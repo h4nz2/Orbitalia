@@ -11,13 +11,13 @@ test.describe.configure({ timeout: 180_000 })
 
 const ready = async (page: Page, url: string) => {
 	await page.goto(url)
-	await page.waitForFunction(() => window.__astrolabe !== undefined, null, {
+	await page.waitForFunction(() => window.__orbitalia !== undefined, null, {
 		timeout: 30_000,
 	})
 	await cameraAtRest(page)
 }
 
-const camera = (page: Page) => page.evaluate(() => window.__astrolabe!.camera())
+const camera = (page: Page) => page.evaluate(() => window.__orbitalia!.camera())
 
 /**
  * Starts a slow flight (so the headless page can watch it) the way a click
@@ -27,7 +27,7 @@ const camera = (page: Page) => page.evaluate(() => window.__astrolabe!.camera())
 const flySlowly = (page: Page, id: string, durationMs = 40_000) =>
 	page.evaluate(
 		({ id, durationMs }) => {
-			const store = window.__astrolabe!.store.getState()
+			const store = window.__orbitalia!.store.getState()
 			store.select(id)
 			store.focus(id, { profile: "fly", durationMs })
 		},
@@ -36,7 +36,7 @@ const flySlowly = (page: Page, id: string, durationMs = 40_000) =>
 
 const waitForProgress = (page: Page, at: number) =>
 	page.waitForFunction(
-		(at) => (window.__astrolabe!.camera().progress ?? 0) >= at,
+		(at) => (window.__orbitalia!.camera().progress ?? 0) >= at,
 		at,
 		{ timeout: 60_000, polling: "raf" },
 	)
@@ -59,7 +59,7 @@ const recordFlight = (page: Page) =>
 		const log: FlightLog = { farthest: 0, skips: [] }
 		;(window as unknown as { flightLog: FlightLog }).flightLog = log
 		const watch = () => {
-			const camera = window.__astrolabe?.camera()
+			const camera = window.__orbitalia?.camera()
 			if (camera !== undefined) {
 				log.farthest = Math.max(log.farthest, camera.distance)
 			}
@@ -133,12 +133,12 @@ test("a flight can be skipped, retargeted and abandoned", async ({ page }) => {
 	await flySlowly(page, "neptune")
 	await waitForProgress(page, 0.2)
 	await page.evaluate(() =>
-		window.__astrolabe!.store.getState().setFocus("mars"),
+		window.__orbitalia!.store.getState().setFocus("mars"),
 	)
 	await expect(readout.getByText("Saturn → Mars")).toBeVisible()
 	await cameraAtRest(page)
 	expect(
-		await page.evaluate(() => window.__astrolabe!.store.getState().focusId),
+		await page.evaluate(() => window.__orbitalia!.store.getState().focusId),
 	).toBe("mars")
 
 	// Escape mid-flight: the way out, and the readout goes with the trip

@@ -603,15 +603,15 @@ describe("buildBodies", () => {
 		const [mapped, ...painted] = moonIds
 		const paintedSource = {
 			title: "Painted",
-			credit: "Astrolabe",
-			short: "Painted by Astrolabe",
+			credit: "Orbitalia",
+			short: "Painted by Orbitalia",
 			url: "https://example.org/",
 			licence: "MIT",
 			licenceUrl: "https://example.org/licence",
 		}
 		const catalogue = (members: string[] = painted) => ({
 			sources: {
-				"astrolabe-painted": paintedSource,
+				"orbitalia-painted": paintedSource,
 				cassini: {
 					...paintedSource,
 					title: "Cassini map",
@@ -668,11 +668,11 @@ describe("buildBodies", () => {
 			const rock = built.bodies.find((body) => body.id === painted[0])
 			expect(rock?.surface).toEqual({
 				kind: "painted",
-				source: "astrolabe-painted",
+				source: "orbitalia-painted",
 			})
 			expect(built.stats.placeholderTextures).toBe(0)
 			expect(built.credits.map((credit) => credit.id)).toEqual([
-				"astrolabe-painted",
+				"orbitalia-painted",
 				"cassini",
 			])
 			expect(built.credits[0].bodies).toEqual(painted)

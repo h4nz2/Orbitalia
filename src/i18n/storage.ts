@@ -5,8 +5,8 @@
  * missing or throw (private windows, blocked site data): every access is guarded
  * and the app works without it.
  */
-export const LOCALE_STORAGE_KEY = "astrolabe.locale"
-export const READING_LEVEL_STORAGE_KEY = "astrolabe.readingLevel"
+export const LOCALE_STORAGE_KEY = "orbitalia.locale"
+export const READING_LEVEL_STORAGE_KEY = "orbitalia.readingLevel"
 
 const storage = (): Storage | undefined => {
 	try {

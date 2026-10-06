@@ -88,7 +88,7 @@ const httpRanges =
 				headers: {
 					range: `bytes=${offset}-${offset + length - 1}`,
 					"user-agent":
-						"Astrolabe gen:surfaces (https://github.com/h4nz2/Astrolabe)",
+						"Orbitalia gen:surfaces (https://github.com/h4nz2/Orbitalia)",
 				},
 			})
 			if (response.status === 206) {

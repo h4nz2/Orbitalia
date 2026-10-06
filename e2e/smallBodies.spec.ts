@@ -18,7 +18,7 @@ const HALLEY_PERIHELION = 2446469.97
 
 const state = (page: Page) =>
 	page.evaluate(() => {
-		const s = window.__astrolabe!.store.getState()
+		const s = window.__orbitalia!.store.getState()
 		return {
 			focusId: s.focusId,
 			selectedId: s.selectedId,
@@ -32,7 +32,7 @@ const state = (page: Page) =>
 const ready = async (page: Page, query: string) => {
 	await page.goto(`/solar_system?${query}`)
 	await expect(page.locator("canvas").first()).toBeVisible()
-	await page.waitForFunction(() => window.__astrolabe !== undefined)
+	await page.waitForFunction(() => window.__orbitalia !== undefined)
 	await cameraAtRest(page)
 }
 

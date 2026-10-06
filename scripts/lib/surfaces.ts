@@ -97,7 +97,7 @@ export const SurfaceCatalogue = z.object({
 export type SurfaceCatalogue = z.infer<typeof SurfaceCatalogue>
 
 /** The source id every painted surface is credited to. */
-export const PAINTED_SOURCE = "astrolabe-painted"
+export const PAINTED_SOURCE = "orbitalia-painted"
 
 /** Output widths of painted surfaces: a featured moon is looked at up close, the long tail rarely. */
 export const PAINTED_WIDTH = { featured: 1024, family: 512 } as const
@@ -222,7 +222,7 @@ export const creditsOf = (
 		if (bodies === undefined) continue
 		credits.push({
 			id,
-			// the moons' painted source, and the planets' ("astrolabe-painted-bands")
+			// the moons' painted source, and the planets' ("orbitalia-painted-bands")
 			kind: id.startsWith(PAINTED_SOURCE) ? "painted" : "map",
 			title: source.title,
 			credit: source.credit,

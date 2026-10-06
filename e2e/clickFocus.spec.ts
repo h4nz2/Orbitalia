@@ -18,7 +18,7 @@ test.describe.configure({ timeout: 180_000 })
 
 const ready = async (page: Page, url = "/solar_system") => {
 	await page.goto(url)
-	await page.waitForFunction(() => window.__astrolabe !== undefined, null, {
+	await page.waitForFunction(() => window.__orbitalia !== undefined, null, {
 		timeout: 30_000,
 	})
 	await settled(page)
@@ -32,14 +32,14 @@ const settled = (page: Page) => cameraAtRest(page)
 
 const state = (page: Page) =>
 	page.evaluate(() => {
-		const { view, selectedId, hoverId } = window.__astrolabe!.store.getState()
+		const { view, selectedId, hoverId } = window.__orbitalia!.store.getState()
 		return { view, selectedId, hoverId }
 	})
 
 /** Where a body is on the page right now (the canvas fills the viewport). */
 const screenOf = async (page: Page, id: string) => {
 	const placement = await page.evaluate(
-		(id) => window.__astrolabe!.screenOf(id),
+		(id) => window.__orbitalia!.screenOf(id),
 		id,
 	)
 	expect(placement, `${id} on screen`).not.toBeNull()
@@ -53,7 +53,7 @@ const screenOf = async (page: Page, id: string) => {
 const emptySpot = async (page: Page, ids: string[], clearance = 90) => {
 	const bodies = await Promise.all(
 		ids.map((id) =>
-			page.evaluate((id) => window.__astrolabe!.screenOf(id), id),
+			page.evaluate((id) => window.__orbitalia!.screenOf(id), id),
 		),
 	)
 	const viewport = page.viewportSize()!
@@ -150,14 +150,14 @@ test("at true scale a sub-pixel planet is hit anywhere within its target", async
 }) => {
 	await ready(page)
 	await page.evaluate(() =>
-		window.__astrolabe!.scale.getState().setPreset("trueScale"),
+		window.__orbitalia!.scale.getState().setPreset("trueScale"),
 	)
 	// the camera follows the new scale on its next drawn frame, which a loaded machine may
 	// not have drawn yet (until then screenOf still answers for the old scale): wait until
 	// the camera has moved with it and come to rest, and Jupiter is back on screen
 	await settled(page)
 	await expect
-		.poll(() => page.evaluate(() => window.__astrolabe!.screenOf("jupiter")))
+		.poll(() => page.evaluate(() => window.__orbitalia!.screenOf("jupiter")))
 		.not.toBeNull()
 	// 9 px beside a planet far less than a pixel wide
 	const aim = await beside(page, "jupiter", 9)

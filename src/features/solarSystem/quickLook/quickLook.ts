@@ -5,7 +5,7 @@
  * features working in the scene, a step for teachers on presentation mode and
  * a pointer to the help page; no, or no answer, shows nothing further.
  *
- * - Asked once per browser: `astrolabe.quickLookAsked` in local storage, set
+ * - Asked once per browser: `orbitalia.quickLookAsked` in local storage, set
  *   when the question appears (an ignored question counts as no). With storage
  *   blocked it is asked at most once per visit.
  * - Never over a shared link or in presentation mode: the opening does not
@@ -42,7 +42,7 @@ import {
 } from "./script"
 
 /** Remembered on this device only (never sent anywhere): the question has been asked here. */
-export const QUICK_LOOK_ASKED_KEY = "astrolabe.quickLookAsked"
+export const QUICK_LOOK_ASKED_KEY = "orbitalia.quickLookAsked"
 
 /** An unanswered question goes away after this long, ms (no answer is no). */
 export const ASK_TIMEOUT_MS = 30_000

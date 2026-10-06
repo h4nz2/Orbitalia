@@ -3,7 +3,7 @@
  * trajectories from NASA/JPL Horizons -> src/data/spacecraft.json (issue #35).
  *
  * Needs the network the first time (Horizons API, public, no key); responses are
- * cached in node_modules/.cache/astrolabe-horizons, so reruns are offline. The
+ * cached in node_modules/.cache/orbitalia-horizons, so reruns are offline. The
  * app itself never fetches anything: it ships the output as static JSON.
  *
  * For every craft:
@@ -64,7 +64,7 @@ const paths = {
 	out: join(root, "src", "data", "spacecraft.json"),
 	trajectories: join(root, "src", "data", "spacecraftTrajectories.json"),
 	check: join(root, "src", "data", "spacecraftCheck.json"),
-	cache: join(root, "node_modules", ".cache", "astrolabe-horizons"),
+	cache: join(root, "node_modules", ".cache", "orbitalia-horizons"),
 }
 
 /** Horizons centre codes: the Sun's and the planets' body centres. */

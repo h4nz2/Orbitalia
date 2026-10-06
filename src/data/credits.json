@@ -180,14 +180,14 @@
 		]
 	},
 	{
-		"id": "astrolabe-painted-bands",
+		"id": "orbitalia-painted-bands",
 		"kind": "painted",
 		"title": "Painted cloud bands",
-		"credit": "Astrolabe contributors (scripts/lib/paint.ts), after Cassini, Voyager 2 and Hubble photographs",
-		"short": "Painted by Astrolabe",
-		"url": "https://github.com/h4nz2/Astrolabe/blob/main/data/planet-textures.json",
+		"credit": "Orbitalia contributors (scripts/lib/paint.ts), after Cassini, Voyager 2 and Hubble photographs",
+		"short": "Painted by Orbitalia",
+		"url": "https://github.com/h4nz2/Orbitalia/blob/main/data/planet-textures.json",
 		"licence": "MIT",
-		"licenceUrl": "https://github.com/h4nz2/Astrolabe/blob/main/LICENSE",
+		"licenceUrl": "https://github.com/h4nz2/Orbitalia/blob/main/LICENSE",
 		"note": "Not a photograph: there is no openly licensed global map of these planets, so their bands, colours and storms are painted after spacecraft photographs (each texture's basis is in data/planet-textures.json).",
 		"bodies": [
 			"venus",
@@ -260,7 +260,7 @@
 		"url": "https://astrogeology.usgs.gov/search/map/Europa/Voyager-Galileo/Europa_Voyager_GalileoSSI_global_mosaic_500m",
 		"licence": "Public domain",
 		"licenceUrl": "https://www.usgs.gov/information-policies-and-instructions/copyrights-and-credits",
-		"note": "A grey mosaic; Astrolabe colours it cream with reddish-brown dark bands.",
+		"note": "A grey mosaic; Orbitalia colours it cream with reddish-brown dark bands.",
 		"bodies": [
 			"europa"
 		]
@@ -287,7 +287,7 @@
 		"url": "https://astrogeology.usgs.gov/search/map/Callisto/Voyager-Galileo/Callisto_Voyager_GalileoSSI_global_mosaic_1km",
 		"licence": "Public domain",
 		"licenceUrl": "https://www.usgs.gov/information-policies-and-instructions/copyrights-and-credits",
-		"note": "A grey mosaic; Astrolabe colours it dark brown with bright icy craters.",
+		"note": "A grey mosaic; Orbitalia colours it dark brown with bright icy craters.",
 		"bodies": [
 			"callisto"
 		]
@@ -301,7 +301,7 @@
 		"url": "https://science.nasa.gov/photojournal/color-maps-of-mimas-2014/",
 		"licence": "Public domain",
 		"licenceUrl": "https://www.jpl.nasa.gov/jpl-image-use-policy/",
-		"note": "The published colours are enhanced (ultraviolet to infrared); Astrolabe keeps a fifth of the colour to stay close to what an eye would see.",
+		"note": "The published colours are enhanced (ultraviolet to infrared); Orbitalia keeps a fifth of the colour to stay close to what an eye would see.",
 		"bodies": [
 			"mimas"
 		]
@@ -315,7 +315,7 @@
 		"url": "https://science.nasa.gov/photojournal/color-maps-of-enceladus-2014/",
 		"licence": "Public domain",
 		"licenceUrl": "https://www.jpl.nasa.gov/jpl-image-use-policy/",
-		"note": "The published colours are enhanced; Astrolabe keeps a fifth of the colour.",
+		"note": "The published colours are enhanced; Orbitalia keeps a fifth of the colour.",
 		"bodies": [
 			"enceladus"
 		]
@@ -329,7 +329,7 @@
 		"url": "https://science.nasa.gov/photojournal/color-maps-of-tethys-2014/",
 		"licence": "Public domain",
 		"licenceUrl": "https://www.jpl.nasa.gov/jpl-image-use-policy/",
-		"note": "The published colours are enhanced; Astrolabe keeps a fifth of the colour.",
+		"note": "The published colours are enhanced; Orbitalia keeps a fifth of the colour.",
 		"bodies": [
 			"tethys"
 		]
@@ -343,7 +343,7 @@
 		"url": "https://science.nasa.gov/photojournal/color-maps-of-dione-2014/",
 		"licence": "Public domain",
 		"licenceUrl": "https://www.jpl.nasa.gov/jpl-image-use-policy/",
-		"note": "The published colours are enhanced; Astrolabe keeps a fifth of the colour.",
+		"note": "The published colours are enhanced; Orbitalia keeps a fifth of the colour.",
 		"bodies": [
 			"dione"
 		]
@@ -357,7 +357,7 @@
 		"url": "https://science.nasa.gov/photojournal/color-maps-of-rhea-2014/",
 		"licence": "Public domain",
 		"licenceUrl": "https://www.jpl.nasa.gov/jpl-image-use-policy/",
-		"note": "The published colours are enhanced; Astrolabe keeps a fifth of the colour.",
+		"note": "The published colours are enhanced; Orbitalia keeps a fifth of the colour.",
 		"bodies": [
 			"rhea"
 		]
@@ -371,7 +371,7 @@
 		"url": "https://science.nasa.gov/photojournal/color-maps-of-iapetus-2014/",
 		"licence": "Public domain",
 		"licenceUrl": "https://www.jpl.nasa.gov/jpl-image-use-policy/",
-		"note": "The published colours are enhanced; Astrolabe keeps a third of the colour.",
+		"note": "The published colours are enhanced; Orbitalia keeps a third of the colour.",
 		"bodies": [
 			"iapetus"
 		]
@@ -413,7 +413,7 @@
 		"url": "https://commons.wikimedia.org/wiki/File:Miranda_map_JPL_USGS.jpg",
 		"licence": "Public domain",
 		"licenceUrl": "https://commons.wikimedia.org/wiki/File:Miranda_map_JPL_USGS.jpg",
-		"note": "Voyager 2 saw only the southern half; Astrolabe fills in the north to match (marked in the app).",
+		"note": "Voyager 2 saw only the southern half; Orbitalia fills in the north to match (marked in the app).",
 		"bodies": [
 			"miranda"
 		]
@@ -427,7 +427,7 @@
 		"url": "https://commons.wikimedia.org/wiki/File:Ariel_map_JPL_USGS.jpg",
 		"licence": "Public domain",
 		"licenceUrl": "https://commons.wikimedia.org/wiki/File:Ariel_map_JPL_USGS.jpg",
-		"note": "Voyager 2 saw only the southern half; Astrolabe fills in the north to match (marked in the app).",
+		"note": "Voyager 2 saw only the southern half; Orbitalia fills in the north to match (marked in the app).",
 		"bodies": [
 			"ariel"
 		]
@@ -441,7 +441,7 @@
 		"url": "https://commons.wikimedia.org/wiki/File:Umbriel_map_JPL_USGS.jpg",
 		"licence": "Public domain",
 		"licenceUrl": "https://commons.wikimedia.org/wiki/File:Umbriel_map_JPL_USGS.jpg",
-		"note": "Voyager 2 saw only the southern half; Astrolabe fills in the north to match (marked in the app).",
+		"note": "Voyager 2 saw only the southern half; Orbitalia fills in the north to match (marked in the app).",
 		"bodies": [
 			"umbriel"
 		]
@@ -455,7 +455,7 @@
 		"url": "https://commons.wikimedia.org/wiki/File:Titania_map_JPL_USGS.jpg",
 		"licence": "Public domain",
 		"licenceUrl": "https://commons.wikimedia.org/wiki/File:Titania_map_JPL_USGS.jpg",
-		"note": "Voyager 2 saw only the southern half; Astrolabe fills in the north to match (marked in the app).",
+		"note": "Voyager 2 saw only the southern half; Orbitalia fills in the north to match (marked in the app).",
 		"bodies": [
 			"titania"
 		]
@@ -469,7 +469,7 @@
 		"url": "https://commons.wikimedia.org/wiki/File:Oberon_map_JPL_USGS.jpg",
 		"licence": "Public domain",
 		"licenceUrl": "https://commons.wikimedia.org/wiki/File:Oberon_map_JPL_USGS.jpg",
-		"note": "Voyager 2 saw only the southern half; Astrolabe fills in the north to match (marked in the app).",
+		"note": "Voyager 2 saw only the southern half; Orbitalia fills in the north to match (marked in the app).",
 		"bodies": [
 			"oberon"
 		]
@@ -489,14 +489,14 @@
 		]
 	},
 	{
-		"id": "astrolabe-painted",
+		"id": "orbitalia-painted",
 		"kind": "painted",
 		"title": "Painted surfaces",
-		"credit": "Astrolabe contributors (scripts/lib/paint.ts), from published colours and brightness (albedo) measurements",
-		"short": "Painted by Astrolabe",
-		"url": "https://github.com/h4nz2/Astrolabe/blob/main/data/moon-surfaces.json",
+		"credit": "Orbitalia contributors (scripts/lib/paint.ts), from published colours and brightness (albedo) measurements",
+		"short": "Painted by Orbitalia",
+		"url": "https://github.com/h4nz2/Orbitalia/blob/main/data/moon-surfaces.json",
 		"licence": "MIT",
-		"licenceUrl": "https://github.com/h4nz2/Astrolabe/blob/main/LICENSE",
+		"licenceUrl": "https://github.com/h4nz2/Orbitalia/blob/main/LICENSE",
 		"note": "Not a photograph: no spacecraft has mapped these moons, so their colour, brightness and the kind of surface are painted from what is known.",
 		"bodies": [
 			"ceres",

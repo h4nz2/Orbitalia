@@ -11,7 +11,7 @@ test.describe.configure({ timeout: 180_000 })
 
 const ready = async (page: Page, url: string) => {
 	await page.goto(url)
-	await page.waitForFunction(() => window.__astrolabe !== undefined, null, {
+	await page.waitForFunction(() => window.__orbitalia !== undefined, null, {
 		timeout: 30_000,
 	})
 	await cameraAtRest(page)
@@ -40,7 +40,7 @@ test("R ends a tour opened after the lesson link and restores the link", async (
 	await expect(page).not.toHaveURL(/tour=/)
 	await cameraAtRest(page)
 	const view = await page.evaluate(
-		() => window.__astrolabe!.store.getState().view,
+		() => window.__orbitalia!.store.getState().view,
 	)
 	expect(view).toEqual({ kind: "body", id: "saturn" })
 })

@@ -544,7 +544,7 @@
 				"simple": "Tu idioma"
 			},
 			"what": {
-				"standard": "Astrolabe habla inglés, alemán, checo, español y francés, cada uno con tres niveles de lectura: sencillo, estándar y avanzado.",
+				"standard": "Orbitalia habla inglés, alemán, checo, español y francés, cada uno con tres niveles de lectura: sencillo, estándar y avanzado.",
 				"simple": "Lee todo en tu idioma y con palabras fáciles."
 			},
 			"why": {
@@ -1242,7 +1242,7 @@
 		},
 		"app": {
 			"title": "Esta aplicación",
-			"intro": "Astrolabe es de código abierto: cualquiera puede usarla, estudiarla, mejorarla y compartirla."
+			"intro": "Orbitalia es de código abierto: cualquiera puede usarla, estudiarla, mejorarla y compartirla."
 		}
 	},
 	"creditNames": {
@@ -1263,7 +1263,7 @@
 		"tanstack": "Las páginas y los enlaces que guardan cada vista.",
 		"gsap": "Animaciones de la página de inicio y del diccionario.",
 		"smallLibraries": "Estado de la aplicación, comprobación de datos, fechas, códigos QR y traducciones con plurales.",
-		"astrolabe": "Hecho por las personas que colaboran en Astrolabe. Cualquiera puede añadir una función, una visita guiada o una traducción."
+		"orbitalia": "Hecho por las personas que colaboran en Orbitalia. Cualquiera puede añadir una función, una visita guiada o una traducción."
 	},
 	"licences": {
 		"openData": "publicado como datos abiertos (sin licencia formal indicada)",

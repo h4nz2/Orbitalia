@@ -9,7 +9,7 @@
  * Every request asks for geometric state vectors (position and velocity, no
  * light-time correction) in the ecliptic and mean equinox of J2000, in km and
  * km/s, with UT time tags (the app's Julian Dates are UTC). Responses are cached
- * on disk (node_modules/.cache/astrolabe-horizons), so a rebuild is offline and
+ * on disk (node_modules/.cache/orbitalia-horizons), so a rebuild is offline and
  * reproducible once fetched.
  */
 import { createHash } from "node:crypto"

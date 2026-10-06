@@ -98,6 +98,6 @@ export function postcardText(
 		scan: i18n.t("solarSystem.postcard.scan"),
 		fileName:
 			extra?.fileName ??
-			`astrolabe-${subjectId ?? "solar-system"}${day === "" ? "" : `-${day}`}.png`,
+			`orbitalia-${subjectId ?? "solar-system"}${day === "" ? "" : `-${day}`}.png`,
 	}
 }

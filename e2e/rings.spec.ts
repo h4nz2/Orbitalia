@@ -140,7 +140,7 @@ test("rings stay drawn in Always lit and survive an edge-on view", async ({
 	await page.mouse.click(size.width / 2 - 0.37 * size.height, size.height / 2)
 	await nextFrames(page)
 	expect(
-		await page.evaluate(() => window.__astrolabe?.store.getState().view),
+		await page.evaluate(() => window.__orbitalia?.store.getState().view),
 	).toEqual({ kind: "body", id: "saturn" })
 
 	await openLayers(page)

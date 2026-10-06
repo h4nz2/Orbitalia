@@ -34,7 +34,7 @@ function collectErrors(page: Page): string[] {
 }
 
 const helpHeading = (page: Page) =>
-	page.getByRole("heading", { level: 1, name: "Everything Astrolabe can do" })
+	page.getByRole("heading", { level: 1, name: "Everything Orbitalia can do" })
 
 test("the help page is one click away from every page, in the same place", async ({
 	page,
@@ -217,7 +217,7 @@ for (let chunk = 0; chunk < CHUNKS; chunk += 1) {
 			// the page is up: every page but help has the help button
 			await expect(page.getByTestId("help-button"), entry.id).toBeVisible()
 			if (expected.pathname === "/solar_system") {
-				await page.waitForFunction(() => window.__astrolabe !== undefined)
+				await page.waitForFunction(() => window.__orbitalia !== undefined)
 				await nextFrames(page, 3)
 			}
 			// the viewer's language came along

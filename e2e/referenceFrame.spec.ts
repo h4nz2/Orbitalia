@@ -21,7 +21,7 @@ const MARS_OPPOSITION = 2460691.5
 const ready = async (page: Page, url: string) => {
 	await page.setViewportSize({ width: 1280, height: 800 })
 	await page.goto(url)
-	await page.waitForFunction(() => window.__astrolabe !== undefined, null, {
+	await page.waitForFunction(() => window.__orbitalia !== undefined, null, {
 		timeout: 30_000,
 	})
 }
@@ -35,13 +35,13 @@ const settled = async (page: Page) => {
 
 const state = (page: Page) =>
 	page.evaluate(() => {
-		const s = window.__astrolabe!.store.getState()
+		const s = window.__orbitalia!.store.getState()
 		return {
 			frameId: s.frameId,
 			selectedId: s.selectedId,
 			timeWarp: s.timeWarp,
 			paused: s.paused,
-			mode: window.__astrolabe!.camera().mode,
+			mode: window.__orbitalia!.camera().mode,
 		}
 	})
 
@@ -91,7 +91,7 @@ test("'Seen from Earth' holds Earth still and draws Mars's loop; one click goes 
 		.click()
 	// hold the moment still for the picture
 	await page.evaluate(() =>
-		window.__astrolabe!.store.getState().setPaused(true),
+		window.__orbitalia!.store.getState().setPaused(true),
 	)
 
 	const badge = page.getByTestId("frame-badge")
@@ -155,7 +155,7 @@ test("'Seen from Earth: the Moon' reads the phase, in German too", async ({
 		.getByRole("menuitem", { name: /Von der Erde aus: der Mond/ })
 		.click()
 	await page.evaluate(() => {
-		const store = window.__astrolabe!.store.getState()
+		const store = window.__orbitalia!.store.getState()
 		store.setPaused(true)
 		store.setSimTime(2460748.79)
 	})

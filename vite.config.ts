@@ -3,7 +3,7 @@ import react from "@vitejs/plugin-react"
 import { tanstackRouter } from "@tanstack/router-plugin/vite"
 
 export default defineConfig({
-	// VITE_BASE lets CI deploy under a sub path (GitHub Pages); default is the site root.
+	// VITE_BASE serves the site from a sub path; default is the site root.
 	base: process.env.VITE_BASE ?? "/",
 	plugins: [
 		// must run before the react plugin

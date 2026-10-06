@@ -16,8 +16,8 @@
  */
 import { create } from "zustand"
 
-export const SOUND_PREFS_KEY = "astrolabe.sound"
-export const SOUND_ON_KEY = "astrolabe.sound.on"
+export const SOUND_PREFS_KEY = "orbitalia.sound"
+export const SOUND_ON_KEY = "orbitalia.sound.on"
 
 /** Quiet by default: half the slider is about a sixth of full level (see `volumeGain`). */
 export const DEFAULT_VOLUME = 0.5

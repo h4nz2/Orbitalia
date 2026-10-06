@@ -17,12 +17,12 @@ const JUPITER = "/solar_system?focus=jupiter&t=2461308.5"
 
 async function ready(page: Page, url: string): Promise<void> {
 	await page.goto(url)
-	await page.waitForFunction(() => window.__astrolabe !== undefined, null, {
+	await page.waitForFunction(() => window.__orbitalia !== undefined, null, {
 		timeout: 60_000,
 	})
 	// hold the moment still, exactly on the day, so the date and file name are known
 	await page.evaluate(() => {
-		const store = window.__astrolabe!.store.getState()
+		const store = window.__orbitalia!.store.getState()
 		store.setPaused(true)
 		store.setSimTime(2461308.5)
 	})
@@ -124,7 +124,7 @@ test("one click takes the view, stamps it and saves it on the device", async ({
 	const download = page.waitForEvent("download")
 	await dialog(page).getByRole("button", { name: "Save picture" }).click()
 	const file = await download
-	expect(file.suggestedFilename()).toBe("astrolabe-jupiter-2026-09-25.png")
+	expect(file.suggestedFilename()).toBe("orbitalia-jupiter-2026-09-25.png")
 	const png = readFileSync(await file.path())
 	expect(png.subarray(1, 4).toString()).toBe("PNG")
 	expect(png.readUInt32BE(16)).toBe(withoutNames.width)
@@ -169,7 +169,7 @@ test("Escape closes the postcard and keeps the view", async ({ page }) => {
 	await page.keyboard.press("Escape")
 	await expect(dialog(page)).toBeHidden()
 	const view = await page.evaluate(
-		() => window.__astrolabe!.store.getState().view,
+		() => window.__orbitalia!.store.getState().view,
 	)
 	expect(view).toEqual({ kind: "body", id: "jupiter" })
 })
@@ -207,6 +207,6 @@ test("works from the comparison: the pair at true relative size with its facts",
 	const download = page.waitForEvent("download")
 	await dialog(page).getByRole("button", { name: "Save picture" }).click()
 	expect((await download).suggestedFilename()).toBe(
-		"astrolabe-earth-jupiter.png",
+		"orbitalia-earth-jupiter.png",
 	)
 })

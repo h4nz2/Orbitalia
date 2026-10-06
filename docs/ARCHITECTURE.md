@@ -1,4 +1,4 @@
-# Astrolabe architecture (rebuild, September 2026)
+# Orbitalia architecture (rebuild, September 2026)
 
 A true-scale, interactive 3D model of the solar system (Sun, planets, moons, and since #23 dwarf planets, asteroids,
 comets and the two belts) plus the visual dictionary and hero page,
@@ -16,9 +16,11 @@ it, and if it must change, change it in the same change set.
 - Tests: Vitest (`src/**/*.test.ts`, `scripts/**/*.test.ts`); Playwright smoke tests (`e2e/`, against `vite preview`).
   `astronomy-engine` is the tests' reference ephemeris and, since #36, the observing astronomy of Sky tonight.
 - ESLint 10 flat config + typescript-eslint + react-hooks; Prettier (tabs, no semicolons).
-- Hosting: static `dist/`, `VITE_BASE` sets Vite `base`. CI (GitHub Actions): typecheck, lint, test, build, e2e, deploy
-  to GitHub Pages. Cloudflare Workers also serves `dist/` (`wrangler.jsonc`, SPA fallback, `npx wrangler deploy`;
-  `wrangler` is a pinned devDependency).
+- Hosting: static `dist/` on Cloudflare Workers at https://orbitalia.app (`wrangler.jsonc`: SPA fallback for deep
+  links, custom domain route). Deploy by hand: `pnpm build && npx wrangler deploy` (`wrangler` is a pinned
+  devDependency). `VITE_BASE` sets Vite `base` for serving from a sub path.
+- No CI: the husky pre-commit hook runs `pnpm format:check && pnpm lint && pnpm typecheck`; run `pnpm test`,
+  `pnpm check:data` and `pnpm test:e2e` yourself before deploying.
 - Known noise: fiber 9.8 logs a `THREE.Clock` deprecation once per `<Canvas>` mount. Do not pin `three` down for it.
 
 ## Directory layout
@@ -153,8 +155,9 @@ interface Belt {
 semi-major axis and the dwarf planets' moons. Editorial content
 lives in the i18n resources (#11), keyed by body `id`, so a new body is added by data alone and its story as content.
 
-`src/data/bodies.json` and `src/data/belts.json` are committed, deterministic build artifacts. CI runs `pnpm check:data`
-(rebuild + `git diff --exit-code`), so rebuild after changing `data/`, `scripts/` or the textures.
+`src/data/bodies.json` and `src/data/belts.json` are committed, deterministic build artifacts. `pnpm check:data`
+(rebuild + `git diff --exit-code`) shows whether they are stale, so rebuild after changing `data/`, `scripts/` or the
+textures.
 
 Build rules (`scripts/lib/`):
 
@@ -354,7 +357,7 @@ Director (`camera/director.ts`, unit-tested frame by frame):
 - A non-finite camera or a view of a missing body resets to the overview.
 - Profiles (`camera/profiles.ts`): the default `smooth` is van Wijk and Nuij's zoom-and-pan (`camera/pose.ts`), 0.8–3 s;
   `fly` is the flight between bodies (see Flights). A profile may add `lift` to its sample and its own `durationMs`.
-- `window.__astrolabe` (`camera/debugHandle.ts`) exposes `camera()` (`director.snapshot()`) and the store for the
+- `window.__orbitalia` (`camera/debugHandle.ts`) exposes `camera()` (`director.snapshot()`) and the store for the
   console and e2e tests. Read the camera, never write it.
 
 ### Flights: fly between planets (`camera/profiles.ts`, `src/store/flight.ts`, `ui/FlightReadout.tsx`; #18)
@@ -408,7 +411,7 @@ Director (`camera/director.ts`, unit-tested frame by frame):
   is dimmed while it plays (`html[data-intro="playing"]`), still usable (hover or focus brings a panel back).
 - **Once per device, never over a link:** it plays on arrival only when no simulation parameter is in the URL
   (`hasExplicitView`: any key of `simSearchSchema`; `lang`/`reading` do not count) and localStorage
-  `astrolabe.introSeen` is unset (set when it starts; guarded, nothing is sent anywhere). A link with a view opens
+  `orbitalia.introSeen` is unset (set when it starts; guarded, nothing is sent anywhere). A link with a view opens
   exactly there. Replayed deliberately from the Help menu (`intro/IntroMenu.tsx`: since #43 the chevron of the Help
   split button beside the language menu, with the help page first), which also shows the hints again, and by
   `?intro=play` (the help page's link; an instruction, never written back). e2e: `playwright.config.ts` presets the key so every test is a returning visitor;
@@ -428,7 +431,7 @@ crawling), a step for teachers on presentation mode (it shows where Present is a
 and the help page. About a minute, moving on by itself.
 
 - **Asked once** (`quickLook.ts`): `watchQuickLook` sees the opening go from `playing` to `handover` and calls `ask()`,
-  which stores `astrolabe.quickLookAsked` in local storage when the question appears (ignored = no; it goes away
+  which stores `orbitalia.quickLookAsked` in local storage when the question appears (ignored = no; it goes away
   after 30 s). Blocked storage: a module flag asks at most once per visit. Never while presenting or while another
   tour runs; never over a shared link, because the opening itself never plays over one (`hasExplicitView`).
 - **Played on the tour player (#28)**: `script.ts` validates `src/data/quickLook.json` (tour stops plus `spot`,
@@ -891,7 +894,7 @@ hover ring, name and cursor apply to labels too.
   planet fit into the gap, the year in Earth years or laps per Earth year, the spin (#13's rotation period and tidal-lock note), weight relative to Earth; the exact
   number sits under each. In the overview or a free view the card is a hint that planets can be clicked. On phones
   (< 600 px) the card sits above the time controls with its facts folded behind a toggle.
-- `window.__astrolabe.screenOf(id)` gives a body's screen position and drawn radius, and `.scale` the scale store, for
+- `window.__orbitalia.screenOf(id)` gives a body's screen position and drawn radius, and `.scale` the scale store, for
   the console and e2e tests.
 - Building on it: #17 moons (focus is how they are seen), #18 fly (clicks call `setFocus`, which flies from a
   focused body; see Flights), #24 compare ("Compare with…" in the card's header, see Comparison),
@@ -971,7 +974,7 @@ the scale engine like any other non-body object.
 operating; `silent` = still flying unheard, `destroyed` = gone), events (flybys, orbit insertions, the heliopause...),
 forced centres (JWST stays Earth-centred) and orbit phases (drawn as a local track). `pnpm build:spacecraft`
 (`scripts/build-spacecraft.ts`, pure parts in `scripts/lib/spacecraft/`, tested) needs the network once; Horizons
-responses are cached in `node_modules/.cache/astrolabe-horizons`. It writes:
+responses are cached in `node_modules/.cache/orbitalia-horizons`. It writes:
 
 ```
 src/data/spacecraft.json              the catalogue (+ flyby times and distances from the data), a few kB, eager
@@ -1158,7 +1161,7 @@ handed to the visitor. Everything happens on the device: no upload, no server, n
 - **Text** (`postcard.ts`, pure): title (body name, else "Our solar system"), the UTC date (none while hidden),
   the caption (the body's tagline; the visitor may edit it), the preset's scale statement
   (`solarSystem.postcard.scaleNote.*`: a copy passed around never pretends to be to scale), the app's name and the
-  file name `astrolabe-<subject>-<YYYY-MM-DD>.png`. Strings: `solarSystem.postcard.*`.
+  file name `orbitalia-<subject>-<YYYY-MM-DD>.png`. Strings: `solarSystem.postcard.*`.
 - **Drawing** (`draw.ts`, Canvas 2D): the picture in a dark mount with a hairline, the stamp below (accent line,
   title, date, caption, extra rows in 4 columns beside a landscape picture or 2 below a portrait one, note, scale
   statement, app name) and a QR code of the link (`qr.ts`, `uqr`, error correction M, loaded with the dialog).
@@ -1327,14 +1330,14 @@ rule decides the defaults: **off until asked, never a surprise**.
 - **Store** (`useSoundStore`): `enabled` (the one master switch; false is total silence), `volume` (0..1, default
   0.5), `ambient`, `cues` (layer switches, default on), `playing` (a recording id). `enabled` starts false on every
   fresh visit and is kept in **sessionStorage** only: a reload mid-lesson keeps it, a new tab or tomorrow's lesson
-  starts silent. Volume and layers are preferences in localStorage (`astrolabe.sound`) and never switch sound on.
+  starts silent. Volume and layers are preferences in localStorage (`orbitalia.sound`) and never switch sound on.
   `mute()` silences everything at once, recordings included (the speaker button, the M key; #29 can call it).
   `setPlaying(id)` turns sound on in the same update: pressing Listen is asking for sound.
 - **Engine** (`sound/engine.ts`): one AudioContext, created and resumed only by `unlockAudio()`, which the UI calls
   inside its own click/key handlers (browser autoplay rules). Buses `ambient`, `cues`, `recordings` → `master`
   (volume, `volumeGain` = 0.6 v², faded with `setTargetAtTime`, never stepped) → a limiter → speakers. While sound
   is off or the tab is hidden the context is suspended (no audio thread work). `getEngine()` is null until unlocked,
-  so every cue before that is a silent no-op. `window.__astrolabeSound.contextState()` is for e2e tests.
+  so every cue before that is a silent no-op. `window.__orbitaliaSound.contextState()` is for e2e tests.
 - **Director** (`sound/SoundDirector.tsx`, rendered once on the page, renders nothing): applies the store to the
   engine (fades, ambient on/off with a 3 s linger, ducking the bed under a recording), binds M (sound on/mute,
   ignored in fields and with modifiers), and, after a reload with sound on, waits for the first pointerdown/keydown
@@ -1617,7 +1620,7 @@ the R3F `<Canvas>` (fiber 9 bridges context); outside the provider it returns En
   `src/i18n/search.ts`); the root route's `retainSearchParams` middleware keeps them on every `Link` and `navigate`,
   so feature code never passes them. A missing or unknown value is replaced at once (`replace: true`): whatever a
   teacher sees, the address bar reproduces for the class.
-- Resolution: URL > the viewer's saved choice (localStorage `astrolabe.locale` / `astrolabe.readingLevel`, written only by the
+- Resolution: URL > the viewer's saved choice (localStorage `orbitalia.locale` / `orbitalia.readingLevel`, written only by the
   switcher) > `navigator.languages` (locale only) > config defaults. Numbers and dates use the browser's regional
   variant of the same language (`de` text, `de-CH` formatting: 149’598’261), never another language's rules.
 - `LanguageMenu` (`placement="corner"` on pages without a HUD) switches both. `I18nProvider` sets `<html lang>`, the

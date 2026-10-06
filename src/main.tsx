@@ -6,7 +6,7 @@ import { createRouter, RouterProvider } from "@tanstack/react-router"
 
 import { routeTree } from "./routeTree.gen"
 
-// Vite's BASE_URL ends with a slash ("/", "/astrolabe/"); TanStack wants "/astrolabe".
+// Vite's BASE_URL ends with a slash ("/", "/orbitalia/"); TanStack wants "/orbitalia".
 const basepath = import.meta.env.BASE_URL.replace(/\/$/, "") || "/"
 
 // Routes are code-split (autoCodeSplitting): preload a route's chunk on link hover/focus/touch,

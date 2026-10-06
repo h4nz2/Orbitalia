@@ -14,7 +14,7 @@ test.describe.configure({ timeout: 120_000 })
 const open = async (page: Page, search = "lang=en") => {
 	await page.setViewportSize({ width: 1280, height: 720 })
 	await page.goto(`/solar_system?${search}`)
-	await page.waitForFunction(() => window.__astrolabe !== undefined, null, {
+	await page.waitForFunction(() => window.__orbitalia !== undefined, null, {
 		timeout: 30_000,
 	})
 	await expect(page.locator("time")).toBeVisible()

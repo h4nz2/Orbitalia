@@ -129,13 +129,13 @@
 			"licenceUrl": "https://www.usgs.gov/information-policies-and-instructions/copyrights-and-credits",
 			"note": "A grey mosaic, coloured by us from Sputnik Planitia's pale cream to Cthulhu's dark red-brown. New Horizons saw only the northern half well; the rest is filled in to match. Turned by 180 degrees for the app's north-side pole (see scripts/lib/iau.ts)."
 		},
-		"astrolabe-painted-bands": {
+		"orbitalia-painted-bands": {
 			"title": "Painted cloud bands",
-			"credit": "Astrolabe contributors (scripts/lib/paint.ts), after Cassini, Voyager 2 and Hubble photographs",
-			"short": "Painted by Astrolabe",
-			"url": "https://github.com/h4nz2/Astrolabe/blob/main/data/planet-textures.json",
+			"credit": "Orbitalia contributors (scripts/lib/paint.ts), after Cassini, Voyager 2 and Hubble photographs",
+			"short": "Painted by Orbitalia",
+			"url": "https://github.com/h4nz2/Orbitalia/blob/main/data/planet-textures.json",
 			"licence": "MIT",
-			"licenceUrl": "https://github.com/h4nz2/Astrolabe/blob/main/LICENSE",
+			"licenceUrl": "https://github.com/h4nz2/Orbitalia/blob/main/LICENSE",
 			"note": "Not a photograph: there is no openly licensed global map of these planets, so their bands, colours and storms are painted after spacecraft photographs (each texture's basis is in data/planet-textures.json)."
 		}
 	},
@@ -175,7 +175,7 @@
 			}
 		},
 		"/assets/textures/venus/venus.jpg": {
-			"source": "astrolabe-painted-bands",
+			"source": "orbitalia-painted-bands",
 			"width": 1024,
 			"veiled": true,
 			"painted": {
@@ -274,7 +274,7 @@
 			}
 		},
 		"/assets/textures/saturn/saturn.jpg": {
-			"source": "astrolabe-painted-bands",
+			"source": "orbitalia-painted-bands",
 			"width": 2048,
 			"painted": {
 				"bands": {
@@ -310,7 +310,7 @@
 			"basis": "Cassini natural-colour images (2004–2017): a butterscotch equatorial zone, tan belts and paler zones at the latitudes Cassini measured, greyer polar regions and the dark edge of the north polar hexagon at about 77° N."
 		},
 		"/assets/textures/uranus/uranus.jpg": {
-			"source": "astrolabe-painted-bands",
+			"source": "orbitalia-painted-bands",
 			"width": 1024,
 			"painted": {
 				"bands": {
@@ -331,7 +331,7 @@
 			"basis": "Voyager 2 (1986) and Hubble images in true colour (Irwin et al. 2024): a pale greenish-cyan ball, almost featureless, a little brighter towards the poles."
 		},
 		"/assets/textures/neptune/neptune.jpg": {
-			"source": "astrolabe-painted-bands",
+			"source": "orbitalia-painted-bands",
 			"width": 2048,
 			"painted": {
 				"bands": {
@@ -414,7 +414,7 @@
 			"basis": "Voyager 2 images of 1989, in true colour (Irwin et al. 2024: a paler blue than the famous enhanced pictures): a dark southern belt with the Great Dark Spot and its bright companion clouds at 22° S, the fast bright \"Scooter\" at 42° S, the small dark spot D2 with its bright core at 55° S, and high white cloud streaks in the north. The Great Dark Spot has since faded; Hubble has seen new dark spots come and go."
 		},
 		"/assets/textures/asteroid.jpg": {
-			"source": "astrolabe-painted",
+			"source": "orbitalia-painted",
 			"width": 512,
 			"for": "#23: stand-in surface for small bodies without a map of their own",
 			"painted": {
@@ -428,7 +428,7 @@
 			"basis": "A generic rocky asteroid: grey, cratered, reflecting about 15 % of sunlight (typical of stony S-type and many C-type asteroids lies between 5 and 25 %)."
 		},
 		"/assets/textures/asteroid_dark.jpg": {
-			"source": "astrolabe-painted",
+			"source": "orbitalia-painted",
 			"width": 512,
 			"for": "#23: stand-in surface for comet nuclei",
 			"painted": {

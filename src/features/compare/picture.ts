@@ -289,7 +289,7 @@ export async function takeComparisonPostcard(
 			caption: facts[0],
 			facts: facts.slice(1, 4),
 			scaleNote: i18n.t("solarSystem.postcard.compareScale"),
-			fileName: `astrolabe-${drawOrder(ids).join("-")}.png`,
+			fileName: `orbitalia-${drawOrder(ids).join("-")}.png`,
 		},
 	})
 }

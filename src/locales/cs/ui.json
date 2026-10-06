@@ -3,10 +3,10 @@
 		"name": "Čeština"
 	},
 	"app": {
-		"name": "Astrolabe",
-		"title": "Astrolabe – naše sluneční soustava",
-		"installName": "Astrolabe - Naše sluneční soustava",
-		"shortName": "Astrolabe",
+		"name": "Orbitalia",
+		"title": "Orbitalia – naše sluneční soustava",
+		"installName": "Orbitalia - Naše sluneční soustava",
+		"shortName": "Orbitalia",
 		"description": "Obrazový slovník a 3D model naší sluneční soustavy ve skutečném měřítku"
 	},
 	"i18n": {
@@ -574,7 +574,7 @@
 				"date": "Dne {date}",
 				"distance": "Moje cesta kolem Slunce: už {distance} km.",
 				"fileName": "muj-vek-na-planetach",
-				"footer": "Astrolabe – naše sluneční soustava"
+				"footer": "Orbitalia – naše sluneční soustava"
 			}
 		},
 		"hunt": {
@@ -1725,7 +1725,7 @@
 		"buttonHint": "Všechny funkce a jak je používat",
 		"more": "Další nápověda: úvod, rychlý pohled, jak se pohybovat",
 		"title": "Nápověda",
-		"heading": "Všechno, co Astrolabe umí",
+		"heading": "Všechno, co Orbitalia umí",
 		"heading@simple": "Co tu můžu dělat?",
 		"lead": "Všechny funkce na jednom místě: co to je, proč to stojí za vyzkoušení a jak se to používá. „Vyzkoušet“ otevře aplikaci s funkcí připravenou k použití.",
 		"lead@simple": "Tady je všechno, co tu můžeš dělat. Stiskni „Vyzkoušet“ a hurá do toho!",

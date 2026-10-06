@@ -16,13 +16,13 @@ test.describe.configure({ timeout: 180_000 })
 
 const ready = async (page: Page, url: string) => {
 	await page.goto(url)
-	await page.waitForFunction(() => window.__astrolabe !== undefined, null, {
+	await page.waitForFunction(() => window.__orbitalia !== undefined, null, {
 		timeout: 60_000,
 	})
 	await settled(page)
 	// freeze the bodies so labels hold still while they are measured and clicked
 	await page.evaluate(() =>
-		window.__astrolabe!.store.getState().setPaused(true),
+		window.__orbitalia!.store.getState().setPaused(true),
 	)
 	// labels fade in over 0.2 s of frame time: wait until they have, and hold still
 	await labelsAtRest(page)
@@ -151,7 +151,7 @@ test("a label is a click target: hover shows it, a tap focuses the body", async 
 	await page.mouse.move(saturn.x, saturn.y)
 	await expect
 		.poll(() =>
-			page.evaluate(() => window.__astrolabe!.store.getState().hoverId),
+			page.evaluate(() => window.__orbitalia!.store.getState().hoverId),
 		)
 		.toBe("saturn")
 	await expect(page.locator("canvas")).toHaveCSS("cursor", "pointer")
@@ -162,7 +162,7 @@ test("a label is a click target: hover shows it, a tap focuses the body", async 
 	await page.mouse.click(saturn.x, saturn.y)
 	await expect
 		.poll(() =>
-			page.evaluate(() => window.__astrolabe!.store.getState().focusId),
+			page.evaluate(() => window.__orbitalia!.store.getState().focusId),
 		)
 		.toBe("saturn")
 	await expect(page).toHaveURL(/[?&]focus=saturn/)
@@ -172,17 +172,17 @@ test("a drag that starts on a label still turns the camera", async ({
 	page,
 }) => {
 	await ready(page, "/solar_system")
-	const before = await page.evaluate(() => window.__astrolabe!.camera())
+	const before = await page.evaluate(() => window.__orbitalia!.camera())
 	const jupiter = await centreOf(page, "jupiter")
 	await page.mouse.move(jupiter.x, jupiter.y)
 	await page.mouse.down()
 	await page.mouse.move(jupiter.x + 150, jupiter.y + 20, { steps: 8 })
 	await page.mouse.up()
 	await settled(page)
-	const after = await page.evaluate(() => window.__astrolabe!.camera())
+	const after = await page.evaluate(() => window.__orbitalia!.camera())
 	expect(Math.abs(after.azimuthDeg - before.azimuthDeg)).toBeGreaterThan(5)
 	expect(
-		await page.evaluate(() => window.__astrolabe!.store.getState().focusId),
+		await page.evaluate(() => window.__orbitalia!.store.getState().focusId),
 	).toBe("sun")
 })
 

@@ -7,7 +7,7 @@ import { cameraAtRest } from "./support/scene"
 
 // The selection and camera navigation model (#10), in the real browser. The
 // model is driven through the UI and through the store exposed on
-// `window.__astrolabe` (the acceptance criterion: select -> focus -> overview
+// `window.__orbitalia` (the acceptance criterion: select -> focus -> overview
 // programmatically, with no feature code touching the camera), and every
 // check reads the camera director's own snapshot.
 
@@ -18,7 +18,7 @@ test.describe.configure({ timeout: 180_000 })
 
 const ready = async (page: Page, url = "/solar_system") => {
 	await page.goto(url)
-	await page.waitForFunction(() => window.__astrolabe !== undefined, null, {
+	await page.waitForFunction(() => window.__orbitalia !== undefined, null, {
 		timeout: 30_000,
 	})
 	await settled(page)
@@ -30,11 +30,11 @@ const ready = async (page: Page, url = "/solar_system") => {
  */
 const settled = (page: Page) => cameraAtRest(page)
 
-const camera = (page: Page) => page.evaluate(() => window.__astrolabe!.camera())
+const camera = (page: Page) => page.evaluate(() => window.__orbitalia!.camera())
 const state = (page: Page) =>
 	page.evaluate(() => {
 		const { view, selectedId, focusId, sequence } =
-			window.__astrolabe!.store.getState()
+			window.__orbitalia!.store.getState()
 		return { view, selectedId, focusId, sequence }
 	})
 
@@ -49,7 +49,7 @@ const expectHealthy = async (page: Page, mode: string, focusId: string) => {
 
 const waitForProgress = (page: Page, at: number) =>
 	page.waitForFunction(
-		(at) => (window.__astrolabe?.camera().progress ?? 0) >= at,
+		(at) => (window.__orbitalia?.camera().progress ?? 0) >= at,
 		at,
 		{ timeout: 60_000 },
 	)
@@ -98,7 +98,7 @@ test("drives select -> focus -> overview through the store, the camera only foll
 	await ready(page)
 	const home = (await camera(page)).cameraKm
 
-	await page.evaluate(() => window.__astrolabe!.store.getState().select("mars"))
+	await page.evaluate(() => window.__orbitalia!.store.getState().select("mars"))
 	await expect(page).toHaveURL(/[?&]sel=mars(&|$)/)
 	// the info panel follows the selection; the camera does not move
 	await expect(
@@ -110,13 +110,13 @@ test("drives select -> focus -> overview through the store, the camera only foll
 	expect(still.mode).toBe("overview")
 	expect(still.cameraKm).toEqual(home)
 
-	await page.evaluate(() => window.__astrolabe!.store.getState().focus("mars"))
+	await page.evaluate(() => window.__orbitalia!.store.getState().focus("mars"))
 	await settled(page)
 	await expectHealthy(page, "focused", "mars")
 	await expect(page).toHaveURL(/[?&]focus=mars(&|$)/)
 	await expect(page).not.toHaveURL(/[?&]sel=/)
 
-	await page.evaluate(() => window.__astrolabe!.store.getState().overview())
+	await page.evaluate(() => window.__orbitalia!.store.getState().overview())
 	await settled(page)
 	await expectHealthy(page, "overview", "sun")
 	// the overview keeps the selection
@@ -132,7 +132,7 @@ test("interrupting a flight at any point never strands the camera", async ({
 			"a second selection",
 			() =>
 				page.evaluate(() =>
-					window.__astrolabe!.store.getState().setFocus("mars"),
+					window.__orbitalia!.store.getState().setFocus("mars"),
 				),
 			"focused",
 			"mars",
@@ -140,7 +140,7 @@ test("interrupting a flight at any point never strands the camera", async ({
 		[
 			"the overview",
 			() =>
-				page.evaluate(() => window.__astrolabe!.store.getState().overview()),
+				page.evaluate(() => window.__orbitalia!.store.getState().overview()),
 			"overview",
 			"sun",
 		],
@@ -158,7 +158,7 @@ test("interrupting a flight at any point never strands the camera", async ({
 		],
 		[
 			"a skip",
-			() => page.evaluate(() => window.__astrolabe!.store.getState().skip()),
+			() => page.evaluate(() => window.__orbitalia!.store.getState().skip()),
 			"focused",
 			"jupiter",
 		],
@@ -168,7 +168,7 @@ test("interrupting a flight at any point never strands the camera", async ({
 			await page.evaluate(() =>
 				// a long flight, so the slow headless page catches it mid-air
 				window
-					.__astrolabe!.store.getState()
+					.__orbitalia!.store.getState()
 					.focus("jupiter", { durationMs: 6000 }),
 			)
 			await waitForProgress(page, 0.2)
@@ -176,7 +176,7 @@ test("interrupting a flight at any point never strands the camera", async ({
 			await settled(page)
 			await expectHealthy(page, mode, focusId)
 			// back to a known start for the next case
-			await page.evaluate(() => window.__astrolabe!.store.getState().reset())
+			await page.evaluate(() => window.__orbitalia!.store.getState().reset())
 			await settled(page)
 		})
 	}
@@ -300,7 +300,7 @@ test("a scripted sequence plays, can be interrupted, resumed and skipped", async
 	await ready(page)
 	await page.evaluate(() =>
 		window
-			.__astrolabe!.store.getState()
+			.__orbitalia!.store.getState()
 			.playSequence([
 				{ view: { kind: "body", id: "earth" }, holdMs: 300 },
 				{ view: { kind: "body", id: "moon" }, holdMs: 300 },
@@ -319,12 +319,12 @@ test("a scripted sequence plays, can be interrupted, resumed and skipped", async
 		.poll(async () => (await state(page)).sequence?.phase)
 		.toBe("interrupted")
 	await page.evaluate(() =>
-		window.__astrolabe!.store.getState().resumeSequence(),
+		window.__orbitalia!.store.getState().resumeSequence(),
 	)
 	await expect
 		.poll(async () => (await state(page)).sequence?.index, { timeout: 60_000 })
 		.toBe(2)
-	await page.evaluate(() => window.__astrolabe!.store.getState().skip())
+	await page.evaluate(() => window.__orbitalia!.store.getState().skip())
 	await settled(page)
 	await expectHealthy(page, "overview", "sun")
 	expect((await state(page)).sequence).toBeNull()

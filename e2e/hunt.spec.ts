@@ -18,7 +18,7 @@ test.describe.configure({ timeout: 180_000 })
 
 const ready = async (page: Page, url: string) => {
 	await page.goto(url)
-	await page.waitForFunction(() => window.__astrolabe !== undefined, null, {
+	await page.waitForFunction(() => window.__orbitalia !== undefined, null, {
 		timeout: 30_000,
 	})
 	await cameraAtRest(page)
@@ -31,7 +31,7 @@ const search = (page: Page) => new URL(page.url()).searchParams
 /** Clicks a body where the scene draws it (it must not be under a HUD panel). */
 const clickBody = async (page: Page, id: string) => {
 	await cameraAtRest(page)
-	const at = await page.evaluate((id) => window.__astrolabe!.screenOf(id), id)
+	const at = await page.evaluate((id) => window.__orbitalia!.screenOf(id), id)
 	expect(at, `${id} on screen`).not.toBeNull()
 	const onCanvas = await page.evaluate(
 		([x, y]) => document.elementFromPoint(x, y)?.tagName,
@@ -114,7 +114,7 @@ test("hints escalate, and 'Show me' finds the moon", async ({ page }) => {
 	await expect(panel(page).getByText("Found it!")).toBeVisible()
 	await expect
 		.poll(() =>
-			page.evaluate(() => window.__astrolabe!.store.getState().selectedId),
+			page.evaluate(() => window.__orbitalia!.store.getState().selectedId),
 		)
 		.toBe("enceladus")
 })
@@ -149,18 +149,18 @@ test("the finish, and progress that survives a reload", async ({ page }) => {
 	await expect(page.getByTestId("hunt-clue")).toBeVisible()
 	// any way of selecting counts, the picker too
 	await page.evaluate(() =>
-		window.__astrolabe!.store.getState().setFocus("moon"),
+		window.__orbitalia!.store.getState().setFocus("moon"),
 	)
 	await expect(panel(page).getByText("Found it!")).toBeVisible()
 	await panel(page).getByRole("button", { name: "Next clue" }).click()
 	await expect(page.getByTestId("hunt-progress")).toHaveText("Clue 2 of 2")
 
 	await page.reload()
-	await page.waitForFunction(() => window.__astrolabe !== undefined)
+	await page.waitForFunction(() => window.__orbitalia !== undefined)
 	await expect(page.getByTestId("hunt-progress")).toHaveText("Clue 2 of 2")
 
 	await page.evaluate(() =>
-		window.__astrolabe!.store.getState().setFocus("mars"),
+		window.__orbitalia!.store.getState().setFocus("mars"),
 	)
 	await panel(page).getByRole("button", { name: "Finish" }).click()
 	await expect(page.getByTestId("hunt-done")).toBeVisible()

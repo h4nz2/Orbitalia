@@ -59,7 +59,7 @@ export interface HuntState extends HuntProgress {
 	next: () => void
 }
 
-export const HUNT_STORAGE_KEY = "astrolabe.hunt"
+export const HUNT_STORAGE_KEY = "orbitalia.hunt"
 
 const EMPTY: HuntProgress = {
 	key: null,

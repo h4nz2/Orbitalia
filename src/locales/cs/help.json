@@ -544,7 +544,7 @@
 				"simple": "Tvůj jazyk"
 			},
 			"what": {
-				"standard": "Astrolabe mluví anglicky, německy, česky, španělsky a francouzsky, a to vždy na třech úrovních náročnosti: jednoduché, běžné a pokročilé.",
+				"standard": "Orbitalia mluví anglicky, německy, česky, španělsky a francouzsky, a to vždy na třech úrovních náročnosti: jednoduché, běžné a pokročilé.",
 				"simple": "Čti všechno ve svém jazyce a jednoduchými slovy."
 			},
 			"why": {
@@ -1242,7 +1242,7 @@
 		},
 		"app": {
 			"title": "Tato aplikace",
-			"intro": "Astrolabe je open source: kdokoli ji smí používat, zkoumat, vylepšovat a sdílet."
+			"intro": "Orbitalia je open source: kdokoli ji smí používat, zkoumat, vylepšovat a sdílet."
 		}
 	},
 	"creditNames": {
@@ -1263,7 +1263,7 @@
 		"tanstack": "Stránky a odkazy, které uchovávají každý pohled.",
 		"gsap": "Animace na úvodní stránce a ve slovníku.",
 		"smallLibraries": "Stav aplikace, kontrola dat, práce s kalendářním datem, QR kódy a překlady s tvary podle čísla.",
-		"astrolabe": "Vytvořili přispěvatelé projektu Astrolabe. Kdokoli může přidat novou funkci, prohlídku nebo překlad."
+		"orbitalia": "Vytvořili přispěvatelé projektu Orbitalia. Kdokoli může přidat novou funkci, prohlídku nebo překlad."
 	},
 	"licences": {
 		"openData": "zveřejněno jako otevřená data (bez uvedené licence)",

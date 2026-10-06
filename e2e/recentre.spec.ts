@@ -20,12 +20,12 @@ const FIXED = "t=2451545&warp=1"
 const ready = async (page: Page, url: string) => {
 	await page.setViewportSize({ width: 1280, height: 720 })
 	await page.goto(url)
-	await page.waitForFunction(() => window.__astrolabe !== undefined, null, {
+	await page.waitForFunction(() => window.__orbitalia !== undefined, null, {
 		timeout: 30_000,
 	})
 	// time stands still, so a free centre stays exactly where it was put
 	await page.evaluate(() =>
-		window.__astrolabe!.store.getState().setPaused(true),
+		window.__orbitalia!.store.getState().setPaused(true),
 	)
 	await settled(page)
 }
@@ -37,9 +37,9 @@ const ready = async (page: Page, url: string) => {
 const settled = (page: Page) => cameraAtRest(page)
 
 const view = (page: Page) =>
-	page.evaluate(() => window.__astrolabe!.store.getState().view)
+	page.evaluate(() => window.__orbitalia!.store.getState().view)
 const mode = async (page: Page) =>
-	(await page.evaluate(() => window.__astrolabe!.camera())).mode
+	(await page.evaluate(() => window.__orbitalia!.camera())).mode
 
 const shot = async (page: Page, name: string) => {
 	mkdirSync(screenshotDir, { recursive: true })
@@ -107,7 +107,7 @@ test("pans away from a planet into its neighbourhood and back with one click", a
 	// the link opens the same free centre
 	const link = page.url()
 	await page.goto(link)
-	await page.waitForFunction(() => window.__astrolabe !== undefined)
+	await page.waitForFunction(() => window.__orbitalia !== undefined)
 	await settled(page)
 	expect(await view(page)).toMatchObject({ kind: "point", anchorId: "mars" })
 	await expect(badge(page)).toBeVisible()
@@ -144,7 +144,7 @@ test("pans out into interplanetary space with Shift + drag, and the home button 
 	await ready(page, `/solar_system?${FIXED}`)
 	expect(await mode(page)).toBe("overview")
 	// a trackpad click or a one-button mouse: Shift + drag pans instead of orbiting
-	const before = await page.evaluate(() => window.__astrolabe!.camera())
+	const before = await page.evaluate(() => window.__orbitalia!.camera())
 	await drag(page, -260, 170, { button: "left", shift: true })
 	await expect
 		.poll(() => view(page), { timeout: 20_000 })
@@ -152,7 +152,7 @@ test("pans out into interplanetary space with Shift + drag, and the home button 
 			kind: "point",
 		})
 	await settled(page)
-	const after = await page.evaluate(() => window.__astrolabe!.camera())
+	const after = await page.evaluate(() => window.__orbitalia!.camera())
 	// panned, not orbited
 	expect(after.azimuthDeg).toBeCloseTo(before.azimuthDeg, 3)
 	expect(after.elevationDeg).toBeCloseTo(before.elevationDeg, 3)
