@@ -5,7 +5,7 @@ import { qrModules } from "./qr"
 describe("the QR code", () => {
 	it("encodes a view's link as a square of modules", async () => {
 		const link =
-			"https://h4nz2.github.io/Astrolabe/solar_system?focus=jupiter&cam=-40_15_2&t=2461308.1235&lang=de&reading=simple"
+			"https://orbitalia.app/solar_system?focus=jupiter&cam=-40_15_2&t=2461308.1235&lang=de&reading=simple"
 		const modules = await qrModules(link)
 		expect(modules).not.toBeNull()
 		const size = modules!.length

@@ -14,11 +14,11 @@ const T_2026 = 2461308.5
 
 const ready = async (page: Page, url: string) => {
 	await page.goto(url)
-	await page.waitForFunction(() => window.__astrolabe !== undefined, null, {
+	await page.waitForFunction(() => window.__orbitalia !== undefined, null, {
 		timeout: 60_000,
 	})
 	await page.evaluate(() =>
-		window.__astrolabe!.store.getState().setPaused(true),
+		window.__orbitalia!.store.getState().setPaused(true),
 	)
 	await settled(page)
 }
@@ -26,7 +26,7 @@ const ready = async (page: Page, url: string) => {
 const settled = (page: Page) =>
 	page.waitForFunction(
 		() => {
-			const handle = window.__astrolabe
+			const handle = window.__orbitalia
 			if (handle === undefined) return false
 			const state = handle.store.getState()
 			return (

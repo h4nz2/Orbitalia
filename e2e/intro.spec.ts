@@ -11,15 +11,15 @@ test.describe.configure({ timeout: 180_000 })
 const firstVisit = { storageState: { cookies: [], origins: [] } }
 
 const handle = async (page: Page) =>
-	page.waitForFunction(() => window.__astrolabe !== undefined, null, {
+	page.waitForFunction(() => window.__orbitalia !== undefined, null, {
 		timeout: 60_000,
 	})
 
 const state = (page: Page) =>
 	page.evaluate(() => {
 		const { view, selectedId, sequence, transition } =
-			window.__astrolabe!.store.getState()
-		const scale = window.__astrolabe!.scale.getState()
+			window.__orbitalia!.store.getState()
+		const scale = window.__orbitalia!.scale.getState()
 		return {
 			view,
 			selectedId,
@@ -35,7 +35,7 @@ const state = (page: Page) =>
 	})
 
 const seen = (page: Page) =>
-	page.evaluate(() => window.localStorage.getItem("astrolabe.introSeen"))
+	page.evaluate(() => window.localStorage.getItem("orbitalia.introSeen"))
 
 interface OpeningLog {
 	steps: { index: number; view: string; scale: string; planned: number }[]
@@ -53,7 +53,7 @@ const recordOpening = (page: Page) =>
 		;(window as unknown as { __openingLog: OpeningLog }).__openingLog = log
 		let lastIndex = -1
 		const tick = () => {
-			const handle = window.__astrolabe
+			const handle = window.__orbitalia
 			const state = handle?.store.getState()
 			const sequence = state?.sequence
 			if (handle && state && sequence && sequence.index !== lastIndex) {
@@ -154,7 +154,7 @@ test.describe("a first visit", () => {
 		)
 		// Earth pulses where Earth is
 		const earth = await page.evaluate(() =>
-			window.__astrolabe!.screenOf("earth"),
+			window.__orbitalia!.screenOf("earth"),
 		)
 		const ring = await page.getByTestId("intro-pulse").boundingBox()
 		expect(earth).not.toBeNull()
@@ -168,7 +168,7 @@ test.describe("a first visit", () => {
 
 		// picking a planet stops the pulse
 		await page.evaluate(() =>
-			window.__astrolabe!.store.getState().setFocus("mars"),
+			window.__orbitalia!.store.getState().setFocus("mars"),
 		)
 		await expect(page.getByTestId("intro-pulse")).toHaveCSS(
 			"visibility",
@@ -200,7 +200,7 @@ test.describe("a first visit", () => {
 		await page.goto("/solar_system?focus=jupiter&cam=-40_15_2")
 		await handle(page)
 		await page.waitForFunction(
-			() => window.__astrolabe!.store.getState().transition === null,
+			() => window.__orbitalia!.store.getState().transition === null,
 		)
 		await expect(page.getByTestId("intro")).toHaveCount(0)
 		const view = await state(page)
@@ -217,7 +217,7 @@ test.describe("a first visit", () => {
 		await handle(page)
 		// somewhere in the pull-back
 		await page.waitForFunction(
-			() => (window.__astrolabe!.store.getState().sequence?.index ?? 0) >= 1,
+			() => (window.__orbitalia!.store.getState().sequence?.index ?? 0) >= 1,
 			null,
 			{ timeout: 60_000, polling: "raf" },
 		)
@@ -226,7 +226,7 @@ test.describe("a first visit", () => {
 		// any reading taken here and the drag
 		await page.evaluate(() => {
 			const probe = window as unknown as { heading?: unknown }
-			window.__astrolabe!.store.subscribe((now, previous) => {
+			window.__orbitalia!.store.subscribe((now, previous) => {
 				if (now.sequence !== null || previous.sequence !== null) {
 					probe.heading = now.view
 				}
@@ -260,12 +260,12 @@ test.describe("a first visit", () => {
 		const start = await state(page)
 		expect(start.steps).toEqual([0, 0, 0, 0, 0])
 		await page.waitForFunction(
-			() => (window.__astrolabe!.store.getState().sequence?.index ?? 0) >= 2,
+			() => (window.__orbitalia!.store.getState().sequence?.index ?? 0) >= 2,
 			null,
 			{ timeout: 60_000, polling: "raf" },
 		)
 		expect(
-			(await page.evaluate(() => window.__astrolabe!.camera())).durationMs ?? 0,
+			(await page.evaluate(() => window.__orbitalia!.camera())).durationMs ?? 0,
 		).toBe(0)
 		await expect(hints(page)).toBeVisible({ timeout: 60_000 })
 		expect((await state(page)).preset).toBe("everythingVisible")

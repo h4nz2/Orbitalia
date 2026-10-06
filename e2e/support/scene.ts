@@ -35,7 +35,7 @@ export const nextFrames = (page: Page, count = 3): Promise<void> =>
 export const cameraAtRest = (page: Page, frames = 3): Promise<unknown> =>
 	page.waitForFunction(
 		({ frames, key }) => {
-			const handle = window.__astrolabe
+			const handle = window.__orbitalia
 			if (handle === undefined) return false
 			const camera = handle.camera()
 			const state = handle.store.getState()

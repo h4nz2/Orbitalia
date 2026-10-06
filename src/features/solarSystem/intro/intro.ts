@@ -36,7 +36,7 @@ import {
  * Remembered on this device only (never sent anywhere): the opening has been
  * shown here, so a returning visitor goes straight to the overview.
  */
-export const INTRO_SEEN_KEY = "astrolabe.introSeen"
+export const INTRO_SEEN_KEY = "orbitalia.introSeen"
 
 /** How a scale left in true scale by an interrupted opening goes back to the default, ms. */
 export const RESTORE_SCALE_MS = 1000

@@ -29,7 +29,7 @@ export default defineConfig({
 			origins: [
 				{
 					origin: baseURL,
-					localStorage: [{ name: "astrolabe.introSeen", value: "1" }],
+					localStorage: [{ name: "orbitalia.introSeen", value: "1" }],
 				},
 			],
 		},

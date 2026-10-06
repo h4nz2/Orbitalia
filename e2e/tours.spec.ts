@@ -11,7 +11,7 @@ test.describe.configure({ timeout: 180_000 })
 
 const ready = async (page: Page, url: string) => {
 	await page.goto(url)
-	await page.waitForFunction(() => window.__astrolabe !== undefined, null, {
+	await page.waitForFunction(() => window.__orbitalia !== undefined, null, {
 		timeout: 30_000,
 	})
 	await cameraAtRest(page)
@@ -20,7 +20,7 @@ const ready = async (page: Page, url: string) => {
 const card = (page: Page) => page.locator("[data-tour-card]")
 const state = (page: Page) =>
 	page.evaluate(() => {
-		const s = window.__astrolabe!.store.getState()
+		const s = window.__orbitalia!.store.getState()
 		return {
 			view: s.view,
 			frameId: s.frameId,
@@ -76,11 +76,11 @@ test("wandering off and coming back restores the stop", async ({ page }) => {
 
 	// a click on a body (here through the store, as the picker does) is exploring
 	await page.evaluate(() =>
-		window.__astrolabe!.store.getState().setFocus("jupiter"),
+		window.__orbitalia!.store.getState().setFocus("jupiter"),
 	)
 	await expect(card(page)).toHaveAttribute("data-status", "exploring")
 	await page.evaluate(() =>
-		window.__astrolabe!.store.getState().setShowMarkers(true),
+		window.__orbitalia!.store.getState().setShowMarkers(true),
 	)
 	await card(page)
 		.getByRole("status")
@@ -124,7 +124,7 @@ test("a link opens on a stop: the frame, the date and the language", async ({
 	)
 	// the stop is paused on its date
 	expect(
-		await page.evaluate(() => window.__astrolabe!.store.getState().paused),
+		await page.evaluate(() => window.__orbitalia!.store.getState().paused),
 	).toBe(true)
 
 	// the next stop in German, and the frame follows the stops

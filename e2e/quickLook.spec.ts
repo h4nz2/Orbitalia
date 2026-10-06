@@ -18,7 +18,7 @@ const html = (page: Page) => page.locator("html")
 const canvas = (page: Page) => page.locator("canvas").first()
 
 const asked = (page: Page) =>
-	page.evaluate(() => localStorage.getItem("astrolabe.quickLookAsked"))
+	page.evaluate(() => localStorage.getItem("orbitalia.quickLookAsked"))
 
 /** A first visit: the opening plays; Skip hands over at once. */
 async function arriveAndSkip(page: Page, search = "") {
@@ -45,7 +45,7 @@ test.describe("a first visit", () => {
 		await expect(card(page)).toHaveCount(0)
 
 		await page.reload()
-		await page.waitForFunction(() => window.__astrolabe !== undefined)
+		await page.waitForFunction(() => window.__orbitalia !== undefined)
 		await cameraAtRest(page)
 		await expect(page.getByTestId("intro-skip")).toHaveCount(0)
 		await expect(question(page)).toHaveCount(0)
@@ -69,7 +69,7 @@ test.describe("a first visit", () => {
 		await expect(html(page)).toHaveAttribute("data-quick-look-spot", "picker")
 		await expect
 			.poll(() =>
-				page.evaluate(() => window.__astrolabe!.store.getState().focusId),
+				page.evaluate(() => window.__orbitalia!.store.getState().focusId),
 			)
 			.toBe("saturn")
 
@@ -126,14 +126,14 @@ test.describe("a first visit", () => {
 		await expect(page.getByTestId("time-menu")).toHaveAccessibleName(/1x$/)
 		await expect
 			.poll(() =>
-				page.evaluate(() => window.__astrolabe!.store.getState().view.kind),
+				page.evaluate(() => window.__orbitalia!.store.getState().view.kind),
 			)
 			.toBe("overview")
 	})
 
 	test("a shared link never asks", async ({ page }) => {
 		await page.goto("/solar_system?focus=mars&lang=en")
-		await page.waitForFunction(() => window.__astrolabe !== undefined)
+		await page.waitForFunction(() => window.__orbitalia !== undefined)
 		await cameraAtRest(page)
 		await expect(page.getByTestId("intro-skip")).toHaveCount(0)
 		await expect(question(page)).toHaveCount(0)
@@ -142,7 +142,7 @@ test.describe("a first visit", () => {
 
 	test("presentation mode never asks", async ({ page }) => {
 		await page.goto("/solar_system?present=true&lang=en")
-		await page.waitForFunction(() => window.__astrolabe !== undefined)
+		await page.waitForFunction(() => window.__orbitalia !== undefined)
 		await cameraAtRest(page)
 		await expect(question(page)).toHaveCount(0)
 		expect(await asked(page)).toBeNull()
@@ -170,7 +170,7 @@ test.describe("a first visit", () => {
 
 test("replayed from the Help menu, and left with Escape", async ({ page }) => {
 	await page.goto("/solar_system?lang=en")
-	await page.waitForFunction(() => window.__astrolabe !== undefined)
+	await page.waitForFunction(() => window.__orbitalia !== undefined)
 	await page.getByTestId("intro-menu").click()
 	await page.getByTestId("quick-look-replay").click()
 	await expect(card(page)).toBeVisible()

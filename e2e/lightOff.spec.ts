@@ -56,7 +56,7 @@ test("the flash in the scene carries its own stop button", async ({ page }) => {
 	// the label rides on the growing front: hold it still to aim at it
 	await page.getByRole("button", { name: "Pause" }).click()
 	const view = await page.evaluate(
-		() => window.__astrolabe!.store.getState().view,
+		() => window.__orbitalia!.store.getState().view,
 	)
 	const stop = page.locator("[data-light-front-stop]")
 	await expect(stop).toHaveAccessibleName("Stop the flash")
@@ -64,7 +64,7 @@ test("the flash in the scene carries its own stop button", async ({ page }) => {
 	await expectFlashGone(page)
 	// the click stayed on the button: the scene underneath did not take it as a click on empty space
 	expect(
-		await page.evaluate(() => window.__astrolabe!.store.getState().view),
+		await page.evaluate(() => window.__orbitalia!.store.getState().view),
 	).toEqual(view)
 })
 
@@ -99,11 +99,11 @@ test("a flash beyond the planets lingers, fades out, and comes back with time re
 	await sendFlash(page)
 	await page.getByRole("button", { name: "Pause" }).click()
 	const emitJD = await page.evaluate(
-		() => window.__astrolabe!.store.getState().simTimeJD,
+		() => window.__orbitalia!.store.getState().simTimeJD,
 	)
 	const setHoursAfter = (hours: number) =>
 		page.evaluate(
-			(jd) => window.__astrolabe!.store.getState().setSimTime(jd),
+			(jd) => window.__orbitalia!.store.getState().setSimTime(jd),
 			emitJD + hours / 24,
 		)
 

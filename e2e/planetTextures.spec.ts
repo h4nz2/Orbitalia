@@ -25,7 +25,7 @@ const watchBrokenTextures = (page: Page): string[] => {
 
 const focus = async (page: Page, url: string) => {
 	await page.goto(url)
-	await page.waitForFunction(() => window.__astrolabe !== undefined, null, {
+	await page.waitForFunction(() => window.__orbitalia !== undefined, null, {
 		timeout: 60_000,
 	})
 	await cameraAtRest(page)
@@ -66,7 +66,7 @@ test("the help page credits the planets' maps with their licences", async ({
 	await expect(blueMarble).toContainText("Blue Marble Next Generation")
 	await expect(blueMarble).toContainText("public domain")
 	await expect(
-		page.locator("[data-credit=image-astrolabe-painted-bands]"),
+		page.locator("[data-credit=image-orbitalia-painted-bands]"),
 	).toContainText("MIT")
 	await expect(page.locator("[data-credits=maps]")).not.toContainText(
 		"source unknown",

@@ -46,7 +46,7 @@ const body = (id: string, kind: Body["kind"], base: string): Body =>
 	}) as Body
 
 const moonCatalogue = {
-	sources: { "astrolabe-painted": source({ licence: "MIT" }) },
+	sources: { "orbitalia-painted": source({ licence: "MIT" }) },
 	maps: {},
 	painted: {},
 	families: {},
@@ -93,7 +93,7 @@ const catalogue = {
 			basis: "clouds",
 		},
 		"/assets/textures/asteroid.jpg": {
-			source: "astrolabe-painted",
+			source: "orbitalia-painted",
 			width: 512,
 			for: "small bodies",
 			painted: {
@@ -105,7 +105,7 @@ const catalogue = {
 }
 
 const moonCredit: ImageCredit = {
-	id: "astrolabe-painted",
+	id: "orbitalia-painted",
 	kind: "painted",
 	title: "Painted",
 	credit: "c",
@@ -141,7 +141,7 @@ describe("applyPlanetTextures", () => {
 			["sdo", ["sun"]],
 			["bands", ["venus", "saturn"]],
 			// a moon source a texture also uses keeps its place and lists both
-			["astrolabe-painted", ["ceres", "leda"]],
+			["orbitalia-painted", ["ceres", "leda"]],
 		])
 	})
 

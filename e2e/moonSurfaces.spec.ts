@@ -24,12 +24,12 @@ const watchMoonMaps = (page: Page): string[] => {
 
 const ready = async (page: Page, url: string) => {
 	await page.goto(url)
-	await page.waitForFunction(() => window.__astrolabe !== undefined, null, {
+	await page.waitForFunction(() => window.__orbitalia !== undefined, null, {
 		timeout: 60_000,
 	})
 	await cameraAtRest(page)
 	await page.evaluate(() =>
-		window.__astrolabe!.store.getState().setPaused(true),
+		window.__orbitalia!.store.getState().setPaused(true),
 	)
 	// the card starts small (#42): the surface note is in the unfolded part
 	if (url.includes("focus=")) await expandCard(page)
@@ -46,7 +46,7 @@ test("the overview fetches no moon maps; a focused moon fetches its own", async 
 	expect(requested).toEqual([])
 
 	await page.evaluate(() =>
-		window.__astrolabe!.store.getState().setFocus("callisto"),
+		window.__orbitalia!.store.getState().setFocus("callisto"),
 	)
 	await cameraAtRest(page)
 	await expandCard(page)

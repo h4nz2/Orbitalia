@@ -3,10 +3,10 @@
 		"name": "English"
 	},
 	"app": {
-		"name": "Astrolabe",
-		"title": "Astrolabe – our solar system",
-		"installName": "Astrolabe - Our Solar System",
-		"shortName": "Astrolabe",
+		"name": "Orbitalia",
+		"title": "Orbitalia – our solar system",
+		"installName": "Orbitalia - Our Solar System",
+		"shortName": "Orbitalia",
 		"description": "Visual dictionary and true-scale 3D model of our solar system"
 	},
 	"i18n": {
@@ -574,7 +574,7 @@
 				"date": "On {date}",
 				"distance": "I have travelled {distance} km around the Sun.",
 				"fileName": "my-age-on-the-planets",
-				"footer": "Astrolabe – our solar system"
+				"footer": "Orbitalia – our solar system"
 			}
 		},
 		"hunt": {
@@ -1725,7 +1725,7 @@
 		"buttonHint": "Every feature and how to use it",
 		"more": "More help: the opening, the quick look, how to move around",
 		"title": "Help",
-		"heading": "Everything Astrolabe can do",
+		"heading": "Everything Orbitalia can do",
 		"heading@simple": "What can I do here?",
 		"lead": "Every feature in one place: what it is, why it is worth trying and how to use it. “Try it” opens the app with the feature ready.",
 		"lead@simple": "Here is everything you can do. Press “Try it” to go and do it!",

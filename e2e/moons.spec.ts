@@ -11,12 +11,12 @@ test.describe.configure({ timeout: 180_000 })
 
 const ready = async (page: Page, url: string) => {
 	await page.goto(url)
-	await page.waitForFunction(() => window.__astrolabe !== undefined, null, {
+	await page.waitForFunction(() => window.__orbitalia !== undefined, null, {
 		timeout: 60_000,
 	})
 	await cameraAtRest(page)
 	await page.evaluate(() =>
-		window.__astrolabe!.store.getState().setPaused(true),
+		window.__orbitalia!.store.getState().setPaused(true),
 	)
 	// the card starts small (#42): its moons are in the unfolded part
 	if (url.includes("focus=")) await expandCard(page)
@@ -42,7 +42,7 @@ test("a planet's card lists its featured moons and a click flies to one", async 
 	).toHaveCount(0)
 	expect(
 		await page.evaluate(
-			() => window.__astrolabe!.store.getState().showAllMoons,
+			() => window.__orbitalia!.store.getState().showAllMoons,
 		),
 	).toBe(false)
 
@@ -95,20 +95,20 @@ test("See the whole moon system steps back to fit every orbit", async ({
 }) => {
 	await ready(page, "/solar_system?focus=uranus&lang=en")
 	const before = await page.evaluate(
-		() => window.__astrolabe!.camera().distance,
+		() => window.__orbitalia!.camera().distance,
 	)
 	await page.getByRole("button", { name: "See the whole moon system" }).click()
 	await page.waitForFunction(
-		() => window.__astrolabe!.store.getState().transition === null,
+		() => window.__orbitalia!.store.getState().transition === null,
 	)
 	await cameraAtRest(page)
-	const after = await page.evaluate(() => window.__astrolabe!.camera())
+	const after = await page.evaluate(() => window.__orbitalia!.camera())
 	expect(after.distance).toBeGreaterThan(before * 2)
 	// still Uranus, and every featured moon is on screen
 	await expect(page).toHaveURL(/focus=uranus/)
 	for (const id of ["miranda", "ariel", "umbriel", "titania", "oberon"]) {
 		const place = await page.evaluate(
-			(id) => window.__astrolabe!.screenOf(id),
+			(id) => window.__orbitalia!.screenOf(id),
 			id,
 		)
 		expect(place, id).not.toBeNull()

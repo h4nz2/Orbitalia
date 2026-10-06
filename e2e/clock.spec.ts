@@ -45,7 +45,7 @@ test("the clock runs at the chosen speed, whatever the frame rate", async ({
 	// machine four counted seconds can take much longer than four.
 	test.slow()
 	await open(page, `t=${J2000}&warp=86400`)
-	await page.waitForFunction(() => window.__astrolabe !== undefined)
+	await page.waitForFunction(() => window.__orbitalia !== undefined)
 	// Every time the HUD date changes, note it with the real time counted up to
 	// the frame that computed it. Real time is counted at the store's own ticks
 	// (`lastTickMs`, the instant each frame sampled the clock), capped per frame
@@ -61,7 +61,7 @@ test("the clock runs at the chosen speed, whatever the frame rate", async ({
 		const ticks = new Map<number, number>()
 		let countedMs = 0
 		let lastTick: number | null = null
-		window.__astrolabe!.store.subscribe(({ lastTickMs, simTimeJD }) => {
+		window.__orbitalia!.store.subscribe(({ lastTickMs, simTimeJD }) => {
 			if (lastTickMs === null || lastTickMs === lastTick) return
 			if (lastTick !== null) {
 				countedMs += Math.min(Math.max(lastTickMs - lastTick, 0), 250)
@@ -118,9 +118,9 @@ test("pause freezes the clock where it is", async ({ page }) => {
 		page.getByRole("button", { name: "Pause", pressed: true }),
 	).toBeVisible()
 	// the HUD refreshes the date at 10 Hz: let it show the pinned value first
-	await page.waitForFunction(() => window.__astrolabe !== undefined)
+	await page.waitForFunction(() => window.__orbitalia !== undefined)
 	const pinned = await page.evaluate(() => {
-		const { simTimeJD } = window.__astrolabe!.store.getState()
+		const { simTimeJD } = window.__orbitalia!.store.getState()
 		return Math.round((simTimeJD - 2440587.5) * 86_400_000)
 	})
 	await expect

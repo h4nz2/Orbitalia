@@ -21,7 +21,7 @@ test.describe.configure({ timeout: 90_000 })
 
 const ready = async (page: Page, url: string) => {
 	await page.goto(url)
-	await page.waitForFunction(() => window.__astrolabe !== undefined, null, {
+	await page.waitForFunction(() => window.__orbitalia !== undefined, null, {
 		timeout: 60_000,
 	})
 	await cameraAtRest(page)

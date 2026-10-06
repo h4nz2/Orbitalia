@@ -1,4 +1,6 @@
-# Astrolabe
+# Orbitalia
+
+Live at **[orbitalia.app](https://orbitalia.app)**.
 
 _Klassenlager 2022 project_
 
@@ -62,6 +64,17 @@ Requirements: Node 22 (`.nvmrc`) and [pnpm](https://pnpm.io).
 - `pnpm test:e2e` runs the Playwright smoke tests against `pnpm preview` (run `pnpm build` first; once: `pnpm exec playwright install chromium`, plus `sudo pnpm exec playwright install-deps chromium` on a bare Linux box for the system libraries such as `libasound2`)
 
 Set `VITE_BASE=/sub/path/` when the site is served from a sub path.
+
+The pre-commit hook runs `pnpm format:check`, `pnpm lint` and `pnpm typecheck`. There is no CI, so run
+`pnpm test`, `pnpm check:data` and `pnpm test:e2e` yourself before deploying.
+
+### Deploy
+
+The site is served by Cloudflare Workers at [orbitalia.app](https://orbitalia.app) (`wrangler.jsonc`):
+
+```bash
+pnpm build && npx wrangler deploy
+```
 
 ## Contributing
 

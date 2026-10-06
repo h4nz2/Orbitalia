@@ -112,11 +112,11 @@ test("the signal delay from Earth, for a picked or a selected body", async ({
 	await expect(panel).toContainText("Lunokhod")
 
 	// selecting a body in the scene makes it the destination: any body, moons too
-	await page.evaluate(() => window.__astrolabe!.store.getState().select("io"))
+	await page.evaluate(() => window.__orbitalia!.store.getState().select("io"))
 	await expect(target).toHaveValue("Io")
 	await expect(oneWay).toHaveText(/\d+ min \d+ s/)
 
-	// watching it: a flash from Earth reaches the Moon in about 1.3 s
+	// watching it: a flash from Earth reaches the Moon in 1.2 to 1.4 s, as its distance changes
 	await panel
 		.getByRole("button", { name: "Send a signal from Earth and watch" })
 		.click()
@@ -126,7 +126,7 @@ test("the signal delay from Earth, for a picked or a selected body", async ({
 		{ timeout: 15_000 },
 	)
 	await expect(panel.locator("[aria-live]")).toHaveText(
-		"Reached the Moon after 1.3 s.",
+		/^Reached the Moon after 1\.\d s\.$/,
 	)
 })
 

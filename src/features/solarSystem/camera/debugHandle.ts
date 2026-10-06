@@ -1,5 +1,5 @@
 /**
- * `window.__astrolabe` while the solar system is on screen: the store (the
+ * `window.__orbitalia` while the solar system is on screen: the store (the
  * navigation API: `select`, `focus`, `overview`, `goTo`, `playSequence`, ...)
  * and read-only camera diagnostics. It lets the navigation model be driven
  * from the browser console and from end-to-end tests without touching the
@@ -11,7 +11,7 @@ import { useSimStore } from "@/store/sim"
 import { placeRing, type RingPlacement } from "../scene/highlight"
 import type { CameraDirector, CameraSnapshot } from "./director"
 
-export interface AstrolabeDebugHandle {
+export interface OrbitaliaDebugHandle {
 	store: typeof useSimStore
 	/** The scale store (presets), for the console and e2e tests. */
 	scale: typeof useScaleStore
@@ -25,7 +25,7 @@ export interface AstrolabeDebugHandle {
 
 declare global {
 	interface Window {
-		__astrolabe?: AstrolabeDebugHandle
+		__orbitalia?: OrbitaliaDebugHandle
 	}
 }
 
@@ -35,7 +35,7 @@ export function exposeDebugHandle(
 	canvas?: HTMLElement,
 ): () => void {
 	if (typeof window === "undefined") return () => undefined
-	const handle: AstrolabeDebugHandle = {
+	const handle: OrbitaliaDebugHandle = {
 		store: useSimStore,
 		scale: useScaleStore,
 		camera: () => director.snapshot(),
@@ -52,8 +52,8 @@ export function exposeDebugHandle(
 			)
 		},
 	}
-	window.__astrolabe = handle
+	window.__orbitalia = handle
 	return () => {
-		if (window.__astrolabe === handle) delete window.__astrolabe
+		if (window.__orbitalia === handle) delete window.__orbitalia
 	}
 }

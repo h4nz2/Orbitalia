@@ -69,7 +69,7 @@ function onKeydown(event: KeyboardEvent): void {
 declare global {
 	interface Window {
 		/** Read-only diagnostics for e2e tests: the context's state ("none" before unlock). */
-		__astrolabeSound?: { contextState: () => string }
+		__orbitaliaSound?: { contextState: () => string }
 	}
 }
 
@@ -208,7 +208,7 @@ function startSound(): () => void {
 	}
 	const offEvents = watchSoundEvents(cues)
 
-	window.__astrolabeSound = {
+	window.__orbitaliaSound = {
 		contextState: () => getEngine()?.ctx.state ?? "none",
 	}
 
@@ -231,7 +231,7 @@ function startSound(): () => void {
 		const engine = getEngine()
 		if (engine !== null) glide(engine.master.gain, 0, engine.ctx, 0.04)
 		suspendAudio()
-		delete window.__astrolabeSound
+		delete window.__orbitaliaSound
 	}
 }
 

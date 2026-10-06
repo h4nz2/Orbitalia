@@ -296,7 +296,7 @@
 		{
 			"id": "rings",
 			"section": "data",
-			"url": "https://github.com/h4nz2/Astrolabe/tree/main/data/rings",
+			"url": "https://github.com/h4nz2/Orbitalia/tree/main/data/rings",
 			"licence": "facts"
 		},
 		{
@@ -362,10 +362,10 @@
 			"licence": "mitBsd"
 		},
 		{
-			"id": "astrolabe",
+			"id": "orbitalia",
 			"section": "app",
-			"name": "Astrolabe",
-			"url": "https://github.com/h4nz2/Astrolabe",
+			"name": "Orbitalia",
+			"url": "https://github.com/h4nz2/Orbitalia",
 			"licence": "mit"
 		}
 	]

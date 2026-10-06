@@ -18,7 +18,7 @@ const LESSON =
 
 const open = async (page: Page, search: string) => {
 	await page.goto(`/solar_system?${search}`)
-	await page.waitForFunction(() => window.__astrolabe !== undefined, null, {
+	await page.waitForFunction(() => window.__orbitalia !== undefined, null, {
 		timeout: 30_000,
 	})
 	await expect(page.locator("time")).toBeVisible()
@@ -26,7 +26,7 @@ const open = async (page: Page, search: string) => {
 
 const state = (page: Page) =>
 	page.evaluate(() => {
-		const handle = window.__astrolabe!
+		const handle = window.__orbitalia!
 		const s = handle.store.getState()
 		return {
 			view: s.view,
@@ -159,7 +159,7 @@ test("high contrast, reduced motion and the screen reader: German, simple readin
 	await page.evaluate(() => {
 		const probe = window as unknown as { durations: (number | null)[] }
 		probe.durations = []
-		window.__astrolabe!.store.subscribe((s, previous) => {
+		window.__orbitalia!.store.subscribe((s, previous) => {
 			if (s.transition !== null && s.transition !== previous.transition) {
 				probe.durations.push(s.transition.durationMs)
 			}
@@ -220,7 +220,7 @@ test("share: the link is the view, copied or scanned", async ({
 	// a running clock rewrites `t` in the address every second: hold it still, so the
 	// shared link and the address are compared at the same instant
 	await page.evaluate(() =>
-		window.__astrolabe!.store.getState().setPaused(true),
+		window.__orbitalia!.store.getState().setPaused(true),
 	)
 	await expect(page).toHaveURL(/[?&]t=/)
 

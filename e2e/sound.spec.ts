@@ -13,7 +13,7 @@ const ready = async (page: Page, url: string) => {
 	await page.goto(url)
 	await page.waitForFunction(
 		() =>
-			window.__astrolabe !== undefined && window.__astrolabeSound !== undefined,
+			window.__orbitalia !== undefined && window.__orbitaliaSound !== undefined,
 		null,
 		{ timeout: 30_000 },
 	)
@@ -21,11 +21,11 @@ const ready = async (page: Page, url: string) => {
 }
 
 const contextState = (page: Page) =>
-	page.evaluate(() => window.__astrolabeSound!.contextState())
+	page.evaluate(() => window.__orbitaliaSound!.contextState())
 
 const waitForContext = (page: Page, state: string) =>
 	page.waitForFunction(
-		(state) => window.__astrolabeSound!.contextState() === state,
+		(state) => window.__orbitaliaSound!.contextState() === state,
 		state,
 		{ timeout: 10_000 },
 	)
@@ -150,7 +150,7 @@ test("Jupiter's card carries a real recording with its honest explanation", asyn
 
 	// Mars has none
 	await page.evaluate(() =>
-		window.__astrolabe!.store.getState().setFocus("mars"),
+		window.__orbitalia!.store.getState().setFocus("mars"),
 	)
 	await expect(page.locator('[data-card-body="mars"]')).toBeVisible()
 	await expect(page.getByTestId("body-recording")).toHaveCount(0)

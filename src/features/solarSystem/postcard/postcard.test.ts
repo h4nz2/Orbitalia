@@ -82,8 +82,8 @@ describe("what the postcard says", () => {
 		expect(text.date).toContain("UTC")
 		expect(text.caption.length).toBeGreaterThan(0)
 		expect(text.scaleNote).toMatch(/Not to scale/)
-		expect(text.footer).toContain("Astrolabe")
-		expect(text.fileName).toBe("astrolabe-jupiter-2026-09-25.png")
+		expect(text.footer).toContain("Orbitalia")
+		expect(text.fileName).toBe("orbitalia-jupiter-2026-09-25.png")
 		expect(text.rows).toEqual([])
 		expect(text.note).toBeNull()
 		expect(text.facts).toEqual([])
@@ -102,7 +102,7 @@ describe("what the postcard says", () => {
 		expect(simple.title).toBe("Unser Sonnensystem")
 		expect(simple.caption).toBe("Die Sonne und ihre acht Planeten")
 		expect(simple.scaleNote).toMatch(/wie in echt/)
-		expect(simple.fileName).toBe("astrolabe-solar-system-2026-09-25.png")
+		expect(simple.fileName).toBe("orbitalia-solar-system-2026-09-25.png")
 	})
 
 	it("leaves the date out of the picture and the file name while it could be a birthday", () => {
@@ -111,7 +111,7 @@ describe("what the postcard says", () => {
 			createI18n({ locale: "en" }),
 		)
 		expect(text.date).toBeNull()
-		expect(text.fileName).toBe("astrolabe-jupiter.png")
+		expect(text.fileName).toBe("orbitalia-jupiter.png")
 		expect(JSON.stringify(text)).not.toContain("2026")
 	})
 

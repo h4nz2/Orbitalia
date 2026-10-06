@@ -13,7 +13,7 @@ const J2000 = 2451545
 
 const ready = async (page: Page, url: string) => {
 	await page.goto(url)
-	await page.waitForFunction(() => window.__astrolabe !== undefined, null, {
+	await page.waitForFunction(() => window.__orbitalia !== undefined, null, {
 		timeout: 30_000,
 	})
 	await cameraAtRest(page)
@@ -24,7 +24,7 @@ const card = (page: Page) => page.locator("[data-event-card]")
 const clock = (page: Page) => page.locator("time")
 const camera = (page: Page) =>
 	page.evaluate(() => {
-		const handle = window.__astrolabe!
+		const handle = window.__orbitalia!
 		const c = handle.camera()
 		return {
 			fovDeg: c.fovDeg,
@@ -76,8 +76,8 @@ test("one action stages the 2024 eclipse; from Earth the Moon covers the Sun; le
 	expect(now.eyeHeld).toBe(true)
 	expect(now.fovDeg).toBeCloseTo(2, 5)
 	const discs = await page.evaluate(() => ({
-		sun: window.__astrolabe!.screenOf("sun"),
-		moon: window.__astrolabe!.screenOf("moon"),
+		sun: window.__orbitalia!.screenOf("sun"),
+		moon: window.__orbitalia!.screenOf("moon"),
 	}))
 	expect(discs.sun).not.toBeNull()
 	expect(discs.moon).not.toBeNull()

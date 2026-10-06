@@ -82,7 +82,7 @@ const download = async (url: string, file: string): Promise<void> => {
 	const response = await fetch(url, {
 		headers: {
 			"user-agent":
-				"Astrolabe gen:surfaces (https://github.com/h4nz2/Astrolabe)",
+				"Orbitalia gen:surfaces (https://github.com/h4nz2/Orbitalia)",
 		},
 	})
 	if (!response.ok || response.body === null) {
