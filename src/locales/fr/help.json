@@ -127,12 +127,14 @@
 				"standard": [
 					"Pointe une planète ou son nom : un anneau apparaît avec « Clique pour t’y rendre ».",
 					"Clique ou touche-la. Pour arriver tout de suite, appuie sur « Passer » dans l’encadré.",
-					"Sur un petit point, clique n’importe où tout autour : la zone de clic est large."
+					"Sur un petit point, clique n’importe où tout autour : la zone de clic est large.",
+					"Le bouton maison en haut à gauche (ou Échap) est le chemin du retour vers tout le système solaire ; un clic dans le vide laisse la vue telle quelle."
 				],
 				"simple": [
 					"Passe la souris sur une planète. Un anneau apparaît.",
 					"Clique dessus. Maintenant, regarde le voyage.",
-					"Appuie sur « Y être tout de suite » si tu ne veux pas attendre."
+					"Appuie sur « Y être tout de suite » si tu ne veux pas attendre.",
+					"Appuie sur le bouton maison en haut à gauche pour revoir toutes les planètes."
 				]
 			}
 		},
@@ -1167,8 +1169,8 @@
 		},
 		"back": {
 			"action": "Revenir à tout le système solaire",
-			"mouse": "Cliquer dans le vide, ou sur le bouton maison",
-			"touch": "Toucher le vide, ou le bouton maison",
+			"mouse": "Cliquer sur le bouton maison, en haut à gauche",
+			"touch": "Toucher le bouton maison, en haut à gauche",
 			"keys": "Échap"
 		},
 		"name": {

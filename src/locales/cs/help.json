@@ -127,12 +127,14 @@
 				"standard": [
 					"Najeď myší na planetu nebo na její název: objeví se kroužek s nápisem „Klikni a leť tam“.",
 					"Klikni nebo ťukni. Chceš-li být na místě hned, stiskni v okénku „Přeskočit“.",
-					"U malé tečky stačí kliknout kamkoli poblíž: zásah se počítá i kousek vedle."
+					"U malé tečky stačí kliknout kamkoli poblíž: zásah se počítá i kousek vedle.",
+					"Tlačítko s domečkem vlevo nahoře (nebo Esc) je cesta zpět na celou sluneční soustavu; kliknutí do prázdného prostoru pohled nezmění."
 				],
 				"simple": [
 					"Najeď myší na planetu. Objeví se kroužek.",
 					"Klikni na ni. A teď sleduj cestu!",
-					"Nechceš čekat? Stiskni „Být tam hned“."
+					"Nechceš čekat? Stiskni „Být tam hned“.",
+					"Stiskni tlačítko s domečkem vlevo nahoře a uvidíš zase všechny planety."
 				]
 			}
 		},
@@ -1167,8 +1169,8 @@
 		},
 		"back": {
 			"action": "Zpět na celou sluneční soustavu",
-			"mouse": "Klikni do prázdného prostoru nebo na tlačítko s domečkem",
-			"touch": "Ťukni do prázdného prostoru nebo na tlačítko s domečkem",
+			"mouse": "Klikni na tlačítko s domečkem vlevo nahoře",
+			"touch": "Ťukni na tlačítko s domečkem vlevo nahoře",
 			"keys": "Esc"
 		},
 		"name": {

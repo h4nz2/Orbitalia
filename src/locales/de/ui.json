@@ -1036,8 +1036,8 @@
 				"link": "Der Link zu dieser Ansicht ist zu lang für einen QR-Code."
 			}
 		},
-		"overviewHint": "Zurück zum ganzen Sonnensystem, von überall (Esc).",
-		"overviewHint@simple": "Geh zurück und sieh dir das ganze Sonnensystem an (Esc).",
+		"overviewHint": "Der Weg zurück zum ganzen Sonnensystem, von überall (Esc). Ein Klick ins Leere lässt die Ansicht, wie sie ist.",
+		"overviewHint@simple": "Geh zurück und sieh dir das ganze Sonnensystem an (Esc). Ein Klick ins Leere lässt dich, wo du bist.",
 		"sky": {
 			"open": "Himmel heute Nacht",
 			"openHint": "Welche Planeten kannst du heute Nacht sehen, wann und wo?",

@@ -127,12 +127,14 @@
 				"standard": [
 					"Señala un planeta o su nombre: aparece un anillo con «Haz clic para volar hasta allí».",
 					"Haz clic o tócalo. Para llegar al instante, pulsa «Saltar» en el recuadro del vuelo.",
-					"Si es un punto pequeño, haz clic en cualquier sitio cerca de él: la zona de clic es generosa."
+					"Si es un punto pequeño, haz clic en cualquier sitio cerca de él: la zona de clic es generosa.",
+					"El botón de la casa, arriba a la izquierda (o Esc), es el camino de vuelta a todo el sistema solar; un clic en el espacio vacío deja la vista como está."
 				],
 				"simple": [
 					"Pasa el ratón por encima de un planeta. Aparece un anillo.",
 					"Haz clic en él. Ahora mira el viaje.",
-					"Pulsa «Llegar ya» si no quieres esperar."
+					"Pulsa «Llegar ya» si no quieres esperar.",
+					"Pulsa el botón de la casa, arriba a la izquierda, para volver a ver todos los planetas."
 				]
 			}
 		},
@@ -1167,8 +1169,8 @@
 		},
 		"back": {
 			"action": "Volver a todo el sistema solar",
-			"mouse": "Hacer clic en el espacio vacío o en el botón de la casa",
-			"touch": "Tocar el espacio vacío o el botón de la casa",
+			"mouse": "Hacer clic en el botón de la casa, arriba a la izquierda",
+			"touch": "Tocar el botón de la casa, arriba a la izquierda",
 			"keys": "Esc"
 		},
 		"name": {

@@ -30,7 +30,8 @@ const handleKeyDown = (event: KeyboardEvent): void => {
 /**
  * The always-available way out (Escape does the same): back to the overview
  * from any state, even mid-transition or mid-sequence, and the selection is
- * cleared, so a lesson can always restart from a known view.
+ * cleared, so a lesson can always restart from a known view. It is *the* way
+ * back: a click on empty space never leaves a body (#47).
  */
 const OverviewButton = () => {
 	useEffect(() => {

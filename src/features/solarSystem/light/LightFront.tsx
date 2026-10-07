@@ -274,7 +274,7 @@ function drawFront(
 	}
 }
 
-/** Stops a click on the label's button from reaching the scene underneath (a click on empty space is the way out). */
+/** Stops a click on the label's button from reaching the scene underneath (a click on empty space clears the selection). */
 const keepFromScene = (event: { stopPropagation: () => void }) =>
 	event.stopPropagation()
 

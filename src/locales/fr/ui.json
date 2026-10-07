@@ -1036,8 +1036,8 @@
 				"link": "Le lien vers cette vue est trop long pour tenir dans un code QR."
 			}
 		},
-		"overviewHint": "Retour à tout le système solaire, de n’importe où (Échap).",
-		"overviewHint@simple": "Reviens voir tout le système solaire (Échap).",
+		"overviewHint": "Le chemin du retour vers tout le système solaire, de n’importe où (Échap). Un clic dans le vide laisse la vue telle quelle.",
+		"overviewHint@simple": "Reviens voir tout le système solaire (Échap). Si tu cliques dans le vide, tu restes où tu es.",
 		"sky": {
 			"open": "Le ciel cette nuit",
 			"openHint": "Quelles planètes peux-tu voir cette nuit, quand et où ?",

@@ -127,12 +127,14 @@
 				"standard": [
 					"Zeige auf einen Planeten oder seinen Namen: Ein Ring erscheint mit „Klicken zum Hinfliegen“.",
 					"Klicke oder tippe darauf. Um sofort zu landen, drücke „Überspringen“ in der Anzeige.",
-					"Bei einem kleinen Punkt klickst du einfach irgendwo in seine Nähe: Das Ziel ist großzügig bemessen."
+					"Bei einem kleinen Punkt klickst du einfach irgendwo in seine Nähe: Das Ziel ist großzügig bemessen.",
+					"Der Haus-Knopf oben links (oder Esc) ist der Weg zurück zum ganzen Sonnensystem; ein Klick ins Leere lässt die Ansicht, wie sie ist."
 				],
 				"simple": [
 					"Fahr mit der Maus über einen Planeten. Ein Ring taucht auf.",
 					"Klick drauf. Jetzt schau dir die Reise an.",
-					"Drück „Sofort hin“, wenn du nicht warten willst."
+					"Drück „Sofort hin“, wenn du nicht warten willst.",
+					"Drück den Haus-Knopf oben links, dann siehst du wieder alle Planeten."
 				]
 			}
 		},
@@ -1167,8 +1169,8 @@
 		},
 		"back": {
 			"action": "Zurück zum ganzen Sonnensystem",
-			"mouse": "Leeren Raum oder den Haus-Knopf anklicken",
-			"touch": "Leeren Raum oder den Haus-Knopf antippen",
+			"mouse": "Den Haus-Knopf oben links anklicken",
+			"touch": "Den Haus-Knopf oben links antippen",
 			"keys": "Esc"
 		},
 		"name": {

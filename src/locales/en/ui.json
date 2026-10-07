@@ -1036,8 +1036,8 @@
 				"link": "The link to this view is too long to fit in a QR code."
 			}
 		},
-		"overviewHint": "Back to the whole solar system, from anywhere (Esc).",
-		"overviewHint@simple": "Go back and see the whole solar system (Esc).",
+		"overviewHint": "The way back to the whole solar system, from anywhere (Esc). A click on empty space leaves the view where it is.",
+		"overviewHint@simple": "Go back and see the whole solar system (Esc). A click on empty space keeps you where you are.",
 		"sky": {
 			"open": "Tonight's sky",
 			"openHint": "Which planets can you see tonight, when and where?",
