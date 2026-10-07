@@ -35,7 +35,7 @@ In the background of it thought, is the use of the Panter stack and implamantati
 - Soft skills
   - Solve mid complex problems independently
 
-#### I value the care and effort to improve in case of any comment by the reader feel free to contact me at odi@panter.ch
+#### We value the care and effort to improve: for any comment, bug or idea, write to [feedback@orbitalia.app](mailto:feedback@orbitalia.app)
 
 # Getting started
 
@@ -45,7 +45,7 @@ A client-only [Vite](https://vitejs.dev/) + React 19 + TypeScript app. See
 [docs/ARCHITECTURE.md](docs/ARCHITECTURE.md) for the full contract.
 
 - routing: [TanStack Router](https://tanstack.com/router) (file routes in `src/routes`)
-- 3D: [Three.js](https://threejs.org) via [@react-three/fiber](https://docs.pmnd.rs/react-three-fiber), drei and postprocessing
+- 3D: [Three.js](https://threejs.org) via [@react-three/fiber](https://docs.pmnd.rs/react-three-fiber) and drei
 - animation: [GSAP](https://greensock.com)
 - UI: [Mantine](https://mantine.dev/) 9 with CSS modules
 - data: static JSON in `data/` (no server, no GraphQL)
