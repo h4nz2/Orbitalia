@@ -5,7 +5,7 @@
  * panel is LightPanel.tsx.
  */
 import { bodies, bodyById, planets, sun, type Body } from "@/data"
-import type { I18n } from "@/i18n"
+import { durationInWords, isSimple, type I18n } from "@/i18n"
 import { buildIndex } from "@/sim"
 import {
 	arrivalJD,
@@ -253,12 +253,22 @@ function splitDuration(
 	return [{ unit: "year", value }]
 }
 
-/** `durationParts` as text in the i18n's language and reading level ("8 min 20 s", "8 Minuten und 20 Sekunden"). */
+/** From this long on, the simple level says a duration in words, not in counted days or years (#51). */
+const SIMPLE_IN_WORDS_FROM = 100 * DAY
+
+/**
+ * `durationParts` as text in the i18n's language and reading level ("8 min
+ * 20 s", "8 Minuten und 20 Sekunden"); at the simple level spans from 100
+ * days on as `durationInWords` ("4 years", "hundreds of years").
+ */
 export function formatDuration(
 	seconds: number,
-	i18n: Pick<I18n, "t">,
+	i18n: I18n,
 	precise = false,
 ): string {
+	if (isSimple(i18n) && Math.abs(seconds) >= SIMPLE_IN_WORDS_FROM) {
+		return durationInWords(seconds, i18n)
+	}
 	const parts = durationParts(seconds, precise).map((part) =>
 		i18n.t(`solarSystem.light.duration.${part.unit}`, { count: part.value }),
 	)

@@ -1,6 +1,5 @@
 import { useId } from "react"
-import { Link } from "@tanstack/react-router"
-import { Anchor, SegmentedControl, Text } from "@mantine/core"
+import { SegmentedControl, Text } from "@mantine/core"
 
 import { useI18n } from "@/i18n"
 import { useBodyName } from "@/i18n/bodies"
@@ -8,6 +7,7 @@ import { Hint } from "@/primitives/hint"
 import {
 	SCALE_LIES,
 	SCALE_PRESETS,
+	isGridPreset,
 	presetForLies,
 	type DistanceLie,
 	type ScalePresetId,
@@ -16,19 +16,23 @@ import {
 import { useScaleStore } from "@/store/scale"
 import { useSimStore } from "@/store/sim"
 
+import { ScaleWalkOffer } from "../walk/WalkOffer"
+import { nudgeTowardsWalk } from "../walk/walkNudge"
 import { scaleSentences, statementSubject } from "./scaleStatement"
 
 import classes from "./ScalePanel.module.css"
 
 /**
- * The presets offered by name, from the truth to the most readable lie. The
- * fourth cell of the grid ("Big planets": enlarged sizes at real distances)
- * is reached through the separate Sizes / Distances switches.
+ * The presets offered by name, from the truth to the most distorted lie
+ * (Poster, #54, which sits beside the sizes x distances grid). The fourth
+ * cell of the grid ("Big planets": enlarged sizes at real distances) is
+ * reached through the separate Sizes / Distances switches.
  */
 export const NAMED_PRESETS: readonly ScalePresetId[] = [
 	"trueScale",
 	"textbook",
 	"everythingVisible",
+	"poster",
 ]
 
 /** Presets in which the planets are sub-pixel specks from the overview: the markers are what finds them. */
@@ -50,10 +54,20 @@ export function switchScale(id: ScalePresetId): void {
 		.switchTo(id, performance.now(), reduced ? 0 : undefined)
 }
 
+/** The viewer's own choice: the switch, and on the first one to True scale the walk's tip (#48). */
+function chooseScale(id: ScalePresetId): void {
+	switchScale(id)
+	nudgeTowardsWalk(id)
+}
+
 /**
  * The scale picker (#21): the named presets, the two separate lies (sizes and
  * distances) each switchable on its own, and the honesty statement saying how
  * far from true the body in view is drawn. A teacher never types a number.
+ *
+ * Poster (#54) tells both lies harder than any cell of the grid: while it is
+ * on, the switches name no cell, and flipping one leaves Poster for the cell
+ * that switch picks (from Poster's enlarged, squeezed lies).
  */
 export interface ScalePanelProps {
 	/** Show the panel's own "Scale" heading (false inside the dock, #42, whose panel is titled already; it stays the region's name). */
@@ -61,7 +75,8 @@ export interface ScalePanelProps {
 }
 
 const ScalePanel = ({ heading = true }: ScalePanelProps) => {
-	const { t } = useI18n()
+	const i18n = useI18n()
+	const { t } = i18n
 	const name = useBodyName()
 	const id = useId()
 	const titleId = `${id}-title`
@@ -77,16 +92,18 @@ const ScalePanel = ({ heading = true }: ScalePanelProps) => {
 	const showMarkers = useSimStore((state) => state.showMarkers)
 
 	const subject = statementSubject(selectedId, focusId)
-	const sentences = scaleSentences(subject, scale, name)
+	const sentences = scaleSentences(subject, scale, name, i18n)
 	// a custom mix (reachable only from the console) has no name and no cell in the grid
 	const lies = targetId === null ? null : SCALE_LIES[targetId]
+	// Poster tells a cell's lies without being its preset: the switches name no cell
+	const cell = targetId !== null && isGridPreset(targetId) ? lies : null
 
 	const setSizes = (sizes: SizeLie) =>
-		switchScale(
+		chooseScale(
 			presetForLies({ distances: lies?.distances ?? "squeezed", sizes }),
 		)
 	const setDistances = (distances: DistanceLie) =>
-		switchScale(presetForLies({ sizes: lies?.sizes ?? "enlarged", distances }))
+		chooseScale(presetForLies({ sizes: lies?.sizes ?? "enlarged", distances }))
 
 	return (
 		<section
@@ -112,12 +129,13 @@ const ScalePanel = ({ heading = true }: ScalePanelProps) => {
 					color="orange"
 					aria-label={t("solarSystem.scale.presetsLabel")}
 					className={classes.presets}
+					classNames={{ label: classes.presetLabel }}
 					value={
 						targetId !== null && NAMED_PRESETS.includes(targetId)
 							? targetId
 							: ""
 					}
-					onChange={(value) => switchScale(value as ScalePresetId)}
+					onChange={(value) => chooseScale(value as ScalePresetId)}
 					data={NAMED_PRESETS.map((id) => ({
 						value: id,
 						label: t(`solarSystem.scale.preset.${id}`),
@@ -143,7 +161,7 @@ const ScalePanel = ({ heading = true }: ScalePanelProps) => {
 					<SegmentedControl
 						size="xs"
 						aria-labelledby={sizesId}
-						value={lies?.sizes ?? ""}
+						value={cell?.sizes ?? ""}
 						onChange={(value) => setSizes(value as SizeLie)}
 						data={[
 							{ value: "true", label: t("solarSystem.scale.sizesTrue") },
@@ -171,7 +189,7 @@ const ScalePanel = ({ heading = true }: ScalePanelProps) => {
 					<SegmentedControl
 						size="xs"
 						aria-labelledby={distancesId}
-						value={lies?.distances ?? ""}
+						value={cell?.distances ?? ""}
 						onChange={(value) => setDistances(value as DistanceLie)}
 						data={[
 							{ value: "true", label: t("solarSystem.scale.distancesTrue") },
@@ -197,11 +215,8 @@ const ScalePanel = ({ heading = true }: ScalePanelProps) => {
 					)}
 				</Text>
 			)}
-			{targetId === "trueScale" && (
-				<Anchor component={Link} to="/solar_walk" className={classes.walk}>
-					{t("solarSystem.scale.walk")}
-				</Anchor>
-			)}
+			{/* the walk, in every preset (#48) */}
+			<ScaleWalkOffer />
 		</section>
 	)
 }

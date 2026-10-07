@@ -8,7 +8,7 @@
  * itself: whoever the picture is passed on to learns how old someone is on
  * Mars, not when they were born.
  */
-import type { I18n } from "@/i18n"
+import { formatCount, type I18n } from "@/i18n"
 
 import type { BirthdayFacts } from "./birthday"
 
@@ -50,6 +50,18 @@ export interface CardText {
 	fileName: string
 }
 
+/**
+ * The simple level's "how far": not billions of kilometres but how many
+ * times Earth has carried you around the Sun, your age in Earth years (#51).
+ */
+export function lapsArgs(
+	facts: BirthdayFacts,
+	i18n: I18n,
+): { laps: number; n: string } {
+	const laps = facts.worlds.find((world) => world.id === "earth")?.age ?? 0
+	return { laps, n: formatCount(laps, i18n) }
+}
+
 export function cardText(
 	facts: BirthdayFacts,
 	i18n: I18n,
@@ -65,9 +77,15 @@ export function cardText(
 		rows: facts.worlds.map((world) => ({
 			id: world.id,
 			name: name(world.id),
-			age: i18n.t("solarSystem.birthday.years.age", { age: world.age }),
+			age: i18n.t("solarSystem.birthday.years.age", {
+				age: world.age,
+				n: formatCount(world.age, i18n),
+			}),
 		})),
-		distance: i18n.t("solarSystem.birthday.card.distance", { distance }),
+		distance: i18n.t("solarSystem.birthday.card.distance", {
+			distance,
+			...lapsArgs(facts, i18n),
+		}),
 		fileName: `${i18n.t("solarSystem.birthday.card.fileName")}.png`,
 	}
 }

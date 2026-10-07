@@ -18,7 +18,7 @@
 		"readingLevel": {
 			"simple": {
 				"name": "Jednoduchá",
-				"description": "Věk 8–11 let: krátké věty, přirovnání z běžného života"
+				"description": "Věk 6–11 let: krátké věty, přirovnání místo velkých čísel"
 			},
 			"standard": {
 				"name": "Běžná",
@@ -46,9 +46,105 @@
 		"approx": "≈ {value}",
 		"au": "{value} au",
 		"gravity": "{value} m/s²",
-		"kelvin": "{value} K",
 		"millionKm": "{value} mil. km",
 		"billionKm": "{value} mld. km"
+	},
+	"quantity": {
+		"moreThan": "víc než {limit, number}",
+		"temperature": {
+			"hotterThanSun": "větší žár než na povrchu Slunce",
+			"fire": "mnohem větší žár než v jakémkoli ohni",
+			"oven": "větší horko než v rozpálené troubě",
+			"boiling": "větší horko než ve vroucí vodě",
+			"desert": "horko jako v nejžhavější poušti",
+			"warm": "teplo jako v letní den",
+			"mild": "ani horko, ani zima",
+			"chilly": "chladno jako v zimní den",
+			"freezer": "větší zima než v jakémkoli mrazáku",
+			"colderThanEarth": "větší zima než kdekoli na Zemi",
+			"airFreezes": "taková zima, že by zmrzl i vzduch"
+		},
+		"temperatureRange": "{min} až {max}",
+		"celsius": "{big, select, other {{value} °C}}",
+		"kelvin": "{big, select, other {{kelvin} K ({celsius} °C)}}",
+		"size": {
+			"gigantic": "obří",
+			"huge": "obrovské",
+			"big": "velké",
+			"small": "malé",
+			"tiny": "maličké"
+		},
+		"sizeVsEarth": {
+			"wider": "{count, plural, one {jako {n} Země vedle sebe} few {jako {n} Země vedle sebe} many {jako {n} Země vedle sebe} other {jako {n} Zemí vedle sebe}}",
+			"similar": "zhruba velikost Země",
+			"narrower": "přes Zemi by se jich vedle sebe vešlo {n}"
+		},
+		"everyday": "{fit, select, smaller {Když je Země malá jako {earth}, je {body} ještě menší než {thing}} bigger {Když je Země malá jako {earth}, je {body} ještě větší než {thing}} other {Když je Země malá jako {earth}, je {body} jako {thing}}}",
+		"thing": {
+			"fineSand": "zrnko jemného písku",
+			"salt": "zrnko soli",
+			"sugar": "zrnko cukru",
+			"poppySeed": "zrnko máku",
+			"pinhead": "špendlíková hlavička",
+			"peppercorn": "zrnko pepře",
+			"pea": "hrášek",
+			"marble": "skleněná kulička",
+			"cherry": "třešeň",
+			"walnut": "vlašský ořech",
+			"tableTennisBall": "pingpongový míček",
+			"tennisBall": "tenisový míček",
+			"orange": "pomeranč",
+			"grapefruit": "grapefruit",
+			"melon": "malý meloun",
+			"football": "fotbalový míč",
+			"exerciseBall": "gymnastický míč",
+			"house": "dům"
+		},
+		"distance": {
+			"lessThanEarth": "ani ne tak daleko, jak je Země široká",
+			"earths": "{count, plural, =1 {tak daleko, jak je Země široká} one {jako {n} Země za sebou} few {jako {n} Země za sebou} many {jako {n} Země za sebou} other {jako {n} Zemí za sebou}}",
+			"moons": "{n}krát dál, než je Měsíc od Země",
+			"partOfSun": "{part, select, quarter {asi čtvrtina vzdálenosti Země od Slunce} third {asi třetina vzdálenosti Země od Slunce} half {asi polovina vzdálenosti Země od Slunce} other {asi tři čtvrtiny vzdálenosti Země od Slunce}}",
+			"sun": "asi tak daleko, jako je Země od Slunce",
+			"suns": "{n}krát dál, než je Země od Slunce"
+		},
+		"unit": {
+			"second": "{count, plural, one {# sekundu} few {# sekundy} many {# sekundy} other {# sekund}}",
+			"minute": "{count, plural, one {# minutu} few {# minuty} many {# minuty} other {# minut}}",
+			"hour": "{count, plural, one {# hodinu} few {# hodiny} many {# hodiny} other {# hodin}}",
+			"day": "{count, plural, one {# den} few {# dny} many {# dne} other {# dní}}",
+			"month": "{count, plural, one {# měsíc} few {# měsíce} many {# měsíce} other {# měsíců}}",
+			"year": "{count, plural, one {# rok} few {# roky} many {# roku} other {# let}}"
+		},
+		"duration": {
+			"lessThanSecond": "méně než sekundu",
+			"lifetimes": "{count, plural, one {{n} dlouhý lidský život} few {{n} dlouhé lidské životy} many {{n} dlouhého lidského života} other {{n} dlouhých lidských životů}}",
+			"pyramids": "déle, než stojí pyramidy",
+			"people": "déle, než existují lidé",
+			"dinosaurs": "déle, než uplynulo od vyhynutí dinosaurů"
+		},
+		"dayVsEarth": {
+			"longer": "{count, plural, one {Den tam trvá jako {n} den doma} few {Den tam trvá jako {n} dny doma} many {Den tam trvá jako {n} dne doma} other {Den tam trvá jako {n} dní doma}}",
+			"similar": "Den tam trvá zhruba stejně dlouho jako doma",
+			"shorter": "Den tam skončí už za {time}"
+		},
+		"yearVsEarth": {
+			"longer": "{count, plural, one {Rok tam trvá jako {n} rok doma} few {Rok tam trvá jako {n} roky doma} many {Rok tam trvá jako {n} roku doma} other {Rok tam trvá jako {n} let doma}}",
+			"similar": "Rok tam trvá zhruba stejně dlouho jako doma",
+			"shorter": "{count, plural, one {Za jeden rok doma tam uběhne {n} rok} few {Za jeden rok doma tam uběhnou {n} roky} many {Za jeden rok doma tam uběhne {n} roku} other {Za jeden rok doma tam uběhne {n} let}}"
+		},
+		"weightVsEarth": {
+			"more": "{count, plural, =2 {Tvoje váha by tam byla dvakrát větší než doma} one {Tvoje váha by tam byla {n}krát větší než doma} few {Tvoje váha by tam byla {n}krát větší než doma} many {Tvoje váha by tam byla {n}krát větší než doma} other {Tvoje váha by tam byla {n}krát větší než doma}}",
+			"similar": "Tvoje váha by tam byla skoro stejná jako doma",
+			"less": "Tvoje váha by tam byla {n}krát menší než doma"
+		},
+		"weight": "{n} kg",
+		"massVsEarth": {
+			"more": "{count, plural, one {váží tolik co {n} Země} few {váží tolik co {n} Země} many {váží tolik co {n} Země} other {váží tolik co {n} Zemí}}",
+			"similar": "váží zhruba tolik co Země",
+			"less": "teprve {n} takových by vážilo tolik co Země"
+		},
+		"speed": "{n} km za každou sekundu"
 	},
 	"bodies": {
 		"kind": {
@@ -62,7 +158,7 @@
 		},
 		"fallback": {
 			"moonDescription": "{name} je měsíc {parentId, select, sun {Slunce} mercury {Merkuru} venus {Venuše} earth {Země} mars {Marsu} jupiter {Jupiteru} saturn {Saturnu} uranus {Uranu} neptune {Neptunu} moon {Měsíce} pluto {Pluta} eris {Eridy} haumea {Haumey} makemake {Makemaka} other {planety {parent}}}. Má průměr asi {diameter} a svou {parentId, select, pluto {trpasličí planetu} eris {trpasličí planetu} haumea {trpasličí planetu} makemake {trpasličí planetu} other {planetu}} oběhne jednou za {period}.",
-			"moonDescription@simple": "{name} je jeden z měsíců, které obíhají kolem {parentId, select, sun {Slunce} mercury {Merkuru} venus {Venuše} earth {Země} mars {Marsu} jupiter {Jupiteru} saturn {Saturnu} uranus {Uranu} neptune {Neptunu} moon {Měsíce} pluto {Pluta} eris {Eridy} haumea {Haumey} makemake {Makemaka} other {planety {parent}}}. Má průměr asi {diameter}.",
+			"moonDescription@simple": "{name} je jeden z měsíců, které obíhají kolem {parentId, select, sun {Slunce} mercury {Merkuru} venus {Venuše} earth {Země} mars {Marsu} jupiter {Jupiteru} saturn {Saturnu} uranus {Uranu} neptune {Neptunu} moon {Měsíce} pluto {Pluta} eris {Eridy} haumea {Haumey} makemake {Makemaka} other {planety {parent}}}. {everyday}.",
 			"moonDescription@advanced": "{name} obíhá kolem {parentId, select, sun {Slunce} mercury {Merkuru} venus {Venuše} earth {Země} mars {Marsu} jupiter {Jupiteru} saturn {Saturnu} uranus {Uranu} neptune {Neptunu} moon {Měsíce} pluto {Pluta} eris {Eridy} haumea {Haumey} makemake {Makemaka} other {planety {parent}}} ve střední vzdálenosti {distance} s oběžnou dobou {period}. Střední průměr je asi {diameter}."
 		}
 	},
@@ -86,44 +182,84 @@
 		},
 		"compare": {
 			"sizeBigger": "{count, plural, one {Země by se dovnitř vešla jednou.} few {Země by se dovnitř vešla #krát.} many {Země by se dovnitř vešla #krát.} other {Země by se dovnitř vešla #krát.}}",
-			"sizeBigger@simple": "{count, plural, one {Dovnitř by se vešla # Země!} few {Dovnitř by se vešly # Země!} many {Dovnitř by se vešlo # Země!} other {Dovnitř by se vešlo # Zemí!}}",
+			"sizeBigger@simple": "{count, plural, one {Dovnitř by se vešla {n} Země!} few {Dovnitř by se vešly {n} Země!} many {Dovnitř by se vešlo {n} Země!} other {Dovnitř by se vešlo {n} Zemí!}}",
 			"sizeBigger@advanced": "{count, plural, one {Má stejný objem jako Země.} few {Má zhruba #krát větší objem než Země.} many {Má zhruba #krát větší objem než Země.} other {Má zhruba #krát větší objem než Země.}}",
 			"sizeSmaller": "{count, plural, one {Do Země by se vešlo # takové těleso.} few {Do Země by se vešla # taková tělesa.} many {Do Země by se vešlo # takového tělesa.} other {Do Země by se vešlo # takových těles.}}",
-			"sizeSmaller@simple": "{count, plural, one {Má stejnou velikost jako Země!} few {Do Země by se vešly # takové koule!} many {Do Země by se vešlo # takové koule!} other {Do Země by se vešlo # takových koulí!}}",
+			"sizeSmaller@simple": "{count, plural, one {Má stejnou velikost jako Země!} few {Do Země by se vešly {n} takové koule!} many {Do Země by se vešlo {n} takové koule!} other {Do Země by se vešlo {n} takových koulí!}}",
 			"sizeSmaller@advanced": "{count, plural, one {Země má stejný objem.} few {Země má zhruba #krát větší objem.} many {Země má zhruba #krát větší objem.} other {Země má zhruba #krát větší objem.}}",
 			"sizeSimilar": "Má zhruba stejnou velikost jako naše planeta.",
 			"sizeSimilar@simple": "Je to skoro stejně velká koule jako Země!",
 			"sizeSimilar@advanced": "Objem se blíží objemu Země.",
 			"dayLonger": "{days, plural, one {Jeden den tam trvá # pozemský den.} few {Jeden den tam trvá # pozemské dny.} many {Jeden den tam trvá # pozemského dne.} other {Jeden den tam trvá # pozemských dní.}}",
-			"dayLonger@simple": "{days, plural, one {Den tam trvá tak dlouho jako # den na Zemi!} few {Den tam trvá tak dlouho jako # dny na Zemi!} many {Den tam trvá tak dlouho jako # dne na Zemi!} other {Den tam trvá tak dlouho jako # dní na Zemi!}}",
 			"dayLonger@advanced": "{days, plural, one {Od jednoho východu Slunce k dalšímu uplyne # pozemský den.} few {Od jednoho východu Slunce k dalšímu uplynou # pozemské dny.} many {Od jednoho východu Slunce k dalšímu uplyne # pozemského dne.} other {Od jednoho východu Slunce k dalšímu uplyne # pozemských dní.}}",
 			"dayShorter": "{hours, plural, one {Jeden den tam trvá jen # hodinu.} few {Jeden den tam trvá jen # hodiny.} many {Jeden den tam trvá jen # hodiny.} other {Jeden den tam trvá jen # hodin.}}",
-			"dayShorter@simple": "{hours, plural, one {Den tam uteče už za # hodinu!} few {Den tam uteče už za # hodiny!} many {Den tam uteče už za # hodiny!} other {Den tam uteče už za # hodin!}}",
 			"dayShorter@advanced": "{hours, plural, one {Sluneční den trvá jen # hodinu, tedy {fraction, number, ::percent} pozemského dne.} few {Sluneční den trvá jen # hodiny, tedy {fraction, number, ::percent} pozemského dne.} many {Sluneční den trvá jen # hodiny, tedy {fraction, number, ::percent} pozemského dne.} other {Sluneční den trvá jen # hodin, tedy {fraction, number, ::percent} pozemského dne.}}",
 			"daySimilar": "Jeden den tam trvá zhruba stejně dlouho jako na Zemi.",
-			"daySimilar@simple": "Den tam je skoro stejně dlouhý jako den na Zemi!",
 			"daySimilar@advanced": "{minutes, plural, one {Tamní sluneční den se od pozemského liší jen o # minutu.} few {Tamní sluneční den se od pozemského liší jen o # minuty.} many {Tamní sluneční den se od pozemského liší jen o # minuty.} other {Tamní sluneční den se od pozemského liší jen o # minut.}}",
 			"yearLonger": "{years, plural, one {Jeden rok tam trvá # pozemský rok – na další narozeniny si tam hodně počkáš!} few {Jeden rok tam trvá # pozemské roky – na další narozeniny si tam hodně počkáš!} many {Jeden rok tam trvá # pozemského roku – na další narozeniny si tam hodně počkáš!} other {Jeden rok tam trvá # pozemských let – na další narozeniny si tam hodně počkáš!}}",
-			"yearLonger@simple": "{years, plural, one {Na další narozeniny si tam počkáš # rok!} few {Na další narozeniny si tam počkáš # roky!} many {Na další narozeniny si tam počkáš # roku!} other {Na další narozeniny si tam počkáš # let!}}",
 			"yearLonger@advanced": "{years, plural, one {Oběžná doba je asi # pozemský rok.} few {Oběžná doba je asi # pozemské roky.} many {Oběžná doba je asi # pozemského roku.} other {Oběžná doba je asi # pozemských let.}}",
 			"yearLongerDays": "{days, plural, one {Na narozeniny si počkáš o # den déle.} few {Na narozeniny si počkáš o # dny déle.} many {Na narozeniny si počkáš o # dne déle.} other {Na narozeniny si počkáš o # dní déle.}}",
-			"yearLongerDays@simple": "{days, plural, one {Na narozeniny si počkáš # den navíc!} few {Na narozeniny si počkáš # dny navíc!} many {Na narozeniny si počkáš # dne navíc!} other {Na narozeniny si počkáš # dní navíc!}}",
 			"yearLongerDays@advanced": "{days, plural, one {Tamní rok je o # den delší než pozemský.} few {Tamní rok je o # dny delší než pozemský.} many {Tamní rok je o # dne delší než pozemský.} other {Tamní rok je o # dní delší než pozemský.}}",
 			"yearShorter": "{times, plural, one {Rok tam trvá jen {period} – to je # oslava narozenin za pozemský rok.} few {Rok tam trvá jen {period} – to jsou # oslavy narozenin za pozemský rok!} many {Rok tam trvá jen {period} – to je # oslavy narozenin za pozemský rok!} other {Rok tam trvá jen {period} – to je # oslav narozenin za pozemský rok!}}",
-			"yearShorter@simple": "{times, plural, one {Za jeden pozemský rok by tam byly narozeniny jednou!} few {Za jeden pozemský rok by tam byly narozeniny asi #krát!} many {Za jeden pozemský rok by tam byly narozeniny asi #krát!} other {Za jeden pozemský rok by tam byly narozeniny asi #krát!}}",
 			"yearShorter@advanced": "{times, plural, one {Oběžná doba je {period}; za pozemský rok oběhne Slunce jednou.} few {Oběžná doba je {period}; za pozemský rok oběhne Slunce #krát.} many {Oběžná doba je {period}; za pozemský rok oběhne Slunce #krát.} other {Oběžná doba je {period}; za pozemský rok oběhne Slunce #krát.}}",
 			"gravityMore": "Váha by ti tam ukázala {ratio, number}krát víc než na Zemi!",
-			"gravityMore@simple": "Když na Zemi vážíš 30 kg, tam by ti váha ukázala {kg, number} kg!",
+			"gravityMore@simple": "Když na Zemi vážíš 30 kg, tam by ti váha ukázala {weight}!",
 			"gravityMore@advanced": "Tíhové zrychlení na povrchu je {ratio, number}krát větší než na Zemi: tvoje tíha by vzrostla, hmotnost by ale zůstala stejná.",
 			"gravitySimilar": "Váha by ti tam ukázala zhruba totéž co na Zemi.",
 			"gravitySimilar@simple": "Tělo by ti tam připadalo stejně těžké jako na Zemi.",
 			"gravitySimilar@advanced": "Tíhové zrychlení na povrchu se od pozemského liší o méně než 5 %.",
 			"gravityLess": "Váha by ti tam ukázala jen {percent, number, ::percent} toho, co na Zemi.",
-			"gravityLess@simple": "Když na Zemi vážíš 30 kg, tam by ti váha ukázala jen {kg, number} kg!",
-			"gravityLess@advanced": "Tíhové zrychlení na povrchu je {percent, number, ::percent} pozemského: tvoje tíha by klesla, hmotnost by ale zůstala stejná.",
-			"temperature": "To je asi {celsius, number} °C.",
-			"temperature@simple": "{range, select, hot {To je asi {celsius, number} °C – víc než v rozpálené troubě!} cold {To je asi {celsius, number} °C – větší zima než v jakémkoli mrazáku!} other {To je asi {celsius, number} °C.}}",
-			"temperature@advanced": "To je {celsius, number} °C; absolutní nula, 0 K, odpovídá −273,15 °C."
+			"gravityLess@simple": "Když na Zemi vážíš 30 kg, tam by ti váha ukázala jen {weight}!",
+			"gravityLess@advanced": "Tíhové zrychlení na povrchu je {percent, number, ::percent} pozemského: tvoje tíha by klesla, hmotnost by ale zůstala stejná."
+		},
+		"section": {
+			"label": "Víc o tomto světě: {name}",
+			"madeOf": "Z čeho se skládá",
+			"madeOf@simple": "Co je uvnitř?",
+			"weather": "Počasí",
+			"weather@simple": "Horko, nebo zima?",
+			"weather@advanced": "Teploty",
+			"names": "Jména",
+			"names@simple": "Jména a přezdívky"
+		},
+		"madeOf": {
+			"pictureTitle": "{name} zevnitř",
+			"pictureDescription": "{name} v řezu. Od středu ven: {layers}.",
+			"scaleNote": "{thickened, select, yes {Vrstvy jsou nakreslené ve správném měřítku; ty nejtenčí jsou o něco tlustší, aby byly vidět.} other {Vrstvy jsou nakreslené ve správném měřítku.}}",
+			"scaleNote@simple": "{thickened, select, yes {Tenké vrstvy jsou nakreslené trochu tlustší, aby byly vidět.} other {Vrstvy jsou nakreslené tak velké, jak doopravdy jsou.}}",
+			"estimateNote": "Dovnitř se nikdo podívat nemůže: tyto vrstvy jsou nejlepší odhady vědců podle gravitace, rotace a modelů.",
+			"estimateNote@simple": "Uvnitř ještě nikdo nebyl. Tyhle vrstvy vědci vypočítali.",
+			"layerSize": "{centre, select, yes {poloměr {size}} other {tloušťka {size}}}",
+			"air": "{star, select, yes {Z čeho je jeho plyn} other {Ovzduší}}",
+			"air@simple": "{star, select, yes {Jeho plyn} other {Vzduch}}",
+			"air@advanced": "{star, select, yes {Chemické složení} other {Atmosféra}}",
+			"gas": "{name} {share, number, ::percent @##}",
+			"basis": "{basis, select, atoms {Podíl na počtu všech atomů.} other {Objemový podíl ve vzduchu.}}",
+			"heavy": "Kolik váží",
+			"heavy@simple": "Kolik váží?",
+			"heavy@advanced": "Hmotnost",
+			"dense": "Hustota",
+			"dense@simple": "Plave, nebo se potopí?",
+			"dense@advanced": "Střední hustota"
+		},
+		"weather": {
+			"high": "{range, select, dayNight {Ve dne} extremes {Nejtepleji} records {Rekordní horko} cloudsCore {U jádra} cloudLevels {V mracích} surfaceCore {V jádru} other {Ve dne i v noci}}",
+			"low": "{range, select, dayNight {V noci} extremes {Nejchladněji} records {Rekordní mráz} cloudsCore {V mracích} cloudLevels {Výš nahoře} surfaceCore {Na povrchu} other {Ve dne i v noci}}"
+		},
+		"names": {
+			"origin": "Odkud má jméno",
+			"inOurLanguage": "V češtině",
+			"discovery": "Objev",
+			"discovery@simple": "Kdo to objevil?"
+		},
+		"sources": "Zdroje:",
+		"quantity": {
+			"mass": "{band, select, earth {Měřítko: ostatní světy vážíme v násobcích Země} similar {{percent, number, ::percent} hmotnosti Země} lighter {{count, plural, one {# takový svět by vážil tolik co Země} few {# takové světy by vážily tolik co Země} many {# takového světa by vážilo tolik co Země} other {# takových světů by vážilo tolik co Země}}} other {{count, plural, one {Váží jako # Země} few {Váží jako # Země} many {Váží jako # Země} other {Váží jako # Zemí}}}}",
+			"mass@simple": "{band, select, star {Váží víc než všechny planety dohromady} earth {Země je měřítko: s ní porovnáváme, kolik váží ostatní světy} huge {Váží víc než 100 Zemí dohromady} similar {Váží skoro jako Země} lighter {{count, plural, one {Váží jako Země} few {Na váhu jedné Země by jich bylo potřeba #} many {Na váhu jedné Země by jich bylo potřeba #} other {Na váhu jedné Země by jich bylo potřeba #}}} other {{count, plural, one {Váží jako # Země} few {Váží jako # Země} many {Váží jako # Země} other {Váží jako # Zemí}}}}",
+			"mass@advanced": "{band, select, earth {{kg} kg} other {{earths}násobek hmotnosti Země ({kg} kg)}}",
+			"density": "{band, select, floats {{value} g/cm³: řidší než voda, takže by takové těleso v dost velké vaně plavalo} sinks {{value} g/cm³: o trochu hustší než voda} other {{value} g/cm³: {ratio, number}krát hustší než voda}}",
+			"density@simple": "{band, select, floats {Lehčí než voda: v obří vaně se nepotopí!} sinks {Trochu těžší než voda: pomalu se potopí} other {{buckets, plural, one {Kbelík plný tohoto světa by vážil jako # kbelík vody} few {Kbelík plný tohoto světa by vážil jako # kbelíky vody} many {Kbelík plný tohoto světa by vážil jako # kbelíku vody} other {Kbelík plný tohoto světa by vážil jako # kbelíků vody}}}}",
+			"density@advanced": "{band, select, floats {{value} g/cm³, méně než voda (1 g/cm³)} other {{value} g/cm³ (voda: 1 g/cm³)}}"
 		}
 	},
 	"solarSystem": {
@@ -173,6 +309,8 @@
 			},
 			"reason": {
 				"allMoons": "Nejdřív zapni Měsíce.",
+				"allMoonsPoster": "Plakát skrývá menší měsíce: mezi planetami pro ně není místo. Vyber jiné měřítko a uvidíš je.",
+				"allMoonsPoster@simple": "Na plakátu jsou malé měsíce schované. Není pro ně místo!",
 				"orbitNames": "{missing, select, orbits {Nejdřív zapni Dráhy.} labels {Nejdřív zapni Názvy.} other {Nejdřív zapni Dráhy a Názvy.}}"
 			},
 			"smallBodies": "Malá tělesa"
@@ -184,7 +322,8 @@
 				"trueScale": "Skutečné měřítko",
 				"textbook": "Jako v učebnici",
 				"bigPlanets": "Velké planety",
-				"everythingVisible": "Vše viditelné"
+				"everythingVisible": "Vše viditelné",
+				"poster": "Plakát"
 			},
 			"summary": {
 				"trueScale": "Skutečné velikosti, skutečné vzdálenosti. Vesmír je skoro úplně prázdný.",
@@ -198,7 +337,10 @@
 				"bigPlanets@advanced": "Vzdálenosti věrné, velikosti zveličené: i desetkrát zvětšené planety jsou jen tečky na svých drahách.",
 				"everythingVisible": "Aby bylo vidět všechno najednou: planety jsou příliš velké a příliš blízko u sebe. Není to v měřítku!",
 				"everythingVisible@simple": "Planety jsou zvětšené a posunuté blíž k sobě, aby byly vidět všechny. Ve skutečnosti to tak není!",
-				"everythingVisible@advanced": "Velikosti zveličené a vzdálenosti stlačené, aby bylo vidět každé těleso najednou. Není v měřítku."
+				"everythingVisible@advanced": "Velikosti zveličené a vzdálenosti stlačené, aby bylo vidět každé těleso najednou. Není v měřítku.",
+				"poster": "Jako plakát ve třídě: každá planeta je dost velká, aby byly vidět všechny najednou, a ve správném pořadí. Velikosti 5× až 60× větší, vzdálenosti 50× až 500× menší. Nejméně skutečný obrázek ze všech!",
+				"poster@simple": "Jako plakát na stěně ve třídě: všechny planety jsou velké a blízko u sebe. Je to nejméně skutečný obrázek ze všech!",
+				"poster@advanced": "Poloměry stlačené k poloměru Slunce a každá dráha umístěná ručně, pořadí zůstává: velikosti 5–60× větší, vzdálenosti 50–500× menší. Nejvíc zkreslená předvolba."
 			},
 			"sizes": "Velikosti",
 			"sizesTrue": "Skutečné",
@@ -210,23 +352,23 @@
 			"sizeTrue@simple": "{subject} má tady stejnou velikost jako ve skutečnosti.",
 			"sizeTrue@advanced": "{subject}: poloměr v měřítku.",
 			"sizeBigger": "Velikost {subjectId, select, sun {Slunce} mercury {Merkuru} venus {Venuše} earth {Země} mars {Marsu} jupiter {Jupiteru} saturn {Saturnu} uranus {Uranu} neptune {Neptunu} moon {Měsíce} other {měsíce {subject}}} je tu {factor, number}× zvětšená.",
-			"sizeBigger@simple": "{subject} tu vypadá {factor, number}krát větší, než ve skutečnosti je!",
+			"sizeBigger@simple": "{subject} tu vypadá {n}krát větší, než ve skutečnosti je!",
 			"sizeBigger@advanced": "{subject}: poloměr zvětšen {factor, number}×.",
 			"distanceTrue": "{subject} je tu ve skutečné vzdálenosti {parentId, select, sun {od Slunce} mercury {od Merkuru} venus {od Venuše} earth {od Země} mars {od Marsu} jupiter {od Jupiteru} saturn {od Saturnu} uranus {od Uranu} neptune {od Neptunu} moon {od Měsíce} pluto {od Pluta} eris {od Eridy} haumea {od Haumey} makemake {od Makemaka} other {od planety {parent}}}.",
 			"distanceTrue@simple": "{subject} je tu {parentId, select, sun {od Slunce} mercury {od Merkuru} venus {od Venuše} earth {od Země} mars {od Marsu} jupiter {od Jupiteru} saturn {od Saturnu} uranus {od Uranu} neptune {od Neptunu} moon {od Měsíce} pluto {od Pluta} eris {od Eridy} haumea {od Haumey} makemake {od Makemaka} other {od planety {parent}}} stejně daleko jako ve skutečnosti.",
 			"distanceTrue@advanced": "{subject}: vzdálenost {parentId, select, sun {od Slunce} mercury {od Merkuru} venus {od Venuše} earth {od Země} mars {od Marsu} jupiter {od Jupiteru} saturn {od Saturnu} uranus {od Uranu} neptune {od Neptunu} moon {od Měsíce} pluto {od Pluta} eris {od Eridy} haumea {od Haumey} makemake {od Makemaka} other {od planety {parent}}} v měřítku.",
 			"distanceCloser": "{subject} je tu {factor, number}× blíž {parentId, select, sun {ke Slunci} mercury {k Merkuru} venus {k Venuši} earth {k Zemi} mars {k Marsu} jupiter {k Jupiteru} saturn {k Saturnu} uranus {k Uranu} neptune {k Neptunu} moon {k Měsíci} pluto {k Plutu} eris {k Eridě} haumea {k Haumeji} makemake {k Makemakovi} other {k planetě {parent}}} než ve skutečnosti.",
-			"distanceCloser@simple": "{subject} je tady {factor, number}krát blíž {parentId, select, sun {ke Slunci} mercury {k Merkuru} venus {k Venuši} earth {k Zemi} mars {k Marsu} jupiter {k Jupiteru} saturn {k Saturnu} uranus {k Uranu} neptune {k Neptunu} moon {k Měsíci} pluto {k Plutu} eris {k Eridě} haumea {k Haumeji} makemake {k Makemakovi} other {k planetě {parent}}}, než je ve skutečnosti!",
+			"distanceCloser@simple": "{subject} je tady {n}krát blíž {parentId, select, sun {ke Slunci} mercury {k Merkuru} venus {k Venuši} earth {k Zemi} mars {k Marsu} jupiter {k Jupiteru} saturn {k Saturnu} uranus {k Uranu} neptune {k Neptunu} moon {k Měsíci} pluto {k Plutu} eris {k Eridě} haumea {k Haumeji} makemake {k Makemakovi} other {k planetě {parent}}}, než je ve skutečnosti!",
 			"distanceCloser@advanced": "{subject}: vzdálenost {parentId, select, sun {od Slunce} mercury {od Merkuru} venus {od Venuše} earth {od Země} mars {od Marsu} jupiter {od Jupiteru} saturn {od Saturnu} uranus {od Uranu} neptune {od Neptunu} moon {od Měsíce} pluto {od Pluta} eris {od Eridy} haumea {od Haumey} makemake {od Makemaka} other {od planety {parent}}} zmenšena na 1/{factor, number} skutečné hodnoty.",
 			"distanceFarther": "{subject} je tu {factor, number}× dál {parentId, select, sun {od Slunce} mercury {od Merkuru} venus {od Venuše} earth {od Země} mars {od Marsu} jupiter {od Jupiteru} saturn {od Saturnu} uranus {od Uranu} neptune {od Neptunu} moon {od Měsíce} pluto {od Pluta} eris {od Eridy} haumea {od Haumey} makemake {od Makemaka} other {od planety {parent}}} než ve skutečnosti.",
-			"distanceFarther@simple": "{subject} je tady {factor, number}krát dál {parentId, select, sun {od Slunce} mercury {od Merkuru} venus {od Venuše} earth {od Země} mars {od Marsu} jupiter {od Jupiteru} saturn {od Saturnu} uranus {od Uranu} neptune {od Neptunu} moon {od Měsíce} pluto {od Pluta} eris {od Eridy} haumea {od Haumey} makemake {od Makemaka} other {od planety {parent}}}, než je ve skutečnosti!",
+			"distanceFarther@simple": "{subject} je tady {n}krát dál {parentId, select, sun {od Slunce} mercury {od Merkuru} venus {od Venuše} earth {od Země} mars {od Marsu} jupiter {od Jupiteru} saturn {od Saturnu} uranus {od Uranu} neptune {od Neptunu} moon {od Měsíce} pluto {od Pluta} eris {od Eridy} haumea {od Haumey} makemake {od Makemaka} other {od planety {parent}}}, než je ve skutečnosti!",
 			"distanceFarther@advanced": "{subject}: vzdálenost {parentId, select, sun {od Slunce} mercury {od Merkuru} venus {od Venuše} earth {od Země} mars {od Marsu} jupiter {od Jupiteru} saturn {od Saturnu} uranus {od Uranu} neptune {od Neptunu} moon {od Měsíce} pluto {od Pluta} eris {od Eridy} haumea {od Haumey} makemake {od Makemaka} other {od planety {parent}}} zvětšena na {factor, number}násobek skutečné hodnoty.",
 			"markersOn": "Tečky jen ukazují, kde planety jsou: samotné planety jsou příliš malé, aby byly vidět.",
 			"markersOn@simple": "Tečky ukazují, kde jsou planety. Samotné planety jsou moc malé, aby byly vidět!",
 			"markersOff": "Značky jsou vypnuté: zapni je a planety najdeš.",
 			"markersOff@simple": "Zapni Značky a najdeš planety!",
-			"walk": "Příliš malé na představu? Projdi si to: sluneční soustava se Sluncem velkým jako basketbalový míč.",
-			"walk@simple": "Není nic vidět? Projdi si sluneční soustavu na školním hřišti!",
+			"walk": "Zmenši Slunce na basketbalový míč a projdi sluneční soustavu na školním hřišti",
+			"walk@simple": "Udělej ze Slunce basketbalový míč a dojdi ke každé planetě",
 			"hint": {
 				"sizesTrue": "Kreslí každé těleso v jeho skutečné velikosti. Z dálky jsou pak planety příliš malé, aby byly vidět.",
 				"sizesTrue@simple": "Planety tak velké, jak doopravdy jsou. Z dálky jsou moc malé, aby byly vidět!",
@@ -267,7 +409,7 @@
 			"reverseHint": "Pustit čas pozpátku",
 			"controls": "Spustit, pozastavit nebo pustit pozpátku",
 			"tooFast": "{body} oběhne {parentId, select, sun {kolem Slunce} mercury {kolem Merkuru} venus {kolem Venuše} earth {kolem Země} mars {kolem Marsu} jupiter {kolem Jupiteru} saturn {kolem Saturnu} uranus {kolem Uranu} neptune {kolem Neptunu} moon {kolem Měsíce} pluto {kolem Pluta} eris {kolem Eridy} haumea {kolem Haumey} makemake {kolem Makemaka} other {kolem planety {parent}}} {count, plural, one {#krát} few {#krát} many {#krát} other {#krát}} za sekundu – na obrazovku příliš rychle, takže se může zdát, že skáče nebo dokonce couvá.",
-			"tooFast@simple": "{body} oběhne {parentId, select, sun {kolem Slunce} mercury {kolem Merkuru} venus {kolem Venuše} earth {kolem Země} mars {kolem Marsu} jupiter {kolem Jupiteru} saturn {kolem Saturnu} uranus {kolem Uranu} neptune {kolem Neptunu} moon {kolem Měsíce} pluto {kolem Pluta} eris {kolem Eridy} haumea {kolem Haumey} makemake {kolem Makemaka} other {kolem planety {parent}}} {count, plural, one {#krát} few {#krát} many {#krát} other {#krát}} za každou sekundu! To je moc rychle, aby to šlo pořádně vidět.",
+			"tooFast@simple": "{body} oběhne {parentId, select, sun {kolem Slunce} mercury {kolem Merkuru} venus {kolem Venuše} earth {kolem Země} mars {kolem Marsu} jupiter {kolem Jupiteru} saturn {kolem Saturnu} uranus {kolem Uranu} neptune {kolem Neptunu} moon {kolem Měsíce} pluto {kolem Pluta} eris {kolem Eridy} haumea {kolem Haumey} makemake {kolem Makemaka} other {kolem planety {parent}}} {count, plural, one {{n}krát} few {{n}krát} many {{n}krát} other {{n}krát}} za každou sekundu! To je moc rychle, aby to šlo pořádně vidět.",
 			"travel": {
 				"open": "Cesta na jiné datum",
 				"title": "Cesta časem",
@@ -275,6 +417,7 @@
 				"pickDate": "Vyber datum",
 				"arrival": "Po příjezdu se čas zastaví. Stiskni Spustit a poběží dál.",
 				"range": "Libovolný den od roku {first} do roku {last}. Dorazíš v poledne (UTC).",
+				"range@simple": "Vyber si jakýkoli den: dávno v minulosti nebo daleko v budoucnosti. Dorazíš v poledne.",
 				"close": "Zavřít",
 				"calendar": {
 					"nextMonth": "Další měsíc",
@@ -377,6 +520,7 @@
 				"launch": "Start",
 				"flyby": "{targetId, select, earth {Průlet kolem Země} venus {Průlet kolem Venuše} mars {Průlet kolem Marsu} jupiter {Průlet kolem Jupiteru} saturn {Průlet kolem Saturnu} uranus {Průlet kolem Uranu} neptune {Průlet kolem Neptunu} titan {Průlet kolem Titanu} triton {Průlet kolem Tritonu} io {Průlet kolem Io} europa {Průlet kolem Europy} ganymede {Průlet kolem Ganymedu} pluto {Průlet kolem Pluta} arrokoth {Průlet kolem Arrokothu} other {Průlet kolem tělesa {target}}}",
 				"orbitInsertion": "{targetId, select, jupiter {Navedení na oběžnou dráhu kolem Jupiteru} saturn {Navedení na oběžnou dráhu kolem Saturnu} other {Navedení na oběžnou dráhu kolem tělesa {target}}}",
+				"orbitInsertion@simple": "{targetId, select, jupiter {Začne obíhat kolem Jupiteru} saturn {Začne obíhat kolem Saturnu} other {Začne obíhat kolem tělesa {target}}}",
 				"probeLanding": "{targetId, select, titan {Výsadkový modul přistává na Titanu} other {Výsadkový modul přistává na tělese {target}}}",
 				"impact": "{targetId, select, saturn {Zanořuje se do Saturnu} jupiter {Zanořuje se do Jupiteru} other {Zanořuje se do tělesa {target}}}",
 				"arrival": "{targetId, select, l2 {Dorazí do bodu L2 soustavy Slunce–Země} other {Dorazí k tělesu {target}}}",
@@ -419,7 +563,15 @@
 			"showFacts": "Zobrazit údaje",
 			"hideFacts": "Skrýt údaje",
 			"close": "Zavřít",
-			"compare": "Porovnat s…"
+			"compare": "Porovnat s…",
+			"walk": "{bodyId, select, sun {Zmenši Slunce na basketbalový míč a projdi sluneční soustavu} other {Zmenši Slunce na basketbalový míč a dojdi až k tomuto světu}}",
+			"walk@simple": "{bodyId, select, sun {Udělej ze Slunce basketbalový míč a dojdi k planetám} other {Udělej ze Slunce basketbalový míč a dojdi k tomuto světu}}"
+		},
+		"walkNudge": {
+			"title": "Kam se poděly planety?",
+			"text": "Ve skutečném měřítku jsou příliš malé, aby byly vidět, a jsou od sebe hodně daleko. Zkus si ty vzdálenosti projít pěšky:",
+			"text@simple": "Teď jsou moc malé, takže je nevidíš. A jsou od sebe hodně daleko. Zkus to projít pěšky!",
+			"dismiss": "Zavřít tip"
 		},
 		"moons": {
 			"label": "Měsíce",
@@ -427,9 +579,12 @@
 			"viewSystem": "Zobrazit celou soustavu měsíců",
 			"viewSystem@simple": "Ukázat všechny měsíce",
 			"showOthers": "{count, plural, one {Zobrazit # menší měsíc} few {Zobrazit # menší měsíce} many {Zobrazit # menšího měsíce} other {Zobrazit # menších měsíců}}",
+			"showOthers@simple": "Zobrazit i menší měsíce",
 			"hideOthers": "Skrýt menší měsíce",
 			"othersNote": "Většinou kameny o průměru pár kilometrů, mnohé z nich zachycené. Astronomové pořád objevují další.",
 			"othersNote@simple": "Většinou malé kameny. Vědci pořád nacházejí další.",
+			"othersHidden": "{count, plural, one {# menší měsíc je na plakátu skrytý} few {# menší měsíce jsou na plakátu skryté} many {# menšího měsíce je na plakátu skryto} other {# menších měsíců je na plakátu skryto}}: mezi planetami pro ně není místo.",
+			"othersHidden@simple": "{count, plural, one {# malý měsíc je tu schovaný} few {# malé měsíce jsou tu schované} many {# malého měsíce je tu schováno} other {# malých měsíců je tu schováno}}. Není pro ně místo!",
 			"readMore": "Přečíst příběh",
 			"readLess": "Zobrazit méně"
 		},
@@ -448,7 +603,7 @@
 			"haze": "Povrch měsíce {moon} skrývá hustý oranžový opar. Takhle měsíc {moon} vidí naše oči.",
 			"haze@simple": "Hustý oranžový opar zakrývá povrch měsíce {moon}. Takhle ho vidí naše oči.",
 			"paintedVisited": "Sonda {probe} kolem měsíce {moon} proletěla v roce {year}, ale její snímky zatím v aplikaci nejsou, proto je tento povrch namalován podle toho, co víme: podle jeho barvy a toho, kolik slunečního světla odráží.",
-			"paintedVisited@simple": "Sonda {probe} měsíc {moon} v roce {year} vyfotila, ale ty fotky zatím v aplikaci nejsou. Tento povrch je namalovaný v jeho skutečné barvě."
+			"paintedVisited@simple": "Sonda {probe} měsíc {moon} vyfotila, ale ty fotky zatím v aplikaci nejsou. Tento povrch je namalovaný v jeho skutečné barvě."
 		},
 		"facts": {
 			"label": {
@@ -463,17 +618,22 @@
 				"weight": "Tvoje váha"
 			},
 			"sizeWider": "{ref, select, moon {{count, number}× průměr Měsíce} other {{count, number}× průměr Země}}",
+			"sizeWider@simple": "{ref, select, moon {{n}× průměr Měsíce} other {{n}× průměr Země}}",
 			"sizeSimilar": "{ref, select, moon {Zhruba stejný průměr jako náš Měsíc} other {Zhruba stejný průměr jako Země}}",
 			"sizeNarrower": "{ref, select, moon {Náš Měsíc je {count, number}× širší} other {Země je {count, number}× širší}}",
+			"sizeNarrower@simple": "{ref, select, moon {Náš Měsíc je {n}× širší} other {Země je {n}× širší}}",
 			"across": "průměr {value}",
 			"sunlight": "Sluneční světlo sem dorazí za {time}",
 			"sunlight@simple": "Světlo ze Slunce sem doletí za {time}",
 			"gap": "{parentId, select, sun {Slunce by se do této mezery vešlo} earth {Země by se do této mezery vešla} venus {Venuše by se do této mezery vešla} mercury {Merkur by se do této mezery vešel} mars {Mars by se do této mezery vešel} jupiter {Jupiter by se do této mezery vešel} saturn {Saturn by se do této mezery vešel} uranus {Uran by se do této mezery vešel} neptune {Neptun by se do této mezery vešel} moon {Měsíc by se do této mezery vešel} pluto {Pluto by se do této mezery vešlo} eris {Eris by se do této mezery vešla} haumea {Haumea by se do této mezery vešla} makemake {Makemake by se do této mezery vešel} other {{parent} by se do této mezery vešel}} {count, plural, one {#krát} few {#krát} many {#krát} other {#krát}}",
+			"gap@simple": "{parentId, select, sun {Slunce by se do této mezery vešlo} earth {Země by se do této mezery vešla} venus {Venuše by se do této mezery vešla} mercury {Merkur by se do této mezery vešel} mars {Mars by se do této mezery vešel} jupiter {Jupiter by se do této mezery vešel} saturn {Saturn by se do této mezery vešel} uranus {Uran by se do této mezery vešel} neptune {Neptun by se do této mezery vešel} moon {Měsíc by se do této mezery vešel} pluto {Pluto by se do této mezery vešlo} eris {Eris by se do této mezery vešla} haumea {Haumea by se do této mezery vešla} makemake {Makemake by se do této mezery vešel} other {{parent} by se do této mezery vešel}} {count, plural, one {{n}krát} few {{n}krát} many {{n}krát} other {{n}krát}}",
 			"fromParent": "{distance} {parentId, select, sun {od Slunce} mercury {od Merkuru} venus {od Venuše} earth {od Země} mars {od Marsu} jupiter {od Jupiteru} saturn {od Saturnu} uranus {od Uranu} neptune {od Neptunu} moon {od Měsíce} pluto {od Pluta} eris {od Eridy} haumea {od Haumey} makemake {od Makemaka} other {od planety {parent}}}",
 			"lap": "Jednou oběhne {parentId, select, sun {kolem Slunce} mercury {kolem Merkuru} venus {kolem Venuše} earth {kolem Země} mars {kolem Marsu} jupiter {kolem Jupiteru} saturn {kolem Saturnu} uranus {kolem Uranu} neptune {kolem Neptunu} moon {kolem Měsíce} pluto {kolem Pluta} eris {kolem Eridy} haumea {kolem Haumey} makemake {kolem Makemaka} other {kolem planety {parent}}} za {period}",
 			"yearEarth": "Jeden oběh kolem Slunce: to je právě jeden rok",
 			"yearLonger": "{count, plural, one {Jeden oběh kolem Slunce trvá # pozemský rok} few {Jeden oběh kolem Slunce trvá # pozemské roky} many {Jeden oběh kolem Slunce trvá # pozemského roku} other {Jeden oběh kolem Slunce trvá # pozemských let}}",
+			"yearLonger@simple": "{count, plural, one {Jeden oběh kolem Slunce trvá {n} pozemský rok} few {Jeden oběh kolem Slunce trvá {n} pozemské roky} many {Jeden oběh kolem Slunce trvá {n} pozemského roku} other {Jeden oběh kolem Slunce trvá {n} pozemských let}}",
 			"yearShorter": "{count, plural, one {Za jeden pozemský rok oběhne Slunce jednou} few {Za jeden pozemský rok oběhne Slunce #krát} many {Za jeden pozemský rok oběhne Slunce #krát} other {Za jeden pozemský rok oběhne Slunce #krát}}",
+			"yearShorter@simple": "{count, plural, one {Za jeden pozemský rok oběhne Slunce jednou} few {Za jeden pozemský rok oběhne Slunce {n}krát} many {Za jeden pozemský rok oběhne Slunce {n}krát} other {Za jeden pozemský rok oběhne Slunce {n}krát}}",
 			"weightMore": "Váha by tu ukázala {count, number}krát víc než na Zemi",
 			"weightMore@simple": "Z 30 kg na Zemi by tu bylo {kg} kg",
 			"weightSimilar": "Váha by tu ukázala zhruba totéž co na Zemi",
@@ -487,7 +647,7 @@
 			"route": "{from} → {to}",
 			"route@simple": "Cesta: {from} → {to}",
 			"distance": "Vzdálenost k tomuto datu: {distance}",
-			"distance@simple": "Je to {distance} daleko",
+			"distance@simple": "Je to {distance}",
 			"distance@advanced": "Přímá vzdálenost k tomuto datu: {distance} ({au})",
 			"crossed": "Uletěno {distance}",
 			"crossed@simple": "Zatím {distance}",
@@ -531,17 +691,19 @@
 				"weight": "Váha"
 			},
 			"distance": "Od tvého narození tě Země provezla kolem Slunce {distance} kilometrů, rychlostí asi {speed, number} km za sekundu. To je {trips, plural, one {# cesta} few {# cesty} many {# cesty} other {# cest}} na Měsíc a zpátky.",
-			"distance@simple": "Od tvého narození tě Země provezla kolem Slunce {distance} kilometrů – a přitom pořád stojíš na zemi! To je tak daleko jako {trips, plural, one {# cesta} few {# cesty} many {# cesty} other {# cest}} na Měsíc a zpátky.",
+			"distance@simple": "Od tvého narození tě Země provezla kolem Slunce {laps, plural, =0 {ještě ani jednou} one {jednou} few {{n}krát} many {{n}krát} other {{n}krát}} – a přitom pořád stojíš na zemi!",
 			"distance@advanced": "Od tvého narození tě oběžný pohyb Země unesl kolem Slunce o {distance} km, průměrnou rychlostí {speed, number} km/s: to je {trips, plural, one {# zpáteční cesta} few {# zpáteční cesty} many {# zpáteční cesty} other {# zpátečních cest}} na Měsíc.",
 			"years": {
 				"intro": "Rok je jedna cesta kolem Slunce. Narozeniny na jiné planetě máš, když se vrátí tam, kde byla v den tvého narození.",
 				"intro@simple": "Rok je jedna cesta kolem Slunce. Vzdáleným planetám trvá mnohem déle, takže tam jsi mladší!",
 				"intro@advanced": "Rok je siderická oběžná doba: narozeniny na planetě máš, když se vrátí do bodu své dráhy, kde byla při tvém narození.",
 				"age": "{age, plural, =0 {ještě ani ne 1 rok} one {# rok} few {# roky} many {# roku} other {# let}}",
+				"age@simple": "{age, plural, =0 {ještě ani ne 1 rok} one {{n} rok} few {{n} roky} many {{n} roku} other {{n} let}}",
 				"exact": "počet oběhů: {orbits}",
 				"next": "Další narozeniny: {date}",
 				"first": "První narozeniny: {date}",
 				"earthAgeThen": "{age, plural, one {Na Zemi ti bude # rok.} few {Na Zemi ti budou # roky.} many {Na Zemi ti bude # roku.} other {Na Zemi ti bude # let.}}",
+				"earthAgeThen@simple": "{age, plural, one {Na Zemi ti bude {n} rok.} few {Na Zemi ti budou {n} roky.} many {Na Zemi ti bude {n} roku.} other {Na Zemi ti bude {n} let.}}",
 				"go": "{planetId, select, sun {Přenést se k dalším narozeninám na Slunci} mercury {Přenést se k dalším narozeninám na Merkuru} venus {Přenést se k dalším narozeninám na Venuši} earth {Přenést se k dalším narozeninám na Zemi} mars {Přenést se k dalším narozeninám na Marsu} jupiter {Přenést se k dalším narozeninám na Jupiteru} saturn {Přenést se k dalším narozeninám na Saturnu} uranus {Přenést se k dalším narozeninám na Uranu} neptune {Přenést se k dalším narozeninám na Neptunu} moon {Přenést se k dalším narozeninám na Měsíci} other {Přenést se k dalším narozeninám na planetě {planet}}}",
 				"today": "{planetId, select, earth {Všechno nejlepší k narozeninám!} sun {Všechno nejlepší k narozeninám na Slunci!} mercury {Všechno nejlepší k narozeninám na Merkuru!} venus {Všechno nejlepší k narozeninám na Venuši!} mars {Všechno nejlepší k narozeninám na Marsu!} jupiter {Všechno nejlepší k narozeninám na Jupiteru!} saturn {Všechno nejlepší k narozeninám na Saturnu!} uranus {Všechno nejlepší k narozeninám na Uranu!} neptune {Všechno nejlepší k narozeninám na Neptunu!} moon {Všechno nejlepší k narozeninám na Měsíci!} other {Všechno nejlepší k narozeninám na planetě {planet}!}}"
 			},
@@ -550,7 +712,8 @@
 				"intro@simple": "Den trvá od jednoho východu Slunce k dalšímu. Na některých planetách vyjde Slunce znovu už po pár hodinách, na jiných až po měsících!",
 				"intro@advanced": "Sluneční den (od východu k východu Slunce) vyplývá ze siderické rotace a z oběhu: 1/sluneční = 1/siderická − 1/rok. Venuše se otáčí pozpátku, takže tam Slunce vychází každých 117 pozemských dní.",
 				"lived": "{count, plural, one {# prožitý den} few {# prožité dny} many {# prožitého dne} other {# prožitých dní}}",
-				"length": "Jeden den tam: {length}"
+				"lived@simple": "{count, plural, one {{n} prožitý den} few {{n} prožité dny} many {{n} prožitého dne} other {{n} prožitých dní}}",
+				"length": "Jeden den tam trvá {length}"
 			},
 			"weight": {
 				"intro": "Nastav, kolik vážíš na Zemi, a podívej se, co by ukázala váha na jiných světech.",
@@ -570,6 +733,7 @@
 				"title": "Kolik je mi let na jiných planetách?",
 				"date": "Dne {date}",
 				"distance": "Moje cesta kolem Slunce: už {distance} km.",
+				"distance@simple": "Moje cesty kolem Slunce: {laps, plural, =0 {zatím žádná} one {jedna} few {{n}} many {{n}} other {{n}}}.",
 				"fileName": "muj-vek-na-planetach",
 				"footer": "Orbitalia – naše sluneční soustava"
 			}
@@ -694,13 +858,14 @@
 			"listenLabel": "Poslechnout: {title}",
 			"stopLabel": "Zastavit: {title}",
 			"credit": "{mission}, {year} · {credit}",
+			"credit@simple": "{mission} · {credit}",
 			"shortcut": "Zapnout nebo vypnout zvuk (po otevření aplikace je vždy vypnutý)",
 			"recording": {
 				"sunRadioBursts": {
 					"title": "Rádiové záblesky ze Slunce",
 					"title@simple": "Rádiové záblesky Slunce",
 					"what": "Není to zvuk: rádiové vlny z obří sluneční erupce z 28. října 2003, zachycené sondou Cassini a posunuté níž, abychom je slyšeli. Klesající hvizd je proud elektronů, který se řítí pryč od Slunce.",
-					"what@simple": "V roce 2003 došlo na Slunci k obrovskému výbuchu. Sonda Cassini zachytila jeho rádiové vlny a vědci z nich udělali zvuk. Klesající hvizd je výbuch, který uhání pryč od Slunce.",
+					"what@simple": "Jednou došlo na Slunci k obrovskému výbuchu. Sonda Cassini zachytila jeho rádiové vlny a vědci z nich udělali zvuk. Klesající hvizd je výbuch, který uhání pryč od Slunce.",
 					"what@advanced": "Rádiové záblesky typu III z erupce třídy X17 z 28. října 2003, zaznamenané přístrojem Radio and Plasma Wave Science sondy Cassini ve vzdálenosti 8,7 AU od Slunce. Elektrony z erupce budí oscilace plazmatu, jejichž frekvence klesá, jak pronikají do řidšího plazmatu dál od Slunce; záznam je posunut do slyšitelného pásma."
 				},
 				"earthChorus": {
@@ -868,7 +1033,8 @@
 					"arrows": "← / →",
 					"digits": "1 – 8",
 					"home": "Home",
-					"esc": "Esc"
+					"esc": "Esc",
+					"backspace": "Backspace"
 				},
 				"pause": "Pozastavit nebo spustit",
 				"speed": "Rychleji nebo pomaleji",
@@ -876,6 +1042,7 @@
 				"planets": "Planety od Merkuru (1) po Neptun (8)",
 				"overview": "Celá sluneční soustava",
 				"reset": "Odkudkoli zpět na přehled",
+				"back": "Zpět na předchozí pohled (při prohlídce na předchozí zastávku)",
 				"start": "Zpět na začátek: pohled, se kterým se odkaz otevřel",
 				"scale": "Další měřítko: Vše viditelné, Jako v učebnici, Skutečné měřítko",
 				"scale@simple": "Přepínání mezi zvětšenými a skutečnými velikostmi",
@@ -891,6 +1058,7 @@
 				"focus": "Teď se zobrazuje: {body}",
 				"overview": "Celá sluneční soustava",
 				"start": "Zpět na začátku",
+				"back": "Zpět na předchozí pohled",
 				"scale": "Měřítko: {preset}",
 				"labelsOn": "Názvy zobrazeny",
 				"labelsOff": "Názvy skryty",
@@ -970,6 +1138,7 @@
 				"oneWay": "Jedním směrem",
 				"roundTrip": "Tam a zpět",
 				"now": "Právě teď {distance} daleko",
+				"now@simple": "Právě teď je to {distance}",
 				"now@advanced": "Právě teď {distance} ({au} au) daleko",
 				"range": "Podle toho, kde obě tělesa na svých drahách právě jsou, to trvá od {min} do {max}.",
 				"range@simple": "Planety se pohybují, takže se to mění: od {min} do {max}.",
@@ -1054,7 +1223,10 @@
 				"bigPlanets@advanced": "Není v měřítku: vzdálenosti skutečné, velikosti přehnané.",
 				"everythingVisible": "Není v měřítku: tělesa jsou nakreslena větší a blíž k sobě, než ve skutečnosti jsou.",
 				"everythingVisible@simple": "Není to jako ve skutečnosti: planety jsou mnohem menší a mnohem dál od sebe.",
-				"everythingVisible@advanced": "Není v měřítku: velikosti přehnané, vzdálenosti zhuštěné."
+				"everythingVisible@advanced": "Není v měřítku: velikosti přehnané, vzdálenosti zhuštěné.",
+				"poster": "Není v měřítku: pohled jako na plakátu, planety nakreslené až 60× větší a až 500× blíž.",
+				"poster@simple": "Není to jako ve skutečnosti: planety jsou mnohem, mnohem menší a hodně daleko od sebe.",
+				"poster@advanced": "Není v měřítku: velikosti zveličené až 60×, vzdálenosti stlačené až 500×."
 			},
 			"hint": {
 				"names": "Nechá na obrázku jména těles. Vypni je pro čistý obrázek nebo kvíz.",
@@ -1067,8 +1239,15 @@
 				"link": "Odkaz na tento pohled je na QR kód příliš dlouhý."
 			}
 		},
-		"overviewHint": "Zpět na celou sluneční soustavu, odkudkoli (Esc).",
-		"overviewHint@simple": "Vrať se a podívej se na celou sluneční soustavu (Esc).",
+		"overviewHint": "Cesta zpět na celou sluneční soustavu, odkudkoli (Esc). Kliknutí do prázdného prostoru pohled nezmění.",
+		"overviewHint@simple": "Vrať se a podívej se na celou sluneční soustavu (Esc). Když klikneš do prázdna, zůstaneš, kde jsi.",
+		"back": {
+			"label": "Zpět",
+			"hint": "O krok zpět na předchozí pohled: na svět, sondu nebo místo, které bylo v záběru, ze stejné vzdálenosti a stejného úhlu (Backspace). Během prohlídky na předchozí zastávku.",
+			"hint@simple": "O krok zpátky, na to, co bylo vidět předtím (Backspace).",
+			"reason": "Zatím není kam se vrátit: nejdřív vyber nějaký svět.",
+			"reason@simple": "Nejdřív vyber planetu. Potom se můžeš vrátit."
+		},
 		"sky": {
 			"open": "Obloha dnes v noci",
 			"openHint": "Které planety dnes v noci uvidíš, kdy a kde?",
@@ -1213,6 +1392,15 @@
 			"skip": "Přeskočit úvod",
 			"skip@simple": "Přeskočit",
 			"progress": "Část {beat, number} z {count, number}",
+			"pause": "Pozastavit",
+			"resume": "Pokračovat",
+			"resume@simple": "Pustit dál",
+			"paused": "Pozastaveno",
+			"next": "Dál",
+			"pauseHint": "Zůstaň u tohoto textu, jak dlouho chceš, a přečti si ho nebo si o něm povídejte. Totéž udělá mezerník nebo klepnutí na scénu; znovu, a pokračuje se.",
+			"pauseHint@simple": "Zastav tady a čti. Můžeš taky stisknout mezerník nebo ťuknout na obrázek. Znovu, a jede se dál.",
+			"nextHint": "Hned na další část; když je úvod pozastavený, jde se po jednotlivých částech. Totéž udělá šipka doprava.",
+			"nextHint@simple": "Jdi hned na další část.",
 			"earth": {
 				"title": "Tohle je Země.",
 				"detail": "Žijí tu všichni, které znáš.",
@@ -1242,7 +1430,7 @@
 			"scale": {
 				"title": "Proto je kreslíme větší a blíž",
 				"title@simple": "Proto je kreslíme větší!",
-				"detail": "Teď vidíš každou planetu, ale ne ve správném měřítku. Panel „Měřítko“ tě vrátí ke skutečným velikostem.",
+				"detail": "Teď vidíš všechny planety, ale ne ve správném měřítku. Panel „Měřítko“ ukáže skutečné velikosti.",
 				"detail@simple": "Teď vidíš každou planetu. V panelu „Měřítko“ uvidíš zase jejich skutečnou velikost.",
 				"detail@advanced": "„Vše viditelné“: velikosti zvětšené, vzdálenosti stlačené. „Skutečné měřítko“ v panelu „Měřítko“ ukáže skutečnost."
 			},
@@ -1293,10 +1481,10 @@
 		"smallBodies": {
 			"beltName": "{belt, select, asteroidbelt {Pás planetek} kuiperbelt {Kuiperův pás} other {{belt}}}",
 			"perDot": "{belt, select, asteroidbelt {Každá tečka představuje zhruba {count, number} planetek větších než {size}.} other {Každá tečka představuje zhruba {count, number} ledových těles větších než {size}.}}",
-			"perDot@simple": "{belt, select, asteroidbelt {Každá tečka znamená asi {count, number} opravdových vesmírných kamenů větších než {size}.} other {Každá tečka znamená asi {count, number} opravdových malých ledových světů větších než {size}.}}",
+			"perDot@simple": "{belt, select, asteroidbelt {Každá tečka znamená {n} opravdových vesmírných kamenů větších než {size}.} other {Každá tečka znamená {n} opravdových malých ledových světů větších než {size}.}}",
 			"perDot@advanced": "{belt, select, asteroidbelt {Jedna tečka na zhruba {count, number} z odhadovaných {total} planetek větších než {size}.} other {Jedna tečka na zhruba {count, number} z odhadovaných {total} těles větších než {size}.}}",
 			"spacing": "Sousedé jsou od sebe asi {distance} – to je {moons, number}krát dál, než je Měsíc od Země. Kosmické sondy tudy prolétají rovně a nemusejí se ničemu vyhýbat.",
-			"spacing@simple": "Jsou ale od sebe hodně daleko: {moons, number}krát dál, než je to ze Země na Měsíc. Vesmírné sondy mezi nimi proletí a do ničeho nenarazí.",
+			"spacing@simple": "Jsou ale od sebe hodně daleko: {n}krát dál, než je to ze Země na Měsíc. Vesmírné sondy mezi nimi proletí a do ničeho nenarazí.",
 			"spacing@advanced": "Typická vzdálenost mezi sousedy: asi {distance}, tedy {moons, number}× vzdálenost Země–Měsíc. Sondy pás křižují po běžných drahách; žádná se zatím nemusela vyhýbat planetce.",
 			"dotSize": "Tečky jsou nakreslené mnohem větší než skutečná tělesa: ve skutečné velikosti by nebylo vidět vůbec nic. Ve filmech je to hustý roj skal – ve vesmíru je to skoro prázdno.",
 			"dotSize@simple": "Tečky jsou nakreslené moc velké. Ve filmech je tu plno kamenů, které do sebe narážejí – ve skutečném vesmíru je tu skoro prázdno.",
@@ -1305,13 +1493,17 @@
 			"comet": {
 				"label": "Kometa",
 				"where": "{distance} od Slunce, {direction, select, in {padá k němu} other {vzdaluje se od něj}}.",
-				"where@simple": "Je {distance} od Slunce a {direction, select, in {přibližuje se k němu} other {vzdaluje se od něj}}.",
+				"where@simple": "{direction, select, in {Přibližuje se ke Slunci. Teď je {distance}.} other {Vzdaluje se od Slunce. Teď je {distance}.}}",
 				"tail": "Její ohon je dlouhý asi {length} a míří od Slunce{direction, select, out { – teď proto letí ohon napřed} other {}}.",
-				"tail@simple": "Její ohon je dlouhý asi {length}. Vždycky míří od Slunce{direction, select, out { – i teď, když kometa odlétá ohonem napřed} other {}}!",
+				"tail@simple": "Její ohon sahá {length}. Vždycky míří od Slunce{direction, select, out { – i teď, když kometa odlétá ohonem napřed} other {}}!",
 				"noTail": "Teď nemá žádný ohon: ten vzniká, až když se kometa přiblíží ke Slunci na méně než asi {onset}. Tam sluneční světlo mění její led v plyn.",
 				"noTail@simple": "Teď nemá žádný ohon. Ten jí naroste, až se přiblíží ke Slunci a její led se začne měnit v plyn.",
+				"waking": "Právě se probouzí: sluneční světlo začíná měnit její led v plyn a kolem jádra se tvoří koma. Ohon jí teprve začíná růst.",
+				"waking@simple": "Právě se probouzí! Slunce začíná měnit její led v plyn. Brzy jí naroste ohon.",
 				"next": "Příště nejblíž Slunci: {date}.",
+				"next@simple": "Než bude zase nejblíž Slunci: {duration}.",
 				"last": "Naposledy nejblíž Slunci: {date}. Vrátí se asi za {years, plural, one {# rok} few {# roky} many {# roku} other {# let}}.",
+				"last@simple": "Než se vrátí: {duration}.",
 				"watch": "Sledovat průlet kolem Slunce",
 				"watch@simple": "Podívat se, jak proletí kolem Slunce"
 			}
@@ -1323,6 +1515,7 @@
 				"solarEclipse": "Zatmění Slunce",
 				"lunarEclipse": "Zatmění Měsíce",
 				"transit": "Přechody přes Slunce",
+				"transit@simple": "Planety přecházejí před Sluncem",
 				"gathering": "Planety pohromadě",
 				"closeApproach": "Mars se blíží",
 				"shadowsRings": "Stíny a prstence",
@@ -1436,8 +1629,8 @@
 				"trueScale": {
 					"title": "Skutečné měřítko",
 					"title@simple": "Skutečná velikost",
-					"text": "Teď jsou všechny velikosti a vzdálenosti skutečné a planety mizí v prázdném prostoru: tečky jen ukazují, kde jsou. Měřítko vpravo dole přepíná mezi pravdou a obrázky, na kterých je něco vidět.",
-					"text@simple": "Takhle velké je všechno doopravdy. Planety jsou tak malé, že je nevidíš! Tečky ukazují, kde jsou. Měřítkem vpravo dole to přepneš."
+					"text": "Teď jsou všechny velikosti a vzdálenosti skutečné a planety mizí v prázdném prostoru: tečky jen ukazují, kde jsou. Měřítko vpravo dole přepíná mezi pravdou a obrázky, na kterých je něco vidět. Najdeš tam i to, jak zmenšit Slunce na basketbalový míč a projít sluneční soustavu na školním hřišti.",
+					"text@simple": "Takhle velké je všechno doopravdy. Planety jsou tak malé, že je nevidíš! Tečky ukazují, kde jsou. Měřítkem vpravo dole to přepneš. Tam můžeš taky dojít k planetám u vaší školy."
 				},
 				"time": {
 					"title": "Cestuj časem",
@@ -1449,7 +1642,7 @@
 					"title": "Porovnej světy",
 					"title@simple": "Porovnej světy",
 					"text": "Slunce a Země ve skutečných velikostech: přes Slunce by se vešlo asi 109 Zemí. „Porovnat s…“ na kartě každého světa ho postaví vedle jiného.",
-					"text@simple": "Tady jsou Slunce a Země ve skutečné velikosti. Přes Slunce by se vešlo 109 Zemí! Stiskni na kartě „Porovnat s…“ a zkus to."
+					"text@simple": "Tady jsou Slunce a Země ve skutečné velikosti. Přes Slunce by se vešlo víc než 100 Zemí! Stiskni na kartě „Porovnat s…“ a zkus to."
 				},
 				"light": {
 					"title": "Sleduj, jak se plazí světlo",
@@ -1495,7 +1688,9 @@
 		"landmarkOption": {
 			"none": "Jen metry",
 			"pitch": "Fotbalové hřiště ({length})",
-			"track": "Běžecká dráha ({length} na kolo)"
+			"pitch@simple": "Fotbalové hřiště",
+			"track": "Běžecká dráha ({length} na kolo)",
+			"track@simple": "Běžecká dráha"
 		},
 		"viewLabel": "Zobrazit jako",
 		"view": {
@@ -1523,15 +1718,19 @@
 		"moon@advanced": "{name}: {size} (ve skutečnosti {trueSize}), {distance} od planety (ve skutečnosti {trueDistance})",
 		"landmarkCount": {
 			"pitch": "{count, plural, one {# fotbalové hřiště} few {# fotbalová hřiště} many {# fotbalového hřiště} other {# fotbalových hřišť}}",
-			"track": "{count, plural, one {# kolo dráhy} few {# kola dráhy} many {# kola dráhy} other {# kol dráhy}}"
+			"pitch@simple": "{count, plural, one {{n} fotbalové hřiště} few {{n} fotbalová hřiště} many {{n} fotbalového hřiště} other {{n} fotbalových hřišť}}",
+			"track": "{count, plural, one {# kolo dráhy} few {# kola dráhy} many {# kola dráhy} other {# kol dráhy}}",
+			"track@simple": "{count, plural, one {{n} kolo dráhy} few {{n} kola dráhy} many {{n} kola dráhy} other {{n} kol dráhy}}"
 		},
 		"landmarkMarker": {
 			"pitch": "Konec fotbalového hřiště: {length} od Slunce",
-			"track": "Jedno kolo běžecké dráhy: {length} od Slunce"
+			"pitch@simple": "Konec fotbalového hřiště",
+			"track": "Jedno kolo běžecké dráhy: {length} od Slunce",
+			"track@simple": "Jedno kolo běžecké dráhy"
 		},
 		"starTitle": "Nejbližší hvězda",
 		"star": "A teď pokračuj. V tomto měřítku je nejbližší hvězda po Slunci, Proxima Centauri, {distance} daleko – letadlem asi {flight}. Celá tvoje procházka k Neptunu se do té vzdálenosti vejde {times}×.",
-		"star@simple": "A další hvězda? V tomto měřítku je {distance} daleko! I letadlo by tam letělo asi {flight}.",
+		"star@simple": "A další hvězda? V tomto měřítku je tak daleko, že i letadlo by tam letělo asi {flight}!",
 		"star@advanced": "Proxima Centauri, vzdálená 4,25 světelného roku, vychází {distance} od startu: {times}× procházka k Neptunu, asi {flight} letu rychlostí 900 km/h. Tento malý červený trpaslík by měl průměr {size}, asi jako {thing}.",
 		"starLesson": "Sluneční soustava z této procházky je nepatrný ostrůvek v oceánu prázdného prostoru.",
 		"starLesson@simple": "Vesmír je opravdu, ale opravdu prázdný!",
@@ -1540,6 +1739,7 @@
 		"lineUp@simple": "Ve skutečnosti planety nikdy nestojí takhle v řadě. Každá obíhá kolem Slunce po své vlastní dráze.",
 		"lineUp@advanced": "Planety nikdy nejsou v jedné přímce: procházka umisťuje každou do její střední vzdálenosti od Slunce (velké poloosy její dráhy). Velikosti jsou střední průměry ze stejných dat jako 3D model. Proxima Centauri: 4,2465 světelného roku (Gaia DR3).",
 		"tableCaption": "Kdyby bylo Slunce velké jako {object}: sluneční soustava v měřítku 1 : {ratio}",
+		"tableCaption@simple": "Kdyby bylo Slunce velké jako {object}",
 		"column": {
 			"stop": "Č.",
 			"body": "Těleso",
@@ -1555,24 +1755,6 @@
 		},
 		"moonDistance": "{distance} od planety",
 		"printNote": "Kruhy jsou vytištěné ve velikosti, jakou mají v modelu.",
-		"thing": {
-			"fineSand": "zrnko jemného písku",
-			"salt": "zrnko soli",
-			"sugar": "zrnko cukru",
-			"poppySeed": "zrnko máku",
-			"pinhead": "špendlíková hlavička",
-			"peppercorn": "zrnko pepře",
-			"pea": "hrášek",
-			"marble": "skleněná kulička",
-			"cherry": "třešeň",
-			"walnut": "vlašský ořech",
-			"tableTennisBall": "pingpongový míček",
-			"tennisBall": "tenisový míček",
-			"orange": "pomeranč",
-			"grapefruit": "grapefruit",
-			"melon": "malý meloun",
-			"football": "fotbalový míč"
-		},
 		"starName": "Proxima Centauri"
 	},
 	"compare": {
@@ -1616,7 +1798,7 @@
 			"sunEarth@simple": "Vedle Slunce je naše velká Země jen malinká tečka.",
 			"sunPlanets": "Slunce obsahuje 99,8 % veškeré hmoty sluneční soustavy.",
 			"sunPlanets@advanced": "Slunce nese 99,86 % hmotnosti sluneční soustavy; většinu zbytku má Jupiter.",
-			"sunPlanets@simple": "Slunce je těžší než všechny planety dohromady, asi 750krát.",
+			"sunPlanets@simple": "Slunce je mnohem, mnohem těžší než všechny planety dohromady.",
 			"jupiterAcrossSun": "Napříč Sluncem se vejde asi deset Jupiterů a napříč Jupiterem jedenáct Zemí.",
 			"jupiterAcrossSun@advanced": "Každý krok je zhruba desetinásobek: Slunce má 10 průměrů Jupiteru, Jupiter 11 průměrů Země.",
 			"jupiterAcrossSun@simple": "Deset Jupiterů vedle sebe sahá přes celé Slunce a jedenáct Zemí přes celý Jupiter.",
@@ -1640,7 +1822,7 @@
 			"bigMoons@simple": "Náš Měsíc je až pátý největší. Čtyři z těchto sedmi obíhají Jupiter.",
 			"galileanMoons": "Galileo je roku 1610 viděl obíhat Jupiter: důkaz, že se ne všechno točí kolem Země.",
 			"galileanMoons@advanced": "Objevil je Galileo roku 1610; Io, Europa a Ganymed obíhají v rytmu 4 : 2 : 1.",
-			"galileanMoons@simple": "Roku 1610 uviděl Galileo tyto měsíce obíhat kolem Jupiteru. Takže se ne všechno točí kolem Země!",
+			"galileanMoons@simple": "Už dávno uviděl Galileo tyto měsíce obíhat kolem Jupiteru. Takže se ne všechno točí kolem Země!",
 			"potatoMoons": "Dva měsíce Marsu jsou hrbolaté balvany velké jako město: Phobos měří napříč jen 22 km.",
 			"potatoMoons@advanced": "Phobos (asi 22 km) a Deimos (asi 12 km) jsou příliš malé, aby je gravitace stáhla do koule; možná jsou to zachycené planetky.",
 			"potatoMoons@simple": "Mars má dva malinké hrbolaté měsíce, které vypadají jako brambory. Ten větší by se vešel do města.",
@@ -1665,7 +1847,7 @@
 		"stage": {
 			"label": "{names} vedle sebe ve skutečném poměru velikostí",
 			"scale": "Jedno měřítko pro všechny: 1 pixel = {km}.",
-			"scale@simple": "Všechno je zmenšené stejně: 1 pixel znamená {km}.",
+			"scale@simple": "Všechno je zmenšené stejně, takže hned vidíš, co je větší.",
 			"scale@advanced": "Společné měřítko, 1 px : {km}. Osy nakloněné jako ve vesmíru.",
 			"tiny": "{count, plural, one {Těleso {names} je v tomto měřítku tak malé, že je zakroužkované.} few {Tělesa {names} jsou v tomto měřítku tak malá, že jsou zakroužkovaná.} many {Tělesa {names} jsou v tomto měřítku tak malá, že jsou zakroužkovaná.} other {Tělesa {names} jsou v tomto měřítku tak malá, že jsou zakroužkovaná.}}",
 			"tiny@simple": "{count, plural, one {Těleso {names} je tady tak malé, že by se bez kroužku skoro nedalo najít.} few {Tělesa {names} jsou tady tak malá, že by se bez kroužků skoro nedala najít.} many {Tělesa {names} jsou tady tak malá, že by se bez kroužků skoro nedala najít.} other {Tělesa {names} jsou tady tak malá, že by se bez kroužků skoro nedala najít.}}",
@@ -1706,7 +1888,7 @@
 				"similar@advanced": "Průměry {aId, select, sun {Slunce} mercury {Merkuru} venus {Venuše} earth {Země} mars {Marsu} jupiter {Jupiteru} saturn {Saturnu} uranus {Uranu} neptune {Neptunu} moon {Měsíce} other {měsíce {a}}} a {bId, select, sun {Slunce} mercury {Merkuru} venus {Venuše} earth {Země} mars {Marsu} jupiter {Jupiteru} saturn {Saturnu} uranus {Uranu} neptune {Neptunu} moon {Měsíce} other {měsíce {b}}} se liší jen o {percent} %."
 			},
 			"volume": "{smallId, select, earth {{count, plural, one {{bigId, select, sun {Do Slunce} mercury {Do Merkuru} venus {Do Venuše} earth {Do Země} mars {Do Marsu} jupiter {Do Jupiteru} saturn {Do Saturnu} uranus {Do Uranu} neptune {Do Neptunu} moon {Do Měsíce} other {Do měsíce {big}}} by se vešla asi {n} Země} few {{bigId, select, sun {Do Slunce} mercury {Do Merkuru} venus {Do Venuše} earth {Do Země} mars {Do Marsu} jupiter {Do Jupiteru} saturn {Do Saturnu} uranus {Do Uranu} neptune {Do Neptunu} moon {Do Měsíce} other {Do měsíce {big}}} by se vešly asi {n} Země} many {{bigId, select, sun {Do Slunce} mercury {Do Merkuru} venus {Do Venuše} earth {Do Země} mars {Do Marsu} jupiter {Do Jupiteru} saturn {Do Saturnu} uranus {Do Uranu} neptune {Do Neptunu} moon {Do Měsíce} other {Do měsíce {big}}} by se vešlo asi {n} Země} other {{bigId, select, sun {Do Slunce} mercury {Do Merkuru} venus {Do Venuše} earth {Do Země} mars {Do Marsu} jupiter {Do Jupiteru} saturn {Do Saturnu} uranus {Do Uranu} neptune {Do Neptunu} moon {Do Měsíce} other {Do měsíce {big}}} by se vešlo asi {n} Zemí}}} moon {{count, plural, one {{bigId, select, sun {Do Slunce} mercury {Do Merkuru} venus {Do Venuše} earth {Do Země} mars {Do Marsu} jupiter {Do Jupiteru} saturn {Do Saturnu} uranus {Do Uranu} neptune {Do Neptunu} moon {Do Měsíce} other {Do měsíce {big}}} by se vešel asi {n} Měsíc} few {{bigId, select, sun {Do Slunce} mercury {Do Merkuru} venus {Do Venuše} earth {Do Země} mars {Do Marsu} jupiter {Do Jupiteru} saturn {Do Saturnu} uranus {Do Uranu} neptune {Do Neptunu} moon {Do Měsíce} other {Do měsíce {big}}} by se vešly asi {n} Měsíce} many {{bigId, select, sun {Do Slunce} mercury {Do Merkuru} venus {Do Venuše} earth {Do Země} mars {Do Marsu} jupiter {Do Jupiteru} saturn {Do Saturnu} uranus {Do Uranu} neptune {Do Neptunu} moon {Do Měsíce} other {Do měsíce {big}}} by se vešlo asi {n} Měsíce} other {{bigId, select, sun {Do Slunce} mercury {Do Merkuru} venus {Do Venuše} earth {Do Země} mars {Do Marsu} jupiter {Do Jupiteru} saturn {Do Saturnu} uranus {Do Uranu} neptune {Do Neptunu} moon {Do Měsíce} other {Do měsíce {big}}} by se vešlo asi {n} Měsíců}}} other {{count, plural, one {{bigId, select, sun {Do Slunce} mercury {Do Merkuru} venus {Do Venuše} earth {Do Země} mars {Do Marsu} jupiter {Do Jupiteru} saturn {Do Saturnu} uranus {Do Uranu} neptune {Do Neptunu} moon {Do Měsíce} other {Do měsíce {big}}} by se vešla asi {n} koule velikosti {smallId, select, sun {Slunce} mercury {Merkuru} venus {Venuše} earth {Země} mars {Marsu} jupiter {Jupiteru} saturn {Saturnu} uranus {Uranu} neptune {Neptunu} moon {Měsíce} other {měsíce {small}}}} few {{bigId, select, sun {Do Slunce} mercury {Do Merkuru} venus {Do Venuše} earth {Do Země} mars {Do Marsu} jupiter {Do Jupiteru} saturn {Do Saturnu} uranus {Do Uranu} neptune {Do Neptunu} moon {Do Měsíce} other {Do měsíce {big}}} by se vešly asi {n} koule velikosti {smallId, select, sun {Slunce} mercury {Merkuru} venus {Venuše} earth {Země} mars {Marsu} jupiter {Jupiteru} saturn {Saturnu} uranus {Uranu} neptune {Neptunu} moon {Měsíce} other {měsíce {small}}}} many {{bigId, select, sun {Do Slunce} mercury {Do Merkuru} venus {Do Venuše} earth {Do Země} mars {Do Marsu} jupiter {Do Jupiteru} saturn {Do Saturnu} uranus {Do Uranu} neptune {Do Neptunu} moon {Do Měsíce} other {Do měsíce {big}}} by se vešlo asi {n} koule velikosti {smallId, select, sun {Slunce} mercury {Merkuru} venus {Venuše} earth {Země} mars {Marsu} jupiter {Jupiteru} saturn {Saturnu} uranus {Uranu} neptune {Neptunu} moon {Měsíce} other {měsíce {small}}}} other {{bigId, select, sun {Do Slunce} mercury {Do Merkuru} venus {Do Venuše} earth {Do Země} mars {Do Marsu} jupiter {Do Jupiteru} saturn {Do Saturnu} uranus {Do Uranu} neptune {Do Neptunu} moon {Do Měsíce} other {Do měsíce {big}}} by se vešlo asi {n} koulí velikosti {smallId, select, sun {Slunce} mercury {Merkuru} venus {Venuše} earth {Země} mars {Marsu} jupiter {Jupiteru} saturn {Saturnu} uranus {Uranu} neptune {Neptunu} moon {Měsíce} other {měsíce {small}}}}}}}.",
-			"volume@simple": "Představ si: {smallId, select, earth {{count, plural, one {{bigId, select, sun {do Slunce} mercury {do Merkuru} venus {do Venuše} earth {do Země} mars {do Marsu} jupiter {do Jupiteru} saturn {do Saturnu} uranus {do Uranu} neptune {do Neptunu} moon {do Měsíce} other {do měsíce {big}}} by se vešla asi {n} Země} few {{bigId, select, sun {do Slunce} mercury {do Merkuru} venus {do Venuše} earth {do Země} mars {do Marsu} jupiter {do Jupiteru} saturn {do Saturnu} uranus {do Uranu} neptune {do Neptunu} moon {do Měsíce} other {do měsíce {big}}} by se vešly asi {n} Země} many {{bigId, select, sun {do Slunce} mercury {do Merkuru} venus {do Venuše} earth {do Země} mars {do Marsu} jupiter {do Jupiteru} saturn {do Saturnu} uranus {do Uranu} neptune {do Neptunu} moon {do Měsíce} other {do měsíce {big}}} by se vešlo asi {n} Země} other {{bigId, select, sun {do Slunce} mercury {do Merkuru} venus {do Venuše} earth {do Země} mars {do Marsu} jupiter {do Jupiteru} saturn {do Saturnu} uranus {do Uranu} neptune {do Neptunu} moon {do Měsíce} other {do měsíce {big}}} by se vešlo asi {n} Zemí}}} moon {{count, plural, one {{bigId, select, sun {do Slunce} mercury {do Merkuru} venus {do Venuše} earth {do Země} mars {do Marsu} jupiter {do Jupiteru} saturn {do Saturnu} uranus {do Uranu} neptune {do Neptunu} moon {do Měsíce} other {do měsíce {big}}} by se vešel asi {n} Měsíc} few {{bigId, select, sun {do Slunce} mercury {do Merkuru} venus {do Venuše} earth {do Země} mars {do Marsu} jupiter {do Jupiteru} saturn {do Saturnu} uranus {do Uranu} neptune {do Neptunu} moon {do Měsíce} other {do měsíce {big}}} by se vešly asi {n} Měsíce} many {{bigId, select, sun {do Slunce} mercury {do Merkuru} venus {do Venuše} earth {do Země} mars {do Marsu} jupiter {do Jupiteru} saturn {do Saturnu} uranus {do Uranu} neptune {do Neptunu} moon {do Měsíce} other {do měsíce {big}}} by se vešlo asi {n} Měsíce} other {{bigId, select, sun {do Slunce} mercury {do Merkuru} venus {do Venuše} earth {do Země} mars {do Marsu} jupiter {do Jupiteru} saturn {do Saturnu} uranus {do Uranu} neptune {do Neptunu} moon {do Měsíce} other {do měsíce {big}}} by se vešlo asi {n} Měsíců}}} other {{count, plural, one {{bigId, select, sun {do Slunce} mercury {do Merkuru} venus {do Venuše} earth {do Země} mars {do Marsu} jupiter {do Jupiteru} saturn {do Saturnu} uranus {do Uranu} neptune {do Neptunu} moon {do Měsíce} other {do měsíce {big}}} by se vešla asi {n} koule velikosti {smallId, select, sun {Slunce} mercury {Merkuru} venus {Venuše} earth {Země} mars {Marsu} jupiter {Jupiteru} saturn {Saturnu} uranus {Uranu} neptune {Neptunu} moon {Měsíce} other {měsíce {small}}}} few {{bigId, select, sun {do Slunce} mercury {do Merkuru} venus {do Venuše} earth {do Země} mars {do Marsu} jupiter {do Jupiteru} saturn {do Saturnu} uranus {do Uranu} neptune {do Neptunu} moon {do Měsíce} other {do měsíce {big}}} by se vešly asi {n} koule velikosti {smallId, select, sun {Slunce} mercury {Merkuru} venus {Venuše} earth {Země} mars {Marsu} jupiter {Jupiteru} saturn {Saturnu} uranus {Uranu} neptune {Neptunu} moon {Měsíce} other {měsíce {small}}}} many {{bigId, select, sun {do Slunce} mercury {do Merkuru} venus {do Venuše} earth {do Země} mars {do Marsu} jupiter {do Jupiteru} saturn {do Saturnu} uranus {do Uranu} neptune {do Neptunu} moon {do Měsíce} other {do měsíce {big}}} by se vešlo asi {n} koule velikosti {smallId, select, sun {Slunce} mercury {Merkuru} venus {Venuše} earth {Země} mars {Marsu} jupiter {Jupiteru} saturn {Saturnu} uranus {Uranu} neptune {Neptunu} moon {Měsíce} other {měsíce {small}}}} other {{bigId, select, sun {do Slunce} mercury {do Merkuru} venus {do Venuše} earth {do Země} mars {do Marsu} jupiter {do Jupiteru} saturn {do Saturnu} uranus {do Uranu} neptune {do Neptunu} moon {do Měsíce} other {do měsíce {big}}} by se vešlo asi {n} koulí velikosti {smallId, select, sun {Slunce} mercury {Merkuru} venus {Venuše} earth {Země} mars {Marsu} jupiter {Jupiteru} saturn {Saturnu} uranus {Uranu} neptune {Neptunu} moon {Měsíce} other {měsíce {small}}}}}}}!",
+			"volume@simple": "Představ si: {smallId, select, earth {{count, plural, one {{bigId, select, sun {do Slunce} mercury {do Merkuru} venus {do Venuše} earth {do Země} mars {do Marsu} jupiter {do Jupiteru} saturn {do Saturnu} uranus {do Uranu} neptune {do Neptunu} moon {do Měsíce} other {do měsíce {big}}} by se vešla {n} Země} few {{bigId, select, sun {do Slunce} mercury {do Merkuru} venus {do Venuše} earth {do Země} mars {do Marsu} jupiter {do Jupiteru} saturn {do Saturnu} uranus {do Uranu} neptune {do Neptunu} moon {do Měsíce} other {do měsíce {big}}} by se vešly {n} Země} many {{bigId, select, sun {do Slunce} mercury {do Merkuru} venus {do Venuše} earth {do Země} mars {do Marsu} jupiter {do Jupiteru} saturn {do Saturnu} uranus {do Uranu} neptune {do Neptunu} moon {do Měsíce} other {do měsíce {big}}} by se vešlo {n} Země} other {{bigId, select, sun {do Slunce} mercury {do Merkuru} venus {do Venuše} earth {do Země} mars {do Marsu} jupiter {do Jupiteru} saturn {do Saturnu} uranus {do Uranu} neptune {do Neptunu} moon {do Měsíce} other {do měsíce {big}}} by se vešlo {n} Zemí}}} moon {{count, plural, one {{bigId, select, sun {do Slunce} mercury {do Merkuru} venus {do Venuše} earth {do Země} mars {do Marsu} jupiter {do Jupiteru} saturn {do Saturnu} uranus {do Uranu} neptune {do Neptunu} moon {do Měsíce} other {do měsíce {big}}} by se vešel {n} Měsíc} few {{bigId, select, sun {do Slunce} mercury {do Merkuru} venus {do Venuše} earth {do Země} mars {do Marsu} jupiter {do Jupiteru} saturn {do Saturnu} uranus {do Uranu} neptune {do Neptunu} moon {do Měsíce} other {do měsíce {big}}} by se vešly {n} Měsíce} many {{bigId, select, sun {do Slunce} mercury {do Merkuru} venus {do Venuše} earth {do Země} mars {do Marsu} jupiter {do Jupiteru} saturn {do Saturnu} uranus {do Uranu} neptune {do Neptunu} moon {do Měsíce} other {do měsíce {big}}} by se vešlo {n} Měsíce} other {{bigId, select, sun {do Slunce} mercury {do Merkuru} venus {do Venuše} earth {do Země} mars {do Marsu} jupiter {do Jupiteru} saturn {do Saturnu} uranus {do Uranu} neptune {do Neptunu} moon {do Měsíce} other {do měsíce {big}}} by se vešlo {n} Měsíců}}} other {{count, plural, one {{bigId, select, sun {do Slunce} mercury {do Merkuru} venus {do Venuše} earth {do Země} mars {do Marsu} jupiter {do Jupiteru} saturn {do Saturnu} uranus {do Uranu} neptune {do Neptunu} moon {do Měsíce} other {do měsíce {big}}} by se vešla {n} koule velikosti {smallId, select, sun {Slunce} mercury {Merkuru} venus {Venuše} earth {Země} mars {Marsu} jupiter {Jupiteru} saturn {Saturnu} uranus {Uranu} neptune {Neptunu} moon {Měsíce} other {měsíce {small}}}} few {{bigId, select, sun {do Slunce} mercury {do Merkuru} venus {do Venuše} earth {do Země} mars {do Marsu} jupiter {do Jupiteru} saturn {do Saturnu} uranus {do Uranu} neptune {do Neptunu} moon {do Měsíce} other {do měsíce {big}}} by se vešly {n} koule velikosti {smallId, select, sun {Slunce} mercury {Merkuru} venus {Venuše} earth {Země} mars {Marsu} jupiter {Jupiteru} saturn {Saturnu} uranus {Uranu} neptune {Neptunu} moon {Měsíce} other {měsíce {small}}}} many {{bigId, select, sun {do Slunce} mercury {do Merkuru} venus {do Venuše} earth {do Země} mars {do Marsu} jupiter {do Jupiteru} saturn {do Saturnu} uranus {do Uranu} neptune {do Neptunu} moon {do Měsíce} other {do měsíce {big}}} by se vešlo {n} koule velikosti {smallId, select, sun {Slunce} mercury {Merkuru} venus {Venuše} earth {Země} mars {Marsu} jupiter {Jupiteru} saturn {Saturnu} uranus {Uranu} neptune {Neptunu} moon {Měsíce} other {měsíce {small}}}} other {{bigId, select, sun {do Slunce} mercury {do Merkuru} venus {do Venuše} earth {do Země} mars {do Marsu} jupiter {do Jupiteru} saturn {do Saturnu} uranus {do Uranu} neptune {do Neptunu} moon {do Měsíce} other {do měsíce {big}}} by se vešlo {n} koulí velikosti {smallId, select, sun {Slunce} mercury {Merkuru} venus {Venuše} earth {Země} mars {Marsu} jupiter {Jupiteru} saturn {Saturnu} uranus {Uranu} neptune {Neptunu} moon {Měsíce} other {měsíce {small}}}}}}}!",
 			"volume@advanced": "{big} má {n}krát větší objem než {small}.",
 			"mass": {
 				"times": "{big} má {n}krát větší hmotnost než {small}.",
@@ -1747,7 +1929,7 @@
 			},
 			"dayYear": {
 				"day": "{xId, select, sun {Na Slunci} mercury {Na Merkuru} venus {Na Venuši} earth {Na Zemi} mars {Na Marsu} jupiter {Na Jupiteru} saturn {Na Saturnu} uranus {Na Uranu} neptune {Na Neptunu} moon {Na Měsíci} other {Na měsíci {x}}} trvá jeden den od východu k východu Slunce déle než celý tamní rok: den trvá {day}, rok jen {year}.",
-				"day@simple": "{xId, select, sun {Na Slunci} mercury {Na Merkuru} venus {Na Venuši} earth {Na Zemi} mars {Na Marsu} jupiter {Na Jupiteru} saturn {Na Saturnu} uranus {Na Uranu} neptune {Na Neptunu} moon {Na Měsíci} other {Na měsíci {x}}} je den delší než rok! Od jednoho východu Slunce k dalšímu uběhne {day}, ale jeden oběh kolem Slunce trvá jen {year}.",
+				"day@simple": "{xId, select, sun {Na Slunci} mercury {Na Merkuru} venus {Na Venuši} earth {Na Zemi} mars {Na Marsu} jupiter {Na Jupiteru} saturn {Na Saturnu} uranus {Na Uranu} neptune {Na Neptunu} moon {Na Měsíci} other {Na měsíci {x}}} je den delší než rok! Od jednoho východu Slunce k dalšímu to trvá {day}, ale jeden oběh kolem Slunce trvá jen {year}.",
 				"day@advanced": "Sluneční den {xId, select, sun {na Slunci} mercury {na Merkuru} venus {na Venuši} earth {na Zemi} mars {na Marsu} jupiter {na Jupiteru} saturn {na Saturnu} uranus {na Uranu} neptune {na Neptunu} moon {na Měsíci} other {na měsíci {x}}} ({day}) je delší než oběžná doba ({year}); jedna otočka trvá {turn}.",
 				"turn": "{x} se otáčí tak pomalu, že jedna otočka trvá déle než celý rok: otočka trvá {turn}, rok jen {year}.",
 				"turn@simple": "{x} se točí tak pomalu, že jedna otočka trvá déle než jeden oběh kolem Slunce: otočka trvá {turn}, oběh jen {year}.",
@@ -1758,7 +1940,7 @@
 				"light@simple": "I světlo, to nejrychlejší, co existuje, letí {aId, select, sun {ze Slunce} mercury {z Merkuru} venus {z Venuše} earth {ze Země} mars {z Marsu} jupiter {z Jupiteru} saturn {ze Saturnu} uranus {z Uranu} neptune {z Neptunu} moon {z Měsíce} other {z měsíce {a}}} {bId, select, sun {ke Slunci} mercury {k Merkuru} venus {k Venuši} earth {k Zemi} mars {k Marsu} jupiter {k Jupiteru} saturn {k Saturnu} uranus {k Uranu} neptune {k Neptunu} moon {k Měsíci} other {k měsíci {b}}} {light}. Auto jedoucí bez zastávky rychlostí 100 km/h by jelo {drive}.",
 				"light@advanced": "Doba letu světla mezi {aId, select, sun {Sluncem} mercury {Merkurem} venus {Venuší} earth {Zemí} mars {Marsem} jupiter {Jupiterem} saturn {Saturnem} uranus {Uranem} neptune {Neptunem} moon {Měsícem} other {měsícem {a}}} a {bId, select, sun {Sluncem} mercury {Merkurem} venus {Venuší} earth {Zemí} mars {Marsem} jupiter {Jupiterem} saturn {Saturnem} uranus {Uranem} neptune {Neptunem} moon {Měsícem} other {měsícem {b}}}: {light}.",
 				"range": "Vzdálenost se při jejich pohybu pořád mění: světlo potřebuje od {min} do {max}.",
-				"range@simple": "Pořád se pohybují, takže se vzdálenost mění: někdy světlu stačí {min}, jindy potřebuje {max}.",
+				"range@simple": "Pořád se pohybují, takže se vzdálenost mění: někdy světlo potřebuje jen {min}, jindy {max}.",
 				"range@advanced": "Během oběhů se vzdálenost mění zhruba od {minKm} do {maxKm} (světlu to trvá {min} až {max})."
 			}
 		}
@@ -1827,7 +2009,8 @@
 			"placeholderBug": "Co se stalo a co jsi čekal(a)? Třeba: „Když přiblížím Saturn, jeho prstence zmizí.“",
 			"placeholderIdea": "Co by Orbitalia měla umět? Třeba: „Ukázat, kde lidé přistáli na Měsíci.“",
 			"placeholderOther": "Cokoli, co nám chceš říct.",
-			"count": "{count, number} / {max, number} znaků"
+			"count": "{count, number} / {max, number} znaků",
+			"count@simple": "Napiš, kolik chceš."
 		},
 		"email": {
 			"label": "Tvůj e-mail (nepovinné)",

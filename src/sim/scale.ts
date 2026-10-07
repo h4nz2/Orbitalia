@@ -9,7 +9,8 @@
  *
  *  - `bodySize`      every radius, compressed toward the root body's radius.
  *                    The root (the Sun) always keeps its true size: it is the
- *                    ruler everything else is drawn against.
+ *                    ruler everything else is drawn against. A preset may size
+ *                    moons separately (`moonSize`, against their own planet).
  *  - `orbitDistance` how far bodies orbiting the root are drawn (planets, and
  *                    later dwarf planets, comets, asteroids), in root radii.
  *  - `moonDistance`  how far bodies orbiting any other body are drawn (moons,
@@ -52,9 +53,16 @@ export interface SizeCurve {
 }
 
 /**
+ * A drawn distance pinned by a preset (#54): `[true, drawn]`, both in parent
+ * radii (true radii in, drawn radii out).
+ */
+export type DistanceAnchor = readonly [number, number]
+
+/**
  * How distances from a parent are drawn, measured in the parent's radii
  * (true radii in, drawn radii out): the identity up to `knee`, then
- * `knee * (1 + gain * ((x / knee) ** exponent - 1))`.
+ * `knee * (1 + gain * ((x / knee) ** exponent - 1))` (the power law), or,
+ * with `anchors`, a curve through drawn distances pinned one by one.
  */
 export interface DistanceCurve {
 	/** Parent radii within which distances stay proportional to the parent's drawn size; >= 1. */
@@ -63,13 +71,45 @@ export interface DistanceCurve {
 	readonly exponent: number
 	/** Multiplier on the stretch beyond the knee: 1 = none, below 1 pulls everything beyond the knee toward it; > 0. */
 	readonly gain: number
+	/**
+	 * Drawn distances pinned one by one (#54, Poster: a poster spaces the
+	 * planets by eye, which no power law can, since Venus and Earth are only
+	 * 1.35x apart while Mars and Jupiter are 3.4x). Ascending in both columns,
+	 * all beyond the knee. Between the knee (drawn at itself) and the anchors
+	 * the curve is a monotone cubic (Fritsch-Carlson) in the log of the true
+	 * distance; past the last anchor it goes on straight in the log at the last
+	 * slope, so whatever lies beyond (dwarf planets, comets, spacecraft) keeps
+	 * its order. See `anchoredDistance`.
+	 */
+	readonly anchors?: readonly DistanceAnchor[]
+	/**
+	 * Share of the anchored curve, 0..1 (default 1 when `anchors` is given):
+	 * the drawn distance is `power ** (1 - w) * anchored ** w`, a geometric
+	 * blend that stays monotone, so an animated switch (#21) to or from an
+	 * anchored preset moves every body smoothly. At 1 the power law is unused.
+	 */
+	readonly anchorWeight?: number
 }
 
-/** The three named, independent scale factors. */
+/** The named, independent scale factors. */
 export interface ScaleSettings {
 	readonly bodySize: SizeCurve
+	/**
+	 * How moons (any body whose parent is not the root) are sized, against
+	 * their parent: drawn radius = parent's drawn radius * (radius /
+	 * parentRadius) ** exponent, so 1 keeps every moon true to its planet's
+	 * drawn size. Absent: moons follow `bodySize` like every other body (the
+	 * same as `moonSize = bodySize`), which is what every preset but Poster does.
+	 */
+	readonly moonSize?: SizeCurve
 	readonly orbitDistance: DistanceCurve
 	readonly moonDistance: DistanceCurve
+	/**
+	 * How tightly the overview frames the drawn system (#54), 0..1, blended
+	 * in a switch: 0 (absent) the shared fit, 1 Poster's tight one
+	 * (camera/framing.ts, `overviewDistance`). A framing hint, not a lie.
+	 */
+	readonly overviewFit?: number
 }
 
 export type ScaleFactor = keyof ScaleSettings
@@ -79,10 +119,19 @@ export interface ScalableBody extends OrbitingBody {
 	readonly radiusKm: number
 }
 
+const freezeCurve = (curve: DistanceCurve): void => {
+	if (curve.anchors !== undefined) {
+		for (const anchor of curve.anchors) Object.freeze(anchor)
+		Object.freeze(curve.anchors)
+	}
+	Object.freeze(curve)
+}
+
 const deepFreeze = <T extends ScaleSettings>(scale: T): T => {
 	Object.freeze(scale.bodySize)
-	Object.freeze(scale.orbitDistance)
-	Object.freeze(scale.moonDistance)
+	if (scale.moonSize !== undefined) Object.freeze(scale.moonSize)
+	freezeCurve(scale.orbitDistance)
+	freezeCurve(scale.moonDistance)
 	return Object.freeze(scale)
 }
 
@@ -132,6 +181,43 @@ export const SCALE_PRESETS = {
 		orbitDistance: { knee: 1, exponent: 0.52, gain: 1 },
 		moonDistance: { knee: 3, exponent: 0.2, gain: 2 },
 	}),
+	/**
+	 * The classroom poster (#54), the most distorted preset: every planet a
+	 * recognisable disc in the whole-system view (Earth at least 12 px across
+	 * on a 1366x768 laptop), in true order of size and distance, none touching
+	 * another's orbit, the Sun inside Mercury's. Sizes are squeezed hard toward
+	 * the Sun's (Jupiter 1.8 Earths across, the planets 5 to 60 times too big);
+	 * the planets sit on drawn distances pinned one by one (anchors at each
+	 * planet's mean distance, in solar radii, 50 to 500 times too close; the
+	 * power law under them is Everything visible's, so a switch between the two
+	 * only moves the planets in). Moons keep their true size against their
+	 * planet and are gathered close outside its rings (the knee just clears
+	 * Jupiter's), so the featured ones never cross a neighbouring orbit; the
+	 * long tail is hidden (`HIDES_LONG_TAIL`). The overview frames the drawn
+	 * system tight (`overviewFit`). Every number is at a limit the tests guard:
+	 * src/sim/poster.test.ts, src/features/solarSystem/camera/poster.test.ts.
+	 */
+	poster: deepFreeze({
+		bodySize: { exponent: 0.28 },
+		moonSize: { exponent: 1 },
+		orbitDistance: {
+			knee: 1,
+			exponent: 0.52,
+			gain: 1,
+			anchors: [
+				[83.3, 1.54], // Mercury, 0.39 AU
+				[155.6, 2.43], // Venus, 0.72 AU
+				[215.1, 3.56], // Earth, 1 AU
+				[327.7, 4.94], // Mars, 1.52 AU
+				[1119, 7.06], // Jupiter, 5.2 AU
+				[2051, 9.43], // Saturn, 9.5 AU
+				[4127, 11.82], // Uranus, 19 AU
+				[6468, 13.69], // Neptune, 30 AU
+			],
+		},
+		moonDistance: { knee: 2.65, exponent: 0.05, gain: 1.76 },
+		overviewFit: 1,
+	}),
 } as const satisfies Record<string, ScaleSettings>
 
 export type ScalePresetId = keyof typeof SCALE_PRESETS
@@ -142,7 +228,15 @@ export const SCALE_PRESET_IDS: readonly ScalePresetId[] = Object.freeze([
 	"textbook",
 	"bigPlanets",
 	"everythingVisible",
+	"poster",
 ])
+
+/**
+ * Presets whose moon systems are packed too tight for the long tail of small
+ * moons (#54): `isBodyShown` (src/store/sim.ts) hides them there, All moons
+ * or not, so none crosses a neighbouring planet's orbit.
+ */
+export const HIDES_LONG_TAIL: ReadonlySet<ScalePresetId> = new Set(["poster"])
 
 /** The preset the app opens in (a product decision, #8 / #21). */
 export const DEFAULT_SCALE_PRESET: ScalePresetId = "everythingVisible"
@@ -152,9 +246,105 @@ export const TRUE_SCALE: ScaleSettings = SCALE_PRESETS.trueScale
 export const isScalePresetId = (id: unknown): id is ScalePresetId =>
 	typeof id === "string" && Object.hasOwn(SCALE_PRESETS, id)
 
+/** The share of the anchored curve in `curve` (0 without anchors). */
+export const anchorWeightOf = (curve: DistanceCurve): number =>
+	curve.anchors === undefined || curve.anchors.length === 0
+		? 0
+		: (curve.anchorWeight ?? 1)
+
 /** True when the curve maps every distance to itself. */
 export const isIdentityCurve = (curve: DistanceCurve): boolean =>
+	curve.exponent === 1 && curve.gain === 1 && !(anchorWeightOf(curve) > 0)
+
+/** The power law beyond the knee (`x > knee`). */
+const powerDistance = (curve: DistanceCurve, x: number): number =>
 	curve.exponent === 1 && curve.gain === 1
+		? x
+		: curve.knee * (1 + curve.gain * ((x / curve.knee) ** curve.exponent - 1))
+
+/**
+ * An anchored curve's nodes (the knee first, then every anchor): the log of
+ * the true distance `u`, the drawn distance `y` and the slope `m` (dy/du)
+ * there. What `anchoredDistance` interpolates, and what the belt shader is fed.
+ */
+export interface AnchorSpline {
+	readonly u: Float64Array
+	readonly y: Float64Array
+	readonly m: Float64Array
+}
+
+// per anchors array (presets are frozen, so the spline is built once), for the last knee asked
+const splines = new WeakMap<
+	readonly DistanceAnchor[],
+	{ readonly knee: number; readonly spline: AnchorSpline }
+>()
+
+/**
+ * The monotone cubic through (ln knee, knee) and every anchor, in the log of
+ * the true distance (Fritsch-Carlson slopes: the weighted harmonic mean of
+ * the neighbouring secants inside, the secant at the ends), so it never
+ * overshoots between anchors and every distance keeps its order.
+ */
+export function anchorSpline(
+	knee: number,
+	anchors: readonly DistanceAnchor[],
+): AnchorSpline {
+	const cached = splines.get(anchors)
+	if (cached !== undefined && cached.knee === knee) return cached.spline
+	const n = anchors.length + 1
+	const u = new Float64Array(n)
+	const y = new Float64Array(n)
+	const m = new Float64Array(n)
+	u[0] = Math.log(knee)
+	y[0] = knee
+	for (let k = 1; k < n; k++) {
+		u[k] = Math.log(anchors[k - 1][0])
+		y[k] = anchors[k - 1][1]
+	}
+	const secant = (k: number) => (y[k + 1] - y[k]) / (u[k + 1] - u[k])
+	m[0] = secant(0)
+	m[n - 1] = secant(n - 2)
+	for (let k = 1; k < n - 1; k++) {
+		const d0 = secant(k - 1)
+		const d1 = secant(k)
+		const h0 = u[k] - u[k - 1]
+		const h1 = u[k + 1] - u[k]
+		const w0 = 2 * h1 + h0
+		const w1 = h1 + 2 * h0
+		m[k] = d0 > 0 && d1 > 0 ? (w0 + w1) / (w0 / d0 + w1 / d1) : 0
+	}
+	const spline = { u, y, m }
+	splines.set(anchors, { knee, spline })
+	return spline
+}
+
+/**
+ * An anchored curve beyond the knee (`x > knee`), drawn parent radii: the
+ * monotone cubic through the anchors, and past the last one a straight line
+ * in the log at the last slope.
+ */
+export function anchoredDistance(
+	knee: number,
+	anchors: readonly DistanceAnchor[],
+	x: number,
+): number {
+	const { u, y, m } = anchorSpline(knee, anchors)
+	const v = Math.log(x)
+	const last = u.length - 1
+	if (v >= u[last]) return y[last] + m[last] * (v - u[last])
+	let k = 0
+	while (k < last - 1 && v >= u[k + 1]) k++
+	const h = u[k + 1] - u[k]
+	const t = (v - u[k]) / h
+	const t2 = t * t
+	const t3 = t2 * t
+	return (
+		(2 * t3 - 3 * t2 + 1) * y[k] +
+		(t3 - 2 * t2 + t) * h * m[k] +
+		(-2 * t3 + 3 * t2) * y[k + 1] +
+		(t3 - t2) * h * m[k + 1]
+	)
+}
 
 /**
  * Drawn distance for a true distance, both in parent radii (true radii in,
@@ -164,17 +354,35 @@ export const isIdentityCurve = (curve: DistanceCurve): boolean =>
 export function mapDistance(curve: DistanceCurve, x: number): number {
 	const { knee } = curve
 	if (!(x > knee) || isIdentityCurve(curve)) return x
-	return knee * (1 + curve.gain * ((x / knee) ** curve.exponent - 1))
+	const w = anchorWeightOf(curve)
+	if (!(w > 0)) return powerDistance(curve, x)
+	const anchored = anchoredDistance(knee, curve.anchors ?? [], x)
+	if (w >= 1) return anchored
+	return powerDistance(curve, x) ** (1 - w) * anchored ** w
 }
 
 /**
  * The inverse of `mapDistance`: the true distance (parent radii) that is drawn
- * at `y` drawn parent radii. Exact, since the curve is monotone and invertible.
+ * at `y` drawn parent radii. Exact for the power law; for an anchored curve
+ * (monotone, unbounded) solved by bisection in the log to the last bits.
  */
 export function unmapDistance(curve: DistanceCurve, y: number): number {
 	const { knee } = curve
 	if (!(y > knee) || isIdentityCurve(curve)) return y
-	return knee * ((y / knee - 1) / curve.gain + 1) ** (1 / curve.exponent)
+	if (!(anchorWeightOf(curve) > 0)) {
+		return knee * ((y / knee - 1) / curve.gain + 1) ** (1 / curve.exponent)
+	}
+	if (!Number.isFinite(y)) return y
+	let lo = Math.log(knee)
+	let hi = lo + 1
+	while (mapDistance(curve, Math.exp(hi)) < y && hi < 1e3)
+		hi = lo + 2 * (hi - lo)
+	for (let i = 0; i < 200 && hi - lo > 1e-15 * Math.max(1, Math.abs(hi)); i++) {
+		const mid = (lo + hi) / 2
+		if (mapDistance(curve, Math.exp(mid)) < y) lo = mid
+		else hi = mid
+	}
+	return Math.exp((lo + hi) / 2)
 }
 
 /** `mapDistance(curve, x) / x`: how much longer (> 1) or shorter (< 1) a distance is drawn, relative to the parent's drawn size. */
@@ -189,6 +397,30 @@ export function displayRadiusKm(
 ): number {
 	if (size.exponent === 1) return radiusKm
 	return rootRadiusKm * (radiusKm / rootRadiusKm) ** size.exponent
+}
+
+/** The size curve moons (bodies whose parent is not the root) are drawn with: `moonSize`, else `bodySize`. */
+export const moonSizeOf = (scale: ScaleSettings): SizeCurve =>
+	scale.moonSize ?? scale.bodySize
+
+/**
+ * A moon's drawn radius (display km): its parent's drawn radius times
+ * `(radius / parentRadius) ** moonSize.exponent`. When moons follow
+ * `bodySize` (every preset but Poster) that is exactly `displayRadiusKm`,
+ * and it is computed that way, to the last bit.
+ */
+export function displayMoonRadiusKm(
+	radiusKm: number,
+	parentRadiusKm: number,
+	parentDisplayRadiusKm: number,
+	rootRadiusKm: number,
+	scale: ScaleSettings,
+): number {
+	const moon = moonSizeOf(scale)
+	if (moon.exponent === scale.bodySize.exponent) {
+		return displayRadiusKm(radiusKm, rootRadiusKm, scale.bodySize)
+	}
+	return parentDisplayRadiusKm * (radiusKm / parentRadiusKm) ** moon.exponent
 }
 
 /**
@@ -294,9 +526,13 @@ export function rootIndexOf(bodies: readonly ScalableBody[]): number {
 }
 
 /**
- * Drawn radius (display km) of every body, in `bodies` order.
+ * Drawn radius (display km) of every body, in `bodies` order: `bodySize`
+ * against the root, moons (a parent other than the root) `moonSize` against
+ * their parent (`displayMoonRadiusKm`).
  *
- * @param out reused when given and long enough, else a new array is allocated
+ * @param bodies topological order (every parent before its children) when the
+ *               scale sizes moons on their own (`moonSize`)
+ * @param out    reused when given and long enough, else a new array is allocated
  */
 export function computeDisplayRadii(
 	bodies: readonly ScalableBody[],
@@ -308,10 +544,54 @@ export function computeDisplayRadii(
 			? out
 			: new Float64Array(bodies.length)
 	const rootRadius = bodies[rootIndexOf(bodies)].radiusKm
+	const parents =
+		moonSizeOf(scale).exponent === scale.bodySize.exponent
+			? null
+			: moonParents(bodies)
 	for (let i = 0; i < bodies.length; i++) {
-		radii[i] = displayRadiusKm(bodies[i].radiusKm, rootRadius, scale.bodySize)
+		const p = parents === null ? -1 : parents[i]
+		radii[i] =
+			p < 0
+				? displayRadiusKm(bodies[i].radiusKm, rootRadius, scale.bodySize)
+				: displayMoonRadiusKm(
+						bodies[i].radiusKm,
+						bodies[p].radiusKm,
+						radii[p],
+						rootRadius,
+						scale,
+					)
 	}
 	return radii
+}
+
+// per bodies array: built once, so a preset switch (one call per frame) allocates nothing
+const moonParentCache = new WeakMap<readonly ScalableBody[], Int32Array>()
+
+/**
+ * Index of every moon's parent (a body whose parent is not the root), -1 for
+ * the root and its children.
+ *
+ * @throws Error when a moon's parent is unknown or comes after it
+ */
+function moonParents(bodies: readonly ScalableBody[]): Int32Array {
+	const cached = moonParentCache.get(bodies)
+	if (cached !== undefined && cached.length === bodies.length) return cached
+	const parents = new Int32Array(bodies.length).fill(-1)
+	const index = new Map<string, number>()
+	for (let i = 0; i < bodies.length; i++) {
+		const body = bodies[i]
+		index.set(body.id, i)
+		if (body.parentId === null) continue
+		const p = index.get(body.parentId)
+		if (p === undefined) {
+			throw new Error(
+				`computeDisplayRadii: parent "${body.parentId}" of "${body.id}" is unknown or comes after it`,
+			)
+		}
+		if (bodies[p].parentId !== null) parents[i] = p
+	}
+	moonParentCache.set(bodies, parents)
+	return parents
 }
 
 /**
@@ -374,28 +654,75 @@ export function computeDisplayPositions(
 const isPositive = (value: number): boolean =>
 	Number.isFinite(value) && value > 0
 
+const isShare = (value: number | undefined): boolean =>
+	value === undefined || (Number.isFinite(value) && value >= 0 && value <= 1)
+
+/** Anchors ascending in both columns, all beyond the knee (so the curve is monotone and never inside the parent). */
+const isValidAnchors = (
+	knee: number,
+	anchors: readonly DistanceAnchor[] | undefined,
+): boolean => {
+	if (anchors === undefined) return true
+	let x = knee
+	let y = knee
+	for (const anchor of anchors) {
+		if (
+			!Array.isArray(anchor) ||
+			!Number.isFinite(anchor[0]) ||
+			!Number.isFinite(anchor[1]) ||
+			!(anchor[0] > x) ||
+			!(anchor[1] > y)
+		) {
+			return false
+		}
+		x = anchor[0]
+		y = anchor[1]
+	}
+	return true
+}
+
 const isValidCurve = (curve: DistanceCurve | undefined): boolean =>
 	curve !== undefined &&
 	Number.isFinite(curve.knee) &&
 	curve.knee >= 1 &&
 	isPositive(curve.exponent) &&
-	isPositive(curve.gain)
+	isPositive(curve.gain) &&
+	isValidAnchors(curve.knee, curve.anchors) &&
+	isShare(curve.anchorWeight)
 
-/** Every factor present, finite, exponents and gains positive, knees at least one parent radius. */
+/** Every factor present, finite, exponents and gains positive, knees at least one parent radius, anchors ascending beyond the knee. */
 export const isValidScale = (scale: ScaleSettings | undefined): boolean =>
 	scale !== undefined &&
 	scale.bodySize !== undefined &&
 	isPositive(scale.bodySize.exponent) &&
+	(scale.moonSize === undefined || isPositive(scale.moonSize.exponent)) &&
 	isValidCurve(scale.orbitDistance) &&
-	isValidCurve(scale.moonDistance)
+	isValidCurve(scale.moonDistance) &&
+	isShare(scale.overviewFit)
+
+const sameAnchors = (
+	a: readonly DistanceAnchor[] | undefined,
+	b: readonly DistanceAnchor[] | undefined,
+): boolean =>
+	a === b ||
+	(a !== undefined &&
+		b !== undefined &&
+		a.length === b.length &&
+		a.every((anchor, k) => anchor[0] === b[k][0] && anchor[1] === b[k][1]))
 
 const sameCurve = (a: DistanceCurve, b: DistanceCurve): boolean =>
-	a.knee === b.knee && a.exponent === b.exponent && a.gain === b.gain
+	a.knee === b.knee &&
+	a.exponent === b.exponent &&
+	a.gain === b.gain &&
+	anchorWeightOf(a) === anchorWeightOf(b) &&
+	(!(anchorWeightOf(a) > 0) || sameAnchors(a.anchors, b.anchors))
 
 export const sameScale = (a: ScaleSettings, b: ScaleSettings): boolean =>
 	a.bodySize.exponent === b.bodySize.exponent &&
+	moonSizeOf(a).exponent === moonSizeOf(b).exponent &&
 	sameCurve(a.orbitDistance, b.orbitDistance) &&
-	sameCurve(a.moonDistance, b.moonDistance)
+	sameCurve(a.moonDistance, b.moonDistance) &&
+	(a.overviewFit ?? 0) === (b.overviewFit ?? 0)
 
 /** The preset these settings are, or null for any other mix (or mid-transition). */
 export const presetOf = (scale: ScaleSettings): ScalePresetId | null =>
@@ -409,21 +736,55 @@ const lerp = (a: number, b: number, t: number): number => a + (b - a) * t
 const lerpLog = (a: number, b: number, t: number): number =>
 	a === b ? a : a * (b / a) ** t
 
+/**
+ * The anchors of a blend: the one side's when only one has any (or both the
+ * same), else each drawn distance blended geometrically (anchors at the same
+ * true distances; with a different number of anchors the target's win).
+ */
+const lerpAnchors = (
+	a: readonly DistanceAnchor[] | undefined,
+	b: readonly DistanceAnchor[] | undefined,
+	t: number,
+): readonly DistanceAnchor[] | undefined => {
+	if (a === undefined || a.length === 0 || sameAnchors(a, b)) return b ?? a
+	if (b === undefined || b.length === 0) return a
+	if (a.length !== b.length) return b
+	return a.map((anchor, k): DistanceAnchor => [
+		lerpLog(anchor[0], b[k][0], t),
+		lerpLog(anchor[1], b[k][1], t),
+	])
+}
+
 const lerpCurve = (
 	a: DistanceCurve,
 	b: DistanceCurve,
 	t: number,
-): DistanceCurve => ({
-	knee: lerp(a.knee, b.knee, t),
-	exponent: lerp(a.exponent, b.exponent, t),
-	gain: lerpLog(a.gain, b.gain, t),
-})
+): DistanceCurve => {
+	const power = {
+		knee: lerp(a.knee, b.knee, t),
+		exponent: lerp(a.exponent, b.exponent, t),
+		gain: lerpLog(a.gain, b.gain, t),
+	}
+	const wa = anchorWeightOf(a)
+	const wb = anchorWeightOf(b)
+	if (!(wa > 0) && !(wb > 0)) return power
+	return {
+		...power,
+		anchors: lerpAnchors(
+			wa > 0 ? a.anchors : undefined,
+			wb > 0 ? b.anchors : undefined,
+			t,
+		),
+		anchorWeight: lerp(wa, wb, t),
+	}
+}
 
 /**
  * The scale a fraction `t` (clamped to 0..1) of the way from `from` to `to`,
- * for animated preset changes (#21): exponents and knees blend linearly,
- * gains geometrically. Returns `from` / `to` themselves at the ends, so a
- * finished transition is recognised by `presetOf`.
+ * for animated preset changes (#21): exponents, knees, the anchored share and
+ * the overview fit blend linearly, gains and anchored distances
+ * geometrically. Returns `from` / `to` themselves at the ends, so a finished
+ * transition is recognised by `presetOf`.
  */
 export function interpolateScale(
 	from: ScaleSettings,
@@ -433,11 +794,25 @@ export function interpolateScale(
 	const f = Math.min(1, Math.max(0, Number.isFinite(t) ? t : 0))
 	if (f === 0) return from
 	if (f === 1) return to
-	return {
+	const blend: ScaleSettings = {
 		bodySize: {
 			exponent: lerp(from.bodySize.exponent, to.bodySize.exponent, f),
 		},
 		orbitDistance: lerpCurve(from.orbitDistance, to.orbitDistance, f),
 		moonDistance: lerpCurve(from.moonDistance, to.moonDistance, f),
+	}
+	const moons =
+		from.moonSize === undefined && to.moonSize === undefined
+			? undefined
+			: lerp(moonSizeOf(from).exponent, moonSizeOf(to).exponent, f)
+	const fit =
+		from.overviewFit === undefined && to.overviewFit === undefined
+			? undefined
+			: lerp(from.overviewFit ?? 0, to.overviewFit ?? 0, f)
+	if (moons === undefined && fit === undefined) return blend
+	return {
+		...blend,
+		...(moons === undefined ? {} : { moonSize: { exponent: moons } }),
+		...(fit === undefined ? {} : { overviewFit: fit }),
 	}
 }

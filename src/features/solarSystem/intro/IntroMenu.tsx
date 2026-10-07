@@ -23,7 +23,7 @@ import { startQuickLook } from "../quickLook/quickLook"
 import { showHints, startIntro } from "./intro"
 
 const IntroMenu = () => {
-	const { t } = useI18n()
+	const { t, readingLevel } = useI18n()
 	const router = useRouter()
 	const label = t("help.more")
 	// the view as it is when the item is picked: every view is in its address
@@ -58,7 +58,7 @@ const IntroMenu = () => {
 					</Menu.Item>
 					<Menu.Item
 						leftSection={<IconPlayerPlay size={16} aria-hidden />}
-						onClick={startIntro}
+						onClick={() => startIntro(readingLevel)}
 					>
 						{t("solarSystem.intro.replay")}
 					</Menu.Item>

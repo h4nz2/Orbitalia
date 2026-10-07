@@ -1,0 +1,456 @@
+{
+	"layers": {
+		"core": {
+			"simple": "Centro caliente",
+			"standard": "Núcleo"
+		},
+		"radiativeZone": {
+			"simple": "Capa que brilla",
+			"standard": "Zona radiativa"
+		},
+		"convectiveZone": {
+			"simple": "Capa que burbujea",
+			"standard": "Zona convectiva"
+		},
+		"ironCore": {
+			"simple": "Centro de metal",
+			"standard": "Núcleo de hierro"
+		},
+		"rockyShell": {
+			"simple": "Roca",
+			"standard": "Manto y corteza (roca)"
+		},
+		"innerCore": {
+			"simple": "Centro de metal sólido",
+			"standard": "Núcleo interno (hierro sólido)"
+		},
+		"outerCore": {
+			"simple": "Metal derretido",
+			"standard": "Núcleo externo (hierro líquido)"
+		},
+		"rockyMantle": {
+			"simple": "Roca",
+			"standard": "Manto (roca)"
+		},
+		"crust": {
+			"simple": "Fina piel de roca",
+			"standard": "Corteza"
+		},
+		"fuzzyCore": {
+			"simple": "Centro pesado",
+			"standard": "Núcleo difuso"
+		},
+		"denseCore": {
+			"simple": "Centro de roca y metal",
+			"standard": "Núcleo (metal y roca)"
+		},
+		"metallicHydrogen": {
+			"simple": "Hidrógeno apretado",
+			"standard": "Hidrógeno metálico líquido"
+		},
+		"hydrogenLayer": {
+			"simple": "Hidrógeno y helio",
+			"standard": "Hidrógeno líquido y gaseoso"
+		},
+		"rockyCore": {
+			"simple": "Centro de roca",
+			"standard": "Núcleo rocoso"
+		},
+		"icyMantle": {
+			"simple": "Hielo caliente y blando",
+			"standard": "Manto helado (agua, metano, amoníaco)"
+		},
+		"gasEnvelope": {
+			"simple": "Gas",
+			"standard": "Hidrógeno, helio y metano"
+		}
+	},
+	"gases": {
+		"hydrogen": "Hidrógeno",
+		"helium": "Helio",
+		"oxygen": "Oxígeno",
+		"sodium": "Sodio",
+		"potassium": "Potasio",
+		"carbonDioxide": "Dióxido de carbono",
+		"nitrogen": "Nitrógeno",
+		"argon": "Argón",
+		"carbonMonoxide": "Monóxido de carbono",
+		"methane": "Metano"
+	},
+	"worlds": {
+		"sun": {
+			"madeOf": {
+				"simple": "El Sol es una bola gigante de gas que brilla. No tiene suelo donde ponerse de pie. En su centro fabrica su propia luz y su propio calor.",
+				"standard": "El Sol es una enorme bola de gas caliente, casi todo hidrógeno y helio. En su núcleo, que llega hasta más o menos una cuarta parte del camino hacia la superficie, el hidrógeno se fusiona en helio y libera energía. Esa energía se abre paso poco a poco hacia fuera a través de la zona radiativa; en la zona convectiva, el gas caliente sube como el agua que hierve en una olla y la lleva hasta la superficie.",
+				"advanced": "El Sol es una esfera de plasma caliente. Su núcleo llega hasta cerca del 25 % del radio, y en él el hidrógeno se fusiona en helio; la zona radiativa, hasta cerca del 70 %, transporta la energía hacia fuera en forma de radiación, y la zona convectiva la lleva el resto del camino hasta la superficie visible, en corrientes de gas que suben y bajan."
+			},
+			"air": {
+				"simple": "El Sol no tiene aire como el nuestro: todo él es gas. Casi todo es hidrógeno. Una parte es helio, el gas de los globos de fiesta.",
+				"standard": "El Sol no tiene aire que respirar: todo él es gas. De cada 100 átomos de su superficie, unos 91 son de hidrógeno y 9 de helio. Todo lo demás, como el oxígeno, el carbono o el hierro, suma solo una pizca.",
+				"advanced": "Por número de átomos, la fotosfera está formada en un 91,0 % por hidrógeno y en un 8,9 % por helio; el oxígeno, el carbono, el neón, el nitrógeno, el hierro y los demás elementos más pesados suman juntos el 0,15 % restante."
+			},
+			"weather": {
+				"simple": "El Sol es el lugar más caliente de nuestro sistema solar. Hasta su parte de fuera está mucho más caliente que cualquier fuego. Su centro está muchísimo más caliente todavía.",
+				"standard": "La superficie que vemos está a unos 5500 °C. En el núcleo hay unos 15 millones de °C: calor suficiente para que el hidrógeno se fusione. Curiosamente, la tenue atmósfera exterior del Sol, la corona, está mucho más caliente que la superficie que tiene debajo: hasta unos 2 millones de °C.",
+				"advanced": "La fotosfera está a unos 5500 °C y el núcleo a unos 15 millones de °C. Por encima de la fotosfera la temperatura vuelve a subir, hasta unos 2 millones de °C en la corona; por qué la corona está mucho más caliente que la superficie que tiene debajo sigue siendo una pregunta abierta."
+			},
+			"nicknames": {
+				"yellowDwarf": {
+					"name": "Enana amarilla",
+					"story": {
+						"simple": "Los científicos llaman enanas amarillas a las estrellas como el Sol. Enana quiere decir que es más pequeña que las estrellas gigantes. ¡Pero en las fotos tomadas desde el espacio, el Sol se ve blanco!",
+						"standard": "Los astrónomos llaman enanas amarillas a las estrellas como el Sol: una estrella corriente, de tamaño mediano, que brilla convirtiendo hidrógeno en helio. «Enana» solo quiere decir que es pequeña al lado de las estrellas gigantes. Y en las fotos el Sol se ve blanco, porque emite a la vez todos los colores que podemos ver.",
+						"advanced": "«Enana amarilla» es el nombre corriente de la clase del Sol, G2 V: una estrella de tipo G en la secuencia principal, la larga y estable etapa de fusión del hidrógeno; «enana» distingue las estrellas de la secuencia principal de las gigantes. En las fotografías el Sol se ve blanco, ya que emite a la vez todos los colores visibles."
+					}
+				}
+			},
+			"name": {
+				"simple": "Hace mucho tiempo, los romanos ya lo llamaban Sol, igual que nosotros. Por eso la familia del Sol se llama sistema solar.",
+				"standard": "En latín, la lengua de los antiguos romanos, el Sol se llamaba «sol», como en español: de ahí que hablemos de sistema solar y de placas solares. Los antiguos griegos tenían un dios del Sol llamado Helios, cuyo nombre sigue vivo en palabras como heliosfera.",
+				"advanced": "El latín «sol» es la raíz del adjetivo «solar»; Helios, el dios del Sol de la mitología griega, presta su nombre a términos como heliosfera y heliosismología, el estudio del interior del Sol a través de sus vibraciones."
+			},
+			"discovery": {
+				"simple": "La gente siempre ha conocido el Sol. Hace mucho tiempo, algunos pueblos hasta le rezaban como a un dios.",
+				"standard": "Todo el mundo ha conocido siempre el Sol, y los antiguos griegos incluso tenían un dios del Sol, Helios. Su gran secreto se descubrió mucho más tarde: es una estrella, igual que las que vemos de noche, solo que mucho más cerca. Y hace unos 500 años, Copérnico dijo que los planetas, también la Tierra, giran a su alrededor.",
+				"advanced": "Conocido desde la prehistoria; en 1543 Nicolás Copérnico publicó la idea de que los planetas, la Tierra entre ellos, giran alrededor del Sol y no de la Tierra. Que el Sol es a su vez una estrella, de clase G2 V, un miembro corriente de la Vía Láctea, es obra de los astrónomos que vinieron después."
+			}
+		},
+		"mercury": {
+			"madeOf": {
+				"simple": "Mercurio está hecho de roca y metal, como la Tierra. Su centro de metal es muy grande. Ocupa casi todo el planeta.",
+				"standard": "Mercurio es un planeta rocoso con un enorme núcleo de hierro: llega hasta cerca del 85 % del camino hacia la superficie. A su alrededor solo hay una fina capa de roca, el manto y la corteza juntos, de unos 400 km de grosor.",
+				"advanced": "El núcleo metálico de Mercurio tiene un radio de unos 2074 km, alrededor del 85 % del radio del planeta, y se cree que está parcialmente fundido. El manto rocoso y la corteza que lo cubren solo suman unos 400 km de grosor, lo que hace de Mercurio el segundo planeta más denso, después de la Tierra."
+			},
+			"air": {
+				"simple": "Mercurio casi no tiene aire. Solo hay un poquito de gas a su alrededor, muchísimo menos del que hace falta para respirar.",
+				"standard": "Mercurio no tiene una atmósfera de verdad, solo una exosfera muy tenue: unos pocos átomos arrancados de su superficie, sobre todo oxígeno, sodio, hidrógeno, helio y potasio. Es demasiado tenue para respirarla o para retener el calor.",
+				"advanced": "En lugar de atmósfera, Mercurio tiene una exosfera ligada a la superficie, tan tenue que su presión está por debajo de unos 5 × 10⁻¹⁵ bar: prácticamente el vacío. Es sobre todo oxígeno, sodio, hidrógeno, helio y potasio; las fichas técnicas la dan como abundancias en columna, no como proporciones."
+			},
+			"weather": {
+				"simple": "De día, en Mercurio hace más calor que en un horno. De noche, hace más frío que en cualquier lugar de la Tierra. No tiene aire que guarde el calor.",
+				"standard": "Mercurio tiene el mayor cambio de temperatura de todos los planetas: hasta unos 430 °C de día y hasta unos −180 °C de noche. Como no tiene una atmósfera de verdad que retenga el calor, este se escapa al espacio en cuanto se pone el Sol.",
+				"advanced": "De día la temperatura alcanza unos 430 °C y de noche baja hasta unos −180 °C: sin una atmósfera que almacene y reparta el calor, la superficie sigue al Sol. Mercurio es el planeta más cercano al Sol, pero no el más caliente: lo es Venus, con su densa atmósfera."
+			},
+			"nicknames": {
+				"apolloHermes": {
+					"name": "Apolo y Hermes",
+					"story": {
+						"simple": "Hace mucho tiempo, los griegos veían Mercurio por la mañana y al anochecer. ¡Creían que eran dos estrellas distintas! A la de la mañana la llamaron Apolo, y a la del anochecer, Hermes.",
+						"standard": "Los antiguos griegos veían Mercurio unas veces en el cielo de la mañana y otras en el del anochecer, y le dieron dos nombres: Apolo cuando era estrella de la mañana y Hermes cuando era estrella de la tarde. Más tarde se dieron cuenta de que los dos nombres eran del mismo mundo.",
+						"advanced": "Como Mercurio solo se ve cerca del Sol, antes del amanecer o después de la puesta del Sol, los antiguos griegos tomaron al principio sus dos apariciones por dos cuerpos: Apolo como estrella de la mañana y Hermes como estrella de la tarde, hasta que comprendieron que eran uno solo. Hermes, el veloz mensajero, es el equivalente griego del Mercurio romano."
+					}
+				}
+			},
+			"name": {
+				"simple": "Mercurio lleva el nombre de un dios romano. Era el mensajero de los dioses y era muy rápido. ¡El planeta también es rápido!",
+				"standard": "Mercurio lleva el nombre del más veloz de los dioses romanos, su mensajero. El nombre le va bien: Mercurio es el planeta más rápido y da la vuelta al Sol en solo 88 días.",
+				"advanced": "Los romanos le dieron el nombre de Mercurius, el veloz mensajero de los dioses, el Hermes griego: un nombre adecuado para el planeta con el año más corto, 88 días, y la mayor velocidad orbital media, unos 47 km/s."
+			},
+			"localName": {
+				"simple": "¿Sabes de dónde viene la palabra miércoles? Quiere decir «día de Mercurio». ¡Cada semana tiene un día de Mercurio!",
+				"standard": "El miércoles lleva el nombre de Mercurio: «miércoles» significa «día de Mercurio». No es el único día con nombre de astro: el lunes es el día de la Luna, el martes el de Marte, el jueves el de Júpiter y el viernes el de Venus.",
+				"advanced": "Según el diccionario de la RAE, «miércoles» viene del latín y significa «[día] de Mercurio»; de la misma serie salen lunes (de la Luna), martes (de Marte), jueves (de Júpiter) y viernes (de Venus)."
+			},
+			"discovery": {
+				"simple": "La gente ve Mercurio desde hace muchísimo tiempo, sin ningún telescopio. Pero es difícil de encontrar. Solo aparece bajo en el cielo, muy temprano por la mañana o al anochecer.",
+				"standard": "Mercurio se conoce desde la Antigüedad: los romanos podían ver cinco planetas sin telescopio, y Mercurio era uno de ellos. Es el más difícil de ver de los cinco, porque solo aparece bajo en el cielo, con la primera luz de la mañana o la última de la tarde.",
+				"advanced": "Uno de los cinco planetas visibles a simple vista y conocidos desde la Antigüedad; como en nuestro cielo nunca se aleja mucho del Sol, solo se ve en el crepúsculo, y por eso los griegos creyeron al principio que sus apariciones de la mañana y de la tarde eran dos objetos distintos."
+			}
+		},
+		"venus": {
+			"madeOf": {
+				"simple": "Venus está hecho de roca y metal, como la Tierra. También es casi tan grande como la Tierra. Tiene muchísimos volcanes.",
+				"standard": "Venus está construido de forma muy parecida a la Tierra: un núcleo de hierro, un manto de roca caliente y una fina corteza rocosa. Su superficie tiene valles, altas montañas y miles de volcanes.",
+				"advanced": "Como la Tierra, Venus tiene un núcleo de hierro, un manto de roca caliente y una corteza fina. Pequeñas oscilaciones de su giro, medidas por radar, apuntan a un núcleo de unos 3500 km de radio (2021); los modelos dan una corteza de unos 40 km de grosor medio y de 65 km como mucho. Los volcanes y las fuerzas tectónicas han borrado casi todas las huellas de su superficie primitiva."
+			},
+			"air": {
+				"simple": "El aire de Venus es muy espeso y pesado. Es un gas que no podemos respirar. Sus nubes son de ácido, que quema.",
+				"standard": "El aire de Venus es casi todo dióxido de carbono, con un poco de nitrógeno, y tan espeso que la presión en el suelo es unas 93 veces la de la Tierra: como estar a más de 900 m bajo el mar. Sus nubes son de ácido sulfúrico.",
+				"advanced": "En volumen, la atmósfera es un 96,5 % dióxido de carbono y un 3,5 % nitrógeno, con trazas de dióxido de azufre, argón y vapor de agua; la presión en la superficie es de unos 92 bar, y las densas nubes son de ácido sulfúrico."
+			},
+			"weather": {
+				"simple": "Venus es el planeta más caliente. Hace más calor que en un horno, de día y de noche. Su aire espeso atrapa el calor del Sol, como una manta.",
+				"standard": "Venus es el planeta más caliente: unos 464 °C en el suelo, bastante para derretir el plomo, y de noche hace tanto calor como de día. Su espeso aire de dióxido de carbono atrapa el calor, así que Venus está aún más caliente que Mercurio, que está más cerca del Sol.",
+				"advanced": "La temperatura media de la superficie es de unos 464 °C, y apenas cambia entre el día y la noche: la densa atmósfera de CO₂ atrapa el calor (un efecto invernadero desbocado) y lo reparte por todo el planeta, incluida la cara nocturna."
+			},
+			"nicknames": {
+				"morningStar": {
+					"name": "La estrella de la mañana y la estrella de la tarde",
+					"story": {
+						"simple": "Venus es el planeta que más brilla en nuestro cielo. A menudo lo ves justo antes de que salga el Sol o justo después de que se ponga. Por eso lo llamaron estrella de la mañana y estrella de la tarde. ¡Pero no es una estrella!",
+						"standard": "Después del Sol y la Luna, Venus es lo más brillante del cielo. Brilla por la mañana antes del amanecer o por la tarde después de la puesta del Sol, así que los antiguos creyeron que eran dos objetos, una estrella de la mañana y una estrella de la tarde. No es una estrella, sino un planeta.",
+						"advanced": "Venus es el tercer objeto más brillante del cielo, después del Sol y la Luna. Como solo se ve al alba o al anochecer, los antiguos lo tomaron por dos objetos, una estrella de la mañana y una estrella de la tarde, los nombres que todavía lleva."
+					}
+				},
+				"earthsTwin": {
+					"name": "El gemelo de la Tierra",
+					"story": {
+						"simple": "Venus es casi tan grande como la Tierra. Por eso lo llaman el gemelo de la Tierra. ¡Pero es tan caliente y venenoso que algunos lo llaman el gemelo malvado de la Tierra!",
+						"standard": "Venus se parece a la Tierra en tamaño y estructura, por eso a veces lo llaman el gemelo de la Tierra. Como es tan caliente y su aire tan venenoso, también lo llaman el gemelo malvado de la Tierra.",
+						"advanced": "Parecido a la Tierra en estructura y tamaño, con cerca del 95 % de su diámetro y el 82 % de su masa, Venus recibe el nombre de gemelo de la Tierra; su atmósfera abrasadora y aplastante le valió el apodo de gemelo malvado de la Tierra."
+					}
+				}
+			},
+			"name": {
+				"simple": "Venus lleva el nombre de la diosa romana del amor y la belleza. Es el único planeta con nombre de diosa.",
+				"standard": "Los romanos dieron al planeta más brillante el nombre de Venus, su diosa del amor y la belleza, a la que los griegos llamaban Afrodita. Es el único planeta que lleva el nombre de una divinidad femenina.",
+				"advanced": "Debe su nombre a la diosa romana del amor y la belleza, la Afrodita griega: el único planeta con nombre de divinidad femenina."
+			},
+			"localName": {
+				"simple": "El viernes es el día de Venus. A Venus también lo llamamos lucero, una palabra que viene de luz. ¡Los pastores lo llaman lucero miguero!",
+				"standard": "«Viernes» significa «día de Venus». Además, el español tiene su propia palabra para el planeta: lucero, de luz, «el que brilla». Se habla del lucero del alba o de la mañana y del lucero de la tarde, y los pastores lo llaman lucero miguero («miguero» viene de las migas, el plato de los pastores).",
+				"advanced": "Según la RAE, «viernes» viene del latín y significa «[día] de Venus», y «lucero», formado sobre luz con el sufijo -ero, designa el planeta Venus: lucero del alba, lucero de la mañana, lucero de la tarde; entre pastores, lucero miguero, de «migas», su plato."
+			},
+			"discovery": {
+				"simple": "La gente ve Venus desde hace muchísimo tiempo. Brilla tanto que es fácil de encontrar.",
+				"standard": "Venus se conoce desde la Antigüedad: los romanos lo veían fácilmente, como uno de los cinco planetas visibles sin telescopio. En 1610, Galileo vio con su telescopio que Venus tiene fases como la Luna, lo que demostró que gira alrededor del Sol.",
+				"advanced": "Conocido desde la Antigüedad como uno de los cinco planetas visibles a simple vista; las observaciones de sus fases que hizo Galileo a partir de 1610 demostraron que orbita alrededor del Sol, una prueba sólida a favor del sistema heliocéntrico de Copérnico."
+			}
+		},
+		"earth": {
+			"madeOf": {
+				"simple": "La Tierra está hecha de roca y metal. En el centro hay una bola de metal sólido. A su alrededor hay metal derretido y luego una capa gruesa de roca caliente. Nosotros vivimos en su fina piel de roca.",
+				"standard": "La Tierra tiene cuatro capas: un núcleo interno sólido de hierro y níquel, un núcleo externo líquido de hierro y níquel, un manto grueso de roca caliente y una corteza fina, de unos 30 km de profundidad bajo los continentes y unos 5 km bajo los océanos. Es el planeta más denso del sistema solar.",
+				"advanced": "El núcleo interno de la Tierra es de hierro y níquel sólidos, mide unos 1221 km de radio y llega a estar a 5400 °C; el núcleo externo líquido que lo rodea tiene unos 2300 km de grosor, y la roca caliente y viscosa del manto, unos 2900 km. La corteza mide de media unos 30 km en los continentes y 5 km bajo los océanos. La Tierra es el planeta más denso."
+			},
+			"air": {
+				"simple": "El aire de la Tierra es el único que podemos respirar. Casi todo es un gas llamado nitrógeno. También tiene oxígeno, que necesitamos para vivir.",
+				"standard": "El aire de la Tierra tiene un 78 % de nitrógeno y un 21 % de oxígeno, con un poco de argón y de dióxido de carbono y algo de vapor de agua. Es el único aire que conocemos que pueden respirar las personas y los animales.",
+				"advanced": "En volumen, el aire seco es un 78,08 % nitrógeno, un 20,95 % oxígeno y un 0,934 % argón, con unas 420 ppm (0,042 %) de dióxido de carbono; el vapor de agua añade cerca de un 1 %, que varía de un lugar a otro."
+			},
+			"weather": {
+				"simple": "En la Tierra no hace ni demasiado calor ni demasiado frío. Por eso el agua sigue siendo líquida y puede haber vida. Pero en los desiertos puede hacer mucho calor, y en la Antártida muchísimo frío.",
+				"standard": "La temperatura más alta jamás medida en la Tierra es de 56,7 °C, en el Valle de la Muerte, en California, en 1913; la más baja, de −89,2 °C, en la estación Vostok de la Antártida, en 1983. De media, la Tierra está a unos 15 °C: justo lo necesario para que haya agua líquida.",
+				"advanced": "La Organización Meteorológica Mundial registra 56,7 °C (Furnace Creek, Valle de la Muerte, 10 de julio de 1913) y −89,2 °C (Vostok, Antártida, 21 de julio de 1983) como las temperaturas del aire más alta y más baja jamás medidas; la media mundial es de unos 15 °C."
+			},
+			"nicknames": {
+				"blueMarble": {
+					"name": "La canica azul",
+					"story": {
+						"simple": "Unos astronautas que viajaban a la Luna hicieron una foto famosa de la Tierra entera. Parecía una canica azul y brillante. Así ganó la Tierra este apodo.",
+						"standard": "El 7 de diciembre de 1972, la tripulación del Apolo 17, de camino a la Luna, hizo una foto de la Tierra entera iluminada por el Sol. La imagen, conocida como «La canica azul», se convirtió en una de las fotos más famosas de la historia.",
+						"advanced": "«La canica azul» la tomó el 7 de diciembre de 1972 la tripulación del Apolo 17 de camino a la Luna: el disco de la Tierra totalmente iluminado, con África, Arabia y el casquete de hielo antártico. Es una de las imágenes más reproducidas de la historia."
+					}
+				},
+				"paleBlueDot": {
+					"name": "El punto azul pálido",
+					"story": {
+						"simple": "Una sonda espacial llamada Voyager 1 miró hacia atrás, hacia la Tierra, desde muy, muy lejos. En la foto, la Tierra era solo un puntito azul.",
+						"standard": "El 14 de febrero de 1990, la Voyager 1, a 6000 millones de km del Sol, se dio la vuelta y fotografió la Tierra: un punto de luz de más o menos un píxel, dentro de un rayo de luz solar. El astrónomo Carl Sagan, a quien se le ocurrió la idea de la foto, llamó a la Tierra un punto azul pálido.",
+						"advanced": "El 14 de febrero de 1990, la Voyager 1, a unos 6000 millones de km del Sol, tomó las 60 imágenes de su «retrato de familia» de los planetas; en una de ellas, la Tierra es un punto de luz de cerca de un píxel, dentro de un rayo disperso de luz solar. Carl Sagan había propuesto la foto en 1981 y le dio nombre en su libro «Un punto azul pálido»."
+					}
+				}
+			},
+			"name": {
+				"simple": "La Tierra es el único planeta que no lleva el nombre de un dios. Su nombre es una palabra muy antigua para el suelo que pisamos.",
+				"standard": "La Tierra es el único planeta cuyo nombre no viene de un dios griego o romano. Se llama como el suelo que pisamos: en inglés, «Earth» es una palabra de unos 1000 años que significa simplemente «el suelo».",
+				"advanced": "Todos los demás planetas llevan el nombre de un dios griego o romano; el nombre inglés, de unos 1000 años, viene del inglés antiguo y del germánico y significa simplemente «el suelo». En muchas lenguas, el nombre del planeta es la palabra de todos los días para el terreno y el suelo."
+			},
+			"localName": {
+				"simple": "La palabra tierra viene del latín, la lengua de los romanos. Tierra es el nombre de nuestro planeta. ¡Y también de lo que hay en las macetas!",
+				"standard": "«Tierra» viene del latín «terra». Su primer significado en el diccionario es el de nuestro planeta, pero también es el material suelto que se desmenuza y del que está hecho el suelo. Y un globo terráqueo es, por su nombre, un globo de tierra y agua: «terráqueo» junta «terra» y «aqua».",
+				"advanced": "Del latín «terra» (RAE): su primera acepción es el planeta que habitamos; otra, el material desmenuzable que forma el suelo. «Terráqueo», de «terra» y «aqua», hace del globo terráqueo un globo de tierra y agua."
+			},
+			"discovery": {
+				"simple": "Vivimos en la Tierra, así que la gente siempre la ha conocido. Pero durante mucho tiempo se pensó que estaba quieta en el centro de todo. Luego un hombre llamado Copérnico dijo que la Tierra gira alrededor del Sol, como los demás planetas.",
+				"standard": "Siempre hemos conocido nuestro hogar, pero no sabíamos que era un planeta. En 1515 Nicolás Copérnico propuso que la Tierra es un planeta como Venus o Saturno y que todos los planetas giran alrededor del Sol; publicó la idea en 1543.",
+				"advanced": "La Tierra fue reconocida como planeta cuando Nicolás Copérnico propuso, hacia 1515, que gira alrededor del Sol como Venus o Saturno, y publicó la idea en «De revolutionibus orbium coelestium» en 1543; Kepler, Galileo y, en 1687, Newton la consolidaron."
+			}
+		},
+		"mars": {
+			"madeOf": {
+				"simple": "Marte está hecho de roca y metal, como la Tierra. Tiene un centro de metal con mucha roca alrededor. Por fuera está cubierto de un polvo rojo y oxidado.",
+				"standard": "Marte tiene un núcleo de hierro, níquel y azufre de entre 1500 y 2100 km de radio, un manto rocoso y una corteza de 10 a 50 km de profundidad. El polvo que lo cubre es como herrumbre: sus minerales de hierro se han oxidado.",
+				"advanced": "Marte tiene un núcleo denso de hierro, níquel y azufre; los datos de la NASA dan entre 1500 y 2100 km de radio, y resultados recientes apuntan a unos 1650–1675 km. Encima hay un manto rocoso de 1240–1880 km de grosor y una corteza de hierro, magnesio, aluminio, calcio y potasio de 10–50 km de profundidad."
+			},
+			"air": {
+				"simple": "El aire de Marte es muy fino. Casi todo es un gas que no podemos respirar. Allí los astronautas necesitarían trajes espaciales.",
+				"standard": "El aire de Marte tiene un 95 % de dióxido de carbono, con un poco de nitrógeno y de argón. Es tan tenue que retiene muy poco calor.",
+				"advanced": "En volumen, la atmósfera es un 95,1 % dióxido de carbono, un 2,59 % nitrógeno y un 1,94 % argón, con un 0,16 % de oxígeno y un 0,06 % de monóxido de carbono; la presión media en la superficie es de solo unos 6 milibares."
+			},
+			"weather": {
+				"simple": "En un día de verano, en Marte puede hacer una temperatura agradable. Pero también puede hacer más frío que en cualquier lugar de la Tierra. ¡Si estuvieras allí de pie, tendrías los pies calentitos y la cabeza fría!",
+				"standard": "En Marte puede hacer hasta unos 20 °C o bajar hasta unos −153 °C. Su aire tenue retiene tan poco calor que a mediodía, en el ecuador, puede haber 24 °C a la altura de los pies y 0 °C a la altura de la cabeza.",
+				"advanced": "Las temperaturas van de unos 20 °C a unos −153 °C. La tenue atmósfera retiene poco calor: a mediodía en el ecuador, el aire puede estar a 24 °C a la altura de los pies y a 0 °C a la altura de la cabeza. La media es de unos −60 °C."
+			},
+			"nicknames": {
+				"redPlanet": {
+					"name": "El planeta rojo",
+					"story": {
+						"simple": "A Marte lo llaman el planeta rojo. Su tierra tiene óxido, como un clavo viejo y oxidado. Por eso se ve rojo.",
+						"standard": "A Marte se le llama a menudo el planeta rojo porque los minerales de hierro de su suelo se han oxidado. Ese polvo oxidado, levantado por el viento, hace que todo el planeta se vea rojo.",
+						"advanced": "El apodo viene de los minerales de hierro oxidados, de color herrumbre, del regolito marciano; el polvo que se levanta en la atmósfera tiñe tanto el cielo como el suelo."
+					}
+				}
+			},
+			"name": {
+				"simple": "Marte lleva el nombre del dios romano de la guerra. A la gente, su color rojo le recordaba la sangre.",
+				"standard": "Los romanos le dieron a Marte el nombre de su dios de la guerra, porque su color rojizo les recordaba la sangre. Mucho antes, los antiguos egipcios lo llamaban Her Desher, «el rojo».",
+				"advanced": "Los antiguos romanos le dieron el nombre de su dios de la guerra porque su color rojizo recordaba la sangre; los egipcios lo habían llamado Her Desher, «el rojo»."
+			},
+			"localName": {
+				"simple": "¿Sabes por qué el martes se llama así? Quiere decir «día de Marte». ¡Y el lunes es el día de la Luna!",
+				"standard": "«Martes» significa «día de Marte»: el planeta, o más bien el dios de la guerra, da nombre a un día de cada semana. Justo antes viene el lunes, el día de la Luna.",
+				"advanced": "Según la RAE, «martes» viene del latín y significa «[día] de Marte», como «lunes» es el de la Luna: en español, de lunes a viernes, los cinco días llevan el nombre de un astro."
+			},
+			"discovery": {
+				"simple": "La gente ve Marte desde hace muchísimo tiempo. En el cielo de la noche parece una estrella roja y brillante.",
+				"standard": "Marte se conoce desde la Antigüedad como uno de los cinco planetas que se ven sin telescopio. Hace unos 400 años, las medidas precisas de dónde aparecía Marte en el cielo ayudaron a Johannes Kepler a descubrir que los planetas se mueven en elipses, no en círculos.",
+				"advanced": "Conocido desde la Antigüedad; Johannes Kepler, trabajando con las precisas observaciones de Tycho Brahe, concluyó que la órbita de Marte es una elipse y no un círculo, el descubrimiento en el que se basan sus leyes del movimiento planetario."
+			}
+		},
+		"jupiter": {
+			"madeOf": {
+				"simple": "Júpiter es una bola gigante de gas. Está hecho sobre todo de hidrógeno y helio, como el Sol. No tiene suelo donde ponerse de pie.",
+				"standard": "Júpiter está hecho sobre todo de hidrógeno y helio. Más abajo, la presión aprieta tanto el hidrógeno que lo convierte en líquido: el océano más grande del sistema solar. Todavía más abajo, quizá a mitad de camino hacia el centro, el hidrógeno se vuelve un líquido que conduce la electricidad como un metal. Su núcleo es difuso: está en parte disuelto y no tiene un borde claro.",
+				"advanced": "Bajo las nubes, el hidrógeno y el helio están comprimidos en un líquido y, más abajo, en hidrógeno metálico líquido; la sonda Juno descubrió que el campo magnético se genera por debajo de cerca del 81 % del radio, en hidrógeno metálico en convección. El núcleo es diluido, parcialmente disuelto, sin una separación clara del hidrógeno metálico que lo rodea."
+			},
+			"air": {
+				"simple": "El aire de Júpiter es casi todo hidrógeno y helio. Sus rayas son franjas de nubes.",
+				"standard": "El aire de Júpiter tiene un 90 % de hidrógeno y un 10 % de helio, con pequeñas cantidades de metano y amoníaco. Sus rayas de colores son franjas de nubes.",
+				"advanced": "En volumen, aproximadamente un 89,8 % de H₂ y un 10,2 % de He (cada uno ± 2 %), con cerca de un 0,3 % de metano y trazas de amoníaco, deuteruro de hidrógeno, etano y agua."
+			},
+			"weather": {
+				"simple": "En las nubes de Júpiter hace más frío que en cualquier lugar de la Tierra. En lo más hondo, hace más calor que en la superficie del Sol.",
+				"standard": "En sus nubes, Júpiter está a unos −110 °C. Más abajo, el gas apretado se calienta cada vez más, y cerca del centro podría haber unos 24 000 °C: mucho más que en la superficie del Sol.",
+				"advanced": "Al nivel de 1 bar la temperatura es de unos 165 K (−108 °C), y a 0,1 bar de unos 112 K; hacia dentro sube sin parar, hasta unos 24 000 °C estimados cerca del centro."
+			},
+			"nicknames": {
+				"kingOfPlanets": {
+					"name": "El rey de los planetas",
+					"story": {
+						"simple": "Júpiter es el planeta más grande. Pesa más que todos los demás planetas juntos. Por eso lo llaman el rey de los planetas.",
+						"standard": "A Júpiter lo llaman el rey de los planetas: es el más grande, tiene más del doble de masa que todos los demás planetas juntos y lleva el nombre del rey de los dioses romanos.",
+						"advanced": "Como corresponde a quien lleva el nombre del rey de los dioses, Júpiter es el planeta más grande y tiene más del doble de masa que todos los demás juntos."
+					}
+				}
+			},
+			"name": {
+				"simple": "Júpiter lleva el nombre del rey de los dioses romanos. El planeta más grande recibió el nombre del dios más importante.",
+				"standard": "El planeta más grande debe su nombre al rey de los dioses de la antigua Roma.",
+				"advanced": "Debe su nombre a Júpiter, el rey de los dioses de la mitología romana: el planeta más grande para el dios supremo."
+			},
+			"localName": {
+				"simple": "En español, el jueves es el día de Júpiter. ¡El rey de los planetas tiene su propio día de la semana!",
+				"standard": "«Jueves» quiere decir «día de Júpiter»: el rey de los dioses romanos tiene su día en cada semana, entre el miércoles de Mercurio y el viernes de Venus.",
+				"advanced": "Según la RAE, «jueves» viene del latín y significa «[día] de Júpiter»: la palabra «día» quedó sobrentendida y solo sobrevivió el nombre del dios, como en martes, miércoles y viernes."
+			},
+			"discovery": {
+				"simple": "La gente ve Júpiter desde hace muchísimo tiempo. Es una de las luces más brillantes del cielo de la noche.",
+				"standard": "Júpiter se conoce desde la Antigüedad. En 1610 Galileo Galilei lo miró con un telescopio y vio, por primera vez en la historia, lunas girando alrededor de otro mundo.",
+				"advanced": "Conocido desde la Antigüedad; en 1610 el telescopio de Galileo mostró cuatro lunas en órbita alrededor de Júpiter, la primera prueba de que no todo gira alrededor de la Tierra."
+			}
+		},
+		"saturn": {
+			"madeOf": {
+				"simple": "Saturno es una bola gigante de gas, como Júpiter. Está hecho sobre todo de hidrógeno y helio. ¡Pesa tan poco para su tamaño que flotaría en el agua!",
+				"standard": "Saturno está hecho sobre todo de hidrógeno y helio. En su centro hay un núcleo denso de metales como el hierro y el níquel, rodeado de roca, todo muy apretado por la presión y el calor. A su alrededor hay hidrógeno metálico líquido, dentro de una capa de hidrógeno líquido. Es el único planeta menos denso que el agua.",
+				"advanced": "En el centro hay un núcleo denso de metales y roca, envuelto en hidrógeno metálico líquido dentro de una capa de hidrógeno líquido. Las ondas de los anillos, provocadas por vibraciones del propio planeta, muestran que el núcleo es difuso: una mezcla de hielo, roca e hidrógeno de unas 17 masas terrestres que llega hasta cerca del 60 % del radio."
+			},
+			"air": {
+				"simple": "El aire de Saturno es casi todo hidrógeno, con un poco de helio. Alrededor del planeta soplan vientos muy fuertes.",
+				"standard": "El aire de Saturno tiene un 96 % de hidrógeno y un 3 % de helio, con un poco de metano y amoníaco. Cerca de su ecuador, los vientos alcanzan unos 1800 km/h.",
+				"advanced": "En volumen, aproximadamente un 96,3 % de H₂ y un 3,25 % de He (cada uno ± 2,4 %), con cerca de un 0,45 % de metano y trazas de amoníaco, deuteruro de hidrógeno y etano; los vientos ecuatoriales alcanzan unos 500 m/s."
+			},
+			"weather": {
+				"simple": "En las nubes de Saturno hace más frío que en cualquier lugar de la Tierra. Más arriba, hace todavía más frío. En lo más hondo, hace mucho calor.",
+				"standard": "En sus nubes, Saturno está a unos −140 °C, y más arriba a unos −190 °C. En lo más hondo, la presión y el calor son tan grandes que aprietan la roca y el metal hasta formar un núcleo.",
+				"advanced": "Unos 134 K (−139 °C) al nivel de 1 bar y 84 K (−189 °C) a 0,1 bar. Hacia dentro se calienta con la profundidad; no hay ningún valor medido para el núcleo."
+			},
+			"nicknames": {
+				"jewel": {
+					"name": "La joya del sistema solar",
+					"story": {
+						"simple": "Saturno tiene unos anillos preciosos y brillantes. Están hechos de hielo y roca. Con sus anillos, Saturno parece una joya.",
+						"standard": "Con sus brillantes anillos de hielo y roca, Saturno es el planeta más bonito para mirar con un telescopio, y por eso lo llaman la joya del sistema solar.",
+						"advanced": "Su amplio y brillante sistema de anillos helados ha convertido a Saturno en «la joya de nuestro sistema solar», el gran espectáculo de cualquier telescopio."
+					}
+				}
+			},
+			"name": {
+				"simple": "Saturno lleva el nombre del dios romano de la agricultura. Era el padre de Júpiter.",
+				"standard": "Hacia el 400 a. C., los astrónomos griegos dieron a esta «estrella errante» el nombre de Crono, su dios de la agricultura; más tarde los romanos la rebautizaron como Saturno, su propio dios de la agricultura y la riqueza, el padre de Júpiter.",
+				"advanced": "Debe su nombre al dios romano de la agricultura y la riqueza, padre de Júpiter; hacia el 400 a. C. los astrónomos griegos le habían dado el nombre de Crono, y los romanos lo cambiaron por el de su propio dios."
+			},
+			"discovery": {
+				"simple": "La gente ve Saturno desde hace muchísimo tiempo. Durante mucho tiempo fue el planeta más lejano que se conocía.",
+				"standard": "Saturno se conoce desde la Antigüedad: es el planeta más lejano que puedes ver con tus propios ojos. En 1610 Galileo vio sus anillos, pero creyó que Saturno era un «planeta triple»; en 1655 Christiaan Huygens descubrió los anillos y la luna más grande de Saturno, Titán.",
+				"advanced": "El planeta más lejano descubierto a simple vista; Galileo vio los anillos en julio de 1610, pero los tomó por un «planeta triple», y Christiaan Huygens los identificó en 1655, el año en que descubrió Titán."
+			}
+		},
+		"uranus": {
+			"madeOf": {
+				"simple": "Urano es un gigante de hielo. Por dentro es casi todo hielo caliente y blando. En su centro hay roca. Por fuera hay gas.",
+				"standard": "Urano es un gigante helado: el 80 % o más de su masa es un fluido caliente y denso de agua, metano y amoníaco, que los científicos llaman hielos, sobre un pequeño núcleo rocoso. Encima hay una atmósfera de hidrógeno, helio y metano.",
+				"advanced": "Al menos el 80 % de la masa de Urano es un fluido caliente y denso de materiales «helados» (agua, metano y amoníaco) sobre un pequeño núcleo rocoso, bajo una envoltura de hidrógeno, helio y metano."
+			},
+			"air": {
+				"simple": "El aire de Urano es casi todo hidrógeno y helio. Un poquito de un gas llamado metano lo vuelve de color azul verdoso.",
+				"standard": "El aire de Urano tiene un 83 % de hidrógeno y un 15 % de helio, con un 2 % de metano. El metano absorbe la luz roja, y eso le da al planeta su color azul verdoso.",
+				"advanced": "En volumen, aproximadamente un 82,5 % de H₂ y un 15,2 % de He (cada uno ± 3,3 %), con un 2,3 % de CH₄; el metano absorbe la parte roja de la luz del Sol, así que el planeta se ve azul verdoso."
+			},
+			"weather": {
+				"simple": "Urano tiene el aire más frío de todos los planetas. Hace más frío que en cualquier lugar de la Tierra. En lo más hondo, está mucho más caliente que cualquier fuego.",
+				"standard": "En sus nubes, Urano está a unos −197 °C, y su aire llega a bajar hasta −224 °C, lo más frío de todos los planetas. Cerca del núcleo se calienta hasta unos 5000 °C.",
+				"advanced": "Unos 76 K (−197 °C) al nivel de 1 bar; el mínimo de la atmósfera, 49 K (−224,2 °C), es el más frío de todos los planetas. Cerca del núcleo alcanza unos 9000 °F (4982 °C)."
+			},
+			"nicknames": {
+				"sideways": {
+					"name": "El planeta tumbado",
+					"story": {
+						"simple": "Urano está tumbado de lado. Rueda alrededor del Sol como una pelota. Quizá algo muy grande chocó contra él hace mucho tiempo.",
+						"standard": "Urano está inclinado unos 98 grados, así que gira tumbado de lado y rueda alrededor del Sol como una pelota. Eso le da las estaciones más extremas del sistema solar. Un choque con un objeto del tamaño de la Tierra, hace mucho tiempo, pudo tumbarlo.",
+						"advanced": "Con una inclinación del eje de 97,77°, Urano es el único planeta cuyo ecuador está casi en ángulo recto con su órbita; durante una cuarta parte de cada órbita de 84 años, uno de los polos mira al Sol mientras la otra mitad del planeta vive una noche de invierno de 21 años. La causa probable es una colisión con un cuerpo del tamaño de la Tierra."
+					}
+				}
+			},
+			"name": {
+				"simple": "Urano lleva el nombre del dios griego del cielo. Era el abuelo de Júpiter. Es el único planeta con nombre de dios griego.",
+				"standard": "Urano lleva el nombre del dios griego del cielo: es el único planeta con el nombre de un dios griego y no romano. Su descubridor quería llamarlo Estrella de Jorge, en honor de su rey, Jorge III; el astrónomo Johann Bode propuso Urano, el padre de Saturno, igual que Saturno era el padre de Júpiter.",
+				"advanced": "William Herschel quiso llamar a su descubrimiento Georgium Sidus, en honor del rey Jorge III; el nombre que se impuso fue la propuesta de Johann Bode, Urano, el dios griego del cielo, padre de Saturno como Saturno lo era de Júpiter: el único planeta que no lleva el nombre de un dios romano."
+			},
+			"discovery": {
+				"simple": "Urano fue el primer planeta encontrado con un telescopio. Un hombre llamado William Herschel lo vio desde su jardín. Al principio creyó que era un cometa.",
+				"standard": "Urano fue el primer planeta descubierto con un telescopio: William Herschel lo encontró el 13 de marzo de 1781 desde el jardín de su casa en Bath, Inglaterra. Al principio pensó que era un cometa o una estrella.",
+				"advanced": "El 13 de marzo de 1781, William Herschel, que observaba desde su jardín en Bath con un telescopio de 7 pies, anotó una «estrella nebulosa o quizá un cometa»: el primer planeta nuevo descubierto desde la Antigüedad."
+			}
+		},
+		"neptune": {
+			"madeOf": {
+				"simple": "Neptuno es un gigante de hielo, como Urano. Por dentro es casi todo hielo caliente y blando. En su centro hay roca. Por fuera hay gas.",
+				"standard": "Como Urano, Neptuno es un gigante helado: el 80 % o más de su masa es un fluido caliente y denso de agua, metano y amoníaco sobre un pequeño núcleo rocoso. Encima hay una atmósfera de hidrógeno, helio y metano. Es el más denso de los planetas gigantes.",
+				"advanced": "Al menos el 80 % de la masa de Neptuno es un fluido caliente y denso de agua, metano y amoníaco; la atmósfera de hidrógeno, helio y metano se funde con él, sobre un núcleo sólido de cerca de una masa terrestre. De los planetas gigantes, Neptuno es el más denso."
+			},
+			"air": {
+				"simple": "El aire de Neptuno es casi todo hidrógeno y helio. Un poquito de metano lo vuelve azul oscuro.",
+				"standard": "El aire de Neptuno tiene un 80 % de hidrógeno y un 19 % de helio, con un 1,5 % de metano. El metano absorbe los demás colores y refleja el azul: por eso Neptuno es azul.",
+				"advanced": "En volumen, aproximadamente un 80,0 % de H₂ y un 19,0 % de He (cada uno ± 3,2 %) y un 1,5 % de CH₄; el metano absorbe los demás colores y refleja el azul."
+			},
+			"weather": {
+				"simple": "En las nubes de Neptuno hace más frío que en cualquier lugar de la Tierra. Más arriba, hace todavía más frío. En lo más hondo, hace calor.",
+				"standard": "En sus nubes, Neptuno está a unos −200 °C, y más arriba a unos −220 °C. En lo más hondo, bajo su aire, hay un fluido caliente y denso de agua y otros hielos.",
+				"advanced": "Unos 72 K (−201 °C) al nivel de 1 bar y 55 K (−218 °C) a 0,1 bar; debajo está el manto fluido, caliente y denso. No hay ningún valor medido para el núcleo."
+			},
+			"nicknames": {
+				"windiest": {
+					"name": "El planeta más ventoso",
+					"story": {
+						"simple": "Neptuno es el planeta con más viento. Sus vientos son mucho más rápidos que la tormenta más fuerte de la Tierra.",
+						"standard": "Neptuno es el mundo con más viento de nuestro sistema solar: sus vientos soplan a más de 2000 km/h, tres veces más fuertes que los de Júpiter y nueve veces más que los de la Tierra.",
+						"advanced": "El mundo más ventoso del sistema solar: vientos de más de 2000 km/h, tres veces más fuertes que los de Júpiter y nueve veces más que los de la Tierra."
+					}
+				}
+			},
+			"name": {
+				"simple": "Neptuno lleva el nombre del dios romano del mar. Su color azul oscuro se parece al del océano.",
+				"standard": "Neptuno lleva el nombre del dios romano del mar: un nombre muy adecuado para el gran planeta azul.",
+				"advanced": "Debe su nombre al dios romano del mar, un nombre adecuado para el planeta de un azul intenso."
+			},
+			"discovery": {
+				"simple": "¡Neptuno se encontró con matemáticas! Los científicos vieron que algo tiraba de Urano. Calcularon dónde tenía que estar, y allí estaba.",
+				"standard": "Neptuno fue el primer planeta descubierto gracias a las matemáticas. Urbain Le Verrier calculó dónde tenía que estar un planeta desconocido para explicar cómo se movía Urano, y el 23 de septiembre de 1846 Johann Galle lo encontró en el Observatorio de Berlín, a cerca de un grado del lugar previsto. John Couch Adams había hecho cálculos parecidos en Inglaterra. Galileo lo había visto en 1612, pero creyó que era una estrella.",
+				"advanced": "Le Verrier predijo la posición y la masa de un planeta desconocido a partir de las irregularidades del movimiento de Urano; Johann Galle lo encontró en Berlín el 23 de septiembre de 1846, en su primera noche de búsqueda, a cerca de un grado de la predicción. John Couch Adams había hecho por su cuenta cálculos parecidos y menos precisos, y Galileo lo había anotado como estrella fija en 1612 y 1613."
+			}
+		}
+	}
+}

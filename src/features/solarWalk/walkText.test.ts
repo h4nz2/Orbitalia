@@ -88,7 +88,14 @@ describe("the walk in English", () => {
 		const simple = setup("basketball", "en", "simple")
 		expect(simple.stop("earth").size).toBe("About as big as a pinhead")
 		expect(starText(simple.walk, simple.i18n)).toBe(
-			"And the next star? At this scale it is 6,900 km away! Even a plane would need about 7.5 hours to get there.",
+			"And the next star? At this scale it is so far away that even a plane would need about 7.5 hours to get there!",
+		)
+		// above 100 m the simple level counts football pitches (#51)
+		expect(simple.stop("neptune").distance).toBe(
+			"7.5 football pitches from the Sun",
+		)
+		expect(summaryText(simple.walk, simple.i18n)).toBe(
+			"The walk to Neptune is 7.5 football pitches long. It takes about 12 minutes.",
 		)
 	})
 

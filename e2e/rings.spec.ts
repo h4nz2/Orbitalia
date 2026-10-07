@@ -133,15 +133,21 @@ test("rings stay drawn in Always lit and survive an edge-on view", async ({
 		.poll(() => ringZoneLit(page, "saturn-honest"), { timeout: 20_000 })
 		.toBeGreaterThan(0.05)
 
-	// a click on the rings is a click on Saturn (already framed: nothing happens), never
-	// a click on empty space, which would send the camera back to the overview
+	// a click on the rings is a click on Saturn (already framed: it is selected again, the
+	// camera stays), never a click on empty space, which would only clear the selection
+	await page.evaluate(() =>
+		window.__orbitalia!.store.getState().select("jupiter"),
+	)
 	const size = page.viewportSize()
 	if (size === null) throw new Error("no viewport")
 	await page.mouse.click(size.width / 2 - 0.37 * size.height, size.height / 2)
 	await nextFrames(page)
 	expect(
-		await page.evaluate(() => window.__orbitalia?.store.getState().view),
-	).toEqual({ kind: "body", id: "saturn" })
+		await page.evaluate(() => {
+			const { view, selectedId } = window.__orbitalia!.store.getState()
+			return { view, selectedId }
+		}),
+	).toEqual({ view: { kind: "body", id: "saturn" }, selectedId: "saturn" })
 
 	await openLayers(page)
 	const alwaysLit = page.getByRole("switch", { name: "Always lit" })

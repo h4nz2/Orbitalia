@@ -2,8 +2,12 @@
  * The walk's sentences (#25), pure so the numbers and the wording can be
  * tested in every locale and reading level. Components pass `useI18n()` and
  * `useBodyName()`; tests pass `createI18n()` and `bodyName`.
+ *
+ * At the simple reading level (#51) a length above 100 m is counted in
+ * football pitches ("7 football pitches"), and the true sizes, the true
+ * distances and the scale ratio stay out of the sentences.
  */
-import type { I18n } from "@/i18n"
+import { countArgs, isSimple, thingName, type I18n } from "@/i18n"
 
 import {
 	formatLength,
@@ -24,8 +28,23 @@ import {
 
 type Name = (id: string) => string
 
-const length = (i18n: I18n, metres: number) =>
-	formatLength(metres, i18n.formatLocale)
+/** Up to this many metres the simple level counts in metres, beyond it in football pitches. */
+const SIMPLE_METRES = 100
+
+/**
+ * A length on the field: "2.2 mm", "26 m", "775 m"; at the simple level
+ * above 100 m in football pitches ("7 football pitches", "more than 100
+ * football pitches"), whichever landmark is picked.
+ */
+export function walkLength(metres: number, i18n: I18n): string {
+	if (!isSimple(i18n) || metres <= SIMPLE_METRES) {
+		return formatLength(metres, i18n.formatLocale)
+	}
+	const pitches = Math.max(1, landmarkCount(metres, "pitch"))
+	return i18n.t("solarWalk.landmarkCount.pitch", countArgs(pitches, i18n))
+}
+
+const length = (i18n: I18n, metres: number) => walkLength(metres, i18n)
 
 /** The page title: "If the Sun were a basketball…". */
 export const titleText = (walk: SolarWalk, i18n: I18n): string =>
@@ -42,7 +61,7 @@ export function leadText(walk: SolarWalk, i18n: I18n): string {
 	const earth = walk.stops.find((stop) => stop.id === "earth")
 	if (earth === undefined) return ""
 	return i18n.t("solarWalk.lead", {
-		earth: i18n.t(`solarWalk.thing.${earth.thing}`),
+		earth: thingName(earth.thing, i18n),
 		earthSize: length(i18n, earth.sizeM),
 		earthDistance: length(i18n, earth.distanceM),
 		ratio: ratioText(walk, i18n),
@@ -67,7 +86,7 @@ export const sunStopText = (walk: SolarWalk, i18n: I18n): string =>
 const sizeValues = (body: ModelBody, i18n: I18n) => ({
 	size: length(i18n, body.sizeM),
 	trueSize: formatTrueKm(body.trueSizeKm, i18n.formatLocale),
-	thing: i18n.t(`solarWalk.thing.${body.thing}`),
+	thing: thingName(body.thing, i18n),
 })
 
 /**
@@ -82,7 +101,7 @@ export function landmarkCountText(
 	const count = roundCount(landmarkCount(distanceM, landmark))
 	return count === 0
 		? null
-		: i18n.t(`solarWalk.landmarkCount.${landmark}`, { count })
+		: i18n.t(`solarWalk.landmarkCount.${landmark}`, countArgs(count, i18n))
 }
 
 /** The lines of one stop's card. */

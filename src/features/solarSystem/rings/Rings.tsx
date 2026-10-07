@@ -149,7 +149,7 @@ function Rings({ rings, radiusKm, index, bodyId, uniforms }: RingsProps) {
 	)
 
 	// the rings are nearer than BodyPicking's "empty space": a click on them is
-	// a click on their planet (never a reset to the overview), and so is hovering
+	// a click on their planet (never one on empty space), and so is hovering
 	const onClick = (event: ThreeEvent<MouseEvent>) => {
 		if (!isTapEvent(event)) return
 		event.stopPropagation()

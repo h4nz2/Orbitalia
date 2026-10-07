@@ -293,6 +293,72 @@ describe("sequences", () => {
 		expect(store().sequence!.phase).toBe("waiting")
 	})
 
+	it("pauses on a stop and carries on with what was left of the hold (#49)", () => {
+		store().playSequence(steps)
+		arrive(100)
+		expect(store().sequence).toMatchObject({
+			phase: "holding",
+			holdUntil: 1100,
+		})
+		store().setSequencePaused(true, 400)
+		expect(store().sequence).toMatchObject({
+			index: 0,
+			phase: "waiting",
+			paused: true,
+			holdUntil: null,
+			holdLeftMs: 700,
+		})
+		store().tickSequence(1e9)
+		expect(store().sequence!.index).toBe(0)
+		// looking around while paused is not an interruption
+		store().userInput()
+		expect(store().sequence!.phase).toBe("waiting")
+		store().setSequencePaused(false, 5000)
+		expect(store().sequence).toMatchObject({
+			phase: "holding",
+			paused: false,
+			holdUntil: 5700,
+		})
+		store().tickSequence(5700)
+		expect(store().sequence!.index).toBe(1)
+	})
+
+	it("paused while moving, arrives and waits with the whole hold to come", () => {
+		store().playSequence(steps)
+		store().setSequencePaused(true, 50)
+		expect(store().sequence).toMatchObject({ phase: "moving", paused: true })
+		store().userInput()
+		expect(store().sequence!.phase).toBe("moving")
+		arrive(100)
+		expect(store().sequence).toMatchObject({
+			phase: "waiting",
+			holdLeftMs: 1000,
+		})
+		store().setSequencePaused(false, 2000)
+		expect(store().sequence).toMatchObject({
+			phase: "holding",
+			holdUntil: 3000,
+		})
+	})
+
+	it("stays paused when stepped, and ignores a pause without a running sequence", () => {
+		store().setSequencePaused(true)
+		expect(store().sequence).toBeNull()
+		store().playSequence(steps)
+		store().setSequencePaused(true, 0)
+		store().nextStep()
+		expect(store().sequence).toMatchObject({ index: 1, paused: true })
+		store().goToStep(0)
+		expect(store().sequence).toMatchObject({ index: 0, paused: true })
+		// a new sequence starts unpaused; an interrupted one cannot be paused
+		store().playSequence(steps)
+		expect(store().sequence!.paused ?? false).toBe(false)
+		store().userInput()
+		store().setSequencePaused(true)
+		expect(store().sequence).toMatchObject({ phase: "interrupted" })
+		expect(store().sequence!.paused ?? false).toBe(false)
+	})
+
 	it("skips a whole sequence to its last view", () => {
 		store().playSequence(steps)
 		store().skip()
@@ -366,5 +432,54 @@ describe("camera shots in the URL", () => {
 		expect(
 			roundShot({ azimuthDeg: -180, elevationDeg: -0.01, distance: 1 }),
 		).toEqual({ azimuthDeg: 180, elevationDeg: 0, distance: 1 })
+	})
+})
+
+describe("steps (#46)", () => {
+	/** How many steps `act` marks. */
+	const marks = (act: () => void) => {
+		const before = store().step
+		act()
+		return store().step - before
+	}
+
+	it("are marked by choosing a body and by holding one still, before anything changes", () => {
+		const seen: (string | null)[] = []
+		const unsubscribe = useSimStore.subscribe((state, previous) => {
+			// the view being left is still there when the mark arrives
+			if (state.step !== previous.step) seen.push(state.view.kind)
+		})
+		expect(marks(() => store().setFocus("mars"))).toBe(1)
+		expect(seen).toEqual(["overview"])
+		unsubscribe()
+		expect(marks(() => store().anchorFrame("mars"))).toBe(1)
+		expect(marks(() => store().releaseFrame())).toBe(1)
+		// unknown bodies are no step
+		expect(marks(() => store().setFocus("vulcan"))).toBe(0)
+		expect(marks(() => store().anchorFrame("vulcan"))).toBe(0)
+	})
+
+	it("are never marked by the camera, the rig or plain requests", () => {
+		expect(marks(() => store().focus("mars"))).toBe(0)
+		expect(marks(() => store().goTo({ kind: "body", id: "earth" }))).toBe(0)
+		expect(marks(() => store().select("venus"))).toBe(0)
+		expect(marks(() => arrive())).toBe(0)
+		expect(
+			marks(() =>
+				store().publishShot({ azimuthDeg: 5, elevationDeg: 5, distance: 3 }),
+			),
+		).toBe(0)
+		expect(
+			marks(() =>
+				store().settleAt({
+					kind: "point",
+					anchorId: "earth",
+					offsetKm: [1e5, 0, 0],
+				}),
+			),
+		).toBe(0)
+		// the way out is a step where the user takes it (the house, Escape), not in the slice
+		expect(marks(() => store().reset())).toBe(0)
+		expect(marks(() => store().markStep())).toBe(1)
 	})
 })

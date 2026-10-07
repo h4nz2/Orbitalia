@@ -1,9 +1,9 @@
 /**
  * Every body as a BodyMesh, keyed by id; moons by the curation rule
  * (`isBodyShown`: featured moons while `showMoons` is on, the long tail with
- * `showAllMoons` too, the focus always).
+ * `showAllMoons` too unless the scale hides it, the focus always).
  */
-import { isBodyShown, useSimStore } from "@/store/sim"
+import { allMoonsShown, isBodyShown, useSimStore } from "@/store/sim"
 
 import { useSimFrame } from "../scene/simFrame"
 import BodyMesh from "./BodyMesh"
@@ -11,7 +11,7 @@ import BodyMesh from "./BodyMesh"
 function Bodies() {
 	const frame = useSimFrame()
 	const showMoons = useSimStore((state) => state.showMoons)
-	const showAllMoons = useSimStore((state) => state.showAllMoons)
+	const showAllMoons = useSimStore(allMoonsShown)
 	const focusId = useSimStore((state) => state.focusId)
 	const showSmallBodies = useSimStore((state) => state.showSmallBodies)
 

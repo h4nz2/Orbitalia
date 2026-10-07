@@ -1,0 +1,182 @@
+/* The story sections (#53): Made of, Weather, Names; one open at a time. */
+.accordion {
+	--accordion-chevron-size: 1rem;
+}
+
+.item {
+	border-color: rgba(255, 255, 255, 0.12);
+	scroll-margin-top: 0.25rem;
+}
+
+.control {
+	padding-inline: 0.25rem;
+	color: white;
+}
+
+.controlLabel {
+	padding-block: 0.6rem;
+	font-weight: 700;
+	font-size: 0.95rem;
+	letter-spacing: 0.5px;
+}
+
+.content {
+	padding: 0 0.25rem 0.75rem;
+}
+
+.section {
+	font-size: 0.9rem;
+	line-height: 1.45;
+}
+
+.section p {
+	margin: 0 0 0.6rem;
+}
+
+.note,
+.muted,
+.sources {
+	color: #9aa0a6;
+}
+
+.note {
+	font-size: 0.75rem;
+}
+
+.heading {
+	margin: 0.9rem 0 0.35rem;
+	font-size: 0.72rem;
+	font-weight: 400;
+	letter-spacing: 2px;
+	text-transform: uppercase;
+	color: #9aa0a6;
+}
+
+/* the cut-away picture and its legend, side by side where they fit */
+.cutAway {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	gap: 0.75rem;
+	margin: 0.25rem 0 0.75rem;
+}
+
+.picture {
+	flex: none;
+	width: 8.5rem;
+	height: 8.5rem;
+}
+
+.legend {
+	flex: 1 1 9rem;
+	margin: 0;
+	padding: 0;
+	list-style: none;
+	font-size: 0.85rem;
+}
+
+.legend li {
+	display: flex;
+	align-items: baseline;
+	gap: 0.45rem;
+	margin-bottom: 0.25rem;
+}
+
+.swatch {
+	flex: none;
+	width: 0.8rem;
+	height: 0.8rem;
+	border-radius: 2px;
+	border: 1px solid rgba(255, 255, 255, 0.3);
+	transform: translateY(1px);
+}
+
+.gases {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 0.35rem;
+	margin: 0 0 0.35rem;
+	padding: 0;
+	list-style: none;
+}
+
+.gases li {
+	padding: 0.1rem 0.55rem;
+	border-radius: 999px;
+	background: rgba(255, 255, 255, 0.08);
+	font-size: 0.8rem;
+}
+
+/* icon, label and value: how heavy, how hot */
+.rows {
+	display: grid;
+	gap: 0.6rem;
+	margin: 0.75rem 0;
+}
+
+.row {
+	display: grid;
+	grid-template-columns: auto 1fr;
+	column-gap: 0.65rem;
+	align-items: center;
+}
+
+.row dt {
+	grid-column: 2;
+	font-size: 0.72rem;
+	letter-spacing: 1px;
+	text-transform: uppercase;
+	color: #9aa0a6;
+}
+
+.row dd {
+	grid-column: 2;
+	margin: 0;
+	font-weight: 700;
+}
+
+.rowIcon {
+	grid-row: span 2;
+	color: var(--mantine-color-orange-4);
+}
+
+.row[data-end="low"] .rowIcon {
+	color: var(--mantine-color-blue-3);
+}
+
+.value {
+	font-size: 1.05rem;
+}
+
+.nicknames {
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+
+.nickname {
+	display: flex;
+	align-items: flex-start;
+	gap: 0.65rem;
+	margin-bottom: 0.4rem;
+}
+
+.bigIcon {
+	flex: none;
+	color: var(--mantine-color-orange-4);
+}
+
+.section .nicknameName {
+	margin: 0 0 0.15rem;
+	font-weight: 700;
+	font-size: 1rem;
+}
+
+.sources {
+	margin-top: 0.75rem;
+	font-size: 0.7rem;
+}
+
+.sources a {
+	color: inherit;
+}

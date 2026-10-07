@@ -22,7 +22,7 @@ import {
 } from "@tabler/icons-react"
 
 import { eventTourId, type SkyEvent } from "@/data/skyEvents"
-import { useI18n, type I18n } from "@/i18n"
+import { durationInWords, isSimple, useI18n, type I18n } from "@/i18n"
 import { Hint } from "@/primitives/hint"
 import { useSimStore } from "@/store/sim"
 import { useTourStore } from "@/store/tour"
@@ -44,14 +44,15 @@ const SAME_TIME_MIN = 5
  */
 export function shownOffset(
 	event: SkyEvent,
-	i18n: Pick<I18n, "quantity">,
+	i18n: I18n,
 ): { direction: "early" | "late"; amount: string } | null {
 	const minutes = (eventJD(event) - eventRealJD(event)) * 1440
 	const size = Math.abs(minutes)
 	if (size < SAME_TIME_MIN) return null
 	const direction = minutes < 0 ? "early" : "late"
-	const amount =
-		size < 90
+	const amount = isSimple(i18n)
+		? durationInWords(size * 60, i18n)
+		: size < 90
 			? i18n.quantity(Math.round(size / 5) * 5, "minute", "long")
 			: size < 36 * 60
 				? i18n.quantity(Math.round(size / 30) / 2, "hour", "long")

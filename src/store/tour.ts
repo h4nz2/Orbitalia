@@ -14,7 +14,8 @@
  */
 import { create } from "zustand"
 
-import type { Tour } from "@/data/tours"
+import { eventOfTourId } from "@/data/skyEvents"
+import { tourById, type Tour } from "@/data/tours"
 import type { ScalePresetId } from "@/sim"
 
 import type { CameraShot, SequenceStep, View } from "./navigation"
@@ -85,6 +86,14 @@ export const useTourStore = create<TourState>()((set) => ({
 	collapsed: false,
 	setCollapsed: (collapsed) => set({ collapsed }),
 }))
+
+/**
+ * A tour of the menu (src/data/tours) or a sky event (#41): the tours a link
+ * can carry and the view history (#46) can return to. Any other `Tour` a
+ * feature plays (the quick look, #44) is neither.
+ */
+export const isListedTour = (id: string): boolean =>
+	tourById.has(id) || eventOfTourId(id) !== null
 
 /** What the URL carries of the tour: its id, the stop counted from 1, and autoplay. */
 export interface TourSearch {

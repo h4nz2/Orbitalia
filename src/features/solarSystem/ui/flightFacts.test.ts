@@ -107,7 +107,7 @@ describe("the readout's travel times", () => {
 				JUPITER_KM,
 				createI18n({ locale: "de", readingLevel: "simple" }),
 			),
-		).toBe("628 Mio. km weit weg")
+		).toBe("Das ist 4-mal so weit wie die Erde von der Sonne")
 	})
 
 	it("leaves no message unformatted in any locale or reading level", () => {

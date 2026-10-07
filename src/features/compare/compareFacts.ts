@@ -14,7 +14,19 @@
  * disagree about a number.
  */
 import { bodyById, type Body } from "@/data"
-import { MISSING_VALUE, type I18n, type MessageKey } from "@/i18n"
+import {
+	MISSING_VALUE,
+	countArgs,
+	distanceInWords,
+	durationInWords,
+	formatCount,
+	formatScientific,
+	formatSize,
+	isSimple,
+	massVsEarth,
+	type I18n,
+	type MessageKey,
+} from "@/i18n"
 import { bodyName } from "@/i18n/bodies"
 import { computePositions, jdToDate, kmToAu } from "@/sim"
 
@@ -81,6 +93,8 @@ const sig3 = (value: number): number => Number(value.toPrecision(3))
  * it), then three significant digits, "333,000", and words, "1.3 million".
  */
 export function formatTimes(ratio: number, i18n: I18n): string {
+	// the simple level: whole numbers to 100, then "more than 100" (#51)
+	if (isSimple(i18n)) return formatCount(ratio, i18n)
 	if (ratio >= 1e6) return formatBigNumber(ratio, i18n.formatLocale)
 	if (ratio >= 10_000) return i18n.significant(ratio, 3)
 	return i18n.number(roughly(ratio))
@@ -88,6 +102,7 @@ export function formatTimes(ratio: number, i18n: I18n): string {
 
 /** A length of time: hours below two days, days below two years, Earth years above. */
 export function formatSpan(days: number, i18n: I18n): string {
+	if (isSimple(i18n)) return durationInWords(days * 86_400, i18n)
 	if (days < 2) return i18n.quantity(sig3(days * 24), "hour", "long")
 	if (days < 2 * DAYS_PER_YEAR) return i18n.quantity(sig3(days), "day", "long")
 	return i18n.quantity(sig3(days / DAYS_PER_YEAR), "year", "long")
@@ -96,6 +111,7 @@ export function formatSpan(days: number, i18n: I18n): string {
 /** How long light takes for `km`: "1.3 seconds", "8.3 minutes", "4.2 hours". */
 export function formatLightTime(km: number, i18n: I18n): string {
 	const seconds = km / SPEED_OF_LIGHT_KM_S
+	if (isSimple(i18n)) return durationInWords(seconds, i18n)
 	if (seconds < 60) return i18n.quantity(roughly(seconds), "second", "long")
 	const minutes = seconds / 60
 	if (minutes < 90) return i18n.quantity(roughly(minutes), "minute", "long")
@@ -104,6 +120,7 @@ export function formatLightTime(km: number, i18n: I18n): string {
 
 /** A distance: "385,000 km" nearby, "5.2 AU · 778 million km" across the system. */
 export function formatDistance(km: number, i18n: I18n): string {
+	if (isSimple(i18n)) return distanceInWords(km, i18n)
 	if (km < 1e6) return i18n.quantity(sig3(km), "kilometer")
 	return `${i18n.t("units.au", { value: i18n.significant(kmToAu(km), 2) })} · ${i18n.t(
 		"units.millionKm",
@@ -111,17 +128,14 @@ export function formatDistance(km: number, i18n: I18n): string {
 	)}`
 }
 
-const SUPERSCRIPT = "⁰¹²³⁴⁵⁶⁷⁸⁹"
-
-/** A mass in scientific notation: "1.9 × 10²⁷ kg" (nobody reads 27 zeros). */
+/**
+ * A mass in scientific notation: "1.9 × 10²⁷ kg" (nobody reads 27 zeros);
+ * at the simple level against Earth ("weighs as much as 318 Earths").
+ */
 export function formatMass(kg: number, i18n: I18n): string {
 	if (!(kg > 0)) return MISSING_VALUE
-	const exponent = Math.floor(Math.log10(kg))
-	const mantissa = kg / 10 ** exponent
-	const power = [...String(exponent)]
-		.map((digit) => SUPERSCRIPT[Number(digit)])
-		.join("")
-	return `${i18n.significant(mantissa, 3)} × 10${power} kg`
+	if (isSimple(i18n)) return massVsEarth(kg, i18n)
+	return `${formatScientific(kg, i18n)} kg`
 }
 
 // ------------------------------------------------------------------ physics
@@ -236,6 +250,8 @@ function sizeFact(a: Body, b: Body, i18n: I18n): PairFact {
 	const [big, small] = byMeasure(a, b, (body) => body.radiusKm)
 	const ratio = big.radiusKm / small.radiusKm
 	const diameter = (body: Body) => {
+		// the simple level: a size word ("huge"), no kilometres (#51)
+		if (isSimple(i18n)) return formatSize(2 * body.radiusKm, i18n)
 		const text = i18n.quantity(sig3(2 * body.radiusKm), "kilometer")
 		return body.radiusEstimated ? i18n.t("units.approx", { value: text }) : text
 	}
@@ -261,7 +277,11 @@ function volumeFact(a: Body, b: Body, i18n: I18n): PairFact | null {
 	const [big, small] = byMeasure(a, b, (body) => body.radiusKm)
 	const ratio = (big.radiusKm / small.radiusKm) ** 3
 	if (ratio < VOLUME_FROM_RATIO) return null
-	const count = ratio >= 1000 ? Math.round(ratio) : roughly(ratio)
+	const count = isSimple(i18n)
+		? countArgs(ratio, i18n).count
+		: ratio >= 1000
+			? Math.round(ratio)
+			: roughly(ratio)
 	return fact(
 		"volume",
 		i18n,
@@ -312,7 +332,9 @@ function weightFact(a: Body, b: Body, i18n: I18n): PairFact | null {
 	const gOther = other === a ? ga : gb
 	const ratio = gOther / gHome
 	const kg = (g: number) =>
-		i18n.significant((REFERENCE_WEIGHT_KG * g) / earthGravity, 2)
+		isSimple(i18n)
+			? formatCount((REFERENCE_WEIGHT_KG * g) / earthGravity, i18n)
+			: i18n.significant((REFERENCE_WEIGHT_KG * g) / earthGravity, 2)
 	const values = {
 		...named("home", home, i18n),
 		...named("other", other, i18n),
@@ -342,10 +364,13 @@ function weightFact(a: Body, b: Body, i18n: I18n): PairFact | null {
 		"weight",
 		i18n,
 		comparison,
-		[
-			{ name: nameOf(a, i18n), text: gravity(ga) },
-			{ name: nameOf(b, i18n), text: gravity(gb) },
-		],
+		// the simple level says it in kilograms only, no m/s² (#51)
+		isSimple(i18n)
+			? []
+			: [
+					{ name: nameOf(a, i18n), text: gravity(ga) },
+					{ name: nameOf(b, i18n), text: gravity(gb) },
+				],
 		notes,
 	)
 }

@@ -204,7 +204,7 @@ describe("pairFacts", () => {
 			"Someone who weighs 30 kg on Earth would weigh 76 kg on Jupiter.",
 		)
 		expect(factsOf("earth", "jupiter", enSimple).distance.comparison).toMatch(
-			/A car driving non-stop at 100 km\/h would need [\d,]+ years\.$/,
+			/A car driving non-stop at 100 km\/h would need \d+ long human lives\.$/,
 		)
 		expect(factsOf("earth", "sun", enAdvanced).size.comparison).toBe(
 			"The Sun’s diameter is 109 times Earth’s.",

@@ -25,6 +25,8 @@ export type IntlUnit =
 	| "year"
 	| "kilometer-per-second"
 	| "kilometer-per-hour"
+	| "kilogram"
+	| "celsius"
 
 /** Decimals worth showing for a magnitude: none from 1000 up, three below 1. */
 export const fractionDigitsFor = (abs: number): number =>

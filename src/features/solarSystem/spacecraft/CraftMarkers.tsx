@@ -277,6 +277,8 @@ function CraftMarkers({ frame, craftFrame, labels }: CraftMarkersProps) {
 				const id = craftIdAt(event)
 				if (id === null) return
 				event.stopPropagation()
+				// choosing a spacecraft is a step of the view history (#46)
+				useSimStore.getState().markStep()
 				useSpacecraftStore.getState().selectCraft(id)
 			}}
 			onPointerOver={(event) => {

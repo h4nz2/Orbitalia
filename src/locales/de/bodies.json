@@ -3,15 +3,16 @@
 		"name": "Sonne",
 		"tagline": "Unser Stern",
 		"description": {
-			"simple": "Die Sonne ist ein Stern, genau wie die Sterne, die du nachts siehst. Sie wirkt nur so groß und hell, weil sie uns so nahe ist. Die Sonne ist eine riesige Kugel aus glühend heißem Gas. Sie schenkt uns Licht und Wärme – ohne sie gäbe es kein Leben auf der Erde.",
+			"simple": "Die Sonne ist ein Stern, genau wie die Sterne, die du nachts siehst. Sie sieht nur so groß und hell aus, weil sie uns so nahe ist. Die Sonne ist eine riesige Kugel aus heißem, glühendem Gas. Sie gibt uns Licht und hält uns warm. Ohne die Sonne könnte auf der Erde nichts leben.",
 			"standard": "Die Sonne ist der Stern im Zentrum unseres Sonnensystems. Sie ist eine riesige Kugel aus heißem Gas, vor allem Wasserstoff und Helium, und vereint mehr als 99,8 % der gesamten Masse des Sonnensystems. Tief in ihrem Kern verschmilzt Wasserstoff zu Helium; die dabei frei werdende Energie erreicht uns etwa 8 Minuten später als Licht und Wärme. Ihre Schwerkraft hält alle Planeten auf ihren Bahnen.",
 			"advanced": "Die Sonne ist ein Hauptreihenstern vom Spektraltyp G2V, etwa 4,6 Milliarden Jahre alt und ungefähr in der Mitte ihrer Wasserstoffbrennphase. In ihrem rund 15 Millionen °C heißen Kern verschmelzen jede Sekunde etwa 600 Millionen Tonnen Wasserstoff zu Helium; dabei werden rund 4 Millionen Tonnen Masse in Energie umgewandelt. Diese Energie braucht viele Jahrtausende, um sich durch die Strahlungs- und die Konvektionszone nach außen zu arbeiten, und legt dann die 150 Millionen km zur Erde in etwa 8 Minuten und 20 Sekunden zurück. Die Sonne rotiert differentiell: am Äquator in etwa 25 Tagen, nahe den Polen in rund 35 Tagen."
 		},
 		"facts": {
 			"simple": [
-				"Etwa 1,3 Millionen Erden würden in die Sonne passen.",
+				"Die Sonne ist so groß, dass alle Planeten zusammen in sie hineinpassen würden.",
 				"Das Sonnenlicht braucht etwa 8 Minuten bis zu uns.",
-				"Schau nie direkt in die Sonne – das kann deinen Augen schaden."
+				"Die Sonne ist viel heißer als jedes Feuer auf der Erde.",
+				"Schau nie direkt in die Sonne. Das kann deinen Augen schaden."
 			],
 			"standard": [
 				"Die Sonne ist etwa 109-mal so breit wie die Erde.",
@@ -28,7 +29,7 @@
 		},
 		"comparisons": {
 			"simple": [
-				"Wäre die Erde ein Fußball, wäre die Sonne so hoch wie ein achtstöckiges Haus."
+				"Wenn die Erde eine Orange wäre, dann wäre die Sonne so hoch wie ein Haus."
 			],
 			"standard": [
 				"Wäre die Sonne ein Wasserball mit 1 m Durchmesser, wäre die Erde eine 9 mm große Erbse in etwa 107 m Entfernung."
@@ -42,15 +43,15 @@
 		"name": "Merkur",
 		"tagline": "Der kleinste und schnellste Planet",
 		"description": {
-			"simple": "Merkur ist der kleinste Planet und der Sonne am nächsten. Er ist eine graue Felskugel voller Krater, ein bisschen wie unser Mond. Merkur saust schneller um die Sonne als jeder andere Planet. Am Tag ist es dort so heiß, dass Blei schmelzen würde, doch in der Nacht wird es eisig kalt.",
+			"simple": "Merkur ist der kleinste Planet. Er ist auch der Sonne am nächsten. Merkur ist eine graue Kugel aus Gestein, ein bisschen wie unser Mond. Er ist voller runder Löcher von Felsbrocken aus dem All, die dort eingeschlagen sind. Merkur saust schneller um die Sonne als jeder andere Planet. Am Tag ist es dort heißer als in einem Backofen. In der Nacht ist es kälter als in jeder Tiefkühltruhe.",
 			"standard": "Merkur ist der kleinste Planet und der sonnennächste; er umrundet die Sonne einmal in 88 Tagen. Er hat fast keine Atmosphäre, die Wärme festhalten könnte, darum schwankt die Temperatur an seiner Oberfläche zwischen etwa 430 °C am Tag und etwa −180 °C in der Nacht. Seine graue, von Kratern übersäte Oberfläche sieht unserem Mond sehr ähnlich. Merkur hat keine Monde.",
 			"advanced": "Merkur umkreist die Sonne in einem mittleren Abstand von 0,39 AE auf der exzentrischsten aller Planetenbahnen (e = 0,21). Er dreht sich genau dreimal um sich selbst, während er die Sonne zweimal umrundet – eine 3:2-Spin-Bahn-Resonanz. Ein Sonnentag dauert dort deshalb 176 Erdtage, also zwei volle Merkurjahre. Ein Eisenkern, der bis etwa 85 % des Radius reicht, verleiht Merkur die zweithöchste Dichte aller Planeten und ein schwaches globales Magnetfeld. Seine dünne Exosphäre kann keine Wärme halten, und in ständig beschatteten Polkratern verbirgt sich Wassereis."
 		},
 		"facts": {
 			"simple": [
-				"Ein Jahr auf Merkur dauert nur 88 Tage.",
-				"Merkur hat keine Monde.",
-				"Er ist nur wenig größer als unser Mond."
+				"Ein Jahr auf Merkur dauert weniger als 3 unserer Monate.",
+				"Auf Merkur dauert es von einem Sonnenaufgang bis zum nächsten länger als sein ganzes Jahr!",
+				"Merkur hat keine Monde."
 			],
 			"standard": [
 				"Merkur ist der schnellste Planet: Er umkreist die Sonne mit etwa 47 km pro Sekunde.",
@@ -66,7 +67,7 @@
 		},
 		"comparisons": {
 			"simple": [
-				"Wäre die Erde ein Fußball, wäre Merkur etwa so groß wie eine Orange."
+				"Wenn die Erde eine Orange wäre, dann wäre Merkur eine Walnuss. Unser Mond wäre eine Kirsche, also nicht viel kleiner."
 			],
 			"standard": ["Merkur würde etwa 18-mal in die Erde passen."],
 			"advanced": [
@@ -78,14 +79,14 @@
 		"name": "Venus",
 		"tagline": "Der heißeste Planet",
 		"description": {
-			"simple": "Die Venus ist fast so groß wie die Erde, aber ein schrecklicher Ort für einen Besuch. Dicke, giftige Wolken hüllen sie ein und halten die Wärme der Sonne fest. Deshalb ist die Venus der heißeste Planet von allen – sogar heißer als Merkur. Oft kannst du sie am Abend- oder Morgenhimmel hell leuchten sehen.",
+			"simple": "Die Venus ist fast so groß wie die Erde. Aber dort könntest du nie leben. Dicke Wolken liegen um sie wie eine schwere Decke und halten die Wärme fest. Darum ist die Venus der heißeste Planet von allen, heißer als ein Backofen. Sie ist sogar heißer als Merkur, obwohl Merkur näher an der Sonne ist. Oft kannst du die Venus am Abend- oder Morgenhimmel hell leuchten sehen.",
 			"standard": "Die Venus ist in ihrer Größe beinahe ein Zwilling der Erde, doch ihre dichte Atmosphäre aus Kohlendioxid erzeugt einen außer Kontrolle geratenen Treibhauseffekt. An der Oberfläche herrschen etwa 465 °C – heißer als auf Merkur, obwohl die Venus fast doppelt so weit von der Sonne entfernt ist – und der Luftdruck ist rund 90-mal so hoch wie auf der Erde. Wolken aus Schwefelsäure verbergen die Oberfläche. Nach dem Mond ist die Venus das hellste natürliche Objekt am Nachthimmel.",
 			"advanced": "Die Venus hat 95 % des Erddurchmessers und 82 % der Erdmasse, hat sich aber ganz anders entwickelt. Eine dichte CO₂-Atmosphäre mit einem Bodendruck von etwa 92 bar treibt einen galoppierenden Treibhauseffekt an, der die Oberfläche Tag und Nacht, von den Polen bis zum Äquator, auf etwa 465 °C hält. Die Venus rotiert rückläufig und sehr langsam: Eine siderische Umdrehung dauert 243 Erdtage, länger als ihr 225-tägiges Jahr; ein Sonnentag dauert deshalb etwa 117 Erdtage. Radarkarten der Sonde Magellan zeigten eine vulkanische Oberfläche, die nur wenige hundert Millionen Jahre alt ist."
 		},
 		"facts": {
 			"simple": [
-				"Die Venus dreht sich andersherum als die meisten Planeten – dort geht die Sonne im Westen auf.",
-				"Ein Tag auf der Venus ist länger als ihr Jahr!",
+				"Die Venus dreht sich andersherum als die meisten Planeten. Dort geht die Sonne im Westen auf.",
+				"Ein Tag auf der Venus ist länger als ihr ganzes Jahr!",
 				"Die Venus hat keine Monde."
 			],
 			"standard": [
@@ -101,7 +102,7 @@
 		},
 		"comparisons": {
 			"simple": [
-				"Wäre die Erde ein Fußball, wäre die Venus auch ein Fußball – nur ein winziges bisschen kleiner."
+				"Wenn die Erde eine Orange wäre, dann wäre die Venus auch eine Orange, nur ein bisschen kleiner."
 			],
 			"standard": [
 				"Wäre die Erde ein Fußball mit 22 cm Durchmesser, hätte die Venus 21 cm."
@@ -115,14 +116,14 @@
 		"name": "Erde",
 		"tagline": "Unser Zuhause",
 		"description": {
-			"simple": "Die Erde ist unser Zuhause und der einzige Planet, von dem wir wissen, dass es dort Leben gibt. Der größte Teil ist von Ozeanen bedeckt, darum sieht sie aus dem All blau aus. Die Erde dreht sich einmal am Tag – so entstehen Tag und Nacht. Für eine ganze Runde um die Sonne braucht sie ein Jahr.",
+			"simple": "Die Erde ist unser Zuhause. Sie ist der einzige Planet, von dem wir wissen, dass es dort Leben gibt. Der größte Teil der Erde ist vom Meer bedeckt, darum sieht sie aus dem All blau aus. Die Erde dreht sich einmal am Tag um sich selbst. So entstehen Tag und Nacht. Für eine ganze Runde um die Sonne braucht sie ein Jahr.",
 			"standard": "Die Erde ist der dritte Planet von der Sonne aus und die einzige Welt, auf der wir Leben kennen. Flüssiges Wasser bedeckt etwa 71 % ihrer Oberfläche, und eine Atmosphäre aus Stickstoff und Sauerstoff schützt uns und sorgt für milde Temperaturen. Die Erdachse ist um etwa 23,4° geneigt; das beschert uns die Jahreszeiten. Die Erde umkreist die Sonne in einem mittleren Abstand von rund 150 Millionen km, einmal in 365,25 Tagen.",
 			"advanced": "Die Erde ist der größte und dichteste der vier Gesteinsplaneten (5,51 g/cm³). Ihr flüssiger äußerer Eisenkern erzeugt ein Magnetfeld, das den Sonnenwind ablenkt, und die Plattentektonik erneuert ständig ihre Kruste. Die Neigung der Erdachse von 23,4°, stabilisiert durch unseren ungewöhnlich großen Mond, verursacht die Jahreszeiten. Die Erde umläuft die Sonne in 1 AE (149,6 Millionen km) mit einer Exzentrizität von 0,017; ihr Abstand zur Sonne schwankt deshalb nur um etwa 3 % – und am nächsten ist sie der Sonne Anfang Januar."
 		},
 		"facts": {
 			"simple": [
-				"Etwa 71 von 100 Teilen der Erdoberfläche sind Wasser.",
-				"Die Erde hat einen Mond – wir nennen ihn einfach den Mond.",
+				"Auf der Erde gibt es mehr als doppelt so viel Meer wie Land.",
+				"Die Erde hat einen Mond. Wir nennen ihn einfach den Mond.",
 				"Die Erde ist der einzige Planet, der nicht nach einem Gott benannt ist."
 			],
 			"standard": [
@@ -138,7 +139,8 @@
 		},
 		"comparisons": {
 			"simple": [
-				"Mit dem Auto bei 100 km/h ohne einen einzigen Halt um den Äquator zu fahren, würde etwa 17 Tage dauern."
+				"Wenn die Erde eine Orange wäre, dann wäre die Sonne so hoch wie ein Haus und etwa 9 Fußballfelder weit weg.",
+				"Wenn du einmal um die ganze Erde laufen würdest, ohne je anzuhalten, wärst du etwa ein Jahr lang unterwegs."
 			],
 			"standard": [
 				"Ein Flugzeug mit 900 km/h bräuchte etwa 19 Jahre bis zur Sonne."
@@ -152,15 +154,16 @@
 		"name": "Mars",
 		"tagline": "Der rote Planet",
 		"description": {
-			"simple": "Mars heißt der rote Planet, weil sein Boden mit rostrotem Staub bedeckt ist. Er ist kleiner und viel kälter als die Erde. Auf dem Mars steht der höchste Vulkan, den wir kennen, und er hat zwei winzige Monde. Roboter, die man Rover nennt, fahren auf dem Mars herum und erforschen ihn für uns.",
+			"simple": "Mars heißt der rote Planet. Sein Boden ist mit rostrotem Staub bedeckt. Mars ist kleiner als die Erde und viel kälter. Er hat den höchsten Vulkan, den wir kennen, und zwei winzige Monde. Roboter auf Rädern, die man Rover nennt, fahren auf dem Mars herum und erforschen ihn für uns.",
 			"standard": "Mars ist der vierte Planet von der Sonne aus und etwa halb so breit wie die Erde. Eisenoxid – Rost – in seinem Staub gibt ihm seine rote Farbe. Mars hat Jahreszeiten und Polkappen aus Eis, aber seine Atmosphäre ist sehr dünn, und die Durchschnittstemperatur liegt bei etwa −60 °C. Auf ihm liegen der größte Vulkan des Sonnensystems, Olympus Mons, und ein Canyon, Valles Marineris, der etwa 4000 km lang ist – ungefähr so weit wie von Lissabon nach Moskau.",
 			"advanced": "Mars hat etwa 53 % des Erddurchmessers und 38 % der Schwerkraft an der Erdoberfläche. Seine dünne CO₂-Atmosphäre mit einem Bodendruck von weniger als 1 % des irdischen kann den Planeten nicht warm halten; die Durchschnittstemperatur liegt um −60 °C. Ausgetrocknete Flusstäler, alte Seebecken und Minerale, die nur in Wasser entstehen, zeigen, dass einst flüssiges Wasser auf seiner Oberfläche floss. Mit einer Achsneigung von 25,2° und einem Tag von 24 h 37 min ähneln Tage und Jahreszeiten denen der Erde, doch jede Jahreszeit dauert etwa doppelt so lang, denn ein Marsjahr hat 687 Erdtage."
 		},
 		"facts": {
 			"simple": [
-				"Ein Tag auf dem Mars ist nur etwa 40 Minuten länger als ein Tag auf der Erde.",
-				"Mars hat zwei kleine Monde: Phobos und Deimos.",
-				"Auf dem Mars würdest du weniger als halb so viel wiegen wie auf der Erde."
+				"Ein Tag auf dem Mars ist nur etwa 40 Minuten länger als ein Tag bei uns.",
+				"Ein Jahr auf dem Mars dauert fast zwei unserer Jahre.",
+				"Auf dem Mars würdest du weniger als halb so viel wiegen wie zu Hause.",
+				"Sein größter Vulkan ist mehr als doppelt so hoch wie der höchste Berg der Erde."
 			],
 			"standard": [
 				"Olympus Mons ist etwa 22 km hoch – zweieinhalbmal so hoch wie der Mount Everest.",
@@ -175,7 +178,7 @@
 		},
 		"comparisons": {
 			"simple": [
-				"Wäre die Erde ein Fußball, wäre der Mars etwa so groß wie eine Grapefruit."
+				"Wenn die Erde eine Orange wäre, dann wäre Mars ein Tischtennisball."
 			],
 			"standard": ["Der Mars würde mehr als sechsmal in die Erde passen."],
 			"advanced": [
@@ -187,14 +190,15 @@
 		"name": "Jupiter",
 		"tagline": "Der Riese des Sonnensystems",
 		"description": {
-			"simple": "Jupiter ist der größte Planet – mehr als 1300 Erden würden in ihn hineinpassen. Er ist eine riesige Kugel aus Gas, auf der man nirgends stehen könnte. Seine Streifen sind Wolkenbänder, und sein Großer Roter Fleck ist ein Sturm, der größer ist als die ganze Erde. Jupiter hat sehr, sehr viele Monde.",
+			"simple": "Jupiter ist der größte Planet. Alle anderen Planeten zusammen würden in ihn hineinpassen. Jupiter ist eine riesige Kugel aus Gas. Es gibt dort keinen Boden, auf dem man stehen könnte. Seine Streifen sind Bänder aus Wolken. Sein Großer Roter Fleck ist ein Sturm, der größer ist als die ganze Erde. Jupiter hat sehr, sehr viele Monde.",
 			"standard": "Jupiter ist der größte Planet, elfmal so breit wie die Erde und schwerer als alle anderen Planeten zusammen. Dieser Gasriese besteht vor allem aus Wasserstoff und Helium; seine farbigen Wolkenbänder werden von schnellen Winden und seiner raschen Drehung in die Länge gezogen: Ein Tag auf Jupiter dauert weniger als 10 Stunden. Der Große Rote Fleck ist ein Sturm, breiter als die Erde, der seit mehr als 150 Jahren tobt. Seine vier größten Monde entdeckte Galileo Galilei im Jahr 1610.",
 			"advanced": "Jupiter hat 318 Erdmassen – etwa das 2,5-Fache der Masse aller anderen Planeten zusammen. Unter den Wolkenobergrenzen aus Ammoniakeis werden Wasserstoff und Helium so stark zusammengepresst, dass sich Wasserstoff tief im Inneren wie ein flüssiges Metall verhält; Ströme in dieser Schicht erzeugen das stärkste planetare Magnetfeld im Sonnensystem. Jupiter dreht sich in etwa 9 h 56 min einmal um sich selbst, schneller als jeder andere Planet, was ihn an den Polen sichtbar abplattet. Er strahlt mehr Wärme ab, als er von der Sonne empfängt – ein Überbleibsel seiner Entstehung und seiner langsamen Kontraktion."
 		},
 		"facts": {
 			"simple": [
-				"Ein Tag auf Jupiter dauert weniger als 10 Stunden – der kürzeste Tag aller Planeten.",
-				"Jupiter hat dünne, dunkle Ringe, die sehr schwer zu sehen sind.",
+				"Etwa 11 Erden nebeneinander würden quer über Jupiter reichen.",
+				"Ein Tag auf Jupiter dauert weniger als 10 Stunden. Das ist der kürzeste Tag aller Planeten.",
+				"Wenn du auf seinen Wolken stehen könntest, würdest du mehr als doppelt so viel wiegen wie zu Hause.",
 				"Sein Mond Ganymed ist größer als der Planet Merkur."
 			],
 			"standard": [
@@ -210,7 +214,7 @@
 		},
 		"comparisons": {
 			"simple": [
-				"Wäre die Erde ein Fußball, wäre Jupiter ein Ball von etwa 2,5 m Höhe – größer als ein Erwachsener."
+				"Wenn die Erde eine Orange wäre, dann wäre Jupiter fast so groß wie ein Gymnastikball."
 			],
 			"standard": ["Etwa 1321 Erden würden in Jupiter passen."],
 			"advanced": [
@@ -222,15 +226,16 @@
 		"name": "Saturn",
 		"tagline": "Der Ringplanet",
 		"description": {
-			"simple": "Saturn ist berühmt für seine wunderschönen Ringe. Sie bestehen aus Milliarden Stücken aus Eis und Gestein – manche so klein wie Sandkörner, manche so groß wie ein Haus. Saturn ist eine riesige Gaskugel und für seine Größe so leicht, dass er im Wasser schwimmen würde – wenn man eine Badewanne fände, die groß genug ist!",
+			"simple": "Saturn ist berühmt für seine wunderschönen Ringe. Die Ringe bestehen aus ganz, ganz vielen Stücken aus Eis und Gestein. Manche sind so klein wie Sandkörner. Manche sind so groß wie ein Haus. Saturn ist eine riesige Kugel aus Gas. Für seine Größe ist er so leicht, dass er im Wasser schwimmen würde, wenn du eine Badewanne fändest, die groß genug ist!",
 			"standard": "Saturn, der sechste Planet, ist der zweitgrößte Planet und der mit der geringsten Dichte: Im Durchschnitt ist er leichter als Wasser. Seine hellen Ringe sind etwa 270 000 km breit, meist aber nur etwa 10 m dick, und bestehen aus unzähligen Brocken aus Eis und Gestein. Saturn hat mehr bekannte Monde als jeder andere Planet, darunter Titan, der größer ist als Merkur und eine dichte Atmosphäre besitzt.",
 			"advanced": "Saturn hat 95 Erdmassen, aber eine mittlere Dichte von nur 0,69 g/cm³, die geringste aller Planeten. Seine schnelle Rotation (etwa 10 h 33 min) macht ihn zum am stärksten abgeplatteten Planeten: Sein Äquatordurchmesser ist etwa 10 % größer als sein Poldurchmesser. Die Hauptringe, vor allem Wassereis mit etwas Gestein, erstrecken sich über etwa 270 000 km, sind meist aber nur etwa 10 m dick – und womöglich viel jünger als Saturn selbst. Die Sonde Cassini, die Saturn von 2004 bis 2017 umkreiste, fand unter dem Eis des Mondes Enceladus einen globalen Ozean, der am Südpol durch Geysire ausbricht."
 		},
 		"facts": {
 			"simple": [
-				"Saturn hat mehr Monde als jeder andere Planet, den wir kennen.",
-				"Ein Jahr auf Saturn dauert fast 30 Erdjahre.",
-				"Sein größter Mond, Titan, hat Seen – nicht aus Wasser, sondern aus flüssigem Methan."
+				"Saturn hat mehr Monde als jeder andere Planet.",
+				"Ein Jahr auf Saturn dauert fast 30 unserer Jahre.",
+				"Die Ringe sind sehr dünn. Von der Seite gesehen verschwinden sie fast.",
+				"Sein größter Mond, Titan, hat Seen, aber keine Seen aus Wasser."
 			],
 			"standard": [
 				"Saturn ist etwa 9,5-mal so weit von der Sonne entfernt wie die Erde.",
@@ -245,7 +250,7 @@
 		},
 		"comparisons": {
 			"simple": [
-				"Wäre die Erde ein Fußball, wäre Saturn ein Ball von über 2 m Höhe – und seine Ringe wären etwa 5 m breit."
+				"Wenn die Erde eine Orange wäre, dann wäre Saturn ein bisschen kleiner als ein Gymnastikball. Seine Ringe wären so breit, wie ein Erwachsener groß ist."
 			],
 			"standard": ["Mehr als 750 Erden würden in Saturn passen."],
 			"advanced": [
@@ -257,15 +262,16 @@
 		"name": "Uranus",
 		"tagline": "Der Planet, der auf der Seite liegt",
 		"description": {
-			"simple": "Uranus ist ein kalter, blaugrüner Planet weit weg von der Sonne. Das Besondere an ihm: Er liegt auf der Seite und rollt deshalb wie ein Ball um die Sonne. Für eine Runde um die Sonne braucht Uranus 84 Jahre. Er hat dünne, dunkle Ringe und viele Monde.",
+			"simple": "Uranus ist ein kalter, blaugrüner Planet, weit weg von der Sonne. Das Besondere an ihm: Er liegt auf der Seite. Darum rollt er wie ein Ball um die Sonne. Vielleicht hat ihn vor langer Zeit etwas sehr Großes umgestoßen. Uranus hat dünne, dunkle Ringe und viele Monde.",
 			"standard": "Uranus ist der siebte Planet und viermal so breit wie die Erde. Er ist ein Eisriese: Unter einer Atmosphäre aus Wasserstoff und Helium liegt eine dicke Schicht aus Wasser-, Ammoniak- und Methaneis. Methangas gibt ihm seine blaugrüne Farbe. Uranus ist um etwa 98° gekippt und rollt deshalb auf der Seite liegend um die Sonne; jeder Pol hat etwa 42 Jahre Tag und danach 42 Jahre Nacht. Er war der erste Planet, der mit einem Teleskop entdeckt wurde – 1781 von Wilhelm Herschel.",
 			"advanced": "Wegen seiner Achsneigung von etwa 98° umkreisen die Ringe und die regulären Monde den Uranus fast senkrecht zu seiner Bahnebene, und seine Jahreszeiten sind die extremsten im Sonnensystem. Er rotiert rückläufig in 17 h 14 min. Anders als die übrigen Riesenplaneten gibt Uranus kaum innere Wärme ab, und in seiner Atmosphäre wurde die tiefste Temperatur aller Planeten gemessen, etwa −224 °C. Sein Magnetfeld ist um etwa 59° gegen die Rotationsachse geneigt und aus dem Planetenmittelpunkt verschoben. Bisher ist nur eine einzige Sonde an ihm vorbeigeflogen: Voyager 2 im Jahr 1986."
 		},
 		"facts": {
 			"simple": [
-				"Uranus hat 13 Ringe, aber sie sind dünn und dunkel.",
-				"Seine Monde sind nach Figuren aus Theaterstücken von William Shakespeare und Gedichten von Alexander Pope benannt.",
-				"Uranus hat die kälteste Luft aller Planeten."
+				"Für eine Runde um die Sonne braucht Uranus 84 unserer Jahre. Das ist ungefähr so lang wie ein langes Menschenleben.",
+				"Uranus hat die kälteste Luft aller Planeten.",
+				"Die meisten seiner Monde sind nach Figuren aus Theaterstücken von William Shakespeare benannt.",
+				"Das Sonnenlicht braucht mehr als zweieinhalb Stunden bis zu Uranus."
 			],
 			"standard": [
 				"Ein Jahr auf Uranus dauert 84 Erdjahre.",
@@ -280,7 +286,7 @@
 		},
 		"comparisons": {
 			"simple": [
-				"Wäre die Erde ein Fußball, wäre Uranus so groß wie ein großer Gymnastikball."
+				"Wenn die Erde eine Orange wäre, dann wäre Uranus ein bisschen größer als ein Basketball."
 			],
 			"standard": ["Etwa 63 Erden würden in Uranus passen."],
 			"advanced": [
@@ -292,15 +298,16 @@
 		"name": "Neptun",
 		"tagline": "Der windigste Planet",
 		"description": {
-			"simple": "Neptun ist der Planet, der am weitesten von der Sonne entfernt ist. Er ist ein tiefblauer Eisriese, sehr kalt und sehr stürmisch – seine Winde sind die schnellsten im Sonnensystem. Neptun ist so weit weg, dass man ihn ohne Teleskop nicht sehen kann. Für eine Runde um die Sonne braucht er 165 Jahre.",
+			"simple": "Neptun ist der Planet, der am weitesten von der Sonne entfernt ist. Er ist tiefblau, sehr kalt und sehr windig. Seine Winde sind die schnellsten aller Planeten. Neptun ist so weit weg, dass du ein Fernrohr brauchst, um ihn zu sehen. Für eine Runde um die Sonne braucht Neptun länger als zwei lange Menschenleben.",
 			"standard": "Neptun ist der achte und äußerste Planet, etwa 30-mal so weit von der Sonne entfernt wie die Erde. Wie Uranus ist er ein Eisriese, und Methan in seiner Atmosphäre färbt ihn blau. Neptun hat die schnellsten Winde des Sonnensystems, über 2000 km/h. Er war der erste Planet, der mit Mathematik gefunden wurde: Astronomen berechneten seine Position daraus, wie er an Uranus zerrte, und entdeckten ihn 1846.",
 			"advanced": "Neptun kreist in etwa 30 AE Abstand, wo das Sonnenlicht rund 900-mal schwächer ist als bei der Erde. Trotzdem hat er eine starke innere Wärmequelle – er strahlt etwa 2,6-mal so viel Energie ab, wie er von der Sonne erhält –, die die schnellsten auf einem Planeten gemessenen Winde von bis zu etwa 2100 km/h mit antreibt. Seine Position wurde 1846 von Urbain Le Verrier aus Störungen der Uranusbahn vorhergesagt, und Johann Galle fand ihn weniger als 1° von der berechneten Stelle entfernt. Sein größter Mond, Triton, umläuft ihn rückläufig und ist wahrscheinlich ein eingefangenes Objekt aus dem Kuipergürtel."
 		},
 		"facts": {
 			"simple": [
-				"Neptun ist der einzige Planet, den man ohne Teleskop nie sehen kann.",
-				"Ein Jahr auf Neptun dauert etwa 165 Erdjahre.",
-				"Sein größter Mond, Triton, umkreist ihn rückwärts."
+				"Nur mit deinen Augen kannst du Neptun nie sehen. Du brauchst ein Fernrohr.",
+				"Das Sonnenlicht braucht etwa 4 Stunden bis zu Neptun.",
+				"Seine Winde wehen mehr als doppelt so schnell, wie ein Flugzeug fliegt.",
+				"Sein größter Mond, Triton, kreist rückwärts um ihn."
 			],
 			"standard": [
 				"Erst 2011 hat Neptun seit seiner Entdeckung im Jahr 1846 einen vollen Umlauf vollendet.",
@@ -315,7 +322,8 @@
 		},
 		"comparisons": {
 			"simple": [
-				"Wäre die Erde ein Fußball, wäre Neptun so groß wie ein großer Gymnastikball – fast genauso groß wie Uranus."
+				"Wenn die Erde eine Orange wäre, dann wäre Neptun ein bisschen größer als ein Basketball, genau wie Uranus.",
+				"Neptun ist 30-mal so weit von der Sonne entfernt wie die Erde."
 			],
 			"standard": ["Etwa 58 Erden würden in Neptun passen."],
 			"advanced": [
@@ -325,17 +333,21 @@
 	},
 	"moon": {
 		"name": "Mond",
-		"tagline": "Der Begleiter der Erde",
+		"tagline": {
+			"simple": "Unser Nachbar im All",
+			"standard": "Der Begleiter der Erde"
+		},
 		"description": {
-			"simple": "Der Mond ist der nächste Nachbar der Erde im All. Er ist eine Kugel aus Gestein, bedeckt mit grauem Staub und Kratern. Der Mond leuchtet nicht selbst – er wirft das Licht der Sonne zurück. Zwölf Astronauten sind schon auf dem Mond herumgelaufen.",
+			"simple": "Der Mond ist unser nächster Nachbar im All. Er ist eine Kugel aus Gestein, bedeckt mit grauem Staub. Er ist voller runder Löcher, die man Krater nennt. Sie stammen von Felsbrocken aus dem All, die dort eingeschlagen sind. Der Mond leuchtet nicht selbst. Er leuchtet, weil Sonnenlicht auf ihn fällt. Zwölf Astronauten sind schon auf dem Mond herumgelaufen.",
 			"standard": "Der Mond ist der einzige natürliche Satellit der Erde, etwa ein Viertel so breit wie sie und im Mittel 384 400 km entfernt. Er braucht etwa 27,3 Tage für einen Umlauf um die Erde, und weil er sich in dieser Zeit genau einmal um sich selbst dreht, zeigt er uns immer dieselbe Seite. Seine Schwerkraft verursacht den größten Teil der Gezeiten in unseren Ozeanen. Zwischen 1969 und 1972 betraten zwölf Apollo-Astronauten seine Oberfläche.",
 			"advanced": "Der Mond entstand wahrscheinlich vor etwa 4,5 Milliarden Jahren aus Trümmern, die ein marsgroßer Körper beim Zusammenstoß mit der jungen Erde herausschleuderte. Er rotiert gebunden: Seine Drehung und sein siderischer Umlauf von 27,3 Tagen sind synchronisiert, sodass stets dieselbe Hälfte zur Erde zeigt, während der Zyklus der Mondphasen (der synodische Monat) etwa 29,5 Tage dauert. Dieselbe Gezeitenwechselwirkung überträgt langsam Drehimpuls von der Erdrotation auf die Mondbahn: Unser Tag wird länger, und der Mond entfernt sich jedes Jahr um etwa 3,8 cm."
 		},
 		"facts": {
 			"simple": [
-				"Auf dem Mond würdest du nur etwa ein Sechstel so viel wiegen wie auf der Erde.",
-				"Die Fußspuren der Astronauten sind immer noch da, weil es keinen Wind gibt, der sie verweht.",
-				"Der Mond braucht etwa einen Monat für eine Runde um die Erde."
+				"Auf dem Mond könntest du sechsmal so hoch springen wie zu Hause.",
+				"Die Fußspuren der Astronauten sind immer noch da. Es gibt keinen Wind, der sie verweht.",
+				"Der Mond braucht etwa einen Monat für eine Runde um die Erde.",
+				"Die Astronauten brauchten drei Tage, um zum Mond zu fliegen."
 			],
 			"standard": [
 				"Das Mondlicht braucht nur etwa 1,3 Sekunden bis zur Erde.",
@@ -350,7 +362,7 @@
 		},
 		"comparisons": {
 			"simple": [
-				"Wäre die Erde ein Fußball, wäre der Mond ein Tennisball in etwa 6,5 m Entfernung."
+				"Wenn die Erde eine Orange wäre, dann wäre der Mond eine Kirsche. Zwischen den beiden hätten 30 Orangen in einer Reihe Platz."
 			],
 			"standard": ["Etwa 50 Monde würden in die Erde passen."],
 			"advanced": [
@@ -360,17 +372,20 @@
 	},
 	"phobos": {
 		"name": "Phobos",
-		"tagline": "Der Marsmond auf Absturzkurs",
+		"tagline": {
+			"simple": "Der Mond, der auf den Mars fällt",
+			"standard": "Der Marsmond auf Absturzkurs"
+		},
 		"description": {
-			"simple": "Phobos ist der größere der beiden winzigen Marsmonde. Er ist ein dunkler, unförmiger Felsbrocken, der ein bisschen wie eine Kartoffel aussieht. Phobos rast so schnell um den Mars, dass er ungefähr dreimal am Tag herumkommt. Ganz langsam fällt er auf den Mars zu – und eines Tages wird er zerbrechen.",
+			"simple": "Phobos ist der größere der beiden winzigen Monde des Mars. Er ist ein dunkler, unförmiger Felsbrocken und sieht ein bisschen aus wie eine Kartoffel. Phobos saust jeden Tag dreimal um den Mars herum. Ganz langsam fällt er auf den Mars zu. Eines Tages, in sehr ferner Zukunft, wird er zerbrechen.",
 			"standard": "Phobos ist ein dunkler, kartoffelförmiger Mond von nur etwa 22 km Durchmesser, der bloß rund 6 000 km über der Marsoberfläche kreist. Für eine Runde um den Mars braucht er 7 Stunden und 39 Minuten – weniger Zeit, als sich der Planet einmal um sich selbst dreht. Vom Mars aus gesehen geht er deshalb im Westen auf und im Osten unter, oft zweimal an einem Tag. Die Schwerkraft des Mars zieht ihn langsam näher heran, um etwa 2 m pro Jahrhundert, und in rund 30 bis 50 Millionen Jahren wird Phobos wahrscheinlich zu einem Trümmerring zerrissen oder auf den Mars stürzen.",
 			"advanced": "Phobos umläuft den Mars mit einer großen Halbachse von 9 376 km, also weit innerhalb der synchronen Umlaufbahn (rund 20 400 km). Der Gezeitenwulst, den er auf dem Mars erzeugt, hinkt ihm deshalb hinterher und entzieht ihm Bahnenergie, sodass Phobos sich dem Planeten um etwa 1,8 cm pro Jahr nähert. In rund 30 bis 50 Millionen Jahren dürfte er die Roche-Grenze unterschreiten, an der die Gezeitenkräfte seine schwache Eigengravitation übertreffen: Ein locker gebundener Geröllhaufen würde sich dann zu einem Ring verteilen, ein festerer Körper könnte vorher auf dem Mars einschlagen. Die langen, parallelen Rillen auf seiner Oberfläche könnten erste Anzeichen dieser Gezeitenbelastung sein, manche sind aber vielleicht auch Spuren von Einschlagtrümmern."
 		},
 		"facts": {
 			"simple": [
-				"Phobos hat einen riesigen Krater namens Stickney, der fast halb so breit ist wie der ganze Mond.",
-				"Vom Mars aus gesehen geht Phobos im Westen auf und im Osten unter – genau andersherum als unsere Sonne und unser Mond.",
-				"Auf Phobos wärst du so leicht, dass dich ein kräftiger Sprung Hunderte Meter hoch tragen könnte."
+				"Phobos hat einen riesigen Krater, also ein rundes Loch von einem Einschlag. Er ist fast halb so breit wie der ganze Mond.",
+				"Vom Mars aus gesehen geht Phobos im Westen auf und im Osten unter. Bei unserer Sonne und unserem Mond ist es genau andersherum.",
+				"Auf Phobos würdest du fast nichts wiegen. Mit einem kräftigen Sprung kämst du höher als ein Wolkenkratzer."
 			],
 			"standard": [
 				"Der Stickney-Krater ist etwa 9 km breit – der Einschlag, der ihn schuf, hat Phobos womöglich beinahe zertrümmert.",
@@ -385,7 +400,8 @@
 		},
 		"comparisons": {
 			"simple": [
-				"Mit dem Auto auf der Autobahn wärst du in etwa einer Viertelstunde von einem Ende von Phobos zum anderen gefahren."
+				"Ein Auto auf der Autobahn könnte in etwa einer Viertelstunde von einem Ende von Phobos zum anderen fahren.",
+				"Wenn die Erde eine Orange wäre, dann wäre Phobos ein Sandkorn."
 			],
 			"standard": [
 				"Phobos sinkt pro Jahrhundert etwa um die Höhe einer Tür auf den Mars zu – langsam, aber genug, um ihn in einigen Dutzend Millionen Jahren zu zerstören."
@@ -399,15 +415,15 @@
 		"name": "Deimos",
 		"tagline": "Ein Mond wie ein Stern",
 		"description": {
-			"simple": "Deimos ist der kleinere Marsmond – nur etwa 12 km groß. Er ist mit weichem, feinem Staub bedeckt, der seine Krater auffüllt, deshalb sieht er glatt aus. Vom Mars aus ist Deimos so klein und so weit weg, dass er wie ein heller Stern aussieht. Sein Name bedeutet „Schrecken“, und sein Bruder Phobos heißt „Furcht“.",
+			"simple": "Deimos ist der kleinere Mond des Mars. Er ist winzig: Ein Auto könnte in weniger als zehn Minuten quer über ihn fahren. Weicher, feiner Staub füllt seine Löcher, darum sieht er glatt aus. Vom Mars aus ist Deimos so klein und so weit weg, dass er wie ein heller Stern aussieht. Sein Name bedeutet „Schrecken“. Sein Bruder Phobos heißt „Furcht“.",
 			"standard": "Deimos ist ein winziger, unregelmäßig geformter Mond von etwa 12 km Durchmesser, der den Mars in rund 23 500 km Abstand alle 30 Stunden umrundet. Eine dicke Staubschicht füllt viele seiner Krater, sodass er viel glatter wirkt als Phobos. Der amerikanische Astronom Asaph Hall entdeckte ihn im August 1877, wenige Tage vor Phobos, und benannt wurden beide Monde nach Phobos und Deimos – Furcht und Schrecken –, die in der griechischen Sage den Kriegsgott Ares in die Schlacht begleiten – bei den Römern hieß er Mars. Ob die beiden Monde eingefangene Asteroiden sind oder aus den Trümmern eines gewaltigen Einschlags auf dem Mars entstanden, ist bis heute umstritten.",
 			"advanced": "Deimos (etwa 16 × 12 × 10 km) kreist in 23 463 km Abstand knapp außerhalb der synchronen Umlaufbahn des Mars; die Gezeiten schieben ihn deshalb ganz langsam nach außen, statt ihn wie Phobos nach innen zu ziehen. Seine Umlaufzeit von 30,3 Stunden ist nur wenig länger als ein Marstag, deshalb wandert er sehr gemächlich über den Himmel: Er geht im Osten auf und bleibt mehr als zwei Tage lang über dem Horizont. Beide Monde sind dunkel und ähneln in ihren Spektren urtümlichen, kohlenstoffreichen Asteroiden, was für einen Einfang spricht – ihre fast kreisförmigen Bahnen nahe der Äquatorebene des Mars passen jedoch besser zu einer Entstehung aus einer Trümmerscheibe nach einem großen Einschlag. Die japanische Mission MMX soll um 2031 eine Bodenprobe von Phobos zur Erde bringen und unterwegs auch Deimos beobachten; das könnte die Frage klären."
 		},
 		"facts": {
 			"simple": [
-				"Wenn du auf Deimos hochspringen würdest, würde es viele Minuten dauern, bis du wieder landest.",
-				"Deimos wurde 1877 von einem Astronomen namens Asaph Hall entdeckt.",
-				"Deimos braucht für eine Runde um den Mars etwas länger als einen Tag."
+				"Wenn du auf Deimos hochspringen würdest, würdest du viele Minuten lang schweben, bevor du wieder landest.",
+				"Deimos wurde vor langer Zeit von einem Forscher namens Asaph Hall entdeckt.",
+				"Deimos braucht für eine Runde um den Mars etwas mehr als einen Tag."
 			],
 			"standard": [
 				"Wenn Deimos voll beleuchtet ist, strahlt er am Marshimmel etwa so hell wie die Venus an unserem.",
@@ -422,7 +438,8 @@
 		},
 		"comparisons": {
 			"simple": [
-				"Einmal um Deimos herumzulaufen wäre ungefähr so weit wie ein Marathon."
+				"Einmal um Deimos herumzulaufen wäre ungefähr so weit wie ein Marathon, ein ganz langes Wettrennen.",
+				"Wenn die Erde eine Orange wäre, dann wäre Deimos ein Staubkorn."
 			],
 			"standard": [
 				"Vom Mars aus ist Deimos kaum mehr als ein Lichtpunkt – für Astronauten sähe er aus wie ein heller Stern, der langsam über den Himmel wandert."
@@ -436,14 +453,14 @@
 		"name": "Io",
 		"tagline": "Der Vulkanmond",
 		"description": {
-			"simple": "Io ist der Ort mit den meisten Vulkanen, den wir kennen. Hunderte Vulkane spucken dort Lava und schleudern Fontänen aus Gas und Staub hoch in den Himmel. Seine gelben, orangefarbenen und roten Farben kommen vom Schwefel. Jupiter und seine anderen großen Monde kneten Io ständig durch – und dieses Kneten heizt ihn innen auf.",
+			"simple": "Io ist ein Mond des Jupiter. Er hat mehr Vulkane als jeder andere Ort, den wir kennen. Sie spucken heißes, geschmolzenes Gestein. Manche schleudern Fontänen aus Gas und Staub hoch in den Himmel. Schwefel macht Io gelb, orange und rot. Schwefel ist ein gelber Stoff, den es auch an Vulkanen auf der Erde gibt. Jupiter und seine anderen großen Monde kneten Io ständig durch, und das Kneten heizt ihn innen auf.",
 			"standard": "Io ist etwas größer als unser Mond und die vulkanisch aktivste Welt, die wir kennen: Mehr als 400 aktive Vulkane wurden dort gefunden, manche schleudern Gas und Staub Hunderte Kilometer hoch. Die Wärme dafür stammt nicht von der Sonne, sondern von Gezeiten. Ios Umlaufbahn ist im Takt mit den Monden Europa und Ganymed gekoppelt und bleibt dadurch leicht oval – so wird Io von Jupiters gewaltiger Schwerkraft ständig gestaucht und gedehnt, je nachdem, wie nah er dem Planeten gerade ist. Galileo Galilei entdeckte Io im Januar 1610 zusammen mit Europa, Ganymed und Kallisto – es waren die ersten Monde, die man bei einem anderen Planeten fand.",
 			"advanced": "Io ist in einer 1:2:4-Laplace-Resonanz gefangen: Auf jeden Umlauf von Ganymed kommen zwei von Europa und vier von Io. Die regelmäßigen Störungen halten Ios Bahn leicht exzentrisch (e ≈ 0,004), sodass sich sein Abstand zu Jupiter – und damit der Gezeitenwulst – während jedes 42,5-stündigen Umlaufs ändert; die Reibung bei dieser ständigen Verformung setzt rund 10¹⁴ W an Wärme frei. Diese Wärme treibt Ausbrüche von Silikatlava mit bis zu etwa 1 600 K an, heißer als die meiste Lava auf der heutigen Erde, dazu schwefelreiche Fontänen bis in rund 500 km Höhe; die Oberfläche erneuert sich so schnell, dass kein einziger Einschlagkrater gefunden wurde. Gase aus Ios Vulkanen speisen einen ringförmigen Schlauch aus geladenen Teilchen um Jupiter, den Io-Plasmatorus."
 		},
 		"facts": {
 			"simple": [
-				"Ios Vulkane wurden 1979 entdeckt, auf Bildern der Raumsonde Voyager 1.",
-				"Auf Io gibt es keine Einschlagkrater, weil neue Lava sie immer wieder zudeckt.",
+				"Ios Vulkane wurden zuerst auf Bildern der Raumsonde Voyager 1 entdeckt.",
+				"Auf Io gibt es keine alten Löcher von Einschlägen. Neue Lava füllt sie immer wieder auf.",
 				"Io braucht weniger als zwei Tage für eine Runde um Jupiter."
 			],
 			"standard": [
@@ -459,7 +476,7 @@
 		},
 		"comparisons": {
 			"simple": [
-				"Io ist etwas größer als unser Mond – aber statt mit ruhigem grauem Staub ist er mit ausbrechenden Vulkanen übersät."
+				"Wenn die Erde eine Orange wäre, dann wäre Io eine Kirsche, ein bisschen größer als unser Mond."
 			],
 			"standard": [
 				"Ios Vulkanfontänen steigen bis zu etwa 500 km hoch – höher, als die Internationale Raumstation über der Erde kreist."
@@ -473,15 +490,15 @@
 		"name": "Europa",
 		"tagline": "Ein Ozean unter dem Eis",
 		"description": {
-			"simple": "Europa ist etwas kleiner als unser Mond und von weißem Eis mit langen, rotbraunen Rissen bedeckt. Unter dem Eis liegt wahrscheinlich ein riesiger, tiefer Ozean aus salzigem Wasser. Das Eis sitzt darauf wie ein Deckel auf einem Topf. Weil Lebewesen auf der Erde Wasser brauchen, halten Forschende Europa für einen der besten Orte, um nach Leben außerhalb der Erde zu suchen.",
+			"simple": "Europa ist ein Mond des Jupiter, ein bisschen kleiner als unser Mond. Europa ist mit weißem Eis bedeckt, voller langer, rotbrauner Risse. Unter dem Eis liegt wahrscheinlich ein riesiges, tiefes Meer aus salzigem Wasser. Das Eis sitzt darauf wie ein Deckel auf einem Topf. Lebewesen auf der Erde brauchen Wasser. Darum halten Forschende Europa für einen der besten Orte, um nach Leben zu suchen.",
 			"standard": "Europa ist etwas kleiner als unser Mond, doch unter seiner Eiskruste – vermutlich einige Dutzend Kilometer dick – liegt ein weltumspannender Ozean aus salzigem, flüssigem Wasser, vielleicht rund 100 km tief. Die Gezeitenkräfte Jupiters verformen den Mond ständig und tragen dazu bei, dass dieser Ozean nicht zufriert. Mit Wasser, den nötigen chemischen Zutaten und einer Energiequelle gehört Europa zu den vielversprechendsten Orten für die Suche nach Leben außerhalb der Erde. Die NASA-Sonde Europa Clipper ist im Oktober 2024 gestartet und soll 2030 Jupiter erreichen, um herauszufinden, ob Europa Leben ermöglichen könnte.",
 			"advanced": "Magnetometerdaten der Raumsonde Galileo zeigten ein Magnetfeld, das von Jupiters rotierendem Feld induziert wird – am besten erklärbar durch einen elektrisch leitfähigen, salzigen Ozean unter dem Eis. Die Eiskruste, deren Dicke auf etwa 10 bis 30 km geschätzt wird, ist geologisch jung, vermutlich nur einige zehn Millionen Jahre alt, mit Rissen, Rücken und chaotischem Gelände, wo Wasser oder warmes Eis bis an die Oberfläche gelangt sein könnte. Der Ozean liegt vermutlich direkt auf einem Gesteinsboden, wo Reaktionen zwischen Wasser und Gestein chemische Energie liefern könnten, ähnlich wie an hydrothermalen Quellen auf der Erde. Europa Clipper wird Dutzende nahe Vorbeiflüge absolvieren, um die Dicke des Eises, den Salzgehalt des Ozeans und die Zusammensetzung der Oberfläche zu messen."
 		},
 		"facts": {
 			"simple": [
-				"Europas Eisoberfläche ist eine der glattesten im Sonnensystem – es gibt dort kaum hohe Berge oder große Krater.",
-				"Auf Europas Oberfläche ist es eisig kalt: etwa −160 °C in der Nähe des Äquators.",
-				"Europa braucht für eine Runde um Jupiter etwa dreieinhalb Tage."
+				"Europa ist eine der glattesten Welten, die wir kennen. Es gibt dort kaum Berge oder große Löcher.",
+				"Auf Europa ist es viel kälter als in jeder Tiefkühltruhe.",
+				"Europa braucht etwa dreieinhalb Tage für eine Runde um Jupiter."
 			],
 			"standard": [
 				"Galileo Galilei entdeckte Europa im Januar 1610, zusammen mit Jupiters drei anderen großen Monden.",
@@ -496,7 +513,8 @@
 		},
 		"comparisons": {
 			"simple": [
-				"Europas Ozean ist vielleicht so tief, dass etwa zehn übereinandergestapelte Mount Everests hineinpassen würden."
+				"Europas Meer ist vielleicht so tief wie zehn der höchsten Berge der Erde, übereinandergestapelt.",
+				"Wenn die Erde eine Orange wäre, dann wäre Europa eine kleine Kirsche."
 			],
 			"standard": [
 				"Europa ist kleiner als unser Mond, doch sein verborgener Ozean enthält vielleicht etwa doppelt so viel Wasser wie alle Ozeane der Erde."
@@ -510,14 +528,14 @@
 		"name": "Ganymed",
 		"tagline": "Der größte Mond von allen",
 		"description": {
-			"simple": "Ganymed ist der größte Mond im ganzen Sonnensystem. Er ist sogar größer als der Planet Merkur! Ganymed besteht aus Gestein und Eis, und tief unter seiner Oberfläche verbirgt sich wahrscheinlich ein Ozean. Er ist der einzige Mond, von dem wir wissen, dass er selbst ein Magnetfeld erzeugt – genau wie die Erde.",
+			"simple": "Ganymed ist ein Mond des Jupiter. Er ist der größte Mond von allen. Er ist sogar größer als der Planet Merkur! Ganymed besteht aus Gestein und Eis. Tief unter dem Boden liegt wahrscheinlich ein verborgenes Meer. Ganymed ist außerdem ein riesiger Magnet, genau wie die Erde. Kein anderer Mond ist das.",
 			"standard": "Ganymed ist der größte Mond des Sonnensystems: Mit 5 268 km Durchmesser ist er breiter als der Planet Merkur, hat aber weniger als die Hälfte von dessen Masse. Er ist der einzige bekannte Mond mit einem eigenen Magnetfeld, das die Raumsonde Galileo 1996 entdeckte. Dieses Feld lässt Polarlichter leuchten, und wie diese hin und her schwanken, verriet dem Hubble-Weltraumteleskop einen salzigen Ozean tief unter dem Eis. Die ESA-Sonde JUICE, 2023 gestartet, soll 2031 bei Jupiter ankommen und 2034 in eine Umlaufbahn um Ganymed einschwenken.",
 			"advanced": "Ganymed ist vollständig differenziert, mit einem eisenreichen Kern, einem Gesteinsmantel und dicken Schichten aus Eis und Wasser; Konvektion im flüssigen Eisenkern treibt vermutlich ein eigenes Dipolfeld von etwa 720 nT am Äquator an. Dieses Feld schafft eine kleine eigene Magnetosphäre innerhalb der viel größeren Magnetosphäre Jupiters. 2015 zeigte Hubble, dass Ganymeds Polarlichtovale weniger stark schwanken als erwartet, wenn Jupiters Feld über ihn hinwegstreicht – weil ein leitfähiger Salzwasserozean, vermutlich etwa 150 km unter der Oberfläche, ein Gegenfeld induziert, das die Änderung abschwächt. JUICE soll als erste Raumsonde einen anderen Mond als unseren umkreisen: Ab Dezember 2034 wird sie von einer Umlaufbahn um Ganymed aus sein Magnetfeld, sein Inneres und seine Eiskruste vermessen."
 		},
 		"facts": {
 			"simple": [
-				"Ganymed wurde vor mehr als 400 Jahren entdeckt, 1610, von Galileo Galilei.",
-				"Ganymed hat leuchtende Lichter nahe seinen Polen, sogenannte Polarlichter – wie die Nordlichter auf der Erde.",
+				"Galileo Galilei hat Ganymed vor sehr, sehr langer Zeit entdeckt, mit einem der allerersten Fernrohre.",
+				"Am Himmel von Ganymed gibt es leuchtende Lichter, wie die Nordlichter auf der Erde.",
 				"Ganymed braucht etwa eine Woche für eine Runde um Jupiter."
 			],
 			"standard": [
@@ -532,7 +550,10 @@
 			]
 		},
 		"comparisons": {
-			"simple": ["Ganymed ist etwa anderthalbmal so breit wie unser Mond."],
+			"simple": [
+				"Wenn die Erde eine Orange wäre, dann wäre Ganymed eine Walnuss, genau wie Merkur.",
+				"Ganymed ist etwa anderthalbmal so breit wie unser Mond."
+			],
 			"standard": [
 				"Ganymed ist größer als der Planet Merkur und hat sogar ein eigenes Magnetfeld mit Polarlichtern – ein Mond, der sich wie ein kleiner Planet benimmt."
 			],
@@ -543,16 +564,19 @@
 	},
 	"callisto": {
 		"name": "Kallisto",
-		"tagline": "Die uralte Kraterwelt",
+		"tagline": {
+			"simple": "Der alte Mond voller Krater",
+			"standard": "Die uralte Kraterwelt"
+		},
 		"description": {
-			"simple": "Kallisto ist der zweitgrößte Mond des Jupiter und fast so groß wie der Planet Merkur. Seine dunkle Oberfläche ist von oben bis unten mit Kratern übersät. Seit etwa 4 Milliarden Jahren hat er sich kaum verändert – er ist wie ein uraltes Tagebuch aller Gesteinsbrocken, die auf ihn gestürzt sind. Kallisto ist weit weg von Jupiters gefährlicher Strahlung, deshalb könnten Astronauten dort eines Tages eine Station bauen.",
+			"simple": "Kallisto ist der zweitgrößte Mond des Jupiter. Er ist fast so groß wie der Planet Merkur. Sein dunkler Boden ist voller Krater, das sind runde Löcher von Felsbrocken aus dem All, die dort eingeschlagen sind. Schon lange vor den Dinosauriern sah Kallisto fast so aus wie heute. Darum ist er wie ein sehr altes Tagebuch der Felsbrocken aus dem All. Er ist weit weg von Jupiters gefährlichen Strahlen. Darum könnten Astronauten dort eines Tages eine Station bauen.",
 			"standard": "Kallisto ist der drittgrößte Mond im Sonnensystem und fast genau so breit wie Merkur. Seine Oberfläche ist so dicht mit Kratern bedeckt, dass kaum Platz für neue bleibt, und sie hat sich in etwa 4 Milliarden Jahren kaum verändert, denn keine Vulkane und keine wandernden Platten löschen die Krater aus. Seine größte Einschlagnarbe, das Valhalla-Becken, hat ein helles Zentrum von etwa 600 km Durchmesser, umgeben von Ringen, die bis zu 1 800 km weit von seiner Mitte reichen. Weil Kallisto außerhalb von Jupiters stärksten Strahlungsgürteln kreist, schlug eine NASA-Studie ihn als möglichen Stützpunkt für künftige menschliche Entdecker vor.",
 			"advanced": "Kallistos Oberfläche ist mit Kratern gesättigt – neue Einschläge löschen vor allem ältere aus –, und die Kraterdichte spricht für ein Oberflächenalter von rund 4 Milliarden Jahren, das höchste unter den Galileischen Monden. Anders als Io, Europa und Ganymed gehört Kallisto nicht zur Laplace-Resonanz und wird durch Gezeiten kaum aufgeheizt; sein Inneres scheint nur teilweise differenziert zu sein, ein Gemisch aus Gestein und Eis. Dennoch maß die Raumsonde Galileo ein induziertes Magnetfeld, das auf einen salzigen Ozean etwa 150 bis 200 km unter der Oberfläche hindeuten könnte. In rund 1,9 Millionen km Abstand von Jupiter beträgt die Strahlendosis an der Oberfläche nur etwa 0,1 mSv pro Tag – deshalb wählte die NASA-Studie HOPE von 2003 Kallisto als Ziel einer möglichen bemannten Mission mit Oberflächenstation."
 		},
 		"facts": {
 			"simple": [
-				"Galileo Galilei entdeckte Kallisto im Januar 1610 mit einem der allerersten Fernrohre.",
-				"Auf Kallisto gibt es keine hohen Berge oder Vulkane – fast nur Krater.",
+				"Kallisto war einer der ersten vier Monde, die man je bei einem anderen Planeten gefunden hat.",
+				"Auf Kallisto gibt es keine großen Berge und keine Vulkane, sondern fast nur Krater.",
 				"Kallisto braucht mehr als zwei Wochen für eine Runde um Jupiter."
 			],
 			"standard": [
@@ -567,7 +591,9 @@
 			]
 		},
 		"comparisons": {
-			"simple": ["Kallisto ist fast genau so breit wie der Planet Merkur."],
+			"simple": [
+				"Wenn die Erde eine Orange wäre, dann wäre Kallisto eine Walnuss, fast genau so groß wie Merkur."
+			],
 			"standard": [
 				"Kallistos Krater sind älter als die ältesten bekannten Fossilien der Erde – sein Gesicht hat sich seit etwa 4 Milliarden Jahren kaum verändert."
 			],
@@ -580,15 +606,15 @@
 		"name": "Mimas",
 		"tagline": "Der Todesstern-Mond",
 		"description": {
-			"simple": "Mimas ist ein kleiner Eismond des Saturn. Auf einer Seite hat er einen riesigen Krater – deshalb sieht er fast aus wie der Todesstern aus den Star-Wars-Filmen. Der Einschlag, der diesen Krater geschlagen hat, hätte Mimas beinahe zerbrochen. Inzwischen glauben Forschende sogar, dass sich tief unter seiner Eiskruste ein verborgener Ozean befinden könnte.",
+			"simple": "Mimas ist ein kleiner, eisiger Mond des Saturn. Auf einer Seite hat er einen riesengroßen Krater, ein rundes Loch von einem Einschlag. Darum sieht er fast aus wie der Todesstern aus den Star-Wars-Filmen. Der Einschlag hätte Mimas beinahe zerbrochen. Forschende glauben, dass tief unter seinem Eis vielleicht sogar ein verborgenes Meer liegt.",
 			"standard": "Mimas hat nur etwa 396 km Durchmesser, doch sein größter Krater, Herschel, ist 139 km breit – rund ein Drittel des ganzen Mondes. Mit seinen hohen Wällen und dem Zentralberg lässt Herschel Mimas wie den Todesstern aus Star Wars aussehen. Mimas umrundet Saturn in nur 22,6 Stunden, und seine Schwerkraft hilft, die Cassinische Teilung – die dunkle Lücke zwischen den beiden hellsten Saturnringen – weitgehend frei von Eisteilchen zu halten. 2024 berichteten Forschende, die winzige, von der Raumsonde Cassini gemessene Schwankungen in der Umlaufbahn von Mimas untersucht hatten, dass sich unter seinem Eis ein junger Ozean verbergen könnte.",
 			"advanced": "Mimas (mittlerer Durchmesser 396 km, Dichte 1,15 g/cm³) besteht überwiegend aus Wassereis und ist der kleinste der großen, runden Saturnmonde. Der Krater Herschel – 139 km breit, mit rund 5 km hohen Wällen und einem etwa 6 km hohen Zentralberg – zeugt von einem Einschlag, der den Mond fast zertrümmert hätte. Eisteilchen am Innenrand der Cassinischen Teilung umrunden Saturn genau zweimal, während Mimas einmal umläuft; diese 2:1-Resonanz schaukelt ihre Bahnen auf und hält die Lücke weitgehend frei. 2024 zeigten Lainey und Kollegen, dass sich die Präzession der Mimas-Bahn und die Libration des Mondes am besten durch einen globalen Ozean 20–30 km unter der Oberfläche erklären lassen, der wahrscheinlich jünger als 25 Millionen Jahre ist – so jung, dass er auf der alten, verkraterten Oberfläche noch keine Spuren hinterlassen hat; manche Fachleute halten die Belege allerdings für indirekt."
 		},
 		"facts": {
 			"simple": [
-				"Mimas braucht für eine Runde um Saturn weniger als einen Erdentag.",
-				"Mimas besteht vor allem aus Eis – wie ein riesiger Schneeball.",
-				"Auf Mimas könntest du mehr als 100-mal so hoch springen wie auf der Erde."
+				"Mimas braucht für eine Runde um Saturn weniger als einen unserer Tage.",
+				"Mimas besteht vor allem aus Eis, wie ein riesiger Schneeball.",
+				"Auf Mimas könntest du so hoch springen wie ein hoher Turm."
 			],
 			"standard": [
 				"Der Krater Herschel ist nach William Herschel benannt, der Mimas 1789 entdeckte.",
@@ -603,7 +629,8 @@
 		},
 		"comparisons": {
 			"simple": [
-				"Wäre Mimas ein Fußball, dann wäre der Herschel-Krater ungefähr so groß wie ein Keks."
+				"Wenn Mimas ein Fußball wäre, dann wäre sein riesiger Krater ungefähr so breit wie ein Keks.",
+				"Wenn die Erde eine Orange wäre, dann wäre Mimas ein Stecknadelkopf."
 			],
 			"standard": [
 				"Hätte die Erde einen im Verhältnis so großen Krater wie Herschel auf Mimas, wäre er etwa 4 500 km breit – breiter als Australien."
@@ -615,17 +642,20 @@
 	},
 	"enceladus": {
 		"name": "Enceladus",
-		"tagline": "Der Geysir-Mond",
+		"tagline": {
+			"simple": "Der Springbrunnen-Mond",
+			"standard": "Der Geysir-Mond"
+		},
 		"description": {
-			"simple": "Enceladus ist ein kleiner, strahlend weißer Mond des Saturn. Unter seiner Eisschale liegt ein Ozean aus salzigem Wasser. Am Südpol schießt Wasser wie aus riesigen Springbrunnen aus langen Spalten und fliegt weit hinaus ins All. Dabei kommt so viel zusammen, dass daraus sogar einer der Saturnringe entsteht.",
+			"simple": "Enceladus ist ein kleiner, strahlend weißer Mond des Saturn. Unter seinem Eis liegt ein Meer aus salzigem Wasser. An seinem Südpol schießt Wasser aus langen Spalten, wie aus riesigen Springbrunnen. Das Wasser fliegt weit hinaus ins All. Dabei sprüht so viel heraus, dass daraus einer der Saturnringe entsteht.",
 			"standard": "Enceladus misst nur etwa 504 km, ist aber eine der aktivsten Welten im Sonnensystem. Aus vier langen Spalten nahe seinem Südpol, den sogenannten „Tigerstreifen“, schießen Fontänen aus Wasserdampf und Eiskörnchen mit etwa 400 m/s (1 440 km/h) ins All. Das Wasser stammt aus einem salzigen Ozean unter dem Eis, und ein großer Teil davon verteilt sich entlang der Mondbahn und bildet Saturns breiten E-Ring. Die NASA-Sonde Cassini entdeckte die Fontänen 2005 und flog später mitten hindurch, um sie zu „kosten“.",
 			"advanced": "Enceladus verbirgt unter einer im Mittel etwa 20–25 km dicken Eisschale einen globalen Salzwasserozean; am Südpol ist das Eis nur wenige Kilometer dick. Flüssig bleibt er vor allem durch Gezeitenreibung: Eine 2:1-Bahnresonanz mit Dione erhält die kleine Bahnexzentrizität von Enceladus (etwa 0,005), sodass Saturns Gezeiten den Mond im Lauf jedes Umlaufs unterschiedlich stark verformen. In den Fontänen und in Eiskörnern des E-Rings fand Cassini Salze, Siliziumdioxid-Nanopartikel, die auf heiße Reaktionen zwischen Wasser und Gestein am Meeresboden hindeuten, molekularen Wasserstoff, vielfältige organische Moleküle und – wie 2023 berichtet – Phosphate. Damit gilt der Ozean von Enceladus als einer der vielversprechendsten Orte für die Suche nach Leben jenseits der Erde."
 		},
 		"facts": {
 			"simple": [
-				"Enceladus gehört zu den hellsten Dingen im Sonnensystem – sein frisches Eis wirft den größten Teil des Sonnenlichts zurück.",
-				"Die Raumsonde Cassini ist mitten durch die Wasserfontänen geflogen und hat sie „gekostet“.",
-				"Auf der Oberfläche ist es eiskalt: etwa −200 °C."
+				"Enceladus gehört zu den hellsten Dingen im All. Sein Eis glänzt so hell wie frischer Schnee.",
+				"Eine Raumsonde namens Cassini ist mitten durch das sprühende Wasser geflogen und hat es „gekostet“.",
+				"Auf Enceladus ist es viel kälter als in jeder Tiefkühltruhe."
 			],
 			"standard": [
 				"Bei ihrem nächsten Vorbeiflug im Jahr 2008 kam Cassini bis auf etwa 25 km an die Oberfläche von Enceladus heran.",
@@ -640,7 +670,8 @@
 		},
 		"comparisons": {
 			"simple": [
-				"Die Wasserfontänen von Enceladus schießen schneller hinaus, als ein Passagierflugzeug fliegt."
+				"Das Wasser von Enceladus schießt schneller hinaus, als ein Flugzeug fliegt.",
+				"Wenn die Erde eine Orange wäre, dann wäre Enceladus ein kleines Pfefferkorn."
 			],
 			"standard": [
 				"Enceladus ist nur etwa so breit wie die Strecke von Berlin nach München – und versprüht doch genug Wasser ins All, um einen ganzen Saturnring zu speisen."
@@ -654,7 +685,7 @@
 		"name": "Tethys",
 		"tagline": "Die vernarbte Eiskugel",
 		"description": {
-			"simple": "Tethys ist ein Mond des Saturn, der fast ganz aus Eis besteht. Er hat einen riesigen Krater namens Odysseus und einen gewaltigen Graben namens Ithaca Chasma, der sich weit um den Mond herumzieht. Zwei winzige Monde reisen auf derselben Bahn wie Tethys – einer vorneweg und einer hinterher.",
+			"simple": "Tethys ist ein Mond des Saturn. Er besteht fast ganz aus Eis. Er hat einen riesigen Krater namens Odysseus, ein rundes Loch von einem Einschlag. Ein gewaltiger Riss zieht sich weit um den Mond herum. Zwei winzige Monde reisen auf demselben Weg wie Tethys, einer vorneweg und einer hinterher.",
 			"standard": "Tethys hat einen Durchmesser von etwa 1 062 km und besteht fast vollständig aus Wassereis – seine Dichte (0,98 g/cm³) ist sogar etwas geringer als die von flüssigem Wasser. Sein größter Krater, Odysseus, ist etwa 400 km breit, mehr als ein Drittel des Monddurchmessers. Ein gewaltiges Grabensystem, Ithaca Chasma, etwa 100 km breit und mehr als 2 000 km lang, zieht sich rund drei Viertel um Tethys herum. Zwei winzige Monde, Telesto und Calypso, teilen sich seine Bahn: Einer läuft etwa 60° voraus, der andere etwa 60° hinterher.",
 			"advanced": "Mit einer Dichte von 0,98 g/cm³ besteht Tethys fast aus reinem Wassereis mit nur wenig Gestein – die geringste Dichte unter den großen Saturnmonden. Odysseus (etwa 400 km) ist für seine Größe flach, weil das Eis darunter im Lauf der Zeit langsam nachgeflossen ist. Ithaca Chasma, bis zu etwa 3 km tief, könnte entstanden sein, als ein früher Ozean gefror und das sich ausdehnende Eis die Kruste aufriss – oder es hängt mit dem Odysseus-Einschlag zusammen. Telesto und Calypso sitzen in den Lagrange-Punkten L4 und L5 von Tethys, wo die gemeinsame Schwerkraft von Saturn und Tethys kleine Körper im Gleichschritt mit dem größeren Mond hält."
 		},
@@ -662,7 +693,7 @@
 			"simple": [
 				"Tethys braucht für eine Runde um Saturn weniger als zwei Tage.",
 				"Tethys ist einer der hellsten Monde, weil sein Eis so sauber ist.",
-				"Die beiden kleinen Reisebegleiter von Tethys sind jeweils nur etwa so breit wie eine große Stadt."
+				"Seine beiden kleinen Reisebegleiter sind jeweils nur etwa so breit wie eine große Stadt."
 			],
 			"standard": [
 				"Giovanni Domenico Cassini entdeckte Tethys 1684 – im selben Jahr wie Dione.",
@@ -677,7 +708,8 @@
 		},
 		"comparisons": {
 			"simple": [
-				"Tethys ist für seine Größe so leicht, dass er in einer riesigen Badewanne wie ein Eiswürfel schwimmen würde."
+				"Tethys ist für seine Größe so leicht, dass er wie ein Eiswürfel schwimmen würde, in einer Badewanne, die groß genug ist.",
+				"Wenn die Erde eine Orange wäre, dann wäre Tethys eine Erbse."
 			],
 			"standard": [
 				"Ithaca Chasma ist mehr als viermal so lang wie der Grand Canyon und zieht sich rund drei Viertel um den ganzen Mond."
@@ -691,15 +723,15 @@
 		"name": "Dione",
 		"tagline": "Der Mond der Eisklippen",
 		"description": {
-			"simple": "Dione ist ein Eismond des Saturn. Auf den ersten Bildern entdeckten Forschende dünne weiße Streifen und rätselten, was das sein könnte. Spätere Nahaufnahmen zeigten: Es sind riesige, helle Klippen aus Eis. Zwei winzige Monde reisen auf Diones Bahn um Saturn mit – einer vorneweg und einer hinterher.",
+			"simple": "Dione ist ein eisiger Mond des Saturn. Auf den ersten Bildern sahen Forschende dünne weiße Linien und rätselten, was das ist. Spätere Bilder aus der Nähe zeigten: Es sind riesige, helle Klippen aus Eis. Zwei winzige Monde reisen auf Diones Weg um Saturn mit, einer vorneweg und einer hinterher.",
 			"standard": "Dione hat einen Durchmesser von etwa 1 123 km und besteht aus Gestein und Eis. Bilder der Voyager-Sonden um 1980 zeigten auf einer Seite helle, zarte Schlieren; 2004–2005 enthüllte die Raumsonde Cassini, dass dieses „wispy terrain“ in Wahrheit ein Netz aus Gräben mit Hunderte Meter hohen Eisklippen ist. Zwei kleine Monde, Helene und Polydeuces, teilen sich Diones Bahn – einer etwa 60° voraus, einer etwa 60° dahinter. Messungen von Diones Schwerefeld deuten darauf hin, dass tief unter dem Eis noch ein Ozean existieren könnte.",
 			"advanced": "Dione (Dichte 1,48 g/cm³) besteht, nach Masse gerechnet, etwa je zur Hälfte aus Gestein und Wassereis. Die hellen Schlieren auf der nachlaufenden Hemisphäre sind tektonische Bruchzonen (Chasmata), deren steile Wände frisches, sauberes Eis freilegen. Dione steht mit Enceladus in einer 1:2-Bahnresonanz, die die Bahn von Enceladus leicht exzentrisch hält und so dessen Geysire mit antreibt. Modellrechnungen von Beuthe und Kollegen (2016) mit Schwere- und Formdaten von Cassini sprechen für eine etwa 100 km dicke Eisschale, die auf einem mehrere Dutzend Kilometer tiefen Ozean schwimmt – plausibel, aber bisher nicht durch direkte Beobachtung bestätigt."
 		},
 		"facts": {
 			"simple": [
 				"Dione braucht für eine Runde um Saturn weniger als drei Tage.",
-				"Auf Dione ist es etwa −186 °C kalt – so kalt, dass das Eis dort hart wie Stein ist.",
-				"Um Dione gibt es ein kleines bisschen Sauerstoff, aber viel zu wenig zum Atmen."
+				"Auf Dione ist es so kalt, dass das Eis dort hart wie Stein ist.",
+				"Um Dione gibt es ein kleines bisschen Sauerstoff, das Gas, das wir atmen. Aber es ist viel zu wenig zum Atmen."
 			],
 			"standard": [
 				"Giovanni Domenico Cassini entdeckte Dione 1684, nur wenige Wochen nach Tethys.",
@@ -714,7 +746,8 @@
 		},
 		"comparisons": {
 			"simple": [
-				"Dione ist ungefähr so weit von Saturn entfernt wie unser Mond von der Erde."
+				"Dione ist ungefähr so weit von Saturn entfernt wie unser Mond von der Erde.",
+				"Wenn die Erde eine Orange wäre, dann wäre Dione eine Erbse."
 			],
 			"standard": [
 				"Diones Eisklippen sind Hunderte Meter hoch – so hoch wie Wolkenkratzer – und so hell, dass sie aus der Ferne wie zarte Reifschleier aussahen."
@@ -728,15 +761,15 @@
 		"name": "Rhea",
 		"tagline": "Ein Hauch von Sauerstoff",
 		"description": {
-			"simple": "Rhea ist der zweitgrößte Mond des Saturn. Er ist eine gefrorene Kugel aus Eis mit etwas Gestein im Inneren und voller alter Krater. Um Rhea herum gibt es ein kleines bisschen Sauerstoff – das Gas, das wir atmen. Aber es ist so wenig, dass du es niemals atmen könntest.",
+			"simple": "Rhea ist der zweitgrößte Mond des Saturn. Er ist eine gefrorene Kugel aus Eis mit etwas Gestein im Inneren. Er ist voller alter Krater, runder Löcher von Einschlägen. Um Rhea herum gibt es ein kleines bisschen Sauerstoff, das Gas, das wir atmen. Aber es ist so wenig, dass du es niemals atmen könntest.",
 			"standard": "Rhea hat einen Durchmesser von etwa 1 527 km und ist nach Titan der zweitgrößte Saturnmond. Er besteht zu etwa drei Vierteln aus Eis und zu einem Viertel aus Gestein, seine Oberfläche ist zwischen −174 und −220 °C kalt und von uralten Kratern übersät, darunter das rund 400 km breite Becken Tirawa. 2010 gaben Forschende bekannt, dass die NASA-Sonde Cassini um Rhea eine extrem dünne „Exosphäre“ aus Sauerstoff und Kohlendioxid nachgewiesen hatte. Laut NASA war es das erste Mal, dass eine Raumsonde Moleküle einer Sauerstoffatmosphäre bei einer anderen Welt als der Erde direkt eingefangen hat.",
 			"advanced": "Rhea (Dichte 1,24 g/cm³) ist eine kalte, stark verkraterte Mischung aus etwa drei Vierteln Eis und einem Viertel Gestein (nach Masse). Seine Exosphäre, die Cassinis Instrumente bei Vorbeiflügen 2005, 2007 und 2010 nachwiesen, enthält Sauerstoff und Kohlendioxid im Verhältnis von etwa 5 zu 2 – mit nur rund 100 000 bis 1 000 000 Molekülen pro cm³ nahe der Oberfläche. Der Sauerstoff entsteht durch Radiolyse: Geladene Teilchen, die in Saturns Magnetfeld gefangen sind, treffen auf die Eisoberfläche, zerlegen Wassermoleküle und setzen Sauerstoff frei. Woher das Kohlendioxid stammt, ist weniger klar – vielleicht aus Trockeneis, das seit der Entstehung des Mondes eingeschlossen ist, oder aus bestrahltem organischem Material an der Oberfläche."
 		},
 		"facts": {
 			"simple": [
 				"Rhea braucht für eine Runde um Saturn etwa viereinhalb Tage.",
-				"Auf Rhea kann es bis zu etwa −220 °C kalt werden.",
-				"Rhea wurde vor mehr als 350 Jahren entdeckt, im Jahr 1672."
+				"Auf Rhea ist es viel, viel kälter als in jeder Tiefkühltruhe.",
+				"Rhea wurde vor langer Zeit entdeckt, als die Menschen noch mit Pferd und Kutsche reisten."
 			],
 			"standard": [
 				"Giovanni Domenico Cassini entdeckte Rhea am 23. Dezember 1672.",
@@ -750,7 +783,10 @@
 			]
 		},
 		"comparisons": {
-			"simple": ["Etwa acht Rheas nebeneinander wären so breit wie die Erde."],
+			"simple": [
+				"Etwa acht Rheas nebeneinander würden quer über die Erde reichen.",
+				"Wenn die Erde eine Orange wäre, dann wäre Rhea eine Erbse."
+			],
 			"standard": [
 				"Ein einziger Atemzug Luft auf der Erde enthält mehr Sauerstoffmoleküle als ein Würfel aus Rheas dünner Exosphäre mit mehr als einem Kilometer Kantenlänge."
 			],
@@ -761,16 +797,19 @@
 	},
 	"titan": {
 		"name": "Titan",
-		"tagline": "Eine Welt mit Methanregen",
+		"tagline": {
+			"simple": "Der Mond mit Regen und Seen",
+			"standard": "Eine Welt mit Methanregen"
+		},
 		"description": {
-			"simple": "Titan ist der größte Mond des Saturn – er ist sogar größer als der Planet Merkur. Er ist der einzige Mond mit einer dichten Lufthülle. Auf Titan regnet es, und es gibt Flüsse, Seen und Meere. Aber sie bestehen nicht aus Wasser: Bei etwa −179 °C ist Wasser steinhart gefroren, deshalb sind Regen und Meere aus flüssigem Methan – einem Gas, das wir auf der Erde zum Kochen und Heizen verbrennen.",
+			"simple": "Titan ist der größte Mond des Saturn. Er ist sogar größer als der Planet Merkur. Titan ist der einzige Mond, der in dicke Luft gehüllt ist. Auf Titan regnet es, und es gibt Flüsse, Seen und Meere. Aber sie sind nicht aus Wasser. Titan ist so kalt, dass Wasser dort steinhart gefroren ist. Der Regen und die Meere bestehen aus einem Gas, mit dem man bei uns am Gasherd kocht. Auf Titan ist es so kalt, dass dieses Gas flüssig wird, wie Wasser.",
 			"standard": "Titan hat einen Durchmesser von etwa 5 150 km – er ist der größte Saturnmond, der zweitgrößte Mond im Sonnensystem und größer als der Planet Merkur. Er ist der einzige Mond mit einer dichten Atmosphäre, die vor allem aus Stickstoff besteht; der Druck an seiner Oberfläche ist etwa 1,5-mal so hoch wie auf der Erde. Bei rund −179 °C übernimmt Methan die Rolle, die auf der Erde das Wasser spielt: Es bildet Wolken, fällt als Regen, gräbt Flüsse und füllt Seen und Meere wie Kraken Mare und Ligeia Mare. Im Januar 2005 landete die europäische Sonde Huygens auf Titan – bis heute die fernste Landung überhaupt –, und NASAs Drehflügler Dragonfly soll im Juli 2028 starten und 2034 ankommen.",
 			"advanced": "Titan (Durchmesser 5 150 km, Dichte 1,88 g/cm³) ist etwa 6 % breiter als Merkur, hat aber nur rund 40 % seiner Masse. Seine Stickstoffatmosphäre enthält nahe dem Boden etwa 5 % Methan; bei rund 1,45 bar und 94 K ist sie ungefähr viermal so dicht wie die Luft auf Meereshöhe der Erde. Sonnenlicht spaltet Methan in der oberen Atmosphäre und erzeugt so den orangefarbenen organischen Dunst und schwerere Kohlenwasserstoffe wie Ethan – das Methan muss also irgendwie nachgeliefert werden, möglicherweise aus dem Inneren. Lange galt Titan als Welt mit globalem Wasserozean, doch eine Neuauswertung von Cassini-Bahnverfolgungsdaten aus dem Jahr 2025 spricht eher für dickes, breiiges Hochdruckeis mit Taschen aus flüssigem Wasser – die Frage ist noch offen."
 		},
 		"facts": {
 			"simple": [
-				"Die Sonde Huygens ist 2005 auf Titan gelandet – noch nie ist eine Raumsonde weiter von der Erde entfernt gelandet.",
-				"Titan ist in orangefarbenen Dunst gehüllt, deshalb sehen normale Kameras seine Oberfläche aus dem All nicht.",
+				"Eine Raumsonde namens Huygens ist auf Titan gelandet. Noch nie ist eine Raumsonde weiter weg von der Erde gelandet.",
+				"Titan ist in orangefarbenen Dunst gehüllt. Normale Kameras können seinen Boden aus dem All nicht sehen.",
 				"Titan braucht etwa 16 Tage für eine Runde um Saturn."
 			],
 			"standard": [
@@ -786,7 +825,8 @@
 		},
 		"comparisons": {
 			"simple": [
-				"Auf Titan ist die Luft so dicht und die Schwerkraft so schwach, dass ein Mensch mit an die Arme geschnallten Flügeln vielleicht fliegen könnte."
+				"Auf Titan ist die Luft dick, und du wärst sehr leicht. Mit Flügeln an den Armen könntest du dort vielleicht sogar fliegen!",
+				"Wenn die Erde eine Orange wäre, dann wäre Titan eine Walnuss."
 			],
 			"standard": [
 				"Titan ist außer der Erde der einzige bekannte Ort mit Flüssen, Seen und Meeren an der Oberfläche – nur sind sie dort mit flüssigem Methan und Ethan bei etwa −179 °C gefüllt."
@@ -800,15 +840,15 @@
 		"name": "Hyperion",
 		"tagline": "Der taumelnde Schwamm",
 		"description": {
-			"simple": "Hyperion ist ein seltsamer Mond des Saturn. Er ist nicht rund, sondern eher wie eine Kartoffel geformt, und seine Oberfläche ist voller Löcher – wie ein Schwamm. Außerdem taumelt Hyperion so wild durcheinander, dass niemand genau sagen kann, wohin er als Nächstes zeigt. Für seine Größe ist er so leicht, dass er innen wahrscheinlich voller Hohlräume ist.",
+			"simple": "Hyperion ist ein seltsamer Mond des Saturn. Er ist nicht rund. Er sieht eher aus wie eine Kartoffel. Seine Oberfläche ist voller Löcher, wie ein Schwamm. Hyperion taumelt wild durcheinander. Niemand kann sagen, wohin er als Nächstes schaut. Für seine Größe ist er so leicht, dass er innen wahrscheinlich zu einem großen Teil hohl ist.",
 			"standard": "Hyperion misst etwa 360 × 266 × 205 km und ist damit einer der größten unregelmäßig geformten Monde im Sonnensystem. Nahaufnahmen der Raumsonde Cassini von 2005 zeigten eine Oberfläche voller tiefer, scharfkantiger Krater, die ihm ein schwammartiges Aussehen verleihen. Seine Dichte beträgt nur etwa 0,54 g/cm³ – rund die Hälfte von Wassereis –, deshalb vermuten Forschende, dass etwa 40 % seines Inneren leerer Raum sein könnten. Hyperion dreht sich nicht gleichmäßig: Die Anziehung von Saturn und dem nahen Titan lässt ihn chaotisch taumeln, sodass sich seine Ausrichtung nicht lange im Voraus vorhersagen lässt.",
 			"advanced": "Hyperion steht mit Titan in einer 4:3-Bahnresonanz (vier Hyperion-Umläufe auf drei von Titan), die seine Bahn recht exzentrisch hält (e ≈ 0,1). Weil der Mond so langgestreckt ist, schwanken Saturns Gezeitendrehmomente entlang dieser exzentrischen Bahn stark; Hyperion kann sich daher nicht in eine gebundene Rotation einpendeln, sondern Drehgeschwindigkeit und Drehachse ändern sich chaotisch, und winzige Unterschiede wachsen innerhalb weniger Umläufe exponentiell an. Wisdom, Peale und Mignard sagten dieses Verhalten 1984 voraus, spätere Beobachtungen stützten es, und seither ist Hyperion das Lehrbuchbeispiel für chaotische Rotation. Seine Porosität von rund 40 % könnte auch die seltsamen Krater erklären: Einschläge pressen das poröse Eis zusammen, statt Material hinauszuschleudern, und hinterlassen tiefe Gruben mit wenig Auswurf."
 		},
 		"facts": {
 			"simple": [
 				"Hyperion braucht etwa drei Wochen für eine Runde um Saturn.",
-				"In vielen Kratern von Hyperion liegt dunkles Zeug am Boden – wie Schmutz in den Löchern eines Schwamms.",
-				"Hyperion wurde 1848 fast gleichzeitig von Astronomen in Amerika und in England entdeckt."
+				"In vielen seiner Löcher liegt dunkles Zeug am Boden, wie Schmutz in einem Schwamm.",
+				"Hyperion wurde fast gleichzeitig von Menschen in Amerika und in England entdeckt."
 			],
 			"standard": [
 				"Hyperion wurde 1848 von William Cranch Bond und seinem Sohn George Phillips Bond entdeckt – und unabhängig davon von William Lassell.",
@@ -823,7 +863,8 @@
 		},
 		"comparisons": {
 			"simple": [
-				"Hyperion ist für seine Größe ungefähr so leicht wie ein Bimsstein – er würde im Wasser schwimmen."
+				"Hyperion ist für seine Größe so leicht, dass er im Wasser schwimmen würde.",
+				"Wenn die Erde eine Orange wäre, dann wäre Hyperion ein Stecknadelkopf."
 			],
 			"standard": [
 				"Hyperion taumelt wie ein Rugbyball, der über ein Spielfeld springt: Winzige Unterschiede lassen ihn anders kippen, sodass niemand lange vorhersagen kann, welche Seite gerade zu Saturn zeigt."
@@ -837,15 +878,15 @@
 		"name": "Iapetus",
 		"tagline": "Der Mond mit zwei Gesichtern",
 		"description": {
-			"simple": "Iapetus ist ein Mond des Saturn mit zwei ganz verschiedenen Seiten. Die eine Hälfte ist dunkel wie Kohle, die andere hell wie Schnee. Um seine Mitte zieht sich ein langer, hoher Gebirgskamm – dadurch sieht Iapetus ein bisschen aus wie eine Walnuss. Er ist weit von Saturn entfernt und braucht mehr als zwei Monate für eine Runde.",
+			"simple": "Iapetus ist ein Mond des Saturn mit zwei ganz verschiedenen Seiten. Die eine Hälfte ist dunkel wie Kohle. Die andere Hälfte ist hell wie Schnee. Um seine Mitte zieht sich eine lange, hohe Reihe von Bergen. Dadurch sieht Iapetus ein bisschen aus wie eine Walnuss. Iapetus ist weit weg von Saturn. Er braucht mehr als zwei Monate für eine Runde.",
 			"standard": "Iapetus hat einen Durchmesser von etwa 1 469 km und ist der drittgrößte Saturnmond. Seine vorauseilende Seite – die in Flugrichtung zeigt – ist dunkel wie Kohle, die nachfolgende Seite dagegen fast so hell wie Schnee. Als Giovanni Domenico Cassini Iapetus 1671 entdeckte, konnte er ihn nur auf einer Seite des Saturn sehen und schloss richtig, dass eine Hälfte viel dunkler sein muss als die andere. Die nach ihm benannte Raumsonde Cassini entdeckte später einen Kamm entlang des Äquators, rund 1 300 km lang und mit Gipfeln bis etwa 20 km Höhe, der dem Mond die Form einer Walnuss gibt.",
 			"advanced": "Die zweifarbige Oberfläche von Iapetus entsteht vermutlich durch einen sich selbst verstärkenden Prozess. Dunkler Staub, großenteils vom rückläufigen Mond Phoebe und seinem riesigen Ring, fegt auf die vorauseilende Hemisphäre; die dunklere Oberfläche absorbiert während der langen, 79 Tage dauernden Iapetus-Tage mehr Sonnenlicht und erwärmt sich etwas, sodass dort Wassereis sublimiert und sich auf der kälteren, helleren Rückseite und an den Polen wieder niederschlägt – die eine Seite wird immer dunkler, die andere immer heller. Die Albedo reicht von etwa 0,03–0,05 in der dunklen Region Cassini Regio bis etwa 0,5–0,6 auf der hellen Seite. Der bis zu etwa 20 km hohe und 1 300 km lange Äquatorkamm ist bis heute unerklärt: Diskutiert werden etwa ein eingefrorener Wulst aus einer Zeit schnellerer Rotation oder Material, das aus einem kollabierten Ring herabgefallen ist."
 		},
 		"facts": {
 			"simple": [
-				"Die höchsten Berge von Iapetus sind mehr als doppelt so hoch wie der Mount Everest.",
-				"Von Iapetus aus hättest du einen tollen Blick auf Saturns Ringe, weil seine Bahn um Saturn schräg geneigt ist.",
-				"Iapetus wurde vor mehr als 350 Jahren entdeckt, im Jahr 1671."
+				"Seine höchsten Berge sind mehr als doppelt so hoch wie der höchste Berg der Erde.",
+				"Von Iapetus aus hättest du einen wunderbaren Blick auf Saturns Ringe.",
+				"Der Mann, der Iapetus entdeckt hat, konnte ihn nur auf einer Seite des Saturn sehen. Auf der anderen Seite ließ ihn seine dunkle Hälfte verschwinden."
 			],
 			"standard": [
 				"Iapetus umkreist Saturn in etwa 3,56 Millionen km Abstand – mehr als neunmal so weit, wie der Mond von der Erde entfernt ist.",
@@ -860,7 +901,8 @@
 		},
 		"comparisons": {
 			"simple": [
-				"Wäre Iapetus ein Fußball, dann wäre sein riesiger Gebirgskamm nur eine etwa 3 mm hohe Erhebung rund um seine Mitte."
+				"Wenn Iapetus ein Fußball wäre, dann wären seine riesigen Berge nur ein Hügel, etwa 3 Millimeter hoch.",
+				"Wenn die Erde eine Orange wäre, dann wäre Iapetus eine Erbse."
 			],
 			"standard": [
 				"Die dunkle Seite von Iapetus wirft nur etwa so viel Licht zurück wie frischer Asphalt, die helle mehr als zehnmal so viel – deshalb konnte Cassini den Mond auf der einen Seite des Saturn sehen, auf der anderen aber nicht."
@@ -874,15 +916,15 @@
 		"name": "Phoebe",
 		"tagline": "Saturns Geisterfahrer",
 		"description": {
-			"simple": "Phoebe ist ein kleiner, dunkler Mond des Saturn, etwa 200 km breit. Er kreist falsch herum um den Saturn – also in die andere Richtung als die großen Saturnmonde – und viel weiter draußen. Forscher glauben, dass Phoebe nicht beim Saturn entstanden ist, sondern von weit draußen im Sonnensystem kam und von Saturns Schwerkraft eingefangen wurde. Staub, der von Phoebe abgeschlagen wird, bildet einen riesigen, sehr schwachen Ring um den Saturn.",
+			"simple": "Phoebe ist ein kleiner, dunkler Mond des Saturn. Er kreist falsch herum um Saturn, also andersherum als die großen Saturnmonde. Außerdem kreist er viel weiter draußen. Forschende glauben, dass Phoebe nicht bei Saturn entstanden ist. Wahrscheinlich kam er von weit her, und Saturn hat ihn zu sich gezogen und eingefangen. Staub, der von Phoebe abgeschlagen wird, bildet einen riesigen, sehr blassen Ring um Saturn.",
 			"standard": "Phoebe misst etwa 213 km und umkreist den Saturn in einem mittleren Abstand von rund 12,9 Millionen km – mehr als dreimal so weit draußen wie Iapetus, der äußerste der großen Saturnmonde. Der Mond läuft rückwärts (retrograd) um den Planeten, ein starkes Indiz dafür, dass Saturn ihn eingefangen hat: Phoebe ist wahrscheinlich ein Besucher aus dem äußeren Sonnensystem, verwandt mit den eisigen Körpern des Kuipergürtels. Winzige Einschläge schlagen Staub von seiner dunklen Oberfläche, und dieser Staub bildet den Phoebe-Ring, den das Spitzer-Weltraumteleskop der NASA 2009 entdeckte. Ein Teil des Staubs driftet nach innen und landet auf einer Seite von Iapetus – er trägt dazu bei, dass diese Seite so dunkel ist.",
 			"advanced": "Phoebes Bahn – große Halbachse etwa 12,9 Millionen km, Exzentrizität 0,16, Neigung etwa 175° gegen die Laplace-Ebene – ist retrograd und liegt weit außerhalb der regulären Saturnmonde: das Kennzeichen eines eingefangenen Körpers, nicht eines, der in Saturns Scheibe entstanden ist. Die Dichte von etwa 1,64 g/cm³, höher als die der inneren Eismonde, und die dunkle Oberfläche (geometrische Albedo etwa 0,08) mit Wassereis, Kohlendioxid und vermutlich organischen Verbindungen sprechen für eine Herkunft aus dem Kuipergürtel oder aus der Gruppe der Zentauren. Mikrometeoriten-Einschläge speisen den Phoebe-Ring, eine riesige, extrem dünne Staubscheibe, die wie Phoebes Bahn um etwa 27° gegen Saturns Hauptringe geneigt ist. Der Strahlungsdruck lässt die Staubkörner langsam nach innen spiralen, wo Iapetus sie mit seiner vorauslaufenden Hemisphäre aufsammelt – ein wichtiger Grund für das auffällige zweifarbige Aussehen dieses Mondes."
 		},
 		"facts": {
 			"simple": [
-				"Phoebe braucht etwa anderthalb Jahre für eine Runde um den Saturn.",
-				"Phoebe war der erste Mond, der jemals auf Fotos entdeckt wurde.",
-				"Phoebe dreht sich in nur etwa 9 Stunden einmal um sich selbst – viel schneller, als er um den Saturn kreist."
+				"Phoebe braucht etwa anderthalb Jahre für eine Runde um Saturn.",
+				"Phoebe war der erste Mond, der je auf Fotos entdeckt wurde.",
+				"Phoebe dreht sich in etwa 9 Stunden einmal um sich selbst."
 			],
 			"standard": [
 				"Die Raumsonde Cassini flog am 11. Juni 2004 in nur 2 068 km Abstand an Phoebe vorbei – etwa drei Wochen, bevor sie in eine Umlaufbahn um den Saturn einschwenkte.",
@@ -897,7 +939,8 @@
 		},
 		"comparisons": {
 			"simple": [
-				"Phoebe fährt um den Saturn wie ein Auto, das falsch herum durch einen Kreisverkehr fährt."
+				"Phoebe fährt um Saturn wie ein Auto, das falsch herum durch einen Kreisverkehr fährt.",
+				"Wenn die Erde eine Orange wäre, dann wäre Phoebe ein Mohnkorn."
 			],
 			"standard": [
 				"Der Staubring, der von Phoebe stammt, ist so gewaltig, dass etwa eine Milliarde Erden hineinpassen würden – und doch so lichtschwach, dass man ihn erst 2009 mit einem Infrarotteleskop entdeckte."
@@ -911,7 +954,7 @@
 		"name": "Miranda",
 		"tagline": "Der Frankenstein-Mond",
 		"description": {
-			"simple": "Miranda ist der kleinste der fünf großen Uranusmonde, etwa 470 km breit. Seine Oberfläche sieht aus, als hätte man sie aus verschiedenen Stücken zusammengenäht – deshalb wird er auch Frankenstein-Mond genannt. Er hat eine der höchsten Klippen, die wir überhaupt kennen. Nur eine einzige Raumsonde, Voyager 2, ist je an ihm vorbeigeflogen, im Jahr 1986.",
+			"simple": "Miranda ist der kleinste der fünf großen Monde des Uranus. Seine Oberfläche sieht aus, als hätte man sie aus verschiedenen Stücken zusammengenäht. Darum nennt man ihn auch den Frankenstein-Mond. Er hat eine der höchsten Klippen, die wir überhaupt kennen. Nur eine einzige Raumsonde, Voyager 2, ist je an ihm vorbeigeflogen.",
 			"standard": "Miranda ist mit etwa 470 km Durchmesser der innerste und kleinste der fünf großen Uranusmonde. Als Voyager 2 im Januar 1986 vorbeiflog, zeigte sich ein Durcheinander völlig verschiedener Landschaften: alte, verkraterte Ebenen direkt neben riesigen Gebieten voller Furchen und Rücken, den sogenannten Coronae. Außerdem besitzt Miranda die Steilwand Verona Rupes, deren Höhe auf 5 bis 20 km geschätzt wird – womöglich die höchste Klippe im Sonnensystem. Entdeckt wurde der Mond 1948 von Gerard Kuiper, der ihn nach der Tochter des Zauberers Prospero in Shakespeares „Der Sturm“ benannte.",
 			"advanced": "Mirandas drei Coronae – Arden, Elsinore und Inverness – sind ovale oder vieleckige Regionen von einigen hundert Kilometern Größe, umgeben von parallelen Rücken und Gräben, die ältere Kraterlandschaften durchschneiden. Frühe Vorstellungen, Miranda sei zertrümmert und wieder zusammengefügt worden, sind weitgehend Modellen gewichen, in denen Gezeitenheizung warmes Eis aufsteigen ließ – vermutlich während einer früheren Bahnresonanz mit Umbriel, die auch Mirandas ungewöhnlich große Bahnneigung von etwa 4,3° erklären könnte. Eine Studie von 2024 schlug sogar vor, dass Miranda noch vor wenigen hundert Millionen Jahren einen etwa 100 km tiefen Ozean unter der Oberfläche gehabt haben könnte. Die geringe Dichte von etwa 1,2 g/cm³ zeigt, dass Miranda größtenteils aus Wassereis besteht."
 		},
@@ -919,7 +962,7 @@
 			"simple": [
 				"Miranda braucht für eine Runde um Uranus weniger als anderthalb Tage.",
 				"Miranda ist nach einem Mädchen aus einem Theaterstück von William Shakespeare benannt.",
-				"Auf Miranda würdest du weniger als ein Hundertstel von dem wiegen, was du auf der Erde wiegst."
+				"Seine höchste Klippe ist vielleicht doppelt so hoch wie der höchste Berg der Erde."
 			],
 			"standard": [
 				"Voyager 2 kam Miranda bis auf etwa 29 000 km nahe – näher als jedem anderen Uranusmond.",
@@ -934,7 +977,8 @@
 		},
 		"comparisons": {
 			"simple": [
-				"Wäre Mirandas Oberfläche ein Puzzle, dann kämen die Teile aus mehreren verschiedenen Schachteln."
+				"Wenn Mirandas Oberfläche ein Puzzle wäre, dann kämen die Teile aus mehreren verschiedenen Schachteln.",
+				"Wenn die Erde eine Orange wäre, dann wäre Miranda ein kleines Pfefferkorn."
 			],
 			"standard": [
 				"Die Steilwand Verona Rupes könnte bis zu 20 km hoch sein – mehr als doppelt so hoch wie der Mount Everest –, und bei Mirandas schwacher Schwerkraft könnte ein fallen gelassener Stein etwa 12 Minuten lang fallen, bevor er unten aufschlägt."
@@ -948,14 +992,14 @@
 		"name": "Ariel",
 		"tagline": "Der junge, helle Uranusmond",
 		"description": {
-			"simple": "Ariel ist einer der fünf großen Uranusmonde, etwa 1 160 km breit. Er ist der hellste von ihnen und hat eine frisch aussehende, eisige Oberfläche. Lange, tiefe Täler, sogenannte Canyons, ziehen sich über ihn hinweg. Nur eine einzige Raumsonde, Voyager 2, ist je an ihm vorbeigeflogen.",
+			"simple": "Ariel ist einer der fünf großen Monde des Uranus. Er ist der hellste von ihnen, mit Eis, das ganz frisch aussieht. Lange, tiefe Täler ziehen sich über ihn. Nur eine einzige Raumsonde, Voyager 2, ist je an ihm vorbeigeflogen.",
 			"standard": "Ariel misst etwa 1 160 km und umkreist Uranus alle 2,5 Tage in einem Abstand von rund 190 900 km. Er hat die hellste Oberfläche der großen Uranusmonde und vermutlich auch die jüngste: Er trägt weniger große Krater als seine Nachbarn, also muss etwas seine Oberfläche erneuert haben. Lange Canyons durchziehen ihn kreuz und quer; einer davon, Kachina Chasma, ist mehr als 600 km lang. William Lassell entdeckte Ariel 1851 in derselben Nacht wie Umbriel; der Name stammt vom Luftgeist Ariel aus Shakespeares „Der Sturm“ und von einer Sylphe in Alexander Popes Gedicht „Der Lockenraub“.",
 			"advanced": "Mit einer geometrischen Albedo von etwa 0,5 ist Ariel der am stärksten reflektierende der großen Uranusmonde, und die vergleichsweise wenigen großen Krater deuten auf die jüngste Oberfläche der fünf hin. Seine Canyons sind Grabenbrüche – Krustenblöcke, die zwischen Verwerfungen absanken, als sich die Kruste dehnte, vermutlich weil das Innere während einer früheren Bahnresonanz durch Gezeiten aufgeheizt wurde oder sich beim Gefrieren ausdehnte; manche Canyonböden scheinen von eisigem Material überflutet worden zu sein. 2024 fand das James-Webb-Weltraumteleskop auf Ariel überraschend dicke Ablagerungen aus Kohlendioxid-Eis, Kohlenmonoxid-Eis und Hinweise auf Karbonatminerale. Manche Forscher deuten das als Material aus einem möglichen Ozean unter der Oberfläche; allerdings erzeugen auch geladene Teilchen aus der Magnetosphäre des Uranus Kohlendioxid auf der Oberfläche, und vermutlich spielen beide Vorgänge eine Rolle."
 		},
 		"facts": {
 			"simple": [
 				"Ariel braucht für eine Runde um Uranus etwa zweieinhalb Tage.",
-				"Ariel ist nach einem Zaubergeist aus einem Theaterstück von William Shakespeare benannt, der fliegen und sogar einen Sturm heraufbeschwören konnte.",
+				"Ariel ist nach einem Zaubergeist aus einem Theaterstück von William Shakespeare benannt. Der Geist konnte fliegen und sogar Stürme herbeizaubern.",
 				"Ariel besteht ungefähr zur Hälfte aus Eis und zur Hälfte aus Gestein."
 			],
 			"standard": [
@@ -971,7 +1015,8 @@
 		},
 		"comparisons": {
 			"simple": [
-				"Ariels längster Canyon ist so lang, dass ein Auto auf der Autobahn mehr als sechs Stunden bräuchte, um von einem Ende zum anderen zu fahren."
+				"Ariels längstes Tal ist so lang, dass ein Auto auf der Autobahn etwa sechs Stunden bräuchte, um es entlangzufahren.",
+				"Wenn die Erde eine Orange wäre, dann wäre Ariel eine Erbse."
 			],
 			"standard": [
 				"Ariel und Umbriel sind fast genau gleich groß, doch Ariel wirft etwa doppelt so viel Licht zurück und hat viel weniger große Krater – wie Zwillinge, von denen einer frisch gewaschen ist und der andere sich seit Milliarden Jahren nicht mehr gewaschen hat."
@@ -985,15 +1030,15 @@
 		"name": "Umbriel",
 		"tagline": "Dunkler Mond, heller Ring",
 		"description": {
-			"simple": "Umbriel ist einer der fünf großen Uranusmonde, etwa 1 170 km breit. Er ist der dunkelste von ihnen und mit alten Kratern übersät. Auf seiner dunklen Oberfläche gibt es einen rätselhaften hellen Ring. Umbriel ist nach einem düsteren Geist aus einem alten Gedicht benannt.",
+			"simple": "Umbriel ist einer der fünf großen Monde des Uranus. Er ist der dunkelste von ihnen. Er ist voller alter Krater, runder Löcher von Einschlägen. Auf seinem dunklen Boden gibt es einen seltsamen hellen Ring. Umbriel ist nach einem düsteren Geist aus einem alten Gedicht benannt.",
 			"standard": "Umbriel ist mit etwa 1 170 km Durchmesser fast genau so groß wie Ariel, aber der dunkelste der großen Uranusmonde. Seine Oberfläche ist alt und dicht mit Kratern bedeckt, sie hat sich also vermutlich seit Milliarden Jahren kaum verändert. Nahe dem Äquator liegt der Krater Wunda, etwa 131 km breit, mit einem seltsamen hellen Ring auf seinem Boden – was das ist, wissen die Forscher bis heute nicht genau. Umbriel wurde 1851 von William Lassell entdeckt und nach einem düsteren Geist aus Alexander Popes Gedicht „Der Lockenraub“ benannt.",
 			"advanced": "Umbriels geometrische Albedo von etwa 0,26 ist nur etwa halb so groß wie die von Ariel, und seine stark verkraterte Oberfläche mit Kratern bis etwa 210 km Durchmesser zeigt kaum Spuren einer Erneuerung – sie gehört zu den ältesten unter den großen Uranusmonden. Warum der Mond so gleichmäßig dunkel ist, ist noch ungeklärt; eine Möglichkeit ist ein Überzug aus dunklem, kohlenstoffreichem Material, das durch Strahlung verändert wurde. Der helle Ring auf dem Boden von Wunda könnte eine Einschlagablagerung sein oder ein Fleck aus Kohlendioxid-Reif – Kohlendioxid-Eis wurde auf den nachlaufenden Hemisphären der großen Uranusmonde nachgewiesen. Voyager 2 fotografierte nur etwa 40 % von Umbriel und mit einer Auflösung von bestenfalls etwa 5 km, deshalb ist ein großer Teil des Mondes noch unkartiert."
 		},
 		"facts": {
 			"simple": [
 				"Umbriel braucht für eine Runde um Uranus etwa vier Tage.",
-				"Umbriels Name erinnert an „umbra“, das lateinische Wort für Schatten – ein guter Name für so einen dunklen Mond.",
-				"Umbriel wurde 1851 in derselben Nacht entdeckt wie Ariel."
+				"Umbriels Name klingt wie „umbra“, ein altes Wort für Schatten. Das ist ein guter Name für so einen dunklen Mond.",
+				"Umbriel wurde in derselben Nacht entdeckt wie Ariel."
 			],
 			"standard": [
 				"In Popes Gedicht wird Umbriel „der düstere, melancholische Geist“ genannt.",
@@ -1008,7 +1053,8 @@
 		},
 		"comparisons": {
 			"simple": [
-				"Umbriel und Ariel sind fast gleich groß, aber neben Ariel sieht Umbriel aus wie ein rußiger Schneeball neben einem sauberen."
+				"Umbriel und Ariel sind fast gleich groß. Aber neben Ariel sieht Umbriel aus wie ein rußiger Schneeball neben einem sauberen.",
+				"Wenn die Erde eine Orange wäre, dann wäre Umbriel eine Erbse."
 			],
 			"standard": [
 				"Auf Umbriels dunklem Gesicht fällt der helle Ring im Krater Wunda auf wie ein weißer Tassenrand auf einem dunklen Tisch – und niemand weiß genau, woher er stammt."
@@ -1022,15 +1068,15 @@
 		"name": "Titania",
 		"tagline": "Die Königin der Uranusmonde",
 		"description": {
-			"simple": "Titania ist der größte Mond des Uranus, etwa 1 580 km breit – etwas weniger als halb so breit wie unser Mond. Er ist nach der Königin der Feen aus einem Theaterstück von William Shakespeare benannt. Seine eisige Oberfläche ist von riesigen Canyons zerrissen. William Herschel, der Astronom, der Uranus entdeckt hat, fand Titania im Jahr 1787.",
+			"simple": "Titania ist der größte Mond des Uranus. Er ist etwas weniger als halb so breit wie unser Mond. Er ist nach der Königin der Feen aus einem Theaterstück von William Shakespeare benannt. Sein eisiger Boden ist von riesigen Tälern zerrissen. William Herschel hat Titania entdeckt. Das war derselbe Mann, der auch Uranus gefunden hat.",
 			"standard": "Titania ist mit etwa 1 580 km Durchmesser der größte Mond des Uranus und der achtgrößte Mond im Sonnensystem. Seine Oberfläche wird von gewaltigen Bruchtälern durchschnitten; das längste, Messina Chasma, ist rund 1 500 km lang. Diese Canyons entstanden vermutlich, als sich Titanias Inneres ausdehnte und die Eiskruste aufriss – ähnlich wie eine Wasserflasche, die man im Gefrierfach vergessen hat. William Herschel entdeckte Titania am 11. Januar 1787 in derselben Nacht wie Oberon; sein Name stammt von der Feenkönigin aus Shakespeares „Ein Sommernachtstraum“.",
 			"advanced": "Titanias Dichte von etwa 1,65 g/cm³ spricht für ungefähr gleiche Anteile von Wassereis und Gestein, vermutlich getrennt in einen Gesteinskern und einen Eismantel; manche Modelle lassen an der Grenze zwischen beiden eine dünne Schicht flüssigen Wassers zu, die Ammoniak als Frostschutzmittel flüssig hält. Seine Canyons (Chasmata) sind Grabenbrüche, die durch eine weltweite Dehnung der Kruste entstanden, und da er weniger große Krater hat als Oberon, ist seine Oberfläche wahrscheinlich jünger. Als Titania 2001 vor einem Stern vorbeizog, verschwand dessen Licht schlagartig – eine Atmosphäre kann daher höchstens einen Bodendruck von etwa 10–20 Nanobar haben. Voyager 2 fotografierte nur etwa 40 % seiner Oberfläche, fast nur auf der Südhalbkugel, die 1986 der Sonne zugewandt war."
 		},
 		"facts": {
 			"simple": [
 				"Titania braucht für eine Runde um Uranus fast neun Tage.",
-				"Titania besteht etwa zur Hälfte aus Eis und zur Hälfte aus Gestein.",
-				"Titanias größter Krater, Gertrude, ist mehr als 300 km breit."
+				"Titania besteht ungefähr zur Hälfte aus Eis und zur Hälfte aus Gestein.",
+				"Sein größter Krater, ein rundes Loch von einem Einschlag, heißt Gertrude. Er ist so breit, dass ein Auto mehr als drei Stunden bräuchte, um ihn zu durchqueren."
 			],
 			"standard": [
 				"Titania kreist etwa 436 300 km von Uranus entfernt – etwas weiter, als unser Mond von der Erde entfernt ist.",
@@ -1045,7 +1091,8 @@
 		},
 		"comparisons": {
 			"simple": [
-				"Titanias längster Canyon ist so lang, dass er fast ein Drittel des Weges um den ganzen Mond herum reicht."
+				"Titanias längstes Tal reicht fast ein Drittel des Weges um den ganzen Mond herum.",
+				"Wenn die Erde eine Orange wäre, dann wäre Titania eine Erbse."
 			],
 			"standard": [
 				"Titanias großer Canyon Messina Chasma ist rund 1 500 km lang – mehr als dreimal so lang wie der Grand Canyon in den USA –, und das auf einem Mond, der nicht einmal halb so breit ist wie unserer."
@@ -1059,15 +1106,15 @@
 		"name": "Oberon",
 		"tagline": "Der alte Feenkönig",
 		"description": {
-			"simple": "Oberon ist der äußerste der fünf großen Uranusmonde und der zweitgrößte, etwa 1 520 km breit. Er ist nach dem König der Feen aus einem Theaterstück von William Shakespeare benannt – und Titania, die Feenkönigin, ist seine Nachbarin. Oberons Oberfläche ist alt und voller Krater, manche davon mit dunklem Boden. William Herschel fand Oberon und Titania in derselben Nacht im Jahr 1787.",
+			"simple": "Oberon ist der zweitgrößte Mond des Uranus. Von den fünf großen Uranusmonden ist er am weitesten draußen. Er ist nach dem König der Feen aus einem Theaterstück von William Shakespeare benannt. Titania, die Feenkönigin, ist seine Nachbarin. Oberons Boden ist alt und voller Krater, runder Löcher von Einschlägen. Manche von ihnen sind innen dunkel.",
 			"standard": "Oberon ist mit etwa 1 520 km Durchmesser der zweitgrößte Uranusmond und kreist von den fünf großen Monden am weitesten draußen, etwa 583 500 km vom Planeten entfernt, einmal alle 13,5 Tage. Seine Oberfläche ist alt und mit Einschlagkratern übersät – dort hat sich also seit Milliarden Jahren wenig verändert. Die Böden mehrerer großer Krater sind mit dunklem Material bedeckt, und Voyager 2 entdeckte am Rand des Mondes einen etwa 11 km hohen Berg. Oberon ist nach dem Feenkönig aus Shakespeares „Ein Sommernachtstraum“ benannt.",
 			"advanced": "Oberon ist der am stärksten verkraterte der großen Uranusmonde, mit Kratern bis etwa 206 km Durchmesser (Hamlet) – seine Oberfläche gehört damit zu den ältesten im Uranussystem. Dunkle Ablagerungen auf den Böden von Kratern wie Hamlet, Othello und Macbeth könnten Material sein, das nach den Einschlägen aus dem Inneren austrat, doch ihre Herkunft ist noch unklar. Auf einem Teil seiner Bahn verlässt Oberon die Magnetosphäre des Uranus, sodass seine Oberfläche abwechselnd dem eingefangenen Plasma des Planeten und dem Sonnenwind ausgesetzt ist. Voyager 2 sah Oberon nur aus etwa 470 600 km Entfernung und bildete rund 40 % seiner Oberfläche in geringer Auflösung ab."
 		},
 		"facts": {
 			"simple": [
 				"Oberon braucht für eine Runde um Uranus etwa zwei Wochen.",
-				"Oberon zeigt Uranus immer dieselbe Seite, so wie unser Mond der Erde.",
-				"Die Krater auf Oberon sind nach Figuren aus Shakespeares Theaterstücken benannt, zum Beispiel Hamlet und Macbeth."
+				"Oberon zeigt Uranus immer dieselbe Seite, genau wie unser Mond der Erde.",
+				"William Herschel hat Oberon und Titania in derselben Nacht entdeckt."
 			],
 			"standard": [
 				"Hamlet, der größte Krater auf Oberon, ist etwa 206 km breit.",
@@ -1082,7 +1129,8 @@
 		},
 		"comparisons": {
 			"simple": [
-				"Oberons höchster Berg ist etwa 11 km hoch – höher als der Mount Everest, der höchste Berg der Erde."
+				"Oberon hat einen Berg, der höher ist als der höchste Berg der Erde.",
+				"Wenn die Erde eine Orange wäre, dann wäre Oberon eine Erbse."
 			],
 			"standard": [
 				"Oberons zerschundenes Gesicht ist wie ein Geschichtsbuch, das nie jemand ausradiert hat: Seine Krater erzählen noch heute von Einschlägen vor Milliarden Jahren."
@@ -1096,15 +1144,15 @@
 		"name": "Triton",
 		"tagline": "Der Mond im Rückwärtsgang",
 		"description": {
-			"simple": "Triton ist der größte Mond des Neptun, und er kreist falschherum um ihn – rückwärts im Vergleich dazu, wie sich Neptun dreht. Das ist ein Hinweis darauf, dass Triton nicht dort entstanden ist: Wahrscheinlich hat ihn Neptuns Schwerkraft vor langer Zeit eingefangen. Triton ist einer der kältesten Orte, die je gemessen wurden, und er hat Geysire, die dunklen Staub ausstoßen. Ganz, ganz langsam kommt Triton dem Neptun immer näher.",
+			"simple": "Triton ist der größte Mond des Neptun. Er kreist rückwärts um Neptun, also andersherum, als sich Neptun dreht. Das ist ein Hinweis darauf, dass Triton nicht dort entstanden ist. Wahrscheinlich hat Neptun ihn vor langer Zeit zu sich gezogen und eingefangen. Triton ist einer der kältesten Orte, die wir kennen. Er hat Fontänen aus Gas, die dunklen Staub herausblasen. Ganz langsam kommt Triton dem Neptun immer näher.",
 			"standard": "Triton ist mit Abstand Neptuns größter Mond, 2 707 km groß und damit etwas größer als der Zwergplanet Pluto. Er umkreist Neptun rückwärts – entgegen der Drehung des Planeten – und ist der einzige große Mond im Sonnensystem, der das tut; deshalb nehmen Astronomen an, dass Neptun ihn vor langer Zeit aus dem Kuipergürtel eingefangen hat. Als Voyager 2 im Jahr 1989 vorbeiflog, sah die Sonde Geysire aus Stickstoffgas, die dunklen Staub etwa 8 km hoch trugen – auf einer Oberfläche mit rund −235 °C. Gezeitenkräfte ziehen Triton langsam nach innen, sodass er in Milliarden Jahren zu Ringen zerrissen werden oder in Neptun stürzen könnte.",
 			"advanced": "Tritons Bahn ist rückläufig und um etwa 157° gegen Neptuns Äquator geneigt – das lässt sich mit einer Entstehung in einer Scheibe um den Planeten nicht erklären; die gängigste Erklärung ist der Einfang eines Kuipergürtel-Objekts, vielleicht eines Partners aus einem Doppelsystem, dessen Begleiter davongeschleudert wurde. Nach dem Einfang dürfte Triton auf einer stark exzentrischen Bahn gelaufen sein, und die Abbremsung auf den heutigen nahezu perfekten Kreis (e ≈ 0,00002) könnte sein Inneres aufgeschmolzen und Neptuns ursprüngliche Monde zerstreut oder zerstört haben. Seine Oberfläche aus Stickstoff-, Methan- und Wassereis wirft den größten Teil des Sonnenlichts zurück (Albedo etwa 0,76), was ihn bei rund 38 K hält. Weil er entgegen Neptuns Drehung kreist, entzieht ihm der Gezeitenwulst, den er erzeugt, langsam Bahnenergie; er könnte Neptuns Roche-Grenze in einigen Milliarden Jahren erreichen, wobei die Schätzungen von etwa 3,6 bis 28 Milliarden Jahren reichen."
 		},
 		"facts": {
 			"simple": [
-				"Triton wurde 1846 entdeckt, nur 17 Tage nachdem Neptun selbst gefunden worden war.",
-				"Triton ist so eisig und hell, dass er den größten Teil des Sonnenlichts zurückwirft, das auf ihn fällt.",
-				"Nur eine einzige Raumsonde hat Triton je besucht: Voyager 2, im Jahr 1989."
+				"Triton wurde nur 17 Tage nach Neptun selbst entdeckt.",
+				"Triton ist so eisig und hell, dass er das meiste Sonnenlicht zurückwirft.",
+				"Nur eine einzige Raumsonde hat Triton je besucht: Voyager 2."
 			],
 			"standard": [
 				"Auf Triton entfallen mehr als 99,5 % der gesamten Masse, die Neptun umkreist.",
@@ -1119,7 +1167,8 @@
 		},
 		"comparisons": {
 			"simple": [
-				"Auf Triton ist es etwa 150 Grad kälter als an dem kältesten Ort, der je auf der Erde gemessen wurde."
+				"Auf Triton ist es viel, viel kälter als am kältesten Ort der Erde.",
+				"Wenn die Erde eine Orange wäre, dann wäre Triton eine Murmel."
 			],
 			"standard": [
 				"Triton kreist falschherum um Neptun, wie ein Auto, das verkehrt herum durch einen Kreisverkehr fährt – ein Hinweis darauf, dass Neptun ihn aus dem Kuipergürtel eingefangen hat."
@@ -1131,17 +1180,20 @@
 	},
 	"nereid": {
 		"name": "Nereid",
-		"tagline": "Der Mond auf Achterbahnkurs",
+		"tagline": {
+			"simple": "Der Mond, der Achterbahn fährt",
+			"standard": "Der Mond auf Achterbahnkurs"
+		},
 		"description": {
-			"simple": "Nereid ist ein kleiner, grauer Mond des Neptun. Seine Bahn um Neptun ist kein Kreis, sondern ein langes, gestrecktes Oval. Manchmal kommt er Neptun recht nahe, dann schwingt er wieder weit hinaus. Forschende vermuten, dass ihn vor langer Zeit etwas Großes auf diese seltsame Bahn geschleudert hat.",
+			"simple": "Nereid ist ein kleiner, grauer Mond des Neptun. Sein Weg um Neptun ist kein Kreis. Er ist ein langes, gestrecktes Oval. Manchmal kommt Nereid dem Neptun ziemlich nahe. Dann schwingt er wieder weit hinaus. Vielleicht hat ihn vor langer Zeit etwas Großes auf diesen seltsamen Weg geschleudert.",
 			"standard": "Nereid ist etwa 340 km groß und hat eine der am stärksten gestreckten Bahnen aller bekannten Monde. Während seines 360 Tage dauernden Umlaufs schwankt sein Abstand zu Neptun zwischen etwa 1,4 und 9,7 Millionen km – fast das Siebenfache. Gerard Kuiper entdeckte ihn 1949; er war der zweite bekannte Neptunmond und der letzte, der vor der Ankunft von Voyager 2 im Jahr 1989 gefunden wurde. Lange hielt man Nereid für ein eingefangenes Objekt, doch eine Studie von 2026 legt nahe, dass er einer von Neptuns ursprünglichen Monden sein könnte, der bei Tritons Ankunft auf seine wilde Bahn geschleudert wurde.",
 			"advanced": "Nereids Bahn hat eine Exzentrizität von etwa 0,75, eine der höchsten, die bei Monden bekannt sind; sein nächster Punkt liegt bei rund 1,37 Millionen km, sein fernster bei rund 9,65 Millionen km von Neptun. Die Bahn ist rechtläufig und nur mäßig geneigt – anders als bei typischen irregulären Monden, die als eingefangene Körper gelten. Zwei Herkunftsmodelle werden diskutiert: ein eingefangenes Kuipergürtel-Objekt oder ein regulärer Neptunmond, der beim Einfang Tritons nach außen gestreut wurde. 2026 zeigten Spektren des James-Webb-Weltraumteleskops kristallines Wassereis und Kohlendioxid auf einer Oberfläche, die nicht zu Kuipergürtel-Objekten passt, wohl aber zu den Uranusmonden – ein Argument für die zweite Idee; dann wäre Nereid womöglich der letzte unversehrte Überlebende von Neptuns ursprünglicher Mondfamilie."
 		},
 		"facts": {
 			"simple": [
-				"Nereid wurde 1949 von dem Astronomen Gerard Kuiper entdeckt.",
+				"Nereid wurde von einem Forscher namens Gerard Kuiper entdeckt.",
 				"Nereid ist der drittgrößte Mond des Neptun.",
-				"Noch nie hat jemand eine Nahaufnahme von Nereid gesehen."
+				"Noch nie hat jemand ein Bild von Nereid aus der Nähe gesehen."
 			],
 			"standard": [
 				"Voyager 2 konnte Nereid nur aus etwa 4,7 Millionen km Entfernung fotografieren, deshalb sind seine Form und Oberfläche noch weitgehend unbekannt.",
@@ -1156,7 +1208,8 @@
 		},
 		"comparisons": {
 			"simple": [
-				"Nereid braucht für eine Runde um Neptun fast genauso lange wie die Erde für eine Runde um die Sonne."
+				"Nereid braucht für eine Runde um Neptun fast genauso lange wie die Erde für eine Runde um die Sonne.",
+				"Wenn die Erde eine Orange wäre, dann wäre Nereid ein Stecknadelkopf."
 			],
 			"standard": [
 				"Nereid schwingt wie ein Komet auf Neptun zu und wieder hinaus – an seinem fernsten Punkt ist er etwa siebenmal so weit weg wie an seinem nächsten."
@@ -1170,15 +1223,15 @@
 		"name": "Proteus",
 		"tagline": "Versteckt im Glanz Neptuns",
 		"description": {
-			"simple": "Proteus ist ein dunkler, klumpiger Mond des Neptun, etwa 420 km breit. Er ist fast groß genug, dass ihn seine eigene Schwerkraft zu einer Kugel zusammendrücken könnte – aber eben nur fast, deshalb sieht er aus wie eine verbeulte Kiste. Obwohl er ziemlich groß ist, hat ihn niemand gesehen, bis die Raumsonde Voyager 2 im Jahr 1989 am Neptun vorbeiflog. Er hatte sich im hellen Schein des Neptun versteckt.",
+			"simple": "Proteus ist ein dunkler, klumpiger Mond des Neptun. Er ist fast groß genug, um rund wie ein Ball zu sein, aber eben nur fast. Darum sieht er aus wie eine verbeulte Kiste. Niemand hat ihn gesehen, bis die Raumsonde Voyager 2 an Neptun vorbeiflog. Er hatte sich im hellen Schein des Neptun versteckt.",
 			"standard": "Proteus ist mit etwa 420 km Durchmesser der zweitgrößte Mond des Neptun – und wurde trotzdem erst 1989 auf Bildern von Voyager 2 entdeckt. Von der Erde aus geht er im grellen Licht des Planeten unter, denn er kreist nur etwa 117 600 km vom Neptunmittelpunkt entfernt – weniger als fünf Neptunradien – und seine Oberfläche wirft nur etwa ein Zehntel des Sonnenlichts zurück. Proteus ist ungefähr so groß, wie ein solcher Körper werden kann, ohne von seiner eigenen Schwerkraft zu einer Kugel geformt zu werden; deshalb ist er ein unregelmäßiger, kastenförmiger Brocken geblieben. In nur 27 Stunden rast er einmal um den Neptun.",
 			"advanced": "Mit einem mittleren Durchmesser von etwa 420 km liegt Proteus nahe an der Größe, ab der die Eigengravitation die Festigkeit von Eis und Gestein überwindet und einen Körper in eine annähernd kugelige (hydrostatische) Form zwingt – und doch ist er unregelmäßig geblieben. Seine Oberfläche wird vom Einschlagbecken Pharos beherrscht, etwa 255 km breit und 10–15 km tief, entstanden bei einem Einschlag, der den Mond beinahe zertrümmert hätte. Forscher vermuten, dass Proteus nicht zusammen mit Neptun entstand, sondern sich aus Trümmern neu bildete, nachdem Neptun den Mond Triton eingefangen und dabei das ursprüngliche Mondsystem durcheinandergebracht hatte. Der winzige Mond Hippocamp, 2013 auf Hubble-Bildern gefunden, kreist nur etwa 12 000 km innerhalb der Proteus-Bahn und könnte ein Bruchstück sein, das beim Pharos-Einschlag abgesprengt wurde."
 		},
 		"facts": {
 			"simple": [
-				"Proteus braucht für eine Runde um den Neptun nur etwas mehr als einen Tag.",
-				"Von Proteus aus würde Neptun etwa 50-mal so breit aussehen wie für uns der Vollmond.",
-				"Proteus hat einen riesigen Krater, der mehr als halb so breit ist wie der ganze Mond."
+				"Proteus braucht für eine Runde um Neptun etwas mehr als einen Tag.",
+				"Von Proteus aus würde Neptun fast 50-mal so breit aussehen wie für uns der Vollmond.",
+				"Proteus hat einen riesigen Krater, ein rundes Loch von einem Einschlag. Er ist mehr als halb so breit wie der ganze Mond."
 			],
 			"standard": [
 				"Voyager 2 entdeckte Proteus 1989, wenige Wochen bevor die Sonde am Neptun vorbeiflog.",
@@ -1193,7 +1246,8 @@
 		},
 		"comparisons": {
 			"simple": [
-				"Mit dem Auto auf der Autobahn bräuchtest du etwa vier Stunden, um Proteus zu durchqueren."
+				"Mit dem Auto auf der Autobahn bräuchtest du etwa vier Stunden, um quer über Proteus zu fahren.",
+				"Wenn die Erde eine Orange wäre, dann wäre Proteus ein Stecknadelkopf."
 			],
 			"standard": [
 				"Proteus ist größer als Nereid, den Astronomen schon 1949 von der Erde aus entdeckten – und blieb doch 40 Jahre länger verborgen, wie ein Stück Kohle neben einem Flutlichtscheinwerfer."
@@ -1205,17 +1259,20 @@
 	},
 	"ceres": {
 		"name": "Ceres",
-		"tagline": "Der Zwergplanet im Asteroidengürtel",
+		"tagline": {
+			"simple": "Die größte Welt zwischen Mars und Jupiter",
+			"standard": "Der Zwergplanet im Asteroidengürtel"
+		},
 		"description": {
-			"simple": "Ceres ist das größte Objekt im Asteroidengürtel, dem Ring aus Felsbrocken zwischen Mars und Jupiter. Sie ist rund wie eine Kugel, aber viel kleiner als unser Mond. Als man sie 1801 entdeckte, hielt man sie für einen neuen Planeten. Eine Raumsonde namens Dawn ist um Ceres gekreist und hat helle weiße Flecken gefunden – aus Salz!",
+			"simple": "Ceres ist das größte Ding im Asteroidengürtel. Das ist ein Ring aus Felsbrocken zwischen Mars und Jupiter. Ceres ist rund wie ein Ball, aber viel kleiner als unser Mond. Als man Ceres fand, hielt man sie für einen neuen Planeten. Eine Raumsonde namens Dawn ist um Ceres gekreist. Sie hat helle weiße Flecken gefunden, und die sind aus Salz!",
 			"standard": "Ceres ist der größte Körper im Asteroidengürtel zwischen Mars und Jupiter und der einzige Zwergplanet dort. Giuseppe Piazzi entdeckte sie am 1. Januar 1801, und etwa ein halbes Jahrhundert lang zählte sie als Planet – bis in derselben Gegend so viele weitere Brocken auftauchten, dass die Astronomen sie stattdessen Asteroiden nannten. Ceres ist etwa 940 km groß und besteht aus Gestein, vermischt mit Eis. Die NASA-Sonde Dawn umkreiste sie von 2015 bis 2018 und fand helle Flecken im Krater Occator: Salz, das zurückblieb, als salziges Wasser von unten aufstieg und verdunstete.",
 			"advanced": "Ceres (mittlerer Durchmesser etwa 940 km) vereint rund ein Drittel der Masse des Asteroidengürtels und ist dort das einzige Objekt, das massereich genug ist, um sich selbst in eine nahezu runde Form zu ziehen. Nach der IAU-Definition von 2006 ist sie damit ein Zwergplanet: Sie ist rund und umkreist die Sonne, hat ihre Bahn aber nicht von den unzähligen anderen Körpern in ihrer Umgebung geräumt. Ihre geringe Dichte von etwa 2,2 g/cm³ deutet auf Gestein mit Wassereis hin, und Dawn fand Hinweise auf Salzlauge tief unter der Kruste. Die hellen Flecken (Faculae) im 92 km großen Krater Occator bestehen vor allem aus Natriumcarbonat; Ahuna Mons, ein einzeln stehender, etwa 4 km hoher Berg, gilt als Eisvulkan. Ceres umrundet die Sonne alle 4,6 Jahre in einem mittleren Abstand von 2,77 AE."
 		},
 		"facts": {
 			"simple": [
-				"Ceres ist nach der römischen Göttin des Ackerbaus benannt – daher kommt auch das englische Wort „cereal“ für Frühstücksflocken.",
+				"Ceres ist nach der römischen Göttin des Ackerbaus benannt. Daher kommt das Wort „Cerealien“ für Frühstücksflocken.",
 				"Ein Tag auf Ceres dauert nur etwa 9 Stunden.",
-				"Der Asteroidengürtel ist nicht so voll wie im Film: Die Asteroiden sind so weit voneinander entfernt, dass Raumsonden hindurchfliegen, ohne irgendetwas ausweichen zu müssen."
+				"Der Asteroidengürtel ist nicht so voll wie im Film. Die Felsbrocken sind so weit voneinander entfernt, dass Raumsonden einfach hindurchfliegen."
 			],
 			"standard": [
 				"Ceres war der erste Asteroid, der je entdeckt wurde – am Neujahrstag 1801.",
@@ -1229,7 +1286,9 @@
 			]
 		},
 		"comparisons": {
-			"simple": ["Wäre die Erde ein Fußball, wäre Ceres eine Murmel."],
+			"simple": [
+				"Wenn die Erde eine Orange wäre, dann wäre Ceres eine kleine Erbse."
+			],
 			"standard": [
 				"Ceres ist nur etwa ein Viertel so breit wie unser Mond: Mit 100 km/h wärst du in weniger als 10 Stunden einmal quer darüber gefahren."
 			],
@@ -1242,15 +1301,15 @@
 		"name": "Pluto",
 		"tagline": "Der Zwergplanet mit Herz",
 		"description": {
-			"simple": "Pluto ist eine kleine, eisige Welt weit hinter Neptun. 76 Jahre lang galt er als neunter Planet. 2006 beschlossen die Astronomen, dass Pluto ein Zwergplanet ist, weil er sich seinen Weg um die Sonne mit vielen anderen eisigen Objekten teilt. Pluto selbst hat sich dabei nicht verändert – nur die Bezeichnung für ihn. Auf seiner Oberfläche liegt eine große, helle Ebene in der Form eines Herzens.",
+			"simple": "Pluto ist eine kleine, eisige Welt weit hinter Neptun. Lange Zeit galt er als neunter Planet. Dann beschlossen Forschende, ihn einen Zwergplaneten zu nennen. Das ist eine kleine, runde Welt, die sich ihren Weg um die Sonne mit vielen anderen eisigen Dingen teilt. Pluto selbst ist derselbe geblieben. Wir nennen ihn nur anders. Auf Pluto gibt es eine große, helle, flache Fläche in der Form eines Herzens.",
 			"standard": "Pluto wurde 1930 von Clyde Tombaugh entdeckt und 76 Jahre lang als neunter Planet gezählt. Dann fanden Astronomen 2005 Eris, eine eisige Welt etwa so groß wie Pluto, und mussten entscheiden: War das ein zehnter Planet? 2006 einigte sich die Internationale Astronomische Union (IAU) auf die erste offizielle Definition eines Planeten: Er muss die Sonne umkreisen, massereich genug sein, um rund zu werden, und die Umgebung seiner Bahn geräumt haben. Pluto erfüllt die ersten beiden Punkte, teilt seine Region, den Kuipergürtel, aber mit Tausenden anderen eisigen Körpern – deshalb wurde er zum Zwergplaneten. Pluto hat sich nicht verändert, sondern unser Wissen, und genau so funktioniert Wissenschaft.",
 			"advanced": "Als die NASA-Sonde New Horizons am 14. Juli 2015 vorbeiflog, erwies sich Pluto als überraschend aktiv. Die westliche Hälfte der hellen, herzförmigen Tombaugh Regio ist Sputnik Planitia, ein etwa 1000 km breites Becken voller langsam umwälzendem Stickstoffeis ohne sichtbare Krater; seine Oberfläche muss also jünger als etwa 10 Millionen Jahre sein. Berge aus Wassereis, mehrere Kilometer hoch, und eine dünne Stickstoffatmosphäre mit blauen Dunstschichten runden das Bild ab. Plutos Bahn ist exzentrisch (0,25) und um 17° geneigt; von 1979 bis 1999 war Pluto der Sonne näher als Neptun, doch eine 3:2-Bahnresonanz – Pluto umrundet die Sonne zweimal, während Neptun es dreimal tut – verhindert, dass die beiden jemals zusammenstoßen."
 		},
 		"facts": {
 			"simple": [
 				"Seinen Namen bekam Pluto von Venetia Burney, einem elfjährigen Mädchen aus England.",
-				"Die Raumsonde New Horizons war neuneinhalb Jahre unterwegs, bis sie Pluto erreichte.",
-				"Ein Jahr auf Pluto dauert fast 250 Erdjahre."
+				"Die Raumsonde New Horizons flog neuneinhalb Jahre lang, bis sie Pluto erreichte.",
+				"Für eine Runde um die Sonne braucht Pluto länger als drei lange Menschenleben."
 			],
 			"standard": [
 				"New Horizons flog am 14. Juli 2015 an Pluto vorbei und schickte die ersten Nahaufnahmen.",
@@ -1264,7 +1323,9 @@
 			]
 		},
 		"comparisons": {
-			"simple": ["Wäre die Erde ein Fußball, wäre Pluto ein Tischtennisball."],
+			"simple": [
+				"Wenn die Erde eine Orange wäre, dann wäre Pluto eine Murmel."
+			],
 			"standard": [
 				"Pluto ist nur etwa zwei Drittel so breit wie unser Mond – sieben Monde im Sonnensystem sind größer als Pluto."
 			],
@@ -1275,17 +1336,17 @@
 	},
 	"haumea": {
 		"name": "Haumea",
-		"tagline": "Das rotierende Ei",
+		"tagline": "Das kreiselnde Ei",
 		"description": {
-			"simple": "Haumea ist ein Zwergplanet weit draußen hinter Neptun. Sie dreht sich so schnell – einmal in weniger als vier Stunden –, dass sie in die Form eines Eis oder eines Rugbyballs gezogen wurde. Haumea hat zwei kleine Monde und sogar einen dünnen Ring.",
+			"simple": "Haumea ist ein Zwergplanet, also eine kleine Welt, die fast ein Planet ist. Sie ist weit draußen hinter Neptun. Sie dreht sich so schnell, einmal in weniger als vier Stunden, dass sie in die Länge gezogen wurde. Jetzt hat sie die Form eines Eis oder eines Rugbyballs. Haumea hat zwei kleine Monde und sogar einen dünnen Ring.",
 			"standard": "Haumea liegt im Kuipergürtel, der Zone eisiger Körper jenseits von Neptun. Ein Tag dauert dort weniger als vier Stunden; damit gehört sie zu den am schnellsten rotierenden großen Körpern des Sonnensystems. Die schnelle Drehung hat sie in eine gestreckte, eiähnliche Form gezogen, etwa doppelt so lang wie dick. 2017 beobachteten Astronomen, wie Haumea vor einem fernen Stern vorbeizog, und entdeckten dabei einen dünnen Ring – den ersten Ring, der um einen Zwergplaneten gefunden wurde. Ihre beiden Monde, Hiʻiaka und Namaka, sind wie Haumea selbst nach hawaiischen Göttinnen benannt.",
 			"advanced": "Haumeas Rotationsperiode von 3,9 Stunden streckt sie zu einem länglichen Ellipsoid, etwa doppelt so lang wie dick – der Form, in der sich ihre Schwerkraft und ihre Drehung die Waage halten. Ihre Oberfläche ist mit kristallinem Wassereis bedeckt, während ihre Dichte auf ein überwiegend felsiges Inneres unter einer dünnen Eishülle hindeutet. Haumea, ihre Monde und eine Familie eisiger Körper auf ähnlichen Bahnen gelten als Bruchstücke eines gewaltigen Zusammenstoßes in der Frühzeit, der vielleicht auch ihre schnelle Drehung erklärt. Sie umrundet die Sonne alle 283 Jahre in einem mittleren Abstand von 43 AE, auf einer um 28° geneigten Bahn."
 		},
 		"facts": {
 			"simple": [
 				"Ein Tag auf Haumea ist kürzer als ein Schulvormittag: weniger als 4 Stunden.",
-				"Haumea ist nach einer hawaiischen Göttin der Geburt und der Fruchtbarkeit benannt.",
-				"Haumea hat einen Ring, genau wie Saturn – nur viel dünner und lichtschwächer."
+				"Haumea ist nach einer hawaiischen Göttin der Geburt benannt.",
+				"Haumea hat einen Ring, genau wie Saturn, nur viel dünner und blasser."
 			],
 			"standard": [
 				"Haumeas Ring wurde 2017 entdeckt, als der Zwergplanet vor einem Stern vorbeizog und dessen Licht kurz abschirmte.",
@@ -1300,7 +1361,7 @@
 		},
 		"comparisons": {
 			"simple": [
-				"Wäre die Erde ein Fußball, hätte Haumea etwa die Größe und Form eines Wachteleis."
+				"Wenn die Erde eine Orange wäre, dann wäre Haumea ein winziges Ei, etwa so lang wie eine Murmel."
 			],
 			"standard": ["Haumea dreht sich etwa sechsmal so schnell wie die Erde."],
 			"advanced": [
@@ -1312,15 +1373,15 @@
 		"name": "Makemake",
 		"tagline": "Der Zwergplanet, der zu Ostern gefunden wurde",
 		"description": {
-			"simple": "Makemake ist eine kleine, rötliche, eisige Welt weit hinter Neptun. Sie wurde 2005 kurz nach Ostern gefunden, deshalb benannten ihre Entdecker sie nach einem Gott der Menschen auf der Osterinsel. Makemake gehört zu den hellsten Objekten im Kuipergürtel, der Zone eisiger Welten jenseits von Neptun. Sie hat einen winzigen, dunklen Mond.",
+			"simple": "Makemake ist eine kleine, rötliche, eisige Welt weit hinter Neptun. Sie wurde kurz nach Ostern gefunden. Darum haben die Menschen, die sie gefunden haben, sie nach einem Gott von der Osterinsel benannt. Makemake ist eine der hellsten eisigen Welten hinter Neptun. Sie hat einen winzigen, dunklen Mond.",
 			"standard": "Makemake ist ein Zwergplanet im Kuipergürtel, etwa 1400 km groß – etwas mehr als halb so breit wie Pluto. Seine Entdecker fanden ihn am 31. März 2005, wenige Tage nach Ostern, und benannten ihn später nach Makemake, dem Schöpfergott der Rapa Nui auf der Osterinsel. Nach Pluto ist er das hellste bekannte Objekt im Kuipergürtel und in einem großen Amateurteleskop sichtbar. Seine rötlich-braune Oberfläche ist mit gefrorenem Methan bedeckt. 2016 zeigten Hubble-Aufnahmen einen kleinen, sehr dunklen Mond.",
 			"advanced": "Makemake umrundet die Sonne alle 308 Jahre in einem mittleren Abstand von 45,6 AE, auf einer um 29° geneigten Bahn. Sein Spektrum wird von Methaneis bestimmt, dazu kommen Ethan und andere Verbindungen, die das Sonnenlicht daraus erzeugt hat und die der Oberfläche ihre rötliche Farbe geben. Als Makemake 2011 vor einem lichtschwachen Stern vorbeizog, verschwand der Stern schlagartig und tauchte ebenso plötzlich wieder auf – Makemake hat also höchstens eine extrem dünne Atmosphäre, anders als Pluto. Sein Mond mit dem Spitznamen MK2 ist etwa 1300-mal lichtschwächer als Makemake und viel dunkler; er wurde auf Hubble-Aufnahmen von 2015 gefunden."
 		},
 		"facts": {
 			"simple": [
-				"Ein Jahr auf Makemake dauert etwa 308 Erdjahre.",
-				"Seine Entdecker gaben ihm zuerst den Spitznamen „Easterbunny“ – Osterhase.",
-				"Makemake ist mit gefrorenem Methan bedeckt – dem Hauptbestandteil des Erdgases, mit dem viele Menschen kochen."
+				"Für eine Runde um die Sonne braucht Makemake fast vier lange Menschenleben.",
+				"Die Menschen, die Makemake gefunden haben, nannten sie zuerst „Easterbunny“. Das ist Englisch und heißt Osterhase.",
+				"Makemake ist mit gefrorenem Gas bedeckt. Mit diesem Gas kochen viele Menschen am Gasherd."
 			],
 			"standard": [
 				"Makemake wurde 2008 offiziell als Zwergplanet anerkannt.",
@@ -1335,7 +1396,7 @@
 		},
 		"comparisons": {
 			"simple": [
-				"Wäre die Erde ein Fußball, wäre Makemake etwa so groß wie eine Kirsche."
+				"Wenn die Erde eine Orange wäre, dann wäre Makemake eine Erbse."
 			],
 			"standard": [
 				"Makemake ist etwa 60 % so breit wie Pluto und 40 % so breit wie unser Mond."
@@ -1347,17 +1408,20 @@
 	},
 	"eris": {
 		"name": "Eris",
-		"tagline": "Der Zwergplanet, der einen Streit auslöste",
+		"tagline": {
+			"simple": "Der Zwergplanet, der einen Streit ausgelöst hat",
+			"standard": "Der Zwergplanet, der einen Streit auslöste"
+		},
 		"description": {
-			"simple": "Eris ist ein Zwergplanet, fast genau so groß wie Pluto, aber viel weiter entfernt. Als sie 2005 gefunden wurde, nannten manche sie den zehnten Planeten. Stattdessen stellten die Astronomen eine klare Regel auf, was als Planet zählt – und sowohl Eris als auch Pluto wurden zu Zwergplaneten. Eris ist nach der griechischen Göttin des Streits benannt. Das passt, denn sie hat einen großen Streit ausgelöst!",
+			"simple": "Eris ist ein Zwergplanet. Sie ist fast genau so groß wie Pluto, aber viel weiter weg. Als sie gefunden wurde, nannten manche sie den zehnten Planeten. Stattdessen stellten Forschende eine klare Regel auf, was als Planet zählt. Danach waren Eris und Pluto beide Zwergplaneten. Eris ist nach der griechischen Göttin des Streits benannt. Das passt, denn sie hat einen großen Streit ausgelöst!",
 			"standard": "Eris ist etwa so breit wie Pluto, aber rund ein Viertel schwerer, und sie gehört zu den entferntesten bekannten Objekten, die die Sonne umkreisen. Ihre Entdeckung 2005 zwang die Astronomen zu entscheiden, ob sie der zehnte Planet war – oder ob Pluto überhaupt ein Planet ist. Die Antwort war die IAU-Definition von 2006, die beide zu Zwergplaneten machte. Passenderweise ist Eris nach der griechischen Göttin der Zwietracht benannt. Ihre Bahn ist so langgestreckt und geneigt (44°), dass sie für einen Umlauf um die Sonne etwa 560 Jahre braucht. Heute ist Eris etwa 96-mal so weit von der Sonne entfernt wie die Erde, nahe dem sonnenfernsten Punkt ihrer Bahn.",
 			"advanced": "Eris gehört zur Streuscheibe, einer Population eisiger Körper jenseits des Kuipergürtels, deren exzentrische, stark geneigte Bahnen vermutlich durch Neptuns Schwerkraft nach außen geschleudert wurden. Ihre Bahn (große Halbachse 68 AE, Exzentrizität 0,44, Neigung 44°) führt sie zwischen etwa 38 und 98 AE von der Sonne. Als Eris 2010 vor einem Stern vorbeizog, ergab sich ein Durchmesser von etwa 2330 km, knapp unter Plutos 2377 km, während die Bahn ihres Mondes Dysnomia eine um etwa 27 % größere Masse als die Plutos ergibt – Eris ist also dichter und felsiger. Ihre Oberfläche wirft etwa 96 % des auftreffenden Lichts zurück, einer der höchsten Werte im Sonnensystem, vermutlich dank frischen Methanreifs."
 		},
 		"facts": {
 			"simple": [
-				"Ein Jahr auf Eris dauert etwa 560 Erdjahre.",
+				"Für eine Runde um die Sonne braucht Eris etwa sieben lange Menschenleben.",
 				"Eris hat einen Mond namens Dysnomia.",
-				"Eris gehört zu den glänzendsten Dingen im Sonnensystem: Wie frischer Schnee wirft sie fast das ganze Sonnenlicht zurück."
+				"Eris gehört zu den glänzendsten Dingen im All. Wie frischer Schnee wirft sie fast das ganze Sonnenlicht zurück."
 			],
 			"standard": [
 				"Bevor sie ihren offiziellen Namen bekam, hatte Eris den Spitznamen „Xena“, nach der Heldin einer Fernsehserie.",
@@ -1372,7 +1436,7 @@
 		},
 		"comparisons": {
 			"simple": [
-				"Wäre die Erde ein Fußball, wäre Eris ein Tischtennisball – nur ein kleines bisschen kleiner als Pluto."
+				"Wenn die Erde eine Orange wäre, dann wäre Eris eine Murmel, nur ein winziges bisschen kleiner als Pluto."
 			],
 			"standard": [
 				"Das Licht braucht heute etwa 13 Stunden bis zu Eris; ein Verkehrsflugzeug mit 900 km/h bräuchte etwa 1800 Jahre."
@@ -1386,15 +1450,15 @@
 		"name": "Charon",
 		"tagline": "Plutos riesiger Partner",
 		"description": {
-			"simple": "Charon ist Plutos größter Mond. Er ist etwa halb so breit wie Pluto – so groß, dass Pluto und Charon umeinander schwingen wie zwei Tänzer, die sich an den Händen halten. Sie zeigen einander immer dieselbe Seite. Stündest du auf Pluto, würde Charon unbeweglich am Himmel hängen – oder du würdest ihn auf der anderen Seite von Pluto nie zu sehen bekommen.",
+			"simple": "Charon ist der größte Mond des Pluto. Er ist etwa halb so breit wie Pluto. Er ist so groß, dass Pluto und Charon umeinander schwingen, wie zwei Tänzer, die sich an den Händen halten. Sie zeigen einander immer dieselbe Seite. Wenn du auf der einen Seite von Pluto stehen würdest, würde Charon am Himmel hängen und sich nie bewegen. Auf der anderen Seite würdest du ihn nie sehen.",
 			"standard": "Charon ist Plutos größter Mond, etwa 1200 km groß – mehr als halb so breit wie Pluto. Weil Charon im Vergleich zu Pluto so schwer ist, liegt der Punkt, um den beide kreisen, im leeren Raum zwischen ihnen und nicht in Pluto. Beide rotieren gebunden: Sie wenden einander immer dieselbe Seite zu, und ein Tag auf Pluto dauert genauso lange wie ein Umlauf Charons, 6,4 Tage. New Horizons entdeckte eine rötliche Kappe an Charons Nordpol und Schluchten, die viel länger und tiefer sind als der Grand Canyon.",
 			"advanced": "Mit etwa 12 % der Masse Plutos ist Charon im Verhältnis zu seinem Mutterkörper der größte Mond aller Planeten und Zwergplaneten; der gemeinsame Schwerpunkt der beiden liegt mehr als 900 km über Plutos Oberfläche, weshalb manche Astronomen Pluto und Charon einen Doppel-Zwergplaneten nennen. Seine Bahn ermöglichte die erste genaue Messung von Plutos Masse. Seine rötliche Polkappe, Mordor Macula, entsteht vermutlich, wenn aus Plutos Atmosphäre entweichendes Methan auf Charons kaltem Winterpol gefriert und von ultraviolettem Licht in rötliche Verbindungen umgewandelt wird. Seine Oberfläche aus Wassereis ist von einem Gürtel aus Schluchten zerrissen – ein Hinweis darauf, dass ein früherer Ozean unter der Oberfläche gefror und sich dabei ausdehnte."
 		},
 		"facts": {
 			"simple": [
-				"Charon ist nach dem Fährmann benannt, der in griechischen Sagen die Seelen über einen Fluss in die Unterwelt brachte.",
-				"Charon umrundet Pluto in etwas weniger als einer Woche.",
-				"Forscher gaben Charons dunkelroter Polkappe den Spitznamen „Mordor“, nach dem finsteren Land aus „Der Herr der Ringe“."
+				"Charon ist nach einem Fährmann aus alten griechischen Sagen benannt. Er brachte die Menschen über einen Fluss ins Land der Toten.",
+				"Charon braucht für eine Runde um Pluto etwas weniger als eine Woche.",
+				"Forschende gaben dem dunkelroten Fleck oben auf Charon den Spitznamen „Mordor“, nach dem finsteren Land aus „Der Herr der Ringe“."
 			],
 			"standard": [
 				"Charon ist nur etwa 19 600 km von Pluto entfernt – etwa ein Zwanzigstel des Abstands zwischen Erde und Mond.",
@@ -1409,7 +1473,7 @@
 		},
 		"comparisons": {
 			"simple": [
-				"Wäre die Erde ein Fußball, wäre Pluto ein Tischtennisball und Charon eine Haselnuss in 34 cm Entfernung."
+				"Wenn die Erde eine Orange wäre, dann wäre Pluto eine Murmel. Charon wäre eine Erbse, so weit von Pluto weg, wie deine Hand lang ist."
 			],
 			"standard": [
 				"Charon kreist nur etwa 19 600 km von Pluto entfernt – ein Verkehrsflugzeug könnte diese Strecke in weniger als einem Tag zurücklegen."
@@ -1423,7 +1487,7 @@
 		"name": "Vesta",
 		"tagline": "Der hellste Asteroid",
 		"description": {
-			"simple": "Vesta ist das zweitgrößte Objekt im Asteroidengürtel. Sie ist der hellste Asteroid von allen – in sehr dunklen Nächten kannst du sie manchmal sogar ohne Teleskop sehen. Vor langer Zeit hat ein gewaltiger Einschlag ein riesiges Loch in Vesta geschlagen, und einige der Bruchstücke sind als Meteoriten auf der Erde gelandet. Man kann also ein Stück von Vesta in der Hand halten!",
+			"simple": "Vesta ist das zweitgrößte Ding im Asteroidengürtel, dem Ring aus Felsbrocken zwischen Mars und Jupiter. Sie ist der hellste aller Felsbrocken im All. In sehr dunklen Nächten kannst du sie manchmal sogar ohne Fernrohr sehen. Vor langer Zeit hat ein gewaltiger Zusammenstoß ein riesiges Loch in Vesta geschlagen. Einige der Bruchstücke sind auf der Erde gelandet. Man kann also ein Stück von Vesta in der Hand halten!",
 			"standard": "Vesta ist der zweitgrößte Körper im Asteroidengürtel, etwa 525 km groß. Anders als die meisten Asteroiden ist sie wie ein kleiner Gesteinsplanet in Schichten aufgebaut: ein Eisenkern, ein Gesteinsmantel und eine Kruste aus alter Lava. Die NASA-Sonde Dawn umkreiste Vesta von 2011 bis 2012 und kartierte Rheasilvia, einen etwa 500 km breiten Krater – fast so breit wie Vesta selbst – mit einem Zentralberg, der mehr als doppelt so hoch ist wie der Mount Everest. Der Einschlag, der ihn schuf, schleuderte Gestein heraus, das noch heute auf die Erde fällt: Etwa jeder zwanzigste Meteorit stammt von Vesta.",
 			"advanced": "Vesta ist ein erhaltener Protoplanet: Früh in ihrer Geschichte schmolz sie und trennte sich in einen Eisenkern, einen Mantel und eine basaltische Kruste – derselbe Vorgang, der auch die Erde geformt hat. Ihre Südhalbkugel wird von zwei einander überlappenden Einschlagbecken beherrscht, Rheasilvia (etwa 500 km) und dem älteren Veneneia. Der Rheasilvia-Einschlag vor etwa einer Milliarde Jahren schleuderte rund 1 % von Vestas Volumen heraus und erzeugte eine Familie kleiner Asteroiden, die Vestoiden. Einige dieser Bruchstücke erreichen die Erde als Howardit-Eukrit-Diogenit-Meteoriten (HED), an denen wir Vestas Kruste im Labor untersuchen können. Weil sie nicht ganz rund ist, zählt Vesta als Asteroid und nicht als Zwergplanet."
 		},
@@ -1445,7 +1509,9 @@
 			]
 		},
 		"comparisons": {
-			"simple": ["Wäre die Erde ein Fußball, wäre Vesta eine Erbse."],
+			"simple": [
+				"Wenn die Erde eine Orange wäre, dann wäre Vesta ein kleines Pfefferkorn."
+			],
 			"standard": [
 				"Vesta ist etwa 525 km breit – mit 100 km/h wärst du in gut 5 Stunden einmal quer darüber gefahren."
 			],
@@ -1458,15 +1524,15 @@
 		"name": "Pallas",
 		"tagline": "Der schräge Riese des Asteroidengürtels",
 		"description": {
-			"simple": "Pallas ist einer der größten Asteroiden, fast so groß wie Vesta. Sie umrundet die Sonne auf einer stark geneigten Bahn und ist deshalb oft ober- oder unterhalb der anderen Asteroiden. Im Film ist der Asteroidengürtel voller Felsen, die dicht an dicht durcheinanderwirbeln – der echte ist dagegen fast leer. Raumsonden fliegen einfach hindurch, ohne irgendetwas ausweichen zu müssen.",
+			"simple": "Pallas ist einer der größten Felsbrocken im Asteroidengürtel. Sie ist fast so groß wie Vesta. Ihr Weg um die Sonne ist sehr schief. Darum ist sie oft über oder unter den anderen Felsbrocken. Im Film ist der Asteroidengürtel voller Felsen, die aneinanderstoßen. Aber der echte ist fast leer. Raumsonden fliegen einfach hindurch.",
 			"standard": "Pallas war der zweite Asteroid, der je gefunden wurde, entdeckt 1802 von Heinrich Olbers. Sie ist etwa 510 km groß, fast so groß wie Vesta, doch ihre Bahn ist um etwa 35° gegenüber denen der Planeten geneigt – so steil, dass sie schwer zu erreichen ist und noch keine Raumsonde sie besucht hat. Pallas erinnert gut daran, wie leer der Asteroidengürtel wirklich ist: Benachbarte Asteroiden sind im Durchschnitt etwa eine Million km voneinander entfernt, mehr als doppelt so weit wie die Erde vom Mond. Raumsonden wie Pioneer 10, Galileo, Cassini und New Horizons haben den Gürtel durchquert, ohne irgendetwas ausweichen zu müssen.",
 			"advanced": "Pallas hat einen mittleren Durchmesser von etwa 510 km und vereint rund 8 % der Masse des Asteroidengürtels. Ihre Bahn ist ungewöhnlich stark geneigt (34,9°) und exzentrisch (0,23), sodass sie anderen Asteroiden mit hohen Relativgeschwindigkeiten begegnet und Zusammenstöße besonders heftig ausfallen – das könnte ihre stark verkraterte „Golfball“-Oberfläche erklären, die 2020 auf Aufnahmen des Very Large Telescope zu sehen war. Der ganze Gürtel enthält nur etwa 3 % der Mondmasse, und Ceres, Vesta, Pallas und Hygiea zusammen machen mehr als die Hälfte davon aus. Pallas kreist in einem mittleren Abstand von 2,77 AE, fast genau wie Ceres."
 		},
 		"facts": {
 			"simple": [
 				"Pallas ist nach Pallas Athene benannt, der griechischen Göttin der Weisheit.",
-				"Ein Jahr auf Pallas dauert mehr als viereinhalb Erdjahre.",
-				"Alle Asteroiden im Gürtel zusammen wiegen viel weniger als unser Mond."
+				"Ein Jahr auf Pallas dauert mehr als viereinhalb unserer Jahre.",
+				"Alle Felsbrocken im Gürtel zusammen wiegen viel weniger als unser Mond."
 			],
 			"standard": [
 				"Wie Ceres wurde auch Pallas nach ihrer Entdeckung jahrzehntelang als Planet gezählt.",
@@ -1481,7 +1547,7 @@
 		},
 		"comparisons": {
 			"simple": [
-				"Wäre die Erde ein Fußball, wäre Pallas eine Erbse – genau wie Vesta."
+				"Wenn die Erde eine Orange wäre, dann wäre Pallas ein kleines Pfefferkorn, genau wie Vesta."
 			],
 			"standard": [
 				"Alle Asteroiden zusammen haben nur etwa ein Dreißigstel der Mondmasse."
@@ -1495,15 +1561,15 @@
 		"name": "Juno",
 		"tagline": "Der dritte Asteroid, der je gefunden wurde",
 		"description": {
-			"simple": "Juno ist ein großer Asteroid im Asteroidengürtel, etwa 250 km breit. Sie war der dritte Asteroid, der je gefunden wurde, im Jahr 1804. Sie besteht aus Gestein, vermischt mit Metall, und ist ein bisschen wie eine Kartoffel geformt. Juno ist nach der Königin der römischen Götter benannt.",
+			"simple": "Juno ist ein großer Felsbrocken im Asteroidengürtel, zwischen Mars und Jupiter. Sie war der dritte, den man je gefunden hat. Sie besteht aus Stein, vermischt mit Metall. Sie ist ein bisschen wie eine Kartoffel geformt. Juno ist nach der Königin der römischen Götter benannt.",
 			"standard": "Juno war der dritte entdeckte Asteroid, gefunden 1804 von Karl Harding. Sie ist etwa 250 km groß und einer der größeren Steinasteroiden, aufgebaut aus Silikatgestein, vermischt mit Metall. Ihre Bahn ist recht langgestreckt: Juno kommt der Sonne bis auf etwa 2 AE nahe und schwingt bis etwa 3,4 AE hinaus. Nicht verwechseln mit der NASA-Raumsonde Juno – die wurde zum Jupiter geschickt, nicht zu diesem Asteroiden.",
 			"advanced": "Juno ist ein S-Typ-Asteroid: Ihre Oberfläche besteht aus steinigen Silikaten, vermischt mit Nickeleisen, und wirft mehr Licht zurück als die dunklen, kohlenstoffreichen Asteroiden. Bei einer Exzentrizität von 0,26 schwankt ihr Abstand zur Sonne zwischen etwa 297 und 502 Millionen km, und sie umrundet die Sonne alle 4,4 Jahre. Sie dreht sich in etwa 7,2 Stunden, und ihre Helligkeit ändert sich dabei wegen ihrer unregelmäßigen Form. Zusammen mit Ceres, Pallas und Vesta wurde sie nach ihrer Entdeckung mehrere Jahrzehnte lang als Planet gezählt."
 		},
 		"facts": {
 			"simple": [
-				"Ein Jahr auf Juno dauert fast viereinhalb Erdjahre.",
+				"Ein Jahr auf Juno dauert fast viereinhalb unserer Jahre.",
 				"Juno dreht sich in etwa 7 Stunden einmal um sich selbst.",
-				"Juno ist zu lichtschwach für das bloße Auge – du brauchst ein Fernglas oder ein Teleskop."
+				"Juno leuchtet zu schwach, um sie nur mit deinen Augen zu sehen. Du brauchst ein Fernglas oder ein Fernrohr."
 			],
 			"standard": [
 				"Juno ist nach der römischen Königin der Götter benannt, der Frau Jupiters.",
@@ -1517,7 +1583,9 @@
 			]
 		},
 		"comparisons": {
-			"simple": ["Wäre die Erde ein Fußball, wäre Juno ein Pfefferkorn."],
+			"simple": [
+				"Wenn die Erde eine Orange wäre, dann wäre Juno ein Stecknadelkopf."
+			],
 			"standard": [
 				"Juno ist etwa 250 km breit: Mit 100 km/h wärst du in zweieinhalb Stunden einmal quer darüber gefahren."
 			],
@@ -1530,15 +1598,15 @@
 		"name": "Hygiea",
 		"tagline": "Ein möglicher Zwergplanet",
 		"description": {
-			"simple": "Hygiea ist das viertgrößte Objekt im Asteroidengürtel. Sie ist sehr dunkel und fast so rund wie ein Ball. Manche Astronomen meinen, sie könnte eines Tages als Zwergplanet gelten. Sie ist nach der griechischen Göttin der Gesundheit benannt – daher kommt das Wort „Hygiene“.",
+			"simple": "Hygiea ist das viertgrößte Ding im Asteroidengürtel, dem Ring aus Felsbrocken zwischen Mars und Jupiter. Sie ist sehr dunkel und fast rund wie ein Ball. Manche Forschende glauben, dass man sie eines Tages einen Zwergplaneten nennen wird. Sie ist nach der griechischen Göttin der Gesundheit benannt. Daher kommt das Wort „Hygiene“: sauber bleiben, um gesund zu bleiben.",
 			"standard": "Hygiea ist der viertgrößte Asteroid, etwa 410 km groß, und kreist im äußeren Teil des Gürtels in einem mittleren Abstand von 3,15 AE. Annibale de Gasparis entdeckte sie 1849 in Neapel. Ihre Oberfläche ist dunkel und kohlenstoffreich, wie die vieler Asteroiden im äußeren Gürtel. 2019 zeigten scharfe Bilder des Very Large Telescope in Chile, dass Hygiea fast perfekt rund ist; sie könnte also als Zwergplanet gelten – die IAU hat ihre Einstufung aber nicht geändert.",
 			"advanced": "Hygiea ist ein C-Typ-Asteroid, ein dunkler, kohlenstoffhaltiger Körper, und das größte Mitglied einer Asteroidenfamilie, die bei einem gewaltigen Einschlag entstand. Die Beobachtungen mit dem Very Large Telescope fanden 2019 überraschenderweise kein großes Einschlagbecken; Modelle deuten darauf hin, dass der Zusammenstoß Hygiea vollständig zertrümmerte und die Bruchstücke sich danach wieder zu einer Kugel sammelten. Ihre runde Form scheint das Rundheitskriterium der IAU für Zwergplaneten zu erfüllen, doch ihre Einstufung wurde nicht geändert. Ceres, Vesta, Pallas und Hygiea zusammen vereinen mehr als die Hälfte der Masse des Asteroidengürtels."
 		},
 		"facts": {
 			"simple": [
-				"Ein Jahr auf Hygiea dauert etwa fünfeinhalb Erdjahre.",
+				"Ein Jahr auf Hygiea dauert etwa fünfeinhalb unserer Jahre.",
 				"Ein Tag auf Hygiea dauert fast 14 Stunden.",
-				"Hygiea ist ohne Teleskop zu lichtschwach, um sie zu sehen."
+				"Hygiea leuchtet zu schwach, um sie ohne Fernrohr zu sehen."
 			],
 			"standard": [
 				"Hygiea braucht etwa 5,6 Jahre für einen Umlauf um die Sonne.",
@@ -1553,7 +1621,7 @@
 		},
 		"comparisons": {
 			"simple": [
-				"Wäre die Erde ein Fußball, wäre Hygiea eine kleine Erbse, etwa 7 mm groß."
+				"Wenn die Erde eine Orange wäre, dann wäre Hygiea ein Stecknadelkopf."
 			],
 			"standard": [
 				"Das Sonnenlicht braucht etwa 26 Minuten bis zu Hygiea – dreimal so lange wie bis zur Erde."
@@ -1565,17 +1633,17 @@
 	},
 	"eros": {
 		"name": "Eros",
-		"tagline": "Der erste Asteroid, auf dem eine Sonde landete",
+		"tagline": "Der erste Asteroid, auf dem eine Raumsonde landete",
 		"description": {
-			"simple": "Eros ist ein langer Asteroid in Form einer Erdnuss, etwa 34 km lang. Er kommt der Erde näher als die Asteroiden im Hauptgürtel. Im Jahr 2000 schwenkte eine Raumsonde namens NEAR Shoemaker in eine Umlaufbahn um Eros ein, und ein Jahr später landete sie sanft auf ihm – obwohl sie nie für eine Landung gebaut worden war!",
+			"simple": "Eros ist ein langer Felsbrocken im All, geformt wie eine Erdnuss. Er kommt der Erde näher als die Felsbrocken im Asteroidengürtel. Eine Raumsonde namens NEAR Shoemaker ist ein Jahr lang um Eros gekreist. Dann ist sie sanft auf ihm gelandet, obwohl sie nie für eine Landung gebaut worden war!",
 			"standard": "Eros, 1898 entdeckt, war der erste erdnahe Asteroid, der je gefunden wurde: Seine Bahn führt ihn näher an die Sonne als Mars, auch wenn sie die Erdbahn nie kreuzt. Er ist etwa 34 km lang. Am 14. Februar 2000 – dem Valentinstag, passend für einen Asteroiden, der nach dem griechischen Gott der Liebe benannt ist – wurde die NASA-Sonde NEAR Shoemaker zur ersten Raumsonde, die einen Asteroiden umkreiste. Nach einem Jahr Kartierung setzte sie am 12. Februar 2001 auf – die erste Landung auf einem Asteroiden.",
 			"advanced": "Eros ist ein S-Typ-Asteroid auf einer Bahn mit einer großen Halbachse von 1,46 AE und einer Exzentrizität von 0,22; er braucht 1,76 Jahre für einen Sonnenumlauf, und sein Perihel bei 1,13 AE macht ihn zu einem marsbahnkreuzenden erdnahen Asteroiden. Nahe Vorbeiflüge von Eros um 1900 und 1931 dienten dazu, seine Parallaxe und damit den Maßstab des Sonnensystems zu messen, die Länge der Astronomischen Einheit. NEAR Shoemaker ermittelte eine mittlere Dichte von etwa 2,7 g/cm³, ähnlich der Erdkruste – ein Hinweis auf einen festen, aber stark zerklüfteten Körper statt eines lockeren Geröllhaufens, bedeckt mit Felsblöcken und Senken voller feinem Staub."
 		},
 		"facts": {
 			"simple": [
-				"Eros ist nach dem griechischen Gott der Liebe benannt – und die Raumsonde kam am Valentinstag an!",
+				"Eros ist nach dem griechischen Gott der Liebe benannt. Und die Raumsonde kam am Valentinstag an!",
 				"Eros dreht sich in etwas mehr als 5 Stunden einmal um sich selbst.",
-				"Auf Eros ist die Schwerkraft so schwach, dass du einen Stein bis ins All werfen könntest."
+				"Eros zieht so schwach an dir, dass du einen Stein bis ins All werfen könntest."
 			],
 			"standard": [
 				"NEAR Shoemaker machte etwa 160 000 Bilder von Eros.",
@@ -1590,7 +1658,8 @@
 		},
 		"comparisons": {
 			"simple": [
-				"Wäre die Erde ein Fußball, wäre Eros so klein wie ein Sandkorn."
+				"Ein Auto auf der Autobahn könnte in etwa 20 Minuten von einem Ende von Eros zum anderen fahren.",
+				"Wenn die Erde eine Orange wäre, dann wäre Eros ein Sandkorn."
 			],
 			"standard": [
 				"Eros ist etwa 34 km lang – ein Auto mit 100 km/h bräuchte etwa 20 Minuten für seine ganze Länge."
@@ -1602,17 +1671,20 @@
 	},
 	"bennu": {
 		"name": "Bennu",
-		"tagline": "Der Geröllhaufen, den wir nach Hause geholt haben",
+		"tagline": {
+			"simple": "Der Steinhaufen, von dem wir Steine geholt haben",
+			"standard": "Der Geröllhaufen, den wir nach Hause geholt haben"
+		},
 		"description": {
-			"simple": "Bennu ist ein kleiner Asteroid, nur etwa 500 m breit – wenn du um seine Mitte herumlaufen könntest, bräuchtest du nur etwa 20 Minuten. Er ist kein fester Felsen, sondern ein lockerer Haufen aus Steinen und Geröll, den seine winzige Schwerkraft zusammenhält. 2020 berührte die Raumsonde OSIRIS-REx Bennu für ein paar Sekunden und schnappte sich etwas Staub und Kieselsteine. 2023 brachte eine Kapsel sie sicher zur Erde, wo Forscher sie jetzt untersuchen.",
+			"simple": "Bennu ist ein kleiner Felsbrocken im All. Du könntest in weniger als einer halben Stunde um seine Mitte herumlaufen. Bennu ist kein fester Felsen. Er ist ein lockerer Haufen aus Steinen und Kies, der nur ganz schwach zusammenhält. Eine Raumsonde hat Bennu für ein paar Sekunden berührt und sich etwas Staub und Kieselsteine geschnappt. Dann hat eine Kapsel sie sicher zur Erde gebracht. Jetzt untersuchen Forschende sie.",
 			"standard": "Bennu ist ein erdnaher Asteroid, etwa 500 m groß und 1999 entdeckt. Die NASA-Sonde OSIRIS-REx kam 2018 an und fand einen Geröllhaufen: einen lockeren Haufen aus Felsblöcken und Schotter, den eine schwache Schwerkraft zusammenhält. Als sie am 20. Oktober 2020 die Oberfläche berührte, um eine Probe zu nehmen, sank ihr Probenkopf ein wie in ein Bällebad. Die Kapsel mit etwa 120 g Material landete am 24. September 2023 in der Wüste von Utah. Die Probe ist reich an Kohlenstoff und wasserhaltigen Mineralen und enthält Aminosäuren, Bausteine des Lebens.",
 			"advanced": "Bennu ist ein kohlenstoffreicher B-Typ-Asteroid, dessen mittlere Dichte von nur etwa 1,2 g/cm³ zeigt, dass ein großer Teil seines Volumens aus leeren Räumen zwischen den Bruchstücken besteht. Seine Bahn (große Halbachse 1,13 AE, Exzentrizität 0,20) kreuzt die Erdbahn und macht ihn zu einem der am genauesten beobachteten potenziell gefährlichen Asteroiden: Nach der präzisen Bahnverfolgung durch OSIRIS-REx liegt die Wahrscheinlichkeit eines Einschlags am 24. September 2182 bei etwa 1 zu 2700. Die zurückgebrachte Probe enthält Minerale, die sich in flüssigem Wasser bildeten, und Salze aus verdunsteter Salzlauge – Hinweise darauf, dass Bennus Mutterkörper einst Wasser enthielt."
 		},
 		"facts": {
 			"simple": [
-				"Seinen Namen bekam Bennu von einem neunjährigen Jungen, der 2013 einen Namenswettbewerb gewann.",
+				"Bennu bekam seinen Namen von einem neunjährigen Jungen, der einen Wettbewerb gewonnen hat.",
 				"Bennu dreht sich in etwas mehr als 4 Stunden einmal um sich selbst.",
-				"Die zur Erde gebrachten Stücke von Bennu wiegen etwa 120 g – etwas mehr als eine Tafel Schokolade."
+				"Die Stücke von Bennu, die zur Erde gebracht wurden, wiegen etwas mehr als eine Tafel Schokolade."
 			],
 			"standard": [
 				"Bennu umrundet die Sonne etwa alle 1,2 Jahre.",
@@ -1639,17 +1711,20 @@
 	},
 	"arrokoth": {
 		"name": "Arrokoth",
-		"tagline": "Die fernste Welt, die je erkundet wurde",
+		"tagline": {
+			"simple": "Die fernste Welt, die wir je besucht haben",
+			"standard": "Die fernste Welt, die je erkundet wurde"
+		},
 		"description": {
-			"simple": "Arrokoth ist eine kleine, rötliche Welt aus Eis und Gestein, weit draußen im Kuipergürtel jenseits von Neptun. Sie sieht aus wie zwei flache Pfannkuchen, die aneinanderkleben – oder wie ein liegender Schneemann. Am Neujahrstag 2019 flog die Raumsonde New Horizons an ihr vorbei. Keine Raumsonde hat je etwas besucht, das weiter entfernt ist.",
+			"simple": "Arrokoth ist eine kleine, rötliche Welt aus Eis und Gestein. Sie ist sehr weit weg, hinter Neptun. Sie sieht aus wie zwei flache Pfannkuchen, die aneinanderkleben, oder wie ein liegender Schneemann. An einem Neujahrstag ist die Raumsonde New Horizons an ihr vorbeigeflogen. Noch nie hat eine Raumsonde etwas besucht, das weiter weg ist.",
 			"standard": "Arrokoth ist ein kleiner, eisiger Körper im Kuipergürtel, etwa 36 km lang. Am 1. Januar 2019 flog die NASA-Sonde New Horizons an ihm vorbei – dreieinhalb Jahre nach ihrem Besuch bei Pluto. Damit ist Arrokoth das fernste Objekt, das je aus der Nähe erkundet wurde, etwa 6,6 Milliarden km von der Erde entfernt. Er besteht aus zwei abgeflachten Hälften, die sanft aneinanderhaften – das zeigt, wie kleine Welten entstanden: Teilchen in einer Wolke aus Staub und Eis ballten sich langsam zusammen. Arrokoth hat sich in 4,5 Milliarden Jahren kaum verändert und ist deshalb wie eine Zeitkapsel aus der Entstehungszeit des Sonnensystems.",
 			"advanced": "Arrokoth (486958, früher 2014 MU69) wurde 2014 mit dem Hubble-Weltraumteleskop gefunden, bei der Suche nach einem Ziel, das New Horizons nach Pluto erreichen konnte. Er kreist im kalten klassischen Kuipergürtel auf einer fast kreisförmigen (Exzentrizität 0,04), kaum geneigten Bahn in 44 AE Abstand und braucht etwa 292 Jahre für einen Umlauf. Er ist ein Kontaktdoppelkörper: Seine beiden Hälften umkreisten einander einst und verschmolzen dann sanft, mit höchstens wenigen km/h – ein Beleg dafür, dass Planetesimale durch den sanften Kollaps von Kieselwolken entstanden und nicht durch heftige Zusammenstöße. Seine tiefrote Farbe stammt von organischen Verbindungen, die durch Strahlung entstanden sind, und auf seiner Oberfläche wurde Methanoleis nachgewiesen."
 		},
 		"facts": {
 			"simple": [
 				"Arrokoth bedeutet „Himmel“ in der Sprache des Volkes der Powhatan.",
-				"Funksignale von New Horizons bei Arrokoth brauchten etwa 6 Stunden bis zur Erde.",
-				"Arrokoth ist sehr rot – sogar röter als Pluto."
+				"Nachrichten von New Horizons bei Arrokoth brauchten etwa 6 Stunden bis zur Erde.",
+				"Arrokoth ist sehr rot, sogar röter als Pluto."
 			],
 			"standard": [
 				"Arrokoth wurde 2014 mit dem Hubble-Weltraumteleskop entdeckt, als Forscher ein Ziel für New Horizons suchten.",
@@ -1664,7 +1739,7 @@
 		},
 		"comparisons": {
 			"simple": [
-				"Wäre die Erde ein Fußball, wäre Arrokoth ein Sandkorn in mehr als 100 km Entfernung."
+				"Wenn die Erde eine Orange wäre, dann wäre Arrokoth ein Sandkorn. Bis dorthin wäre es so weit wie bei einem Marathon, einem ganz langen Wettrennen."
 			],
 			"standard": [
 				"Arrokoth ist etwa 36 km lang – etwas kürzer als ein Marathon."
@@ -1678,15 +1753,15 @@
 		"name": "Halley",
 		"tagline": "Der Halleysche Komet, alle 75 bis 76 Jahre zurück",
 		"description": {
-			"simple": "Der Halleysche Komet ist der berühmteste Komet von allen. Er ist ein Klumpen aus schmutzigem Eis, etwa 15 km lang. Alle 75 oder 76 Jahre kommt er der Sonne nahe: Das Eis wird zu Gas und Staub, und der Komet bekommt einen langen, leuchtenden Schweif. Der Schweif zeigt immer von der Sonne weg. Zuletzt war Halley 1986 zu Besuch, und 2061 kommt er wieder – vielleicht siehst du ihn dann!",
+			"simple": "Der Halleysche Komet ist der berühmteste Komet von allen. Ein Komet ist ein großer Klumpen aus schmutzigem Eis. Halleys Eisklumpen ist etwa so lang wie eine große Stadt. Alle 75 oder 76 Jahre kommt er der Sonne nahe. Dann wird ein Teil seines Eises zu Gas und Staub, und der Komet bekommt einen langen, leuchtenden Schweif. Der Schweif zeigt immer von der Sonne weg. Halley kommt wieder, wenn du erwachsen bist. Vielleicht siehst du ihn dann!",
 			"standard": "Der Halleysche Komet kehrt alle 75 bis 76 Jahre ins innere Sonnensystem zurück. Sein Kern ist ein dunkler Klumpen aus Eis und Staub, etwa 15 × 8 km groß. Nähert er sich der Sonne, verwandelt das Sonnenlicht das Eis in Gas, das Staub mitreißt und eine leuchtende Wolke bildet, die Koma, dazu zwei Schweife, die von der Sonne weggedrückt werden: einen geraden, bläulichen Gasschweif und einen gebogenen, weißlichen Staubschweif. Wenn sich der Komet wieder von der Sonne entfernt, fliegen seine Schweife ihm also voraus. Edmond Halley erkannte, dass die Kometen von 1531, 1607 und 1682 ein und derselbe waren, und sagte seine Rückkehr für 1758 voraus; der Komet kam tatsächlich wieder, doch Halley erlebte es nicht mehr. Sein letztes Perihel war am 9. Februar 1986, das nächste folgt am 28. Juli 2061.",
 			"advanced": "Der Komet 1P/Halley bewegt sich auf einer rückläufigen Bahn (Neigung 162°): Er umrundet die Sonne in entgegengesetzter Richtung zu den Planeten. Seine stark exzentrische Bahn (0,97) führt ihn von etwa 0,6 AE, innerhalb der Venusbahn, bis etwa 35 AE hinaus, jenseits von Neptun. Im März 1986 flog die ESA-Sonde Giotto in etwa 600 km Abstand am Kern vorbei und lieferte die ersten Nahaufnahmen eines Kometenkerns: eine Oberfläche dunkler als Kohle, aus der an einigen aktiven Stellen auf der Tagseite Gas- und Staubfontänen schossen. Aufzeichnungen über den Halleyschen Kometen reichen in China mindestens bis ins Jahr 240 v. Chr. zurück."
 		},
 		"facts": {
 			"simple": [
-				"Staub vom Halleyschen Kometen sorgt jedes Jahr für zwei Sternschnuppenschauer, im Mai und im Oktober.",
-				"Der Schriftsteller Mark Twain wurde in einem Halley-Jahr geboren, 1835, und starb im nächsten, 1910.",
-				"Der Halleysche Komet ist auf dem Teppich von Bayeux zu sehen, einer mehr als 900 Jahre alten Stickerei."
+				"Staub vom Halleyschen Kometen schenkt uns jedes Jahr zweimal Sternschnuppen, im Mai und im Oktober.",
+				"Der Schriftsteller Mark Twain wurde in einem Jahr geboren, in dem der Halleysche Komet kam. Er starb, als der Komet das nächste Mal wiederkam.",
+				"Der Halleysche Komet ist auf einem sehr alten Bild aus Stoff zu sehen, aus der Zeit der Ritter und Burgen."
 			],
 			"standard": [
 				"1986 flog eine ganze Flotte von Raumsonden aus Europa, der Sowjetunion und Japan an dem Kometen vorbei.",
@@ -1701,7 +1776,8 @@
 		},
 		"comparisons": {
 			"simple": [
-				"Halleys Kern ist nur etwa 15 km lang, doch sein Schweif kann sich über Millionen Kilometer erstrecken – ein Vielfaches der Entfernung von der Erde zum Mond."
+				"Halleys Eisklumpen ist nur so lang wie eine große Stadt. Aber sein Schweif kann viele Male länger sein als der Weg von der Erde zum Mond.",
+				"Wenn die Erde eine Orange wäre, dann wäre Halleys Eisklumpen ein Staubkorn."
 			],
 			"standard": [
 				"Ein Kind, das den Halleyschen Kometen 2061 mit 10 Jahren sieht, ist bei seiner nächsten Wiederkehr danach etwa 85."
@@ -1715,15 +1791,15 @@
 		"name": "Encke",
 		"tagline": "Der Komet mit dem kürzesten Jahr",
 		"description": {
-			"simple": "Der Komet Encke ist ein kleiner Komet, der sehr oft zur Sonne zurückkommt – etwa alle 3 Jahre und 4 Monate. Sein Kern ist nur etwa 5 km breit, und meistens ist er zu lichtschwach, um ihn ohne Fernglas oder Teleskop zu sehen. Staub, den er entlang seiner Bahn zurückgelassen hat, beschert uns im Herbst Sternschnuppen.",
+			"simple": "Der Komet Encke ist ein kleiner Komet, also ein Klumpen aus schmutzigem Eis. Er kommt sehr oft zur Sonne zurück: etwa alle drei Jahre. Meistens leuchtet er zu schwach, um ihn ohne Fernglas oder Fernrohr zu sehen. Staub, den er auf seinem Weg zurückgelassen hat, schenkt uns im Herbst Sternschnuppen.",
 			"standard": "Der Komet Encke (2P/Encke) hat die kürzeste Umlaufzeit aller hellen Kometen: Er kehrt alle 3,3 Jahre wieder. Pierre Méchain sah ihn 1786 als Erster, doch benannt ist er nach Johann Franz Encke, der 1819 seine Bahn berechnete und zeigte, dass er immer wiederkommt. Er war erst der zweite Komet nach dem Halleyschen, bei dem man das wusste – deshalb beginnt sein Katalogname mit „2P“. Seine Bahn führt ihn näher an die Sonne als Merkur im Mittel und hinaus bis etwa 4 AE, noch innerhalb der Jupiterbahn. Staub von Encke verursacht jedes Jahr im Oktober und November die Sternschnuppen der Tauriden.",
 			"advanced": "Enckes Bahn (große Halbachse 2,22 AE, Exzentrizität 0,85) reicht von 0,34 AE, näher an der Sonne als Merkurs mittlerer Abstand, bis 4,1 AE. Encke bemerkte, dass der Komet jedes Mal einige Stunden früher zurückkehrte, als die Schwerkraft allein vorhersagte – einer der ersten Hinweise auf nichtgravitative Kräfte, die, wie wir heute wissen, von Gasfontänen stammen, die wie kleine Raketentriebwerke auf den rotierenden Kern wirken. Anders als die meisten kurzperiodischen Kometen kommt Encke Jupiter nie nahe, dessen Schwerkraft solche Bahnen sonst umformt; wie er auf seine heutige Bahn gelangte, ist noch umstritten. Da er schon Dutzende Male beobachtet wurde, gehört er zu den am besten untersuchten Kometen."
 		},
 		"facts": {
 			"simple": [
-				"Encke beschert uns im Oktober und November die Sternschnuppen der Tauriden.",
-				"Encke kommt der Sonne näher, als der Planet Merkur im Mittel ist.",
-				"Encke kehrt etwa dreimal in zehn Jahren zur Sonne zurück."
+				"Encke schenkt uns im Oktober und November die Sternschnuppen, die man Tauriden nennt.",
+				"Encke kommt der Sonne näher, als Merkur meistens ist.",
+				"Encke kommt etwa dreimal in zehn Jahren zur Sonne zurück."
 			],
 			"standard": [
 				"Enckes Kern ist etwa 5 km groß.",
@@ -1738,7 +1814,7 @@
 		},
 		"comparisons": {
 			"simple": [
-				"Wäre die Erde ein Fußball, wäre Enckes Kern etwa so dünn wie ein Haar."
+				"Wenn die Erde eine Orange wäre, dann wäre der Eisklumpen von Encke dünner als ein Haar."
 			],
 			"standard": [
 				"Encke kehrt etwa 23-mal wieder, während der Halleysche Komet ein einziges Mal zurückkommt."
@@ -1752,15 +1828,15 @@
 		"name": "67P",
 		"tagline": "Der Quietscheentchen-Komet, den Rosetta besuchte",
 		"description": {
-			"simple": "Der Komet 67P sieht aus wie ein riesiges Quietscheentchen aus Eis und Staub, etwa 4 km lang. Die Raumsonde Rosetta umkreiste ihn zwei Jahre lang und sah zu, wie er aufwachte, als er der Sonne näher kam: Fontänen aus Gas und Staub schossen aus ihm heraus. Rosetta setzte sogar einen kleinen Lander namens Philae auf dem Kometen ab – die allererste Landung auf einem Kometen.",
+			"simple": "Der Komet 67P sieht aus wie ein riesiges Quietscheentchen aus Eis und Staub. Die Raumsonde Rosetta ist zwei Jahre lang um ihn gekreist. Sie hat zugesehen, wie er aufwachte, als er der Sonne näher kam. Fontänen aus Gas und Staub schossen aus ihm heraus. Rosetta hat sogar einen kleinen Lande-Roboter namens Philae auf dem Kometen abgesetzt. Das war die allererste Landung auf einem Kometen.",
 			"standard": "Der Komet 67P/Tschurjumow-Gerassimenko wurde 1969 von Klim Tschurjumow und Swetlana Gerassimenko entdeckt. Er besteht aus zwei Teilen, die durch einen schmalen Hals verbunden sind – das ergibt seine berühmte „Quietscheentchen“-Form, etwa 4 km lang. Die ESA-Sonde Rosetta erreichte ihn im August 2014 und umkreiste ihn mehr als zwei Jahre lang; dabei beobachtete sie, wie sich das Eis in Gas verwandelte, als der Komet der Sonne näher kam. Am 12. November 2014 setzte der Lander Philae auf – die erste Landung auf einem Kometen –, prallte aber ab und kam im Schatten einer Felswand zur Ruhe. Rosetta beendete ihre Mission am 30. September 2016 mit einer langsamen, kontrollierten Bruchlandung auf dem Kometen.",
 			"advanced": "67P ist ein Komet der Jupiter-Familie mit einer Umlaufzeit von 6,4 Jahren; sein Abstand zur Sonne schwankt zwischen 1,24 AE und etwa 5,7 AE. Rosetta maß eine Dichte von nur etwa 0,53 g/cm³: Rund 70 % des Kerns sind leerer Raum. Ihre Instrumente fanden die Aminosäure Glycin und Phosphor sowie ein Verhältnis von schwerem zu gewöhnlichem Wasser, das sich deutlich von dem in den Ozeanen der Erde unterscheidet – Kometen wie 67P haben also wohl nicht den Großteil des irdischen Wassers geliefert. Philaes Harpunen zündeten nicht, sodass er zweimal abprallte, bevor er im Schatten liegen blieb, wo seine Batterie nach etwa zweieinhalb Tagen Messbetrieb erschöpft war."
 		},
 		"facts": {
 			"simple": [
-				"Die Schwerkraft auf 67P ist so schwach, dass dich ein kräftiger Sprung ins All befördern würde.",
-				"Der Lander Philae prallte zweimal ab, bevor er liegen blieb.",
-				"Rosetta brauchte zehn Jahre bis zu 67P und erkundete ihn dann mehr als zwei Jahre lang."
+				"67P zieht so schwach an dir, dass du mit einem guten Sprung bis ins All fliegen würdest.",
+				"Der Lande-Roboter Philae ist zweimal abgeprallt, bevor er liegen blieb.",
+				"Rosetta brauchte zehn Jahre bis zu 67P. Dann hat sie ihn mehr als zwei Jahre lang erforscht."
 			],
 			"standard": [
 				"67P umrundet die Sonne alle 6,4 Jahre.",
@@ -1775,7 +1851,7 @@
 		},
 		"comparisons": {
 			"simple": [
-				"67P ist etwa 4 km lang – du könntest in weniger als einer Stunde von einem Ende zum anderen laufen, wenn du nicht davonschweben würdest."
+				"Du könntest in etwa einer Stunde von einem Ende von 67P zum anderen laufen, wenn du nicht davonschweben würdest."
 			],
 			"standard": [
 				"Wäre die Erde ein Fußball, wäre 67P etwa so dick wie ein menschliches Haar."
@@ -1787,17 +1863,20 @@
 	},
 	"halebopp": {
 		"name": "Hale-Bopp",
-		"tagline": "Der große Komet von 1997",
+		"tagline": {
+			"simple": "Der große Komet, an den sich deine Eltern vielleicht erinnern",
+			"standard": "Der große Komet von 1997"
+		},
 		"description": {
-			"simple": "Hale-Bopp war einer der hellsten Kometen der letzten hundert Jahre. 1997 konnten ihn Menschen auf der ganzen Welt ohne Teleskop am Nachthimmel sehen – sogar aus hell erleuchteten Städten. Er blieb etwa anderthalb Jahre lang sichtbar. Sein Kern ist für einen Kometen riesig, etwa 60 km breit. Erst in etwa 2400 Jahren kommt er wieder.",
+			"simple": "Hale-Bopp war einer der hellsten Kometen seit sehr langer Zeit. Menschen auf der ganzen Welt konnten ihn ohne Fernrohr am Nachthimmel sehen, sogar aus hellen Städten. Er blieb etwa anderthalb Jahre lang am Himmel. Sein Eisklumpen ist für einen Kometen riesig. Hale-Bopp kommt erst in sehr, sehr langer Zeit wieder.",
 			"standard": "Der Komet Hale-Bopp (C/1995 O1) wurde am 23. Juli 1995 in derselben Nacht unabhängig voneinander von Alan Hale in New Mexico und Thomas Bopp in Arizona entdeckt. Damals war er noch jenseits der Jupiterbahn – ungewöhnlich weit draußen für einen sichtbaren Kometen, weil sein Kern außergewöhnlich groß ist, rund 60 km. Am 1. April 1997 kam er der Sonne am nächsten und wurde wahrscheinlich von mehr Menschen gesehen als je ein Komet zuvor. Seine beiden Schweife, ein bläulicher Gasschweif und ein breiter, weißlicher Staubschweif, zeigten in leicht unterschiedliche Richtungen, aber beide von der Sonne weg.",
 			"advanced": "Hale-Bopp ist ein langperiodischer Komet auf einer fast senkrecht stehenden (Neigung 89°), extrem langgestreckten Bahn (Exzentrizität 0,995). Sein vorheriger Besuch liegt etwa 4200 Jahre zurück; auf dem Weg nach innen kam er 1996 Jupiter nahe, dessen Schwerkraft seine Umlaufzeit auf etwa 2400 Jahre verkürzte. Sein Kern, geschätzt 40 bis 80 km groß, ist einer der größten bekannten Kometenkerne. Neben den üblichen Gas- und Staubschweifen entdeckten Beobachter einen dritten, schwachen Schweif aus Natriumatomen. Seine Bahn reicht heute bis etwa 350 AE von der Sonne hinaus."
 		},
 		"facts": {
 			"simple": [
 				"Hale-Bopp wurde in derselben Nacht von zwei Menschen an zwei verschiedenen Orten entdeckt.",
-				"Sein Kern ist etwa viermal so lang wie der des Halleyschen Kometen.",
-				"Als Hale-Bopp das letzte Mal vorbeikam, vor etwa 4200 Jahren, standen die ägyptischen Pyramiden schon."
+				"Sein Eisklumpen ist etwa viermal so lang wie der des Halleyschen Kometen.",
+				"Als Hale-Bopp das letzte Mal vorbeikam, standen die Pyramiden in Ägypten schon."
 			],
 			"standard": [
 				"Hale-Bopp war etwa 18 Monate lang mit bloßem Auge zu sehen, doppelt so lange wie der bisherige Rekordhalter, der Große Komet von 1811.",
@@ -1812,7 +1891,8 @@
 		},
 		"comparisons": {
 			"simple": [
-				"Wäre die Erde ein Fußball, wäre der Kern von Hale-Bopp etwa so groß wie ein Mohnkorn."
+				"Ein Auto bräuchte mehr als eine halbe Stunde, um quer über den Eisklumpen von Hale-Bopp zu fahren.",
+				"Wenn die Erde eine Orange wäre, dann wäre der Eisklumpen von Hale-Bopp ein Salzkorn."
 			],
 			"standard": [
 				"Hale-Bopp kommt nur etwa alle 2400 Jahre wieder – rund 30-mal so selten wie der Halleysche Komet."
@@ -1824,16 +1904,19 @@
 	},
 	"neowise": {
 		"name": "NEOWISE",
-		"tagline": "Der große Komet von 2020",
+		"tagline": {
+			"simple": "Der große Komet von vor ein paar Jahren",
+			"standard": "Der große Komet von 2020"
+		},
 		"description": {
-			"simple": "Der Komet NEOWISE war ein heller Komet, den man im Juli 2020 mit eigenen Augen sehen konnte. Entdeckt wurde er im März 2020 von einem Weltraumteleskop namens NEOWISE, das dem Kometen seinen Namen gab. Auf Fotos erkennt man deutlich seine zwei Schweife: einen gebogenen, weißlichen Staubschweif und einen dünnen, bläulichen Gasschweif. Erst in etwa 6800 Jahren kommt er wieder.",
+			"simple": "Der Komet NEOWISE war ein heller Komet. Vor ein paar Jahren, im Juli, konnten ihn die Menschen mit eigenen Augen sehen. Ein Fernrohr im Weltraum namens NEOWISE hat ihn entdeckt und ihm seinen Namen gegeben. Auf Fotos sieht man seine zwei Schweife. Der eine ist ein gebogener, weißlicher Schweif aus Staub. Der andere ist ein dünner, bläulicher Schweif aus Gas.",
 			"standard": "Der Komet NEOWISE (C/2020 F3) wurde am 27. März 2020 vom NASA-Weltraumteleskop NEOWISE entdeckt, das im Infrarotlicht nach Asteroiden und Kometen suchte. Am 3. Juli 2020 kam er der Sonne am nächsten, innerhalb der Merkurbahn, und überstand die Hitze. Im Juli wurde er zum hellsten Kometen, der seit Hale-Bopp 1997 von der Nordhalbkugel aus zu sehen war – mit bloßem Auge gut zu erkennen, tief am Morgen- und später am Abendhimmel. Fotos zeigten deutlich seine zwei Schweife: einen gebogenen, gelblich-weißen Staubschweif und einen geraden, schwachen blauen Gasschweif, beide von der Sonne weg gerichtet. Erst in etwa 6800 Jahren kehrt er zurück.",
 			"advanced": "C/2020 F3 ist ein langperiodischer Komet auf einer stark geneigten (129°), rückläufigen Bahn. Im Perihel war er nur 0,29 AE von der Sonne entfernt, und am 23. Juli 2020 kam er der Erde mit etwa 103 Millionen km (0,69 AE) am nächsten. Die Schwerkraft der Planeten dehnte bei diesem Durchgang seine Bahn: Seine Umlaufzeit wuchs um mehr als 2000 Jahre auf etwa 6800 Jahre, sein Aphel liegt nun mehr als 700 AE von der Sonne entfernt. Sein Kern ist etwa 5 km groß. Spektren zeigten leuchtendes Natrium, und das Sonnenobservatorium SOHO sowie die Parker Solar Probe fotografierten ihn nahe dem Perihel."
 		},
 		"facts": {
 			"simple": [
-				"NEOWISE war für Menschen auf der Nordhalbkugel der hellste Komet seit mehr als 20 Jahren.",
-				"Astronauten auf der Internationalen Raumstation fotografierten ihn aus dem All.",
+				"Für Menschen auf der nördlichen Hälfte der Erde war NEOWISE der hellste Komet seit mehr als 20 Jahren.",
+				"Astronauten auf der Internationalen Raumstation haben ihn aus dem All fotografiert.",
 				"Sein nächster Besuch liegt so weit in der Zukunft, dass ihn niemand, der heute lebt, wiedersehen wird."
 			],
 			"standard": [
@@ -1849,7 +1932,7 @@
 		},
 		"comparisons": {
 			"simple": [
-				"NEOWISE kommt erst in etwa 6800 Jahren wieder – das ist länger als die ganze Zeit, seit die Menschen schreiben können."
+				"NEOWISE kommt erst in sehr, sehr langer Zeit wieder. Das ist länger als die ganze Zeit, seit die Menschen schreiben können."
 			],
 			"standard": [
 				"NEOWISE braucht für einen Umlauf um die Sonne etwa 90-mal so lange wie der Halleysche Komet."
@@ -1863,7 +1946,7 @@
 		"name": "Nix",
 		"tagline": "Plutos Mond der Nacht",
 		"description": {
-			"simple": "Nix ist einer der kleinen Monde Plutos, nur etwa 50 km lang und geformt wie eine Kartoffel. Statt Pluto immer dieselbe Seite zu zeigen, taumelt er bei seinem Umlauf. Er ist nach der griechischen Göttin der Nacht benannt.",
+			"simple": "Nix ist einer der kleinen Monde des Pluto. Er ist wie eine Kartoffel geformt. Er zeigt Pluto nicht immer dieselbe Seite. Er taumelt, während er um Pluto kreist. Er ist nach der griechischen Göttin der Nacht benannt.",
 			"standard": "Nix ist ein kleiner, länglicher Mond, etwa 50 × 33 × 31 km groß, der 2005 zusammen mit Hydra mit dem Hubble-Weltraumteleskop entdeckt wurde. Er umkreist Pluto und Charon alle 24,9 Tage. Wie Plutos andere kleine Monde wendet er Pluto nicht immer dieselbe Seite zu, sondern taumelt chaotisch, weil zwei große Körper zugleich an ihm ziehen. Er ist nach Nyx benannt, der griechischen Göttin der Nacht; die Schreibweise mit i vermeidet eine Verwechslung mit einem Asteroiden namens Nyx.",
 			"advanced": "Nix umkreist den gemeinsamen Schwerpunkt von Pluto und Charon in etwa 48 700 km Abstand mit einer Umlaufzeit von 24,9 Tagen, fast dem Vierfachen von Charons Umlaufzeit. Seine chaotische, taumelnde Rotation entsteht durch die ständig wechselnde Anziehung des Paares Pluto–Charon. New Horizons fand ein rötliches Gebiet um einen großen Krater auf seiner sonst hellen Oberfläche aus Wassereis. Die Anfangsbuchstaben von Nix und Hydra, N und H, wurden zu Ehren von New Horizons gewählt."
 		}
@@ -1872,16 +1955,19 @@
 		"name": "Hydra",
 		"tagline": "Plutos äußerster Mond",
 		"description": {
-			"simple": "Hydra ist der Mond, der am weitesten von Pluto entfernt ist. Er ist klein, etwa 51 km lang, und taumelt bei seinem Umlauf. Benannt ist er nach einem vielköpfigen Ungeheuer aus griechischen Sagen.",
+			"simple": "Hydra ist der Mond, der am weitesten von Pluto entfernt ist. Er ist klein und taumelt, während er um Pluto kreist. Er ist nach einem Ungeheuer mit vielen Köpfen aus alten griechischen Sagen benannt.",
 			"standard": "Hydra ist der äußerste der bekannten Monde Plutos, etwa 51 × 36 × 31 km groß. Er wurde 2005 zusammen mit Nix mit dem Hubble-Weltraumteleskop entdeckt und umkreist Pluto und Charon alle 38,2 Tage. New Horizons zeigte, dass seine Oberfläche hell ist und größtenteils aus Wassereis besteht. Benannt ist er nach der vielköpfigen Schlange, gegen die Herakles in der griechischen Sage kämpfte.",
 			"advanced": "Hydra umkreist den gemeinsamen Schwerpunkt von Pluto und Charon in etwa 64 700 km Abstand mit einer Umlaufzeit von 38,2 Tagen – fast genau dem Sechsfachen von Charons Umlaufzeit. Wie die anderen kleinen Monde rotiert er chaotisch statt gebunden. Seine helle Oberfläche wird von relativ reinem Wassereis bestimmt. Zusammen mit Nix erhielt er seinen Namen so, dass die Anfangsbuchstaben N und H die Mission New Horizons ehren."
 		}
 	},
 	"kerberos": {
 		"name": "Kerberos",
-		"tagline": "Plutos Mond aus zwei Teilen",
+		"tagline": {
+			"simple": "Plutos Mond aus zwei Klumpen",
+			"standard": "Plutos Mond aus zwei Teilen"
+		},
 		"description": {
-			"simple": "Kerberos ist ein winziger Mond Plutos, nur etwa 19 km lang. Er sieht aus wie zwei kleine Klumpen, die aneinanderkleben. Benannt ist er nach dem dreiköpfigen Hund, der in griechischen Sagen die Unterwelt bewacht.",
+			"simple": "Kerberos ist ein winziger Mond des Pluto. Er sieht aus wie zwei kleine Klumpen, die aneinanderkleben. Er ist nach dem Hund mit drei Köpfen benannt, der in alten griechischen Sagen das Land der Toten bewacht.",
 			"standard": "Kerberos gehört zu den kleinsten Monden Plutos, etwa 19 × 10 × 9 km groß, und wurde 2011 mit dem Hubble-Weltraumteleskop entdeckt. Er umkreist Pluto und Charon alle 32,2 Tage. New Horizons zeigte, dass er aus zwei Teilen besteht, einem größeren und einem kleineren, und dass seine Oberfläche heller ist, als die Forscher erwartet hatten. Benannt ist er nach dem dreiköpfigen Hund, der in der griechischen Sage den Eingang zur Unterwelt bewacht.",
 			"advanced": "Kerberos umkreist den gemeinsamen Schwerpunkt von Pluto und Charon in etwa 57 800 km Abstand mit einer Umlaufzeit von 32,2 Tagen – fast dem Fünffachen von Charons Umlaufzeit, zwischen den Bahnen von Nix und Hydra. Aufnahmen von New Horizons zeigten eine Form aus zwei Teilen, vielleicht zwei verschmolzene Körper, und eine helle Oberfläche aus Wassereis. Wie Plutos andere kleine Monde entstand er wahrscheinlich aus Trümmern des gewaltigen Einschlags, der vermutlich auch Charon hervorgebracht hat."
 		}
@@ -1890,7 +1976,7 @@
 		"name": "Styx",
 		"tagline": "Plutos kleinster bekannter Mond",
 		"description": {
-			"simple": "Styx ist der kleinste bekannte Mond Plutos, nur etwa 16 km lang. Er wurde 2012 gefunden, als Forscher prüften, ob der Weg der Raumsonde New Horizons sicher war. Benannt ist er nach einem Fluss der Unterwelt aus griechischen Sagen.",
+			"simple": "Styx ist der kleinste Mond des Pluto, den wir kennen. Forschende haben ihn gefunden, als sie prüften, ob der Weg der Raumsonde New Horizons sicher ist. Er ist nach einem Fluss im Land der Toten aus alten griechischen Sagen benannt.",
 			"standard": "Styx, etwa 16 × 9 × 8 km groß, ist der kleinste bekannte Mond Plutos. Er wurde 2012 mit dem Hubble-Weltraumteleskop entdeckt, bei der Suche nach Monden und Staub, die New Horizons gefährden könnten. Er umkreist Pluto und Charon alle 20,2 Tage, innerhalb der Bahn von Nix. Benannt ist er nach dem Fluss, der in der griechischen Sage die Welt der Lebenden von der Unterwelt trennt.",
 			"advanced": "Styx umkreist den gemeinsamen Schwerpunkt von Pluto und Charon in etwa 42 700 km Abstand mit einer Umlaufzeit von 20,2 Tagen, fast dem Dreifachen von Charons Umlaufzeit; damit ist er der innerste der vier kleinen Monde Plutos. Ein Team unter der Leitung von Mark Showalter fand ihn auf Hubble-Aufnahmen von 2012. New Horizons sah ihn nur aus großer Entfernung, deshalb ist über seine Oberfläche wenig bekannt."
 		}
@@ -1899,7 +1985,7 @@
 		"name": "Dysnomia",
 		"tagline": "Der Mond, der Eris gewogen hat",
 		"description": {
-			"simple": "Dysnomia ist der einzige bekannte Mond des Zwergplaneten Eris. Sie ist viel dunkler als Eris, die so hell ist wie frischer Schnee. Indem sie beobachteten, wie Dysnomia um Eris kreist, konnten Astronomen ausrechnen, wie schwer Eris ist.",
+			"simple": "Dysnomia ist der einzige Mond des Zwergplaneten Eris, den wir kennen. Sie ist viel dunkler als Eris, die so hell ist wie frischer Schnee. Forschende haben beobachtet, wie Dysnomia um Eris kreist. Daran konnten sie erkennen, wie schwer Eris ist.",
 			"standard": "Dysnomia ist der einzige bekannte Mond von Eris, entdeckt im September 2005 mit dem Keck-Teleskop auf Hawaii. Sie umkreist Eris alle 15,8 Tage in etwa 37 300 km Abstand. Aus ihrer Bahn berechneten Astronomen, dass Eris etwa ein Viertel schwerer ist als Pluto. In der griechischen Sage ist Dysnomia die Tochter der Eris und der Geist der Gesetzlosigkeit – ein Name, der auch auf die Schauspielerin Lucy Lawless anspielt, die Xena spielte, den frühen Spitznamen von Eris.",
 			"advanced": "Dysnomia folgt einer fast kreisförmigen Bahn in etwa 37 300 km Abstand von Eris mit einer Umlaufzeit von 15,8 Tagen; mit dem dritten Keplerschen Gesetz ergibt sich daraus die Masse von Eris, etwa 1,66 × 10²² kg, 27 % mehr als die Plutos. Dysnomia ist sehr dunkel und wirft nur wenige Prozent des auftreffenden Lichts zurück, Eris dagegen etwa 96 %. Sie ist vermutlich mehrere hundert Kilometer groß und wäre damit nach Charon der zweitgrößte bekannte Mond eines Zwergplaneten. Eris scheint sich im Gleichtakt mit Dysnomias Umlauf zu drehen – ein Zeichen, dass Gezeitenkräfte das Paar aneinander gebunden haben."
 		}
@@ -1908,7 +1994,7 @@
 		"name": "Namaka",
 		"tagline": "Haumeas innerer Mond",
 		"description": {
-			"simple": "Namaka ist der kleinere der beiden Monde des Zwergplaneten Haumea. Sie umrundet Haumea in etwas mehr als zweieinhalb Wochen. Benannt ist sie nach einer hawaiischen Meeresgöttin, einer der Töchter Haumeas.",
+			"simple": "Namaka ist der kleinere der beiden Monde des Zwergplaneten Haumea. Sie braucht für eine Runde um Haumea etwas mehr als zweieinhalb Wochen. Sie ist nach einer hawaiischen Göttin des Meeres benannt, einer der Töchter von Haumea.",
 			"standard": "Namaka ist der kleinere und innere der beiden Monde Haumeas, vielleicht 170 km groß. Sie wurde im Juni 2005 mit dem Keck-Teleskop auf Hawaii entdeckt und umkreist Haumea alle 18,3 Tage in etwa 25 700 km Abstand. Wie Haumea und ihr anderer Mond ist sie wahrscheinlich ein Bruchstück, das bei einem Zusammenstoß in der Frühzeit abgesprengt wurde. Benannt ist sie nach Nāmaka, einer hawaiischen Meeresgöttin und Tochter Haumeas.",
 			"advanced": "Namaka umkreist Haumea in etwa 25 700 km Abstand mit einer Umlaufzeit von 18,3 Tagen, auf einer deutlich exzentrischen Bahn (etwa 0,25), die gegen die Bahn des äußeren Mondes Hiʻiaka geneigt ist. Ihre Bahn wird von Hiʻiaka und von Haumeas stark gestreckter Form gestört. Namaka und Hiʻiaka gelten als Bruchstücke des gewaltigen Zusammenstoßes, aus dem auch Haumeas Familie eisiger Körper und womöglich ihre schnelle Drehung hervorgingen."
 		}
@@ -1917,7 +2003,7 @@
 		"name": "Hiʻiaka",
 		"tagline": "Haumeas äußerer Mond",
 		"description": {
-			"simple": "Hiʻiaka ist der größere der beiden Monde des Zwergplaneten Haumea. Sie ist mit Eis bedeckt und umrundet Haumea in etwa sieben Wochen. Benannt ist sie nach einer hawaiischen Göttin des Hula-Tanzes, einer der Töchter Haumeas.",
+			"simple": "Hiʻiaka ist der größere der beiden Monde des Zwergplaneten Haumea. Sie ist mit Eis bedeckt. Sie braucht für eine Runde um Haumea etwa sieben Wochen. Sie ist nach einer hawaiischen Göttin des Hula-Tanzes benannt, einer der Töchter von Haumea.",
 			"standard": "Hiʻiaka ist der größere und äußere der beiden Monde Haumeas, etwa 320 km groß. Sie wurde im Januar 2005 mit dem Keck-Teleskop auf Hawaii entdeckt, noch bevor Haumea ihren Namen hatte, und umkreist Haumea alle 49 Tage in etwa 49 900 km Abstand. Wie bei Haumea ist ihre Oberfläche mit Wassereis bedeckt. Benannt ist sie nach Hiʻiaka, der hawaiischen Schutzgöttin der Insel Hawaiʻi und der Hula-Tänzerinnen, einer Tochter Haumeas.",
 			"advanced": "Hiʻiaka umkreist Haumea in etwa 49 900 km Abstand mit einer Umlaufzeit von 49 Tagen auf einer fast kreisförmigen Bahn. Ihr Spektrum zeigt kristallines Wassereis, ganz ähnlich wie Haumeas eigene Oberfläche – das stützt die Vorstellung, dass beide Monde Bruchstücke von Haumeas Eiskruste sind, die bei einem Zusammenstoß in der Frühzeit abgesprengt wurden. Erst die Verfolgung von Hiʻiakas Bahn erlaubte es den Astronomen, Haumeas Masse zu messen."
 		}
@@ -1926,7 +2012,7 @@
 		"name": "S/2015 (136472) 1",
 		"tagline": "Makemakes dunkler kleiner Mond",
 		"description": {
-			"simple": "Dieser winzige, dunkle Mond umkreist den Zwergplaneten Makemake. Neben dem hellen Makemake war er so schwer zu erkennen, dass er erst 2016 auf Bildern des Hubble-Weltraumteleskops gefunden wurde. Forscher gaben ihm den Spitznamen MK2.",
+			"simple": "Dieser winzige, dunkle Mond kreist um den Zwergplaneten Makemake. Neben dem hellen Makemake war er sehr schwer zu sehen. Darum hat man ihn erst vor ein paar Jahren gefunden, auf Bildern vom Hubble-Weltraumteleskop. Forschende gaben ihm den Spitznamen MK2.",
 			"standard": "S/2015 (136472) 1, Spitzname MK2, ist der einzige bekannte Mond von Makemake. Er wurde auf Hubble-Aufnahmen vom April 2015 entdeckt und 2016 bekannt gegeben. Er ist etwa 1300-mal lichtschwächer als Makemake und sehr dunkel, vermutlich kleiner als 200 km. Sein Name ist noch eine vorläufige Bezeichnung: S für Satellit, 2015 für das Jahr der Aufnahme, 136472 für Makemakes Katalognummer und 1 für den ersten gefundenen Mond.",
 			"advanced": "MK2 wurde auf Hubble-Aufnahmen vom April 2015 entdeckt, etwa 21 000 km von Makemake entfernt. Seine Bahn ist noch nicht genau bekannt; sehen wir sie fast von der Kante, verschwindet der Mond die meiste Zeit im Glanz von Makemake – das könnte erklären, warum frühere Suchen ihn übersehen haben. Seine dunkle Oberfläche steht im Gegensatz zu Makemakes hellem Methaneis, vielleicht weil seine schwache Schwerkraft solch flüchtiges Eis nicht festhalten kann. Eine genau vermessene Bahn würde Makemakes Masse und Dichte liefern."
 		}

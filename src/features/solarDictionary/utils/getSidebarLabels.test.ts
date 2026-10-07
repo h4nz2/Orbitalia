@@ -42,8 +42,8 @@ describe("getSidebarFacts", () => {
 		expect(mars.diameter.value).toBe("6,792 km")
 		expect(mars.orbitalPeriod.value).toBe("687 days")
 		expect(mars.gravity.value).toBe("3.71 m/s²")
-		expect(mars.avgTemp.value).toBe("210 K")
-		expect(mars.avgTemp.extra).toBe("That is about -63 °C.")
+		expect(mars.avgTemp.value).toBe("-63 °C")
+		expect(mars.avgTemp.extra).toBeNull()
 		expect(mars.orbitalPeriod.extra).toBe(
 			"You would wait 322 days longer for your birthday.",
 		)
@@ -70,7 +70,10 @@ describe("getSidebarFacts", () => {
 		)
 		const venus = facts("Venus", "en", "simple")
 		expect(venus.lengthOfDay.extra).toBe(
-			"A day there is as long as 117 days on Earth!",
+			"A day there lasts as long as more than 100 days at home",
+		)
+		expect(facts("Venus", "en", "standard").lengthOfDay.extra).toBe(
+			"One day there lasts 117 Earth days.",
 		)
 	})
 
@@ -102,19 +105,37 @@ describe("getSidebarFacts", () => {
 	})
 
 	it("counts birthdays on fast planets and years on slow ones", () => {
+		expect(facts("Mercury", "en", "standard").orbitalPeriod.extra).toBe(
+			"A year there lasts only 88 days – that is 4.1 birthdays per Earth year!",
+		)
+		expect(facts("Neptune", "de", "standard").orbitalPeriod.extra).toBe(
+			"Ein Jahr dort dauert 164 Erdjahre – eine lange Wartezeit auf den nächsten Geburtstag!",
+		)
+		// the simple level: the year at home is the yardstick, no number above 100 (#51)
 		expect(facts("Mercury", "en", "simple").orbitalPeriod.extra).toBe(
-			"You would have a birthday about 4.1 times every Earth year!",
+			"In one year at home, 4 years go by there",
 		)
 		expect(facts("Neptune", "de", "simple").orbitalPeriod.extra).toBe(
-			"Du müsstest 164 Jahre auf deinen nächsten Geburtstag warten!",
+			"Ein Jahr dort dauert so lange wie mehr als 100 Jahre zu Hause",
 		)
 	})
 
-	it("does not compare Earth with itself, but still converts its temperature", () => {
+	it("does not compare Earth with itself", () => {
 		const own = facts("Earth")
 		expect(own.diameter.extra).toBeNull()
 		expect(own.gravity.extra).toBeNull()
-		expect(own.avgTemp.extra).toBe("That is about 15 °C.")
+		expect(own.avgTemp.value).toBe("15 °C")
+	})
+
+	it("gives the temperature in words, °C or kelvin by reading level (#51)", () => {
+		expect(facts("Mars", "en", "simple").avgTemp.value).toBe(
+			"Colder than any freezer",
+		)
+		expect(facts("Mars", "en", "standard").avgTemp.value).toBe("-63 °C")
+		expect(facts("Mars", "en", "advanced").avgTemp.value).toBe("210 K (-63 °C)")
+		expect(facts("Venus", "de", "simple").avgTemp.value).toBe(
+			"Heißer als ein Backofen",
+		)
 	})
 
 	it("leaves out facts without a value", () => {

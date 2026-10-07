@@ -11,7 +11,7 @@ import { useMemo, type CSSProperties } from "react"
 import { useElementSize } from "@mantine/hooks"
 
 import { getBody, type Body } from "@/data"
-import { useI18n } from "@/i18n"
+import { formatSize, isSimple, useI18n } from "@/i18n"
 import { useBodyName } from "@/i18n/bodies"
 import { assetUrl } from "@/utils/assetUrl"
 
@@ -180,9 +180,9 @@ const Stage = ({ ids, onPick }: StageProps) => {
 									: item.id === ids[1]
 										? "second"
 										: "extra"
-							const diameter = i18n.quantity(
+							const diameter = formatSize(
 								Number((2 * body.radiusKm).toPrecision(3)),
-								"kilometer",
+								i18n,
 							)
 							const content = (
 								<>
@@ -203,7 +203,7 @@ const Stage = ({ ids, onPick }: StageProps) => {
 									<span className={classes.label} data-role={role}>
 										<span className={classes.labelName}>{name(item.id)}</span>
 										<span className={classes.labelSize}>
-											{body.radiusEstimated
+											{body.radiusEstimated && !isSimple(i18n)
 												? t("units.approx", { value: diameter })
 												: diameter}
 										</span>

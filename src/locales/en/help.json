@@ -64,8 +64,8 @@
 				"simple": "The start film"
 			},
 			"what": {
-				"standard": "Fourteen seconds that start close on Earth at its real size and pull back until Earth is smaller than a pixel, then draw everything bigger so you can see it.",
-				"simple": "A short film that flies from Earth out to the whole solar system."
+				"standard": "About a minute that starts close on Earth at its real size and pulls back until Earth is smaller than a pixel, then draws everything bigger so you can see it. Every caption stays up long enough to read it aloud.",
+				"simple": "A film that flies from Earth out to the whole solar system. It goes slowly, so you can read every word."
 			},
 			"why": {
 				"standard": "It makes the point of the app before anyone reads a word: space is huge and almost empty. It works without sound.",
@@ -74,12 +74,16 @@
 			"how": {
 				"standard": [
 					"It plays once, on the first visit; “Skip intro”, a drag or Esc ends it at any time.",
+					"To stay on a caption, press Space, tap the scene or press the pause button; do it again to carry on. While it is paused you can turn the view without ending it.",
+					"“Next” (or the right arrow key) goes straight on to the next part; while paused, one part at a time.",
 					"After the first opening the app asks once whether you want a quick look at what you can do (see “A quick look”).",
 					"To see it again, open the arrow next to Help and choose “Play the opening again”.",
 					"“Show how to move around” in the same menu brings back the hints for dragging, zooming and clicking."
 				],
 				"simple": [
 					"It plays the first time you come.",
+					"Press Space or tap the picture to stop it. Do it again to go on.",
+					"“Next” shows the next part.",
 					"To watch it again, press the arrow next to Help, then “Play the opening again”."
 				]
 			}
@@ -127,12 +131,41 @@
 				"standard": [
 					"Point at a planet or its name: a ring appears with “Click to fly there”.",
 					"Click or tap it. To land at once, press Skip in the readout.",
-					"On a small dot, click anywhere near it: the target is generous."
+					"On a small dot, click anywhere near it: the target is generous.",
+					"The house button at the top left (or Esc) is the way back to the whole solar system; a click on empty space leaves the view where it is."
 				],
 				"simple": [
 					"Move the mouse over a planet. A ring shows up.",
 					"Click it. Now watch the trip.",
-					"Press “Be there now” if you do not want to wait."
+					"Press “Be there now” if you do not want to wait.",
+					"Press the house button at the top left to see all the planets again."
+				]
+			}
+		},
+		"goBack": {
+			"title": {
+				"standard": "Back to where you just were",
+				"simple": "Go back"
+			},
+			"what": {
+				"standard": "The arrow next to the house button takes you back one step: to the world, spacecraft or place you were looking at before, from the same distance and angle. Press it again to go further back.",
+				"simple": "The arrow at the top left takes you back to what you saw before."
+			},
+			"why": {
+				"standard": "Clicked a moon by mistake, or did a spacecraft’s milestone take you far away? Nothing is lost: Back undoes the jump, while the house button goes all the way out to the whole system.",
+				"simple": "Clicked the wrong planet? No problem. Just go back."
+			},
+			"how": {
+				"standard": [
+					"Click a world, for example the Moon, then another one, like Mars.",
+					"Press the arrow at the top left, or Backspace: the camera flies back to the Moon, as you left it. Press it again to go further back; when there is nothing left, it is greyed out.",
+					"Your browser’s back button and your phone’s back gesture do the same. During a tour, Back goes to the stop before.",
+					"Turning, zooming, time, layers and the scale are not steps: Back skips them."
+				],
+				"simple": [
+					"Click the Moon. Then click Mars.",
+					"Press the arrow at the top left. You fly back to the Moon.",
+					"Press it again to go back more."
 				]
 			}
 		},
@@ -204,13 +237,13 @@
 			},
 			"how": {
 				"standard": [
-					"Top left: the house button (back to the whole system), the name of the world in view and its card; the arrow on the card opens its facts, moons and stories.",
+					"Top left: the arrow back to where you just were, the house button (back to the whole system), the name of the world in view and its card; the arrow on the card opens its facts, moons and stories.",
 					"Bottom: play, pause and the date; the button with the speed (like 1x) opens Now, the speeds and the spin.",
 					"Bottom right: Tours, Layers (what is drawn), Scale (how big and how far) and Tools (the speed of light, tonight's sky, spacecraft, your birthday, the scavenger hunt, side by side, walking the solar system, the picture dictionary and taking a picture). One panel opens at a time; × closes it.",
 					"Top right: Present, Share, the crossed-out eye that hides everything (H brings it back), sound, Help and the language."
 				],
 				"simple": [
-					"The house button at the top left takes you back to all the planets.",
+					"The arrow at the top left goes back one step. The house button next to it takes you back to all the planets.",
 					"Press Layers, Scale or Tools at the bottom right to find more.",
 					"Press the crossed-out eye at the top right to hide all the buttons. Press H to get them back."
 				]
@@ -234,6 +267,7 @@
 					"Fly to a world: its card appears with its name and one sentence.",
 					"Press the arrow on the card to open its facts, moons and stories; it stays open for the next world.",
 					"“Read more in the dictionary” opens its page, “Compare with…” puts it next to another world.",
+					"Under the comparison, “Shrink the Sun to a basketball…” finds the world on the walk across the school field.",
 					"The last line of the open card says where the picture of the world comes from: a spacecraft’s map, or painted after spacecraft photos where no complete map exists."
 				],
 				"simple": [
@@ -375,18 +409,19 @@
 				"simple": "Comets"
 			},
 			"what": {
-				"standard": "Five comets on their real, stretched orbits grow a glowing head and two tails as they near the Sun, and lose them as they leave.",
-				"simple": "Comets grow a long tail when they come close to the Sun."
+				"standard": "Five comets on their real, stretched orbits wake up as they near the Sun, each at its own distance (big Hale-Bopp already beyond Saturn, little Encke only close in): first a glowing head appears, then a straight blue gas tail and a curved, yellowish dust tail grow as long and bright as they were really seen, and fade again as the comet leaves.",
+				"simple": "Comets wake up when they come close to the Sun. Big comets wake up far away, small ones only close to the Sun. Then they grow a long, glowing tail."
 			},
 			"why": {
-				"standard": "The tail always points away from the Sun, so a comet that is leaving flies tail first: something to see, not only to be told.",
+				"standard": "The tail always points away from the Sun, so a comet that is leaving flies tail first: something to see, not only to be told. The dust tail lags behind and curves, most of all when a comet whips close round the Sun.",
 				"simple": "The tail always points away from the Sun, even when the comet flies away!"
 			},
 			"how": {
 				"standard": [
 					"Pick Halley or Encke in the box at the top left (group Comets).",
 					"Open its card with the arrow and press “Watch it pass the Sun”: the app goes to its next visit and plays it in about a minute and a half.",
-					"Watch which way the tail points on the way in and on the way out."
+					"Watch which way the tail points on the way in and on the way out.",
+					"Try Hale-Bopp too: its head appears far beyond Jupiter, long before its tails grow."
 				],
 				"simple": [
 					"Pick Halley in the box at the top left.",
@@ -483,7 +518,7 @@
 			},
 			"why": {
 				"standard": "Voyager 1 is still sending messages from far beyond the planets: its card shows how long its signal takes to reach us, and why the trip took so many gravity assists.",
-				"simple": "Voyager 1 left Earth in 1977 and is still flying. A message from it takes almost a day to reach us!"
+				"simple": "Voyager 1 left Earth when your grandparents were young, and it is still flying. A message from it takes almost a day to reach us!"
 			},
 			"how": {
 				"standard": [
@@ -504,22 +539,23 @@
 				"simple": "The planet book"
 			},
 			"what": {
-				"standard": "A page for the Sun and each planet, with a big turning globe, its surface maps and the key numbers explained.",
-				"simple": "A page for the Sun and every planet, with a big spinning picture."
+				"standard": "A page for the Sun and each planet: a big turning globe with its surface maps, the key numbers explained, and its stories: what it is made of, how hot it gets, its nicknames and where its name comes from.",
+				"simple": "A page for the Sun and every planet. See what is inside it, how hot it gets and its nicknames."
 			},
 			"why": {
-				"standard": "It is the quiet way to read about one world at a time, and to peel off its clouds or see its mountains and oceans.",
-				"simple": "Read about one planet at a time, and see its mountains and clouds."
+				"standard": "It is the quiet way to read about one world at a time: peel off its clouds, look inside it in a cut-away picture, and find the stories children remember, like the planet that would float in a bathtub. Every fact links to its source.",
+				"simple": "Read about one planet at a time. Look inside it, and find out which planet would float in a bathtub!"
 			},
 			"how": {
 				"standard": [
 					"Open Tools at the bottom right and choose “Picture dictionary”: it opens on the world you are looking at. Or press “Read more in the dictionary” on a world’s card.",
-					"Pick a world in the row of dots at the top, then Surface, Terrain, Oceans or Clouds where it has them."
+					"Pick a world in the row of dots at the top, then Surface, Terrain, Oceans or Clouds where it has them.",
+					"Open “Made of”, “Weather” or “Names” beside the globe (under it on a phone). The open section stays open when you pick another world, so a class can compare them one by one."
 				],
 				"simple": [
 					"Press Tools, then “Planet book”.",
 					"Pick a planet in the row of dots at the top.",
-					"Try Terrain and Clouds to change the picture."
+					"Press “What is inside?”, “Hot or cold?” or “Its names”."
 				]
 			}
 		},
@@ -555,12 +591,12 @@
 				"simple": "Your language"
 			},
 			"what": {
-				"standard": "Orbitalia speaks English, German, Czech, Spanish and French, each at three reading levels: simple, standard and advanced.",
-				"simple": "Read everything in your language, and in easy words."
+				"standard": "Orbitalia speaks English, German, Czech, Spanish and French, each at three reading levels: simple (for ages 6 to 11, with comparisons instead of big numbers), standard and advanced.",
+				"simple": "Read everything in your language. Simple is for children from 6 to 11: no big numbers, just comparisons like “11 Earths wide”."
 			},
 			"why": {
-				"standard": "The same view can be explained to a nine-year-old and to a sixth-former, and a shared link keeps both choices.",
-				"simple": "Simple words for younger readers, more detail for older ones."
+				"standard": "The same view can be explained to a six-year-old and to a sixth-former: at the simple level “139,822 km” becomes “11 Earths wide” and “−63 °C” “colder than any freezer”. A shared link keeps both choices.",
+				"simple": "Simple words and comparisons for younger readers, exact numbers for older ones."
 			},
 			"how": {
 				"standard": [
@@ -681,23 +717,25 @@
 				"simple": "Real sizes"
 			},
 			"what": {
-				"standard": "The scene normally draws the worlds bigger and closer together so you can see them; one click shows real sizes and real distances.",
-				"simple": "Normally the planets are drawn much too big. One click shows how small they really are."
+				"standard": "The scene normally draws the worlds bigger and closer together so you can see them; one click shows real sizes and real distances, another the Poster, the classroom poster with every planet big enough to recognise.",
+				"simple": "Normally the planets are drawn much too big. One click shows how small they really are. Another makes them big, like on a poster."
 			},
 			"why": {
-				"standard": "At true scale the planets vanish into empty space: the most surprising lesson in the app, and a statement always says how far the picture is from the truth.",
+				"standard": "At true scale the planets vanish into empty space: the most surprising lesson in the app, and a statement always says how far the picture is from the truth. Poster is the opposite lie: sizes 5 to 60× too big, distances 50 to 500× too close.",
 				"simple": "At real size you cannot even see the planets. Space is very, very empty!"
 			},
 			"how": {
 				"standard": [
-					"Press Scale at the bottom right (it names the scale on screen) and click True scale, Textbook or Everything visible, or press S.",
+					"Press Scale at the bottom right (it names the scale on screen) and click True scale, Textbook, Everything visible or Poster, or press S.",
 					"The Sizes and Distances switches change one lie at a time.",
+					"Poster shows all eight planets in order and in their own colours, Saturn with its rings, none touching another's path. It hides the smaller moons, which have no room there; the Sizes and Distances switches lead back to the other scales.",
 					"At true scale, the dots show where the planets are; turn Markers off (under Layers) to see how little is left."
 				],
 				"simple": [
 					"Press Scale at the bottom right.",
 					"Click True scale.",
-					"Where did the planets go? The dots show where they are."
+					"Where did the planets go? The dots show where they are.",
+					"Click Poster to see all the planets big at once. It is the least real picture!"
 				]
 			}
 		},
@@ -733,7 +771,7 @@
 			},
 			"what": {
 				"standard": "The Small bodies switch shows the asteroid belt and the Kuiper belt as fields of dots, plus the dwarf planets, seven named asteroids and five comets.",
-				"simple": "A switch shows the asteroid belt, the icy Kuiper belt, the dwarf planets and comets."
+				"simple": "A switch shows the asteroid belt, a ring of space rocks between Mars and Jupiter. It also shows the icy worlds beyond Neptune, and comets."
 			},
 			"why": {
 				"standard": "Films show a crowded field of rocks. The card says the truth: each dot stands for about 380 asteroids, and neighbours are about a million km apart, so spacecraft fly straight through.",
@@ -753,7 +791,7 @@
 		},
 		"solarWalk": {
 			"title": {
-				"standard": "The basketball solar system",
+				"standard": "Shrink the Sun and walk the solar system",
 				"simple": "Walk the solar system"
 			},
 			"what": {
@@ -766,12 +804,14 @@
 			},
 			"how": {
 				"standard": [
-					"Open Tools at the bottom right and choose “Walk the solar system”, or press “Walk it” in the Scale panel at true scale.",
+					"Open Tools at the bottom right and choose “Walk the solar system”, or press Scale and then “Shrink the Sun to a basketball…” at the bottom of its panel, in every scale.",
+					"On a world’s card, unfold the facts: under its comparison, “Shrink the Sun to a basketball and walk out to this world” opens the walk on that world.",
 					"Choose what the Sun is (an orange, a football, a basketball, an exercise ball) and a landmark to measure against.",
 					"Switch to Table and Print it to take outside."
 				],
 				"simple": [
 					"Press Tools, then “Walk the solar system”.",
+					"Or press Scale, then “Make the Sun a basketball…”.",
 					"Choose a ball for the Sun.",
 					"Read how far to walk to each planet.",
 					"Print the table and walk it outside."
@@ -1168,9 +1208,15 @@
 		},
 		"back": {
 			"action": "Back to the whole solar system",
-			"mouse": "Click empty space, or the house button",
-			"touch": "Tap empty space, or the house button",
+			"mouse": "Click the house button at the top left",
+			"touch": "Tap the house button at the top left",
 			"keys": "Esc"
+		},
+		"stepBack": {
+			"action": "Back to where you just were",
+			"mouse": "The arrow next to the house button",
+			"touch": "The arrow, or your phone’s back gesture",
+			"keys": "Backspace"
 		},
 		"name": {
 			"action": "See a world’s name",

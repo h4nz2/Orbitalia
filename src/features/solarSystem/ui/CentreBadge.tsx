@@ -21,6 +21,7 @@ const CentreBadge = () => {
 	const centre = freeCentre(useSimStore(freeCentreId))
 	const setFocus = useSimStore((state) => state.setFocus)
 	const overview = useSimStore((state) => state.overview)
+	const markStep = useSimStore((state) => state.markStep)
 	if (centre === null) return null
 	const { anchor, interplanetary } = centre
 	const body = name(anchor.id)
@@ -48,7 +49,15 @@ const CentreBadge = () => {
 				size="compact-sm"
 				variant="light"
 				color="orange"
-				onClick={() => (interplanetary ? overview() : setFocus(anchor.id))}
+				onClick={() => {
+					if (!interplanetary) {
+						setFocus(anchor.id)
+						return
+					}
+					// a step of the view history (#46), like the way out
+					markStep()
+					overview()
+				}}
 			>
 				{interplanetary
 					? t("solarSystem.overview")

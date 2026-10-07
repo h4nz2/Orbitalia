@@ -1,9 +1,15 @@
-import { describe, expect, it } from "vitest"
+import { afterEach, beforeEach, describe, expect, it, vi } from "vitest"
 
 import { getBody } from "@/data"
 import { SCALE_PRESETS } from "@/sim"
+import { HOME_SHOT, OVERVIEW } from "@/store/navigation"
+import { useScaleStore } from "@/store/scale"
+import { useSimStore } from "@/store/sim"
+import { useTourStore } from "@/store/tour"
+import { createRecorder, waypointOf, type Waypoint } from "@/store/viewHistory"
 
 import { CAMERA_FOV_DEG, overviewDistance } from "../camera/framing"
+import { questionById } from "./hunts"
 import {
 	BAR_ROOM_PX,
 	EDGE_ROOM_PX,
@@ -11,8 +17,10 @@ import {
 	clearanceOf,
 	drawnPosition,
 	framedMoons,
+	goToStart,
 	moonsShotDistance,
 	overviewPx,
+	overviewShot,
 	overviewShotDistance,
 } from "./startView"
 
@@ -99,6 +107,37 @@ describe("where an Easy clue is asked from (#52)", () => {
 		).toBe(1)
 	})
 
+	it("turns the overview round the Sun rather than shrinking it, Poster too (#54)", () => {
+		const jd = 2461321.04
+		const beside = clearanceOf(1280, 800, { left: 880, top: 380 })
+		const label = { width: 110, height: 24 }
+		for (const preset of ["everythingVisible", "poster"] as const) {
+			const lie = SCALE_PRESETS[preset]
+			const neptune = [drawnPosition(getBody("neptune"), lie, jd)]
+			// Neptune on the right, under the panel: turned until it is clear
+			const shot = overviewShot(neptune, lie, beside, label)
+			expect(shot.distance, preset).toBe(1)
+			expect(shot.azimuthDeg, preset).not.toBe(0)
+			const base = overviewDistance(lie, CAMERA_FOV_DEG, 1280 / 800)
+			const at = overviewPx(neptune[0], base, 800, shot.azimuthDeg)
+			expect(Math.abs(at.x) + label.width, preset).toBeLessThanOrEqual(
+				at.x >= 0 ? beside.right : beside.left,
+			)
+			// a clear answer keeps the home view
+			const earth = [drawnPosition(getBody("earth"), lie, jd)]
+			expect(overviewShot(earth, lie, beside, label), preset).toEqual({
+				azimuthDeg: 0,
+				distance: 1,
+			})
+		}
+		// half a turn mirrors the picture
+		const p = { x: 3, y: 0.5, z: -2 }
+		const front = overviewPx(p, 50, 800, 0)
+		const back = overviewPx({ x: -3, y: 0.5, z: 2 }, 50, 800, 180)
+		expect(back.x).toBeCloseTo(front.x)
+		expect(back.y).toBeCloseTo(front.y)
+	})
+
 	it("frames a moon with the moons out to the next one, as company", () => {
 		const ids = (planet: string, answer: string) =>
 			framedMoons(getBody(planet), [answer]).map((moon) => moon.id)
@@ -132,5 +171,80 @@ describe("where an Easy clue is asked from (#52)", () => {
 		)
 		expect(free).toBeGreaterThanOrEqual(1)
 		expect(beside).toBeGreaterThan(free)
+	})
+})
+
+describe("an Easy clue's start view is a step of Back (#46)", () => {
+	const pushed: Waypoint[] = []
+	const writes: boolean[] = []
+	let pending: (() => void)[] = []
+	let stop: () => void = () => undefined
+	/** Runs what the recorder deferred to the end of the task. */
+	const endTask = () => {
+		const run = pending
+		pending = []
+		for (const fn of run) fn()
+	}
+	const ask = (id: string) => {
+		goToStart(questionById.get(id)!)
+		endTask()
+	}
+
+	beforeEach(() => {
+		vi.stubGlobal("window", { innerWidth: 1280, innerHeight: 800 })
+		vi.stubGlobal("document", { querySelector: () => null })
+		useScaleStore.getState().setPreset("everythingVisible")
+		useSimStore.getState().releaseFrame()
+		useSimStore.getState().jumpTo(OVERVIEW, HOME_SHOT)
+		useSimStore.getState().select(null)
+		pushed.length = 0
+		writes.length = 0
+		pending = []
+		const now = () =>
+			waypointOf(useSimStore.getState(), useTourStore.getState(), null)
+		const recorder = createRecorder({
+			now,
+			write: (push) => {
+				writes.push(push)
+				if (push) pushed.push(now())
+			},
+			arrive: () => undefined,
+			defer: (fn) => pending.push(fn),
+		})
+		stop = useSimStore.subscribe((state, previous) => {
+			if (state.step !== previous.step) recorder.step()
+		})
+	})
+
+	afterEach(() => {
+		stop()
+		vi.unstubAllGlobals()
+	})
+
+	it("leaves no entry when the clue is asked where the camera already is", () => {
+		ask("seeRed")
+		expect(writes).toEqual([false])
+		// asked again (the panel reopened): still nothing to go back to
+		ask("seeRed")
+		expect(pushed).toEqual([])
+	})
+
+	it("is one entry from the world just found, and one more to a planet's moons", () => {
+		useSimStore.getState().setFocus("mars") // the answer, a step of its own
+		endTask()
+		expect(pushed).toHaveLength(1)
+		ask("seeBiggest")
+		expect(pushed).toHaveLength(2)
+		expect(pushed[1]).toMatchObject({
+			kind: "view",
+			view: { kind: "overview" },
+			selectedId: null,
+		})
+		ask("seeMoon")
+		expect(pushed).toHaveLength(3)
+		expect(pushed[2]).toMatchObject({ view: { kind: "body", id: "earth" } })
+		// the same moon clue again: the view does not change, no new entry
+		ask("seeMoon")
+		expect(pushed).toHaveLength(3)
 	})
 })

@@ -21,12 +21,16 @@
 					"simple": "This is our solar system. In the middle is the Sun, a star. Eight planets go round it, and many of them have moons. We live on the third planet: Earth. Let's visit them all!",
 					"standard": "One star, eight planets and hundreds of moons. Everything here circles the Sun, held by its gravity, and all the planets go round it in the same direction, almost in one flat plane. The planets are drawn much bigger than they really are, so you can see them. Let's visit each one, from the inside out.",
 					"advanced": "One star, eight planets and hundreds of known moons, all formed about 4.6 billion years ago from one flattened cloud of gas and dust. That is why the planets orbit in nearly the same plane and in the same direction. Sizes and distances are distorted in this view (see the Scale panel); every fact in the tour uses the true values."
+				},
+				"link": {
+					"simple": "Make the Sun a basketball and walk to every planet",
+					"standard": "Shrink the Sun to a basketball and walk the solar system"
 				}
 			},
 			"sun": {
 				"title": "The Sun",
 				"text": {
-					"simple": "The Sun is a star: a giant ball of glowing hot gas. It is so big that more than a million Earths would fit inside it. Its light gives us warmth and daylight.",
+					"simple": "The Sun is a star: a giant ball of glowing hot gas. It is so big that all the planets together would fit inside it. Its light gives us warmth and daylight.",
 					"standard": "The Sun holds 99.8 % of all the mass in the solar system. It is 109 Earths wide, and about 1.3 million Earths would fit inside it. Deep in its core, at 15 million °C, hydrogen fuses into helium. That is where all its light comes from.",
 					"advanced": "A middle-aged, ordinary star: 1.39 million km across, 99.86 % of the solar system's mass. In its core, at about 15 million K, it fuses about 600 million tonnes of hydrogen into helium every second, turning 4 million tonnes of mass into energy (E = mc²). Light leaving its surface reaches Earth 8 minutes 20 seconds later."
 				}
@@ -34,7 +38,7 @@
 			"mercury": {
 				"title": "Mercury",
 				"text": {
-					"simple": "Mercury is the smallest planet and the closest to the Sun. It has no air to keep it warm, so the day side is hot enough to melt lead and the night side is freezing cold.",
+					"simple": "Mercury is the smallest planet and the closest to the Sun. It has no air to keep it warm. So the day side is hotter than an oven, and the night side is colder than any freezer.",
 					"standard": "The smallest planet, and the fastest: one lap around the Sun takes only 88 days. Mercury has almost no atmosphere to hold heat, so its day side reaches 430 °C while its night side drops to −180 °C.",
 					"advanced": "The innermost planet, 4,879 km across, with a year of 88 days. It turns so slowly that one solar day (sunrise to sunrise) lasts 176 Earth days: two of its years. Without an atmosphere, the surface swings between 430 °C and −180 °C. Its huge iron core fills about 85 % of its radius."
 				}
@@ -42,7 +46,7 @@
 			"venus": {
 				"title": "Venus",
 				"text": {
-					"simple": "Venus is almost as big as Earth, but you could never live there. Thick clouds trap the heat, and it is hotter than an oven: the hottest planet of all. It also spins the wrong way round.",
+					"simple": "Venus is almost as big as Earth, but you could never live there. Thick clouds trap the heat. It is hotter than an oven: the hottest planet of all. It also spins the wrong way round.",
 					"standard": "Venus is nearly Earth's twin in size, but its thick carbon dioxide air traps the Sun's heat: at 465 °C it is hotter than Mercury, although it is twice as far from the Sun. It spins backwards, so slowly that a day on Venus is longer than its year.",
 					"advanced": "12,104 km across, almost Earth's size. Its atmosphere is 96 % carbon dioxide at 92 times Earth's surface pressure, and a runaway greenhouse effect keeps the surface at 465 °C, day and night. It rotates retrograde in 243 days, longer than its 225-day year; the Sun rises in the west."
 				}
@@ -50,7 +54,7 @@
 			"earth": {
 				"title": "Earth",
 				"text": {
-					"simple": "Home! Earth is the only place where we know there is life. It has liquid water, air to breathe and just the right warmth from the Sun. The Moon goes round it once a month.",
+					"simple": "Home! Earth is the only place where we know there is life. It has water, air to breathe and just the right warmth from the Sun. The Moon goes round it once a month.",
 					"standard": "Our planet is the only world known to have life. It is at just the right distance from the Sun for water to stay liquid, and water covers 71 % of its surface. Its tilted axis gives us the seasons. Watch the flight panel: it tells you how far each trip in this tour really is.",
 					"advanced": "12,742 km across, 150 million km (1 astronomical unit) from the Sun. Liquid water, a protective magnetic field and an atmosphere of nitrogen and oxygen (made by life itself) make it the only world known to be inhabited. Its axis is tilted 23.4°, which causes the seasons."
 				}
@@ -58,7 +62,7 @@
 			"mars": {
 				"title": "Mars",
 				"text": {
-					"simple": "Mars is red because its dust is rusty. It has the tallest volcano in the solar system, and long ago rivers flowed there. Today robots drive around on Mars and explore it for us.",
+					"simple": "Mars is red because its dust is rusty. It has the tallest volcano of all the planets. Long ago, rivers flowed there. Today robots drive around on Mars and explore it for us.",
 					"standard": "The red planet gets its colour from iron oxide: rust. Mars is half as wide as Earth and has Olympus Mons, a volcano about 22 km high, two and a half times as tall as Mount Everest. Dry riverbeds show that water once flowed here. Its two small moons are Phobos and Deimos.",
 					"advanced": "6,779 km across, with a thin carbon dioxide atmosphere at less than 1 % of Earth's pressure. Olympus Mons rises about 22 km; the canyon Valles Marineris is 4,000 km long. Ancient river deltas and lake beds show Mars was once wetter and warmer; water ice remains at its poles and underground. A day lasts about 24 h 40 min, a year 687 days."
 				}
@@ -66,7 +70,7 @@
 			"jupiter": {
 				"title": "Jupiter",
 				"text": {
-					"simple": "Jupiter is the biggest planet. More than a thousand Earths would fit inside it! It has no ground to stand on: it is a giant ball of gas with stripes of clouds and a huge storm, the Great Red Spot.",
+					"simple": "Jupiter is the biggest planet. All the other planets together would fit inside it! It has no ground to stand on. It is a giant ball of gas, with stripes of clouds and a huge storm called the Great Red Spot.",
 					"standard": "The giant: 11 Earths wide, with more than twice the mass of all the other planets together. Jupiter is made mostly of hydrogen and helium, with no solid surface. The Great Red Spot is a storm wider than Earth that has been raging for well over 150 years. Its four big moons were discovered by Galileo in 1610.",
 					"advanced": "139,820 km across and 318 Earth masses: 2.5 times all the other planets combined. It spins in under 10 hours, which flattens it visibly and stretches its clouds into bands. The Great Red Spot, an anticyclone wider than Earth, has been observed since at least 1831. Ganymede, the largest moon in the solar system, is bigger than Mercury."
 				}
@@ -74,7 +78,7 @@
 			"saturn": {
 				"title": "Saturn",
 				"text": {
-					"simple": "Saturn has the most beautiful rings. They are made of billions of pieces of ice, some as small as sand, some as big as a house. Saturn is so light that it would float in a giant bathtub!",
+					"simple": "Saturn has the most beautiful rings. They are made of lots and lots of pieces of ice. Some are as small as sand, some as big as a house. Saturn is so light that it would float in a giant bathtub!",
 					"standard": "Saturn's rings are made of countless chunks of water ice. They are about 280,000 km across but mostly only about 10 m thick. Saturn is 9 Earths wide, yet it is the only planet less dense than water. Its moon Titan is bigger than the planet Mercury.",
 					"advanced": "116,460 km across, with a mean density of 0.69 g/cm³, less than water. Its main rings span about 280,000 km yet are typically only about 10 m thick: mostly water ice, in pieces from dust to house-sized. They may be far younger than Saturn itself. Of its many moons, Titan has a thick atmosphere and Enceladus sprays an ocean into space."
 				}
@@ -82,7 +86,7 @@
 			"uranus": {
 				"title": "Uranus",
 				"text": {
-					"simple": "Uranus rolls around the Sun on its side, like a ball rolling along. Something very big may have knocked it over long ago. It is an ice giant, and it is very, very cold.",
+					"simple": "Uranus rolls around the Sun on its side, like a ball rolling along. Something very big may have knocked it over long ago. It is very, very cold.",
 					"standard": "Uranus is tipped over: its axis lies almost flat in its orbit. Look at how its moons circle it, top to bottom. One year on Uranus lasts 84 Earth years, so each pole gets 42 years of sunlight and then 42 years of darkness. It was the first planet found with a telescope, in 1781.",
 					"advanced": "An ice giant 50,724 km across, with its spin axis tilted 98°, probably by a giant impact early in its history. Its moons and rings orbit in its tilted equator plane. Over its 84-year orbit each pole spends about 42 years in continuous daylight. Discovered by William Herschel in 1781, the first planet found with a telescope."
 				}
@@ -90,7 +94,7 @@
 			"neptune": {
 				"title": "Neptune",
 				"text": {
-					"simple": "Neptune is the farthest planet: sunlight needs about 4 hours to get there. It has the fastest winds in the solar system. People found it by doing maths before anyone saw it!",
+					"simple": "Neptune is the farthest planet. Sunlight needs about 4 hours to get there. It has the fastest winds of all the planets. People found it by doing sums, before anyone saw it!",
 					"standard": "The outermost planet, 4.5 billion km from the Sun. A year here lasts 165 Earth years. Neptune has the fastest winds in the solar system, up to 2,100 km/h. It was found in 1846 by calculation: astronomers noticed Uranus being pulled off course and worked out where the unseen planet had to be.",
 					"advanced": "30 AU from the Sun, where sunlight is 900 times weaker than at Earth. Its winds reach about 2,100 km/h. In 1846 Johann Galle found it within 1° of the position Urbain Le Verrier had computed from the irregularities in Uranus's orbit: the first planet discovered by mathematics. Its big moon Triton orbits backwards, probably a captured Kuiper belt object."
 				}
@@ -102,7 +106,7 @@
 					"advanced": "Beyond Neptune"
 				},
 				"text": {
-					"simple": "The solar system does not end at Neptune. Further out there are icy worlds like Pluto. The space probe Voyager 1 has flown for almost 50 years and is now the farthest thing people ever made.",
+					"simple": "The solar system does not end at Neptune. Farther out there are icy worlds like Pluto. The space probe Voyager 1 has been flying since your grandparents were young. Now it is the farthest thing people have ever made.",
 					"standard": "Past Neptune lies the Kuiper belt, a ring of icy bodies that includes the dwarf planet Pluto. Much further out, the Oort cloud of comets may reach a third of the way to the next star. Voyager 1, launched in 1977, is more than 25 billion km away: around the end of 2026 its radio signal needs a whole day to reach us.",
 					"advanced": "Beyond 30 AU the Kuiper belt (about 30 to 50 AU) holds icy remnants of the planets' formation, among them Pluto. The Oort cloud of comets may extend beyond 100,000 AU. Voyager 1, launched in 1977, left the Sun's heliosphere in 2012 and passes one light-day from Earth around the end of 2026. The nearest star, Proxima Centauri, is 4.2 light-years away."
 				}
@@ -160,7 +164,7 @@
 					"advanced": "The Sun at true size"
 				},
 				"text": {
-					"simple": "Here is the Sun at its real size. It is 109 Earths wide! If the Sun were hollow, more than a million Earths would fit inside it.",
+					"simple": "Here is the Sun at its real size. If Earth were an orange, the Sun would be as tall as a house! If the Sun were hollow, all the planets together would fit inside it, with lots of room left over.",
 					"standard": "The Sun is 1.4 million km across: 109 Earths side by side. By volume, about 1.3 million Earths would fit inside it. The whole Earth–Moon system you just saw would fit inside the Sun with room to spare.",
 					"advanced": "Diameter 1.39 million km, 109 Earth diameters; volume 1.3 million Earths. The Moon's entire orbit (768,800 km across) would fit inside the Sun, with more than half a million km to spare. It still holds 99.86 % of the solar system's mass."
 				}
@@ -172,7 +176,7 @@
 					"advanced": "One astronomical unit"
 				},
 				"text": {
-					"simple": "Can you find Earth? The circle only shows where it is. The real Earth is far too small to see from here. A car driving to the Sun without stopping would need more than 170 years!",
+					"simple": "Can you find Earth? The circle only shows where it is. The real Earth is far too small to see from here. A car driving to the Sun without ever stopping would need longer than two long human lives!",
 					"standard": "Earth is 150 million km from the Sun: 11,700 Earths in a row. At this true scale it is far too small to see; the dot and the ring only show where it is. A car at 100 km/h would need 171 years to get there. Sunlight makes it in 8 minutes 20 seconds.",
 					"advanced": "1 AU = 149.6 million km, 11,740 Earth diameters. The drawn dot is only a marker: Earth's true disc here is a tiny fraction of a pixel. By car at 100 km/h: 171 years; by airliner: 19 years; by light: 499 seconds. Every time you see the Sun, you see it as it was 8 minutes ago."
 				}
@@ -184,7 +188,7 @@
 					"advanced": "Out to Neptune"
 				},
 				"text": {
-					"simple": "Here are all the planets, at their real distances. The inner planets crowd close to the Sun, and the others are very far apart. Sunlight needs about four hours to reach Neptune.",
+					"simple": "Here are all the planets, at their real distances. The planets near the Sun crowd close together, and the others are very far apart. Sunlight needs about four hours to reach Neptune.",
 					"standard": "The whole planetary system at true scale. Neptune is 30 times as far from the Sun as Earth: 4.5 billion km. Sunlight, the fastest thing there is, needs over 4 hours to get there. The four inner planets huddle in the middle; you can hardly tell them apart.",
 					"advanced": "Neptune's orbit, 30 AU (4.5 billion km) in radius. Light takes 4.2 hours to cross it. The spacing is very uneven: the four rocky planets all fit within 1.5 AU, then comes a wide gap to Jupiter at 5.2 AU, and each giant is 1.5 to 2 times as far out as the one before."
 				}
@@ -196,7 +200,7 @@
 					"advanced": "Almost entirely empty"
 				},
 				"text": {
-					"simple": "Now we switch off the dots and the names. This is how the solar system really looks: the Sun is a tiny dot, and the planets are much too small to see. Space is almost completely empty!",
+					"simple": "Now we switch off the dots and the names. This is how the solar system really looks. The Sun is a tiny dot, and the planets are much too small to see. Space is almost completely empty!",
 					"standard": "The markers and names are off now. This is what is really there: a small Sun and, as far as your eye can tell, nothing else. The Sun and all the planets together fill less than one hundred-billionth of the space inside Neptune's orbit. Space is almost perfectly empty.",
 					"advanced": "Markers and labels off: at true scale no planet covers even a single pixel here. The Sun and the planets occupy less than 10⁻¹¹ of the volume of a sphere with Neptune's orbit as its radius. That emptiness, not the size of the objects, is the real lesson of scale."
 				}
@@ -208,14 +212,13 @@
 					"advanced": "The Sun as a basketball"
 				},
 				"text": {
-					"simple": "Imagine the Sun as a basketball. Then Earth is a pinhead 26 metres away, Jupiter a cherry 134 metres away, and Neptune a pea almost 800 metres away. The next star would be 6,900 km away!",
+					"simple": "Imagine the Sun as a basketball. Then Earth is a pinhead 26 metres away. Jupiter is a cherry more than a football pitch away. Neptune is a pea more than 7 football pitches away. And the next star? It would be so far away that a plane would need about 8 hours to fly there!",
 					"standard": "Shrink it all so the Sun is a basketball: Earth becomes a pinhead 26 m away, Jupiter a cherry 134 m away, Neptune a pea 776 m away. At that scale the nearest star, Proxima Centauri, is 6,900 km away. You can walk this model on your school field.",
 					"advanced": "At a scale of 1 : 5.8 billion the Sun is a 24 cm basketball, Earth a 2.2 mm pinhead at 26 m, Jupiter 24 mm at 134 m and Neptune 8.5 mm at 776 m. Proxima Centauri, 4.2 light-years away, would be 6,900 km off: the solar system is a tiny island in an ocean of nothing."
 				},
 				"link": {
-					"simple": "Walk it outside",
-					"standard": "Walk the model",
-					"advanced": "Walk the model"
+					"simple": "Walk it at your school",
+					"standard": "Walk this model on your school field"
 				}
 			}
 		}
@@ -299,7 +302,7 @@
 					"advanced": "1610: evidence from the telescope"
 				},
 				"text": {
-					"simple": "In 1610, Galileo looked at Jupiter through his new telescope. He saw four small moons circling it. So not everything goes round the Earth! This helped people believe the new idea.",
+					"simple": "Long, long ago, Galileo looked at Jupiter through his new telescope. He saw four small moons going round it. So not everything goes round the Earth! This helped people believe the new idea.",
 					"standard": "We have travelled back to January 1610. Galileo turned his new telescope to Jupiter and found four moons circling it: proof that not everything goes round Earth. He also saw Venus show a full set of phases, like our Moon. That is only possible if Venus goes round the Sun.",
 					"advanced": "January 1610: Galileo discovers Io, Europa, Ganymede and Callisto, a miniature system with a centre other than Earth. Later that year he observes the full cycle of Venus's phases, including gibbous phases that Ptolemy's arrangement cannot produce. It refuted Ptolemy, though not yet Tycho Brahe's hybrid model."
 				}
@@ -311,7 +314,7 @@
 					"advanced": "Proof: aberration and parallax"
 				},
 				"text": {
-					"simple": "Today we know for sure: Earth goes round the Sun once a year, at about 30 km every second. It took people about 2,000 years to be completely sure. Spacecraft use this knowledge to fly to other planets.",
+					"simple": "Today we know for sure: Earth races round the Sun once a year. In just one second, it goes about as far as you could walk in a whole day! It took people a very, very long time to be completely sure. Spacecraft use this knowledge to fly to other planets.",
 					"standard": "Earth races around the Sun at about 30 km every second. The final proof came in 1838, when Friedrich Bessel measured a nearby star shifting back and forth over the year: the view from a moving Earth. From Aristarchus's first idea to Bessel took more than two thousand years. Every probe we send to Mars relies on it.",
 					"advanced": "Direct proof of Earth's motion came from James Bradley's aberration of starlight (1729) and Friedrich Bessel's parallax of 61 Cygni (1838), 0.3 arcseconds: the stars' apparent shift as Earth moves 300 million km across its orbit. Earth's orbital speed is 29.8 km/s. Kepler's ellipses (1609) and Newton's gravity (1687) turned the picture into physics."
 				}
@@ -337,7 +340,7 @@
 					"advanced": "The ingredients of life"
 				},
 				"text": {
-					"simple": "Every living thing on Earth needs water. It also needs energy, like sunlight or warmth, and the right ingredients. Life lives in amazing places: in ice, in boiling hot springs and deep in the dark sea.",
+					"simple": "Every living thing on Earth needs water. It also needs food or sunlight to keep going. Living things are found in amazing places: in ice, in boiling hot springs and deep in the dark sea.",
 					"standard": "All life we know needs three things: liquid water, a source of energy, and the right chemistry, based on carbon. On Earth life turns up almost wherever those meet: in Antarctic ice, in boiling hot springs, and around hot vents on the dark sea floor. So where else in the solar system do they meet?",
 					"advanced": "Life as we know it requires liquid water as a solvent, an energy source (light or chemical gradients) and carbon-based chemistry with elements such as nitrogen, phosphorus and sulfur. Extremophiles thrive from −20 °C brines to hydrothermal vents above 120 °C, some with no sunlight at all. That widens the search far beyond Earth-like planets."
 				}
@@ -349,7 +352,7 @@
 					"advanced": "Mars: a habitable past"
 				},
 				"text": {
-					"simple": "Today Mars is cold and dry. But long ago it had rivers and lakes. Maybe tiny living things lived there. The rover Perseverance is collecting rocks from an old lake to look for clues.",
+					"simple": "Today Mars is cold and dry. But long ago it had rivers and lakes. Maybe tiny living things lived there. A robot car called Perseverance is collecting rocks from an old lake to look for clues.",
 					"standard": "Mars is cold and dry today, with air far too thin for liquid water to last. But billions of years ago rivers filled lakes here. Since 2021 the rover Perseverance has been exploring Jezero crater, an old lake bed, and collecting rock samples. Some show patterns that on Earth are often made by microbes; only a lab on Earth can tell for sure.",
 					"advanced": "About 3.5 billion years ago Mars had rivers, deltas and lakes. Perseverance, in Jezero crater since 2021, has cached samples of the old lake deposits; one rock found in 2024 shows mineral patterns that on Earth are often associated with microbes but could also form without life. Water ice survives at the poles and underground."
 				}
@@ -361,7 +364,7 @@
 					"advanced": "Europa: a subsurface ocean"
 				},
 				"text": {
-					"simple": "This moon of Jupiter is covered with ice. Under the ice there is a huge ocean of salty water, with more water than all the seas on Earth together! A spacecraft is on its way there.",
+					"simple": "This moon of Jupiter is covered with ice. Under the ice there is a huge ocean of salty water. It holds more water than all the seas on Earth together! A spacecraft is on its way there.",
 					"standard": "Europa, one of Jupiter's big moons, is covered by an ice shell many kilometres thick. Underneath lies a salty ocean holding about twice as much water as all of Earth's oceans. Jupiter's tides knead the moon and keep it warm inside. NASA's Europa Clipper, launched in 2024, arrives in 2030.",
 					"advanced": "Galileo spacecraft magnetometer data revealed a conducting, salty ocean under an ice shell perhaps 15–25 km thick, with about twice the water of Earth's oceans. Tidal flexing by Jupiter provides the heat, and the ocean floor may be in contact with rock, as around hydrothermal vents on Earth. Europa Clipper (launched 2024) arrives in 2030."
 				}

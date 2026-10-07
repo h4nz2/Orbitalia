@@ -41,6 +41,7 @@ const SCALE_NOTE: Record<ScalePresetId, MessageKey> = {
 	textbook: "solarSystem.postcard.scaleNote.textbook",
 	bigPlanets: "solarSystem.postcard.scaleNote.bigPlanets",
 	everythingVisible: "solarSystem.postcard.scaleNote.everythingVisible",
+	poster: "solarSystem.postcard.scaleNote.poster",
 }
 
 /** Everything written on the postcard. */

@@ -113,33 +113,46 @@ export function drawnPosition(
 /**
  * Where a point drawn at `at` (scene units round the Sun) appears in the
  * overview, px from the centre of a screen `height` high (right and down
- * positive), the camera `distance` away from `HOME_SHOT`'s direction.
+ * positive), the camera `distance` away at `HOME_SHOT`'s elevation and at
+ * `azimuthDeg` (about +Y from +Z, the camera's convention).
  */
 export function overviewPx(
 	at: Vec3,
 	distance: number,
 	height: number,
+	azimuthDeg = HOME_SHOT.azimuthDeg,
 	fovDeg = CAMERA_FOV_DEG,
 ): { x: number; y: number } {
+	const azimuth = degToRad(azimuthDeg)
+	// turned into the frame of a camera at azimuth 0, which looks from +z
+	const x = at.x * Math.cos(azimuth) - at.z * Math.sin(azimuth)
+	const z = at.x * Math.sin(azimuth) + at.z * Math.cos(azimuth)
 	const elevation = degToRad(HOME_SHOT.elevationDeg)
 	const sin = Math.sin(elevation)
 	const cos = Math.cos(elevation)
-	// the camera looks from +z (azimuth 0), raised by the elevation
-	const depth = Math.max(1e-9, distance - (at.z * cos + at.y * sin))
+	const depth = Math.max(1e-9, distance - (z * cos + at.y * sin))
 	const px = height / 2 / (depth * Math.tan(degToRad(fovDeg) / 2))
-	return { x: at.x * px, y: (at.z * sin - at.y * cos) * px }
+	return { x: x * px, y: (z * sin - at.y * cos) * px }
+}
+
+/** A name's room beside its body, px. */
+export interface LabelRoom {
+	width: number
+	height: number
 }
 
 /**
- * The overview's shot distance (a multiple of the default, 1) that keeps
- * each point in `answers` (drawn positions) and a name of `label` px beside
- * it clear of the panels: 1 unless a panel would cover one.
+ * The overview's shot distance (a multiple of the default, 1) from
+ * `azimuthDeg` that keeps each point in `answers` (drawn positions) and a
+ * name of `label` px beside it clear of the panels: 1 unless a panel would
+ * cover one.
  */
 export function overviewShotDistance(
 	answers: readonly Vec3[],
 	scale: ScaleSettings,
 	clear: Clearance,
-	label: { width: number; height: number } = { width: 0, height: 0 },
+	label: LabelRoom = { width: 0, height: 0 },
+	azimuthDeg = HOME_SHOT.azimuthDeg,
 ): number {
 	const base = overviewDistance(
 		scale,
@@ -148,7 +161,7 @@ export function overviewShotDistance(
 	)
 	let distance = 1
 	for (const at of answers) {
-		const { x, y } = overviewPx(at, base, clear.height)
+		const { x, y } = overviewPx(at, base, clear.height, azimuthDeg)
 		const across = x >= 0 ? clear.right : clear.left
 		const along = y >= 0 ? clear.down : clear.up
 		// backing off by k divides the offset by about k; the name keeps its size
@@ -157,6 +170,39 @@ export function overviewShotDistance(
 		distance = Math.max(distance, Math.abs(x) / roomX, Math.abs(y) / roomY)
 	}
 	return distance
+}
+
+/** The turns tried, nearest the home view first, degrees. */
+const TURNS = Array.from({ length: 18 }, (_, i) => [i * 10, -(i + 1) * 10])
+	.flat()
+	.concat(180)
+
+/**
+ * The overview an Easy clue is asked from: the home view when the answer is
+ * clear of the panels; else the system turned round the Sun the least that
+ * brings the answer and its name into the clear (the planets keep their size,
+ * which matters most in Poster, #54); backed off only when no turn is enough.
+ */
+export function overviewShot(
+	answers: readonly Vec3[],
+	scale: ScaleSettings,
+	clear: Clearance,
+	label: LabelRoom = { width: 0, height: 0 },
+): { azimuthDeg: number; distance: number } {
+	let best = { azimuthDeg: HOME_SHOT.azimuthDeg, distance: Infinity }
+	for (const turn of TURNS) {
+		const azimuthDeg = HOME_SHOT.azimuthDeg + turn
+		const distance = overviewShotDistance(
+			answers,
+			scale,
+			clear,
+			label,
+			azimuthDeg,
+		)
+		if (distance <= 1) return { azimuthDeg, distance: 1 }
+		if (distance < best.distance) best = { azimuthDeg, distance }
+	}
+	return best
 }
 
 /**
@@ -201,7 +247,7 @@ export function moonsShotDistance(
  * The room the answer's name takes beside it, px: its label as drawn now,
  * plus the picture an Easy clue adds (about two letters wide).
  */
-function labelRoom(id: string): { width: number; height: number } {
+function labelRoom(id: string): LabelRoom {
 	const label = document.querySelector<HTMLElement>(
 		`[data-label-layer] [data-body="${id}"]`,
 	)
@@ -229,9 +275,13 @@ function clearanceNow(): Clearance {
 /**
  * Takes the camera to where an Easy clue is asked from: names on, nothing
  * selected, the Sun in the middle; then the overview, or the planet `at`
- * with its moons (the Moons layer on). Reduced motion jumps.
+ * with its moons (the Moons layer on). Reduced motion jumps. It is one step
+ * of the view history (#46), like a tour stop: Back returns to where the
+ * viewer was before the clue; a clue asked where the camera already is
+ * leaves no entry (the recorder writes in place when nothing changed).
  */
 export function goToStart(question: HuntQuestion, sim = useSimStore): void {
+	sim.getState().markStep()
 	const store = sim.getState()
 	const scale = useScaleStore.getState().scale
 	const clear = clearanceNow()
@@ -246,15 +296,15 @@ export function goToStart(question: HuntQuestion, sim = useSimStore): void {
 				: [drawnPosition(body, scale, store.simTimeJD)]
 		})
 		store.reset()
-		const distance = overviewShotDistance(
+		const shot = overviewShot(
 			answers,
 			scale,
 			clear,
 			labelRoom(question.answers[0]),
 		)
-		if (distance > 1 || jump) {
+		if (shot.distance > 1 || shot.azimuthDeg !== HOME_SHOT.azimuthDeg || jump) {
 			sim.getState().overview({
-				shot: { distance },
+				shot,
 				durationMs: jump ? 0 : undefined,
 			})
 		}

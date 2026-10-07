@@ -3,20 +3,19 @@
  * with the tail still to grow, at a speed that shows the whole passage in about a minute
  * and a half, with the comet in the middle and the Sun in the frame.
  */
-import type { Body } from "@/data"
+import type { Body, Tail } from "@/data"
 import { propagate, type OrbitElements, type Vec3 } from "@/sim"
-import {
-	TAIL_ONSET_KM,
-	nextPerihelionJD,
-	previousPerihelionJD,
-} from "@/sim/comet"
+import { nextPerihelionJD, previousPerihelionJD } from "@/sim/comet"
 import { WARP_PRESETS, useSimStore } from "@/store/sim"
 
 /** Real seconds the passage (tail on to tail off) should take on screen. */
 export const WATCH_SECONDS = 90
 
+/** What a passage depends on: where the comet wakes up and its lag (a schema `Tail`). */
+export type PassageTail = Pick<Tail, "onsetKm" | "lagDays">
+
 export interface Passage {
-	/** the comet crosses `TAIL_ONSET_KM` inbound: its coma starts to grow */
+	/** the comet wakes up (crosses its `onsetKm` inbound, plus its lag): its coma starts to grow */
 	startJD: number
 	perihelionJD: number
 	/** ...and outbound: the tail is gone */
@@ -30,34 +29,35 @@ const sunDistanceKm = (orbit: OrbitElements, jd: number): number => {
 }
 
 /**
- * When a comet is inside `TAIL_ONSET_KM` around the perihelion at `perihelionJD`: the
- * crossings on either side, found by bisection (the distance grows monotonically away
- * from perihelion). A comet that never leaves that sphere is active all the time.
+ * When a comet is awake around the perihelion at `perihelionJD`: the crossings of its
+ * `onsetKm` on either side, found by bisection (the distance grows monotonically away
+ * from perihelion), shifted by its lag. A comet that never leaves that sphere is active
+ * all the time.
  */
 export function passageAround(
 	orbit: OrbitElements,
+	tail: PassageTail,
 	perihelionJD: number,
 ): Passage {
 	const half = orbit.periodDays / 2
+	const lag = tail.lagDays ?? 0
 	const cross = (direction: 1 | -1): number => {
 		let inside = 0
 		let outside = half
 		if (
-			sunDistanceKm(orbit, perihelionJD + direction * outside) < TAIL_ONSET_KM
+			sunDistanceKm(orbit, perihelionJD + direction * outside) < tail.onsetKm
 		) {
 			return perihelionJD + direction * half
 		}
 		for (let k = 0; k < 60; k++) {
 			const mid = (inside + outside) / 2
-			if (
-				sunDistanceKm(orbit, perihelionJD + direction * mid) < TAIL_ONSET_KM
-			) {
+			if (sunDistanceKm(orbit, perihelionJD + direction * mid) < tail.onsetKm) {
 				inside = mid
 			} else {
 				outside = mid
 			}
 		}
-		return perihelionJD + direction * outside
+		return perihelionJD + direction * outside + lag
 	}
 	return { startJD: cross(-1), perihelionJD, endJD: cross(1) }
 }
@@ -72,12 +72,13 @@ export const LATEST_WATCH_JD = 2816787.5
  */
 export function passageToWatch(
 	orbit: OrbitElements,
+	tail: PassageTail,
 	jd: number,
 	latestJD = LATEST_WATCH_JD,
 ): Passage {
-	const current = passageAround(orbit, previousPerihelionJD(orbit, jd))
+	const current = passageAround(orbit, tail, previousPerihelionJD(orbit, jd))
 	if (jd < current.endJD) return current
-	const next = passageAround(orbit, nextPerihelionJD(orbit, jd))
+	const next = passageAround(orbit, tail, nextPerihelionJD(orbit, jd))
 	return next.startJD <= latestJD ? next : current
 }
 
@@ -104,13 +105,15 @@ export const watchStartJD = (passage: Passage, jd: number): number =>
  * as its perihelion distance (so the Sun is in the picture), glides the clock to the
  * start of the passage and lets it run forward at `watchWarp`.
  */
-export function watchComet(body: Pick<Body, "id" | "orbit">): void {
-	const orbit = body.orbit
-	if (orbit === null) return
+export function watchComet(body: Pick<Body, "id" | "orbit" | "tail">): void {
+	const { orbit, tail } = body
+	if (orbit === null || tail === undefined) return
 	const state = useSimStore.getState()
-	const passage = passageToWatch(orbit, state.simTimeJD)
+	const passage = passageToWatch(orbit, tail, state.simTimeJD)
 	const start = watchStartJD(passage, state.simTimeJD)
 	const q = orbit.semiMajorAxisKm * (1 - orbit.eccentricity)
+	// choosing the comet is a step of the view history (#46)
+	state.markStep()
 	state.select(body.id)
 	state.focus(body.id, { fit: { km: 1.2 * q, around: "sun" } })
 	state.setTimeWarp(watchWarp(passage.endJD - passage.startJD))

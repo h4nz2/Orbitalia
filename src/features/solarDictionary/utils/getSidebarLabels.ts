@@ -1,5 +1,19 @@
 import type { SolarDictionaryItem } from "@/data/solarDictionary"
-import type { I18n } from "@/i18n"
+import {
+	countArgs,
+	dayVsEarth,
+	durationInWords,
+	capitalized,
+	formatSize,
+	formatWeight,
+	isSimple,
+	sizeVsEarth,
+	weightVsEarth,
+	yearVsEarth,
+	type I18n,
+} from "@/i18n"
+
+import { levelQuantity } from "./quantity"
 
 /** The facts the sidebar can show, in display order. */
 export type FactKey =
@@ -45,20 +59,24 @@ function sizeComparison(
 			: (value / earth) ** 3,
 	)
 	if (earths > 1.5) {
-		return i18n.t("dictionary.compare.sizeBigger", {
-			count: Math.round(earths),
-		})
+		return i18n.t(
+			"dictionary.compare.sizeBigger",
+			countArgs(Math.round(earths), i18n),
+		)
 	}
 	if (earths < 0.6) {
-		return i18n.t("dictionary.compare.sizeSmaller", {
-			count: Math.round(1 / earths),
-		})
+		return i18n.t(
+			"dictionary.compare.sizeSmaller",
+			countArgs(Math.round(1 / earths), i18n),
+		)
 	}
 	return i18n.t("dictionary.compare.sizeSimilar")
 }
 
 function dayComparison(hours: number, earth: number, i18n: I18n): string {
 	const ratio = hours / earth
+	// the simple level: the day at home is the yardstick (#51)
+	if (isSimple(i18n)) return dayVsEarth(ratio, i18n)
 	if (ratio >= 1.5) {
 		return i18n.t("dictionary.compare.dayLonger", { days: Math.round(ratio) })
 	}
@@ -75,6 +93,7 @@ function dayComparison(hours: number, earth: number, i18n: I18n): string {
 
 function yearComparison(days: number, earth: number, i18n: I18n): string {
 	const ratio = days / earth
+	if (isSimple(i18n)) return yearVsEarth(days, i18n)
 	if (ratio >= 2) {
 		return i18n.t("dictionary.compare.yearLonger", {
 			years: Math.round(ratio),
@@ -94,35 +113,30 @@ function yearComparison(days: number, earth: number, i18n: I18n): string {
 function gravityComparison(value: number, earth: number, i18n: I18n): string {
 	const ratio = value / earth
 	const kg = Math.round(REFERENCE_KG * ratio)
+	const weight = formatWeight(REFERENCE_KG * ratio, i18n)
 	if (ratio >= 1.05) {
 		return i18n.t("dictionary.compare.gravityMore", {
 			ratio: round1(ratio),
 			kg,
+			weight,
 		})
 	}
 	if (ratio <= 0.95) {
-		return i18n.t("dictionary.compare.gravityLess", { percent: ratio, kg })
+		return i18n.t("dictionary.compare.gravityLess", {
+			percent: ratio,
+			kg,
+			weight,
+		})
 	}
-	return i18n.t("dictionary.compare.gravitySimilar", { kg })
-}
-
-/** Oven-hot and freezer-cold thresholds of the "simple" sentence (°C). */
-const HOT_C = 250
-const COLD_C = -20
-
-function temperatureComparison(kelvin: number, i18n: I18n): string {
-	const celsius = Math.round(kelvin - 273.15)
-	return i18n.t("dictionary.compare.temperature", {
-		celsius,
-		range: celsius > HOT_C ? "hot" : celsius < COLD_C ? "cold" : "other",
-	})
+	return i18n.t("dictionary.compare.gravitySimilar", { kg, weight })
 }
 
 /**
  * The sidebar facts of a dictionary entry, translated, formatted for the
- * active locale and compared with `earth` (no comparisons for Earth itself,
- * except the Celsius reading of its temperature). Facts without a value are
- * left out. `volumes` makes the size comparison exact for flattened planets.
+ * active locale and compared with `earth` (no comparisons for Earth itself).
+ * The temperature follows the reading level (`levelQuantity`: words, °C, or
+ * kelvin with °C). Facts without a value are left out. `volumes` makes the
+ * size comparison exact for flattened planets.
  */
 export function getSidebarFacts(
 	entity: SolarDictionaryItem | undefined,
@@ -148,7 +162,12 @@ export function getSidebarFacts(
 				return {
 					key,
 					label,
-					value: i18n.quantity(value, "kilometer"),
+					// the simple level: Earth is the yardstick, not the kilometres (#51)
+					value: !isSimple(i18n)
+						? i18n.quantity(value, "kilometer")
+						: reference === null
+							? formatSize(value, i18n)
+							: sizeVsEarth(value, i18n),
 					extra:
 						reference === null
 							? null
@@ -158,7 +177,9 @@ export function getSidebarFacts(
 				return {
 					key,
 					label,
-					value: i18n.quantity(value, "hour", "long"),
+					value: isSimple(i18n)
+						? durationInWords(value * 3600, i18n)
+						: i18n.quantity(value, "hour", "long"),
 					extra:
 						reference === null ? null : dayComparison(value, reference, i18n),
 				}
@@ -166,7 +187,9 @@ export function getSidebarFacts(
 				return {
 					key,
 					label,
-					value: i18n.quantity(value, "day", "long"),
+					value: isSimple(i18n)
+						? durationInWords(value * 86_400, i18n)
+						: i18n.quantity(value, "day", "long"),
 					extra:
 						reference === null ? null : yearComparison(value, reference, i18n),
 				}
@@ -174,7 +197,9 @@ export function getSidebarFacts(
 				return {
 					key,
 					label,
-					value: i18n.t("units.gravity", { value: i18n.number(value) }),
+					value: isSimple(i18n)
+						? weightVsEarth(value / (reference ?? value), i18n)
+						: i18n.t("units.gravity", { value: i18n.number(value) }),
 					extra:
 						reference === null
 							? null
@@ -184,11 +209,18 @@ export function getSidebarFacts(
 				return {
 					key,
 					label,
-					value: i18n.t("units.kelvin", { value: i18n.number(value) }),
-					extra: temperatureComparison(value, i18n),
+					value:
+						levelQuantity(
+							{ kind: "temperature", degrees: { k: value } },
+							i18n,
+						) ?? "",
+					extra: null,
 				}
 		}
 	}
 
-	return keys.map(fact).filter((entry): entry is SidebarFact => entry !== null)
+	return keys
+		.map(fact)
+		.filter((entry): entry is SidebarFact => entry !== null)
+		.map((entry) => ({ ...entry, value: capitalized(entry.value, i18n) }))
 }

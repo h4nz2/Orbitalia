@@ -5,6 +5,9 @@
  * see ui/TimeControls, ui/FocusPicker, ui/OverviewButton), which keep working
  * while the controls are hidden because hiding never unmounts them.
  *
+ * Backspace is Back (#46, back/back.ts): where you just were, or the tour's
+ * previous stop.
+ *
  * Presenter remotes send PageDown / PageUp for "next" / "previous"; their
  * "start show" button alternates F5 (a reload: harmless, the whole view is in
  * the URL) and Escape (the way out).
@@ -20,6 +23,8 @@ export type PresenterCommand =
 	/** 0: the whole system; 1..8: the planets in order from the Sun. */
 	| { readonly kind: "view"; readonly index: number }
 	| { readonly kind: "start" }
+	/** Back to where you just were (#46): the view before, or the tour's previous stop. */
+	| { readonly kind: "back" }
 	| { readonly kind: "scale" }
 	| { readonly kind: "labels" }
 	| { readonly kind: "chrome" }
@@ -64,6 +69,8 @@ export function keyCommand(event: KeyLike): PresenterCommand | null {
 			return { kind: "step", direction: -1 }
 		case "Home":
 			return { kind: "start" }
+		case "Backspace":
+			return { kind: "back" }
 		case "?":
 			return { kind: "help" }
 		default:

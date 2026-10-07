@@ -3,9 +3,9 @@ import { Text } from "@mantine/core"
 import { IconAlertTriangle } from "@tabler/icons-react"
 
 import { bodies } from "@/data"
-import { useI18n } from "@/i18n"
+import { countArgs, useI18n } from "@/i18n"
 import { useBodyName } from "@/i18n/bodies"
-import { useSimStore } from "@/store/sim"
+import { allMoonsShown, useSimStore } from "@/store/sim"
 
 import { bodiesInView, tooFastToFollow } from "./tooFast"
 import { useFrameRate } from "./useFrameRate"
@@ -18,14 +18,15 @@ import classes from "./TimeControls.module.css"
  * Nothing while paused or travelling to a date.
  */
 const TooFastHint = () => {
-	const { t } = useI18n()
+	const i18n = useI18n()
+	const { t } = i18n
 	const name = useBodyName()
 	const warp = useSimStore((state) => state.timeWarp)
 	const paused = useSimStore((state) => state.paused)
 	const gliding = useSimStore((state) => state.clock.glide !== null)
 	const focusId = useSimStore((state) => state.focusId)
 	const showMoons = useSimStore((state) => state.showMoons)
-	const showAllMoons = useSimStore((state) => state.showAllMoons)
+	const showAllMoons = useSimStore(allMoonsShown)
 	const fps = useFrameRate()
 	const inView = useMemo(
 		() => bodiesInView(bodies, focusId, showMoons, showAllMoons),
@@ -48,7 +49,7 @@ const TooFastHint = () => {
 					body: name(fast.id),
 					parent: name(fast.parentId),
 					parentId: fast.parentId,
-					count: Math.round(fast.lapsPerSecond),
+					...countArgs(Math.round(fast.lapsPerSecond), i18n),
 				})}
 			</span>
 		</Text>

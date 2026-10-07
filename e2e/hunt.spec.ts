@@ -405,3 +405,65 @@ test("an Easy clue on the projector (#29): large, read out, clear of the panel",
 	await clickBody(page, "titan")
 	await expect(page.getByTestId("hunt-found")).toBeVisible()
 })
+
+test("an Easy clue in Poster (#54), and its start view a step of Back (#46)", async ({
+	page,
+}) => {
+	await page.setViewportSize({ width: 1280, height: 800 })
+	await stubSpeech(page)
+	await ready(
+		page,
+		"/solar_system?scale=poster&focus=jupiter&hunt=true&lang=en&reading=simple",
+	)
+	await expect(page.locator("canvas")).toHaveAttribute(
+		"data-scale-preset",
+		"poster",
+	)
+	const view = () =>
+		page.evaluate(() => window.__orbitalia!.store.getState().view)
+
+	// the clue takes the camera from Jupiter to the overview: one step
+	await panel(page).locator('[data-hunt="sunAndMoons"]').click()
+	await expect(page.getByTestId("hunt-clue")).toHaveText("Find the Sun.")
+	await cameraAtRest(page)
+	expect(await view()).toEqual({ kind: "overview" })
+	// Poster keeps its discs, every planet named with its picture
+	await expect(
+		page.locator('[data-label-layer] [data-body="saturn"] [data-picture]'),
+	).toBeVisible()
+
+	// Back returns to where we were before the clue; the clue stays
+	await page.getByTestId("back-button").click()
+	await cameraAtRest(page)
+	expect(await view()).toEqual({ kind: "body", id: "jupiter" })
+	await expect(page.getByTestId("hunt-clue")).toHaveText("Find the Sun.")
+
+	// answered; the next clue is asked from the overview again
+	await page.evaluate(() =>
+		window.__orbitalia!.store.getState().setFocus("sun"),
+	)
+	await expect(page.getByTestId("hunt-found")).toBeVisible()
+	await panel(page).getByRole("button", { name: "Next clue" }).click()
+	await cameraAtRest(page)
+	expect(await view()).toEqual({ kind: "overview" })
+	await clickBody(page, "mercury")
+	await expect(page.getByTestId("hunt-found")).toBeVisible()
+	await panel(page).getByRole("button", { name: "Next clue" }).click()
+	await expect(page.getByTestId("hunt-clue")).toHaveText(
+		"Find the planet farthest from the Sun.",
+	)
+	await cameraAtRest(page)
+	// Neptune and its name are clear of the panel, the planets as big as before
+	const neptune = await page.evaluate(() =>
+		window.__orbitalia!.screenOf("neptune"),
+	)
+	const box = await panel(page).boundingBox()
+	expect(neptune!.x < box!.x || neptune!.y < box!.y).toBe(true)
+	await expect(
+		page.locator('[data-label-layer] [data-body="neptune"]'),
+	).toHaveAttribute("data-visible", "true")
+	expect(neptune!.discPx).toBeGreaterThan(2)
+	await page.screenshot({ path: path.join(screenshotDir, "easy-poster.png") })
+	await clickBody(page, "neptune")
+	await expect(page.getByTestId("hunt-found")).toBeVisible()
+})

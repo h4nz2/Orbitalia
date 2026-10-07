@@ -7,9 +7,11 @@ import { SCALE_PRESETS, TRUE_SCALE, interpolateScale, mapDistance } from "@/sim"
 import {
 	DEFAULT_SCALE,
 	SCALE_TRANSITION_MS,
+	hidesLongTail,
 	transitionScale,
 	useScaleStore,
 } from "./scale"
+import { useSimStore } from "./sim"
 
 const reset = () =>
 	useScaleStore.setState(useScaleStore.getInitialState(), true)
@@ -172,5 +174,25 @@ describe("animated preset switches (#21)", () => {
 			.getState()
 			.setScale(interpolateScale(TRUE_SCALE, SCALE_PRESETS.textbook, 0.3))
 		expect(useScaleStore.getState().targetId).toBeNull()
+	})
+})
+
+describe("Poster hides the long tail of moons (#54)", () => {
+	afterEach(() => useSimStore.setState(useSimStore.getInitialState(), true))
+
+	it("from the click on, and gives it back with the next preset", () => {
+		expect(hidesLongTail("poster")).toBe(true)
+		expect(hidesLongTail("everythingVisible")).toBe(false)
+		expect(hidesLongTail(null)).toBe(false)
+		expect(useSimStore.getState().longTailHidden).toBe(false)
+		useScaleStore.getState().switchTo("poster", 0)
+		// still on its way, already chosen
+		expect(useScaleStore.getState().presetId).toBe("everythingVisible")
+		expect(useSimStore.getState().longTailHidden).toBe(true)
+		useScaleStore.getState().setPreset("trueScale")
+		expect(useSimStore.getState().longTailHidden).toBe(false)
+		// a link opening in Poster
+		useScaleStore.getState().setPreset("poster")
+		expect(useSimStore.getState().longTailHidden).toBe(true)
 	})
 })

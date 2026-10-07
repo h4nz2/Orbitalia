@@ -178,6 +178,6 @@ test("the small-body texts come in German too", async ({ page }) => {
 	await openLayers(page)
 	await expect(page.getByRole("switch", { name: "Kleinkörper" })).toBeChecked()
 	await expect(page.getByTestId("small-bodies-legend")).toContainText(
-		"Jeder Punkt steht für etwa 380 echte Felsbrocken",
+		"Jeder Punkt steht für mehr als 100 echte Felsbrocken",
 	)
 })

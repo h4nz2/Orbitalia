@@ -5,7 +5,12 @@
  * translated through the i18n layer (`solarSystem.flight.*`); the readout
  * component only lays them out.
  */
-import type { I18n } from "@/i18n"
+import {
+	durationInWords,
+	formatDistance as formatAnyDistance,
+	isSimple,
+	type I18n,
+} from "@/i18n"
 import { kmToAu } from "@/sim"
 
 /** km/s */
@@ -48,29 +53,24 @@ export function approx(value: number): number {
 	return Math.round(value / step) * step
 }
 
-/** Three significant digits, for the kilometres of a trip. */
-const threeDigits = (value: number): number => {
-	if (!(value > 0)) return 0
-	const step = 10 ** (Math.floor(Math.log10(value)) - 2)
-	return Math.round(value / step) * step
-}
-
-/** "384,000 km", "628 million km", "4.35 billion km" (and the German forms). */
-export function formatDistance(km: number, i18n: I18n): string {
-	if (km < 1e6) return i18n.quantity(threeDigits(km), "kilometer")
-	if (km < 1e9) {
-		return i18n.t("units.millionKm", { value: i18n.significant(km / 1e6, 3) })
-	}
-	return i18n.t("units.billionKm", { value: i18n.significant(km / 1e9, 3) })
-}
+/**
+ * "384,000 km", "628 million km", "4.35 billion km" (and the German forms);
+ * at the simple level in words ("4 times as far as Earth is from the Sun").
+ * `@/i18n`'s `formatDistance`, the app's one distance formatter.
+ */
+export const formatDistance = formatAnyDistance
 
 const MINUTE = 60
 const HOUR = 3600
 const DAY = 86_400
 const YEAR = 365.25 * DAY
 
-/** "1.3 seconds", "35 minutes", "4.2 hours", "160 days", "1.2 years", "5,300 years". */
+/**
+ * "1.3 seconds", "35 minutes", "4.2 hours", "160 days", "1.2 years", "5,300
+ * years"; at the simple level "4 months", "hundreds of years".
+ */
 export function formatTravelTime(seconds: number, i18n: I18n): string {
+	if (isSimple(i18n)) return durationInWords(seconds, i18n)
 	if (seconds < 90) return i18n.quantity(approx(seconds), "second", "long")
 	if (seconds < 90 * MINUTE) {
 		return i18n.quantity(approx(seconds / MINUTE), "minute", "long")
