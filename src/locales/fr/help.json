@@ -45,6 +45,16 @@
 				"standard": "Pars à la chasse aux mondes, découvre ton âge sur Mars et prends une photo en souvenir.",
 				"simple": "Joue à la chasse au trésor, découvre ton âge sur Mars et prends une photo."
 			}
+		},
+		"community": {
+			"title": {
+				"standard": "Améliorer Orbitalia",
+				"simple": "Aide à améliorer Orbitalia"
+			},
+			"intro": {
+				"standard": "Orbitalia est gratuite et open source : elle s’améliore avec chaque bug signalé et chaque idée envoyée.",
+				"simple": "Dis-nous quand quelque chose est cassé, ou quand tu as une idée."
+			}
 		}
 	},
 	"entries": {
@@ -1101,6 +1111,32 @@
 					"Appuie sur Outils en bas à droite, puis sur « Prendre une photo ».",
 					"Écris quelque chose sur ton image.",
 					"Appuie sur « Enregistrer l’image »."
+				]
+			}
+		},
+		"feedback": {
+			"title": {
+				"standard": "Envoyer un avis",
+				"simple": "Dis-nous ce que tu en penses"
+			},
+			"what": {
+				"standard": "Un court formulaire qui envoie ton signalement, ton idée ou ta question directement aux personnes qui font Orbitalia, avec la vue que tu regardais si tu le souhaites.",
+				"simple": "Écris aux personnes qui font Orbitalia quand quelque chose est cassé ou quand tu as une idée."
+			},
+			"why": {
+				"standard": "Orbitalia est open source et grandit avec ce que nous racontent les enseignants, les élèves et les passionnés d’espace ; un lien vers la vue qui pose problème permet de corriger vite.",
+				"simple": "Ton idée sera peut-être dans l’application la prochaine fois !"
+			},
+			"how": {
+				"standard": [
+					"Dans le système solaire, ouvre la flèche à côté d’Aide en haut à droite et choisis « Envoyer un avis » : si tu veux, la vue que tu regardes est jointe.",
+					"Choisis de quoi il s’agit, écris quelques mots et appuie sur « Envoyer ». L’e-mail est facultatif : ne le donne que si tu veux une réponse.",
+					"Avec un compte GitHub, tu peux aussi signaler sur GitHub ou discuter avec d’autres sur GitHub Discussions ; la page mène aux deux."
+				],
+				"simple": [
+					"Appuie sur la flèche à côté d’Aide, puis sur « Dis-nous ce que tu en penses ».",
+					"Écris ce qui est cassé, ou ton idée.",
+					"Appuie sur « Envoyer ». Tu n’as pas besoin de donner ton e-mail."
 				]
 			}
 		}

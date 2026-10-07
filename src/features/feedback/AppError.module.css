@@ -1,0 +1,52 @@
+.page {
+	min-height: 100vh;
+	min-height: 100dvh;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	gap: 1rem;
+	padding: 1rem;
+	background: #050609;
+	color: #dee2e6;
+	font-family: system-ui, sans-serif;
+	text-align: center;
+}
+
+.title {
+	margin: 0;
+	font-size: 2rem;
+	color: #ffa94d;
+}
+
+.text {
+	max-width: 32rem;
+	margin: 0;
+}
+
+.actions {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+	gap: 0.75rem;
+}
+
+.reload,
+.report {
+	padding: 0.5rem 1rem;
+	border-radius: 0.25rem;
+	font: inherit;
+	cursor: pointer;
+	text-decoration: none;
+}
+
+.reload {
+	border: none;
+	background: #f76707;
+	color: #fff;
+}
+
+.report {
+	border: 1px solid #495057;
+	color: #dee2e6;
+}

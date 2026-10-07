@@ -256,6 +256,12 @@
 	color: var(--mantine-color-gray-3);
 }
 
+.aboutLinks {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 0.5rem;
+}
+
 .creditIntro {
 	margin: 0.25rem 0 0.5rem;
 	font-size: var(--mantine-font-size-sm);

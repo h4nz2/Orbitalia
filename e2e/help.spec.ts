@@ -3,6 +3,7 @@ import path from "node:path"
 
 import { expect, test, type Page } from "@playwright/test"
 
+import { stubTurnstile } from "./support/feedback"
 import { nextFrames } from "./support/scene"
 
 // The help page (#43): one click away from every screen, every feature with a
@@ -205,6 +206,8 @@ for (let chunk = 0; chunk < CHUNKS; chunk += 1) {
 	}) => {
 		test.setTimeout(60_000 + entries.length * 30_000)
 		const errors = collectErrors(page)
+		// the feedback page's Turnstile never reaches the network in a test
+		await stubTurnstile(page)
 		await page.goto("/help?lang=en&reading=standard")
 		await expect(helpHeading(page)).toBeVisible()
 		for (const entry of entries) {

@@ -11,6 +11,7 @@
 import { Route as rootRouteImport } from "./routes/__root"
 import { Route as IndexRouteImport } from "./routes/index"
 import { Route as CompareRouteImport } from "./routes/compare"
+import { Route as FeedbackRouteImport } from "./routes/feedback"
 import { Route as HelpRouteImport } from "./routes/help"
 import { Route as Solar_dictionaryRouteImport } from "./routes/solar_dictionary"
 import { Route as Solar_systemRouteImport } from "./routes/solar_system"
@@ -24,6 +25,11 @@ const IndexRoute = IndexRouteImport.update({
 const CompareRoute = CompareRouteImport.update({
   id: "/compare",
   path: "/compare",
+  getParentRoute: () => rootRouteImport,
+} as any)
+const FeedbackRoute = FeedbackRouteImport.update({
+  id: "/feedback",
+  path: "/feedback",
   getParentRoute: () => rootRouteImport,
 } as any)
 const HelpRoute = HelpRouteImport.update({
@@ -50,6 +56,7 @@ const Solar_walkRoute = Solar_walkRouteImport.update({
 export interface FileRoutesByFullPath {
   "/": typeof IndexRoute
   "/compare": typeof CompareRoute
+  "/feedback": typeof FeedbackRoute
   "/help": typeof HelpRoute
   "/solar_dictionary": typeof Solar_dictionaryRoute
   "/solar_system": typeof Solar_systemRoute
@@ -58,6 +65,7 @@ export interface FileRoutesByFullPath {
 export interface FileRoutesByTo {
   "/": typeof IndexRoute
   "/compare": typeof CompareRoute
+  "/feedback": typeof FeedbackRoute
   "/help": typeof HelpRoute
   "/solar_dictionary": typeof Solar_dictionaryRoute
   "/solar_system": typeof Solar_systemRoute
@@ -67,6 +75,7 @@ export interface FileRoutesById {
   __root__: typeof rootRouteImport
   "/": typeof IndexRoute
   "/compare": typeof CompareRoute
+  "/feedback": typeof FeedbackRoute
   "/help": typeof HelpRoute
   "/solar_dictionary": typeof Solar_dictionaryRoute
   "/solar_system": typeof Solar_systemRoute
@@ -77,6 +86,7 @@ export interface FileRouteTypes {
   fullPaths:
     | "/"
     | "/compare"
+    | "/feedback"
     | "/help"
     | "/solar_dictionary"
     | "/solar_system"
@@ -85,6 +95,7 @@ export interface FileRouteTypes {
   to:
     | "/"
     | "/compare"
+    | "/feedback"
     | "/help"
     | "/solar_dictionary"
     | "/solar_system"
@@ -93,6 +104,7 @@ export interface FileRouteTypes {
     | "__root__"
     | "/"
     | "/compare"
+    | "/feedback"
     | "/help"
     | "/solar_dictionary"
     | "/solar_system"
@@ -102,6 +114,7 @@ export interface FileRouteTypes {
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   CompareRoute: typeof CompareRoute
+  FeedbackRoute: typeof FeedbackRoute
   HelpRoute: typeof HelpRoute
   Solar_dictionaryRoute: typeof Solar_dictionaryRoute
   Solar_systemRoute: typeof Solar_systemRoute
@@ -122,6 +135,13 @@ declare module "@tanstack/react-router" {
       path: "/compare"
       fullPath: "/compare"
       preLoaderRoute: typeof CompareRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    "/feedback": {
+      id: "/feedback"
+      path: "/feedback"
+      fullPath: "/feedback"
+      preLoaderRoute: typeof FeedbackRouteImport
       parentRoute: typeof rootRouteImport
     }
     "/help": {
@@ -158,6 +178,7 @@ declare module "@tanstack/react-router" {
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   CompareRoute: CompareRoute,
+  FeedbackRoute: FeedbackRoute,
   HelpRoute: HelpRoute,
   Solar_dictionaryRoute: Solar_dictionaryRoute,
   Solar_systemRoute: Solar_systemRoute,

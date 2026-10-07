@@ -11,6 +11,7 @@ import { parseOffset, parseShot } from "@/store/navigation"
 import { simSearchSchema } from "@/store/simSearch"
 
 import { compareSearchSchema } from "../compare/search"
+import { feedbackSearchSchema } from "../feedback/search"
 import { parseBodies } from "../compare/selection"
 import { resolveHunt } from "../solarSystem/hunt/hunts"
 import { dictionarySearchSchema } from "../solarDictionary/search"
@@ -197,6 +198,7 @@ const SCHEMAS: Record<TryRoute, z.ZodType> = {
 	"/solar_walk": solarWalkSearchSchema,
 	"/compare": compareSearchSchema,
 	"/help": helpSearchSchema,
+	"/feedback": feedbackSearchSchema,
 }
 
 /** Why a link would open something other than what it says; empty when it is sound. */

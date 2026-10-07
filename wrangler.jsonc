@@ -1,10 +1,18 @@
 {
-	// Cloudflare Workers static assets: serves the Vite build, SPA fallback for deep links.
+	// Cloudflare Workers: the Vite build as static assets (SPA fallback for deep links), and
+	// worker/index.ts for /api/* only (the feedback form, see docs/ARCHITECTURE.md, "Feedback").
+	// Secrets (`wrangler secret put`): TURNSTILE_SECRET, FEEDBACK_TO.
 	"name": "orbitalia",
+	"main": "worker/index.ts",
 	"compatibility_date": "2026-09-24",
+	"minify": true,
 	"assets": {
 		"directory": "./dist",
+		"binding": "ASSETS",
 		"not_found_handling": "single-page-application",
+		"run_worker_first": ["/api/*"],
 	},
+	// mails each report to the verified Email Routing destination in FEEDBACK_TO
+	"send_email": [{ "name": "FEEDBACK_EMAIL" }],
 	"routes": [{ "pattern": "orbitalia.app", "custom_domain": true }],
 }

@@ -1,0 +1,31 @@
+name: An idea
+description: Something Orbitalia could show, explain or do.
+labels: [enhancement]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Ideas are very welcome, small or big. No GitHub account? The app's **Help → Send feedback** reaches us too.
+        Not sure yet? Start a conversation in [Discussions → Ideas](https://github.com/h4nz2/Orbitalia/discussions/categories/ideas).
+  - type: textarea
+    id: idea
+    attributes:
+      label: What would you like Orbitalia to do?
+      placeholder: Show where the Moon landings were on the Moon's surface.
+    validations:
+      required: true
+  - type: textarea
+    id: why
+    attributes:
+      label: What would it help with?
+      description: The lesson it would teach, the question it would answer, or simply why it would be fun.
+  - type: dropdown
+    id: who
+    attributes:
+      label: Who would use it?
+      multiple: true
+      options:
+        - Teachers in a lesson
+        - Students on their own
+        - Younger children (6–11)
+        - Anyone curious about space

@@ -7,7 +7,8 @@
 		"light",
 		"comparing",
 		"teachers",
-		"games"
+		"games",
+		"community"
 	],
 	"entries": [
 		{
@@ -239,6 +240,11 @@
 			"id": "postcard",
 			"group": "games",
 			"try": "/solar_system?focus=jupiter"
+		},
+		{
+			"id": "feedback",
+			"group": "community",
+			"try": "/feedback"
 		}
 	],
 	"controls": [

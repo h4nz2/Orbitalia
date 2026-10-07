@@ -64,6 +64,7 @@ export const HELP_GROUP_IDS = [
 	"comparing",
 	"teachers",
 	"games",
+	"community",
 ] as const
 export type HelpGroupId = (typeof HELP_GROUP_IDS)[number]
 

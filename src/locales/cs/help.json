@@ -45,6 +45,16 @@
 				"standard": "Pátrej po světech, zjisti svůj věk na Marsu a vyfoť si obrázek na památku.",
 				"simple": "Zahraj si pátrací hru, zjisti, kolik ti je na Marsu, a vyfoť si obrázek."
 			}
+		},
+		"community": {
+			"title": {
+				"standard": "Pomoz vylepšit Orbitalii",
+				"simple": "Pomoz vylepšit Orbitalii"
+			},
+			"intro": {
+				"standard": "Orbitalia je zdarma a open source: zlepšuje se s každou nahlášenou chybou a každým nápadem.",
+				"simple": "Napiš nám, když se něco rozbije nebo když máš nápad."
+			}
 		}
 	},
 	"entries": {
@@ -1101,6 +1111,32 @@
 					"Stiskni vpravo dole Nástroje a pak „Vyfotit“.",
 					"Napiš něco ke svému obrázku.",
 					"Stiskni „Uložit obrázek“."
+				]
+			}
+		},
+		"feedback": {
+			"title": {
+				"standard": "Poslat zpětnou vazbu",
+				"simple": "Napiš nám, co si myslíš"
+			},
+			"what": {
+				"standard": "Krátký formulář, který tvoje hlášení chyby, nápad nebo otázku pošle přímo lidem, kteří Orbitalii dělají, a pokud chceš, přiloží i pohled, na který se díváš.",
+				"simple": "Napiš lidem, kteří dělají Orbitalii, když se něco rozbije nebo když máš nápad."
+			},
+			"why": {
+				"standard": "Orbitalia je open source a roste s tím, co nám řeknou učitelé, žáci a fanoušci vesmíru; odkaz na pohled s chybou pomůže chybu rychle opravit.",
+				"simple": "Tvůj nápad může být příště v aplikaci!"
+			},
+			"how": {
+				"standard": [
+					"Ve sluneční soustavě otevři šipku vedle Nápovědy vpravo nahoře a vyber „Poslat zpětnou vazbu“: pokud chceš, přiloží se pohled, na který se díváš.",
+					"Vyber, o co jde, napiš pár slov a stiskni „Odeslat“. E-mail je nepovinný: vyplň ho, jen pokud chceš odpověď.",
+					"S účtem na GitHubu to můžeš nahlásit i na GitHubu nebo diskutovat s ostatními na GitHub Discussions; stránka odkazuje na obojí."
+				],
+				"simple": [
+					"Stiskni šipku vedle Nápovědy a pak „Napiš nám, co si myslíš“.",
+					"Napiš, co se rozbilo, nebo svůj nápad.",
+					"Stiskni „Odeslat“. E-mail psát nemusíš."
 				]
 			}
 		}

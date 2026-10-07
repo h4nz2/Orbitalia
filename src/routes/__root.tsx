@@ -3,8 +3,9 @@ import {
 	Link,
 	Outlet,
 	retainSearchParams,
+	useLocation,
 } from "@tanstack/react-router"
-import { Button, Center, Stack, Text, Title } from "@mantine/core"
+import { Anchor, Button, Center, Stack, Text, Title } from "@mantine/core"
 
 import {
 	I18N_SEARCH_KEYS,
@@ -26,6 +27,8 @@ function RootLayout() {
 // Rendered in place of <Outlet /> for unknown URLs, so it keeps the providers and layout.
 function NotFound() {
 	const { t } = useI18n()
+	const { pathname, searchStr } = useLocation()
+	const brokenPath = `${pathname}${searchStr}`.slice(0, 2000)
 	return (
 		<Center h="100vh">
 			<CornerBar />
@@ -40,6 +43,19 @@ function NotFound() {
 				>
 					{t("notFound.back")}
 				</Button>
+				<Anchor
+					renderRoot={(props) => (
+						<Link
+							{...props}
+							to="/feedback"
+							search={{ kind: "bug", from: brokenPath }}
+						/>
+					)}
+					size="sm"
+					c="dimmed"
+				>
+					{t("notFound.report")}
+				</Anchor>
 			</Stack>
 		</Center>
 	)
