@@ -1,5 +1,13 @@
 import { useMemo } from "react"
-import { Button, Group, Modal, Stack, Text, TextInput } from "@mantine/core"
+import {
+	Button,
+	Group,
+	Modal,
+	Stack,
+	Text,
+	TextInput,
+	getDefaultZIndex,
+} from "@mantine/core"
 import { useClipboard } from "@mantine/hooks"
 import { IconCheck, IconCopy, IconQrcode } from "@tabler/icons-react"
 import { useRouterState } from "@tanstack/react-router"
@@ -39,7 +47,10 @@ function useViewLink(): string {
 
 /**
  * The QR code large, for a class to scan off the projector. A modal of its
- * own outside the share popover (which closes on any click outside it).
+ * own outside the share popover, which closes as it opens (#50). It sits
+ * above everything on the page, the HUD's popovers and menus included, so
+ * nothing covers the code or its white margin; only hints (which describe
+ * a control inside it) would go higher.
  */
 export function ClassQr() {
 	const { t } = useI18n()
@@ -53,6 +64,7 @@ export function ClassQr() {
 			title={t("solarSystem.present.share.qr")}
 			size="auto"
 			centered
+			zIndex={getDefaultZIndex("max")}
 		>
 			<div className={classes.qrLarge}>
 				<QrImage link={link} label={t("solarSystem.present.share.qrLabel")} />
@@ -61,13 +73,18 @@ export function ClassQr() {
 	)
 }
 
+export interface SharePanelProps {
+	/** Closes the panel: the class QR code takes its place (#50). */
+	onClose: () => void
+}
+
 /**
  * "Share this view" (#29): the address of what is on screen, which already
  * holds the whole view (body, camera, date, speed, pause, scale, layers,
  * language), with a copy button and a QR code, small here and large for the
  * class (`ClassQr`). Loaded lazily with the QR encoder.
  */
-function SharePanel() {
+function SharePanel({ onClose }: SharePanelProps) {
 	const { t } = useI18n()
 	const link = useViewLink()
 	const clipboard = useClipboard({ timeout: 2500 })
@@ -107,7 +124,10 @@ function SharePanel() {
 					variant="light"
 					color="gray"
 					leftSection={<IconQrcode size={16} aria-hidden />}
-					onClick={() => setQrOpen(true)}
+					onClick={() => {
+						setQrOpen(true)
+						onClose()
+					}}
 				>
 					{t("solarSystem.present.share.qrShow")}
 				</Button>

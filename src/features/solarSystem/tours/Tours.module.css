@@ -78,6 +78,17 @@
 
 .link {
 	align-self: flex-start;
+	max-width: 100%;
+	height: auto;
+	min-height: var(--button-height);
+	padding-block: 0.3rem;
+}
+
+/* a link named for its idea (#48) may take two lines on a narrow card */
+.link :global(.mantine-Button-label) {
+	white-space: normal;
+	text-align: start;
+	line-height: 1.3;
 }
 
 .away {

@@ -6,6 +6,12 @@
  * the whole system, until Earth is far below a pixel and the screen is mostly
  * empty. The last beat switches the scale to Everything visible (the app's
  * default), so the sequence hands over in exactly the view a reset leads to.
+ *
+ * Slow enough to read (#49): every caption stays up, fully faded in and with
+ * the camera and the scale still, for as long as it takes to read it aloud at
+ * a calm pace (`readingMs`), timed from its longest translation at the
+ * reading level the opening plays in (`captionReadingMs` in ./captions.ts).
+ *
  * Pure: no store, no DOM, so the timing and the shots are unit-tested.
  */
 import { bodyById } from "@/data"
@@ -36,10 +42,7 @@ export const HANDOVER_SCALE: ScalePresetId = "everythingVisible"
 export const SCALE_BEAT = INTRO_BEATS.indexOf("scale")
 
 /** Length of the animated switch to Everything visible in the last beat, ms. */
-export const SCALE_REVEAL_MS = 2000
-
-/** Hard ceiling for the whole opening, ms (the issue: "under fifteen seconds"). */
-export const INTRO_MAX_MS = 15_000
+export const SCALE_REVEAL_MS = 2500
 
 /**
  * How far the close-up turns away from the Sun (degrees of azimuth): Earth is
@@ -47,38 +50,60 @@ export const INTRO_MAX_MS = 15_000
  */
 export const EARTH_PHASE_DEG = 35
 
-interface BeatTiming {
-	/** The move into the beat, ms (0: a cut). */
-	moveMs: number
-	/** The time on the beat after arriving, ms. */
-	holdMs: number
-}
-
-/** The animated opening: 14 s. */
-const MOTION: Record<IntroBeat, BeatTiming> = {
-	earth: { moveMs: 0, holdMs: 1600 },
-	moon: { moveMs: 2000, holdMs: 900 },
-	inner: { moveMs: 2400, holdMs: 900 },
-	system: { moveMs: 2200, holdMs: 1400 },
-	scale: { moveMs: 0, holdMs: SCALE_REVEAL_MS + 600 },
-}
+/** How long a caption takes to fade in, ms (the caption's animation, IntroOverlay.tsx); none with reduced motion. */
+export const CAPTION_FADE_MS = 600
 
 /**
- * With reduced motion asked for: the same shots as cuts, each held a little
- * longer so its caption can be read; the scale switch is a cut as well.
+ * Reading time (#49): `READ_BASE_MS` plus `READ_MS_PER_WORD` for every word
+ * (reading aloud at a calm pace, about 130 words a minute), at least
+ * `READ_MIN_MS`.
  */
-const STILL: Record<IntroBeat, BeatTiming> = {
-	earth: { moveMs: 0, holdMs: 2200 },
-	moon: { moveMs: 0, holdMs: 2200 },
-	inner: { moveMs: 0, holdMs: 2200 },
-	system: { moveMs: 0, holdMs: 2600 },
-	scale: { moveMs: 0, holdMs: 2600 },
+export const READ_MIN_MS = 3500
+export const READ_BASE_MS = 1500
+export const READ_MS_PER_WORD = 450
+
+/** How long a caption of `words` words stays up, fully in and with nothing moving, ms. */
+export const readingMs = (words: number): number =>
+	Math.max(READ_MIN_MS, READ_BASE_MS + READ_MS_PER_WORD * words)
+
+/** The words of `text`: what stands between spaces and holds a letter or a digit ("–" and "«" are not words). */
+export const countWords = (text: string): number =>
+	text.split(/\s+/u).filter((word) => /[\p{L}\p{N}]/u.test(word)).length
+
+/** The camera move into each beat, ms (0: a cut). */
+const MOVE_MS: Record<IntroBeat, number> = {
+	earth: 0,
+	moon: 2600,
+	inner: 3200,
+	system: 2800,
+	scale: 0,
 }
+
+/** Reading time per beat, ms. */
+export type ReadingTimes = Readonly<Record<IntroBeat, number>>
 
 export interface IntroOptions {
 	/** Azimuth (degrees) from which Earth is seen lit, see `sunlitAzimuthDeg`. */
 	earthAzimuthDeg: number
+	/**
+	 * With reduced motion asked for: the same shots as cuts, the scale switch
+	 * a cut as well, and the captions appear without a fade; the reading
+	 * time is the same.
+	 */
 	reducedMotion: boolean
+	/** How long each beat's caption must stay readable (`captionReadingMs`). */
+	readMs: ReadingTimes
+}
+
+/**
+ * How long after a beat starts its caption is fully in and nothing moves any
+ * more, ms: the move into it, the caption's fade and, in the last beat, the
+ * scale switch. The beat's reading time starts there.
+ */
+export function settleMs(beat: IntroBeat, reducedMotion: boolean): number {
+	if (reducedMotion) return 0
+	const scale = beat === "scale" ? SCALE_REVEAL_MS : 0
+	return Math.max(MOVE_MS[beat], CAPTION_FADE_MS, scale)
 }
 
 const earth = bodyById.get("earth")
@@ -121,16 +146,21 @@ export function sunlitAzimuthDeg(jd: number): number {
 export function introSteps({
 	earthAzimuthDeg,
 	reducedMotion,
+	readMs,
 }: IntroOptions): SequenceStep[] {
-	const timing = reducedMotion ? STILL : MOTION
 	const earthView: View = { kind: "body", id: "earth" }
 	const az = (share: number) =>
 		turnToward(earthAzimuthDeg, HOME_SHOT.azimuthDeg, share)
-	const step = (beat: IntroBeat, rest: Omit<SequenceStep, "holdMs">) => ({
-		...rest,
-		durationMs: timing[beat].moveMs,
-		holdMs: timing[beat].holdMs,
-	})
+	const step = (beat: IntroBeat, rest: Omit<SequenceStep, "holdMs">) => {
+		const moveMs = reducedMotion ? 0 : MOVE_MS[beat]
+		// the hold starts on arrival: whatever of the fade and the scale switch is still running, then the reading
+		const stillMs = settleMs(beat, reducedMotion) - moveMs
+		return {
+			...rest,
+			durationMs: moveMs,
+			holdMs: stillMs + Math.max(READ_MIN_MS, readMs[beat]),
+		}
+	}
 	return [
 		step("earth", {
 			view: earthView,

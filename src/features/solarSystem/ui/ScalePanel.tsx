@@ -1,6 +1,5 @@
 import { useId } from "react"
-import { Link } from "@tanstack/react-router"
-import { Anchor, SegmentedControl, Text } from "@mantine/core"
+import { SegmentedControl, Text } from "@mantine/core"
 
 import { useI18n } from "@/i18n"
 import { useBodyName } from "@/i18n/bodies"
@@ -17,6 +16,8 @@ import {
 import { useScaleStore } from "@/store/scale"
 import { useSimStore } from "@/store/sim"
 
+import { ScaleWalkOffer } from "../walk/WalkOffer"
+import { nudgeTowardsWalk } from "../walk/walkNudge"
 import { scaleSentences, statementSubject } from "./scaleStatement"
 
 import classes from "./ScalePanel.module.css"
@@ -51,6 +52,12 @@ export function switchScale(id: ScalePresetId): void {
 	useScaleStore
 		.getState()
 		.switchTo(id, performance.now(), reduced ? 0 : undefined)
+}
+
+/** The viewer's own choice: the switch, and on the first one to True scale the walk's tip (#48). */
+function chooseScale(id: ScalePresetId): void {
+	switchScale(id)
+	nudgeTowardsWalk(id)
 }
 
 /**
@@ -91,11 +98,11 @@ const ScalePanel = ({ heading = true }: ScalePanelProps) => {
 	const cell = targetId !== null && isGridPreset(targetId) ? lies : null
 
 	const setSizes = (sizes: SizeLie) =>
-		switchScale(
+		chooseScale(
 			presetForLies({ distances: lies?.distances ?? "squeezed", sizes }),
 		)
 	const setDistances = (distances: DistanceLie) =>
-		switchScale(presetForLies({ sizes: lies?.sizes ?? "enlarged", distances }))
+		chooseScale(presetForLies({ sizes: lies?.sizes ?? "enlarged", distances }))
 
 	return (
 		<section
@@ -127,7 +134,7 @@ const ScalePanel = ({ heading = true }: ScalePanelProps) => {
 							? targetId
 							: ""
 					}
-					onChange={(value) => switchScale(value as ScalePresetId)}
+					onChange={(value) => chooseScale(value as ScalePresetId)}
 					data={NAMED_PRESETS.map((id) => ({
 						value: id,
 						label: t(`solarSystem.scale.preset.${id}`),
@@ -207,11 +214,8 @@ const ScalePanel = ({ heading = true }: ScalePanelProps) => {
 					)}
 				</Text>
 			)}
-			{targetId === "trueScale" && (
-				<Anchor component={Link} to="/solar_walk" className={classes.walk}>
-					{t("solarSystem.scale.walk")}
-				</Anchor>
-			)}
+			{/* the walk, in every preset (#48) */}
+			<ScaleWalkOffer />
 		</section>
 	)
 }

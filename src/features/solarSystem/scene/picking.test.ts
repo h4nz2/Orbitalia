@@ -219,10 +219,30 @@ describe("bodyClickAction", () => {
 
 describe("emptyClickAction", () => {
 	const base = { selectedId: null, sequence: null }
-	it("is the way out of a focused or free view", () => {
+	const mars: View = { kind: "body", id: "mars" }
+
+	it("never leaves a focused or free view (#47)", () => {
+		expect(emptyClickAction({ ...base, view: mars }, false)).toBe("none")
+		// the focused body stays selected: its card stays, the planet is no click target
 		expect(
-			emptyClickAction({ ...base, view: { kind: "body", id: "mars" } }, false),
-		).toBe("reset")
+			emptyClickAction({ ...base, selectedId: "mars", view: mars }, false),
+		).toBe("none")
+		expect(
+			emptyClickAction(
+				{
+					...base,
+					view: { kind: "point", anchorId: "mars", offsetKm: [1, 0, 0] },
+				},
+				false,
+			),
+		).toBe("none")
+	})
+
+	it("lets go of a body selected besides the one in view", () => {
+		expect(
+			emptyClickAction({ ...base, selectedId: "phobos", view: mars }, false),
+		).toBe("deselect")
+		// a free view shows the selection's card: it closes
 		expect(
 			emptyClickAction(
 				{
@@ -232,7 +252,7 @@ describe("emptyClickAction", () => {
 				},
 				false,
 			),
-		).toBe("reset")
+		).toBe("deselect")
 	})
 
 	it("only clears the selection in the overview", () => {
@@ -243,15 +263,14 @@ describe("emptyClickAction", () => {
 	})
 
 	it("never acts on a near miss or during a tour", () => {
-		const view: View = { kind: "body", id: "mars" }
-		expect(emptyClickAction({ ...base, view }, true)).toBe("none")
+		const selected = { ...base, selectedId: "phobos", view: mars }
+		expect(emptyClickAction(selected, true)).toBe("none")
 		expect(
 			emptyClickAction(
 				{
-					...base,
-					view,
+					...selected,
 					sequence: {
-						steps: [{ view }],
+						steps: [{ view: mars }],
 						index: 0,
 						phase: "waiting",
 						holdUntil: null,

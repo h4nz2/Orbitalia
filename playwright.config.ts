@@ -23,13 +23,17 @@ export default defineConfig({
 		baseURL,
 		// every test is a returning visitor: the opening (#30) plays only on a first
 		// visit, so it never runs over another test's scene; e2e/intro.spec.ts
-		// clears this to be a first-time visitor
+		// clears this to be a first-time visitor. Likewise the walk's one-time tip
+		// on the first switch to True scale (#48; e2e/walkFindable.spec.ts clears it).
 		storageState: {
 			cookies: [],
 			origins: [
 				{
 					origin: baseURL,
-					localStorage: [{ name: "orbitalia.introSeen", value: "1" }],
+					localStorage: [
+						{ name: "orbitalia.introSeen", value: "1" },
+						{ name: "orbitalia.walkNudgeShown", value: "1" },
+					],
 				},
 			],
 		},

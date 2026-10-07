@@ -1,6 +1,7 @@
 /**
  * The focused view's card (#16): the selected body (else the body the view is
- * on), its name and tagline, an authored comparison, the headline facts
+ * on), its name and tagline, an authored comparison (with the way to the
+ * walk on the school field where the walk has the body, #48), the headline facts
  * (comparative first: "11 Earths wide", with the exact number beside it), a
  * link into its dictionary entry, and a close button that leaves the camera
  * where it is (the way back to the overview is the home button). With
@@ -15,10 +16,12 @@ import {
 	IconChevronUp,
 	IconHandClick,
 	IconScale,
+	IconWalk,
 } from "@tabler/icons-react"
 import { Link, useNavigate } from "@tanstack/react-router"
 
 import { compareSearchFor } from "@/features/compare/links"
+import { isWalkFocusId } from "@/features/solarWalk/search"
 
 import { bodyById } from "@/data"
 import { useI18n } from "@/i18n"
@@ -70,6 +73,29 @@ const CompareButton = ({ bodyId }: { bodyId: string }) => {
 		>
 			{t("solarSystem.card.compare")}
 		</Button>
+	)
+}
+
+/**
+ * Under the comparison (#48): the same idea taken outside, the walk opened on
+ * this body's line (`/solar_walk?focus=<id>`); only for the bodies the walk
+ * has (the Sun, the planets, their big moons).
+ */
+const WalkLink = ({ bodyId }: { bodyId: string }) => {
+	const { t } = useI18n()
+	if (!isWalkFocusId(bodyId)) return null
+	return (
+		<Anchor
+			className={classes.walk}
+			size="sm"
+			data-testid="card-walk"
+			renderRoot={(props) => (
+				<Link {...props} to="/solar_walk" search={{ focus: bodyId }} />
+			)}
+		>
+			<IconWalk size={16} aria-hidden className={classes.walkIcon} />
+			<span>{t("solarSystem.card.walk", { bodyId })}</span>
+		</Anchor>
 	)
 }
 
@@ -148,7 +174,12 @@ const BodyCard = ({ bodyId }: { bodyId: string }) => {
 			</header>
 			{open && (
 				<div className={classes.details} data-card-details>
-					{story !== undefined && <p className={classes.story}>{story}</p>}
+					{story !== undefined && (
+						<>
+							<p className={classes.story}>{story}</p>
+							<WalkLink bodyId={body.id} />
+						</>
+					)}
 					<BodyRecording bodyId={body.id} />
 					<MoonSystem body={body} />
 					<dl className={classes.facts}>

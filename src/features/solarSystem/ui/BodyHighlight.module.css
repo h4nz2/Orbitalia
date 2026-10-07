@@ -55,3 +55,8 @@
 	font-size: var(--mantine-font-size-xs);
 	color: var(--mantine-color-gray-4);
 }
+
+/* while the opening plays a tap pauses it (#49), so nothing invites a click to fly there */
+:global(html[data-intro="playing"]) .hover {
+	display: none;
+}

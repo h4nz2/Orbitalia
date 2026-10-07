@@ -120,10 +120,59 @@
 			"gravitySimilar@advanced": "Tíhové zrychlení na povrchu se od pozemského liší o méně než 5 %.",
 			"gravityLess": "Váha by ti tam ukázala jen {percent, number, ::percent} toho, co na Zemi.",
 			"gravityLess@simple": "Když na Zemi vážíš 30 kg, tam by ti váha ukázala jen {kg, number} kg!",
-			"gravityLess@advanced": "Tíhové zrychlení na povrchu je {percent, number, ::percent} pozemského: tvoje tíha by klesla, hmotnost by ale zůstala stejná.",
-			"temperature": "To je asi {celsius, number} °C.",
-			"temperature@simple": "{range, select, hot {To je asi {celsius, number} °C – víc než v rozpálené troubě!} cold {To je asi {celsius, number} °C – větší zima než v jakémkoli mrazáku!} other {To je asi {celsius, number} °C.}}",
-			"temperature@advanced": "To je {celsius, number} °C; absolutní nula, 0 K, odpovídá −273,15 °C."
+			"gravityLess@advanced": "Tíhové zrychlení na povrchu je {percent, number, ::percent} pozemského: tvoje tíha by klesla, hmotnost by ale zůstala stejná."
+		},
+		"section": {
+			"label": "Víc o tomto světě: {name}",
+			"madeOf": "Z čeho se skládá",
+			"madeOf@simple": "Co je uvnitř?",
+			"weather": "Počasí",
+			"weather@simple": "Horko, nebo zima?",
+			"weather@advanced": "Teploty",
+			"names": "Jména",
+			"names@simple": "Jména a přezdívky"
+		},
+		"madeOf": {
+			"pictureTitle": "{name} zevnitř",
+			"pictureDescription": "{name} v řezu. Od středu ven: {layers}.",
+			"scaleNote": "{thickened, select, yes {Vrstvy jsou nakreslené ve správném měřítku; ty nejtenčí jsou o něco tlustší, aby byly vidět.} other {Vrstvy jsou nakreslené ve správném měřítku.}}",
+			"scaleNote@simple": "{thickened, select, yes {Tenké vrstvy jsou nakreslené trochu tlustší, aby byly vidět.} other {Vrstvy jsou nakreslené tak velké, jak doopravdy jsou.}}",
+			"estimateNote": "Dovnitř se nikdo podívat nemůže: tyto vrstvy jsou nejlepší odhady vědců podle gravitace, rotace a modelů.",
+			"estimateNote@simple": "Uvnitř ještě nikdo nebyl. Tyhle vrstvy vědci vypočítali.",
+			"layerSize": "{centre, select, yes {poloměr {size}} other {tloušťka {size}}}",
+			"air": "{star, select, yes {Z čeho je jeho plyn} other {Ovzduší}}",
+			"air@simple": "{star, select, yes {Jeho plyn} other {Vzduch}}",
+			"air@advanced": "{star, select, yes {Chemické složení} other {Atmosféra}}",
+			"gas": "{name} {share, number, ::percent @##}",
+			"basis": "{basis, select, atoms {Podíl na počtu všech atomů.} other {Objemový podíl ve vzduchu.}}",
+			"heavy": "Kolik váží",
+			"heavy@simple": "Kolik váží?",
+			"heavy@advanced": "Hmotnost",
+			"dense": "Hustota",
+			"dense@simple": "Plave, nebo se potopí?",
+			"dense@advanced": "Střední hustota"
+		},
+		"weather": {
+			"high": "{range, select, dayNight {Ve dne} extremes {Nejtepleji} records {Rekordní horko} cloudsCore {U jádra} cloudLevels {V mracích} surfaceCore {V jádru} other {Ve dne i v noci}}",
+			"low": "{range, select, dayNight {V noci} extremes {Nejchladněji} records {Rekordní mráz} cloudsCore {V mracích} cloudLevels {Výš nahoře} surfaceCore {Na povrchu} other {Ve dne i v noci}}"
+		},
+		"names": {
+			"origin": "Odkud má jméno",
+			"inOurLanguage": "V češtině",
+			"discovery": "Objev",
+			"discovery@simple": "Kdo to objevil?"
+		},
+		"sources": "Zdroje:",
+		"quantity": {
+			"feel": "{band, select, hotterThanSun {Větší žár než na povrchu Slunce} fire {Mnohem větší žár než v jakémkoli ohni} oven {Větší horko než v rozpálené troubě} boiling {Větší horko než ve vroucí vodě} desert {Horko jako v nejžhavější poušti} warm {Teplo jako v letní den} mild {Ani horko, ani zima} chilly {Chladno jako v zimní den} freezer {Větší zima než v jakémkoli mrazáku} coldest {Větší zima než kdekoli na Zemi} other {Taková zima, že by zmrzl i vzduch}}",
+			"celsius": "{big, select, other {{value} °C}}",
+			"kelvin": "{big, select, other {{kelvin} K ({celsius} °C)}}",
+			"mass": "{band, select, earth {Měřítko: ostatní světy vážíme v násobcích Země} similar {{percent, number, ::percent} hmotnosti Země} lighter {{count, plural, one {# takový svět by vážil tolik co Země} few {# takové světy by vážily tolik co Země} many {# takového světa by vážilo tolik co Země} other {# takových světů by vážilo tolik co Země}}} other {{count, plural, one {Váží jako # Země} few {Váží jako # Země} many {Váží jako # Země} other {Váží jako # Zemí}}}}",
+			"mass@simple": "{band, select, star {Váží víc než všechny planety dohromady} earth {Země je měřítko: s ní porovnáváme, kolik váží ostatní světy} huge {Váží víc než 100 Zemí dohromady} similar {Váží skoro jako Země} lighter {{count, plural, one {Váží jako Země} few {Na váhu jedné Země by jich bylo potřeba #} many {Na váhu jedné Země by jich bylo potřeba #} other {Na váhu jedné Země by jich bylo potřeba #}}} other {{count, plural, one {Váží jako # Země} few {Váží jako # Země} many {Váží jako # Země} other {Váží jako # Zemí}}}}",
+			"mass@advanced": "{band, select, earth {{kg} kg} other {{earths}násobek hmotnosti Země ({kg} kg)}}",
+			"density": "{band, select, floats {{value} g/cm³: řidší než voda, takže by takové těleso v dost velké vaně plavalo} sinks {{value} g/cm³: o trochu hustší než voda} other {{value} g/cm³: {ratio, number}krát hustší než voda}}",
+			"density@simple": "{band, select, floats {Lehčí než voda: v obří vaně se nepotopí!} sinks {Trochu těžší než voda: pomalu se potopí} other {{buckets, plural, one {Kbelík plný tohoto světa by vážil jako # kbelík vody} few {Kbelík plný tohoto světa by vážil jako # kbelíky vody} many {Kbelík plný tohoto světa by vážil jako # kbelíku vody} other {Kbelík plný tohoto světa by vážil jako # kbelíků vody}}}}",
+			"density@advanced": "{band, select, floats {{value} g/cm³, méně než voda (1 g/cm³)} other {{value} g/cm³ (voda: 1 g/cm³)}}"
 		}
 	},
 	"solarSystem": {
@@ -231,8 +280,8 @@
 			"markersOn@simple": "Tečky ukazují, kde jsou planety. Samotné planety jsou moc malé, aby byly vidět!",
 			"markersOff": "Značky jsou vypnuté: zapni je a planety najdeš.",
 			"markersOff@simple": "Zapni Značky a najdeš planety!",
-			"walk": "Příliš malé na představu? Projdi si to: sluneční soustava se Sluncem velkým jako basketbalový míč.",
-			"walk@simple": "Není nic vidět? Projdi si sluneční soustavu na školním hřišti!",
+			"walk": "Zmenši Slunce na basketbalový míč a projdi sluneční soustavu na školním hřišti",
+			"walk@simple": "Udělej ze Slunce basketbalový míč a dojdi ke každé planetě",
 			"hint": {
 				"sizesTrue": "Kreslí každé těleso v jeho skutečné velikosti. Z dálky jsou pak planety příliš malé, aby byly vidět.",
 				"sizesTrue@simple": "Planety tak velké, jak doopravdy jsou. Z dálky jsou moc malé, aby byly vidět!",
@@ -425,7 +474,15 @@
 			"showFacts": "Zobrazit údaje",
 			"hideFacts": "Skrýt údaje",
 			"close": "Zavřít",
-			"compare": "Porovnat s…"
+			"compare": "Porovnat s…",
+			"walk": "{bodyId, select, sun {Zmenši Slunce na basketbalový míč a projdi sluneční soustavu} other {Zmenši Slunce na basketbalový míč a dojdi až k tomuto světu}}",
+			"walk@simple": "{bodyId, select, sun {Udělej ze Slunce basketbalový míč a dojdi k planetám} other {Udělej ze Slunce basketbalový míč a dojdi k tomuto světu}}"
+		},
+		"walkNudge": {
+			"title": "Kam se poděly planety?",
+			"text": "Ve skutečném měřítku jsou příliš malé, aby byly vidět, a jsou od sebe hodně daleko. Zkus si ty vzdálenosti projít pěšky:",
+			"text@simple": "Teď jsou moc malé, takže je nevidíš. A jsou od sebe hodně daleko. Zkus to projít pěšky!",
+			"dismiss": "Zavřít tip"
 		},
 		"moons": {
 			"label": "Měsíce",
@@ -1039,8 +1096,8 @@
 				"link": "Odkaz na tento pohled je na QR kód příliš dlouhý."
 			}
 		},
-		"overviewHint": "Zpět na celou sluneční soustavu, odkudkoli (Esc).",
-		"overviewHint@simple": "Vrať se a podívej se na celou sluneční soustavu (Esc).",
+		"overviewHint": "Cesta zpět na celou sluneční soustavu, odkudkoli (Esc). Kliknutí do prázdného prostoru pohled nezmění.",
+		"overviewHint@simple": "Vrať se a podívej se na celou sluneční soustavu (Esc). Když klikneš do prázdna, zůstaneš, kde jsi.",
 		"sky": {
 			"open": "Obloha dnes v noci",
 			"openHint": "Které planety dnes v noci uvidíš, kdy a kde?",
@@ -1185,6 +1242,15 @@
 			"skip": "Přeskočit úvod",
 			"skip@simple": "Přeskočit",
 			"progress": "Část {beat, number} z {count, number}",
+			"pause": "Pozastavit",
+			"resume": "Pokračovat",
+			"resume@simple": "Pustit dál",
+			"paused": "Pozastaveno",
+			"next": "Dál",
+			"pauseHint": "Zůstaň u tohoto textu, jak dlouho chceš, a přečti si ho nebo si o něm povídejte. Totéž udělá mezerník nebo klepnutí na scénu; znovu, a pokračuje se.",
+			"pauseHint@simple": "Zastav tady a čti. Můžeš taky stisknout mezerník nebo ťuknout na obrázek. Znovu, a jede se dál.",
+			"nextHint": "Hned na další část; když je úvod pozastavený, jde se po jednotlivých částech. Totéž udělá šipka doprava.",
+			"nextHint@simple": "Jdi hned na další část.",
 			"earth": {
 				"title": "Tohle je Země.",
 				"detail": "Žijí tu všichni, které znáš.",
@@ -1214,7 +1280,7 @@
 			"scale": {
 				"title": "Proto je kreslíme větší a blíž",
 				"title@simple": "Proto je kreslíme větší!",
-				"detail": "Teď vidíš každou planetu, ale ne ve správném měřítku. Panel „Měřítko“ tě vrátí ke skutečným velikostem.",
+				"detail": "Teď vidíš všechny planety, ale ne ve správném měřítku. Panel „Měřítko“ ukáže skutečné velikosti.",
 				"detail@simple": "Teď vidíš každou planetu. V panelu „Měřítko“ uvidíš zase jejich skutečnou velikost.",
 				"detail@advanced": "„Vše viditelné“: velikosti zvětšené, vzdálenosti stlačené. „Skutečné měřítko“ v panelu „Měřítko“ ukáže skutečnost."
 			},
@@ -1408,8 +1474,8 @@
 				"trueScale": {
 					"title": "Skutečné měřítko",
 					"title@simple": "Skutečná velikost",
-					"text": "Teď jsou všechny velikosti a vzdálenosti skutečné a planety mizí v prázdném prostoru: tečky jen ukazují, kde jsou. Měřítko vpravo dole přepíná mezi pravdou a obrázky, na kterých je něco vidět.",
-					"text@simple": "Takhle velké je všechno doopravdy. Planety jsou tak malé, že je nevidíš! Tečky ukazují, kde jsou. Měřítkem vpravo dole to přepneš."
+					"text": "Teď jsou všechny velikosti a vzdálenosti skutečné a planety mizí v prázdném prostoru: tečky jen ukazují, kde jsou. Měřítko vpravo dole přepíná mezi pravdou a obrázky, na kterých je něco vidět. Najdeš tam i to, jak zmenšit Slunce na basketbalový míč a projít sluneční soustavu na školním hřišti.",
+					"text@simple": "Takhle velké je všechno doopravdy. Planety jsou tak malé, že je nevidíš! Tečky ukazují, kde jsou. Měřítkem vpravo dole to přepneš. Tam můžeš taky dojít k planetám u vaší školy."
 				},
 				"time": {
 					"title": "Cestuj časem",

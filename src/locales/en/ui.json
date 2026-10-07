@@ -120,10 +120,59 @@
 			"gravitySimilar@advanced": "Surface gravity is within 5 % of Earth’s.",
 			"gravityLess": "You would weigh only {percent, number, ::percent} of your weight on Earth.",
 			"gravityLess@simple": "If you weigh 30 kg on Earth, you would weigh only {kg, number} kg there!",
-			"gravityLess@advanced": "Surface gravity is {percent, number, ::percent} of Earth’s: your weight would drop, but your mass would stay the same.",
-			"temperature": "That is about {celsius, number} °C.",
-			"temperature@simple": "{range, select, hot {That is about {celsius, number} °C – hotter than an oven!} cold {That is about {celsius, number} °C – colder than any freezer!} other {That is about {celsius, number} °C.}}",
-			"temperature@advanced": "That is {celsius, number} °C; absolute zero, 0 K, is −273.15 °C."
+			"gravityLess@advanced": "Surface gravity is {percent, number, ::percent} of Earth’s: your weight would drop, but your mass would stay the same."
+		},
+		"section": {
+			"label": "More about {name}",
+			"madeOf": "Made of",
+			"madeOf@simple": "What is inside?",
+			"weather": "Weather",
+			"weather@simple": "Hot or cold?",
+			"weather@advanced": "Temperatures",
+			"names": "Names",
+			"names@simple": "Its names"
+		},
+		"madeOf": {
+			"pictureTitle": "Inside {name}",
+			"pictureDescription": "A cut-away picture of {name}. From the centre outwards: {layers}.",
+			"scaleNote": "{thickened, select, yes {The layers are drawn to scale; the thinnest are drawn a little thicker so you can see them.} other {The layers are drawn to scale.}}",
+			"scaleNote@simple": "{thickened, select, yes {Thin layers are drawn a bit thicker, so you can see them.} other {The layers are drawn at their real sizes.}}",
+			"estimateNote": "Nobody can look inside it: these layers are scientists’ best estimates from its gravity, its spin and models.",
+			"estimateNote@simple": "Nobody has been inside. Scientists worked these layers out.",
+			"layerSize": "{centre, select, yes {radius {size}} other {{size} thick}}",
+			"air": "{star, select, yes {What its gas is made of} other {Its air}}",
+			"air@simple": "{star, select, yes {Its gas} other {Its air}}",
+			"air@advanced": "{star, select, yes {Composition} other {Atmosphere}}",
+			"gas": "{name} {share, number, ::percent @##}",
+			"basis": "{basis, select, atoms {Share of all its atoms.} other {Share of its air, by volume.}}",
+			"heavy": "How heavy",
+			"heavy@simple": "How heavy?",
+			"heavy@advanced": "Mass",
+			"dense": "Heavy for its size",
+			"dense@simple": "Would it float?",
+			"dense@advanced": "Mean density"
+		},
+		"weather": {
+			"high": "{range, select, dayNight {By day} extremes {Warmest} records {Hottest ever measured} cloudsCore {Near the core} cloudLevels {In the clouds} surfaceCore {In the core} other {Day and night}}",
+			"low": "{range, select, dayNight {At night} extremes {Coldest} records {Coldest ever measured} cloudsCore {In the clouds} cloudLevels {Higher up} surfaceCore {At the surface} other {Day and night}}"
+		},
+		"names": {
+			"origin": "Where the name comes from",
+			"inOurLanguage": "In English",
+			"discovery": "How it was found",
+			"discovery@simple": "Who found it?"
+		},
+		"sources": "Sources:",
+		"quantity": {
+			"feel": "{band, select, hotterThanSun {Hotter than the surface of the Sun} fire {Far hotter than any fire} oven {Hotter than an oven} boiling {Hotter than boiling water} desert {As hot as the hottest desert} warm {Warm, like a summer day} mild {Not too hot, not too cold} chilly {Cold, like a winter day} freezer {Colder than any freezer} coldest {Colder than anywhere on Earth} other {So cold that air would freeze}}",
+			"celsius": "{big, select, other {{value} °C}}",
+			"kelvin": "{big, select, other {{kelvin} K ({celsius} °C)}}",
+			"mass": "{band, select, earth {The yardstick: the other worlds are weighed in Earths} similar {{percent, number, ::percent} of Earth’s mass} lighter {{count, plural, one {# of them would weigh as much as Earth} other {# of them would weigh as much as Earth}}} other {{count, plural, one {As heavy as # Earth} other {As heavy as # Earths}}}}",
+			"mass@simple": "{band, select, star {Heavier than all the planets put together} earth {Earth is the yardstick: the other worlds are weighed in Earths} huge {Heavier than 100 Earths put together} similar {Almost as heavy as Earth} lighter {{count, plural, one {As heavy as Earth} other {It would take # of them to weigh as much as Earth}}} other {{count, plural, one {As heavy as # Earth} other {As heavy as # Earths}}}}",
+			"mass@advanced": "{band, select, earth {{kg} kg} other {{earths} Earth masses ({kg} kg)}}",
+			"density": "{band, select, floats {{value} g/cm³: lighter than water, so in a big enough bathtub it would float} sinks {{value} g/cm³: a little denser than water} other {{value} g/cm³: {ratio, number} times as dense as water}}",
+			"density@simple": "{band, select, floats {Lighter than water: in a giant bathtub, it would float!} sinks {A little heavier than water: it would sink, slowly} other {{buckets, plural, one {A bucket full of it would weigh as much as # bucket of water} other {A bucket full of it would weigh as much as # buckets of water}}}}",
+			"density@advanced": "{band, select, floats {{value} g/cm³, less than water (1 g/cm³)} other {{value} g/cm³ (water: 1 g/cm³)}}"
 		}
 	},
 	"solarSystem": {
@@ -231,8 +280,8 @@
 			"markersOn@simple": "The dots show where the planets are. The planets are too small to see!",
 			"markersOff": "Markers are off: switch them on to find the planets.",
 			"markersOff@simple": "Switch on Markers to find the planets!",
-			"walk": "Too small to imagine? Walk it: the solar system with the Sun as a basketball.",
-			"walk@simple": "Too small to see? Walk the solar system on your school field!",
+			"walk": "Shrink the Sun to a basketball and walk the solar system on a school field",
+			"walk@simple": "Make the Sun a basketball and walk to every planet",
 			"hint": {
 				"sizesTrue": "Draws every body at its real size. From far away the planets become too small to see.",
 				"sizesTrue@simple": "Planets as big as they really are. From far away they are too small to see!",
@@ -425,7 +474,15 @@
 			"showFacts": "Show facts",
 			"hideFacts": "Hide facts",
 			"close": "Close",
-			"compare": "Compare with…"
+			"compare": "Compare with…",
+			"walk": "{bodyId, select, sun {Shrink the Sun to a basketball and walk the solar system} other {Shrink the Sun to a basketball and walk out to this world}}",
+			"walk@simple": "{bodyId, select, sun {Make the Sun a basketball and walk to the planets} other {Make the Sun a basketball and walk to this world}}"
+		},
+		"walkNudge": {
+			"title": "Where did the planets go?",
+			"text": "At true scale they are far too small to see, and very far apart. Feel the distances on foot:",
+			"text@simple": "They are too small to see now. And they are very far apart. Try walking it!",
+			"dismiss": "Close the tip"
 		},
 		"moons": {
 			"label": "Moons",
@@ -1039,8 +1096,8 @@
 				"link": "The link to this view is too long to fit in a QR code."
 			}
 		},
-		"overviewHint": "Back to the whole solar system, from anywhere (Esc).",
-		"overviewHint@simple": "Go back and see the whole solar system (Esc).",
+		"overviewHint": "The way back to the whole solar system, from anywhere (Esc). A click on empty space leaves the view where it is.",
+		"overviewHint@simple": "Go back and see the whole solar system (Esc). A click on empty space keeps you where you are.",
 		"sky": {
 			"open": "Tonight's sky",
 			"openHint": "Which planets can you see tonight, when and where?",
@@ -1185,6 +1242,15 @@
 			"skip": "Skip intro",
 			"skip@simple": "Skip",
 			"progress": "Part {beat, number} of {count, number}",
+			"pause": "Pause",
+			"resume": "Continue",
+			"resume@simple": "Go on",
+			"paused": "Paused",
+			"next": "Next",
+			"pauseHint": "Stay on this caption as long as you like, to read it or talk about it. Space or a tap on the scene does the same; press again to carry on.",
+			"pauseHint@simple": "Stop here to read. You can also press Space or tap the picture. Press again to go on.",
+			"nextHint": "Go on to the next part now; while paused, it moves one part at a time. The right arrow key does the same.",
+			"nextHint@simple": "Go to the next part now.",
 			"earth": {
 				"title": "This is Earth.",
 				"detail": "Everyone you know lives here.",
@@ -1207,14 +1273,14 @@
 			"system": {
 				"title": "The whole solar system, at its real size",
 				"title@simple": "Everything, at its real size",
-				"detail": "The planets are far too small to see. The dots only show where they are.",
+				"detail": "The planets are too small to see. Dots mark where they are.",
 				"detail@simple": "The planets are too tiny to see! The dots show where they are.",
-				"detail@advanced": "Earth is now much smaller than one pixel, and space is almost entirely empty. The dots only mark the planets."
+				"detail@advanced": "Earth is now smaller than a pixel, and space is almost empty. Dots mark the planets."
 			},
 			"scale": {
 				"title": "So we draw them bigger and closer",
 				"title@simple": "So we draw them bigger!",
-				"detail": "Now you can see every planet, but not to scale. The Scale panel switches back to real sizes.",
+				"detail": "They’re all visible, but not to scale. The Scale panel shows real sizes.",
 				"detail@simple": "Now you can see every planet. The Scale panel shows their real size again.",
 				"detail@advanced": "“Everything visible”: sizes enlarged, distances squeezed. “True scale” in the Scale panel shows the real thing."
 			},
@@ -1408,8 +1474,8 @@
 				"trueScale": {
 					"title": "True scale",
 					"title@simple": "The real size",
-					"text": "Now every size and distance is real, and the planets vanish into empty space: the dots only show where they are. Scale, at the bottom right, switches between the truth and pictures you can see.",
-					"text@simple": "This is the real size of everything. The planets are so small you cannot see them! The dots show where they are. Press Scale at the bottom right to switch."
+					"text": "Now every size and distance is real, and the planets vanish into empty space: the dots only show where they are. Scale, at the bottom right, switches between the truth and pictures you can see. Its panel also lets you shrink the Sun to a basketball and walk the solar system on a school field.",
+					"text@simple": "This is the real size of everything. The planets are so small you cannot see them! The dots show where they are. Press Scale at the bottom right to switch. There you can also walk to the planets at school."
 				},
 				"time": {
 					"title": "Travel in time",

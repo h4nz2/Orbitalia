@@ -1,0 +1,446 @@
+{
+	"layers": {
+		"core": {
+			"simple": "Heiße Mitte",
+			"standard": "Kern"
+		},
+		"radiativeZone": {
+			"simple": "Leuchtende Schicht",
+			"standard": "Strahlungszone"
+		},
+		"convectiveZone": {
+			"simple": "Brodelnde Schicht",
+			"standard": "Konvektionszone"
+		},
+		"ironCore": {
+			"simple": "Mitte aus Metall",
+			"standard": "Eisenkern"
+		},
+		"rockyShell": {
+			"simple": "Gestein",
+			"standard": "Mantel und Kruste (Gestein)"
+		},
+		"innerCore": {
+			"simple": "Feste Mitte aus Metall",
+			"standard": "Innerer Kern (festes Eisen)"
+		},
+		"outerCore": {
+			"simple": "Geschmolzenes Metall",
+			"standard": "Äußerer Kern (flüssiges Eisen)"
+		},
+		"rockyMantle": {
+			"simple": "Gestein",
+			"standard": "Mantel (Gestein)"
+		},
+		"crust": {
+			"simple": "Dünne Haut aus Gestein",
+			"standard": "Kruste"
+		},
+		"fuzzyCore": {
+			"simple": "Schwere Mitte",
+			"standard": "Unscharfer Kern"
+		},
+		"denseCore": {
+			"simple": "Mitte aus Gestein und Metall",
+			"standard": "Kern (Metall und Gestein)"
+		},
+		"metallicHydrogen": {
+			"simple": "Zusammengepresster Wasserstoff",
+			"standard": "Flüssiger metallischer Wasserstoff"
+		},
+		"hydrogenLayer": {
+			"simple": "Wasserstoff und Helium",
+			"standard": "Flüssiger und gasförmiger Wasserstoff"
+		},
+		"rockyCore": {
+			"simple": "Mitte aus Gestein",
+			"standard": "Gesteinskern"
+		},
+		"icyMantle": {
+			"simple": "Heißes, matschiges Eis",
+			"standard": "Eismantel (Wasser, Methan, Ammoniak)"
+		},
+		"gasEnvelope": {
+			"simple": "Gas",
+			"standard": "Wasserstoff, Helium und Methan"
+		}
+	},
+	"gases": {
+		"hydrogen": "Wasserstoff",
+		"helium": "Helium",
+		"oxygen": "Sauerstoff",
+		"sodium": "Natrium",
+		"potassium": "Kalium",
+		"carbonDioxide": "Kohlendioxid",
+		"nitrogen": "Stickstoff",
+		"argon": "Argon",
+		"carbonMonoxide": "Kohlenmonoxid",
+		"methane": "Methan"
+	},
+	"worlds": {
+		"sun": {
+			"madeOf": {
+				"simple": "Die Sonne ist eine riesige Kugel aus leuchtendem Gas. Es gibt keinen Boden, auf dem man stehen könnte. In ihrer Mitte macht sie ihr eigenes Licht und ihre eigene Wärme.",
+				"standard": "Die Sonne ist eine riesige Kugel aus heißem Gas, fast nur Wasserstoff und Helium. In ihrem Kern, der etwa ein Viertel des Weges bis zur Oberfläche reicht, verschmilzt Wasserstoff zu Helium und setzt dabei Energie frei. Diese Energie arbeitet sich langsam durch die Strahlungszone nach außen; in der Konvektionszone steigt heißes Gas auf wie Wasser, das in einem Topf kocht, und trägt sie bis an die Oberfläche.",
+				"advanced": "Die Sonne ist eine Kugel aus heißem Plasma. Ihr Kern reicht bis etwa 25 % des Radius; dort verschmilzt Wasserstoff zu Helium. Die Strahlungszone, bis etwa 70 %, transportiert die Energie als Strahlung nach außen, und die Konvektionszone trägt sie den restlichen Weg bis zur sichtbaren Oberfläche, in auf- und absteigenden Gasströmen."
+			},
+			"air": {
+				"simple": "Die Sonne hat keine Luft wie wir: Sie ist ganz aus Gas. Das meiste davon ist Wasserstoff. Ein Teil ist Helium, das Gas in Luftballons, die nach oben fliegen.",
+				"standard": "Die Sonne hat keine Luft zum Atmen: Sie besteht ganz aus Gas. Von je 100 Atomen an ihrer Oberfläche sind etwa 91 Wasserstoff und 9 Helium. Alles andere, etwa Sauerstoff, Kohlenstoff und Eisen, ergibt zusammen nur eine Prise.",
+				"advanced": "Nach der Zahl der Atome besteht die Photosphäre zu etwa 91,0 % aus Wasserstoff und zu 8,9 % aus Helium; Sauerstoff, Kohlenstoff, Neon, Stickstoff, Eisen und die übrigen schwereren Elemente machen zusammen die restlichen 0,15 % aus."
+			},
+			"weather": {
+				"simple": "Die Sonne ist der heißeste Ort in unserem Sonnensystem. Schon außen ist sie viel heißer als jedes Feuer. In ihrer Mitte ist es noch viel heißer.",
+				"standard": "Die Oberfläche, die wir sehen, ist etwa 5500 °C heiß. Im Kern sind es etwa 15 Millionen °C: heiß genug, dass Wasserstoff verschmilzt. Seltsamerweise ist die dünne äußere Atmosphäre der Sonne, die Korona, viel heißer als die Oberfläche darunter: bis zu etwa 2 Millionen °C.",
+				"advanced": "Die Photosphäre ist etwa 5500 °C heiß, der Kern etwa 15 Millionen °C. Oberhalb der Photosphäre steigt die Temperatur wieder an, auf bis zu etwa 2 Millionen °C in der Korona; warum die Korona so viel heißer ist als die Oberfläche unter ihr, ist noch eine offene Frage."
+			},
+			"nicknames": {
+				"yellowDwarf": {
+					"name": "Gelber Zwerg",
+					"story": {
+						"simple": "Forscher nennen Sterne wie die Sonne Gelbe Zwerge. Zwerg heißt nur: kleiner als die Riesensterne. Aber auf Fotos aus dem All sieht die Sonne weiß aus!",
+						"standard": "Astronomen nennen Sterne wie die Sonne Gelbe Zwerge: ganz gewöhnliche, mittelgroße Sterne, die leuchten, indem sie Wasserstoff in Helium umwandeln. „Zwerg“ heißt nur, dass sie neben den Riesensternen klein sind. Und auf Fotos sieht die Sonne weiß aus, weil sie alle Farben, die wir sehen können, auf einmal aussendet.",
+						"advanced": "„Gelber Zwerg“ ist der Alltagsname für die Klasse der Sonne, G2 V: ein Stern vom Typ G auf der Hauptreihe, der langen, stabilen Phase des Wasserstoffbrennens; „Zwerg“ grenzt Hauptreihensterne von den Riesen ab. Auf Fotos erscheint die Sonne weiß, da sie alle sichtbaren Farben zugleich abstrahlt."
+					}
+				}
+			},
+			"name": {
+				"simple": "Vor langer Zeit nannten die Römer die Sonne Sol. Daher kommen Wörter wie Solarzelle und Solarstrom.",
+				"standard": "Auf Latein, der Sprache der alten Römer, heißt die Sonne Sol: Daher kommen Wörter wie Solarzelle und Solarenergie, und auf Englisch heißt das Sonnensystem „solar system“. Die alten Griechen hatten einen Sonnengott namens Helios, dessen Name in Wörtern wie Heliosphäre weiterlebt.",
+				"advanced": "Das lateinische „sol“ steckt im Adjektiv „solar“; Helios, der Sonnengott der griechischen Mythologie, lieh seinen Namen Begriffen wie Heliosphäre und Helioseismologie, der Erforschung des Sonneninneren anhand der Schwingungen der Sonne."
+			},
+			"localName": {
+				"simple": "Vor sehr langer Zeit hieß die Sonne auf Deutsch „sunna“. Damals gab es sogar eine Göttin, die Sunna hieß. Und der Sonntag ist bis heute der Tag der Sonne!",
+				"standard": "Im Althochdeutschen hieß die Sonne „sunna“, ein weibliches Wort, verwandt mit dem lateinischen „sol“. In einem alten Zauberspruch, dem Zweiten Merseburger Zauberspruch, tritt sogar eine Göttin Sunna auf. Der Sonntag ist der Tag der Sonne: ein germanischer Nachbau des lateinischen „dies solis“, entstanden, bevor das Christentum zu den Germanen kam.",
+				"advanced": "Althochdeutsch „sunna“ ist feminin und mit lateinisch „sol“ verwandt; der Zweite Merseburger Zauberspruch nennt eine Göttin Sunna („Sunna era suister“), und im Mittelhochdeutschen schwankte das Genus mitunter („der sunne“), wohl unter dem Einfluss von „mâno“, dem Mond. „Sonntag“ ist eine vorchristliche germanische Lehnübersetzung von lateinisch „dies solis“."
+			},
+			"discovery": {
+				"simple": "Die Menschen kennen die Sonne schon immer. Vor langer Zeit beteten manche sogar zu ihr wie zu einem Gott.",
+				"standard": "Die Sonne kannten alle schon immer, und die alten Griechen hatten sogar einen Sonnengott, Helios. Ihr großes Geheimnis kam erst viel später heraus: Sie ist ein Stern, genau wie die Sterne, die wir nachts sehen, nur viel näher. Und vor etwa 500 Jahren sagte Kopernikus, dass die Planeten, auch die Erde, um sie kreisen.",
+				"advanced": "Seit der Vorgeschichte bekannt; 1543 veröffentlichte Nikolaus Kopernikus die Idee, dass die Planeten, die Erde eingeschlossen, die Sonne umkreisen und nicht die Erde. Dass die Sonne selbst ein Stern ist, der Klasse G2 V, ein gewöhnliches Mitglied der Milchstraße, ist das Werk der Astronomen, die ihm folgten."
+			}
+		},
+		"mercury": {
+			"madeOf": {
+				"simple": "Merkur besteht aus Gestein und Metall, wie die Erde. Seine Mitte aus Metall ist sehr groß. Sie füllt fast den ganzen Planeten.",
+				"standard": "Merkur ist ein Gesteinsplanet mit einem riesigen Eisenkern: Er reicht bis etwa 85 % des Weges zur Oberfläche. Darum herum liegt nur eine dünne Schale aus Gestein, Mantel und Kruste zusammen, etwa 400 km dick.",
+				"advanced": "Merkurs Metallkern hat einen Radius von etwa 2074 km, rund 85 % des Planetenradius, und ist vermutlich teilweise geschmolzen. Gesteinsmantel und Kruste darüber sind zusammen nur etwa 400 km dick; das macht Merkur nach der Erde zum Planeten mit der zweithöchsten Dichte."
+			},
+			"air": {
+				"simple": "Merkur hat fast keine Luft. Um ihn herum gibt es nur ein winziges bisschen Gas, viel zu wenig zum Atmen.",
+				"standard": "Merkur hat keine richtige Atmosphäre, nur eine sehr dünne Exosphäre: ein paar Atome, die aus seiner Oberfläche herausgeschlagen wurden, vor allem Sauerstoff, Natrium, Wasserstoff, Helium und Kalium. Sie ist viel zu dünn, um darin zu atmen oder Wärme zu halten.",
+				"advanced": "Statt einer Atmosphäre hat Merkur eine oberflächengebundene Exosphäre, so dünn, dass ihr Druck unter etwa 5 × 10⁻¹⁵ bar liegt: praktisch ein Vakuum. Sie besteht vor allem aus Sauerstoff, Natrium, Wasserstoff, Helium und Kalium; die Datenblätter geben sie als Säulendichten an, nicht als Anteile."
+			},
+			"weather": {
+				"simple": "Am Tag ist es auf Merkur heißer als in einem Backofen. In der Nacht ist es kälter als irgendwo auf der Erde. Es gibt keine Luft, die die Wärme festhält.",
+				"standard": "Merkur hat die größten Temperaturunterschiede aller Planeten: bis zu etwa 430 °C am Tag und bis hinunter zu etwa −180 °C in der Nacht. Ohne richtige Atmosphäre, die sie festhält, entweicht die Wärme ins All, sobald die Sonne untergeht.",
+				"advanced": "Am Tag werden etwa 430 °C erreicht, nachts fällt die Temperatur auf etwa −180 °C: Ohne Atmosphäre, die Wärme speichert und verteilt, folgt die Oberfläche der Sonne. Merkur ist der Sonne am nächsten, aber nicht der heißeste Planet: Das ist die Venus mit ihrer dichten Atmosphäre."
+			},
+			"nicknames": {
+				"apolloHermes": {
+					"name": "Apollo und Hermes",
+					"story": {
+						"simple": "Vor langer Zeit sahen die Griechen Merkur am Morgen und am Abend. Sie dachten, es wären zwei verschiedene Sterne! Den am Morgen nannten sie Apollo, den am Abend Hermes.",
+						"standard": "Die alten Griechen sahen Merkur mal am Morgenhimmel, mal am Abendhimmel, und gaben ihm zwei Namen: Apollo, wenn er ein Morgenstern war, Hermes, wenn er ein Abendstern war. Später erkannten sie, dass beide Namen zu derselben Welt gehörten.",
+						"advanced": "Weil Merkur immer nur nahe der Sonne zu sehen ist, vor Sonnenaufgang oder nach Sonnenuntergang, hielten die alten Griechen seine beiden Erscheinungen zuerst für zwei Himmelskörper: Apollo als Morgenstern, Hermes als Abendstern, bis sie erkannten, dass beide einer waren. Hermes, der flinke Götterbote, ist das griechische Gegenstück zum römischen Merkur."
+					}
+				}
+			},
+			"name": {
+				"simple": "Merkur ist nach einem römischen Gott benannt. Er war der Bote der Götter, und er war sehr schnell. Der Planet ist auch schnell!",
+				"standard": "Merkur ist nach dem schnellsten der römischen Götter benannt, ihrem Boten. Der Name passt: Merkur ist der schnellste Planet und rast in nur 88 Tagen um die Sonne.",
+				"advanced": "Die Römer benannten ihn nach Mercurius, dem flinken Götterboten, dem griechischen Hermes: ein passender Name für den Planeten mit dem kürzesten Jahr, 88 Tage, und der höchsten mittleren Bahngeschwindigkeit, etwa 47 km/s."
+			},
+			"discovery": {
+				"simple": "Merkur sehen die Menschen schon seit langer, langer Zeit, ganz ohne Fernrohr. Aber er ist schwer zu finden. Er zeigt sich nur tief am Himmel, früh am Morgen oder am Abend.",
+				"standard": "Merkur ist seit dem Altertum bekannt: Die Römer konnten fünf Planeten ohne Teleskop sehen, und Merkur war einer davon. Von den fünf ist er am schwersten zu entdecken, weil er nur tief am Himmel in der Morgen- oder Abenddämmerung erscheint.",
+				"advanced": "Einer der fünf mit bloßem Auge sichtbaren Planeten, seit der Antike bekannt; da er an unserem Himmel nahe der Sonne bleibt, ist er nur in der Dämmerung zu sehen, weshalb die Griechen seine Morgen- und Abenderscheinungen zuerst für zwei verschiedene Objekte hielten."
+			}
+		},
+		"venus": {
+			"madeOf": {
+				"simple": "Die Venus besteht aus Gestein und Metall, wie die Erde. Sie ist auch fast so groß wie die Erde. Auf ihr gibt es sehr, sehr viele Vulkane.",
+				"standard": "Die Venus ist ähnlich gebaut wie die Erde: ein Eisenkern, ein Mantel aus heißem Gestein und eine dünne Kruste aus Gestein. Auf ihrer Oberfläche gibt es Täler, hohe Berge und Tausende von Vulkanen.",
+				"advanced": "Wie die Erde hat die Venus einen Eisenkern, einen Mantel aus heißem Gestein und eine dünne Kruste. Winzige Schwankungen ihrer Drehung, mit Radar gemessen, deuten auf einen Kern mit etwa 3500 km Radius hin (2021); Modelle ergeben eine Kruste von im Mittel etwa 40 km und höchstens 65 km Dicke. Vulkane und tektonische Kräfte haben die meisten Spuren ihrer frühen Oberfläche ausgelöscht."
+			},
+			"air": {
+				"simple": "Die Luft auf der Venus ist sehr dick und schwer. Sie ist ein Gas, das wir nicht atmen können. Ihre Wolken sind aus Säure, und die brennt.",
+				"standard": "Die Luft auf der Venus besteht fast nur aus Kohlendioxid, mit etwas Stickstoff, und ist so dicht, dass der Druck am Boden etwa 93-mal so hoch ist wie auf der Erde, als wäre man mehr als 900 m tief im Meer. Ihre Wolken bestehen aus Schwefelsäure.",
+				"advanced": "Die Atmosphäre besteht nach Volumen zu 96,5 % aus Kohlendioxid und zu 3,5 % aus Stickstoff, mit Spuren von Schwefeldioxid, Argon und Wasserdampf; der Druck an der Oberfläche beträgt etwa 92 bar, und die dichten Wolken bestehen aus Schwefelsäure."
+			},
+			"weather": {
+				"simple": "Die Venus ist der heißeste Planet. Sie ist heißer als ein Backofen, am Tag und in der Nacht. Ihre dicke Luft hält die Wärme der Sonne fest, wie eine Decke.",
+				"standard": "Die Venus ist der heißeste Planet: etwa 464 °C am Boden, heiß genug, um Blei zu schmelzen, und nachts genauso heiß wie am Tag. Ihre dichte Luft aus Kohlendioxid hält die Wärme fest, darum ist die Venus sogar heißer als Merkur, der näher an der Sonne ist.",
+				"advanced": "Die mittlere Oberflächentemperatur liegt bei etwa 464 °C, und der Unterschied zwischen Tag und Nacht ist fast null: Die dichte CO₂-Atmosphäre hält die Wärme fest (ein galoppierender Treibhauseffekt) und verteilt sie über den ganzen Planeten, die Nachtseite eingeschlossen."
+			},
+			"nicknames": {
+				"morningStar": {
+					"name": "Morgenstern und Abendstern",
+					"story": {
+						"simple": "Die Venus ist der hellste Planet an unserem Himmel. Du siehst sie oft kurz vor Sonnenaufgang oder kurz nach Sonnenuntergang. Darum nennt man sie Morgenstern und Abendstern. Aber sie ist gar kein Stern!",
+						"standard": "Nach Sonne und Mond ist die Venus das Hellste am Himmel. Sie leuchtet am Morgen vor Sonnenaufgang oder am Abend nach Sonnenuntergang, darum hielten die Menschen im Altertum sie für zwei Objekte, einen Morgenstern und einen Abendstern. Sie ist aber gar kein Stern, sondern ein Planet.",
+						"advanced": "Die Venus ist nach Sonne und Mond das dritthellste Objekt am Himmel. Da sie nur in der Morgen- oder Abenddämmerung zu sehen ist, hielten die Menschen der Antike sie für zwei Objekte, einen Morgenstern und einen Abendstern; diese Namen trägt sie bis heute."
+					}
+				},
+				"earthsTwin": {
+					"name": "Zwilling der Erde",
+					"story": {
+						"simple": "Die Venus ist fast so groß wie die Erde. Darum nennt man sie den Zwilling der Erde. Aber sie ist so heiß und giftig, dass manche sie den bösen Zwilling der Erde nennen!",
+						"standard": "Die Venus ähnelt der Erde in Größe und Aufbau, darum wird sie manchmal Zwilling der Erde genannt. Weil sie so heiß und ihre Luft so giftig ist, heißt sie auch der böse Zwilling der Erde.",
+						"advanced": "Im Aufbau und in der Größe der Erde ähnlich, mit etwa 95 % des Erddurchmessers und 82 % der Erdmasse, gilt die Venus als Zwilling der Erde; ihre erdrückende, glühend heiße Atmosphäre brachte ihr den Spitznamen böser Zwilling der Erde ein."
+					}
+				}
+			},
+			"name": {
+				"simple": "Die Venus ist nach der römischen Göttin der Liebe und der Schönheit benannt. Sie ist der einzige Planet, der nach einer Göttin heißt.",
+				"standard": "Die Römer benannten den hellsten Planeten nach Venus, ihrer Göttin der Liebe und der Schönheit, die bei den Griechen Aphrodite hieß. Die Venus ist der einzige Planet, der nach einer weiblichen Gottheit benannt ist.",
+				"advanced": "Benannt nach der römischen Göttin der Liebe und der Schönheit, der griechischen Aphrodite: der einzige Planet, der den Namen einer weiblichen Gottheit trägt."
+			},
+			"localName": {
+				"simple": "Am Morgen nennen wir die Venus Morgenstern, am Abend Abendstern. Ein Morgenstern ist aber auch eine Waffe aus der Zeit der Ritter. Das ist eine Keule mit Stacheln!",
+				"standard": "Auf Deutsch heißt die Venus am Morgenhimmel „Morgenstern“. Dasselbe Wort bezeichnet auch eine Waffe aus dem Mittelalter, eine Keule mit Stacheln. Der „Abendstern“ ist ein Stern am Abendhimmel, vor allem die Venus.",
+				"advanced": "„Morgenstern“ bezeichnet die Venus am Morgenhimmel, aber auch eine mittelalterliche Stachelkeule; „Abendstern“ ist ein am Abendhimmel sichtbarer Stern, vor allem die Venus."
+			},
+			"discovery": {
+				"simple": "Die Venus sehen die Menschen schon seit langer, langer Zeit. Sie ist so hell, dass man sie leicht findet.",
+				"standard": "Die Venus ist seit dem Altertum bekannt: Die Römer konnten sie leicht sehen, als einen der fünf Planeten, die man ohne Teleskop erkennt. 1610 sah Galilei durch sein Teleskop, dass die Venus Phasen hat wie der Mond, und das bewies, dass sie um die Sonne kreist.",
+				"advanced": "Seit der Antike als einer der fünf mit bloßem Auge sichtbaren Planeten bekannt; Galileis Beobachtung ihrer Phasen ab 1610 bewies, dass sie die Sonne umkreist, ein starkes Argument für das heliozentrische System des Kopernikus."
+			}
+		},
+		"earth": {
+			"madeOf": {
+				"simple": "Die Erde besteht aus Gestein und Metall. In der Mitte ist eine Kugel aus festem Metall. Darum herum ist geschmolzenes Metall, dann eine dicke Schicht aus heißem Gestein. Wir leben auf ihrer dünnen Haut aus Gestein.",
+				"standard": "Die Erde hat vier Schichten: einen festen inneren Kern aus Eisen und Nickel, einen flüssigen äußeren Kern aus Eisen und Nickel, einen dicken Mantel aus heißem Gestein und eine dünne Kruste, etwa 30 km dick unter den Kontinenten und etwa 5 km unter den Ozeanen. Sie ist der Planet mit der höchsten Dichte im Sonnensystem.",
+				"advanced": "Der innere Kern der Erde ist festes Eisen und Nickel mit etwa 1221 km Radius und bis zu 5400 °C heiß; der flüssige äußere Kern um ihn ist etwa 2300 km dick, das heiße, zähe Gestein des Mantels etwa 2900 km. Die Kruste ist an Land im Mittel etwa 30 km dick, unter den Ozeanen 5 km. Die Erde ist der dichteste Planet."
+			},
+			"air": {
+				"simple": "Die Luft der Erde ist die einzige Luft, die wir atmen können. Das meiste davon ist ein Gas namens Stickstoff. Sie enthält auch Sauerstoff, den wir zum Leben brauchen.",
+				"standard": "Die Luft der Erde besteht zu etwa 78 % aus Stickstoff und zu 21 % aus Sauerstoff, mit etwas Argon und Kohlendioxid und etwas Wasserdampf. Sie ist die einzige Luft, die wir kennen, die Menschen und Tiere atmen können.",
+				"advanced": "Trockene Luft besteht nach Volumen zu 78,08 % aus Stickstoff, zu 20,95 % aus Sauerstoff und zu 0,934 % aus Argon, dazu etwa 420 ppm (0,042 %) Kohlendioxid; Wasserdampf kommt mit etwa 1 % hinzu, je nach Ort verschieden."
+			},
+			"weather": {
+				"simple": "Auf der Erde ist es nicht zu heiß und nicht zu kalt. Darum bleibt Wasser flüssig, und es kann Leben geben. Aber in Wüsten kann es sehr heiß werden und in der Antarktis sehr, sehr kalt.",
+				"standard": "Die höchste je auf der Erde gemessene Temperatur sind 56,7 °C, 1913 im Death Valley in Kalifornien; die tiefste sind −89,2 °C, 1983 an der Station Wostok in der Antarktis. Im Mittel hat die Erde etwa 15 °C: genau richtig für flüssiges Wasser.",
+				"advanced": "Die Weltorganisation für Meteorologie führt 56,7 °C (Furnace Creek, Death Valley, 10. Juli 1913) und −89,2 °C (Wostok, Antarktis, 21. Juli 1983) als höchste und tiefste je gemessene Lufttemperatur; das globale Mittel liegt bei etwa 15 °C."
+			},
+			"nicknames": {
+				"blueMarble": {
+					"name": "Die Blaue Murmel",
+					"story": {
+						"simple": "Astronauten auf dem Weg zum Mond machten ein berühmtes Foto von der ganzen Erde. Sie sah aus wie eine glänzende blaue Murmel. So bekam die Erde diesen Spitznamen.",
+						"standard": "Am 7. Dezember 1972 fotografierte die Besatzung von Apollo 17 auf dem Weg zum Mond die ganze, von der Sonne beleuchtete Erde. Das Bild mit dem Namen „The Blue Marble“, die blaue Murmel, wurde zu einem der berühmtesten Fotos, die je gemacht wurden.",
+						"advanced": "„The Blue Marble“ wurde am 7. Dezember 1972 von der Besatzung von Apollo 17 auf dem Weg zum Mond aufgenommen: die voll beleuchtete Erdscheibe mit Afrika, Arabien und der antarktischen Eiskappe. Es ist eines der am häufigsten reproduzierten Bilder der Geschichte."
+					}
+				},
+				"paleBlueDot": {
+					"name": "Der blassblaue Punkt",
+					"story": {
+						"simple": "Eine Raumsonde namens Voyager 1 hat von sehr, sehr weit weg zur Erde zurückgeschaut. Auf dem Foto war die Erde nur ein winziger blauer Punkt.",
+						"standard": "Am 14. Februar 1990 drehte sich Voyager 1, 6 Milliarden km von der Sonne entfernt, um und fotografierte die Erde: ein Lichtpunkt, etwa ein Pixel groß, in einem Strahl Sonnenlicht. Der Astronom Carl Sagan, der die Idee für das Bild hatte, nannte die Erde einen blassblauen Punkt, auf Englisch „pale blue dot“.",
+						"advanced": "Am 14. Februar 1990 nahm Voyager 1, etwa 6 Milliarden km von der Sonne entfernt, die 60 Bilder ihres „Familienporträts“ der Planeten auf; auf einem davon ist die Erde ein Lichtpunkt von etwa einem Pixel, mitten in einem gestreuten Sonnenstrahl. Carl Sagan hatte das Bild 1981 vorgeschlagen und gab ihm in seinem Buch „Pale Blue Dot“ den Namen."
+					}
+				}
+			},
+			"name": {
+				"simple": "Die Erde ist der einzige Planet, der nicht nach einem Gott benannt ist. Ihr Name ist ein altes Wort für den Boden, auf dem wir gehen.",
+				"standard": "Die Erde ist der einzige Planet, dessen Name nicht von einem griechischen oder römischen Gott stammt. Ihr englischer Name „Earth“ ist etwa 1000 Jahre alt und bedeutet, wie das deutsche „Erde“, einfach „der Boden“.",
+				"advanced": "Alle anderen Planeten tragen den Namen eines griechischen oder römischen Gottes; der englische Name „Earth“, etwa 1000 Jahre alt, stammt aus dem Altenglischen und Germanischen und bedeutet einfach „der Boden“. In vielen Sprachen ist der Name des Planeten das Alltagswort für Land und Boden."
+			},
+			"localName": {
+				"simple": "Erde ist zuerst der Boden, in dem Pflanzen wachsen. Unser Planet ist nach diesem Boden benannt. Und in manchen Gegenden heißt die Kartoffel Erdapfel!",
+				"standard": "Das Wort „Erde“ hieß im Althochdeutschen „erda“. Das Digitale Wörterbuch der deutschen Sprache nennt als Bedeutungen zuerst den fruchtbaren Boden, dann das Land, die irdische Welt und erst zuletzt unseren Planeten: Er ist nach dem Wort für den Boden benannt. In manchen Gegenden heißt die Kartoffel übrigens „Erdapfel“.",
+				"advanced": "Althochdeutsch „erda“; das DWDS ordnet die Bedeutungen fruchtbarer Boden, Land, irdische Welt und erst dann Planet: Der Planet trägt das Wort für den Boden. Regional heißt die Kartoffel „Erdapfel“."
+			},
+			"discovery": {
+				"simple": "Wir leben auf der Erde, darum kannten die Menschen sie schon immer. Aber lange dachten sie, die Erde stehe still in der Mitte von allem. Dann sagte ein Mann namens Kopernikus, dass die Erde um die Sonne kreist, wie die anderen Planeten.",
+				"standard": "Unsere Heimat kannten wir schon immer, aber nicht als Planeten. 1515 schlug Nikolaus Kopernikus vor, dass die Erde ein Planet ist wie die Venus oder Saturn und dass alle Planeten um die Sonne kreisen; 1543 veröffentlichte er diese Idee.",
+				"advanced": "Als Planet erkannt wurde die Erde, als Nikolaus Kopernikus um 1515 vorschlug, dass sie wie die Venus oder Saturn die Sonne umkreist, und die Idee 1543 in „De revolutionibus orbium coelestium“ veröffentlichte; Kepler, Galilei und 1687 Newton verhalfen ihr zum Durchbruch."
+			}
+		},
+		"mars": {
+			"madeOf": {
+				"simple": "Mars besteht aus Gestein und Metall, wie die Erde. Er hat eine Mitte aus Metall mit viel Gestein drumherum. Außen ist er mit rotem, rostigem Staub bedeckt.",
+				"standard": "Mars hat einen Kern aus Eisen, Nickel und Schwefel mit 1500 bis 2100 km Radius, einen Mantel aus Gestein und eine 10 bis 50 km dicke Kruste. Der Staub, der ihn bedeckt, ist rostig: Seine Eisenminerale sind oxidiert.",
+				"advanced": "Mars hat einen dichten Kern aus Eisen, Nickel und Schwefel; die NASA-Daten geben 1500–2100 km als Radius an, neuere Ergebnisse deuten auf etwa 1650–1675 km hin. Darüber liegen ein 1240–1880 km dicker Gesteinsmantel und eine 10–50 km dicke Kruste aus Eisen, Magnesium, Aluminium, Calcium und Kalium."
+			},
+			"air": {
+				"simple": "Die Luft auf dem Mars ist sehr dünn. Sie ist vor allem ein Gas, das wir nicht atmen können. Astronauten bräuchten dort Raumanzüge.",
+				"standard": "Die Luft auf dem Mars besteht zu etwa 95 % aus Kohlendioxid, mit etwas Stickstoff und Argon. Sie ist so dünn, dass sie nur sehr wenig Wärme hält.",
+				"advanced": "Nach Volumen besteht die Atmosphäre zu 95,1 % aus Kohlendioxid, zu 2,59 % aus Stickstoff und zu 1,94 % aus Argon, dazu 0,16 % Sauerstoff und 0,06 % Kohlenmonoxid; der mittlere Druck an der Oberfläche beträgt nur etwa 6 Millibar."
+			},
+			"weather": {
+				"simple": "An einem Sommertag kann es auf dem Mars ganz mild sein. Es kann aber auch kälter werden als irgendwo auf der Erde. Würdest du dort stehen, wären deine Füße warm und dein Kopf kalt!",
+				"standard": "Auf dem Mars kann es bis zu etwa 20 °C warm oder bis zu etwa −153 °C kalt werden. Seine dünne Luft hält so wenig Wärme, dass es mittags am Äquator an deinen Füßen 24 °C haben kann, an deinem Kopf aber 0 °C.",
+				"advanced": "Die Temperaturen reichen von etwa 20 °C bis etwa −153 °C. Die dünne Atmosphäre hält wenig Wärme: Mittags am Äquator kann die Luft auf Höhe deiner Füße 24 °C haben, auf Höhe deines Kopfes aber 0 °C. Das Mittel liegt bei etwa −60 °C."
+			},
+			"nicknames": {
+				"redPlanet": {
+					"name": "Der Rote Planet",
+					"story": {
+						"simple": "Mars wird der Rote Planet genannt. In seinem Boden ist Rost, genau wie an einem alten, rostigen Nagel. Darum sieht er rot aus.",
+						"standard": "Mars wird oft der Rote Planet genannt, weil die Eisenminerale in seinem Boden verrostet sind. Dieser rostige Staub, in die Luft gewirbelt, lässt den ganzen Planeten rot aussehen.",
+						"advanced": "Der Spitzname kommt von oxidierten, rostfarbenen Eisenmineralen im Regolith des Mars; der in die Atmosphäre aufgewirbelte Staub färbt den Himmel ebenso wie den Boden."
+					}
+				}
+			},
+			"name": {
+				"simple": "Mars ist nach dem römischen Gott des Krieges benannt. Die Menschen fanden, seine rote Farbe sehe aus wie Blut.",
+				"standard": "Die Römer benannten Mars nach ihrem Kriegsgott, weil seine rötliche Farbe sie an Blut erinnerte. Lange vor ihnen nannten die alten Ägypter ihn Her Desher, „der Rote“.",
+				"advanced": "Von den alten Römern nach ihrem Kriegsgott benannt, weil seine rötliche Farbe an Blut erinnerte; die Ägypter hatten ihn Her Desher genannt, „der Rote“."
+			},
+			"discovery": {
+				"simple": "Mars sehen die Menschen schon seit langer, langer Zeit. Er sieht aus wie ein heller roter Stern am Nachthimmel.",
+				"standard": "Mars ist seit dem Altertum bekannt, als einer der fünf Planeten, die man ohne Teleskop sehen kann. Vor etwa 400 Jahren halfen genaue Messungen, wo Mars am Himmel stand, Johannes Kepler zu entdecken, dass sich Planeten auf Ellipsen bewegen, nicht auf Kreisen.",
+				"advanced": "Seit der Antike bekannt; Johannes Kepler schloss aus den genauen Beobachtungen Tycho Brahes, dass die Bahn des Mars eine Ellipse ist und kein Kreis, die Entdeckung hinter seinen Gesetzen der Planetenbewegung."
+			}
+		},
+		"jupiter": {
+			"madeOf": {
+				"simple": "Jupiter ist eine riesige Kugel aus Gas. Er besteht vor allem aus Wasserstoff und Helium, wie die Sonne. Es gibt keinen Boden, auf dem man stehen könnte.",
+				"standard": "Jupiter besteht vor allem aus Wasserstoff und Helium. Weiter unten presst der Druck das Wasserstoffgas zu einer Flüssigkeit zusammen, dem größten Ozean im Sonnensystem; noch tiefer, vielleicht auf halbem Weg zur Mitte, wird der Wasserstoff zu einer Flüssigkeit, die Strom leitet wie ein Metall. Sein Kern ist unscharf: teilweise aufgelöst, ohne klare Grenze.",
+				"advanced": "Unter den Wolken sind Wasserstoff und Helium zu einer Flüssigkeit zusammengepresst, weiter unten zu flüssigem metallischem Wasserstoff; die Sonde Juno fand, dass das Magnetfeld unterhalb von etwa 81 % des Radius entsteht, in konvektierendem metallischem Wasserstoff. Der Kern ist verdünnt, teilweise aufgelöst, ohne klare Trennung vom metallischen Wasserstoff um ihn herum."
+			},
+			"air": {
+				"simple": "Die Luft auf Jupiter ist vor allem Wasserstoff und Helium. Seine Streifen sind Bänder aus Wolken.",
+				"standard": "Die Luft auf Jupiter besteht zu etwa 90 % aus Wasserstoff und zu 10 % aus Helium, mit kleinen Mengen Methan und Ammoniak. Seine bunten Streifen sind Wolkenbänder.",
+				"advanced": "Nach Volumen etwa 89,8 % H₂ und 10,2 % He (jeweils ± 2 %), dazu etwa 0,3 % Methan und Spuren von Ammoniak, Wasserstoffdeuterid, Ethan und Wasser."
+			},
+			"weather": {
+				"simple": "In seinen Wolken ist Jupiter kälter als irgendwo auf der Erde. Tief innen ist er heißer als die Oberfläche der Sonne.",
+				"standard": "In seinen Wolken hat Jupiter etwa −110 °C. Weiter unten wird das zusammengepresste Gas immer heißer, und nahe der Mitte könnten es etwa 24 000 °C sein: viel heißer als die Oberfläche der Sonne.",
+				"advanced": "Auf dem 1-bar-Niveau beträgt die Temperatur etwa 165 K (−108 °C), bei 0,1 bar etwa 112 K; nach innen steigt sie stetig an, bis auf geschätzte 24 000 °C nahe der Mitte."
+			},
+			"nicknames": {
+				"kingOfPlanets": {
+					"name": "König der Planeten",
+					"story": {
+						"simple": "Jupiter ist der größte Planet. Er ist schwerer als alle anderen Planeten zusammen. Darum nennt man ihn den König der Planeten.",
+						"standard": "Jupiter wird der König der Planeten genannt: Er ist der größte, mehr als doppelt so schwer wie alle anderen Planeten zusammen und nach dem König der römischen Götter benannt.",
+						"advanced": "Wie es sich für den Namensvetter des Götterkönigs gehört, ist Jupiter der größte Planet und mehr als doppelt so massereich wie alle anderen zusammen."
+					}
+				}
+			},
+			"name": {
+				"simple": "Jupiter ist nach dem König der römischen Götter benannt. Der größte Planet bekam den Namen des wichtigsten Gottes.",
+				"standard": "Der größte Planet hat seinen Namen vom König der altrömischen Götter.",
+				"advanced": "Benannt nach Jupiter, dem König der Götter in der römischen Mythologie: der größte Planet für den höchsten Gott."
+			},
+			"discovery": {
+				"simple": "Jupiter sehen die Menschen schon seit langer, langer Zeit. Er ist eines der hellsten Lichter am Nachthimmel.",
+				"standard": "Jupiter ist seit dem Altertum bekannt. 1610 richtete Galileo Galilei ein Teleskop auf ihn und sah zum ersten Mal in der Geschichte Monde, die um eine andere Welt kreisen.",
+				"advanced": "Seit der Antike bekannt; Galileis Teleskop zeigte 1610 vier Monde, die Jupiter umkreisen, der erste Beweis dafür, dass nicht alles um die Erde kreist."
+			}
+		},
+		"saturn": {
+			"madeOf": {
+				"simple": "Saturn ist eine riesige Kugel aus Gas, wie Jupiter. Er besteht vor allem aus Wasserstoff und Helium. Für seine Größe ist er so leicht, dass er im Wasser schwimmen würde!",
+				"standard": "Saturn besteht vor allem aus Wasserstoff und Helium. In seiner Mitte liegt ein dichter Kern aus Metallen wie Eisen und Nickel, umgeben von Gestein, alles von Druck und Hitze stark zusammengepresst. Darum herum liegt flüssiger metallischer Wasserstoff, innerhalb einer Schicht aus flüssigem Wasserstoff. Er ist der einzige Planet mit einer geringeren Dichte als Wasser.",
+				"advanced": "In der Mitte liegt ein dichter Kern aus Metallen und Gestein, umhüllt von flüssigem metallischem Wasserstoff innerhalb einer Schicht aus flüssigem Wasserstoff. Wellen in den Ringen, ausgelöst von Schwingungen des Planeten selbst, zeigen, dass der Kern diffus ist: eine Mischung aus Eis, Gestein und Wasserstoff von etwa 17 Erdmassen, die bis etwa 60 % des Radius reicht."
+			},
+			"air": {
+				"simple": "Die Luft auf Saturn ist vor allem Wasserstoff, mit ein bisschen Helium. Um den Planeten wehen sehr starke Winde.",
+				"standard": "Die Luft auf Saturn besteht zu etwa 96 % aus Wasserstoff und zu 3 % aus Helium, mit etwas Methan und Ammoniak. Nahe seinem Äquator erreichen die Winde etwa 1800 km/h.",
+				"advanced": "Nach Volumen etwa 96,3 % H₂ und 3,25 % He (jeweils ± 2,4 %), dazu etwa 0,45 % Methan und Spuren von Ammoniak, Wasserstoffdeuterid und Ethan; die Winde am Äquator erreichen etwa 500 m/s."
+			},
+			"weather": {
+				"simple": "Die Wolken von Saturn sind kälter als irgendwo auf der Erde. Weiter oben ist es noch kälter. Tief innen ist es sehr heiß.",
+				"standard": "In seinen Wolken hat Saturn etwa −140 °C, weiter oben etwa −190 °C. Tief im Inneren sind Druck und Hitze so groß, dass sie Gestein und Metall zu einem Kern zusammenpressen.",
+				"advanced": "Etwa 134 K (−139 °C) auf dem 1-bar-Niveau und 84 K (−189 °C) bei 0,1 bar. Im Inneren wird es mit der Tiefe heißer; für den Kern gibt es keinen gemessenen Wert."
+			},
+			"nicknames": {
+				"jewel": {
+					"name": "Juwel des Sonnensystems",
+					"story": {
+						"simple": "Saturn hat wunderschöne, glänzende Ringe. Sie bestehen aus Eis und Gestein. Mit seinen Ringen sieht Saturn aus wie ein Juwel.",
+						"standard": "Mit seinen hellen Ringen aus Eis und Gestein ist Saturn durch ein Teleskop der schönste Planet, darum wird er das Juwel des Sonnensystems genannt.",
+						"advanced": "Sein breites, helles System aus Eisringen hat Saturn zum „Juwel unseres Sonnensystems“ gemacht, zum Glanzstück jedes Teleskops."
+					}
+				}
+			},
+			"name": {
+				"simple": "Saturn ist nach dem römischen Gott der Landwirtschaft benannt. Er war der Vater von Jupiter.",
+				"standard": "Um 400 v. Chr. benannten griechische Astronomen diesen „wandernden Stern“ nach Kronos, ihrem Gott der Landwirtschaft; die Römer tauften ihn später in Saturn um, nach ihrem eigenen Gott der Landwirtschaft und des Reichtums, dem Vater Jupiters.",
+				"advanced": "Benannt nach dem römischen Gott des Ackerbaus und des Reichtums, dem Vater Jupiters; um 400 v. Chr. hatten griechische Astronomen ihn nach Kronos benannt, und die Römer setzten ihren eigenen Gott an dessen Stelle."
+			},
+			"discovery": {
+				"simple": "Saturn sehen die Menschen schon seit langer, langer Zeit. Lange war er der fernste Planet, den man kannte.",
+				"standard": "Saturn ist seit dem Altertum bekannt: Er ist der fernste Planet, den man mit bloßem Auge sehen kann. 1610 sah Galilei seine Ringe, hielt Saturn aber für einen „dreifachen Planeten“; 1655 entdeckte Christiaan Huygens die Ringe und Saturns größten Mond, Titan.",
+				"advanced": "Der fernste mit bloßem Auge entdeckte Planet; Galilei sah die Ringe im Juli 1610, hielt sie aber für einen „dreifachen Planeten“, und Christiaan Huygens erkannte sie 1655, im selben Jahr, in dem er Titan fand."
+			}
+		},
+		"uranus": {
+			"madeOf": {
+				"simple": "Uranus ist ein Eisriese. Innen besteht er vor allem aus heißem, matschigem Eis. In seiner Mitte ist Gestein. Außen ist Gas.",
+				"standard": "Uranus ist ein Eisriese: 80 % oder mehr seiner Masse sind eine heiße, dichte Flüssigkeit aus Wasser, Methan und Ammoniak, die man in der Planetenforschung „Eis“ nennt, über einem kleinen Gesteinskern. Obendrauf liegt eine Atmosphäre aus Wasserstoff, Helium und Methan.",
+				"advanced": "Mindestens 80 % der Masse von Uranus sind eine heiße, dichte Flüssigkeit aus „eisigen“ Stoffen (Wasser, Methan und Ammoniak) über einem kleinen Gesteinskern, unter einer Hülle aus Wasserstoff, Helium und Methan."
+			},
+			"air": {
+				"simple": "Die Luft auf Uranus ist vor allem Wasserstoff und Helium. Ein kleines bisschen von einem Gas namens Methan macht ihn blaugrün.",
+				"standard": "Die Luft auf Uranus besteht zu etwa 83 % aus Wasserstoff und zu 15 % aus Helium, mit etwa 2 % Methan. Methan schluckt rotes Licht, das gibt dem Planeten seine blaugrüne Farbe.",
+				"advanced": "Nach Volumen etwa 82,5 % H₂ und 15,2 % He (jeweils ± 3,3 %) mit 2,3 % CH₄; Methan absorbiert den roten Anteil des Sonnenlichts, darum erscheint der Planet blaugrün."
+			},
+			"weather": {
+				"simple": "Uranus hat die kälteste Luft aller Planeten. Es ist dort kälter als irgendwo auf der Erde. Tief innen ist er viel heißer als jedes Feuer.",
+				"standard": "In seinen Wolken hat Uranus etwa −197 °C, und seine Luft wird bis zu −224 °C kalt, so kalt wie bei keinem anderen Planeten. Nahe dem Kern wird er bis zu etwa 5000 °C heiß.",
+				"advanced": "Etwa 76 K (−197 °C) auf dem 1-bar-Niveau; das Minimum der Atmosphäre, 49 K (−224,2 °C), ist das kälteste aller Planeten. Nahe dem Kern erreicht er etwa 9000 °F (4982 °C)."
+			},
+			"nicknames": {
+				"sideways": {
+					"name": "Der Planet, der auf der Seite liegt",
+					"story": {
+						"simple": "Uranus liegt auf der Seite. Er rollt wie ein Ball um die Sonne. Vielleicht ist vor langer Zeit etwas Großes mit ihm zusammengestoßen.",
+						"standard": "Uranus ist um etwa 98 Grad gekippt, darum dreht er sich auf der Seite liegend und rollt wie ein Ball um die Sonne. Das beschert ihm die extremsten Jahreszeiten im Sonnensystem. Vielleicht hat ihn vor langer Zeit ein Zusammenstoß mit einem Körper von der Größe der Erde umgeworfen.",
+						"advanced": "Mit einer Achsneigung von 97,77° ist Uranus der einzige Planet, dessen Äquator fast im rechten Winkel zu seiner Bahn steht; ein Viertel jedes 84-jährigen Umlaufs lang zeigt ein Pol zur Sonne, während die andere Hälfte des Planeten eine 21-jährige Winternacht hat. Wahrscheinliche Ursache ist ein Zusammenstoß mit einem erdgroßen Körper."
+					}
+				}
+			},
+			"name": {
+				"simple": "Uranus ist nach dem griechischen Gott des Himmels benannt. Er war der Großvater von Jupiter. Uranus ist der einzige Planet, der nach einem griechischen Gott heißt.",
+				"standard": "Uranus ist nach dem griechischen Himmelsgott benannt: der einzige Planet mit dem Namen eines griechischen statt eines römischen Gottes. Sein Entdecker wollte ihn nach seinem König Georg III. „Georgs Stern“ nennen; der Astronom Johann Bode schlug Uranus vor, den Vater Saturns, so wie Saturn der Vater Jupiters war.",
+				"advanced": "Wilhelm Herschel wollte seine Entdeckung nach König Georg III. Georgium Sidus nennen; durchgesetzt hat sich Johann Bodes Vorschlag Uranus, der griechische Himmelsgott, Vater Saturns, wie Saturn Vater Jupiters war: der einzige Planet, der nicht nach einem römischen Gott benannt ist."
+			},
+			"discovery": {
+				"simple": "Uranus war der erste Planet, der mit einem Fernrohr gefunden wurde. Ein Mann namens Wilhelm Herschel sah ihn von seinem Garten aus. Zuerst dachte er, es sei ein Komet.",
+				"standard": "Uranus war der erste Planet, der mit einem Teleskop gefunden wurde: Wilhelm Herschel entdeckte ihn am 13. März 1781 im Garten hinter seinem Haus in Bath in England. Zuerst hielt er ihn für einen Kometen oder einen Stern.",
+				"advanced": "Am 13. März 1781 notierte Wilhelm Herschel, der in seinem Garten in Bath mit einem 7-Fuß-Teleskop beobachtete, einen „nebligen Stern oder vielleicht einen Kometen“: der erste neue Planet, der seit der Antike entdeckt wurde."
+			}
+		},
+		"neptune": {
+			"madeOf": {
+				"simple": "Neptun ist ein Eisriese, wie Uranus. Innen besteht er vor allem aus heißem, matschigem Eis. In seiner Mitte ist Gestein. Außen ist Gas.",
+				"standard": "Wie Uranus ist Neptun ein Eisriese: 80 % oder mehr seiner Masse sind eine heiße, dichte Flüssigkeit aus Wasser, Methan und Ammoniak über einem kleinen Gesteinskern. Obendrauf liegt eine Atmosphäre aus Wasserstoff, Helium und Methan. Er ist der dichteste der Riesenplaneten.",
+				"advanced": "Mindestens 80 % der Masse Neptuns sind eine heiße, dichte Flüssigkeit aus Wasser, Methan und Ammoniak; die Atmosphäre aus Wasserstoff, Helium und Methan geht in sie über, über einem festen Kern von etwa einer Erdmasse. Von den Riesenplaneten ist Neptun der dichteste."
+			},
+			"air": {
+				"simple": "Die Luft auf Neptun ist vor allem Wasserstoff und Helium. Ein kleines bisschen Methan macht ihn tiefblau.",
+				"standard": "Die Luft auf Neptun besteht zu etwa 80 % aus Wasserstoff und zu 19 % aus Helium, mit etwa 1,5 % Methan. Das Methan schluckt die anderen Farben und wirft Blau zurück, darum ist Neptun blau.",
+				"advanced": "Nach Volumen etwa 80,0 % H₂ und 19,0 % He (jeweils ± 3,2 %) und 1,5 % CH₄; Methan absorbiert die anderen Farben und reflektiert Blau."
+			},
+			"weather": {
+				"simple": "Die Wolken von Neptun sind kälter als irgendwo auf der Erde. Weiter oben ist es noch kälter. Tief innen ist es heiß.",
+				"standard": "In seinen Wolken hat Neptun etwa −200 °C, weiter oben etwa −220 °C. Tief innen, unter seiner Luft, liegt eine heiße, dichte Flüssigkeit aus Wasser und anderen Stoffen, die man Eis nennt.",
+				"advanced": "Etwa 72 K (−201 °C) auf dem 1-bar-Niveau und 55 K (−218 °C) bei 0,1 bar; darunter liegt der heiße, dichte, flüssige Mantel. Für den Kern gibt es keinen gemessenen Wert."
+			},
+			"nicknames": {
+				"windiest": {
+					"name": "Der windigste Planet",
+					"story": {
+						"simple": "Neptun ist der windigste Planet. Seine Winde sind viel schneller als der stärkste Sturm auf der Erde.",
+						"standard": "Neptun ist die windigste Welt in unserem Sonnensystem: Seine Winde wehen mit mehr als 2000 km/h, dreimal so stark wie die von Jupiter und neunmal so stark wie die der Erde.",
+						"advanced": "Die windigste Welt des Sonnensystems: Winde von mehr als 2000 km/h, dreimal so stark wie auf Jupiter und neunmal so stark wie auf der Erde."
+					}
+				}
+			},
+			"name": {
+				"simple": "Neptun ist nach dem römischen Gott des Meeres benannt. Seine tiefblaue Farbe sieht aus wie das Meer.",
+				"standard": "Neptun ist nach dem römischen Meeresgott benannt: ein passender Name für den großen blauen Planeten.",
+				"advanced": "Benannt nach dem römischen Gott des Meeres, ein passender Name für den tiefblauen Planeten."
+			},
+			"discovery": {
+				"simple": "Neptun wurde mit Mathe gefunden! Forscher merkten, dass etwas an Uranus zog. Sie rechneten aus, wo es sein musste, und da war er.",
+				"standard": "Neptun war der erste Planet, der mit Mathematik gefunden wurde. Urbain Le Verrier berechnete, wo ein unbekannter Planet stehen musste, um zu erklären, wie sich Uranus bewegte, und am 23. September 1846 fand Johann Galle ihn an der Berliner Sternwarte, etwa ein Grad von der vorhergesagten Stelle entfernt. John Couch Adams hatte in England ähnliche Berechnungen angestellt. Galilei hatte ihn schon 1612 gesehen, ihn aber für einen Stern gehalten.",
+				"advanced": "Le Verrier sagte Position und Masse eines unbekannten Planeten aus Unregelmäßigkeiten in der Bewegung von Uranus voraus; Johann Galle fand ihn am 23. September 1846 in Berlin, in seiner ersten Suchnacht, etwa ein Grad von der Vorhersage entfernt. John Couch Adams hatte unabhängig ähnliche, weniger genaue Berechnungen angestellt, und Galilei hatte ihn 1612 und 1613 als Fixstern verzeichnet."
+			}
+		}
+	}
+}

@@ -40,6 +40,21 @@
 	color: var(--mantine-color-gray-2);
 }
 
+/* the comparison taken outside: the walk, opened on this body (#48) */
+.walk {
+	display: flex;
+	align-items: flex-start;
+	gap: 0.375rem;
+	margin: 0.25rem 0 0;
+	padding-left: calc(0.625rem + 3px);
+	line-height: 1.35;
+}
+
+.walkIcon {
+	flex: none;
+	margin-top: 0.1em;
+}
+
 .facts {
 	margin: 0.5rem 0 0;
 	display: grid;

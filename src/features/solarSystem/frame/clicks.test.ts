@@ -29,13 +29,17 @@ describe("clicks in an anchored frame", () => {
 
 	it("keep the frame on a click into empty space", () => {
 		expect(emptyClickAction(held, false)).toBe("deselect")
+		expect(emptyClickAction({ ...held, selectedId: "earth" }, false)).toBe(
+			"none",
+		)
 		expect(emptyClickAction({ ...held, selectedId: null }, false)).toBe("none")
 	})
 
 	it("leave the Sun-centred frame as #16 made it", () => {
 		const free = { ...held, frameId: "sun" }
 		expect(bodyClickAction(free, "venus")).toBe("focus")
-		expect(emptyClickAction(free, false)).toBe("reset")
+		// and a click on empty space never leaves the view there either (#47)
+		expect(emptyClickAction(free, false)).toBe("deselect")
 		expect(emptyClickAction({ ...free, view: OVERVIEW }, false)).toBe(
 			"deselect",
 		)

@@ -8,7 +8,8 @@
 			"scale": "everythingVisible",
 			"speed": "hour",
 			"time": "now",
-			"layers": { "orbits": true, "labels": true, "markers": true }
+			"layers": { "orbits": true, "labels": true, "markers": true },
+			"link": "solarWalk"
 		},
 		{ "id": "sun", "view": "sun", "camera": { "distance": 1.2 } },
 		{ "id": "mercury", "view": "mercury" },

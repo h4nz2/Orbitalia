@@ -11,8 +11,9 @@
  *   visible disc right under the pointer wins, then the Sun and the planets
  *   over moons, so from afar a planet's moons never steal its click. A small
  *   body in front of a big disc beats the disc; one behind it is hidden.
- * - **Empty space**: nothing within reach. A click there is the way out
- *   (`emptyClickAction`), unless it was a near miss (`NEAR_MISS_FACTOR`).
+ * - **Empty space**: nothing within reach. A click there never moves the
+ *   camera (#47); at most it clears the selection (`emptyClickAction`), and
+ *   not even that on a near miss (`NEAR_MISS_FACTOR`).
  *
  * Pure: no React and no store, so all of it is unit-tested.
  */
@@ -43,7 +44,7 @@ export const TARGET_RADIUS_PX: Readonly<Record<PointerKind, number>> = {
 /**
  * A click within this multiple of the target radius of a body is a near miss,
  * not a click on empty space: aiming at a tiny moon and missing by a hair
- * must not throw the view back to the overview.
+ * must not close the card of what is selected.
  */
 export const NEAR_MISS_FACTOR = 2.5
 
@@ -239,24 +240,30 @@ export function bodyClickAction(
 }
 
 export type EmptyClickAction =
-	/** a near miss, or a tour is running: a stray click never ends a lesson */
+	/**
+	 * the selection is the body in view (or nothing), a near miss, or a tour is
+	 * running: a stray click never ends a lesson
+	 */
 	| "none"
-	/** the overview with a selection: clear it (the camera stays) */
+	/** clear the selection: its card closes, or gives way to the focus's; the camera stays */
 	| "deselect"
-	/** anywhere else: back to the overview (`reset`, like Escape and the home button) */
-	| "reset"
 
-/** What a click on empty space does (#16: "exit is obvious and always available"). */
+/**
+ * What a click on empty space does: it never moves the camera (#47). Leaving
+ * a body is always deliberate (the way out, Escape, or choosing another
+ * body), so a stray click, a palm on a touchpad or a child's tap at most lets
+ * go of a body selected besides the one in view, as it always did in the
+ * overview and while a body is held still (#31). The focused body stays
+ * selected: its card stays open (its × closes it) and the planet filling the
+ * view never turns into a click target.
+ */
 export function emptyClickAction(
-	state: Pick<NavigationSlice, "view" | "selectedId" | "sequence"> & {
-		frameId?: string
-	},
+	state: Pick<NavigationSlice, "view" | "selectedId" | "sequence">,
 	nearMiss: boolean,
 ): EmptyClickAction {
-	if (nearMiss || state.sequence !== null) return "none"
-	// a body held still (#31) is left only through its badge, the home button or Escape
-	if (state.view.kind === "overview" || anchoredFrame(state.frameId)) {
-		return state.selectedId !== null ? "deselect" : "none"
+	if (nearMiss || state.sequence !== null || state.selectedId === null) {
+		return "none"
 	}
-	return "reset"
+	const inView = state.view.kind === "body" ? state.view.id : null
+	return state.selectedId === inView ? "none" : "deselect"
 }

@@ -64,8 +64,8 @@
 				"simple": "Le film du début"
 			},
 			"what": {
-				"standard": "Quatorze secondes qui commencent tout près de la Terre, à sa vraie taille, et reculent jusqu’à ce que la Terre soit plus petite qu’un pixel ; ensuite tout est dessiné plus grand pour que tu puisses le voir.",
-				"simple": "Un petit film qui part de la Terre et s’envole jusqu’au système solaire entier."
+				"standard": "Environ une minute qui commence tout près de la Terre, à sa vraie taille, et recule jusqu’à ce que la Terre soit plus petite qu’un pixel ; ensuite tout est dessiné plus grand pour que tu puisses le voir. Chaque texte reste affiché assez longtemps pour être lu à voix haute.",
+				"simple": "Un film qui part de la Terre et s’envole jusqu’au système solaire entier. Il va lentement, pour que tu puisses lire chaque mot."
 			},
 			"why": {
 				"standard": "Elle montre l’idée de l’application avant qu’on lise un mot : l’espace est immense et presque vide. Elle marche sans le son.",
@@ -74,12 +74,16 @@
 			"how": {
 				"standard": [
 					"Elle passe une fois, à la première visite ; « Passer l’intro », un glissement ou Échap l’arrêtent à tout moment.",
+					"Pour rester sur un texte, appuie sur la barre d’espace, touche la scène ou appuie sur le bouton pause ; encore une fois, et ça reprend. En pause, tu peux tourner la vue sans arrêter l’introduction.",
+					"« Suivant » (ou la flèche droite) passe tout de suite à la partie suivante ; en pause, une partie à la fois.",
 					"Après la première introduction, l’application demande une fois si tu veux un petit aperçu de ce que tu peux faire (voir « Un petit aperçu »).",
 					"Pour la revoir, ouvre la flèche à côté de « Aide » et choisis « Revoir l’introduction ».",
 					"« Montrer comment se déplacer », dans le même menu, fait revenir les conseils pour glisser, zoomer et cliquer."
 				],
 				"simple": [
 					"Elle passe la première fois que tu viens.",
+					"Appuie sur la barre d’espace ou touche l’image pour l’arrêter. Encore une fois, et ça repart.",
+					"« Suivant » montre la partie suivante.",
 					"Pour la revoir, appuie sur la flèche à côté de « Aide », puis sur « Revoir l’introduction »."
 				]
 			}
@@ -127,12 +131,14 @@
 				"standard": [
 					"Pointe une planète ou son nom : un anneau apparaît avec « Clique pour t’y rendre ».",
 					"Clique ou touche-la. Pour arriver tout de suite, appuie sur « Passer » dans l’encadré.",
-					"Sur un petit point, clique n’importe où tout autour : la zone de clic est large."
+					"Sur un petit point, clique n’importe où tout autour : la zone de clic est large.",
+					"Le bouton maison en haut à gauche (ou Échap) est le chemin du retour vers tout le système solaire ; un clic dans le vide laisse la vue telle quelle."
 				],
 				"simple": [
 					"Passe la souris sur une planète. Un anneau apparaît.",
 					"Clique dessus. Maintenant, regarde le voyage.",
-					"Appuie sur « Y être tout de suite » si tu ne veux pas attendre."
+					"Appuie sur « Y être tout de suite » si tu ne veux pas attendre.",
+					"Appuie sur le bouton maison en haut à gauche pour revoir toutes les planètes."
 				]
 			}
 		},
@@ -234,6 +240,7 @@
 					"Vole vers un monde : sa fiche apparaît avec son nom et une phrase.",
 					"La flèche de la fiche ouvre ses infos, ses lunes et ses histoires ; elle reste ouverte pour le monde suivant.",
 					"« En savoir plus dans le dictionnaire » ouvre sa page, « Comparer avec… » le place à côté d’un autre monde.",
+					"Sous la comparaison, « Réduis le Soleil à un ballon de basket… » retrouve ce monde sur le parcours à travers le terrain de l’école.",
 					"La dernière ligne de la fiche ouverte dit d’où vient l’image du monde : une carte faite par une sonde ou, là où il n’existe pas de carte complète, une peinture d’après des photos de sondes."
 				],
 				"simple": [
@@ -364,7 +371,7 @@
 					"← / → passent à la planète naine suivante."
 				],
 				"simple": [
-					"Tape « Pluton » dans le champ en haut à gauche.",
+					"Tape « Pluton » dans le champ en haut à gauche.",
 					"Choisis Pluton et tu voles jusqu’à elle."
 				]
 			}
@@ -380,7 +387,7 @@
 			},
 			"why": {
 				"standard": "La queue pointe toujours à l’opposé du Soleil : une comète qui s’éloigne vole donc queue en avant. Il faut le voir pour le croire.",
-				"simple": "La queue pointe toujours à l’opposé du Soleil, même quand la comète s’en va !"
+				"simple": "La queue pointe toujours à l’opposé du Soleil, même quand la comète s’en va !"
 			},
 			"how": {
 				"standard": [
@@ -483,7 +490,7 @@
 			},
 			"why": {
 				"standard": "Voyager 1 envoie encore des messages depuis bien au-delà des planètes : sa fiche montre combien de temps son signal met à nous parvenir, et pourquoi le voyage a demandé tant d’assistances gravitationnelles.",
-				"simple": "Voyager 1 a quitté la Terre en 1977 et vole toujours. Un message d’elle met presque un jour à nous arriver !"
+				"simple": "Voyager 1 a quitté la Terre quand tes grands-parents étaient jeunes, et elle vole toujours. Un message d’elle met presque un jour pour nous arriver !"
 			},
 			"how": {
 				"standard": [
@@ -504,22 +511,23 @@
 				"simple": "Le livre des planètes"
 			},
 			"what": {
-				"standard": "Une page pour le Soleil et pour chaque planète, avec un grand globe qui tourne, ses cartes de surface et les chiffres clés expliqués.",
-				"simple": "Une page pour le Soleil et pour chaque planète, avec une grande image qui tourne."
+				"standard": "Une page pour le Soleil et pour chaque planète : un grand globe qui tourne avec ses cartes de surface, les chiffres clés expliqués, et ses histoires : sa composition, ses températures, ses surnoms et l’origine de son nom.",
+				"simple": "Une page pour le Soleil et pour chaque planète. Regarde ce qu’il y a dedans, s’il y fait chaud ou froid, et découvre ses surnoms."
 			},
 			"why": {
-				"standard": "C’est la façon tranquille de découvrir un monde à la fois, d’enlever ses nuages ou de voir ses montagnes et ses océans.",
-				"simple": "Découvre une planète à la fois, et regarde ses montagnes et ses nuages."
+				"standard": "C’est la façon tranquille de découvrir un monde à la fois : enlève ses nuages, regarde à l’intérieur grâce à une image en coupe, et trouve les histoires dont les enfants se souviennent, comme celle de la planète qui flotterait dans une baignoire. Chaque fait renvoie à sa source.",
+				"simple": "Découvre une planète à la fois. Regarde à l’intérieur, et trouve quelle planète flotterait dans une baignoire !"
 			},
 			"how": {
 				"standard": [
 					"Ouvre Outils en bas à droite et choisis « Dictionnaire illustré » : il s’ouvre sur le monde que tu regardes. Ou clique sur « En savoir plus dans le dictionnaire » sur la fiche d’un monde.",
-					"Choisis un monde dans la rangée de points en haut, puis Surface, Relief, Océans ou Nuages quand il en a."
+					"Choisis un monde dans la rangée de points en haut, puis « Surface », « Relief », « Océans » ou « Nuages » quand il en a.",
+					"Ouvre « Composition », « Météo » ou « Noms » à côté du globe (en dessous sur un téléphone). La section ouverte le reste quand tu choisis un autre monde : une classe peut ainsi les comparer un par un."
 				],
 				"simple": [
 					"Appuie sur Outils, puis sur « Livre des planètes ».",
 					"Choisis une planète dans la rangée de points en haut.",
-					"Essaie Relief et Nuages pour changer l’image."
+					"Appuie sur « Qu’y a-t-il dedans ? », « Chaud ou froid ? » ou « Ses noms »."
 				]
 			}
 		},
@@ -628,15 +636,15 @@
 		"skyEvents": {
 			"title": {
 				"standard": "Phénomènes du ciel : éclipses, transits et alignements",
-				"simple": "Éclipses et autres phénomènes du ciel"
+				"simple": "Les éclipses et autres spectacles du ciel"
 			},
 			"what": {
 				"standard": "Une liste d’éclipses, de transits de Vénus et de Mercure, de planètes réunies dans le ciel, de rapprochements de Mars, d’ombres de lunes et des anneaux de Saturne par la tranche, passés et à venir. En choisir un règle tout : la date, l’échelle réelle et une vue depuis l’espace, avec un passage à la vue depuis la Terre au télescope.",
-				"simple": "Choisis une éclipse ou un autre spectacle du ciel, et l’application t’y emmène : le bon jour, le bon endroit d’où regarder."
+				"simple": "Choisis une éclipse ou un autre spectacle du ciel, et l’application t’y emmène : le bon jour, le bon endroit d’où regarder."
 			},
 			"why": {
 				"standard": "Chaque phénomène est une leçon de géométrie en une image : pourquoi la Lune couvre exactement le Soleil, pourquoi il n’y a pas d’éclipse chaque mois, ce que veut vraiment dire « les planètes s’alignent ». Passer de la vue depuis l’espace à la vue depuis la Terre, c’est la leçon.",
-				"simple": "Tu vois pourquoi il y a une éclipse : depuis l’espace, et depuis la Terre, d’où les gens l’ont regardée."
+				"simple": "Tu vois pourquoi il y a une éclipse : depuis l’espace, et depuis la Terre, d’où les gens l’ont regardée."
 			},
 			"how": {
 				"standard": [
@@ -645,9 +653,9 @@
 					"Sur la carte, passe de « Depuis l’espace » à « Depuis la Terre » ; appuie sur « Quitter » pour revenir là où tu étais."
 				],
 				"simple": [
-					"Clique sur la date en bas, puis sur « Phénomènes du ciel ».",
+					"Clique sur la date en bas, puis sur « Phénomènes du ciel ».",
 					"Choisis une éclipse.",
-					"Appuie sur « Depuis la Terre » et la Lune couvre le Soleil."
+					"Appuie sur « Depuis la Terre » et la Lune couvre le Soleil."
 				]
 			}
 		},
@@ -735,7 +743,7 @@
 			},
 			"what": {
 				"standard": "L’interrupteur « Petits corps » montre la ceinture d’astéroïdes et la ceinture de Kuiper sous forme de nuages de points, ainsi que les planètes naines, sept astéroïdes nommés et cinq comètes.",
-				"simple": "Un interrupteur montre la ceinture d’astéroïdes, la ceinture de Kuiper glacée, les planètes naines et les comètes."
+				"simple": "Un interrupteur montre la ceinture d’astéroïdes, un anneau de rochers de l’espace entre Mars et Jupiter. Il montre aussi les mondes glacés au-delà de Neptune, et les comètes."
 			},
 			"why": {
 				"standard": "Les films montrent un champ de rochers serrés. La carte dit la vérité : chaque point représente environ 380 astéroïdes, et les voisins sont à environ un million de km les uns des autres, si bien que les sondes la traversent en ligne droite.",
@@ -755,7 +763,7 @@
 		},
 		"solarWalk": {
 			"title": {
-				"standard": "Le système solaire en ballon de basket",
+				"standard": "Réduis le Soleil et parcours le système solaire à pied",
 				"simple": "Le système solaire à pied"
 			},
 			"what": {
@@ -768,12 +776,14 @@
 			},
 			"how": {
 				"standard": [
-					"Ouvre Outils en bas à droite et choisis « Le système solaire à pied », ou clique sur « Parcours-le à pied » dans le panneau Échelle, à l’échelle réelle.",
+					"Ouvre Outils en bas à droite et choisis « Le système solaire à pied », ou appuie sur Échelle puis sur « Réduis le Soleil à un ballon de basket… » en bas du panneau, à toutes les échelles.",
+					"Sur la fiche d’un monde, déplie les infos : sous sa comparaison, « Réduis le Soleil à un ballon de basket et marche jusqu’à ce monde » ouvre le parcours sur ce monde.",
 					"Choisis ce qu’est le Soleil (une orange, un ballon de foot, un ballon de basket, un ballon de gym) et un repère pour comparer.",
 					"Passe en Tableau et clique sur Imprimer pour l’emporter dehors."
 				],
 				"simple": [
-					"Appuie sur Outils, puis sur « Le système solaire à pied ».",
+					"Appuie sur Outils, puis sur « Le système solaire à pied ».",
+					"Ou appuie sur Échelle, puis sur « Transforme le Soleil en ballon de basket… ».",
 					"Choisis un ballon pour le Soleil.",
 					"Lis jusqu’où il faut marcher pour chaque planète.",
 					"Imprime le tableau et fais le parcours dehors."
@@ -1166,8 +1176,8 @@
 		},
 		"back": {
 			"action": "Revenir à tout le système solaire",
-			"mouse": "Cliquer dans le vide, ou sur le bouton maison",
-			"touch": "Toucher le vide, ou le bouton maison",
+			"mouse": "Cliquer sur le bouton maison, en haut à gauche",
+			"touch": "Toucher le bouton maison, en haut à gauche",
 			"keys": "Échap"
 		},
 		"name": {

@@ -1,0 +1,479 @@
+{
+	"layers": {
+		"core": {
+			"simple": "Horký střed",
+			"standard": "Jádro"
+		},
+		"radiativeZone": {
+			"simple": "Zářící vrstva",
+			"standard": "Zářivá zóna"
+		},
+		"convectiveZone": {
+			"simple": "Bublající vrstva",
+			"standard": "Konvektivní zóna"
+		},
+		"ironCore": {
+			"simple": "Kovový střed",
+			"standard": "Železné jádro"
+		},
+		"rockyShell": {
+			"simple": "Kámen",
+			"standard": "Plášť a kůra (horniny)"
+		},
+		"innerCore": {
+			"simple": "Pevný kovový střed",
+			"standard": "Vnitřní jádro (pevné železo)"
+		},
+		"outerCore": {
+			"simple": "Roztavený kov",
+			"standard": "Vnější jádro (tekuté železo)"
+		},
+		"rockyMantle": {
+			"simple": "Kámen",
+			"standard": "Plášť (horniny)"
+		},
+		"crust": {
+			"simple": "Tenká kamenná slupka",
+			"standard": "Kůra"
+		},
+		"fuzzyCore": {
+			"simple": "Těžký střed",
+			"standard": "Rozmazané jádro"
+		},
+		"denseCore": {
+			"simple": "Střed z kovu a kamene",
+			"standard": "Jádro (kov a horniny)"
+		},
+		"metallicHydrogen": {
+			"simple": "Stlačený vodík",
+			"standard": "Tekutý kovový vodík"
+		},
+		"hydrogenLayer": {
+			"simple": "Vodík a helium",
+			"standard": "Tekutý a plynný vodík"
+		},
+		"rockyCore": {
+			"simple": "Kamenný střed",
+			"standard": "Kamenné jádro"
+		},
+		"icyMantle": {
+			"simple": "Horká ledová kaše",
+			"standard": "Ledový plášť (voda, metan, amoniak)"
+		},
+		"gasEnvelope": {
+			"simple": "Plyn",
+			"standard": "Vodík, helium a metan"
+		}
+	},
+	"gases": {
+		"hydrogen": "Vodík",
+		"helium": "Helium",
+		"oxygen": "Kyslík",
+		"sodium": "Sodík",
+		"potassium": "Draslík",
+		"carbonDioxide": "Oxid uhličitý",
+		"nitrogen": "Dusík",
+		"argon": "Argon",
+		"carbonMonoxide": "Oxid uhelnatý",
+		"methane": "Metan"
+	},
+	"worlds": {
+		"sun": {
+			"madeOf": {
+				"simple": "Slunce je obrovská koule zářícího plynu. Není na něm žádná pevná zem, na které by se dalo stát. Ve svém středu si samo vyrábí světlo a teplo.",
+				"standard": "Slunce je obrovská koule horkého plynu, skoro jen vodíku a helia. V jádru, které sahá asi do čtvrtiny cesty k povrchu, se vodík slučuje na helium a uvolňuje energii. Ta se pomalu prodírá ven zářivou zónou; v konvektivní zóně pak stoupá horký plyn jako vroucí voda v hrnci a vynáší ji až k povrchu.",
+				"advanced": "Slunce je koule horkého plazmatu. Jádro, v němž se vodík slučuje na helium, sahá asi do 25 % poloměru; zářivá zóna, sahající asi do 70 %, přenáší energii ven zářením a konvektivní zóna ji zbytek cesty k viditelnému povrchu nese stoupajícími a klesajícími proudy plynu."
+			},
+			"air": {
+				"simple": "Slunce nemá vzduch jako my: je celé z plynu. Nejvíc je v něm vodíku. Trochu je tam i helia, to je plyn, kterým se plní létající balónky.",
+				"standard": "Slunce nemá vzduch, který by se dal dýchat: je celé z plynu. Ze 100 atomů na jeho povrchu je asi 91 atomů vodíku a 9 atomů helia. Všechno ostatní, třeba kyslík, uhlík a železo, dohromady tvoří jen špetku.",
+				"advanced": "Podle počtu atomů tvoří fotosféru asi z 91,0 % vodík a z 8,9 % helium; kyslík, uhlík, neon, dusík, železo a ostatní těžší prvky dohromady tvoří zbylých 0,15 %."
+			},
+			"weather": {
+				"simple": "Slunce je nejteplejší místo v celé sluneční soustavě. I jeho povrch je mnohem žhavější než jakýkoli oheň. A jeho střed je ještě mnohem žhavější.",
+				"standard": "Povrch, který vidíme, má asi 5 500 °C. V jádru je to asi 15 milionů °C: dost na to, aby se vodík slučoval. Zvláštní je, že řídká vnější atmosféra Slunce, koróna, je mnohem teplejší než povrch pod ní: až asi 2 miliony °C.",
+				"advanced": "Fotosféra má asi 5 500 °C, jádro asi 15 milionů °C. Nad fotosférou teplota znovu stoupá, v koróně až asi na 2 miliony °C; proč je koróna o tolik teplejší než povrch pod ní, je dodnes otevřená otázka."
+			},
+			"nicknames": {
+				"yellowDwarf": {
+					"name": {
+						"simple": "Žlutá trpasličí hvězda",
+						"standard": "Žlutý trpaslík"
+					},
+					"story": {
+						"simple": "Hvězdám, jako je Slunce, říkají vědci žlutí trpaslíci. Znamená to, že jsou menší než obří hvězdy. Ale na fotkách z vesmíru vypadá Slunce bílé!",
+						"standard": "Hvězdám, jako je Slunce, říkají astronomové žlutí trpaslíci: je to obyčejná, středně velká hvězda, která svítí díky přeměně vodíku na helium. „Trpaslík“ jen znamená, že je malá ve srovnání s obřími hvězdami. A na fotkách vypadá Slunce bílé, protože vyzařuje všechny barvy, které vidíme, najednou.",
+						"advanced": "„Žlutý trpaslík“ je běžné označení třídy, do které Slunce patří, G2 V: hvězda typu G na hlavní posloupnosti, v dlouhé a stabilní fázi slučování vodíku; „trpaslík“ odlišuje hvězdy hlavní posloupnosti od obrů. Na fotografiích se Slunce jeví bílé, protože vyzařuje všechny viditelné barvy najednou."
+					}
+				}
+			},
+			"name": {
+				"simple": "Kdysi dávno říkali Římané Slunci Sol. Odtud pochází slovo solární, třeba v solárních panelech.",
+				"standard": "Latinsky, tedy v jazyce starých Římanů, se Slunce řekne Sol: odtud pochází slovo solární, třeba v solárních panelech, a anglický název sluneční soustavy, solar system. Staří Řekové měli boha Slunce jménem Hélios, jehož jméno žije dál ve slovech jako heliosféra.",
+				"advanced": "Z latinského „sol“ pochází přídavné jméno „solární“; Hélios, bůh Slunce v řecké mytologii, propůjčil jméno pojmům jako heliosféra nebo helioseismologie, obor, který zkoumá nitro Slunce podle jeho chvění."
+			},
+			"localName": {
+				"simple": "Slovo Slunce je stará zdrobnělina: kdysi znamenalo malé slunce. A čeština ho zmenšila ještě víc, a tak říkáme i slunko a sluníčko! Je příbuzné se slovem Sol, jak Slunci říkali Římané.",
+				"standard": "Slovo Slunce bylo původně zdrobnělina, tedy vlastně „malé slunce“, a je příbuzné s latinským „sol“. Čeština ho později zmenšila ještě jednou: slunko, sluníčko. A je středního rodu: to Slunce.",
+				"advanced": "Praslovanské *sъlnьce vzniklo ze *sъlnь a zdrobňující přípony -ьce, bylo to tedy původně „malé slunce“, příbuzné s latinským „sol“; čeština toto slovo středního rodu zdrobnila znovu na slunko a sluníčko."
+			},
+			"discovery": {
+				"simple": "Slunce znali lidé odjakživa. Kdysi dávno ho někteří lidé dokonce uctívali jako boha.",
+				"standard": "Slunce znal odjakživa každý a staří Řekové měli dokonce boha Slunce, Hélia. Jeho velké tajemství vyšlo najevo mnohem později: je to hvězda, stejná jako hvězdy, které vidíme v noci, jen mnohem blíž. A asi před 500 lety Mikuláš Koperník prohlásil, že planety, i Země, obíhají kolem něj.",
+				"advanced": "Známé od pravěku; roku 1543 Mikuláš Koperník zveřejnil myšlenku, že planety, Země mezi nimi, obíhají kolem Slunce, a ne kolem Země. Že je Slunce samo hvězdou třídy G2 V, obyčejnou členkou Mléčné dráhy, je dílem astronomů, kteří přišli po něm."
+			}
+		},
+		"mercury": {
+			"madeOf": {
+				"simple": "Merkur je z kamene a kovu, stejně jako Země. Jeho kovový střed je hodně velký. Vyplňuje většinu planety.",
+				"standard": "Merkur je kamenná planeta s obrovským železným jádrem: sahá asi do 85 % cesty k povrchu. Kolem něj je jen tenká skořápka z hornin, plášť a kůra dohromady, silná asi 400 km.",
+				"advanced": "Kovové jádro Merkuru má poloměr asi 2 074 km, zhruba 85 % poloměru planety, a je nejspíš zčásti roztavené. Kamenný plášť a kůra nad ním jsou dohromady silné jen asi 400 km, a Merkur je tak po Zemi druhou planetou s nejvyšší hustotou."
+			},
+			"air": {
+				"simple": "Merkur nemá skoro žádný vzduch. Je kolem něj jen maličko plynu, mnohem míň, než by bylo potřeba na dýchání.",
+				"standard": "Merkur nemá skutečnou atmosféru, jen velmi řídkou exosféru: pár atomů vyražených z povrchu, hlavně kyslíku, sodíku, vodíku, helia a draslíku. Je příliš řídká na dýchání i na to, aby udržela teplo.",
+				"advanced": "Místo atmosféry má Merkur exosféru ohraničenou povrchem, tak řídkou, že její tlak je pod asi 5 × 10⁻¹⁵ baru: v podstatě vakuum. Tvoří ji hlavně kyslík, sodík, vodík, helium a draslík; souhrnné tabulky údajů ji uvádějí jako sloupcové hustoty, ne jako podíly."
+			},
+			"weather": {
+				"simple": "Ve dne je na Merkuru větší horko než v troubě. V noci je tam větší zima než kdekoli na Zemi. Nemá totiž vzduch, který by teplo udržel.",
+				"standard": "Merkur má ze všech planet největší rozdíly teplot: ve dne až asi 430 °C, v noci až asi −180 °C. Nemá skutečnou atmosféru, která by teplo držela, a tak teplo uniká do vesmíru, jakmile Slunce zapadne.",
+				"advanced": "Ve dne teplota dosahuje asi 430 °C a v noci klesá asi na −180 °C: bez atmosféry, která by teplo uchovala a rozváděla, povrch kopíruje Slunce. Merkur je Slunci nejblíž, ale nejteplejší planetou není: tou je Venuše se svou hustou atmosférou."
+			},
+			"nicknames": {
+				"apolloHermes": {
+					"name": "Apollón a Hermés",
+					"story": {
+						"simple": "Kdysi dávno vídali Řekové Merkur ráno a večer. Mysleli si, že jsou to dvě různé hvězdy! Té ranní říkali Apollón a té večerní Hermés.",
+						"standard": "Staří Řekové vídali Merkur někdy na ranní a někdy na večerní obloze, a tak mu dali dvě jména: Apollón, když svítil jako ranní hvězda, a Hermés, když svítil jako večerní hvězda. Později pochopili, že obě jména patří témuž světu.",
+						"advanced": "Merkur je vidět vždy jen blízko Slunce, před východem nebo po západu, a tak staří Řekové jeho dvě podoby nejprve považovali za dvě tělesa: Apollóna jako ranní hvězdu a Herma jako večerní, dokud nepoznali, že jde o jedno. Hermés, rychlý posel, je řeckým protějškem římského Merkura."
+					}
+				}
+			},
+			"name": {
+				"simple": "Merkur se jmenuje po římském bohu. Byl to posel bohů a byl moc rychlý. A planeta je taky rychlá!",
+				"standard": "Merkur je pojmenovaný po nejrychlejším z římských bohů, jejich poslovi. To jméno sedí: Merkur je nejrychlejší planeta a oběhne Slunce za pouhých 88 dní.",
+				"advanced": "Římané ho pojmenovali po Merkurovi (latinsky Mercurius), rychlém poslu bohů, řeckém Hermovi: příhodné jméno pro planetu s nejkratším rokem, 88 dní, a nejvyšší střední oběžnou rychlostí, asi 47 km/s."
+			},
+			"localName": {
+				"simple": "Kdysi dávno se Merkuru česky říkalo Dobropán. Dobro tehdy neznamenalo jen něco dobrého, ale i majetek. Dobropán byl pán bohatství, protože Merkur byl římský bůh obchodu.",
+				"standard": "Staročesky se Merkur jmenoval Dobropán. Stará česká jména planet se připisují Klaretovi, autorovi slovníků z doby Karla IV. ve 14. století, a používala se až do začátku 20. století, kdy je nahradila mezinárodní latinská jména. „Dobro“ tehdy neznamenalo jen dobro, ale i majetek: Dobropán je pán statků, ze kterých plyne bohatství, a Merkur byl římský bůh obchodu.",
+				"advanced": "Dobropán je jedno ze staročeských jmen planet, připisovaných slovníkáři Klaretovi ze 14. století, z doby Karla IV., a užívaných až do počátku 20. století, kdy je vytlačila mezinárodní latinská jména: „dobro“ znamenalo také majetek, Dobropán je tedy pán statků, z nichž plyne bohatství, jako byl Merkur římským bohem obchodu."
+			},
+			"discovery": {
+				"simple": "Merkur lidé vidí už odedávna, i bez dalekohledu. Jenže je těžké ho najít. Ukazuje se jen nízko na obloze, brzy ráno nebo večer.",
+				"standard": "Merkur je známý od starověku: Římané viděli bez dalekohledu pět planet a Merkur byl jednou z nich. Ze všech pěti se hledá nejhůř, protože se ukazuje jen nízko na obloze, v ranním nebo večerním šeru.",
+				"advanced": "Jedna z pěti planet viditelných pouhým okem, známá od starověku; drží se na naší obloze blízko Slunce a je vidět jen v šeru, a tak si Řekové nejprve mysleli, že jeho ranní a večerní zjevení jsou dva různé objekty."
+			}
+		},
+		"venus": {
+			"madeOf": {
+				"simple": "Venuše je z kamene a kovu, stejně jako Země. A je skoro stejně velká jako Země. Má spoustu a spoustu sopek.",
+				"standard": "Venuše je stavěná podobně jako Země: železné jádro, plášť z horkých hornin a tenká kamenná kůra. Na jejím povrchu jsou údolí, vysoké hory a tisíce sopek.",
+				"advanced": "Stejně jako Země má Venuše železné jádro, plášť z horkých hornin a tenkou kůru. Drobné výkyvy její rotace, změřené radarem, ukazují na jádro o poloměru asi 3 500 km (2021); modely dávají kůru silnou v průměru asi 40 km a nejvýš 65 km. Sopky a tektonické síly smazaly většinu stop jejího raného povrchu."
+			},
+			"air": {
+				"simple": "Vzduch na Venuši je hodně hustý a těžký. Je to plyn, který nemůžeme dýchat. Její mraky jsou z kyseliny, která pálí.",
+				"standard": "Vzduch na Venuši je skoro celý z oxidu uhličitého, s trochou dusíku, a je tak hustý, že tlak u povrchu je asi 93krát větší než na Zemi, jako bychom byli víc než 900 m pod mořem. Její mraky jsou z kyseliny sírové.",
+				"advanced": "Atmosféru tvoří objemově z 96,5 % oxid uhličitý a z 3,5 % dusík, se stopami oxidu siřičitého, argonu a vodní páry; tlak u povrchu je asi 92 barů a husté mraky jsou z kyseliny sírové."
+			},
+			"weather": {
+				"simple": "Venuše je nejteplejší planeta. Je tam větší horko než v troubě, ve dne i v noci. Její hustý vzduch drží sluneční teplo jako peřina.",
+				"standard": "Venuše je nejteplejší planeta: u povrchu má asi 464 °C, dost na to, aby se roztavilo olovo, a v noci je tam stejné horko jako ve dne. Její hustý vzduch z oxidu uhličitého drží teplo, a tak je Venuše teplejší i než Merkur, který je Slunci blíž.",
+				"advanced": "Průměrná teplota povrchu je asi 464 °C a denní rozdíly jsou téměř nulové: hustá atmosféra z CO₂ teplo zadržuje (překotný skleníkový efekt) a rozvádí ho po celé planetě, i na noční stranu."
+			},
+			"nicknames": {
+				"morningStar": {
+					"name": "Ranní a večerní hvězda",
+					"story": {
+						"simple": "Venuše je na naší obloze nejjasnější planeta. Často ji uvidíš těsně před východem Slunce nebo hned po západu. Proto jí lidé říkali ranní a večerní hvězda. Jenže hvězda to není!",
+						"standard": "Po Slunci a Měsíci je Venuše nejjasnější věc na obloze. Svítí ráno před východem Slunce nebo večer po západu, a tak si lidé ve starověku mysleli, že jde o dvě tělesa, ranní a večerní hvězdu. Ve skutečnosti to vůbec není hvězda, ale planeta.",
+						"advanced": "Venuše je po Slunci a Měsíci třetím nejjasnějším objektem na obloze. Protože je vidět jen za svítání nebo za soumraku, starověcí pozorovatelé ji považovali za dva objekty, ranní a večerní hvězdu, a tato jména jí zůstala dodnes."
+					}
+				},
+				"earthsTwin": {
+					"name": "Dvojče Země",
+					"story": {
+						"simple": "Venuše je skoro stejně velká jako Země. Proto se jí říká dvojče Země. Jenže je tak horká a jedovatá, že jí někteří říkají zlé dvojče Země!",
+						"standard": "Venuše se podobá Zemi velikostí i stavbou, a proto se jí někdy říká dvojče Země. Protože je na ní takové horko a její vzduch je tak jedovatý, říká se jí také zlé dvojče Země.",
+						"advanced": "Venuše se Zemi podobá stavbou i velikostí, má asi 95 % jejího průměru a 82 % její hmotnosti, a proto se jí říká dvojče Země; drtivá a spalující atmosféra jí vynesla přezdívku zlé dvojče Země."
+					}
+				}
+			},
+			"name": {
+				"simple": "Venuše se jmenuje po římské bohyni lásky a krásy. Je to jediná planeta pojmenovaná po bohyni.",
+				"standard": "Římané pojmenovali nejjasnější planetu po Venuši, své bohyni lásky a krásy, které Řekové říkali Afrodita. Je to jediná planeta pojmenovaná po ženském božstvu.",
+				"advanced": "Pojmenována po římské bohyni lásky a krásy, řecké Afroditě: jediná planeta nesoucí jméno ženského božstva."
+			},
+			"localName": {
+				"simple": "Kdysi dávno se Venuši česky říkalo Krasopaní, tedy paní krásy. Když svítí ráno, říkáme jí jitřenka. Když svítí večer, je to večernice.",
+				"standard": "Staročesky se Venuše jmenovala Krasopaní: toto jméno v 17. století nahradilo starší Ctitel neboli Čstitel, z latinského venerari, „ctít“, a Venuše byla bohyně krásy a lásky. Dodnes jí říkáme jitřenka, když svítí před východem Slunce, a večernice, když září na večerní obloze; obě slova píšeme s malým písmenem, protože jsou to obrazná pojmenování, ne vlastní jména.",
+				"advanced": "Staročeské jméno Krasopaní, „paní krásy“ jako Venuše, bohyně krásy a lásky, nahradilo v 17. století starší Ctitel či Čstitel z latinského venerari, „ctít“; obrazná pojmenování jitřenka (Venuše před východem Slunce) a večernice (Venuše na večerní obloze) se jako nevlastní jména píší s malým písmenem."
+			},
+			"discovery": {
+				"simple": "Venuši lidé vidí už odedávna. Je tak jasná, že se snadno najde.",
+				"standard": "Venuše je známá od starověku: Římané ji snadno viděli, je jednou z pěti planet viditelných bez dalekohledu. V roce 1610 Galileo uviděl dalekohledem, že Venuše má fáze jako Měsíc, a to dokázalo, že obíhá kolem Slunce.",
+				"advanced": "Známá od starověku jako jedna z pěti planet viditelných pouhým okem; Galileova pozorování jejích fází od roku 1610 dokázala, že obíhá kolem Slunce, což byl silný důkaz pro Koperníkovu heliocentrickou soustavu."
+			}
+		},
+		"earth": {
+			"madeOf": {
+				"simple": "Země je z kamene a kovu. Uprostřed je koule z pevného kovu. Kolem ní je roztavený kov a pak tlustá vrstva horkého kamene. My žijeme na její tenké kamenné slupce.",
+				"standard": "Země má čtyři vrstvy: pevné vnitřní jádro ze železa a niklu, tekuté vnější jádro ze železa a niklu, tlustý plášť z horkých hornin a tenkou kůru, pod pevninami silnou asi 30 km a pod oceány asi 5 km. Je to planeta s největší hustotou ve sluneční soustavě.",
+				"advanced": "Vnitřní jádro Země je z pevného železa a niklu, má poloměr asi 1 221 km a teplotu až 5 400 °C; tekuté vnější jádro kolem něj je silné asi 2 300 km, horké a vazké horniny pláště asi 2 900 km. Kůra je v průměru silná asi 30 km na pevnině a 5 km pod oceány. Země je planeta s nejvyšší hustotou."
+			},
+			"air": {
+				"simple": "Vzduch na Zemi je jediný, který můžeme dýchat. Nejvíc je v něm plynu, který se jmenuje dusík. Je v něm i kyslík, bez kterého bychom nemohli žít.",
+				"standard": "Vzduch na Zemi je asi ze 78 % dusík a z 21 % kyslík, s trochou argonu a oxidu uhličitého a s vodní párou. Je to jediný vzduch, o kterém víme, že ho mohou dýchat lidé a zvířata.",
+				"advanced": "Suchý vzduch obsahuje objemově 78,08 % dusíku, 20,95 % kyslíku a 0,934 % argonu a asi 420 ppm (0,042 %) oxidu uhličitého; vodní pára přidává asi 1 %, podle místa různě."
+			},
+			"weather": {
+				"simple": "Na Zemi není ani moc horko, ani moc zima. Proto tu voda zůstává tekutá a může tu být život. V pouštích ale bývá hrozné horko a v Antarktidě hrozná, hrozná zima.",
+				"standard": "Nejvyšší teplota, jaká kdy byla na Zemi naměřena, je 56,7 °C, v Údolí smrti v Kalifornii v roce 1913; nejnižší je −89,2 °C, na stanici Vostok v Antarktidě v roce 1983. V průměru má Země asi 15 °C: tak akorát pro tekutou vodu.",
+				"advanced": "Světová meteorologická organizace uvádí 56,7 °C (Furnace Creek, Údolí smrti, 10. července 1913) a −89,2 °C (Vostok, Antarktida, 21. července 1983) jako nejvyšší a nejnižší kdy naměřenou teplotu vzduchu; celosvětový průměr je asi 15 °C."
+			},
+			"nicknames": {
+				"blueMarble": {
+					"name": "Modrá kulička",
+					"story": {
+						"simple": "Astronauti na cestě na Měsíc pořídili slavnou fotku celé Země. Vypadala na ní jako lesklá modrá kulička. Odtud má Země tuhle přezdívku.",
+						"standard": "Posádka Apolla 17 cestou k Měsíci 7. prosince 1972 vyfotografovala celou Zemi osvětlenou Sluncem. Snímek, kterému se říká Modrá kulička (anglicky The Blue Marble), se stal jednou z nejslavnějších fotografií všech dob.",
+						"advanced": "Snímek The Blue Marble pořídila 7. prosince 1972 posádka Apolla 17 na cestě k Měsíci: celý osvětlený kotouč Země s Afrikou, Arábií a antarktickým ledovým příkrovem. Patří k nejčastěji reprodukovaným obrázkům v historii."
+					}
+				},
+				"paleBlueDot": {
+					"name": "Bledě modrá tečka",
+					"story": {
+						"simple": "Vesmírná sonda Voyager 1 se ohlédla a vyfotila Zemi z hrozně, hrozně daleka. Na fotce byla Země jen malinká modrá tečka.",
+						"standard": "Sonda Voyager 1 se 14. února 1990, 6 miliard km od Slunce, otočila a vyfotografovala Zemi: světelný bod velký asi jeden pixel v paprsku slunečního světla. Astronom Carl Sagan, který s nápadem na snímek přišel, nazval Zemi bledě modrou tečkou.",
+						"advanced": "Voyager 1 pořídil 14. února 1990 asi 6 miliard km od Slunce 60 snímků svého „rodinného portrétu“ planet; na jednom z nich je Země světelný bod asi pixel velký uvnitř rozptýleného paprsku slunečního světla. Carl Sagan snímek navrhl už v roce 1981 a jméno mu dal ve své knize „Pale Blue Dot“."
+					}
+				}
+			},
+			"name": {
+				"simple": "Země je jediná planeta, která se nejmenuje po žádném bohovi. Její jméno je staré slovo pro zem, po které chodíme.",
+				"standard": "Země je jediná planeta, jejíž jméno nepochází od řeckého ani římského boha. Anglický název Earth je starý asi 1 000 let a znamená prostě „zem“, stejně jako naše Země.",
+				"advanced": "Všechny ostatní planety nesou jméno řeckého nebo římského boha; anglické Earth, staré asi 1 000 let, pochází ze staré angličtiny a germánských jazyků a znamená prostě „zem“. V mnoha jazycích je jméno planety obyčejné slovo pro pevninu a půdu, a čeština není výjimkou."
+			},
+			"localName": {
+				"simple": "Slovo země znamená spoustu věcí: půdu, zem pod nohama i celou naši planetu. Naše planeta se tedy jmenuje stejně jako zem, po které chodíme. Říkáme jí taky zeměkoule.",
+				"standard": "Země je jedno slovo s mnoha významy: planeta, souš na rozdíl od moře, stát nebo kraj („české země“), zem pod nohama i podlaha, půda a kus pozemku. Planeta je tedy pojmenovaná slovem pro zem. A zeměkoule znamená především Zemi samotnou.",
+				"advanced": "Z praslovanského *zemja, „země, půda, kraj“; Slovník spisovného jazyka českého uvádí významy planeta, souš proti moři, země jako stát („české země“), zem či podlaha, půda a pozemek, takže planeta nese jméno slova pro zem, a zeměkoule znamená v první řadě Zemi samu."
+			},
+			"discovery": {
+				"simple": "Na Zemi žijeme, takže ji lidé znali vždycky. Dlouho si ale mysleli, že Země stojí na místě uprostřed všeho. Pak ale Mikuláše Koperníka napadlo, že Země obíhá kolem Slunce, stejně jako ostatní planety.",
+				"standard": "Svůj domov jsme znali odjakživa, ale ne to, že je to planeta. Roku 1515 Mikuláš Koperník přišel s myšlenkou, že Země je planeta jako Venuše nebo Saturn a že všechny planety obíhají kolem Slunce; zveřejnil ji v roce 1543.",
+				"advanced": "Za planetu byla Země uznána, když Mikuláš Koperník kolem roku 1515 navrhl, že obíhá kolem Slunce jako Venuše nebo Saturn, a myšlenku roku 1543 zveřejnil v díle „De revolutionibus orbium coelestium“; Kepler, Galileo a v roce 1687 Newton ji pak prosadili."
+			}
+		},
+		"mars": {
+			"madeOf": {
+				"simple": "Mars je z kamene a kovu, stejně jako Země. Má kovový střed a kolem něj spoustu kamene. Na povrchu je pokrytý červeným rezavým prachem.",
+				"standard": "Mars má jádro ze železa, niklu a síry o poloměru 1 500 až 2 100 km, kamenný plášť a kůru silnou 10 až 50 km. Prach, který ho pokrývá, je rezavý: minerály železa v něm zoxidovaly.",
+				"advanced": "Mars má husté jádro ze železa, niklu a síry; přehled NASA udává poloměr 1 500–2 100 km, novější výsledky ukazují asi na 1 650–1 675 km. Nad ním leží kamenný plášť silný 1 240–1 880 km a kůra ze železa, hořčíku, hliníku, vápníku a draslíku, silná 10–50 km."
+			},
+			"air": {
+				"simple": "Vzduch na Marsu je hodně řídký. Je to hlavně plyn, který nemůžeme dýchat. Astronauti by tam potřebovali skafandry.",
+				"standard": "Vzduch na Marsu je asi z 95 % oxid uhličitý, s trochou dusíku a argonu. Je tak řídký, že udrží jen velmi málo tepla.",
+				"advanced": "Atmosféru tvoří objemově z 95,1 % oxid uhličitý, z 2,59 % dusík a z 1,94 % argon, s 0,16 % kyslíku a 0,06 % oxidu uhelnatého; průměrný tlak u povrchu je jen asi 6 milibarů."
+			},
+			"weather": {
+				"simple": "Za letního dne může být na Marsu docela příjemně. Umí tam ale být i větší zima než kdekoli na Zemi. Na nohy by ti tam bylo teplo, ale na hlavu zima!",
+				"standard": "Na Marsu může být až asi 20 °C, ale také až asi −153 °C. Řídký vzduch udrží tak málo tepla, že v poledne na rovníku může být u nohou 24 °C, ale u hlavy 0 °C.",
+				"advanced": "Teploty se pohybují od asi 20 °C do asi −153 °C. Řídká atmosféra udrží málo tepla: v poledne na rovníku může mít vzduch ve výšce chodidel 24 °C, ale ve výšce hlavy 0 °C. Průměr je asi −60 °C."
+			},
+			"nicknames": {
+				"redPlanet": {
+					"name": "Rudá planeta",
+					"story": {
+						"simple": "Marsu se říká Rudá planeta. V jeho půdě je rez, stejně jako na starém rezavém hřebíku. Proto vypadá červeně.",
+						"standard": "Marsu se často říká Rudá planeta, protože minerály železa v jeho půdě zrezivěly. Ten rezavý prach, rozfoukaný do vzduchu, barví celou planetu do červena.",
+						"advanced": "Přezdívka pochází ze zoxidovaných, rezavě zbarvených minerálů železa v marsovském regolitu; prach zvířený do atmosféry barví stejně jako povrch i oblohu."
+					}
+				}
+			},
+			"name": {
+				"simple": "Mars se jmenuje po římském bohu války. Lidem jeho červená barva připomínala krev.",
+				"standard": "Římané pojmenovali Mars po svém bohu války, protože jim jeho načervenalá barva připomínala krev. Dávno před nimi mu staří Egypťané říkali Her Desher, „ten rudý“.",
+				"advanced": "Staří Římané ho pojmenovali po svém bohu války, protože jeho načervenalá barva připomínala krev; Egypťané mu předtím říkali Her Desher, „ten rudý“."
+			},
+			"localName": {
+				"simple": "Kdysi dávno se Marsu česky říkalo Smrtonoš. To znamená ten, kdo nosí smrt. Mars byl totiž bůh války.",
+				"standard": "Staročesky se Mars jmenoval Smrtonoš, „ten, kdo nosí smrt“: u planety boha války to jméno snad ani nepotřebuje vysvětlení. Jako ostatní stará česká jména planet se připisuje Klaretovi, slovníkáři z doby Karla IV. ve 14. století, a používalo se až do začátku 20. století.",
+				"advanced": "Staročeský Smrtonoš, „nositel smrti“, jedno ze jmen planet připisovaných Klaretovi ze 14. století a užívaných do počátku 20. století, je jméno pro planetu boha války, které žádné vysvětlení nepotřebuje."
+			},
+			"discovery": {
+				"simple": "Mars lidé vidí už odedávna. Na noční obloze vypadá jako jasná červená hvězda.",
+				"standard": "Mars je známý od starověku jako jedna z pěti planet, které jsou vidět bez dalekohledu. Asi před 400 lety pomohla Johannesu Keplerovi pečlivá měření toho, kde se Mars na obloze objevuje, zjistit, že planety obíhají po elipsách, a ne po kružnicích.",
+				"advanced": "Známý od starověku; Johannes Kepler, který pracoval s přesnými pozorováními Tychona Brahe, dospěl k závěru, že dráha Marsu je elipsa, a ne kružnice, a na tomto objevu postavil své zákony pohybu planet."
+			}
+		},
+		"jupiter": {
+			"madeOf": {
+				"simple": "Jupiter je obří koule plynu. Je hlavně z vodíku a helia, stejně jako Slunce. Není na něm žádná pevná zem, na které by se dalo stát.",
+				"standard": "Jupiter je hlavně z vodíku a helia. Hlouběji tlak stlačí vodíkový plyn na kapalinu, největší oceán ve sluneční soustavě; ještě hlouběji, možná v polovině cesty ke středu, se z vodíku stane kapalina, která vede elektřinu jako kov. Jeho jádro je rozmazané: zčásti rozpuštěné, bez ostrého okraje.",
+				"advanced": "Pod mraky jsou vodík a helium stlačené na kapalinu a hlouběji na tekutý kovový vodík; sonda Juno zjistila, že magnetické pole vzniká pod úrovní asi 81 % poloměru, v proudícím kovovém vodíku. Jádro je zředěné, zčásti rozpuštěné a nemá ostrou hranici s kovovým vodíkem kolem sebe."
+			},
+			"air": {
+				"simple": "Vzduch na Jupiteru je hlavně z vodíku a helia. Jeho pruhy jsou pásy mraků.",
+				"standard": "Vzduch na Jupiteru je asi z 90 % vodík a z 10 % helium, s malým množstvím metanu a amoniaku. Jeho barevné pruhy jsou pásy mraků.",
+				"advanced": "Objemově asi 89,8 % H₂ a 10,2 % He (obojí ± 2 %), s asi 0,3 % metanu a stopami amoniaku, deuteridu vodíku, etanu a vody."
+			},
+			"weather": {
+				"simple": "V mracích je na Jupiteru větší zima než kdekoli na Zemi. Hluboko uvnitř je větší žár než na povrchu Slunce.",
+				"standard": "V mracích má Jupiter asi −110 °C. Hlouběji je stlačený plyn teplejší a teplejší a blízko středu by mohl mít asi 24 000 °C: mnohem víc než povrch Slunce.",
+				"advanced": "Na úrovni tlaku 1 bar je teplota asi 165 K (−108 °C), při 0,1 baru asi 112 K; směrem dovnitř plynule stoupá až na odhadovaných 24 000 °C blízko středu."
+			},
+			"nicknames": {
+				"kingOfPlanets": {
+					"name": "Král planet",
+					"story": {
+						"simple": "Jupiter je největší planeta. Je těžší než všechny ostatní planety dohromady. Proto se mu říká král planet.",
+						"standard": "Jupiteru se říká král planet: je největší, víc než dvakrát hmotnější než všechny ostatní planety dohromady a pojmenovaný po králi římských bohů.",
+						"advanced": "Jak se na jmenovce krále bohů sluší, je Jupiter největší planetou a víc než dvakrát hmotnější než všechny ostatní dohromady."
+					}
+				}
+			},
+			"name": {
+				"simple": "Jupiter se jmenuje po králi římských bohů. Největší planeta dostala jméno nejdůležitějšího boha.",
+				"standard": "Největší planeta má jméno po králi starořímských bohů.",
+				"advanced": "Pojmenován po Jupiterovi, králi bohů římské mytologie: největší planeta pro nejvyššího boha."
+			},
+			"localName": {
+				"simple": "Kdysi dávno se Jupiteru česky říkalo Kralomoc. To znamená moc krále. Jupiter byl totiž nejvyšší římský bůh, vládce nebe a hromu.",
+				"standard": "Staročesky se Jupiter jmenoval Kralomoc, „královská moc“. To sedí: Jupiter, vládce nebes a hromu, byl nejvyšším římským bohem. Stará česká jména planet pocházejí z doby Karla IV. a používala se až do začátku 20. století, kdy je nahradila mezinárodní latinská jména.",
+				"advanced": "Staročeské jméno Kralomoc, „královská moc“, jedno ze jmen planet připisovaných Klaretovi ze 14. století, se hodí na Jupitera, vládce nebes a hromu a nejvyššího římského boha."
+			},
+			"discovery": {
+				"simple": "Jupiter lidé vidí už odedávna. Je to jedno z nejjasnějších světel na noční obloze.",
+				"standard": "Jupiter je známý od starověku. V roce 1610 se na něj Galileo Galilei podíval dalekohledem a poprvé v dějinách uviděl měsíce, které obíhají kolem jiného světa.",
+				"advanced": "Známý od starověku; Galileův dalekohled ukázal v roce 1610 čtyři měsíce obíhající kolem Jupiteru, první důkaz, že ne všechno obíhá kolem Země."
+			}
+		},
+		"saturn": {
+			"madeOf": {
+				"simple": "Saturn je obří koule plynu, stejně jako Jupiter. Je hlavně z vodíku a helia. Na svou velikost je tak lehký, že by plaval ve vodě!",
+				"standard": "Saturn je hlavně z vodíku a helia. V jeho středu je husté jádro z kovů, jako je železo a nikl, obklopené horninami, a to všechno silně stlačují tlak a horko. Kolem něj je tekutý kovový vodík uvnitř vrstvy tekutého vodíku. Je to jediná planeta s menší hustotou než voda.",
+				"advanced": "Uprostřed je husté jádro z kovů a hornin, obalené tekutým kovovým vodíkem uvnitř vrstvy tekutého vodíku. Vlny v prstencích, vybuzené chvěním samotné planety, ukazují, že jádro je rozptýlené: směs ledu, hornin a vodíku o hmotnosti asi 17 Zemí, sahající asi do 60 % poloměru."
+			},
+			"air": {
+				"simple": "Vzduch na Saturnu je hlavně z vodíku, s trochou helia. Kolem planety foukají hodně silné větry.",
+				"standard": "Vzduch na Saturnu je asi z 96 % vodík a ze 3 % helium, s trochou metanu a amoniaku. U rovníku dosahují větry rychlosti asi 1 800 km/h.",
+				"advanced": "Objemově asi 96,3 % H₂ a 3,25 % He (obojí ± 2,4 %), s asi 0,45 % metanu a stopami amoniaku, deuteridu vodíku a etanu; rovníkové větry dosahují asi 500 m/s."
+			},
+			"weather": {
+				"simple": "V mracích je na Saturnu větší zima než kdekoli na Zemi. Výš nahoře je ještě větší zima. Hluboko uvnitř je hrozné horko.",
+				"standard": "V mracích má Saturn asi −140 °C a výš asi −190 °C. Hluboko uvnitř jsou tlak a horko tak velké, že stlačí horniny a kovy dohromady do jádra.",
+				"advanced": "Asi 134 K (−139 °C) na úrovni 1 baru a 84 K (−189 °C) při 0,1 baru. Uvnitř se s hloubkou otepluje; pro jádro žádná naměřená hodnota neexistuje."
+			},
+			"nicknames": {
+				"jewel": {
+					"name": "Klenot sluneční soustavy",
+					"story": {
+						"simple": "Saturn má krásné lesklé prstence. Jsou z ledu a kamenů. S prstenci vypadá Saturn jako klenot.",
+						"standard": "Se svými jasnými prstenci z ledu a hornin je Saturn v dalekohledu nejkrásnější planeta, a proto se mu říká klenot sluneční soustavy.",
+						"advanced": "Široká soustava jasných ledových prstenců udělala ze Saturnu „klenot naší sluneční soustavy“, chloubu každého dalekohledu."
+					}
+				}
+			},
+			"name": {
+				"simple": "Saturn se jmenuje po římském bohu zemědělství. Byl to otec Jupitera.",
+				"standard": "Kolem roku 400 př. n. l. pojmenovali řečtí astronomové tuto „bludnou hvězdu“ po Kronovi, svém bohu zemědělství; Římané ji později přejmenovali na Saturn podle svého boha zemědělství a bohatství, otce Jupitera.",
+				"advanced": "Pojmenován po římském bohu zemědělství a bohatství, otci Jupitera; kolem roku 400 př. n. l. ho řečtí astronomové pojmenovali po Kronovi a Římané pak dosadili svého boha."
+			},
+			"localName": {
+				"simple": "Kdysi dávno se Saturnu česky říkalo Hladolet. Proč, to nikdo přesně neví. Saturn byl bůh polí, úrody a času.",
+				"standard": "Staročesky se Saturn jmenoval Hladolet. Proč, není jasné: Saturn byl bohem zemědělství, sklizně a času, a tak nás možná napadne „hladové léto“, to je ale málo pravděpodobné. Stará česká jména planet se používala od doby Karla IV. až do začátku 20. století.",
+				"advanced": "Původ staročeského Hladoletu, jednoho ze jmen planet připisovaných Klaretovi ze 14. století, je nejasný: Saturn byl bohem zemědělství, sklizně a času a výklad „hladové léto“ se sice nabízí, není ale příliš pravděpodobný."
+			},
+			"discovery": {
+				"simple": "Saturn lidé vidí už odedávna. Dlouho to byla nejvzdálenější planeta, o které lidé věděli.",
+				"standard": "Saturn je známý od starověku: je to nejvzdálenější planeta, kterou uvidíš pouhým okem. V roce 1610 uviděl Galileo jeho prstence, ale myslel si, že Saturn je „trojitá planeta“; v roce 1655 objevil Christiaan Huygens prstence i největší Saturnův měsíc, Titan.",
+				"advanced": "Nejvzdálenější planeta objevená pouhým okem; Galileo viděl prstence v červenci 1610, ale považoval je za „trojitou planetu“, a Christiaan Huygens je rozpoznal roku 1655, v roce, kdy objevil Titan."
+			}
+		},
+		"uranus": {
+			"madeOf": {
+				"simple": "Uran je ledový obr. Uvnitř je hlavně horká ledová kaše. V jeho středu je kámen. Navrchu je plyn.",
+				"standard": "Uran je ledový obr: 80 % jeho hmotnosti nebo víc tvoří horká, hustá tekutina z vody, metanu a amoniaku, které vědci říkají ledy, nad malým kamenným jádrem. Navrchu leží atmosféra z vodíku, helia a metanu.",
+				"advanced": "Nejméně 80 % hmotnosti Uranu tvoří horká, hustá tekutina z „ledových“ látek (vody, metanu a amoniaku) nad malým kamenným jádrem, pod obalem z vodíku, helia a metanu."
+			},
+			"air": {
+				"simple": "Vzduch na Uranu je hlavně z vodíku a helia. Trocha plynu, kterému se říká metan, ho barví do modrozelena.",
+				"standard": "Vzduch na Uranu je asi z 83 % vodík a z 15 % helium, s asi 2 % metanu. Metan pohlcuje červené světlo, a proto má planeta modrozelenou barvu.",
+				"advanced": "Objemově asi 82,5 % H₂ a 15,2 % He (obojí ± 3,3 %) a 2,3 % CH₄; metan pohlcuje červenou část slunečního světla, a planeta proto vypadá modrozeleně."
+			},
+			"weather": {
+				"simple": "Uran má ze všech planet nejstudenější vzduch. Je tam větší zima než kdekoli na Zemi. Hluboko uvnitř je ale mnohem větší žár než v jakémkoli ohni.",
+				"standard": "V mracích má Uran asi −197 °C a jeho vzduch se ochladí až na −224 °C, nejvíc ze všech planet. U jádra se ohřeje asi na 5 000 °C.",
+				"advanced": "Asi 76 K (−197 °C) na úrovni 1 baru; minimum atmosféry, 49 K (−224,2 °C), je nejnižší ze všech planet. U jádra dosahuje asi 9 000 °F (4 982 °C)."
+			},
+			"nicknames": {
+				"sideways": {
+					"name": "Planeta ležící na boku",
+					"story": {
+						"simple": "Uran leží na boku. Kolem Slunce se valí jako míč. Možná do něj kdysi dávno narazilo něco velkého.",
+						"standard": "Uran je nakloněný asi o 98 stupňů, takže se otáčí na boku a valí se kolem Slunce jako míč. Proto má nejextrémnější roční období ve sluneční soustavě. Kdysi ho mohla převrátit srážka s tělesem velkým jako Země.",
+						"advanced": "Se sklonem osy 97,77° je Uran jedinou planetou, jejíž rovník je téměř kolmý k rovině oběhu; po čtvrtinu každého 84letého oběhu míří ke Slunci jeden pól, zatímco druhá polovina planety má 21 let trvající zimní noc. Nejpravděpodobnější příčinou je srážka s tělesem velikosti Země."
+					}
+				}
+			},
+			"name": {
+				"simple": "Uran se jmenuje po řeckém bohu nebe. Byl to dědeček Jupitera. Je to jediná planeta pojmenovaná po řeckém bohu.",
+				"standard": "Uran je pojmenovaný po řeckém bohu nebe: je to jediná planeta pojmenovaná po řeckém, a ne římském bohu. Objevitel chtěl planetu nazvat Jiřího hvězda, po svém králi Jiřím III.; astronom Johann Bode navrhl jméno Uran, podle otce Saturna, tak jako byl Saturn otcem Jupitera.",
+				"advanced": "William Herschel chtěl svůj objev pojmenovat Georgium Sidus po králi Jiřím III.; ujalo se však jméno, které navrhl Johann Bode: Uran, řecký bůh nebe a otec Saturna, tak jako byl Saturn otcem Jupitera. Je to jediná planeta, jež nenese jméno římského boha."
+			},
+			"localName": {
+				"simple": "Kdysi se Uranu česky říkalo Nebešťanka. To jméno připomíná nebe. Uran byl totiž řecký bůh nebe.",
+				"standard": "Staročesky se Uran jmenoval Nebešťanka. Spolu s Vodopánem pro Neptun je to nejmladší ze starých českých jmen planet a připomíná, že Uran, řecky Uranos, je bůh nebes a zároveň samo nebe. Stará česká jména se používala až do začátku 20. století, kdy je nahradila mezinárodní latinská.",
+				"advanced": "Nebešťanka a Vodopán (Neptun) jsou nejmladší ze staročeských jmen planet, jinak připisovaných Klaretovi ze 14. století; Nebešťanka připomíná, že Uranos je bůh nebes i nebe samo, jediný řecký bůh mezi jinak převážně římskými jmenovci planet."
+			},
+			"discovery": {
+				"simple": "Uran byl první planeta objevená dalekohledem. Našel ho William Herschel ze své zahrady. Nejdřív si myslel, že je to kometa.",
+				"standard": "Uran byl první planeta objevená dalekohledem: William Herschel ho objevil 13. března 1781 ze zahrady za svým domem v anglickém Bathu. Nejdřív si myslel, že je to kometa nebo hvězda.",
+				"advanced": "13. března 1781 zaznamenal William Herschel, který pozoroval ze své zahrady v Bathu sedmistopým dalekohledem, „mlhavou hvězdu, nebo snad kometu“: první novou planetu objevenou od starověku."
+			}
+		},
+		"neptune": {
+			"madeOf": {
+				"simple": "Neptun je ledový obr, stejně jako Uran. Uvnitř je hlavně horká ledová kaše. V jeho středu je kámen. Navrchu je plyn.",
+				"standard": "Stejně jako Uran je i Neptun ledový obr: 80 % jeho hmotnosti nebo víc tvoří horká, hustá tekutina z vody, metanu a amoniaku nad malým kamenným jádrem. Navrchu leží atmosféra z vodíku, helia a metanu. Ze všech obřích planet má největší hustotu.",
+				"advanced": "Nejméně 80 % hmotnosti Neptunu tvoří horká, hustá tekutina z vody, metanu a amoniaku; atmosféra z vodíku, helia a metanu do ní plynule přechází nad pevným jádrem o hmotnosti asi jedné Země. Ze všech obřích planet má Neptun největší hustotu."
+			},
+			"air": {
+				"simple": "Vzduch na Neptunu je hlavně z vodíku a helia. Trocha metanu ho barví do tmavě modra.",
+				"standard": "Vzduch na Neptunu je asi z 80 % vodík a z 19 % helium, s asi 1,5 % metanu. Metan pohlcuje ostatní barvy a odráží modrou, a proto je Neptun modrý.",
+				"advanced": "Objemově asi 80,0 % H₂ a 19,0 % He (obojí ± 3,2 %) a 1,5 % CH₄; metan pohlcuje ostatní barvy a odráží modrou."
+			},
+			"weather": {
+				"simple": "V mracích je na Neptunu větší zima než kdekoli na Zemi. Výš nahoře je ještě větší zima. Hluboko uvnitř je horko.",
+				"standard": "V mracích má Neptun asi −200 °C a výš asi −220 °C. Hluboko uvnitř, pod jeho vzduchem, je horká, hustá tekutina z vody a dalších ledů.",
+				"advanced": "Asi 72 K (−201 °C) na úrovni 1 baru a 55 K (−218 °C) při 0,1 baru; níž leží horký, hustý tekutý plášť. Pro jádro žádná naměřená hodnota neexistuje."
+			},
+			"nicknames": {
+				"windiest": {
+					"name": "Největrnější planeta",
+					"story": {
+						"simple": "Neptun je největrnější planeta. Jeho větry jsou mnohem rychlejší než ta nejsilnější bouře na Zemi.",
+						"standard": "Neptun je největrnější svět naší sluneční soustavy: jeho větry vanou rychlostí přes 2 000 km/h, třikrát silněji než na Jupiteru a devětkrát silněji než na Zemi.",
+						"advanced": "Největrnější svět sluneční soustavy: větry přes 2 000 km/h, třikrát silnější než na Jupiteru a devětkrát silnější než na Zemi."
+					}
+				}
+			},
+			"name": {
+				"simple": "Neptun se jmenuje po římském bohu moře. Jeho tmavě modrá barva připomíná oceán.",
+				"standard": "Neptun je pojmenovaný po římském bohu moře: příhodné jméno pro velkou modrou planetu.",
+				"advanced": "Pojmenován po římském bohu moře, příhodné jméno pro sytě modrou planetu."
+			},
+			"localName": {
+				"simple": "Kdysi se Neptunu česky říkalo Vodopán. To znamená pán vod. Neptun byl totiž vládce moří.",
+				"standard": "Staročesky se Neptun jmenoval Vodopán nebo Vodan, „pán vod“, protože Neptun vládl mořím. Spolu s Nebešťankou pro Uran je to nejmladší ze starých českých jmen planet, která se používala až do začátku 20. století.",
+				"advanced": "Vodopán či Vodan, „pán vod“, odkazuje k Neptunovi, vládci moří; spolu s Nebešťankou (Uran) patří k nejmladším staročeským jménům planet, užívaným až do počátku 20. století, kdy je nahradila mezinárodní latinská jména."
+			},
+			"discovery": {
+				"simple": "Neptun našli díky matematice! Vědci si všimli, že něco tahá za Uran. Spočítali, kde to musí být, a tam to opravdu bylo.",
+				"standard": "Neptun byl první planeta nalezená výpočtem. Urbain Le Verrier spočítal, kde musí být neznámá planeta, aby se dal vysvětlit pohyb Uranu, a 23. září 1846 ji Johann Galle našel na berlínské hvězdárně, asi jeden stupeň od předpovězeného místa. John Couch Adams provedl podobné výpočty v Anglii. Galileo ho viděl už v roce 1612, ale myslel si, že je to hvězda.",
+				"advanced": "Le Verrier předpověděl polohu a hmotnost neznámé planety z nepravidelností v pohybu Uranu; Johann Galle ji našel v Berlíně 23. září 1846, hned první noc hledání, asi jeden stupeň od předpovědi. John Couch Adams nezávisle provedl podobné, méně přesné výpočty a Galileo si ho v letech 1612 a 1613 zapsal jako stálici."
+			}
+		}
+	}
+}

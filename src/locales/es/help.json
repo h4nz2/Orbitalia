@@ -64,8 +64,8 @@
 				"simple": "La película de inicio"
 			},
 			"what": {
-				"standard": "Catorce segundos que empiezan muy cerca de la Tierra, a su tamaño real, y se alejan hasta que la Tierra es más pequeña que un píxel; después todo se dibuja más grande para que puedas verlo.",
-				"simple": "Una película corta que vuela desde la Tierra hasta todo el sistema solar."
+				"standard": "Alrededor de un minuto que empieza muy cerca de la Tierra, a su tamaño real, y se aleja hasta que la Tierra es más pequeña que un píxel; después todo se dibuja más grande para que puedas verlo. Cada texto se queda el tiempo suficiente para leerlo en voz alta.",
+				"simple": "Una película que vuela desde la Tierra hasta todo el sistema solar. Va despacio, para que puedas leer cada palabra."
 			},
 			"why": {
 				"standard": "Cuenta de qué va la aplicación antes de leer una sola palabra: el espacio es enorme y está casi vacío. Funciona sin sonido.",
@@ -74,12 +74,16 @@
 			"how": {
 				"standard": [
 					"Se reproduce una vez, en la primera visita; «Saltar la intro», arrastrar o Esc la terminan en cualquier momento.",
+					"Para quedarte en un texto, pulsa la barra espaciadora, toca la escena o pulsa el botón de pausa; otra vez, y continúa. En pausa puedes girar la vista sin terminar la introducción.",
+					"«Siguiente» (o la flecha derecha) pasa ya a la siguiente parte; en pausa, de una en una.",
 					"Después de la primera introducción, la aplicación pregunta una vez si quieres ver rápidamente lo que puedes hacer (mira «Un vistazo rápido»).",
 					"Para verla otra vez, abre la flecha junto a «Ayuda» y elige «Ver la introducción otra vez».",
 					"«Mostrar cómo moverse», en el mismo menú, vuelve a mostrar las pistas para arrastrar, acercar y hacer clic."
 				],
 				"simple": [
 					"Se ve la primera vez que entras.",
+					"Pulsa la barra espaciadora o toca la imagen para pararla. Otra vez, y sigue.",
+					"«Siguiente» muestra la parte siguiente.",
 					"Para verla otra vez, pulsa la flecha junto a «Ayuda» y luego «Ver la introducción otra vez»."
 				]
 			}
@@ -127,12 +131,14 @@
 				"standard": [
 					"Señala un planeta o su nombre: aparece un anillo con «Haz clic para volar hasta allí».",
 					"Haz clic o tócalo. Para llegar al instante, pulsa «Saltar» en el recuadro del vuelo.",
-					"Si es un punto pequeño, haz clic en cualquier sitio cerca de él: la zona de clic es generosa."
+					"Si es un punto pequeño, haz clic en cualquier sitio cerca de él: la zona de clic es generosa.",
+					"El botón de la casa, arriba a la izquierda (o Esc), es el camino de vuelta a todo el sistema solar; un clic en el espacio vacío deja la vista como está."
 				],
 				"simple": [
 					"Pasa el ratón por encima de un planeta. Aparece un anillo.",
 					"Haz clic en él. Ahora mira el viaje.",
-					"Pulsa «Llegar ya» si no quieres esperar."
+					"Pulsa «Llegar ya» si no quieres esperar.",
+					"Pulsa el botón de la casa, arriba a la izquierda, para volver a ver todos los planetas."
 				]
 			}
 		},
@@ -234,6 +240,7 @@
 					"Vuela a un mundo: aparece su ficha con su nombre y una frase.",
 					"La flecha de la ficha abre sus datos, lunas e historias; se queda abierta para el siguiente mundo.",
 					"«Leer más en el diccionario» abre su página; «Comparar con…» lo pone junto a otro mundo.",
+					"Debajo de la comparación, «Encoge el Sol hasta un balón de baloncesto…» encuentra el mundo en el paseo por el patio del colegio.",
 					"La última línea de la ficha abierta dice de dónde viene la imagen del mundo: un mapa de una nave espacial o, donde no hay un mapa completo, una pintura hecha a partir de fotos de naves."
 				],
 				"simple": [
@@ -483,7 +490,7 @@
 			},
 			"why": {
 				"standard": "La Voyager 1 sigue enviando mensajes desde mucho más allá de los planetas: su tarjeta muestra cuánto tarda su señal en llegarnos y por qué el viaje necesitó tantas asistencias gravitatorias.",
-				"simple": "La Voyager 1 salió de la Tierra en 1977 y sigue volando. ¡Un mensaje suyo tarda casi un día en llegar!"
+				"simple": "La Voyager 1 salió de la Tierra cuando tus abuelos eran jóvenes, y sigue volando. ¡Un mensaje suyo tarda casi un día en llegar!"
 			},
 			"how": {
 				"standard": [
@@ -504,22 +511,23 @@
 				"simple": "El libro de los planetas"
 			},
 			"what": {
-				"standard": "Una página para el Sol y cada planeta, con un gran globo que gira, sus mapas de superficie y los datos clave explicados.",
-				"simple": "Una página para el Sol y cada planeta, con un gran dibujo que gira."
+				"standard": "Una página para el Sol y cada planeta: un gran globo que gira con sus mapas de superficie, los datos clave explicados y las historias de cada mundo: de qué está hecho, cuánto calor o frío hace allí, sus apodos y de dónde viene su nombre.",
+				"simple": "Una página para el Sol y cada planeta. Mira qué hay dentro, si hace calor o frío y qué apodos tiene."
 			},
 			"why": {
-				"standard": "Es la forma tranquila de leer sobre un mundo cada vez, y de quitarle las nubes o ver sus montañas y océanos.",
-				"simple": "Lee sobre un planeta cada vez y mira sus montañas y sus nubes."
+				"standard": "Es la forma tranquila de leer sobre un mundo cada vez: quitarle las nubes, mirar su interior en un dibujo en corte y encontrar las historias que los niños recuerdan, como la del planeta que flotaría en una bañera. Cada dato enlaza con su fuente.",
+				"simple": "Lee sobre un planeta cada vez. Mira qué hay dentro y descubre qué planeta flotaría en una bañera."
 			},
 			"how": {
 				"standard": [
 					"Abre Herramientas abajo a la derecha y elige «Diccionario visual»: se abre en el mundo que estás mirando. O pulsa «Leer más en el diccionario» en la ficha de un mundo.",
-					"Elige un mundo en la fila de puntos de arriba y luego Superficie, Relieve, Océanos o Nubes, si los tiene."
+					"Elige un mundo en la fila de puntos de arriba y luego «Superficie», «Relieve», «Océanos» o «Nubes», si los tiene.",
+					"Abre «Composición», «Clima» o «Nombres» junto al globo (debajo, en un móvil). La sección abierta sigue abierta cuando eliges otro mundo, así que una clase puede compararlos uno a uno."
 				],
 				"simple": [
 					"Pulsa Herramientas y luego «Libro de los planetas».",
 					"Elige un planeta en la fila de puntos de arriba.",
-					"Prueba Relieve y Nubes para cambiar el dibujo."
+					"Pulsa «¿Qué hay dentro?», «¿Hace calor o frío?» o «Sus nombres»."
 				]
 			}
 		},
@@ -735,7 +743,7 @@
 			},
 			"what": {
 				"standard": "El interruptor «Cuerpos menores» muestra el cinturón de asteroides y el cinturón de Kuiper como nubes de puntos, además de los planetas enanos, siete asteroides con nombre y cinco cometas.",
-				"simple": "Un interruptor muestra el cinturón de asteroides, el helado cinturón de Kuiper, los planetas enanos y los cometas."
+				"simple": "Un interruptor muestra el cinturón de asteroides, un anillo de rocas espaciales entre Marte y Júpiter. También muestra los mundos helados de más allá de Neptuno y los cometas."
 			},
 			"why": {
 				"standard": "Las películas muestran un campo lleno de rocas. La tarjeta cuenta la verdad: cada punto representa unos 380 asteroides y los vecinos están a un millón de km, así que las sondas lo cruzan en línea recta.",
@@ -755,7 +763,7 @@
 		},
 		"solarWalk": {
 			"title": {
-				"standard": "El sistema solar con un balón de baloncesto",
+				"standard": "Encoge el Sol y recorre a pie el sistema solar",
 				"simple": "Recorre el sistema solar a pie"
 			},
 			"what": {
@@ -768,12 +776,14 @@
 			},
 			"how": {
 				"standard": [
-					"Abre Herramientas abajo a la derecha y elige «Recorre el sistema solar a pie», o pulsa «Recórrelo a pie» en el panel Escala, a escala real.",
+					"Abre Herramientas abajo a la derecha y elige «Recorre el sistema solar a pie», o pulsa Escala y luego «Encoge el Sol hasta un balón de baloncesto…» al final del panel, en cualquier escala.",
+					"En la ficha de un mundo, despliega los datos: debajo de su comparación, «Encoge el Sol hasta un balón de baloncesto y camina hasta este mundo» abre el paseo justo en ese mundo.",
 					"Elige qué es el Sol (una naranja, un balón de fútbol, un balón de baloncesto, una pelota de gimnasia) y un lugar conocido con el que comparar.",
 					"Cambia a Tabla y pulsa Imprimir para llevártela afuera."
 				],
 				"simple": [
 					"Pulsa Herramientas y luego «Recorre el sistema solar a pie».",
+					"O pulsa Escala y luego «Convierte el Sol en un balón de baloncesto…».",
 					"Elige una pelota para el Sol.",
 					"Lee cuánto tienes que caminar hasta cada planeta.",
 					"Imprime la tabla y haz el paseo afuera."
@@ -1166,8 +1176,8 @@
 		},
 		"back": {
 			"action": "Volver a todo el sistema solar",
-			"mouse": "Hacer clic en el espacio vacío o en el botón de la casa",
-			"touch": "Tocar el espacio vacío o el botón de la casa",
+			"mouse": "Hacer clic en el botón de la casa, arriba a la izquierda",
+			"touch": "Tocar el botón de la casa, arriba a la izquierda",
 			"keys": "Esc"
 		},
 		"name": {
