@@ -1182,6 +1182,15 @@
 			"skip": "Passer l’intro",
 			"skip@simple": "Passer",
 			"progress": "Partie {beat, number} sur {count, number}",
+			"pause": "Mettre en pause",
+			"resume": "Reprendre",
+			"resume@simple": "Continuer",
+			"paused": "En pause",
+			"next": "Suivant",
+			"pauseHint": "Reste sur ce texte aussi longtemps que tu veux, pour le lire ou en parler. La barre d’espace ou un toucher sur la scène font la même chose ; encore une fois, et ça reprend.",
+			"pauseHint@simple": "Arrête-toi ici pour lire. Tu peux aussi appuyer sur la barre d’espace ou toucher l’image. Encore une fois, et ça repart.",
+			"nextHint": "Passe tout de suite à la partie suivante ; en pause, elle avance une partie à la fois. La flèche droite fait la même chose.",
+			"nextHint@simple": "Va tout de suite à la partie suivante.",
 			"earth": {
 				"title": "Voici la Terre.",
 				"detail": "Tous les gens que tu connais vivent ici.",
@@ -1204,14 +1213,14 @@
 			"system": {
 				"title": "Tout le Système solaire, à sa vraie taille",
 				"title@simple": "Tout, à sa vraie taille",
-				"detail": "Les planètes sont bien trop petites pour être vues. Les points montrent seulement où elles sont.",
-				"detail@simple": "Les planètes sont si minuscules qu’on ne les voit pas ! Les points montrent où elles sont.",
-				"detail@advanced": "La Terre est maintenant bien plus petite qu’un pixel, et l’espace est presque entièrement vide. Les points ne font que repérer les planètes."
+				"detail": "Les planètes, trop petites, sont invisibles. Les points montrent où elles sont.",
+				"detail@simple": "Les planètes sont minuscules, on ne les voit pas ! Les points montrent où elles sont.",
+				"detail@advanced": "La Terre est plus petite qu’un pixel, l’espace presque vide. Les points repèrent les planètes."
 			},
 			"scale": {
 				"title": "Alors on les dessine plus grosses et plus proches",
 				"title@simple": "Alors on les dessine plus grosses !",
-				"detail": "Tu vois maintenant chaque planète, mais pas à l’échelle. Le panneau « Échelle » te ramène aux vraies tailles.",
+				"detail": "Toutes visibles, mais pas à l’échelle. « Échelle » montre la réalité.",
 				"detail@simple": "Tu vois maintenant chaque planète. Dans le panneau « Échelle », tu retrouves leur vraie taille.",
 				"detail@advanced": "« Tout visible » : tailles agrandies, distances resserrées. « Échelle réelle », dans le panneau « Échelle », montre la réalité."
 			},

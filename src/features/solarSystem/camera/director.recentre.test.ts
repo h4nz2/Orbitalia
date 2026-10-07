@@ -132,7 +132,7 @@ class Harness {
 	/** A pan gesture that moves the pivot to `km` (display km) and lets go. */
 	panTo(km: ArrayLike<number>): void {
 		const o = this.frame.originKm
-		this.controls.dispatchEvent({ type: "controlstart" })
+		this.controls.dispatchEvent({ type: "control" })
 		void this.controls.moveTo(
 			(km[0] - o[0]) / KM_PER_UNIT,
 			(km[1] - o[1]) / KM_PER_UNIT,

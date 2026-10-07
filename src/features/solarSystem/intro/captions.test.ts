@@ -6,10 +6,17 @@ import { bodyName } from "@/i18n/bodies"
 import {
 	EARTHS_TO_THE_MOON,
 	INNER_PLANETS,
+	captionReadingMs,
 	introCaption,
 	listOfNames,
 } from "./captions"
-import { INTRO_BEATS } from "./script"
+import {
+	CAPTION_FADE_MS,
+	INTRO_BEATS,
+	SCALE_REVEAL_MS,
+	introSteps,
+	sequenceLengthMs,
+} from "./script"
 
 const captions = (
 	locale: (typeof LOCALES)[number],
@@ -73,5 +80,79 @@ describe("the opening's captions", () => {
 		expect(listOfNames(INNER_PLANETS, names, { locale: "de" })).toBe(
 			"MERCURY, VENUS, EARTH und MARS",
 		)
+	})
+})
+
+describe("the opening's reading time (#49)", () => {
+	/** Words as a reader counts them: runs of letters or digits between spaces. */
+	const words = (text: string) =>
+		text.split(/\s+/).filter((word) => /[\p{L}\p{N}]/u.test(word)).length
+	/** Read aloud at a calm pace (about 130 words a minute), never under 3.5 s. */
+	const toRead = (text: string) => Math.max(3500, 1500 + 450 * words(text))
+
+	for (const level of READING_LEVELS) {
+		for (const reducedMotion of [false, true]) {
+			const steps = introSteps({
+				earthAzimuthDeg: 0,
+				reducedMotion,
+				readMs: captionReadingMs(level),
+			})
+			const how = `${level}${reducedMotion ? ", reduced motion" : ""}`
+
+			it(`lets every caption be read aloud in every language (${how})`, () => {
+				for (const locale of LOCALES) {
+					const shown = captions(locale, level)
+					for (const [index, beat] of INTRO_BEATS.entries()) {
+						const { title, detail } = shown[beat]
+						const move = steps[index].durationMs ?? 0
+						const end = move + (steps[index].holdMs ?? 0)
+						// from the moment the caption is fully in and nothing moves: the camera
+						// has arrived, the fade is over, the scale switch has landed
+						const readFrom = reducedMotion
+							? 0
+							: Math.max(
+									move,
+									CAPTION_FADE_MS,
+									beat === "scale" ? SCALE_REVEAL_MS : 0,
+								)
+						expect(
+							end - readFrom,
+							`${locale}, ${level}, ${beat}: “${title} ${detail}”`,
+						).toBeGreaterThanOrEqual(toRead(`${title} ${detail}`))
+					}
+				}
+			})
+
+			it(`takes the reading time of that level's longest translations and no more (${how})`, () => {
+				const longest = INTRO_BEATS.map((beat) =>
+					Math.max(
+						...LOCALES.map((locale) => {
+							const { title, detail } = captions(locale, level)[beat]
+							return toRead(`${title} ${detail}`)
+						}),
+					),
+				)
+				const reading = longest.reduce((ms, read) => ms + read, 0)
+				const total = sequenceLengthMs(steps)
+				expect(total).toBeGreaterThanOrEqual(reading)
+				// the moves, one fade and the scale switch on top, nothing else
+				expect(total).toBeLessThan(reading + (reducedMotion ? 1 : 12_000))
+			})
+		}
+	}
+
+	it("keeps every caption short: 20 words at most, 24 at the advanced level", () => {
+		for (const locale of LOCALES) {
+			for (const level of READING_LEVELS) {
+				for (const [beat, { title, detail }] of Object.entries(
+					captions(locale, level),
+				)) {
+					expect(
+						words(`${title} ${detail}`),
+						`${locale}, ${level}, ${beat}: “${title} ${detail}”`,
+					).toBeLessThanOrEqual(level === "advanced" ? 24 : 20)
+				}
+			}
+		}
 	})
 })

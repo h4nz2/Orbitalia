@@ -1182,6 +1182,15 @@
 			"skip": "Skip intro",
 			"skip@simple": "Skip",
 			"progress": "Part {beat, number} of {count, number}",
+			"pause": "Pause",
+			"resume": "Continue",
+			"resume@simple": "Go on",
+			"paused": "Paused",
+			"next": "Next",
+			"pauseHint": "Stay on this caption as long as you like, to read it or talk about it. Space or a tap on the scene does the same; press again to carry on.",
+			"pauseHint@simple": "Stop here to read. You can also press Space or tap the picture. Press again to go on.",
+			"nextHint": "Go on to the next part now; while paused, it moves one part at a time. The right arrow key does the same.",
+			"nextHint@simple": "Go to the next part now.",
 			"earth": {
 				"title": "This is Earth.",
 				"detail": "Everyone you know lives here.",
@@ -1204,14 +1213,14 @@
 			"system": {
 				"title": "The whole solar system, at its real size",
 				"title@simple": "Everything, at its real size",
-				"detail": "The planets are far too small to see. The dots only show where they are.",
+				"detail": "The planets are too small to see. Dots mark where they are.",
 				"detail@simple": "The planets are too tiny to see! The dots show where they are.",
-				"detail@advanced": "Earth is now much smaller than one pixel, and space is almost entirely empty. The dots only mark the planets."
+				"detail@advanced": "Earth is now smaller than a pixel, and space is almost empty. Dots mark the planets."
 			},
 			"scale": {
 				"title": "So we draw them bigger and closer",
 				"title@simple": "So we draw them bigger!",
-				"detail": "Now you can see every planet, but not to scale. The Scale panel switches back to real sizes.",
+				"detail": "They’re all visible, but not to scale. The Scale panel shows real sizes.",
 				"detail@simple": "Now you can see every planet. The Scale panel shows their real size again.",
 				"detail@advanced": "“Everything visible”: sizes enlarged, distances squeezed. “True scale” in the Scale panel shows the real thing."
 			},

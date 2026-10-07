@@ -233,3 +233,37 @@ describe("the click that brings the window into focus (#47)", () => {
 		).toBe(false)
 	})
 })
+
+describe("when a press takes the camera (#49)", () => {
+	it("not while it stays within the allowance, once it wanders beyond", () => {
+		const tracker = createPressTracker()
+		const hand = finger(tracker)
+		hand.down(100, 100)
+		hand.move(106, 100)
+		expect(tracker.isGrab()).toBe(false)
+		hand.move(160, 100)
+		expect(tracker.isGrab()).toBe(true)
+		// back where it started: still a drag
+		hand.move(100, 100)
+		expect(tracker.isGrab()).toBe(true)
+	})
+
+	it("as soon as a second finger lands, before anything moves", () => {
+		const tracker = createPressTracker()
+		const hand = finger(tracker)
+		hand.down(100, 100, 1)
+		hand.down(200, 100, 2)
+		expect(tracker.isGrab()).toBe(true)
+	})
+
+	it("not for the click that brought the window into focus, unless it drags", () => {
+		const tracker = createPressTracker()
+		const hand = finger(tracker, "mouse")
+		hand.down(10, 10, 1, false)
+		// never a tap, but no grab either: the camera stays put
+		expect(tracker.isTap(0, "mouse")).toBe(false)
+		expect(tracker.isGrab()).toBe(false)
+		hand.move(40, 10)
+		expect(tracker.isGrab()).toBe(true)
+	})
+})

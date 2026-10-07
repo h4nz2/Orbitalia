@@ -64,8 +64,8 @@
 				"simple": "Le film du début"
 			},
 			"what": {
-				"standard": "Quatorze secondes qui commencent tout près de la Terre, à sa vraie taille, et reculent jusqu’à ce que la Terre soit plus petite qu’un pixel ; ensuite tout est dessiné plus grand pour que tu puisses le voir.",
-				"simple": "Un petit film qui part de la Terre et s’envole jusqu’au système solaire entier."
+				"standard": "Environ une minute qui commence tout près de la Terre, à sa vraie taille, et recule jusqu’à ce que la Terre soit plus petite qu’un pixel ; ensuite tout est dessiné plus grand pour que tu puisses le voir. Chaque texte reste affiché assez longtemps pour être lu à voix haute.",
+				"simple": "Un film qui part de la Terre et s’envole jusqu’au système solaire entier. Il va lentement, pour que tu puisses lire chaque mot."
 			},
 			"why": {
 				"standard": "Elle montre l’idée de l’application avant qu’on lise un mot : l’espace est immense et presque vide. Elle marche sans le son.",
@@ -74,12 +74,16 @@
 			"how": {
 				"standard": [
 					"Elle passe une fois, à la première visite ; « Passer l’intro », un glissement ou Échap l’arrêtent à tout moment.",
+					"Pour rester sur un texte, appuie sur la barre d’espace, touche la scène ou appuie sur le bouton pause ; encore une fois, et ça reprend. En pause, tu peux tourner la vue sans arrêter l’introduction.",
+					"« Suivant » (ou la flèche droite) passe tout de suite à la partie suivante ; en pause, une partie à la fois.",
 					"Après la première introduction, l’application demande une fois si tu veux un petit aperçu de ce que tu peux faire (voir « Un petit aperçu »).",
 					"Pour la revoir, ouvre la flèche à côté de « Aide » et choisis « Revoir l’introduction ».",
 					"« Montrer comment se déplacer », dans le même menu, fait revenir les conseils pour glisser, zoomer et cliquer."
 				],
 				"simple": [
 					"Elle passe la première fois que tu viens.",
+					"Appuie sur la barre d’espace ou touche l’image pour l’arrêter. Encore une fois, et ça repart.",
+					"« Suivant » montre la partie suivante.",
 					"Pour la revoir, appuie sur la flèche à côté de « Aide », puis sur « Revoir l’introduction »."
 				]
 			}
