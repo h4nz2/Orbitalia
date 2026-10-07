@@ -1145,7 +1145,8 @@ Slots: `0..n-1` are the bodies' names, `n..2n-1` their orbits' names (`orbitSlot
 - **Placement** (`placeLabels`): greedy in priority order; 8 positions round the disc (right, left, below, above,
   diagonals; last frame's side first), never on its own disc, inside the viewport, never over another label or a HUD
   `.panel` (`setKeepOut`, re-read every 0.25 s), first try clear of every dot (<= 24 px), else only of labelled ones.
-  No free position: hidden. 2 px hysteresis against flicker; 0.2 s fades (`fadeLabels`).
+  No free position: hidden. 2 px hysteresis against flicker (a shown label survives that much overlap where it is;
+  one that appears or moves to another side needs that much clear space); 0.2 s fades (`fadeLabels`).
 - **Density:** at most `MOON_LABEL_BUDGET` (10) moon names at once (featured moons first, then largest; #17); the hovered, selected or focused
   moon and moons drawn >= 8 px radius are extra. Orbit names rank after every body name and share the moon budget; a faded-out moon orbit (see Moons) gets no name.
 - **Size:** CSS, relative to the viewport (planets 13..19 px, moons 12..16 px, orbits 11..15 px), never the zoom.

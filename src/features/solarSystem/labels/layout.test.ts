@@ -270,6 +270,23 @@ describe("placeLabels", () => {
 		expect(build(LABEL_HYSTERESIS_PX + 1, false)).toBe(SIDE.right)
 	})
 
+	it("a shown label that has to move needs the clear space of a new one", () => {
+		// both at the left edge, so a label on the left is off screen; body 1's
+		// right-hand label would overlap body 0's by 1 px
+		const layout = layoutOf([
+			{ cx: 30, cy: 300 },
+			{ cx: 30, cy: 317 },
+		])
+		layout.side[0] = SIDE.right
+		layout.visible[0] = 1
+		layout.side[1] = SIDE.left
+		layout.visible[1] = 1
+		placeLabels(layout)
+		expect(layout.visible[1]).toBe(1)
+		expect(layout.side[1]).not.toBe(SIDE.right)
+		expect(overlaps(layout, 0, 1)).toBe(false)
+	})
+
 	it("holds its promises for any arrangement", () => {
 		let seed = 7
 		const random = () => {

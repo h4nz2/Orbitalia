@@ -422,16 +422,24 @@ test.describe("a first visit", () => {
 		expect(start.holds!.reduce((ms, hold) => ms + hold, 0)).toBeGreaterThan(
 			30_000,
 		)
-		for (const beat of ["moon", "inner"]) {
-			await next(page).click()
-			await onBeat(page, beat)
+		// held on its caption, so a hold that runs out on a slow machine never
+		// overtakes a click; Next steps on and the pause holds on the next beat
+		await pause(page).click()
+		await expect(paused(page)).toBeVisible()
+		const beats = ["earth", "moon", "inner", "system", "scale"]
+		let at = (await state(page)).sequence!.index
+		const stepTo = async (beat: string) => {
+			while (at < beats.indexOf(beat)) {
+				await next(page).click()
+				at += 1
+				await onBeat(page, beats[at])
+			}
 		}
+		await stepTo("inner")
 		expect(
 			(await page.evaluate(() => window.__orbitalia!.camera())).durationMs ?? 0,
 		).toBe(0)
-		await next(page).click()
-		await next(page).click()
-		await onBeat(page, "scale")
+		await stepTo("scale")
 		expect((await state(page)).preset).toBe("everythingVisible")
 		await next(page).click()
 		await expect(hints(page)).toBeVisible({ timeout: 60_000 })
