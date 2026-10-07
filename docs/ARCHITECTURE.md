@@ -870,7 +870,9 @@ preset and are their true length at true scale. The coma's drawn radius is its t
 drawn there, but never less than `COMA_NUCLEUS_RADII` (4) drawn radii of the nucleus, so it surrounds the enlarged nucleus
 in every preset (the presets come from `SCALE_PRESET_IDS` in the tests). Each tail starts with a fade-in from the
 nucleus's drawn surface and is at full strength from the coma's edge, where its length is counted from; a tail of
-length 0 folds into the nucleus. `CometTails.tsx` draws camera-facing additive ribbons (gas `#4d8dff`, dust
+length 0 folds into the nucleus. Where those two lie in true km is solved, not extrapolated (`trueReachKm`, a few secant
+steps from the 1e5 km probe's guess): Poster (#54) draws a nucleus so big that its surface lies millions of true km
+out, where the drawn scale differs from the probe's by a few per cent. `CometTails.tsx` draws camera-facing additive ribbons (gas `#4d8dff`, dust
 `#ffe2a8`; never thinner than 1.5 / 3 px; no wider at the start than the coma) whose opacity follows the activity
 (`tailBrightness`, its square root) and a coma sprite (`comaGrowth`, its fourth root, for its size and glow, so the
 head shows long before the tails, as Hale-Bopp's did beyond Jupiter; at least 3 px), for every shown body with `tail`.
