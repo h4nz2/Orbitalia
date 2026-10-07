@@ -3,15 +3,16 @@
 		"name": "Soleil",
 		"tagline": "Notre étoile",
 		"description": {
-			"simple": "Le Soleil est une étoile, exactement comme les étoiles que tu vois la nuit. Il paraît si grand et si brillant seulement parce qu’il est très proche de nous. Le Soleil est une énorme boule de gaz brûlant. Il nous donne la lumière et la chaleur. Sans lui, il n’y aurait pas de vie sur la Terre.",
+			"simple": "Le Soleil est une étoile, comme les étoiles que tu vois la nuit. Il paraît si grand et si brillant parce qu’il est très près de nous. Le Soleil est une énorme boule de gaz chaud qui brille. Il nous donne la lumière et nous garde au chaud. Sans le Soleil, rien ne pourrait vivre sur la Terre.",
 			"standard": "Le Soleil est l’étoile au centre de notre système solaire. C’est une énorme boule de gaz chaud, surtout de l’hydrogène et de l’hélium, qui contient plus de 99,8 % de toute la masse du système solaire. Au plus profond de son cœur, l’hydrogène fusionne en hélium et libère de l’énergie, qui nous parvient sous forme de lumière et de chaleur environ 8 minutes plus tard. Sa gravité maintient toutes les planètes sur leur orbite.",
 			"advanced": "Le Soleil est une étoile de la séquence principale de type G (G2V), âgée d’environ 4,6 milliards d’années et arrivée à peu près à la moitié de sa phase de combustion de l’hydrogène. Dans son cœur, à environ 15 millions de °C, la fusion nucléaire transforme chaque seconde quelque 600 millions de tonnes d’hydrogène en hélium, convertissant environ 4 millions de tonnes de masse en énergie. Cette énergie met plusieurs milliers d’années à traverser les zones radiative et convective, puis parcourt les 150 millions de km jusqu’à la Terre en 8 minutes et 20 secondes environ. Le Soleil tourne de façon différentielle : environ 25 jours à l’équateur, mais près de 35 jours près des pôles."
 		},
 		"facts": {
 			"simple": [
-				"Environ 1,3 million de Terres pourraient tenir dans le Soleil.",
+				"Le Soleil est si grand que toutes les planètes ensemble tiendraient dedans.",
 				"La lumière du Soleil met environ 8 minutes pour arriver jusqu’à nous.",
-				"Ne regarde jamais directement le Soleil – cela peut abîmer tes yeux."
+				"Le Soleil est bien plus chaud que n’importe quel feu sur la Terre.",
+				"Ne regarde jamais directement le Soleil. Cela peut abîmer tes yeux."
 			],
 			"standard": [
 				"Le Soleil est environ 109 fois plus large que la Terre.",
@@ -28,7 +29,7 @@
 		},
 		"comparisons": {
 			"simple": [
-				"Si la Terre était un ballon de foot, le Soleil serait aussi haut qu’un immeuble de huit étages."
+				"Si la Terre était une orange, le Soleil serait aussi haut qu’une maison."
 			],
 			"standard": [
 				"Si le Soleil était un ballon de plage de 1 m de diamètre, la Terre serait un petit pois de 9 mm placé à environ 107 m."
@@ -42,15 +43,15 @@
 		"name": "Mercure",
 		"tagline": "La planète la plus petite et la plus rapide",
 		"description": {
-			"simple": "Mercure est la plus petite planète et la plus proche du Soleil. C’est une boule de roche grise, couverte de cratères, un peu comme notre Lune. Elle fait le tour du Soleil plus vite que toutes les autres planètes. Le jour, il y fait assez chaud pour faire fondre du plomb. Mais la nuit, il y fait un froid glacial.",
+			"simple": "Mercure est la plus petite planète. C’est aussi la plus proche du Soleil. C’est une boule de roche grise, un peu comme notre Lune. Elle est pleine de trous ronds, laissés par des rochers de l’espace qui s’y sont écrasés. Mercure fait le tour du Soleil plus vite que toutes les autres planètes. Le jour, il y fait plus chaud que dans un four. La nuit, il y fait plus froid que dans n’importe quel congélateur.",
 			"standard": "Mercure est la plus petite planète et la plus proche du Soleil, dont elle fait le tour en 88 jours. Elle n’a presque pas d’atmosphère pour retenir la chaleur : sa surface passe d’environ 430 °C en plein jour à environ −180 °C la nuit. Sa surface grise et criblée de cratères ressemble beaucoup à celle de notre Lune. Mercure n’a pas de lune.",
 			"advanced": "Mercure orbite autour du Soleil à une distance moyenne de 0,39 ua, sur l’orbite planétaire la plus excentrique (e = 0,21). Elle tourne exactement trois fois sur elle-même pendant qu’elle fait deux fois le tour du Soleil – une résonance spin-orbite 3:2 – si bien qu’un jour solaire y dure 176 jours terrestres, soit deux années de Mercure entières. Un noyau de fer qui s’étend jusqu’à environ 85 % de son rayon lui donne la deuxième densité la plus élevée des planètes et un faible champ magnétique global. Sa mince exosphère ne retient pas la chaleur, et le fond des cratères polaires, plongé dans une ombre permanente, abrite de la glace d’eau."
 		},
 		"facts": {
 			"simple": [
-				"Une année sur Mercure ne dure que 88 jours.",
-				"Mercure n’a pas de lune.",
-				"Elle est à peine plus grande que notre Lune."
+				"Une année sur Mercure dure moins de 3 de nos mois.",
+				"Sur Mercure, entre deux levers de Soleil, il se passe plus de temps que pendant toute son année !",
+				"Mercure n’a pas de lune."
 			],
 			"standard": [
 				"Mercure est la planète la plus rapide : elle tourne autour du Soleil à environ 47 km par seconde.",
@@ -66,7 +67,7 @@
 		},
 		"comparisons": {
 			"simple": [
-				"Si la Terre était un ballon de foot, Mercure serait à peu près aussi grosse qu’une orange."
+				"Si la Terre était une orange, Mercure serait une noix. Notre Lune serait une cerise, à peine plus petite."
 			],
 			"standard": ["Environ 18 Mercure pourraient tenir dans la Terre."],
 			"advanced": [
@@ -78,14 +79,14 @@
 		"name": "Vénus",
 		"tagline": "La planète la plus chaude",
 		"description": {
-			"simple": "Vénus a presque la même taille que la Terre, mais ce serait un endroit horrible à visiter. D’épais nuages toxiques l’enveloppent et retiennent la chaleur du Soleil. C’est pour ça que Vénus est la planète la plus chaude de toutes – encore plus chaude que Mercure. Tu peux souvent la voir briller très fort dans le ciel du soir ou du matin.",
+			"simple": "Vénus est presque aussi grande que la Terre. Mais personne ne pourrait jamais y vivre. D’épais nuages la couvrent comme une lourde couverture et gardent la chaleur. Alors Vénus est la planète la plus chaude de toutes, plus chaude qu’un four. Elle est même plus chaude que Mercure, qui est plus près du Soleil. Tu peux souvent voir Vénus briller très fort dans le ciel du soir ou du matin.",
 			"standard": "Vénus est presque la jumelle de la Terre par la taille, mais son épaisse atmosphère de dioxyde de carbone provoque un effet de serre qui s’emballe. Sa surface atteint environ 465 °C – plus que Mercure, alors que Vénus est presque deux fois plus loin du Soleil – et la pression de l’air y est environ 90 fois celle de la Terre. Des nuages d’acide sulfurique cachent sa surface. Après la Lune, Vénus est l’objet naturel le plus brillant du ciel nocturne.",
 			"advanced": "Vénus possède 95 % du diamètre de la Terre et 82 % de sa masse, et pourtant elle a évolué de façon très différente. Une atmosphère dense de CO₂, avec une pression au sol d’environ 92 bar, entretient un effet de serre galopant qui maintient la surface vers 465 °C, de jour comme de nuit, des pôles à l’équateur. Vénus tourne dans le sens rétrograde et très lentement : une rotation sidérale dure 243 jours terrestres, plus que son année de 225 jours, de sorte qu’un jour solaire y dure environ 117 jours terrestres. Les cartes radar de la sonde Magellan ont révélé une surface volcanique âgée de seulement quelques centaines de millions d’années."
 		},
 		"facts": {
 			"simple": [
-				"Vénus tourne dans l’autre sens que la plupart des planètes : là-bas, le Soleil se lève à l’ouest.",
-				"Sur Vénus, un jour dure plus longtemps qu’une année !",
+				"Vénus tourne dans l’autre sens que la plupart des planètes. Là-bas, le Soleil se lève à l’ouest.",
+				"Sur Vénus, un jour dure plus longtemps que toute son année !",
 				"Vénus n’a pas de lune."
 			],
 			"standard": [
@@ -101,7 +102,7 @@
 		},
 		"comparisons": {
 			"simple": [
-				"Si la Terre était un ballon de foot, Vénus serait aussi un ballon de foot – juste un tout petit peu plus petit."
+				"Si la Terre était une orange, Vénus serait aussi une orange, juste un peu plus petite."
 			],
 			"standard": [
 				"Si la Terre était un ballon de foot de 22 cm, Vénus mesurerait 21 cm de diamètre."
@@ -115,14 +116,14 @@
 		"name": "Terre",
 		"tagline": "Notre maison",
 		"description": {
-			"simple": "La Terre est notre maison et la seule planète où nous savons qu’il y a de la vie. Elle est surtout couverte d’océans : c’est pour ça qu’elle paraît bleue vue de l’espace. La Terre tourne sur elle-même une fois par jour, ce qui nous donne le jour et la nuit. Il lui faut un an pour faire tout le tour du Soleil.",
+			"simple": "La Terre est notre maison. C’est la seule planète où nous savons qu’il y a de la vie. La mer couvre la plus grande partie de la Terre, alors elle paraît bleue vue de l’espace. La Terre tourne sur elle-même une fois par jour, et cela nous donne le jour et la nuit. Il lui faut un an pour faire tout le tour du Soleil.",
 			"standard": "La Terre est la troisième planète à partir du Soleil et le seul monde connu où il y a de la vie. L’eau liquide couvre environ 71 % de sa surface, et une atmosphère d’azote et d’oxygène nous protège et garde une température douce. L’axe de la Terre est incliné d’environ 23,4°, ce qui nous donne les saisons. Elle tourne autour du Soleil à une distance moyenne d’environ 150 millions de km, en 365,25 jours.",
 			"advanced": "La Terre est la plus grande et la plus dense des quatre planètes rocheuses (5,51 g/cm³). Son noyau externe de fer liquide produit un champ magnétique qui dévie le vent solaire, et la tectonique des plaques recycle sans cesse sa croûte. L’inclinaison de son axe de 23,4°, stabilisée par notre Lune exceptionnellement grande, crée les saisons. La Terre orbite à 1 ua (149,6 millions de km) avec une excentricité de 0,017 : sa distance au Soleil ne varie donc que d’environ 3 % – et c’est début janvier que la Terre est le plus près du Soleil."
 		},
 		"facts": {
 			"simple": [
-				"Sur 100 morceaux de la surface de la Terre, environ 71 sont de l’eau.",
-				"La Terre a une seule lune – on l’appelle tout simplement la Lune.",
+				"Sur la Terre, il y a plus de deux fois plus de mer que de terre ferme.",
+				"La Terre a une seule lune. On l’appelle tout simplement la Lune.",
 				"La Terre est la seule planète qui ne porte pas le nom d’un dieu."
 			],
 			"standard": [
@@ -138,7 +139,8 @@
 		},
 		"comparisons": {
 			"simple": [
-				"Faire le tour de l’équateur en voiture à 100 km/h, sans jamais s’arrêter, prendrait environ 17 jours."
+				"Si la Terre était une orange, le Soleil serait aussi haut qu’une maison, à environ 9 terrains de foot.",
+				"Pour faire le tour de la Terre à pied, sans jamais t’arrêter, il te faudrait environ un an."
 			],
 			"standard": [
 				"Un avion volant à 900 km/h mettrait environ 19 ans pour atteindre le Soleil."
@@ -152,15 +154,16 @@
 		"name": "Mars",
 		"tagline": "La planète rouge",
 		"description": {
-			"simple": "On appelle Mars la planète rouge, parce que son sol est couvert d’une poussière rouge, comme de la rouille. Elle est plus petite et beaucoup plus froide que la Terre. Mars a le plus haut volcan que l’on connaisse, et deux toutes petites lunes. Des robots appelés rovers roulent sur Mars et l’explorent pour nous.",
+			"simple": "On appelle Mars la planète rouge. Son sol est couvert d’une poussière rouge, comme de la rouille. Mars est plus petite que la Terre, et beaucoup plus froide. Elle a le plus haut volcan que l’on connaisse, et deux toutes petites lunes. Des robots à roues, qu’on appelle des rovers, roulent sur Mars et l’explorent pour nous.",
 			"standard": "Mars est la quatrième planète à partir du Soleil, environ deux fois moins large que la Terre. L’oxyde de fer – la rouille – contenu dans sa poussière lui donne sa couleur rouge. Mars a des saisons et des calottes polaires, mais son atmosphère est très mince et la température moyenne est d’environ −60 °C. Elle possède le plus grand volcan du système solaire, Olympus Mons, et un canyon, Valles Marineris, long d’environ 4 000 km – à peu près la distance de Lisbonne à Moscou.",
 			"advanced": "Mars a environ 53 % du diamètre de la Terre et 38 % de sa gravité de surface. Sa mince atmosphère de CO₂, dont la pression au sol est inférieure à 1 % de celle de la Terre, ne peut pas garder la planète au chaud, et la température moyenne tourne autour de −60 °C. Des vallées fluviales asséchées, d’anciens fonds de lacs et des minéraux qui ne se forment que dans l’eau montrent que de l’eau liquide a autrefois coulé à sa surface. Avec une inclinaison de l’axe de 25,2° et un jour de 24 h 37 min, Mars a des jours et des saisons très semblables à ceux de la Terre, mais chaque saison dure environ deux fois plus longtemps, car une année martienne compte 687 jours terrestres."
 		},
 		"facts": {
 			"simple": [
-				"Un jour sur Mars ne dure qu’environ 40 minutes de plus qu’un jour sur la Terre.",
-				"Mars a deux petites lunes, Phobos et Déimos.",
-				"Sur Mars, tu pèserais moins de la moitié de ton poids sur la Terre."
+				"Un jour sur Mars ne dure qu’environ 40 minutes de plus qu’un jour chez nous.",
+				"Une année sur Mars dure presque deux de nos années.",
+				"Sur Mars, tu pèserais moins de la moitié de ton poids de chez nous.",
+				"Son plus grand volcan est plus de deux fois plus haut que la plus haute montagne de la Terre."
 			],
 			"standard": [
 				"Olympus Mons mesure environ 22 km de haut – deux fois et demie la hauteur du mont Everest.",
@@ -175,7 +178,7 @@
 		},
 		"comparisons": {
 			"simple": [
-				"Si la Terre était un ballon de foot, Mars serait à peu près aussi grosse qu’un pamplemousse."
+				"Si la Terre était une orange, Mars serait une balle de ping-pong."
 			],
 			"standard": ["Plus de six Mars pourraient tenir dans la Terre."],
 			"advanced": [
@@ -187,14 +190,15 @@
 		"name": "Jupiter",
 		"tagline": "Le géant du système solaire",
 		"description": {
-			"simple": "Jupiter est la plus grosse planète – plus de 1 300 Terres pourraient tenir à l’intérieur. C’est une énorme boule de gaz, sans sol solide où se poser. Ses rayures sont des bandes de nuages, et sa Grande Tache rouge est une tempête plus grande que toute la Terre. Jupiter a vraiment beaucoup de lunes.",
+			"simple": "Jupiter est la plus grosse planète. Toutes les autres planètes ensemble tiendraient dedans. Jupiter est une énorme boule de gaz, sans sol où se poser. Ses rayures sont des bandes de nuages. Sa Grande Tache rouge est une tempête plus grande que toute la Terre. Jupiter a vraiment beaucoup de lunes.",
 			"standard": "Jupiter est la plus grande planète : elle est 11 fois plus large que la Terre et plus massive que toutes les autres planètes réunies. Cette géante gazeuse est faite surtout d’hydrogène et d’hélium, et ses bandes de nuages colorées sont étirées par des vents rapides et par sa rotation très vive : un jour sur Jupiter dure moins de 10 heures. La Grande Tache rouge est une tempête plus large que la Terre qui fait rage depuis plus de 150 ans. Ses quatre plus grandes lunes ont été découvertes par Galilée en 1610.",
 			"advanced": "Jupiter a une masse de 318 masses terrestres – environ 2,5 fois celle de toutes les autres planètes réunies. Sous ses sommets nuageux de glace d’ammoniac, l’hydrogène et l’hélium sont comprimés jusqu’à ce que, en profondeur, l’hydrogène se comporte comme un métal liquide ; les courants dans cette couche produisent le champ magnétique planétaire le plus puissant du système solaire. Jupiter tourne sur elle-même en 9 h 56 min environ, plus vite que toute autre planète, ce qui l’aplatit visiblement aux pôles. Elle rayonne plus de chaleur qu’elle n’en reçoit du Soleil, un reste de sa formation et de sa lente contraction."
 		},
 		"facts": {
 			"simple": [
-				"Un jour sur Jupiter dure moins de 10 heures – c’est le jour le plus court de toutes les planètes.",
-				"Jupiter a des anneaux fins et sombres, très difficiles à voir.",
+				"Il faudrait environ 11 Terres côte à côte pour traverser Jupiter.",
+				"Un jour sur Jupiter dure moins de 10 heures. C’est le jour le plus court de toutes les planètes.",
+				"Si tu pouvais te tenir sur ses nuages, tu pèserais plus de deux fois ton poids de chez nous.",
 				"Sa lune Ganymède est plus grande que la planète Mercure."
 			],
 			"standard": [
@@ -210,7 +214,7 @@
 		},
 		"comparisons": {
 			"simple": [
-				"Si la Terre était un ballon de foot, Jupiter serait une boule d’environ 2,5 m de haut – plus grande qu’un adulte."
+				"Si la Terre était une orange, Jupiter aurait presque la taille d’un ballon de gym."
 			],
 			"standard": ["Environ 1 321 Terres pourraient tenir dans Jupiter."],
 			"advanced": [
@@ -222,15 +226,16 @@
 		"name": "Saturne",
 		"tagline": "La planète aux anneaux",
 		"description": {
-			"simple": "Saturne est célèbre pour ses magnifiques anneaux. Ils sont faits de milliards de morceaux de glace et de roche. Certains sont petits comme des grains de sable, d’autres gros comme une maison. Saturne est une énorme boule de gaz, si légère pour sa taille qu’elle flotterait sur l’eau – si tu trouvais une baignoire assez grande !",
+			"simple": "Saturne est célèbre pour ses magnifiques anneaux. Les anneaux sont faits d’énormément de morceaux de glace et de roche. Certains sont petits comme des grains de sable. D’autres sont gros comme une maison. Saturne est une énorme boule de gaz. Elle est si légère pour sa taille qu’elle flotterait sur l’eau, si tu trouvais une baignoire assez grande !",
 			"standard": "Saturne, la sixième planète, est la deuxième plus grande planète et la moins dense : en moyenne, elle est plus légère que l’eau. Ses anneaux brillants mesurent environ 270 000 km de large, mais en général seulement une dizaine de mètres d’épaisseur, et ils sont faits d’innombrables morceaux de glace et de roche. Saturne a plus de lunes connues que toute autre planète, dont Titan, plus grande que Mercure et entourée d’une épaisse atmosphère.",
 			"advanced": "Saturne a une masse de 95 masses terrestres mais une densité moyenne de seulement 0,69 g/cm³, la plus faible de toutes les planètes. Sa rotation rapide (environ 10 h 33 min) en fait la planète la plus aplatie : son diamètre équatorial dépasse d’environ 10 % son diamètre polaire. Les anneaux principaux, surtout de la glace d’eau avec un peu de roche, s’étendent sur environ 270 000 km mais n’ont généralement qu’une dizaine de mètres d’épaisseur, et ils pourraient être bien plus jeunes que Saturne elle-même. La sonde Cassini, en orbite autour de Saturne de 2004 à 2017, a découvert un océan global sous la glace de la lune Encelade, qui jaillit en geysers à son pôle Sud."
 		},
 		"facts": {
 			"simple": [
-				"Saturne a plus de lunes que toutes les autres planètes que nous connaissons.",
-				"Une année sur Saturne dure presque 30 années terrestres.",
-				"Sa plus grande lune, Titan, a des lacs – pas d’eau, mais de méthane liquide."
+				"Saturne a plus de lunes que toutes les autres planètes.",
+				"Une année sur Saturne dure presque 30 de nos années.",
+				"Les anneaux sont très fins. Vus de côté, ils disparaissent presque.",
+				"Sa plus grande lune, Titan, a des lacs, mais pas des lacs d’eau."
 			],
 			"standard": [
 				"Saturne est environ 9,5 fois plus loin du Soleil que la Terre.",
@@ -245,7 +250,7 @@
 		},
 		"comparisons": {
 			"simple": [
-				"Si la Terre était un ballon de foot, Saturne serait une boule de plus de 2 m de haut – et ses anneaux mesureraient environ 5 m de large."
+				"Si la Terre était une orange, Saturne serait un peu plus petite qu’un ballon de gym. D’un bord à l’autre, ses anneaux seraient aussi longs qu’un adulte allongé."
 			],
 			"standard": ["Plus de 750 Terres pourraient tenir dans Saturne."],
 			"advanced": [
@@ -257,15 +262,16 @@
 		"name": "Uranus",
 		"tagline": "La planète qui roule sur le côté",
 		"description": {
-			"simple": "Uranus est une planète froide, bleu-vert, très loin du Soleil. Elle est spéciale parce qu’elle est couchée sur le côté : elle roule autour du Soleil comme une balle. Il faut 84 ans à Uranus pour faire une fois le tour du Soleil. Uranus a des anneaux fins et sombres, et beaucoup de lunes.",
+			"simple": "Uranus est une planète froide, bleu-vert, très loin du Soleil. Elle est spéciale parce qu’elle est couchée sur le côté. Alors elle roule autour du Soleil comme une balle. Il y a très longtemps, quelque chose d’énorme l’a peut-être renversée. Uranus a des anneaux fins et sombres, et beaucoup de lunes.",
 			"standard": "Uranus est la septième planète, quatre fois plus large que la Terre. C’est une géante de glace : sous une atmosphère d’hydrogène et d’hélium se trouve une épaisse couche de glaces d’eau, d’ammoniac et de méthane. Le méthane lui donne sa couleur bleu-vert. Uranus est basculée d’environ 98° : elle avance sur son orbite couchée sur le côté, et chaque pôle connaît environ 42 ans de jour suivis de 42 ans de nuit. C’est la première planète découverte avec un télescope, par William Herschel en 1781.",
 			"advanced": "L’inclinaison de l’axe d’Uranus, d’environ 98°, fait que ses anneaux et ses lunes régulières orbitent presque perpendiculairement à son plan orbital, et ses saisons sont les plus extrêmes du système solaire. Elle tourne dans le sens rétrograde en 17 h 14 min. Contrairement aux autres planètes géantes, Uranus ne dégage presque pas de chaleur interne, et son atmosphère détient la température la plus basse mesurée sur une planète, environ −224 °C. Son champ magnétique est incliné d’environ 59° par rapport à l’axe de rotation et décalé par rapport au centre de la planète. Jusqu’ici, une seule sonde l’a survolée : Voyager 2, en 1986."
 		},
 		"facts": {
 			"simple": [
-				"Uranus a 13 anneaux, mais ils sont fins et sombres.",
-				"Ses lunes portent les noms de personnages des pièces de William Shakespeare et des poèmes d’Alexander Pope.",
-				"Uranus a l’air le plus froid de toutes les planètes."
+				"Uranus met 84 de nos années pour faire une fois le tour du Soleil. C’est à peu près une longue vie humaine.",
+				"Uranus a l’air le plus froid de toutes les planètes.",
+				"La plupart de ses lunes portent les noms de personnages des pièces de William Shakespeare.",
+				"La lumière du Soleil met plus de deux heures et demie pour arriver jusqu’à Uranus."
 			],
 			"standard": [
 				"Une année sur Uranus dure 84 années terrestres.",
@@ -280,7 +286,7 @@
 		},
 		"comparisons": {
 			"simple": [
-				"Si la Terre était un ballon de foot, Uranus serait aussi grosse qu’un grand ballon de gym."
+				"Si la Terre était une orange, Uranus serait un peu plus grosse qu’un ballon de basket."
 			],
 			"standard": ["Environ 63 Terres pourraient tenir dans Uranus."],
 			"advanced": [
@@ -292,14 +298,15 @@
 		"name": "Neptune",
 		"tagline": "La planète la plus venteuse",
 		"description": {
-			"simple": "Neptune est la planète la plus éloignée du Soleil. C’est une géante de glace d’un bleu profond, très froide et très venteuse : ses vents sont les plus rapides du système solaire. Neptune est si loin que tu ne peux pas la voir sans télescope. Elle met 165 ans à faire une fois le tour du Soleil.",
+			"simple": "Neptune est la planète la plus éloignée du Soleil. Elle est d’un bleu profond, très froide et pleine de vent. Ses vents sont les plus rapides de toutes les planètes. Neptune est si loin qu’il faut un télescope pour la voir. Pour faire une fois le tour du Soleil, Neptune met plus de deux longues vies humaines.",
 			"standard": "Neptune est la huitième planète et la plus lointaine, environ 30 fois plus loin du Soleil que la Terre. Comme Uranus, c’est une géante de glace, et le méthane de son atmosphère la rend bleue. Neptune a les vents les plus rapides du système solaire, plus de 2 000 km/h. C’est la première planète trouvée grâce aux mathématiques : les astronomes ont calculé sa position d’après la façon dont elle tirait sur Uranus, puis l’ont repérée en 1846.",
 			"advanced": "Neptune orbite à environ 30 ua, là où la lumière du Soleil est à peu près 900 fois plus faible que sur la Terre. Elle possède pourtant une forte source de chaleur interne – elle rayonne environ 2,6 fois l’énergie qu’elle reçoit du Soleil – qui contribue à alimenter les vents les plus rapides mesurés sur une planète, jusqu’à environ 2 100 km/h. Sa position a été prédite en 1846 par Urbain Le Verrier à partir des perturbations de l’orbite d’Uranus, et Johann Galle l’a trouvée à moins de 1° de la prédiction. Sa plus grande lune, Triton, orbite à l’envers (mouvement rétrograde) et est probablement un objet capturé de la ceinture de Kuiper."
 		},
 		"facts": {
 			"simple": [
-				"Neptune est la seule planète que l’on ne peut jamais voir sans télescope.",
-				"Une année sur Neptune dure environ 165 années terrestres.",
+				"Tu ne peux jamais voir Neptune avec tes yeux seuls. Il te faut un télescope.",
+				"La lumière du Soleil met environ 4 heures pour arriver jusqu’à Neptune.",
+				"Ses vents soufflent plus de deux fois plus vite que ne vole un avion de ligne.",
 				"Sa plus grande lune, Triton, tourne autour d’elle à l’envers."
 			],
 			"standard": [
@@ -315,7 +322,8 @@
 		},
 		"comparisons": {
 			"simple": [
-				"Si la Terre était un ballon de foot, Neptune serait aussi grosse qu’un grand ballon de gym – presque la même taille qu’Uranus."
+				"Si la Terre était une orange, Neptune serait un peu plus grosse qu’un ballon de basket, tout comme Uranus.",
+				"Neptune est 30 fois plus loin du Soleil que la Terre."
 			],
 			"standard": ["Environ 58 Terres pourraient tenir dans Neptune."],
 			"advanced": [
@@ -325,17 +333,21 @@
 	},
 	"moon": {
 		"name": "Lune",
-		"tagline": "La compagne de la Terre",
+		"tagline": {
+			"simple": "Notre voisine dans l’espace",
+			"standard": "La compagne de la Terre"
+		},
 		"description": {
-			"simple": "La Lune est la plus proche voisine de la Terre dans l’espace. C’est une boule de roche couverte de poussière grise et de cratères. La Lune ne brille pas toute seule : elle renvoie la lumière du Soleil. Douze astronautes ont marché sur la Lune.",
+			"simple": "La Lune est notre plus proche voisine dans l’espace. C’est une boule de roche couverte de poussière grise. Elle est pleine de trous ronds, appelés cratères, creusés par des rochers de l’espace qui s’y sont écrasés. La Lune ne brille pas toute seule. Elle brille parce que la lumière du Soleil tombe sur elle. Douze astronautes ont marché sur la Lune.",
 			"standard": "La Lune est le seul satellite naturel de la Terre. Elle est environ quatre fois moins large que la Terre et se trouve en moyenne à 384 400 km. Elle met environ 27,3 jours à faire le tour de la Terre, et comme elle tourne exactement une fois sur elle-même pendant ce temps, elle nous montre toujours la même face. Sa gravité provoque l’essentiel des marées dans nos océans. Entre 1969 et 1972, douze astronautes des missions Apollo ont marché à sa surface.",
 			"advanced": "La Lune s’est probablement formée il y a environ 4,5 milliards d’années à partir des débris projetés lorsqu’un corps de la taille de Mars a percuté la jeune Terre. Elle est en rotation synchrone : sa rotation et son orbite sidérale de 27,3 jours sont synchronisées, si bien qu’un hémisphère fait toujours face à la Terre, tandis que le cycle des phases (le mois synodique) dure environ 29,5 jours. Cette même interaction de marée transfère lentement du moment cinétique de la rotation terrestre vers l’orbite lunaire : notre jour s’allonge et la Lune s’éloigne d’environ 3,8 cm chaque année."
 		},
 		"facts": {
 			"simple": [
-				"Sur la Lune, tu ne pèserais qu’environ un sixième de ton poids sur la Terre.",
-				"Les traces de pas des astronautes sont toujours là, car il n’y a pas de vent pour les effacer.",
-				"La Lune met environ un mois à faire une fois le tour de la Terre."
+				"Sur la Lune, tu pourrais sauter six fois plus haut que chez nous.",
+				"Les traces de pas des astronautes sont toujours là. Il n’y a pas de vent pour les effacer.",
+				"La Lune met environ un mois pour faire une fois le tour de la Terre.",
+				"Les astronautes ont mis trois jours pour voler jusqu’à la Lune."
 			],
 			"standard": [
 				"La lumière de la Lune ne met qu’environ 1,3 seconde pour atteindre la Terre.",
@@ -350,7 +362,7 @@
 		},
 		"comparisons": {
 			"simple": [
-				"Si la Terre était un ballon de foot, la Lune serait une balle de tennis placée à environ 6,5 m."
+				"Si la Terre était une orange, la Lune serait une cerise. Entre les deux, on pourrait aligner 30 oranges."
 			],
 			"standard": ["Environ 50 Lunes pourraient tenir dans la Terre."],
 			"advanced": [
@@ -360,17 +372,20 @@
 	},
 	"phobos": {
 		"name": "Phobos",
-		"tagline": "La lune condamnée de Mars",
+		"tagline": {
+			"simple": "La lune qui tombe",
+			"standard": "La lune condamnée de Mars"
+		},
 		"description": {
-			"simple": "Phobos est la plus grande des deux toutes petites lunes de Mars. C’est un rocher sombre et bosselé, un peu en forme de pomme de terre. Phobos file autour de Mars si vite qu’elle en fait le tour environ trois fois par jour. Très lentement, elle tombe vers Mars – et un jour, elle se brisera.",
+			"simple": "Phobos est la plus grande des deux toutes petites lunes de Mars. C’est un rocher sombre et bosselé, un peu en forme de pomme de terre. Phobos fait trois fois le tour de Mars chaque jour. Très lentement, elle tombe vers Mars. Un jour, dans très longtemps, elle se brisera.",
 			"standard": "Phobos est une lune sombre en forme de pomme de terre, d’environ 22 km seulement, qui orbite à peine à 6 000 km au-dessus de la surface de Mars. Elle fait le tour de Mars en 7 heures et 39 minutes – plus vite que la planète ne tourne sur elle-même. Vue depuis Mars, elle se lève donc à l’ouest et se couche à l’est, souvent deux fois dans la même journée. La gravité de Mars la rapproche lentement, d’environ 2 m tous les cent ans : dans 30 à 50 millions d’années environ, Phobos sera probablement déchiquetée en un anneau de débris ou s’écrasera sur Mars.",
 			"advanced": "Phobos orbite avec un demi-grand axe de 9 376 km, bien en dessous de l’orbite synchrone de Mars (environ 20 400 km). Le bourrelet de marée qu’elle soulève sur Mars prend donc du retard sur elle et lui retire de l’énergie orbitale : Phobos se rapproche en spirale d’environ 1,8 cm par an. D’ici 30 à 50 millions d’années environ, elle devrait franchir la limite de Roche, où les forces de marée l’emportent sur sa faible autogravité : un agrégat de débris peu soudé s’étalerait en anneau, tandis qu’un corps plus solide pourrait d’abord percuter Mars. Les longs sillons parallèles qui traversent sa surface pourraient être des premiers signes de ces contraintes de marée, même si certains sont peut-être plutôt des traînées de débris laissées par des impacts."
 		},
 		"facts": {
 			"simple": [
-				"Phobos a un cratère géant appelé Stickney, qui fait presque la moitié de la largeur de toute la lune.",
-				"Vue depuis Mars, Phobos se lève à l’ouest et se couche à l’est – le contraire de notre Soleil et de notre Lune.",
-				"Sur Phobos, tu serais si léger qu’un bon saut pourrait t’envoyer à des centaines de mètres de haut."
+				"Phobos a un cratère géant, un trou rond laissé par un choc. Ce trou est presque aussi large que la moitié de Phobos.",
+				"Vue depuis Mars, Phobos se lève à l’ouest et se couche à l’est. C’est le contraire de notre Soleil et de notre Lune.",
+				"Sur Phobos, tu ne pèserais presque rien. Un bon saut pourrait t’envoyer plus haut qu’un gratte-ciel."
 			],
 			"standard": [
 				"Le cratère Stickney mesure environ 9 km de large – l’impact qui l’a creusé a peut-être failli faire éclater Phobos.",
@@ -385,7 +400,8 @@
 		},
 		"comparisons": {
 			"simple": [
-				"Une voiture sur l’autoroute pourrait traverser Phobos d’un bout à l’autre en un quart d’heure environ."
+				"Une voiture sur l’autoroute pourrait traverser Phobos d’un bout à l’autre en un quart d’heure environ.",
+				"Si la Terre était une orange, Phobos serait un grain de sable."
 			],
 			"standard": [
 				"Phobos descend vers Mars d’environ la hauteur d’une porte tous les cent ans – c’est lent, mais assez pour la condamner d’ici quelques dizaines de millions d’années."
@@ -399,14 +415,14 @@
 		"name": "Déimos",
 		"tagline": "Une lune comme une étoile",
 		"description": {
-			"simple": "Déimos est la plus petite lune de Mars : elle ne mesure qu’environ 12 km. Elle est couverte d’une poussière douce et fine qui remplit ses cratères, alors elle paraît toute lisse. Vue depuis Mars, Déimos est si petite et si lointaine qu’elle ressemble à une étoile brillante. Son nom veut dire Terreur, et celui de sa lune sœur, Phobos, veut dire Peur.",
+			"simple": "Déimos est la plus petite lune de Mars. Elle est toute petite : une voiture pourrait la traverser en moins de dix minutes. Une poussière douce et fine remplit ses trous, alors elle paraît toute lisse. Vue depuis Mars, Déimos est si petite et si lointaine qu’elle ressemble à une étoile brillante. Son nom veut dire Terreur. Celui de sa lune sœur, Phobos, veut dire Peur.",
 			"standard": "Déimos est une toute petite lune bosselée d’environ 12 km qui fait le tour de Mars en 30 heures, à environ 23 500 km de distance. Une épaisse couche de poussière remplit beaucoup de ses cratères : elle paraît donc bien plus lisse que Phobos. L’astronome américain Asaph Hall l’a découverte en août 1877, quelques jours avant Phobos, et les deux lunes ont reçu les noms de Phobos et Déimos – la Peur et la Terreur – qui, dans la mythologie grecque, accompagnent au combat le dieu de la guerre Arès, appelé Mars par les Romains. Les scientifiques se demandent encore si ces deux lunes sont des astéroïdes capturés ou si elles sont nées de débris projetés par un impact géant sur Mars.",
 			"advanced": "Déimos (environ 16 × 12 × 10 km) orbite à 23 463 km, juste au-delà de l’orbite synchrone de Mars : les marées la repoussent donc très lentement vers l’extérieur, au lieu de l’attirer vers l’intérieur comme Phobos. Sa période de 30,3 heures n’est qu’un peu plus longue qu’un sol martien, si bien qu’elle dérive très lentement dans le ciel : elle se lève à l’est et reste au-dessus de l’horizon plus de deux jours. Les deux lunes sont sombres et ressemblent, par leur spectre, à des astéroïdes primitifs riches en carbone, ce qui suggère une capture ; mais leurs orbites presque circulaires, proches du plan équatorial de Mars, s’accordent mieux avec une formation dans un disque de débris après un grand impact. La mission japonaise MMX doit rapporter un échantillon de Phobos sur la Terre vers 2031 et observer Déimos au passage, ce qui pourrait trancher la question."
 		},
 		"facts": {
 			"simple": [
-				"Si tu sautais sur Déimos, il faudrait de longues minutes avant que tu retombes.",
-				"Déimos a été découverte en 1877 par un astronome nommé Asaph Hall.",
+				"Si tu sautais sur Déimos, tu flotterais pendant de longues minutes avant de retomber.",
+				"Déimos a été découverte il y a longtemps par un scientifique nommé Asaph Hall.",
 				"Déimos met un peu plus d’un jour à faire le tour de Mars."
 			],
 			"standard": [
@@ -422,7 +438,8 @@
 		},
 		"comparisons": {
 			"simple": [
-				"Faire une fois le tour de Déimos en courant, ce serait à peu près aussi long qu’un marathon."
+				"Faire une fois le tour de Déimos en courant, ce serait à peu près aussi long qu’un marathon, la plus longue course à pied.",
+				"Si la Terre était une orange, Déimos serait un grain de poussière."
 			],
 			"standard": [
 				"Vue depuis Mars, Déimos n’est guère plus qu’un point lumineux – pour un astronaute, elle ressemblerait à une étoile brillante qui traverse lentement le ciel."
@@ -436,14 +453,14 @@
 		"name": "Io",
 		"tagline": "La lune aux volcans",
 		"description": {
-			"simple": "Io est l’endroit le plus volcanique que l’on connaisse. Des centaines de volcans crachent de la lave et projettent des fontaines de gaz et de poussière très haut dans le ciel. Ses couleurs jaune, orange et rouge viennent du soufre. Jupiter et ses autres grandes lunes pressent Io sans arrêt, et tout ça chauffe son intérieur.",
+			"simple": "Io est une lune de Jupiter. Elle a plus de volcans que n’importe quel autre endroit que l’on connaisse. Ils crachent de la roche fondue toute chaude. Certains projettent des fontaines de gaz et de poussière très haut dans le ciel. Le soufre rend Io jaune, orange et rouge. Le soufre est une matière jaune qu’on trouve aussi près des volcans sur la Terre. Jupiter et ses autres grandes lunes pressent Io sans arrêt, et cela la chauffe de l’intérieur.",
 			"standard": "Io est un peu plus grande que notre Lune et c’est le monde le plus volcanique connu : on y a trouvé plus de 400 volcans actifs, dont certains projettent des panaches de gaz et de poussière à des centaines de kilomètres de haut. Cette chaleur ne vient pas du Soleil, mais des marées. L’orbite d’Io est accordée à celles des lunes Europe et Ganymède, ce qui la garde légèrement ovale : l’énorme gravité de Jupiter comprime et étire donc Io à mesure que sa distance change. Galilée a découvert Io en janvier 1610, en même temps qu’Europe, Ganymède et Callisto – les premières lunes jamais trouvées autour d’une autre planète.",
 			"advanced": "Io est prise dans une résonance de Laplace 1:2:4 : pendant que Ganymède fait un tour, Europe en fait deux et Io quatre. Ces attractions régulières maintiennent l’orbite d’Io légèrement excentrique (e ≈ 0,004), si bien que sa distance à Jupiter – et le bourrelet de marée que Jupiter y soulève – varie au cours de chaque orbite de 42,5 heures ; la friction due à cette déformation permanente libère environ 10¹⁴ W de chaleur. Cette chaleur alimente des éruptions de lave silicatée jusqu’à environ 1 600 K, plus chaude que la plupart des laves terrestres actuelles, et des panaches riches en soufre jusqu’à environ 500 km de haut, qui renouvellent la surface si vite qu’on n’y a trouvé aucun cratère d’impact. Le gaz des volcans d’Io alimente un anneau de particules chargées autour de Jupiter : le tore de plasma d’Io."
 		},
 		"facts": {
 			"simple": [
-				"Les volcans d’Io ont été repérés pour la première fois en 1979, sur des photos prises par la sonde Voyager 1.",
-				"Io n’a pas de cratères de météorites, car de la nouvelle lave les recouvre sans cesse.",
+				"On a vu les volcans d’Io pour la première fois sur des photos de la sonde spatiale Voyager 1.",
+				"Io n’a pas de vieux trous laissés par des rochers de l’espace. La nouvelle lave les remplit sans cesse.",
 				"Io fait le tour de Jupiter en moins de deux jours."
 			],
 			"standard": [
@@ -459,7 +476,7 @@
 		},
 		"comparisons": {
 			"simple": [
-				"Io est un peu plus grande que notre Lune – mais au lieu d’une tranquille poussière grise, elle est couverte de volcans en éruption."
+				"Si la Terre était une orange, Io serait une cerise, un peu plus grosse que notre Lune."
 			],
 			"standard": [
 				"Les panaches volcaniques d’Io peuvent monter à environ 500 km de haut – plus haut que l’orbite de la Station spatiale internationale autour de la Terre."
@@ -473,14 +490,14 @@
 		"name": "Europe",
 		"tagline": "Un océan sous la glace",
 		"description": {
-			"simple": "Europe est un peu plus petite que notre Lune. Elle est couverte de glace blanche, avec de longues fissures brun-rouge. Sous la glace se cache sans doute un immense océan d’eau salée, très profond. La glace est posée dessus comme un couvercle sur une casserole. Comme les êtres vivants sur la Terre ont besoin d’eau, les scientifiques pensent qu’Europe est l’un des meilleurs endroits pour chercher de la vie ailleurs que sur la Terre.",
+			"simple": "Europe est une lune de Jupiter. Elle est un peu plus petite que notre Lune. Elle est couverte de glace blanche, avec de longues fissures brun-rouge. Sous la glace se cache sans doute une immense mer d’eau salée, très profonde. La glace est posée dessus comme un couvercle sur une casserole. Sur la Terre, les êtres vivants ont besoin d’eau. Alors les scientifiques pensent qu’Europe est l’un des meilleurs endroits pour chercher de la vie.",
 			"standard": "Europe est un peu plus petite que notre Lune, mais sous sa carapace de glace – sans doute épaisse de quelques dizaines de kilomètres – s’étend un océan global d’eau liquide salée, profond peut-être d’environ 100 km. Les marées de Jupiter déforment la lune et aident cet océan à ne pas geler. Avec de l’eau, des ingrédients chimiques et une source d’énergie, Europe est l’un des endroits les plus prometteurs pour chercher de la vie hors de la Terre. La sonde Europa Clipper de la NASA a été lancée en octobre 2024 et doit atteindre Jupiter en 2030 pour découvrir si Europe pourrait abriter la vie.",
 			"advanced": "Les données du magnétomètre de la sonde Galileo ont révélé un champ magnétique induit par le champ tournant de Jupiter – que l’on explique le mieux par un océan salé, conducteur d’électricité, sous la glace. La carapace de glace, estimée à 10–30 km d’épaisseur environ, est géologiquement jeune, sans doute âgée de quelques dizaines de millions d’années seulement, avec des fissures, des crêtes et des terrains chaotiques où de l’eau ou de la glace tiède a pu atteindre la surface. L’océan reposerait directement sur un plancher rocheux, où les réactions entre l’eau et la roche pourraient fournir de l’énergie chimique, comme autour des sources hydrothermales sur la Terre. Europa Clipper effectuera des dizaines de survols rapprochés pour mesurer l’épaisseur de la glace, la salinité de l’océan et la composition de la surface."
 		},
 		"facts": {
 			"simple": [
-				"La surface glacée d’Europe est l’une des plus lisses du système solaire – elle n’a presque pas de grandes montagnes ni de cratères.",
-				"Il fait très froid à la surface d’Europe : environ −160 °C près de l’équateur.",
+				"Europe est l’un des mondes les plus lisses que l’on connaisse. Elle n’a presque pas de montagnes ni de grands trous.",
+				"Europe est bien plus froide que n’importe quel congélateur.",
 				"Europe fait le tour de Jupiter en trois jours et demi environ."
 			],
 			"standard": [
@@ -496,7 +513,8 @@
 		},
 		"comparisons": {
 			"simple": [
-				"L’océan d’Europe est peut-être si profond qu’on pourrait y empiler une dizaine de monts Everest les uns sur les autres."
+				"La mer d’Europe est peut-être aussi profonde que dix des plus hautes montagnes de la Terre, empilées les unes sur les autres.",
+				"Si la Terre était une orange, Europe serait une petite cerise."
 			],
 			"standard": [
 				"Europe est plus petite que notre Lune, et pourtant son océan caché contient peut-être environ deux fois plus d’eau que tous les océans de la Terre."
@@ -510,14 +528,14 @@
 		"name": "Ganymède",
 		"tagline": "La plus grande de toutes les lunes",
 		"description": {
-			"simple": "Ganymède est la plus grande lune de tout le système solaire. Elle est même plus grande que la planète Mercure ! Ganymède est faite de roche et de glace, et tout au fond, sous sa surface, se cache sans doute un océan. C’est la seule lune que l’on connaisse qui fabrique son propre magnétisme, tout comme la Terre.",
+			"simple": "Ganymède est une lune de Jupiter. C’est la plus grande de toutes les lunes. Elle est même plus grande que la planète Mercure ! Ganymède est faite de roche et de glace. Tout au fond, sous le sol, se cache sans doute une mer. Ganymède est aussi un aimant géant, comme la Terre. Aucune autre lune ne l’est.",
 			"standard": "Ganymède est la plus grande lune du système solaire : avec 5 268 km de diamètre, elle est plus large que la planète Mercure, même si elle a moins de la moitié de sa masse. C’est la seule lune connue qui produit son propre champ magnétique, découvert par la sonde Galileo en 1996. Ce champ crée des aurores lumineuses, et leur balancement, observé par le télescope spatial Hubble, a révélé un océan salé caché loin sous la glace. La sonde JUICE de l’ESA, lancée en 2023, doit atteindre Jupiter en 2031 et se placer en orbite autour de Ganymède en 2034.",
 			"advanced": "Ganymède est entièrement différenciée, avec un noyau riche en fer, un manteau rocheux et d’épaisses couches de glace et d’eau ; la convection dans son noyau de fer liquide entretient probablement un champ dipolaire propre d’environ 720 nT à l’équateur. Ce champ se creuse une petite magnétosphère à l’intérieur de celle, bien plus vaste, de Jupiter. En 2015, Hubble a montré que les ovales auroraux de Ganymède oscillent moins que prévu quand le champ de Jupiter les balaie, car un océan salé conducteur, situé à environ 150 km sous la surface, induit un champ secondaire qui s’oppose à ce changement. JUICE doit devenir la première sonde en orbite autour d’une autre lune que la nôtre, en se plaçant autour de Ganymède en décembre 2034 pour cartographier son champ magnétique, son intérieur et sa carapace de glace."
 		},
 		"facts": {
 			"simple": [
-				"Ganymède a été découverte il y a plus de 400 ans, en 1610, par Galilée.",
-				"Ganymède a des lumières qui brillent près de ses pôles, appelées aurores, comme les aurores boréales sur la Terre.",
+				"Galilée a découvert Ganymède il y a très, très longtemps, avec l’un des tout premiers télescopes.",
+				"Ganymède a des lumières qui brillent dans son ciel, comme les aurores boréales sur la Terre.",
 				"Ganymède met environ une semaine à faire le tour de Jupiter."
 			],
 			"standard": [
@@ -533,6 +551,7 @@
 		},
 		"comparisons": {
 			"simple": [
+				"Si la Terre était une orange, Ganymède serait une noix, tout comme Mercure.",
 				"Ganymède est environ une fois et demie plus large que notre Lune."
 			],
 			"standard": [
@@ -545,16 +564,19 @@
 	},
 	"callisto": {
 		"name": "Callisto",
-		"tagline": "L’antique monde aux cratères",
+		"tagline": {
+			"simple": "La vieille lune pleine de cratères",
+			"standard": "L’antique monde aux cratères"
+		},
 		"description": {
-			"simple": "Callisto est la deuxième plus grande lune de Jupiter, presque aussi grande que la planète Mercure. Sa surface sombre est couverte de cratères de haut en bas. Elle n’a presque pas changé depuis environ 4 milliards d’années : c’est comme un très vieux journal intime des roches spatiales qui s’y sont écrasées. Callisto est loin des radiations dangereuses de Jupiter, alors un jour, des astronautes pourraient y construire une base.",
+			"simple": "Callisto est la deuxième plus grande lune de Jupiter. Elle est presque aussi grande que la planète Mercure. Son sol sombre est couvert de cratères, les trous ronds laissés par des rochers de l’espace qui s’y sont écrasés. Callisto n’a presque pas changé depuis bien avant les dinosaures. Elle est comme un très vieux cahier : chaque rocher tombé dessus a laissé sa marque. Elle est loin des rayons dangereux de Jupiter. Alors un jour, des astronautes pourraient y construire une base.",
 			"standard": "Callisto est la troisième plus grande lune du système solaire et presque exactement aussi large que Mercure. Sa surface est tellement couverte de cratères qu’il ne reste presque plus de place pour de nouveaux, et elle a très peu changé en 4 milliards d’années environ, car aucun volcan ni aucune plaque en mouvement n’efface les cratères. Sa plus grande cicatrice d’impact, le bassin Valhalla, a un centre clair d’environ 600 km de large, entouré d’anneaux qui s’étendent jusqu’à environ 1 800 km de son milieu. Comme Callisto orbite en dehors des ceintures de radiation les plus fortes de Jupiter, une étude de la NASA l’a proposée comme base possible pour de futurs explorateurs humains.",
 			"advanced": "La surface de Callisto est saturée de cratères – les nouveaux impacts effacent surtout les anciens – et la densité de cratères indique une surface âgée d’environ 4 milliards d’années, la plus ancienne des lunes galiléennes. Contrairement à Io, Europe et Ganymède, Callisto ne participe pas à la résonance de Laplace et ne reçoit presque aucun chauffage de marée ; son intérieur ne semble que partiellement différencié, un mélange de roche et de glace. La sonde Galileo y a pourtant détecté un champ magnétique induit, qui pourrait trahir un océan salé à quelque 150–200 km sous la surface. À environ 1,9 million de km de Jupiter, sa surface ne reçoit qu’environ 0,1 mSv de rayonnement par jour : c’est pourquoi l’étude HOPE de la NASA, en 2003, a choisi Callisto comme cible d’une possible mission habitée avec une base au sol."
 		},
 		"facts": {
 			"simple": [
-				"Galilée a découvert Callisto en janvier 1610, avec l’un des tout premiers télescopes.",
-				"Callisto n’a ni grandes montagnes ni volcans – presque seulement des cratères.",
+				"Callisto est l’une des quatre premières lunes découvertes autour d’une autre planète.",
+				"Callisto n’a ni grandes montagnes ni volcans. Elle a surtout des cratères.",
 				"Callisto met plus de deux semaines à faire le tour de Jupiter."
 			],
 			"standard": [
@@ -570,7 +592,7 @@
 		},
 		"comparisons": {
 			"simple": [
-				"Callisto est presque exactement aussi large que la planète Mercure."
+				"Si la Terre était une orange, Callisto serait une noix, presque exactement aussi grosse que Mercure."
 			],
 			"standard": [
 				"Les cratères de Callisto sont plus vieux que les plus anciens fossiles connus sur la Terre – son visage n’a presque pas changé depuis environ 4 milliards d’années."
@@ -584,15 +606,15 @@
 		"name": "Mimas",
 		"tagline": "La lune Étoile de la mort",
 		"description": {
-			"simple": "Mimas est une petite lune glacée de Saturne. Sur un côté, elle a un cratère gigantesque : elle ressemble beaucoup à l’Étoile de la mort des films Star Wars. Le choc qui a creusé ce cratère a failli briser Mimas en morceaux. Aujourd’hui, les scientifiques pensent qu’un océan se cache peut-être tout au fond, sous sa croûte de glace.",
+			"simple": "Mimas est une petite lune glacée de Saturne. Sur un côté, elle a un cratère gigantesque, un trou rond laissé par un choc. Alors elle ressemble beaucoup à l’Étoile de la mort des films Star Wars. Le choc a failli briser Mimas en morceaux. Les scientifiques pensent même qu’une mer se cache peut-être tout au fond, sous sa glace.",
 			"standard": "Mimas ne mesure qu’environ 396 km, mais son plus grand cratère, Herschel, fait 139 km de large – environ un tiers de la lune entière. Avec ses hautes parois et son pic central, Herschel donne à Mimas l’air de l’Étoile de la mort de Star Wars. Mimas fait le tour de Saturne en 22,6 heures seulement, et sa gravité aide à garder la division de Cassini – l’espace sombre entre les deux anneaux les plus brillants de Saturne – en grande partie vide de particules de glace. En 2024, des scientifiques qui ont étudié de minuscules oscillations de l’orbite de Mimas, mesurées par la sonde Cassini, ont annoncé qu’un jeune océan se cache peut-être sous sa glace.",
 			"advanced": "Mimas (diamètre moyen 396 km, densité 1,15 g/cm³) est faite surtout de glace d’eau ; c’est la plus petite des grandes lunes rondes de Saturne. Le cratère Herschel, large de 139 km, avec des parois d’environ 5 km de haut et un pic central d’environ 6 km, témoigne d’un impact qui a failli faire voler la lune en éclats. Les particules de glace au bord intérieur de la division de Cassini font exactement deux fois le tour de Saturne pendant que Mimas en fait un ; cette résonance 2:1 excite leurs orbites et aide à garder la lacune en grande partie vide. En 2024, Lainey et ses collègues ont montré que la précession de l’orbite de Mimas et sa libration s’expliquent le mieux par un océan global situé 20 à 30 km sous la surface, probablement âgé de moins de 25 millions d’années – assez jeune pour n’avoir laissé aucune trace sur la vieille surface cratérisée, même si certains chercheurs jugent encore ces indices indirects."
 		},
 		"facts": {
 			"simple": [
-				"Mimas fait une fois le tour de Saturne en moins d’un jour terrestre.",
+				"Mimas fait une fois le tour de Saturne en moins d’un de nos jours.",
 				"Mimas est faite surtout de glace, comme une boule de neige géante.",
-				"Sur Mimas, tu pourrais sauter plus de 100 fois plus haut que sur la Terre."
+				"Sur Mimas, un saut pourrait t’envoyer aussi haut qu’une grande tour."
 			],
 			"standard": [
 				"Le cratère Herschel porte le nom de William Herschel, qui a découvert Mimas en 1789.",
@@ -607,7 +629,8 @@
 		},
 		"comparisons": {
 			"simple": [
-				"Si Mimas était un ballon de foot, le cratère Herschel serait à peu près aussi large qu’un biscuit."
+				"Si Mimas était un ballon de foot, son cratère géant serait à peu près aussi large qu’un biscuit.",
+				"Si la Terre était une orange, Mimas serait une tête d’épingle."
 			],
 			"standard": [
 				"Si la Terre avait un cratère aussi grand, par rapport à sa taille, qu’Herschel l’est pour Mimas, il mesurerait environ 4 500 km de large – plus que l’Australie."
@@ -619,17 +642,20 @@
 	},
 	"enceladus": {
 		"name": "Encelade",
-		"tagline": "La lune aux geysers",
+		"tagline": {
+			"simple": "La lune aux fontaines",
+			"standard": "La lune aux geysers"
+		},
 		"description": {
-			"simple": "Encelade est une petite lune de Saturne, d’un blanc éclatant. Sous sa carapace de glace se trouve un océan d’eau salée. À son pôle Sud, de l’eau jaillit de longues fissures comme des fontaines géantes et s’envole loin dans l’espace. Il y a tellement d’embruns qu’ils forment l’un des anneaux de Saturne.",
+			"simple": "Encelade est une petite lune de Saturne, d’un blanc éclatant. Sous sa glace, il y a une mer d’eau salée. À son pôle Sud, de l’eau jaillit de longues fissures, comme des fontaines géantes. L’eau s’envole loin dans l’espace. Il y a tellement de gouttelettes qu’elles forment l’un des anneaux de Saturne.",
 			"standard": "Encelade ne mesure qu’environ 504 km, et pourtant c’est l’un des mondes les plus actifs du système solaire. De quatre longues fissures près de son pôle Sud, surnommées « rayures de tigre », des jets de vapeur d’eau et de grains de glace jaillissent dans l’espace à environ 400 m/s (1 440 km/h). L’eau vient d’un océan salé sous la glace, et une grande partie des embruns se répand le long de l’orbite de la lune pour former le large anneau E de Saturne. La sonde Cassini de la NASA a découvert ces panaches en 2005, puis les a traversés pour les « goûter ».",
 			"advanced": "Encelade cache un océan salé global sous une carapace de glace épaisse en moyenne d’environ 20–25 km, mais de quelques kilomètres seulement au pôle Sud. La chaleur qui le maintient liquide vient surtout des déformations de marée : une résonance orbitale 2:1 avec Dioné entretient la faible excentricité orbitale d’Encelade (environ 0,005), si bien que les marées de Saturne compriment la lune plus ou moins fort au cours de chaque orbite. En analysant les panaches et les grains de l’anneau E, Cassini a trouvé des sels, des nanoparticules de silice qui trahissent des réactions entre eau chaude et roche sur le plancher océanique, de l’hydrogène moléculaire, toute une gamme de molécules organiques et, comme annoncé en 2023, des phosphates. Tout cela fait de l’océan d’Encelade l’un des endroits les plus prometteurs pour chercher de la vie hors de la Terre."
 		},
 		"facts": {
 			"simple": [
-				"Encelade est l’un des objets les plus brillants du système solaire – sa glace toute fraîche renvoie presque toute la lumière du Soleil qu’elle reçoit.",
-				"Une sonde appelée Cassini a traversé les jets d’eau et les a « goûtés ».",
-				"Il fait un froid glacial à la surface : environ −200 °C."
+				"Encelade est l’une des choses les plus brillantes de l’espace. Sa glace brille comme de la neige fraîche.",
+				"Une sonde spatiale appelée Cassini a traversé les jets d’eau et les a « goûtés ».",
+				"Encelade est bien plus froide que n’importe quel congélateur."
 			],
 			"standard": [
 				"Lors de son survol le plus proche, en 2008, Cassini est passée à seulement 25 km environ au-dessus de la surface d’Encelade.",
@@ -644,7 +670,8 @@
 		},
 		"comparisons": {
 			"simple": [
-				"Les jets d’eau d’Encelade jaillissent plus vite que ne vole un avion de ligne."
+				"L’eau d’Encelade jaillit plus vite que ne vole un avion de ligne.",
+				"Si la Terre était une orange, Encelade serait un petit grain de poivre."
 			],
 			"standard": [
 				"Encelade n’est pas plus large que la distance de Paris à Bordeaux, et pourtant elle projette assez d’eau dans l’espace pour alimenter tout un anneau de Saturne."
@@ -658,7 +685,7 @@
 		"name": "Téthys",
 		"tagline": "La boule de glace balafrée",
 		"description": {
-			"simple": "Téthys est une lune de Saturne faite presque entièrement de glace. Elle a un énorme cratère appelé Odyssée et une gigantesque fissure appelée Ithaca Chasma, qui fait une bonne partie du tour de la lune. Deux toutes petites lunes suivent le même chemin que Téthys : l’une devant elle, l’autre derrière.",
+			"simple": "Téthys est une lune de Saturne. Elle est faite presque entièrement de glace. Elle a un énorme cratère, un trou rond laissé par un choc, appelé Odyssée. Une fissure géante fait une bonne partie du tour de la lune. Deux toutes petites lunes suivent le même chemin que Téthys : l’une devant elle, l’autre derrière.",
 			"standard": "Téthys mesure environ 1 062 km et est faite presque entièrement de glace d’eau – sa densité (0,98 g/cm³) est même un peu plus faible que celle de l’eau liquide. Son plus grand cratère, Odyssée, fait environ 400 km de large, plus d’un tiers du diamètre de la lune. Un immense système de canyons, Ithaca Chasma, large d’environ 100 km et long de plus de 2 000 km, s’étend sur environ les trois quarts du tour de Téthys. Deux minuscules lunes, Télesto et Calypso, partagent son orbite, l’une environ 60° devant Téthys, l’autre environ 60° derrière.",
 			"advanced": "Avec une densité de 0,98 g/cm³, Téthys est presque de la glace d’eau pure, avec une faible part de roche – la densité la plus basse des grandes lunes de Saturne. Odyssée (environ 400 km) est peu profond pour sa taille, car la glace en dessous a lentement flué et s’est relaxée au fil du temps. Ithaca Chasma, profond jusqu’à 3 km environ, s’est peut-être formé quand un océan primitif a gelé et que la glace, en se dilatant, a fissuré la croûte ; il pourrait aussi être lié à l’impact d’Odyssée. Télesto et Calypso occupent les points de Lagrange L4 et L5 de Téthys, où la gravité combinée de Saturne et de Téthys fait avancer de petits corps au même rythme que la grande lune."
 		},
@@ -666,7 +693,7 @@
 			"simple": [
 				"Téthys fait le tour de Saturne en moins de deux jours.",
 				"Téthys est l’une des lunes les plus brillantes, parce que sa glace est très propre.",
-				"Les deux petites compagnes de voyage de Téthys ne sont chacune pas plus larges qu’une grande ville."
+				"Ses deux petites compagnes de voyage ne sont chacune pas plus larges qu’une grande ville."
 			],
 			"standard": [
 				"Jean-Dominique Cassini a découvert Téthys en 1684, la même année que Dioné.",
@@ -681,7 +708,8 @@
 		},
 		"comparisons": {
 			"simple": [
-				"Téthys est si légère pour sa taille que, dans une baignoire assez grande, elle flotterait comme un glaçon."
+				"Téthys est si légère pour sa taille qu’elle flotterait comme un glaçon, dans une baignoire assez grande.",
+				"Si la Terre était une orange, Téthys serait un petit pois."
 			],
 			"standard": [
 				"Ithaca Chasma est plus de quatre fois plus long que le Grand Canyon et fait environ les trois quarts du tour de la lune."
@@ -695,15 +723,15 @@
 		"name": "Dioné",
 		"tagline": "La lune aux falaises de glace",
 		"description": {
-			"simple": "Dioné est une lune glacée de Saturne. Sur les premières images, les scientifiques ont vu de fines traînées blanches et se sont demandé ce que c’était. Plus tard, des images prises de plus près ont montré que ce sont d’immenses falaises de glace brillantes. Deux toutes petites lunes suivent le chemin de Dioné autour de Saturne : l’une devant, l’autre derrière.",
+			"simple": "Dioné est une lune glacée de Saturne. Sur les premières images, les scientifiques ont vu de fines lignes blanches et se sont demandé ce que c’était. Plus tard, des images prises de plus près ont montré que ce sont d’immenses falaises de glace brillantes. Deux toutes petites lunes suivent le chemin de Dioné autour de Saturne : l’une devant, l’autre derrière.",
 			"standard": "Dioné mesure environ 1 123 km et est faite de roche et de glace. Les images des sondes Voyager, vers 1980, montraient sur une face des traînées claires et vaporeuses ; en 2004–2005, la sonde Cassini a révélé que ce « terrain filamenteux » est en réalité un réseau de canyons bordés de falaises de glace hautes de plusieurs centaines de mètres. Deux petites lunes, Hélène et Pollux, partagent l’orbite de Dioné, l’une environ 60° devant, l’autre environ 60° derrière. Les mesures de la gravité de Dioné suggèrent qu’un océan existe peut-être encore loin sous la glace.",
 			"advanced": "Dioné (densité 1,48 g/cm³) est constituée de roche et de glace d’eau en masses à peu près égales. Les filaments clairs de son hémisphère arrière sont des fractures tectoniques (chasmata) dont les parois abruptes exposent de la glace fraîche et propre. Dioné est en résonance orbitale 1:2 avec Encelade, ce qui garde l’orbite d’Encelade légèrement excentrique et contribue ainsi à alimenter ses geysers. La modélisation des données de gravité et de forme de Cassini par Beuthe et ses collègues, en 2016, suggère une carapace de glace d’environ 100 km d’épaisseur flottant sur un océan profond de plusieurs dizaines de kilomètres – une interprétation plausible, mais pas encore confirmée par une observation directe."
 		},
 		"facts": {
 			"simple": [
 				"Dioné fait une fois le tour de Saturne en moins de trois jours.",
-				"Il fait environ −186 °C sur Dioné, si froid que la glace y est aussi dure que la roche.",
-				"Il y a un tout petit peu d’oxygène autour de Dioné, mais beaucoup trop peu pour respirer."
+				"Il fait si froid sur Dioné que la glace y est aussi dure que la roche.",
+				"Autour de Dioné, il y a un tout petit peu d’oxygène, le gaz que nous respirons. Mais il y en a beaucoup trop peu pour respirer."
 			],
 			"standard": [
 				"Jean-Dominique Cassini a découvert Dioné en 1684, quelques semaines seulement après avoir trouvé Téthys.",
@@ -718,7 +746,8 @@
 		},
 		"comparisons": {
 			"simple": [
-				"Dioné est à peu près aussi loin de Saturne que notre Lune l’est de la Terre."
+				"Dioné est à peu près aussi loin de Saturne que notre Lune l’est de la Terre.",
+				"Si la Terre était une orange, Dioné serait un petit pois."
 			],
 			"standard": [
 				"Les falaises de glace de Dioné font des centaines de mètres de haut – autant que des gratte-ciel – et sont si brillantes que, de loin, elles ressemblaient à de fines traînées de givre."
@@ -732,15 +761,15 @@
 		"name": "Rhéa",
 		"tagline": "Un souffle d’oxygène",
 		"description": {
-			"simple": "Rhéa est la deuxième plus grande lune de Saturne. C’est une boule de glace gelée avec un peu de roche à l’intérieur, couverte de vieux cratères. Autour de Rhéa, il y a un tout petit peu d’oxygène – le gaz que nous respirons. Mais il y en a si peu que tu ne pourrais jamais le respirer.",
+			"simple": "Rhéa est la deuxième plus grande lune de Saturne. C’est une boule de glace gelée, avec un peu de roche à l’intérieur. Elle est couverte de vieux cratères, des trous ronds laissés par des chocs. Autour de Rhéa, il y a un tout petit peu d’oxygène, le gaz que nous respirons. Mais il y en a si peu que tu ne pourrais jamais le respirer.",
 			"standard": "Rhéa mesure environ 1 527 km : c’est la deuxième plus grande lune de Saturne, après Titan. Elle est faite d’environ trois quarts de glace et un quart de roche, sa surface est entre −174 et −220 °C, et elle est couverte de cratères anciens, dont le bassin Tirawa, large d’environ 400 km. En 2010, des scientifiques ont annoncé que la sonde Cassini de la NASA avait détecté autour de Rhéa une « exosphère » extrêmement ténue d’oxygène et de dioxyde de carbone. D’après la NASA, c’était la première fois qu’une sonde captait directement des molécules d’une atmosphère d’oxygène autour d’un autre monde que la Terre.",
 			"advanced": "Rhéa (densité 1,24 g/cm³) est un mélange froid et très cratérisé d’environ trois quarts de glace et un quart de roche en masse. Son exosphère, détectée par les instruments de Cassini lors de survols en 2005, 2007 et 2010, contient de l’oxygène et du dioxyde de carbone dans un rapport d’environ 5 pour 2, avec seulement 100 000 à 1 000 000 de molécules environ par cm³ près de la surface. L’oxygène est produit par radiolyse : des particules chargées piégées dans le champ magnétique de Saturne frappent la surface de glace d’eau, cassent les molécules d’eau et libèrent de l’oxygène. L’origine du dioxyde de carbone est moins sûre : il pourrait venir de neige carbonique piégée depuis la formation de la lune ou de matière organique irradiée à la surface."
 		},
 		"facts": {
 			"simple": [
 				"Rhéa met environ quatre jours et demi à faire le tour de Saturne.",
-				"Sur Rhéa, il peut faire jusqu’à environ −220 °C.",
-				"Rhéa a été découverte il y a plus de 350 ans, en 1672."
+				"Rhéa est beaucoup, beaucoup plus froide que n’importe quel congélateur.",
+				"Rhéa a été découverte il y a longtemps, quand les gens voyageaient encore à cheval."
 			],
 			"standard": [
 				"Jean-Dominique Cassini a découvert Rhéa le 23 décembre 1672.",
@@ -755,7 +784,8 @@
 		},
 		"comparisons": {
 			"simple": [
-				"Il faudrait environ huit Rhéa alignées côte à côte pour traverser la Terre."
+				"Il faudrait environ huit Rhéa côte à côte pour traverser la Terre.",
+				"Si la Terre était une orange, Rhéa serait un petit pois."
 			],
 			"standard": [
 				"Une seule inspiration d’air sur la Terre contient plus de molécules d’oxygène qu’un cube de la mince exosphère de Rhéa de plus d’un kilomètre de côté."
@@ -767,16 +797,19 @@
 	},
 	"titan": {
 		"name": "Titan",
-		"tagline": "Un monde de pluie de méthane",
+		"tagline": {
+			"simple": "La lune de la pluie et des lacs",
+			"standard": "Un monde de pluie de méthane"
+		},
 		"description": {
-			"simple": "Titan est la plus grande lune de Saturne – elle est même plus grande que la planète Mercure. C’est la seule lune entourée d’un air épais. Sur Titan, il pleut, et il y a des rivières, des lacs et des mers. Mais ils ne sont pas faits d’eau : à environ −179 °C, l’eau est gelée, dure comme de la roche. La pluie et les mers sont donc du méthane liquide, un gaz que nous brûlons sur la Terre pour cuisiner et nous chauffer.",
+			"simple": "Titan est la plus grande lune de Saturne. Elle est même plus grande que la planète Mercure. Titan est la seule lune entourée d’un air épais. Sur Titan, il pleut, et il y a des rivières, des lacs et des mers. Mais ce n’est pas de l’eau. Titan est si froide que l’eau y est gelée, dure comme de la roche. La pluie et les mers sont faites d’un gaz que nous brûlons pour faire la cuisine. Sur Titan, il fait si froid que ce gaz se change en liquide, comme de l’eau.",
 			"standard": "Titan mesure environ 5 150 km : c’est la plus grande lune de Saturne, la deuxième plus grande lune du système solaire, et elle est plus grande que la planète Mercure. C’est la seule lune dotée d’une atmosphère épaisse, faite surtout d’azote, et la pression à sa surface vaut environ 1,5 fois celle de la Terre. À environ −179 °C, le méthane joue le rôle de l’eau sur la Terre : il forme des nuages, tombe en pluie, creuse des rivières et remplit des lacs et des mers comme Kraken Mare et Ligeia Mare. En janvier 2005, la sonde européenne Huygens s’est posée sur Titan – c’est encore aujourd’hui l’atterrissage le plus lointain jamais réalisé – et le giravion Dragonfly de la NASA doit être lancé en juillet 2028 pour arriver en 2034.",
 			"advanced": "Titan (diamètre 5 150 km, densité 1,88 g/cm³) est environ 6 % plus large que Mercure mais n’a qu’environ 40 % de sa masse. Son atmosphère d’azote contient environ 5 % de méthane près du sol ; à environ 1,45 bar et 94 K, elle est à peu près quatre fois plus dense que l’air terrestre au niveau de la mer. La lumière du Soleil casse le méthane dans la haute atmosphère, produisant la brume organique orangée et des hydrocarbures plus lourds comme l’éthane : le méthane doit donc être renouvelé d’une façon ou d’une autre, peut-être depuis l’intérieur. On a longtemps pensé que Titan cachait un océan d’eau global, mais une nouvelle analyse des données de suivi de Cassini, publiée en 2025, plaide plutôt pour une épaisse couche de glace à haute pression, pâteuse, avec des poches d’eau liquide – la question reste ouverte."
 		},
 		"facts": {
 			"simple": [
-				"La sonde Huygens s’est posée sur Titan en 2005 – aucun engin ne s’est jamais posé plus loin de la Terre.",
-				"Titan est enveloppée d’une brume orange : les caméras ordinaires ne peuvent pas voir sa surface depuis l’espace.",
+				"Une sonde spatiale appelée Huygens s’est posée sur Titan. Aucune sonde ne s’est jamais posée plus loin de la Terre.",
+				"Titan est enveloppée d’une brume orange. Depuis l’espace, les caméras ordinaires ne peuvent pas voir son sol.",
 				"Titan met environ 16 jours à faire le tour de Saturne."
 			],
 			"standard": [
@@ -792,7 +825,8 @@
 		},
 		"comparisons": {
 			"simple": [
-				"Sur Titan, l’air est si épais et la gravité si faible qu’une personne avec des ailes attachées aux bras pourrait peut-être voler."
+				"Sur Titan, l’air est épais et tu serais très léger. Avec des ailes attachées aux bras, tu pourrais peut-être même voler !",
+				"Si la Terre était une orange, Titan serait une noix."
 			],
 			"standard": [
 				"Titan est le seul endroit, en dehors de la Terre, où l’on connaît des rivières, des lacs et des mers à la surface – mais ils contiennent du méthane et de l’éthane liquides à environ −179 °C."
@@ -806,15 +840,15 @@
 		"name": "Hypérion",
 		"tagline": "L’éponge qui culbute",
 		"description": {
-			"simple": "Hypérion est une drôle de lune de Saturne. Elle n’est pas ronde, mais plutôt en forme de pomme de terre, et sa surface est pleine de trous, comme une éponge. Hypérion culbute aussi de façon si folle et si désordonnée que personne ne peut dire exactement de quel côté elle sera tournée ensuite. Elle est si légère pour sa taille que son intérieur est sans doute en grande partie vide.",
+			"simple": "Hypérion est une drôle de lune de Saturne. Elle n’est pas ronde. Elle a plutôt la forme d’une pomme de terre. Sa surface est pleine de trous, comme une éponge. Hypérion fait des culbutes dans tous les sens. Personne ne peut dire de quel côté elle sera tournée ensuite. Elle est si légère pour sa taille que son intérieur est sans doute en grande partie vide.",
 			"standard": "Hypérion mesure environ 360 × 266 × 205 km, ce qui en fait l’une des plus grandes lunes de forme irrégulière du système solaire. Les images rapprochées prises par la sonde Cassini en 2005 ont montré une surface criblée de cratères profonds aux bords tranchants, qui lui donnent l’aspect d’une éponge. Sa densité n’est que d’environ 0,54 g/cm³ – environ la moitié de celle de la glace d’eau – et les scientifiques pensent donc qu’environ 40 % de son volume serait vide. Hypérion ne tourne pas régulièrement : les attractions de Saturne et de Titan, toute proche, la font culbuter de façon chaotique, si bien qu’on ne peut pas prévoir longtemps son orientation.",
 			"advanced": "Hypérion est bloquée dans une résonance orbitale 4:3 avec Titan (quatre orbites d’Hypérion pour trois de Titan), qui maintient son orbite assez excentrique (e ≈ 0,1). Comme la lune est très allongée, les couples de marée exercés par Saturne varient fortement le long de cette orbite excentrique : Hypérion ne peut donc pas se stabiliser en rotation synchrone ; sa vitesse et son axe de rotation changent au contraire de façon chaotique, et de minuscules écarts croissent exponentiellement en quelques orbites. Wisdom, Peale et Mignard ont prédit ce comportement en 1984, des observations ultérieures l’ont étayé, et Hypérion est depuis l’exemple type de rotation chaotique dans les manuels. Sa porosité d’environ 40 % pourrait aussi expliquer ses étranges cratères : les impacts compriment la glace poreuse au lieu d’en éjecter de la matière, laissant des creux profonds avec peu d’éjectas."
 		},
 		"facts": {
 			"simple": [
 				"Hypérion met environ trois semaines à faire le tour de Saturne.",
-				"Beaucoup de cratères d’Hypérion ont une matière sombre au fond, comme de la saleté dans les trous d’une éponge.",
-				"Hypérion a été découverte en 1848 par des astronomes en Amérique et en Angleterre, presque en même temps."
+				"Beaucoup de ses trous ont une matière sombre au fond, comme de la saleté dans une éponge.",
+				"Hypérion a été découverte par des gens en Amérique et en Angleterre, presque en même temps."
 			],
 			"standard": [
 				"Hypérion a été découverte en 1848 par William Cranch Bond et son fils George Phillips Bond, et indépendamment par William Lassell.",
@@ -829,7 +863,8 @@
 		},
 		"comparisons": {
 			"simple": [
-				"Pour sa taille, Hypérion est à peu près aussi légère qu’une pierre ponce : elle flotterait sur l’eau."
+				"Hypérion est si légère pour sa taille qu’elle flotterait sur l’eau.",
+				"Si la Terre était une orange, Hypérion serait une tête d’épingle."
 			],
 			"standard": [
 				"Hypérion culbute comme un ballon de rugby qui rebondit sur un terrain : de minuscules différences la font tourner autrement, si bien que personne ne peut prévoir longtemps quelle face sera tournée vers Saturne."
@@ -843,15 +878,15 @@
 		"name": "Japet",
 		"tagline": "La lune à deux visages",
 		"description": {
-			"simple": "Japet est une lune de Saturne avec deux côtés très différents. Une moitié est sombre comme du charbon, l’autre est claire comme de la neige. Une longue et haute chaîne de montagnes fait le tour de son milieu, ce qui donne à Japet un petit air de noix. Elle est loin de Saturne et met plus de deux mois à en faire une fois le tour.",
+			"simple": "Japet est une lune de Saturne avec deux côtés très différents. Une moitié est sombre comme du charbon. L’autre moitié est claire comme de la neige. Une longue et haute chaîne de montagnes fait le tour de son milieu. Cela donne à Japet un petit air de noix. Japet est loin de Saturne. Elle met plus de deux mois pour en faire une fois le tour.",
 			"standard": "Japet mesure environ 1 469 km : c’est la troisième plus grande lune de Saturne. Sa face avant – celle tournée vers l’avant sur son orbite – est aussi sombre que du charbon, tandis que sa face arrière est presque aussi claire que la neige. Quand Jean-Dominique Cassini a découvert Japet en 1671, il ne pouvait la voir que d’un seul côté de Saturne, et il a deviné avec raison qu’une moitié devait être bien plus sombre que l’autre. La sonde Cassini, baptisée en son honneur, a ensuite révélé une crête le long de l’équateur, longue d’environ 1 300 km, avec des sommets jusqu’à environ 20 km de haut, qui donne à Japet la forme d’une noix.",
 			"advanced": "La surface bicolore de Japet résulte probablement d’un processus qui s’emballe. De la poussière sombre, venant en grande partie de la lune rétrograde Phœbé et de son immense anneau, se dépose sur l’hémisphère avant de Japet ; la surface assombrie absorbe davantage de lumière pendant les longues journées de 79 jours de Japet et se réchauffe légèrement : la glace d’eau s’y sublime et va se recondenser sur la face arrière, plus froide et plus claire, et aux pôles, rendant une face toujours plus sombre et l’autre toujours plus claire. L’albédo va d’environ 0,03–0,05 dans la région sombre de Cassini Regio à environ 0,5–0,6 sur la face claire. La crête équatoriale, haute jusqu’à 20 km environ et longue de 1 300 km, reste inexpliquée : on a proposé un renflement figé datant d’une époque de rotation plus rapide, ou de la matière tombée d’un anneau effondré."
 		},
 		"facts": {
 			"simple": [
-				"Les plus hautes montagnes de Japet sont plus de deux fois plus hautes que le mont Everest.",
-				"Depuis Japet, tu aurais une vue magnifique sur les anneaux de Saturne, parce que son chemin autour de Saturne est incliné.",
-				"Japet a été découverte il y a plus de 350 ans, en 1671."
+				"Ses plus hautes montagnes sont plus de deux fois plus hautes que la plus haute montagne de la Terre.",
+				"Depuis Japet, tu aurais une vue magnifique sur les anneaux de Saturne.",
+				"L’homme qui a découvert Japet ne la voyait que d’un côté de Saturne. De l’autre côté, sa moitié sombre la faisait disparaître."
 			],
 			"standard": [
 				"Japet orbite autour de Saturne à environ 3,56 millions de km – plus de neuf fois la distance de la Terre à la Lune.",
@@ -866,7 +901,8 @@
 		},
 		"comparisons": {
 			"simple": [
-				"Si Japet était un ballon de foot, sa crête géante ne serait qu’une bosse d’environ 3 mm de haut faisant le tour de son milieu."
+				"Si Japet était un ballon de foot, ses montagnes géantes ne seraient qu’une bosse d’environ 3 mm de haut.",
+				"Si la Terre était une orange, Japet serait un petit pois."
 			],
 			"standard": [
 				"La face sombre de Japet ne renvoie à peu près pas plus de lumière qu’un asphalte tout neuf, alors que sa face claire en renvoie plus de dix fois plus – c’est pourquoi Cassini voyait la lune d’un côté de Saturne mais pas de l’autre."
@@ -880,15 +916,15 @@
 		"name": "Phœbé",
 		"tagline": "La lune de Saturne qui roule à contresens",
 		"description": {
-			"simple": "Phœbé est une petite lune sombre de Saturne, d’environ 200 km de large. Elle tourne autour de Saturne dans le mauvais sens – dans le sens contraire des grandes lunes de Saturne – et beaucoup plus loin. Les scientifiques pensent que Phœbé ne s’est pas formée près de Saturne : elle viendrait des confins du système solaire et aurait été capturée par la gravité de Saturne. La poussière arrachée à Phœbé forme un immense anneau, très pâle, autour de Saturne.",
+			"simple": "Phœbé est une petite lune sombre de Saturne. Elle tourne autour de Saturne dans le mauvais sens, le sens contraire des grandes lunes de Saturne. Elle tourne aussi beaucoup plus loin. Les scientifiques pensent que Phœbé n’est pas née près de Saturne. Elle vient sans doute de très loin, et Saturne l’a attirée et attrapée. La poussière arrachée à Phœbé forme un immense anneau, très pâle, autour de Saturne.",
 			"standard": "Phœbé mesure environ 213 km et tourne autour de Saturne à une distance moyenne d’environ 12,9 millions de km – plus de trois fois plus loin que Japet, la plus éloignée des grandes lunes de Saturne. Elle orbite à l’envers (mouvement rétrograde), ce qui laisse fortement penser que Saturne l’a capturée : Phœbé est probablement une visiteuse du système solaire externe, apparentée aux corps glacés de la ceinture de Kuiper. De minuscules impacts arrachent de la poussière à sa surface sombre, et cette poussière forme l’anneau de Phœbé, découvert en 2009 par le télescope spatial Spitzer de la NASA. Une partie de cette poussière dérive vers l’intérieur et se dépose sur une face de Japet, qu’elle contribue à assombrir.",
 			"advanced": "L’orbite de Phœbé – demi-grand axe d’environ 12,9 millions de km, excentricité 0,16, inclinaison d’environ 175° sur son plan de Laplace – est rétrograde et se situe bien au-delà des satellites réguliers de Saturne : c’est la signature d’un corps capturé plutôt que formé dans le disque de Saturne. Sa densité d’environ 1,64 g/cm³, supérieure à celle des lunes glacées intérieures de Saturne, et sa surface sombre (albédo géométrique d’environ 0,08) contenant de la glace d’eau, du dioxyde de carbone et probablement des composés organiques, indiquent une origine parmi les objets de la ceinture de Kuiper ou les centaures. Les impacts de micrométéorites alimentent l’anneau de Phœbé, un vaste disque de poussière ténu, incliné comme l’orbite de Phœbé d’environ 27° par rapport aux anneaux principaux de Saturne. La pression de radiation fait lentement spiraler ses grains vers l’intérieur, où Japet les balaie sur son hémisphère avant – un ingrédient clé de l’étonnant aspect bicolore de cette lune."
 		},
 		"facts": {
 			"simple": [
 				"Phœbé met environ un an et demi à faire une fois le tour de Saturne.",
-				"Phœbé est la toute première lune découverte sur des photographies.",
-				"Phœbé tourne sur elle-même en seulement 9 heures environ – bien plus vite qu’elle ne tourne autour de Saturne."
+				"Phœbé est la toute première lune découverte sur des photos.",
+				"Phœbé tourne sur elle-même en 9 heures environ."
 			],
 			"standard": [
 				"La sonde Cassini est passée à seulement 2 068 km de Phœbé le 11 juin 2004, environ trois semaines avant de se placer en orbite autour de Saturne.",
@@ -903,7 +939,8 @@
 		},
 		"comparisons": {
 			"simple": [
-				"Phœbé tourne autour de Saturne comme une voiture qui prendrait un rond-point à contresens."
+				"Phœbé tourne autour de Saturne comme une voiture qui prendrait un rond-point à contresens.",
+				"Si la Terre était une orange, Phœbé serait une graine de pavot."
 			],
 			"standard": [
 				"L’anneau de poussière issu de Phœbé est si vaste qu’environ un milliard de Terres pourraient y tenir – et pourtant il est si pâle qu’on ne l’a découvert qu’en 2009, avec un télescope infrarouge."
@@ -917,7 +954,7 @@
 		"name": "Miranda",
 		"tagline": "La lune Frankenstein",
 		"description": {
-			"simple": "Miranda est la plus petite des cinq grandes lunes d’Uranus : elle mesure environ 470 km. Sa surface a l’air d’avoir été cousue à partir de morceaux différents, alors on l’appelle la lune Frankenstein. Elle possède l’une des plus hautes falaises connues. Une seule sonde, Voyager 2, l’a survolée, en 1986.",
+			"simple": "Miranda est la plus petite des cinq grandes lunes d’Uranus. Sa surface a l’air d’avoir été cousue à partir de morceaux différents. Alors on l’appelle la lune Frankenstein. Elle a l’une des plus hautes falaises que l’on connaisse. Une seule sonde spatiale, Voyager 2, est passée près d’elle.",
 			"standard": "Miranda, qui mesure environ 470 km, est la plus proche d’Uranus et la plus petite de ses cinq grandes lunes. Quand Voyager 2 l’a survolée en janvier 1986, elle a révélé un fouillis de paysages très différents : de vieilles plaines cratérisées juste à côté d’immenses régions de sillons et de crêtes, appelées coronae. Miranda possède aussi Verona Rupes, une falaise dont la hauteur est estimée entre 5 et 20 km – peut-être la plus haute du système solaire. La lune a été découverte en 1948 par Gerard Kuiper, qui lui a donné le nom de la fille du magicien Prospero dans La Tempête de Shakespeare.",
 			"advanced": "Les trois coronae de Miranda – Arden, Elsinore et Inverness – sont des provinces ovales ou polygonales de quelques centaines de kilomètres, cernées de crêtes et de fossés parallèles qui recoupent des terrains cratérisés plus anciens. L’idée ancienne d’une Miranda brisée puis réassemblée a largement cédé la place à des modèles où le chauffage de marée a provoqué la remontée de glace tiède, probablement lors d’une ancienne résonance orbitale avec Umbriel, qui pourrait aussi expliquer l’inclinaison orbitale inhabituellement forte de Miranda, d’environ 4,3°. Une étude de 2024 suggère même que Miranda aurait pu abriter un océan souterrain d’environ 100 km de profondeur au cours des dernières centaines de millions d’années. Sa faible densité, d’environ 1,2 g/cm³, montre qu’elle est surtout faite de glace d’eau."
 		},
@@ -925,7 +962,7 @@
 			"simple": [
 				"Miranda fait le tour d’Uranus en moins d’un jour et demi.",
 				"Miranda porte le nom d’une jeune fille dans une pièce de William Shakespeare.",
-				"Sur Miranda, tu pèserais moins d’un centième de ton poids sur la Terre."
+				"Sa plus haute falaise est peut-être deux fois plus haute que la plus haute montagne de la Terre."
 			],
 			"standard": [
 				"Voyager 2 est passée à environ 29 000 km seulement de Miranda, plus près que de toute autre lune d’Uranus.",
@@ -940,7 +977,8 @@
 		},
 		"comparisons": {
 			"simple": [
-				"Si la surface de Miranda était un puzzle, les pièces viendraient de plusieurs boîtes différentes."
+				"Si la surface de Miranda était un puzzle, les pièces viendraient de plusieurs boîtes différentes.",
+				"Si la Terre était une orange, Miranda serait un petit grain de poivre."
 			],
 			"standard": [
 				"La falaise Verona Rupes pourrait atteindre 20 km de haut – plus de deux fois la hauteur du mont Everest – et, avec la faible gravité de Miranda, un caillou lâché du sommet pourrait tomber pendant environ 12 minutes avant de toucher le fond."
@@ -954,14 +992,14 @@
 		"name": "Ariel",
 		"tagline": "La jeune lune brillante d’Uranus",
 		"description": {
-			"simple": "Ariel est l’une des cinq grandes lunes d’Uranus. Elle mesure environ 1 160 km. C’est la plus brillante d’entre elles, avec une surface glacée qui a l’air toute neuve. De longues vallées profondes, appelées canyons, la traversent. Une seule sonde, Voyager 2, l’a jamais survolée.",
+			"simple": "Ariel est l’une des cinq grandes lunes d’Uranus. C’est la plus brillante d’entre elles, avec une glace qui a l’air toute neuve. De longues vallées profondes la traversent. Une seule sonde spatiale, Voyager 2, est passée près d’elle.",
 			"standard": "Ariel, qui mesure environ 1 160 km, fait le tour d’Uranus en 2,5 jours, à une distance d’environ 190 900 km. Elle a la surface la plus brillante des grandes lunes d’Uranus, et sans doute la plus jeune : elle a moins de grands cratères que ses voisines, donc quelque chose a dû renouveler sa surface. De longs canyons la sillonnent ; l’un d’eux, Kachina Chasma, s’étend sur plus de 600 km. William Lassell a découvert Ariel en 1851, la même nuit qu’Umbriel ; son nom vient de l’esprit Ariel dans La Tempête de Shakespeare et d’un sylphe du poème d’Alexander Pope La Boucle de cheveux enlevée.",
 			"advanced": "Avec un albédo géométrique d’environ 0,5, Ariel est la plus réfléchissante des grandes lunes d’Uranus, et la relative rareté de ses grands cratères suggère la surface la plus jeune des cinq. Ses canyons sont des grabens – des blocs de croûte effondrés entre des failles quand la croûte s’est étirée, probablement lorsque l’intérieur a été chauffé par les marées pendant une ancienne résonance orbitale, ou s’est dilaté en gelant – et le fond de certains canyons semble avoir été inondé de matière glacée. En 2024, le télescope spatial James Webb a trouvé sur Ariel des dépôts étonnamment épais de glace de dioxyde de carbone, de glace de monoxyde de carbone et des indices de minéraux carbonatés. Certains chercheurs y voient de la matière venue d’un possible océan souterrain, mais les particules chargées de la magnétosphère d’Uranus produisent aussi du dioxyde de carbone à la surface, et les deux processus jouent probablement un rôle."
 		},
 		"facts": {
 			"simple": [
 				"Ariel fait le tour d’Uranus en deux jours et demi environ.",
-				"Ariel porte le nom d’un esprit magique dans une pièce de William Shakespeare, qui pouvait voler et même déclencher une tempête.",
+				"Ariel porte le nom d’un esprit magique dans une pièce de William Shakespeare. Cet esprit pouvait voler et même déclencher des tempêtes.",
 				"Ariel est faite à peu près pour moitié de glace et pour moitié de roche."
 			],
 			"standard": [
@@ -977,7 +1015,8 @@
 		},
 		"comparisons": {
 			"simple": [
-				"Le plus long canyon d’Ariel est si long qu’une voiture roulant à 100 km/h mettrait plus de six heures pour aller d’un bout à l’autre."
+				"La plus longue vallée d’Ariel est si longue qu’une voiture sur l’autoroute mettrait environ six heures pour la parcourir.",
+				"Si la Terre était une orange, Ariel serait un petit pois."
 			],
 			"standard": [
 				"Ariel et Umbriel ont presque exactement la même taille, mais Ariel renvoie environ deux fois plus de lumière et a bien moins de grands cratères – comme des jumelles, l’une le visage tout juste lavé, l’autre pas débarbouillée depuis des milliards d’années."
@@ -991,15 +1030,15 @@
 		"name": "Umbriel",
 		"tagline": "Lune sombre, anneau clair",
 		"description": {
-			"simple": "Umbriel est l’une des cinq grandes lunes d’Uranus. Elle mesure environ 1 170 km. C’est la plus sombre d’entre elles, et elle est couverte de vieux cratères. Sur sa surface sombre se trouve un mystérieux anneau clair. Umbriel porte le nom d’un lutin maussade dans un vieux poème.",
+			"simple": "Umbriel est l’une des cinq grandes lunes d’Uranus. C’est la plus sombre d’entre elles. Elle est couverte de vieux cratères, des trous ronds laissés par des chocs. Sur son sol sombre, il y a un étrange anneau clair. Umbriel porte le nom d’un lutin grognon dans un vieux poème.",
 			"standard": "Umbriel, qui mesure environ 1 170 km, est presque exactement aussi grande qu’Ariel, mais c’est la plus sombre des grandes lunes d’Uranus. Sa surface est ancienne et couverte de cratères : elle a donc sans doute peu changé depuis des milliards d’années. Près de son équateur se trouve le cratère Wunda, large d’environ 131 km, avec sur son fond un étrange anneau clair – les scientifiques ne savent toujours pas vraiment ce que c’est. Umbriel a été découverte en 1851 par William Lassell et porte le nom d’un lutin maussade du poème d’Alexander Pope La Boucle de cheveux enlevée.",
 			"advanced": "L’albédo géométrique d’Umbriel, d’environ 0,26, vaut à peu près la moitié de celui d’Ariel, et sa surface très cratérisée, avec des cratères jusqu’à environ 210 km, montre peu de signes de renouvellement : c’est l’une des surfaces les plus anciennes parmi les grandes lunes d’Uranus. On ne sait toujours pas pourquoi elle est si uniformément sombre ; un revêtement de matière sombre riche en carbone, altérée par le rayonnement, est une possibilité. L’anneau clair au fond de Wunda pourrait être un dépôt d’impact ou une plaque de givre de dioxyde de carbone – on a détecté de la glace de dioxyde de carbone sur les hémisphères arrière des grandes lunes d’Uranus. Voyager 2 n’a photographié qu’environ 40 % d’Umbriel, avec une résolution de 5 km au mieux : une grande partie reste donc non cartographiée."
 		},
 		"facts": {
 			"simple": [
 				"Umbriel fait le tour d’Uranus en quatre jours environ.",
-				"Le nom Umbriel ressemble à « umbra », le mot latin pour « ombre » – un bon nom pour une lune aussi sombre.",
-				"Umbriel a été découverte la même nuit qu’Ariel, en 1851."
+				"Le nom Umbriel ressemble à « umbra », un vieux mot qui veut dire « ombre ». C’est un bon nom pour une lune aussi sombre.",
+				"Umbriel a été découverte la même nuit qu’Ariel."
 			],
 			"standard": [
 				"Dans le poème de Pope, Umbriel est appelé « le sombre lutin mélancolique ».",
@@ -1014,7 +1053,8 @@
 		},
 		"comparisons": {
 			"simple": [
-				"Umbriel et Ariel ont presque la même taille, mais à côté d’Ariel, Umbriel ressemble à une boule de neige pleine de suie à côté d’une boule toute propre."
+				"Umbriel et Ariel ont presque la même taille. Mais à côté d’Ariel, Umbriel ressemble à une boule de neige pleine de suie à côté d’une boule toute propre.",
+				"Si la Terre était une orange, Umbriel serait un petit pois."
 			],
 			"standard": [
 				"Sur la face sombre d’Umbriel, l’anneau clair du cratère Wunda ressort comme la trace blanche laissée par une tasse sur une table sombre – et personne ne sait vraiment ce qui l’a produit."
@@ -1028,7 +1068,7 @@
 		"name": "Titania",
 		"tagline": "La reine des lunes d’Uranus",
 		"description": {
-			"simple": "Titania est la plus grande lune d’Uranus. Elle mesure environ 1 580 km, un peu moins de la moitié de la largeur de notre Lune. Elle porte le nom de la reine des fées dans une pièce de William Shakespeare. Sa surface glacée est fendue par d’énormes canyons. William Herschel, l’astronome qui a découvert Uranus, a trouvé Titania en 1787.",
+			"simple": "Titania est la plus grande lune d’Uranus. Elle est un peu moins large que la moitié de notre Lune. Elle porte le nom de la reine des fées dans une pièce de William Shakespeare. Son sol glacé est fendu par d’immenses vallées. C’est William Herschel qui a trouvé Titania. C’est le même homme qui a trouvé Uranus.",
 			"standard": "Titania, qui mesure environ 1 580 km, est la plus grande lune d’Uranus et la huitième plus grande lune du système solaire. Sa surface est entaillée par d’immenses vallées de failles ; la plus longue, Messina Chasma, s’étend sur environ 1 500 km. Ces canyons se sont sans doute formés quand l’intérieur de Titania s’est dilaté, fissurant la croûte glacée comme une bouteille d’eau oubliée au congélateur. William Herschel a découvert Titania le 11 janvier 1787, la même nuit qu’Obéron ; elle porte le nom de la reine des fées dans Le Songe d’une nuit d’été de Shakespeare.",
 			"advanced": "La densité de Titania, d’environ 1,65 g/cm³, suggère des quantités à peu près égales de glace d’eau et de roche, probablement séparées en un noyau rocheux et un manteau de glace ; certains modèles admettent une fine couche d’eau liquide à la frontière entre les deux, maintenue liquide par l’ammoniac qui agit comme antigel. Ses canyons (chasmata) sont des grabens formés par une extension globale de la croûte, et elle compte moins de grands cratères qu’Obéron : sa surface est donc probablement plus jeune. Quand Titania est passée devant une étoile en 2001, l’étoile a disparu brusquement, ce qui limite une éventuelle atmosphère à une pression au sol inférieure à environ 10–20 nanobars. Voyager 2 n’a photographié qu’environ 40 % de sa surface, presque entièrement dans l’hémisphère Sud, tourné vers le Soleil en 1986."
 		},
@@ -1036,7 +1076,7 @@
 			"simple": [
 				"Titania met presque neuf jours à faire le tour d’Uranus.",
 				"Titania est faite à peu près pour moitié de glace et pour moitié de roche.",
-				"Le plus grand cratère de Titania, Gertrude, fait plus de 300 km de large."
+				"Son plus grand cratère, un trou rond laissé par un choc, s’appelle Gertrude. Il est si large qu’une voiture mettrait plus de trois heures pour le traverser."
 			],
 			"standard": [
 				"Titania orbite à environ 436 300 km d’Uranus – un peu plus loin que notre Lune ne l’est de la Terre.",
@@ -1051,7 +1091,8 @@
 		},
 		"comparisons": {
 			"simple": [
-				"Le plus long canyon de Titania est si long qu’il fait presque un tiers du tour de la lune entière."
+				"La plus longue vallée de Titania fait presque un tiers du tour de la lune entière.",
+				"Si la Terre était une orange, Titania serait un petit pois."
 			],
 			"standard": [
 				"Le grand canyon de Titania, Messina Chasma, mesure environ 1 500 km de long – plus de trois fois la longueur du Grand Canyon aux États-Unis – sur une lune qui fait moins de la moitié de la largeur de la nôtre."
@@ -1065,7 +1106,7 @@
 		"name": "Obéron",
 		"tagline": "Le vieux roi des fées",
 		"description": {
-			"simple": "Obéron est la plus lointaine des cinq grandes lunes d’Uranus et la deuxième plus grande. Elle mesure environ 1 520 km. Elle porte le nom du roi des fées dans une pièce de William Shakespeare – et Titania, la reine des fées, est sa voisine. La surface d’Obéron est vieille et pleine de cratères, dont certains ont un fond sombre. William Herschel a trouvé Obéron et Titania la même nuit, en 1787.",
+			"simple": "Obéron est la deuxième plus grande lune d’Uranus, et la plus lointaine de ses cinq grandes lunes. Elle porte le nom du roi des fées dans une pièce de William Shakespeare. Titania, la reine des fées, est sa voisine. Le sol d’Obéron est vieux et plein de cratères, des trous ronds laissés par des chocs. Certains ont un fond sombre.",
 			"standard": "Obéron, qui mesure environ 1 520 km, est la deuxième plus grande lune d’Uranus et la plus éloignée des cinq grandes lunes : elle orbite à environ 583 500 km de la planète et en fait le tour en 13,5 jours. Sa surface est ancienne et couverte de cratères d’impact, ce qui suggère que peu de choses y ont changé depuis des milliards d’années. Le fond de plusieurs grands cratères est recouvert de matière sombre, et Voyager 2 a repéré sur son bord une montagne d’environ 11 km de haut. Obéron porte le nom du roi des fées dans Le Songe d’une nuit d’été de Shakespeare.",
 			"advanced": "Obéron est la plus cratérisée des grandes lunes d’Uranus, avec des cratères jusqu’à environ 206 km (Hamlet), ce qui fait de sa surface l’une des plus anciennes du système d’Uranus. Les dépôts sombres au fond de cratères comme Hamlet, Othello et Macbeth pourraient être de la matière venue de l’intérieur après les impacts, mais leur origine reste floue. Son orbite fait sortir Obéron de la magnétosphère d’Uranus une partie du temps : sa surface est donc exposée tour à tour au plasma piégé de la planète et au vent solaire. Voyager 2 n’a vu Obéron que depuis environ 470 600 km, en photographiant à peu près 40 % de sa surface à basse résolution."
 		},
@@ -1073,7 +1114,7 @@
 			"simple": [
 				"Obéron met environ deux semaines à faire le tour d’Uranus.",
 				"Obéron montre toujours la même face à Uranus, tout comme notre Lune avec la Terre.",
-				"Les cratères d’Obéron portent les noms de personnages des pièces de Shakespeare, comme Hamlet et Macbeth."
+				"William Herschel a trouvé Obéron et Titania la même nuit."
 			],
 			"standard": [
 				"Hamlet, le plus grand cratère d’Obéron, fait environ 206 km de large.",
@@ -1088,7 +1129,8 @@
 		},
 		"comparisons": {
 			"simple": [
-				"La plus haute montagne d’Obéron mesure environ 11 km – plus que le mont Everest, la plus haute montagne de la Terre."
+				"Obéron a une montagne plus haute que la plus haute montagne de la Terre.",
+				"Si la Terre était une orange, Obéron serait un petit pois."
 			],
 			"standard": [
 				"Le visage cabossé d’Obéron est comme un livre d’histoire que personne n’a effacé : ses cratères gardent la trace d’impacts vieux de milliards d’années."
@@ -1102,15 +1144,15 @@
 		"name": "Triton",
 		"tagline": "La lune qui tourne à l’envers",
 		"description": {
-			"simple": "Triton est la plus grande lune de Neptune, et elle tourne autour de Neptune dans le mauvais sens – à l’envers par rapport au sens de rotation de Neptune. C’est un indice que Triton n’est pas née là : elle a sans doute été capturée par la gravité de Neptune il y a très longtemps. Triton est l’un des endroits les plus froids jamais mesurés, et elle a des geysers qui crachent de la poussière sombre. Très, très lentement, Triton se rapproche de Neptune.",
+			"simple": "Triton est la plus grande lune de Neptune. Elle tourne autour de Neptune à l’envers, dans le sens contraire de celui où Neptune tourne sur elle-même. C’est un indice : Triton n’est pas née là. Il y a très longtemps, Neptune l’a sans doute attirée et attrapée. Triton est l’un des endroits les plus froids que l’on connaisse. Elle a des fontaines de gaz qui crachent de la poussière sombre. Très lentement, Triton se rapproche de Neptune.",
 			"standard": "Triton est de loin la plus grande lune de Neptune : elle mesure 2 707 km, un peu plus que la planète naine Pluton. Elle orbite autour de Neptune à l’envers – dans le sens contraire de la rotation de la planète – et c’est la seule grande lune du système solaire dans ce cas ; c’est pourquoi les astronomes pensent que Neptune l’a capturée dans la ceinture de Kuiper il y a longtemps. Lors de son survol en 1989, Voyager 2 a vu des geysers d’azote gazeux emportant de la poussière sombre à environ 8 km de haut, sur une surface à environ −235 °C. Les marées attirent lentement Triton vers l’intérieur : dans des milliards d’années, elle pourrait être déchiquetée en anneaux ou tomber sur Neptune.",
 			"advanced": "L’orbite de Triton est rétrograde et inclinée d’environ 157° sur l’équateur de Neptune, ce qu’une formation dans un disque autour de la planète ne peut pas expliquer ; l’explication privilégiée est la capture d’un objet de la ceinture de Kuiper, peut-être l’un des membres d’un couple binaire dont le partenaire aurait été éjecté. La capture aurait laissé Triton sur une orbite très excentrique, et l’amortissement de cette orbite jusqu’au cercle presque parfait d’aujourd’hui (e ≈ 0,00002) a peut-être fait fondre son intérieur et dispersé ou détruit les lunes d’origine de Neptune. Sa surface de glaces d’azote, de méthane et d’eau renvoie l’essentiel de la lumière solaire reçue (albédo d’environ 0,76), ce qui contribue à la maintenir vers 38 K. Comme elle orbite dans le sens contraire de la rotation de Neptune, le bourrelet de marée qu’elle soulève lui retire lentement de l’énergie orbitale ; elle pourrait atteindre la limite de Roche de Neptune dans plusieurs milliards d’années, les estimations allant d’environ 3,6 à 28 milliards d’années."
 		},
 		"facts": {
 			"simple": [
-				"Triton a été découverte en 1846, seulement 17 jours après la découverte de Neptune.",
-				"Triton est si glacée et si brillante qu’elle renvoie presque toute la lumière du Soleil qui l’atteint.",
-				"Une seule sonde a visité Triton : Voyager 2, en 1989."
+				"Triton a été découverte seulement 17 jours après Neptune.",
+				"Triton est si glacée et si brillante qu’elle renvoie presque toute la lumière du Soleil.",
+				"Une seule sonde spatiale a visité Triton : Voyager 2."
 			],
 			"standard": [
 				"Triton contient plus de 99,5 % de toute la masse en orbite autour de Neptune.",
@@ -1125,7 +1167,8 @@
 		},
 		"comparisons": {
 			"simple": [
-				"Il fait environ 150 degrés de moins sur Triton qu’à l’endroit le plus froid jamais mesuré sur la Terre."
+				"Triton est beaucoup, beaucoup plus froide que l’endroit le plus froid de la Terre.",
+				"Si la Terre était une orange, Triton serait une bille."
 			],
 			"standard": [
 				"Triton tourne autour de Neptune à contresens, comme une voiture qui ferait le tour d’un rond-point en marche arrière – un indice que Neptune l’a capturée dans la ceinture de Kuiper."
@@ -1137,15 +1180,18 @@
 	},
 	"nereid": {
 		"name": "Néréide",
-		"tagline": "L’orbite en montagnes russes",
+		"tagline": {
+			"simple": "La lune au chemin en montagnes russes",
+			"standard": "L’orbite en montagnes russes"
+		},
 		"description": {
-			"simple": "Néréide est une petite lune grise de Neptune. Son chemin autour de Neptune n’est pas un cercle, mais un long ovale étiré. Parfois, elle passe assez près de Neptune, puis elle repart très loin. Les scientifiques pensent que quelque chose de gros l’a peut-être lancée sur ce drôle de chemin il y a longtemps.",
+			"simple": "Néréide est une petite lune grise de Neptune. Son chemin autour de Neptune n’est pas un cercle. C’est un long ovale étiré. Parfois, Néréide passe assez près de Neptune. Puis elle repart très loin. Il y a longtemps, quelque chose de gros l’a peut-être lancée sur ce drôle de chemin.",
 			"standard": "Néréide mesure environ 340 km et possède l’une des orbites les plus étirées de toutes les lunes connues. Au cours de son orbite de 360 jours, sa distance à Neptune varie d’environ 1,4 million de km à environ 9,7 millions de km – presque sept fois plus loin. Gerard Kuiper l’a découverte en 1949 ; c’était la deuxième lune de Neptune jamais trouvée, et la dernière découverte avant l’arrivée de Voyager 2 en 1989. Les astronomes ont longtemps pensé que Néréide était un objet capturé, mais une étude de 2026 suggère qu’elle pourrait être l’une des lunes d’origine de Neptune, projetée sur son orbite folle lors de l’arrivée de Triton.",
 			"advanced": "L’orbite de Néréide a une excentricité d’environ 0,75, l’une des plus élevées connues pour une lune, avec un point le plus proche vers 1,37 million de km et un point le plus éloigné vers 9,65 millions de km de Neptune. Elle est prograde et peu inclinée, contrairement aux lunes irrégulières typiques, que l’on considère comme des corps capturés. Deux origines ont été proposées : un objet capturé de la ceinture de Kuiper, ou une lune régulière de Neptune projetée vers l’extérieur lors de la capture de Triton. En 2026, des spectres du télescope spatial James Webb ont montré de la glace d’eau cristalline et du dioxyde de carbone, ainsi qu’une surface différente de celle des objets de la ceinture de Kuiper mais semblable à celle des lunes d’Uranus, ce qui favorise la seconde idée – si c’est le cas, Néréide pourrait être la dernière survivante intacte de la famille de lunes d’origine de Neptune."
 		},
 		"facts": {
 			"simple": [
-				"Néréide a été découverte en 1949 par un astronome nommé Gerard Kuiper.",
+				"Néréide a été découverte par un scientifique nommé Gerard Kuiper.",
 				"Néréide est la troisième plus grande lune de Neptune.",
 				"Personne n’a jamais vu de photo de Néréide prise de près."
 			],
@@ -1162,7 +1208,8 @@
 		},
 		"comparisons": {
 			"simple": [
-				"Néréide met presque exactement autant de temps à faire le tour de Neptune que la Terre à faire le tour du Soleil."
+				"Néréide met presque exactement autant de temps à faire le tour de Neptune que la Terre à faire le tour du Soleil.",
+				"Si la Terre était une orange, Néréide serait une tête d’épingle."
 			],
 			"standard": [
 				"Néréide plonge vers Neptune puis repart au loin comme une comète – au plus loin, elle est environ sept fois plus éloignée qu’au plus près."
@@ -1176,15 +1223,15 @@
 		"name": "Protée",
 		"tagline": "Cachée dans l’éclat de Neptune",
 		"description": {
-			"simple": "Protée est une lune sombre et bosselée de Neptune, d’environ 420 km de large. Elle est presque assez grosse pour que sa propre gravité la presse en boule – mais pas tout à fait, alors elle ressemble à une boîte cabossée. Même si elle est assez grande, personne ne l’avait vue avant que la sonde Voyager 2 passe près de Neptune en 1989. Elle se cachait dans la lumière éclatante de Neptune.",
+			"simple": "Protée est une lune sombre et bosselée de Neptune. Elle est presque assez grosse pour être ronde comme une balle, mais pas tout à fait. Alors elle ressemble à une boîte cabossée. Personne ne l’avait vue avant que la sonde spatiale Voyager 2 passe près de Neptune. Elle se cachait dans la lumière éclatante de Neptune.",
 			"standard": "Protée est la deuxième plus grande lune de Neptune, environ 420 km, et pourtant elle n’a été découverte qu’en 1989, sur des images de Voyager 2. Depuis la Terre, elle se perd dans l’éclat de Neptune, car elle orbite à seulement 117 600 km environ du centre de la planète – moins de cinq rayons de Neptune – et sa surface ne renvoie qu’environ un dixième de la lumière du Soleil qu’elle reçoit. Protée est à peu près aussi grande que peut l’être un corps comme elle sans que sa propre gravité lui donne une forme ronde : elle reste donc un bloc irrégulier, en forme de boîte. Elle file autour de Neptune en 27 heures seulement.",
 			"advanced": "Avec un diamètre moyen d’environ 420 km, Protée est proche de la taille à partir de laquelle l’autogravité devrait vaincre la résistance de la glace et de la roche et donner à un corps une forme à peu près sphéroïdale (hydrostatique) – et pourtant elle est restée irrégulière. Sa surface est dominée par le bassin d’impact Pharos, large d’environ 255 km et profond de 10 à 15 km, creusé par un impact qui a failli faire éclater la lune. Les scientifiques pensent que Protée ne s’est pas formée en même temps que Neptune, mais s’est réagrégée à partir de débris après la capture de Triton par Neptune, dont l’arrivée aurait bouleversé le système de lunes d’origine. La minuscule lune Hippocampe, découverte sur des images de Hubble en 2013, orbite à seulement 12 000 km environ à l’intérieur de l’orbite de Protée et pourrait être un fragment arraché par l’impact de Pharos."
 		},
 		"facts": {
 			"simple": [
 				"Protée fait le tour de Neptune en un peu plus d’un jour.",
-				"Depuis Protée, Neptune paraîtrait environ 50 fois plus large que la pleine Lune vue depuis chez nous.",
-				"Protée a un cratère géant plus large que la moitié de la lune entière."
+				"Depuis Protée, Neptune paraîtrait presque 50 fois plus large que la pleine Lune vue de chez nous.",
+				"Protée a un cratère géant, un trou rond laissé par un choc. Ce trou est plus large que la moitié de Protée."
 			],
 			"standard": [
 				"Voyager 2 a découvert Protée en 1989, quelques semaines avant de survoler Neptune.",
@@ -1199,7 +1246,8 @@
 		},
 		"comparisons": {
 			"simple": [
-				"Traverser Protée en voiture à 100 km/h prendrait environ quatre heures."
+				"Traverser Protée en voiture sur l’autoroute prendrait environ quatre heures.",
+				"Si la Terre était une orange, Protée serait une tête d’épingle."
 			],
 			"standard": [
 				"Protée est plus grande que Néréide, que les astronomes ont repérée depuis la Terre dès 1949, et pourtant Protée est restée cachée 40 ans de plus – comme un morceau de charbon posé à côté d’un projecteur."
@@ -1211,17 +1259,20 @@
 	},
 	"ceres": {
 		"name": "Cérès",
-		"tagline": "La planète naine de la ceinture d’astéroïdes",
+		"tagline": {
+			"simple": "Le plus grand monde entre Mars et Jupiter",
+			"standard": "La planète naine de la ceinture d’astéroïdes"
+		},
 		"description": {
-			"simple": "Cérès est le plus gros objet de la ceinture d’astéroïdes, l’anneau de rochers qui tourne entre Mars et Jupiter. Elle est ronde comme une balle, mais beaucoup plus petite que notre Lune. Quand on l’a découverte, en 1801, on a cru que c’était une nouvelle planète. Une sonde appelée Dawn a tourné autour de Cérès et y a trouvé des taches d’un blanc éclatant – faites de sel !",
+			"simple": "Cérès est le plus gros objet de la ceinture d’astéroïdes. Cette ceinture est un anneau de rochers de l’espace, entre Mars et Jupiter. Cérès est ronde comme une balle, mais beaucoup plus petite que notre Lune. Quand on l’a découverte, on a cru que c’était une nouvelle planète. Une sonde spatiale appelée Dawn a tourné autour de Cérès. Elle a trouvé des taches d’un blanc éclatant, faites de sel !",
 			"standard": "Cérès est le plus gros corps de la ceinture d’astéroïdes, entre Mars et Jupiter, et la seule planète naine de cette région. Giuseppe Piazzi l’a découverte le 1er janvier 1801, et pendant environ un demi-siècle, on l’a comptée parmi les planètes – jusqu’à ce que l’on trouve tant d’autres rochers dans la même région que les astronomes ont commencé à les appeler astéroïdes. Cérès mesure environ 940 km de diamètre et se compose de roche mêlée de glace. La sonde Dawn de la NASA a tourné autour d’elle de 2015 à 2018 et a découvert des taches brillantes dans le cratère Occator : du sel, laissé par de l’eau salée remontée des profondeurs, puis évaporée.",
 			"advanced": "Cérès (diamètre moyen d’environ 940 km) concentre à peu près un tiers de la masse de la ceinture d’astéroïdes ; c’est le seul objet de la ceinture assez massif pour avoir pris, sous l’effet de sa propre gravité, une forme presque ronde. Selon la définition de l’UAI de 2006, c’est donc une planète naine : elle est ronde et tourne autour du Soleil, mais elle n’a pas fait le vide sur son orbite, encombrée d’innombrables autres corps. Sa faible masse volumique, environ 2,2 g/cm³, indique un mélange de roche et de glace d’eau, et Dawn a trouvé des indices de saumure loin sous la croûte. Les taches brillantes (faculae) du cratère Occator, large de 92 km, sont surtout faites de carbonate de sodium, et Ahuna Mons, une montagne isolée d’environ 4 km de haut, serait un volcan de glace. Cérès fait le tour du Soleil en 4,6 ans, à une distance moyenne de 2,77 ua."
 		},
 		"facts": {
 			"simple": [
-				"Cérès porte le nom de la déesse romaine des moissons – c’est de là que vient le mot « céréale ».",
+				"Cérès porte le nom de la déesse romaine des moissons. C’est de là que vient le mot « céréale ».",
 				"Une journée sur Cérès ne dure qu’environ 9 heures.",
-				"La ceinture d’astéroïdes n’est pas encombrée comme dans les films : les astéroïdes sont si éloignés les uns des autres que les sondes la traversent sans avoir à éviter quoi que ce soit."
+				"La ceinture d’astéroïdes n’est pas encombrée comme dans les films. Les rochers sont si loin les uns des autres que les sondes spatiales la traversent tout droit."
 			],
 			"standard": [
 				"Cérès a été le tout premier astéroïde découvert, le jour de l’An 1801.",
@@ -1236,7 +1287,7 @@
 		},
 		"comparisons": {
 			"simple": [
-				"Si la Terre était un ballon de foot, Cérès serait une bille."
+				"Si la Terre était une orange, Cérès serait un petit pois, mais un tout petit."
 			],
 			"standard": [
 				"Cérès est environ quatre fois moins large que notre Lune : la traverser à 100 km/h prendrait moins de 10 heures."
@@ -1250,15 +1301,15 @@
 		"name": "Pluton",
 		"tagline": "La planète naine qui a un cœur",
 		"description": {
-			"simple": "Pluton est un petit monde glacé, loin au-delà de Neptune. Pendant 76 ans, on l’a appelée la neuvième planète. En 2006, les astronomes ont décidé que Pluton était une planète naine, parce qu’elle partage son chemin autour du Soleil avec beaucoup d’autres objets glacés. Pluton elle-même n’a pas changé – seul le nom qu’on lui donne a changé. À sa surface, il y a une grande plaine claire en forme de cœur.",
+			"simple": "Pluton est un petit monde glacé, loin au-delà de Neptune. Pendant longtemps, on l’a appelée la neuvième planète. Puis les scientifiques ont décidé de l’appeler une planète naine. Une planète naine, c’est un petit monde rond qui partage son chemin avec beaucoup d’autres objets glacés. Pluton elle-même n’a pas changé. Seul le nom qu’on lui donne a changé. Sur Pluton, il y a une grande tache claire et plate, en forme de cœur.",
 			"standard": "Pluton a été découverte en 1930 par Clyde Tombaugh et a été appelée la neuvième planète pendant 76 ans. Puis, en 2005, des astronomes ont trouvé Éris, un monde glacé à peu près aussi grand que Pluton, et il a fallu trancher : était-ce une dixième planète ? En 2006, l’Union astronomique internationale (UAI) a adopté la première définition officielle d’une planète : elle doit tourner autour du Soleil, être assez massive pour être ronde et avoir fait le vide autour de son orbite. Pluton remplit les deux premières conditions, mais elle partage sa région, la ceinture de Kuiper, avec des milliers d’autres corps glacés – elle est donc devenue une planète naine. Pluton n’a pas changé ; ce sont nos connaissances qui ont changé, et c’est ainsi que fonctionne la science.",
 			"advanced": "Lorsque la sonde New Horizons de la NASA l’a survolée le 14 juillet 2015, Pluton s’est révélée étonnamment active. La moitié ouest de Tombaugh Regio, la grande région claire en forme de cœur, est occupée par Sputnik Planitia, un bassin d’environ 1 000 km de large rempli de glace d’azote en lente convection et dépourvu de cratères visibles : sa surface doit donc avoir moins d’environ 10 millions d’années. Des montagnes de glace d’eau hautes de plusieurs kilomètres et une mince atmosphère d’azote aux couches de brume bleutée complètent le tableau. L’orbite de Pluton est excentrique (0,25) et inclinée de 17° ; de 1979 à 1999, Pluton était plus proche du Soleil que Neptune, mais une résonance orbitale 3:2 – Pluton fait deux fois le tour du Soleil pendant que Neptune en fait trois – empêche les deux astres d’entrer un jour en collision."
 		},
 		"facts": {
 			"simple": [
 				"Pluton doit son nom à Venetia Burney, une petite Anglaise de 11 ans.",
-				"La sonde New Horizons a voyagé pendant neuf ans et demi pour atteindre Pluton.",
-				"Une année sur Pluton dure presque 250 années terrestres."
+				"La sonde spatiale New Horizons a voyagé pendant neuf ans et demi pour atteindre Pluton.",
+				"Pour faire une fois le tour du Soleil, Pluton met plus de trois longues vies humaines."
 			],
 			"standard": [
 				"New Horizons a survolé Pluton le 14 juillet 2015 et a envoyé les premières images prises de près.",
@@ -1272,9 +1323,7 @@
 			]
 		},
 		"comparisons": {
-			"simple": [
-				"Si la Terre était un ballon de foot, Pluton serait une balle de ping-pong."
-			],
+			"simple": ["Si la Terre était une orange, Pluton serait une bille."],
 			"standard": [
 				"Pluton ne fait qu’environ les deux tiers de la largeur de notre Lune – sept lunes du système solaire sont plus grandes que Pluton."
 			],
@@ -1287,15 +1336,15 @@
 		"name": "Hauméa",
 		"tagline": "L’œuf qui tourne à toute vitesse",
 		"description": {
-			"simple": "Hauméa est une planète naine située loin au-delà de Neptune. Elle tourne si vite sur elle-même – un tour en moins de quatre heures – qu’elle s’est étirée en forme d’œuf, ou de ballon de rugby. Hauméa a deux petites lunes et même un anneau très fin.",
+			"simple": "Hauméa est une planète naine, loin au-delà de Neptune. Elle tourne si vite sur elle-même, en moins de quatre heures, qu’elle s’est étirée. Maintenant, elle a la forme d’un œuf ou d’un ballon de rugby. Hauméa a deux petites lunes et même un anneau très fin.",
 			"standard": "Hauméa se trouve dans la ceinture de Kuiper, la zone des corps glacés au-delà de Neptune. Une journée y dure moins de quatre heures, ce qui en fait l’un des grands corps du système solaire qui tournent le plus vite. Cette rotation rapide l’a étirée en une forme d’œuf allongé, environ deux fois plus longue qu’épaisse. En 2017, des astronomes ont observé Hauméa passer devant une étoile lointaine et ont découvert un anneau fin autour d’elle – le premier anneau trouvé autour d’une planète naine. Ses deux lunes, Hiʻiaka et Namaka, portent comme elle des noms de déesses hawaïennes.",
 			"advanced": "Sa période de rotation de 3,9 heures étire Hauméa en un ellipsoïde allongé environ deux fois plus long qu’épais – la forme dans laquelle sa gravité et sa rotation s’équilibrent. Sa surface est couverte de glace d’eau cristalline, tandis que sa masse volumique indique un intérieur surtout rocheux sous une fine coquille de glace. Hauméa, ses lunes et une famille de corps glacés aux orbites semblables seraient les fragments d’une ancienne collision géante, qui pourrait aussi expliquer sa rotation rapide. Elle fait le tour du Soleil en 283 ans, à une distance moyenne de 43 ua, sur une orbite inclinée de 28°."
 		},
 		"facts": {
 			"simple": [
 				"Une journée sur Hauméa est plus courte qu’une matinée d’école : moins de 4 heures.",
-				"Hauméa porte le nom d’une déesse hawaïenne de la naissance et de la fertilité.",
-				"Hauméa a un anneau, comme Saturne – mais beaucoup plus fin et plus pâle."
+				"Hauméa porte le nom d’une déesse hawaïenne de la naissance.",
+				"Hauméa a un anneau, comme Saturne, mais beaucoup plus fin et plus pâle."
 			],
 			"standard": [
 				"L’anneau de Hauméa a été découvert en 2017, quand la planète naine est passée devant une étoile et a caché sa lumière pendant un court instant.",
@@ -1310,7 +1359,7 @@
 		},
 		"comparisons": {
 			"simple": [
-				"Si la Terre était un ballon de foot, Hauméa aurait à peu près la taille et la forme d’un œuf de caille."
+				"Si la Terre était une orange, Hauméa serait un tout petit œuf, à peu près aussi long qu’une bille."
 			],
 			"standard": [
 				"Hauméa tourne sur elle-même environ six fois plus vite que la Terre."
@@ -1324,15 +1373,15 @@
 		"name": "Makémaké",
 		"tagline": "La planète naine découverte à Pâques",
 		"description": {
-			"simple": "Makémaké est un petit monde glacé et rougeâtre, loin au-delà de Neptune. On l’a découverte en 2005, juste après Pâques : ses découvreurs lui ont donc donné le nom d’un dieu du peuple de l’île de Pâques. Makémaké est l’un des objets les plus brillants de la ceinture de Kuiper, la zone des mondes glacés au-delà de Neptune. Elle a une toute petite lune sombre.",
+			"simple": "Makémaké est un petit monde glacé et rougeâtre, loin au-delà de Neptune. On l’a découverte juste après Pâques. Alors ceux qui l’ont trouvée lui ont donné le nom d’un dieu de l’île de Pâques. Makémaké est l’un des mondes glacés les plus brillants au-delà de Neptune. Elle a une toute petite lune sombre.",
 			"standard": "Makémaké est une planète naine de la ceinture de Kuiper, d’environ 1 400 km de diamètre – un peu plus de la moitié de la largeur de Pluton. Ses découvreurs l’ont repérée le 31 mars 2005, quelques jours après Pâques, et l’ont ensuite nommée d’après Makemake, le dieu créateur du peuple rapanui de l’île de Pâques. Après Pluton, c’est l’objet connu le plus brillant de la ceinture de Kuiper, visible dans un grand télescope d’amateur. Sa surface brun-rouge est couverte de méthane gelé. En 2016, des images de Hubble ont révélé une petite lune très sombre.",
 			"advanced": "Makémaké fait le tour du Soleil en 308 ans, à une distance moyenne de 45,6 ua, sur une orbite inclinée de 29°. Son spectre est dominé par la glace de méthane, accompagnée d’éthane et d’autres composés que la lumière du Soleil a produits à partir du méthane et qui donnent à la surface sa couleur rougeâtre. Quand Makémaké est passée devant une étoile peu brillante en 2011, l’étoile a disparu puis réapparu brusquement : Makémaké n’a donc tout au plus qu’une atmosphère extrêmement ténue – contrairement à Pluton. Sa lune, surnommée MK2, est environ 1 300 fois moins lumineuse que Makémaké et bien plus sombre ; elle a été trouvée sur des images de Hubble prises en 2015."
 		},
 		"facts": {
 			"simple": [
-				"Une année sur Makémaké dure environ 308 années terrestres.",
-				"Ses découvreurs l’avaient d’abord surnommée « Lapin de Pâques ».",
-				"Makémaké est couverte de méthane gelé – le principal gaz du gaz naturel avec lequel beaucoup de gens font la cuisine."
+				"Pour faire une fois le tour du Soleil, Makémaké met presque quatre longues vies humaines.",
+				"Ceux qui l’ont trouvée l’avaient d’abord surnommée « Lapin de Pâques ».",
+				"Makémaké est couverte de gaz gelé, le même gaz que beaucoup de gens utilisent pour faire la cuisine."
 			],
 			"standard": [
 				"Makémaké a été officiellement reconnue comme planète naine en 2008.",
@@ -1347,7 +1396,7 @@
 		},
 		"comparisons": {
 			"simple": [
-				"Si la Terre était un ballon de foot, Makémaké serait à peu près aussi grosse qu’une cerise."
+				"Si la Terre était une orange, Makémaké serait un petit pois."
 			],
 			"standard": [
 				"Makémaké fait environ 60 % de la largeur de Pluton et 40 % de celle de notre Lune."
@@ -1359,17 +1408,20 @@
 	},
 	"eris": {
 		"name": "Éris",
-		"tagline": "La planète naine qui a lancé le débat",
+		"tagline": {
+			"simple": "La planète naine qui a lancé une dispute",
+			"standard": "La planète naine qui a lancé le débat"
+		},
 		"description": {
-			"simple": "Éris est une planète naine presque exactement aussi grande que Pluton, mais beaucoup plus lointaine. Quand on l’a découverte en 2005, certains l’ont appelée la dixième planète. Au lieu de cela, les astronomes ont fixé une règle claire pour décider de ce qui compte comme une planète – et Éris et Pluton sont toutes deux devenues des planètes naines. Éris porte le nom de la déesse grecque de la discorde, ce qui lui va bien, car elle a déclenché une grande dispute !",
+			"simple": "Éris est une planète naine. Elle est presque exactement aussi grande que Pluton, mais beaucoup plus lointaine. Quand on l’a découverte, certains l’ont appelée la dixième planète. Au lieu de cela, les scientifiques ont fixé une règle claire pour dire ce qui est une planète. Alors Éris et Pluton sont toutes les deux devenues des planètes naines. Éris porte le nom de la déesse grecque des disputes. Ça lui va bien, car elle a déclenché une grande dispute !",
 			"standard": "Éris est à peu près aussi large que Pluton, mais environ un quart plus lourde, et c’est l’un des objets connus les plus lointains qui tournent autour du Soleil. Sa découverte en 2005 a obligé les astronomes à décider si c’était la dixième planète – ou si Pluton était vraiment une planète. La réponse a été la définition de l’UAI de 2006, qui a fait des deux astres des planètes naines. Fort à propos, Éris porte le nom de la déesse grecque de la discorde et des querelles. Son orbite est si allongée et si inclinée (44°) qu’il lui faut environ 560 ans pour faire le tour du Soleil. Aujourd’hui, Éris est environ 96 fois plus loin du Soleil que la Terre, près du point le plus éloigné de son orbite.",
 			"advanced": "Éris appartient au disque des objets épars, une population de corps glacés au-delà de la ceinture de Kuiper dont les orbites excentriques et fortement inclinées ont probablement été repoussées vers l’extérieur par la gravité de Neptune. Son orbite (demi-grand axe de 68 ua, excentricité 0,44, inclinaison 44°) la mène entre environ 38 et 98 ua du Soleil. Quand Éris est passée devant une étoile en 2010, on a mesuré son diamètre : environ 2 330 km, juste en dessous des 2 377 km de Pluton, tandis que l’orbite de sa lune Dysnomie donne une masse supérieure d’environ 27 % à celle de Pluton – Éris est donc plus dense et plus rocheuse. Sa surface renvoie environ 96 % de la lumière qu’elle reçoit, l’une des valeurs les plus élevées du système solaire, probablement grâce à un givre de méthane frais."
 		},
 		"facts": {
 			"simple": [
-				"Une année sur Éris dure environ 560 années terrestres.",
+				"Pour faire une fois le tour du Soleil, Éris met environ sept longues vies humaines.",
 				"Éris a une lune, qui s’appelle Dysnomie.",
-				"Éris est l’un des objets les plus brillants du système solaire : comme de la neige fraîche, elle renvoie presque toute la lumière du Soleil qu’elle reçoit."
+				"Éris est l’une des choses les plus brillantes de l’espace. Comme de la neige fraîche, elle renvoie presque toute la lumière du Soleil."
 			],
 			"standard": [
 				"Avant de recevoir son nom officiel, Éris était surnommée « Xena », d’après l’héroïne d’une série télévisée.",
@@ -1384,7 +1436,7 @@
 		},
 		"comparisons": {
 			"simple": [
-				"Si la Terre était un ballon de foot, Éris serait une balle de ping-pong – à peine plus petite que Pluton."
+				"Si la Terre était une orange, Éris serait une bille, à peine plus petite que Pluton."
 			],
 			"standard": [
 				"La lumière met aujourd’hui environ 13 heures pour atteindre Éris ; un avion de ligne à 900 km/h mettrait environ 1 800 ans."
@@ -1398,15 +1450,15 @@
 		"name": "Charon",
 		"tagline": "La grande compagne de Pluton",
 		"description": {
-			"simple": "Charon est la plus grande lune de Pluton. Elle est à peu près deux fois moins large que Pluton – si grande que Pluton et Charon tournent l’une autour de l’autre comme deux danseurs qui se tiennent par la main. Elles se montrent toujours la même face. Si tu étais sur Pluton, tu verrais Charon suspendue dans le ciel sans jamais bouger – ou, de l’autre côté de Pluton, tu ne la verrais jamais.",
+			"simple": "Charon est la plus grande lune de Pluton. Elle est à peu près moitié moins large que Pluton. Elle est si grande que Pluton et Charon tournent l’une autour de l’autre, comme deux danseurs qui se tiennent par la main. Elles se montrent toujours la même face. Si tu étais d’un côté de Pluton, Charon resterait suspendue dans le ciel sans jamais bouger. De l’autre côté, tu ne la verrais jamais.",
 			"standard": "Charon est la plus grande lune de Pluton, avec environ 1 200 km de diamètre – plus de la moitié de la largeur de Pluton. Comme Charon est très lourde par rapport à Pluton, le point autour duquel tournent les deux astres se trouve dans l’espace vide qui les sépare, et non à l’intérieur de Pluton. Toutes deux sont en rotation synchrone : elles se montrent toujours la même face, et un jour sur Pluton dure exactement autant qu’un tour de Charon, soit 6,4 jours. New Horizons a révélé une calotte rougeâtre au pôle Nord de Charon et des canyons bien plus longs et plus profonds que le Grand Canyon.",
 			"advanced": "Avec environ 12 % de la masse de Pluton, Charon est, par rapport à son astre parent, la plus grosse lune de toutes les planètes et planètes naines ; le barycentre du couple se trouve à plus de 900 km au-dessus de la surface de Pluton, si bien que certains astronomes parlent de Pluton et Charon comme d’une planète naine double. Son orbite a permis la première mesure précise de la masse de Pluton. Sa calotte polaire rougeâtre, Mordor Macula, se formerait lorsque du méthane qui s’échappe de l’atmosphère de Pluton gèle sur le pôle de Charon plongé dans le froid de l’hiver, puis est transformé en composés rougeâtres par la lumière ultraviolette. Sa surface de glace d’eau est fendue par une ceinture de canyons, signe qu’un ancien océan souterrain a gelé et s’est dilaté."
 		},
 		"facts": {
 			"simple": [
-				"Charon porte le nom du passeur qui, dans les mythes grecs, faisait traverser un fleuve aux âmes des morts pour les mener aux Enfers.",
+				"Charon porte le nom d’un passeur des vieilles histoires grecques. Avec sa barque, il faisait traverser un fleuve aux gens pour les mener au pays des morts.",
 				"Charon fait le tour de Pluton en un peu moins d’une semaine.",
-				"Les scientifiques ont surnommé « Mordor » la calotte polaire rouge sombre de Charon, d’après le pays sombre du Seigneur des anneaux."
+				"Les scientifiques ont surnommé « Mordor » la tache rouge sombre en haut de Charon, d’après le pays sombre du Seigneur des anneaux."
 			],
 			"standard": [
 				"Charon n’est qu’à environ 19 600 km de Pluton – à peu près un vingtième de la distance entre la Terre et la Lune.",
@@ -1421,7 +1473,7 @@
 		},
 		"comparisons": {
 			"simple": [
-				"Si la Terre était un ballon de foot, Pluton serait une balle de ping-pong et Charon une noisette placée à 34 cm."
+				"Si la Terre était une orange, Pluton serait une bille. Charon serait un petit pois, à une longueur de main de Pluton."
 			],
 			"standard": [
 				"Charon tourne à seulement 19 600 km environ de Pluton – un avion de ligne parcourrait cette distance en moins d’une journée."
@@ -1435,15 +1487,15 @@
 		"name": "Vesta",
 		"tagline": "L’astéroïde le plus brillant",
 		"description": {
-			"simple": "Vesta est le deuxième plus gros objet de la ceinture d’astéroïdes. C’est l’astéroïde le plus brillant de tous – lors de nuits très noires, on peut même parfois le voir sans télescope. Il y a très longtemps, un choc énorme a creusé un trou géant dans Vesta, et certains morceaux sont tombés sur la Terre sous forme de météorites. On peut donc tenir un morceau de Vesta dans sa main !",
+			"simple": "Vesta est le deuxième plus gros objet de la ceinture d’astéroïdes, l’anneau de rochers de l’espace entre Mars et Jupiter. C’est le plus brillant de tous les rochers de l’espace. Lors de nuits très noires, on peut parfois le voir sans télescope. Il y a très longtemps, un choc énorme a creusé un trou géant dans Vesta. Certains morceaux sont tombés sur la Terre. On peut donc tenir un morceau de Vesta dans sa main !",
 			"standard": "Vesta est le deuxième plus gros corps de la ceinture d’astéroïdes, avec environ 525 km de diamètre. Contrairement à la plupart des astéroïdes, il est formé de couches, comme une petite planète rocheuse : un noyau de fer, un manteau rocheux et une croûte de lave ancienne. La sonde Dawn de la NASA a tourné autour de Vesta de 2011 à 2012 et a cartographié Rheasilvia, un cratère d’environ 500 km de large – presque aussi large que Vesta lui-même – dont le pic central est plus de deux fois plus haut que le mont Everest. L’impact qui l’a creusé a projeté des roches qui tombent encore aujourd’hui sur la Terre : environ une météorite sur vingt vient de Vesta.",
 			"advanced": "Vesta est une protoplanète rescapée : au début de son histoire, cet astre a fondu et s’est différencié en un noyau de fer, un manteau et une croûte basaltique – le même processus qui a façonné la Terre. Son hémisphère sud est dominé par deux bassins d’impact qui se chevauchent, Rheasilvia (environ 500 km) et Veneneia, plus ancien. L’impact de Rheasilvia, il y a environ un milliard d’années, a arraché environ 1 % du volume de Vesta et a créé une famille de petits astéroïdes, les vestoïdes. Certains de ces fragments atteignent la Terre sous forme de météorites HED (howardites, eucrites, diogénites), qui nous permettent d’étudier la croûte de Vesta en laboratoire. Comme sa forme n’est pas tout à fait ronde, Vesta est rangé parmi les astéroïdes et non parmi les planètes naines."
 		},
 		"facts": {
 			"simple": [
-				"Vesta porte le nom de la déesse romaine du foyer et du feu de la maison.",
+				"Vesta porte le nom de la déesse romaine de la maison et du feu de cheminée.",
 				"Une journée sur Vesta dure un peu plus de 5 heures.",
-				"La sonde Dawn a d’abord visité Vesta, puis elle a continué son voyage jusqu’à Cérès."
+				"La sonde spatiale Dawn a d’abord visité Vesta, puis elle a continué jusqu’à Cérès."
 			],
 			"standard": [
 				"Vesta a été découvert en 1807 par Heinrich Olbers.",
@@ -1458,7 +1510,7 @@
 		},
 		"comparisons": {
 			"simple": [
-				"Si la Terre était un ballon de foot, Vesta serait un petit pois."
+				"Si la Terre était une orange, Vesta serait un petit grain de poivre."
 			],
 			"standard": [
 				"Vesta mesure environ 525 km de large – à 100 km/h, tu pourrais le traverser en voiture en un peu plus de 5 heures."
@@ -1472,7 +1524,7 @@
 		"name": "Pallas",
 		"tagline": "Le géant penché de la ceinture d’astéroïdes",
 		"description": {
-			"simple": "Pallas est l’un des plus gros astéroïdes, presque aussi grand que Vesta. Il tourne autour du Soleil sur un chemin très penché : il passe donc une grande partie de son temps au-dessus ou au-dessous des autres astéroïdes. Dans les films, la ceinture d’astéroïdes est pleine de rochers qui roulent les uns contre les autres – mais la vraie est presque vide. Les sondes la traversent tout droit sans avoir à esquiver quoi que ce soit.",
+			"simple": "Pallas est l’un des plus gros rochers de l’espace dans la ceinture d’astéroïdes. Il est presque aussi gros que Vesta. Son chemin autour du Soleil est très penché. Alors il passe beaucoup de temps au-dessus ou au-dessous des autres rochers. Dans les films, la ceinture d’astéroïdes est pleine de rochers qui se cognent. Mais la vraie est presque vide. Les sondes spatiales la traversent tout droit.",
 			"standard": "Pallas a été le deuxième astéroïde découvert, par Heinrich Olbers en 1802. Il mesure environ 510 km de diamètre, presque autant que Vesta, mais son orbite est inclinée d’environ 35° par rapport à celle des planètes – si fortement qu’il est difficile à atteindre, et aucune sonde ne l’a encore visité. Pallas rappelle à quel point la ceinture d’astéroïdes est vide : deux astéroïdes voisins sont en moyenne séparés d’environ un million de km, plus du double de la distance entre la Terre et la Lune. Des sondes comme Pioneer 10, Galileo, Cassini et New Horizons ont traversé la ceinture sans avoir à éviter quoi que ce soit.",
 			"advanced": "Pallas a un diamètre moyen d’environ 510 km et contient à peu près 8 % de la masse de la ceinture d’astéroïdes. Son orbite est exceptionnellement inclinée (34,9°) et excentrique (0,23) : il croise donc les autres astéroïdes à de grandes vitesses relatives, et les collisions y sont particulièrement violentes – ce qui pourrait expliquer sa surface criblée de cratères, en « balle de golf », visible sur des images prises en 2020 par le Very Large Telescope. La ceinture entière ne contient qu’environ 3 % de la masse de la Lune, et Cérès, Vesta, Pallas et Hygie en représentent ensemble plus de la moitié. Pallas orbite à une distance moyenne de 2,77 ua, presque exactement comme Cérès."
 		},
@@ -1480,7 +1532,7 @@
 			"simple": [
 				"Pallas porte le nom de Pallas Athéna, la déesse grecque de la sagesse.",
 				"Une année sur Pallas dure plus de quatre ans et demi sur Terre.",
-				"Tous les astéroïdes de la ceinture réunis pèsent beaucoup moins que notre Lune."
+				"Tous les rochers de la ceinture réunis pèsent beaucoup moins que notre Lune."
 			],
 			"standard": [
 				"Comme Cérès, Pallas a été compté parmi les planètes pendant des décennies après sa découverte.",
@@ -1495,7 +1547,7 @@
 		},
 		"comparisons": {
 			"simple": [
-				"Si la Terre était un ballon de foot, Pallas serait un petit pois – tout comme Vesta."
+				"Si la Terre était une orange, Pallas serait un petit grain de poivre, tout comme Vesta."
 			],
 			"standard": [
 				"Tous les astéroïdes réunis n’ont qu’environ un trentième de la masse de la Lune."
@@ -1509,15 +1561,15 @@
 		"name": "Junon",
 		"tagline": "Le troisième astéroïde découvert",
 		"description": {
-			"simple": "Junon est un gros astéroïde de la ceinture d’astéroïdes, d’environ 250 km de large. C’est le troisième astéroïde jamais découvert, en 1804. Il est fait de pierre mêlée de métal et a un peu la forme d’une pomme de terre. Junon porte le nom de la reine des dieux romains.",
+			"simple": "Junon est un gros rocher de l’espace dans la ceinture d’astéroïdes, entre Mars et Jupiter. C’est le troisième qu’on ait jamais découvert. Il est fait de pierre mêlée de métal. Il a un peu la forme d’une pomme de terre. Junon porte le nom de la reine des dieux romains.",
 			"standard": "Junon a été le troisième astéroïde découvert, par Karl Harding en 1804. Il mesure environ 250 km de diamètre et fait partie des plus gros astéroïdes pierreux, faits de roches silicatées mêlées de métal. Son orbite est assez allongée : Junon s’approche jusqu’à environ 2 ua du Soleil et s’en éloigne jusqu’à environ 3,4 ua. Ne le confonds pas avec la sonde Juno de la NASA – celle-là a été envoyée vers Jupiter, pas vers cet astéroïde.",
 			"advanced": "Junon est un astéroïde de type S : sa surface est faite de silicates pierreux mêlés de fer-nickel, et il renvoie plus de lumière que les astéroïdes sombres, riches en carbone. Avec une excentricité de 0,26, sa distance au Soleil varie entre environ 297 et 502 millions de km, et il fait le tour du Soleil en 4,4 ans. Il tourne sur lui-même en environ 7,2 heures, et sa luminosité change pendant sa rotation à cause de sa forme irrégulière. Avec Cérès, Pallas et Vesta, il a été compté parmi les planètes pendant plusieurs décennies après sa découverte."
 		},
 		"facts": {
 			"simple": [
 				"Une année sur Junon dure presque quatre ans et demi sur Terre.",
-				"Junon fait un tour sur lui-même en environ 7 heures.",
-				"Junon est trop pâle pour être vu à l’œil nu – il faut des jumelles ou un télescope."
+				"Junon fait un tour sur lui-même en 7 heures environ.",
+				"Junon est trop pâle pour être vu avec tes yeux seuls. Il faut des jumelles ou un télescope."
 			],
 			"standard": [
 				"Junon porte le nom de la reine des dieux romains, l’épouse de Jupiter.",
@@ -1532,7 +1584,7 @@
 		},
 		"comparisons": {
 			"simple": [
-				"Si la Terre était un ballon de foot, Junon serait un grain de poivre."
+				"Si la Terre était une orange, Junon serait une tête d’épingle."
 			],
 			"standard": [
 				"Junon mesure environ 250 km de large : à 100 km/h, tu pourrais le traverser en voiture en deux heures et demie."
@@ -1546,7 +1598,7 @@
 		"name": "Hygie",
 		"tagline": "Une planète naine, peut-être",
 		"description": {
-			"simple": "Hygie est le quatrième plus gros objet de la ceinture d’astéroïdes. Il est très sombre et presque rond comme une balle. Certains astronomes pensent qu’il pourrait un jour être compté parmi les planètes naines. Il porte le nom de la déesse grecque de la santé – c’est de là que vient le mot « hygiène ».",
+			"simple": "Hygie est le quatrième plus gros objet de la ceinture d’astéroïdes, l’anneau de rochers de l’espace entre Mars et Jupiter. Il est très sombre et presque rond, comme une balle. Certains scientifiques pensent qu’on l’appellera peut-être un jour une planète naine. Il porte le nom de la déesse grecque de la santé. C’est de là que vient le mot « hygiène » : rester propre pour être en bonne santé.",
 			"standard": "Hygie est le quatrième plus gros astéroïde, avec environ 410 km de diamètre ; il tourne dans la partie extérieure de la ceinture, à une distance moyenne de 3,15 ua. Il a été découvert en 1849 par Annibale de Gasparis, à Naples. Sa surface est sombre et riche en carbone, comme celle de nombreux astéroïdes de la ceinture extérieure. En 2019, des images très nettes du Very Large Telescope, au Chili, ont montré qu’Hygie est presque parfaitement rond : il pourrait donc être classé parmi les planètes naines – mais l’UAI n’a pas changé son statut.",
 			"advanced": "Hygie est un astéroïde de type C, un corps sombre et carboné, et le plus grand membre d’une famille d’astéroïdes née d’un impact géant. Les observations de 2019 au Very Large Telescope n’y ont trouvé, à la surprise générale, aucun grand bassin d’impact ; selon les modèles, la collision aurait entièrement pulvérisé Hygie, puis les fragments se seraient rassemblés en une sphère. Sa forme ronde semble satisfaire au critère de rondeur de l’UAI pour les planètes naines, mais sa classification n’a pas été modifiée. Cérès, Vesta, Pallas et Hygie contiennent à eux quatre plus de la moitié de la masse de la ceinture d’astéroïdes."
 		},
@@ -1569,7 +1621,7 @@
 		},
 		"comparisons": {
 			"simple": [
-				"Si la Terre était un ballon de foot, Hygie serait un petit pois d’environ 7 mm de large."
+				"Si la Terre était une orange, Hygie serait une tête d’épingle."
 			],
 			"standard": [
 				"La lumière du Soleil met environ 26 minutes pour atteindre Hygie – trois fois plus que pour atteindre la Terre."
@@ -1583,15 +1635,15 @@
 		"name": "Éros",
 		"tagline": "Le premier astéroïde où une sonde s’est posée",
 		"description": {
-			"simple": "Éros est un astéroïde allongé en forme de cacahuète, long d’environ 34 km. Il vient plus près de la Terre que les astéroïdes de la ceinture principale. En l’an 2000, une sonde appelée NEAR Shoemaker s’est mise en orbite autour d’Éros, et un an plus tard, elle s’y est posée en douceur – alors qu’elle n’avait pas du tout été construite pour atterrir !",
+			"simple": "Éros est un long rocher de l’espace en forme de cacahuète. Il vient plus près de la Terre que les rochers de la ceinture d’astéroïdes. Une sonde spatiale appelée NEAR Shoemaker a tourné autour d’Éros pendant un an. Puis elle s’y est posée en douceur, alors qu’elle n’avait pas du tout été construite pour atterrir !",
 			"standard": "Éros, découvert en 1898, a été le tout premier géocroiseur connu : son orbite l’amène plus près du Soleil que Mars, même s’il ne croise jamais le chemin de la Terre. Il mesure environ 34 km de long. Le 14 février 2000 – jour de la Saint-Valentin, ce qui tombe bien pour un astéroïde qui porte le nom du dieu grec de l’amour –, la sonde NEAR Shoemaker de la NASA est devenue la première sonde en orbite autour d’un astéroïde. Après un an de cartographie, elle s’est posée le 12 février 2001 : le premier atterrissage sur un astéroïde.",
 			"advanced": "Éros est un astéroïde de type S dont l’orbite a un demi-grand axe de 1,46 ua et une excentricité de 0,22 ; il fait le tour du Soleil en 1,76 an, et son périhélie à 1,13 ua en fait un géocroiseur qui croise l’orbite de Mars. Ses passages rapprochés vers 1900 et en 1931 ont servi à mesurer sa parallaxe, et donc l’échelle du système solaire, c’est-à-dire la longueur de l’unité astronomique. NEAR Shoemaker a mesuré une masse volumique globale d’environ 2,7 g/cm³, proche de celle de la croûte terrestre, ce qui suggère un corps solide mais très fracturé plutôt qu’un amas de débris peu compact, couvert de blocs rocheux et de mares de poussière fine."
 		},
 		"facts": {
 			"simple": [
-				"Éros porte le nom du dieu grec de l’amour – et la sonde est arrivée le jour de la Saint-Valentin !",
+				"Éros porte le nom du dieu grec de l’amour. Et la sonde est arrivée le jour de la Saint-Valentin !",
 				"Éros fait un tour sur lui-même en un peu plus de 5 heures.",
-				"Sur Éros, la gravité est si faible que tu pourrais lancer un caillou directement dans l’espace."
+				"Éros attire si peu les choses que tu pourrais lancer un caillou jusque dans l’espace."
 			],
 			"standard": [
 				"NEAR Shoemaker a pris environ 160 000 photos d’Éros.",
@@ -1606,7 +1658,8 @@
 		},
 		"comparisons": {
 			"simple": [
-				"Si la Terre était un ballon de foot, Éros serait aussi petit qu’un grain de sable."
+				"Une voiture sur l’autoroute pourrait traverser Éros d’un bout à l’autre en 20 minutes environ.",
+				"Si la Terre était une orange, Éros serait un grain de sable."
 			],
 			"standard": [
 				"Éros mesure environ 34 km de long – une voiture à 100 km/h le parcourrait d’un bout à l’autre en une vingtaine de minutes."
@@ -1618,17 +1671,20 @@
 	},
 	"bennu": {
 		"name": "Bennu",
-		"tagline": "Le tas de gravats dont on a ramené des morceaux",
+		"tagline": {
+			"simple": "Le tas de cailloux dont on a ramené des morceaux",
+			"standard": "Le tas de gravats dont on a ramené des morceaux"
+		},
 		"description": {
-			"simple": "Bennu est un petit astéroïde, large d’environ 500 m seulement – si tu pouvais faire le tour de son milieu à pied, il ne te faudrait qu’une vingtaine de minutes. Ce n’est pas un seul gros rocher, mais un tas de rochers et de graviers qui tiennent ensemble grâce à sa toute petite gravité. En 2020, la sonde OSIRIS-REx a touché Bennu pendant quelques secondes et a attrapé de la poussière et des cailloux. En 2023, une capsule les a ramenés sans encombre sur Terre, où des scientifiques les étudient.",
+			"simple": "Bennu est un petit rocher de l’espace. Tu pourrais faire le tour de son milieu à pied en moins d’une demi-heure. Ce n’est pas un seul gros rocher. C’est un tas de rochers et de graviers. Ils tiennent ensemble parce que Bennu les attire un tout petit peu. Une sonde spatiale a touché Bennu pendant quelques secondes et a attrapé de la poussière et des cailloux. Puis une capsule les a ramenés sans danger sur la Terre. Maintenant, des scientifiques les étudient.",
 			"standard": "Bennu est un géocroiseur d’environ 500 m de diamètre, découvert en 1999. La sonde OSIRIS-REx de la NASA est arrivée en 2018 et a découvert un tas de gravats : un amas peu compact de blocs rocheux et de graviers, retenus par une faible gravité. Quand elle a touché la surface le 20 octobre 2020 pour prélever un échantillon, sa tête de prélèvement s’y est enfoncée comme dans une piscine à balles. La capsule contenant environ 120 g de matériau a atterri dans le désert de l’Utah le 24 septembre 2023. L’échantillon est riche en carbone et en minéraux contenant de l’eau, et il renferme des acides aminés, des briques de la vie.",
 			"advanced": "Bennu est un astéroïde carboné de type B dont la masse volumique globale, d’environ 1,2 g/cm³ seulement, implique qu’une grande partie de son volume est faite de vide entre les fragments. Son orbite (demi-grand axe de 1,13 ua, excentricité 0,20) croise celle de la Terre, ce qui en fait l’un des astéroïdes potentiellement dangereux les plus surveillés : d’après le suivi précis d’OSIRIS-REx, la probabilité d’un impact le 24 septembre 2182 est d’environ 1 sur 2 700. L’échantillon rapporté contient des minéraux formés dans de l’eau liquide et des sels laissés par l’évaporation de saumures, preuve que le corps parent de Bennu contenait autrefois de l’eau."
 		},
 		"facts": {
 			"simple": [
-				"Bennu doit son nom à un garçon de 9 ans qui a gagné un concours en 2013.",
+				"Bennu doit son nom à un garçon de 9 ans, qui a gagné un concours pour le baptiser.",
 				"Bennu fait un tour sur lui-même en un peu plus de 4 heures.",
-				"Les morceaux de Bennu rapportés sur Terre pèsent environ 120 g – un peu plus qu’une tablette de chocolat."
+				"Les morceaux de Bennu rapportés sur Terre pèsent un peu plus qu’une tablette de chocolat."
 			],
 			"standard": [
 				"Bennu fait le tour du Soleil en 1,2 an environ.",
@@ -1655,17 +1711,20 @@
 	},
 	"arrokoth": {
 		"name": "Arrokoth",
-		"tagline": "Le monde le plus lointain jamais exploré",
+		"tagline": {
+			"simple": "Le monde le plus lointain que nous ayons visité",
+			"standard": "Le monde le plus lointain jamais exploré"
+		},
 		"description": {
-			"simple": "Arrokoth est un petit monde rougeâtre fait de glace et de roche, loin dans la ceinture de Kuiper, au-delà de Neptune. On dirait deux crêpes plates collées ensemble – ou un bonhomme de neige couché. Le 1er janvier 2019, la sonde New Horizons est passée tout près. Aucune sonde n’a jamais visité quelque chose de plus lointain.",
+			"simple": "Arrokoth est un petit monde rougeâtre fait de glace et de roche. Il est très loin, au-delà de Neptune. On dirait deux crêpes plates collées ensemble, ou un bonhomme de neige couché. Le jour de l’An, la sonde spatiale New Horizons est passée tout près. Aucune sonde n’a jamais visité quelque chose de plus lointain.",
 			"standard": "Arrokoth est un petit corps glacé de la ceinture de Kuiper, long d’environ 36 km. Le 1er janvier 2019, la sonde New Horizons de la NASA l’a survolé – trois ans et demi après sa visite de Pluton –, ce qui en fait l’objet le plus lointain jamais exploré de près, à environ 6,6 milliards de km de la Terre. Il s’est révélé formé de deux lobes aplatis, doucement collés l’un à l’autre, ce qui montre comment les petits mondes se sont formés : dans un nuage de poussière et de glace, des morceaux se sont lentement agglomérés. Arrokoth n’a presque pas changé en 4,5 milliards d’années : c’est comme une capsule temporelle venue de la naissance du système solaire.",
 			"advanced": "Arrokoth (486958, anciennement 2014 MU69) a été découvert en 2014 avec le télescope spatial Hubble, lors de la recherche d’une cible que New Horizons pourrait atteindre après Pluton. Il se trouve dans la ceinture de Kuiper classique froide, sur une orbite presque circulaire (excentricité 0,04) et peu inclinée, à 44 ua, et met environ 292 ans à en faire le tour. C’est un binaire de contact : ses deux lobes tournaient autrefois l’un autour de l’autre, puis ils ont fusionné en douceur, à quelques km/h tout au plus – un indice que les planétésimaux se sont formés par l’effondrement tranquille de nuages de cailloux plutôt que par des collisions violentes. Sa couleur rouge foncé vient de composés organiques produits par le rayonnement, et de la glace de méthanol a été détectée à sa surface."
 		},
 		"facts": {
 			"simple": [
-				"Arrokoth signifie « ciel » dans la langue du peuple powhatan.",
-				"Les signaux radio envoyés par New Horizons depuis Arrokoth mettaient environ 6 heures pour atteindre la Terre.",
-				"Arrokoth est très rouge – encore plus rouge que Pluton."
+				"Arrokoth veut dire « ciel » dans la langue du peuple powhatan.",
+				"Les messages de New Horizons, près d’Arrokoth, mettaient environ 6 heures pour arriver sur la Terre.",
+				"Arrokoth est très rouge, encore plus rouge que Pluton."
 			],
 			"standard": [
 				"Arrokoth a été découvert en 2014 avec le télescope spatial Hubble, alors que des scientifiques cherchaient une cible pour New Horizons.",
@@ -1680,7 +1739,7 @@
 		},
 		"comparisons": {
 			"simple": [
-				"Si la Terre était un ballon de foot, Arrokoth serait un grain de sable situé à plus de 100 km."
+				"Si la Terre était une orange, Arrokoth serait un grain de sable. Il serait à la distance d’un marathon, la plus longue course à pied."
 			],
 			"standard": [
 				"Arrokoth mesure environ 36 km de long – un peu moins qu’un marathon."
@@ -1694,15 +1753,15 @@
 		"name": "Halley",
 		"tagline": "La comète de Halley, de retour tous les 75 à 76 ans",
 		"description": {
-			"simple": "La comète de Halley est la plus célèbre de toutes les comètes. C’est un bloc de glace sale d’environ 15 km de long. Tous les 75 ou 76 ans, elle s’approche du Soleil : la glace se transforme en gaz et en poussière, et la comète se pare d’une longue queue lumineuse. La queue pointe toujours à l’opposé du Soleil. Halley est venue pour la dernière fois en 1986 et reviendra en 2061 – peut-être que tu la verras !",
+			"simple": "La comète de Halley est la plus célèbre de toutes les comètes. Une comète est un gros bloc de glace sale. Celle de Halley est à peu près aussi longue qu’une grande ville. Tous les 75 ou 76 ans, elle s’approche du Soleil. Alors une partie de sa glace se change en gaz et en poussière, et la comète se fait une longue queue qui brille. La queue pointe toujours à l’opposé du Soleil. Halley reviendra quand tu seras adulte. Peut-être que tu la verras !",
 			"standard": "La comète de Halley revient dans le système solaire intérieur tous les 75 à 76 ans. Son noyau est un bloc sombre de glace et de poussière d’environ 15 × 8 km. À l’approche du Soleil, la lumière solaire transforme la glace en gaz, qui entraîne de la poussière et forme un nuage lumineux, la chevelure, ainsi que deux queues repoussées à l’opposé du Soleil : une queue de gaz droite et bleutée, et une queue de poussière courbe et blanchâtre. Ainsi, quand la comète s’éloigne à nouveau du Soleil, ses queues passent devant elle. Edmond Halley a compris que les comètes observées en 1531, 1607 et 1682 n’en faisaient qu’une et a prédit son retour pour 1758 ; elle est bien revenue, mais Halley n’a pas vécu assez longtemps pour la voir. Son dernier passage au périhélie a eu lieu le 9 février 1986, et le prochain aura lieu le 28 juillet 2061.",
 			"advanced": "La comète 1P/Halley suit une orbite rétrograde (inclinaison 162°) : elle tourne autour du Soleil dans le sens opposé à celui des planètes. Son orbite très excentrique (0,97) la mène d’environ 0,6 ua, à l’intérieur de l’orbite de Vénus, jusqu’à environ 35 ua, au-delà de Neptune. En mars 1986, la sonde Giotto de l’ESA est passée à environ 600 km du noyau et a pris les premières images rapprochées d’un noyau de comète : une surface plus sombre que le charbon, d’où jaillissaient des jets de gaz et de poussière depuis quelques zones actives du côté éclairé. Les observations de la comète de Halley remontent au moins à 240 av. J.-C., en Chine."
 		},
 		"facts": {
 			"simple": [
-				"La poussière de la comète de Halley produit chaque année deux pluies d’étoiles filantes, en mai et en octobre.",
-				"L’écrivain Mark Twain est né une année de passage de Halley, en 1835, et il est mort au passage suivant, en 1910.",
-				"La comète de Halley apparaît sur la tapisserie de Bayeux, une broderie vieille de plus de 900 ans."
+				"La poussière de la comète de Halley nous donne des étoiles filantes deux fois par an, en mai et en octobre.",
+				"L’écrivain Mark Twain est né une année où la comète de Halley est passée. Il est mort la fois suivante, quand elle est revenue.",
+				"La comète de Halley est sur la tapisserie de Bayeux, une très vieille broderie du temps des chevaliers et des châteaux forts."
 			],
 			"standard": [
 				"En 1986, une flotte de sondes européennes, soviétiques et japonaises a survolé la comète.",
@@ -1717,7 +1776,8 @@
 		},
 		"comparisons": {
 			"simple": [
-				"Le noyau de Halley ne mesure qu’environ 15 km de long, mais sa queue peut s’étendre sur des millions de kilomètres – bien des fois la distance de la Terre à la Lune."
+				"Le cœur de glace de Halley n’est pas plus long qu’une grande ville. Mais sa queue peut être bien des fois plus longue que le chemin de la Terre à la Lune.",
+				"Si la Terre était une orange, le cœur de glace de Halley serait un grain de poussière."
 			],
 			"standard": [
 				"Un enfant qui verra la comète de Halley en 2061 à l’âge de 10 ans aura environ 85 ans à son passage suivant."
@@ -1731,14 +1791,14 @@
 		"name": "Encke",
 		"tagline": "La comète à l’année la plus courte",
 		"description": {
-			"simple": "La comète d’Encke est une petite comète qui revient très souvent près du Soleil – environ tous les 3 ans et 4 mois. Son noyau ne mesure qu’environ 5 km de large, et on ne peut généralement pas la voir sans jumelles ni télescope. La poussière qu’elle a laissée le long de son chemin nous donne des étoiles filantes en automne.",
+			"simple": "La comète d’Encke est une petite comète, un bloc de glace sale. Elle revient très souvent près du Soleil : environ tous les trois ans. D’habitude, on ne peut pas la voir sans jumelles ni télescope. La poussière qu’elle a laissée sur son chemin nous donne des étoiles filantes en automne.",
 			"standard": "La comète d’Encke (2P/Encke) a la période orbitale la plus courte de toutes les comètes brillantes : elle revient tous les 3,3 ans. Pierre Méchain l’a vue le premier en 1786, mais elle porte le nom de Johann Franz Encke, qui a calculé son orbite en 1819 et a montré qu’elle revient régulièrement. C’était seulement la deuxième comète connue à revenir ainsi, après celle de Halley – c’est pourquoi son nom de catalogue commence par « 2P ». Son orbite l’amène plus près du Soleil que la distance moyenne de Mercure, puis jusqu’à environ 4 ua, encore à l’intérieur de l’orbite de Jupiter. La poussière d’Encke produit les pluies de météores des Taurides, chaque année en octobre et en novembre.",
 			"advanced": "L’orbite d’Encke (demi-grand axe de 2,22 ua, excentricité 0,85) s’étend de 0,34 ua, plus près du Soleil que la distance moyenne de Mercure, jusqu’à 4,1 ua. Encke a remarqué que la comète revenait à chaque fois quelques heures plus tôt que ne le prévoyait la seule gravité – l’un des premiers signes de forces non gravitationnelles, dont on sait aujourd’hui qu’elles proviennent de jets de gaz agissant comme de petits moteurs-fusées sur le noyau en rotation. Contrairement à la plupart des comètes à courte période, Encke ne s’approche jamais de Jupiter, dont la gravité remodèle d’habitude de telles orbites ; la façon dont elle a atteint son orbite actuelle fait encore débat. Observée lors de dizaines de passages, c’est l’une des comètes les mieux étudiées."
 		},
 		"facts": {
 			"simple": [
-				"Encke nous offre les étoiles filantes des Taurides en octobre et en novembre.",
-				"Encke passe plus près du Soleil que la planète Mercure ne l’est en moyenne.",
+				"Encke nous donne les étoiles filantes appelées Taurides, en octobre et en novembre.",
+				"Encke passe plus près du Soleil que Mercure ne l’est d’habitude.",
 				"Encke revient près du Soleil environ trois fois tous les dix ans."
 			],
 			"standard": [
@@ -1754,7 +1814,7 @@
 		},
 		"comparisons": {
 			"simple": [
-				"Si la Terre était un ballon de foot, le noyau d’Encke serait à peu près aussi fin qu’un cheveu."
+				"Si la Terre était une orange, le cœur de glace d’Encke serait plus fin qu’un cheveu."
 			],
 			"standard": [
 				"Encke revient environ 23 fois pendant que la comète de Halley ne revient qu’une seule fois."
@@ -1768,15 +1828,15 @@
 		"name": "67P",
 		"tagline": "La comète « canard en plastique » visitée par Rosetta",
 		"description": {
-			"simple": "La comète 67P ressemble à un canard de bain géant fait de glace et de poussière, long d’environ 4 km. La sonde Rosetta a tourné autour d’elle pendant deux ans et l’a vue se réveiller en s’approchant du Soleil : des jets de gaz et de poussière en jaillissaient. Rosetta a même largué sur la comète un petit atterrisseur appelé Philae – le tout premier atterrissage sur une comète.",
+			"simple": "La comète 67P ressemble à un canard de bain géant fait de glace et de poussière. La sonde spatiale Rosetta a tourné autour d’elle pendant deux ans. Elle a vu la comète se réveiller en s’approchant du Soleil. Des jets de gaz et de poussière en jaillissaient. Rosetta a même lâché sur la comète un petit robot appelé Philae. C’était la toute première fois qu’on se posait sur une comète.",
 			"standard": "La comète 67P/Tchourioumov-Guérassimenko a été découverte en 1969 par Klim Tchourioumov et Svetlana Guérassimenko. Elle est formée de deux lobes reliés par un cou étroit, ce qui lui donne sa célèbre forme de « canard en plastique », longue d’environ 4 km. La sonde Rosetta de l’ESA l’a atteinte en août 2014 et a tourné autour d’elle pendant plus de deux ans, observant la glace se transformer en gaz à mesure que la comète s’approchait du Soleil. Le 12 novembre 2014, l’atterrisseur Philae s’est posé – le premier atterrissage sur une comète –, mais il a rebondi et s’est immobilisé à l’ombre d’une falaise. Rosetta a terminé sa mission le 30 septembre 2016 en s’écrasant lentement, de façon contrôlée, sur la comète.",
 			"advanced": "67P est une comète de la famille de Jupiter, d’une période de 6,4 ans, qui voyage entre 1,24 ua et environ 5,7 ua du Soleil. Rosetta a mesuré une masse volumique d’environ 0,53 g/cm³ seulement : le noyau est constitué d’environ 70 % de vide. Ses instruments ont détecté l’acide aminé glycine et du phosphore, ainsi qu’un rapport entre eau lourde et eau ordinaire très différent de celui des océans terrestres, ce qui suggère que les comètes comme 67P n’ont pas apporté l’essentiel de l’eau de la Terre. Les harpons de Philae ne se sont pas déclenchés : l’atterrisseur a donc rebondi deux fois avant de s’immobiliser à l’ombre, où sa batterie s’est épuisée après environ deux jours et demi de mesures scientifiques."
 		},
 		"facts": {
 			"simple": [
-				"Sur 67P, la gravité est si faible qu’un bon saut suffirait à t’envoyer dans l’espace.",
-				"L’atterrisseur Philae a rebondi deux fois avant de s’immobiliser.",
-				"Rosetta a mis dix ans pour atteindre 67P, puis l’a explorée pendant plus de deux ans."
+				"67P attire si peu les choses qu’un bon saut suffirait à t’envoyer dans l’espace.",
+				"Le petit robot Philae a rebondi deux fois avant de s’arrêter.",
+				"Rosetta a mis dix ans pour atteindre 67P. Ensuite, elle l’a explorée pendant plus de deux ans."
 			],
 			"standard": [
 				"67P fait le tour du Soleil en 6,4 ans.",
@@ -1791,7 +1851,7 @@
 		},
 		"comparisons": {
 			"simple": [
-				"67P mesure environ 4 km de long – tu pourrais aller à pied d’un bout à l’autre en moins d’une heure, si tu ne t’envolais pas avant."
+				"Tu pourrais aller à pied d’un bout à l’autre de 67P en une heure environ, si tu ne t’envolais pas avant."
 			],
 			"standard": [
 				"Si la Terre était un ballon de foot, 67P serait à peu près aussi épaisse qu’un cheveu."
@@ -1803,17 +1863,20 @@
 	},
 	"halebopp": {
 		"name": "Hale-Bopp",
-		"tagline": "La grande comète de 1997",
+		"tagline": {
+			"simple": "La grande comète dont tes parents se souviennent peut-être",
+			"standard": "La grande comète de 1997"
+		},
 		"description": {
-			"simple": "Hale-Bopp a été l’une des comètes les plus brillantes des cent dernières années. En 1997, des gens du monde entier pouvaient la voir dans le ciel nocturne sans télescope – même depuis des villes très éclairées. Elle est restée visible pendant environ un an et demi. Son noyau est énorme pour une comète : environ 60 km de large. Elle ne reviendra pas avant environ 2 400 ans.",
+			"simple": "Hale-Bopp a été l’une des comètes les plus brillantes depuis très longtemps. Partout dans le monde, les gens pouvaient la voir dans le ciel de la nuit sans télescope, même depuis des villes très éclairées. Elle est restée dans le ciel pendant environ un an et demi. Son cœur de glace est énorme pour une comète. Hale-Bopp ne reviendra pas avant très, très longtemps.",
 			"standard": "La comète Hale-Bopp (C/1995 O1) a été découverte le 23 juillet 1995, la même nuit mais chacun de son côté, par Alan Hale au Nouveau-Mexique et Thomas Bopp en Arizona. Elle se trouvait alors encore au-delà de l’orbite de Jupiter – une distance inhabituelle pour repérer une comète –, car son noyau est exceptionnellement gros : environ 60 km de diamètre. Elle est passée au plus près du Soleil le 1er avril 1997 et a probablement été vue par plus de monde que toute autre comète avant elle. Ses deux queues, une queue de gaz bleutée et une large queue de poussière blanchâtre, pointaient dans des directions légèrement différentes, mais toutes deux à l’opposé du Soleil.",
 			"advanced": "Hale-Bopp est une comète à longue période sur une orbite presque perpendiculaire (inclinaison 89°) et extrêmement allongée (excentricité 0,995). Son passage précédent remonte à environ 4 200 ans ; en approchant, elle est passée près de Jupiter en 1996, dont la gravité a raccourci sa période à environ 2 400 ans. Son noyau, estimé entre 40 et 80 km de diamètre, est l’un des plus gros connus pour une comète. En plus des habituelles queues de gaz et de poussière, les observateurs ont découvert une troisième queue, faible, faite d’atomes de sodium. Son orbite s’étend aujourd’hui jusqu’à environ 350 ua du Soleil."
 		},
 		"facts": {
 			"simple": [
 				"Hale-Bopp a été découverte la même nuit par deux personnes, à deux endroits différents.",
-				"Son noyau est environ quatre fois plus long que celui de Halley.",
-				"La dernière fois que Hale-Bopp est passée, il y a environ 4 200 ans, les pyramides d’Égypte étaient déjà construites."
+				"Son cœur de glace est environ quatre fois plus long que celui de Halley.",
+				"La dernière fois que Hale-Bopp est passée, les pyramides d’Égypte étaient déjà construites."
 			],
 			"standard": [
 				"Hale-Bopp est restée visible à l’œil nu pendant environ 18 mois, deux fois plus longtemps que la précédente détentrice du record, la grande comète de 1811.",
@@ -1828,7 +1891,8 @@
 		},
 		"comparisons": {
 			"simple": [
-				"Si la Terre était un ballon de foot, le noyau de Hale-Bopp aurait à peu près la taille d’une graine de pavot."
+				"Une voiture mettrait plus d’une demi-heure pour traverser le cœur de glace de Hale-Bopp.",
+				"Si la Terre était une orange, le cœur de glace de Hale-Bopp serait un grain de sel."
 			],
 			"standard": [
 				"Hale-Bopp ne revient qu’environ tous les 2 400 ans – à peu près 30 fois plus longtemps que la comète de Halley."
@@ -1840,15 +1904,18 @@
 	},
 	"neowise": {
 		"name": "NEOWISE",
-		"tagline": "La grande comète de 2020",
+		"tagline": {
+			"simple": "La grande comète d’il y a quelques années",
+			"standard": "La grande comète de 2020"
+		},
 		"description": {
-			"simple": "La comète NEOWISE était une comète brillante que l’on pouvait voir à l’œil nu en juillet 2020. Elle a été découverte en mars 2020 par un télescope spatial appelé NEOWISE, qui lui a donné son nom. Sur les photos, on voit bien ses deux queues : une queue de poussière courbe et blanchâtre, et une fine queue de gaz bleutée. Elle ne reviendra pas avant environ 6 800 ans.",
+			"simple": "La comète NEOWISE était une comète brillante. Il y a quelques années, en juillet, les gens pouvaient la voir de leurs propres yeux. Un télescope spatial appelé NEOWISE l’a trouvée et lui a donné son nom. Sur les photos, on voit ses deux queues. L’une est une queue de poussière courbe et blanchâtre. L’autre est une fine queue de gaz bleutée.",
 			"standard": "La comète NEOWISE (C/2020 F3) a été découverte le 27 mars 2020 par le télescope spatial NEOWISE de la NASA, qui traquait les astéroïdes et les comètes en lumière infrarouge. Elle est passée au plus près du Soleil le 3 juillet 2020, à l’intérieur de l’orbite de Mercure, et a survécu à la chaleur. En juillet, elle est devenue la comète la plus brillante vue depuis l’hémisphère Nord depuis Hale-Bopp en 1997, facile à repérer à l’œil nu, bas dans le ciel du matin, puis du soir. Les photos montraient nettement ses deux queues : une queue de poussière courbe, d’un blanc jaunâtre, et une queue de gaz droite, d’un bleu pâle, toutes deux à l’opposé du Soleil. Elle ne reviendra pas avant environ 6 800 ans.",
 			"advanced": "C/2020 F3 est une comète à longue période sur une orbite rétrograde fortement inclinée (129°). Au périhélie, elle n’était qu’à 0,29 ua du Soleil, et elle est passée au plus près de la Terre le 23 juillet 2020, à environ 103 millions de km (0,69 ua). Pendant ce passage, l’attraction des planètes a étiré son orbite : sa période s’est allongée de plus de 2 000 ans pour atteindre environ 6 800 ans, et son aphélie se trouve désormais à plus de 700 ua du Soleil. Son noyau mesure environ 5 km de diamètre. Les spectres ont montré l’éclat du sodium, et l’observatoire SOHO ainsi que la sonde Parker Solar Probe l’ont photographiée près du périhélie."
 		},
 		"facts": {
 			"simple": [
-				"Pour les habitants de la moitié nord de la Terre, NEOWISE a été la comète la plus brillante depuis plus de 20 ans.",
+				"Pour les gens de la moitié nord de la Terre, NEOWISE a été la comète la plus brillante depuis plus de 20 ans.",
 				"Des astronautes de la Station spatiale internationale l’ont photographiée depuis l’espace.",
 				"Son prochain passage est si loin dans le futur que personne de vivant aujourd’hui ne la reverra."
 			],
@@ -1865,7 +1932,7 @@
 		},
 		"comparisons": {
 			"simple": [
-				"NEOWISE reviendra dans environ 6 800 ans – plus longtemps que tout le temps écoulé depuis que les humains ont appris à écrire."
+				"NEOWISE ne reviendra pas avant très, très longtemps. C’est plus long que tout le temps passé depuis que les humains ont appris à écrire."
 			],
 			"standard": [
 				"NEOWISE met environ 90 fois plus de temps que la comète de Halley à faire le tour du Soleil."
@@ -1879,7 +1946,7 @@
 		"name": "Nix",
 		"tagline": "La lune de Pluton qui porte le nom de la nuit",
 		"description": {
-			"simple": "Nix est l’une des petites lunes de Pluton : elle ne mesure qu’environ 50 km de long et a la forme d’une pomme de terre. Au lieu de montrer toujours la même face à Pluton, elle fait des culbutes en tournant autour. Elle porte le nom de la déesse grecque de la nuit.",
+			"simple": "Nix est l’une des petites lunes de Pluton. Elle a la forme d’une pomme de terre. Elle ne montre pas toujours la même face à Pluton. Elle fait des culbutes en tournant autour. Elle porte le nom de la déesse grecque de la nuit.",
 			"standard": "Nix est une petite lune allongée d’environ 50 × 33 × 31 km, découverte avec le télescope spatial Hubble en 2005, en même temps qu’Hydre. Elle fait le tour de Pluton et de Charon en 24,9 jours. Comme les autres petites lunes de Pluton, elle ne garde pas une face tournée vers Pluton, mais culbute de façon chaotique, car elle est attirée par deux gros corps à la fois. Elle porte le nom de Nyx, la déesse grecque de la nuit ; l’orthographe avec un i évite la confusion avec un astéroïde appelé Nyx.",
 			"advanced": "Nix tourne autour du barycentre Pluton–Charon à environ 48 700 km, avec une période de 24,9 jours, proche de quatre fois la période orbitale de Charon. Sa rotation chaotique, en culbute, est due à l’attraction sans cesse changeante du couple Pluton–Charon. New Horizons a trouvé une zone rougeâtre autour d’un grand cratère, sur une surface par ailleurs claire, faite de glace d’eau. Les initiales de Nix et d’Hydre, N et H, ont été choisies en hommage à New Horizons."
 		}
@@ -1888,16 +1955,19 @@
 		"name": "Hydre",
 		"tagline": "La lune la plus lointaine de Pluton",
 		"description": {
-			"simple": "Hydre est la lune la plus éloignée de Pluton. Elle est petite, environ 51 km de long, et elle fait des culbutes en tournant autour de Pluton. Elle porte le nom d’un monstre à plusieurs têtes des mythes grecs.",
+			"simple": "Hydre est la lune la plus éloignée de Pluton. Elle est petite, et elle fait des culbutes en tournant autour de Pluton. Elle porte le nom d’un monstre à plusieurs têtes des vieilles histoires grecques.",
 			"standard": "Hydre est la plus éloignée des lunes connues de Pluton ; elle mesure environ 51 × 36 × 31 km. Elle a été découverte avec le télescope spatial Hubble en 2005, en même temps que Nix, et fait le tour de Pluton et de Charon en 38,2 jours. New Horizons a montré que sa surface est claire et faite surtout de glace d’eau. Elle porte le nom du serpent à plusieurs têtes qu’Héraclès a combattu dans la mythologie grecque.",
 			"advanced": "Hydre tourne autour du barycentre Pluton–Charon à environ 64 700 km, avec une période de 38,2 jours – presque exactement six fois la période orbitale de Charon. Comme les autres petites lunes, elle tourne sur elle-même de façon chaotique au lieu d’être en rotation synchrone. Sa surface claire est dominée par une glace d’eau relativement propre. Comme pour Nix, son nom a été choisi pour que les initiales N et H rendent hommage à la mission New Horizons."
 		}
 	},
 	"kerberos": {
 		"name": "Kerbéros",
-		"tagline": "La lune de Pluton à deux lobes",
+		"tagline": {
+			"simple": "La lune de Pluton faite de deux boules",
+			"standard": "La lune de Pluton à deux lobes"
+		},
 		"description": {
-			"simple": "Kerbéros est une toute petite lune de Pluton, longue d’environ 19 km seulement. On dirait deux petites boules collées ensemble. Elle porte le nom du chien à trois têtes qui garde les Enfers dans les mythes grecs.",
+			"simple": "Kerbéros est une toute petite lune de Pluton. On dirait deux petites boules collées ensemble. Elle porte le nom du chien à trois têtes qui garde le pays des morts, dans les vieilles histoires grecques.",
 			"standard": "Kerbéros est l’une des plus petites lunes de Pluton, d’environ 19 × 10 × 9 km, découverte avec le télescope spatial Hubble en 2011. Elle fait le tour de Pluton et de Charon en 32,2 jours. New Horizons a montré qu’elle est formée de deux lobes, un grand et un petit, et que sa surface est plus claire que ne le pensaient les scientifiques. Elle porte le nom du chien à trois têtes qui garde l’entrée des Enfers dans la mythologie grecque.",
 			"advanced": "Kerbéros tourne autour du barycentre Pluton–Charon à environ 57 800 km, avec une période de 32,2 jours – proche de cinq fois la période orbitale de Charon –, entre les orbites de Nix et d’Hydre. Les images de New Horizons ont révélé une forme à deux lobes, peut-être deux corps qui ont fusionné, et une surface claire de glace d’eau. Comme les autres petites lunes de Pluton, elle s’est probablement formée à partir des débris laissés par l’impact géant qui aurait donné naissance à Charon."
 		}
@@ -1906,7 +1976,7 @@
 		"name": "Styx",
 		"tagline": "La plus petite lune connue de Pluton",
 		"description": {
-			"simple": "Styx est la plus petite lune connue de Pluton : elle ne mesure qu’environ 16 km de long. On l’a trouvée en 2012, pendant que des scientifiques vérifiaient que le chemin de la sonde New Horizons était sans danger. Elle porte le nom d’un fleuve des Enfers dans les mythes grecs.",
+			"simple": "Styx est la plus petite lune de Pluton que l’on connaisse. Des scientifiques l’ont trouvée pendant qu’ils vérifiaient que le chemin de la sonde spatiale New Horizons était sans danger. Elle porte le nom d’un fleuve du pays des morts, dans les vieilles histoires grecques.",
 			"standard": "Styx, d’environ 16 × 9 × 8 km, est la plus petite lune connue de Pluton. Elle a été découverte en 2012 avec le télescope spatial Hubble, lors d’une recherche de lunes et de poussières qui auraient pu mettre New Horizons en danger. Elle fait le tour de Pluton et de Charon en 20,2 jours, à l’intérieur de l’orbite de Nix. Elle porte le nom du fleuve qui, dans la mythologie grecque, sépare le monde des vivants des Enfers.",
 			"advanced": "Styx tourne autour du barycentre Pluton–Charon à environ 42 700 km, avec une période de 20,2 jours, proche de trois fois la période orbitale de Charon : c’est la plus proche des quatre petites lunes de Pluton. Elle a été trouvée sur des images de Hubble prises en 2012 par une équipe dirigée par Mark Showalter. New Horizons ne l’a vue que de très loin : on sait donc peu de chose de sa surface."
 		}
@@ -1915,7 +1985,7 @@
 		"name": "Dysnomie",
 		"tagline": "La lune qui a permis de peser Éris",
 		"description": {
-			"simple": "Dysnomie est la seule lune connue de la planète naine Éris. Elle est beaucoup plus sombre qu’Éris, qui est aussi brillante que de la neige fraîche. En observant comment Dysnomie tourne autour d’Éris, les astronomes ont pu calculer combien pèse Éris.",
+			"simple": "Dysnomie est la seule lune que l’on connaisse de la planète naine Éris. Elle est beaucoup plus sombre qu’Éris, qui est aussi brillante que de la neige fraîche. Les scientifiques ont regardé comment Dysnomie tourne autour d’Éris. Cela leur a appris combien pèse Éris.",
 			"standard": "Dysnomie est la seule lune connue d’Éris, découverte en septembre 2005 avec le télescope Keck, à Hawaï. Elle fait le tour d’Éris en 15,8 jours, à environ 37 300 km. Grâce à son orbite, les astronomes ont calculé qu’Éris est environ un quart plus lourde que Pluton. Dans la mythologie grecque, Dysnomie est la fille d’Éris et l’esprit de l’anarchie – un nom qui fait aussi un clin d’œil à l’actrice Lucy Lawless (« sans loi » en anglais), qui jouait Xena, le premier surnom d’Éris.",
 			"advanced": "Dysnomie suit une orbite presque circulaire à environ 37 300 km d’Éris, avec une période de 15,8 jours ; en appliquant la troisième loi de Kepler à cette orbite, on obtient la masse d’Éris, environ 1,66 × 10²² kg, soit 27 % de plus que celle de Pluton. Dysnomie est très sombre : elle ne renvoie que quelques pour cent de la lumière qu’elle reçoit, contre environ 96 % pour Éris. Elle mesure probablement plusieurs centaines de km de diamètre, ce qui en ferait la deuxième plus grande lune connue d’une planète naine, après Charon. Éris semble tourner sur elle-même au rythme de l’orbite de Dysnomie, signe que les marées ont synchronisé le couple."
 		}
@@ -1933,7 +2003,7 @@
 		"name": "Hiʻiaka",
 		"tagline": "La lune extérieure de Hauméa",
 		"description": {
-			"simple": "Hiʻiaka est la plus grande des deux lunes de la planète naine Hauméa. Elle est couverte de glace et fait le tour de Hauméa en sept semaines environ. Elle porte le nom d’une déesse hawaïenne de la danse hula, l’une des filles de Hauméa.",
+			"simple": "Hiʻiaka est la plus grande des deux lunes de la planète naine Hauméa. Elle est couverte de glace. Elle fait le tour de Hauméa en sept semaines environ. Elle porte le nom d’une déesse hawaïenne de la danse hula, l’une des filles de Hauméa.",
 			"standard": "Hiʻiaka est la plus grande et la plus éloignée des deux lunes de Hauméa ; elle mesure environ 320 km de diamètre. Elle a été découverte en janvier 2005 avec le télescope Keck, à Hawaï, avant même que Hauméa ait reçu son nom, et fait le tour de Hauméa en 49 jours, à environ 49 900 km. Comme celle de Hauméa, sa surface est couverte de glace d’eau. Elle porte le nom de Hiʻiaka, déesse hawaïenne protectrice de l’île d’Hawaï et des danseurs de hula, et fille de Hauméa.",
 			"advanced": "Hiʻiaka tourne autour de Hauméa à environ 49 900 km, avec une période de 49 jours, sur une orbite presque circulaire. Son spectre montre de la glace d’eau cristalline, très semblable à celle de la surface de Hauméa, ce qui conforte l’idée que les deux lunes sont des fragments de la croûte glacée de Hauméa arrachés lors d’une ancienne collision. C’est le suivi de l’orbite de Hiʻiaka qui a permis pour la première fois de mesurer la masse de Hauméa."
 		}
@@ -1942,7 +2012,7 @@
 		"name": "S/2015 (136472) 1",
 		"tagline": "La petite lune sombre de Makémaké",
 		"description": {
-			"simple": "Cette toute petite lune sombre tourne autour de la planète naine Makémaké. Elle était si difficile à voir à côté de la brillante Makémaké qu’on ne l’a trouvée qu’en 2016, sur des images du télescope spatial Hubble. Les scientifiques l’ont surnommée MK2.",
+			"simple": "Cette toute petite lune sombre tourne autour de la planète naine Makémaké. Elle était très difficile à voir à côté de la brillante Makémaké. Alors on ne l’a trouvée qu’il y a quelques années, sur des images du télescope spatial Hubble. Les scientifiques l’ont surnommée MK2.",
 			"standard": "S/2015 (136472) 1, surnommée MK2, est la seule lune connue de Makémaké. Elle a été repérée sur des images de Hubble prises en avril 2015, et sa découverte a été annoncée en 2016. Elle est environ 1 300 fois moins lumineuse que Makémaké et très sombre ; elle mesure probablement moins de 200 km de diamètre. Son nom n’est encore qu’une désignation provisoire : S pour satellite, 2015 pour l’année où elle a été photographiée, 136472 pour le numéro de catalogue de Makémaké et 1 pour la première lune trouvée.",
 			"advanced": "MK2 a été découverte sur des images de Hubble d’avril 2015, à environ 21 000 km de Makémaké. Son orbite est encore mal connue ; si nous la voyons presque par la tranche, la lune passe une grande partie de son temps noyée dans l’éclat de Makémaké, ce qui pourrait expliquer pourquoi les recherches précédentes ne l’avaient pas repérée. Sa surface sombre contraste avec la glace de méthane brillante de Makémaké, peut-être parce que sa faible gravité ne peut pas retenir des glaces aussi volatiles. Une orbite bien mesurée donnerait la masse et la masse volumique de Makémaké."
 		}

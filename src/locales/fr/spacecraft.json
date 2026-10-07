@@ -7,7 +7,7 @@
 			"advanced": "L’objet fabriqué par l’humanité le plus lointain, désormais dans l’espace interstellaire"
 		},
 		"description": {
-			"simple": "Voyager 1 a quitté la Terre en 1977. Elle est passée près de Jupiter et de Saturne et les a photographiées. Aujourd’hui, elle est plus loin que tout ce que les humains ont fabriqué, là-bas entre les étoiles. Elle envoie encore des messages à la maison, tout doucement.",
+			"simple": "Voyager 1 a quitté la Terre il y a longtemps, quand tes grands-parents étaient jeunes. Elle est passée près de Jupiter et de Saturne et les a photographiées. Aujourd’hui, elle est plus loin que tout ce que les humains ont fabriqué. Elle est là-bas, entre les étoiles. Elle envoie encore des messages à la maison, tout doucement.",
 			"standard": "Lancée en 1977, Voyager 1 a survolé Jupiter en 1979 puis Saturne en 1980, où elle a observé de près la lune Titan. En 1990, elle s’est retournée pour photographier la Terre, un point bleu pâle. Depuis 1998, c’est l’objet fabriqué par l’humanité le plus lointain, et en août 2012 elle a franchi l’héliopause, là où le vent du Soleil cède la place au gaz entre les étoiles. Elle transmet toujours ses données avec environ 20 watts.",
 			"advanced": "Voyager 1 a profité d’une assistance gravitationnelle de Jupiter (mars 1979) pour atteindre Saturne (novembre 1980) ; son passage serré près de Titan a fortement relevé sa trajectoire hors du plan des planètes. En février 1998, elle a dépassé Pioneer 10 comme sonde la plus lointaine et, le 25 août 2012, à environ 121 ua du Soleil, elle a franchi l’héliopause vers l’espace interstellaire. Sa source d’énergie nucléaire perd environ 4 watts par an ; ses instruments sont donc éteints un à un."
 		}
@@ -16,25 +16,31 @@
 		"name": "Voyager 2",
 		"tagline": "La seule visiteuse d’Uranus et de Neptune",
 		"description": {
-			"simple": "Voyager 2 est la jumelle de Voyager 1. C’est la seule sonde à avoir visité les quatre planètes géantes : Jupiter, Saturne, Uranus et Neptune. Elle a quitté la Terre en 1977 ; elle vole toujours et envoie encore des messages.",
+			"simple": "Voyager 2 est la jumelle de Voyager 1. C’est la seule sonde spatiale à avoir visité les quatre planètes géantes : Jupiter, Saturne, Uranus et Neptune. Elle a quitté la Terre il y a longtemps, quand tes grands-parents étaient jeunes. Elle vole toujours et envoie encore des messages.",
 			"standard": "Voyager 2 a été lancée en août 1977, 16 jours avant sa jumelle. Un rare alignement des planètes extérieures lui a permis de passer de Jupiter (1979) à Saturne (1981), Uranus (1986) et Neptune (1989) : le « Grand Tour ». Elle reste la seule sonde à avoir visité Uranus et Neptune. En novembre 2018, elle a franchi l’héliopause vers l’espace interstellaire.",
 			"advanced": "Chaque survol de Voyager 2 était une assistance gravitationnelle qui courbait sa trajectoire et l’accélérait vers la planète suivante : un voyage de 30 ans jusqu’à Neptune est ainsi devenu un voyage de 12 ans. L’alignement qui l’a rendu possible ne revient qu’environ tous les 175 ans. Après Neptune et sa lune Triton (août 1989), elle est partie au sud du plan des planètes et a franchi l’héliopause le 5 novembre 2018, à environ 119 ua du Soleil."
 		}
 	},
 	"pioneer10": {
 		"name": "Pioneer 10",
-		"tagline": "La première sonde vers Jupiter",
+		"tagline": {
+			"simple": "La première sonde spatiale vers Jupiter",
+			"standard": "La première sonde vers Jupiter"
+		},
 		"description": {
-			"simple": "Pioneer 10 a été la première sonde à traverser la ceinture d’astéroïdes et à passer près de Jupiter, en 1973. Elle emporte une plaque de métal avec le dessin de deux humains, au cas où quelqu’un la trouverait un jour. Nous avons eu de ses nouvelles pour la dernière fois en 2003.",
+			"simple": "Pioneer 10 a été la première sonde spatiale à traverser la ceinture d’astéroïdes et à passer près de Jupiter. Elle emporte une plaque de métal avec le dessin de deux humains, au cas où quelqu’un la trouverait un jour. Elle a arrêté d’envoyer des messages il y a longtemps.",
 			"standard": "Lancée en mars 1972, Pioneer 10 a été la première sonde à traverser la ceinture d’astéroïdes et la première à visiter Jupiter, en décembre 1973. Ensuite, elle a continué sa route, hors du Système solaire. Son dernier signal, très faible, a atteint la Terre le 23 janvier 2003 ; depuis, elle poursuit sa route en silence.",
 			"advanced": "Pioneer 10 est passée à environ 200 000 km du centre de Jupiter et a mesuré ses intenses ceintures de radiation, des connaissances qui ont guidé toutes les missions suivantes. Pendant des décennies, sa trajectoire a servi à tester la gravitation loin du Soleil : la minuscule « anomalie Pioneer » de son mouvement s’est révélée en 2012 être la chaleur de sa propre source d’énergie qui la poussait. Le contact a été perdu en 2003, quand cette source est devenue trop faible."
 		}
 	},
 	"pioneer11": {
 		"name": "Pioneer 11",
-		"tagline": "La première sonde vers Saturne",
+		"tagline": {
+			"simple": "La première sonde spatiale vers Saturne",
+			"standard": "La première sonde vers Saturne"
+		},
 		"description": {
-			"simple": "Pioneer 11 est passée près de Jupiter, puis a été la première sonde à visiter Saturne, en 1979. Elle a manqué d’énergie et s’est tue en 1995. Elle s’éloigne toujours du Soleil.",
+			"simple": "Pioneer 11 est passée près de Jupiter. Puis elle a été la première sonde spatiale à visiter Saturne. Plus tard, elle n’a plus eu assez de courant, et elle s’est tue. Elle s’éloigne toujours du Soleil.",
 			"standard": "Pioneer 11 a été lancée en avril 1973. En décembre 1974, elle est passée à seulement 42 000 km au-dessus des nuages de Jupiter et a utilisé sa gravité pour traverser le Système solaire jusqu’à Saturne en septembre 1979 : la toute première visite de Saturne. Son travail scientifique s’est arrêté en septembre 1995, faute d’énergie.",
 			"advanced": "Le passage serré de Pioneer 11 près de Jupiter était une assistance gravitationnelle qui l’a renvoyée à travers le Système solaire jusqu’à Saturne. Là, elle est passée sous les anneaux, a découvert le fin anneau F et a montré qu’une sonde pouvait traverser le plan des anneaux sans danger, ce sur quoi les Voyager ont ensuite compté. Ses opérations régulières ont pris fin le 30 septembre 1995."
 		}
@@ -43,7 +49,7 @@
 		"name": "New Horizons",
 		"tagline": "La première visite de Pluton",
 		"description": {
-			"simple": "New Horizons est une petite sonde rapide, grande comme un piano. En 2015, elle est passée près de Pluton et a envoyé les premières photos de près, avec une grande plaine de glace en forme de cœur. En 2019, elle a visité Arrokoth, un petit monde glacé encore plus lointain.",
+			"simple": "New Horizons est une petite sonde spatiale rapide, grande comme un piano. Elle est passée près de Pluton et a envoyé les premières photos prises de près. On y voyait une grande tache de glace en forme de cœur. Plus tard, elle a visité Arrokoth, un petit monde glacé encore plus lointain.",
 			"standard": "Lancée en janvier 2006, sonde la plus rapide à avoir jamais quitté la Terre, New Horizons a frôlé Jupiter en 2007 puis survolé Pluton le 14 juillet 2015, à seulement 12 500 km de sa surface. Le 1er janvier 2019, elle est passée près d’Arrokoth, l’objet le plus lointain jamais visité par une sonde. Elle explore aujourd’hui la ceinture de Kuiper.",
 			"advanced": "New Horizons a quitté la Terre à environ 16 km/s, la plus grande vitesse de lancement de toutes les sondes, et une assistance gravitationnelle de Jupiter a raccourci le voyage d’environ trois ans. Dans le système de Pluton (14 juillet 2015), elle a découvert des montagnes de glace d’eau et une jeune plaine de glace d’azote, Sputnik Planitia. Arrokoth s’est révélé formé de deux lobes qui se sont doucement assemblés, un indice sur la naissance des premières briques des planètes."
 		}
@@ -52,7 +58,7 @@
 		"name": "Cassini",
 		"tagline": "Treize ans autour de Saturne",
 		"description": {
-			"simple": "Cassini est allée jusqu’à Saturne et a tourné autour pendant 13 ans pour étudier la planète, ses anneaux et ses lunes. Elle emportait un petit atterrisseur, Huygens, qui s’est posé sur la lune Titan. À la fin, Cassini a plongé exprès dans Saturne et s’y est désintégrée.",
+			"simple": "Cassini est allée jusqu’à Saturne et a tourné autour pendant 13 ans. Elle a étudié la planète, ses anneaux et ses lunes. Elle emportait une petite sonde, Huygens, qui s’est posée sur la lune Titan. À la fin, Cassini a plongé exprès dans Saturne et a brûlé.",
 			"standard": "Lancée en 1997, Cassini a eu besoin d’assistances gravitationnelles de Vénus (deux fois), de la Terre et de Jupiter pour atteindre Saturne en juillet 2004. Sa sonde Huygens s’est posée sur Titan en janvier 2005, et Cassini a découvert des geysers d’eau jaillissant d’Encelade. Presque à court de carburant, elle a été dirigée dans Saturne le 15 septembre 2017 pour qu’elle ne puisse jamais s’écraser sur une lune qui abriterait peut-être la vie.",
 			"advanced": "Cassini-Huygens était une mission commune de la NASA, de l’ESA et de l’agence spatiale italienne. Au fil de 294 orbites autour de Saturne, elle a utilisé des survols serrés de Titan pour changer de cap sans carburant. Huygens a réussi le premier atterrissage dans le Système solaire externe. Les 22 dernières orbites du « Grand Final » sont passées entre la planète et ses anneaux avant que la sonde ne se désintègre dans l’atmosphère de Saturne."
 		}
@@ -61,7 +67,7 @@
 		"name": "Parker Solar Probe",
 		"tagline": "La sonde qui a touché le Soleil",
 		"description": {
-			"simple": "Parker Solar Probe vole plus près du Soleil que tout ce que les humains ont fabriqué. Un épais bouclier thermique la garde au frais. Au plus près, elle file devant le Soleil plus vite que n’importe quelle autre sonde.",
+			"simple": "Parker Solar Probe vole plus près du Soleil que tout ce que les humains ont fabriqué. Un épais bouclier contre la chaleur la garde au frais. Au plus près, elle file devant le Soleil plus vite que n’importe quelle autre sonde.",
 			"standard": "Lancée en août 2018, Parker Solar Probe a utilisé sept survols de Vénus pour se rapprocher de plus en plus du Soleil. Le 24 décembre 2024, elle est passée à 6,1 millions de km de la surface du Soleil à environ 690 000 km/h, la plus grande vitesse jamais atteinte par un objet fabriqué par l’humanité. Elle traverse la couronne, l’atmosphère extérieure du Soleil, pour comprendre pourquoi elle est si chaude.",
 			"advanced": "Atteindre le Soleil est difficile : une sonde partie de la Terre doit perdre presque toute la vitesse orbitale de la Terre, 30 km/s. Parker a utilisé sept assistances gravitationnelles de Vénus pour abaisser son point le plus proche à 9,86 rayons solaires du centre du Soleil. Son bouclier thermique en mousse de carbone de 11,4 cm d’épaisseur encaisse environ 1 400 °C, tandis que les instruments derrière lui restent presque à température ambiante."
 		}
@@ -70,16 +76,19 @@
 		"name": "Télescope spatial James-Webb",
 		"tagline": "Un télescope géant bien au-delà de la Lune",
 		"description": {
-			"simple": "Le télescope spatial James-Webb est un immense télescope au miroir doré. Il voit la lumière de la chaleur (l’infrarouge) des toutes premières étoiles et galaxies. Il flotte à environ 1,5 million de km de la Terre, toujours du côté opposé au Soleil.",
+			"simple": "Le télescope spatial James-Webb est un immense télescope au miroir doré. Il voit la lumière de la chaleur, une lumière que nos yeux ne peuvent pas voir. Grâce à elle, il trouve les toutes premières étoiles et galaxies, les immenses groupes d’étoiles très lointains. Il flotte environ quatre fois plus loin que la Lune, du côté de la Terre opposé au Soleil.",
 			"standard": "Webb a été lancé le 25 décembre 2021 et a mis un mois pour rejoindre son poste près du point L2 Soleil–Terre, à 1,5 million de km au-delà de la Terre, du côté opposé au Soleil : environ quatre fois plus loin que la Lune. Là, un pare-soleil grand comme un court de tennis garde son miroir de 6,5 m assez froid pour voir la lumière infrarouge des toutes premières galaxies.",
 			"advanced": "Au point L2, l’attraction combinée du Soleil et de la Terre maintient une sonde au rythme de l’année terrestre. Webb ne reste pas sur le point : il tourne autour sur une grande orbite de halo d’environ six mois, qui le garde hors de l’ombre de la Terre. À environ 40 K (−233 °C), son miroir et ses instruments captent une lumière que l’expansion de l’Univers a étirée jusque dans l’infrarouge."
 		}
 	},
 	"juno": {
 		"name": "Juno",
-		"tagline": "En orbite autour de Jupiter",
+		"tagline": {
+			"simple": "Des tours et des tours autour de Jupiter",
+			"standard": "En orbite autour de Jupiter"
+		},
 		"description": {
-			"simple": "Juno tourne autour de Jupiter depuis 2016. Elle passe tout près des nuages de Jupiter pour découvrir ce qu’il y a à l’intérieur de la planète. Elle tourne lentement sur elle-même et, avec ses trois longs panneaux solaires, ressemble à un moulin à vent.",
+			"simple": "Juno tourne autour de Jupiter depuis de nombreuses années. Elle passe tout près des nuages de Jupiter pour découvrir ce qu’il y a à l’intérieur de la planète. Elle tourne lentement sur elle-même. Avec ses trois longs panneaux solaires, elle ressemble à un moulin à vent.",
 			"standard": "Lancée en 2011, Juno a pris de l’élan en survolant la Terre en 2013 et a atteint Jupiter le 5 juillet 2016. Sur une longue orbite étirée qui passe au-dessus des pôles, elle plonge jusqu’à quelques milliers de kilomètres des nuages, puis repart très loin. Elle a été la première sonde à atteindre Jupiter grâce à la seule énergie solaire.",
 			"advanced": "Juno cartographie la gravité et le champ magnétique de Jupiter pour savoir ce qui se cache dans ses profondeurs : son noyau s’est révélé grand et dilué, mélangé à l’hydrogène qui l’entoure. Son orbite polaire évite le pire des ceintures de radiation. Depuis 2021, son orbite l’a aussi fait passer près des lunes Ganymède, Europe et Io."
 		}

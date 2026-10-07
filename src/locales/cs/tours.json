@@ -22,7 +22,7 @@
 			"sun": {
 				"title": "Slunce",
 				"text": {
-					"simple": "Slunce je hvězda: obrovská koule rozžhaveného plynu. Je tak velké, že by se do něj vešlo víc než milion Zemí. Jeho světlo nám dává teplo a den.",
+					"simple": "Slunce je hvězda: obrovská koule žhavého, zářícího plynu. Je tak velké, že by se do něj vešly všechny planety dohromady. Jeho světlo nám dává teplo a den.",
 					"standard": "Slunce obsahuje 99,8 % veškeré hmoty sluneční soustavy. Je široké jako 109 Zemí a vešlo by se do něj asi 1,3 milionu Zemí. Hluboko v jeho jádru, při 15 milionech °C, se vodík slučuje na helium. Odtud pochází všechno jeho světlo.",
 					"advanced": "Obyčejná hvězda středního věku: průměr 1,39 milionu km, 99,86 % hmoty sluneční soustavy. V jádru při zhruba 15 milionech K slučuje každou sekundu asi 600 milionů tun vodíku na helium a mění přitom 4 miliony tun hmoty na energii (E = mc²). Světlo, které opustí jeho povrch, doletí k Zemi za 8 minut a 20 sekund."
 				}
@@ -30,7 +30,7 @@
 			"mercury": {
 				"title": "Merkur",
 				"text": {
-					"simple": "Merkur je nejmenší planeta a je nejblíž Slunci. Nemá žádný vzduch, který by ho hřál. Na denní straně je takové horko, že by se roztavilo olovo, a na noční straně je mráz.",
+					"simple": "Merkur je nejmenší planeta a je nejblíž Slunci. Nemá žádný vzduch, který by ho hřál. Proto je na denní straně větší horko než v troubě a na noční straně větší zima než v jakémkoli mrazáku.",
 					"standard": "Nejmenší planeta, a zároveň nejrychlejší: jeden oběh kolem Slunce jí trvá jen 88 dní. Merkur nemá skoro žádnou atmosféru, která by držela teplo, takže jeho denní strana se rozpálí na 430 °C a noční strana vychladne na −180 °C.",
 					"advanced": "Nejvnitřnější planeta, průměr 4 879 km, rok trvá 88 dní. Otáčí se tak pomalu, že jeden sluneční den (od východu Slunce do dalšího) trvá 176 pozemských dní: dva jeho roky. Bez atmosféry kolísá teplota povrchu mezi 430 °C a −180 °C. Jeho obrovské železné jádro zabírá asi 85 % poloměru."
 				}
@@ -38,7 +38,7 @@
 			"venus": {
 				"title": "Venuše",
 				"text": {
-					"simple": "Venuše je skoro stejně velká jako Země, ale nikdo by tam nemohl žít. Husté mraky drží teplo a je tam větší horko než v troubě: je to nejteplejší planeta ze všech. A navíc se točí obráceně.",
+					"simple": "Venuše je skoro stejně velká jako Země, ale žít by se tam nedalo. Husté mraky drží teplo. Je tam větší horko než v troubě: je to nejteplejší planeta ze všech. A navíc se točí obráceně.",
 					"standard": "Venuše je velikostí skoro dvojče Země, ale její hustý vzduch z oxidu uhličitého drží sluneční teplo: se 465 °C je teplejší než Merkur, i když je od Slunce dvakrát dál. Otáčí se pozpátku, a tak pomalu, že den na Venuši trvá déle než její rok.",
 					"advanced": "Průměr 12 104 km, téměř velikost Země. Atmosféru tvoří z 96 % oxid uhličitý při 92násobku pozemského tlaku a nekontrolovatelný skleníkový efekt drží povrch ve dne i v noci na 465 °C. Rotuje retrográdně za 243 dní, déle než trvá její rok (225 dní); Slunce tam vychází na západě."
 				}
@@ -46,7 +46,7 @@
 			"earth": {
 				"title": "Země",
 				"text": {
-					"simple": "Doma! Země je jediné místo, kde víme, že je život. Je tu tekutá voda, vzduch k dýchání a přesně tolik tepla od Slunce, kolik je potřeba. Měsíc ji oběhne jednou za měsíc.",
+					"simple": "Doma! Země je jediné místo, kde víme, že je život. Je tu voda, vzduch k dýchání a přesně tolik tepla od Slunce, kolik je potřeba. Měsíc ji oběhne jednou za měsíc.",
 					"standard": "Naše planeta je jediný svět, o kterém víme, že na něm je život. Je přesně v té správné vzdálenosti od Slunce, aby voda zůstala tekutá, a voda pokrývá 71 % jejího povrchu. Její skloněná osa nám dává roční období. Sleduj letový panel: ukáže ti, jak daleko je doopravdy každá cesta v této prohlídce.",
 					"advanced": "Průměr 12 742 km, vzdálenost 150 milionů km (1 astronomická jednotka) od Slunce. Tekutá voda, ochranné magnetické pole a atmosféra z dusíku a kyslíku (který vytvořil sám život) z ní dělají jediný známý obydlený svět. Její osa je skloněná o 23,4°, a to způsobuje roční období."
 				}
@@ -54,7 +54,7 @@
 			"mars": {
 				"title": "Mars",
 				"text": {
-					"simple": "Mars je červený, protože jeho prach je zrezivělý. Má nejvyšší sopku ve sluneční soustavě a kdysi dávno po něm tekly řeky. Dnes po Marsu jezdí roboti a zkoumají ho za nás.",
+					"simple": "Mars je červený, protože jeho prach je rezavý. Má nejvyšší sopku ze všech planet. Kdysi dávno po něm tekly řeky. Dnes po Marsu jezdí roboti a zkoumají ho za nás.",
 					"standard": "Rudá planeta vděčí za svou barvu oxidu železa: rzi. Mars je napůl tak široký jako Země a má Olympus Mons, sopku vysokou asi 22 km, dvaapůlkrát vyšší než Mount Everest. Vyschlá říční koryta ukazují, že tu kdysi tekla voda. Jeho dva malé měsíce se jmenují Phobos a Deimos.",
 					"advanced": "Průměr 6 779 km, řídká atmosféra z oxidu uhličitého s tlakem pod 1 % pozemského. Olympus Mons se zvedá asi do 22 km; kaňon Valles Marineris je 4 000 km dlouhý. Dávné říční delty a dna jezer ukazují, že Mars býval vlhčí a teplejší; vodní led přetrvává u pólů a pod povrchem. Den trvá asi 24 h 40 min, rok 687 dní."
 				}
@@ -62,7 +62,7 @@
 			"jupiter": {
 				"title": "Jupiter",
 				"text": {
-					"simple": "Jupiter je největší planeta. Vešlo by se do něj přes tisíc Zemí! Nedá se na něm stát: je to obrovská koule plynu s pruhy mraků a s obří bouří, Velkou rudou skvrnou.",
+					"simple": "Jupiter je největší planeta. Všechny ostatní planety by se do něj vešly dohromady! Nedá se na něm stát. Je to obrovská koule plynu s pruhy mraků a s obří bouří, které se říká Velká rudá skvrna.",
 					"standard": "Obr: široký jako 11 Zemí a víc než dvakrát hmotnější než všechny ostatní planety dohromady. Jupiter je hlavně z vodíku a helia a nemá pevný povrch. Velká rudá skvrna je bouře širší než Země, která zuří už víc než 150 let. Jeho čtyři velké měsíce objevil Galileo Galilei v roce 1610.",
 					"advanced": "Průměr 139 820 km a 318 hmotností Země: 2,5krát víc než všechny ostatní planety dohromady. Otočí se za méně než 10 hodin, což ho viditelně zplošťuje a natahuje jeho mraky do pásů. Velká rudá skvrna, tlaková výše širší než Země, je pozorována nejméně od roku 1831. Ganymed, největší měsíc sluneční soustavy, je větší než Merkur."
 				}
@@ -70,7 +70,7 @@
 			"saturn": {
 				"title": "Saturn",
 				"text": {
-					"simple": "Saturn má nejkrásnější prstence. Jsou z miliard kousků ledu, některé jsou malé jako zrnka písku, jiné velké jako dům. Saturn je tak lehký, že by plaval v obří vaně!",
+					"simple": "Saturn má nejkrásnější prstence. Jsou ze spousty a spousty kousků ledu. Některé jsou malé jako zrnka písku, jiné velké jako dům. Saturn je tak lehký, že by plaval v obří vaně!",
 					"standard": "Saturnovy prstence tvoří nespočet kusů vodního ledu. Jsou široké asi 280 000 km, ale většinou tlusté jen kolem 10 m. Saturn je široký jako 9 Zemí, a přesto je to jediná planeta s menší hustotou než voda. Jeho měsíc Titan je větší než planeta Merkur.",
 					"advanced": "Průměr 116 460 km při střední hustotě 0,69 g/cm³, menší než má voda. Hlavní prstence se táhnou přes zhruba 280 000 km, ale obvykle jsou tlusté jen asi 10 m: převážně vodní led v kouscích od prachu po velikost domu. Mohou být mnohem mladší než samotný Saturn. Z jeho mnoha měsíců má Titan hustou atmosféru a Enceladus stříká do vesmíru oceán."
 				}
@@ -78,7 +78,7 @@
 			"uranus": {
 				"title": "Uran",
 				"text": {
-					"simple": "Uran obíhá kolem Slunce vleže na boku, jako když se kutálí míč. Možná ho kdysi dávno převrhlo něco hodně velkého. Je to ledový obr a je tam hrozná zima.",
+					"simple": "Uran se kolem Slunce valí na boku, jako když se kutálí míč. Možná ho kdysi dávno převrhlo něco hodně velkého. Je tam hrozná, hrozná zima.",
 					"standard": "Uran je převrácený: jeho osa leží skoro naplocho v rovině jeho dráhy. Podívej se, jak kolem něj obíhají jeho měsíce, shora dolů. Rok na Uranu trvá 84 pozemských let, takže každý pól má 42 let slunce a pak 42 let tmy. Byla to první planeta objevená dalekohledem, v roce 1781.",
 					"advanced": "Ledový obr o průměru 50 724 km s osou rotace skloněnou o 98°, nejspíš kvůli obřímu nárazu na začátku své historie. Jeho měsíce a prstence obíhají v jeho skloněné rovníkové rovině. Během 84letého oběhu stráví každý pól asi 42 let v nepřetržitém dni. Objevil ho William Herschel v roce 1781, jako první planetu nalezenou dalekohledem."
 				}
@@ -86,7 +86,7 @@
 			"neptune": {
 				"title": "Neptun",
 				"text": {
-					"simple": "Neptun je nejvzdálenější planeta: sluneční světlo k němu letí asi 4 hodiny. Má nejrychlejší větry ve sluneční soustavě. Našli ho počítáním dřív, než ho kdokoli uviděl!",
+					"simple": "Neptun je nejvzdálenější planeta. Sluneční světlo k němu letí asi 4 hodiny. Má nejrychlejší větry ze všech planet. Lidé ho našli počítáním dřív, než ho kdokoli uviděl!",
 					"standard": "Nejvzdálenější planeta, 4,5 miliardy km od Slunce. Rok tu trvá 165 pozemských let. Neptun má nejrychlejší větry ve sluneční soustavě, až 2 100 km/h. Našli ho v roce 1846 výpočtem: astronomové si všimli, že něco vychyluje Uran z jeho dráhy, a spočítali, kde musí být neviditelná planeta.",
 					"advanced": "30 au od Slunce, kde je sluneční světlo 900krát slabší než u Země. Jeho větry dosahují asi 2 100 km/h. V roce 1846 ho Johann Galle našel méně než 1° od polohy, kterou Urbain Le Verrier spočítal z nepravidelností v dráze Uranu: první planeta objevená matematikou. Jeho velký měsíc Triton obíhá pozpátku, nejspíš zachycené těleso z Kuiperova pásu."
 				}
@@ -98,7 +98,7 @@
 					"advanced": "Za Neptunem"
 				},
 				"text": {
-					"simple": "Sluneční soustava u Neptunu nekončí. Dál jsou ledové světy jako Pluto. Sonda Voyager 1 letí už skoro 50 let a je to nejvzdálenější věc, jakou kdy lidé vyrobili.",
+					"simple": "Sluneční soustava u Neptunu nekončí. Dál jsou ledové světy jako Pluto. Vesmírná sonda Voyager 1 letí už od doby, kdy byli babička s dědou mladí. Teď je to nejvzdálenější věc, jakou kdy lidé vyrobili.",
 					"standard": "Za Neptunem leží Kuiperův pás, prstenec ledových těles, ke kterému patří i trpasličí planeta Pluto. Mnohem dál sahá Oortův oblak komet možná až do třetiny cesty k nejbližší hvězdě. Voyager 1, vypuštěný v roce 1977, je vzdálený přes 25 miliard km: ke konci roku 2026 k nám jeho rádiový signál poletí celý den.",
 					"advanced": "Za 30 au obsahuje Kuiperův pás (zhruba 30 až 50 au) ledové pozůstatky vzniku planet, mezi nimi Pluto. Oortův oblak komet může sahat za 100 000 au. Voyager 1, vypuštěný v roce 1977, opustil v roce 2012 sluneční heliosféru a ke konci roku 2026 bude jeden světelný den od Země. Nejbližší hvězda, Proxima Centauri, je vzdálená 4,2 světelného roku."
 				}
@@ -156,7 +156,7 @@
 					"advanced": "Slunce ve skutečné velikosti"
 				},
 				"text": {
-					"simple": "Tady je Slunce ve své skutečné velikosti. Je široké jako 109 Zemí! Kdyby bylo Slunce duté, vešlo by se do něj přes milion Zemí.",
+					"simple": "Tady je Slunce ve své skutečné velikosti. Kdyby byla Země pomeranč, bylo by Slunce vysoké jako dům! Kdyby bylo Slunce duté, vešly by se do něj všechny planety dohromady a ještě by zbylo hodně místa.",
 					"standard": "Slunce je 1,4 milionu km široké: 109 Zemí vedle sebe. Objemem by se do něj vešlo asi 1,3 milionu Zemí. Celá soustava Země–Měsíc, kterou jsi právě viděl, by se do Slunce vešla i s rezervou.",
 					"advanced": "Průměr 1,39 milionu km, 109 průměrů Země; objem 1,3 milionu Zemí. Celá dráha Měsíce (průměr 768 800 km) by se do Slunce vešla s rezervou přes půl milionu km. Přesto obsahuje 99,86 % hmoty sluneční soustavy."
 				}
@@ -168,7 +168,7 @@
 					"advanced": "Jedna astronomická jednotka"
 				},
 				"text": {
-					"simple": "Najdeš Zemi? Kroužek jen ukazuje, kde je. Skutečná Země je odsud moc malá, aby byla vidět. Auto, které by jelo ke Slunci bez zastávky, by jelo přes 170 let!",
+					"simple": "Najdeš Zemi? Kroužek jen ukazuje, kde je. Skutečná Země je odsud moc malá, aby byla vidět. Auto, které by jelo ke Slunci bez zastávky, by jelo déle než dva dlouhé lidské životy!",
 					"standard": "Země je 150 milionů km od Slunce: 11 700 Zemí za sebou. V tomto skutečném měřítku je příliš malá, aby byla vidět; tečka a kroužek jen ukazují, kde je. Auto jedoucí 100 km/h by tam jelo 171 let. Sluneční světlo to zvládne za 8 minut a 20 sekund.",
 					"advanced": "1 au = 149,6 milionu km, 11 740 průměrů Země. Nakreslená tečka je jen značka: skutečný kotouček Země je tu nepatrný zlomek pixelu. Autem rychlostí 100 km/h: 171 let; dopravním letadlem: 19 let; rychlostí světla: 499 sekund. Pokaždé, když vidíš Slunce, vidíš ho takové, jaké bylo před 8 minutami."
 				}
@@ -180,7 +180,7 @@
 					"advanced": "Až k Neptunu"
 				},
 				"text": {
-					"simple": "Tady jsou všechny planety ve svých skutečných vzdálenostech. Vnitřní planety se tlačí u Slunce a ostatní jsou od sebe hodně daleko. Sluneční světlo letí k Neptunu asi čtyři hodiny.",
+					"simple": "Tady jsou všechny planety ve svých skutečných vzdálenostech. Planety blízko Slunce se tlačí u sebe a ostatní jsou od sebe hodně daleko. Sluneční světlo letí k Neptunu asi čtyři hodiny.",
 					"standard": "Celá soustava planet ve skutečném měřítku. Neptun je od Slunce 30krát dál než Země: 4,5 miliardy km. Sluneční světlo, to nejrychlejší, co existuje, tam letí přes 4 hodiny. Čtyři vnitřní planety se tísní uprostřed; skoro je od sebe nerozeznáš.",
 					"advanced": "Dráha Neptunu o poloměru 30 au (4,5 miliardy km). Světlo ji přeletí za 4,2 hodiny. Rozestupy jsou velmi nerovnoměrné: čtyři kamenné planety se vejdou do 1,5 au, pak následuje velká mezera až k Jupiteru ve vzdálenosti 5,2 au a každý obr je 1,5krát až 2krát dál než ten předchozí."
 				}
@@ -192,7 +192,7 @@
 					"advanced": "Téměř úplně prázdno"
 				},
 				"text": {
-					"simple": "Teď vypneme tečky i jména. Takhle sluneční soustava vypadá doopravdy: Slunce je malinká tečka a planety jsou moc malé, aby byly vidět. Vesmír je skoro úplně prázdný!",
+					"simple": "Teď vypneme tečky i jména. Takhle sluneční soustava vypadá doopravdy. Slunce je malinká tečka a planety jsou moc malé, aby byly vidět. Vesmír je skoro úplně prázdný!",
 					"standard": "Značky a jména jsou vypnuté. Tohle tam doopravdy je: malé Slunce a, kam až oko dohlédne, nic jiného. Slunce a všechny planety dohromady zaberou méně než stomiliardtinu prostoru uvnitř dráhy Neptunu. Vesmír je téměř dokonale prázdný.",
 					"advanced": "Značky i popisky vypnuté: ve skutečném měřítku tu žádná planeta nepokryje ani jediný pixel. Slunce a planety zabírají méně než 10⁻¹¹ objemu koule, jejímž poloměrem je dráha Neptunu. Právě tahle prázdnota, ne velikost těles, je skutečnou lekcí o měřítku."
 				}
@@ -204,7 +204,7 @@
 					"advanced": "Slunce jako basketbalový míč"
 				},
 				"text": {
-					"simple": "Představ si Slunce jako basketbalový míč. Země by pak byla špendlíková hlavička 26 metrů daleko, Jupiter třešeň 134 metrů daleko a Neptun hrášek skoro 800 metrů daleko. Nejbližší hvězda by byla 6 900 km daleko!",
+					"simple": "Představ si Slunce jako basketbalový míč. Země by pak byla špendlíková hlavička 26 metrů daleko. Jupiter by byl třešeň víc než jedno fotbalové hřiště daleko. Neptun by byl hrášek víc než 7 fotbalových hřišť daleko. A nejbližší hvězda? Byla by tak daleko, že by tam letadlo letělo asi 8 hodin!",
 					"standard": "Zmenši všechno tak, aby Slunce bylo basketbalový míč: Země bude špendlíková hlavička ve vzdálenosti 26 m, Jupiter třešeň ve 134 m a Neptun hrášek v 776 m. V tomto měřítku je nejbližší hvězda, Proxima Centauri, 6 900 km daleko. Tenhle model můžeš projít pěšky na školním hřišti.",
 					"advanced": "V měřítku 1 : 5,8 miliardy je Slunce basketbalový míč o průměru 24 cm, Země špendlíková hlavička 2,2 mm ve 26 m, Jupiter 24 mm ve 134 m a Neptun 8,5 mm v 776 m. Proxima Centauri, vzdálená 4,2 světelného roku, by byla 6 900 km daleko: sluneční soustava je malinký ostrov v oceánu ničeho."
 				},
@@ -295,7 +295,7 @@
 					"advanced": "1610: důkazy z dalekohledu"
 				},
 				"text": {
-					"simple": "V roce 1610 se Galileo podíval svým novým dalekohledem na Jupiter. Uviděl čtyři malé měsíce, které kolem něj obíhají. Takže se ne všechno točí kolem Země! To lidem pomohlo uvěřit nové myšlence.",
+					"simple": "Kdysi dávno se Galileo podíval svým novým dalekohledem na Jupiter. Uviděl čtyři malé měsíce, které kolem něj krouží. Takže se ne všechno točí kolem Země! To lidem pomohlo uvěřit nové myšlence.",
 					"standard": "Vrátili jsme se do ledna 1610. Galileo Galilei namířil svůj nový dalekohled na Jupiter a našel čtyři měsíce, které ho obíhají: důkaz, že se ne všechno točí kolem Země. Viděl také, že Venuše ukazuje všechny fáze jako náš Měsíc. To je možné jen tehdy, když Venuše obíhá kolem Slunce.",
 					"advanced": "Leden 1610: Galilei objevuje Io, Europu, Ganymed a Callisto, zmenšenou soustavu s jiným středem než Země. Později téhož roku pozoruje celý cyklus fází Venuše, včetně téměř úplných fází, které Ptolemaiovo uspořádání vytvořit nedokáže. To vyvrátilo Ptolemaia, ale ještě ne smíšený model Tychona Brahe."
 				}
@@ -307,7 +307,7 @@
 					"advanced": "Důkaz: aberace a paralaxa"
 				},
 				"text": {
-					"simple": "Dnes to víme jistě: Země oběhne Slunce jednou za rok, rychlostí asi 30 km za každou sekundu. Trvalo asi 2 000 let, než si tím lidé byli úplně jistí. Kosmické sondy tohle vědění používají, když letí k jiným planetám.",
+					"simple": "Dnes to víme jistě: Země oběhne Slunce jednou za rok. Za jedinou sekundu urazí asi tolik, kolik bys ušel za celý den! Trvalo hodně, hodně dlouho, než si tím lidé byli úplně jistí. Vesmírné sondy tohle vědění používají, když letí k jiným planetám.",
 					"standard": "Země se řítí kolem Slunce rychlostí asi 30 km za sekundu. Definitivní důkaz přišel v roce 1838, když Friedrich Bessel změřil, jak se blízká hvězda během roku posouvá sem a tam: pohled z pohybující se Země. Od Aristarchova prvního nápadu k Besselovi uběhlo přes dva tisíce let. Každá sonda, kterou posíláme k Marsu, s tím počítá.",
 					"advanced": "Přímý důkaz pohybu Země přinesla aberace hvězdného světla Jamese Bradleyho (1729) a paralaxa hvězdy 61 Cygni, kterou změřil Friedrich Bessel (1838), 0,3 úhlové vteřiny: zdánlivý posun hvězd, zatímco Země přejede napříč svou dráhou 300 milionů km. Oběžná rychlost Země je 29,8 km/s. Keplerovy elipsy (1609) a Newtonova gravitace (1687) z toho obrazu udělaly fyziku."
 				}
@@ -333,7 +333,7 @@
 					"advanced": "Přísady života"
 				},
 				"text": {
-					"simple": "Každý živý tvor na Zemi potřebuje vodu. Potřebuje taky energii, třeba sluneční světlo nebo teplo, a ty správné přísady. Život najdeme na úžasných místech: v ledu, ve vroucích pramenech i hluboko v tmavém moři.",
+					"simple": "Každý živý tvor na Zemi potřebuje vodu. Potřebuje taky jídlo nebo sluneční světlo, aby mohl žít. Živé tvory najdeme na úžasných místech: v ledu, ve vroucích horkých pramenech i hluboko v tmavém moři.",
 					"standard": "Všechen život, který známe, potřebuje tři věci: tekutou vodu, zdroj energie a správnou chemii postavenou na uhlíku. Na Zemi se život objeví skoro všude, kde se tyhle tři věci potkají: v antarktickém ledu, ve vroucích horkých pramenech i u horkých průduchů na temném mořském dně. Kde jinde ve sluneční soustavě se potkávají?",
 					"advanced": "Život, jak ho známe, potřebuje tekutou vodu jako rozpouštědlo, zdroj energie (světlo nebo chemické gradienty) a chemii na bázi uhlíku s prvky jako dusík, fosfor a síra. Extrémofilové prosperují od solanek o −20 °C až po hydrotermální prameny přes 120 °C, někteří úplně bez slunečního světla. To rozšiřuje hledání daleko za planety podobné Zemi."
 				}
@@ -345,7 +345,7 @@
 					"advanced": "Mars: obyvatelná minulost"
 				},
 				"text": {
-					"simple": "Dnes je Mars studený a suchý. Ale kdysi dávno na něm byly řeky a jezera. Možná tam žili malincí tvorové. Rover Perseverance sbírá kameny ze starého jezera a hledá stopy.",
+					"simple": "Dnes je Mars studený a suchý. Ale kdysi dávno na něm byly řeky a jezera. Možná tam žili malincí živí tvorové. Robotické vozítko jménem Perseverance sbírá kameny ze starého jezera a hledá stopy.",
 					"standard": "Mars je dnes studený a suchý a jeho vzduch je příliš řídký na to, aby tekutá voda vydržela. Ale před miliardami let tu řeky plnily jezera. Od roku 2021 zkoumá rover Perseverance kráter Jezero, staré dno jezera, a sbírá vzorky hornin. Některé ukazují vzory, jaké na Zemi často vytvářejí mikroby; jistotu ale dá jen laboratoř na Zemi.",
 					"advanced": "Zhruba před 3,5 miliardy let měl Mars řeky, delty a jezera. Perseverance, v kráteru Jezero od roku 2021, uložil vzorky starých jezerních usazenin; hornina nalezená v roce 2024 ukazuje minerální vzory, které se na Zemi často pojí s mikroby, ale mohly by vzniknout i bez života. Vodní led přetrvává u pólů a pod povrchem."
 				}
@@ -357,7 +357,7 @@
 					"advanced": "Europa: podpovrchový oceán"
 				},
 				"text": {
-					"simple": "Tenhle Jupiterův měsíc je pokrytý ledem. Pod ledem je obrovský oceán slané vody, a je v něm víc vody než ve všech mořích na Zemi dohromady! Kosmická sonda už k němu letí.",
+					"simple": "Tenhle Jupiterův měsíc je pokrytý ledem. Pod ledem je obrovský oceán slané vody. Je v něm víc vody než ve všech mořích na Zemi dohromady! Vesmírná sonda už k němu letí.",
 					"standard": "Europa, jeden z velkých Jupiterových měsíců, je pokrytá ledovým krunýřem silným mnoho kilometrů. Pod ním leží slaný oceán s asi dvakrát víc vodou, než mají všechny oceány Země. Jupiterovo slapové působení měsíc hněte a udržuje ho uvnitř teplý. Sonda NASA Europa Clipper, vypuštěná v roce 2024, dorazí v roce 2030.",
 					"advanced": "Data magnetometru sondy Galileo odhalila vodivý, slaný oceán pod ledovou slupkou silnou snad 15–25 km, s asi dvojnásobkem vody pozemských oceánů. Teplo dodává slapové pružení způsobené Jupiterem a dno oceánu může být ve styku s horninou jako u hydrotermálních průduchů na Zemi. Europa Clipper (start 2024) dorazí v roce 2030."
 				}
