@@ -1,6 +1,8 @@
 import type { SolarDictionaryItem } from "@/data/solarDictionary"
 import type { I18n } from "@/i18n"
 
+import { levelQuantity } from "./quantity"
+
 /** The facts the sidebar can show, in display order. */
 export type FactKey =
 	"name" | "diameter" | "lengthOfDay" | "orbitalPeriod" | "gravity" | "avgTemp"
@@ -106,23 +108,12 @@ function gravityComparison(value: number, earth: number, i18n: I18n): string {
 	return i18n.t("dictionary.compare.gravitySimilar", { kg })
 }
 
-/** Oven-hot and freezer-cold thresholds of the "simple" sentence (°C). */
-const HOT_C = 250
-const COLD_C = -20
-
-function temperatureComparison(kelvin: number, i18n: I18n): string {
-	const celsius = Math.round(kelvin - 273.15)
-	return i18n.t("dictionary.compare.temperature", {
-		celsius,
-		range: celsius > HOT_C ? "hot" : celsius < COLD_C ? "cold" : "other",
-	})
-}
-
 /**
  * The sidebar facts of a dictionary entry, translated, formatted for the
- * active locale and compared with `earth` (no comparisons for Earth itself,
- * except the Celsius reading of its temperature). Facts without a value are
- * left out. `volumes` makes the size comparison exact for flattened planets.
+ * active locale and compared with `earth` (no comparisons for Earth itself).
+ * The temperature follows the reading level (`levelQuantity`: words, °C, or
+ * kelvin with °C). Facts without a value are left out. `volumes` makes the
+ * size comparison exact for flattened planets.
  */
 export function getSidebarFacts(
 	entity: SolarDictionaryItem | undefined,
@@ -184,8 +175,12 @@ export function getSidebarFacts(
 				return {
 					key,
 					label,
-					value: i18n.t("units.kelvin", { value: i18n.number(value) }),
-					extra: temperatureComparison(value, i18n),
+					value:
+						levelQuantity(
+							{ kind: "temperature", degrees: { k: value } },
+							i18n,
+						) ?? "",
+					extra: null,
 				}
 		}
 	}

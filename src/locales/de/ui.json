@@ -120,10 +120,59 @@
 			"gravitySimilar@advanced": "Die Schwerkraft an der Oberfläche weicht um weniger als 5 % von der irdischen ab.",
 			"gravityLess": "Du würdest nur {percent, number, ::percent} deines Gewichts auf der Erde wiegen.",
 			"gravityLess@simple": "Wenn du auf der Erde 30 kg wiegst, würdest du dort nur {kg, number} kg wiegen!",
-			"gravityLess@advanced": "Die Schwerkraft an der Oberfläche beträgt {percent, number, ::percent} der irdischen: Dein Gewicht würde sinken, deine Masse bliebe gleich.",
-			"temperature": "Das sind etwa {celsius, number} °C.",
-			"temperature@simple": "{range, select, hot {Das sind etwa {celsius, number} °C – heißer als ein Backofen!} cold {Das sind etwa {celsius, number} °C – kälter als jede Tiefkühltruhe!} other {Das sind etwa {celsius, number} °C.}}",
-			"temperature@advanced": "Das sind {celsius, number} °C; der absolute Nullpunkt, 0 K, liegt bei −273,15 °C."
+			"gravityLess@advanced": "Die Schwerkraft an der Oberfläche beträgt {percent, number, ::percent} der irdischen: Dein Gewicht würde sinken, deine Masse bliebe gleich."
+		},
+		"section": {
+			"label": "{name} im Detail",
+			"madeOf": "Aufbau",
+			"madeOf@simple": "Was steckt drin?",
+			"weather": "Wetter",
+			"weather@simple": "Heiß oder kalt?",
+			"weather@advanced": "Temperaturen",
+			"names": "Namen",
+			"names@simple": "Namen und Spitznamen"
+		},
+		"madeOf": {
+			"pictureTitle": "{name} von innen",
+			"pictureDescription": "{name} im Schnittbild. Von der Mitte nach außen: {layers}.",
+			"scaleNote": "{thickened, select, yes {Die Schichten sind maßstabsgetreu gezeichnet; die dünnsten etwas dicker, damit man sie sieht.} other {Die Schichten sind maßstabsgetreu gezeichnet.}}",
+			"scaleNote@simple": "{thickened, select, yes {Dünne Schichten sind etwas dicker gezeichnet, damit du sie sehen kannst.} other {Die Schichten sind so groß gezeichnet, wie sie wirklich sind.}}",
+			"estimateNote": "Hineinsehen kann niemand: Diese Schichten sind die besten Schätzungen der Forschung, abgeleitet aus Schwerkraft, Drehung und Modellen.",
+			"estimateNote@simple": "Drinnen war noch niemand. Forscher haben sich diese Schichten ausgerechnet.",
+			"layerSize": "{centre, select, yes {Radius {size}} other {{size} dick}}",
+			"air": "{star, select, yes {Woraus das Gas besteht} other {Die Luft dort}}",
+			"air@simple": "{star, select, yes {Das Gas} other {Die Luft}}",
+			"air@advanced": "{star, select, yes {Zusammensetzung} other {Atmosphäre}}",
+			"gas": "{name} {share, number, ::percent @##}",
+			"basis": "{basis, select, atoms {Anteil an allen Atomen.} other {Anteil an der Luft, nach Volumen.}}",
+			"heavy": "Wie schwer",
+			"heavy@simple": "Wie schwer?",
+			"heavy@advanced": "Masse",
+			"dense": "Schwer im Verhältnis zur Größe",
+			"dense@simple": "Schwimmen oder untergehen?",
+			"dense@advanced": "Mittlere Dichte"
+		},
+		"weather": {
+			"high": "{range, select, dayNight {Am Tag} extremes {Am wärmsten} records {Höchste je gemessene Temperatur} cloudsCore {Nahe dem Kern} cloudLevels {In den Wolken} surfaceCore {Im Kern} other {Tag und Nacht}}",
+			"low": "{range, select, dayNight {In der Nacht} extremes {Am kältesten} records {Tiefste je gemessene Temperatur} cloudsCore {In den Wolken} cloudLevels {Weiter oben} surfaceCore {An der Oberfläche} other {Tag und Nacht}}"
+		},
+		"names": {
+			"origin": "Woher der Name kommt",
+			"inOurLanguage": "Auf Deutsch",
+			"discovery": "Die Entdeckung",
+			"discovery@simple": "Wer hat das entdeckt?"
+		},
+		"sources": "Quellen:",
+		"quantity": {
+			"feel": "{band, select, hotterThanSun {Heißer als die Oberfläche der Sonne} fire {Viel heißer als jedes Feuer} oven {Heißer als ein Backofen} boiling {Heißer als kochendes Wasser} desert {So heiß wie die heißeste Wüste} warm {Warm wie ein Sommertag} mild {Nicht zu heiß und nicht zu kalt} chilly {Kalt wie ein Wintertag} freezer {Kälter als jede Tiefkühltruhe} coldest {Kälter als irgendwo auf der Erde} other {So kalt, dass Luft gefrieren würde}}",
+			"celsius": "{big, select, other {{value} °C}}",
+			"kelvin": "{big, select, other {{kelvin} K ({celsius} °C)}}",
+			"mass": "{band, select, earth {Der Maßstab: Die anderen Welten werden in Erden gewogen} similar {{percent, number, ::percent} der Erdmasse} lighter {{count, plural, one {# davon wäre so schwer wie die Erde} other {# davon wären zusammen so schwer wie die Erde}}} other {{count, plural, one {So schwer wie # Erde} other {So schwer wie # Erden}}}}",
+			"mass@simple": "{band, select, star {Schwerer als alle Planeten zusammen} earth {Die Erde ist der Maßstab: Die anderen Welten werden in Erden gewogen} huge {Schwerer als 100 Erden zusammen} similar {Fast so schwer wie die Erde} lighter {{count, plural, one {So schwer wie die Erde} other {Man bräuchte # davon, um so viel zu wiegen wie die Erde}}} other {{count, plural, one {So schwer wie # Erde} other {So schwer wie # Erden}}}}",
+			"mass@advanced": "{band, select, earth {{kg} kg} other {{earths} Erdmassen ({kg} kg)}}",
+			"density": "{band, select, floats {{value} g/cm³: leichter als Wasser, in einer Badewanne, die groß genug ist, würde diese Welt also schwimmen} sinks {{value} g/cm³: etwas dichter als Wasser} other {{value} g/cm³: {ratio, number}-mal so dicht wie Wasser}}",
+			"density@simple": "{band, select, floats {Leichter als Wasser: In einer Riesenbadewanne würde diese Welt schwimmen!} sinks {Ein bisschen schwerer als Wasser: Diese Welt würde langsam untergehen} other {{buckets, plural, one {Ein Eimer voll davon wäre so schwer wie # Eimer Wasser} other {Ein Eimer voll davon wäre so schwer wie # Eimer Wasser}}}}",
+			"density@advanced": "{band, select, floats {{value} g/cm³, weniger als Wasser (1 g/cm³)} other {{value} g/cm³ (Wasser: 1 g/cm³)}}"
 		}
 	},
 	"solarSystem": {

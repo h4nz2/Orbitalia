@@ -1,0 +1,466 @@
+{
+	"layers": {
+		"core": {
+			"simple": "Centre brûlant",
+			"standard": "Cœur"
+		},
+		"radiativeZone": {
+			"simple": "Couche qui rayonne",
+			"standard": "Zone radiative"
+		},
+		"convectiveZone": {
+			"simple": "Couche qui bouillonne",
+			"standard": "Zone convective"
+		},
+		"ironCore": {
+			"simple": "Centre en métal",
+			"standard": "Noyau de fer"
+		},
+		"rockyShell": {
+			"simple": "Roche",
+			"standard": "Manteau et croûte (roche)"
+		},
+		"innerCore": {
+			"simple": "Centre en métal solide",
+			"standard": "Noyau interne (fer solide)"
+		},
+		"outerCore": {
+			"simple": "Métal fondu",
+			"standard": "Noyau externe (fer liquide)"
+		},
+		"rockyMantle": {
+			"simple": "Roche",
+			"standard": "Manteau (roche)"
+		},
+		"crust": {
+			"simple": "Fine peau de roche",
+			"standard": "Croûte"
+		},
+		"fuzzyCore": {
+			"simple": "Centre lourd",
+			"standard": "Noyau diffus"
+		},
+		"denseCore": {
+			"simple": "Centre de roche et de métal",
+			"standard": "Noyau (métal et roche)"
+		},
+		"metallicHydrogen": {
+			"simple": "Hydrogène écrasé",
+			"standard": "Hydrogène métallique liquide"
+		},
+		"hydrogenLayer": {
+			"simple": "Hydrogène et hélium",
+			"standard": "Hydrogène liquide et gazeux"
+		},
+		"rockyCore": {
+			"simple": "Centre en roche",
+			"standard": "Noyau rocheux"
+		},
+		"icyMantle": {
+			"simple": "Bouillie de glace chaude",
+			"standard": "Manteau de glaces (eau, méthane, ammoniac)"
+		},
+		"gasEnvelope": {
+			"simple": "Gaz",
+			"standard": "Hydrogène, hélium et méthane"
+		}
+	},
+	"gases": {
+		"hydrogen": "Hydrogène",
+		"helium": "Hélium",
+		"oxygen": "Oxygène",
+		"sodium": "Sodium",
+		"potassium": "Potassium",
+		"carbonDioxide": "Dioxyde de carbone",
+		"nitrogen": "Azote",
+		"argon": "Argon",
+		"carbonMonoxide": "Monoxyde de carbone",
+		"methane": "Méthane"
+	},
+	"worlds": {
+		"sun": {
+			"madeOf": {
+				"simple": "Le Soleil est une énorme boule de gaz qui brille. Il n’a pas de sol où poser les pieds. En son centre, il fabrique sa propre lumière et sa propre chaleur.",
+				"standard": "Le Soleil est une immense boule de gaz chaud, presque entièrement de l’hydrogène et de l’hélium. Dans son cœur, qui s’étend sur environ un quart du chemin jusqu’à la surface, l’hydrogène fusionne en hélium et libère de l’énergie. Cette énergie se fraie lentement un chemin à travers la zone radiative ; dans la zone convective, le gaz chaud monte comme l’eau qui bout dans une casserole et l’emporte jusqu’à la surface.",
+				"advanced": "Le Soleil est une sphère de plasma chaud. Son cœur s’étend jusqu’à environ 25 % du rayon : c’est là que l’hydrogène fusionne en hélium ; la zone radiative, jusqu’à environ 70 %, transporte l’énergie vers l’extérieur sous forme de rayonnement, et la zone convective l’achemine jusqu’à la surface visible par des courants de gaz qui montent et qui descendent."
+			},
+			"air": {
+				"simple": "Le Soleil n’a pas d’air comme le nôtre : il n’est fait que de gaz. C’est surtout de l’hydrogène. Il y a aussi de l’hélium, le gaz des ballons de fête.",
+				"standard": "Le Soleil n’a pas d’air à respirer : il n’est fait que de gaz. Sur 100 atomes à sa surface, environ 91 sont de l’hydrogène et 9 de l’hélium. Tout le reste, comme l’oxygène, le carbone et le fer, ne représente qu’une pincée.",
+				"advanced": "En nombre d’atomes, la photosphère contient environ 91,0 % d’hydrogène et 8,9 % d’hélium ; l’oxygène, le carbone, le néon, l’azote, le fer et les autres éléments plus lourds forment ensemble les 0,15 % restants."
+			},
+			"weather": {
+				"simple": "Le Soleil est l’endroit le plus chaud de notre système solaire. Même sa surface est bien plus chaude que n’importe quel feu. Son centre est encore beaucoup plus chaud.",
+				"standard": "La surface que nous voyons est à environ 5 500 °C. Dans le cœur, il fait environ 15 millions de °C : assez chaud pour que l’hydrogène fusionne. Chose étrange, la fine atmosphère extérieure du Soleil, la couronne, est bien plus chaude que la surface en dessous : jusqu’à environ 2 millions de °C.",
+				"advanced": "La photosphère est à environ 5 500 °C et le cœur à environ 15 millions de °C. Au-dessus de la photosphère, la température remonte, jusqu’à environ 2 millions de °C dans la couronne ; pourquoi la couronne est tellement plus chaude que la surface en dessous reste une question ouverte."
+			},
+			"nicknames": {
+				"yellowDwarf": {
+					"name": "Naine jaune",
+					"story": {
+						"simple": "Les scientifiques appellent les étoiles comme le Soleil des naines jaunes. Naine veut dire qu’elle est plus petite que les étoiles géantes. Mais sur les photos prises depuis l’espace, le Soleil a l’air blanc !",
+						"standard": "Les astronomes appellent les étoiles comme le Soleil des naines jaunes : des étoiles ordinaires, de taille moyenne, qui brillent en transformant l’hydrogène en hélium. « Naine » veut seulement dire qu’elle est petite à côté des étoiles géantes. Et sur les photos, le Soleil paraît blanc, parce qu’il émet en même temps toutes les couleurs que nous pouvons voir.",
+						"advanced": "« Naine jaune » est le nom courant de la classe du Soleil, G2 V : une étoile de type G sur la séquence principale, la longue phase stable de la fusion de l’hydrogène ; « naine » distingue les étoiles de la séquence principale des géantes. Sur les photographies, le Soleil apparaît blanc, car il émet toutes les couleurs visibles à la fois."
+					}
+				}
+			},
+			"name": {
+				"simple": "Il y a très longtemps, les Romains appelaient le Soleil Sol. C’est pour cela que la famille du Soleil s’appelle le système solaire.",
+				"standard": "En latin, la langue des anciens Romains, le Soleil se dit Sol : c’est pour cela qu’on parle du système solaire et de panneaux solaires. Les Grecs de l’Antiquité avaient un dieu du Soleil appelé Hélios, dont le nom survit dans des mots comme héliosphère.",
+				"advanced": "Le latin « sol » est la racine de l’adjectif « solaire » ; Hélios, le dieu du Soleil de la mythologie grecque, a prêté son nom à des termes comme héliosphère et héliosismologie, l’étude de l’intérieur du Soleil par ses vibrations."
+			},
+			"localName": {
+				"simple": "Les Romains disaient sol pour le Soleil. Les Italiens disent encore sole et les Espagnols sol. Mais le français est parti d’un mot plus long, et c’est devenu soleil !",
+				"standard": "« Soleil » ne vient pas directement du latin « sol », mais d’une forme allongée de ce mot en latin populaire, le latin que l’on parlait tous les jours. La plupart des autres langues romanes ont gardé le simple « sol » : « sole » en italien, « sol » en espagnol et en portugais. Le français fait exception.",
+				"advanced": "« Soleil » remonte au latin populaire *soliculus, élargissement de « sol » ; la plupart des langues romanes ont conservé la forme simple (italien « sole », espagnol et portugais « sol ») : le français fait figure d’exception."
+			},
+			"discovery": {
+				"simple": "Les gens ont toujours connu le Soleil. Il y a très longtemps, certains le priaient même comme un dieu.",
+				"standard": "Tout le monde a toujours connu le Soleil, et les Grecs de l’Antiquité avaient même un dieu du Soleil, Hélios. Son grand secret n’a été percé que bien plus tard : c’est une étoile, comme celles que nous voyons la nuit, mais beaucoup plus proche. Et il y a environ 500 ans, Copernic a affirmé que les planètes, la Terre comprise, tournent autour de lui.",
+				"advanced": "Connu depuis la préhistoire ; en 1543, Nicolas Copernic a publié l’idée que les planètes, dont la Terre, tournent autour du Soleil, et non autour de la Terre. Que le Soleil soit lui-même une étoile, de classe G2 V, un membre ordinaire de la Voie lactée, est l’œuvre des astronomes qui lui ont succédé."
+			}
+		},
+		"mercury": {
+			"madeOf": {
+				"simple": "Mercure est une planète de roche et de métal, comme la Terre. Son centre en métal est très grand. Il occupe presque toute la planète.",
+				"standard": "Mercure est une planète rocheuse avec un énorme noyau de fer : il s’étend sur environ 85 % du chemin jusqu’à la surface. Autour, il n’y a qu’une fine coquille de roche, le manteau et la croûte ensemble, épaisse d’environ 400 km.",
+				"advanced": "Le noyau métallique de Mercure a un rayon d’environ 2 074 km, quelque 85 % du rayon de la planète, et serait en partie fondu. Le manteau rocheux et la croûte au-dessus ne mesurent ensemble qu’environ 400 km d’épaisseur, ce qui fait de Mercure la deuxième planète la plus dense, après la Terre."
+			},
+			"air": {
+				"simple": "Mercure n’a presque pas d’air. Il n’y a qu’un tout petit peu de gaz autour d’elle, bien trop peu pour respirer.",
+				"standard": "Mercure n’a pas de véritable atmosphère, seulement une exosphère très ténue : quelques atomes arrachés à sa surface, surtout de l’oxygène, du sodium, de l’hydrogène, de l’hélium et du potassium. Elle est bien trop ténue pour qu’on la respire ou pour garder la moindre chaleur.",
+				"advanced": "Au lieu d’une atmosphère, Mercure possède une exosphère liée à la surface, si ténue que sa pression est inférieure à environ 5 × 10⁻¹⁵ bar : pratiquement le vide. Elle se compose surtout d’oxygène, de sodium, d’hydrogène, d’hélium et de potassium ; les fiches de données l’indiquent en abondances par colonne, et non en proportions."
+			},
+			"weather": {
+				"simple": "Le jour, sur Mercure, il fait plus chaud que dans un four. La nuit, il y fait plus froid que n’importe où sur Terre. Mercure n’a pas d’air pour garder la chaleur.",
+				"standard": "Mercure connaît le plus grand écart de toutes les planètes : jusqu’à environ 430 °C le jour et jusqu’à environ −180 °C la nuit. Sans véritable atmosphère pour la retenir, la chaleur s’échappe dans l’espace dès que le Soleil se couche.",
+				"advanced": "Le jour, la température atteint environ 430 °C et la nuit, elle tombe à environ −180 °C : sans atmosphère pour stocker et répartir la chaleur, la surface suit le Soleil. Mercure est la plus proche du Soleil, mais ce n’est pas la planète la plus chaude : c’est Vénus, avec son atmosphère épaisse."
+			},
+			"nicknames": {
+				"apolloHermes": {
+					"name": "Apollon et Hermès",
+					"story": {
+						"simple": "Il y a très longtemps, les Grecs voyaient Mercure le matin et le soir. Ils croyaient que c’étaient deux étoiles différentes ! Ils ont appelé celle du matin Apollon et celle du soir Hermès.",
+						"standard": "Les Grecs de l’Antiquité voyaient Mercure tantôt dans le ciel du matin, tantôt dans celui du soir, et lui ont donné deux noms : Apollon quand elle était une étoile du matin, Hermès quand elle était une étoile du soir. Plus tard, ils ont compris que les deux noms désignaient le même monde.",
+						"advanced": "Comme Mercure ne se voit jamais que près du Soleil, avant son lever ou après son coucher, les Grecs de l’Antiquité ont d’abord pris ses deux apparitions pour deux astres : Apollon, l’étoile du matin, et Hermès, l’étoile du soir, jusqu’à comprendre qu’il n’y en avait qu’un. Hermès, le messager rapide, est l’équivalent grec du Mercure romain."
+					}
+				}
+			},
+			"name": {
+				"simple": "Mercure porte le nom d’un dieu romain. C’était le messager des dieux, et il était très rapide. La planète aussi est rapide !",
+				"standard": "Mercure porte le nom du plus rapide des dieux romains, leur messager. Le nom lui va bien : Mercure est la planète la plus rapide et fait le tour du Soleil en seulement 88 jours.",
+				"advanced": "Les Romains l’ont nommée d’après Mercurius, le rapide messager des dieux, l’Hermès grec : un nom bien choisi pour la planète à l’année la plus courte, 88 jours, et à la vitesse orbitale moyenne la plus élevée, environ 47 km/s."
+			},
+			"localName": {
+				"simple": "Mercredi, c’est le jour de Mercure ! Le mot vient du latin, la langue des Romains. Les Romains ont donné aux jours de la semaine les noms de sept astres du ciel.",
+				"standard": "Mercredi est le jour de Mercure : le mot vient du latin « Mercurii dies », « le jour de Mercure ». Les Romains avaient donné aux jours de la semaine les noms des sept « planètes » connues à l’époque.",
+				"advanced": "« Mercredi » vient du latin « Mercurii dies », le jour de Mercure : Rome avait nommé les jours de la semaine d’après les sept « planètes » de l’époque."
+			},
+			"discovery": {
+				"simple": "Les gens voient Mercure depuis très, très longtemps, sans télescope. Mais elle est difficile à repérer. Elle ne se montre que bas dans le ciel, tôt le matin ou le soir.",
+				"standard": "Mercure est connue depuis l’Antiquité : les Romains pouvaient voir cinq planètes sans télescope, et Mercure en faisait partie. C’est la plus difficile des cinq à repérer, car elle n’apparaît que bas dans le ciel, dans les lueurs de l’aube ou du crépuscule.",
+				"advanced": "L’une des cinq planètes visibles à l’œil nu, connue depuis l’Antiquité ; comme elle reste proche du Soleil dans notre ciel, on ne la voit qu’à l’aube ou au crépuscule, ce qui explique pourquoi les Grecs ont d’abord pris ses apparitions du matin et du soir pour deux objets différents."
+			}
+		},
+		"venus": {
+			"madeOf": {
+				"simple": "Vénus est une planète de roche et de métal, comme la Terre. Elle est presque aussi grande que la Terre. Elle a énormément de volcans.",
+				"standard": "Vénus est construite à peu près comme la Terre : un noyau de fer, un manteau de roche chaude et une fine croûte rocheuse. Sa surface a des vallées, de hautes montagnes et des milliers de volcans.",
+				"advanced": "Comme la Terre, Vénus possède un noyau de fer, un manteau de roche chaude et une croûte fine. De minuscules oscillations de sa rotation, mesurées par radar, suggèrent un noyau d’environ 3 500 km de rayon (2021) ; les modèles donnent une croûte d’environ 40 km d’épaisseur en moyenne et de 65 km au plus. Les volcans et les forces tectoniques ont effacé la plupart des traces de sa surface primitive."
+			},
+			"air": {
+				"simple": "L’air de Vénus est très épais et très lourd. C’est un gaz que nous ne pouvons pas respirer. Ses nuages sont faits d’acide, qui brûle.",
+				"standard": "L’air de Vénus est presque entièrement du dioxyde de carbone, avec un peu d’azote, et il est si épais que la pression au sol est environ 93 fois celle de la Terre : comme si l’on était à plus de 900 m sous la mer. Ses nuages sont faits d’acide sulfurique.",
+				"advanced": "En volume, l’atmosphère contient 96,5 % de dioxyde de carbone et 3,5 % d’azote, avec des traces de dioxyde de soufre, d’argon et de vapeur d’eau ; la pression au sol est d’environ 92 bar, et les nuages denses sont faits d’acide sulfurique."
+			},
+			"weather": {
+				"simple": "Vénus est la planète la plus chaude. Il y fait plus chaud que dans un four, le jour comme la nuit. Son air épais garde la chaleur du Soleil, comme une couverture.",
+				"standard": "Vénus est la planète la plus chaude : environ 464 °C au sol, assez pour faire fondre du plomb, et il y fait aussi chaud la nuit que le jour. Son air épais de dioxyde de carbone retient la chaleur, si bien que Vénus est encore plus chaude que Mercure, pourtant plus proche du Soleil.",
+				"advanced": "La température moyenne au sol est d’environ 464 °C, et l’écart entre le jour et la nuit est presque nul : l’atmosphère dense de CO₂ retient la chaleur (un effet de serre qui s’est emballé) et la répartit sur toute la planète, face nocturne comprise."
+			},
+			"nicknames": {
+				"morningStar": {
+					"name": "L’étoile du matin et l’étoile du soir",
+					"story": {
+						"simple": "Vénus est la planète la plus brillante de notre ciel. On la voit souvent juste avant le lever du Soleil ou juste après son coucher. Alors on l’a appelée l’étoile du matin et l’étoile du soir. Mais ce n’est pas une étoile !",
+						"standard": "Après le Soleil et la Lune, Vénus est ce qui brille le plus dans le ciel. Elle brille le matin avant le lever du Soleil ou le soir après son coucher : les Anciens croyaient donc que c’étaient deux objets, une étoile du matin et une étoile du soir. Ce n’est pas du tout une étoile, mais une planète.",
+						"advanced": "Vénus est le troisième objet le plus brillant du ciel, après le Soleil et la Lune. Visible seulement à l’aube ou au crépuscule, elle a été prise par les Anciens pour deux objets, une étoile du matin et une étoile du soir, les noms qu’elle porte encore."
+					}
+				},
+				"earthsTwin": {
+					"name": "La jumelle de la Terre",
+					"story": {
+						"simple": "Vénus est presque aussi grande que la Terre. C’est pour cela qu’on l’appelle la jumelle de la Terre. Mais elle est si chaude et si toxique que certains l’appellent la jumelle maléfique de la Terre !",
+						"standard": "Vénus ressemble à la Terre par sa taille et sa structure : c’est pourquoi on l’appelle parfois la jumelle de la Terre. Comme elle est si chaude et que son air est si toxique, on l’appelle aussi la jumelle maléfique de la Terre.",
+						"advanced": "Semblable à la Terre par sa structure et sa taille, avec environ 95 % de son diamètre et 82 % de sa masse, Vénus est appelée la jumelle de la Terre ; son atmosphère écrasante et brûlante lui a valu le surnom de jumelle maléfique de la Terre."
+					}
+				}
+			},
+			"name": {
+				"simple": "Vénus porte le nom de la déesse romaine de l’amour et de la beauté. C’est la seule planète qui porte le nom d’une déesse.",
+				"standard": "Les Romains ont donné à la planète la plus brillante le nom de Vénus, leur déesse de l’amour et de la beauté, que les Grecs appelaient Aphrodite. C’est la seule planète qui porte le nom d’une divinité féminine.",
+				"advanced": "Nommée d’après la déesse romaine de l’amour et de la beauté, l’Aphrodite grecque : la seule planète qui porte le nom d’une divinité féminine."
+			},
+			"localName": {
+				"simple": "En français, on appelle aussi Vénus l’étoile du Berger. Les bergers la voient facilement, tôt le soir ou tard le matin. Et vendredi, c’est le jour de Vénus !",
+				"standard": "Son nom populaire est « l’étoile du Berger » : une étoile « que les bergers observent facilement, parce qu’elle se montre le soir de très bonne heure ou très tard dans la matinée », explique le dictionnaire Larousse. Et vendredi est le jour de Vénus : le mot vient du latin « Veneris dies ».",
+				"advanced": "« L’étoile du Berger » est le nom populaire de Vénus, « que les bergers observent facilement, parce qu’elle se montre le soir de très bonne heure ou très tard dans la matinée » (Larousse, cité par le TLFi) ; « vendredi » vient du latin « Veneris dies », le jour de Vénus."
+			},
+			"discovery": {
+				"simple": "Les gens voient Vénus depuis très, très longtemps. Elle est si brillante qu’on la trouve facilement.",
+				"standard": "Vénus est connue depuis l’Antiquité : les Romains la voyaient facilement, c’est l’une des cinq planètes visibles sans télescope. En 1610, Galilée a vu dans sa lunette que Vénus a des phases comme la Lune, ce qui a prouvé qu’elle tourne autour du Soleil.",
+				"advanced": "Connue depuis l’Antiquité comme l’une des cinq planètes visibles à l’œil nu ; l’observation de ses phases par Galilée, à partir de 1610, a prouvé qu’elle tourne autour du Soleil, un argument de poids en faveur du système héliocentrique de Copernic."
+			}
+		},
+		"earth": {
+			"madeOf": {
+				"simple": "La Terre est faite de roche et de métal. Au milieu, il y a une boule de métal solide. Autour, il y a du métal fondu, puis une épaisse couche de roche chaude. Nous vivons sur sa fine peau de roche.",
+				"standard": "La Terre a quatre couches : un noyau interne solide de fer et de nickel, un noyau externe liquide de fer et de nickel, un épais manteau de roche chaude et une fine croûte, d’environ 30 km d’épaisseur sous les continents et d’environ 5 km sous les océans. C’est la planète la plus dense du système solaire.",
+				"advanced": "Le noyau interne de la Terre, solide, de fer et de nickel, a un rayon d’environ 1 221 km et atteint 5 400 °C ; le noyau externe liquide qui l’entoure fait environ 2 300 km d’épaisseur, la roche chaude et visqueuse du manteau environ 2 900 km. La croûte mesure en moyenne environ 30 km sur les continents et 5 km sous les océans. La Terre est la planète la plus dense."
+			},
+			"air": {
+				"simple": "Nous ne pouvons respirer que l’air de la Terre. Il est surtout fait d’un gaz appelé azote. Il contient aussi de l’oxygène, dont nous avons besoin pour vivre.",
+				"standard": "L’air de la Terre contient environ 78 % d’azote et 21 % d’oxygène, avec un peu d’argon et de dioxyde de carbone et un peu de vapeur d’eau. C’est le seul air connu que les humains et les animaux puissent respirer.",
+				"advanced": "En volume, l’air sec contient 78,08 % d’azote, 20,95 % d’oxygène et 0,934 % d’argon, avec environ 420 ppm (0,042 %) de dioxyde de carbone ; la vapeur d’eau ajoute environ 1 %, selon les endroits."
+			},
+			"weather": {
+				"simple": "Sur la Terre, il ne fait ni trop chaud ni trop froid. C’est pour cela que l’eau reste liquide et que la vie est possible. Mais les déserts peuvent devenir très chauds, et l’Antarctique très, très froid.",
+				"standard": "La température la plus chaude jamais mesurée sur Terre est de 56,7 °C, dans la vallée de la Mort, en Californie, en 1913 ; la plus froide est de −89,2 °C, à la station Vostok, en Antarctique, en 1983. En moyenne, la Terre est à environ 15 °C : juste ce qu’il faut pour l’eau liquide.",
+				"advanced": "L’Organisation météorologique mondiale retient 56,7 °C (Furnace Creek, vallée de la Mort, 10 juillet 1913) et −89,2 °C (Vostok, Antarctique, 21 juillet 1983) comme les températures de l’air la plus haute et la plus basse jamais mesurées ; la moyenne mondiale est d’environ 15 °C."
+			},
+			"nicknames": {
+				"blueMarble": {
+					"name": "La Bille bleue",
+					"story": {
+						"simple": "En route vers la Lune, des astronautes ont pris une photo célèbre de la Terre entière. Elle ressemblait à une bille bleue toute brillante. C’est comme ça que la Terre a reçu ce surnom.",
+						"standard": "Le 7 décembre 1972, l’équipage d’Apollo 17, en route vers la Lune, a photographié la Terre entière éclairée par le Soleil. Cette image, appelée « La Bille bleue » (The Blue Marble), est devenue l’une des photos les plus célèbres jamais prises.",
+						"advanced": "La Bille bleue (The Blue Marble) a été prise le 7 décembre 1972 par l’équipage d’Apollo 17 en route vers la Lune : le disque de la Terre entièrement éclairé, avec l’Afrique, l’Arabie et la calotte glaciaire de l’Antarctique. C’est l’une des images les plus reproduites de l’histoire."
+					}
+				},
+				"paleBlueDot": {
+					"name": "Le point bleu pâle",
+					"story": {
+						"simple": "Une sonde spatiale appelée Voyager 1 s’est retournée vers la Terre, de très, très loin. Sur la photo, la Terre n’était qu’un minuscule point bleu.",
+						"standard": "Le 14 février 1990, la sonde Voyager 1, à 6 milliards de km du Soleil, s’est retournée et a photographié la Terre : un point de lumière d’environ un pixel, dans un rayon de soleil. L’astronome Carl Sagan, qui avait eu l’idée de cette photo, a appelé la Terre un point bleu pâle.",
+						"advanced": "Le 14 février 1990, Voyager 1, à environ 6 milliards de km du Soleil, a pris les 60 images de son « portrait de famille » des planètes ; sur l’une d’elles, la Terre est un point de lumière d’environ un pixel, au milieu d’un rayon de soleil diffusé. Carl Sagan avait proposé cette photo en 1981 et lui a donné son nom dans son livre « Pale Blue Dot »."
+					}
+				}
+			},
+			"name": {
+				"simple": "La Terre est la seule planète qui ne porte pas le nom d’un dieu. Son nom est un vieux mot pour le sol sur lequel nous marchons.",
+				"standard": "La Terre est la seule planète dont le nom ne vient pas d’un dieu grec ou romain. Son nom a environ 1 000 ans et veut simplement dire « le sol ».",
+				"advanced": "Toutes les autres planètes portent le nom d’un dieu grec ou romain ; le nom anglais, « Earth », vieux d’environ 1 000 ans, vient du vieil anglais et du germanique et veut simplement dire « le sol ». Dans beaucoup de langues, le nom de la planète est le mot de tous les jours pour la terre et le sol."
+			},
+			"localName": {
+				"simple": "Le mot Terre vient du latin terra, la langue des Romains. Il veut dire beaucoup de choses : le sol sous nos pieds, la terre ferme loin de la mer, et notre planète. On l’utilise pour la planète depuis très, très longtemps.",
+				"standard": "« Terre » vient du latin « terra ». Le mot a plusieurs sens : le globe, la surface et le sol, la terre ferme par opposition à la mer, ou encore un pays. On l’emploie pour la planète dès l’an 980 environ.",
+				"advanced": "Du latin « terra » ; le mot désigne le globe, la surface et le sol, la terre ferme par opposition à la mer, un pays, et s’emploie pour la planète dès 980 environ."
+			},
+			"discovery": {
+				"simple": "Nous vivons sur la Terre, alors les gens l’ont toujours connue. Mais pendant longtemps, ils ont cru que la Terre restait immobile, au milieu de tout. Puis un homme appelé Copernic a dit que la Terre tourne autour du Soleil, comme les autres planètes.",
+				"standard": "Nous avons toujours connu notre maison, mais pas le fait que c’est une planète. En 1515, Nicolas Copernic a proposé l’idée que la Terre est une planète comme Vénus ou Saturne et que toutes les planètes tournent autour du Soleil ; il l’a publiée en 1543.",
+				"advanced": "La Terre a été reconnue comme une planète quand Nicolas Copernic a proposé, vers 1515, qu’elle tourne autour du Soleil comme Vénus ou Saturne, idée qu’il a publiée en 1543 dans « De revolutionibus orbium coelestium » ; Kepler, Galilée puis, en 1687, Newton l’ont fait accepter."
+			}
+		},
+		"mars": {
+			"madeOf": {
+				"simple": "Mars est une planète de roche et de métal, comme la Terre. Elle a un centre en métal entouré de beaucoup de roche. Sa surface est couverte d’une poussière rouge et rouillée.",
+				"standard": "Mars a un noyau de fer, de nickel et de soufre, de 1 500 à 2 100 km de rayon, un manteau rocheux et une croûte de 10 à 50 km d’épaisseur. La poussière qui la recouvre est rouillée : ses minéraux de fer se sont oxydés.",
+				"advanced": "Mars possède un noyau dense de fer, de nickel et de soufre ; les fiches de la NASA donnent 1 500–2 100 km pour son rayon, et des résultats récents suggèrent environ 1 650–1 675 km. Au-dessus se trouvent un manteau rocheux de 1 240–1 880 km d’épaisseur et une croûte de fer, de magnésium, d’aluminium, de calcium et de potassium, épaisse de 10–50 km."
+			},
+			"air": {
+				"simple": "Sur Mars, il y a très peu d’air. C’est surtout un gaz que nous ne pouvons pas respirer. Là-bas, les astronautes auraient besoin de combinaisons spatiales.",
+				"standard": "L’air de Mars contient environ 95 % de dioxyde de carbone, avec un peu d’azote et d’argon. Il est si ténu qu’il retient très peu de chaleur.",
+				"advanced": "En volume, l’atmosphère contient 95,1 % de dioxyde de carbone, 2,59 % d’azote et 1,94 % d’argon, avec 0,16 % d’oxygène et 0,06 % de monoxyde de carbone ; la pression moyenne au sol n’est que d’environ 6 millibars."
+			},
+			"weather": {
+				"simple": "Un jour d’été, il peut faire assez doux sur Mars. Mais il peut aussi y faire plus froid que n’importe où sur Terre. Si tu étais là-bas, tu aurais chaud aux pieds et froid à la tête !",
+				"standard": "Sur Mars, il peut faire jusqu’à environ 20 °C, ou descendre jusqu’à environ −153 °C. Son air ténu garde si peu la chaleur qu’à midi, à l’équateur, il peut faire 24 °C à hauteur de tes pieds mais 0 °C à hauteur de ta tête.",
+				"advanced": "Les températures vont d’environ 20 °C à environ −153 °C. L’atmosphère ténue retient peu la chaleur : à midi, à l’équateur, l’air peut être à 24 °C à hauteur des pieds mais à 0 °C à hauteur de la tête. La moyenne est d’environ −60 °C."
+			},
+			"nicknames": {
+				"redPlanet": {
+					"name": "La planète rouge",
+					"story": {
+						"simple": "On appelle Mars la planète rouge. Son sol contient de la rouille, comme un vieux clou rouillé. C’est pour ça qu’elle a l’air rouge.",
+						"standard": "On appelle souvent Mars la planète rouge, parce que les minéraux de fer de son sol ont rouillé. Cette poussière rouillée, soulevée dans l’air, donne à toute la planète sa couleur rouge.",
+						"advanced": "Le surnom vient des minéraux de fer oxydés, couleur de rouille, du régolithe martien ; la poussière soulevée dans l’atmosphère colore le ciel aussi bien que le sol."
+					}
+				}
+			},
+			"name": {
+				"simple": "Mars porte le nom du dieu romain de la guerre. Les gens trouvaient que sa couleur rouge ressemblait à du sang.",
+				"standard": "Les Romains ont donné à Mars le nom de leur dieu de la guerre, parce que sa couleur rougeâtre leur rappelait le sang. Bien avant eux, les Égyptiens de l’Antiquité l’appelaient Her Desher, « la rouge ».",
+				"advanced": "Nommée par les Romains d’après leur dieu de la guerre, car sa couleur rougeâtre évoquait le sang ; les Égyptiens l’avaient appelée Her Desher, « la rouge »."
+			},
+			"localName": {
+				"simple": "Mardi, c’est le jour de Mars ! Le mot vient du latin, la langue des Romains. Pour eux, chaque jour de la semaine portait le nom d’un astre du ciel.",
+				"standard": "Mardi est le jour de Mars : le mot vient du latin « Martis dies », « le jour de Mars ». Les Romains avaient nommé les jours de la semaine d’après les sept « planètes » de l’époque.",
+				"advanced": "« Mardi » vient du latin « Martis dies », le jour de Mars, l’un des jours que Rome avait nommés d’après les sept « planètes » de l’époque."
+			},
+			"discovery": {
+				"simple": "Les gens voient Mars depuis très, très longtemps. Dans le ciel de la nuit, elle ressemble à une étoile rouge et brillante.",
+				"standard": "Mars est connue depuis l’Antiquité comme l’une des cinq planètes visibles sans télescope. Il y a environ 400 ans, des mesures précises de sa position dans le ciel ont aidé Johannes Kepler à découvrir que les planètes se déplacent sur des ellipses, et non sur des cercles.",
+				"advanced": "Connue depuis l’Antiquité ; à partir des observations précises de Tycho Brahe, Johannes Kepler a conclu que l’orbite de Mars est une ellipse et non un cercle, la découverte à l’origine de ses lois du mouvement des planètes."
+			}
+		},
+		"jupiter": {
+			"madeOf": {
+				"simple": "Jupiter est une énorme boule de gaz. Elle est surtout faite d’hydrogène et d’hélium, comme le Soleil. Elle n’a pas de sol où poser les pieds.",
+				"standard": "Jupiter est surtout faite d’hydrogène et d’hélium. Plus bas, la pression écrase l’hydrogène gazeux jusqu’à le rendre liquide : c’est le plus grand océan du système solaire ; plus profond encore, peut-être à mi-chemin du centre, l’hydrogène devient un liquide qui conduit l’électricité comme un métal. Son noyau est diffus : en partie dissous, sans limite nette.",
+				"advanced": "Sous les nuages, l’hydrogène et l’hélium sont comprimés en un liquide, puis plus bas en hydrogène métallique liquide ; Juno a montré que le champ magnétique naît en dessous d’environ 81 % du rayon, dans l’hydrogène métallique en convection. Le noyau est dilué, en partie dissous, sans séparation nette avec l’hydrogène métallique qui l’entoure."
+			},
+			"air": {
+				"simple": "L’air de Jupiter est surtout fait d’hydrogène et d’hélium. Ses rayures sont des bandes de nuages.",
+				"standard": "L’air de Jupiter contient environ 90 % d’hydrogène et 10 % d’hélium, avec un peu de méthane et d’ammoniac. Ses rayures colorées sont des bandes de nuages.",
+				"advanced": "En volume, environ 89,8 % de H₂ et 10,2 % de He (± 2 % chacun), avec environ 0,3 % de méthane et des traces d’ammoniac, de deutérure d’hydrogène, d’éthane et d’eau."
+			},
+			"weather": {
+				"simple": "Dans les nuages de Jupiter, il fait plus froid que n’importe où sur Terre. Tout au fond, il fait plus chaud qu’à la surface du Soleil.",
+				"standard": "Dans ses nuages, Jupiter est à environ −110 °C. Plus bas, le gaz comprimé devient de plus en plus chaud, et près du centre il pourrait faire environ 24 000 °C : bien plus chaud qu’à la surface du Soleil.",
+				"advanced": "Au niveau de 1 bar, la température est d’environ 165 K (−108 °C), à 0,1 bar d’environ 112 K ; vers l’intérieur, elle monte sans cesse, jusqu’à environ 24 000 °C estimés près du centre."
+			},
+			"nicknames": {
+				"kingOfPlanets": {
+					"name": "Le roi des planètes",
+					"story": {
+						"simple": "Jupiter est la plus grande planète. Elle est plus lourde que toutes les autres planètes réunies. C’est pour ça qu’on l’appelle le roi des planètes.",
+						"standard": "On appelle Jupiter le roi des planètes : c’est la plus grande, plus de deux fois plus massive que toutes les autres planètes réunies, et elle porte le nom du roi des dieux romains.",
+						"advanced": "Comme il sied à l’homonyme du roi des dieux, Jupiter est la plus grande planète et plus de deux fois plus massive que toutes les autres réunies."
+					}
+				}
+			},
+			"name": {
+				"simple": "Jupiter porte le nom du roi des dieux romains. La plus grande planète a reçu le nom du dieu le plus important.",
+				"standard": "La plus grande planète tient son nom du roi des dieux de la Rome antique.",
+				"advanced": "Nommée d’après Jupiter, le roi des dieux de la mythologie romaine : la plus grande planète pour le plus grand des dieux."
+			},
+			"localName": {
+				"simple": "Jeudi, c’est le jour de Jupiter ! Les Romains disaient Jovis dies, le jour de Jupiter. Avec le temps, c’est devenu jeudi.",
+				"standard": "Jeudi est le jour de Jupiter : le mot vient du latin « Jovis dies », « le jour de Jupiter ». Rome avait donné aux jours de la semaine les noms des sept « planètes » de l’époque, et le roi des dieux avait le sien.",
+				"advanced": "« Jeudi » vient du latin « Jovis dies », le jour de Jupiter, l’un des jours que Rome avait nommés d’après les sept « planètes » de l’époque."
+			},
+			"discovery": {
+				"simple": "Les gens voient Jupiter depuis très, très longtemps. C’est l’une des lumières les plus brillantes du ciel de la nuit.",
+				"standard": "Jupiter est connue depuis l’Antiquité. En 1610, Galilée l’a observée avec sa lunette et a vu, pour la première fois de l’histoire, des lunes tourner autour d’un autre monde.",
+				"advanced": "Connue depuis l’Antiquité ; en 1610, la lunette de Galilée a révélé quatre lunes en orbite autour de Jupiter, la première preuve que tout ne tourne pas autour de la Terre."
+			}
+		},
+		"saturn": {
+			"madeOf": {
+				"simple": "Saturne est une énorme boule de gaz, comme Jupiter. Elle est surtout faite d’hydrogène et d’hélium. Elle est si légère pour sa taille qu’elle flotterait dans l’eau !",
+				"standard": "Saturne est surtout faite d’hydrogène et d’hélium. En son centre se trouve un noyau dense de métaux comme le fer et le nickel, entouré de roche, le tout fortement comprimé par la pression et la chaleur. Autour, on trouve de l’hydrogène métallique liquide, à l’intérieur d’une couche d’hydrogène liquide. C’est la seule planète moins dense que l’eau.",
+				"advanced": "Au centre se trouve un noyau dense de métaux et de roche, enveloppé d’hydrogène métallique liquide, lui-même à l’intérieur d’une couche d’hydrogène liquide. Des ondes dans les anneaux, déclenchées par les vibrations de la planète elle-même, montrent que le noyau est diffus : un mélange de glace, de roche et d’hydrogène d’environ 17 masses terrestres, qui s’étend jusqu’à environ 60 % du rayon."
+			},
+			"air": {
+				"simple": "L’air de Saturne est surtout de l’hydrogène, avec un peu d’hélium. Des vents très forts soufflent autour de la planète.",
+				"standard": "L’air de Saturne contient environ 96 % d’hydrogène et 3 % d’hélium, avec un peu de méthane et d’ammoniac. Près de son équateur, les vents atteignent environ 1 800 km/h.",
+				"advanced": "En volume, environ 96,3 % de H₂ et 3,25 % de He (± 2,4 % chacun), avec environ 0,45 % de méthane et des traces d’ammoniac, de deutérure d’hydrogène et d’éthane ; les vents équatoriaux atteignent environ 500 m/s."
+			},
+			"weather": {
+				"simple": "Dans les nuages de Saturne, il fait plus froid que n’importe où sur Terre. Plus haut, il fait encore plus froid. Tout au fond, il fait très chaud.",
+				"standard": "Dans ses nuages, Saturne est à environ −140 °C, et plus haut à environ −190 °C. Tout au fond, la pression et la chaleur sont si fortes qu’elles tassent la roche et le métal en un noyau.",
+				"advanced": "Environ 134 K (−139 °C) au niveau de 1 bar et 84 K (−189 °C) à 0,1 bar. À l’intérieur, la température monte avec la profondeur ; il n’existe aucune valeur mesurée pour le noyau."
+			},
+			"nicknames": {
+				"jewel": {
+					"name": "Le joyau du système solaire",
+					"story": {
+						"simple": "Saturne a de beaux anneaux brillants. Ils sont faits de glace et de roche. Avec ses anneaux, Saturne ressemble à un bijou.",
+						"standard": "Avec ses anneaux brillants de glace et de roche, Saturne est la plus belle planète à regarder au télescope : c’est pourquoi on l’appelle le joyau du système solaire.",
+						"advanced": "Son vaste système d’anneaux de glace, larges et brillants, a fait de Saturne le « joyau de notre système solaire », la vedette de tous les télescopes."
+					}
+				}
+			},
+			"name": {
+				"simple": "Saturne porte le nom du dieu romain de l’agriculture. C’était le père de Jupiter.",
+				"standard": "Vers 400 av. J.-C., des astronomes grecs ont donné à cette « étoile errante » le nom de Cronos, leur dieu de l’agriculture ; les Romains l’ont ensuite rebaptisée Saturne, du nom de leur propre dieu de l’agriculture et de la richesse, le père de Jupiter.",
+				"advanced": "Nommée d’après le dieu romain de l’agriculture et de la richesse, père de Jupiter ; vers 400 av. J.-C., les astronomes grecs lui avaient donné le nom de Cronos, et les Romains y ont substitué leur propre dieu."
+			},
+			"localName": {
+				"simple": "En français, samedi n’est pas le jour de Saturne. Les chrétiens ont changé son nom, et aussi celui du jour du Soleil, devenu dimanche. Mais en anglais, samedi se dit Saturday : le jour de Saturne !",
+				"standard": "Contrairement à mercredi ou à vendredi, samedi ne porte pas le nom de sa planète : le christianisme a remplacé les jours de Saturne et du Soleil par « sabbatum », qui a donné samedi, et « dominicus », le jour du Seigneur, qui a donné dimanche. Le jour de Saturne survit ailleurs : « Saturday » en anglais, « zaterdag » en néerlandais et « disadorn » en breton.",
+				"advanced": "« Samedi » n’est pas le jour de Saturne : le christianisme a remplacé les jours de Saturne et du Soleil par « sabbatum » (samedi) et « dominicus », le jour du Seigneur (dimanche) ; le jour de Saturne survit dans l’anglais « Saturday », le néerlandais « zaterdag » et le breton « disadorn »."
+			},
+			"discovery": {
+				"simple": "Les gens voient Saturne depuis très, très longtemps. Pendant longtemps, c’était la planète la plus lointaine que l’on connaissait.",
+				"standard": "Saturne est connue depuis l’Antiquité : c’est la planète la plus lointaine que l’on puisse voir à l’œil nu. En 1610, Galilée a vu ses anneaux mais a cru que Saturne était une « planète triple » ; en 1655, Christiaan Huygens a découvert les anneaux et la plus grande lune de Saturne, Titan.",
+				"advanced": "La planète la plus lointaine découverte à l’œil nu ; Galilée a vu les anneaux en juillet 1610 mais les a pris pour une « planète triple », et Christiaan Huygens les a reconnus en 1655, l’année où il a découvert Titan."
+			}
+		},
+		"uranus": {
+			"madeOf": {
+				"simple": "Uranus est une géante de glace. À l’intérieur, c’est surtout une bouillie de glace chaude. Au milieu, il y a de la roche. Dehors, il y a du gaz.",
+				"standard": "Uranus est une géante de glace : 80 % de sa masse ou plus est un fluide chaud et dense d’eau, de méthane et d’ammoniac, que les scientifiques appellent des glaces, au-dessus d’un petit noyau rocheux. Par-dessus se trouve une atmosphère d’hydrogène, d’hélium et de méthane.",
+				"advanced": "Au moins 80 % de la masse d’Uranus est un fluide chaud et dense de matériaux « glacés » (eau, méthane et ammoniac) au-dessus d’un petit noyau rocheux, sous une enveloppe d’hydrogène, d’hélium et de méthane."
+			},
+			"air": {
+				"simple": "L’air d’Uranus est surtout de l’hydrogène et de l’hélium. Un tout petit peu d’un gaz appelé méthane la rend bleu-vert.",
+				"standard": "L’air d’Uranus contient environ 83 % d’hydrogène et 15 % d’hélium, avec environ 2 % de méthane. Le méthane absorbe la lumière rouge, ce qui donne à la planète sa couleur bleu-vert.",
+				"advanced": "En volume, environ 82,5 % de H₂ et 15,2 % de He (± 3,3 % chacun), avec 2,3 % de CH₄ ; le méthane absorbe la partie rouge de la lumière du Soleil, si bien que la planète paraît bleu-vert."
+			},
+			"weather": {
+				"simple": "Sur Uranus, l’air est le plus froid de toutes les planètes. Il y fait plus froid que n’importe où sur Terre. Tout au fond, il fait bien plus chaud que n’importe quel feu.",
+				"standard": "Dans ses nuages, Uranus est à environ −197 °C, et son air descend jusqu’à −224 °C, le plus froid de toutes les planètes. Près du noyau, la température monte jusqu’à environ 5 000 °C.",
+				"advanced": "Environ 76 K (−197 °C) au niveau de 1 bar ; le minimum de l’atmosphère, 49 K (−224,2 °C), est le plus froid de toutes les planètes. Près du noyau, la température atteint environ 9 000 °F (4 982 °C)."
+			},
+			"nicknames": {
+				"sideways": {
+					"name": "La planète couchée",
+					"story": {
+						"simple": "Uranus est couchée sur le côté. Elle roule autour du Soleil comme une balle. Peut-être que quelque chose de gros l’a heurtée, il y a très longtemps.",
+						"standard": "Uranus est inclinée d’environ 98 degrés : elle tourne donc sur le côté et roule autour du Soleil comme une balle. Cela lui donne les saisons les plus extrêmes du système solaire. Une collision avec un objet de la taille de la Terre, il y a longtemps, l’a peut-être renversée.",
+						"advanced": "Avec un axe incliné de 97,77°, Uranus est la seule planète dont l’équateur est presque perpendiculaire à son orbite ; pendant un quart de chaque orbite de 84 ans, un pôle fait face au Soleil tandis que l’autre moitié de la planète connaît une nuit d’hiver de 21 ans. Une collision avec un corps de la taille de la Terre en est la cause probable."
+					}
+				}
+			},
+			"name": {
+				"simple": "Uranus porte le nom du dieu grec du ciel. C’était le grand-père de Jupiter. C’est la seule planète qui porte le nom d’un dieu grec.",
+				"standard": "Uranus porte le nom du dieu grec du ciel : c’est la seule planète nommée d’après un dieu grec, et non romain. Celui qui l’a découverte voulait l’appeler l’Étoile de George, en l’honneur de son roi, George III ; l’astronome Johann Bode a proposé Uranus, le père de Saturne, comme Saturne était le père de Jupiter.",
+				"advanced": "William Herschel a voulu nommer sa découverte Georgium Sidus, d’après le roi George III ; le nom qui s’est imposé est celui que proposait Johann Bode : Uranus, le dieu grec du ciel, père de Saturne comme Saturne était père de Jupiter, la seule planète qui ne porte pas le nom d’un dieu romain."
+			},
+			"discovery": {
+				"simple": "Uranus est la première planète trouvée avec un télescope. Un homme appelé William Herschel l’a vue depuis son jardin. Au début, il a cru que c’était une comète.",
+				"standard": "Uranus est la première planète découverte au télescope : William Herschel l’a trouvée le 13 mars 1781 depuis le jardin de sa maison à Bath, en Angleterre. Au début, il a cru que c’était une comète ou une étoile.",
+				"advanced": "Le 13 mars 1781, William Herschel, qui observait depuis son jardin à Bath avec un télescope de 7 pieds, a noté une « étoile nébuleuse ou peut-être une comète » : la première nouvelle planète découverte depuis l’Antiquité."
+			}
+		},
+		"neptune": {
+			"madeOf": {
+				"simple": "Neptune est une géante de glace, comme Uranus. À l’intérieur, c’est surtout une bouillie de glace chaude. Au milieu, il y a de la roche. Dehors, il y a du gaz.",
+				"standard": "Comme Uranus, Neptune est une géante de glace : 80 % de sa masse ou plus est un fluide chaud et dense d’eau, de méthane et d’ammoniac, au-dessus d’un petit noyau rocheux. Par-dessus se trouve une atmosphère d’hydrogène, d’hélium et de méthane. C’est la plus dense des planètes géantes.",
+				"advanced": "Au moins 80 % de la masse de Neptune est un fluide chaud et dense d’eau, de méthane et d’ammoniac ; l’atmosphère d’hydrogène, d’hélium et de méthane se fond dans ce fluide, au-dessus d’un noyau solide d’environ une masse terrestre. Des planètes géantes, Neptune est la plus dense."
+			},
+			"air": {
+				"simple": "L’air de Neptune est surtout de l’hydrogène et de l’hélium. Un tout petit peu de méthane la rend bleu foncé.",
+				"standard": "L’air de Neptune contient environ 80 % d’hydrogène et 19 % d’hélium, avec environ 1,5 % de méthane. Le méthane absorbe les autres couleurs et renvoie le bleu : c’est pour cela que Neptune est bleue.",
+				"advanced": "En volume, environ 80,0 % de H₂ et 19,0 % de He (± 3,2 % chacun) et 1,5 % de CH₄ ; le méthane absorbe les autres couleurs et réfléchit le bleu."
+			},
+			"weather": {
+				"simple": "Dans les nuages de Neptune, il fait plus froid que n’importe où sur Terre. Plus haut, il fait encore plus froid. Tout au fond, il fait chaud.",
+				"standard": "Dans ses nuages, Neptune est à environ −200 °C, et plus haut à environ −220 °C. Tout au fond, sous son air, se trouve un fluide chaud et dense d’eau et d’autres glaces.",
+				"advanced": "Environ 72 K (−201 °C) au niveau de 1 bar et 55 K (−218 °C) à 0,1 bar ; en dessous se trouve le manteau fluide, chaud et dense. Il n’existe aucune valeur mesurée pour le noyau."
+			},
+			"nicknames": {
+				"windiest": {
+					"name": "La planète la plus venteuse",
+					"story": {
+						"simple": "Neptune est la planète où il y a le plus de vent. Ses vents vont bien plus vite que la plus forte tempête sur Terre.",
+						"standard": "Neptune est le monde le plus venteux de notre système solaire : ses vents soufflent à plus de 2 000 km/h, trois fois plus fort que ceux de Jupiter et neuf fois plus fort que ceux de la Terre.",
+						"advanced": "Le monde le plus venteux du système solaire : des vents de plus de 2 000 km/h, trois fois plus forts que ceux de Jupiter et neuf fois plus forts que ceux de la Terre."
+					}
+				}
+			},
+			"name": {
+				"simple": "Neptune porte le nom du dieu romain de la mer. Sa couleur bleu foncé ressemble à l’océan.",
+				"standard": "Neptune porte le nom du dieu romain de la mer : un nom bien choisi pour la grande planète bleue.",
+				"advanced": "Nommée d’après le dieu romain de la mer, un nom bien choisi pour la planète d’un bleu profond."
+			},
+			"discovery": {
+				"simple": "Neptune a été trouvée grâce aux maths ! Des scientifiques ont vu que quelque chose tirait sur Uranus. Ils ont calculé où elle devait se trouver, et elle était bien là !",
+				"standard": "Neptune est la première planète trouvée grâce aux mathématiques. Urbain Le Verrier a calculé où une planète inconnue devait se trouver pour expliquer le mouvement d’Uranus, et le 23 septembre 1846, Johann Galle l’a trouvée à l’observatoire de Berlin, à environ un degré de l’endroit prévu. John Couch Adams avait fait des calculs semblables en Angleterre. Galilée l’avait vue en 1612, mais l’avait prise pour une étoile.",
+				"advanced": "Le Verrier a prédit la position et la masse d’une planète inconnue à partir des irrégularités du mouvement d’Uranus ; Johann Galle l’a trouvée à Berlin le 23 septembre 1846, dès sa première nuit de recherche, à environ un degré de la prédiction. John Couch Adams avait fait de son côté des calculs semblables, moins précis, et Galilée l’avait notée comme une étoile fixe en 1612 et en 1613."
+			}
+		}
+	}
+}

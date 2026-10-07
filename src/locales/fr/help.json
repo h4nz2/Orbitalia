@@ -511,22 +511,23 @@
 				"simple": "Le livre des planètes"
 			},
 			"what": {
-				"standard": "Une page pour le Soleil et pour chaque planète, avec un grand globe qui tourne, ses cartes de surface et les chiffres clés expliqués.",
-				"simple": "Une page pour le Soleil et pour chaque planète, avec une grande image qui tourne."
+				"standard": "Une page pour le Soleil et pour chaque planète : un grand globe qui tourne avec ses cartes de surface, les chiffres clés expliqués, et ses histoires : sa composition, ses températures, ses surnoms et l’origine de son nom.",
+				"simple": "Une page pour le Soleil et pour chaque planète. Regarde ce qu’il y a dedans, s’il y fait chaud ou froid, et découvre ses surnoms."
 			},
 			"why": {
-				"standard": "C’est la façon tranquille de découvrir un monde à la fois, d’enlever ses nuages ou de voir ses montagnes et ses océans.",
-				"simple": "Découvre une planète à la fois, et regarde ses montagnes et ses nuages."
+				"standard": "C’est la façon tranquille de découvrir un monde à la fois : enlève ses nuages, regarde à l’intérieur grâce à une image en coupe, et trouve les histoires dont les enfants se souviennent, comme celle de la planète qui flotterait dans une baignoire. Chaque fait renvoie à sa source.",
+				"simple": "Découvre une planète à la fois. Regarde à l’intérieur, et trouve quelle planète flotterait dans une baignoire !"
 			},
 			"how": {
 				"standard": [
 					"Ouvre Outils en bas à droite et choisis « Dictionnaire illustré » : il s’ouvre sur le monde que tu regardes. Ou clique sur « En savoir plus dans le dictionnaire » sur la fiche d’un monde.",
-					"Choisis un monde dans la rangée de points en haut, puis Surface, Relief, Océans ou Nuages quand il en a."
+					"Choisis un monde dans la rangée de points en haut, puis « Surface », « Relief », « Océans » ou « Nuages » quand il en a.",
+					"Ouvre « Composition », « Météo » ou « Noms » à côté du globe (en dessous sur un téléphone). La section ouverte le reste quand tu choisis un autre monde : une classe peut ainsi les comparer un par un."
 				],
 				"simple": [
 					"Appuie sur Outils, puis sur « Livre des planètes ».",
 					"Choisis une planète dans la rangée de points en haut.",
-					"Essaie Relief et Nuages pour changer l’image."
+					"Appuie sur « Qu’y a-t-il dedans ? », « Chaud ou froid ? » ou « Ses noms »."
 				]
 			}
 		},

@@ -511,22 +511,23 @@
 				"simple": "El libro de los planetas"
 			},
 			"what": {
-				"standard": "Una página para el Sol y cada planeta, con un gran globo que gira, sus mapas de superficie y los datos clave explicados.",
-				"simple": "Una página para el Sol y cada planeta, con un gran dibujo que gira."
+				"standard": "Una página para el Sol y cada planeta: un gran globo que gira con sus mapas de superficie, los datos clave explicados y las historias de cada mundo: de qué está hecho, cuánto calor o frío hace allí, sus apodos y de dónde viene su nombre.",
+				"simple": "Una página para el Sol y cada planeta. Mira qué hay dentro, si hace calor o frío y qué apodos tiene."
 			},
 			"why": {
-				"standard": "Es la forma tranquila de leer sobre un mundo cada vez, y de quitarle las nubes o ver sus montañas y océanos.",
-				"simple": "Lee sobre un planeta cada vez y mira sus montañas y sus nubes."
+				"standard": "Es la forma tranquila de leer sobre un mundo cada vez: quitarle las nubes, mirar su interior en un dibujo en corte y encontrar las historias que los niños recuerdan, como la del planeta que flotaría en una bañera. Cada dato enlaza con su fuente.",
+				"simple": "Lee sobre un planeta cada vez. Mira qué hay dentro y descubre qué planeta flotaría en una bañera."
 			},
 			"how": {
 				"standard": [
 					"Abre Herramientas abajo a la derecha y elige «Diccionario visual»: se abre en el mundo que estás mirando. O pulsa «Leer más en el diccionario» en la ficha de un mundo.",
-					"Elige un mundo en la fila de puntos de arriba y luego Superficie, Relieve, Océanos o Nubes, si los tiene."
+					"Elige un mundo en la fila de puntos de arriba y luego «Superficie», «Relieve», «Océanos» o «Nubes», si los tiene.",
+					"Abre «Composición», «Clima» o «Nombres» junto al globo (debajo, en un móvil). La sección abierta sigue abierta cuando eliges otro mundo, así que una clase puede compararlos uno a uno."
 				],
 				"simple": [
 					"Pulsa Herramientas y luego «Libro de los planetas».",
 					"Elige un planeta en la fila de puntos de arriba.",
-					"Prueba Relieve y Nubes para cambiar el dibujo."
+					"Pulsa «¿Qué hay dentro?», «¿Hace calor o frío?» o «Sus nombres»."
 				]
 			}
 		},

@@ -89,7 +89,7 @@
 		{
 			"id": "dictionary",
 			"group": "lookingAround",
-			"try": "/solar_dictionary?entity=4"
+			"try": "/solar_dictionary?entity=6&section=madeOf"
 		},
 		{
 			"id": "sound",

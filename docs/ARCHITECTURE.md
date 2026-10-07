@@ -9,7 +9,7 @@ it, and if it must change, change it in the same change set.
 
 - Vite + React 19 + TypeScript (strict), pnpm, Node 22 (`.nvmrc`).
 - TanStack Router, file routes in `src/routes`. URLs stay `/solar_system`, `/solar_dictionary`, plus `/solar_walk` (#25), `/compare` (#24), `/help` (#43) and `/feedback`; `/` redirects to `/solar_system` with its search (#45, see "The way in and the way back"). Search params are
-  zod-validated and invalid values fall back to defaults (`/solar_dictionary?entity=<0..8>&texture=<base|topo|specular|clouds>`).
+  zod-validated and invalid values fall back to defaults (`/solar_dictionary?entity=<0..8>&texture=<base|topo|specular|clouds>&section=<madeOf|weather|names>`).
 - 3D: `three`, `@react-three/fiber` 9, `@react-three/drei` 10, `@react-three/postprocessing` 3.
 - UI: Mantine 9 + CSS modules (no emotion, `createStyles` or `sx`), `@tabler/icons-react`. Animation: `gsap`. State: `zustand`.
 - Data: static JSON validated with zod at build time. No GraphQL, no database; the one endpoint is the feedback
@@ -49,6 +49,7 @@ src/data/                    bodies.json, belts.json (#23), credits.json (image 
                              tours.ts + tours/*.json (guided tours, #28)
 src/sim/                     pure simulation, no React or three objects (import from "@/sim"); testing/ is test-only
 src/data/skyEvents.json      the sky events (#41): real instants and the check that each happens in the simulation
+src/data/worlds.json         the dictionary's stories (#53): layers, air, temperatures, nicknames, names, discovery, each with its source
 src/store/                   sim.ts, navigation.ts, flight.ts, scale.ts, lighting.ts, spin.ts, trails.ts, light.ts, hunt.ts,
                              hud.ts (the quiet HUD, #42), presentation.ts, postcard.ts, sound.ts, birthday.ts, skyTonight.ts, tour.ts, simSearch.ts (URL schema),
                              urlSync.ts
@@ -1278,6 +1279,55 @@ handed to the visitor. Everything happens on the device: no upload, no server, n
   `usePostcardStore.getState().show(...)` and renders `<PostcardButton onTake>` and `<PostcardSlot />`: the
   comparison is the worked example (`features/compare/picture.ts`).
 
+## The dictionary (`features/solarDictionary`, route `/solar_dictionary`; #53)
+
+One page per world for the Sun and the eight planets (decided 6 Oct 2026: no dwarf planets or moons): a turning
+globe with its surface maps, the key numbers compared with Earth (`utils/getSidebarLabels.ts`), the tagline and
+description, and the stories a reader opens.
+
+- **Sections the reader opens** (`components/WorldStories.tsx`, a Mantine `Accordion`, one open at a time, closed
+  panels unmounted): _Made of_, _Weather_ and _Names_. The open one is URL state (`?section=madeOf|weather|names`,
+  `search.ts`) and stays open from world to world, so a class can go through the planets' weather one by one. On a
+  desktop they sit under the description in the right-hand column, which scrolls; below 900 px the description is
+  hidden and the sections form a bottom sheet (at most 55 % of the height) under the globe.
+- **Made of** (`MadeOf.tsx`): the cut-away picture (`CutAway.tsx`, an inline SVG drawn from the layer data: the
+  world's outside in its `surface` colour with a quarter cut away, one wedge per layer from `outer` and `color`; a
+  layer never thinner than `MIN_BAND` of the radius so a crust shows, which its note says), the legend (the layers'
+  thickness from the body model's radius, not at the simple level), what it is made of, its air (the gases and their
+  shares, not at the simple level) and how heavy it is: mass in Earths and mean density from the body model's mass and
+  mean radius (`utils/heft.ts`), told as "would it float in a bathtub" (only Saturn does). The SVG is `role="img"`
+  with a `<title>` and a `<desc>` that lists the layers.
+- **Weather** (`Weather.tsx`): both ends of the range with what they are (`TEMPERATURE_RANGES`: day and night,
+  warmest and coldest, the measured records, the clouds and near the core, the clouds and higher up where no core
+  temperature is published (Saturn, Neptune), the surface and the core, or the same day and night for Venus), then
+  why. **Names** (`Names.tsx`): each nickname with its picture and how it came about, where the name comes from, the
+  story of this language's own name where it has one (`localName`, only the active locale's, never borrowed: Erde,
+  Země, Tierra, Terre, the Romance weekdays, the old Czech planet names), and how it was found. Each section ends
+  with links to its sources. At the simple level every section leads with a picture or an icon (`icons.ts`).
+- **Facts are data, with their sources.** `src/data/worlds.json` (zod schema `src/data/worlds.ts`) holds per world
+  the layers (`outer` as a fraction of the mean radius, colours), the gases (percent by volume or by atoms, where
+  the source gives shares), the temperatures (`{ c }` or `{ k }`, as the source states them), the nicknames (id,
+  icon), the discovery (`ancient`, `home`, `telescope` or `predicted`, with its year), the locales whose own name has
+  a story, and for every fact its `sources`: the public pages that state it (NASA fact sheets and NASA Science, the
+  WMO records, Juno and Cassini results, etymological dictionaries: etymonline, DWDS, SSJČ, RAE, CNRTL). The giants'
+  layer boundaries are model estimates and their texts say so. Mass and density stay in the body model;
+  `heft.sources` says where they are stated. The words are `src/locales/<locale>/worlds.json` (`worldText.ts`:
+  `layers`, `gases`, `worlds.<id>.{madeOf, air, weather, nicknames.<id>.{name, story}, name, localName?,
+discovery}`), plain text, one value or one per reading level. No text may state a fact its sources do not.
+- **Quantities follow the reading level through one function** (`utils/quantity.ts` `levelQuantity`, #51's rule):
+  temperatures in words at simple ("hotter than an oven", `feelBand`), °C at standard, kelvin with °C at advanced;
+  mass in Earths (at simple never above 100: "heavier than 100 Earths put together"); density against water
+  (buckets of water at simple); layer thickness in km, not at simple. The sidebar's average temperature uses it too.
+  When #51's app-wide formatters land, this function delegates to them.
+- **The contract** (`stories.test.ts`): every world has layers for its picture, its air, a range the right way
+  round, a nickname, a name origin and a discovery, each with https sources; every locale has exactly the facts'
+  worlds, nicknames, layers and gases, every story at every reading level, a local name story exactly where the data
+  lists that locale, simple texts without numbers above 100 or units, and the year of every discovery in its standard
+  text. `e2e/dictionary.spec.ts` opens the sections. Adding a world's story: its facts in `worlds.json`, its words
+  in every locale.
+- **Entry:** Tools → the dictionary (the world in view, #45) and "Read more in the dictionary" on a world's card
+  (`ui/dictionaryEntry.ts`: Sun 0, planets 1..8).
+
 ## Comparison (`features/compare`, route `/compare`; #24)
 
 Two or more bodies side by side at true relative size, independent of where they are, with comparisons a class can
@@ -1715,6 +1765,7 @@ src/locales/<locale>/ui.json     UI strings: a tree of ICU MessageFormat message
 src/locales/<locale>/bodies.json editorial body content, keyed by body id (src/data/bodies.json)
 src/locales/<locale>/hunts.json  the scavenger hunt's clues, hints and discoveries (#34, see Scavenger hunt)
 src/locales/<locale>/help.json   the help page's words (#43, see Help page)
+src/locales/<locale>/worlds.json the dictionary's stories (#53, see The dictionary)
 ```
 
 - Messages are ICU MessageFormat (plural, select, `{n, number}`, `{n, number, ::percent}`); never build sentences

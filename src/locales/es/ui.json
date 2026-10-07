@@ -120,10 +120,59 @@
 			"gravitySimilar@advanced": "La gravedad en la superficie difiere menos de un 5 % de la terrestre.",
 			"gravityLess": "Pesarías solo el {percent, number, ::percent} de lo que pesas en la Tierra.",
 			"gravityLess@simple": "Si en la Tierra pesas 30 kg, ¡allí pesarías solo {kg, number} kg!",
-			"gravityLess@advanced": "La gravedad en la superficie es el {percent, number, ::percent} de la terrestre: tu peso disminuiría, pero tu masa seguiría siendo la misma.",
-			"temperature": "Eso son unos {celsius, number} °C.",
-			"temperature@simple": "{range, select, hot {Eso son unos {celsius, number} °C: ¡más calor que dentro de un horno!} cold {Eso son unos {celsius, number} °C: ¡más frío que en cualquier congelador!} other {Eso son unos {celsius, number} °C.}}",
-			"temperature@advanced": "Eso son {celsius, number} °C; el cero absoluto, 0 K, equivale a −273,15 °C."
+			"gravityLess@advanced": "La gravedad en la superficie es el {percent, number, ::percent} de la terrestre: tu peso disminuiría, pero tu masa seguiría siendo la misma."
+		},
+		"section": {
+			"label": "Más sobre {name}",
+			"madeOf": "Composición",
+			"madeOf@simple": "¿Qué hay dentro?",
+			"weather": "Clima",
+			"weather@simple": "¿Hace calor o frío?",
+			"weather@advanced": "Temperaturas",
+			"names": "Nombres",
+			"names@simple": "Sus nombres"
+		},
+		"madeOf": {
+			"pictureTitle": "{name} por dentro",
+			"pictureDescription": "{name} en un corte que deja ver su interior. Del centro hacia fuera: {layers}.",
+			"scaleNote": "{thickened, select, yes {Las capas están dibujadas a escala; las más finas, un poco más gruesas para que puedas verlas.} other {Las capas están dibujadas a escala.}}",
+			"scaleNote@simple": "{thickened, select, yes {Las capas finas se dibujan un poco más gruesas, para que puedas verlas.} other {Las capas están dibujadas con su grosor de verdad.}}",
+			"estimateNote": "Nadie puede mirar en su interior: estas capas son las mejores estimaciones de los científicos a partir de su gravedad, su rotación y sus modelos.",
+			"estimateNote@simple": "Nadie ha estado nunca dentro. Los científicos han calculado cómo son estas capas.",
+			"layerSize": "{centre, select, yes {radio de {size}} other {{size} de grosor}}",
+			"air": "{star, select, yes {De qué está hecho su gas} other {Su aire}}",
+			"air@simple": "{star, select, yes {Su gas} other {Su aire}}",
+			"air@advanced": "{star, select, yes {Composición química} other {Atmósfera}}",
+			"gas": "{name} {share, number, ::percent @##}",
+			"basis": "{basis, select, atoms {Proporción sobre el total de sus átomos.} other {Proporción en volumen de su aire.}}",
+			"heavy": "Cuánto pesa",
+			"heavy@simple": "¿Cuánto pesa?",
+			"heavy@advanced": "Masa",
+			"dense": "Cuánto pesa para su tamaño",
+			"dense@simple": "¿Flotaría?",
+			"dense@advanced": "Densidad media"
+		},
+		"weather": {
+			"high": "{range, select, dayNight {De día} extremes {Máxima} records {Máxima jamás medida} cloudsCore {Cerca del núcleo} cloudLevels {En las nubes} surfaceCore {En el núcleo} other {De día y de noche}}",
+			"low": "{range, select, dayNight {De noche} extremes {Mínima} records {Mínima jamás medida} cloudsCore {En las nubes} cloudLevels {Más arriba} surfaceCore {En la superficie} other {De día y de noche}}"
+		},
+		"names": {
+			"origin": "De dónde viene el nombre",
+			"inOurLanguage": "En español",
+			"discovery": "Cómo se descubrió",
+			"discovery@simple": "¿Quién descubrió este mundo?"
+		},
+		"sources": "Fuentes:",
+		"quantity": {
+			"feel": "{band, select, hotterThanSun {Más calor que en la superficie del Sol} fire {Mucho más calor que cualquier fuego} oven {Más calor que en un horno} boiling {Más calor que el agua hirviendo} desert {Tanto calor como en el desierto más caluroso} warm {Calor, como en un día de verano} mild {Ni frío ni calor} chilly {Frío, como en un día de invierno} freezer {Más frío que en cualquier congelador} coldest {Más frío que en cualquier lugar de la Tierra} other {Tanto frío que el aire se congelaría}}",
+			"celsius": "{big, select, yes {{value} de °C} other {{value} °C}}",
+			"kelvin": "{big, select, yes {{kelvin} de K ({celsius} de °C)} other {{kelvin} K ({celsius} °C)}}",
+			"mass": "{band, select, earth {La referencia: los demás mundos se pesan en Tierras} similar {El {percent, number, ::percent} de la masa de la Tierra} lighter {{count, plural, one {Haría falta # mundo así para pesar lo que la Tierra} many {Harían falta # de mundos así para pesar lo que la Tierra} other {Harían falta # mundos así para pesar lo que la Tierra}}} other {{count, plural, one {Pesa lo que # Tierra} many {Pesa lo que # de Tierras} other {Pesa lo que # Tierras}}}}",
+			"mass@simple": "{band, select, star {Pesa más que todos los planetas juntos} earth {La Tierra sirve de medida: los demás mundos se pesan en Tierras} huge {Pesa más que 100 Tierras juntas} similar {Pesa casi lo mismo que la Tierra} lighter {{count, plural, one {Pesa lo mismo que la Tierra} many {Harían falta # de mundos así para pesar lo que la Tierra} other {Harían falta # mundos así para pesar lo que la Tierra}}} other {{count, plural, one {Pesa lo mismo que # Tierra} many {Pesa lo mismo que # de Tierras} other {Pesa lo mismo que # Tierras}}}}",
+			"mass@advanced": "{band, select, earth {{kg} kg} other {{earths} masas terrestres ({kg} kg)}}",
+			"density": "{band, select, floats {{value} g/cm³: una densidad menor que la del agua, así que flotaría en una bañera lo bastante grande} sinks {{value} g/cm³: una densidad un poco mayor que la del agua} other {{value} g/cm³: {ratio, number} veces la densidad del agua}}",
+			"density@simple": "{band, select, floats {Pesa menos que el agua: ¡en una bañera gigante, flotaría!} sinks {Pesa un poco más que el agua: se hundiría, despacito} other {{buckets, plural, one {Un cubo lleno de este mundo pesaría lo mismo que # cubo de agua} many {Un cubo lleno de este mundo pesaría lo mismo que # de cubos de agua} other {Un cubo lleno de este mundo pesaría lo mismo que # cubos de agua}}}}",
+			"density@advanced": "{band, select, floats {{value} g/cm³, menos que el agua (1 g/cm³)} other {{value} g/cm³ (agua: 1 g/cm³)}}"
 		}
 	},
 	"solarSystem": {
