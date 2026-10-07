@@ -1218,13 +1218,51 @@ src/data/spacecraftCheck.json         dropped Horizons states with their toleran
   planet: a flyby passes the drawn planet at its true miss distance (Voyager 2: 29,240 km from Neptune's centre).
 
 **Placement (`src/sim/spacecraft.ts`, pure).** A trajectory is segments of states relative to a centre: the Sun
-(the root) or a planet (a direct child of the root). A craft at `jd` = centre + interpolated offset, mapped with
-`displayOffset` around the centre (`childDistanceCurve`: `orbitDistance` around the Sun, `moonDistance` around a
-planet), so in every preset a flyby bends around the drawn planet and never enters it. Inside a planet segment's
-inner radius (1 Hill radius) only it counts, beyond its outer radius (1.5) only the Sun's; between them the two
-blend by a smoothstep of the distance, so the hand-over never jumps (tested in every preset). Readouts (distances,
-signal time = distance to Earth / c, speed relative to the anchor) use the TRUE positions. `craftPhase`:
-`planned` before launch, `active`, then the mission end's kind.
+(the root) or a planet (a direct child of the root). The TRUE position at `jd` = centre + interpolated offset;
+inside a planet segment's inner radius (1 Hill radius) only it counts, beyond its outer radius (1.5) only the Sun's,
+between them the two blend by a smoothstep of the distance. Readouts (distances, signal time = distance to Earth /
+c, speed relative to the anchor) use the true positions. `craftPhase`: `planned` before launch, `active`, then the
+mission end's kind. `craftStateAt` is the one function that places a craft (the marker, every path vertex, a
+camera that follows one, #57): true position and drawn position.
+
+**Drawing a planet passage (`src/sim/flyby.ts`, pure; #56).** Away from planets the drawn position is the true one
+through the Sun-centred map (`displayOffset` with `orbitDistance`). Near one the two maps disagree: the planet is
+drawn far bigger than the Sun-centred map draws its neighbourhood (100 to 800 times in Everything visible, up to
+13,000 in Poster), and mapping the planet-centred offset with the moon curve alone bent straight legs into a V and
+kinked where the maps met. So each passage (`CraftEncounter`: a flyby, a departure from Earth after any parking
+orbit, an arrival into orbit, or a forced centre like JWST's) is drawn as a copy of its osculating hyperbola:
+
+- Shape: the drawn curve follows the true direction of motion point by point under a local stretch: the planet's
+  scale (`k`, the moon curve's factor at the closest approach, so it is drawn where the moons' orbits are drawn,
+  on the right side of each) near the planet, relaxing to the Sun-centred map's far out, whose part of the legs
+  goes through the map itself (not its linearisation: Poster's anchored curve changes its local scale too quickly).
+  So the drawn flyby turns by the true angle, passes closest at the true instant, and its legs end up where the
+  Sun-centred map draws them. Integrals of the shape and pace weights along the hyperbola are tabulated once per
+  trajectory (`FlybyTable`); a scale only rescales them (`prepareFlyby`, memoised per encounter and scale).
+- Pace: the drawn craft travels its (much bigger) drawn curve at about the speed the Sun-centred map gives it, so
+  time near the planet runs slower for the drawing (in slow motion; moons keep the clock's pace). Without this the
+  path in the Sun's frame showed the planet-centred turn and then a turn back (hooks; a zigzag for Parker braking
+  at Venus). `drawnPhaseAt` gives the true instant the drawing shows.
+- Window: a passage owns the time until the craft is as near the next planet in Hill radii, at most 0.4 of its
+  orbit around the Sun (Parker's windows would span several). If the slowdown would put the drawing out of step
+  by more than a quarter of that, the passage is drawn more compactly (a tighter but still smooth turn), then
+  the legs catch up by running up to 5 times faster than the craft for a while, and only then is the slowdown cut.
+  That is Poster's case (its windows are short for planets drawn that big); the other presets need none of it.
+- Hand-over: the rest (the drawn flyby's breadth, any lag) blends into the Sun-centred placement by a smoothstep of
+  the drawing's distance, from where the slowdown is over and the Sun-centred map draws the leg two breadths clear
+  of the planet (a search through the map) to the window's edge. Bound phases (a parking orbit, the orbits after
+  an insertion, JWST) are drawn like moons, with the moon curve in real time, as the local track is.
+- At true scale every stretch is 1: the drawing is the true path. Tested over `SCALE_PRESET_IDS`
+  (`src/sim/flyby.test.ts`, `src/data/spacecraft.test.ts`): the bend within 2 degrees, the closest approach the true
+  one scaled (outside the drawn planet, on the right side of every featured moon's drawn orbit), no turn the
+  Sun-centred map's drawing of the same path does not have (curvature x distance from the planet under 10; a
+  few Poster passages, short windows for planets drawn that big, are allowed tight bends up to 40), and no jump
+  where a segment or a passage begins or ends.
+- Known limits: an arrival keeps the real near-cusp of its heliocentric path (Juno's speed round the Sun nearly
+  vanishes as Jupiter overtakes it); in Poster the Sun-centred map itself puts a craft months from a planet inside
+  its drawn moon system (Voyager 2 a year after Jupiter, Parker's later passes of Venus, which are not flybys); a
+  craft's meeting with a moon (Voyager 1 and Titan, Voyager 2 and Triton) is not drawn at the drawn moon, which
+  runs at the clock's pace while the drawing slows.
 
 **Scene.** `Scene.tsx` creates a `CraftFrame` (`spacecraft/craftFrame.ts`) beside the SimFrame; `SpacecraftScene`
 updates it at `useFrame` priority -0.9 (after SimClock, before the director) and draws:
@@ -1233,7 +1271,8 @@ updates it at `useFrame` priority -0.9 (after SimClock, before the director) and
   craft; hidden near a planet that is still a dot until 10 px clear of it (the moon-name rule), unless selected or
   hovered; angular picking; 12 px pick radius (smaller than #16's finger target, so a tap beside a planet stays the planet's); hover shows the pointer, a tap selects.
 - paths (`CraftPaths.tsx`, for the selected and hovered craft, or all with "Show every path"): the cruise path in
-  the Sun's frame with each vertex placed where the planets were at that time (rebuilt on a scale change), bright
+  the Sun's frame with each vertex placed where the planets were at that time (rebuilt on a scale change; extra
+  vertices along each drawn passage, `flybyPathTimes`), bright
   up to the craft and dim beyond; during an orbit phase (Cassini, Juno, JWST) a local track of +-`trackDays`
   around where the planet is now instead; milestone rings at the events on the selected craft's path.
 - names: a `LabelExtension` (`craftLabels.ts`) owns the label slots after the bodies' and orbits'

@@ -3,7 +3,10 @@
  * schema and the curated catalogue, the trajectories rebuild the JPL Horizons
  * states within the stated tolerance, cover their whole time range without a
  * gap, never jump where the frame hands over from the Sun to a planet in any
- * scale preset, and put known events where they happened.
+ * scale preset, and put known events where they happened. And every planet
+ * passage looks like one in every preset (#56): the true bend, no sharp turn,
+ * the closest approach outside the drawn planet and on the right side of its
+ * moons' drawn orbits.
  */
 import { readFileSync } from "node:fs"
 import { join } from "node:path"
@@ -15,18 +18,33 @@ import {
 	SCALE_PRESETS,
 	SCALE_PRESET_IDS,
 	buildIndex,
+	childDistanceCurve,
 	computeDisplayPositions,
 	computeDisplayRadii,
 	computePositions,
+	displayOffset,
+	mapDistance,
+	propagate,
+	type ScalePresetId,
 	type ScaleSettings,
 } from "@/sim"
 import {
+	SKEW_FROM,
+	drawnAnomalyAt,
+	drawnTimeAt,
+	nearWeight,
+	trueTimeAt,
+} from "@/sim/flyby"
+import {
 	craftStateAt,
+	createCentresAt,
 	createCraftState,
 	decodeTrajectory,
+	flybyScaleOf,
 	isoToJD,
 	segmentState,
 	type CentreFrame,
+	type CraftEncounter,
 	type CraftTrajectory,
 } from "@/sim/spacecraft"
 
@@ -225,9 +243,20 @@ describe("trajectory accuracy", () => {
 						frameAt(jd, scale),
 						createCraftState(),
 					).displayKm.slice()
-				const edges = [...trajectory.helio, ...trajectory.planetary].flatMap(
-					(s) => [s.from, s.to],
-				)
+				// segment edges, and where a planet's passage begins, ends, or
+				// turns from a bound orbit to the passage or back (#56)
+				const edges = [
+					...[...trajectory.helio, ...trajectory.planetary].flatMap((s) => [
+						s.from,
+						s.to,
+					]),
+					...trajectory.encounters.flatMap((e) => [
+						e.from,
+						e.to,
+						e.hyperFrom,
+						e.hyperTo,
+					]),
+				]
 				for (const edge of edges) {
 					if (
 						edge - 3 * dt <= trajectory.fromJD ||
@@ -330,5 +359,333 @@ describe("where the craft are", () => {
 			// inside the moon curves' knee (3 radii) distances keep true proportion
 			expect(radii, presetId).toBeCloseTo(29240 / 24622, 1)
 		}
+	})
+})
+
+/** Every planet passage drawn as a hyperbola, of the given kinds. */
+const passages = (kinds: readonly CraftEncounter["kind"][]) =>
+	catalogue.craft.flatMap((craft) =>
+		trajectoryOf(craft.id)
+			.encounters.filter((e) => e.flyby !== null && kinds.includes(e.kind))
+			.map((encounter) => ({
+				craft: craft.id,
+				trajectory: trajectoryOf(craft.id),
+				encounter,
+				label: `${craft.id} at ${bodies[encounter.planet].id} (${encounter.kind})`,
+			})),
+	)
+
+/**
+ * A passage's samples as the path builder draws them under `scale`: the
+ * craft's drawn and true position, the planet's, at instants spaced by a
+ * growing step from periapsis out to the passage's ends.
+ */
+function sampled(
+	trajectory: CraftTrajectory,
+	encounter: CraftEncounter,
+	scale: ScaleSettings,
+	growth = 1.02,
+) {
+	const { hyperbola } = encounter.flyby!
+	const lo = Math.max(encounter.from, encounter.hyperFrom)
+	const hi = Math.min(encounter.to, encounter.hyperTo)
+	const times: number[] =
+		hyperbola.tp >= lo && hyperbola.tp <= hi ? [hyperbola.tp] : []
+	for (const side of [-1, 1]) {
+		for (let dt = 1 / 1440; dt < 4000; dt *= growth) {
+			const t = hyperbola.tp + side * dt
+			if (t >= lo && t <= hi) times.push(t)
+		}
+	}
+	times.sort((a, b) => a - b)
+	const frame = frameAt(encounter.flyby!.anchorJD, scale)
+	const root = trajectory.root
+	const centres = createCentresAt(root)
+	const state = createCraftState()
+	const planet = bodies[encounter.planet]
+	const at = { x: 0, y: 0, z: 0 }
+	const mapped = new Float64Array(3)
+	const n = times.length
+	const drawn = new Float64Array(n * 3)
+	const drawnPlanet = new Float64Array(n * 3)
+	const trueOffset = new Float64Array(n * 3)
+	const sunOnly = new Float64Array(n * 3)
+	const rootKm = bodies[root].radiusKm
+	const rootDrawnKm = frame.displayRadiiKm[root]
+	const curve = childDistanceCurve(scale, true)
+	for (let k = 0; k < n; k++) {
+		centres.jd = times[k]
+		craftStateAt(trajectory, times[k], frame, state, centres.lookup)
+		propagate(planet.orbit!, times[k], at)
+		displayOffset(at.x, at.y, at.z, rootKm, rootDrawnKm, curve, mapped)
+		const r = root * 3
+		const relative: [number, number, number] = [
+			state.trueKm[0] - frame.positionsKm[r],
+			state.trueKm[1] - frame.positionsKm[r + 1],
+			state.trueKm[2] - frame.positionsKm[r + 2],
+		]
+		const o = k * 3
+		trueOffset[o] = relative[0] - at.x
+		trueOffset[o + 1] = relative[1] - at.y
+		trueOffset[o + 2] = relative[2] - at.z
+		for (let c = 0; c < 3; c++) {
+			drawn[o + c] = state.displayKm[c]
+			drawnPlanet[o + c] = frame.displayKm[root * 3 + c] + mapped[c]
+		}
+		// what the Sun-centred map alone draws there (before #56, between planets)
+		displayOffset(...relative, rootKm, rootDrawnKm, curve, mapped)
+		for (let c = 0; c < 3; c++) {
+			sunOnly[o + c] = frame.displayKm[root * 3 + c] + mapped[c]
+		}
+	}
+	return { times, frame, drawn, drawnPlanet, trueOffset, sunOnly }
+}
+
+const sub3 = (v: ArrayLike<number>, i: number, j: number) => [
+	v[i * 3] - v[j * 3],
+	v[i * 3 + 1] - v[j * 3 + 1],
+	v[i * 3 + 2] - v[j * 3 + 2],
+]
+const turnOf = (a: number[], b: number[]) => {
+	const la = Math.hypot(a[0], a[1], a[2])
+	const lb = Math.hypot(b[0], b[1], b[2])
+	if (!(la > 0 && lb > 0)) return 0
+	const cos = (a[0] * b[0] + a[1] * b[1] + a[2] * b[2]) / (la * lb)
+	return Math.acos(Math.max(-1, Math.min(1, cos)))
+}
+
+/**
+ * The sharpest turn of a drawn passage that the Sun-centred map's drawing of
+ * the same path does not have (the planet's pull, Parker's turns round the
+ * Sun): the turn between neighbouring steps per step length, times the
+ * distance from the drawn planet (so 1 is a circle round it). Steps are at
+ * least 1% of that distance; only where the craft is near the planet.
+ */
+function sharpestTurn(
+	trajectory: CraftTrajectory,
+	encounter: CraftEncounter,
+	presetId: ScalePresetId,
+) {
+	const scale = SCALE_PRESETS[presetId]
+	const { times, frame, drawn, drawnPlanet, trueOffset, sunOnly } = sampled(
+		trajectory,
+		encounter,
+		scale,
+	)
+	const prepared = flybyScaleOf(trajectory, encounter, frame)!
+	const tp = encounter.flyby!.hyperbola.tp
+	const distance = (k: number) =>
+		Math.hypot(
+			drawn[k * 3] - drawnPlanet[k * 3],
+			drawn[k * 3 + 1] - drawnPlanet[k * 3 + 1],
+			drawn[k * 3 + 2] - drawnPlanet[k * 3 + 2],
+		)
+	const kept = [0]
+	for (let k = 1; k < times.length; k++) {
+		const step = Math.hypot(...sub3(drawn, k, kept[kept.length - 1]))
+		if (step >= 0.01 * distance(k)) kept.push(k)
+	}
+	let worst = 0
+	let where = ""
+	for (let i = 1; i + 1 < kept.length; i++) {
+		const [k0, k, k1] = [kept[i - 1], kept[i], kept[i + 1]]
+		const side = times[k] < tp ? 0 : 1
+		const near = Math.hypot(
+			trueOffset[k * 3],
+			trueOffset[k * 3 + 1],
+			trueOffset[k * 3 + 2],
+		)
+		if (near > 1.5 * prepared.farKm[side]) continue
+		const a = sub3(drawn, k, k0)
+		const b = sub3(drawn, k1, k)
+		const own =
+			turnOf(a, b) - turnOf(sub3(sunOnly, k, k0), sub3(sunOnly, k1, k))
+		const length = (Math.hypot(...a) + Math.hypot(...b)) / 2
+		const sharpness = (Math.max(0, own) * distance(k)) / length
+		if (sharpness > worst) {
+			worst = sharpness
+			where = `${(times[k] - tp).toFixed(1)} d from periapsis`
+		}
+	}
+	return { worst, where }
+}
+
+/** No sharper than this anywhere ... */
+const SHARPEST = 10
+/**
+ * ... but where Poster's planets, drawn up to thousands of times bigger than
+ * the Sun-centred map draws their neighbourhoods, leave a short window for the
+ * hand-over: tight bends, no corners (docs/ARCHITECTURE.md, "Spacecraft").
+ */
+const POSTER_SHARPEST: Record<string, number> = {
+	"cassini at jupiter (flyby)": 40,
+	"voyager2 at neptune (flyby)": 30,
+	"voyager2 at saturn (flyby)": 20,
+	"voyager2 at uranus (flyby)": 15,
+}
+
+describe("planet passages, drawn (#56)", () => {
+	const flybys = passages(["flyby"])
+
+	it("are drawn for every flyby, departure and arrival in the data", () => {
+		expect(flybys.length).toBeGreaterThanOrEqual(24)
+		expect(passages(["departure"]).length).toBeGreaterThanOrEqual(9)
+		expect(passages(["arrival"]).length).toBe(3)
+	})
+
+	it("are the true path at true scale", () => {
+		for (const { trajectory, encounter, label } of passages([
+			"flyby",
+			"departure",
+			"arrival",
+		])) {
+			const { drawn, frame, times } = sampled(
+				trajectory,
+				encounter,
+				trueScale,
+				1.3,
+			)
+			const state = createCraftState()
+			const centres = createCentresAt(trajectory.root)
+			for (let k = 0; k < times.length; k++) {
+				centres.jd = times[k]
+				craftStateAt(trajectory, times[k], frame, state, centres.lookup)
+				const r = trajectory.root * 3
+				for (let c = 0; c < 3; c++) {
+					const truth =
+						state.trueKm[c] - frame.positionsKm[r + c] + frame.displayKm[r + c]
+					expect(Math.abs(drawn[k * 3 + c] - truth), label).toBeLessThan(1)
+				}
+			}
+		}
+	})
+
+	describe.each(SCALE_PRESET_IDS)("in %s", (presetId) => {
+		const scale = SCALE_PRESETS[presetId]
+
+		it("bend each flyby's path by the true angle", () => {
+			for (const { trajectory, encounter, label } of flybys) {
+				const geometry = encounter.flyby!
+				const { hyperbola, table } = geometry
+				const frame = frameAt(geometry.anchorJD, scale)
+				const prepared = flybyScaleOf(trajectory, encounter, frame)!
+				// the legs' directions as far out as the drawing keeps them true
+				const F = Math.acosh(
+					((0.9 * SKEW_FROM * table.coreKm) / hyperbola.a + 1) / hyperbola.e,
+				)
+				const direction = (
+					jd: number,
+					h: number,
+					drawnScale: ScaleSettings,
+				) => {
+					const [before, after] = [jd - h, jd + h].map((t) => {
+						const f = frameAt(t, drawnScale)
+						const state = craftStateAt(trajectory, t, f, createCraftState())
+						const p = encounter.planet * 3
+						const own =
+							drawnScale === trueScale ? state.trueKm : state.displayKm
+						const centre =
+							drawnScale === trueScale ? f.positionsKm : f.displayKm
+						return [0, 1, 2].map((c) => own[c] - centre[p + c])
+					})
+					return [0, 1, 2].map((c) => after[c] - before[c])
+				}
+				const drawnBend = turnOf(
+					direction(drawnTimeAt(geometry, prepared, -F), 1e-3, scale),
+					direction(drawnTimeAt(geometry, prepared, F), 1e-3, scale),
+				)
+				const trueBend = turnOf(
+					direction(trueTimeAt(hyperbola, -F), 1e-4, trueScale),
+					direction(trueTimeAt(hyperbola, F), 1e-4, trueScale),
+				)
+				expect(
+					Math.abs(drawnBend - trueBend) * (180 / Math.PI),
+					label,
+				).toBeLessThan(2)
+			}
+		})
+
+		it("pass each planet closest at the true distance scaled like its moons, outside it and on the right side of its moons", () => {
+			for (const { trajectory, encounter, label } of flybys) {
+				const geometry = encounter.flyby!
+				const planet = bodies[encounter.planet]
+				const { times, frame, drawn, drawnPlanet, trueOffset } = sampled(
+					trajectory,
+					encounter,
+					scale,
+				)
+				const prepared = flybyScaleOf(trajectory, encounter, frame)!
+				const radius = frame.displayRadiiKm[encounter.planet]
+				// the core scale is the moon curve's at the osculating periapsis
+				const { rp } = geometry.hyperbola
+				expect(prepared.periapsisKm / radius, label).toBeCloseTo(
+					mapDistance(scale.moonDistance, rp / planet.radiusKm),
+					9,
+				)
+				let closest = Infinity
+				let nearest = Infinity
+				let trueClosest = Infinity
+				for (let k = 0; k < times.length; k++) {
+					const o = k * 3
+					const d = Math.hypot(
+						drawn[o] - drawnPlanet[o],
+						drawn[o + 1] - drawnPlanet[o + 1],
+						drawn[o + 2] - drawnPlanet[o + 2],
+					)
+					const r = Math.hypot(
+						trueOffset[o],
+						trueOffset[o + 1],
+						trueOffset[o + 2],
+					)
+					trueClosest = Math.min(trueClosest, r)
+					const F = drawnAnomalyAt(geometry, prepared, times[k])
+					const weight = nearWeight(geometry.hyperbola, prepared, F)
+					// where the planet-centred drawing has it alone
+					if (weight === 1) closest = Math.min(closest, d)
+					// while it has any share: never inside the drawn planet
+					if (weight > 0) nearest = Math.min(nearest, d)
+					// at periapsis, the true path scaled
+					if (times[k] === geometry.hyperbola.tp) {
+						expect(d / r / prepared.k, label).toBeCloseTo(1, 6)
+					}
+				}
+				expect(closest / (prepared.k * trueClosest), label).toBeGreaterThan(
+					0.999,
+				)
+				expect(nearest / radius, label).toBeGreaterThan(1)
+				for (const moon of bodies) {
+					if (
+						moon.parentId !== planet.id ||
+						!moon.featured ||
+						moon.orbit === null
+					)
+						continue
+					const orbit =
+						radius *
+						mapDistance(
+							scale.moonDistance,
+							moon.orbit.semiMajorAxisKm / planet.radiusKm,
+						)
+					expect(closest < orbit, `${label}, ${moon.id}`).toBe(
+						trueClosest < moon.orbit.semiMajorAxisKm,
+					)
+				}
+			}
+		})
+
+		it.each(passages(["flyby", "departure"]).map((p) => p.label))(
+			"turn %s smoothly",
+			(label) => {
+				const { trajectory, encounter } = passages(["flyby", "departure"]).find(
+					(p) => p.label === label,
+				)!
+				const { worst, where } = sharpestTurn(trajectory, encounter, presetId)
+				const limit =
+					presetId === "poster"
+						? (POSTER_SHARPEST[label] ?? SHARPEST)
+						: SHARPEST
+				expect(worst, where).toBeLessThan(limit)
+			},
+		)
 	})
 })
