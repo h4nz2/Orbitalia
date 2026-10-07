@@ -887,7 +887,9 @@ hover ring, name and cursor apply to labels too.
   the camera was dollied beyond `REFRAME_DISTANCE` x its framing flies back to the close-up; the framed, selected
   focus does nothing. **Click on empty space** (`emptyClickAction`): `reset()` from a focused or free view,
   `select(null)` in the overview; nothing on a near miss (within `NEAR_MISS_FACTOR` x the target radius of a drawn
-  edge) or while a sequence (tour) runs. Only taps count (`isTapEvent`).
+  edge) or while a sequence (tour) runs. Only taps count (`isTapEvent`). While an Easy hunt clue is on screen
+  (#52, `useHuntStore.assist`) the target radius is `EASY_TARGET_FACTOR` (2) times larger and an empty click does
+  nothing.
 - **Hover**: `hoverId` follows the pointer, but never for a finger or while a button is held (an orbit drag).
   `HoverCursor` shows `cursor: pointer` for click targets (`isClickTarget` = `bodyClickAction` is not `none`).
   `ui/BodyHighlight.tsx` renders a white ring with the body's name and "Click to fly there" around the hovered target,
@@ -947,6 +949,9 @@ Slots: `0..n-1` are the bodies' names, `n..2n-1` their orbits' names (`orbitSlot
   hover, cursor and tap (`isTapEvent`) handling. `<Labels onActivate>` is the hook for #16 (`activateBody`).
 - **Switches:** `showLabels` (the Labels switch; `setShowLabels(false)` hides every name at once, e.g. for #30/#33),
   `showOrbitLabels` (Orbit names; needs orbits and labels on).
+- **Pictures** (#52): while an Easy hunt clue is on screen (`useHuntStore.assist`) the Sun, the planets and the
+  featured moons of the planet in view carry their `ui/BodyPicture` before the name (`labelPicture`; the text in a
+  `[data-label-text]` span, which the postcard reads), and the layer measures again.
 - **For later issues:** `[data-body=<id>][data-visible=true]` marks a shown name (tests, tours); a feature that
   needs a body named can select or hover it (top priority).
 
@@ -1239,34 +1244,79 @@ whole comparison is its link: `/compare?bodies=earth,jupiter,saturn&t=<jd>` (`se
   `compareSearchFor`: `t` unless the clock shows the present at 1x). "Back" returns through the history, else to
   `/solar_system?focus=<first>`.
 
-## Scavenger hunt (`features/solarSystem/hunt`, `src/store/hunt.ts`; #34)
+## Scavenger hunt (`features/solarSystem/hunt`, `src/store/hunt.ts`; #34, #52)
 
 Clues a class solves by finding a world in the scene and selecting it: the exploration is the point, the selection
-is the receipt. No score, no timer, no ranking, no failure state.
+is the receipt. No score, no timer, no ranking, no failure state; a star for every find.
 
-- **Content is data.** `src/data/hunts.json` holds the question bank (`id`, `answers`: body ids, any of which
-  solves it; optional `frame`: the body that must be held still, #31) and the ready-made hunts (`id`,
-  `difficulty` easy/medium/hard, question ids in order). The words live in `src/locales/<locale>/hunts.json`
-  (`hunts.<id>.{title, description}`, `questions.<id>.{clue, hints[], found}`; plain text, one value or one per
-  reading level, like `bodies.json`; read by `hunt/text.ts`). `hunt/hunts.test.ts` is the contract: answers are
-  real bodies, every clue and discovery is written for every level in every locale, at least two hints, the last
-  naming the answer. A new clue or hunt is an edit of those three files.
+- **Content is data.** `src/data/hunts.json` holds the question bank (`id`, `difficulty` easy/medium/hard,
+  `answers`: body ids, any of which solves it; optional `frame`: the body that must be held still, #31; for Easy
+  clues `picture`, the body whose picture shows what to look for, and `at`, the planet the camera visits first for
+  a clue about its moons) and the ready-made hunts (`id`, question ids in order). A hunt's difficulty is its
+  hardest clue's (`difficultyOf`); each clue keeps its own, so a teacher's own hunt may mix them. The words live in
+  `src/locales/<locale>/hunts.json` (`hunts.<id>.{title, description}`, `questions.<id>.{clue, hints[], found}`;
+  plain text, one value or one per reading level, like `bodies.json`; read by `hunt/text.ts`). `hunt/hunts.test.ts`
+  is the contract: answers are real bodies; Medium and Tricky clues and discoveries are written for every level,
+  with simple-level hints; Easy hunts have 3–5 Easy clues (at least two of 5), each with a picture of its one
+  answer, two hints, one short sentence per clue, hint and discovery, no number above 20, and `at` exactly for the
+  moon clues; at least two hints everywhere, the last naming the answer. A new clue or hunt is an edit of those
+  three files.
+- **Difficulty is a real choice** (#52): Easy (ages 6–8), Medium (9–11), Tricky (12+; `hard` in the data). The
+  chooser's segmented control filters the hunt cards (`huntsOf`); it opens on `DEFAULT_DIFFICULTY` for the reading
+  level (simple → Easy, standard and advanced → Tricky) and keeps the viewer's pick while the page is open
+  (`useHuntStore.difficulty`, not stored). "Make your own hunt" lists the whole bank under the three levels.
+- **Easy clues are answered by looking** (`hunt/startView.ts`): when an Easy clue is asked, the hunt asks the
+  navigation store for its start view (the camera keeps one owner): `reset()` to the overview, or for `at` the
+  planet with the featured moons out to the one beyond the answer (`framedMoons`, `moonSystemShot`'s direction),
+  names on, Moons on. Both are framed clear of the docked panel: `clearanceOf` measures the dock, the overview backs
+  off only as far as the answer's drawn position and its name need (`overviewShotDistance`, `overviewPx`), a moon
+  system as far as its orbits need (`moonsShotDistance`). Reduced motion jumps.
+- **Help while an Easy clue is on screen** (`useHuntStore.assist`, set by the panel): the labels carry a picture
+  beside the name for the Sun, the planets and the moons of the planet in view (`labels/LabelLayer.tsx`
+  `labelPicture`), so a child matches the clue's picture; small targets are twice as large and a click on empty
+  space never leaves the view (`scene/BodyPicking.tsx`, `EASY_TARGET_FACTOR`).
+- **Pictures** (`ui/BodyPicture.tsx`): a body's own surface map on a shaded disc (the comparison's globes, #24),
+  with Saturn's bright rings; no image files of their own. Sized by the font size. Used by the clue, the Easy hunt
+  cards, the sticker of a find, the finish and the labels.
+- **Hints show rather than tell at Easy** (`hunt/spot.ts`, `HuntSpot.tsx` in the HUD, `HuntSpotTracker.tsx` in the
+  Canvas placing it every frame like #30's pulse): the first lights up a part of the sky with the answer off its
+  centre (`areaPlacement`), the second makes the answer pulse, then "Show me". Every clue has simple-level hint
+  texts; reduced motion keeps the circle and ring still.
+- **Read aloud** (`hunt/speech.ts`): a speaker beside the clue (with "We are at Jupiter." for an `at` clue), each
+  hint, the discovery and the finish reads it with the browser's own voice for the language (`pickVoice`: the
+  locale's region, then the browser's languages in order, then the default voice, then a local one; unit-tested).
+  No voice for the language: no speaker. The voice is part of the app's sound (#32): it speaks only while sound is
+  on, muting stops it (`useSoundStore` subscription). A speaker press asks for sound like Listen; starting an Easy
+  hunt by a click asks for it too unless the viewer muted sound in this visit (`useSoundStore.muted`), and then
+  every Easy clue, hint, find and the finish are read out as they appear. A hunt opened from a link stays silent
+  until a speaker is pressed.
 - **Answering** (`hunt/watch.ts`): the hunt watches `selectedId` (and `frameId`) in the sim store; it has no picking
   of its own, so a click, a label (#20) or the picker (#16) all answer. A selection that already answers a new clue
   is let go (`select(null)`), so every answer is a fresh choice. A miss only sets kind words (`guessOf`: "other",
   "warm" on the planet of a moon that answers, "almost" for the right body outside the clue's frame). Hints
   escalate; after the last one "Show me" (`showAnswer`) flies there (or applies the matching #31 preset), which
   solves the clue.
+- **Rewards**: one star per clue in the header (bigger at Easy), a star popping out with a burst of sparks on every
+  find and, at Easy, a sticker of the world; #32's chime when sound is on; reduced motion drops the animation. The
+  finish shows a star per clue, the worlds found (with their pictures) and "Make a certificate"
+  (`hunt/certificate.ts`): the postcard of the view (#33) with the hunt, today's date and every world found as rows,
+  to save, copy or share like any postcard.
 - **Store** (`useHuntStore`): the hunt `key`, `step`, `hints`, `phase` (asking/found), `found` bodies, plus panel
-  state. Progress is kept in sessionStorage (a reload mid-lesson keeps it; nothing leaves the device).
+  state, `difficulty` and `assist`. Progress (only the first five) is kept in sessionStorage (a reload mid-lesson
+  keeps it; nothing leaves the device).
 - **UI**: Tools → Scavenger hunt opens it (#42); `hunt/Hunt.tsx` has the panel slot, in the dock;
   `HuntPanel.tsx` (lazy) is a panel of the dock like the birthday panel and carries the HUD `.panel` class, so
-  labels avoid it: the chooser (hunt cards, "Make your own hunt" from the whole bank), then progress dots, the
-  clue in large type, hints, the discovery text and a finish with the worlds found. It folds to the clue alone.
+  labels avoid it: the chooser (difficulty, hunt cards, "Make your own hunt" from the whole bank), then the stars,
+  the clue in large type (larger at Easy, with its picture), hints, the discovery text and a finish. It folds to the
+  clue alone. In projector mode (#29) everything grows with the root font; the e2e test checks an Easy clue at
+  1366 x 768 there.
 - **Links**: `?hunt=true` opens the chooser, `?hunt=<hunt id>` or `?hunt=<question ids joined by ".">` (a teacher's
   own hunt, `resolveHunt`) opens that hunt. The route keeps `hunt` on every navigation (`retainSearchParams`), so
   the store mirror in `urlSync.ts` leaves it alone; the panel sets and clears it. "Share" builds
   `/solar_system?hunt=…&lang=…&reading=…` only, so every student starts the same hunt in the teacher's language.
+- **Tests**: `hunts.test.ts` (the bank and its words, Easy rules, answering), `speech.test.ts` (voice choice, sound
+  gating), `spot.test.ts`, `startView.test.ts`; `e2e/hunt.spec.ts` with `e2e/support/speech.ts` standing in for the
+  voices headless Chromium lacks.
 
 ## Light travel (`src/sim/light.ts`, `src/store/light.ts`, `features/solarSystem/light/`; #27)
 
@@ -1393,7 +1443,11 @@ rule decides the defaults: **off until asked, never a surprise**.
   fresh visit and is kept in **sessionStorage** only: a reload mid-lesson keeps it, a new tab or tomorrow's lesson
   starts silent. Volume and layers are preferences in localStorage (`orbitalia.sound`) and never switch sound on.
   `mute()` silences everything at once, recordings included (the speaker button, the M key; #29 can call it).
-  `setPlaying(id)` turns sound on in the same update: pressing Listen is asking for sound.
+  `setPlaying(id)` turns sound on in the same update: pressing Listen is asking for sound. `muted` (memory only)
+  says the viewer turned sound off in this visit, so a feature that may turn it on by itself (an Easy hunt asking
+  for its voice, #52) leaves it off.
+- **Speech** (#52, `hunt/speech.ts`): the hunt's read-aloud uses the Web Speech API, not the AudioContext, but
+  follows the same switch: it speaks only while `enabled`, and every mute cancels it.
 - **Engine** (`sound/engine.ts`): one AudioContext, created and resumed only by `unlockAudio()`, which the UI calls
   inside its own click/key handlers (browser autoplay rules). Buses `ambient`, `cues`, `recordings` → `master`
   (volume, `volumeGain` = 0.6 v², faded with `setTargetAtTime`, never stepped) → a limiter → speakers. While sound
@@ -1476,8 +1530,8 @@ import { Hint, hintKey } from "@/primitives/hint"
 - **Where it is used:** the scene layer switches, the scale presets and the Sizes/Distances lies (presets reuse
   `solarSystem.scale.summary.*`), the spin modes (reusing `solarSystem.spin.hint.*`, one per mode), reverse / pause /
   play / Now / the speed presets, the point-of-view menu, the Present, Share and Layers buttons, the projector and
-  high-contrast switches, the postcard's switches and button, the birthday, hunt and light buttons and the two
-  "stop the flash" buttons (#38), the sound toggle and its settings button (#32), the sky-tonight launcher and "Show me in space" (#36), the Help menu (#30), the spacecraft menu, its two switches and "Show" (#35), the tours menu and the tour card's autoplay toggle (#28), the Help button (every page) and its "more" chevron (#43), and Overview. The tour card's share button keeps its Mantine `Tooltip`: it doubles as the "Link copied" confirmation. Plain tabs (the light
+  high-contrast switches, the postcard's switches and button, the birthday, hunt and light buttons, the hunt's difficulty
+  choice, speakers and certificate (#52), the two "stop the flash" buttons (#38), the sound toggle and its settings button (#32), the sky-tonight launcher and "Show me in space" (#36), the Help menu (#30), the spacecraft menu, its two switches and "Show" (#35), the tours menu and the tour card's autoplay toggle (#28), the Help button (every page) and its "more" chevron (#43), and Overview. The tour card's share button keeps its Mantine `Tooltip`: it doubles as the "Link copied" confirmation. Plain tabs (the light
   panel's, the birthday panel's) have none, by design. A switch that already shows a Mantine `description` under
   its label is explained in place; wrap it in `<Hint>` only to add something the description does not say (the
   projector switch) or a disabled `reason` (high contrast), as the sound panel's switches show.

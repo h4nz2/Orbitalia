@@ -8,6 +8,8 @@
  * - a tap on a body selects it and flies there (`setFocus`), or flies back to
  *   the close-up of the focus after the camera was dollied far out;
  * - a tap on empty space is the way out (`emptyClickAction`);
+ * - while an Easy hunt clue is on screen (#52) small targets are larger
+ *   (`EASY_TARGET_FACTOR`) and a tap on empty space does nothing;
  * - hovering sets `hoverId` for the pointer cursor and the highlight ring,
  *   never while a button is held (an orbit drag) or for a finger.
  *
@@ -23,11 +25,13 @@ import {
 	type Raycaster,
 } from "three"
 
+import { useHuntStore } from "@/store/hunt"
 import { isBodyShown, useSimStore } from "@/store/sim"
 
 import { CAMERA_FAR } from "../camera/framing"
 import { isMoonDotShown } from "./Markers"
 import {
+	EASY_TARGET_FACTOR,
 	NEAR_MISS_FACTOR,
 	TARGET_RADIUS_PX,
 	bodyClickAction,
@@ -84,7 +88,9 @@ function BodyPicking() {
 				focusIndex === undefined ? null : bodies[focusIndex].parentId
 			const isShown = (i: number) => isBodyShown(bodies[i], state)
 			const pxPerUnit = pixelsPerUnitAtDistanceOne(camera, heightPx)
-			const targetRadiusPx = TARGET_RADIUS_PX[currentPointerKind()]
+			const targetRadiusPx =
+				TARGET_RADIUS_PX[currentPointerKind()] *
+				(useHuntStore.getState().assist ? EASY_TARGET_FACTOR : 1)
 			const { origin, direction } = raycaster.ray
 			const pick = pickBody(frame, origin, direction, {
 				pxPerUnit,
@@ -136,7 +142,8 @@ function BodyPicking() {
 			activateBody(id)
 			return
 		}
-		switch (emptyClickAction(store, nearMiss.current)) {
+		const forgiven = nearMiss.current || useHuntStore.getState().assist
+		switch (emptyClickAction(store, forgiven)) {
 			case "deselect":
 				store.select(null)
 				return

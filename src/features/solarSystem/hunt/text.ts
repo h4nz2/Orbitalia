@@ -14,7 +14,9 @@
 import { z } from "zod"
 
 import type { I18n, Locale } from "@/i18n"
-import { leveled, pickLevel } from "@/i18n/bodies"
+import { bodyName, leveled, pickLevel } from "@/i18n/bodies"
+
+import type { HuntQuestion } from "./hunts"
 
 const text = z.string().trim().min(1)
 
@@ -26,7 +28,11 @@ export const QuestionTextEntry = z
 	.object({
 		/** The clue, a riddle about the world to find. */
 		clue: leveled(text),
-		/** Escalating hints, gentlest first; the last one names the world and how to reach it. */
+		/**
+		 * Escalating hints, gentlest first; the last one names the world and how
+		 * to reach it. A simple-level version for every clue (#52); at Easy the
+		 * first two also show (the area of the sky, then the answer pulsing).
+		 */
 		hints: leveled(z.array(text).min(1)),
 		/** What the class learns once it is found. */
 		found: leveled(text),
@@ -100,3 +106,27 @@ export const huntTitle = (
 	description:
 		lookup<string>(i18n, (file) => file.hunts[id]?.description) ?? "",
 })
+
+/**
+ * Where the camera went before an Easy clue about moons ("We are at
+ * Jupiter."), or null.
+ */
+export const arrivalText = (
+	question: Pick<HuntQuestion, "at">,
+	i18n: Pick<I18n, "chain" | "t">,
+): string | null =>
+	question.at === undefined
+		? null
+		: i18n.t("solarSystem.hunt.weAreAt", {
+				bodyId: question.at,
+				name: bodyName(question.at, i18n.chain),
+			})
+
+/** What the speaker reads for a clue (#52): where we are, then the clue. */
+export const spokenClue = (
+	question: Pick<HuntQuestion, "id" | "at">,
+	i18n: Pick<I18n, "chain" | "readingLevel" | "t">,
+): string =>
+	[arrivalText(question, i18n), questionText(question.id, i18n).clue]
+		.filter((part) => part !== null)
+		.join(" ")

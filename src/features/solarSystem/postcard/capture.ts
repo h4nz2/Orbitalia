@@ -54,7 +54,9 @@ export function readLabels(origin: DOMRect): ShotLabel[] {
 		if (style.visibility === "hidden" || !(opacity > 0.05)) continue
 		const text = element.textContent ?? ""
 		if (text === "") continue
-		const rect = element.getBoundingClientRect()
+		// a name with a picture beside it (#52): the words start after it
+		const words = element.querySelector("[data-label-text]") ?? element
+		const rect = words.getBoundingClientRect()
 		labels.push({
 			text,
 			x: rect.left - origin.left,

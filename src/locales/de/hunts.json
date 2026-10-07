@@ -1,9 +1,23 @@
 {
 	"hunts": {
+		"lookAndFind": {
+			"title": "Schauen und finden",
+			"description": {
+				"simple": "Schau dir das Bild an und finde es dann im Weltall!",
+				"standard": "Fünf Welten zum Finden durch Hinschauen, jede mit einem Bild und zum Vorlesen."
+			}
+		},
+		"sunAndMoons": {
+			"title": "Sonne und Monde",
+			"description": {
+				"simple": "Finde die Sonne, den Planeten ganz innen und den ganz außen, dann zwei Monde.",
+				"standard": "Von der Sonne hinaus bis zum letzten Planeten, dann zwei Monde: fünf Funde durch Hinschauen."
+			}
+		},
 		"firstSteps": {
 			"title": "Erste Schritte",
 			"description": {
-				"simple": "Sechs leichte Rätsel über den Mond und die Planeten.",
+				"simple": "Sechs Rätsel über den Mond und die Planeten.",
 				"standard": "Sechs Rätsel, um die Planeten und unseren Mond kennenzulernen.",
 				"advanced": "Zum Aufwärmen: sechs Rätsel quer durch die Planeten und zum Mond."
 			}
@@ -34,19 +48,106 @@
 		}
 	},
 	"questions": {
+		"seeHome": {
+			"clue": "Finde den Planeten, auf dem wir leben.",
+			"hints": [
+				"Such im gelben Kreis nach einem blau-weißen Planeten.",
+				"Der blinkende Planet ist unser Zuhause, die Erde!"
+			],
+			"found": "Ja, das ist die Erde, unser Zuhause!"
+		},
+		"seeRed": {
+			"clue": "Finde den roten Planeten.",
+			"hints": [
+				"Such im gelben Kreis nach einem roten Planeten.",
+				"Der blinkende Planet ist Mars!"
+			],
+			"found": "Ja, das ist Mars, rot von rostigem Staub!"
+		},
+		"seeBiggest": {
+			"clue": "Finde den größten Planeten.",
+			"hints": [
+				"Such im gelben Kreis nach einem großen Planeten mit Streifen.",
+				"Der blinkende Planet ist der Riese Jupiter!"
+			],
+			"found": "Ja, das ist Jupiter, so breit wie 11 Erden!"
+		},
+		"seeRings": {
+			"clue": "Finde den Planeten mit großen Ringen.",
+			"hints": [
+				"Such im gelben Kreis nach einem Planeten mit Ringen.",
+				"Der blinkende Planet ist Saturn!"
+			],
+			"found": "Ja, das ist Saturn, mit Ringen aus Eis!"
+		},
+		"seeMoon": {
+			"clue": "Finde den Mond!",
+			"hints": [
+				"Schau in den gelben Kreis, nah bei der Erde.",
+				"Was da blinkt, ist unser Mond!"
+			],
+			"found": "Ja, das ist der Mond, auf dem schon Menschen gelaufen sind!"
+		},
+		"seeSun": {
+			"clue": "Finde die Sonne.",
+			"hints": [
+				"Schau in den gelben Kreis, genau in der Mitte.",
+				"Was da blinkt, ist die Sonne!"
+			],
+			"found": "Ja, das ist die Sonne, der Stern, der uns Licht schenkt!"
+		},
+		"seeNearest": {
+			"clue": "Finde den Planeten, der am nächsten an der Sonne ist.",
+			"hints": [
+				"Schau in den gelben Kreis, ganz nah bei der Sonne.",
+				"Der blinkende Planet ist Merkur!"
+			],
+			"found": "Ja, das ist Merkur, der schnellste Planet von allen!"
+		},
+		"seeFarthest": {
+			"clue": "Finde den Planeten, der am weitesten von der Sonne weg ist.",
+			"hints": [
+				"Schau in den gelben Kreis, weit draußen am Rand.",
+				"Der blinkende Planet ist Neptun!"
+			],
+			"found": "Ja, das ist Neptun, dunkel und eiskalt!"
+		},
+		"seeYellowMoon": {
+			"clue": "Finde Jupiters gelben Mond!",
+			"hints": [
+				"Schau in den gelben Kreis, nah beim Jupiter.",
+				"Der blinkende Mond ist Io!"
+			],
+			"found": "Ja, das ist Io, voller Vulkane!"
+		},
+		"seeBiggestMoon": {
+			"clue": "Finde Saturns größten Mond!",
+			"hints": [
+				"Such im gelben Kreis nach einem großen orangefarbenen Mond.",
+				"Der blinkende Mond ist Titan!"
+			],
+			"found": "Ja, das ist Titan, in orangefarbenen Nebel gehüllt!"
+		},
 		"walkedOn": {
 			"clue": {
 				"simple": "Finde die einzige Welt außer der Erde, auf der schon Menschen gelaufen sind.",
 				"standard": "Finde die einzige Welt außer der Erde, auf der Menschen schon gegangen sind.",
 				"advanced": "Finde die einzige andere Welt, die Menschen je betreten haben."
 			},
-			"hints": [
-				"Sie ist näher bei uns als jeder Planet.",
-				"Sie kreist um die Erde: Klick zuerst die Erde an und schau in der Nähe.",
-				"Es ist der Mond. Klick die Erde an und dann den Mond daneben."
-			],
+			"hints": {
+				"simple": [
+					"Sie ist näher bei uns als jeder Planet.",
+					"Sie kreist um die Erde. Klick die Erde an und schau dann in der Nähe.",
+					"Es ist der Mond. Klick die Erde an und dann den Mond daneben."
+				],
+				"standard": [
+					"Sie ist näher bei uns als jeder Planet.",
+					"Sie kreist um die Erde: Klick zuerst die Erde an und schau in der Nähe.",
+					"Es ist der Mond. Klick die Erde an und dann den Mond daneben."
+				]
+			},
 			"found": {
-				"simple": "Ja, der Mond! Zwölf Astronauten sind zwischen 1969 und 1972 auf ihm gelaufen. Ihre Fußspuren sind immer noch da, weil es dort keinen Wind gibt, der sie wegweht.",
+				"simple": "Ja, der Mond! Zwölf Astronauten sind vor langer Zeit auf ihm gelaufen. Ihre Fußspuren sind immer noch da, weil es dort keinen Wind gibt, der sie wegweht.",
 				"standard": "Der Mond! Zwölf Astronauten sind bei den Apollo-Missionen zwischen 1969 und 1972 auf ihm gegangen. Ohne Luft und ohne Wind sind ihre Fußspuren immer noch da.",
 				"advanced": "Der Mond. Zwölf Apollo-Astronauten betraten ihn zwischen 1969 und 1972 und brachten 382 kg Gestein zurück. Ohne Atmosphäre, die sie abträgt, könnten ihre Fußspuren Millionen Jahre überdauern."
 			}
@@ -57,11 +158,18 @@
 				"standard": "Finde den roten Planeten mit dem höchsten Vulkan aller Planeten.",
 				"advanced": "Finde den Planeten, dessen rostiger Staub ihn an unserem Nachthimmel rot leuchten lässt und der den höchsten Vulkan aller Planeten trägt."
 			},
-			"hints": [
-				"Es ist der nächste Planet nach der Erde, weiter weg von der Sonne.",
-				"Such einen kleinen, orangeroten Planeten zwischen Erde und Jupiter.",
-				"Es ist Mars, der vierte Planet von der Sonne aus. Klick ihn an."
-			],
+			"hints": {
+				"simple": [
+					"Es ist der nächste Planet nach der Erde, weiter weg von der Sonne.",
+					"Such einen kleinen roten Planeten zwischen Erde und Jupiter.",
+					"Es ist Mars. Klick ihn an."
+				],
+				"standard": [
+					"Es ist der nächste Planet nach der Erde, weiter weg von der Sonne.",
+					"Such einen kleinen, orangeroten Planeten zwischen Erde und Jupiter.",
+					"Es ist Mars, der vierte Planet von der Sonne aus. Klick ihn an."
+				]
+			},
 			"found": {
 				"simple": "Mars! Sein Staub ist voller Rost, darum sieht er rot aus. Sein Vulkan Olympus Mons ist etwa zweieinhalbmal so hoch wie der Mount Everest.",
 				"standard": "Mars. Sein Boden enthält viel Eisenoxid – Rost –, das ihn rot färbt. Olympus Mons, sein größter Vulkan, ist etwa 22 km hoch.",
@@ -70,17 +178,24 @@
 		},
 		"biggestPlanet": {
 			"clue": {
-				"simple": "Finde den größten Planeten. Mehr als tausend Erden würden in ihn hineinpassen!",
+				"simple": "Finde den größten Planeten. Er ist so breit wie 11 Erden!",
 				"standard": "Finde den größten Planeten: Mehr als 1300 Erden würden in ihn hineinpassen.",
 				"advanced": "Finde den Planeten, der mehr Masse hat als alle anderen Planeten zusammen."
 			},
-			"hints": [
-				"Er ist ein Riese aus Gas, mit Streifen aus Wolken.",
-				"Er ist der fünfte Planet von der Sonne aus, der erste nach dem Mars.",
-				"Es ist Jupiter. Klick den großen, gestreiften Planeten nach dem Mars an."
-			],
+			"hints": {
+				"simple": [
+					"Er ist eine riesige Kugel aus Gas, mit Streifen.",
+					"Es ist der Planet nach dem Mars.",
+					"Es ist Jupiter. Klick den großen, gestreiften Planeten nach dem Mars an."
+				],
+				"standard": [
+					"Er ist ein Riese aus Gas, mit Streifen aus Wolken.",
+					"Er ist der fünfte Planet von der Sonne aus, der erste nach dem Mars.",
+					"Es ist Jupiter. Klick den großen, gestreiften Planeten nach dem Mars an."
+				]
+			},
 			"found": {
-				"simple": "Jupiter! Er ist so groß, dass 11 Erden nebeneinander quer hineinpassen würden. Sein Großer Roter Fleck ist ein Sturm, der größer ist als die Erde.",
+				"simple": "Jupiter! Auf ihm tobt ein riesiger Sturm, der Große Rote Fleck. Der Sturm ist größer als die Erde.",
 				"standard": "Jupiter: 11 Erden breit und mehr als doppelt so schwer wie alle anderen Planeten zusammen. Sein Großer Roter Fleck ist ein Sturm, der breiter ist als die Erde.",
 				"advanced": "Jupiter: 2,5-mal so viel Masse wie alle anderen Planeten zusammen und 11 Erddurchmesser breit. Sein Großer Roter Fleck ist ein Sturm, breiter als die Erde, der seit mehr als 150 Jahren beobachtet wird."
 			}
@@ -91,13 +206,20 @@
 				"standard": "Finde den Planeten mit den hellsten Ringen im Sonnensystem.",
 				"advanced": "Finde den Planeten, dessen Ringe fast von der Erde bis zum Mond reichen würden und trotzdem meist dünner als ein Kilometer sind."
 			},
-			"hints": [
-				"Seine Ringe bestehen aus unzähligen Eisstücken.",
-				"Er ist der sechste Planet von der Sonne aus, nach dem Jupiter.",
-				"Es ist Saturn. Klick den Planeten mit den großen Ringen nach dem Jupiter an."
-			],
+			"hints": {
+				"simple": [
+					"Seine Ringe bestehen aus ganz vielen Eisstücken.",
+					"Es ist der Planet nach dem Jupiter.",
+					"Es ist Saturn. Klick den Planeten mit den großen Ringen an."
+				],
+				"standard": [
+					"Seine Ringe bestehen aus unzähligen Eisstücken.",
+					"Er ist der sechste Planet von der Sonne aus, nach dem Jupiter.",
+					"Es ist Saturn. Klick den Planeten mit den großen Ringen nach dem Jupiter an."
+				]
+			},
 			"found": {
-				"simple": "Saturn! Seine Ringe bestehen aus Milliarden Eisstücken. Manche sind so klein wie Sandkörner, manche so groß wie ein Haus.",
+				"simple": "Saturn! Seine Ringe bestehen aus ganz, ganz vielen Eisstücken. Manche sind so klein wie Sandkörner, manche so groß wie ein Haus.",
 				"standard": "Saturn. Seine Ringe sind Milliarden Brocken aus Wassereis, von Staubkörnchen bis zu hausgroßen Blöcken, die alle um den Planeten kreisen.",
 				"advanced": "Saturn. Seine Hauptringe sind etwa 270 000 km breit, aber meist nur rund 10 Meter dick. Sie bestehen aus Wassereis-Teilchen von Staubkörnern bis zu mehrere Meter großen Brocken."
 			}
@@ -108,13 +230,20 @@
 				"standard": "Finde den heißesten Planeten – und nein, es ist nicht der, der der Sonne am nächsten ist.",
 				"advanced": "Finde den Planeten mit der heißesten Oberfläche, obwohl ein anderer Planet näher an der Sonne ist."
 			},
-			"hints": [
-				"Seine dicken Wolken halten die Wärme fest wie eine Decke.",
-				"Er ist der zweite Planet von der Sonne aus, zwischen Merkur und Erde.",
-				"Es ist die Venus. Klick den zweiten Planeten von der Sonne aus an."
-			],
+			"hints": {
+				"simple": [
+					"Seine dicken Wolken halten die Wärme drinnen, wie eine Decke.",
+					"Es ist der zweite Planet von der Sonne aus.",
+					"Es ist die Venus. Klick den zweiten Planeten von der Sonne aus an."
+				],
+				"standard": [
+					"Seine dicken Wolken halten die Wärme fest wie eine Decke.",
+					"Er ist der zweite Planet von der Sonne aus, zwischen Merkur und Erde.",
+					"Es ist die Venus. Klick den zweiten Planeten von der Sonne aus an."
+				]
+			},
 			"found": {
-				"simple": "Die Venus! Ihre dicke Luft hält die Wärme der Sonne fest. Der Boden ist etwa 465 °C heiß – heiß genug, um Blei zu schmelzen.",
+				"simple": "Die Venus! Ihre dicke Luft hält die Wärme der Sonne fest. Der Boden ist heißer als ein Pizzaofen, heiß genug, um Metall zu schmelzen.",
 				"standard": "Die Venus. Ihre dicke Luft aus Kohlendioxid hält die Wärme fest, darum ist ihre Oberfläche Tag und Nacht etwa 465 °C heiß – heißer als der Merkur.",
 				"advanced": "Die Venus. Ein galoppierender Treibhauseffekt in ihrer dichten Kohlendioxid-Atmosphäre, mit etwa 90-mal dem Druck am Erdboden, hält den Boden Tag und Nacht bei rund 465 °C – heißer als die Tagseite des Merkur."
 			}
@@ -125,11 +254,18 @@
 				"standard": "Finde den Planeten mit dem kürzesten Jahr: Er umrundet die Sonne in weniger als drei Erdmonaten.",
 				"advanced": "Finde den Planeten, der in einem Erdjahr mehr als viermal um die Sonne läuft."
 			},
-			"hints": [
-				"Je näher ein Planet an der Sonne ist, desto schneller kreist er um sie.",
-				"Schau dir den Planeten an, der der Sonne am nächsten ist. Seine Karte verrät, wie lang sein Jahr ist.",
-				"Es ist Merkur, der erste Planet von der Sonne aus. Klick ihn an."
-			],
+			"hints": {
+				"simple": [
+					"Planeten nah an der Sonne kreisen schneller um sie herum.",
+					"Schau dir den Planeten an, der der Sonne am nächsten ist. Seine Karte verrät, wie lang sein Jahr ist.",
+					"Es ist Merkur, der Planet, der der Sonne am nächsten ist. Klick ihn an."
+				],
+				"standard": [
+					"Je näher ein Planet an der Sonne ist, desto schneller kreist er um sie.",
+					"Schau dir den Planeten an, der der Sonne am nächsten ist. Seine Karte verrät, wie lang sein Jahr ist.",
+					"Es ist Merkur, der erste Planet von der Sonne aus. Klick ihn an."
+				]
+			},
 			"found": {
 				"simple": "Merkur! Sein Jahr dauert nur 88 Tage. Wenn du dort leben würdest, hättest du etwa alle drei Monate Geburtstag.",
 				"standard": "Merkur. Er umrundet die Sonne in nur 88 Tagen und saust dabei mit etwa 47 km pro Sekunde dahin.",
@@ -142,11 +278,18 @@
 				"standard": "Finde einen Planeten, der sich rückwärts dreht – andersherum als die Erde.",
 				"advanced": "Finde einen Planeten mit rückläufiger Rotation: Er dreht sich entgegen der Richtung, in der er die Sonne umläuft."
 			},
-			"hints": [
-				"Klick einen Planeten an und schau auf seiner Karte, wie er sich dreht.",
-				"Es gibt zwei davon: Einer ist der Nachbar der Erde, der andere liegt auf der Seite.",
-				"Versuch es mit der Venus, dem zweiten Planeten von der Sonne aus – oder mit Uranus, dem siebten."
-			],
+			"hints": {
+				"simple": [
+					"Klick einen Planeten an und schau auf seiner Karte, wie er sich dreht.",
+					"Es gibt zwei. Einer ist der Nachbar der Erde. Der andere liegt auf der Seite.",
+					"Versuch es mit der Venus, dem zweiten Planeten. Oder mit Uranus, dem siebten."
+				],
+				"standard": [
+					"Klick einen Planeten an und schau auf seiner Karte, wie er sich dreht.",
+					"Es gibt zwei davon: Einer ist der Nachbar der Erde, der andere liegt auf der Seite.",
+					"Versuch es mit der Venus, dem zweiten Planeten von der Sonne aus – oder mit Uranus, dem siebten."
+				]
+			},
 			"found": {
 				"simple": "Richtig! Die Venus dreht sich rückwärts, darum geht dort die Sonne im Westen auf. Auch Uranus dreht sich rückwärts, weil er umgekippt ist.",
 				"standard": "Ja! Die Venus dreht sich rückwärts, darum geht die Sonne dort im Westen auf. Auch Uranus gilt als rückwärts drehend: Er ist so weit umgekippt, dass er auf der Seite rollt.",
@@ -159,11 +302,18 @@
 				"standard": "Finde einen Mond mit Geysiren, die Wasser aus einem versteckten Ozean ins All sprühen.",
 				"advanced": "Finde den Mond, dessen Geysire am Südpol einen der Ringe seines Planeten mit Eis versorgen."
 			},
-			"hints": [
-				"Er gehört zu dem Planeten mit den großen, hellen Ringen.",
-				"Klick Saturn an und schau dir die kleinen Monde nahe bei ihm an. Es ist der weißeste von ihnen.",
-				"Es ist Enceladus, ein Mond des Saturn. Klick Saturn an und dann Enceladus."
-			],
+			"hints": {
+				"simple": [
+					"Er gehört zu dem Planeten mit den großen, hellen Ringen.",
+					"Klick Saturn an. Schau dir dann die kleinen Monde nahe bei ihm an. Es ist der weißeste.",
+					"Es ist Enceladus, ein Mond des Saturn. Klick Saturn an und dann Enceladus."
+				],
+				"standard": [
+					"Er gehört zu dem Planeten mit den großen, hellen Ringen.",
+					"Klick Saturn an und schau dir die kleinen Monde nahe bei ihm an. Es ist der weißeste von ihnen.",
+					"Es ist Enceladus, ein Mond des Saturn. Klick Saturn an und dann Enceladus."
+				]
+			},
 			"found": {
 				"simple": "Enceladus! Unter seinem Eis ist ein salziger Ozean. Am Südpol schießt Wasser aus Rissen, wie riesige Springbrunnen.",
 				"standard": "Enceladus. Die Raumsonde Cassini sah Geysire, die Wasserdampf und Eis aus langen Rissen nahe seinem Südpol schleudern. Sie kommen aus einem salzigen Ozean unter dem Eis.",
@@ -176,11 +326,18 @@
 				"standard": "Finde den einzigen großen Mond, der seinen Planeten falsch herum umkreist.",
 				"advanced": "Finde den einzigen großen Mond auf einer rückläufigen Bahn – ein starkes Zeichen dafür, dass er eingefangen wurde."
 			},
-			"hints": [
-				"Sein Planet ist der, der am weitesten von der Sonne entfernt ist.",
-				"Klick Neptun an, stell die Geschwindigkeit auf 1 Tag/s und schau, in welche Richtung sein größter Mond läuft.",
-				"Es ist Triton, der größte Mond des Neptun. Klick Neptun an und dann Triton."
-			],
+			"hints": {
+				"simple": [
+					"Sein Planet ist der, der am weitesten von der Sonne entfernt ist.",
+					"Klick Neptun an. Lass die Zeit schneller laufen und schau dir seinen größten Mond an.",
+					"Es ist Triton, der größte Mond des Neptun. Klick Neptun an und dann Triton."
+				],
+				"standard": [
+					"Sein Planet ist der, der am weitesten von der Sonne entfernt ist.",
+					"Klick Neptun an, stell die Geschwindigkeit auf 1 Tag/s und schau, in welche Richtung sein größter Mond läuft.",
+					"Es ist Triton, der größte Mond des Neptun. Klick Neptun an und dann Triton."
+				]
+			},
 			"found": {
 				"simple": "Triton! Er kreist rückwärts um Neptun. Neptun hat ihn wahrscheinlich vor langer Zeit eingefangen.",
 				"standard": "Triton. Er umkreist Neptun entgegen der Drehrichtung des Planeten. Wahrscheinlich entstand er weit draußen im Kuipergürtel und wurde später von Neptun eingefangen.",
@@ -193,13 +350,20 @@
 				"standard": "Finde den Planeten, auf dem ein Tag länger dauert als ein Jahr.",
 				"advanced": "Finde den Planeten, der für eine Drehung um seine Achse länger braucht als für einen Umlauf um die Sonne."
 			},
-			"hints": [
-				"Vergleiche, wie lange ein Planet für eine Drehung braucht und wie lang sein Jahr ist. Die Karten zeigen beides.",
-				"Es ist ein Gesteinsplanet nahe der Sonne, versteckt unter dicken Wolken.",
-				"Es ist die Venus. Klick sie an und vergleiche auf ihrer Karte die Drehung mit dem Jahr."
-			],
+			"hints": {
+				"simple": [
+					"Ein Tag ist eine Drehung. Ein Jahr ist eine Reise um die Sonne. Die Karten zeigen beides.",
+					"Es ist ein Planet aus Gestein, nah bei der Sonne und versteckt unter dicken Wolken.",
+					"Es ist die Venus. Klick sie an und schau dir ihre Karte an."
+				],
+				"standard": [
+					"Vergleiche, wie lange ein Planet für eine Drehung braucht und wie lang sein Jahr ist. Die Karten zeigen beides.",
+					"Es ist ein Gesteinsplanet nahe der Sonne, versteckt unter dicken Wolken.",
+					"Es ist die Venus. Klick sie an und vergleiche auf ihrer Karte die Drehung mit dem Jahr."
+				]
+			},
 			"found": {
-				"simple": "Die Venus! Sie dreht sich so langsam, dass eine Drehung 243 Tage dauert. Ihr Jahr dauert aber nur 225 Tage.",
+				"simple": "Die Venus! Sie dreht sich so langsam, dass eine Drehung länger dauert als eine Reise um die Sonne.",
 				"standard": "Die Venus. Eine Drehung um ihre Achse dauert 243 Erdtage, eine Reise um die Sonne nur 225.",
 				"advanced": "Die Venus: Eine siderische Rotation dauert 243 Tage, ein Umlauf 225 Tage. Weil sie sich rückwärts dreht, ist ihr Sonnentag – von einem Sonnenaufgang zum nächsten – kürzer, etwa 117 Tage."
 			}
@@ -210,13 +374,20 @@
 				"standard": "Finde die Welt, auf der eine Raumsonde eine der kältesten Temperaturen im Sonnensystem gemessen hat: unter −240 °C, in Kratern ohne Sonnenlicht.",
 				"advanced": "Finde die Welt, auf der eine Raumsonde etwa −247 °C gemessen hat, kälter als die Oberfläche des Pluto, am Grund von Kratern, die seit Milliarden Jahren kein Sonnenlicht gesehen haben."
 			},
-			"hints": [
-				"Sie ist viel näher, als du denkst – nicht am Rand des Sonnensystems.",
-				"Sie kreist um die Erde. Die kältesten Stellen liegen in Kratern nahe ihren Polen.",
-				"Es ist unser Mond. Klick die Erde an und dann den Mond."
-			],
+			"hints": {
+				"simple": [
+					"Sie ist viel näher, als du denkst.",
+					"Sie kreist um die Erde. Die kältesten Stellen sind tiefe Löcher nahe ihren Polen.",
+					"Es ist unser Mond. Klick die Erde an und dann den Mond."
+				],
+				"standard": [
+					"Sie ist viel näher, als du denkst – nicht am Rand des Sonnensystems.",
+					"Sie kreist um die Erde. Die kältesten Stellen liegen in Kratern nahe ihren Polen.",
+					"Es ist unser Mond. Klick die Erde an und dann den Mond."
+				]
+			},
 			"found": {
-				"simple": "Unser Mond! Tiefe Krater an seinen Polen liegen immer im Schatten, darum sind sie sogar kälter als Pluto. Vielleicht ist darin Eis versteckt.",
+				"simple": "Unser Mond! Nahe seinen Polen gibt es tiefe Löcher, die Krater heißen und immer im Schatten liegen. Sie sind sogar kälter als Pluto, und vielleicht ist darin Eis versteckt.",
 				"standard": "Unser Mond. Nahe seinen Polen liegen tiefe Krater immer im Schatten. Der Lunar Reconnaissance Orbiter der NASA hat dort unter −240 °C gemessen – kälter als die Oberfläche des Pluto. In ihnen steckt Wassereis. Nur wenig wärmer ist Triton, der Mond des Neptun, mit etwa −235 °C.",
 				"advanced": "Der Mond. Seine Achse ist nur um 1,5° geneigt, darum sehen manche Kraterböden nahe den Polen nie die Sonne. Der Lunar Reconnaissance Orbiter der NASA hat dort etwa 26 K gemessen, und die Krater speichern Wassereis – ein Vorrat für künftige Stationen. Die kälteste Oberfläche, die Voyager 2 gemessen hat, auf dem Neptunmond Triton, hatte etwa 38 K."
 			}
@@ -227,11 +398,18 @@
 				"standard": "Finde den Planeten, der so weit umgekippt ist, dass er auf der Seite um die Sonne rollt.",
 				"advanced": "Finde den Planeten, dessen Achse um fast 98° geneigt ist, sodass jeder Pol etwa 42 Jahre Sonnenlicht und danach 42 Jahre Dunkelheit bekommt."
 			},
-			"hints": [
-				"Schau auf die Ringe: Bei diesem Planeten stehen sie fast senkrecht.",
-				"Es ist ein blassblaugrüner Eisriese, weit hinter dem Saturn.",
-				"Es ist Uranus, der siebte Planet. Klick ihn an und schau dir seine Ringe an."
-			],
+			"hints": {
+				"simple": [
+					"Schau auf die Ringe. Bei diesem Planeten stehen sie fast aufrecht.",
+					"Es ist ein blassblauer Planet, weit hinter dem Saturn.",
+					"Es ist Uranus, der siebte Planet. Klick ihn an und schau dir seine Ringe an."
+				],
+				"standard": [
+					"Schau auf die Ringe: Bei diesem Planeten stehen sie fast senkrecht.",
+					"Es ist ein blassblaugrüner Eisriese, weit hinter dem Saturn.",
+					"Es ist Uranus, der siebte Planet. Klick ihn an und schau dir seine Ringe an."
+				]
+			},
 			"found": {
 				"simple": "Uranus! Er liegt auf der Seite, vielleicht weil vor langer Zeit etwas Riesiges mit ihm zusammengestoßen ist. Auch seine Ringe stehen senkrecht.",
 				"standard": "Uranus. Seine Achse ist um 98° umgekippt, darum rollt er auf seiner Bahn dahin. Ein gewaltiger Zusammenstoß vor langer Zeit könnte ihn umgeworfen haben.",
@@ -244,11 +422,18 @@
 				"standard": "Finde den Planeten, der eine geringere Dichte hat als Wasser: In einer ausreichend großen Badewanne würde er schwimmen.",
 				"advanced": "Finde den einzigen Planeten mit einer mittleren Dichte, die kleiner ist als die von Wasser."
 			},
-			"hints": [
-				"Es ist ein Gasriese, vor allem aus Wasserstoff und Helium.",
-				"Es ist nicht der größte Riese, sondern der mit den breiten, hellen Ringen.",
-				"Es ist Saturn, der sechste Planet. Klick ihn an."
-			],
+			"hints": {
+				"simple": [
+					"Es ist ein Riese, der vor allem aus Gas besteht.",
+					"Es ist nicht der größte Riese. Es ist der mit den breiten, hellen Ringen.",
+					"Es ist Saturn, der sechste Planet. Klick ihn an."
+				],
+				"standard": [
+					"Es ist ein Gasriese, vor allem aus Wasserstoff und Helium.",
+					"Es ist nicht der größte Riese, sondern der mit den breiten, hellen Ringen.",
+					"Es ist Saturn, der sechste Planet. Klick ihn an."
+				]
+			},
 			"found": {
 				"simple": "Saturn! Er ist riesig, besteht aber vor allem aus den leichtesten Gasen. Für seine Größe ist er leichter als Wasser.",
 				"standard": "Saturn. Er besteht vor allem aus Wasserstoff und Helium, den leichtesten Gasen, darum ist er im Mittel nur etwa 70 % so dicht wie Wasser.",
@@ -257,15 +442,22 @@
 		},
 		"volcanoMoon": {
 			"clue": {
-				"simple": "Finde den Mond mit Hunderten Vulkanen, die gerade jetzt ausbrechen.",
+				"simple": "Finde den Mond mit vielen Vulkanen, die gerade jetzt ausbrechen.",
 				"standard": "Finde die vulkanreichste Welt im Sonnensystem: einen Mond mit Hunderten aktiven Vulkanen.",
 				"advanced": "Finde den Mond, den die Gezeiten so stark aufheizen, dass er der vulkanisch aktivste Körper im Sonnensystem ist."
 			},
-			"hints": [
-				"Er kreist um den größten Planeten.",
-				"Klick Jupiter an und schau dir seine vier großen Monde an. Es ist der gelbe, fleckige, der Jupiter am nächsten ist.",
-				"Es ist Io. Klick Jupiter an und dann Io."
-			],
+			"hints": {
+				"simple": [
+					"Er kreist um den größten Planeten.",
+					"Klick Jupiter an. Schau dir seine vier großen Monde an. Es ist der gelbe, fleckige, der Jupiter am nächsten ist.",
+					"Es ist Io. Klick Jupiter an und dann Io."
+				],
+				"standard": [
+					"Er kreist um den größten Planeten.",
+					"Klick Jupiter an und schau dir seine vier großen Monde an. Es ist der gelbe, fleckige, der Jupiter am nächsten ist.",
+					"Es ist Io. Klick Jupiter an und dann Io."
+				]
+			},
 			"found": {
 				"simple": "Io! Jupiter knetet ihn immer wieder durch, dadurch wird er innen heiß. Seine Vulkane schleudern Material hoch ins All.",
 				"standard": "Io hat etwa 400 aktive Vulkane. Jupiters Schwerkraft knetet ihn auf seiner Bahn durch und heizt sein Inneres auf. Manche Fontänen steigen Hunderte Kilometer hoch.",
@@ -278,13 +470,20 @@
 				"standard": "Finde den einzigen Mond mit einer dicken Atmosphäre, dichter als die Luft auf der Erde.",
 				"advanced": "Finde den einzigen Mond mit einer dichten Atmosphäre – dem 1,5-fachen Druck am Erdboden – und Seen aus flüssigem Methan."
 			},
-			"hints": [
-				"Er ist der zweitgrößte Mond im Sonnensystem.",
-				"Er gehört zum Saturn. Er ist mit Abstand Saturns größter Mond.",
-				"Es ist Titan. Klick Saturn an und dann Titan."
-			],
+			"hints": {
+				"simple": [
+					"Er ist der zweitgrößte Mond von allen.",
+					"Er gehört zum Saturn. Er ist mit Abstand Saturns größter Mond.",
+					"Es ist Titan. Klick Saturn an und dann Titan."
+				],
+				"standard": [
+					"Er ist der zweitgrößte Mond im Sonnensystem.",
+					"Er gehört zum Saturn. Er ist mit Abstand Saturns größter Mond.",
+					"Es ist Titan. Klick Saturn an und dann Titan."
+				]
+			},
 			"found": {
-				"simple": "Titan! Er ist in orangefarbenen Dunst gehüllt und hat Seen und Flüsse – nicht aus Wasser, sondern aus flüssigem Methan. 2005 ist die Sonde Huygens dort gelandet.",
+				"simple": "Titan! Er ist in orangefarbenen Dunst gehüllt. Er hat Seen und Flüsse, aber nicht aus Wasser: Sie sind aus einem flüssigen Gas namens Methan. Eine kleine Raumsonde namens Huygens ist dort gelandet.",
 				"standard": "Titan. Seine dicke Stickstoffluft verbirgt die Oberfläche unter orangefarbenem Dunst. Es gibt Regen, Flüsse und Seen – aus flüssigem Methan. Die Sonde Huygens ist 2005 dort gelandet.",
 				"advanced": "Titan: eine Stickstoffatmosphäre mit 1,5 bar am Boden und ein Methankreislauf wie der Wasserkreislauf der Erde – Wolken, Regen, Flüsse und Meere aus flüssigen Kohlenwasserstoffen. Huygens landete 2005; die NASA-Sonde Dragonfly soll in den 2030er-Jahren ankommen."
 			}
@@ -295,11 +494,18 @@
 				"standard": "Finde einen Mond, der breiter ist als der Planet Merkur.",
 				"advanced": "Finde einen Mond mit einem größeren Durchmesser als der Planet Merkur. Es gibt zwei."
 			},
-			"hints": [
-				"Vergleiche die Größen auf den Karten: Merkur ist etwa 4900 km breit.",
-				"Schau dir die größten Monde von Jupiter und Saturn an.",
-				"Ganymed (ein Mond des Jupiter) und Titan (ein Mond des Saturn) zählen beide. Klick Jupiter an und dann Ganymed."
-			],
+			"hints": {
+				"simple": [
+					"Vergleiche die Größen auf den Karten. Merkur ist ein kleiner Planet.",
+					"Schau dir die größten Monde von Jupiter und Saturn an.",
+					"Ganymed (ein Mond des Jupiter) und Titan (ein Mond des Saturn) zählen beide. Klick Jupiter an und dann Ganymed."
+				],
+				"standard": [
+					"Vergleiche die Größen auf den Karten: Merkur ist etwa 4900 km breit.",
+					"Schau dir die größten Monde von Jupiter und Saturn an.",
+					"Ganymed (ein Mond des Jupiter) und Titan (ein Mond des Saturn) zählen beide. Klick Jupiter an und dann Ganymed."
+				]
+			},
 			"found": {
 				"simple": "Ja! Ganymed und Titan sind beide breiter als Merkur. Aber Merkur besteht aus schwerem Gestein und Eisen, darum wiegt er trotzdem mehr.",
 				"standard": "Richtig! Ganymed (5268 km) und Titan (5150 km) sind beide breiter als Merkur (4879 km). Merkur ist trotzdem mehr als doppelt so schwer: Er besteht aus Gestein und Eisen, sie aus Gestein und Eis.",
@@ -312,11 +518,18 @@
 				"standard": "Finde den glattesten Mond: eine Kugel aus rissigem Eis, unter der ein Ozean mit mehr Wasser als in allen Meeren der Erde liegt.",
 				"advanced": "Finde den Mond, dessen rissiger Eispanzer einen salzigen Ozean mit etwa doppelt so viel Wasser wie alle Ozeane der Erde bedeckt."
 			},
-			"hints": [
-				"Er kreist um den größten Planeten.",
-				"Klick Jupiter an und schau dir seine vier großen Monde an. Es ist der kleinste von ihnen, hell mit langen braunen Rissen.",
-				"Es ist Europa. Klick Jupiter an und dann Europa."
-			],
+			"hints": {
+				"simple": [
+					"Er kreist um den größten Planeten.",
+					"Klick Jupiter an. Schau dir seine vier großen Monde an. Es ist der kleinste, hell mit langen braunen Rissen.",
+					"Es ist Europa. Klick Jupiter an und dann Europa."
+				],
+				"standard": [
+					"Er kreist um den größten Planeten.",
+					"Klick Jupiter an und schau dir seine vier großen Monde an. Es ist der kleinste von ihnen, hell mit langen braunen Rissen.",
+					"Es ist Europa. Klick Jupiter an und dann Europa."
+				]
+			},
 			"found": {
 				"simple": "Europa! Unter dem Eis liegt ein riesiger salziger Ozean. Forschende fragen sich, ob darin etwas leben könnte. Eine Raumsonde namens Europa Clipper ist schon unterwegs.",
 				"standard": "Europa. Unter einem viele Kilometer dicken Eispanzer liegt ein salziger Ozean. Er ist einer der besten Orte, um nach Leben außerhalb der Erde zu suchen – die NASA-Sonde Europa Clipper kommt 2030 an.",
@@ -329,11 +542,18 @@
 				"standard": "Finde den Planeten, den das Sonnenlicht erst nach mehr als vier Stunden erreicht.",
 				"advanced": "Finde den Planeten, den das Sonnenlicht erst nach über vier Stunden erreicht – 30-mal so lange wie bis zur Erde."
 			},
-			"hints": [
-				"Die Karten verraten, wie lange das Sonnenlicht bis dorthin braucht.",
-				"Je weiter draußen ein Planet ist, desto länger reist das Licht. Versuch es mit den Planeten am Rand.",
-				"Es ist Neptun, der äußerste Planet. Klick ihn an und lies seine Karte."
-			],
+			"hints": {
+				"simple": [
+					"Die Karten verraten, wie lange das Sonnenlicht bis dorthin braucht.",
+					"Je weiter draußen ein Planet ist, desto länger reist das Licht. Versuch es mit den Planeten am Rand.",
+					"Es ist Neptun, der äußerste Planet. Klick ihn an und lies seine Karte."
+				],
+				"standard": [
+					"Die Karten verraten, wie lange das Sonnenlicht bis dorthin braucht.",
+					"Je weiter draußen ein Planet ist, desto länger reist das Licht. Versuch es mit den Planeten am Rand.",
+					"Es ist Neptun, der äußerste Planet. Klick ihn an und lies seine Karte."
+				]
+			},
 			"found": {
 				"simple": "Neptun! Sein Sonnenlicht war etwa vier Stunden unterwegs. Bis zur Erde braucht es nur 8 Minuten.",
 				"standard": "Neptun. Das Sonnenlicht braucht etwa 4 Stunden und 10 Minuten bis dorthin, bis zur Erde nur 8 Minuten. Darum bekommt Neptun 900-mal weniger Licht als die Erde.",
@@ -370,11 +590,18 @@
 				"standard": "Finde den Planeten mit dem kürzesten Tag: Eine Drehung dauert weniger als 10 Stunden.",
 				"advanced": "Finde den Planeten, der sich am schnellsten dreht – so schnell, dass er an den Polen sichtbar abgeplattet ist."
 			},
-			"hints": [
-				"Die Karten zeigen, wie lange jeder Planet für eine Drehung braucht.",
-				"Große Planeten drehen sich schnell. Versuch es mit den Riesen.",
-				"Es ist Jupiter. Klick ihn an und schau auf seiner Karte nach seiner Drehung."
-			],
+			"hints": {
+				"simple": [
+					"Die Karten zeigen, wie lange jeder Planet für eine Drehung braucht.",
+					"Große Planeten drehen sich schnell. Versuch es mit den Riesen.",
+					"Es ist Jupiter. Klick ihn an und schau auf seiner Karte nach seiner Drehung."
+				],
+				"standard": [
+					"Die Karten zeigen, wie lange jeder Planet für eine Drehung braucht.",
+					"Große Planeten drehen sich schnell. Versuch es mit den Riesen.",
+					"Es ist Jupiter. Klick ihn an und schau auf seiner Karte nach seiner Drehung."
+				]
+			},
 			"found": {
 				"simple": "Jupiter! Obwohl er der größte Planet ist, dreht er sich in weniger als 10 Stunden einmal. Ein Tag dort ist nicht einmal halb so lang wie auf der Erde.",
 				"standard": "Jupiter dreht sich alle 9 Stunden und 56 Minuten einmal – der kürzeste Tag aller Planeten, obwohl er der größte ist.",
@@ -387,11 +614,18 @@
 				"standard": "Finde den Planeten mit der kältesten Luft, die je auf einem Planeten gemessen wurde – es ist nicht der äußerste.",
 				"advanced": "Finde den Planeten, dessen Atmosphäre die tiefste Temperatur aller Planeten erreicht, etwa −224 °C, obwohl er nicht der entfernteste ist."
 			},
-			"hints": [
-				"Es ist einer der beiden blauen Eisriesen am Rand des Sonnensystems.",
-				"Von diesen beiden ist es der, der näher an der Sonne ist – der, der auf der Seite liegt.",
-				"Es ist Uranus, der siebte Planet. Klick ihn an."
-			],
+			"hints": {
+				"simple": [
+					"Es ist einer der beiden blauen Planeten am Rand.",
+					"Von diesen beiden ist es der, der näher an der Sonne ist. Er liegt auf der Seite.",
+					"Es ist Uranus, der siebte Planet. Klick ihn an."
+				],
+				"standard": [
+					"Es ist einer der beiden blauen Eisriesen am Rand des Sonnensystems.",
+					"Von diesen beiden ist es der, der näher an der Sonne ist – der, der auf der Seite liegt.",
+					"Es ist Uranus, der siebte Planet. Klick ihn an."
+				]
+			},
 			"found": {
 				"simple": "Uranus! Er ist sogar kälter als Neptun, der weiter weg ist. Uranus hat fast keine Wärme mehr in seinem Inneren.",
 				"standard": "Uranus: Seine Atmosphäre kühlt auf etwa −224 °C ab, kälter als die des Neptun. Anders als die anderen Riesen gibt Uranus fast keine eigene Wärme ab.",
@@ -404,11 +638,18 @@
 				"standard": "Saturns Ringe sind berühmt, aber er ist nicht der einzige Planet mit Ringen. Finde einen anderen.",
 				"advanced": "Finde einen Planeten mit Ringen außer Saturn. Die Ringe der anderen wurden erst ab 1977 entdeckt."
 			},
-			"hints": [
-				"Die anderen Ringe sind dünn und dunkel, flieg also nah heran, um sie zu sehen.",
-				"Nur die Riesenplaneten haben Ringe. Versuch es mit einem, der nicht Saturn ist.",
-				"Jupiter, Uranus und Neptun haben alle Ringe. Klick Uranus an und schau genau hin."
-			],
+			"hints": {
+				"simple": [
+					"Die anderen Ringe sind dünn und dunkel. Flieg nah heran, um sie zu sehen.",
+					"Nur die Riesenplaneten haben Ringe. Versuch es mit einem, der nicht Saturn ist.",
+					"Jupiter, Uranus und Neptun haben alle Ringe. Klick Uranus an und schau genau hin."
+				],
+				"standard": [
+					"Die anderen Ringe sind dünn und dunkel, flieg also nah heran, um sie zu sehen.",
+					"Nur die Riesenplaneten haben Ringe. Versuch es mit einem, der nicht Saturn ist.",
+					"Jupiter, Uranus und Neptun haben alle Ringe. Klick Uranus an und schau genau hin."
+				]
+			},
 			"found": {
 				"simple": "Ja! Jupiter, Uranus und Neptun haben alle Ringe. Sie sind dünn und dunkel, darum wurden sie erst mit Raumsonden und großen Teleskopen gefunden.",
 				"standard": "Richtig: Jupiter, Uranus und Neptun haben alle Ringe. Sie sind dünn und dunkel, aus Staub und dunklem Gestein statt hellem Eis, darum wurden sie erst zwischen 1977 und 1989 entdeckt.",

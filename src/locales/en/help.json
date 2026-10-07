@@ -1036,29 +1036,33 @@
 			"why": "The hunt fits the topic of the day, and a link starts it for every student in your language.",
 			"how": [
 				"Open Tools → “Scavenger hunt” and choose “Make your own hunt”.",
-				"Tick the clues, then Start, or Share to get the link for the class."
+				"Tick the clues from any level, then Start, or Share to get the link for the class. Easy clues keep their pictures and their voice."
 			]
 		},
 		"hunt": {
 			"title": "Scavenger hunt",
 			"what": {
-				"standard": "Clues to solve by finding the right world in the scene and clicking it, with hints when you are stuck and a story when you find it.",
-				"simple": "Read a clue, find the right world, and click it!"
+				"standard": "Clues to solve by finding the right world in the scene and clicking it, at three levels: Easy (ages 6–8) with a picture and a voice for every clue, Medium (9–11) and Tricky (12 and up). Hints when you are stuck, a story and a star for every find, and a certificate at the end.",
+				"simple": "Find the right world and click it! Easy clues have a picture, and a voice can read them to you. Every find gives you a star."
 			},
 			"why": {
-				"standard": "Searching makes you explore: there is no score and no timer, and every wrong guess is a world you just visited.",
-				"simple": "You learn a lot while you look. There is no timer, and no losing."
+				"standard": "Searching makes you explore: there is no score and no timer, and every wrong guess is a world you just visited. Easy works for children who cannot read yet: they match the picture, the hints light up the sky, and everything can be read aloud, also for a whole class at the projector.",
+				"simple": "You learn a lot while you look. There is no timer and no losing. You do not even need to read: look at the picture and listen."
 			},
 			"how": {
 				"standard": [
-					"Open Tools at the bottom right, choose “Scavenger hunt” and pick a hunt: Easy, Medium or Tricky.",
-					"Read the clue, find the world and click it.",
-					"Stuck? “Need a hint?”, and after the last hint “Show me”."
+					"Open Tools at the bottom right and choose “Scavenger hunt”.",
+					"Pick how hard it should be (Easy, Medium or Tricky; it starts on the one for your reading level), then a hunt.",
+					"Read the clue or press the speaker to hear it, then find the world and click it.",
+					"Stuck? “Need a hint?”: at Easy the first hint lights up a part of the sky and the second makes the answer blink; after the last one, “Show me”.",
+					"At the end, “Make a certificate” gives you a picture to save or print."
 				],
 				"simple": [
 					"Press Tools, then “Scavenger hunt”.",
-					"Pick an easy hunt.",
-					"Read the clue and click the right world."
+					"Pick “Easy”, then a hunt.",
+					"Look at the picture and find it. Press the speaker to hear the clue.",
+					"Stuck? Press “Need a hint?”.",
+					"At the end, press “Get your certificate”."
 				]
 			}
 		},

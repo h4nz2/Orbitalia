@@ -1036,29 +1036,33 @@
 			"why": "La búsqueda encaja con el tema del día, y un enlace la inicia para cada alumno en tu idioma.",
 			"how": [
 				"Abre Herramientas → «Búsqueda del tesoro» y elige «Crea tu propia búsqueda».",
-				"Marca las pistas y luego pulsa Empezar, o Compartir para obtener el enlace para la clase."
+				"Marca pistas de cualquier nivel y luego pulsa Empezar, o Compartir para obtener el enlace para la clase. Las pistas del nivel Fácil conservan sus imágenes y su voz."
 			]
 		},
 		"hunt": {
 			"title": "Búsqueda del tesoro",
 			"what": {
-				"standard": "Pistas que se resuelven encontrando el mundo correcto en la escena y haciendo clic en él, con ayudas cuando te atascas y una historia cuando lo encuentras.",
-				"simple": "Lee una pista, encuentra el mundo correcto y ¡haz clic en él!"
+				"standard": "Pistas que se resuelven encontrando el mundo correcto en la escena y haciendo clic en él, en tres niveles: Fácil (de 6 a 8 años), con una imagen y una voz para cada pista, Media (de 9 a 11) y Complicada (desde 12 años). Ayudas cuando te atascas, una historia y una estrella por cada hallazgo, y un diploma al final.",
+				"simple": "¡Encuentra el mundo correcto y haz clic en él! Las pistas fáciles tienen una imagen, y una voz te las puede leer. Por cada mundo que encuentras, ganas una estrella."
 			},
 			"why": {
-				"standard": "Buscar te hace explorar: no hay puntuación ni límite de tiempo, y cada respuesta equivocada es un mundo que acabas de visitar.",
-				"simple": "Aprendes un montón mientras buscas. No hay reloj y nadie pierde."
+				"standard": "Buscar te hace explorar: no hay puntuación ni límite de tiempo, y cada respuesta equivocada es un mundo que acabas de visitar. El nivel Fácil sirve para quienes todavía no saben leer: buscan lo que muestra la imagen, las ayudas iluminan el cielo y todo se puede leer en voz alta, también para toda la clase con el proyector.",
+				"simple": "Aprendes un montón mientras buscas. No hay reloj y nadie pierde. Ni siquiera tienes que saber leer: mira la imagen y escucha."
 			},
 			"how": {
 				"standard": [
-					"Abre Herramientas abajo a la derecha, elige «Búsqueda del tesoro» y luego una búsqueda: Fácil, Media o Complicada.",
-					"Lee la pista, encuentra el mundo y haz clic en él.",
-					"¿Te has atascado? Pulsa «¿Necesitas una ayuda?» y, después de la última ayuda, «Muéstramelo»."
+					"Abre Herramientas abajo a la derecha y elige «Búsqueda del tesoro».",
+					"Elige la dificultad (Fácil, Media o Complicada; empieza en la de tu nivel de lectura) y luego una búsqueda.",
+					"Lee la pista o pulsa el altavoz para escucharla; luego encuentra el mundo y haz clic en él.",
+					"¿Te has atascado? Pulsa «¿Necesitas una ayuda?»: en Fácil, la primera ayuda ilumina una parte del cielo y la segunda hace parpadear la respuesta; después de la última, «Muéstramelo».",
+					"Al final, «Crear un diploma» te da una imagen para guardar o imprimir."
 				],
 				"simple": [
 					"Pulsa Herramientas y luego «Búsqueda del tesoro».",
-					"Elige una búsqueda fácil.",
-					"Lee la pista y haz clic en el mundo correcto."
+					"Elige «Fácil» y luego una búsqueda.",
+					"Mira la imagen y encuéntrala. Pulsa el altavoz para escuchar la pista.",
+					"¿Te has atascado? Pulsa «¿Necesitas una ayuda?».",
+					"Al final, pulsa «Consigue tu diploma»."
 				]
 			}
 		},

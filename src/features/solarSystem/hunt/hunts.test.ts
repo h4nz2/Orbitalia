@@ -1,6 +1,6 @@
 import { afterEach, beforeEach, describe, expect, it } from "vitest"
 
-import { bodyById } from "@/data"
+import { bodyById, moonsOf } from "@/data"
 import { DEFAULT_LOCALE, LOCALES, READING_LEVELS, createI18n } from "@/i18n"
 import { bodyName, levelsOf } from "@/i18n/bodies"
 import { useHuntStore } from "@/store/hunt"
@@ -8,19 +8,32 @@ import { OVERVIEW, OVERVIEW_BODY_ID } from "@/store/navigation"
 import { useSimStore } from "@/store/sim"
 
 import { FRAME_PRESETS } from "../frame/presets"
+import { certificate } from "./certificate"
 import {
+	DEFAULT_DIFFICULTY,
+	DIFFICULTIES,
 	HUNTS,
 	HuntFile,
 	QUESTIONS,
 	customHuntKey,
+	difficultyOf,
 	guessOf,
 	huntFile,
+	huntsOf,
+	isEasy,
 	questionById,
 	resolveHunt,
 	showPreset,
 	solves,
 } from "./hunts"
-import { HuntTextFile, huntText, huntTitle, questionText } from "./text"
+import {
+	HuntTextFile,
+	arrivalText,
+	huntText,
+	huntTitle,
+	questionText,
+	spokenClue,
+} from "./text"
 import { showAnswer, watchAnswers } from "./watch"
 
 describe("the question bank (src/data/hunts.json)", () => {
@@ -76,10 +89,156 @@ describe("the question bank (src/data/hunts.json)", () => {
 		expect(QUESTIONS.filter((question) => !used.has(question.id))).toEqual([])
 	})
 
-	it("covers every difficulty", () => {
-		expect(new Set(HUNTS.map((hunt) => hunt.difficulty))).toEqual(
-			new Set(["easy", "medium", "hard"]),
-		)
+	it("has ready-made hunts at every difficulty", () => {
+		for (const difficulty of DIFFICULTIES) {
+			expect(huntsOf(difficulty).length, difficulty).toBeGreaterThan(0)
+		}
+		// every hunt is listed under exactly one difficulty
+		expect(DIFFICULTIES.flatMap((d) => huntsOf(d)).length).toBe(HUNTS.length)
+	})
+
+	it("opens the chooser on the difficulty of the reader's age (#52)", () => {
+		expect(DEFAULT_DIFFICULTY).toEqual({
+			simple: "easy",
+			standard: "hard",
+			advanced: "hard",
+		})
+	})
+})
+
+describe("Easy clues (#52)", () => {
+	const easy = QUESTIONS.filter(isEasy)
+	const easyHunts = huntsOf("easy")
+
+	it("are the Easy hunts' only clues, 3 to 5 of them", () => {
+		for (const hunt of easyHunts) {
+			const questions = hunt.questions.map((id) => questionById.get(id)!)
+			expect(questions.every(isEasy), hunt.id).toBe(true)
+			expect(questions.length, hunt.id).toBeGreaterThanOrEqual(3)
+			expect(questions.length, hunt.id).toBeLessThanOrEqual(5)
+		}
+		// the issue's content: at least two Easy hunts of five clues
+		expect(
+			easyHunts.filter((hunt) => hunt.questions.length === 5).length,
+		).toBeGreaterThanOrEqual(2)
+	})
+
+	it("never sit in a Medium hunt, and Tricky clues never either", () => {
+		for (const hunt of huntsOf("medium")) {
+			const levels = hunt.questions.map(
+				(id) => questionById.get(id)!.difficulty,
+			)
+			expect(
+				levels.every((level) => level === "medium"),
+				hunt.id,
+			).toBe(true)
+		}
+	})
+
+	it("each come with a picture of what to look for", () => {
+		expect(easy.length).toBeGreaterThanOrEqual(10)
+		for (const question of easy) {
+			expect(question.picture, question.id).toBeDefined()
+			// the picture shows the answer itself: matching it is the game
+			expect(question.answers, question.id).toContain(question.picture)
+			expect(question.answers.length, question.id).toBe(1)
+		}
+	})
+
+	it("ask only for what can be seen: no point of view, a moon from its planet", () => {
+		for (const question of easy) {
+			expect(question.frame, question.id).toBeUndefined()
+			const answer = bodyById.get(question.answers[0])!
+			if (answer.kind === "moon") {
+				// the hunt first takes the camera there ("We are at Jupiter.")
+				expect(question.at, question.id).toBe(answer.parentId)
+				expect(answer.featured, question.id).toBe(true)
+			} else {
+				expect(question.at, question.id).toBeUndefined()
+				expect(["star", "planet"], question.id).toContain(answer.kind)
+			}
+		}
+		// only Easy clues move the camera before asking
+		for (const question of QUESTIONS.filter((q) => !isEasy(q))) {
+			expect(question.at, question.id).toBeUndefined()
+		}
+		for (const question of QUESTIONS.filter((q) => q.at !== undefined)) {
+			expect(bodyById.get(question.at!)?.kind, question.id).toBe("planet")
+			expect(
+				moonsOf(question.at!).some((moon) =>
+					question.answers.includes(moon.id),
+				),
+				question.id,
+			).toBe(true)
+		}
+	})
+
+	describe.each(LOCALES)("%s", (locale) => {
+		const file = huntText.get(locale)!
+		/** Sentences: text up to a full stop, "!" or "?" (with Spanish's opening marks). */
+		const sentences = (text: string) =>
+			text.split(/(?<=[.!?])\s+(?=[¡¿"«„]?\p{Lu})/u).filter(Boolean)
+
+		it("have read-aloud words at every level: one short sentence, no number above 20", () => {
+			for (const question of easy) {
+				for (const level of READING_LEVELS) {
+					const i18n = createI18n({ locale, readingLevel: level })
+					const words = questionText(question.id, i18n)
+					const spoken = spokenClue(question, i18n)
+					expect(spoken.length, `${question.id}@${level}`).toBeGreaterThan(0)
+					expect(spoken, `${question.id}@${level}`).toContain(words.clue)
+					for (const text of [words.clue, words.found]) {
+						expect(
+							sentences(text),
+							`${question.id}@${level}: ${text}`,
+						).toHaveLength(1)
+						expect(text.length, `${question.id}: ${text}`).toBeLessThanOrEqual(
+							70,
+						)
+					}
+					for (const text of [spoken, words.found, ...words.hints]) {
+						const numbers = (text.match(/\d+/g) ?? []).map(Number)
+						expect(
+							numbers.filter((n) => n > 20),
+							`${question.id}: ${text}`,
+						).toEqual([])
+					}
+				}
+			}
+		})
+
+		it("say where the camera went first for a clue about moons", () => {
+			const i18n = createI18n({ locale, readingLevel: "simple" })
+			for (const question of easy) {
+				const arrival = arrivalText(question, i18n)
+				if (question.at === undefined) expect(arrival).toBeNull()
+				else {
+					expect(arrival, question.id).toContain(
+						bodyName(question.at, i18n.chain),
+					)
+					expect(spokenClue(question, i18n).startsWith(arrival!)).toBe(true)
+				}
+			}
+		})
+
+		it("give every clue simple-level hints (#52), Easy ones two before 'Show me'", () => {
+			for (const question of QUESTIONS) {
+				const hints = file.questions[question.id]!.hints
+				if (isEasy(question)) {
+					// written for the youngest, so one text serves every level
+					const simple = questionText(
+						question.id,
+						createI18n({ locale, readingLevel: "simple" }),
+					).hints
+					expect(simple.length, question.id).toBe(2)
+					for (const text of simple) {
+						expect(sentences(text), `${question.id}: ${text}`).toHaveLength(1)
+					}
+				} else {
+					expect(levelsOf(hints), question.id).toContain("simple")
+				}
+			}
+		})
 	})
 })
 
@@ -109,6 +268,8 @@ describe("the clues' words (src/locales/<locale>/hunts.json)", () => {
 
 		it("writes every clue and discovery for every reading level", () => {
 			for (const [id, entry] of Object.entries(file.questions)) {
+				// an Easy clue is written for the youngest: one text serves every level
+				if (isEasy(questionById.get(id)!)) continue
 				for (const field of ["clue", "found"] as const) {
 					expect(levelsOf(entry[field]).sort(), `${id}.${field}`).toEqual(
 						[...READING_LEVELS].sort(),
@@ -182,7 +343,7 @@ describe("resolveHunt", () => {
 	it("opens a ready-made hunt by its id", () => {
 		const hunt = resolveHunt("weirdWorlds")
 		expect(hunt?.id).toBe("weirdWorlds")
-		expect(hunt?.difficulty).toBe("medium")
+		expect(hunt?.difficulty).toBe("hard")
 		expect(hunt?.questions.map((question) => question.id)).toEqual(
 			HUNTS.find((h) => h.id === "weirdWorlds")!.questions,
 		)
@@ -203,6 +364,15 @@ describe("resolveHunt", () => {
 		expect(resolveHunt(undefined)).toBeNull()
 		expect(resolveHunt("")).toBeNull()
 		expect(resolveHunt("nope.alsoNope")).toBeNull()
+	})
+
+	it("rates a hunt by its hardest clue, a teacher's mix too", () => {
+		expect(resolveHunt("lookAndFind")?.difficulty).toBe("easy")
+		expect(resolveHunt("seeRed.walkedOn")?.difficulty).toBe("medium")
+		expect(resolveHunt("seeRed.walkedOn.retrogradeLoop")?.difficulty).toBe(
+			"hard",
+		)
+		expect(difficultyOf([])).toBeNull()
 	})
 
 	it("keys a custom hunt in the bank's order", () => {
@@ -320,10 +490,44 @@ describe("watchAnswers (with the real stores)", () => {
 		useSimStore.getState().setTimeWarp(1)
 	})
 
+	it("'Show me' flies to an Easy clue's moon", () => {
+		const titan = questionById.get("seeBiggestMoon")!
+		stop = watchAnswers(titan)
+		showAnswer(titan)
+		expect(useSimStore.getState().selectedId).toBe("titan")
+		expect(useHuntStore.getState().found).toEqual(["titan"])
+	})
+
 	it("stops watching when told to", () => {
 		const question = questionById.get("spinsBackwards")!
 		watchAnswers(question)()
 		useSimStore.getState().setFocus("venus")
 		expect(useHuntStore.getState().phase).toBe("asking")
+	})
+})
+
+describe("the certificate (#52)", () => {
+	it("stamps the hunt, the date and every world found on the postcard", () => {
+		const i18n = createI18n({ locale: "en", readingLevel: "simple" })
+		const hunt = resolveHunt("lookAndFind")!
+		const found = ["earth", "mars", "jupiter", "saturn", "moon"]
+		const extra = certificate(
+			hunt,
+			found,
+			i18n,
+			(id) => bodyName(id, i18n.chain),
+			new Date("2026-10-07T12:00:00Z"),
+		)
+		expect(extra.title).toBe("Space explorer!")
+		expect(extra.caption).toBe("Look and find: you found all 5!")
+		expect(extra.date).toBe("October 7, 2026")
+		expect(extra.rows?.map((row) => [row.label, row.value])).toEqual([
+			["Clue 1", "Earth"],
+			["Clue 2", "Mars"],
+			["Clue 3", "Jupiter"],
+			["Clue 4", "Saturn"],
+			["Clue 5", "Moon"],
+		])
+		expect(extra.fileName).toBe("my-space-hunt-2026-10-07.png")
 	})
 })

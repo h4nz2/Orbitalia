@@ -41,6 +41,12 @@
 		0 0 8px rgba(0, 0, 0, 0.6);
 }
 
+/* a picture beside the name while an Easy hunt clue is asked (#52) */
+.picture {
+	margin-right: 0.3em;
+	filter: drop-shadow(0 0 2px #000);
+}
+
 /* the Sun and the moons in the colours of their marker dots */
 .label[data-kind="star"] {
 	color: #ffe29a;

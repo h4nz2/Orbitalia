@@ -1,9 +1,23 @@
 {
 	"hunts": {
+		"lookAndFind": {
+			"title": "Mira y encuentra",
+			"description": {
+				"simple": "¡Mira la imagen y luego encuéntrala en el espacio!",
+				"standard": "Cinco mundos que encontrar con solo mirar, cada uno con su imagen y leído en voz alta."
+			}
+		},
+		"sunAndMoons": {
+			"title": "El Sol y las lunas",
+			"description": {
+				"simple": "Encuentra el Sol, el planeta más cercano y el más lejano, y luego dos lunas.",
+				"standard": "Del Sol hasta el último planeta, y luego dos lunas: cinco hallazgos con solo mirar."
+			}
+		},
 		"firstSteps": {
 			"title": "Primeros pasos",
 			"description": {
-				"simple": "Seis pistas fáciles sobre la Luna y los planetas.",
+				"simple": "Seis pistas sobre la Luna y los planetas.",
 				"standard": "Seis pistas para conocer los planetas y nuestra Luna.",
 				"advanced": "Para calentar: seis pistas por los planetas y la Luna."
 			}
@@ -34,19 +48,106 @@
 		}
 	},
 	"questions": {
+		"seeHome": {
+			"clue": "Encuentra el planeta en el que vivimos.",
+			"hints": [
+				"Busca dentro del círculo amarillo un planeta azul y blanco.",
+				"¡El que parpadea es nuestro hogar, la Tierra!"
+			],
+			"found": "¡Sí, es la Tierra, nuestro hogar!"
+		},
+		"seeRed": {
+			"clue": "Encuentra el planeta rojo.",
+			"hints": [
+				"Busca dentro del círculo amarillo un planeta rojo.",
+				"¡El que parpadea es Marte!"
+			],
+			"found": "¡Sí, es Marte, rojo por su polvo oxidado!"
+		},
+		"seeBiggest": {
+			"clue": "Encuentra el planeta más grande.",
+			"hints": [
+				"Busca dentro del círculo amarillo un planeta grande con rayas.",
+				"¡El que parpadea es el gigante, Júpiter!"
+			],
+			"found": "¡Sí, es Júpiter, tan ancho como 11 Tierras en fila!"
+		},
+		"seeRings": {
+			"clue": "Encuentra el planeta con grandes anillos.",
+			"hints": [
+				"Busca dentro del círculo amarillo un planeta con anillos.",
+				"¡El que parpadea es Saturno!"
+			],
+			"found": "¡Sí, es Saturno, con anillos hechos de hielo!"
+		},
+		"seeMoon": {
+			"clue": "¡Encuentra la Luna!",
+			"hints": [
+				"Busca dentro del círculo amarillo, cerca de la Tierra.",
+				"¡La que parpadea es nuestra Luna!"
+			],
+			"found": "¡Sí, es la Luna, donde han caminado personas!"
+		},
+		"seeSun": {
+			"clue": "Encuentra el Sol.",
+			"hints": [
+				"Busca dentro del círculo amarillo, justo en el centro.",
+				"¡El que parpadea es el Sol!"
+			],
+			"found": "¡Sí, es el Sol, la estrella que nos da luz!"
+		},
+		"seeNearest": {
+			"clue": "Encuentra el planeta más cercano al Sol.",
+			"hints": [
+				"Busca dentro del círculo amarillo, muy cerca del Sol.",
+				"¡El que parpadea es Mercurio!"
+			],
+			"found": "¡Sí, es Mercurio, el planeta más rápido de todos!"
+		},
+		"seeFarthest": {
+			"clue": "Encuentra el planeta más lejano del Sol.",
+			"hints": [
+				"Busca dentro del círculo amarillo, muy lejos, en el borde.",
+				"¡El que parpadea es Neptuno!"
+			],
+			"found": "¡Sí, es Neptuno, oscuro y frío como el hielo!"
+		},
+		"seeYellowMoon": {
+			"clue": "¡Encuentra la luna amarilla de Júpiter!",
+			"hints": [
+				"Busca dentro del círculo amarillo, cerca de Júpiter.",
+				"¡La que parpadea es Ío!"
+			],
+			"found": "¡Sí, es Ío, llena de volcanes!"
+		},
+		"seeBiggestMoon": {
+			"clue": "¡Encuentra la luna más grande de Saturno!",
+			"hints": [
+				"Busca dentro del círculo amarillo una luna grande y naranja.",
+				"¡La que parpadea es Titán!"
+			],
+			"found": "¡Sí, es Titán, envuelta en una niebla naranja!"
+		},
 		"walkedOn": {
 			"clue": {
 				"simple": "Encuentra el único mundo, aparte de la Tierra, donde han caminado personas.",
 				"standard": "Encuentra el único mundo, además de la Tierra, donde han caminado seres humanos.",
 				"advanced": "Encuentra el único otro mundo que han pisado los seres humanos."
 			},
-			"hints": [
-				"Está más cerca de nosotros que cualquier planeta.",
-				"Gira alrededor de la Tierra: haz clic primero en la Tierra y busca muy cerca.",
-				"Es la Luna. Haz clic en la Tierra y luego en la Luna, que está a su lado."
-			],
+			"hints": {
+				"simple": [
+					"Está más cerca de nosotros que cualquier planeta.",
+					"Gira alrededor de la Tierra. Haz clic en la Tierra y busca muy cerca.",
+					"Es la Luna. Haz clic en la Tierra y luego en la Luna, que está a su lado."
+				],
+				"standard": [
+					"Está más cerca de nosotros que cualquier planeta.",
+					"Gira alrededor de la Tierra: haz clic primero en la Tierra y busca muy cerca.",
+					"Es la Luna. Haz clic en la Tierra y luego en la Luna, que está a su lado."
+				]
+			},
 			"found": {
-				"simple": "¡Sí, la Luna! Doce astronautas caminaron por ella entre 1969 y 1972. Sus huellas siguen allí, porque no hay viento que las borre.",
+				"simple": "¡Sí, la Luna! Doce astronautas caminaron por ella hace mucho tiempo. Sus huellas siguen allí, porque no hay viento que las borre.",
 				"standard": "¡La Luna! Doce astronautas caminaron por ella en las misiones Apolo, entre 1969 y 1972. Como no hay aire ni viento, sus huellas siguen allí.",
 				"advanced": "La Luna. Doce astronautas del programa Apolo caminaron por ella entre 1969 y 1972 y trajeron 382 kg de rocas. Sin atmósfera que las desgaste, sus huellas podrían durar millones de años."
 			}
@@ -57,11 +158,18 @@
 				"standard": "Encuentra el planeta rojo, hogar del volcán más alto de todos los planetas.",
 				"advanced": "Encuentra el planeta cuyo polvo oxidado lo hace brillar rojo en nuestro cielo nocturno y que tiene el volcán más alto de todos los planetas."
 			},
-			"hints": [
-				"Es el siguiente planeta después de la Tierra, alejándose del Sol.",
-				"Busca un planeta pequeño de color rojo anaranjado entre la Tierra y Júpiter.",
-				"Es Marte, el cuarto planeta desde el Sol. Haz clic en él."
-			],
+			"hints": {
+				"simple": [
+					"Es el siguiente planeta después de la Tierra, más lejos del Sol.",
+					"Busca un planeta pequeño y rojo entre la Tierra y Júpiter.",
+					"Es Marte. Haz clic en él."
+				],
+				"standard": [
+					"Es el siguiente planeta después de la Tierra, alejándose del Sol.",
+					"Busca un planeta pequeño de color rojo anaranjado entre la Tierra y Júpiter.",
+					"Es Marte, el cuarto planeta desde el Sol. Haz clic en él."
+				]
+			},
 			"found": {
 				"simple": "¡Marte! Su polvo está lleno de óxido, por eso se ve rojo. Su volcán, el Monte Olimpo, es unas dos veces y media más alto que el Everest.",
 				"standard": "Marte. Su suelo tiene mucho óxido de hierro –herrumbre–, que lo vuelve rojo. El Monte Olimpo, su volcán más grande, mide unos 22 km de altura.",
@@ -70,17 +178,24 @@
 		},
 		"biggestPlanet": {
 			"clue": {
-				"simple": "Encuentra el planeta más grande. ¡Dentro de él cabrían más de mil Tierras!",
+				"simple": "Encuentra el planeta más grande. ¡Mide 11 Tierras de ancho!",
 				"standard": "Encuentra el planeta más grande: dentro de él cabrían más de 1300 Tierras.",
 				"advanced": "Encuentra el planeta que tiene más masa que todos los demás planetas juntos."
 			},
-			"hints": [
-				"Es un gigante hecho de gas, con franjas de nubes.",
-				"Es el quinto planeta desde el Sol, el primero después de Marte.",
-				"Es Júpiter. Haz clic en el gran planeta de franjas que viene después de Marte."
-			],
+			"hints": {
+				"simple": [
+					"Es una bola gigante de gas con rayas.",
+					"Es el planeta que viene después de Marte.",
+					"Es Júpiter. Haz clic en el gran planeta de rayas que viene después de Marte."
+				],
+				"standard": [
+					"Es un gigante hecho de gas, con franjas de nubes.",
+					"Es el quinto planeta desde el Sol, el primero después de Marte.",
+					"Es Júpiter. Haz clic en el gran planeta de franjas que viene después de Marte."
+				]
+			},
 			"found": {
-				"simple": "¡Júpiter! Es tan grande que cabrían 11 Tierras una al lado de otra a lo ancho. Su Gran Mancha Roja es una tormenta más grande que la Tierra.",
+				"simple": "¡Júpiter! Tiene una tormenta gigante llamada la Gran Mancha Roja. La tormenta es más grande que la Tierra.",
 				"standard": "Júpiter: mide 11 Tierras de ancho y pesa más del doble que todos los demás planetas juntos. Su Gran Mancha Roja es una tormenta más ancha que la Tierra.",
 				"advanced": "Júpiter: 2,5 veces la masa de todos los demás planetas juntos y 11 diámetros terrestres de ancho. Su Gran Mancha Roja es una tormenta más ancha que la Tierra que se observa desde hace más de 150 años."
 			}
@@ -91,13 +206,20 @@
 				"standard": "Encuentra el planeta con los anillos más brillantes del sistema solar.",
 				"advanced": "Encuentra el planeta cuyos anillos llegarían casi de la Tierra a la Luna, aunque en su mayoría tienen menos de un kilómetro de grosor."
 			},
-			"hints": [
-				"Sus anillos están hechos de incontables trozos de hielo.",
-				"Es el sexto planeta desde el Sol, después de Júpiter.",
-				"Es Saturno. Haz clic en el planeta de grandes anillos que viene después de Júpiter."
-			],
+			"hints": {
+				"simple": [
+					"Sus anillos están hechos de muchos trozos de hielo.",
+					"Es el planeta que viene después de Júpiter.",
+					"Es Saturno. Haz clic en el planeta de los grandes anillos."
+				],
+				"standard": [
+					"Sus anillos están hechos de incontables trozos de hielo.",
+					"Es el sexto planeta desde el Sol, después de Júpiter.",
+					"Es Saturno. Haz clic en el planeta de grandes anillos que viene después de Júpiter."
+				]
+			},
 			"found": {
-				"simple": "¡Saturno! Sus anillos están hechos de miles de millones de trozos de hielo. Algunos son tan pequeños como granos de arena y otros tan grandes como una casa.",
+				"simple": "¡Saturno! Sus anillos están hechos de muchísimos trozos de hielo. Algunos son tan pequeños como granos de arena y otros tan grandes como una casa.",
 				"standard": "Saturno. Sus anillos son miles de millones de trozos de hielo de agua, desde motas de polvo hasta rocas del tamaño de una casa, todos girando alrededor del planeta.",
 				"advanced": "Saturno. Sus anillos principales miden unos 270 000 km de diámetro, pero suelen tener solo unos 10 metros de grosor. Están formados por partículas de hielo de agua, desde granos de polvo hasta bloques de varios metros."
 			}
@@ -108,13 +230,20 @@
 				"standard": "Encuentra el planeta más caliente... y no, no es el más cercano al Sol.",
 				"advanced": "Encuentra el planeta con la superficie más caliente, aunque hay otro planeta más cerca del Sol."
 			},
-			"hints": [
-				"Sus nubes espesas atrapan el calor como una manta.",
-				"Es el segundo planeta desde el Sol, entre Mercurio y la Tierra.",
-				"Es Venus. Haz clic en el segundo planeta desde el Sol."
-			],
+			"hints": {
+				"simple": [
+					"Sus nubes espesas no dejan salir el calor, como una manta.",
+					"Es el segundo planeta desde el Sol.",
+					"Es Venus. Haz clic en el segundo planeta desde el Sol."
+				],
+				"standard": [
+					"Sus nubes espesas atrapan el calor como una manta.",
+					"Es el segundo planeta desde el Sol, entre Mercurio y la Tierra.",
+					"Es Venus. Haz clic en el segundo planeta desde el Sol."
+				]
+			},
 			"found": {
-				"simple": "¡Venus! Su aire espeso atrapa el calor del Sol, así que el suelo está a unos 465 °C: tan caliente que el plomo se derretiría.",
+				"simple": "¡Venus! Su aire espeso no deja escapar el calor del Sol. El suelo está más caliente que un horno de pizza, tanto que el metal se derretiría.",
 				"standard": "Venus. Su aire espeso de dióxido de carbono atrapa el calor, así que la superficie está a unos 465 °C de día y de noche, más caliente que Mercurio.",
 				"advanced": "Venus. Un efecto invernadero desbocado en su densa atmósfera de dióxido de carbono, con unas 90 veces la presión de la superficie terrestre, mantiene el suelo cerca de 465 °C de día y de noche: más caliente que el lado diurno de Mercurio."
 			}
@@ -125,11 +254,18 @@
 				"standard": "Encuentra el planeta con el año más corto: da la vuelta al Sol en menos de tres meses terrestres.",
 				"advanced": "Encuentra el planeta que completa más de cuatro órbitas alrededor del Sol en un año terrestre."
 			},
-			"hints": [
-				"Cuanto más cerca del Sol está un planeta, más rápido da la vuelta.",
-				"Mira el planeta más cercano al Sol. Su ficha te dice cuánto dura su año.",
-				"Es Mercurio, el primer planeta desde el Sol. Haz clic en él."
-			],
+			"hints": {
+				"simple": [
+					"Los planetas cercanos al Sol le dan la vuelta más rápido.",
+					"Mira el planeta más cercano al Sol. Su ficha te dice cuánto dura su año.",
+					"Es Mercurio, el planeta más cercano al Sol. Haz clic en él."
+				],
+				"standard": [
+					"Cuanto más cerca del Sol está un planeta, más rápido da la vuelta.",
+					"Mira el planeta más cercano al Sol. Su ficha te dice cuánto dura su año.",
+					"Es Mercurio, el primer planeta desde el Sol. Haz clic en él."
+				]
+			},
 			"found": {
 				"simple": "¡Mercurio! Su año dura solo 88 días. Si vivieras allí, cumplirías años más o menos cada tres meses.",
 				"standard": "Mercurio. Da la vuelta al Sol en solo 88 días, a toda prisa, a unos 47 km por segundo.",
@@ -142,11 +278,18 @@
 				"standard": "Encuentra un planeta que gira al revés, en sentido contrario al de la Tierra.",
 				"advanced": "Encuentra un planeta con rotación retrógrada: gira en sentido contrario al de su órbita alrededor del Sol."
 			},
-			"hints": [
-				"Haz clic en un planeta y mira en su ficha cómo gira.",
-				"Hay dos: uno es vecino de la Tierra y el otro está tumbado de lado.",
-				"Prueba con Venus, el segundo planeta desde el Sol, o con Urano, el séptimo."
-			],
+			"hints": {
+				"simple": [
+					"Haz clic en un planeta y mira en su ficha cómo gira.",
+					"Hay dos. Uno es vecino de la Tierra. El otro está tumbado de lado.",
+					"Prueba con Venus, el segundo planeta. O con Urano, el séptimo."
+				],
+				"standard": [
+					"Haz clic en un planeta y mira en su ficha cómo gira.",
+					"Hay dos: uno es vecino de la Tierra y el otro está tumbado de lado.",
+					"Prueba con Venus, el segundo planeta desde el Sol, o con Urano, el séptimo."
+				]
+			},
 			"found": {
 				"simple": "¡Bien! Venus gira al revés, así que allí el Sol sale por el oeste. Urano también gira al revés, porque está volcado.",
 				"standard": "¡Sí! Venus gira al revés, así que allí el Sol sale por el oeste. Urano también cuenta como planeta que gira al revés: está tan inclinado que rueda de lado.",
@@ -159,11 +302,18 @@
 				"standard": "Encuentra una luna con géiseres que lanzan al espacio agua de un océano escondido.",
 				"advanced": "Encuentra la luna cuyos géiseres en el polo sur alimentan con hielo uno de los anillos de su planeta."
 			},
-			"hints": [
-				"Pertenece al planeta de los grandes anillos brillantes.",
-				"Haz clic en Saturno y mira las lunas pequeñas que tiene cerca. Es la más blanca de todas.",
-				"Es Encélado, una luna de Saturno. Haz clic en Saturno y luego en Encélado."
-			],
+			"hints": {
+				"simple": [
+					"Pertenece al planeta de los grandes anillos brillantes.",
+					"Haz clic en Saturno. Luego mira las lunas pequeñas que tiene cerca. Es la más blanca.",
+					"Es Encélado, una luna de Saturno. Haz clic en Saturno y luego en Encélado."
+				],
+				"standard": [
+					"Pertenece al planeta de los grandes anillos brillantes.",
+					"Haz clic en Saturno y mira las lunas pequeñas que tiene cerca. Es la más blanca de todas.",
+					"Es Encélado, una luna de Saturno. Haz clic en Saturno y luego en Encélado."
+				]
+			},
 			"found": {
 				"simple": "¡Encélado! Bajo su hielo hay un océano salado. El agua sale disparada por grietas en su polo sur, como fuentes gigantes.",
 				"standard": "Encélado. La nave Cassini vio géiseres que lanzaban vapor de agua y hielo por largas grietas cerca de su polo sur. Vienen de un océano salado bajo el hielo.",
@@ -176,11 +326,18 @@
 				"standard": "Encuentra la única luna grande que gira alrededor de su planeta en sentido contrario.",
 				"advanced": "Encuentra la única luna grande con una órbita retrógrada: una clara señal de que fue capturada."
 			},
-			"hints": [
-				"Su planeta es el más alejado del Sol.",
-				"Haz clic en Neptuno, pon la velocidad en 1 día/s y mira hacia dónde va su luna más grande.",
-				"Es Tritón, la luna más grande de Neptuno. Haz clic en Neptuno y luego en Tritón."
-			],
+			"hints": {
+				"simple": [
+					"Su planeta es el más alejado del Sol.",
+					"Haz clic en Neptuno. Haz que el tiempo vaya más rápido y mira su luna más grande.",
+					"Es Tritón, la luna más grande de Neptuno. Haz clic en Neptuno y luego en Tritón."
+				],
+				"standard": [
+					"Su planeta es el más alejado del Sol.",
+					"Haz clic en Neptuno, pon la velocidad en 1 día/s y mira hacia dónde va su luna más grande.",
+					"Es Tritón, la luna más grande de Neptuno. Haz clic en Neptuno y luego en Tritón."
+				]
+			},
 			"found": {
 				"simple": "¡Tritón! Da vueltas a Neptuno al revés. Seguramente Neptuno la atrapó hace muchísimo tiempo.",
 				"standard": "Tritón. Gira alrededor de Neptuno en sentido contrario a la rotación del planeta. Probablemente se formó lejos, en el cinturón de Kuiper, y Neptuno la capturó más tarde.",
@@ -193,13 +350,20 @@
 				"standard": "Encuentra el planeta donde un día dura más que un año.",
 				"advanced": "Encuentra el planeta que tarda más en girar una vez sobre su eje que en dar una vuelta al Sol."
 			},
-			"hints": [
-				"Compara cuánto tarda un planeta en girar una vez con cuánto dura su año. Las fichas muestran las dos cosas.",
-				"Es un planeta rocoso cerca del Sol, escondido bajo nubes espesas.",
-				"Es Venus. Haz clic en él y compara en su ficha el giro con el año."
-			],
+			"hints": {
+				"simple": [
+					"Un día es una vuelta sobre sí mismo. Un año es un viaje alrededor del Sol. Las fichas muestran las dos cosas.",
+					"Es un planeta rocoso cerca del Sol, escondido bajo nubes espesas.",
+					"Es Venus. Haz clic en él y mira su ficha."
+				],
+				"standard": [
+					"Compara cuánto tarda un planeta en girar una vez con cuánto dura su año. Las fichas muestran las dos cosas.",
+					"Es un planeta rocoso cerca del Sol, escondido bajo nubes espesas.",
+					"Es Venus. Haz clic en él y compara en su ficha el giro con el año."
+				]
+			},
 			"found": {
-				"simple": "¡Venus! Gira tan despacio que una vuelta tarda 243 días, pero su año dura solo 225 días.",
+				"simple": "¡Venus! Gira tan despacio que dar una vuelta sobre sí mismo le lleva más tiempo que dar una vuelta al Sol.",
 				"standard": "Venus. Una vuelta sobre su eje tarda 243 días terrestres, pero un viaje alrededor del Sol solo 225.",
 				"advanced": "Venus: una rotación sideral dura 243 días y una órbita, 225. Como gira al revés, su día solar –de un amanecer al siguiente– es más corto, unos 117 días."
 			}
@@ -210,13 +374,20 @@
 				"standard": "Encuentra el mundo donde una nave midió una de las temperaturas más frías del sistema solar: menos de −240 °C, en cráteres que nunca ven la luz del Sol.",
 				"advanced": "Encuentra el mundo donde una nave midió unos −247 °C, más frío que la superficie de Plutón, en el fondo de cráteres que no han visto la luz del Sol en miles de millones de años."
 			},
-			"hints": [
-				"Está mucho más cerca de lo que crees, no en el borde del sistema solar.",
-				"Gira alrededor de la Tierra. Los puntos más fríos están en cráteres cerca de sus polos.",
-				"Es nuestra Luna. Haz clic en la Tierra y luego en la Luna."
-			],
+			"hints": {
+				"simple": [
+					"Está mucho más cerca de lo que crees.",
+					"Gira alrededor de la Tierra. Los puntos más fríos están en hoyos profundos cerca de sus polos.",
+					"Es nuestra Luna. Haz clic en la Tierra y luego en la Luna."
+				],
+				"standard": [
+					"Está mucho más cerca de lo que crees, no en el borde del sistema solar.",
+					"Gira alrededor de la Tierra. Los puntos más fríos están en cráteres cerca de sus polos.",
+					"Es nuestra Luna. Haz clic en la Tierra y luego en la Luna."
+				]
+			},
 			"found": {
-				"simple": "¡Nuestra Luna! Los cráteres profundos cerca de sus polos siempre están en sombra, así que son aún más fríos que Plutón. Puede que dentro haya hielo escondido.",
+				"simple": "¡Nuestra Luna! Algunos hoyos profundos cerca de sus polos, llamados cráteres, siempre están en sombra. Son aún más fríos que Plutón, y puede que dentro haya hielo.",
 				"standard": "Nuestra Luna. Cerca de sus polos hay cráteres profundos siempre en sombra. El Lunar Reconnaissance Orbiter de la NASA midió allí menos de −240 °C, más frío que la superficie de Plutón. En ellos se esconde hielo de agua. Tritón, la luna de Neptuno, se acerca, con unos −235 °C.",
 				"advanced": "La Luna. Su eje está inclinado solo 1,5°, así que el fondo de algunos cráteres cerca de los polos nunca ve el Sol. El Lunar Reconnaissance Orbiter de la NASA midió allí unos 26 K, y los cráteres atrapan hielo de agua: un recurso para futuras bases. La superficie más fría que midió la Voyager 2, en Tritón, la luna de Neptuno, estaba a unos 38 K."
 			}
@@ -227,11 +398,18 @@
 				"standard": "Encuentra el planeta que está tan inclinado que rueda de lado alrededor del Sol.",
 				"advanced": "Encuentra el planeta cuyo eje está inclinado casi 98°, de modo que cada polo recibe unos 42 años de luz solar y después 42 años de oscuridad."
 			},
-			"hints": [
-				"Mira los anillos: en este planeta están casi de pie.",
-				"Es un gigante de hielo de color azul verdoso pálido, mucho más allá de Saturno.",
-				"Es Urano, el séptimo planeta. Haz clic en él y mira sus anillos."
-			],
+			"hints": {
+				"simple": [
+					"Mira los anillos. En este planeta están casi de pie.",
+					"Es un planeta azul pálido, mucho más allá de Saturno.",
+					"Es Urano, el séptimo planeta. Haz clic en él y mira sus anillos."
+				],
+				"standard": [
+					"Mira los anillos: en este planeta están casi de pie.",
+					"Es un gigante de hielo de color azul verdoso pálido, mucho más allá de Saturno.",
+					"Es Urano, el séptimo planeta. Haz clic en él y mira sus anillos."
+				]
+			},
 			"found": {
 				"simple": "¡Urano! Está tumbado de lado, quizá porque algo enorme chocó contra él hace mucho tiempo. Sus anillos también están de pie.",
 				"standard": "Urano. Su eje está inclinado 98°, así que va rodando por su órbita. Un choque gigante hace mucho tiempo pudo haberlo volcado.",
@@ -244,11 +422,18 @@
 				"standard": "Encuentra el planeta que es menos denso que el agua: en una bañera lo bastante grande, flotaría.",
 				"advanced": "Encuentra el único planeta con una densidad media menor que la del agua."
 			},
-			"hints": [
-				"Es un gigante gaseoso, hecho sobre todo de hidrógeno y helio.",
-				"No es el gigante más grande, sino el de los anillos anchos y brillantes.",
-				"Es Saturno, el sexto planeta. Haz clic en él."
-			],
+			"hints": {
+				"simple": [
+					"Es un gigante hecho sobre todo de gas.",
+					"No es el gigante más grande. Es el de los anillos anchos y brillantes.",
+					"Es Saturno, el sexto planeta. Haz clic en él."
+				],
+				"standard": [
+					"Es un gigante gaseoso, hecho sobre todo de hidrógeno y helio.",
+					"No es el gigante más grande, sino el de los anillos anchos y brillantes.",
+					"Es Saturno, el sexto planeta. Haz clic en él."
+				]
+			},
 			"found": {
 				"simple": "¡Saturno! Es enorme, pero está hecho sobre todo de los gases más ligeros. Para su tamaño, es más ligero que el agua.",
 				"standard": "Saturno. Está hecho sobre todo de hidrógeno y helio, los gases más ligeros, así que de media solo tiene un 70 % de la densidad del agua.",
@@ -257,15 +442,22 @@
 		},
 		"volcanoMoon": {
 			"clue": {
-				"simple": "Encuentra la luna con cientos de volcanes que están en erupción ahora mismo.",
+				"simple": "Encuentra la luna con muchísimos volcanes que están en erupción ahora mismo.",
 				"standard": "Encuentra el mundo más volcánico del sistema solar: una luna con cientos de volcanes activos.",
 				"advanced": "Encuentra la luna calentada con tanta fuerza por las mareas que es el cuerpo con más actividad volcánica del sistema solar."
 			},
-			"hints": [
-				"Gira alrededor del planeta más grande.",
-				"Haz clic en Júpiter y mira sus cuatro lunas grandes. Es la amarilla y llena de manchas, la más cercana a Júpiter.",
-				"Es Ío. Haz clic en Júpiter y luego en Ío."
-			],
+			"hints": {
+				"simple": [
+					"Gira alrededor del planeta más grande.",
+					"Haz clic en Júpiter. Mira sus cuatro lunas grandes. Es la amarilla y llena de manchas, la más cercana a Júpiter.",
+					"Es Ío. Haz clic en Júpiter y luego en Ío."
+				],
+				"standard": [
+					"Gira alrededor del planeta más grande.",
+					"Haz clic en Júpiter y mira sus cuatro lunas grandes. Es la amarilla y llena de manchas, la más cercana a Júpiter.",
+					"Es Ío. Haz clic en Júpiter y luego en Ío."
+				]
+			},
 			"found": {
 				"simple": "¡Ío! Júpiter la aprieta una y otra vez, y eso la calienta por dentro. Sus volcanes lanzan material muy alto, hacia el espacio.",
 				"standard": "Ío tiene unos 400 volcanes activos. La gravedad de Júpiter la aprieta mientras gira a su alrededor y calienta su interior. Algunos penachos suben cientos de kilómetros.",
@@ -278,13 +470,20 @@
 				"standard": "Encuentra la única luna con una atmósfera espesa, más densa que el aire de la Tierra.",
 				"advanced": "Encuentra la única luna con una atmósfera densa –1,5 veces la presión de la superficie terrestre– y lagos de metano líquido."
 			},
-			"hints": [
-				"Es la segunda luna más grande del sistema solar.",
-				"Pertenece a Saturno. Es, con diferencia, la luna más grande de Saturno.",
-				"Es Titán. Haz clic en Saturno y luego en Titán."
-			],
+			"hints": {
+				"simple": [
+					"Es la segunda luna más grande de todas.",
+					"Pertenece a Saturno. Es mucho más grande que las otras lunas de Saturno.",
+					"Es Titán. Haz clic en Saturno y luego en Titán."
+				],
+				"standard": [
+					"Es la segunda luna más grande del sistema solar.",
+					"Pertenece a Saturno. Es, con diferencia, la luna más grande de Saturno.",
+					"Es Titán. Haz clic en Saturno y luego en Titán."
+				]
+			},
 			"found": {
-				"simple": "¡Titán! Está envuelta en una neblina naranja y tiene lagos y ríos, pero no de agua, sino de metano líquido. En 2005 la sonda Huygens aterrizó allí.",
+				"simple": "¡Titán! Está envuelta en una neblina naranja. Tiene lagos y ríos, pero no de agua: son de un gas líquido llamado metano. Una pequeña nave llamada Huygens aterrizó allí.",
 				"standard": "Titán. Su aire espeso de nitrógeno esconde la superficie bajo una neblina naranja. Tiene lluvia, ríos y lagos… de metano líquido. La sonda Huygens aterrizó allí en 2005.",
 				"advanced": "Titán: una atmósfera de nitrógeno con 1,5 bar en la superficie y un ciclo del metano como el ciclo del agua en la Tierra: nubes, lluvia, ríos y mares de hidrocarburos líquidos. Huygens aterrizó en 2005; la Dragonfly de la NASA llegará en la década de 2030."
 			}
@@ -295,11 +494,18 @@
 				"standard": "Encuentra una luna más ancha que el planeta Mercurio.",
 				"advanced": "Encuentra una luna con un diámetro mayor que el del planeta Mercurio. Hay dos."
 			},
-			"hints": [
-				"Compara los tamaños en las fichas: Mercurio mide unos 4900 km de ancho.",
-				"Mira las lunas más grandes de Júpiter y de Saturno.",
-				"Valen Ganímedes (una luna de Júpiter) y Titán (una luna de Saturno). Haz clic en Júpiter y luego en Ganímedes."
-			],
+			"hints": {
+				"simple": [
+					"Compara los tamaños en las fichas. Mercurio es un planeta pequeño.",
+					"Mira las lunas más grandes de Júpiter y de Saturno.",
+					"Valen Ganímedes (una luna de Júpiter) y Titán (una luna de Saturno). Haz clic en Júpiter y luego en Ganímedes."
+				],
+				"standard": [
+					"Compara los tamaños en las fichas: Mercurio mide unos 4900 km de ancho.",
+					"Mira las lunas más grandes de Júpiter y de Saturno.",
+					"Valen Ganímedes (una luna de Júpiter) y Titán (una luna de Saturno). Haz clic en Júpiter y luego en Ganímedes."
+				]
+			},
 			"found": {
 				"simple": "¡Sí! Ganímedes y Titán son más anchas que Mercurio. Pero Mercurio está hecho de roca y hierro pesados, así que aun así pesa más.",
 				"standard": "¡Bien! Ganímedes (5268 km) y Titán (5150 km) son más anchas que Mercurio (4879 km). Aun así, Mercurio pesa más del doble: es de roca y hierro, y ellas de roca y hielo.",
@@ -312,11 +518,18 @@
 				"standard": "Encuentra la luna más lisa: una bola de hielo agrietado que esconde un océano con más agua que todos los mares de la Tierra.",
 				"advanced": "Encuentra la luna cuya capa de hielo agrietada cubre un océano salado con unas dos veces más agua que todos los océanos de la Tierra."
 			},
-			"hints": [
-				"Gira alrededor del planeta más grande.",
-				"Haz clic en Júpiter y mira sus cuatro lunas grandes. Es la más pequeña de ellas, pálida y con largas grietas marrones.",
-				"Es Europa. Haz clic en Júpiter y luego en Europa."
-			],
+			"hints": {
+				"simple": [
+					"Gira alrededor del planeta más grande.",
+					"Haz clic en Júpiter. Mira sus cuatro lunas grandes. Es la más pequeña, pálida y con largas grietas marrones.",
+					"Es Europa. Haz clic en Júpiter y luego en Europa."
+				],
+				"standard": [
+					"Gira alrededor del planeta más grande.",
+					"Haz clic en Júpiter y mira sus cuatro lunas grandes. Es la más pequeña de ellas, pálida y con largas grietas marrones.",
+					"Es Europa. Haz clic en Júpiter y luego en Europa."
+				]
+			},
 			"found": {
 				"simple": "¡Europa! Bajo el hielo hay un enorme océano salado. Los científicos se preguntan si algo podría vivir en él. Una nave llamada Europa Clipper ya va de camino.",
 				"standard": "Europa. Bajo una capa de hielo de muchos kilómetros de grosor hay un océano salado. Es uno de los mejores lugares para buscar vida fuera de la Tierra: la Europa Clipper de la NASA llega en 2030.",
@@ -329,11 +542,18 @@
 				"standard": "Encuentra el planeta al que la luz del Sol tarda más de cuatro horas en llegar.",
 				"advanced": "Encuentra el planeta al que la luz del Sol tarda más de cuatro horas en llegar: 30 veces más de lo que tarda en llegar a la Tierra."
 			},
-			"hints": [
-				"Las fichas te dicen cuánto tarda la luz del Sol en llegar allí.",
-				"Cuanto más lejos está un planeta, más tiempo viaja la luz. Prueba con los planetas del borde.",
-				"Es Neptuno, el planeta más lejano. Haz clic en él y lee su ficha."
-			],
+			"hints": {
+				"simple": [
+					"Las fichas te dicen cuánto tarda la luz del Sol en llegar allí.",
+					"Cuanto más lejos está un planeta, más tiempo viaja la luz. Prueba con los planetas del borde.",
+					"Es Neptuno, el planeta más lejano. Haz clic en él y lee su ficha."
+				],
+				"standard": [
+					"Las fichas te dicen cuánto tarda la luz del Sol en llegar allí.",
+					"Cuanto más lejos está un planeta, más tiempo viaja la luz. Prueba con los planetas del borde.",
+					"Es Neptuno, el planeta más lejano. Haz clic en él y lee su ficha."
+				]
+			},
 			"found": {
 				"simple": "¡Neptuno! Su luz del Sol lleva unas cuatro horas viajando. Para llegar a la Tierra, solo necesita 8 minutos.",
 				"standard": "Neptuno. La luz del Sol tarda unas 4 horas y 10 minutos en llegar allí, pero solo 8 minutos en llegar a la Tierra. Por eso Neptuno recibe 900 veces menos luz que la Tierra.",
@@ -370,11 +590,18 @@
 				"standard": "Encuentra el planeta con el día más corto: una vuelta tarda menos de 10 horas.",
 				"advanced": "Encuentra el planeta que gira más rápido, tan rápido que está visiblemente achatado por los polos."
 			},
-			"hints": [
-				"Las fichas muestran cuánto tarda cada planeta en girar una vez.",
-				"Los planetas grandes giran rápido. Prueba con los gigantes.",
-				"Es Júpiter. Haz clic en él y mira su giro en la ficha."
-			],
+			"hints": {
+				"simple": [
+					"Las fichas muestran cuánto tarda cada planeta en girar una vez.",
+					"Los planetas grandes giran rápido. Prueba con los gigantes.",
+					"Es Júpiter. Haz clic en él y mira su giro en la ficha."
+				],
+				"standard": [
+					"Las fichas muestran cuánto tarda cada planeta en girar una vez.",
+					"Los planetas grandes giran rápido. Prueba con los gigantes.",
+					"Es Júpiter. Haz clic en él y mira su giro en la ficha."
+				]
+			},
 			"found": {
 				"simple": "¡Júpiter! Aunque es el planeta más grande, da una vuelta en menos de 10 horas. Allí un día dura menos de la mitad que en la Tierra.",
 				"standard": "Júpiter da una vuelta cada 9 horas y 56 minutos: el día más corto de todos los planetas, aunque es el más grande.",
@@ -387,11 +614,18 @@
 				"standard": "Encuentra el planeta con el aire más frío jamás medido en un planeta. No es el más lejano.",
 				"advanced": "Encuentra el planeta cuya atmósfera alcanza la temperatura más baja de todos los planetas, unos −224 °C, aunque no es el más distante."
 			},
-			"hints": [
-				"Es uno de los dos gigantes de hielo azules del borde del sistema solar.",
-				"De esos dos, es el más cercano al Sol: el que está tumbado de lado.",
-				"Es Urano, el séptimo planeta. Haz clic en él."
-			],
+			"hints": {
+				"simple": [
+					"Es uno de los dos planetas azules del borde.",
+					"De esos dos, es el más cercano al Sol. Está tumbado de lado.",
+					"Es Urano, el séptimo planeta. Haz clic en él."
+				],
+				"standard": [
+					"Es uno de los dos gigantes de hielo azules del borde del sistema solar.",
+					"De esos dos, es el más cercano al Sol: el que está tumbado de lado.",
+					"Es Urano, el séptimo planeta. Haz clic en él."
+				]
+			},
 			"found": {
 				"simple": "¡Urano! Es aún más frío que Neptuno, que está más lejos. A Urano casi no le queda calor dentro.",
 				"standard": "Urano: su atmósfera baja hasta unos −224 °C, más fría que la de Neptuno. A diferencia de los otros gigantes, Urano casi no desprende calor propio.",
@@ -404,11 +638,18 @@
 				"standard": "Los anillos de Saturno son famosos, pero no es el único planeta con anillos. Encuentra otro.",
 				"advanced": "Encuentra un planeta con anillos que no sea Saturno. Los anillos de los demás no se descubrieron hasta 1977."
 			},
-			"hints": [
-				"Los otros anillos son finos y oscuros, así que acércate volando para verlos.",
-				"Solo los planetas gigantes tienen anillos. Prueba con uno que no sea Saturno.",
-				"Júpiter, Urano y Neptuno tienen anillos. Haz clic en Urano y mira de cerca."
-			],
+			"hints": {
+				"simple": [
+					"Los otros anillos son finos y oscuros. Acércate volando para verlos.",
+					"Solo los planetas gigantes tienen anillos. Prueba con uno que no sea Saturno.",
+					"Júpiter, Urano y Neptuno tienen anillos. Haz clic en Urano y mira de cerca."
+				],
+				"standard": [
+					"Los otros anillos son finos y oscuros, así que acércate volando para verlos.",
+					"Solo los planetas gigantes tienen anillos. Prueba con uno que no sea Saturno.",
+					"Júpiter, Urano y Neptuno tienen anillos. Haz clic en Urano y mira de cerca."
+				]
+			},
 			"found": {
 				"simple": "¡Sí! Júpiter, Urano y Neptuno tienen anillos. Son finos y oscuros, por eso solo se descubrieron con naves espaciales y grandes telescopios.",
 				"standard": "¡Bien! Júpiter, Urano y Neptuno tienen anillos. Son finos y oscuros, hechos de polvo y roca oscura en lugar de hielo brillante, por eso no se descubrieron hasta entre 1977 y 1989.",

@@ -584,17 +584,43 @@
 			"intro": "Chaque énigme décrit un monde. Trouve-le dans la scène et clique dessus : c’est ta réponse. Les indices sont gratuits, et il n’y a ni score ni limite de temps.",
 			"intro@simple": "Lis l’énigme, trouve le monde et clique dessus ! Tu bloques ? Demande un indice.",
 			"choose": "Choisis une chasse",
+			"difficultyLabel": "Quelle difficulté ?",
 			"difficulty": {
 				"easy": "Facile",
 				"medium": "Moyen",
 				"hard": "Corsé"
 			},
+			"ages": {
+				"easy": "6–8 ans",
+				"medium": "9–11 ans",
+				"hard": "Dès 12 ans"
+			},
+			"hint": {
+				"easy": "Trouve ce que montre l’image. Les énigmes sont lues à voix haute, et les indices te montrent où regarder dans le ciel. Pour les 6 à 8 ans.",
+				"easy@simple": "Regarde l’image et trouve ce monde dans l’espace. Une voix peut te lire l’énigme.",
+				"medium": "Des énigmes sur ce qui rend chaque monde spécial. Pour les 9 à 11 ans.",
+				"medium@simple": "Des énigmes sur ce qui rend chaque monde spécial.",
+				"hard": "Des énigmes corsées, où il faut les fiches, l’horloge et les points de vue. Dès 12 ans.",
+				"hard@simple": "Des énigmes difficiles. Il faut lire les fiches.",
+				"readAloud": "Écoute l’énigme lue à voix haute, dans la langue affichée.",
+				"readAloud@simple": "Appuie pour l’écouter.",
+				"certificate": "Une image de la scène avec les mondes que tu as trouvés, à enregistrer ou à imprimer.",
+				"certificate@simple": "Une image à garder, avec tous les mondes que tu as trouvés."
+			},
+			"easyNote": "Avec des images : trouve ce que tu vois.",
+			"easyNote@simple": "Regarde l’image, puis trouve ce monde !",
+			"easyNoteVoice": "Avec des images, et une voix lit chaque énigme.",
+			"easyNoteVoice@simple": "Regarde l’image, puis trouve ce monde ! Une voix lit les énigmes.",
+			"none": "Pas encore de chasse à ce niveau : crée la tienne ci-dessous.",
 			"clueCount": "{count, plural, one {# énigme} many {# d’énigmes} other {# énigmes}}",
 			"inProgress": "Reprendre : énigme {step} sur {total}",
 			"progress": "Énigme {step} sur {total}",
 			"progressLabel": "Trouvés : {found} sur {total}",
 			"answerHow": "Trouve-le dans la scène et clique dessus.",
 			"answerHow@simple": "Trouve-le et clique dessus !",
+			"weAreAt": "Nous voici près {bodyId, select, earth {de la Terre} uranus {d’{name}} other {de {name}}}.",
+			"readAloud": "Lire à voix haute",
+			"stopReading": "Arrêter la lecture",
 			"firstHint": "Besoin d’un indice ?",
 			"moreHint": "Un autre indice",
 			"hintLabel": "Indice {n}",
@@ -607,19 +633,23 @@
 				"almost": "Oui, {name} ! Maintenant, observe la scène depuis {frameId, select, sun {le Soleil} earth {la Terre} moon {la Lune} other {{frame}}} : choisis le point de vue en haut à gauche."
 			},
 			"found": "Trouvé !",
+			"star": "Une étoile pour toi !",
 			"next": "Énigme suivante",
 			"finish": "Terminer",
 			"done": {
 				"title": "Chasse terminée !",
 				"text": "{count, plural, one {Tu as résolu l’énigme.} many {Tu as résolu les # d’énigmes.} other {Tu as résolu les # énigmes.}}",
 				"text@simple": "{count, plural, one {Tu as réussi !} many {Bravo : tu as trouvé les # de mondes !} other {Bravo : tu as trouvé les # mondes !}}",
+				"stars": "{count, plural, one {# étoile} many {# d’étoiles} other {# étoiles}}",
 				"found": "Les mondes que tu as trouvés. Clique sur l’un d’eux pour le revoir :",
 				"again": "Rejouer",
-				"other": "Choisir une autre chasse"
+				"other": "Choisir une autre chasse",
+				"certificate": "Créer un diplôme",
+				"certificate@simple": "Reçois ton diplôme"
 			},
 			"custom": {
 				"title": "Crée ta propre chasse",
-				"intro": "Coche les énigmes pour ton cours, puis lance la chasse ou partage-la avec ta classe.",
+				"intro": "Coche les énigmes pour ton cours, de n’importe quel niveau, puis lance la chasse ou partage-la avec ta classe. Les énigmes faciles gardent leurs images et leur voix.",
 				"name": "Ta propre chasse",
 				"count": "{count, plural, =0 {Aucune énigme choisie} one {# énigme choisie} many {# d’énigmes choisies} other {# énigmes choisies}}",
 				"start": "Commencer"
@@ -632,7 +662,16 @@
 				"copied": "Copié",
 				"link": "Lien vers cette chasse"
 			},
-			"otherHunts": "Autres chasses"
+			"otherHunts": "Autres chasses",
+			"certificate": {
+				"title": "Diplôme d’exploration spatiale",
+				"title@simple": "Mission spatiale réussie !",
+				"caption": "{hunt} : {count, plural, one {# énigme résolue} many {toutes les # d’énigmes résolues} other {toutes les # énigmes résolues}}",
+				"caption@simple": "{hunt} : {count, plural, one {tu l’as trouvé !} many {tu as trouvé les # de mondes !} other {tu as trouvé les # mondes !}}",
+				"row": "Énigme {n}",
+				"note": "Bravo, tu as exploré l’espace !",
+				"fileName": "ma-chasse-spatiale"
+			}
 		},
 		"sound": {
 			"toggle": "Son",

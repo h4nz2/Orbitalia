@@ -9,6 +9,7 @@ import { useSimUrlSync } from "@/store/urlSync"
 
 import FrameBadge from "./frame/FrameBadge"
 import FrameMenu from "./frame/FrameMenu"
+import HuntSpot from "./hunt/HuntSpot"
 import IntroController from "./intro/IntroController"
 import IntroMenu from "./intro/IntroMenu"
 import IntroOverlay from "./intro/IntroOverlay"
@@ -101,6 +102,7 @@ const SolarSystem = () => {
 			</Suspense>
 			<BodyHighlight />
 			<IntroPulse />
+			<HuntSpot />
 			<CentreMarker />
 			<div className={classes.hud} data-testid="hud">
 				<div className={classes.pickerStack}>

@@ -13,6 +13,9 @@
  *   (localStorage). They never switch sound on by themselves.
  * - `mute()` stops everything at once, recordings included (the M key, the
  *   speaker button, and for #29's presentation mode).
+ * - `muted` remembers that the viewer turned sound off in this visit: a
+ *   feature that may turn sound on by itself (an Easy hunt reading its clues
+ *   aloud, #52) then leaves it off.
  */
 import { create } from "zustand"
 
@@ -42,6 +45,8 @@ export interface SoundState extends SoundPrefs {
 	enabled: boolean
 	/** The recording being played (`recordings.ts` id), or null. */
 	playing: string | null
+	/** The viewer turned sound off after it was on, in this page visit (not stored). */
+	muted: boolean
 	/** Turning on only records the choice: the caller unlocks audio in its own click handler. */
 	setEnabled: (enabled: boolean) => void
 	/** Silence now: master off, recording stopped. */
@@ -115,9 +120,14 @@ export const useSoundStore = create<SoundState>()((set, get) => ({
 	...loadPrefs(),
 	enabled: loadEnabled(),
 	playing: null,
+	muted: false,
 	setEnabled: (enabled) => {
 		saveEnabled(enabled)
-		set(enabled ? { enabled } : { enabled, playing: null })
+		set(
+			enabled
+				? { enabled, muted: false }
+				: { enabled, playing: null, muted: get().muted || get().enabled },
+		)
 	},
 	mute: () => get().setEnabled(false),
 	setVolume: (volume) => {
@@ -137,7 +147,7 @@ export const useSoundStore = create<SoundState>()((set, get) => ({
 		// one update, so nobody ever sees sound on without the recording
 		if (playing !== null && !get().enabled) {
 			saveEnabled(true)
-			set({ enabled: true, playing })
+			set({ enabled: true, muted: false, playing })
 		} else {
 			set({ playing })
 		}

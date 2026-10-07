@@ -9,8 +9,20 @@
  * throw the class back to the first clue; closing the tab forgets it. There is
  * no score, no timer and no record of wrong guesses or hints used: this is not
  * a test.
+ *
+ * Two bits of state are for the scene rather than the panel (#52): the
+ * difficulty the chooser shows, and `assist`, on while an Easy clue is on
+ * screen, which the labels (pictures beside the names) and the picking
+ * (forgiving clicks) read.
  */
 import { create } from "zustand"
+
+/**
+ * Easy (ages 6–8), Medium (9–11), Tricky (12+): the chooser's filter and each
+ * clue's own level (`features/solarSystem/hunt/hunts.ts`).
+ */
+export const HUNT_DIFFICULTIES = ["easy", "medium", "hard"] as const
+export type HuntDifficulty = (typeof HUNT_DIFFICULTIES)[number]
 
 /** Asking a clue, or showing what the class just found. */
 export type HuntPhase = "asking" | "found"
@@ -41,6 +53,15 @@ export interface HuntState extends HuntProgress {
 	/** The chooser is showing although a hunt is in progress (kept until another one starts). */
 	choosing: boolean
 	guess: HuntGuess | null
+	/** The difficulty the chooser shows; null follows the reading level. */
+	difficulty: HuntDifficulty | null
+	/**
+	 * An Easy clue is on screen: the labels carry pictures and a click near a
+	 * body counts (#52). Set by the hunt panel, never stored.
+	 */
+	assist: boolean
+	setDifficulty: (difficulty: HuntDifficulty) => void
+	setAssist: (assist: boolean) => void
 	setOpen: (open: boolean) => void
 	setCollapsed: (collapsed: boolean) => void
 	/** Starts `key` from its first clue. */
@@ -124,6 +145,12 @@ export const useHuntStore = create<HuntState>()((set, get) => ({
 	collapsed: false,
 	choosing: false,
 	guess: null,
+	difficulty: null,
+	assist: false,
+	setDifficulty: (difficulty) => set({ difficulty }),
+	setAssist: (assist) => {
+		if (get().assist !== assist) set({ assist })
+	},
 	setOpen: (open) => set({ open, choosing: false }),
 	setCollapsed: (collapsed) => set({ collapsed }),
 	start: (key) =>
