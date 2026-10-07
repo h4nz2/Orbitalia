@@ -10213,7 +10213,20 @@
 			"bodyType": "Comet",
 			"epochJD": 2446469.973616,
 			"elementsSource": "JPL Small-Body Database (1P/Halley, epoch 1968), fetched 2026-09-25; epoch moved to the 1986-02-09 perihelion and the period set to the mean between the 1986 and 2061-07-28 perihelia, so both returns land on their dates",
-			"tailLengthKmAt1Au": 18000000.0
+			"tail": {
+				"onsetAu": 6,
+				"fullAu": 0.7,
+				"ionLengthKm": 50000000,
+				"dustLengthKm": 25000000,
+				"lagDays": 11,
+				"sources": {
+					"onset": "Meech, Jewitt & Ricker 1986, Icarus 66, 561 (https://faculty.epss.ucla.edu/~jewitt/papers/1986/MJR86.pdf): first coma at 6.1 AU in September 1984 (Spinrad et al.), dust leaving the nucleus from about 5.9 AU; star-like at 8 to 11 AU",
+					"full": "ESO press release eso8607 (https://www.eso.org/public/news/eso8607/): the ion tail at least 50 million km long on 1986 Feb 27, at 0.70 AU from the Sun (JPL Horizons)",
+					"ionLength": "ESO press release eso8607 (https://www.eso.org/public/news/eso8607/): a 15 degree CO+ ion tail on 1986 Feb 27, \"at least 50 million kilometres\" (about 90 million km if it points straight away from the Sun)",
+					"dustLength": "IAUC 4196 (https://tamkin3.eps.harvard.edu/iauc/04100/04196.html): tail about 10 degrees on 1986 Mar 20.5; with the JPL Horizons geometry (0.99 AU from the Sun, 0.81 AU from Earth, phase angle 66 degrees) at least 21 and about 25 million km",
+					"lag": "Ferrín 2010, Planet. Space Sci. 58, 365 (https://arxiv.org/abs/0909.3498): the light curve peaks 11 days after perihelion; Weaver et al. 1986, Nature 324, 441 (https://ntrs.nasa.gov/citations/19870042030): water production after perihelion about ten times that before at the same distance"
+				}
+			}
 		},
 		{
 			"id": "c2020f3-neowise",
@@ -10250,7 +10263,18 @@
 			"bodyType": "Comet",
 			"epochJD": 2459036.5,
 			"elementsSource": "JPL Small-Body Database, osculating J2000 ecliptic elements (fetched 2026-09-25)",
-			"tailLengthKmAt1Au": 15000000.0
+			"tail": {
+				"onsetAu": 3,
+				"fullAu": 0.45,
+				"ionLengthKm": 36000000,
+				"dustLengthKm": 21000000,
+				"sources": {
+					"onset": "Already active at discovery on 2020 Mar 27 at 2.09 AU (JPL Horizons; https://en.wikipedia.org/wiki/Comet_NEOWISE), with a 1 arcminute coma and a short tail on Mar 31 (COBS, https://www.cobs.si/news/archive/new-comet-c2020-f3-neowise/); there are no earlier images, so 3 AU, where water ice starts to sublimate, is an estimate",
+					"full": "Its tails were longest on 2020 Jul 12 to 17, at 0.39 to 0.50 AU from the Sun after perihelion (Sky & Telescope, https://skyandtelescope.org/astronomy-news/comet-neowise-delights-at-dawn/; JPL Horizons)",
+					"ionLength": "Sky & Telescope (https://skyandtelescope.org/astronomy-news/comet-neowise-delights-at-dawn/): ion tail \"at least 16 degrees long\" on 2020 Jul 12; with the JPL Horizons geometry (0.39 AU from the Sun, 0.87 AU from Earth, phase angle 101 degrees) about 36 million km; over 20 degrees, about 42 million km, on Jul 14 (APOD 2020-07-16, https://science.nasa.gov/image-article/apod-2020-july-16-the-long-tails-of-comet-neowise/)",
+					"dustLength": "Sky & Telescope, \"Comet NEOWISE dazzles at dusk\" (July 2020, read as a search excerpt only): the dust tail traced for 10 degrees with the naked eye on 2020 Jul 14 and more than 15 degrees two weeks after perihelion; with the JPL Horizons geometry (about 0.45 AU from the Sun, phase angle over 100 degrees) about 21 million km for 10 degrees (29 million km for 15)"
+				}
+			}
 		},
 		{
 			"id": "encke",
@@ -10275,7 +10299,18 @@
 			"alternativeName": "2P/Encke",
 			"meanRadius": 2.4,
 			"sideralRotation": 11.083,
-			"tailLengthKmAt1Au": 2000000.0
+			"tail": {
+				"onsetAu": 1.63,
+				"fullAu": 0.5,
+				"ionLengthKm": 13000000,
+				"dustLengthKm": 0,
+				"sources": {
+					"onset": "Ferrín 2008, Icarus 197, 169 (https://arxiv.org/abs/0806.2161): in 2003 its activity turned on at 1.63 AU before perihelion and off at 1.49 AU after",
+					"full": "Estimate: its longest tail was seen one day after perihelion at 0.34 AU (NASA SVS 11732, https://svs.gsfc.nasa.gov/11732); no tail lengths further out are published",
+					"ionLength": "NASA SVS 11732 (https://svs.gsfc.nasa.gov/11732): on 2007 Apr 20, at 0.34 AU, a coronal mass ejection tore off its \"approximately 8 million-mile-long tail\" (STEREO; Vourlidas et al. 2007, ApJ 668, L79)",
+					"dustLength": "None: Encke has no classical dust tail, only a trail of centimetre-sized grains along its orbit (Reach et al. 2000, Icarus 148, 80, https://arxiv.org/abs/astro-ph/0007146)"
+				}
+			}
 		},
 		{
 			"id": "67p",
@@ -10304,7 +10339,20 @@
 				"massExponent": 12
 			},
 			"sideralRotation": 12.4,
-			"tailLengthKmAt1Au": 1000000.0
+			"tail": {
+				"onsetAu": 4.3,
+				"fullAu": 1.3,
+				"ionLengthKm": 0,
+				"dustLengthKm": 2200000,
+				"lagDays": 20,
+				"sources": {
+					"onset": "Snodgrass et al. 2013, A&A 557, A33 (https://arxiv.org/abs/1307.7978): active at 4.3 AU before perihelion in 2007, repeating from orbit to orbit; Rosetta found it weakly active at 4.3 AU in March 2014 (Tubiana et al. 2015, A&A 573, A62)",
+					"full": "Its activity peaked two to three weeks after the 2015 Aug 13 perihelion at 1.24 AU (ESA, https://sci.esa.int/rosetta/58349-rosetta-measures-production-of-water-at-comet-over-two-years); its longest tail was seen in September to November 2015 (ESA, https://blogs.esa.int/rosetta/2016/01/27/twin-tails/)",
+					"ionLength": "None: despite dedicated searches no ion tail was seen in 2015/16 (Snodgrass et al. 2017, Phil. Trans. R. Soc. A 375, 20160249, https://arxiv.org/abs/1705.10539)",
+					"dustLength": "ESA Rosetta blog, Twin tails (https://blogs.esa.int/rosetta/2016/01/27/twin-tails/): 20 to 30 arcminutes in September to November 2015 (D. Peach) and 0.5 degrees on 2016 Jan 19, \"a minimum length of 2.2 million km\"",
+					"lag": "Hansen et al. 2016, MNRAS 462, S491 (https://doi.org/10.1093/mnras/stw2413): its water production peaked 18 to 22 days after perihelion"
+				}
+			}
 		},
 		{
 			"id": "halebopp",
@@ -10329,7 +10377,18 @@
 			"alternativeName": "C/1995 O1",
 			"meanRadius": 30,
 			"sideralRotation": 11.4,
-			"tailLengthKmAt1Au": 70000000.0
+			"tail": {
+				"onsetAu": 13,
+				"fullAu": 1,
+				"ionLengthKm": 148000000,
+				"dustLengthKm": 77000000,
+				"sources": {
+					"onset": "Kronk, Cometography (https://www.cometography.com/lcomets/1995o1.html): a coma 0.4 arcminutes across on McNaught's prediscovery plate of 1993 Apr 27, at 13.0 AU; discovered at 7.2 AU (CBAT, http://www.cbat.eps.harvard.edu/pressinfo/HaleBopp.html)",
+					"full": "Kronk, Cometography (https://www.cometography.com/lcomets/1995o1.html): the tail grew from 2 degrees in early February 1997 (1.4 AU) to over 10 degrees by Mar 7 (1.0 AU) and was 15 to 20 degrees at perihelion",
+					"ionLength": "ESO tail length exercise (http://web.archive.org/web/20061011153309/http://www.eso.org/outreach/info-events/hale-bopp/taillength.html): the 20 degree ion tail of 1997 Apr 1 is 0.994 AU, 148 million km, long; APOD 1997-03-14 (https://apod.nasa.gov/apod/ap970314.html)",
+					"dustLength": "R. M. West, ESO, 1997 Apr 13 (https://web.archive.org/web/20110524134423/http://www.eso.org/public/events/astro-evt/hale-bopp/comet-hale-bopp-summary-apr13-97-rw.html): dust tail 21 degrees with the naked eye on Apr 9; with the JPL Horizons geometry (0.925 AU from the Sun, 1.43 AU from Earth, phase angle 44 degrees) at least 77 million km (42 degrees was also reported)"
+				}
+			}
 		}
 	],
 	"asteroidBelt": {

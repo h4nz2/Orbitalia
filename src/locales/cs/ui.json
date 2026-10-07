@@ -1337,6 +1337,8 @@
 				"tail@simple": "Její ohon je dlouhý asi {length}. Vždycky míří od Slunce{direction, select, out { – i teď, když kometa odlétá ohonem napřed} other {}}!",
 				"noTail": "Teď nemá žádný ohon: ten vzniká, až když se kometa přiblíží ke Slunci na méně než asi {onset}. Tam sluneční světlo mění její led v plyn.",
 				"noTail@simple": "Teď nemá žádný ohon. Ten jí naroste, až se přiblíží ke Slunci a její led se začne měnit v plyn.",
+				"waking": "Právě se probouzí: sluneční světlo začíná měnit její led v plyn a kolem jádra se tvoří koma. Ohon jí teprve začíná růst.",
+				"waking@simple": "Právě se probouzí! Slunce začíná měnit její led v plyn. Brzy jí naroste ohon.",
 				"next": "Příště nejblíž Slunci: {date}.",
 				"last": "Naposledy nejblíž Slunci: {date}. Vrátí se asi za {years, plural, one {# rok} few {# roky} many {# roku} other {# let}}.",
 				"watch": "Sledovat průlet kolem Slunce",

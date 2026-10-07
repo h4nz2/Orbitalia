@@ -1337,6 +1337,8 @@
 				"tail@simple": "Su cola mide unos {length}. ¡Siempre apunta en sentido contrario al Sol{direction, select, out { – incluso ahora, que el cometa se aleja con la cola por delante} other {}}!",
 				"noTail": "Ahora mismo no tiene cola: solo se forma a menos de unos {onset} del Sol, donde la luz solar convierte el hielo del cometa en gas.",
 				"noTail@simple": "Ahora mismo no tiene cola. La cola solo crece cuando el cometa se acerca al Sol y su hielo empieza a convertirse en gas.",
+				"waking": "Se está despertando: la luz del Sol empieza a convertir su hielo en gas y se forma una coma. Su cola apenas ha empezado a crecer.",
+				"waking@simple": "¡Se está despertando! El Sol empieza a convertir su hielo en gas. Pronto le crecerá una cola.",
 				"next": "Próximo paso más cerca del Sol: {date}.",
 				"last": "Último paso más cerca del Sol: {date}. Volverá dentro de unos {years, number} años.",
 				"watch": "Ver cómo pasa junto al Sol",

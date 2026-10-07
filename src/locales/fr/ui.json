@@ -1337,6 +1337,8 @@
 				"tail@simple": "Sa queue mesure environ {length}. Elle pointe toujours à l’opposé du Soleil{direction, select, out { – même maintenant, alors que la comète s’en va la queue en avant} other {}} !",
 				"noTail": "Pas de queue pour l’instant : elle ne se forme qu’à moins d’environ {onset} du Soleil, là où la lumière solaire transforme la glace de la comète en gaz.",
 				"noTail@simple": "Pas de queue pour l’instant. La queue n’apparaît que lorsque la comète s’approche du Soleil et que sa glace commence à se changer en gaz.",
+				"waking": "Elle se réveille : la lumière du Soleil commence à transformer sa glace en gaz, et une chevelure se forme autour du noyau. Sa queue commence à peine à pousser.",
+				"waking@simple": "Elle se réveille ! Le Soleil commence à changer sa glace en gaz. Bientôt, elle aura une queue.",
 				"next": "Prochain passage au plus près du Soleil : {date}.",
 				"last": "Dernier passage au plus près du Soleil : {date}. Elle reviendra dans environ {years, number} ans.",
 				"watch": "Voir son passage près du Soleil",
