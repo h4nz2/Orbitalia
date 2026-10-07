@@ -92,6 +92,8 @@ test("the reading level changes the sentences, not the language", async ({
 	await expect(
 		page.getByText("You would weigh only 38% of your weight on Earth."),
 	).toBeVisible()
+	// °C at the standard level, no kelvin (#51)
+	await expect(page.getByText("-63 °C", { exact: true })).toBeVisible()
 	await page
 		.getByRole("button", { name: "Language and reading level (EN)" })
 		.click()
@@ -103,6 +105,11 @@ test("the reading level changes the sentences, not the language", async ({
 			"If you weigh 30 kg on Earth, you would weigh only 11 kg there!",
 		),
 	).toBeVisible()
+	// the simple level: Earth as the yardstick and temperatures in words (#51)
+	await expect(
+		page.getByText("So small that 2 of them would fit across Earth"),
+	).toBeVisible()
+	await expect(page.getByText("Colder than any freezer")).toBeVisible()
 	await expect(page.getByText(/^Mars is called the red planet/)).toBeVisible()
 })
 

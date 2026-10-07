@@ -1,8 +1,13 @@
 import { describe, expect, it } from "vitest"
 
-import { createI18n, type ReadingLevel } from "@/i18n"
+import {
+	createI18n,
+	formatScientific,
+	temperatureWord,
+	type ReadingLevel,
+} from "@/i18n"
 
-import { feelBand, levelQuantity, scientific } from "./quantity"
+import { levelQuantity } from "./quantity"
 
 const at = (readingLevel: ReadingLevel, locale = "en") =>
 	createI18n({ locale, readingLevel })
@@ -36,15 +41,15 @@ describe("levelQuantity: temperatures (#51's rule)", () => {
 		)
 	})
 
-	it("has a word for every temperature in the solar system", () => {
-		expect(feelBand(5500)).toBe("fire")
-		expect(feelBand(464)).toBe("oven")
-		expect(feelBand(56.7)).toBe("desert")
-		expect(feelBand(15)).toBe("mild")
-		expect(feelBand(-63)).toBe("freezer")
-		expect(feelBand(-89.2)).toBe("freezer")
-		expect(feelBand(-153)).toBe("coldest")
-		expect(feelBand(-224)).toBe("airFreezes")
+	it("has a word for every temperature in the solar system (the app's one ladder)", () => {
+		expect(temperatureWord({ c: 5500 })).toBe("fire")
+		expect(temperatureWord({ c: 464 })).toBe("oven")
+		expect(temperatureWord({ c: 56.7 })).toBe("desert")
+		expect(temperatureWord({ c: 15 })).toBe("mild")
+		expect(temperatureWord({ c: -63 })).toBe("freezer")
+		expect(temperatureWord({ c: -89.2 })).toBe("freezer")
+		expect(temperatureWord({ c: -153 })).toBe("colderThanEarth")
+		expect(temperatureWord({ c: -224 })).toBe("airFreezes")
 		expect(
 			levelQuantity(
 				{ kind: "temperature", degrees: { c: -224 } },
@@ -103,8 +108,10 @@ describe("levelQuantity: mass and density", () => {
 	})
 
 	it("writes powers of ten for the advanced level", () => {
-		expect(scientific(5.97237e24, at("advanced"))).toBe("5.97 × 10²⁴")
-		expect(scientific(5.97237e24, at("advanced", "de"))).toBe("5,97 × 10²⁴")
+		expect(formatScientific(5.97237e24, at("advanced"))).toBe("5.97 × 10²⁴")
+		expect(formatScientific(5.97237e24, at("advanced", "de"))).toBe(
+			"5,97 × 10²⁴",
+		)
 	})
 })
 

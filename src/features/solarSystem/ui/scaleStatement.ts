@@ -9,7 +9,12 @@
  * is Earth: the body every child can relate to.
  */
 import { bodyById, sun, type Body } from "@/data"
-import type { MessageKey, MessageValues } from "@/i18n"
+import {
+	formatCount,
+	type I18n,
+	type MessageKey,
+	type MessageValues,
+} from "@/i18n"
 import { bodyDistortion, type BodyDistortion, type ScaleSettings } from "@/sim"
 
 /** The body the statement talks about when nothing else is in view. */
@@ -62,19 +67,26 @@ export function distortionOf(body: Body, scale: ScaleSettings): BodyDistortion {
  * (null for a body without a parent), each "true" or by how much it lies.
  *
  * @param name the body name in the active language (`useBodyName()`)
+ * @param i18n the active language: `{n}` is the factor as the reading level
+ *             shows it ("more than 100" at the simple level, #51)
  */
 export function scaleSentences(
 	body: Body,
 	scale: ScaleSettings,
 	name: (id: string) => string,
+	i18n: I18n,
 ): { size: Sentence; distance: Sentence | null } {
+	const factor = (value: number) => {
+		const rounded = roundFactor(value)
+		return { factor: rounded, n: formatCount(rounded, i18n) }
+	}
 	const distortion = distortionOf(body, scale)
 	const subject = { subjectId: body.id, subject: name(body.id) }
 	const size: Sentence = isTrue(distortion.size)
 		? { key: "solarSystem.scale.sizeTrue", values: subject }
 		: {
 				key: "solarSystem.scale.sizeBigger",
-				values: { ...subject, factor: roundFactor(distortion.size) },
+				values: { ...subject, ...factor(distortion.size) },
 			}
 	if (body.parentId === null) return { size, distance: null }
 	const parent = { parentId: body.parentId, parent: name(body.parentId) }
@@ -87,11 +99,11 @@ export function scaleSentences(
 		: d < 1
 			? {
 					key: "solarSystem.scale.distanceCloser",
-					values: { ...subject, ...parent, factor: roundFactor(1 / d) },
+					values: { ...subject, ...parent, ...factor(1 / d) },
 				}
 			: {
 					key: "solarSystem.scale.distanceFarther",
-					values: { ...subject, ...parent, factor: roundFactor(d) },
+					values: { ...subject, ...parent, ...factor(d) },
 				}
 	return { size, distance }
 }

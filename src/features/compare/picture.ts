@@ -7,7 +7,7 @@
  * on the device; the textures come from the app itself.
  */
 import { getBody, type Body } from "@/data"
-import type { I18n } from "@/i18n"
+import { formatSize, isSimple, type I18n } from "@/i18n"
 import { dateToJD } from "@/sim"
 import { hidesTimeInUrl, useBirthdayStore } from "@/store/birthday"
 import {
@@ -257,11 +257,11 @@ export async function takeComparisonPostcard(
 	name: (id: string) => string,
 ): Promise<void> {
 	const size = (body: Body) => {
-		const diameter = i18n.quantity(
+		const diameter = formatSize(
 			Number((2 * body.radiusKm).toPrecision(3)),
-			"kilometer",
+			i18n,
 		)
-		return body.radiusEstimated
+		return body.radiusEstimated && !isSimple(i18n)
 			? i18n.t("units.approx", { value: diameter })
 			: diameter
 	}

@@ -75,7 +75,8 @@ export interface ScalePanelProps {
 }
 
 const ScalePanel = ({ heading = true }: ScalePanelProps) => {
-	const { t } = useI18n()
+	const i18n = useI18n()
+	const { t } = i18n
 	const name = useBodyName()
 	const id = useId()
 	const titleId = `${id}-title`
@@ -91,7 +92,7 @@ const ScalePanel = ({ heading = true }: ScalePanelProps) => {
 	const showMarkers = useSimStore((state) => state.showMarkers)
 
 	const subject = statementSubject(selectedId, focusId)
-	const sentences = scaleSentences(subject, scale, name)
+	const sentences = scaleSentences(subject, scale, name, i18n)
 	// a custom mix (reachable only from the console) has no name and no cell in the grid
 	const lies = targetId === null ? null : SCALE_LIES[targetId]
 	// Poster tells a cell's lies without being its preset: the switches name no cell

@@ -374,12 +374,16 @@ True scale taken out onto the school field: "if the Sun were a basketball, Earth
 - **Stops:** the Sun at the start, the planets by mean distance (semi-major axis) with the leg from the previous
   stop, their big moons (radius >= 1000 km: the Moon, the Galileans, Titan, Triton) and the nearest star (Proxima
   Centauri, `NEAREST_STAR`; not a body of the app). Sizes are compared with the nearest everyday thing on a log
-  scale (`THINGS`: typical diameters from a grain of fine sand to a football, never off by more than 1.5x).
+  scale (`THINGS`: typical diameters from a grain of fine sand to a football, never off by more than 1.5x; since
+  #51 the app's one shared set, in `@/i18n` quantities, with an exercise ball and a house on top for the
+  "If Earth were an orange" comparisons; names under `quantity.thing.*`).
 - **Landmarks** (`LANDMARKS`: football pitch 105 m, running-track lap 400 m): distances in landmark lengths and a
   marker where the first one ends. Teachers pick names, never type numbers.
 - **Text:** `walkText.ts` builds every sentence from `I18n` (tested in en/de at each level); lengths through
   `lengths.ts` (`formatLength`: mm/cm/m/km, two significant digits below 10, whole numbers up to 999,
-  "149.6 million km" for true values, "1 : 5.8 billion" for the scale).
+  "149.6 million km" for true values, "1 : 5.8 billion" for the scale). At the simple level (#51, `walkLength`)
+  a length above 100 m is counted in football pitches ("7.5 football pitches"), and the true values, the scale
+  ratio and the landmarks' metres stay out.
 - **Views:** the walk (a path of stop cards, the default) and a table (projectable). Printing always prints the
   table: controls hidden, black on white, a tick column, bodies up to 30 mm drawn at their model size in CSS mm.
 - **URL:** `?sun=<object>&landmark=pitch|track|none&view=walk|table&focus=<body>` (`search.ts`, zod only, so the route chunk
@@ -1458,10 +1462,11 @@ description, and the stories a reader opens.
   `layers`, `gases`, `worlds.<id>.{madeOf, air, weather, nicknames.<id>.{name, story}, name, localName?,
 discovery}`), plain text, one value or one per reading level. No text may state a fact its sources do not.
 - **Quantities follow the reading level through one function** (`utils/quantity.ts` `levelQuantity`, #51's rule):
-  temperatures in words at simple ("hotter than an oven", `feelBand`), °C at standard, kelvin with °C at advanced;
-  mass in Earths (at simple never above 100: "heavier than 100 Earths put together"); density against water
-  (buckets of water at simple); layer thickness in km, not at simple. The sidebar's average temperature uses it too.
-  When #51's app-wide formatters land, this function delegates to them.
+  temperatures through `@/i18n`'s `formatTemperature` (the app's one word ladder at simple, "Hotter than an oven",
+  capitalized as a value of its own; °C at standard; kelvin with °C at advanced), powers of ten through
+  `formatScientific`; what stays here is the dictionary's own: mass in Earths with the Sun and Earth as special
+  cases (at simple never above 100: "heavier than 100 Earths put together"), density against water (buckets of
+  water at simple), layer thickness in km, not at simple. The sidebar's average temperature uses it too.
 - **The contract** (`stories.test.ts`): every world has layers for its picture, its air, a range the right way
   round, a nickname, a name origin and a discovery, each with https sources; every locale has exactly the facts'
   worlds, nicknames, layers and gases, every story at every reading level, a local name story exactly where the data
@@ -1898,8 +1903,8 @@ telescope), why the hidden ones are hidden, and the geometry behind each sightin
 
 ## i18n: languages and reading levels (`src/i18n`, `src/locales`)
 
-Two axes: the **locale** (language) and the **reading level** (`simple` 8–11, `standard` 12–15 and the default,
-`advanced` 16+). Shipped locales: English (`en`, the reference and fallback), German (`de`, standard German
+Two axes: the **locale** (language) and the **reading level** (`simple` 6–11 (#51: comparisons instead of big
+numbers, see "Quantities at each reading level"), `standard` 12–15 and the default, `advanced` 16+). Shipped locales: English (`en`, the reference and fallback), German (`de`, standard German
 orthography), Czech (`cs`), Spanish (`es`, neutral international Spanish, "tú") and French (`fr`, "tu").
 Body names: the Sun, the planets and the major moons are translated ("Erde", "Země", "Tierra", "Terre"); every other
 body keeps its catalogue name, and provisional designations (`S/2003 J 2`) are never translated.
@@ -1960,8 +1965,52 @@ createI18n({ locale: "de", readingLevel: "simple" }) // the same object outside 
 ```
 
 Pure helpers take the `I18n` object (or its `chain`) as a parameter rather than calling the hook. `@/i18n/bodies`
-is kept out of the `@/i18n` barrel so the eager root chunk does not pull in the body data. `useI18n()` works inside
+is kept out of the `@/i18n` barrel so the eager root chunk does not pull in the body data. Sizes, distances,
+durations, temperatures, weights and counts go through the level-aware quantities below, never through
+`number`/`quantity` alone. `useI18n()` works inside
 the R3F `<Canvas>` (fiber 9 bridges context); outside the provider it returns English/standard.
+
+### Quantities at each reading level (`src/i18n/quantities.ts`, `simpleRules.ts`; #51)
+
+`simple` is written for ages 6–11, who cannot picture "149.6 million km" or "5,778 K". **The rule, for every
+simple-level text and every number the code shows at `simple`:** no number above **100** (`SIMPLE_LIMIT`; years
+count too: "long ago", not "in 1610"), no thousands, millions or billions, no km for big distances, no AU, K,
+m/s², °C or scientific notation. Small numbers a child can picture stay ("11 Earths wide", "2 moons", "4 hours",
+"22 km"), rounded to halves below 10 and whole numbers above (`childNumber`); above 100 a sentence says "more than
+100". Instead: words (tiny … gigantic; hotter than an oven, colder than any freezer), Earth as the yardstick, and
+the walk's everyday objects (#25) on the scale the simple texts use, **Earth as an orange** (the Moon a cherry,
+Jupiter about an exercise ball, the Sun as big as a house). `standard` and `advanced` keep their exact numbers;
+temperatures are °C at `standard` and kelvin only at `advanced`. Formatted calendar dates (the clock, a birthday,
+a launch day) are dates, not quantities, and stay.
+
+Every feature formats through these (pure, `I18n` in, a phrase without final punctuation out; fragments in lower
+case, clauses with a capital, `capitalized` for a value on its own; messages under `quantity.*` in `ui.json`, the
+units of time in `quantity.unit.*`, so a Czech "za 1 sekundu" or a German "dauert 27 Tage" reads right):
+
+| Helper                                                                             | simple                                                                                                                             | standard / advanced            |
+| ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------- | ------------------------------ |
+| `formatCount(n)`, `countArgs(n)`                                                   | "11", "2.5", "more than 100" (`{count}` for the plural, `{n}` to show)                                                             | the number                     |
+| `formatTemperature(t)`, `formatTemperatureRange(min, max)`                         | "colder than any freezer", "far hotter than any fire", "from … to …" (`temperatureWord`; `t` in K, `{ c }` or `{ k }`)             | "−63 °C" / "210 K (−63 °C)"    |
+| `formatSize(km)`, `sizeWord`                                                       | "huge" (tiny/small/big/huge/gigantic, against Earth)                                                                               | "139,822 km"                   |
+| `sizeVsEarth(km)`                                                                  | "11 Earths wide", "so small that 4 of them would fit across Earth"                                                                 | same, exact                    |
+| `everydaySize(body)`, `everydayThing`, `THINGS`, `EARTH_AS`                        | "If Earth were as small as an orange, Jupiter would be as big as an exercise ball"                                                 | same                           |
+| `distanceInWords(km)`, `formatDistance(km)`                                        | "as far as 30 Earths in a row", "4 times as far as the Moon is from Earth", "about half / 5 times as far as Earth is from the Sun" | "384,000 km", "628 million km" |
+| `durationInWords(s)`                                                               | "8.5 minutes", "4 months", "12 years", "9 long human lives" (80 years each), "longer than there have been people"                  | (features keep their own)      |
+| `dayVsEarth(days)`, `yearVsEarth(days)`                                            | "A day there lasts as long as 10 days at home", "In one year at home, 4 years go by there"                                         | same, exact                    |
+| `weightVsEarth(ratio)`, `formatWeight(kg)`, `massVsEarth(kg)`, `formatSpeed(km/s)` | "You would weigh twice as much as at home", "more than 100 kg", "weighs as much as more than 100 Earths", "17 km every second"     | exact                          |
+
+A feature with its own exact format branches with `isSimple(i18n)` and calls the helper at `simple` (the flight
+readout, light travel, the compare page, the spacecraft card, the dictionary, the birthday, the scale notice, the
+walk's lengths above 100 m in football pitches). A message whose number can pass 100 at `simple` gets an
+`@simple` variant that shows `{n}` (and keeps `{count}` for the plural); the code passes `countArgs(value, i18n)`.
+
+**The guard** (`src/i18n/simpleLevel.test.ts`, the check itself in `simpleRules.ts` `simpleProblems(text,
+locale)`, reusable by other tests): every simple-level text of every locale and resource (`ui`, `bodies`, `hunts`,
+`tours`, `help`, `events`, `spacecraft`; the `@simple` variant, else the text the level falls back to; catalogue
+`name`s and the help page's credits and licences aside) and the simple-level output of the helpers and of every
+feature that shows a number. The prose rewrite is tracked in its `PENDING` list per locale and resource; a listed
+resource that is already clean fails, so the list only shrinks. `ui.json` is never pending; its keys the code never
+shows at `simple` (the exact `units.*`, the kelvin note) are listed in `NEVER_AT_SIMPLE`.
 
 ### State, URL and page metadata
 
@@ -1980,7 +2029,9 @@ the R3F `<Canvas>` (fiber 9 bridges context); outside the provider it returns En
 
 - **Add a string:** add the key to `src/locales/en/ui.json` (under the feature's namespace), the same key to every
   other locale, then `t("feature.key")`. Run `pnpm test`: `locales.test.ts` lists anything missing.
-- **Add a reading-level variant:** add `"key@simple"` (etc.) in every locale.
+- **Add a reading-level variant:** add `"key@simple"` (etc.) in every locale. A simple text keeps the rule of
+  "Quantities at each reading level" (no number above 100, no big-number words, no scientific units);
+  `pnpm test` (`simpleLevel.test.ts`) names any line that breaks it.
 - **Add a locale** (e.g. French): copy `src/locales/en/` to `src/locales/fr/`, translate both files (`locale.name` is
   the language's own name, "Français"), run `pnpm test`. No code changes; the switcher lists it automatically.
   A regional variant (`de-CH`, e.g. for ss instead of ß) may be a folder with only the keys that differ once the tests

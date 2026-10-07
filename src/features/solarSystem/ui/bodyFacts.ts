@@ -5,11 +5,26 @@
  * knows (Earth, our Moon, the speed of light, their own weight) with the exact
  * number beside it. Computed from the body model, so every body gets them,
  * translated through the i18n layer (`solarSystem.facts.*`).
+ *
+ * At the simple reading level (#51) the numbers follow `@/i18n`'s
+ * quantities: no number above 100, times in words, and instead of the exact
+ * number the size gets an everyday picture ("If Earth were as small as a
+ * pea, Jupiter would be as big as an orange"); the other value lines go.
  */
 import { bodyById, isSmallBody, type Body } from "@/data"
-import type { I18n } from "@/i18n"
+import {
+	countArgs,
+	durationInWords,
+	everydaySize,
+	formatCount,
+	isSimple,
+	roughly,
+	type I18n,
+} from "@/i18n"
 import { bodyName } from "@/i18n/bodies"
 import { kmToAu } from "@/sim"
+
+export { roughly }
 
 export type FactKey = "size" | "distance" | "year" | "orbit" | "spin" | "weight"
 
@@ -36,9 +51,9 @@ const SIMILAR_HIGH = 1.15
 const earth = bodyById.get("earth")
 const moon = bodyById.get("moon")
 
-/** One decimal below 10 ("1.9 Earths"), whole numbers above ("11 Earths"). */
-export const roughly = (value: number): number =>
-	value >= 10 ? Math.round(value) : Math.round(value * 10) / 10
+/** A ratio as a count: `roughly` for the exact levels, the child's rounding (and "more than 100") at `simple`. */
+const counted = (ratio: number, i18n: I18n) =>
+	countArgs(isSimple(i18n) ? ratio : roughly(ratio), i18n)
 
 /**
  * Surface gravity, m/s²: the curated value where the source has one (it
@@ -73,13 +88,28 @@ function sizeFact(body: Body, i18n: I18n): HeadlineFact | null {
 	const ref = reference.id
 	const comparison =
 		ratio >= SIMILAR_HIGH
-			? i18n.t("solarSystem.facts.sizeWider", { count: roughly(ratio), ref })
+			? i18n.t("solarSystem.facts.sizeWider", { ...counted(ratio, i18n), ref })
 			: ratio > SIMILAR_LOW
 				? i18n.t("solarSystem.facts.sizeSimilar", { ref })
 				: i18n.t("solarSystem.facts.sizeNarrower", {
-						count: roughly(1 / ratio),
+						...counted(1 / ratio, i18n),
 						ref,
 					})
+	if (isSimple(i18n)) {
+		return {
+			key: "size",
+			label: i18n.t("solarSystem.facts.label.size"),
+			comparison,
+			value: everydaySize(
+				{
+					id: body.id,
+					name: bodyName(body.id, i18n.chain),
+					diameterKm: 2 * body.radiusKm,
+				},
+				i18n,
+			),
+		}
+	}
 	const diameter = i18n.quantity(2 * body.radiusKm, "kilometer")
 	return {
 		key: "size",
@@ -95,6 +125,7 @@ function sizeFact(body: Body, i18n: I18n): HeadlineFact | null {
 
 /** "8.3 minutes", "4.2 hours": how long light takes for `km`. */
 const lightTime = (km: number, i18n: I18n): string => {
+	if (isSimple(i18n)) return durationInWords(km / SPEED_OF_LIGHT_KM_S, i18n)
 	const minutes = km / SPEED_OF_LIGHT_KM_S / 60
 	return minutes < 90
 		? i18n.quantity(roughly(minutes), "minute", "long")
@@ -123,7 +154,7 @@ function distanceFact(body: Body, i18n: I18n): HeadlineFact | null {
 				near: lightTime(near, i18n),
 				far: lightTime(far, i18n),
 			}),
-			value: `${au(near)} – ${au(far)}`,
+			value: isSimple(i18n) ? null : `${au(near)} – ${au(far)}`,
 		}
 	}
 	if (parent.parentId === null) {
@@ -134,10 +165,12 @@ function distanceFact(body: Body, i18n: I18n): HeadlineFact | null {
 			comparison: i18n.t("solarSystem.facts.sunlight", {
 				time: lightTime(km, i18n),
 			}),
-			value: `${i18n.t("units.au", { value: i18n.significant(kmToAu(km), 3) })} · ${i18n.t(
-				"units.millionKm",
-				{ value: i18n.significant(km / 1e6, 3) },
-			)}`,
+			value: isSimple(i18n)
+				? null
+				: `${i18n.t("units.au", { value: i18n.significant(kmToAu(km), 3) })} · ${i18n.t(
+						"units.millionKm",
+						{ value: i18n.significant(km / 1e6, 3) },
+					)}`,
 		}
 	}
 	// a moon: how many of its planet would fit into the gap
@@ -150,19 +183,23 @@ function distanceFact(body: Body, i18n: I18n): HeadlineFact | null {
 		label,
 		comparison: i18n.t("solarSystem.facts.gap", {
 			...names,
-			count: roughly(km / (2 * parent.radiusKm)),
+			...counted(km / (2 * parent.radiusKm), i18n),
 		}),
-		value: i18n.t("solarSystem.facts.fromParent", {
-			...names,
-			distance: i18n.quantity(km, "kilometer"),
-		}),
+		value: isSimple(i18n)
+			? null
+			: i18n.t("solarSystem.facts.fromParent", {
+					...names,
+					distance: i18n.quantity(km, "kilometer"),
+				}),
 	}
 }
 
 const duration = (days: number, i18n: I18n): string =>
-	days < 1
-		? i18n.quantity(days * 24, "hour", "long")
-		: i18n.quantity(days, "day", "long")
+	isSimple(i18n)
+		? durationInWords(days * 86_400, i18n)
+		: days < 1
+			? i18n.quantity(days * 24, "hour", "long")
+			: i18n.quantity(days, "day", "long")
 
 function yearFact(body: Body, i18n: I18n): HeadlineFact | null {
 	const parent =
@@ -188,15 +225,13 @@ function yearFact(body: Body, i18n: I18n): HeadlineFact | null {
 		body.id === "earth"
 			? i18n.t("solarSystem.facts.yearEarth")
 			: years >= 1.5
-				? i18n.t("solarSystem.facts.yearLonger", { count: roughly(years) })
-				: i18n.t("solarSystem.facts.yearShorter", {
-						count: roughly(1 / years),
-					})
+				? i18n.t("solarSystem.facts.yearLonger", counted(years, i18n))
+				: i18n.t("solarSystem.facts.yearShorter", counted(1 / years, i18n))
 	return {
 		key: "year",
 		label: i18n.t("solarSystem.facts.label.year"),
 		comparison,
-		value: i18n.quantity(days, "day", "long"),
+		value: isSimple(i18n) ? null : i18n.quantity(days, "day", "long"),
 	}
 }
 
@@ -216,8 +251,9 @@ function spinFact(body: Body, i18n: I18n): HeadlineFact {
 		}
 	}
 	const hours = Math.abs(periodHours)
-	const period =
-		hours >= ROTATION_DAYS_FROM_HOURS
+	const period = isSimple(i18n)
+		? durationInWords(hours * 3600, i18n)
+		: hours >= ROTATION_DAYS_FROM_HOURS
 			? i18n.quantity(hours / 24, "day", "long")
 			: i18n.quantity(hours, "hour", "long")
 	return {
@@ -244,7 +280,9 @@ function weightFact(body: Body, i18n: I18n): HeadlineFact | null {
 		return null
 	}
 	const ratio = gravity / earthGravity
-	const kg = i18n.significant(REFERENCE_WEIGHT_KG * ratio, 2)
+	const kg = isSimple(i18n)
+		? formatCount(REFERENCE_WEIGHT_KG * ratio, i18n)
+		: i18n.significant(REFERENCE_WEIGHT_KG * ratio, 2)
 	const comparison =
 		ratio >= 1.05
 			? i18n.t("solarSystem.facts.weightMore", { count: roughly(ratio), kg })
@@ -258,7 +296,9 @@ function weightFact(body: Body, i18n: I18n): HeadlineFact | null {
 		key: "weight",
 		label: i18n.t("solarSystem.facts.label.weight"),
 		comparison,
-		value: i18n.t("units.gravity", { value: i18n.significant(gravity, 3) }),
+		value: isSimple(i18n)
+			? null
+			: i18n.t("units.gravity", { value: i18n.significant(gravity, 3) }),
 	}
 }
 

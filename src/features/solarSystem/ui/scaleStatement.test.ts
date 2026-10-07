@@ -18,6 +18,7 @@ const say = (
 		getBody(bodyId),
 		SCALE_PRESETS[preset],
 		(id) => bodyName(id, i18n.chain),
+		i18n,
 	)
 	return [size, distance].flatMap((s) =>
 		s === null ? [] : [i18n.t(s.key, s.values)],
@@ -59,6 +60,18 @@ describe("scaleSentences", () => {
 			"Earth: radius drawn at 10× its true value.",
 			"Earth: distance from the Sun drawn at 1/13 of its true value.",
 		])
+	})
+
+	it("never shows a factor above 100 at the simple level (#51)", () => {
+		expect(say("phobos", "everythingVisible")[0]).toMatch(
+			/^Phobos is drawn \d{3,}/,
+		)
+		expect(say("phobos", "everythingVisible", "en", "simple")[0]).toBe(
+			"Phobos looks more than 100 times bigger than it really is!",
+		)
+		expect(say("phobos", "everythingVisible", "de", "simple")[0]).toBe(
+			"Phobos ist hier mehr als 100-mal größer als in Wirklichkeit!",
+		)
 	})
 
 	it("says it in German, with the right article and case", () => {

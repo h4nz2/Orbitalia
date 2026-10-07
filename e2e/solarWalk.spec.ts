@@ -191,8 +191,12 @@ test("German, simple reading level", async ({ page }) => {
 		"Etwa so groß wie ein Stecknadelkopf",
 	)
 	await expect(stop(page, "earth")).toContainText("26 m von der Sonne")
+	// above 100 m the simple level counts football pitches (#51)
+	await expect(stop(page, "neptune")).toContainText(
+		"7,5 Fußballfelder von der Sonne",
+	)
 	await expect(
-		page.getByText(/Sogar ein Flugzeug bräuchte etwa 7,5 Stunden/),
+		page.getByText(/sogar ein Flugzeug etwa 7,5 Stunden bis dorthin/),
 	).toBeVisible()
 	mkdirSync(screenshotDir, { recursive: true })
 	await page.screenshot({

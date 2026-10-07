@@ -18,7 +18,7 @@
 		"readingLevel": {
 			"simple": {
 				"name": "Simple",
-				"description": "Ages 8–11: short sentences, everyday comparisons"
+				"description": "Ages 6–11: short sentences, comparisons instead of big numbers"
 			},
 			"standard": {
 				"name": "Standard",
@@ -46,9 +46,105 @@
 		"approx": "≈ {value}",
 		"au": "{value} AU",
 		"gravity": "{value} m/s²",
-		"kelvin": "{value} K",
 		"millionKm": "{value} million km",
 		"billionKm": "{value} billion km"
+	},
+	"quantity": {
+		"moreThan": "more than {limit, number}",
+		"temperature": {
+			"hotterThanSun": "hotter than the surface of the Sun",
+			"fire": "far hotter than any fire",
+			"oven": "hotter than an oven",
+			"boiling": "hotter than boiling water",
+			"desert": "as hot as the hottest desert",
+			"warm": "warm, like a summer day",
+			"mild": "not too hot, not too cold",
+			"chilly": "cold, like a winter day",
+			"freezer": "colder than any freezer",
+			"colderThanEarth": "colder than anywhere on Earth",
+			"airFreezes": "so cold that air would freeze"
+		},
+		"temperatureRange": "from {min} to {max}",
+		"celsius": "{big, select, other {{value} °C}}",
+		"kelvin": "{big, select, other {{kelvin} K ({celsius} °C)}}",
+		"size": {
+			"gigantic": "gigantic",
+			"huge": "huge",
+			"big": "big",
+			"small": "small",
+			"tiny": "tiny"
+		},
+		"sizeVsEarth": {
+			"wider": "{count, plural, one {{n} Earth wide} other {{n} Earths wide}}",
+			"similar": "about as wide as Earth",
+			"narrower": "so small that {n} of them would fit across Earth"
+		},
+		"everyday": "{fit, select, smaller {If Earth were as small as {earth}, {bodyId, select, sun {the Sun} moon {the Moon} other {{body}}} would be even smaller than {thing}} bigger {If Earth were as small as {earth}, {bodyId, select, sun {the Sun} moon {the Moon} other {{body}}} would be even bigger than {thing}} other {If Earth were as small as {earth}, {bodyId, select, sun {the Sun} moon {the Moon} other {{body}}} would be as big as {thing}}}",
+		"thing": {
+			"fineSand": "a grain of fine sand",
+			"salt": "a grain of salt",
+			"sugar": "a grain of sugar",
+			"poppySeed": "a poppy seed",
+			"pinhead": "a pinhead",
+			"peppercorn": "a peppercorn",
+			"pea": "a pea",
+			"marble": "a marble",
+			"cherry": "a cherry",
+			"walnut": "a walnut",
+			"tableTennisBall": "a table tennis ball",
+			"tennisBall": "a tennis ball",
+			"orange": "an orange",
+			"grapefruit": "a grapefruit",
+			"melon": "a small melon",
+			"football": "a football",
+			"exerciseBall": "an exercise ball",
+			"house": "a house"
+		},
+		"distance": {
+			"lessThanEarth": "less than the width of one Earth",
+			"earths": "{count, plural, =1 {as far as one Earth is wide} one {as far as {n} Earth in a row} other {as far as {n} Earths in a row}}",
+			"moons": "{n} times as far as the Moon is from Earth",
+			"partOfSun": "{part, select, quarter {about a quarter as far as Earth is from the Sun} third {about a third as far as Earth is from the Sun} half {about half as far as Earth is from the Sun} other {about three quarters as far as Earth is from the Sun}}",
+			"sun": "about as far as Earth is from the Sun",
+			"suns": "{n} times as far as Earth is from the Sun"
+		},
+		"unit": {
+			"second": "{count, plural, one {# second} other {# seconds}}",
+			"minute": "{count, plural, one {# minute} other {# minutes}}",
+			"hour": "{count, plural, one {# hour} other {# hours}}",
+			"day": "{count, plural, one {# day} other {# days}}",
+			"month": "{count, plural, one {# month} other {# months}}",
+			"year": "{count, plural, one {# year} other {# years}}"
+		},
+		"duration": {
+			"lessThanSecond": "less than a second",
+			"lifetimes": "{count, plural, one {{n} long human life} other {{n} long human lives}}",
+			"pyramids": "longer than since the pyramids were built",
+			"people": "longer than there have been people",
+			"dinosaurs": "longer than since the dinosaurs died out"
+		},
+		"dayVsEarth": {
+			"longer": "{count, plural, one {A day there lasts as long as {n} day at home} other {A day there lasts as long as {n} days at home}}",
+			"similar": "A day there lasts about as long as at home",
+			"shorter": "A day there is over in {time}"
+		},
+		"yearVsEarth": {
+			"longer": "{count, plural, one {A year there lasts as long as {n} year at home} other {A year there lasts as long as {n} years at home}}",
+			"similar": "A year there lasts about as long as at home",
+			"shorter": "{count, plural, one {In one year at home, {n} year goes by there} other {In one year at home, {n} years go by there}}"
+		},
+		"weightVsEarth": {
+			"more": "{count, plural, =2 {You would weigh twice as much as at home} one {You would weigh {n} times as much as at home} other {You would weigh {n} times as much as at home}}",
+			"similar": "You would weigh about as much as at home",
+			"less": "You would be {n} times lighter than at home"
+		},
+		"weight": "{n} kg",
+		"massVsEarth": {
+			"more": "{count, plural, one {weighs as much as {n} Earth} other {weighs as much as {n} Earths}}",
+			"similar": "weighs about as much as Earth",
+			"less": "it would take {n} of them to weigh as much as Earth"
+		},
+		"speed": "{n} km every second"
 	},
 	"bodies": {
 		"kind": {
@@ -62,7 +158,7 @@
 		},
 		"fallback": {
 			"moonDescription": "{name} is a moon of {parentId, select, other {{parent}}}. It is about {diameter} across and travels once around {parentId, select, pluto {its dwarf planet} eris {its dwarf planet} haumea {its dwarf planet} makemake {its dwarf planet} other {its planet}} every {period}.",
-			"moonDescription@simple": "{name} is one of the moons that circle {parentId, select, other {{parent}}}. It is about {diameter} wide.",
+			"moonDescription@simple": "{name} is one of the moons that circle {parentId, select, other {{parent}}}. {everyday}.",
 			"moonDescription@advanced": "{name} orbits {parentId, select, other {{parent}}} at an average distance of {distance} with a period of {period}. Its mean diameter is about {diameter}."
 		}
 	},
@@ -86,40 +182,34 @@
 		},
 		"compare": {
 			"sizeBigger": "{count, plural, one {Earth would fit inside it # time.} other {Earth would fit inside it # times.}}",
-			"sizeBigger@simple": "{count, plural, one {# Earth would fit inside it!} other {# Earths would fit inside it!}}",
+			"sizeBigger@simple": "{count, plural, one {{n} Earth would fit inside it!} other {{n} Earths would fit inside it!}}",
 			"sizeBigger@advanced": "{count, plural, one {Its volume equals Earth’s.} other {Its volume is about # times Earth’s.}}",
 			"sizeSmaller": "{count, plural, one {It would fit inside Earth # time.} other {It would fit inside Earth # times.}}",
-			"sizeSmaller@simple": "{count, plural, one {It is as big as Earth!} other {# of them would fit inside Earth!}}",
+			"sizeSmaller@simple": "{count, plural, one {It is as big as Earth!} other {{n} of them would fit inside Earth!}}",
 			"sizeSmaller@advanced": "{count, plural, one {Earth has the same volume.} other {Earth has about # times its volume.}}",
 			"sizeSimilar": "It is about the same size as our planet.",
 			"sizeSimilar@simple": "It is about as big as Earth!",
 			"sizeSimilar@advanced": "Its volume is close to Earth’s.",
 			"dayLonger": "{days, plural, one {One day there lasts # Earth day.} other {One day there lasts # Earth days.}}",
-			"dayLonger@simple": "{days, plural, one {A day there is as long as # day on Earth!} other {A day there is as long as # days on Earth!}}",
 			"dayLonger@advanced": "{days, plural, one {From one sunrise to the next takes # Earth day.} other {From one sunrise to the next takes # Earth days.}}",
 			"dayShorter": "{hours, plural, one {One day there lasts only # hour.} other {One day there lasts only # hours.}}",
-			"dayShorter@simple": "{hours, plural, one {A day there is over after just # hour!} other {A day there is over after just # hours!}}",
 			"dayShorter@advanced": "{hours, plural, one {A solar day lasts only # hour, {fraction, number, ::percent} of an Earth day.} other {A solar day lasts only # hours, {fraction, number, ::percent} of an Earth day.}}",
 			"daySimilar": "One day there is about as long as on Earth.",
-			"daySimilar@simple": "A day there is almost as long as a day on Earth!",
 			"daySimilar@advanced": "{minutes, plural, one {Its solar day differs from Earth’s by only # minute.} other {Its solar day differs from Earth’s by only # minutes.}}",
 			"yearLonger": "{years, plural, one {One year there lasts # Earth year – a long wait for your next birthday!} other {One year there lasts # Earth years – a long wait for your next birthday!}}",
-			"yearLonger@simple": "{years, plural, one {You would have to wait # year for your next birthday!} other {You would have to wait # years for your next birthday!}}",
 			"yearLonger@advanced": "{years, plural, one {Its orbital period is about # Earth year.} other {Its orbital period is about # Earth years.}}",
 			"yearLongerDays": "{days, plural, one {You would wait # day longer for your birthday.} other {You would wait # days longer for your birthday.}}",
-			"yearLongerDays@simple": "{days, plural, one {You would have to wait # extra day for your birthday!} other {You would have to wait # extra days for your birthday!}}",
 			"yearLongerDays@advanced": "{days, plural, one {Its year is # day longer than Earth’s.} other {Its year is # days longer than Earth’s.}}",
 			"yearShorter": "{times, plural, one {A year there lasts only {period} – that is # birthday per Earth year.} other {A year there lasts only {period} – that is # birthdays per Earth year!}}",
-			"yearShorter@simple": "{times, plural, one {You would have a birthday # time every Earth year!} other {You would have a birthday about # times every Earth year!}}",
 			"yearShorter@advanced": "{times, plural, one {Its orbital period is {period}; it circles the Sun # time per Earth year.} other {Its orbital period is {period}; it circles the Sun # times per Earth year.}}",
 			"gravityMore": "You would weigh {ratio, number} times as much as on Earth!",
-			"gravityMore@simple": "If you weigh 30 kg on Earth, you would weigh {kg, number} kg there!",
+			"gravityMore@simple": "If you weigh 30 kg on Earth, you would weigh {weight} there!",
 			"gravityMore@advanced": "Surface gravity is {ratio, number} times Earth’s: your weight would grow, but your mass would stay the same.",
 			"gravitySimilar": "You would weigh about the same as on Earth.",
 			"gravitySimilar@simple": "You would feel just as heavy as on Earth.",
 			"gravitySimilar@advanced": "Surface gravity is within 5 % of Earth’s.",
 			"gravityLess": "You would weigh only {percent, number, ::percent} of your weight on Earth.",
-			"gravityLess@simple": "If you weigh 30 kg on Earth, you would weigh only {kg, number} kg there!",
+			"gravityLess@simple": "If you weigh 30 kg on Earth, you would weigh only {weight} there!",
 			"gravityLess@advanced": "Surface gravity is {percent, number, ::percent} of Earth’s: your weight would drop, but your mass would stay the same."
 		},
 		"section": {
@@ -164,9 +254,6 @@
 		},
 		"sources": "Sources:",
 		"quantity": {
-			"feel": "{band, select, hotterThanSun {Hotter than the surface of the Sun} fire {Far hotter than any fire} oven {Hotter than an oven} boiling {Hotter than boiling water} desert {As hot as the hottest desert} warm {Warm, like a summer day} mild {Not too hot, not too cold} chilly {Cold, like a winter day} freezer {Colder than any freezer} coldest {Colder than anywhere on Earth} other {So cold that air would freeze}}",
-			"celsius": "{big, select, other {{value} °C}}",
-			"kelvin": "{big, select, other {{kelvin} K ({celsius} °C)}}",
 			"mass": "{band, select, earth {The yardstick: the other worlds are weighed in Earths} similar {{percent, number, ::percent} of Earth’s mass} lighter {{count, plural, one {# of them would weigh as much as Earth} other {# of them would weigh as much as Earth}}} other {{count, plural, one {As heavy as # Earth} other {As heavy as # Earths}}}}",
 			"mass@simple": "{band, select, star {Heavier than all the planets put together} earth {Earth is the yardstick: the other worlds are weighed in Earths} huge {Heavier than 100 Earths put together} similar {Almost as heavy as Earth} lighter {{count, plural, one {As heavy as Earth} other {It would take # of them to weigh as much as Earth}}} other {{count, plural, one {As heavy as # Earth} other {As heavy as # Earths}}}}",
 			"mass@advanced": "{band, select, earth {{kg} kg} other {{earths} Earth masses ({kg} kg)}}",
@@ -265,16 +352,16 @@
 			"sizeTrue@simple": "{subjectId, select, moon {The Moon} other {{subject}}} is shown as big as it really is.",
 			"sizeTrue@advanced": "{subjectId, select, moon {The Moon} other {{subject}}}: radius drawn to scale.",
 			"sizeBigger": "{subjectId, select, moon {The Moon} other {{subject}}} is drawn {factor, number}× too big.",
-			"sizeBigger@simple": "{subjectId, select, moon {The Moon} other {{subject}}} looks {factor, number} times bigger than it really is!",
+			"sizeBigger@simple": "{subjectId, select, moon {The Moon} other {{subject}}} looks {n} times bigger than it really is!",
 			"sizeBigger@advanced": "{subjectId, select, moon {The Moon} other {{subject}}}: radius drawn at {factor, number}× its true value.",
 			"distanceTrue": "{subjectId, select, moon {The Moon} other {{subject}}} is drawn at its real distance from {parentId, select, sun {the Sun} other {{parent}}}.",
 			"distanceTrue@simple": "{subjectId, select, moon {The Moon} other {{subject}}} is just as far from {parentId, select, sun {the Sun} other {{parent}}} as in real life.",
 			"distanceTrue@advanced": "{subjectId, select, moon {The Moon} other {{subject}}}: distance from {parentId, select, sun {the Sun} other {{parent}}} drawn to scale.",
 			"distanceCloser": "{subjectId, select, moon {The Moon} other {{subject}}} is drawn {factor, number}× too close to {parentId, select, sun {the Sun} other {{parent}}}.",
-			"distanceCloser@simple": "{subjectId, select, moon {The Moon} other {{subject}}} is shown {factor, number} times closer to {parentId, select, sun {the Sun} other {{parent}}} than it really is!",
+			"distanceCloser@simple": "{subjectId, select, moon {The Moon} other {{subject}}} is shown {n} times closer to {parentId, select, sun {the Sun} other {{parent}}} than it really is!",
 			"distanceCloser@advanced": "{subjectId, select, moon {The Moon} other {{subject}}}: distance from {parentId, select, sun {the Sun} other {{parent}}} drawn at 1/{factor, number} of its true value.",
 			"distanceFarther": "{subjectId, select, moon {The Moon} other {{subject}}} is drawn {factor, number}× too far from {parentId, select, sun {the Sun} other {{parent}}}.",
-			"distanceFarther@simple": "{subjectId, select, moon {The Moon} other {{subject}}} is shown {factor, number} times farther from {parentId, select, sun {the Sun} other {{parent}}} than it really is!",
+			"distanceFarther@simple": "{subjectId, select, moon {The Moon} other {{subject}}} is shown {n} times farther from {parentId, select, sun {the Sun} other {{parent}}} than it really is!",
 			"distanceFarther@advanced": "{subjectId, select, moon {The Moon} other {{subject}}}: distance from {parentId, select, sun {the Sun} other {{parent}}} drawn at {factor, number}× its true value.",
 			"markersOn": "The dots only mark where the planets are: the planets themselves are too small to see.",
 			"markersOn@simple": "The dots show where the planets are. The planets are too small to see!",
@@ -322,7 +409,7 @@
 			"reverseHint": "Run time backwards",
 			"controls": "Play, pause or reverse",
 			"tooFast": "{body} circles {parentId, select, sun {the Sun} other {{parent}}} {count, plural, one {# time} other {# times}} a second – too fast for your screen, so it may seem to jump or even run backwards.",
-			"tooFast@simple": "{body} goes around {parentId, select, sun {the Sun} other {{parent}}} {count, plural, one {# time} other {# times}} every second! That is too fast to see properly.",
+			"tooFast@simple": "{body} goes around {parentId, select, sun {the Sun} other {{parent}}} {count, plural, one {{n} time} other {{n} times}} every second! That is too fast to see properly.",
 			"travel": {
 				"open": "Travel to a date",
 				"title": "Travel in time",
@@ -330,6 +417,7 @@
 				"pickDate": "Pick a date",
 				"arrival": "Time stops when you arrive. Press play to run on.",
 				"range": "Any day from the year {first} to {last}. You arrive at noon (UTC).",
+				"range@simple": "Pick any day: long ago or far in the future. You arrive at noon.",
 				"close": "Close",
 				"calendar": {
 					"nextMonth": "Next month",
@@ -432,6 +520,7 @@
 				"launch": "Launch",
 				"flyby": "{targetId, select, other {Flies past {target}}}",
 				"orbitInsertion": "{targetId, select, other {Enters orbit around {target}}}",
+				"orbitInsertion@simple": "{targetId, select, other {Starts going around {target}}}",
 				"probeLanding": "{targetId, select, other {Its probe lands on {target}}}",
 				"impact": "{targetId, select, other {Plunges into {target}}}",
 				"arrival": "{targetId, select, l2 {Arrives at the Sun–Earth L2 point} other {Arrives at {target}}}",
@@ -490,6 +579,7 @@
 			"viewSystem": "See the whole moon system",
 			"viewSystem@simple": "See all its moons",
 			"showOthers": "{count, plural, one {Show # smaller moon} other {Show # smaller moons}}",
+			"showOthers@simple": "Show the smaller moons too",
 			"hideOthers": "Hide the smaller moons",
 			"othersNote": "Mostly rocks a few kilometres across, many of them captured. Astronomers keep finding more.",
 			"othersNote@simple": "Mostly small rocks. Scientists keep finding more of them.",
@@ -513,7 +603,7 @@
 			"haze": "The ground of {moon} is hidden under a thick orange haze. This is how {moon} looks to our eyes.",
 			"haze@simple": "Thick orange haze hides the ground of {moon}. This is how {moon} looks to our eyes.",
 			"paintedVisited": "{probe} flew past {moon} in {year}, but its pictures are not in the app yet, so this surface is painted to match what is known: its colour and how much sunlight it reflects.",
-			"paintedVisited@simple": "{probe} took pictures of {moon} in {year}, but they are not in the app yet. This surface is painted in its real colour."
+			"paintedVisited@simple": "{probe} took pictures of {moon}, but they are not in the app yet. This surface is painted in its real colour."
 		},
 		"facts": {
 			"label": {
@@ -528,17 +618,22 @@
 				"weight": "Your weight"
 			},
 			"sizeWider": "{ref, select, moon {{count, plural, one {# Moon wide} other {# Moons wide}}} other {{count, plural, one {# Earth wide} other {# Earths wide}}}}",
+			"sizeWider@simple": "{ref, select, moon {{count, plural, one {{n} Moon wide} other {{n} Moons wide}}} other {{count, plural, one {{n} Earth wide} other {{n} Earths wide}}}}",
 			"sizeSimilar": "{ref, select, moon {About as wide as our Moon} other {About as wide as Earth}}",
 			"sizeNarrower": "{ref, select, moon {Our Moon is {count, number} times as wide} other {Earth is {count, number} times as wide}}",
+			"sizeNarrower@simple": "{ref, select, moon {Our Moon is {n} times as wide} other {Earth is {n} times as wide}}",
 			"across": "{value} across",
 			"sunlight": "Sunlight takes {time} to get here",
 			"sunlight@simple": "Light from the Sun needs {time} to get here",
 			"gap": "{parentId, select, other {{parent}}} would fit into the gap {count, plural, one {# time} other {# times}}",
+			"gap@simple": "{parentId, select, other {{parent}}} would fit into the gap {count, plural, one {{n} time} other {{n} times}}",
 			"fromParent": "{distance} from {parentId, select, other {{parent}}}",
 			"lap": "Goes once around {parentId, select, other {{parent}}} in {period}",
 			"yearEarth": "One lap around the Sun: that is what a year is",
 			"yearLonger": "{count, plural, one {One lap around the Sun takes # Earth year} other {One lap around the Sun takes # Earth years}}",
+			"yearLonger@simple": "{count, plural, one {One lap around the Sun takes {n} Earth year} other {One lap around the Sun takes {n} Earth years}}",
 			"yearShorter": "{count, plural, one {Goes around the Sun # time in one Earth year} other {Goes around the Sun # times in one Earth year}}",
+			"yearShorter@simple": "{count, plural, one {Goes around the Sun {n} time in one Earth year} other {Goes around the Sun {n} times in one Earth year}}",
 			"weightMore": "You would weigh {count, number} times as much as on Earth",
 			"weightMore@simple": "30 kg on Earth would be {kg} kg here",
 			"weightSimilar": "You would weigh about as much as on Earth",
@@ -552,10 +647,10 @@
 			"route": "{from} → {to}",
 			"route@simple": "From {from} to {to}",
 			"distance": "{distance} apart on this date",
-			"distance@simple": "{distance} away",
+			"distance@simple": "That is {distance}",
 			"distance@advanced": "{distance} ({au}) in a straight line on this date",
 			"crossed": "{distance} crossed",
-			"crossed@simple": "{distance} so far",
+			"crossed@simple": "So far: {distance}",
 			"question": "How long would the trip take?",
 			"question@simple": "How long would it take to get there?",
 			"question@advanced": "Travel time at a constant speed",
@@ -596,17 +691,19 @@
 				"weight": "Weight"
 			},
 			"distance": "Since you were born, Earth has carried you {distance} kilometres around the Sun, at about {speed, number} km every second. That is {trips, plural, one {# trip} other {# trips}} to the Moon and back.",
-			"distance@simple": "Since you were born, you have travelled {distance} kilometres around the Sun – without ever leaving the ground! That is as far as {trips, plural, one {# trip} other {# trips}} to the Moon and back.",
+			"distance@simple": "Since you were born, Earth has carried you around the Sun {laps, plural, =0 {not even once yet} one {once} other {{n} times}} – without you ever leaving the ground!",
 			"distance@advanced": "Since your birth, Earth’s orbital motion has carried you {distance} km around the Sun at a mean {speed, number} km/s: {trips, plural, one {# return trip} other {# return trips}} to the Moon.",
 			"years": {
 				"intro": "A year is one trip around the Sun. Your birthday on another planet comes when it is back where it was on the day you were born.",
 				"intro@simple": "A year is one trip around the Sun. Planets far away take much longer, so you are younger there!",
 				"intro@advanced": "A year is the sidereal orbital period: your birthday on a planet is when it returns to the point of its orbit where it was at your birth.",
 				"age": "{age, plural, =0 {not 1 year old yet} one {# year old} other {# years old}}",
+				"age@simple": "{age, plural, =0 {not 1 year old yet} one {{n} year old} other {{n} years old}}",
 				"exact": "{orbits} orbits",
 				"next": "Next birthday: {date}",
 				"first": "First birthday: {date}",
 				"earthAgeThen": "{age, plural, one {You will be # on Earth.} other {You will be # on Earth.}}",
+				"earthAgeThen@simple": "{age, plural, one {You will be {n} on Earth.} other {You will be {n} on Earth.}}",
 				"go": "{planetId, select, other {Travel to your next birthday on {planet}}}",
 				"today": "{planetId, select, earth {Happy birthday!} other {Happy birthday on {planet}!}}"
 			},
@@ -615,6 +712,7 @@
 				"intro@simple": "A day lasts from one sunrise to the next. On some planets the Sun rises again after a few hours, on others only after months!",
 				"intro@advanced": "A solar day (sunrise to sunrise) follows from the sidereal rotation and the orbit: 1/solar = 1/sidereal − 1/year. Venus spins backwards, so its Sun rises every 117 Earth days.",
 				"lived": "{count, plural, one {# day lived} other {# days lived}}",
+				"lived@simple": "{count, plural, one {{n} day lived} other {{n} days lived}}",
 				"length": "One day there: {length}"
 			},
 			"weight": {
@@ -635,6 +733,7 @@
 				"title": "How old am I on the other planets?",
 				"date": "On {date}",
 				"distance": "I have travelled {distance} km around the Sun.",
+				"distance@simple": "I have been around the Sun {laps, plural, =0 {not even once yet} one {once} other {{n} times}}.",
 				"fileName": "my-age-on-the-planets",
 				"footer": "Orbitalia – our solar system"
 			}
@@ -720,13 +819,14 @@
 			"listenLabel": "Listen: {title}",
 			"stopLabel": "Stop: {title}",
 			"credit": "{mission}, {year} · {credit}",
+			"credit@simple": "{mission} · {credit}",
 			"shortcut": "Sound on or off (always off when the app opens)",
 			"recording": {
 				"sunRadioBursts": {
 					"title": "Radio bursts from the Sun",
 					"title@simple": "The Sun's radio bursts",
 					"what": "Not sound: radio waves from a giant solar flare on 28 October 2003, caught by the Cassini probe and shifted down so we can hear them. The falling whistle is a burst of electrons racing away from the Sun.",
-					"what@simple": "In 2003 the Sun had a huge explosion. The Cassini space probe caught its radio waves, and scientists turned them into sound. The falling whistle is the burst rushing away from the Sun.",
+					"what@simple": "Once, the Sun had a huge explosion. The Cassini space probe caught its radio waves, and scientists turned them into sound. The falling whistle is the burst rushing away from the Sun.",
 					"what@advanced": "Type III radio bursts from the X17 flare of 28 October 2003, recorded by Cassini's Radio and Plasma Wave Science instrument 8.7 AU from the Sun. Flare electrons excite plasma oscillations whose frequency falls as they reach thinner plasma farther out; the recording is shifted down into the audible range."
 				},
 				"earthChorus": {
@@ -968,7 +1068,7 @@
 			"travelling": "Light has been travelling for",
 			"travelling@simple": "The light has been on its way for",
 			"covered": "{distance} covered",
-			"covered@simple": "{distance} so far",
+			"covered@simple": "So far: {distance}",
 			"waiting": "Time has run back to before the flash was sent.",
 			"clock": {
 				"realTime": "Real time: one second here is one second in real life.",
@@ -999,6 +1099,7 @@
 				"oneWay": "One way",
 				"roundTrip": "There and back",
 				"now": "{distance} away right now",
+				"now@simple": "Right now it is {distance}",
 				"now@advanced": "{distance} ({au} AU) away right now",
 				"range": "Depending on where both are in their orbits, it takes between {min} and {max}.",
 				"range@simple": "The planets move, so this changes: from {min} to {max}.",
@@ -1341,10 +1442,10 @@
 		"smallBodies": {
 			"beltName": "{belt, select, asteroidbelt {Asteroid belt} kuiperbelt {Kuiper belt} other {{belt}}}",
 			"perDot": "{belt, select, asteroidbelt {Each dot stands for about {count, number} asteroids bigger than {size}.} other {Each dot stands for about {count, number} icy bodies bigger than {size}.}}",
-			"perDot@simple": "{belt, select, asteroidbelt {Every dot stands for about {count, number} real space rocks bigger than {size}.} other {Every dot stands for about {count, number} real icy worlds bigger than {size}.}}",
+			"perDot@simple": "{belt, select, asteroidbelt {Every dot stands for {n} real space rocks bigger than {size}.} other {Every dot stands for {n} real icy worlds bigger than {size}.}}",
 			"perDot@advanced": "{belt, select, asteroidbelt {One dot per roughly {count, number} of the estimated {total} asteroids larger than {size}.} other {One dot per roughly {count, number} of the estimated {total} bodies larger than {size}.}}",
 			"spacing": "Neighbours are about {distance} apart – {moons, number} times as far as the Moon is from Earth. Spacecraft fly straight through without steering around anything.",
-			"spacing@simple": "But they are very far apart: {moons, number} times as far as from the Earth to the Moon. Space probes fly right through without bumping into anything.",
+			"spacing@simple": "But they are very far apart: {n} times as far as from the Earth to the Moon. Space probes fly right through without bumping into anything.",
 			"spacing@advanced": "Typical separation between neighbours: about {distance}, {moons, number} times the Earth–Moon distance. Probes cross the belt on ordinary trajectories; none has ever needed to avoid an asteroid on the way.",
 			"dotSize": "The dots are drawn far bigger than the real bodies: at their true size you would see nothing at all. In films this is a crowded field of rocks – in space it is almost empty.",
 			"dotSize@simple": "The dots are drawn much too big. In films it is full of rocks crashing into each other – in real space it is almost empty.",
@@ -1353,15 +1454,17 @@
 			"comet": {
 				"label": "Comet",
 				"where": "{distance} from the Sun, {direction, select, in {falling toward it} other {heading away from it}}.",
-				"where@simple": "It is {distance} away from the Sun and {direction, select, in {getting closer} other {moving away}}.",
+				"where@simple": "{direction, select, in {It is coming closer to the Sun. Right now it is {distance}.} other {It is moving away from the Sun. Right now it is {distance}.}}",
 				"tail": "Its tail is about {length} long and points away from the Sun{direction, select, out { – so now the tail goes first} other {}}.",
-				"tail@simple": "Its tail is about {length} long. It always points away from the Sun{direction, select, out { – even now, when the comet flies away tail first} other {}}!",
+				"tail@simple": "Its tail stretches {length}. It always points away from the Sun{direction, select, out { – even now, when the comet flies away tail first} other {}}!",
 				"noTail": "No tail right now: it only grows within about {onset} of the Sun, where sunlight turns the comet’s ice into gas.",
 				"noTail@simple": "No tail right now. The tail only grows when the comet comes close to the Sun and its ice starts to melt into gas.",
 				"waking": "It is waking up: sunlight has begun to turn its ice into gas, and a coma is forming. Its tail has hardly started to grow.",
 				"waking@simple": "It is waking up! The Sun is starting to turn its ice into gas. Soon it will grow a tail.",
 				"next": "Next time closest to the Sun: {date}.",
+				"next@simple": "Until it is closest to the Sun again: {duration}.",
 				"last": "Last time closest to the Sun: {date}. It returns in about {years, number} years.",
+				"last@simple": "Until it comes back: {duration}.",
 				"watch": "Watch it pass the Sun",
 				"watch@simple": "Watch it fly past the Sun"
 			}
@@ -1373,6 +1476,7 @@
 				"solarEclipse": "Solar eclipses",
 				"lunarEclipse": "Lunar eclipses",
 				"transit": "Transits across the Sun",
+				"transit@simple": "Planets passing in front of the Sun",
 				"gathering": "Planets together",
 				"closeApproach": "Mars comes close",
 				"shadowsRings": "Shadows and rings",
@@ -1499,7 +1603,7 @@
 					"title": "Compare worlds",
 					"title@simple": "Compare worlds",
 					"text": "The Sun and Earth at their true sizes: about 109 Earths would fit across the Sun. “Compare with…” on any world’s card puts it beside another one.",
-					"text@simple": "Here are the Sun and Earth at their real sizes. 109 Earths would fit across the Sun! Press “Compare with…” on a card to try it."
+					"text@simple": "Here are the Sun and Earth at their real sizes. More than 100 Earths would fit across the Sun! Press “Compare with…” on a card to try it."
 				},
 				"light": {
 					"title": "Watch light crawl",
@@ -1545,7 +1649,9 @@
 		"landmarkOption": {
 			"none": "Metres only",
 			"pitch": "Football pitch ({length})",
-			"track": "Running track ({length} a lap)"
+			"pitch@simple": "Football pitch",
+			"track": "Running track ({length} a lap)",
+			"track@simple": "Running track"
 		},
 		"viewLabel": "Show as",
 		"view": {
@@ -1573,15 +1679,19 @@
 		"moon@advanced": "{name}: {size} (really {trueSize}), {distance} from the planet (really {trueDistance})",
 		"landmarkCount": {
 			"pitch": "{count, plural, one {# football pitch} other {# football pitches}}",
-			"track": "{count, plural, one {# lap of the track} other {# laps of the track}}"
+			"pitch@simple": "{count, plural, one {{n} football pitch} other {{n} football pitches}}",
+			"track": "{count, plural, one {# lap of the track} other {# laps of the track}}",
+			"track@simple": "{count, plural, one {{n} lap of the track} other {{n} laps of the track}}"
 		},
 		"landmarkMarker": {
 			"pitch": "The end of a football pitch: {length} from the Sun",
-			"track": "One lap of the running track: {length} from the Sun"
+			"pitch@simple": "The end of a football pitch",
+			"track": "One lap of the running track: {length} from the Sun",
+			"track@simple": "One lap of the running track"
 		},
 		"starTitle": "The nearest star",
 		"star": "Now keep going. At this scale the nearest star after the Sun, Proxima Centauri, is {distance} away – about {flight} by plane. Your whole walk to Neptune fits into that {times} times.",
-		"star@simple": "And the next star? At this scale it is {distance} away! Even a plane would need about {flight} to get there.",
+		"star@simple": "And the next star? At this scale it is so far away that even a plane would need about {flight} to get there!",
 		"star@advanced": "Proxima Centauri, 4.25 light-years away, lands {distance} from the start: {times} times the walk to Neptune, about {flight} of flying at 900 km/h. This small red dwarf would be {size} across, about the size of {thing}.",
 		"starLesson": "The solar system you just walked is a tiny island in an ocean of empty space.",
 		"starLesson@simple": "Space is really, really empty!",
@@ -1590,6 +1700,7 @@
 		"lineUp@simple": "In real life the planets are never in a row like this. Each one goes round the Sun on its own path.",
 		"lineUp@advanced": "The planets are never aligned: the walk puts each one at its mean distance from the Sun (the semi-major axis of its orbit). Sizes are mean diameters, from the same data as the 3D model. Proxima Centauri: 4.2465 light-years (Gaia DR3).",
 		"tableCaption": "If the Sun were {object}: the solar system at 1 : {ratio}",
+		"tableCaption@simple": "If the Sun were {object}",
 		"column": {
 			"stop": "No.",
 			"body": "Body",
@@ -1605,24 +1716,6 @@
 		},
 		"moonDistance": "{distance} from the planet",
 		"printNote": "The circles are printed at their size in the model.",
-		"thing": {
-			"fineSand": "a grain of fine sand",
-			"salt": "a grain of salt",
-			"sugar": "a grain of sugar",
-			"poppySeed": "a poppy seed",
-			"pinhead": "a pinhead",
-			"peppercorn": "a peppercorn",
-			"pea": "a pea",
-			"marble": "a marble",
-			"cherry": "a cherry",
-			"walnut": "a walnut",
-			"tableTennisBall": "a table tennis ball",
-			"tennisBall": "a tennis ball",
-			"orange": "an orange",
-			"grapefruit": "a grapefruit",
-			"melon": "a small melon",
-			"football": "a football"
-		},
 		"starName": "Proxima Centauri"
 	},
 	"compare": {
@@ -1666,7 +1759,7 @@
 			"sunEarth@simple": "Next to the Sun, our big Earth is just a tiny dot.",
 			"sunPlanets": "The Sun holds 99.8% of all the mass in the solar system.",
 			"sunPlanets@advanced": "The Sun holds 99.86% of the solar system’s mass; Jupiter has most of what is left.",
-			"sunPlanets@simple": "The Sun is heavier than all the planets together, about 750 times over.",
+			"sunPlanets@simple": "The Sun is much, much heavier than all the planets put together.",
 			"jupiterAcrossSun": "About ten Jupiters fit across the Sun, and eleven Earths across Jupiter.",
 			"jupiterAcrossSun@advanced": "Each step is a factor of ten: the Sun is 10 Jupiter diameters, Jupiter 11 Earth diameters.",
 			"jupiterAcrossSun@simple": "Line up ten Jupiters to cross the Sun, and eleven Earths to cross Jupiter.",
@@ -1690,7 +1783,7 @@
 			"bigMoons@simple": "Our Moon is only the fifth biggest. Four of these seven go around Jupiter.",
 			"galileanMoons": "Galileo saw them circle Jupiter in 1610: proof that not everything goes around the Earth.",
 			"galileanMoons@advanced": "Found by Galileo in 1610; Io, Europa and Ganymede orbit in step, 4 : 2 : 1.",
-			"galileanMoons@simple": "In 1610 Galileo saw these moons going around Jupiter. So not everything goes around the Earth!",
+			"galileanMoons@simple": "A long time ago, Galileo saw these moons going around Jupiter. So not everything goes around the Earth!",
 			"potatoMoons": "Mars’s two moons are lumpy rocks the size of a city: Phobos is only 22 km across.",
 			"potatoMoons@advanced": "Phobos (about 22 km) and Deimos (about 12 km) are too small for gravity to pull them round; they may be captured asteroids.",
 			"potatoMoons@simple": "Mars has two tiny, lumpy moons shaped like potatoes. The bigger one would fit inside a city.",
@@ -1715,7 +1808,7 @@
 		"stage": {
 			"label": "{names}, drawn side by side at their true relative sizes",
 			"scale": "One scale for all: 1 pixel = {km}.",
-			"scale@simple": "Everything is shrunk by the same amount: 1 pixel stands for {km}.",
+			"scale@simple": "Everything is shrunk by the same amount, so you can see which is bigger.",
 			"scale@advanced": "Common scale, 1 px : {km}. Axes tilted as in space.",
 			"tiny": "{count, plural, one {{names} is so small at this scale that it is circled.} other {{names} are so small at this scale that they are circled.}}",
 			"tiny@simple": "{count, plural, one {{names} is so small here that you could hardly find it without the circle.} other {{names} are so small here that you could hardly find them without the circles.}}",
@@ -1756,7 +1849,7 @@
 				"similar@advanced": "The diameters of {aId, select, sun {the Sun} moon {the Moon} other {{a}}} and {bId, select, sun {the Sun} moon {the Moon} other {{b}}} differ by only {percent}%."
 			},
 			"volume": "About {n} {smallId, select, earth {{count, plural, one {Earth} other {Earths}}} moon {{count, plural, one {Moon} other {Moons}}} other {{count, plural, one {ball} other {balls}} the size of {small}}} would fit inside {bigId, select, sun {the Sun} moon {the Moon} other {{big}}}.",
-			"volume@simple": "{bigId, select, sun {The Sun} moon {The Moon} other {{big}}} is so big that about {n} {smallId, select, earth {{count, plural, one {Earth} other {Earths}}} moon {{count, plural, one {Moon} other {Moons}}} other {{count, plural, one {ball} other {balls}} the size of {small}}} could fit inside it.",
+			"volume@simple": "{bigId, select, sun {The Sun} moon {The Moon} other {{big}}} is so big that {n} {smallId, select, earth {{count, plural, one {Earth} other {Earths}}} moon {{count, plural, one {Moon} other {Moons}}} other {{count, plural, one {ball} other {balls}} the size of {small}}} could fit inside it.",
 			"volume@advanced": "{bigId, select, sun {The Sun} moon {The Moon} other {{big}}} has {n} times the volume of {smallId, select, sun {the Sun} moon {the Moon} other {{small}}}.",
 			"mass": {
 				"times": "{bigId, select, sun {The Sun} moon {The Moon} other {{big}}} has {n} times as much mass as {smallId, select, sun {the Sun} moon {the Moon} other {{small}}}.",
@@ -1877,7 +1970,8 @@
 			"placeholderBug": "What happened, and what did you expect? For example: “Saturn’s rings disappear when I zoom in close.”",
 			"placeholderIdea": "What would you like Orbitalia to do? For example: “Show where the Moon landings were.”",
 			"placeholderOther": "Anything you would like to tell us.",
-			"count": "{count, number} / {max, number} characters"
+			"count": "{count, number} / {max, number} characters",
+			"count@simple": "Write as much as you like."
 		},
 		"email": {
 			"label": "Your email (optional)",

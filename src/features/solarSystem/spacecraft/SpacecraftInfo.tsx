@@ -22,7 +22,13 @@ import {
 	type Spacecraft,
 } from "@/data/spacecraft"
 import { Hint } from "@/primitives/hint"
-import { useI18n, type I18n } from "@/i18n"
+import {
+	distanceInWords,
+	formatSpeed,
+	isSimple,
+	useI18n,
+	type I18n,
+} from "@/i18n"
 import { useBodyName } from "@/i18n/bodies"
 import { useSpacecraftText } from "@/i18n/spacecraft"
 import { kmToAu } from "@/sim"
@@ -38,8 +44,13 @@ import { eventLabel } from "./text"
 
 import classes from "./Spacecraft.module.css"
 
-/** A distance for people: "348,400 km", "25.5 billion km" / "25,5 Milliarden km". */
+/**
+ * A distance for people: "348,400 km", "25.5 billion km" / "25,5 Milliarden
+ * km"; at the simple level in words ("more than 100 times as far as Earth is
+ * from the Sun", #51).
+ */
 export function formatDistance(km: number, i18n: I18n): string {
+	if (isSimple(i18n)) return distanceInWords(km, i18n)
 	if (km < 1e6) return i18n.quantity(Math.round(km), "kilometer")
 	return new Intl.NumberFormat(i18n.formatLocale, {
 		style: "unit",
@@ -111,13 +122,16 @@ const Milestones = ({ craft }: { craft: Spacecraft }) => {
 								<span className={classes.milestoneDate}>{date}</span>
 								<span className={classes.milestoneText}>
 									{eventLabel(event, i18n, bodyName)}
-									{"distanceKm" in event && event.distanceKm !== undefined && (
-										<span className={classes.milestoneDetail}>
-											{t("solarSystem.spacecraft.distanceAt", {
-												distance: formatDistance(event.distanceKm, i18n),
-											})}
-										</span>
-									)}
+									{"distanceKm" in event &&
+										event.distanceKm !== undefined &&
+										// a flyby's distance from the centre is a detail for the older readers
+										!isSimple(i18n) && (
+											<span className={classes.milestoneDetail}>
+												{t("solarSystem.spacecraft.distanceAt", {
+													distance: formatDistance(event.distanceKm, i18n),
+												})}
+											</span>
+										)}
 								</span>
 								{event.jd > asOfJD && (
 									<Badge size="xs" variant="outline" color="gray">
@@ -202,9 +216,13 @@ const CraftPanel = ({ craft }: { craft: Spacecraft }) => {
 						<Fact
 							label={t("solarSystem.spacecraft.distanceSun")}
 							id="sun"
-							detail={t("units.au", {
-								value: i18n.significant(kmToAu(facts.sunDistanceKm)),
-							})}
+							detail={
+								isSimple(i18n)
+									? undefined
+									: t("units.au", {
+											value: i18n.significant(kmToAu(facts.sunDistanceKm)),
+										})
+							}
 						>
 							{formatDistance(facts.sunDistanceKm, i18n)}
 						</Fact>
@@ -225,7 +243,7 @@ const CraftPanel = ({ craft }: { craft: Spacecraft }) => {
 							})}
 							id="speed"
 						>
-							{i18n.quantity(facts.speedKmS, "kilometer-per-second")}
+							{formatSpeed(facts.speedKmS, i18n)}
 						</Fact>
 					</>
 				)}
