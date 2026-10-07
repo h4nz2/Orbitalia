@@ -48,6 +48,8 @@ import { currentPointerKind, isTapEvent } from "./tap"
  */
 export function activateBody(id: string): void {
 	const store = useSimStore.getState()
+	// choosing a body is a step of the view history (#46)
+	store.markStep()
 	switch (bodyClickAction(store, id)) {
 		case "focus":
 			store.setFocus(id)

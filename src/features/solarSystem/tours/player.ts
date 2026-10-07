@@ -12,6 +12,10 @@
  * the home button end the sequence but not the tour, and `resumeTour()`
  * restores the stop in both cases: its view, date, speed, scale, layers and
  * frame. Presentation mode (#29) and keyboard shortcuts call these functions.
+ *
+ * Entering a stop of a menu tour or a sky event is a step of the view history
+ * (#46), so Back returns to the stop before; a link opening on a stop, and a
+ * tour another feature plays (the quick look, #44), are not.
  */
 import type { Tour } from "@/data/tours"
 import { tourById } from "@/data/tours"
@@ -22,6 +26,7 @@ import { useScaleStore } from "@/store/scale"
 import { useSimStore, type SimState } from "@/store/sim"
 import {
 	TOUR_LAYER_FIELDS,
+	isListedTour,
 	useTourStore,
 	type TourBaseline,
 	type TourLayerKey,
@@ -29,6 +34,7 @@ import {
 	type TourState,
 } from "@/store/tour"
 import { useTrailStore } from "@/store/trails"
+import { withoutSteps } from "@/store/viewHistory"
 
 import { arrivalJD } from "../ui/timeTravel"
 import {
@@ -79,8 +85,20 @@ const LAYER_SETTERS = {
 	showAllMoons: "setShowAllMoons",
 } as const
 
-/** Shows stop `index` of the running tour: the scene first, then the camera. */
+/** Shows stop `index` of the running tour, as a step of the view history (#46) where it is one. */
 function enterStop(index: number, mode: EnterMode): void {
+	const { tour } = useTourStore.getState()
+	if (tour === null) return
+	if (mode === "jump" || !isListedTour(tour.id)) {
+		withoutSteps(() => showStop(index, mode))
+		return
+	}
+	useSimStore.getState().markStep()
+	showStop(index, mode)
+}
+
+/** Shows stop `index` of the running tour: the scene first, then the camera. */
+function showStop(index: number, mode: EnterMode): void {
 	const { tour, baseline } = useTourStore.getState()
 	if (tour === null || baseline === null) return
 	const at = Math.max(0, Math.min(tour.stops.length - 1, Math.trunc(index)))
@@ -222,8 +240,12 @@ export function setTourAuto(auto: boolean): void {
  * speed, scale and layers the viewer had before it began.
  */
 export function exitTour(): void {
-	const { steps, baseline } = useTourStore.getState()
+	const { tour, steps, baseline } = useTourStore.getState()
 	const sim = useSimStore.getState()
+	// going back to where a sky event began moves the camera: a step (#46)
+	if (tour !== null && baseline?.scene !== undefined && isListedTour(tour.id)) {
+		sim.markStep()
+	}
 	if (steps !== null && sim.sequence?.steps === steps) sim.stopSequence()
 	useTourStore.setState({ tour: null, index: 0, steps: null, baseline: null })
 	if (baseline?.scene !== undefined) restoreScene(baseline, baseline.scene)

@@ -27,6 +27,7 @@ import type { SequenceStep } from "@/store/navigation"
 import { useScaleStore } from "@/store/scale"
 import { useSimStore, type SimState } from "@/store/sim"
 import type { SimSearch } from "@/store/simSearch"
+import { holdSteps } from "@/store/viewHistory"
 
 import { captionReadingMs } from "./captions"
 import {
@@ -297,6 +298,14 @@ export function onSimChange(
 
 /** Installs the watchers; returns the function that removes them. */
 export function watchIntro(): () => void {
+	// while it plays nothing is a step of the view history and Back does nothing
+	// (#46): its own moves, and a choice that ends it, leave no entry behind
+	holdSteps(useIntroStore.getState().status === "playing")
+	const unsubscribeIntro = useIntroStore.subscribe((state, previous) => {
+		if (state.status !== previous.status) {
+			holdSteps(state.status === "playing")
+		}
+	})
 	const unsubscribeSim = useSimStore.subscribe((state, previous) =>
 		onSimChange(state, previous),
 	)
@@ -310,7 +319,9 @@ export function watchIntro(): () => void {
 		}
 	})
 	return () => {
+		unsubscribeIntro()
 		unsubscribeSim()
 		unsubscribeScale()
+		holdSteps(false)
 	}
 }

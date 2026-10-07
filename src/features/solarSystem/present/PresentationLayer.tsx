@@ -41,6 +41,10 @@ const SHORTCUTS: readonly {
 			},
 			{ keys: ["0"], text: "solarSystem.present.help.overview" },
 			{
+				keys: ["solarSystem.present.help.keys.backspace"],
+				text: "solarSystem.present.help.back",
+			},
+			{
 				keys: ["solarSystem.present.help.keys.esc"],
 				text: "solarSystem.present.help.reset",
 			},

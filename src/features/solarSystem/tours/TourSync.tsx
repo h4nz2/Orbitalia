@@ -14,7 +14,9 @@ import { eventOfTourId } from "@/data/skyEvents"
 import { tourById } from "@/data/tours"
 import { useSimStore } from "@/store/sim"
 import { useTourStore } from "@/store/tour"
+import { withoutSteps } from "@/store/viewHistory"
 
+import { tourBack } from "../back/back"
 import { startEvent } from "../events/player"
 import { EVENT_VIEWS } from "../events/staging"
 import {
@@ -27,7 +29,6 @@ import {
 	exitTour,
 	followSequence,
 	nextStop,
-	previousStop,
 	startTour,
 	tourStatus,
 } from "./player"
@@ -59,7 +60,7 @@ function onTourKey(event: KeyboardEvent): void {
 	event.preventDefault()
 	event.stopImmediatePropagation()
 	if (action === "next") nextStop()
-	else previousStop()
+	else tourBack()
 }
 
 /** Autoplay: at a stop the camera has reached, moves on once its narration has had time; a look around restarts the wait. */
@@ -122,7 +123,8 @@ const TourSync = () => {
 		} else if (useTourStore.getState().tour !== null) {
 			// a tour left running when the page was last closed ends here, not on
 			// unmount, where writing the URL could pull the visitor back to this page
-			exitTour()
+			// (arriving is never a step of the view history, #46)
+			withoutSteps(exitTour)
 		}
 		return followSequence()
 	}, [])

@@ -3,6 +3,7 @@ import { afterEach, beforeEach, describe, expect, it, vi } from "vitest"
 import { HOME_SHOT, OVERVIEW } from "@/store/navigation"
 import { useScaleStore } from "@/store/scale"
 import { useSimStore } from "@/store/sim"
+import { useViewHistoryStore } from "@/store/viewHistory"
 
 import {
 	INTRO_SEEN_KEY,
@@ -402,5 +403,25 @@ describe("the Help menu", () => {
 		expect(intro().status).toBe("playing")
 		expect(sim().view).toEqual({ kind: "body", id: "earth" })
 		expect(scale().presetId).toBe("trueScale")
+	})
+})
+
+describe("the view history (#46)", () => {
+	it("is held while the opening plays, and free again once it ends", () => {
+		const held = () => useViewHistoryStore.getState().held
+		expect(held()).toBe(false)
+		const steps = sim().step
+		startIntro()
+		expect(held()).toBe(true)
+		// its reset and its beats are no steps
+		nextBeat()
+		expect(sim().step).toBe(steps)
+		skipIntro()
+		expect(held()).toBe(false)
+		startIntro()
+		expect(held()).toBe(true)
+		unwatch()
+		expect(held()).toBe(false)
+		unwatch = watchIntro()
 	})
 })

@@ -15,6 +15,7 @@ import {
 	shouldMirrorTime,
 	stateFromSearch,
 	viewFromSearch,
+	waypointFromSearch,
 } from "./urlSync"
 
 type Mirrored = Parameters<typeof searchFromState>[0]
@@ -344,5 +345,39 @@ describe("urlSync helpers", () => {
 		const seeded = mountState({}).simTimeJD
 		expect(seeded).toBeGreaterThanOrEqual(before)
 		expect(seeded).toBeLessThanOrEqual(dateToJD(new Date()))
+	})
+
+	it("reads a waypoint from an address the view history has no record of (#46)", () => {
+		expect(
+			waypointFromSearch({
+				focus: "earth",
+				frame: "earth",
+				sel: "mars",
+				cam: "0_89.9_120",
+			}),
+		).toEqual({
+			kind: "view",
+			view: { kind: "body", id: "earth" },
+			shot: { azimuthDeg: 0, elevationDeg: 89.9, distance: 120 },
+			frameId: "earth",
+			selectedId: "mars",
+			craftId: null,
+			tour: null,
+		})
+		expect(waypointFromSearch({})).toMatchObject({
+			kind: "view",
+			view: OVERVIEW,
+			frameId: "sun",
+		})
+		// a menu tour's stop is the tour's, counted from 1 in the address
+		expect(waypointFromSearch({ tour: "grandTour", stop: 3 })).toEqual({
+			kind: "tourStop",
+			tour: { id: "grandTour", index: 2 },
+		})
+		// an unknown tour is only its view
+		expect(waypointFromSearch({ tour: "nope", focus: "mars" })).toMatchObject({
+			kind: "view",
+			view: { kind: "body", id: "mars" },
+		})
 	})
 })

@@ -131,10 +131,11 @@ export function craftView(
 	}
 }
 
-/** Selects the craft and flies the view to where it is now. */
+/** Selects the craft and flies the view to where it is now: a step of the view history (#46). */
 export function showCraft(id: string, scale: ScaleSettings): void {
 	const craft = spacecraftById.get(id)
 	if (craft === undefined) return
+	useSimStore.getState().markStep()
 	useSpacecraftStore.getState().selectCraft(id)
 	const view = craftView(craft, useSimStore.getState().simTimeJD, scale)
 	if (view === null) return
@@ -159,6 +160,7 @@ const eventPlanet = (target: string | undefined): Body | null => {
  * it happened at, or to where the craft was. The date is kept inside the
  * trajectory data, so the craft is on screen on arrival: the launch goes to
  * the first state (minutes after lift-off), Cassini's plunge to its last.
+ * A step of the view history (#46).
  */
 export function showEvent(
 	craft: Spacecraft,
@@ -171,6 +173,7 @@ export function showEvent(
 		trajectory === null
 			? eventJD
 			: Math.min(trajectory.toJD, Math.max(trajectory.fromJD, eventJD))
+	useSimStore.getState().markStep()
 	useSpacecraftStore.getState().selectCraft(craft.id)
 	travelAndStop(jd)
 	const planet = eventPlanet(event.target)

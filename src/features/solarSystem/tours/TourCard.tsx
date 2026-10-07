@@ -27,11 +27,11 @@ import { useI18n } from "@/i18n"
 import { useSimStore } from "@/store/sim"
 import { useTourStore } from "@/store/tour"
 
+import { tourBack } from "../back/back"
 import {
 	exitTour,
 	goToStop,
 	nextStop,
-	previousStop,
 	resumeTour,
 	setTourAuto,
 	tourStatus,
@@ -170,7 +170,8 @@ const TourCard = ({ className = "" }: { className?: string }) => {
 		<Button
 			variant="default"
 			size={collapsed ? "compact-sm" : "sm"}
-			onClick={previousStop}
+			// the previous stop, through the browser's history where it can (#46)
+			onClick={tourBack}
 			disabled={index === 0}
 			leftSection={<IconChevronLeft size={16} aria-hidden />}
 		>

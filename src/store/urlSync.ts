@@ -11,17 +11,27 @@
  * as they change (the shot when the camera comes to rest) and the simulation
  * time follows at most once per second, and only while it is slow enough to
  * be worth a link (paused or |warp| <= 1 min/s).
- * Everything is `replace: true`, so the history never fills up.
+ *
+ * A step (#46: choosing a body, the way out, a tour stop, ...; see
+ * ./viewHistory.ts) is written once, at its end, as a new history entry;
+ * everything else rewrites the entry on screen (`replace: true`), so the
+ * history holds the steps and nothing else. The browser's back and forward
+ * between two entries of the solar system go to the entry's view (flying),
+ * through the view history.
  *
  * The store is watched through `useSimStore.subscribe`, not selectors: the
  * component calling this hook must not re-render at the clock's rate.
  */
 import { useEffect, useLayoutEffect, useRef } from "react"
-import { useNavigate, useSearch } from "@tanstack/react-router"
+import {
+	defaultParseSearch,
+	useNavigate,
+	useRouter,
+	useSearch,
+	type HistoryState,
+} from "@tanstack/react-router"
 
 import { bodyById } from "@/data"
-import { eventOfTourId } from "@/data/skyEvents"
-import { tourById } from "@/data/tours"
 import {
 	DEFAULT_SCALE_PRESET,
 	dateToJD,
@@ -50,14 +60,18 @@ import {
 	samePresentationSearch,
 	usePresentationStore,
 } from "./presentation"
-import { tourSearch, useTourStore, type TourSearch } from "./tour"
+import { isListedTour, tourSearch, useTourStore, type TourSearch } from "./tour"
 import { useScaleStore } from "./scale"
 import { useSimStore, type SimState } from "./sim"
-import type { SimSearch } from "./simSearch"
-
-/** Only the tours of the menu (src/data/tours) and sky events (#41) go into a link. */
-const isTourListed = (id: string): boolean =>
-	tourById.has(id) || eventOfTourId(id) !== null
+import { simSearchSchema, type SimSearch } from "./simSearch"
+import { useSpacecraftStore } from "./spacecraft"
+import {
+	arrive,
+	createRecorder,
+	setHistoryBack,
+	waypointOf,
+	type Waypoint,
+} from "./viewHistory"
 
 /** Minimum spacing between two writes of `t` into the URL. */
 export const TIME_SYNC_INTERVAL_MS = 1000
@@ -244,6 +258,38 @@ export function frameFromSearch(search: SimSearch): string | null {
 }
 
 /**
+ * The waypoint of an address (#46): an entry of the history the view history
+ * has no record of (one of an earlier visit, before a reload). A menu tour's
+ * or a sky event's stop, else the view, its camera, frame and selection.
+ */
+export function waypointFromSearch(search: SimSearch): Waypoint {
+	if (search.tour !== undefined && isListedTour(search.tour)) {
+		return {
+			kind: "tourStop",
+			tour: { id: search.tour, index: Math.max(0, (search.stop ?? 1) - 1) },
+		}
+	}
+	const { view, shot, selectedId } = viewFromSearch(search)
+	return {
+		kind: "view",
+		view,
+		shot,
+		frameId: frameFromSearch(search) ?? OVERVIEW_BODY_ID,
+		selectedId,
+		craftId: null,
+		tour: null,
+	}
+}
+
+/** The scene as the view history keeps it (#46). */
+const currentWaypoint = (): Waypoint =>
+	waypointOf(
+		useSimStore.getState(),
+		useTourStore.getState(),
+		useSpacecraftStore.getState().selectedCraftId,
+	)
+
+/**
  * The layer switches a search sets: a switch the link leaves out is on, except
  * the orbit names, all moons (#17) and the small bodies (#23), which are off unless the link turns them on.
  */
@@ -292,6 +338,7 @@ export function mountState(
 export function useSimUrlSync(): void {
 	const search = useSearch({ from: "/solar_system" })
 	const navigate = useNavigate()
+	const router = useRouter()
 	// the URL as last seen (rendered or written by us); a ref so the sync effect never re-runs
 	const searchRef = useRef<SimSearch>(search)
 	useEffect(() => {
@@ -324,14 +371,17 @@ export function useSimUrlSync(): void {
 		usePresentationStore.getState().setStartSearch(searchRef.current)
 
 		let timer: ReturnType<typeof setTimeout> | undefined
-		const write = () => {
+		/** Writes the store into the URL: in place, or as a new history entry for a step (#46). */
+		const write = (push = false) => {
+			// a step is written once, at its end, so the entry it leaves stays as it was
+			if (!push && recorder.holds()) return
 			const sim = useSimStore.getState()
 			const next = {
 				...searchFromState(
 					{
 						...sim,
 						scalePreset: useScaleStore.getState().targetId,
-						tour: tourSearch(useTourStore.getState(), isTourListed),
+						tour: tourSearch(useTourStore.getState(), isListedTour),
 					},
 					searchRef.current,
 					hidesTimeInUrl(useBirthdayStore.getState()),
@@ -342,14 +392,61 @@ export function useSimUrlSync(): void {
 				}),
 			}
 			if (
+				!push &&
 				sameSearch(next, searchRef.current) &&
 				samePresentationSearch(next, searchRef.current)
 			) {
 				return
 			}
 			searchRef.current = next
-			void navigate({ to: "/solar_system", search: next, replace: true })
+			void navigate({
+				to: "/solar_system",
+				search: next,
+				replace: !push,
+				// a step that changes nothing the address shows (a spacecraft chosen)
+				// is still an entry of its own: its state tells it apart
+				...(push
+					? {
+							state: (previous: HistoryState) => ({
+								...previous,
+								orbitaliaStep: sim.step,
+							}),
+						}
+					: {}),
+			})
 		}
+
+		// the view history (#46): steps become entries, back and forward go to them
+		const history = router.history
+		const solarSystemPath = history.location.pathname
+		const recorder = createRecorder({
+			now: currentWaypoint,
+			write,
+			arrive: (recorded) => {
+				const arrived = simSearchSchema.parse(
+					defaultParseSearch(history.location.search),
+				)
+				searchRef.current = arrived
+				arrive(recorded ?? waypointFromSearch(arrived))
+				write()
+			},
+		})
+		recorder.open(
+			history.location.state.__TSR_index,
+			history.location.state.key,
+		)
+		const unsubscribeHistory = history.subscribe(({ location, action }) =>
+			recorder.note({
+				action: action.type,
+				index: location.state.__TSR_index,
+				key: location.state.key,
+				solarSystem: location.pathname === solarSystemPath,
+			}),
+		)
+		const unsubscribeStep = useSimStore.subscribe((state, previous) => {
+			if (state.step !== previous.step) recorder.step()
+		})
+		setHistoryBack(() => history.back())
 
 		// store -> URL: view, selection, camera, warp, pause and layer changes right
 		// away (a pause also pins `t`); the running clock at most once per TIME_SYNC_INTERVAL_MS
@@ -415,13 +512,17 @@ export function useSimUrlSync(): void {
 
 		return () => {
 			unsubscribe()
+			unsubscribeHistory()
+			unsubscribeStep()
+			recorder.dispose()
+			setHistoryBack(null)
 			unsubscribeScale()
 			unsubscribeTour()
 			unsubscribeBirthday()
 			unsubscribePresentation()
 			if (timer !== undefined) clearTimeout(timer)
 		}
-	}, [navigate])
+	}, [navigate, router])
 }
 
 export default useSimUrlSync

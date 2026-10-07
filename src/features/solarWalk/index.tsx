@@ -1,13 +1,6 @@
 import { Fragment, useEffect, useId, useMemo, useRef } from "react"
 import { useNavigate, useSearch } from "@tanstack/react-router"
-import {
-	Anchor,
-	Button,
-	Group,
-	SegmentedControl,
-	Text,
-	Title,
-} from "@mantine/core"
+import { Button, Group, SegmentedControl, Text, Title } from "@mantine/core"
 import { useMediaQuery } from "@mantine/hooks"
 import { IconArrowLeft, IconPlanet, IconPrinter } from "@tabler/icons-react"
 
@@ -114,15 +107,16 @@ const SolarWalk = () => {
 			</div>
 			<div className={classes.inner}>
 				<header className={classes.header}>
-					<Anchor
-						component="button"
-						type="button"
+					{/* the same Back as the help page and the comparison (#45, #46) */}
+					<Button
+						variant="subtle"
+						color="gray"
+						leftSection={<IconArrowLeft size={18} aria-hidden />}
 						onClick={back}
 						className={classes.back}
 					>
-						<IconArrowLeft size={16} aria-hidden />
 						{t("solarWalk.back")}
-					</Anchor>
+					</Button>
 					<Title order={1} className={classes.title}>
 						{titleText(walk, i18n)}
 					</Title>

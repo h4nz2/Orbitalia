@@ -34,6 +34,8 @@ import { switchScale } from "../ui/ScalePanel"
 
 export function restoreStart(search: SimSearch, instant: boolean): void {
 	const store = useSimStore.getState()
+	// a step of the view history (#46): Back returns to where the teacher wandered off to
+	store.markStep()
 	const durationMs = instant ? 0 : undefined
 	exitTour()
 	store.stopSequence()

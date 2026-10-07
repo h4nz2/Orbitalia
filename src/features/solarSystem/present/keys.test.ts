@@ -54,6 +54,12 @@ describe("keyCommand", () => {
 		expect(press("?")).toEqual({ kind: "help" })
 	})
 
+	it("maps Backspace to Back (#46), never with a modifier", () => {
+		expect(press("Backspace")).toEqual({ kind: "back" })
+		expect(press("Backspace", { altKey: true })).toBeNull()
+		expect(press("Backspace", { ctrlKey: true })).toBeNull()
+	})
+
 	it("never takes a browser shortcut or a key the HUD already owns", () => {
 		expect(press("r", { ctrlKey: true })).toBeNull()
 		expect(press("f", { metaKey: true })).toBeNull()

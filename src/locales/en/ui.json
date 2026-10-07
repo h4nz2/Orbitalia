@@ -894,7 +894,8 @@
 					"arrows": "← / →",
 					"digits": "1 – 8",
 					"home": "Home",
-					"esc": "Esc"
+					"esc": "Esc",
+					"backspace": "Backspace"
 				},
 				"pause": "Pause or play",
 				"speed": "Faster or slower",
@@ -902,6 +903,7 @@
 				"planets": "The planets, from Mercury (1) to Neptune (8)",
 				"overview": "The whole solar system",
 				"reset": "Back to the overview, from anywhere",
+				"back": "Back to where you just were (in a tour: the stop before)",
 				"start": "Back to the start: the view the link opened with",
 				"scale": "Next scale: Everything visible, Textbook, True scale",
 				"scale@simple": "Switch between pretend sizes and real sizes",
@@ -917,6 +919,7 @@
 				"focus": "Now showing {body}",
 				"overview": "The whole solar system",
 				"start": "Back to the start",
+				"back": "Back to the view before",
 				"scale": "Scale: {preset}",
 				"labelsOn": "Names shown",
 				"labelsOff": "Names hidden",
@@ -1098,6 +1101,13 @@
 		},
 		"overviewHint": "The way back to the whole solar system, from anywhere (Esc). A click on empty space leaves the view where it is.",
 		"overviewHint@simple": "Go back and see the whole solar system (Esc). A click on empty space keeps you where you are.",
+		"back": {
+			"label": "Back",
+			"hint": "One step back to where you just were: the world, spacecraft or place in view before, as you left it (Backspace). During a tour, the stop before.",
+			"hint@simple": "Go one step back, to what you looked at before (Backspace).",
+			"reason": "Nothing to go back to yet: choose a world first.",
+			"reason@simple": "Pick a planet first. Then you can go back."
+		},
 		"sky": {
 			"open": "Tonight's sky",
 			"openHint": "Which planets can you see tonight, when and where?",

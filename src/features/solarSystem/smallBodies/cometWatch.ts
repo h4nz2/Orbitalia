@@ -112,6 +112,8 @@ export function watchComet(body: Pick<Body, "id" | "orbit" | "tail">): void {
 	const passage = passageToWatch(orbit, tail, state.simTimeJD)
 	const start = watchStartJD(passage, state.simTimeJD)
 	const q = orbit.semiMajorAxisKm * (1 - orbit.eccentricity)
+	// choosing the comet is a step of the view history (#46)
+	state.markStep()
 	state.select(body.id)
 	state.focus(body.id, { fit: { km: 1.2 * q, around: "sun" } })
 	state.setTimeWarp(watchWarp(passage.endJD - passage.startJD))

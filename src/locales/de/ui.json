@@ -894,7 +894,8 @@
 					"arrows": "← / →",
 					"digits": "1 – 8",
 					"home": "Pos1",
-					"esc": "Esc"
+					"esc": "Esc",
+					"backspace": "Rücktaste"
 				},
 				"pause": "Anhalten oder weiterlaufen lassen",
 				"speed": "Schneller oder langsamer",
@@ -902,6 +903,7 @@
 				"planets": "Die Planeten, von Merkur (1) bis Neptun (8)",
 				"overview": "Das ganze Sonnensystem",
 				"reset": "Zurück zur Übersicht, von überall",
+				"back": "Zurück dorthin, wo du gerade warst (in einer Tour: zur Station davor)",
 				"start": "Zurück zum Anfang: die Ansicht, mit der der Link geöffnet wurde",
 				"scale": "Nächster Maßstab: Alles sichtbar, Schulbuch, Echter Maßstab",
 				"scale@simple": "Zwischen erfundenen und echten Größen wechseln",
@@ -917,6 +919,7 @@
 				"focus": "Jetzt zu sehen: {body}",
 				"overview": "Das ganze Sonnensystem",
 				"start": "Zurück zum Anfang",
+				"back": "Zurück zur Ansicht davor",
 				"scale": "Maßstab: {preset}",
 				"labelsOn": "Namen eingeblendet",
 				"labelsOff": "Namen ausgeblendet",
@@ -1098,6 +1101,13 @@
 		},
 		"overviewHint": "Der Weg zurück zum ganzen Sonnensystem, von überall (Esc). Ein Klick ins Leere lässt die Ansicht, wie sie ist.",
 		"overviewHint@simple": "Geh zurück und sieh dir das ganze Sonnensystem an (Esc). Ein Klick ins Leere lässt dich, wo du bist.",
+		"back": {
+			"label": "Zurück",
+			"hint": "Einen Schritt zurück, dorthin, wo du gerade warst: zur Welt, Raumsonde oder Stelle von vorhin, so wie du sie verlassen hast (Rücktaste). In einer Tour: zur Station davor.",
+			"hint@simple": "Geh einen Schritt zurück, zu dem, was du vorher angeschaut hast (Rücktaste).",
+			"reason": "Noch gibt es nichts, wohin es zurückgeht: Wähle zuerst eine Welt.",
+			"reason@simple": "Wähle zuerst einen Planeten. Dann kannst du zurück."
+		},
 		"sky": {
 			"open": "Himmel heute Nacht",
 			"openHint": "Welche Planeten kannst du heute Nacht sehen, wann und wo?",

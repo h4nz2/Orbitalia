@@ -7,6 +7,7 @@ import { isFrameAnchored } from "@/store/navigation"
 import { useSimStore } from "@/store/sim"
 import { useSimUrlSync } from "@/store/urlSync"
 
+import BackButton from "./back/BackButton"
 import FrameBadge from "./frame/FrameBadge"
 import FrameMenu from "./frame/FrameMenu"
 import IntroController from "./intro/IntroController"
@@ -83,7 +84,7 @@ const FrameBadgePanel = () => {
 /**
  * The solar system page: the 3D scene filling the viewport with a quiet HUD
  * floating above it (#42; docs/ARCHITECTURE.md, "HUD layout"). On screen all
- * the time: what you look at and the way out (top left), whether time runs
+ * the time: what you look at, Back and the way out (top left), whether time runs
  * (the time bar), the teacher's corner (top right) and the four entry points
  * (bottom right). Everything else waits behind those, one panel at a time in
  * the dock, and the secondary controls dim while the camera moves.
@@ -110,6 +111,7 @@ const SolarSystem = () => {
 						data-steady
 						data-testid="where"
 					>
+						<BackButton />
 						<OverviewButton />
 						<FocusPicker />
 						<div className={classes.frame} data-dim>
