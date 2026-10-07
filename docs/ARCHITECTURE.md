@@ -1114,6 +1114,19 @@ the URL, so "save the lesson" is the link itself (plus `paused`, `present`, `con
 - **Sharing** (`present/SharePanel.tsx`, lazy): the current address with a copy button (`useClipboard`) and a QR
   code (`uqr` encodes, `present/qr.ts` draws one SVG path), small in the popover and large for the class
   (`ClassQr`, a modal outside the popover).
+  - **The class code takes the panel's place (#50).** Opening it closes the popover (`ShareMenu` holds it open);
+    closing it puts the focus on Share, it does not reopen the panel (the dialog mounts open, so `ShareMenu` returns
+    the focus itself). The modal sits at Mantine's `max` z-index, above every HUD popover and menu, so nothing
+    covers the code or its white margin; only hints go higher. "?" replaces it with the shortcut list: one dialog
+    at a time. `e2e/presentation.spec.ts` hit-tests its corners, finder squares and centre (click-through layers
+    included) on a laptop, a phone, and a laptop and a full-HD projector presenting.
+  - **Coarse modules** (`qr.ts` `QR_OPTIONS`): error correction L, boosted to whatever the version holds for
+    free. A screen is never crumpled or stained (the printed postcard keeps M); what fails at the back of a room is
+    a module too small for the camera. A classroom link is 88 to 157 characters (`lang` and `reading` are always
+    in it), and L draws it one or two versions smaller than M: 37 modules instead of 41 for the issue's
+    `focus=jupiter`, 49 instead of 53 for a prepared lesson. The link itself is already at the precision the view
+    needs (angles 0.1°: an edge-on ring shows half a degree; the distance to 3 digits; the time to about 9 s, so
+    the clock shows the same minute), so it is not trimmed further.
 - **Second screen**: the layout is viewport-relative; `present/DprSync.tsx` in the Canvas re-applies the `dpr` range
   when the device pixel ratio changes (dragging the window to a projector), which the Canvas otherwise reads once.
 - **For #28 (tours):** PageDown/PageUp already step a running `playSequence` (`presenterStep`: next, resume after an

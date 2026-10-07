@@ -111,6 +111,13 @@ describe("runCommand", () => {
 		expect(presentation().helpOpen).toBe(false)
 	})
 
+	it("? over the class QR code replaces it with the list, never under it (#50)", () => {
+		presentation().setQrOpen(true)
+		runCommand({ kind: "help" }, context())
+		expect(presentation().helpOpen).toBe(true)
+		expect(presentation().qrOpen).toBe(false)
+	})
+
 	it("R goes back to the link the page was opened with", () => {
 		presentation().setStartSearch({ focus: "saturn", scale: "trueScale" })
 		sim().setFocus("earth")
