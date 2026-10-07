@@ -34,8 +34,18 @@ export function qrPath(modules: readonly (readonly boolean[])[]): string {
 	return parts.join("")
 }
 
-/** The QR code of `text`, medium error correction, with the standard four-module quiet zone. */
+/**
+ * How the share codes are encoded (#50): low error correction, raised to
+ * whatever the code's size holds for free, and the standard four-module quiet
+ * zone. A code on a screen is never crumpled or stained (the printed
+ * postcard keeps M); what fails at the back of a classroom is a module too
+ * small for the camera, and L draws the same link with one or two versions
+ * fewer, so every module is 10-20 % larger.
+ */
+export const QR_OPTIONS = { ecc: "L", boostEcc: true, border: 4 } as const
+
+/** The QR code of `text` (see `QR_OPTIONS`). */
 export function qrCode(text: string): QrCode {
-	const { data, size } = encode(text, { ecc: "M", border: 4 })
+	const { data, size } = encode(text, QR_OPTIONS)
 	return { size, path: qrPath(data) }
 }

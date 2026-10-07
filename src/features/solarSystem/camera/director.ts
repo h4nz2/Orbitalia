@@ -52,6 +52,7 @@ import { isBodyShown, type SimState } from "@/store/sim"
 
 import { isMoonDotShown } from "../scene/Markers"
 import type { SimFrame } from "../scene/simFrame"
+import { isPressGrab } from "../scene/tap"
 import {
 	CAMERA_FOV_DEG,
 	CAMERA_MAX_DISTANCE,
@@ -211,7 +212,21 @@ export class CameraDirector {
 	private readonly fromKm = new Float64Array(3)
 	private readonly toKm = new Float64Array(3)
 
-	private readonly onUserInput = () => this.userInput()
+	/** A pointer is pressed on the canvas (between camera-controls' controlstart and controlend). */
+	private pressing = false
+
+	private readonly onPress = () => {
+		this.pressing = true
+	}
+	private readonly onRelease = () => {
+		this.pressing = false
+	}
+	// a press is a tap until it moves past the tap allowance or a second finger lands:
+	// a tap never takes the camera (#49: a tap pauses the opening), a drag, wheel or pinch does
+	private readonly onUserInput = () => {
+		if (this.pressing && !isPressGrab()) return
+		this.userInput()
+	}
 	private readonly onRest = () => this.rest()
 
 	constructor(
@@ -224,15 +239,18 @@ export class CameraDirector {
 
 	/** Starts listening to the controls (user input hands transitions over; rest publishes the shot). */
 	attach(): void {
-		this.controls.addEventListener("controlstart", this.onUserInput)
+		this.controls.addEventListener("controlstart", this.onPress)
+		this.controls.addEventListener("controlend", this.onRelease)
 		this.controls.addEventListener("control", this.onUserInput)
 		this.controls.addEventListener("rest", this.onRest)
 	}
 
 	detach(): void {
-		this.controls.removeEventListener("controlstart", this.onUserInput)
+		this.controls.removeEventListener("controlstart", this.onPress)
+		this.controls.removeEventListener("controlend", this.onRelease)
 		this.controls.removeEventListener("control", this.onUserInput)
 		this.controls.removeEventListener("rest", this.onRest)
+		this.pressing = false
 	}
 
 	/** One frame: `now` in ms (performance.now()), `deltaS` the frame time in seconds. */

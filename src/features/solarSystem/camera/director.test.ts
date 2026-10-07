@@ -4,7 +4,7 @@
  * with no feature code touching the camera, and every transition interrupted
  * at every point without leaving the camera stuck or the pivot orphaned.
  */
-import { afterEach, describe, expect, it } from "vitest"
+import { afterEach, describe, expect, it, vi } from "vitest"
 import * as THREE from "three"
 import { CameraControlsImpl } from "@react-three/drei"
 
@@ -34,6 +34,13 @@ import {
 	defaultDistance,
 	minViewDistance,
 } from "./framing"
+
+/** What the page's press tracker says of the press under way (#49): a drag or a pinch by now. */
+let grabbing = false
+vi.mock("../scene/tap", async (importOriginal) => ({
+	...(await importOriginal<typeof import("../scene/tap")>()),
+	isPressGrab: () => grabbing,
+}))
 
 // camera-controls creates a DOMRect when constructed; node has none
 class Rect {
@@ -127,9 +134,12 @@ class Harness {
 		return [p[i * 3], p[i * 3 + 1], p[i * 3 + 2]]
 	}
 
-	/** A gesture starting on the canvas (what camera-controls reports for a drag, wheel or pinch). */
+	/**
+	 * The user moves the camera: what camera-controls reports for a wheel, or
+	 * for a drag or pinch once it has moved (a press alone is a tap, see `press`).
+	 */
 	grab(): void {
-		this.controls.dispatchEvent({ type: "controlstart" })
+		this.controls.dispatchEvent({ type: "control" })
 	}
 }
 
@@ -484,6 +494,30 @@ describe("CameraDirector", () => {
 			const end = h.now + 10000
 			while (store().sequence !== null && h.now < end) h.step()
 			expectSettled(h, "focused", "phobos")
+		})
+
+		it("lets a tap go by, and takes over once the press is a drag or a pinch (#49)", () => {
+			const h = new Harness()
+			h.step()
+			store().playSequence([
+				{ view: { kind: "body", id: "mars" }, holdMs: 100 },
+				{ view: { kind: "body", id: "phobos" }, holdMs: 100 },
+			])
+			h.step(5)
+			// a finger lands and wobbles a little: a tap, not a grab
+			grabbing = false
+			h.controls.dispatchEvent({ type: "controlstart" })
+			h.controls.dispatchEvent({ type: "control" })
+			h.step()
+			expect(store().sequence?.phase).toBe("moving")
+			expect(store().transition?.handedOver).toBe(false)
+			// then it wanders off (or a second finger lands): the camera is the user's
+			grabbing = true
+			h.controls.dispatchEvent({ type: "control" })
+			expect(store().sequence?.phase).toBe("interrupted")
+			expect(store().transition?.handedOver).toBe(true)
+			h.controls.dispatchEvent({ type: "controlend" })
+			grabbing = false
 		})
 	})
 

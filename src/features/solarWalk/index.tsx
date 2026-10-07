@@ -1,4 +1,4 @@
-import { Fragment, useId, useMemo } from "react"
+import { Fragment, useEffect, useId, useMemo, useRef } from "react"
 import { useNavigate, useSearch } from "@tanstack/react-router"
 import {
 	Anchor,
@@ -29,7 +29,13 @@ import {
 	type SunObjectId,
 	type WalkView,
 } from "./search"
-import { LANDMARKS, SUN_OBJECTS, buildWalk, landmarkOnWalk } from "./walk"
+import {
+	LANDMARKS,
+	SUN_OBJECTS,
+	buildWalk,
+	landmarkOnWalk,
+	stopOf,
+} from "./walk"
 import {
 	landmarkMarkerText,
 	leadText,
@@ -49,7 +55,8 @@ import classes from "./SolarWalk.module.css"
  * The basketball solar system (#25): choose what the Sun is, and every planet
  * becomes an everyday thing at a distance a class can walk out on a school
  * field. The walk is the experience; the table is for projecting and for the
- * printed hand-out. Built on #21's true scale (see walk.ts).
+ * printed hand-out. Built on #21's true scale (see walk.ts). A link from a
+ * world's card (`?focus=jupiter`, #48) opens it on that world's line.
  */
 const SolarWalk = () => {
 	const i18n = useI18n()
@@ -68,6 +75,21 @@ const SolarWalk = () => {
 	const view = search.view ?? DEFAULT_WALK_VIEW
 	const walk = useMemo(() => buildWalk(sunObject), [sunObject])
 	const marker = landmark === null ? null : landmarkOnWalk(walk, landmark)
+	// the body a link asked for, and the stop its line is on
+	const focus = search.focus ?? null
+	const focusStop =
+		focus === null || focus === "sun"
+			? focus
+			: (stopOf(walk, focus)?.id ?? null)
+	const focused = (bodyId: string) => (bodyId === focus ? true : undefined)
+	const walkRef = useRef<HTMLOListElement>(null)
+	const tableRef = useRef<HTMLDivElement>(null)
+	// arriving on a body: its line in the middle of the screen, in the view on show
+	useEffect(() => {
+		if (focus === null) return
+		const shown = view === "walk" ? walkRef.current : tableRef.current
+		shown?.querySelector("[data-focused]")?.scrollIntoView({ block: "center" })
+	}, [focus, view])
 
 	// defaults stay out of the URL, so a plain link means the same for everyone
 	const setSearch = (patch: SolarWalkSearch) =>
@@ -191,10 +213,16 @@ const SolarWalk = () => {
 				<Text className={classes.summary}>{summaryText(walk, i18n)}</Text>
 
 				<ol
+					ref={walkRef}
 					className={`${classes.walk} ${view === "walk" ? "" : classes.screenHidden}`}
 					aria-label={titleText(walk, i18n)}
 				>
-					<li className={classes.stop} data-stop="sun">
+					<li
+						className={classes.stop}
+						data-stop="sun"
+						data-focused={focused("sun")}
+						aria-current={focusStop === "sun" ? "location" : undefined}
+					>
 						<article className={`${classes.card} ${classes.sunCard}`}>
 							<header className={classes.cardHeader}>
 								<span className={classes.start}>{t("solarWalk.start")}</span>
@@ -224,7 +252,12 @@ const SolarWalk = () => {
 										</p>
 									</li>
 								)}
-								<li className={classes.stop} data-stop={stop.id}>
+								<li
+									className={classes.stop}
+									data-stop={stop.id}
+									data-focused={focused(stop.id)}
+									aria-current={focusStop === stop.id ? "location" : undefined}
+								>
 									<p className={classes.leg}>{text.leg}</p>
 									<article className={classes.card}>
 										<header className={classes.cardHeader}>
@@ -257,7 +290,13 @@ const SolarWalk = () => {
 										{text.moons.length > 0 && (
 											<ul className={classes.moons}>
 												{text.moons.map((line, i) => (
-													<li key={stop.moons[i].id}>{line}</li>
+													<li
+														key={stop.moons[i].id}
+														data-moon={stop.moons[i].id}
+														data-focused={focused(stop.moons[i].id)}
+													>
+														{line}
+													</li>
 												))}
 											</ul>
 										)}
@@ -269,9 +308,10 @@ const SolarWalk = () => {
 				</ol>
 
 				<div
+					ref={tableRef}
 					className={`${classes.tableView} ${view === "table" ? "" : classes.screenHidden}`}
 				>
-					<WalkTable walk={walk} landmark={landmark} />
+					<WalkTable walk={walk} landmark={landmark} focus={focus} />
 					<p className={classes.printNote}>{t("solarWalk.printNote")}</p>
 				</div>
 

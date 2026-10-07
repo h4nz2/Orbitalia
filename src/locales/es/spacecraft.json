@@ -7,7 +7,7 @@
 			"advanced": "El objeto fabricado por humanos más lejano, ya en el espacio interestelar"
 		},
 		"description": {
-			"simple": "La Voyager 1 salió de la Tierra en 1977. Pasó junto a Júpiter y Saturno y les hizo fotos. Hoy está más lejos que cualquier otra cosa que haya fabricado la gente, allá fuera, entre las estrellas. Todavía manda mensajes a casa, muy bajito.",
+			"simple": "La Voyager 1 salió de la Tierra hace mucho tiempo, cuando tus abuelos eran jóvenes. Pasó junto a Júpiter y Saturno y les hizo fotos. Hoy está más lejos que cualquier otra cosa que haya fabricado la gente. Está allá fuera, entre las estrellas. Todavía manda mensajes a casa, muy bajito.",
 			"standard": "Lanzada en 1977, la Voyager 1 pasó junto a Júpiter en 1979 y junto a Saturno en 1980, donde observó de cerca la luna Titán. En 1990 se dio la vuelta y fotografió la Tierra como un punto azul pálido. Desde 1998 es el objeto fabricado por humanos más lejano, y en agosto de 2012 cruzó la heliopausa, donde el viento del Sol cede ante el gas que hay entre las estrellas. Sigue enviando datos a casa con unos 20 vatios.",
 			"advanced": "La Voyager 1 aprovechó una asistencia gravitatoria en Júpiter (marzo de 1979) para llegar a Saturno (noviembre de 1980); su paso cercano junto a Titán desvió bruscamente su trayectoria fuera del plano de los planetas. En febrero de 1998 superó a la Pioneer 10 como la sonda más lejana y el 25 de agosto de 2012, a unas 121 ua del Sol, cruzó la heliopausa hacia el espacio interestelar. Su fuente de energía nuclear pierde unos 4 vatios al año, así que sus instrumentos se apagan uno a uno."
 		}
@@ -16,25 +16,31 @@
 		"name": "Voyager 2",
 		"tagline": "La única visitante de Urano y Neptuno",
 		"description": {
-			"simple": "La Voyager 2 es la gemela de la Voyager 1. Es la única nave que ha visitado los cuatro planetas gigantes: Júpiter, Saturno, Urano y Neptuno. Salió de la Tierra en 1977 y todavía vuela y envía mensajes.",
+			"simple": "La Voyager 2 es la gemela de la Voyager 1. Es la única sonda espacial que ha visitado los cuatro planetas gigantes: Júpiter, Saturno, Urano y Neptuno. Salió de la Tierra hace mucho tiempo, cuando tus abuelos eran jóvenes. Todavía vuela y envía mensajes.",
 			"standard": "La Voyager 2 despegó en agosto de 1977, 16 días antes que su gemela. Una rara alineación de los planetas exteriores le permitió saltar de Júpiter (1979) a Saturno (1981), Urano (1986) y Neptuno (1989): el Gran Viaje. Sigue siendo la única nave que ha visitado Urano y Neptuno. En noviembre de 2018 cruzó la heliopausa hacia el espacio interestelar.",
 			"advanced": "Cada sobrevuelo de la Voyager 2 fue una asistencia gravitatoria que curvó su trayectoria y la aceleró hacia el siguiente planeta, de modo que un viaje de 30 años hasta Neptuno se quedó en 12. La alineación que lo hizo posible solo se repite más o menos cada 175 años. Tras Neptuno y su luna Tritón (agosto de 1989) se dirigió al sur del plano de los planetas y el 5 de noviembre de 2018, a unas 119 ua del Sol, cruzó la heliopausa."
 		}
 	},
 	"pioneer10": {
 		"name": "Pioneer 10",
-		"tagline": "La primera sonda a Júpiter",
+		"tagline": {
+			"simple": "La primera sonda espacial que fue a Júpiter",
+			"standard": "La primera sonda a Júpiter"
+		},
 		"description": {
-			"simple": "La Pioneer 10 fue la primera nave que atravesó el cinturón de asteroides y pasó junto a Júpiter, en 1973. Lleva una placa de metal con el dibujo de dos personas, por si alguien la encuentra algún día. Supimos de ella por última vez en 2003.",
+			"simple": "La Pioneer 10 fue la primera sonda espacial que atravesó el cinturón de asteroides y pasó junto a Júpiter. Lleva una placa de metal con el dibujo de dos personas, por si alguien la encuentra algún día. Dejó de mandar mensajes hace mucho tiempo.",
 			"standard": "Lanzada en marzo de 1972, la Pioneer 10 fue la primera nave en cruzar el cinturón de asteroides y la primera en visitar Júpiter, en diciembre de 1973. Después siguió su camino, fuera del sistema solar. Su última señal, muy débil, llegó a la Tierra el 23 de enero de 2003; desde entonces sigue volando en silencio.",
 			"advanced": "La Pioneer 10 pasó a unos 200 000 km del centro de Júpiter y midió sus intensos cinturones de radiación, un conocimiento que marcó todas las misiones posteriores. Durante décadas su trayectoria sirvió para poner a prueba la gravedad lejos del Sol: la diminuta «anomalía de las Pioneer» en su movimiento resultó ser, en 2012, el calor de su propia fuente de energía empujándola. El contacto se perdió en 2003, cuando esa fuente ya era demasiado débil."
 		}
 	},
 	"pioneer11": {
 		"name": "Pioneer 11",
-		"tagline": "La primera sonda a Saturno",
+		"tagline": {
+			"simple": "La primera sonda espacial que fue a Saturno",
+			"standard": "La primera sonda a Saturno"
+		},
 		"description": {
-			"simple": "La Pioneer 11 pasó junto a Júpiter y luego fue la primera nave en visitar Saturno, en 1979. Se quedó sin energía y en 1995 dejó de hablar. Todavía se aleja del Sol.",
+			"simple": "La Pioneer 11 pasó junto a Júpiter. Luego fue la primera sonda espacial en visitar Saturno. Más tarde se quedó casi sin energía y dejó de hablar. Todavía se aleja del Sol.",
 			"standard": "La Pioneer 11 despegó en abril de 1973. En diciembre de 1974 pasó a solo 42 000 km por encima de las nubes de Júpiter y aprovechó su gravedad para cruzar el sistema solar hasta Saturno en septiembre de 1979: la primera visita a Saturno de la historia. Su trabajo científico terminó en septiembre de 1995, cuando ya no le quedaba energía suficiente.",
 			"advanced": "El paso cercano de la Pioneer 11 junto a Júpiter fue una asistencia gravitatoria que la lanzó de vuelta a través del sistema solar hasta Saturno. Allí voló por debajo de los anillos, descubrió el fino anillo F y demostró que una nave podía cruzar el plano de los anillos sin peligro, algo en lo que luego confiaron las Voyager. Sus operaciones regulares terminaron el 30 de septiembre de 1995."
 		}
@@ -43,7 +49,7 @@
 		"name": "New Horizons",
 		"tagline": "La primera visita a Plutón",
 		"description": {
-			"simple": "New Horizons es una nave pequeña y rápida, del tamaño de un piano. En 2015 pasó junto a Plutón y envió las primeras fotos de cerca, con una gran llanura de hielo en forma de corazón. En 2019 visitó Arrokoth, un pequeño mundo helado todavía más lejos.",
+			"simple": "New Horizons es una sonda espacial pequeña y rápida, más o menos del tamaño de un piano. Pasó junto a Plutón y mandó las primeras fotos de cerca. En ellas se veía una gran mancha de hielo con forma de corazón. Más tarde visitó Arrokoth, un pequeño mundo helado todavía más lejos.",
 			"standard": "Lanzada en enero de 2006 como la nave más rápida que ha salido nunca de la Tierra, New Horizons pasó junto a Júpiter en 2007 y sobrevoló Plutón el 14 de julio de 2015, a solo 12 500 km de su superficie. El 1 de enero de 2019 pasó junto a Arrokoth, el objeto más lejano que ha visitado jamás una nave. Hoy explora el cinturón de Kuiper.",
 			"advanced": "New Horizons salió de la Tierra a unos 16 km/s, la mayor velocidad de lanzamiento de todas las naves, y una asistencia gravitatoria en Júpiter le ahorró unos tres años de viaje. En el sistema de Plutón (14 de julio de 2015) encontró montañas de hielo de agua y una llanura joven de hielo de nitrógeno, Sputnik Planitia. Arrokoth resultó ser dos lóbulos que se unieron suavemente, una pista de cómo se formaron los primeros ladrillos de los planetas."
 		}
@@ -52,7 +58,7 @@
 		"name": "Cassini",
 		"tagline": "Trece años en Saturno",
 		"description": {
-			"simple": "La Cassini viajó hasta Saturno y dio vueltas a su alrededor durante 13 años, estudiando el planeta, sus anillos y sus lunas. Llevaba un pequeño módulo, Huygens, que se posó en la luna Titán. Al final, la Cassini se lanzó a propósito contra Saturno y se desintegró.",
+			"simple": "La Cassini viajó hasta Saturno y le dio vueltas durante 13 años. Estudió el planeta, sus anillos y sus lunas. Llevaba una pequeña sonda, Huygens, que se posó en la luna Titán. Al final, la Cassini se lanzó a propósito contra Saturno y se quemó.",
 			"standard": "La Cassini despegó en 1997 y necesitó asistencias gravitatorias de Venus (dos veces), la Tierra y Júpiter para llegar a Saturno en julio de 2004. Su sonda Huygens se posó en Titán en enero de 2005, y la Cassini descubrió géiseres de agua que brotan de Encélado. Casi sin combustible, el 15 de septiembre de 2017 la dirigieron contra Saturno para que nunca pudiera estrellarse en una luna que quizá albergue vida.",
 			"advanced": "Cassini-Huygens fue una misión conjunta de la NASA, la ESA y la agencia espacial italiana. En 294 órbitas alrededor de Saturno usó sobrevuelos cercanos de Titán para cambiar de rumbo sin gastar combustible. Huygens logró el primer aterrizaje en el sistema solar exterior. Las 22 órbitas finales del «Gran Final» pasaron entre el planeta y sus anillos antes de que la nave se desintegrara en la atmósfera de Saturno."
 		}
@@ -61,7 +67,7 @@
 		"name": "Parker Solar Probe",
 		"tagline": "La nave que tocó el Sol",
 		"description": {
-			"simple": "La Parker Solar Probe vuela más cerca del Sol que cualquier cosa que haya fabricado la gente. Un grueso escudo térmico la mantiene fresca. En su punto más cercano pasa junto al Sol más deprisa que ninguna otra nave.",
+			"simple": "La Parker Solar Probe vuela más cerca del Sol que cualquier cosa que haya fabricado la gente. Un escudo grueso la protege del calor y la mantiene fresca. En su punto más cercano pasa junto al Sol más deprisa que ninguna otra nave.",
 			"standard": "Lanzada en agosto de 2018, la Parker Solar Probe usó siete sobrevuelos de Venus para acercarse cada vez más al Sol. El 24 de diciembre de 2024 pasó a 6,1 millones de km de la superficie del Sol a unos 690 000 km/h, la mayor velocidad que ha alcanzado nunca un objeto fabricado por humanos. Atraviesa la corona, la atmósfera exterior del Sol, para averiguar por qué está tan caliente.",
 			"advanced": "Llegar al Sol es difícil: una nave que sale de la Tierra tiene que perder casi toda la velocidad orbital de la Tierra, 30 km/s. La Parker usó siete asistencias gravitatorias de Venus para rebajar su punto más cercano a 9,86 radios solares del centro del Sol. Su escudo térmico de espuma de carbono, de 11,4 cm de grosor, aguanta unos 1400 °C mientras los instrumentos que protege se mantienen cerca de la temperatura ambiente."
 		}
@@ -70,16 +76,19 @@
 		"name": "Telescopio espacial James Webb",
 		"tagline": "Un telescopio gigante mucho más allá de la Luna",
 		"description": {
-			"simple": "El telescopio espacial James Webb es un telescopio enorme con un espejo dorado. Ve la luz del calor (infrarroja) de las primeras estrellas y galaxias. Flota a unos 1,5 millones de km de la Tierra, siempre en el lado contrario al Sol.",
+			"simple": "El telescopio espacial James Webb es un telescopio enorme con un espejo dorado. Ve la luz del calor, una luz que nuestros ojos no pueden ver. Con ella encuentra las primeras estrellas y galaxias. Las galaxias son grupos gigantes de estrellas, muy lejanos. El telescopio flota unas cuatro veces más lejos que la Luna, en el lado de la Tierra contrario al Sol.",
 			"standard": "El Webb despegó el 25 de diciembre de 2021 y tardó un mes en llegar a su hogar junto al punto L2 del sistema Sol-Tierra, 1,5 millones de km más allá de la Tierra, en el lado opuesto al Sol: unas cuatro veces más lejos que la Luna. Allí, un parasol del tamaño de una pista de tenis mantiene su espejo de 6,5 m lo bastante frío para ver la luz infrarroja de las primeras galaxias.",
 			"advanced": "En L2, la atracción conjunta del Sol y la Tierra mantiene una nave al paso del año terrestre. El Webb no se queda en el punto, sino que gira a su alrededor en una gran órbita de halo de unos seis meses, que lo mantiene fuera de la sombra de la Tierra. A unos 40 K (−233 °C), su espejo y sus instrumentos ven luz que la expansión del universo ha estirado hasta el infrarrojo."
 		}
 	},
 	"juno": {
 		"name": "Juno",
-		"tagline": "En órbita alrededor de Júpiter",
+		"tagline": {
+			"simple": "Dando vueltas y vueltas a Júpiter",
+			"standard": "En órbita alrededor de Júpiter"
+		},
 		"description": {
-			"simple": "Juno da vueltas alrededor de Júpiter desde 2016. Pasa rozando las nubes de Júpiter para descubrir qué hay dentro del planeta. Gira despacio y, con sus tres largos paneles solares, parece un molinillo.",
+			"simple": "Juno lleva muchos años dando vueltas a Júpiter. Pasa rozando las nubes de Júpiter para descubrir qué hay dentro del planeta. Gira despacio. Con sus tres paneles solares largos, parece un molinillo.",
 			"standard": "Juno despegó en 2011, tomó impulso en un sobrevuelo de la Tierra en 2013 y llegó a Júpiter el 5 de julio de 2016. En una órbita larga y estirada sobre los polos, baja hasta unos pocos miles de kilómetros de las nubes y luego vuelve a alejarse mucho. Fue la primera nave en llegar a Júpiter solo con energía solar.",
 			"advanced": "Juno cartografía la gravedad y el campo magnético de Júpiter para saber qué hay en su interior profundo: su núcleo resultó ser grande y diluido, mezclado con el hidrógeno que lo rodea. Su órbita polar esquiva lo peor de los cinturones de radiación. Desde 2021 su órbita también la ha llevado junto a las lunas Ganímedes, Europa e Ío."
 		}

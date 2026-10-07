@@ -373,6 +373,23 @@
 	display: none;
 }
 
+/* the world a link opened the walk on (#48, `?focus=`): its stop, its moon's line, its row */
+@media screen {
+	.stop[aria-current] .card {
+		border-color: var(--mantine-color-orange-5);
+		box-shadow: 0 0 0 2px rgba(253, 126, 20, 0.35);
+	}
+
+	.moons li[data-focused] {
+		color: var(--mantine-color-orange-2);
+		font-weight: 600;
+	}
+
+	.table tr[data-focused] > * {
+		background: rgba(253, 126, 20, 0.16);
+	}
+}
+
 @media (max-width: 599px) {
 	.header {
 		padding-right: 0;

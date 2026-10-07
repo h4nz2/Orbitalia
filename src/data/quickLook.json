@@ -18,7 +18,7 @@
 			"camera": { "elevation": 50 },
 			"select": null,
 			"spot": "scale",
-			"autoSeconds": 8
+			"autoSeconds": 10
 		},
 		{
 			"id": "time",

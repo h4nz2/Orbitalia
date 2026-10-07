@@ -9,14 +9,25 @@ import {
 	RESTORE_SCALE_MS,
 	endIntro,
 	hasSeenIntro,
+	nextBeat,
+	previousBeat,
 	shouldPlayOnArrival,
 	showHints,
 	skipIntro,
 	startIntro,
+	toggleIntroPause,
 	useIntroStore,
 	watchIntro,
 } from "./intro"
+import { onIntroKey, onSceneClick } from "./pace"
 import { SCALE_BEAT, SCALE_REVEAL_MS } from "./script"
+
+/** What the page's press tracker says of the click that just ended: a tap, or a drag. */
+let tapping = true
+vi.mock("../scene/tap", async (importOriginal) => ({
+	...(await importOriginal<typeof import("../scene/tap")>()),
+	isTapClick: () => tapping,
+}))
 
 const sim = () => useSimStore.getState()
 const scale = () => useScaleStore.getState()
@@ -222,6 +233,157 @@ describe("reduced motion", () => {
 		playThrough(1)
 		sim().userInput()
 		expect(scale().presetId).toBe("everythingVisible")
+	})
+})
+
+describe("at the viewer's own pace (#49)", () => {
+	it("pauses on the caption on screen and carries on with the rest of its hold", () => {
+		startIntro()
+		const at = playThrough(1)
+		arrive(at)
+		const holdUntil = sim().sequence!.holdUntil!
+		toggleIntroPause(at + 1000)
+		expect(intro().paused).toBe(true)
+		expect(sim().sequence).toMatchObject({ index: 1, phase: "waiting" })
+		// nothing moves on however long it stays paused
+		sim().tickSequence(at + 1e7)
+		expect(intro().beat).toBe(1)
+		// looking around while paused keeps the opening
+		sim().userInput()
+		expect(intro().status).toBe("playing")
+		toggleIntroPause(at + 60_000)
+		expect(intro().paused).toBe(false)
+		// what was left of the hold (all but the first second), from the moment it carries on
+		expect(sim().sequence!.holdUntil).toBe(holdUntil + 59_000)
+		sim().tickSequence(sim().sequence!.holdUntil!)
+		expect(intro().beat).toBe(2)
+	})
+
+	it("steps on with Next, a pause holding on every beat, and ends after the last", () => {
+		startIntro()
+		toggleIntroPause()
+		nextBeat()
+		expect(intro().beat).toBe(1)
+		expect(intro().paused).toBe(true)
+		arrive(5000)
+		expect(sim().sequence!.phase).toBe("waiting")
+		for (let beat = 2; beat <= SCALE_BEAT; beat++) nextBeat()
+		expect(intro().beat).toBe(SCALE_BEAT)
+		expect(scale().targetId).toBe("everythingVisible")
+		nextBeat()
+		expect(sim().sequence).toBeNull()
+		expect(intro().status).toBe("handover")
+		expect(intro().paused).toBe(false)
+		expect(scale().targetId).toBe("everythingVisible")
+	})
+
+	it("steps back, to true scale again before the last beat", () => {
+		startIntro()
+		playThrough(SCALE_BEAT)
+		expect(scale().targetId).toBe("everythingVisible")
+		previousBeat()
+		expect(intro().beat).toBe(SCALE_BEAT - 1)
+		expect(scale().targetId).toBe("trueScale")
+		// and nothing of it when the opening is not playing
+		skipIntro()
+		nextBeat()
+		previousBeat()
+		toggleIntroPause()
+		expect(intro().status).toBe("handover")
+	})
+
+	it("skips from a pause, too", () => {
+		startIntro()
+		toggleIntroPause()
+		skipIntro()
+		expect(intro().status).toBe("handover")
+		expect(sim().sequence).toBeNull()
+		expect(scale().presetId).toBe("everythingVisible")
+	})
+
+	describe("keys and taps", () => {
+		class FakeElement {
+			closest = (selector: string) =>
+				selector.includes("button") && this.button ? this : null
+			constructor(readonly button = false) {}
+		}
+		class FakeCanvas extends FakeElement {}
+		const key = (k: string, target: unknown = null, repeat = false) => {
+			const event = {
+				key: k,
+				target,
+				repeat,
+				ctrlKey: false,
+				metaKey: false,
+				altKey: false,
+				shiftKey: false,
+				prevented: false,
+				preventDefault() {
+					event.prevented = true
+				},
+				stopImmediatePropagation() {},
+			}
+			onIntroKey(event as unknown as KeyboardEvent)
+			return event
+		}
+		const click = (target: unknown) => {
+			const event = {
+				target,
+				stopped: false,
+				stopPropagation() {
+					event.stopped = true
+				},
+			}
+			onSceneClick(event as unknown as MouseEvent)
+			return event
+		}
+
+		beforeEach(() => {
+			vi.stubGlobal("Element", FakeElement)
+			vi.stubGlobal("HTMLCanvasElement", FakeCanvas)
+		})
+
+		it("Space pauses and carries on, never the clock underneath", () => {
+			startIntro()
+			const clockPaused = sim().paused
+			expect(key(" ").prevented).toBe(true)
+			expect(intro().paused).toBe(true)
+			// held down: once
+			key(" ", null, true)
+			expect(intro().paused).toBe(true)
+			key(" ")
+			expect(intro().paused).toBe(false)
+			expect(sim().paused).toBe(clockPaused)
+			// a focused button keeps its Space
+			expect(key(" ", new FakeElement(true)).prevented).toBe(false)
+			expect(intro().paused).toBe(false)
+		})
+
+		it("the arrows step the beats", () => {
+			startIntro()
+			expect(key("ArrowRight").prevented).toBe(true)
+			expect(intro().beat).toBe(1)
+			key("ArrowLeft")
+			expect(intro().beat).toBe(0)
+		})
+
+		it("a tap on the scene pauses, a drag does not, and nothing happens after the opening", () => {
+			startIntro()
+			tapping = true
+			expect(click(new FakeCanvas()).stopped).toBe(true)
+			expect(intro().paused).toBe(true)
+			// a click on the HUD is not on the scene
+			expect(click(new FakeElement(true)).stopped).toBe(false)
+			expect(intro().paused).toBe(true)
+			// the click at the end of a drag (or one that focused the window)
+			tapping = false
+			expect(click(new FakeCanvas()).stopped).toBe(false)
+			expect(intro().paused).toBe(true)
+			tapping = true
+			skipIntro()
+			expect(click(new FakeCanvas()).stopped).toBe(false)
+			expect(key(" ").prevented).toBe(false)
+		})
 	})
 })
 

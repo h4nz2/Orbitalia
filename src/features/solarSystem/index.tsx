@@ -34,6 +34,7 @@ import TourCard from "./tours/TourCard"
 import TourSync from "./tours/TourSync"
 import BodyHighlight from "./ui/BodyHighlight"
 import BodyInfo from "./ui/BodyInfo"
+import { WalkNudge } from "./walk/WalkOffer"
 import { freeCentreId } from "./ui/centre"
 import CentreBadge from "./ui/CentreBadge"
 import CentreMarker from "./ui/CentreMarker"
@@ -140,6 +141,7 @@ const SolarSystem = () => {
 				</div>
 				<div className={classes.dock} data-testid="dock">
 					<DockPanels />
+					<WalkNudge className={classes.panel} />
 					<TourCard className={`${classes.panel} ${classes.tour}`} />
 					<EventCard className={`${classes.panel} ${classes.tour}`} />
 					<QuickLookAsk className={`${classes.panel} ${classes.tour}`} />

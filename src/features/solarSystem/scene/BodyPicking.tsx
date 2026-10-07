@@ -7,11 +7,13 @@
  *
  * - a tap on a body selects it and flies there (`setFocus`), or flies back to
  *   the close-up of the focus after the camera was dollied far out;
- * - a tap on empty space is the way out (`emptyClickAction`);
+ * - a tap on empty space never moves the camera: at most it clears the
+ *   selection (`emptyClickAction`, #47);
  * - hovering sets `hoverId` for the pointer cursor and the highlight ring,
  *   never while a button is held (an orbit drag) or for a finger.
  *
- * A drag never counts (`isTapEvent`).
+ * A drag, a pinch and the click that brought the window into focus never
+ * count (`isTapEvent`).
  */
 import { useCallback, useRef } from "react"
 import { useThree, type ThreeEvent } from "@react-three/fiber"
@@ -136,15 +138,8 @@ function BodyPicking() {
 			activateBody(id)
 			return
 		}
-		switch (emptyClickAction(store, nearMiss.current)) {
-			case "deselect":
-				store.select(null)
-				return
-			case "reset":
-				store.reset()
-				return
-			case "none":
-				return
+		if (emptyClickAction(store, nearMiss.current) === "deselect") {
+			store.select(null)
 		}
 	}
 

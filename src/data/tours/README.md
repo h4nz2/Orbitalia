@@ -84,6 +84,7 @@ In `src/locales/en/tours.json` (and the same keys in every other language):
 ```
 
 - Every text is either one string for all reading levels or one per level (`standard` is required).
-- A stop with a `link` also needs a `link` text: the label of its button.
+- A stop with a `link` also needs a `link` text: the label of its button. Name the idea, not the page
+  ("Shrink the Sun to a basketball and walk the solar system", not "Solar walk").
 - Two to four sentences per stop. Say what to look at on screen and why it matters; one number people can
   picture beats five they cannot. Check every fact: this is used in classrooms.

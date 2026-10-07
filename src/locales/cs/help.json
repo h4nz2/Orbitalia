@@ -64,8 +64,8 @@
 				"simple": "Úvodní film"
 			},
 			"what": {
-				"standard": "Čtrnáct sekund, které začnou těsně u Země v její skutečné velikosti a vzdalují se, dokud Země není menší než pixel; pak se vše nakreslí větší, abys to viděl.",
-				"simple": "Krátký film, který letí od Země až k celé sluneční soustavě."
+				"standard": "Asi minuta, která začne těsně u Země v její skutečné velikosti a vzdaluje se, dokud Země není menší než pixel; pak se vše nakreslí větší, abys to viděl. Každý text zůstane na obrazovce dost dlouho, aby se dal přečíst nahlas.",
+				"simple": "Film, který letí od Země až k celé sluneční soustavě. Jde pomalu, abys stihl přečíst každé slovo."
 			},
 			"why": {
 				"standard": "Ukáže smysl aplikace dřív, než kdokoli přečte slovo: vesmír je obrovský a skoro prázdný. Funguje i bez zvuku.",
@@ -74,12 +74,16 @@
 			"how": {
 				"standard": [
 					"Přehraje se jednou, při první návštěvě; „Přeskočit úvod“, tažení nebo Esc ho kdykoli ukončí.",
+					"Chceš u textu zůstat? Stiskni mezerník, klepni na scénu nebo na tlačítko pauzy; znovu, a pokračuje se. Když je úvod pozastavený, můžeš otáčet pohledem a neskončí.",
+					"„Dál“ (nebo šipka doprava) přejde hned na další část; když je pozastavený, po jedné části.",
 					"Po prvním úvodu se aplikace jednou zeptá, jestli se chceš rychle podívat, co tu jde (viz „Rychlý pohled“).",
 					"Chceš ho vidět znovu? Otevři šipku vedle „Nápověda“ a vyber „Přehrát úvod znovu“.",
 					"„Ukázat, jak se pohybovat“ ve stejné nabídce vrátí nápovědu k tažení, přibližování a klikání."
 				],
 				"simple": [
 					"Přehraje se, když přijdeš poprvé.",
+					"Stiskni mezerník nebo ťukni na obrázek a úvod se zastaví. Znovu, a jede dál.",
+					"„Dál“ ukáže další část.",
 					"Chceš ho vidět znovu? Stiskni šipku vedle „Nápověda“ a pak „Přehrát úvod znovu“."
 				]
 			}
@@ -127,12 +131,14 @@
 				"standard": [
 					"Najeď myší na planetu nebo na její název: objeví se kroužek s nápisem „Klikni a leť tam“.",
 					"Klikni nebo ťukni. Chceš-li být na místě hned, stiskni v okénku „Přeskočit“.",
-					"U malé tečky stačí kliknout kamkoli poblíž: zásah se počítá i kousek vedle."
+					"U malé tečky stačí kliknout kamkoli poblíž: zásah se počítá i kousek vedle.",
+					"Tlačítko s domečkem vlevo nahoře (nebo Esc) je cesta zpět na celou sluneční soustavu; kliknutí do prázdného prostoru pohled nezmění."
 				],
 				"simple": [
 					"Najeď myší na planetu. Objeví se kroužek.",
 					"Klikni na ni. A teď sleduj cestu!",
-					"Nechceš čekat? Stiskni „Být tam hned“."
+					"Nechceš čekat? Stiskni „Být tam hned“.",
+					"Stiskni tlačítko s domečkem vlevo nahoře a uvidíš zase všechny planety."
 				]
 			}
 		},
@@ -234,6 +240,7 @@
 					"Leť k nějakému světu: objeví se jeho karta se jménem a jednou větou.",
 					"Šipka na kartě rozbalí údaje, měsíce a příběhy; karta pak zůstane rozbalená i u dalšího světa.",
 					"„Víc ve slovníku“ otevře jeho stránku, „Porovnat s…“ ho postaví vedle jiného světa.",
+					"Pod přirovnáním najde „Zmenši Slunce na basketbalový míč…“ tento svět na procházce po školním hřišti.",
 					"Poslední řádek rozbalené karty říká, odkud je obrázek světa: mapa ze sondy, nebo malba podle snímků ze sond tam, kde úplná mapa neexistuje."
 				],
 				"simple": [
@@ -484,7 +491,7 @@
 			},
 			"why": {
 				"standard": "Voyager 1 pořád posílá zprávy z dálky daleko za planetami: kartička ukáže, jak dlouho k nám letí jeho signál a proč cesta potřebovala tolik gravitačních praků.",
-				"simple": "Voyager 1 odletěl ze Země v roce 1977 a letí pořád. Zpráva od něj k nám letí skoro den!"
+				"simple": "Voyager 1 odletěl ze Země, když byli babička s dědou mladí, a letí pořád. Zpráva od něj k nám letí skoro den!"
 			},
 			"how": {
 				"standard": [
@@ -505,22 +512,23 @@
 				"simple": "Kniha o planetách"
 			},
 			"what": {
-				"standard": "Stránka pro Slunce a každou planetu s velkým otáčejícím se glóbem, mapami povrchu a vysvětlením nejdůležitějších čísel.",
-				"simple": "Stránka o Slunci a o každé planetě, s velkým točícím se obrázkem."
+				"standard": "Stránka pro Slunce a každou planetu: velký otáčející se glóbus s mapami povrchu, vysvětlení nejdůležitějších čísel a příběhy: z čeho se svět skládá, jak horko tam bývá, jaké má přezdívky a odkud má jméno.",
+				"simple": "Stránka o Slunci a o každé planetě. Uvidíš, co je uvnitř, jaké je tam horko a jaké má přezdívky."
 			},
 			"why": {
-				"standard": "Je to klidné místo, kde si můžeš číst o jednom světě po druhém, sloupnout z něj mraky nebo si prohlédnout jeho hory a oceány.",
-				"simple": "Čti o jedné planetě po druhé a prohlédni si její hory a mraky."
+				"standard": "Je to klidné místo, kde si můžeš číst o jednom světě po druhém: sloupni z něj mraky, podívej se do něj v řezu a najdi příběhy, které si děti zapamatují, třeba o planetě, která by plavala ve vaně. U každého údaje je odkaz na jeho zdroj.",
+				"simple": "Čti o jedné planetě po druhé. Podívej se dovnitř a zjisti, která planeta by plavala ve vaně!"
 			},
 			"how": {
 				"standard": [
 					"Otevři vpravo dole Nástroje a vyber „Obrazový slovník“: otevře se na světě, na který se právě díváš. Nebo stiskni „Víc ve slovníku“ na kartě světa.",
-					"Vyber svět v řadě teček nahoře, pak Povrch, Terén, Oceány nebo Mraky, pokud je má."
+					"Vyber svět v řadě teček nahoře, pak „Povrch“, „Terén“, „Oceány“ nebo „Mraky“, pokud je má.",
+					"Otevři „Z čeho se skládá“, „Počasí“ nebo „Jména“ vedle glóbu (na telefonu pod ním). Otevřená část zůstane otevřená, i když vybereš jiný svět, takže třída může světy porovnávat jeden po druhém."
 				],
 				"simple": [
 					"Stiskni Nástroje a pak „Kniha o planetách“.",
 					"Vyber planetu v řadě teček nahoře.",
-					"Zkus Terén a Mraky a obrázek se změní."
+					"Stiskni „Co je uvnitř?“, „Horko, nebo zima?“ nebo „Jména a přezdívky“."
 				]
 			}
 		},
@@ -734,7 +742,7 @@
 			},
 			"what": {
 				"standard": "Přepínač malých těles ukáže pás planetek a Kuiperův pás jako oblaka teček, k tomu trpasličí planety, sedm pojmenovaných planetek a pět komet.",
-				"simple": "Přepínač ukáže pás planetek, ledový Kuiperův pás, trpasličí planety a komety."
+				"simple": "Přepínač ukáže pás planetek, prstenec vesmírných kamenů mezi Marsem a Jupiterem. Ukáže taky ledové světy za Neptunem a komety."
 			},
 			"why": {
 				"standard": "Filmy ukazují husté pole kamenů. Karta říká pravdu: každá tečka představuje asi 380 planetek a sousedé jsou od sebe asi milion km, takže sondy prolétají rovnou skrz.",
@@ -754,7 +762,7 @@
 		},
 		"solarWalk": {
 			"title": {
-				"standard": "Sluneční soustava s basketbalovým míčem",
+				"standard": "Zmenši Slunce a projdi sluneční soustavu",
 				"simple": "Projdi sluneční soustavu"
 			},
 			"what": {
@@ -767,12 +775,14 @@
 			},
 			"how": {
 				"standard": [
-					"Otevři vpravo dole Nástroje a vyber „Projdi sluneční soustavu“, nebo ve skutečném měřítku odkaz „Projdi si to“ v panelu Měřítko.",
+					"Otevři vpravo dole Nástroje a vyber „Projdi sluneční soustavu“, nebo stiskni Měřítko a pak dole v panelu „Zmenši Slunce na basketbalový míč…“, v každém měřítku.",
+					"Na kartě světa rozbal fakta: pod jeho přirovnáním otevře „Zmenši Slunce na basketbalový míč a dojdi až k tomuto světu“ procházku právě u tohoto světa.",
 					"Vyber, co bude Slunce (pomeranč, fotbalový míč, basketbalový míč, gymnastický míč), a s čím vzdálenosti porovnat.",
 					"Přepni na „Tabulka“ a stiskni „Tisk“, ať ji můžeš vzít ven."
 				],
 				"simple": [
 					"Stiskni Nástroje a pak „Projdi sluneční soustavu“.",
+					"Nebo stiskni Měřítko a pak „Udělej ze Slunce basketbalový míč…“.",
 					"Vyber míč, který bude Slunce.",
 					"Přečti si, jak daleko musíš dojít ke každé planetě.",
 					"Vytiskni tabulku a projdi to venku."
@@ -1165,8 +1175,8 @@
 		},
 		"back": {
 			"action": "Zpět na celou sluneční soustavu",
-			"mouse": "Klikni do prázdného prostoru nebo na tlačítko s domečkem",
-			"touch": "Ťukni do prázdného prostoru nebo na tlačítko s domečkem",
+			"mouse": "Klikni na tlačítko s domečkem vlevo nahoře",
+			"touch": "Ťukni na tlačítko s domečkem vlevo nahoře",
 			"keys": "Esc"
 		},
 		"name": {

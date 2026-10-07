@@ -120,10 +120,59 @@
 			"gravitySimilar@advanced": "Die Schwerkraft an der Oberfläche weicht um weniger als 5 % von der irdischen ab.",
 			"gravityLess": "Du würdest nur {percent, number, ::percent} deines Gewichts auf der Erde wiegen.",
 			"gravityLess@simple": "Wenn du auf der Erde 30 kg wiegst, würdest du dort nur {kg, number} kg wiegen!",
-			"gravityLess@advanced": "Die Schwerkraft an der Oberfläche beträgt {percent, number, ::percent} der irdischen: Dein Gewicht würde sinken, deine Masse bliebe gleich.",
-			"temperature": "Das sind etwa {celsius, number} °C.",
-			"temperature@simple": "{range, select, hot {Das sind etwa {celsius, number} °C – heißer als ein Backofen!} cold {Das sind etwa {celsius, number} °C – kälter als jede Tiefkühltruhe!} other {Das sind etwa {celsius, number} °C.}}",
-			"temperature@advanced": "Das sind {celsius, number} °C; der absolute Nullpunkt, 0 K, liegt bei −273,15 °C."
+			"gravityLess@advanced": "Die Schwerkraft an der Oberfläche beträgt {percent, number, ::percent} der irdischen: Dein Gewicht würde sinken, deine Masse bliebe gleich."
+		},
+		"section": {
+			"label": "{name} im Detail",
+			"madeOf": "Aufbau",
+			"madeOf@simple": "Was steckt drin?",
+			"weather": "Wetter",
+			"weather@simple": "Heiß oder kalt?",
+			"weather@advanced": "Temperaturen",
+			"names": "Namen",
+			"names@simple": "Namen und Spitznamen"
+		},
+		"madeOf": {
+			"pictureTitle": "{name} von innen",
+			"pictureDescription": "{name} im Schnittbild. Von der Mitte nach außen: {layers}.",
+			"scaleNote": "{thickened, select, yes {Die Schichten sind maßstabsgetreu gezeichnet; die dünnsten etwas dicker, damit man sie sieht.} other {Die Schichten sind maßstabsgetreu gezeichnet.}}",
+			"scaleNote@simple": "{thickened, select, yes {Dünne Schichten sind etwas dicker gezeichnet, damit du sie sehen kannst.} other {Die Schichten sind so groß gezeichnet, wie sie wirklich sind.}}",
+			"estimateNote": "Hineinsehen kann niemand: Diese Schichten sind die besten Schätzungen der Forschung, abgeleitet aus Schwerkraft, Drehung und Modellen.",
+			"estimateNote@simple": "Drinnen war noch niemand. Forscher haben sich diese Schichten ausgerechnet.",
+			"layerSize": "{centre, select, yes {Radius {size}} other {{size} dick}}",
+			"air": "{star, select, yes {Woraus das Gas besteht} other {Die Luft dort}}",
+			"air@simple": "{star, select, yes {Das Gas} other {Die Luft}}",
+			"air@advanced": "{star, select, yes {Zusammensetzung} other {Atmosphäre}}",
+			"gas": "{name} {share, number, ::percent @##}",
+			"basis": "{basis, select, atoms {Anteil an allen Atomen.} other {Anteil an der Luft, nach Volumen.}}",
+			"heavy": "Wie schwer",
+			"heavy@simple": "Wie schwer?",
+			"heavy@advanced": "Masse",
+			"dense": "Schwer im Verhältnis zur Größe",
+			"dense@simple": "Schwimmen oder untergehen?",
+			"dense@advanced": "Mittlere Dichte"
+		},
+		"weather": {
+			"high": "{range, select, dayNight {Am Tag} extremes {Am wärmsten} records {Höchste je gemessene Temperatur} cloudsCore {Nahe dem Kern} cloudLevels {In den Wolken} surfaceCore {Im Kern} other {Tag und Nacht}}",
+			"low": "{range, select, dayNight {In der Nacht} extremes {Am kältesten} records {Tiefste je gemessene Temperatur} cloudsCore {In den Wolken} cloudLevels {Weiter oben} surfaceCore {An der Oberfläche} other {Tag und Nacht}}"
+		},
+		"names": {
+			"origin": "Woher der Name kommt",
+			"inOurLanguage": "Auf Deutsch",
+			"discovery": "Die Entdeckung",
+			"discovery@simple": "Wer hat das entdeckt?"
+		},
+		"sources": "Quellen:",
+		"quantity": {
+			"feel": "{band, select, hotterThanSun {Heißer als die Oberfläche der Sonne} fire {Viel heißer als jedes Feuer} oven {Heißer als ein Backofen} boiling {Heißer als kochendes Wasser} desert {So heiß wie die heißeste Wüste} warm {Warm wie ein Sommertag} mild {Nicht zu heiß und nicht zu kalt} chilly {Kalt wie ein Wintertag} freezer {Kälter als jede Tiefkühltruhe} coldest {Kälter als irgendwo auf der Erde} other {So kalt, dass Luft gefrieren würde}}",
+			"celsius": "{big, select, other {{value} °C}}",
+			"kelvin": "{big, select, other {{kelvin} K ({celsius} °C)}}",
+			"mass": "{band, select, earth {Der Maßstab: Die anderen Welten werden in Erden gewogen} similar {{percent, number, ::percent} der Erdmasse} lighter {{count, plural, one {# davon wäre so schwer wie die Erde} other {# davon wären zusammen so schwer wie die Erde}}} other {{count, plural, one {So schwer wie # Erde} other {So schwer wie # Erden}}}}",
+			"mass@simple": "{band, select, star {Schwerer als alle Planeten zusammen} earth {Die Erde ist der Maßstab: Die anderen Welten werden in Erden gewogen} huge {Schwerer als 100 Erden zusammen} similar {Fast so schwer wie die Erde} lighter {{count, plural, one {So schwer wie die Erde} other {Man bräuchte # davon, um so viel zu wiegen wie die Erde}}} other {{count, plural, one {So schwer wie # Erde} other {So schwer wie # Erden}}}}",
+			"mass@advanced": "{band, select, earth {{kg} kg} other {{earths} Erdmassen ({kg} kg)}}",
+			"density": "{band, select, floats {{value} g/cm³: leichter als Wasser, in einer Badewanne, die groß genug ist, würde diese Welt also schwimmen} sinks {{value} g/cm³: etwas dichter als Wasser} other {{value} g/cm³: {ratio, number}-mal so dicht wie Wasser}}",
+			"density@simple": "{band, select, floats {Leichter als Wasser: In einer Riesenbadewanne würde diese Welt schwimmen!} sinks {Ein bisschen schwerer als Wasser: Diese Welt würde langsam untergehen} other {{buckets, plural, one {Ein Eimer voll davon wäre so schwer wie # Eimer Wasser} other {Ein Eimer voll davon wäre so schwer wie # Eimer Wasser}}}}",
+			"density@advanced": "{band, select, floats {{value} g/cm³, weniger als Wasser (1 g/cm³)} other {{value} g/cm³ (Wasser: 1 g/cm³)}}"
 		}
 	},
 	"solarSystem": {
@@ -225,8 +274,8 @@
 			"markersOn@simple": "Die Punkte zeigen, wo die Planeten sind. Die Planeten sind zu klein, um sie zu sehen!",
 			"markersOff": "Die Markierungen sind aus: Schalte sie ein, um die Planeten zu finden.",
 			"markersOff@simple": "Schalte die Markierungen ein, um die Planeten zu finden!",
-			"walk": "Zu klein, um es sich vorzustellen? Lauf es ab: das Sonnensystem mit der Sonne als Basketball.",
-			"walk@simple": "Zu klein zum Sehen? Lauf das Sonnensystem auf dem Sportplatz ab!",
+			"walk": "Schrumpf die Sonne auf einen Basketball und lauf das Sonnensystem auf dem Sportplatz ab",
+			"walk@simple": "Mach die Sonne zu einem Basketball und lauf zu jedem Planeten",
 			"hint": {
 				"sizesTrue": "Zeichnet jeden Himmelskörper in seiner echten Größe. Aus der Ferne werden die Planeten zu klein zum Sehen.",
 				"sizesTrue@simple": "Planeten so groß, wie sie wirklich sind. Von weit weg sind sie zu klein zum Sehen!",
@@ -419,7 +468,15 @@
 			"showFacts": "Fakten zeigen",
 			"hideFacts": "Fakten ausblenden",
 			"close": "Schließen",
-			"compare": "Vergleichen mit …"
+			"compare": "Vergleichen mit …",
+			"walk": "{bodyId, select, sun {Schrumpf die Sonne auf einen Basketball und lauf das Sonnensystem ab} other {Schrumpf die Sonne auf einen Basketball und lauf bis zu dieser Welt}}",
+			"walk@simple": "{bodyId, select, sun {Mach die Sonne zu einem Basketball und lauf zu den Planeten} other {Mach die Sonne zu einem Basketball und lauf zu dieser Welt}}"
+		},
+		"walkNudge": {
+			"title": "Wo sind die Planeten hin?",
+			"text": "Im echten Maßstab sind sie viel zu klein, um sie zu sehen, und sehr weit voneinander entfernt. Spür die Abstände zu Fuß:",
+			"text@simple": "Jetzt sind sie zu klein zum Sehen. Und sie sind sehr weit voneinander weg. Lauf es doch einmal ab!",
+			"dismiss": "Tipp schließen"
 		},
 		"moons": {
 			"label": "Monde",
@@ -1028,8 +1085,8 @@
 				"link": "Der Link zu dieser Ansicht ist zu lang für einen QR-Code."
 			}
 		},
-		"overviewHint": "Zurück zum ganzen Sonnensystem, von überall (Esc).",
-		"overviewHint@simple": "Geh zurück und sieh dir das ganze Sonnensystem an (Esc).",
+		"overviewHint": "Der Weg zurück zum ganzen Sonnensystem, von überall (Esc). Ein Klick ins Leere lässt die Ansicht, wie sie ist.",
+		"overviewHint@simple": "Geh zurück und sieh dir das ganze Sonnensystem an (Esc). Ein Klick ins Leere lässt dich, wo du bist.",
 		"sky": {
 			"open": "Himmel heute Nacht",
 			"openHint": "Welche Planeten kannst du heute Nacht sehen, wann und wo?",
@@ -1174,6 +1231,15 @@
 			"skip": "Intro überspringen",
 			"skip@simple": "Überspringen",
 			"progress": "Teil {beat, number} von {count, number}",
+			"pause": "Anhalten",
+			"resume": "Fortsetzen",
+			"resume@simple": "Weiterschauen",
+			"paused": "Angehalten",
+			"next": "Weiter",
+			"pauseHint": "Bleib bei diesem Text, so lange du willst, um ihn zu lesen oder darüber zu sprechen. Die Leertaste oder ein Tippen auf die Szene tun dasselbe; noch einmal, und es geht weiter.",
+			"pauseHint@simple": "Halte hier an, um zu lesen. Du kannst auch die Leertaste drücken oder auf das Bild tippen. Noch einmal, und es geht weiter.",
+			"nextHint": "Gleich zum nächsten Teil; ist das Intro angehalten, geht es Teil für Teil weiter. Die Pfeiltaste nach rechts tut dasselbe.",
+			"nextHint@simple": "Geh gleich zum nächsten Teil.",
 			"earth": {
 				"title": "Das ist die Erde.",
 				"detail": "Alle Menschen, die du kennst, leben hier.",
@@ -1196,14 +1262,14 @@
 			"system": {
 				"title": "Das ganze Sonnensystem in echter Größe",
 				"title@simple": "Alles in echter Größe",
-				"detail": "Die Planeten sind viel zu klein, um sie zu sehen. Die Punkte zeigen nur, wo sie sind.",
+				"detail": "Die Planeten sind zu klein, um sie zu sehen. Punkte zeigen, wo sie sind.",
 				"detail@simple": "Die Planeten sind zu winzig, um sie zu sehen! Die Punkte zeigen, wo sie sind.",
-				"detail@advanced": "Die Erde ist jetzt viel kleiner als ein Pixel, und der Raum ist fast völlig leer. Die Punkte markieren nur die Planeten."
+				"detail@advanced": "Die Erde ist jetzt kleiner als ein Pixel, der Raum fast leer. Punkte markieren die Planeten."
 			},
 			"scale": {
 				"title": "Darum zeichnen wir sie größer und näher",
 				"title@simple": "Darum zeichnen wir sie größer!",
-				"detail": "Jetzt siehst du jeden Planeten, aber nicht maßstabsgetreu. Im Feld „Maßstab“ geht es zurück zur echten Größe.",
+				"detail": "Alle sind sichtbar, aber nicht maßstabsgetreu. Das Feld „Maßstab“ zeigt echte Größen.",
 				"detail@simple": "Jetzt siehst du jeden Planeten. Im Feld „Maßstab“ siehst du wieder ihre echte Größe.",
 				"detail@advanced": "„Alles sichtbar“: Größen vergrößert, Abstände gestaucht. „Echter Maßstab“ im Feld „Maßstab“ zeigt die Wirklichkeit."
 			},
@@ -1399,8 +1465,8 @@
 				"trueScale": {
 					"title": "Echter Maßstab",
 					"title@simple": "Die echte Größe",
-					"text": "Jetzt sind alle Größen und Abstände echt, und die Planeten verschwinden im leeren Raum: Die Punkte zeigen nur, wo sie sind. „Maßstab“ unten rechts wechselt zwischen der Wahrheit und Bildern, auf denen man etwas sieht.",
-					"text@simple": "So groß ist alles wirklich. Die Planeten sind so klein, dass du sie nicht siehst! Die Punkte zeigen, wo sie sind. Mit „Maßstab“ unten rechts schaltest du um."
+					"text": "Jetzt sind alle Größen und Abstände echt, und die Planeten verschwinden im leeren Raum: Die Punkte zeigen nur, wo sie sind. „Maßstab“ unten rechts wechselt zwischen der Wahrheit und Bildern, auf denen man etwas sieht. Dort schrumpfst du auch die Sonne auf einen Basketball und läufst das Sonnensystem auf dem Sportplatz ab.",
+					"text@simple": "So groß ist alles wirklich. Die Planeten sind so klein, dass du sie nicht siehst! Die Punkte zeigen, wo sie sind. Mit „Maßstab“ unten rechts schaltest du um. Dort kannst du auch an deiner Schule zu den Planeten laufen."
 				},
 				"time": {
 					"title": "Reise durch die Zeit",

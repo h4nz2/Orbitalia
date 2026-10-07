@@ -120,10 +120,59 @@
 			"gravitySimilar@advanced": "La gravedad en la superficie difiere menos de un 5 % de la terrestre.",
 			"gravityLess": "Pesarías solo el {percent, number, ::percent} de lo que pesas en la Tierra.",
 			"gravityLess@simple": "Si en la Tierra pesas 30 kg, ¡allí pesarías solo {kg, number} kg!",
-			"gravityLess@advanced": "La gravedad en la superficie es el {percent, number, ::percent} de la terrestre: tu peso disminuiría, pero tu masa seguiría siendo la misma.",
-			"temperature": "Eso son unos {celsius, number} °C.",
-			"temperature@simple": "{range, select, hot {Eso son unos {celsius, number} °C: ¡más calor que dentro de un horno!} cold {Eso son unos {celsius, number} °C: ¡más frío que en cualquier congelador!} other {Eso son unos {celsius, number} °C.}}",
-			"temperature@advanced": "Eso son {celsius, number} °C; el cero absoluto, 0 K, equivale a −273,15 °C."
+			"gravityLess@advanced": "La gravedad en la superficie es el {percent, number, ::percent} de la terrestre: tu peso disminuiría, pero tu masa seguiría siendo la misma."
+		},
+		"section": {
+			"label": "Más sobre {name}",
+			"madeOf": "Composición",
+			"madeOf@simple": "¿Qué hay dentro?",
+			"weather": "Clima",
+			"weather@simple": "¿Hace calor o frío?",
+			"weather@advanced": "Temperaturas",
+			"names": "Nombres",
+			"names@simple": "Sus nombres"
+		},
+		"madeOf": {
+			"pictureTitle": "{name} por dentro",
+			"pictureDescription": "{name} en un corte que deja ver su interior. Del centro hacia fuera: {layers}.",
+			"scaleNote": "{thickened, select, yes {Las capas están dibujadas a escala; las más finas, un poco más gruesas para que puedas verlas.} other {Las capas están dibujadas a escala.}}",
+			"scaleNote@simple": "{thickened, select, yes {Las capas finas se dibujan un poco más gruesas, para que puedas verlas.} other {Las capas están dibujadas con su grosor de verdad.}}",
+			"estimateNote": "Nadie puede mirar en su interior: estas capas son las mejores estimaciones de los científicos a partir de su gravedad, su rotación y sus modelos.",
+			"estimateNote@simple": "Nadie ha estado nunca dentro. Los científicos han calculado cómo son estas capas.",
+			"layerSize": "{centre, select, yes {radio de {size}} other {{size} de grosor}}",
+			"air": "{star, select, yes {De qué está hecho su gas} other {Su aire}}",
+			"air@simple": "{star, select, yes {Su gas} other {Su aire}}",
+			"air@advanced": "{star, select, yes {Composición química} other {Atmósfera}}",
+			"gas": "{name} {share, number, ::percent @##}",
+			"basis": "{basis, select, atoms {Proporción sobre el total de sus átomos.} other {Proporción en volumen de su aire.}}",
+			"heavy": "Cuánto pesa",
+			"heavy@simple": "¿Cuánto pesa?",
+			"heavy@advanced": "Masa",
+			"dense": "Cuánto pesa para su tamaño",
+			"dense@simple": "¿Flotaría?",
+			"dense@advanced": "Densidad media"
+		},
+		"weather": {
+			"high": "{range, select, dayNight {De día} extremes {Máxima} records {Máxima jamás medida} cloudsCore {Cerca del núcleo} cloudLevels {En las nubes} surfaceCore {En el núcleo} other {De día y de noche}}",
+			"low": "{range, select, dayNight {De noche} extremes {Mínima} records {Mínima jamás medida} cloudsCore {En las nubes} cloudLevels {Más arriba} surfaceCore {En la superficie} other {De día y de noche}}"
+		},
+		"names": {
+			"origin": "De dónde viene el nombre",
+			"inOurLanguage": "En español",
+			"discovery": "Cómo se descubrió",
+			"discovery@simple": "¿Quién descubrió este mundo?"
+		},
+		"sources": "Fuentes:",
+		"quantity": {
+			"feel": "{band, select, hotterThanSun {Más calor que en la superficie del Sol} fire {Mucho más calor que cualquier fuego} oven {Más calor que en un horno} boiling {Más calor que el agua hirviendo} desert {Tanto calor como en el desierto más caluroso} warm {Calor, como en un día de verano} mild {Ni frío ni calor} chilly {Frío, como en un día de invierno} freezer {Más frío que en cualquier congelador} coldest {Más frío que en cualquier lugar de la Tierra} other {Tanto frío que el aire se congelaría}}",
+			"celsius": "{big, select, yes {{value} de °C} other {{value} °C}}",
+			"kelvin": "{big, select, yes {{kelvin} de K ({celsius} de °C)} other {{kelvin} K ({celsius} °C)}}",
+			"mass": "{band, select, earth {La referencia: los demás mundos se pesan en Tierras} similar {El {percent, number, ::percent} de la masa de la Tierra} lighter {{count, plural, one {Haría falta # mundo así para pesar lo que la Tierra} many {Harían falta # de mundos así para pesar lo que la Tierra} other {Harían falta # mundos así para pesar lo que la Tierra}}} other {{count, plural, one {Pesa lo que # Tierra} many {Pesa lo que # de Tierras} other {Pesa lo que # Tierras}}}}",
+			"mass@simple": "{band, select, star {Pesa más que todos los planetas juntos} earth {La Tierra sirve de medida: los demás mundos se pesan en Tierras} huge {Pesa más que 100 Tierras juntas} similar {Pesa casi lo mismo que la Tierra} lighter {{count, plural, one {Pesa lo mismo que la Tierra} many {Harían falta # de mundos así para pesar lo que la Tierra} other {Harían falta # mundos así para pesar lo que la Tierra}}} other {{count, plural, one {Pesa lo mismo que # Tierra} many {Pesa lo mismo que # de Tierras} other {Pesa lo mismo que # Tierras}}}}",
+			"mass@advanced": "{band, select, earth {{kg} kg} other {{earths} masas terrestres ({kg} kg)}}",
+			"density": "{band, select, floats {{value} g/cm³: una densidad menor que la del agua, así que flotaría en una bañera lo bastante grande} sinks {{value} g/cm³: una densidad un poco mayor que la del agua} other {{value} g/cm³: {ratio, number} veces la densidad del agua}}",
+			"density@simple": "{band, select, floats {Pesa menos que el agua: ¡en una bañera gigante, flotaría!} sinks {Pesa un poco más que el agua: se hundiría, despacito} other {{buckets, plural, one {Un cubo lleno de este mundo pesaría lo mismo que # cubo de agua} many {Un cubo lleno de este mundo pesaría lo mismo que # de cubos de agua} other {Un cubo lleno de este mundo pesaría lo mismo que # cubos de agua}}}}",
+			"density@advanced": "{band, select, floats {{value} g/cm³, menos que el agua (1 g/cm³)} other {{value} g/cm³ (agua: 1 g/cm³)}}"
 		}
 	},
 	"solarSystem": {
@@ -225,8 +274,8 @@
 			"markersOn@simple": "Los puntos muestran dónde están los planetas. ¡Los planetas son demasiado pequeños para verlos!",
 			"markersOff": "Los marcadores están desactivados: actívalos para encontrar los planetas.",
 			"markersOff@simple": "¡Activa los Marcadores para encontrar los planetas!",
-			"walk": "¿Demasiado pequeño para imaginarlo? Recórrelo a pie: el sistema solar con el Sol del tamaño de un balón de baloncesto.",
-			"walk@simple": "¿Demasiado pequeño para verlo? ¡Recorre a pie el sistema solar en el patio de tu escuela!",
+			"walk": "Encoge el Sol hasta un balón de baloncesto y recorre a pie el sistema solar en el patio del colegio",
+			"walk@simple": "Convierte el Sol en un balón de baloncesto y camina hasta cada planeta",
 			"hint": {
 				"sizesTrue": "Dibuja cada cuerpo con su tamaño real. De lejos, los planetas son demasiado pequeños para verse.",
 				"sizesTrue@simple": "Planetas tan grandes como son de verdad. ¡De lejos son demasiado pequeños para verlos!",
@@ -419,7 +468,15 @@
 			"showFacts": "Mostrar datos",
 			"hideFacts": "Ocultar datos",
 			"close": "Cerrar",
-			"compare": "Comparar con…"
+			"compare": "Comparar con…",
+			"walk": "{bodyId, select, sun {Encoge el Sol hasta un balón de baloncesto y recorre a pie el sistema solar} other {Encoge el Sol hasta un balón de baloncesto y camina hasta este mundo}}",
+			"walk@simple": "{bodyId, select, sun {Convierte el Sol en un balón de baloncesto y camina hasta los planetas} other {Convierte el Sol en un balón de baloncesto y camina hasta este mundo}}"
+		},
+		"walkNudge": {
+			"title": "¿Adónde se han ido los planetas?",
+			"text": "A escala real son demasiado pequeños para verlos y están muy lejos unos de otros. Siente las distancias a pie:",
+			"text@simple": "Ahora son demasiado pequeños para verlos. Y están muy lejos unos de otros. ¡Prueba a recorrerlo a pie!",
+			"dismiss": "Cerrar el consejo"
 		},
 		"moons": {
 			"label": "Lunas",
@@ -1028,8 +1085,8 @@
 				"link": "El enlace a esta vista es demasiado largo para un código QR."
 			}
 		},
-		"overviewHint": "Vuelve a todo el sistema solar, desde cualquier sitio (Esc).",
-		"overviewHint@simple": "Vuelve y mira todo el sistema solar (Esc).",
+		"overviewHint": "El camino de vuelta a todo el sistema solar, desde cualquier sitio (Esc). Un clic en el espacio vacío deja la vista como está.",
+		"overviewHint@simple": "Vuelve y mira todo el sistema solar (Esc). Si haces clic en el espacio vacío, te quedas donde estás.",
 		"sky": {
 			"open": "El cielo esta noche",
 			"openHint": "¿Qué planetas puedes ver esta noche, cuándo y dónde?",
@@ -1174,6 +1231,15 @@
 			"skip": "Saltar la intro",
 			"skip@simple": "Saltar",
 			"progress": "Parte {beat, number} de {count, number}",
+			"pause": "Pausar",
+			"resume": "Continuar",
+			"resume@simple": "Seguir",
+			"paused": "En pausa",
+			"next": "Siguiente",
+			"pauseHint": "Quédate en este texto todo el tiempo que quieras, para leerlo o hablar de él. La barra espaciadora o un toque en la escena hacen lo mismo; otra vez, y continúa.",
+			"pauseHint@simple": "Para aquí para leer. También puedes pulsar la barra espaciadora o tocar la imagen. Otra vez, y sigue.",
+			"nextHint": "Pasa ya a la siguiente parte; si está en pausa, avanza parte a parte. La flecha derecha hace lo mismo.",
+			"nextHint@simple": "Ve ya a la siguiente parte.",
 			"earth": {
 				"title": "Esta es la Tierra.",
 				"detail": "Todas las personas que conoces viven aquí.",
@@ -1196,15 +1262,15 @@
 			"system": {
 				"title": "Todo el sistema solar, a su tamaño real",
 				"title@simple": "Todo, a su tamaño real",
-				"detail": "Los planetas son demasiado pequeños para verlos. Los puntos solo indican dónde están.",
+				"detail": "Los planetas son demasiado pequeños para verlos. Los puntos indican dónde están.",
 				"detail@simple": "¡Los planetas son tan diminutos que no se ven! Los puntos muestran dónde están.",
-				"detail@advanced": "La Tierra es ahora mucho más pequeña que un píxel, y el espacio está casi totalmente vacío. Los puntos solo marcan los planetas."
+				"detail@advanced": "La Tierra es menor que un píxel; el espacio, casi vacío. Los puntos marcan los planetas."
 			},
 			"scale": {
 				"title": "Por eso los dibujamos más grandes y más cerca",
 				"title@simple": "¡Por eso los dibujamos más grandes!",
-				"detail": "Ahora ves todos los planetas, pero no a escala. El panel «Escala» vuelve a los tamaños reales.",
-				"detail@simple": "Ahora ves todos los planetas. En el panel «Escala» vuelves a ver su tamaño real.",
+				"detail": "Ahora visibles, pero no a escala. «Escala» da el tamaño real.",
+				"detail@simple": "Ahora ves todos los planetas. El panel «Escala» muestra su tamaño real.",
 				"detail@advanced": "«Todo visible»: tamaños aumentados, distancias comprimidas. «Escala real», en el panel «Escala», muestra la realidad."
 			},
 			"hint": {
@@ -1399,8 +1465,8 @@
 				"trueScale": {
 					"title": "Escala real",
 					"title@simple": "El tamaño real",
-					"text": "Ahora cada tamaño y cada distancia son reales, y los planetas desaparecen en el espacio vacío: los puntos solo muestran dónde están. Escala, abajo a la derecha, cambia entre la realidad y dibujos en los que se ve algo.",
-					"text@simple": "Este es el tamaño real de todo. ¡Los planetas son tan pequeños que no los ves! Los puntos muestran dónde están. Pulsa Escala abajo a la derecha para cambiar."
+					"text": "Ahora cada tamaño y cada distancia son reales, y los planetas desaparecen en el espacio vacío: los puntos solo muestran dónde están. Escala, abajo a la derecha, cambia entre la realidad y dibujos en los que se ve algo. Ahí también encoges el Sol hasta un balón de baloncesto para recorrer a pie el sistema solar en el patio del colegio.",
+					"text@simple": "Este es el tamaño real de todo. ¡Los planetas son tan pequeños que no los ves! Los puntos muestran dónde están. Pulsa Escala abajo a la derecha para cambiar. Ahí también puedes caminar hasta los planetas en tu escuela."
 				},
 				"time": {
 					"title": "Viaja en el tiempo",

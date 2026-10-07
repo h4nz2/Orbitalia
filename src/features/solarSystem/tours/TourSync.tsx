@@ -17,7 +17,11 @@ import { useTourStore } from "@/store/tour"
 
 import { startEvent } from "../events/player"
 import { EVENT_VIEWS } from "../events/staging"
-import { hasModifier, isEditableTarget } from "../ui/keyboard"
+import {
+	hasModifier,
+	isArrowWidgetTarget,
+	isEditableTarget,
+} from "../ui/keyboard"
 import { autoHoldMs } from "./plan"
 import {
 	exitTour,
@@ -37,10 +41,6 @@ export const TOUR_KEYS: Readonly<Record<string, "next" | "back">> = {
 	PageUp: "back",
 }
 
-/** Widgets that use the arrow keys themselves (tabs, sliders, menus, radio groups). */
-const ARROW_WIDGETS =
-	"[role='tab'], [role='tablist'], [role='slider'], [role='menu'], [role='menuitem'], [role='radio'], [role='radiogroup']"
-
 /**
  * Steps the tour on a presenter key. Listens in the capture phase so, while a
  * tour runs, the arrows step it instead of cycling the focus between bodies.
@@ -52,8 +52,7 @@ function onTourKey(event: KeyboardEvent): void {
 		hasModifier(event) ||
 		event.shiftKey ||
 		isEditableTarget(event.target) ||
-		(event.target instanceof Element &&
-			event.target.closest(ARROW_WIDGETS) !== null)
+		isArrowWidgetTarget(event.target)
 	) {
 		return
 	}

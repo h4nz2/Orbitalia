@@ -1,0 +1,867 @@
+{
+	"$comment": "The dictionary's stories (#53): per world its layers (outer edge as a fraction of the mean radius, from the centre outwards), the main gases of its air, its temperature range as the sources state it, its nicknames, where its name comes from, the locales whose own name for it has a story, and how it was found, each fact with the public pages that state it. Mass and density come from src/data/bodies.json. Schema: src/data/worlds.ts; words: src/locales/<locale>/worlds.json.",
+	"worlds": [
+		{
+			"id": "sun",
+			"madeOf": {
+				"surface": "#ffb52e",
+				"layers": [
+					{
+						"id": "core",
+						"outer": 0.25,
+						"color": "#fff4c2"
+					},
+					{
+						"id": "radiativeZone",
+						"outer": 0.7,
+						"color": "#ffd24a"
+					},
+					{
+						"id": "convectiveZone",
+						"outer": 1,
+						"color": "#ff9124"
+					}
+				],
+				"sources": [
+					"https://solarscience.msfc.nasa.gov/interior.shtml",
+					"https://science.nasa.gov/sun/facts/"
+				]
+			},
+			"air": {
+				"gases": [
+					{
+						"id": "hydrogen",
+						"percent": 90.965
+					},
+					{
+						"id": "helium",
+						"percent": 8.889
+					}
+				],
+				"basis": "atoms",
+				"sources": [
+					"https://nssdc.gsfc.nasa.gov/planetary/factsheet/sunfact.html"
+				]
+			},
+			"temperature": {
+				"range": "surfaceCore",
+				"high": {
+					"c": 15000000
+				},
+				"low": {
+					"c": 5500
+				},
+				"sources": ["https://science.nasa.gov/sun/facts/"]
+			},
+			"nicknames": [
+				{
+					"id": "yellowDwarf",
+					"icon": "sun",
+					"sources": [
+						"https://science.nasa.gov/sun/facts/",
+						"https://svs.gsfc.nasa.gov/13859"
+					]
+				}
+			],
+			"name": {
+				"sources": ["https://science.nasa.gov/sun/facts/"]
+			},
+			"localNames": {
+				"en": [
+					"https://www.etymonline.com/word/sun",
+					"https://www.etymonline.com/word/Sunday"
+				],
+				"de": [
+					"https://www.dwds.de/wb/Sonne",
+					"https://www.dwds.de/wb/Sonntag",
+					"https://woerterbuchnetz.de/?sigle=DWB&lemma=sonne"
+				],
+				"cs": [
+					"https://en.wiktionary.org/wiki/Reconstruction:Proto-Slavic/s%D1%8Aln%D1%8Cce",
+					"https://ssjc.ujc.cas.cz/search.php?heslo=slunce&hledej=Hledat"
+				],
+				"fr": ["https://www.cnrtl.fr/etymologie/soleil"]
+			},
+			"discovery": {
+				"kind": "ancient",
+				"sources": [
+					"https://science.nasa.gov/sun/facts/",
+					"https://science.nasa.gov/earth/earth-observatory/planetary-motion/"
+				]
+			},
+			"heft": {
+				"sources": [
+					"https://nssdc.gsfc.nasa.gov/planetary/factsheet/sunfact.html"
+				]
+			}
+		},
+		{
+			"id": "mercury",
+			"madeOf": {
+				"surface": "#9c9189",
+				"layers": [
+					{
+						"id": "ironCore",
+						"outer": 0.85,
+						"color": "#d7a64b"
+					},
+					{
+						"id": "rockyShell",
+						"outer": 1,
+						"color": "#7d6a5e"
+					}
+				],
+				"sources": ["https://science.nasa.gov/mercury/facts/"]
+			},
+			"air": {
+				"gases": [
+					{
+						"id": "oxygen"
+					},
+					{
+						"id": "sodium"
+					},
+					{
+						"id": "hydrogen"
+					},
+					{
+						"id": "helium"
+					},
+					{
+						"id": "potassium"
+					}
+				],
+				"sources": ["https://science.nasa.gov/mercury/facts/"]
+			},
+			"temperature": {
+				"range": "dayNight",
+				"high": {
+					"c": 430
+				},
+				"low": {
+					"c": -180
+				},
+				"sources": ["https://science.nasa.gov/mercury/facts/"]
+			},
+			"nicknames": [
+				{
+					"id": "apolloHermes",
+					"icon": "star",
+					"sources": [
+						"https://www.eso.org/public/outreach/eduoff/vt-2004/mt-2003/mt-mercury-mythology.html"
+					]
+				}
+			],
+			"name": {
+				"sources": [
+					"https://science.nasa.gov/mercury/facts/",
+					"https://www.eso.org/public/outreach/eduoff/vt-2004/mt-2003/mt-mercury-mythology.html",
+					"https://nssdc.gsfc.nasa.gov/planetary/factsheet/mercuryfact.html"
+				]
+			},
+			"localNames": {
+				"cs": ["https://www.ziva.avcr.cz/files/ziva/pdf/hvezdy-nelzou.pdf"],
+				"es": ["https://dle.rae.es/mi%C3%A9rcoles"],
+				"fr": ["https://www.cnrtl.fr/etymologie/mercredi"]
+			},
+			"discovery": {
+				"kind": "ancient",
+				"sources": [
+					"https://science.nasa.gov/venus/venus-facts/",
+					"https://www.eso.org/public/outreach/eduoff/vt-2004/mt-2003/mt-mercury-mythology.html"
+				]
+			},
+			"heft": {
+				"sources": [
+					"https://nssdc.gsfc.nasa.gov/planetary/factsheet/mercuryfact.html",
+					"https://science.nasa.gov/mercury/facts/"
+				]
+			}
+		},
+		{
+			"id": "venus",
+			"madeOf": {
+				"surface": "#d8b26e",
+				"estimated": true,
+				"layers": [
+					{
+						"id": "ironCore",
+						"outer": 0.58,
+						"color": "#d7a64b"
+					},
+					{
+						"id": "rockyMantle",
+						"outer": 0.993,
+						"color": "#c0703c"
+					},
+					{
+						"id": "crust",
+						"outer": 1,
+						"color": "#7a5a44"
+					}
+				],
+				"sources": [
+					"https://science.nasa.gov/venus/venus-facts/",
+					"https://arxiv.org/abs/2103.01504",
+					"https://science.nasa.gov/science-research/astromaterials/nasa-study-reveals-venus-crust-surprise/"
+				]
+			},
+			"air": {
+				"gases": [
+					{
+						"id": "carbonDioxide",
+						"percent": 96.5
+					},
+					{
+						"id": "nitrogen",
+						"percent": 3.5
+					}
+				],
+				"basis": "volume",
+				"sources": [
+					"https://nssdc.gsfc.nasa.gov/planetary/factsheet/venusfact.html",
+					"https://science.nasa.gov/venus/venus-facts/"
+				]
+			},
+			"temperature": {
+				"range": "steady",
+				"high": {
+					"c": 464
+				},
+				"sources": [
+					"https://science.nasa.gov/solar-system/temperatures-across-our-solar-system/",
+					"https://nssdc.gsfc.nasa.gov/planetary/factsheet/venusfact.html"
+				]
+			},
+			"nicknames": [
+				{
+					"id": "morningStar",
+					"icon": "star",
+					"sources": ["https://science.nasa.gov/venus/venus-facts/"]
+				},
+				{
+					"id": "earthsTwin",
+					"icon": "twins",
+					"sources": [
+						"https://science.nasa.gov/venus/venus-facts/",
+						"https://nssdc.gsfc.nasa.gov/planetary/factsheet/venusfact.html"
+					]
+				}
+			],
+			"name": {
+				"sources": ["https://science.nasa.gov/venus/venus-facts/"]
+			},
+			"localNames": {
+				"de": [
+					"https://www.dwds.de/wb/Morgenstern",
+					"https://www.dwds.de/wb/Abendstern"
+				],
+				"cs": [
+					"https://ssjc.ujc.cas.cz/search.php?heslo=jit%C5%99enka&hledej=Hledat",
+					"https://ssjc.ujc.cas.cz/search.php?heslo=ve%C4%8Dernice&hledej=Hledat",
+					"https://www.ziva.avcr.cz/files/ziva/pdf/hvezdy-nelzou.pdf"
+				],
+				"es": [
+					"https://dle.rae.es/lucero",
+					"https://dle.rae.es/miguero",
+					"https://dle.rae.es/viernes"
+				],
+				"fr": [
+					"https://www.cnrtl.fr/definition/berger",
+					"https://www.cnrtl.fr/etymologie/vendredi"
+				]
+			},
+			"discovery": {
+				"kind": "ancient",
+				"sources": [
+					"https://science.nasa.gov/venus/venus-facts/",
+					"https://science.nasa.gov/earth/earth-observatory/planetary-motion/"
+				]
+			},
+			"heft": {
+				"sources": [
+					"https://nssdc.gsfc.nasa.gov/planetary/factsheet/venusfact.html"
+				]
+			}
+		},
+		{
+			"id": "earth",
+			"madeOf": {
+				"surface": "#3d7cc9",
+				"layers": [
+					{
+						"id": "innerCore",
+						"outer": 0.192,
+						"color": "#f6d36b"
+					},
+					{
+						"id": "outerCore",
+						"outer": 0.547,
+						"color": "#e98a36"
+					},
+					{
+						"id": "rockyMantle",
+						"outer": 0.995,
+						"color": "#b9502d"
+					},
+					{
+						"id": "crust",
+						"outer": 1,
+						"color": "#6b4a33"
+					}
+				],
+				"sources": [
+					"https://science.nasa.gov/earth/facts/",
+					"https://nssdc.gsfc.nasa.gov/planetary/factsheet/earthfact.html"
+				]
+			},
+			"air": {
+				"gases": [
+					{
+						"id": "nitrogen",
+						"percent": 78.08
+					},
+					{
+						"id": "oxygen",
+						"percent": 20.95
+					},
+					{
+						"id": "argon",
+						"percent": 0.934
+					},
+					{
+						"id": "carbonDioxide",
+						"percent": 0.042
+					}
+				],
+				"basis": "volume",
+				"sources": [
+					"https://nssdc.gsfc.nasa.gov/planetary/factsheet/earthfact.html"
+				]
+			},
+			"temperature": {
+				"range": "records",
+				"high": {
+					"c": 56.7
+				},
+				"low": {
+					"c": -89.2
+				},
+				"sources": [
+					"https://wmo.int/sites/default/files/2025-07/Table_Records_25Jul2025.pdf",
+					"https://science.nasa.gov/solar-system/temperatures-across-our-solar-system/"
+				]
+			},
+			"nicknames": [
+				{
+					"id": "blueMarble",
+					"icon": "world",
+					"sources": ["https://science.nasa.gov/resource/the-blue-marble/"]
+				},
+				{
+					"id": "paleBlueDot",
+					"icon": "dot",
+					"sources": [
+						"https://science.nasa.gov/mission/voyager/voyager-1s-pale-blue-dot/"
+					]
+				}
+			],
+			"name": {
+				"sources": ["https://science.nasa.gov/earth/facts/"]
+			},
+			"localNames": {
+				"en": ["https://www.etymonline.com/word/earth"],
+				"de": ["https://www.dwds.de/wb/Erde"],
+				"cs": [
+					"https://ssjc.ujc.cas.cz/search.php?heslo=zem%C4%9B&hledej=Hledat",
+					"https://ssjc.ujc.cas.cz/search.php?heslo=zem%C4%9Bkoule&hledej=Hledat",
+					"https://en.wiktionary.org/wiki/Reconstruction:Proto-Slavic/zem%C4%BEa"
+				],
+				"es": [
+					"https://dle.rae.es/tierra",
+					"https://dle.rae.es/terr%C3%A1queo"
+				],
+				"fr": ["https://www.cnrtl.fr/etymologie/terre"]
+			},
+			"discovery": {
+				"kind": "home",
+				"year": 1543,
+				"sources": [
+					"https://science.nasa.gov/earth/earth-observatory/planetary-motion/"
+				]
+			},
+			"heft": {
+				"sources": [
+					"https://nssdc.gsfc.nasa.gov/planetary/factsheet/earthfact.html",
+					"https://science.nasa.gov/mercury/facts/"
+				]
+			}
+		},
+		{
+			"id": "mars",
+			"madeOf": {
+				"surface": "#c1440e",
+				"layers": [
+					{
+						"id": "ironCore",
+						"outer": 0.49,
+						"color": "#d7a64b"
+					},
+					{
+						"id": "rockyMantle",
+						"outer": 0.991,
+						"color": "#a8502f"
+					},
+					{
+						"id": "crust",
+						"outer": 1,
+						"color": "#7c3418"
+					}
+				],
+				"sources": [
+					"https://science.nasa.gov/mars/facts/",
+					"https://nssdc.gsfc.nasa.gov/planetary/factsheet/marsfact.html"
+				]
+			},
+			"air": {
+				"gases": [
+					{
+						"id": "carbonDioxide",
+						"percent": 95.1
+					},
+					{
+						"id": "nitrogen",
+						"percent": 2.59
+					},
+					{
+						"id": "argon",
+						"percent": 1.94
+					},
+					{
+						"id": "oxygen",
+						"percent": 0.16
+					},
+					{
+						"id": "carbonMonoxide",
+						"percent": 0.06
+					}
+				],
+				"basis": "volume",
+				"sources": [
+					"https://nssdc.gsfc.nasa.gov/planetary/factsheet/marsfact.html"
+				]
+			},
+			"temperature": {
+				"range": "extremes",
+				"high": {
+					"c": 20
+				},
+				"low": {
+					"c": -153
+				},
+				"sources": [
+					"https://science.nasa.gov/mars/facts/",
+					"https://nssdc.gsfc.nasa.gov/planetary/factsheet/marsfact.html"
+				]
+			},
+			"nicknames": [
+				{
+					"id": "redPlanet",
+					"icon": "planet",
+					"sources": ["https://science.nasa.gov/mars/facts/"]
+				}
+			],
+			"name": {
+				"sources": ["https://science.nasa.gov/mars/facts/"]
+			},
+			"localNames": {
+				"cs": ["https://www.ziva.avcr.cz/files/ziva/pdf/hvezdy-nelzou.pdf"],
+				"es": ["https://dle.rae.es/martes"],
+				"fr": ["https://www.cnrtl.fr/etymologie/mardi"]
+			},
+			"discovery": {
+				"kind": "ancient",
+				"sources": [
+					"https://science.nasa.gov/venus/venus-facts/",
+					"https://science.nasa.gov/earth/earth-observatory/planetary-motion/"
+				]
+			},
+			"heft": {
+				"sources": [
+					"https://nssdc.gsfc.nasa.gov/planetary/factsheet/marsfact.html"
+				]
+			}
+		},
+		{
+			"id": "jupiter",
+			"madeOf": {
+				"surface": "#c9a27a",
+				"estimated": true,
+				"layers": [
+					{
+						"id": "fuzzyCore",
+						"outer": 0.2,
+						"color": "#8c6a4c"
+					},
+					{
+						"id": "metallicHydrogen",
+						"outer": 0.81,
+						"color": "#7183a8"
+					},
+					{
+						"id": "hydrogenLayer",
+						"outer": 1,
+						"color": "#d9b88f"
+					}
+				],
+				"sources": [
+					"https://science.nasa.gov/jupiter/jupiter-facts/",
+					"https://www.missionjuno.swri.edu/science-findings/juno-spacecraft-probes-the-source-of-jupiter-magnetic-field",
+					"https://openstax.org/books/astronomy-2e/pages/11-2-the-giant-planets"
+				]
+			},
+			"air": {
+				"gases": [
+					{
+						"id": "hydrogen",
+						"percent": 89.8
+					},
+					{
+						"id": "helium",
+						"percent": 10.2
+					},
+					{
+						"id": "methane",
+						"percent": 0.3
+					}
+				],
+				"basis": "volume",
+				"sources": [
+					"https://nssdc.gsfc.nasa.gov/planetary/factsheet/jupiterfact.html"
+				]
+			},
+			"temperature": {
+				"range": "cloudsCore",
+				"high": {
+					"c": 24000
+				},
+				"low": {
+					"k": 165
+				},
+				"sources": [
+					"https://spaceplace.nasa.gov/jupiter/en/",
+					"https://nssdc.gsfc.nasa.gov/planetary/factsheet/jupiterfact.html",
+					"https://science.nasa.gov/solar-system/temperatures-across-our-solar-system/"
+				]
+			},
+			"nicknames": [
+				{
+					"id": "kingOfPlanets",
+					"icon": "crown",
+					"sources": [
+						"https://science.nasa.gov/jupiter/",
+						"https://science.nasa.gov/jupiter/jupiter-facts/"
+					]
+				}
+			],
+			"name": {
+				"sources": ["https://science.nasa.gov/jupiter/jupiter-facts/"]
+			},
+			"localNames": {
+				"cs": ["https://www.ziva.avcr.cz/files/ziva/pdf/hvezdy-nelzou.pdf"],
+				"es": ["https://dle.rae.es/jueves"],
+				"fr": ["https://www.cnrtl.fr/etymologie/jeudi"]
+			},
+			"discovery": {
+				"kind": "ancient",
+				"sources": [
+					"https://science.nasa.gov/jupiter/exploration/",
+					"https://science.nasa.gov/earth/earth-observatory/planetary-motion/"
+				]
+			},
+			"heft": {
+				"sources": [
+					"https://nssdc.gsfc.nasa.gov/planetary/factsheet/jupiterfact.html"
+				]
+			}
+		},
+		{
+			"id": "saturn",
+			"madeOf": {
+				"surface": "#e0c48c",
+				"estimated": true,
+				"layers": [
+					{
+						"id": "denseCore",
+						"outer": 0.27,
+						"color": "#8c6a4c"
+					},
+					{
+						"id": "metallicHydrogen",
+						"outer": 0.5,
+						"color": "#7d8cab"
+					},
+					{
+						"id": "hydrogenLayer",
+						"outer": 1,
+						"color": "#e6d09e"
+					}
+				],
+				"sources": [
+					"https://science.nasa.gov/saturn/facts/",
+					"https://openstax.org/books/astronomy-2e/pages/11-2-the-giant-planets",
+					"https://arxiv.org/abs/2104.13385"
+				]
+			},
+			"air": {
+				"gases": [
+					{
+						"id": "hydrogen",
+						"percent": 96.3
+					},
+					{
+						"id": "helium",
+						"percent": 3.25
+					},
+					{
+						"id": "methane",
+						"percent": 0.45
+					}
+				],
+				"basis": "volume",
+				"sources": [
+					"https://nssdc.gsfc.nasa.gov/planetary/factsheet/saturnfact.html",
+					"https://science.nasa.gov/saturn/facts/"
+				]
+			},
+			"temperature": {
+				"range": "cloudLevels",
+				"high": {
+					"k": 134
+				},
+				"low": {
+					"k": 84
+				},
+				"sources": [
+					"https://nssdc.gsfc.nasa.gov/planetary/factsheet/saturnfact.html",
+					"https://science.nasa.gov/saturn/facts/"
+				]
+			},
+			"nicknames": [
+				{
+					"id": "jewel",
+					"icon": "diamond",
+					"sources": [
+						"https://www.jpl.nasa.gov/edu/resources/lesson-plan/jewel-of-the-solar-system-activity-guide/"
+					]
+				}
+			],
+			"name": {
+				"sources": [
+					"https://science.nasa.gov/saturn/facts/",
+					"https://science.nasa.gov/saturn/exploration/"
+				]
+			},
+			"localNames": {
+				"en": ["https://www.etymonline.com/word/Saturday"],
+				"cs": ["https://www.ziva.avcr.cz/files/ziva/pdf/hvezdy-nelzou.pdf"],
+				"fr": ["https://www.cnrtl.fr/etymologie/samedi"]
+			},
+			"discovery": {
+				"kind": "ancient",
+				"sources": [
+					"https://science.nasa.gov/saturn/facts/",
+					"https://science.nasa.gov/saturn/exploration/"
+				]
+			},
+			"heft": {
+				"sources": [
+					"https://nssdc.gsfc.nasa.gov/planetary/factsheet/saturnfact.html",
+					"https://science.nasa.gov/saturn/facts/"
+				]
+			}
+		},
+		{
+			"id": "uranus",
+			"madeOf": {
+				"surface": "#9fd6dd",
+				"estimated": true,
+				"layers": [
+					{
+						"id": "rockyCore",
+						"outer": 0.31,
+						"color": "#8c6a4c"
+					},
+					{
+						"id": "icyMantle",
+						"outer": 0.69,
+						"color": "#4fa9c0"
+					},
+					{
+						"id": "gasEnvelope",
+						"outer": 1,
+						"color": "#a9e2e8"
+					}
+				],
+				"sources": [
+					"https://science.nasa.gov/uranus/facts/",
+					"https://openstax.org/books/astronomy-2e/pages/11-2-the-giant-planets"
+				]
+			},
+			"air": {
+				"gases": [
+					{
+						"id": "hydrogen",
+						"percent": 82.5
+					},
+					{
+						"id": "helium",
+						"percent": 15.2
+					},
+					{
+						"id": "methane",
+						"percent": 2.3
+					}
+				],
+				"basis": "volume",
+				"sources": [
+					"https://nssdc.gsfc.nasa.gov/planetary/factsheet/uranusfact.html",
+					"https://science.nasa.gov/uranus/facts/"
+				]
+			},
+			"temperature": {
+				"range": "cloudsCore",
+				"high": {
+					"c": 4982
+				},
+				"low": {
+					"k": 76
+				},
+				"sources": [
+					"https://science.nasa.gov/uranus/facts/",
+					"https://nssdc.gsfc.nasa.gov/planetary/factsheet/uranusfact.html"
+				]
+			},
+			"nicknames": [
+				{
+					"id": "sideways",
+					"icon": "rotate",
+					"sources": ["https://science.nasa.gov/uranus/facts/"]
+				}
+			],
+			"name": {
+				"sources": [
+					"https://science.nasa.gov/uranus/facts/",
+					"https://herschelmuseum.org.uk/about/faqs/",
+					"https://www.ziva.avcr.cz/files/ziva/pdf/hvezdy-nelzou.pdf"
+				]
+			},
+			"localNames": {
+				"cs": ["https://www.ziva.avcr.cz/files/ziva/pdf/hvezdy-nelzou.pdf"]
+			},
+			"discovery": {
+				"kind": "telescope",
+				"year": 1781,
+				"sources": [
+					"https://science.nasa.gov/uranus/exploration/",
+					"https://science.nasa.gov/uranus/facts/",
+					"https://herschelmuseum.org.uk/about/faqs/"
+				]
+			},
+			"heft": {
+				"sources": [
+					"https://nssdc.gsfc.nasa.gov/planetary/factsheet/uranusfact.html"
+				]
+			}
+		},
+		{
+			"id": "neptune",
+			"madeOf": {
+				"surface": "#4b70dd",
+				"estimated": true,
+				"layers": [
+					{
+						"id": "rockyCore",
+						"outer": 0.4,
+						"color": "#8c6a4c"
+					},
+					{
+						"id": "icyMantle",
+						"outer": 0.8,
+						"color": "#2f5fc4"
+					},
+					{
+						"id": "gasEnvelope",
+						"outer": 1,
+						"color": "#6d93ec"
+					}
+				],
+				"sources": [
+					"https://science.nasa.gov/neptune/neptune-facts/",
+					"https://openstax.org/books/astronomy-2e/pages/11-2-the-giant-planets"
+				]
+			},
+			"air": {
+				"gases": [
+					{
+						"id": "hydrogen",
+						"percent": 80
+					},
+					{
+						"id": "helium",
+						"percent": 19
+					},
+					{
+						"id": "methane",
+						"percent": 1.5
+					}
+				],
+				"basis": "volume",
+				"sources": [
+					"https://nssdc.gsfc.nasa.gov/planetary/factsheet/neptunefact.html",
+					"https://science.nasa.gov/neptune/neptune-facts/"
+				]
+			},
+			"temperature": {
+				"range": "cloudLevels",
+				"high": {
+					"k": 72
+				},
+				"low": {
+					"k": 55
+				},
+				"sources": [
+					"https://nssdc.gsfc.nasa.gov/planetary/factsheet/neptunefact.html"
+				]
+			},
+			"nicknames": [
+				{
+					"id": "windiest",
+					"icon": "wind",
+					"sources": ["https://science.nasa.gov/neptune/neptune-facts/"]
+				}
+			],
+			"name": {
+				"sources": ["https://science.nasa.gov/neptune/neptune-facts/"]
+			},
+			"localNames": {
+				"cs": ["https://www.ziva.avcr.cz/files/ziva/pdf/hvezdy-nelzou.pdf"]
+			},
+			"discovery": {
+				"kind": "predicted",
+				"year": 1846,
+				"sources": [
+					"https://science.nasa.gov/neptune/neptune-facts/",
+					"https://www.lindahall.org/about/news/scientist-of-the-day/johann-galle/",
+					"https://mathshistory.st-andrews.ac.uk/Biographies/Le_Verrier/"
+				]
+			},
+			"heft": {
+				"sources": [
+					"https://nssdc.gsfc.nasa.gov/planetary/factsheet/neptunefact.html",
+					"https://science.nasa.gov/neptune/neptune-facts/"
+				]
+			}
+		}
+	]
+}
