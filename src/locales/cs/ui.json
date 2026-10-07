@@ -173,6 +173,8 @@
 			},
 			"reason": {
 				"allMoons": "Nejdřív zapni Měsíce.",
+				"allMoonsPoster": "Plakát skrývá menší měsíce: mezi planetami pro ně není místo. Vyber jiné měřítko a uvidíš je.",
+				"allMoonsPoster@simple": "Na plakátu jsou malé měsíce schované. Není pro ně místo!",
 				"orbitNames": "{missing, select, orbits {Nejdřív zapni Dráhy.} labels {Nejdřív zapni Názvy.} other {Nejdřív zapni Dráhy a Názvy.}}"
 			},
 			"smallBodies": "Malá tělesa"
@@ -184,7 +186,8 @@
 				"trueScale": "Skutečné měřítko",
 				"textbook": "Jako v učebnici",
 				"bigPlanets": "Velké planety",
-				"everythingVisible": "Vše viditelné"
+				"everythingVisible": "Vše viditelné",
+				"poster": "Plakát"
 			},
 			"summary": {
 				"trueScale": "Skutečné velikosti, skutečné vzdálenosti. Vesmír je skoro úplně prázdný.",
@@ -198,7 +201,10 @@
 				"bigPlanets@advanced": "Vzdálenosti věrné, velikosti zveličené: i desetkrát zvětšené planety jsou jen tečky na svých drahách.",
 				"everythingVisible": "Aby bylo vidět všechno najednou: planety jsou příliš velké a příliš blízko u sebe. Není to v měřítku!",
 				"everythingVisible@simple": "Planety jsou zvětšené a posunuté blíž k sobě, aby byly vidět všechny. Ve skutečnosti to tak není!",
-				"everythingVisible@advanced": "Velikosti zveličené a vzdálenosti stlačené, aby bylo vidět každé těleso najednou. Není v měřítku."
+				"everythingVisible@advanced": "Velikosti zveličené a vzdálenosti stlačené, aby bylo vidět každé těleso najednou. Není v měřítku.",
+				"poster": "Jako plakát ve třídě: každá planeta je dost velká, aby byly vidět všechny najednou, a ve správném pořadí. Velikosti 5× až 60× větší, vzdálenosti 50× až 500× menší. Nejméně skutečný obrázek ze všech!",
+				"poster@simple": "Jako plakát na stěně ve třídě: všechny planety jsou velké a blízko u sebe. Je to nejméně skutečný obrázek ze všech!",
+				"poster@advanced": "Poloměry stlačené k poloměru Slunce a každá dráha umístěná ručně, pořadí zůstává: velikosti 5–60× větší, vzdálenosti 50–500× menší. Nejvíc zkreslená předvolba."
 			},
 			"sizes": "Velikosti",
 			"sizesTrue": "Skutečné",
@@ -430,6 +436,8 @@
 			"hideOthers": "Skrýt menší měsíce",
 			"othersNote": "Většinou kameny o průměru pár kilometrů, mnohé z nich zachycené. Astronomové pořád objevují další.",
 			"othersNote@simple": "Většinou malé kameny. Vědci pořád nacházejí další.",
+			"othersHidden": "{count, plural, one {# menší měsíc je na plakátu skrytý} few {# menší měsíce jsou na plakátu skryté} many {# menšího měsíce je na plakátu skryto} other {# menších měsíců je na plakátu skryto}}: mezi planetami pro ně není místo.",
+			"othersHidden@simple": "{count, plural, one {# malý měsíc je tu schovaný} few {# malé měsíce jsou tu schované} many {# malého měsíce je tu schováno} other {# malých měsíců je tu schováno}}. Není pro ně místo!",
 			"readMore": "Přečíst příběh",
 			"readLess": "Zobrazit méně"
 		},
@@ -1015,7 +1023,10 @@
 				"bigPlanets@advanced": "Není v měřítku: vzdálenosti skutečné, velikosti přehnané.",
 				"everythingVisible": "Není v měřítku: tělesa jsou nakreslena větší a blíž k sobě, než ve skutečnosti jsou.",
 				"everythingVisible@simple": "Není to jako ve skutečnosti: planety jsou mnohem menší a mnohem dál od sebe.",
-				"everythingVisible@advanced": "Není v měřítku: velikosti přehnané, vzdálenosti zhuštěné."
+				"everythingVisible@advanced": "Není v měřítku: velikosti přehnané, vzdálenosti zhuštěné.",
+				"poster": "Není v měřítku: pohled jako na plakátu, planety nakreslené až 60× větší a až 500× blíž.",
+				"poster@simple": "Není to jako ve skutečnosti: planety jsou mnohem, mnohem menší a hodně daleko od sebe.",
+				"poster@advanced": "Není v měřítku: velikosti zveličené až 60×, vzdálenosti stlačené až 500×."
 			},
 			"hint": {
 				"names": "Nechá na obrázku jména těles. Vypni je pro čistý obrázek nebo kvíz.",

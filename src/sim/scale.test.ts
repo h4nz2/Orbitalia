@@ -449,12 +449,13 @@ describe("Everything visible, the default (a product choice guarded here)", () =
 })
 
 describe("presets and settings", () => {
-	it("exposes true scale, textbook, big planets and everything visible, frozen", () => {
+	it("exposes true scale, textbook, big planets, everything visible and poster, frozen", () => {
 		expect(SCALE_PRESET_IDS).toEqual([
 			"trueScale",
 			"textbook",
 			"bigPlanets",
 			"everythingVisible",
+			"poster",
 		])
 		for (const [, scale] of presets) {
 			expect(isValidScale(scale)).toBe(true)

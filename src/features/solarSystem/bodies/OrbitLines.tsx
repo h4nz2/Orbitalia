@@ -5,7 +5,7 @@
  * the selection: seven lines stacked in the belt would only hide the belt.
  */
 import type { Body } from "@/data"
-import { isBodyShown, useSimStore } from "@/store/sim"
+import { allMoonsShown, isBodyShown, useSimStore } from "@/store/sim"
 
 import { useSimFrame } from "../scene/simFrame"
 import OrbitLine from "./OrbitLine"
@@ -22,7 +22,7 @@ function OrbitLines() {
 	const frame = useSimFrame()
 	const showOrbits = useSimStore((state) => state.showOrbits)
 	const showMoons = useSimStore((state) => state.showMoons)
-	const showAllMoons = useSimStore((state) => state.showAllMoons)
+	const showAllMoons = useSimStore(allMoonsShown)
 	const focusId = useSimStore((state) => state.focusId)
 	const selectedId = useSimStore((state) => state.selectedId)
 	const showSmallBodies = useSimStore((state) => state.showSmallBodies)

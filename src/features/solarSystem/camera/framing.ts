@@ -6,8 +6,14 @@
  * SimFrame, never a true one.
  */
 import { planets, sun } from "@/data"
-import { degToRad, displayDistanceKm, toUnits, type ScaleSettings } from "@/sim"
-import { type View, viewBodyId } from "@/store/navigation"
+import {
+	degToRad,
+	displayDistanceKm,
+	displayRadiusKm,
+	toUnits,
+	type ScaleSettings,
+} from "@/sim"
+import { HOME_SHOT, type View, viewBodyId } from "@/store/navigation"
 
 import type { SimFrame } from "../scene/simFrame"
 
@@ -41,8 +47,17 @@ export const OVERVIEW_MARGIN = 1.3
 export type FramingFrame = Pick<SimFrame, "index" | "renderRadius" | "scale">
 
 /**
+ * The tight overview fit (#54, Poster, `overviewFit` 1): the share of the
+ * half-height the drawn system's near edge may reach, seen from the home
+ * elevation (the rest is the time bar's), and of the half-width its sides may.
+ */
+export const TIGHT_FIT_HEIGHT = 0.85
+export const TIGHT_FIT_WIDTH = 0.9
+
+/**
  * Radius of the region the overview shows under `scale`: the farthest
- * planet's aphelion as drawn, scene units. The Sun (the root) keeps its true
+ * planet's aphelion as drawn plus its drawn disc (#54: an enlarged Neptune is
+ * not cut off at the edge), scene units. The Sun (the root) keeps its true
  * size in every scale, so it is the parent radius on both sides.
  */
 export const overviewRadius = (scale: ScaleSettings): number =>
@@ -56,7 +71,7 @@ export const overviewRadius = (scale: ScaleSettings): number =>
 							sun.radiusKm,
 							sun.radiusKm,
 							scale.orbitDistance,
-						),
+						) + displayRadiusKm(planet.radiusKm, sun.radiusKm, scale.bodySize),
 					),
 		),
 	)
@@ -85,13 +100,49 @@ export function fitDistance(
 	return radius / Math.sin(Math.min(halfVertical, halfHorizontal))
 }
 
-/** The overview's default distance: the whole planetary system on screen. */
-export const overviewDistance = (
+/**
+ * Distance from which a flat disc of `radius` in the ecliptic, seen from
+ * `elevationDeg` toward its centre, fills the view as tightly as the HUD
+ * allows: its near edge at `TIGHT_FIT_HEIGHT` of the half-height, its widest
+ * points at `TIGHT_FIT_WIDTH` of the half-width (#54). Closer than the shared
+ * fit, which fits a sphere around the system from any direction; tilting the
+ * camera steeper than the home shot brings the near edge closer to the bottom.
+ */
+export function tightFitDistance(
+	radius: number,
+	fovDeg: number,
+	aspect: number,
+	elevationDeg: number = HOME_SHOT.elevationDeg,
+): number {
+	const tanHalf = Math.tan(degToRad(fovDeg) / 2)
+	const v = TIGHT_FIT_HEIGHT * tanHalf
+	const h = TIGHT_FIT_WIDTH * tanHalf * (aspect > 0 ? aspect : 1)
+	const e = degToRad(elevationDeg)
+	// the near edge is seen at tan = r sin e / (d - r cos e) below the centre
+	const near = radius * (Math.cos(e) + Math.sin(e) / v)
+	// the widest points (where the line of sight grazes the disc) at tan = r / sqrt(d^2 - r^2 cos^2 e)
+	const side = radius * Math.sqrt(1 / (h * h) + Math.cos(e) ** 2)
+	return Math.max(near, side)
+}
+
+/**
+ * The overview's default distance: the whole planetary system on screen. The
+ * shared fit puts a sphere `OVERVIEW_MARGIN` times the drawn system into the
+ * narrower field of view; a scale with `overviewFit` (Poster, #54) blends
+ * toward `tightFitDistance`, so a switch glides the camera there.
+ */
+export function overviewDistance(
 	scale: ScaleSettings,
 	fovDeg: number,
 	aspect: number,
-): number =>
-	fitDistance(OVERVIEW_MARGIN * overviewRadius(scale), fovDeg, aspect)
+): number {
+	const radius = overviewRadius(scale)
+	const shared = fitDistance(OVERVIEW_MARGIN * radius, fovDeg, aspect)
+	const fit = scale.overviewFit ?? 0
+	if (!(fit > 0)) return shared
+	const tight = tightFitDistance(radius, fovDeg, aspect)
+	return shared + (tight - shared) * Math.min(1, fit)
+}
 
 /** Drawn radius (scene units) of the body a view is centred on; the Sun for unknown ids. */
 export const viewRadius = (view: View, frame: FramingFrame): number =>

@@ -173,6 +173,8 @@
 			},
 			"reason": {
 				"allMoons": "Turn on Moons first.",
+				"allMoonsPoster": "Poster hides the smaller moons: there is no room for them between the planets. Choose another scale to see them.",
+				"allMoonsPoster@simple": "In Poster the little moons are hidden. There is no room for them!",
 				"orbitNames": "{missing, select, orbits {Turn on Orbits first.} labels {Turn on Labels first.} other {Turn on Orbits and Labels first.}}"
 			},
 			"smallBodies": "Small bodies"
@@ -184,7 +186,8 @@
 				"trueScale": "True scale",
 				"textbook": "Textbook",
 				"bigPlanets": "Big planets",
-				"everythingVisible": "Everything visible"
+				"everythingVisible": "Everything visible",
+				"poster": "Poster"
 			},
 			"summary": {
 				"trueScale": "Real sizes, real distances. Space is almost entirely empty.",
@@ -198,7 +201,10 @@
 				"bigPlanets@advanced": "Distances true, sizes exaggerated: even enlarged tenfold, the planets are specks along their orbits.",
 				"everythingVisible": "Made to show everything at once: the planets are drawn too big and too close together. Not to scale!",
 				"everythingVisible@simple": "The planets are made bigger and pulled closer, so you can see them all. It is not really like this!",
-				"everythingVisible@advanced": "Sizes exaggerated and distances compressed, so every body is visible at once. Not to scale."
+				"everythingVisible@advanced": "Sizes exaggerated and distances compressed, so every body is visible at once. Not to scale.",
+				"poster": "Like a classroom poster: every planet big enough to see at once, in the right order. Sizes 5 to 60× too big, distances 50 to 500× too close. The least true picture of all!",
+				"poster@simple": "Like a poster on the classroom wall: all the planets are big and close together. This is the least real picture of all!",
+				"poster@advanced": "Radii compressed toward the Sun's and every orbit placed by hand, order kept: sizes 5–60× too large, distances 50–500× too small. The most distorted preset."
 			},
 			"sizes": "Sizes",
 			"sizesTrue": "Real",
@@ -430,6 +436,8 @@
 			"hideOthers": "Hide the smaller moons",
 			"othersNote": "Mostly rocks a few kilometres across, many of them captured. Astronomers keep finding more.",
 			"othersNote@simple": "Mostly small rocks. Scientists keep finding more of them.",
+			"othersHidden": "{count, plural, one {# smaller moon is hidden} other {# smaller moons are hidden}} in Poster: there is no room for them between the planets.",
+			"othersHidden@simple": "{count, plural, one {# little moon is hidden} other {# little moons are hidden}} here. There is no room for them!",
 			"readMore": "Read its story",
 			"readLess": "Show less"
 		},
@@ -1013,7 +1021,10 @@
 				"bigPlanets@advanced": "Not to scale: distances true, sizes exaggerated.",
 				"everythingVisible": "Not to scale: the bodies are drawn bigger and closer together than they are.",
 				"everythingVisible@simple": "Not like real life: the planets are really much smaller and much farther apart.",
-				"everythingVisible@advanced": "Not to scale: sizes exaggerated and distances compressed."
+				"everythingVisible@advanced": "Not to scale: sizes exaggerated and distances compressed.",
+				"poster": "Not to scale: a poster view, with the planets drawn up to 60× too big and up to 500× too close.",
+				"poster@simple": "Not like real life: the planets are really much, much smaller and very far apart.",
+				"poster@advanced": "Not to scale: sizes exaggerated up to 60×, distances compressed up to 500×."
 			},
 			"compareTitle": "{a} and {b} side by side",
 			"compareScale": "True relative sizes: every body is drawn at the same scale.",

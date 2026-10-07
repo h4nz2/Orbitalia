@@ -5,10 +5,12 @@
 import { Vector3 } from "three"
 
 import type { Belt } from "@/data"
-import { rootIndexOf, toUnits } from "@/sim"
+import { anchorSpline, anchorWeightOf, rootIndexOf, toUnits } from "@/sim"
 
 import { mapTruePointKm } from "../light/lightFront"
 import type { SimFrame } from "../scene/simFrame"
+
+import { BELT_SPLINE_NODES } from "./beltShader"
 
 /** Size of a belt dot on screen (CSS px): a marker of where members are, never their size. */
 export const BELT_DOT_PX = 2.2
@@ -21,6 +23,12 @@ export interface BeltUniforms {
 	uRootRender: { value: Vector3 }
 	uRootRadiusKm: { value: number }
 	uCurve: { value: Vector3 }
+	uSplineShare: { value: number }
+	uSplineCount: { value: number }
+	uSplineU: { value: number[] }
+	uSplineY: { value: number[] }
+	uSplineM: { value: number[] }
+	uSplineEnd: { value: Vector3 }
 	uAnchorRender: { value: Vector3[] }
 	uAnchorTrue: { value: Vector3[] }
 	uAnchorWeight: { value: number[] }
@@ -38,6 +46,12 @@ export function createBeltUniforms(
 		uRootRender: { value: new Vector3() },
 		uRootRadiusKm: { value: 1 },
 		uCurve: { value: new Vector3(1, 1, 1) },
+		uSplineShare: { value: 0 },
+		uSplineCount: { value: 0 },
+		uSplineU: { value: new Array<number>(BELT_SPLINE_NODES).fill(0) },
+		uSplineY: { value: new Array<number>(BELT_SPLINE_NODES).fill(0) },
+		uSplineM: { value: new Array<number>(BELT_SPLINE_NODES).fill(0) },
+		uSplineEnd: { value: new Vector3() },
 		uAnchorRender: {
 			value: Array.from({ length: slots }, () => new Vector3()),
 		},
@@ -57,7 +71,10 @@ export function hexToRgb(hex: string): [number, number, number] {
 
 /**
  * Writes the frame into the uniforms: time since J2000, where the root is drawn, the
- * `orbitDistance` curve and the anchored frames (drawn and true anchor positions, weights).
+ * `orbitDistance` curve (its power law, and the nodes and share of its anchored part, #54)
+ * and the anchored frames (drawn and true anchor positions, weights).
+ *
+ * @throws Error when the curve has more anchors than the shader takes
  */
 export function updateBeltUniforms(
 	uniforms: BeltUniforms,
@@ -83,8 +100,26 @@ export function updateBeltUniforms(
 		toUnits(displayKm[r + 2] - originKm[2]),
 	)
 	uniforms.uRootRadiusKm.value = frame.bodies[root].radiusKm
-	const { knee, exponent, gain } = frame.scale.orbitDistance
-	uniforms.uCurve.value.set(knee, exponent, gain)
+	const curve = frame.scale.orbitDistance
+	uniforms.uCurve.value.set(curve.knee, curve.exponent, curve.gain)
+	const share = anchorWeightOf(curve)
+	uniforms.uSplineShare.value = share
+	if (share > 0 && curve.anchors !== undefined) {
+		const { u, y, m } = anchorSpline(curve.knee, curve.anchors)
+		if (u.length > BELT_SPLINE_NODES) {
+			throw new Error(
+				`belts: ${u.length - 1} anchors, the shader takes ${BELT_SPLINE_NODES - 1}`,
+			)
+		}
+		uniforms.uSplineCount.value = u.length
+		for (let k = 0; k < u.length; k++) {
+			uniforms.uSplineU.value[k] = u[k]
+			uniforms.uSplineY.value[k] = y[k]
+			uniforms.uSplineM.value[k] = m[k]
+		}
+		const last = u.length - 1
+		uniforms.uSplineEnd.value.set(u[last], y[last], m[last])
+	}
 	const { anchors, weights } = frame.frameBlend
 	for (let k = 0; k < uniforms.uAnchorWeight.value.length; k++) {
 		const a = anchors[k] ?? root

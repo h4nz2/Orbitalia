@@ -11,11 +11,15 @@
  */
 import { FRAME_BLEND_SLOTS } from "../scene/simFrame"
 
+/** Nodes of an anchored orbitDistance curve the shader takes: the knee and up to 11 anchors (Poster has 8). */
+export const BELT_SPLINE_NODES = 12
+
 export const beltVertexShader = /* glsl */ `
 #include <common>
 #include <logdepthbuf_pars_vertex>
 
 #define BELT_FRAME_SLOTS ${FRAME_BLEND_SLOTS}
+#define BELT_SPLINE_NODES ${BELT_SPLINE_NODES}
 
 // per dot: semi-major axis (km), eccentricity, mean motion (rad/day), mean anomaly at J2000 (rad)
 attribute vec4 aOrbit;
@@ -26,12 +30,41 @@ uniform float uDays;
 // the root's drawn position relative to the render origin (scene units)
 uniform vec3 uRootRender;
 uniform float uRootRadiusKm;
-// the orbitDistance curve: knee, exponent, gain
+// the orbitDistance curve: knee, exponent, gain (the power law)
 uniform vec3 uCurve;
+// its anchored part (#54, Poster; anchoredDistance in src/sim/scale.ts): the share
+// (0: the power law alone), the nodes (log true distance, drawn distance, slope)
+// and the last one, which the curve goes on from in a straight line
+uniform float uSplineShare;
+uniform int uSplineCount;
+uniform float uSplineU[BELT_SPLINE_NODES];
+uniform float uSplineY[BELT_SPLINE_NODES];
+uniform float uSplineM[BELT_SPLINE_NODES];
+uniform vec3 uSplineEnd;
 uniform vec3 uAnchorRender[BELT_FRAME_SLOTS];
 uniform vec3 uAnchorTrue[BELT_FRAME_SLOTS];
 uniform float uAnchorWeight[BELT_FRAME_SLOTS];
 uniform float uPointSize;
+
+// the monotone cubic through the nodes, in the log of the distance (x > knee)
+float beltSpline(float x) {
+	float v = log(x);
+	if (v >= uSplineEnd.x) return uSplineEnd.y + uSplineEnd.z * (v - uSplineEnd.x);
+	for (int k = 0; k < BELT_SPLINE_NODES - 1; k++) {
+		if (k + 1 >= uSplineCount) break;
+		if (v < uSplineU[k + 1]) {
+			float h = uSplineU[k + 1] - uSplineU[k];
+			float t = (v - uSplineU[k]) / h;
+			float t2 = t * t;
+			float t3 = t2 * t;
+			return (2.0 * t3 - 3.0 * t2 + 1.0) * uSplineY[k]
+				+ (t3 - 2.0 * t2 + t) * h * uSplineM[k]
+				+ (-2.0 * t3 + 3.0 * t2) * uSplineY[k + 1]
+				+ (t3 - t2) * h * uSplineM[k + 1];
+		}
+	}
+	return uSplineEnd.y;
+}
 
 // displayOffset of a true offset (km) around a body of the root's size, display km
 vec3 beltMapped(vec3 v) {
@@ -40,6 +73,10 @@ vec3 beltMapped(vec3 v) {
 	float x = d / uRootRadiusKm;
 	float knee = uCurve.x;
 	float f = x <= knee ? x : knee * (1.0 + uCurve.z * (pow(x / knee, uCurve.y) - 1.0));
+	if (x > knee && uSplineShare > 0.0) {
+		float s = beltSpline(x);
+		f = uSplineShare >= 1.0 ? s : pow(f, 1.0 - uSplineShare) * pow(s, uSplineShare);
+	}
 	return v * (uRootRadiusKm * f / d);
 }
 

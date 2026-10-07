@@ -681,23 +681,25 @@
 				"simple": "Echte Größen"
 			},
 			"what": {
-				"standard": "Normalerweise zeichnet die Szene die Welten größer und näher beieinander, damit du sie sehen kannst; ein Klick zeigt echte Größen und echte Abstände.",
-				"simple": "Normalerweise sind die Planeten viel zu groß gezeichnet. Ein Klick zeigt, wie klein sie wirklich sind."
+				"standard": "Normalerweise zeichnet die Szene die Welten größer und näher beieinander, damit du sie sehen kannst; ein Klick zeigt echte Größen und echte Abstände, ein anderer das Poster, wie im Klassenzimmer, mit jedem Planeten groß genug zum Erkennen.",
+				"simple": "Normalerweise sind die Planeten viel zu groß gezeichnet. Ein Klick zeigt, wie klein sie wirklich sind. Ein anderer macht sie groß wie auf einem Poster."
 			},
 			"why": {
-				"standard": "Im echten Maßstab verschwinden die Planeten im leeren Raum: die überraschendste Lektion der App. Ein Satz sagt immer, wie weit das Bild von der Wirklichkeit entfernt ist.",
+				"standard": "Im echten Maßstab verschwinden die Planeten im leeren Raum: die überraschendste Lektion der App. Ein Satz sagt immer, wie weit das Bild von der Wirklichkeit entfernt ist. Das Poster schummelt in die andere Richtung: Größen 5- bis 60-mal zu groß, Abstände 50- bis 500-mal zu klein.",
 				"simple": "In echter Größe kannst du die Planeten nicht einmal sehen. Der Weltraum ist sehr, sehr leer!"
 			},
 			"how": {
 				"standard": [
-					"Drücke unten rechts auf „Maßstab“ (der Knopf nennt den Maßstab im Bild) und klicke auf „Echter Maßstab“, „Schulbuch“ oder „Alles sichtbar“, oder drücke S.",
+					"Drücke unten rechts auf „Maßstab“ (der Knopf nennt den Maßstab im Bild) und klicke auf „Echter Maßstab“, „Schulbuch“, „Alles sichtbar“ oder „Poster“, oder drücke S.",
 					"Die Schalter „Größen“ und „Abstände“ ändern immer nur eine Schummelei auf einmal.",
+					"„Poster“ zeigt alle acht Planeten in der richtigen Reihenfolge und in ihren eigenen Farben, Saturn mit seinen Ringen, keiner berührt die Bahn eines anderen. Die kleineren Monde sind dort ausgeblendet, weil sie keinen Platz haben; die Schalter „Größen“ und „Abstände“ führen zurück zu den anderen Maßstäben.",
 					"Im echten Maßstab zeigen die Punkte, wo die Planeten sind; schalte „Markierungen“ (unter „Ebenen“) aus, um zu sehen, wie wenig übrig bleibt."
 				],
 				"simple": [
 					"Drück unten rechts auf „Maßstab“.",
 					"Klick auf „Echter Maßstab“.",
-					"Wo sind die Planeten hin? Die Punkte zeigen, wo sie sind."
+					"Wo sind die Planeten hin? Die Punkte zeigen, wo sie sind.",
+					"Klick auf „Poster“, dann siehst du alle Planeten groß auf einmal. Das ist das am wenigsten echte Bild!"
 				]
 			}
 		},
