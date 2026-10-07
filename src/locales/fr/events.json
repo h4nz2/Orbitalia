@@ -1,6 +1,9 @@
 {
 	"solar1999": {
-		"title": "Éclipse totale de Soleil sur l’Europe",
+		"title": {
+			"simple": "Éclipse de Soleil sur l’Europe",
+			"standard": "Éclipse totale de Soleil sur l’Europe"
+		},
 		"where": "De la Cornouailles à la France, l’Allemagne, l’Autriche, la Hongrie et la Roumanie, jusqu’en Turquie, en Iran et en Inde",
 		"look": {
 			"simple": "L’ombre de la Lune est une petite tache sombre sur l’Europe. Partout dans cette tache, il a fait nuit pendant deux minutes.",
@@ -12,13 +15,16 @@
 		"title": "La grande éclipse américaine",
 		"where": "À travers les États-Unis, de l’Oregon à la Caroline du Sud",
 		"look": {
-			"simple": "L’ombre de la Lune traverse l’Amérique d’un océan à l’autre. Tu trouves la tache sombre ?",
+			"simple": "L’ombre de la Lune traverse l’Amérique d’un océan à l’autre. Tu trouves la tache sombre ?",
 			"standard": "L’ombre de la Lune a traversé tous les États-Unis d’une côte à l’autre en une heure et demie environ. Cherche la tache sombre de l’ombre ; depuis la Terre, la Lune couvre exactement le Soleil.",
 			"advanced": "L’ombre, large de 115 km au plus, a filé sur les États-Unis à 2 400 à 4 000 km/h ; la totalité a duré jusqu’à 2 min 40 s. La première éclipse totale d’une côte à l’autre aux États-Unis depuis 1918."
 		}
 	},
 	"solar2024": {
-		"title": "Éclipse totale de Soleil",
+		"title": {
+			"simple": "Éclipse de Soleil",
+			"standard": "Éclipse totale de Soleil"
+		},
 		"where": "Le Mexique, les États-Unis et le Canada",
 		"look": {
 			"simple": "La Lune est juste entre le Soleil et la Terre. Son ombre fait une petite tache sombre sur l’Amérique du Nord.",
@@ -27,7 +33,10 @@
 		}
 	},
 	"solar2026": {
-		"title": "Éclipse totale de Soleil sur l’Espagne",
+		"title": {
+			"simple": "Éclipse de Soleil sur l’Espagne",
+			"standard": "Éclipse totale de Soleil sur l’Espagne"
+		},
 		"where": "Le Groenland, l’Islande et le nord de l’Espagne, le soir",
 		"look": {
 			"simple": "L’ombre de la Lune passe sur le Groenland, l’Islande et l’Espagne. En Espagne, le Soleil était déjà bas dans le ciel du soir.",
@@ -36,7 +45,10 @@
 		}
 	},
 	"annular2027": {
-		"title": "Éclipse annulaire de Soleil : un anneau de feu",
+		"title": {
+			"simple": "Éclipse de Soleil : un anneau de feu",
+			"standard": "Éclipse annulaire de Soleil : un anneau de feu"
+		},
 		"where": "Le Chili, l’Argentine et l’Uruguay, puis l’Afrique de l’Ouest",
 		"look": {
 			"simple": "Cette fois, la Lune est un peu trop petite pour couvrir tout le Soleil. Un anneau de Soleil brillant reste autour d’elle.",
@@ -45,25 +57,34 @@
 		}
 	},
 	"solar2027": {
-		"title": "L’éclipse du siècle",
+		"title": {
+			"simple": "Une très longue éclipse de Soleil",
+			"standard": "L’éclipse du siècle"
+		},
 		"where": "Le sud de l’Espagne, l’Afrique du Nord, l’Égypte et l’Arabie saoudite",
 		"look": {
-			"simple": "La prochaine grande éclipse totale ! Près de Louxor, en Égypte, le jour devient nuit pendant plus de six minutes.",
+			"simple": "La prochaine grande éclipse totale ! Près de Louxor, en Égypte, le jour devient nuit pendant plus de six minutes.",
 			"standard": "La Lune est proche de la Terre et la Terre loin du Soleil, alors la Lune paraît particulièrement grande : la totalité dure plus de six minutes près de Louxor, la plus longue sur terre jusqu’en 2114.",
 			"advanced": "Lune près du périgée, Terre près de l’aphélie : le diamètre apparent de la Lune dépasse celui du Soleil de 8 %. L’ombre, large de 258 km au plus, donne 6 min 23 s de totalité près de Louxor."
 		}
 	},
 	"lunar2018": {
-		"title": "La plus longue éclipse totale de Lune du siècle",
+		"title": {
+			"simple": "La plus longue éclipse de Lune depuis très longtemps",
+			"standard": "La plus longue éclipse totale de Lune du siècle"
+		},
 		"where": "L’Europe, l’Afrique, l’Asie et l’Australie",
 		"look": {
-			"simple": "La Lune est dans l’ombre de la Terre. Elle ne devient pas noire : elle devient rouge foncé.",
+			"simple": "La Lune est dans l’ombre de la Terre. Elle ne devient pas noire : elle devient rouge foncé.",
 			"standard": "La Lune est passée en plein milieu de l’ombre de la Terre : la totalité a duré 1 heure 43 minutes. Elle brille en rouge : de la lumière du Soleil déviée par l’air de la Terre, un anneau de tous les levers et couchers de Soleil de la planète.",
 			"advanced": "La Lune était près de l’apogée, lente, et a traversé l’ombre près de son centre : 103 minutes de totalité, la plus longue du XXIe siècle. Mars, à l’opposition la même nuit, brillait à côté."
 		}
 	},
 	"lunar2025mar": {
-		"title": "Éclipse totale de Lune : une lune de sang",
+		"title": {
+			"simple": "Éclipse de Lune : une Lune rouge",
+			"standard": "Éclipse totale de Lune : une lune de sang"
+		},
 		"where": "Les Amériques",
 		"look": {
 			"simple": "Pleine Lune, et la Terre est juste entre le Soleil et la Lune. La Lune devient rouge.",
@@ -72,7 +93,10 @@
 		}
 	},
 	"lunar2025sep": {
-		"title": "Éclipse totale de Lune",
+		"title": {
+			"simple": "Éclipse de Lune",
+			"standard": "Éclipse totale de Lune"
+		},
 		"where": "L’Asie et l’Australie ; l’Europe et l’Afrique au lever de la Lune",
 		"look": {
 			"simple": "La Lune glisse dans l’ombre de la Terre et devient rouge.",
@@ -81,7 +105,10 @@
 		}
 	},
 	"lunar2026aug": {
-		"title": "Éclipse partielle de Lune",
+		"title": {
+			"simple": "Éclipse de presque toute la Lune",
+			"standard": "Éclipse partielle de Lune"
+		},
 		"where": "Les Amériques, l’Europe et l’Afrique",
 		"look": {
 			"simple": "La Lune entre presque entièrement dans l’ombre de la Terre, mais une fine tranche reste brillante.",
@@ -90,16 +117,22 @@
 		}
 	},
 	"lunar2028dec": {
-		"title": "Une lune de sang le soir du Nouvel An",
+		"title": {
+			"simple": "Une Lune rouge le soir du Nouvel An",
+			"standard": "Une lune de sang le soir du Nouvel An"
+		},
 		"where": "L’Europe, l’Afrique, l’Asie et l’Australie",
 		"look": {
-			"simple": "Le dernier soir de 2028, la Lune devient rouge dans l’ombre de la Terre.",
+			"simple": "Le dernier soir de l’année, la Lune devient rouge dans l’ombre de la Terre.",
 			"standard": "La prochaine éclipse totale de Lune : la pleine Lune entre dans l’ombre de la Terre le soir du Nouvel An et brille en rouge pendant plus d’une heure.",
 			"advanced": "La totalité dure environ 71 minutes. Les éclipses viennent par saisons à environ six mois d’écart, quand la ligne où l’orbite de la Lune croise celle de la Terre pointe vers le Soleil."
 		}
 	},
 	"venusTransit": {
-		"title": "Transit de Vénus",
+		"title": {
+			"simple": "Vénus passe devant le Soleil",
+			"standard": "Transit de Vénus"
+		},
 		"where": "Le Pacifique, l’Asie et l’Australie ; l’Amérique du Nord le soir",
 		"look": {
 			"simple": "Vénus passe devant le Soleil. Depuis la Terre, c’est un petit point noir sur le Soleil.",
@@ -108,16 +141,22 @@
 		}
 	},
 	"mercury2019": {
-		"title": "Transit de Mercure",
+		"title": {
+			"simple": "Mercure passe devant le Soleil",
+			"standard": "Transit de Mercure"
+		},
 		"where": "Les Amériques ; l’Europe et l’Afrique l’après-midi",
 		"look": {
-			"simple": "La minuscule Mercure passe devant le Soleil. Tu trouves le petit point ?",
+			"simple": "La minuscule Mercure passe devant le Soleil. Tu trouves le petit point ?",
 			"standard": "Mercure traverse le Soleil presque par son centre. Elle est si petite que, depuis la Terre, il faut un télescope avec un filtre solaire pour voir son point noir.",
 			"advanced": "Le disque de Mercure, de 10 secondes d’arc, a traversé le Soleil (1 940 secondes d’arc) en 5 h 29 min. Il y a environ 13 transits de Mercure par siècle, toujours en mai ou en novembre."
 		}
 	},
 	"mercury2032": {
-		"title": "Le prochain transit de Mercure",
+		"title": {
+			"simple": "Mercure passe encore devant le Soleil",
+			"standard": "Le prochain transit de Mercure"
+		},
 		"where": "L’Europe, l’Afrique et l’Asie",
 		"look": {
 			"simple": "La prochaine fois que Mercure passera devant le Soleil.",
@@ -126,19 +165,25 @@
 		}
 	},
 	"nextVenusTransit": {
-		"title": "Le prochain transit de Vénus",
+		"title": {
+			"simple": "Vénus passe encore devant le Soleil",
+			"standard": "Le prochain transit de Vénus"
+		},
 		"where": "L’Asie de l’Est et l’Australie ; l’ouest de l’Amérique du Nord le soir",
 		"look": {
-			"simple": "La prochaine fois que Vénus passera devant le Soleil. Quelqu’un dans cette salle le verra-t-il ?",
+			"simple": "La prochaine fois que Vénus passera devant le Soleil. Quelqu’un dans cette salle le verra-t-il ?",
 			"standard": "Plus d’un siècle après le dernier, Vénus traverse à nouveau le Soleil. L’application ne montre ce futur lointain qu’à peu près : ses orbites sont celles d’aujourd’hui, alors sa Vénus arrive environ cinq heures en retard.",
 			"advanced": "Les éléments orbitaux de l’application sont ceux de l’an 2000 ; en un siècle, la petite dérive de l’orbite de Vénus s’additionne en quelques heures. Le vrai transit dure environ 5 h 40 min."
 		}
 	},
 	"greatConjunction": {
-		"title": "La grande conjonction",
+		"title": {
+			"simple": "Jupiter rencontre Saturne",
+			"standard": "La grande conjonction"
+		},
 		"where": "Partout, bas au sud-ouest après le coucher du Soleil",
 		"look": {
-			"simple": "Jupiter et Saturne semblent presque se toucher. Dans l’espace, ils sont très loin l’un de l’autre !",
+			"simple": "Jupiter et Saturne semblent presque se toucher. Dans l’espace, ils sont très loin l’un de l’autre !",
 			"standard": "Vus de la Terre, Jupiter et Saturne ne sont écartés que d’un cinquième de la largeur de la Lune, du jamais vu depuis 1623. D’en haut, tu vois pourquoi : la Terre, Jupiter et Saturne sont presque alignés, mais Saturne est presque deux fois plus loin que Jupiter.",
 			"advanced": "Écart de 6 minutes d’arc. Jupiter dépasse Saturne tous les 19,9 ans ; la conjonction n’est serrée que près de la ligne où leurs orbites se croisent. Dans l’espace, ils étaient à environ 730 millions de km l’un de l’autre."
 		}
@@ -156,7 +201,7 @@
 		"title": "Une parade de planètes",
 		"where": "Partout, après le coucher du Soleil",
 		"look": {
-			"simple": "Toutes les autres planètes sont en même temps du même côté de notre ciel. D’en haut, elles ne sont pas du tout alignées !",
+			"simple": "Toutes les autres planètes sont en même temps du même côté de notre ciel. D’en haut, elles ne sont pas du tout alignées !",
 			"standard": "Les sept autres planètes étaient en même temps dans le ciel du soir, étalées d’un seul côté du ciel à partir du Soleil. Dans l’espace, elles ne sont jamais alignées : passe de la vue d’en haut à la vue depuis la Terre pour voir la différence.",
 			"advanced": "« Alignées » veut dire ici à moins d’environ 120° les unes des autres le long de l’écliptique, vues de la Terre. Mercure et Saturne étaient bas dans le crépuscule, Uranus et Neptune demandent des jumelles ou un télescope."
 		}
@@ -180,7 +225,10 @@
 		}
 	},
 	"marsClosest": {
-		"title": "Mars au plus près depuis 60 000 ans",
+		"title": {
+			"simple": "Mars au plus près",
+			"standard": "Mars au plus près depuis 60 000 ans"
+		},
 		"where": "Partout, toute la nuit",
 		"look": {
 			"simple": "Mars vient tout près de la Terre. Au télescope, elle paraît plus grande que depuis très longtemps.",
@@ -192,16 +240,19 @@
 		"title": "Mars proche de la Terre, mais lointaine cette fois",
 		"where": "Partout, toute la nuit",
 		"look": {
-			"simple": "La Terre dépasse encore Mars, mais cette fois Mars est loin. Compare avec 2003 !",
+			"simple": "La Terre dépasse encore Mars. Mais cette fois, Mars reste loin, alors elle paraît petite. Compare avec Mars au plus près !",
 			"standard": "Tous les 26 mois, la Terre double Mars. Cette fois, Mars est près du bout le plus lointain de son orbite : elle reste à 101 millions de km et paraît petite. Compare la vue depuis la Terre avec 2003.",
 			"advanced": "Une opposition aphélique : le disque de Mars ne fait que 14 secondes d’arc. L’orbite de Mars est excentrique (0,093), les rapprochements vont donc de 55 à 101 millions de km."
 		}
 	},
 	"mars2035": {
-		"title": "Le prochain grand rapprochement de Mars",
+		"title": {
+			"simple": "Mars revient tout près",
+			"standard": "Le prochain grand rapprochement de Mars"
+		},
 		"where": "Partout, toute la nuit",
 		"look": {
-			"simple": "Mars vient presque aussi près qu’en 2003. Elle brille en rouge toute la nuit.",
+			"simple": "Mars revient tout près, presque aussi près que possible. Elle brille en rouge vif toute la nuit.",
 			"standard": "La prochaine fois que la Terre double Mars près de son point le plus proche du Soleil : 56,9 millions de km, presque aussi près qu’en 2003.",
 			"advanced": "Les oppositions périhéliques reviennent tous les 15 ou 17 ans ; celle-ci est la meilleure entre 2003 et 2050."
 		}
@@ -216,16 +267,22 @@
 		}
 	},
 	"saturnEdgeOn2025": {
-		"title": "Les anneaux de Saturne par la tranche",
+		"title": {
+			"simple": "Les anneaux de Saturne vus de côté",
+			"standard": "Les anneaux de Saturne par la tranche"
+		},
 		"where": "Nulle part, hélas : Saturne était trop près du Soleil",
 		"look": {
-			"simple": "On voit les anneaux de Saturne exactement de côté, et ils disparaissent presque. Ils sont très, très fins !",
+			"simple": "On voit les anneaux de Saturne exactement de côté, et ils disparaissent presque. Ils sont très, très fins !",
 			"standard": "La Terre traverse le plan des anneaux de Saturne : vus par la tranche, des anneaux larges de 270 000 km se réduisent à un trait fin. Regarde d’au-dessus des anneaux, puis depuis la Terre.",
 			"advanced": "Les anneaux principaux de Saturne ne font le plus souvent qu’une dizaine de mètres d’épaisseur. La Terre traverse leur plan deux fois par année de Saturne, qui dure 29,5 ans ; en mars 2025, Saturne n’était qu’à environ 10° du Soleil."
 		}
 	},
 	"saturnEdgeOn2038": {
-		"title": "Les anneaux de Saturne à nouveau par la tranche",
+		"title": {
+			"simple": "Les anneaux de Saturne de nouveau vus de côté",
+			"standard": "Les anneaux de Saturne à nouveau par la tranche"
+		},
 		"where": "Bas dans l’aube",
 		"look": {
 			"simple": "Les anneaux de Saturne nous montrent de nouveau leur tranche et disparaissent presque.",
@@ -237,7 +294,7 @@
 		"title": "Galilée voit les lunes de Jupiter",
 		"where": "Padoue, Italie, avec une petite lunette",
 		"look": {
-			"simple": "Galilée pointe sa lunette vers Jupiter et voit de petites étoiles à côté. Ce sont des lunes !",
+			"simple": "Galilée pointe sa lunette vers Jupiter et voit de petites étoiles à côté. Ce sont des lunes !",
 			"standard": "Les premières lunes jamais découvertes autour d’une autre planète. La lunette de Galilée ne grossissait qu’environ 20 fois ; regarde depuis la Terre dans un champ étroit comme le sien. Pour une date si ancienne, les lunes de l’application ne sont pas à leur place exacte.",
 			"advanced": "Jupiter était près de l’opposition. Galilée a vu trois « étoiles » le 7 janvier 1610 et une quatrième quelques jours plus tard ; qu’elles suivent Jupiter a montré que tout ne tourne pas autour de la Terre."
 		}
@@ -246,7 +303,7 @@
 		"title": "Découverte d’Uranus",
 		"where": "Bath, Angleterre",
 		"look": {
-			"simple": "William Herschel trouve une nouvelle planète avec son télescope. Personne ne savait qu’elle était là !",
+			"simple": "William Herschel trouve une nouvelle planète avec son télescope. Personne ne savait qu’elle était là !",
 			"standard": "La première planète inconnue des Anciens. Au télescope, Herschel a vu un minuscule disque, pas un point comme une étoile.",
 			"advanced": "Uranus est tout juste visible à l’œil nu et avait déjà été cataloguée comme une étoile ; son disque de 3,6 secondes d’arc et son lent mouvement l’ont trahie."
 		}
@@ -255,7 +312,7 @@
 		"title": "Découverte de Neptune",
 		"where": "Berlin, Allemagne",
 		"look": {
-			"simple": "Neptune a été trouvée par le calcul, avant que quiconque la voie !",
+			"simple": "Neptune a été trouvée par le calcul, avant que quiconque la voie !",
 			"standard": "Uranus ne se déplaçait pas tout à fait comme prévu. Le Verrier a calculé d’où une planète invisible devait la tirer, et Galle y a trouvé Neptune dès la première nuit.",
 			"advanced": "Neptune a été trouvée à moins de 1° environ de la position prédite par Le Verrier ; son disque ne fait que 2,3 secondes d’arc."
 		}
@@ -264,7 +321,7 @@
 		"title": "Lancement de Spoutnik 1",
 		"where": "Baïkonour, Kazakhstan",
 		"look": {
-			"simple": "Le premier satellite tourne autour de la Terre. L’ère spatiale commence !",
+			"simple": "Le premier satellite tourne autour de la Terre. C’est une petite boule de métal que des gens ont envoyée dans l’espace. L’aventure de l’espace commence !",
 			"standard": "Le premier satellite artificiel ouvre l’ère spatiale. Il faisait le tour de la Terre en 96 minutes, beaucoup trop près et trop petit pour être dessiné à cette échelle.",
 			"advanced": "Spoutnik 1 a tourné pendant trois mois entre environ 215 et 940 km d’altitude. Les satellites artificiels ne sont pas des lunes : l’application ne les dessine pas."
 		}
@@ -273,7 +330,7 @@
 		"title": "Premiers pas sur la Lune",
 		"where": "La mer de la Tranquillité, sur la Lune",
 		"look": {
-			"simple": "Apollo 11 se pose sur la Lune. Depuis la Terre, la Lune est un croissant dans le ciel du soir.",
+			"simple": "Apollo 11 se pose sur la Lune. Depuis la Terre, la Lune est dans le ciel du soir, et moins de la moitié est éclairée.",
 			"standard": "Apollo 11 se pose sur la Lune. L’alunissage a eu lieu juste après le lever du Soleil sur le site, pour que le sol ne soit pas trop chaud. Depuis la Terre, la Lune était un croissant.",
 			"advanced": "Sur le site de la mer de la Tranquillité, le Soleil était à environ 10° de hauteur ; les longues ombres rendaient le relief facile à lire. La Lune avait environ 6 jours."
 		}
@@ -289,7 +346,10 @@
 	},
 	"voyagerNeptune": {
 		"title": "Voyager 2 atteint Neptune",
-		"where": "À 4,5 milliards de km de la Terre",
+		"where": {
+			"simple": "Près de Neptune, très, très loin de la Terre",
+			"standard": "À 4,5 milliards de km de la Terre"
+		},
 		"look": {
 			"simple": "Après douze ans, Voyager 2 passe près de Neptune. Personne n’y est retourné depuis.",
 			"standard": "Douze ans après son lancement : la seule visite que Neptune ait jamais reçue. Le losange turquoise est Voyager 2, à seulement 29 240 km du centre de Neptune.",
