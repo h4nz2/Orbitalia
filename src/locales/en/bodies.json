@@ -3,15 +3,16 @@
 		"name": "Sun",
 		"tagline": "Our star",
 		"description": {
-			"simple": "The Sun is a star, just like the stars you see at night. It only looks so big and bright because it is so close to us. The Sun is a giant ball of glowing hot gas. It gives us light and warmth, and without it there would be no life on Earth.",
+			"simple": "The Sun is a star, like the stars you see at night. It looks so big and bright because it is so close to us. The Sun is a giant ball of hot, glowing gas. It gives us light and keeps us warm. Without the Sun, nothing could live on Earth.",
 			"standard": "The Sun is the star at the centre of our solar system. It is a huge ball of hot gas, mostly hydrogen and helium, and it holds more than 99.8 % of all the mass in the solar system. Deep in its core, hydrogen is fused into helium, releasing the energy that reaches us as light and heat about 8 minutes later. Its gravity keeps all the planets in their orbits.",
 			"advanced": "The Sun is a G-type main-sequence star (G2V), about 4.6 billion years old and roughly halfway through its hydrogen-burning life. In its core, at about 15 million °C, nuclear fusion turns some 600 million tonnes of hydrogen into helium every second, converting about 4 million tonnes of mass into energy. That energy needs many thousands of years to work its way out through the radiative and convective zones, then crosses the 150 million km to Earth in about 8 minutes 20 seconds. The Sun rotates differentially: about 25 days at the equator but around 35 days near the poles."
 		},
 		"facts": {
 			"simple": [
-				"About 1.3 million Earths would fit inside the Sun.",
+				"The Sun is so big that all the planets together would fit inside it.",
 				"Sunlight needs about 8 minutes to reach us.",
-				"Never look straight at the Sun – it can hurt your eyes."
+				"The Sun is much hotter than any fire on Earth.",
+				"Never look straight at the Sun. It can hurt your eyes."
 			],
 			"standard": [
 				"The Sun is about 109 times as wide as Earth.",
@@ -28,7 +29,7 @@
 		},
 		"comparisons": {
 			"simple": [
-				"If Earth were a football, the Sun would be as tall as an eight-storey building."
+				"If Earth were an orange, the Sun would be as tall as a house."
 			],
 			"standard": [
 				"If the Sun were a beach ball 1 m across, Earth would be a pea 9 mm across about 107 m away."
@@ -42,15 +43,15 @@
 		"name": "Mercury",
 		"tagline": "The smallest and fastest planet",
 		"description": {
-			"simple": "Mercury is the smallest planet and the closest one to the Sun. It is a grey, rocky ball full of craters, a bit like our Moon. It races around the Sun faster than any other planet. In the daytime it is hot enough to melt lead, but at night it gets freezing cold.",
+			"simple": "Mercury is the smallest planet. It is also the closest one to the Sun. It is a grey ball of rock, a bit like our Moon. It is full of round holes from crashing space rocks. Mercury races around the Sun faster than any other planet. In the daytime it is hotter than an oven. At night it is colder than any freezer.",
 			"standard": "Mercury is the smallest planet and the one closest to the Sun, circling it once every 88 days. It has almost no atmosphere to trap heat, so its surface swings from about 430 °C in daylight to about −180 °C at night. Its grey, cratered surface looks a lot like our Moon. Mercury has no moons.",
 			"advanced": "Mercury orbits the Sun at an average distance of 0.39 AU on the most eccentric planetary orbit (e = 0.21). It spins exactly three times for every two orbits – a 3:2 spin–orbit resonance – so one solar day there lasts 176 Earth days, two full Mercury years. An iron core reaching out to about 85 % of its radius gives Mercury the second-highest density of any planet and a weak global magnetic field. Its thin exosphere cannot hold heat, and the permanently shadowed floors of polar craters hide water ice."
 		},
 		"facts": {
 			"simple": [
-				"A year on Mercury lasts only 88 days.",
-				"Mercury has no moons.",
-				"It is only a little bigger than our Moon."
+				"A year on Mercury lasts less than 3 of our months.",
+				"On Mercury, the time from one sunrise to the next is longer than its whole year!",
+				"Mercury has no moons."
 			],
 			"standard": [
 				"Mercury is the fastest planet, orbiting the Sun at about 47 km per second.",
@@ -66,7 +67,7 @@
 		},
 		"comparisons": {
 			"simple": [
-				"If Earth were a football, Mercury would be about as big as an orange."
+				"If Earth were an orange, Mercury would be a walnut. Our Moon would be a cherry, not much smaller."
 			],
 			"standard": ["About 18 Mercurys would fit inside Earth."],
 			"advanced": [
@@ -78,14 +79,14 @@
 		"name": "Venus",
 		"tagline": "The hottest planet",
 		"description": {
-			"simple": "Venus is almost the same size as Earth, but it is a terrible place to visit. Thick, poisonous clouds wrap around it and trap the Sun’s heat. That makes Venus the hottest planet of all – even hotter than Mercury. You can often see it shining brightly in the evening or morning sky.",
+			"simple": "Venus is almost as big as Earth. But you could never live there. Thick clouds cover it like a heavy blanket and keep the heat in. So Venus is the hottest planet of all, hotter than an oven. It is even hotter than Mercury, which is closer to the Sun. You can often see Venus shining brightly in the evening or morning sky.",
 			"standard": "Venus is nearly Earth’s twin in size, but its thick carbon dioxide atmosphere creates a runaway greenhouse effect. The surface is about 465 °C – hotter than Mercury, although Venus is almost twice as far from the Sun – and the air pressure is about 90 times that on Earth. Clouds of sulfuric acid hide the surface from view. After the Moon, Venus is the brightest natural object in the night sky.",
 			"advanced": "Venus has 95 % of Earth’s diameter and 82 % of its mass, yet it evolved very differently. A dense CO₂ atmosphere with a surface pressure of about 92 bar drives a runaway greenhouse effect that keeps the surface near 465 °C, day and night, from pole to equator. Venus rotates retrograde and very slowly: one sidereal rotation takes 243 Earth days, longer than its 225-day year, so a solar day lasts about 117 Earth days. Radar maps from the Magellan orbiter revealed a volcanic surface only a few hundred million years old."
 		},
 		"facts": {
 			"simple": [
-				"Venus spins the other way round than most planets, so there the Sun rises in the west.",
-				"A day on Venus is longer than its year!",
+				"Venus spins the other way round from most planets. There, the Sun rises in the west.",
+				"A day on Venus is longer than its whole year!",
 				"Venus has no moons."
 			],
 			"standard": [
@@ -101,7 +102,7 @@
 		},
 		"comparisons": {
 			"simple": [
-				"If Earth were a football, Venus would be a football too – just a tiny bit smaller."
+				"If Earth were an orange, Venus would be an orange too, just a little smaller."
 			],
 			"standard": [
 				"If Earth were a 22 cm football, Venus would be 21 cm across."
@@ -115,15 +116,15 @@
 		"name": "Earth",
 		"tagline": "Our home",
 		"description": {
-			"simple": "Earth is our home and the only planet where we know there is life. Most of it is covered by oceans, which is why it looks blue from space. Earth spins once a day, which gives us day and night. It takes one year to travel all the way around the Sun.",
+			"simple": "Earth is our home. It is the only planet where we know there is life. Most of Earth is covered by sea, so it looks blue from space. Earth spins round once a day, and that gives us day and night. It takes one year to go all the way around the Sun.",
 			"standard": "Earth is the third planet from the Sun and the only world known to have life. Liquid water covers about 71 % of its surface, and an atmosphere of nitrogen and oxygen protects us and keeps the temperature mild. Earth’s axis is tilted by about 23.4°, which gives us the seasons. It orbits the Sun at an average distance of about 150 million km, once every 365.25 days.",
 			"advanced": "Earth is the largest and densest of the four rocky planets (5.51 g/cm³). Its liquid iron outer core generates a magnetic field that deflects the solar wind, and plate tectonics keeps recycling its crust. The 23.4° tilt of its axis, stabilised by our unusually large Moon, produces the seasons. Earth orbits at 1 AU (149.6 million km) with an eccentricity of 0.017, so its distance from the Sun varies by only about 3 % – and Earth is closest to the Sun in early January."
 		},
 		"facts": {
 			"simple": [
-				"About 71 out of every 100 parts of Earth’s surface are water.",
-				"Earth has one moon – we simply call it the Moon.",
-				"Earth is the only planet not named after a god."
+				"Earth has more than twice as much sea as land.",
+				"Earth has one moon. We simply call it the Moon.",
+				"Earth is the only planet that is not named after a god."
 			],
 			"standard": [
 				"Earth travels around the Sun at about 30 km per second – more than 100,000 km/h.",
@@ -138,7 +139,8 @@
 		},
 		"comparisons": {
 			"simple": [
-				"Driving around the equator at 100 km/h without a single stop would take about 17 days."
+				"If Earth were an orange, the Sun would be as tall as a house and about 9 football pitches away.",
+				"Walking all the way around Earth, without ever stopping, would take you about a year."
 			],
 			"standard": [
 				"A plane flying at 900 km/h would need about 19 years to reach the Sun."
@@ -152,15 +154,16 @@
 		"name": "Mars",
 		"tagline": "The red planet",
 		"description": {
-			"simple": "Mars is called the red planet because its ground is covered in rusty red dust. It is smaller and much colder than Earth. Mars has the tallest volcano we know of, and two tiny moons. Robots called rovers drive around on Mars and explore it for us.",
+			"simple": "Mars is called the red planet. Its ground is covered in rusty red dust. Mars is smaller than Earth and much colder. It has the tallest volcano we know of, and two tiny moons. Robots on wheels, called rovers, drive around on Mars and explore it for us.",
 			"standard": "Mars is the fourth planet from the Sun, about half as wide as Earth. Iron oxide – rust – in its dust gives it its red colour. Mars has seasons and polar ice caps, but its atmosphere is very thin and the average temperature is about −60 °C. It has the largest volcano in the solar system, Olympus Mons, and a canyon, Valles Marineris, about 4,000 km long – roughly the distance from Lisbon to Moscow.",
 			"advanced": "Mars has about 53 % of Earth’s diameter and 38 % of its surface gravity. Its thin CO₂ atmosphere, with a surface pressure below 1 % of Earth’s, cannot keep the planet warm, and the average temperature is around −60 °C. Dry river valleys, ancient lake beds and minerals that form only in water show that liquid water once flowed on its surface. With an axial tilt of 25.2° and a day of 24 h 37 min, Mars has days and seasons much like Earth’s, but each season lasts about twice as long because a Martian year is 687 Earth days."
 		},
 		"facts": {
 			"simple": [
-				"A day on Mars is only about 40 minutes longer than a day on Earth.",
-				"Mars has two small moons, Phobos and Deimos.",
-				"On Mars you would weigh less than half as much as on Earth."
+				"A day on Mars is only about 40 minutes longer than a day at home.",
+				"A year on Mars lasts almost two of our years.",
+				"On Mars you would weigh less than half as much as at home.",
+				"Its biggest volcano is more than twice as tall as the highest mountain on Earth."
 			],
 			"standard": [
 				"Olympus Mons is about 22 km high – two and a half times as tall as Mount Everest.",
@@ -174,9 +177,7 @@
 			]
 		},
 		"comparisons": {
-			"simple": [
-				"If Earth were a football, Mars would be about as big as a grapefruit."
-			],
+			"simple": ["If Earth were an orange, Mars would be a table tennis ball."],
 			"standard": ["More than six Mars would fit inside Earth."],
 			"advanced": [
 				"Seen from Mars, the Sun looks only about two thirds as wide as it does from Earth."
@@ -187,14 +188,15 @@
 		"name": "Jupiter",
 		"tagline": "The giant of the solar system",
 		"description": {
-			"simple": "Jupiter is the biggest planet – more than 1,300 Earths could fit inside it. It is a giant ball of gas with no solid ground to stand on. Its stripes are bands of clouds, and its Great Red Spot is a storm bigger than the whole Earth. Jupiter has lots and lots of moons.",
+			"simple": "Jupiter is the biggest planet. All the other planets together would fit inside it. Jupiter is a giant ball of gas, with no ground to stand on. Its stripes are bands of clouds. Its Great Red Spot is a storm that is bigger than the whole Earth. Jupiter has lots and lots of moons.",
 			"standard": "Jupiter is the largest planet, 11 times as wide as Earth and more massive than all the other planets put together. This gas giant is made mostly of hydrogen and helium, and its colourful cloud bands are stretched out by fast winds and its rapid spin: a day on Jupiter lasts less than 10 hours. The Great Red Spot is a storm wider than Earth that has raged for more than 150 years. Its four largest moons were discovered by Galileo Galilei in 1610.",
 			"advanced": "Jupiter has 318 Earth masses – about 2.5 times the mass of all the other planets combined. Beneath its cloud tops of ammonia ice, hydrogen and helium are compressed until, deep inside, hydrogen behaves like a liquid metal; currents in this layer generate the strongest planetary magnetic field in the solar system. Jupiter rotates in about 9 h 56 min, the fastest of any planet, which visibly flattens it at the poles. It radiates more heat than it receives from the Sun, left over from its formation and slow contraction."
 		},
 		"facts": {
 			"simple": [
-				"A day on Jupiter lasts less than 10 hours – the shortest day of all the planets.",
-				"Jupiter has thin, dark rings that are very hard to see.",
+				"About 11 Earths side by side would stretch across Jupiter.",
+				"A day on Jupiter lasts less than 10 hours. That is the shortest day of all the planets.",
+				"If you could stand on its clouds, you would weigh more than twice as much as at home.",
 				"Its moon Ganymede is bigger than the planet Mercury."
 			],
 			"standard": [
@@ -210,7 +212,7 @@
 		},
 		"comparisons": {
 			"simple": [
-				"If Earth were a football, Jupiter would be a ball about 2.5 m tall – taller than a grown-up."
+				"If Earth were an orange, Jupiter would be almost as big as an exercise ball."
 			],
 			"standard": ["About 1,321 Earths would fit inside Jupiter."],
 			"advanced": [
@@ -222,15 +224,16 @@
 		"name": "Saturn",
 		"tagline": "The ringed planet",
 		"description": {
-			"simple": "Saturn is famous for its beautiful rings. They are made of billions of pieces of ice and rock, some as small as grains of sand and some as big as a house. Saturn is a giant ball of gas, and it is so light for its size that it would float in water – if you could find a bathtub big enough!",
+			"simple": "Saturn is famous for its beautiful rings. The rings are made of lots and lots of pieces of ice and rock. Some are as small as grains of sand. Some are as big as a house. Saturn is a giant ball of gas. It is so light for its size that it would float in water, if you could find a bathtub big enough!",
 			"standard": "Saturn, the sixth planet, is the second-largest planet and the least dense: on average it is lighter than water. Its bright rings are about 270,000 km wide but generally only about 10 m thick, and they are made of countless pieces of ice and rock. Saturn has more known moons than any other planet, among them Titan, which is bigger than Mercury and has a thick atmosphere.",
 			"advanced": "Saturn has 95 Earth masses but a mean density of only 0.69 g/cm³, the lowest of any planet. Its rapid rotation (about 10 h 33 min) makes it the most flattened planet: its equatorial diameter is about 10 % larger than its polar diameter. The main rings, mostly water ice with a little rock, span about 270,000 km yet are generally only about 10 m thick, and they may be much younger than Saturn itself. The Cassini spacecraft, which orbited Saturn from 2004 to 2017, found a global ocean beneath the ice of the moon Enceladus, venting through geysers at its south pole."
 		},
 		"facts": {
 			"simple": [
-				"Saturn has more moons than any other planet we know.",
-				"A year on Saturn lasts almost 30 Earth years.",
-				"Its biggest moon, Titan, has lakes – not of water, but of liquid methane."
+				"Saturn has more moons than any other planet.",
+				"A year on Saturn lasts almost 30 of our years.",
+				"The rings are very thin. Seen from the side, they almost disappear.",
+				"Its biggest moon, Titan, has lakes, but not lakes of water."
 			],
 			"standard": [
 				"Saturn is about 9.5 times as far from the Sun as Earth.",
@@ -245,7 +248,7 @@
 		},
 		"comparisons": {
 			"simple": [
-				"If Earth were a football, Saturn would be a ball over 2 m tall – and its rings would be about 5 m wide."
+				"If Earth were an orange, Saturn would be a little smaller than an exercise ball. Its rings would be as wide as a grown-up is tall."
 			],
 			"standard": ["More than 750 Earths would fit inside Saturn."],
 			"advanced": [
@@ -257,15 +260,16 @@
 		"name": "Uranus",
 		"tagline": "The planet that rolls on its side",
 		"description": {
-			"simple": "Uranus is a cold, blue-green planet far away from the Sun. It is special because it lies on its side, so it rolls around the Sun like a ball. It takes Uranus 84 years to go once around the Sun. Uranus has thin, dark rings and many moons.",
+			"simple": "Uranus is a cold, blue-green planet, far away from the Sun. It is special because it lies on its side. So it rolls around the Sun like a ball. Something very big may have knocked it over long ago. Uranus has thin, dark rings and many moons.",
 			"standard": "Uranus is the seventh planet, four times as wide as Earth. It is an ice giant: beneath a hydrogen–helium atmosphere lies a thick layer of water, ammonia and methane ices. Methane gas gives it its blue-green colour. Uranus is tipped over by about 98°, so it rolls along its orbit on its side, and each pole has about 42 years of daylight followed by 42 years of darkness. It was the first planet discovered with a telescope, by William Herschel in 1781.",
 			"advanced": "Uranus’s axial tilt of about 98° means that its rings and regular moons orbit almost perpendicular to its orbital plane, and its seasons are the most extreme in the solar system. It rotates retrograde in 17 h 14 min. Unlike the other giant planets, Uranus gives off hardly any internal heat, and its atmosphere holds the coldest temperature measured on any planet, about −224 °C. Its magnetic field is tilted about 59° from the rotation axis and offset from the planet’s centre. So far only one spacecraft, Voyager 2 in 1986, has flown past it."
 		},
 		"facts": {
 			"simple": [
-				"Uranus has 13 rings, but they are thin and dark.",
-				"Its moons are named after characters from plays by William Shakespeare and poems by Alexander Pope.",
-				"Uranus has the coldest air of all the planets."
+				"One trip around the Sun takes Uranus 84 of our years. That is about as long as a long human life.",
+				"Uranus has the coldest air of all the planets.",
+				"Most of its moons are named after people in plays by William Shakespeare.",
+				"Sunlight needs more than two and a half hours to reach Uranus."
 			],
 			"standard": [
 				"A year on Uranus lasts 84 Earth years.",
@@ -280,7 +284,7 @@
 		},
 		"comparisons": {
 			"simple": [
-				"If Earth were a football, Uranus would be as big as a large exercise ball."
+				"If Earth were an orange, Uranus would be a bit bigger than a basketball."
 			],
 			"standard": ["About 63 Earths would fit inside Uranus."],
 			"advanced": ["Sunlight takes about 2 hours 40 minutes to reach Uranus."]
@@ -290,14 +294,15 @@
 		"name": "Neptune",
 		"tagline": "The windiest planet",
 		"description": {
-			"simple": "Neptune is the planet farthest from the Sun. It is a deep blue ice giant, very cold and very windy – its winds are the fastest in the solar system. Neptune is so far away that you cannot see it without a telescope. It takes 165 years to go around the Sun once.",
+			"simple": "Neptune is the planet farthest from the Sun. It is deep blue, very cold and very windy. Its winds are the fastest of all the planets. Neptune is so far away that you need a telescope to see it. One trip around the Sun takes Neptune longer than two long human lives.",
 			"standard": "Neptune is the eighth and most distant planet, about 30 times as far from the Sun as Earth. Like Uranus it is an ice giant, and methane in its atmosphere makes it blue. Neptune has the fastest winds in the solar system, over 2,000 km/h. It was the first planet found by mathematics: astronomers predicted its position from the way it tugged on Uranus and spotted it in 1846.",
 			"advanced": "Neptune orbits at about 30 AU, where sunlight is roughly 900 times weaker than at Earth. Yet it has a strong internal heat source – it radiates about 2.6 times the energy it receives from the Sun – which helps power the fastest winds measured on any planet, up to about 2,100 km/h. Its position was predicted in 1846 by Urbain Le Verrier from disturbances in Uranus’s orbit, and Johann Galle found it within 1° of the prediction. Its largest moon, Triton, orbits backwards (retrograde) and is probably a captured object from the Kuiper Belt."
 		},
 		"facts": {
 			"simple": [
-				"Neptune is the only planet you can never see without a telescope.",
-				"A year on Neptune lasts about 165 Earth years.",
+				"You can never see Neptune with your eyes alone. You need a telescope.",
+				"Sunlight needs about 4 hours to reach Neptune.",
+				"Its winds blow more than twice as fast as a jet plane flies.",
 				"Its biggest moon, Triton, goes around it backwards."
 			],
 			"standard": [
@@ -313,7 +318,8 @@
 		},
 		"comparisons": {
 			"simple": [
-				"If Earth were a football, Neptune would be as big as a large exercise ball – almost the same size as Uranus."
+				"If Earth were an orange, Neptune would be a bit bigger than a basketball, just like Uranus.",
+				"Neptune is 30 times as far from the Sun as Earth is."
 			],
 			"standard": ["About 58 Earths would fit inside Neptune."],
 			"advanced": [
@@ -323,17 +329,21 @@
 	},
 	"moon": {
 		"name": "Moon",
-		"tagline": "Earth’s companion",
+		"tagline": {
+			"simple": "Our neighbour in space",
+			"standard": "Earth’s companion"
+		},
 		"description": {
-			"simple": "The Moon is Earth’s closest neighbour in space. It is a ball of rock covered in grey dust and craters. The Moon does not shine by itself – it reflects light from the Sun. Twelve astronauts have walked on the Moon.",
+			"simple": "The Moon is our closest neighbour in space. It is a ball of rock covered in grey dust. It is full of round holes, called craters, made by crashing space rocks. The Moon does not shine by itself. It shines because sunlight falls on it. Twelve astronauts have walked on the Moon.",
 			"standard": "The Moon is Earth’s only natural satellite, about a quarter as wide as Earth and on average 384,400 km away. It takes about 27.3 days to orbit Earth, and because it spins exactly once in that time, it always shows us the same face. Its gravity causes most of the tides in our oceans. Between 1969 and 1972, twelve Apollo astronauts walked on its surface.",
 			"advanced": "The Moon probably formed about 4.5 billion years ago from debris thrown out when a Mars-sized body collided with the young Earth. It is tidally locked: its rotation and its 27.3-day sidereal orbit are synchronised, so one hemisphere always faces Earth, while the cycle of phases (the synodic month) lasts about 29.5 days. The same tidal interaction slowly transfers angular momentum from Earth’s spin to the Moon’s orbit, lengthening our day and pushing the Moon about 3.8 cm farther away each year."
 		},
 		"facts": {
 			"simple": [
-				"On the Moon you would weigh only about one sixth as much as on Earth.",
-				"The footprints of the astronauts are still there, because there is no wind to blow them away.",
-				"It takes about a month for the Moon to go once around Earth."
+				"On the Moon you could jump six times as high as at home.",
+				"The astronauts’ footprints are still there. There is no wind to blow them away.",
+				"The Moon takes about a month to go once around Earth.",
+				"Astronauts needed three days to fly to the Moon."
 			],
 			"standard": [
 				"Moonlight needs only about 1.3 seconds to reach Earth.",
@@ -348,7 +358,7 @@
 		},
 		"comparisons": {
 			"simple": [
-				"If Earth were a football, the Moon would be a tennis ball about 6.5 m away."
+				"If Earth were an orange, the Moon would be a cherry. It would be 30 oranges away."
 			],
 			"standard": ["About 50 Moons would fit inside Earth."],
 			"advanced": [
@@ -358,17 +368,20 @@
 	},
 	"phobos": {
 		"name": "Phobos",
-		"tagline": "The doomed moon of Mars",
+		"tagline": {
+			"simple": "The moon that is falling",
+			"standard": "The doomed moon of Mars"
+		},
 		"description": {
-			"simple": "Phobos is the bigger of Mars’s two tiny moons. It is a dark, lumpy rock shaped a bit like a potato. Phobos races around Mars so fast that it goes around about three times a day. Very slowly, it is falling toward Mars – and one day it will break apart.",
+			"simple": "Phobos is the bigger of the two tiny moons of Mars. It is a dark, lumpy rock, shaped a bit like a potato. Phobos races around Mars three times every day. Very slowly, it is falling towards Mars. One day, a long time from now, it will break apart.",
 			"standard": "Phobos is a dark, potato-shaped moon only about 22 km across, orbiting just 6,000 km above the surface of Mars. It circles Mars in 7 hours and 39 minutes – faster than the planet turns. So, seen from Mars, it rises in the west and sets in the east, often twice in a single day. Mars’s gravity is slowly pulling it closer, by about 2 m every hundred years, and in roughly 30 to 50 million years Phobos will probably be torn apart into a ring of rubble or crash onto Mars.",
 			"advanced": "Phobos orbits at a semi-major axis of 9,376 km, well inside Mars’s synchronous orbit (about 20,400 km). The tidal bulge it raises on Mars therefore lags behind it and drains its orbital energy, so Phobos spirals inward by about 1.8 cm per year. Within roughly 30–50 million years it should cross the Roche limit, where tidal forces overcome its weak self-gravity: a loosely bound rubble pile would spread into a ring, while a stronger body might hit Mars first. The long parallel grooves across its surface may be early signs of this tidal stress, although some may instead be trails of debris from impacts."
 		},
 		"facts": {
 			"simple": [
-				"Phobos has a giant crater called Stickney that is almost half as wide as the whole moon.",
-				"Seen from Mars, Phobos rises in the west and sets in the east – the opposite of our Sun and Moon.",
-				"On Phobos you would weigh so little that one strong jump could carry you hundreds of metres high."
+				"Phobos has a giant crater, a round hole from a crash, almost half as wide as the whole moon.",
+				"Seen from Mars, Phobos rises in the west and sets in the east. That is the opposite of our Sun and Moon.",
+				"On Phobos you would weigh almost nothing. One strong jump could carry you higher than a skyscraper."
 			],
 			"standard": [
 				"Stickney crater is about 9 km wide – the impact that made it may have nearly shattered Phobos.",
@@ -383,7 +396,8 @@
 		},
 		"comparisons": {
 			"simple": [
-				"A car on a motorway could drive from one end of Phobos to the other in about a quarter of an hour."
+				"A car on a motorway could drive from one end of Phobos to the other in about a quarter of an hour.",
+				"If Earth were an orange, Phobos would be a grain of sand."
 			],
 			"standard": [
 				"Phobos sinks toward Mars by about the height of a door every hundred years – slow, but enough to doom it within some tens of millions of years."
@@ -397,14 +411,14 @@
 		"name": "Deimos",
 		"tagline": "A moon like a star",
 		"description": {
-			"simple": "Deimos is the smaller moon of Mars – only about 12 km across. It is covered in soft, fine dust that fills up its craters, so it looks smooth. From Mars, Deimos is so small and far away that it looks like a bright star. Its name means Terror, and its brother moon Phobos means Fear.",
+			"simple": "Deimos is the smaller moon of Mars. It is tiny: a car could drive across it in less than ten minutes. Soft, fine dust fills up its holes, so it looks smooth. From Mars, Deimos is so small and far away that it looks like a bright star. Its name means Terror. Its brother moon Phobos means Fear.",
 			"standard": "Deimos is a tiny, lumpy moon about 12 km across that orbits Mars every 30 hours at a distance of about 23,500 km. A thick layer of dust fills many of its craters, so it looks much smoother than Phobos. The American astronomer Asaph Hall discovered it in August 1877, a few days before Phobos, and both moons were named after Phobos and Deimos – Fear and Terror – who in Greek myth go into battle with the war god Ares, known to the Romans as Mars. Scientists still debate whether the two moons are captured asteroids or formed from debris thrown up by a giant impact on Mars.",
 			"advanced": "Deimos (about 16 × 12 × 10 km) orbits at 23,463 km, just outside Mars’s synchronous orbit, so tides push it very slowly outward instead of pulling it inward like Phobos. Its 30.3-hour period is only a little longer than a Martian sol, so it drifts very slowly across the sky: it rises in the east and stays above the horizon for more than two days. Both moons are dark and spectrally resemble primitive, carbon-rich asteroids, which suggests capture, but their nearly circular orbits close to Mars’s equatorial plane fit better with formation from a debris disk after a large impact. Japan’s MMX mission is to bring a sample of Phobos back to Earth around 2031 and to observe Deimos along the way, which may settle the question."
 		},
 		"facts": {
 			"simple": [
-				"If you jumped on Deimos, it would take many minutes before you came back down.",
-				"Deimos was discovered in 1877 by an astronomer called Asaph Hall.",
+				"If you jumped on Deimos, you would float for many minutes before you came back down.",
+				"Deimos was found long ago by a scientist called Asaph Hall.",
 				"Deimos takes a little more than one day to go around Mars."
 			],
 			"standard": [
@@ -420,7 +434,8 @@
 		},
 		"comparisons": {
 			"simple": [
-				"Running once around Deimos would be about as far as a marathon."
+				"Running once around Deimos would be about as far as a marathon, the longest running race.",
+				"If Earth were an orange, Deimos would be a speck of dust."
 			],
 			"standard": [
 				"Seen from Mars, Deimos is barely more than a point of light – to an astronaut it would look like a bright star slowly drifting across the sky."
@@ -434,14 +449,14 @@
 		"name": "Io",
 		"tagline": "The volcano moon",
 		"description": {
-			"simple": "Io is the most volcanic place we know of. Hundreds of volcanoes pour out lava and shoot fountains of gas and dust high into the sky. Its yellow, orange and red colours come from sulfur. Jupiter and its other big moons keep squeezing Io, and all that squeezing heats up its inside.",
+			"simple": "Io is a moon of Jupiter. It has more volcanoes than any other place we know. They pour out hot, melted rock. Some shoot fountains of gas and dust high into the sky. Sulfur makes Io yellow, orange and red. Sulfur is a yellow stuff that is also found near volcanoes on Earth. Jupiter and its other big moons keep squeezing Io, and the squeezing heats it up inside.",
 			"standard": "Io is slightly larger than our Moon and is the most volcanically active world known: more than 400 active volcanoes have been found there, some throwing plumes of gas and dust hundreds of kilometres high. The heat does not come from the Sun but from tides. Io’s orbit is locked in step with the moons Europa and Ganymede, which keeps it slightly oval, so Jupiter’s enormous gravity squeezes and stretches Io as its distance changes. Galileo Galilei discovered Io in January 1610, together with Europa, Ganymede and Callisto – the first moons ever found around another planet.",
 			"advanced": "Io is caught in a 1:2:4 Laplace resonance: for every orbit of Ganymede, Europa completes two and Io four. The regular tugs keep Io’s orbit slightly eccentric (e ≈ 0.004), so its distance from Jupiter – and the tidal bulge Jupiter raises – changes during each 42.5-hour orbit, and friction from this constant flexing releases roughly 10¹⁴ W of heat. That heat drives silicate lava eruptions at up to about 1,600 K, hotter than most lava on Earth today, and sulfur-rich plumes up to about 500 km high, resurfacing the moon so quickly that no impact craters have been found. Gas from Io’s volcanoes feeds a doughnut of charged particles around Jupiter, the Io plasma torus."
 		},
 		"facts": {
 			"simple": [
-				"Io’s volcanoes were first spotted in 1979, in pictures taken by the Voyager 1 spacecraft.",
-				"Io has no craters from space rocks, because new lava keeps covering them up.",
+				"Io’s volcanoes were first seen in pictures from the space probe Voyager 1.",
+				"Io has no old holes from crashing space rocks. New lava keeps filling them in.",
 				"Io goes around Jupiter in less than two days."
 			],
 			"standard": [
@@ -457,7 +472,7 @@
 		},
 		"comparisons": {
 			"simple": [
-				"Io is a little bigger than our Moon – but instead of quiet grey dust, it is covered with erupting volcanoes."
+				"If Earth were an orange, Io would be a cherry, a little bigger than our Moon."
 			],
 			"standard": [
 				"Io’s volcanic plumes can rise about 500 km high – higher than the International Space Station orbits above Earth."
@@ -471,14 +486,14 @@
 		"name": "Europa",
 		"tagline": "An ocean under the ice",
 		"description": {
-			"simple": "Europa is a bit smaller than our Moon and is covered in white ice with long reddish-brown cracks. Under the ice there is probably a huge, deep ocean of salty water. The ice sits on top of it like a lid on a pot. Because living things on Earth need water, scientists think Europa is one of the best places to look for life beyond Earth.",
+			"simple": "Europa is a moon of Jupiter. It is a bit smaller than our Moon. It is covered in white ice with long, reddish-brown cracks. Under the ice there is probably a huge, deep sea of salty water. The ice sits on top like a lid on a pot. Living things on Earth need water. So scientists think Europa is one of the best places to look for life.",
 			"standard": "Europa is slightly smaller than our Moon, but beneath its icy shell – probably a few tens of kilometres thick – lies a global ocean of salty liquid water, perhaps around 100 km deep. Tides from Jupiter flex the moon and help keep that ocean from freezing. With water, chemical ingredients and a source of energy, Europa is one of the most promising places to search for life beyond Earth. NASA’s Europa Clipper spacecraft launched in October 2024 and is due to reach Jupiter in 2030 to find out whether Europa could support life.",
 			"advanced": "Magnetometer data from the Galileo spacecraft revealed a magnetic field induced by Jupiter’s rotating field – best explained by an electrically conducting, salty ocean below the ice. The ice shell, estimated at roughly 10–30 km thick, is geologically young, probably only tens of millions of years old, with cracks, ridges and chaos terrain where water or warm ice may have reached the surface. The ocean is thought to lie directly on a rocky seafloor, where reactions between water and rock could supply chemical energy, as at hydrothermal vents on Earth. Europa Clipper will make dozens of close flybys to measure the thickness of the ice, the saltiness of the ocean and the composition of the surface."
 		},
 		"facts": {
 			"simple": [
-				"Europa’s icy surface is one of the smoothest in the solar system – it has hardly any big mountains or craters.",
-				"It is very cold on Europa’s surface: about −160 °C near the equator.",
+				"Europa is one of the smoothest worlds we know. It has hardly any mountains or big holes.",
+				"Europa is much colder than any freezer.",
 				"Europa goes around Jupiter in about three and a half days."
 			],
 			"standard": [
@@ -494,7 +509,8 @@
 		},
 		"comparisons": {
 			"simple": [
-				"Europa’s ocean may be so deep that about ten Mount Everests stacked on top of each other would fit into it."
+				"Europa’s sea may be as deep as ten of the highest mountains on Earth, stacked on top of each other.",
+				"If Earth were an orange, Europa would be a small cherry."
 			],
 			"standard": [
 				"Europa is smaller than our Moon, yet its hidden ocean may hold about twice as much water as all of Earth’s oceans."
@@ -508,14 +524,14 @@
 		"name": "Ganymede",
 		"tagline": "The biggest moon of all",
 		"description": {
-			"simple": "Ganymede is the biggest moon in the whole solar system. It is even bigger than the planet Mercury! Ganymede is made of rock and ice, and deep under its surface there is probably a hidden ocean. It is the only moon we know of that makes its own magnetism, just like Earth does.",
+			"simple": "Ganymede is a moon of Jupiter. It is the biggest moon of all. It is even bigger than the planet Mercury! Ganymede is made of rock and ice. Deep under the ground there is probably a hidden sea. Ganymede is also a giant magnet, just like Earth. No other moon is.",
 			"standard": "Ganymede is the largest moon in the solar system: at 5,268 km across it is wider than the planet Mercury, although it has less than half of Mercury’s mass. It is the only moon known to generate its own magnetic field, which the Galileo spacecraft discovered in 1996. That field produces glowing aurorae, and the way they rock back and forth, observed by the Hubble Space Telescope, revealed a salty ocean hidden deep under the ice. ESA’s JUICE spacecraft, launched in 2023, is due to reach Jupiter in 2031 and go into orbit around Ganymede in 2034.",
 			"advanced": "Ganymede is fully differentiated, with an iron-rich core, a rocky mantle and thick layers of ice and water; convection in its liquid iron core probably drives an intrinsic dipole field of about 720 nT at the equator. This field carves out a small magnetosphere of its own inside Jupiter’s much larger one. In 2015, Hubble showed that Ganymede’s auroral ovals rock less than expected as Jupiter’s field sweeps past, because a conducting salty ocean, thought to lie about 150 km below the surface, induces a secondary field that counteracts the change. JUICE is planned to become the first spacecraft to orbit a moon other than our own, entering orbit around Ganymede in December 2034 to map its magnetic field, interior and ice shell."
 		},
 		"facts": {
 			"simple": [
-				"Ganymede was discovered more than 400 years ago, in 1610, by Galileo Galilei.",
-				"Ganymede has glowing lights near its poles, called aurorae, like the northern lights on Earth.",
+				"Galileo found Ganymede long, long ago, with one of the very first telescopes.",
+				"Ganymede has glowing lights in its sky, like the northern lights on Earth.",
 				"It takes Ganymede about a week to go around Jupiter."
 			],
 			"standard": [
@@ -530,7 +546,10 @@
 			]
 		},
 		"comparisons": {
-			"simple": ["Ganymede is about one and a half times as wide as our Moon."],
+			"simple": [
+				"If Earth were an orange, Ganymede would be a walnut, just like Mercury.",
+				"Ganymede is about one and a half times as wide as our Moon."
+			],
 			"standard": [
 				"Ganymede is bigger than the planet Mercury and even has its own magnetic field with aurorae – a moon that behaves like a small planet."
 			],
@@ -541,16 +560,19 @@
 	},
 	"callisto": {
 		"name": "Callisto",
-		"tagline": "The ancient crater world",
+		"tagline": {
+			"simple": "The old moon full of craters",
+			"standard": "The ancient crater world"
+		},
 		"description": {
-			"simple": "Callisto is Jupiter’s second-biggest moon and almost as big as the planet Mercury. Its dark surface is covered with craters from top to bottom. It has hardly changed for about 4 billion years, so it is like a very old diary of space rocks crashing into it. Callisto is far away from Jupiter’s dangerous radiation, so one day astronauts might build a base there.",
+			"simple": "Callisto is the second-biggest moon of Jupiter. It is almost as big as the planet Mercury. Its dark ground is covered in craters, the round holes left by crashing space rocks. Callisto has hardly changed since long before the dinosaurs. So it is like a very old diary of space rocks. It is far from Jupiter’s dangerous rays, so one day astronauts might build a base there.",
 			"standard": "Callisto is the third-largest moon in the solar system and almost exactly as wide as Mercury. Its surface is so crowded with craters that there is hardly any room left for new ones, and it has changed very little in about 4 billion years, because no volcanoes or moving plates wipe the craters away. Its biggest impact scar, the Valhalla basin, has a bright centre about 600 km wide, surrounded by rings that reach out about 1,800 km from its middle. Because Callisto orbits outside Jupiter’s strongest radiation belts, a NASA study has suggested it as a possible base for future human explorers.",
 			"advanced": "Callisto’s surface is saturated with craters – new impacts mostly erase older ones – and the crater density points to a surface roughly 4 billion years old, the oldest of the Galilean moons. Unlike Io, Europa and Ganymede, Callisto is not part of the Laplace resonance and receives almost no tidal heating; its interior appears to be only partly differentiated, a mixture of rock and ice. Even so, the Galileo spacecraft detected an induced magnetic field that may point to a salty ocean some 150–200 km below the surface. About 1.9 million km from Jupiter, it receives a surface radiation dose of only about 0.1 mSv per day, which is why NASA’s 2003 HOPE study chose Callisto as the target for a possible crewed mission with a surface base."
 		},
 		"facts": {
 			"simple": [
-				"Galileo Galilei discovered Callisto in January 1610, using one of the very first telescopes.",
-				"Callisto has no big mountains or volcanoes – mostly just craters.",
+				"Callisto was one of the first four moons ever found around another planet.",
+				"Callisto has no big mountains and no volcanoes. It has mostly craters.",
 				"It takes Callisto more than two weeks to go around Jupiter."
 			],
 			"standard": [
@@ -565,7 +587,9 @@
 			]
 		},
 		"comparisons": {
-			"simple": ["Callisto is almost exactly as wide as the planet Mercury."],
+			"simple": [
+				"If Earth were an orange, Callisto would be a walnut, almost exactly as big as Mercury."
+			],
 			"standard": [
 				"Callisto’s craters are older than the oldest known fossils on Earth – its face has hardly changed for about 4 billion years."
 			],
@@ -578,15 +602,15 @@
 		"name": "Mimas",
 		"tagline": "The Death Star moon",
 		"description": {
-			"simple": "Mimas is a small, icy moon of Saturn. On one side it has a gigantic crater, so it looks a lot like the Death Star from the Star Wars films. The crash that made the crater almost broke Mimas apart. Scientists now think there may even be a hidden ocean deep under its icy crust.",
+			"simple": "Mimas is a small, icy moon of Saturn. On one side it has a gigantic crater, a round hole from a crash. So it looks a lot like the Death Star from the Star Wars films. The crash almost broke Mimas apart. Scientists think there may even be a hidden sea deep under its ice.",
 			"standard": "Mimas is only about 396 km across, but its biggest crater, Herschel, is 139 km wide – about a third of the whole moon. With its high walls and central peak, Herschel makes Mimas look like the Death Star from Star Wars. Mimas circles Saturn in just 22.6 hours, and its gravity helps keep the Cassini Division – the dark gap between Saturn’s two brightest rings – largely clear of ice particles. In 2024, scientists who studied tiny wobbles in Mimas’s orbit, measured by the Cassini spacecraft, reported that a young ocean may be hiding under its ice.",
 			"advanced": "Mimas (mean diameter 396 km, density 1.15 g/cm³) is made mostly of water ice and is the smallest of Saturn’s major round moons. Herschel crater, 139 km across with walls about 5 km high and a central peak about 6 km tall, records an impact that came close to shattering the moon. Ice particles at the inner edge of the Cassini Division orbit Saturn exactly twice for every orbit of Mimas; this 2:1 resonance pumps up their orbits and helps keep the gap largely clear. In 2024, Lainey and colleagues showed that the precession of Mimas’s orbit and its libration are best explained by a global ocean 20–30 km below the surface that is probably less than 25 million years old – young enough to have left no marks on the old, cratered surface, although some researchers still regard the evidence as indirect."
 		},
 		"facts": {
 			"simple": [
-				"Mimas goes once around Saturn in less than one Earth day.",
+				"Mimas goes once around Saturn in less than one of our days.",
 				"Mimas is made mostly of ice, like a giant snowball.",
-				"On Mimas you could jump more than 100 times higher than on Earth."
+				"One jump on Mimas could carry you as high as a tall tower."
 			],
 			"standard": [
 				"Herschel crater is named after William Herschel, who discovered Mimas in 1789.",
@@ -601,7 +625,8 @@
 		},
 		"comparisons": {
 			"simple": [
-				"If Mimas were a football, the Herschel crater would be about as wide as a cookie."
+				"If Mimas were a football, its giant crater would be about as wide as a cookie.",
+				"If Earth were an orange, Mimas would be a pinhead."
 			],
 			"standard": [
 				"If Earth had a crater as large for its size as Herschel is for Mimas, it would be about 4,500 km wide – wider than Australia."
@@ -613,17 +638,20 @@
 	},
 	"enceladus": {
 		"name": "Enceladus",
-		"tagline": "The geyser moon",
+		"tagline": {
+			"simple": "The fountain moon",
+			"standard": "The geyser moon"
+		},
 		"description": {
-			"simple": "Enceladus is a small, bright white moon of Saturn. Under its icy shell there is an ocean of salty water. At its south pole, water shoots out of long cracks like giant fountains and flies far out into space. There is so much spray that it makes one of Saturn’s rings.",
+			"simple": "Enceladus is a small, bright white moon of Saturn. Under its ice there is a sea of salty water. At its south pole, water shoots out of long cracks like giant fountains. The water flies far out into space. There is so much spray that it makes one of Saturn’s rings.",
 			"standard": "Enceladus is only about 504 km across, yet it is one of the most active worlds in the solar system. From four long cracks near its south pole, nicknamed “tiger stripes”, jets of water vapour and ice grains shoot into space at about 400 m/s (1,440 km/h). The water comes from a salty ocean beneath the ice, and much of the spray spreads out along the moon’s orbit to form Saturn’s wide E ring. NASA’s Cassini spacecraft discovered the plumes in 2005 and later flew straight through them to “taste” them.",
 			"advanced": "Enceladus hides a global salty ocean beneath an ice shell roughly 20–25 km thick on average but only a few kilometres thick at the south pole. The heat that keeps it liquid comes mainly from tidal flexing: a 2:1 orbital resonance with Dione maintains Enceladus’s small orbital eccentricity (about 0.005), so Saturn’s tides squeeze the moon by different amounts during each orbit. By sampling the plumes and E-ring grains, Cassini found salts, silica nanoparticles that point to hot water–rock reactions on the seafloor, molecular hydrogen, a range of organic molecules and, as reported in 2023, phosphates. Together these make Enceladus’s ocean one of the most promising places to search for life beyond Earth."
 		},
 		"facts": {
 			"simple": [
-				"Enceladus is one of the shiniest things in the solar system – its fresh ice reflects most of the sunlight that hits it.",
-				"A spacecraft called Cassini flew right through the water spray and ‘tasted’ it.",
-				"It is freezing cold on the surface: about −200 °C."
+				"Enceladus is one of the shiniest things in space. Its ice is as bright as fresh snow.",
+				"A space probe called Cassini flew right through the spray and ‘tasted’ it.",
+				"Enceladus is much colder than any freezer."
 			],
 			"standard": [
 				"Cassini’s closest flyby, in 2008, passed only about 25 km above the surface of Enceladus.",
@@ -638,7 +666,8 @@
 		},
 		"comparisons": {
 			"simple": [
-				"The water jets of Enceladus shoot out faster than a passenger jet flies."
+				"The water of Enceladus shoots out faster than a jet plane flies.",
+				"If Earth were an orange, Enceladus would be a small peppercorn."
 			],
 			"standard": [
 				"Enceladus is only about as wide as the distance from Berlin to Munich, yet it sprays enough water into space to feed a whole ring of Saturn."
@@ -652,7 +681,7 @@
 		"name": "Tethys",
 		"tagline": "The scarred ice ball",
 		"description": {
-			"simple": "Tethys is a moon of Saturn made almost completely of ice. It has a huge crater called Odysseus and a giant crack called Ithaca Chasma that runs a long way around the moon. Two tiny moons travel along the same path as Tethys, one in front of it and one behind it.",
+			"simple": "Tethys is a moon of Saturn. It is made almost completely of ice. It has a huge crater, a round hole from a crash, called Odysseus. A giant crack runs a long way around the moon. Two tiny moons travel along the same path as Tethys, one in front of it and one behind it.",
 			"standard": "Tethys is about 1,062 km across and made almost entirely of water ice – its density (0.98 g/cm³) is even slightly lower than that of liquid water. Its biggest crater, Odysseus, is about 400 km wide, more than a third of the moon’s diameter. A vast canyon system, Ithaca Chasma, about 100 km wide and more than 2,000 km long, stretches about three-quarters of the way around Tethys. Two tiny moons, Telesto and Calypso, share its orbit, one about 60° ahead of Tethys and one about 60° behind.",
 			"advanced": "With a density of 0.98 g/cm³, Tethys is almost pure water ice with only a small fraction of rock – the lowest density of Saturn’s major moons. Odysseus (about 400 km) is shallow for its size because the ice beneath it has slowly flowed and relaxed over time. Ithaca Chasma, up to about 3 km deep, may have formed when an early ocean froze and the expanding ice cracked the crust, or it may be linked to the Odysseus impact. Telesto and Calypso occupy Tethys’s L4 and L5 Lagrange points, where the combined gravity of Saturn and Tethys keeps small bodies moving in step with the larger moon."
 		},
@@ -660,7 +689,7 @@
 			"simple": [
 				"Tethys takes less than two days to go around Saturn.",
 				"Tethys is one of the brightest moons, because its ice is so clean.",
-				"Tethys’s two little travel companions are each only about as wide as a big city."
+				"Its two little travel buddies are each only about as wide as a big city."
 			],
 			"standard": [
 				"Giovanni Domenico Cassini discovered Tethys in 1684, the same year he found Dione.",
@@ -675,7 +704,8 @@
 		},
 		"comparisons": {
 			"simple": [
-				"Tethys is so light for its size that, in a big enough bathtub, it would float like an ice cube."
+				"Tethys is so light for its size that it would float like an ice cube, in a big enough bathtub.",
+				"If Earth were an orange, Tethys would be a pea."
 			],
 			"standard": [
 				"Ithaca Chasma is more than four times as long as the Grand Canyon and wraps about three-quarters of the way around the moon."
@@ -689,15 +719,15 @@
 		"name": "Dione",
 		"tagline": "The moon of ice cliffs",
 		"description": {
-			"simple": "Dione is an icy moon of Saturn. In the first pictures of it, scientists saw thin white streaks and wondered what they were. Later, closer pictures showed that they are huge, bright cliffs of ice. Two tiny moons travel along Dione’s path around Saturn, one in front and one behind.",
+			"simple": "Dione is an icy moon of Saturn. In the first pictures of it, scientists saw thin white lines and wondered what they were. Closer pictures later showed that they are huge, bright cliffs of ice. Two tiny moons travel along Dione’s path around Saturn, one in front and one behind.",
 			"standard": "Dione is about 1,123 km across and made of rock and ice. Images from the Voyager probes around 1980 showed bright, wispy streaks on one side; in 2004–2005 the Cassini spacecraft revealed that this “wispy terrain” is really a network of canyons lined with ice cliffs hundreds of metres high. Two small moons, Helene and Polydeuces, share Dione’s orbit, one about 60° ahead and one about 60° behind. Measurements of Dione’s gravity suggest that an ocean may still exist deep beneath the ice.",
 			"advanced": "Dione (density 1.48 g/cm³) consists of roughly equal masses of rock and water ice. The bright wisps on its trailing hemisphere are tectonic fractures (chasmata) whose steep walls expose fresh, clean ice. Dione is in a 1:2 orbital resonance with Enceladus, which keeps Enceladus’s orbit slightly eccentric and so helps power its geysers. Modelling of Cassini gravity and shape data by Beuthe and colleagues in 2016 suggests an ice shell about 100 km thick floating on an ocean several tens of kilometres deep – an interpretation that is plausible but not yet confirmed by direct observation."
 		},
 		"facts": {
 			"simple": [
 				"Dione goes once around Saturn in less than three days.",
-				"It is about −186 °C on Dione, so cold that the ice there is as hard as rock.",
-				"Dione has a tiny bit of oxygen around it, but far too little to breathe."
+				"Dione is so cold that its ice is as hard as rock.",
+				"There is a tiny bit of oxygen, the gas we breathe, around Dione. But it is far too little to breathe."
 			],
 			"standard": [
 				"Giovanni Domenico Cassini discovered Dione in 1684, only weeks after he found Tethys.",
@@ -712,7 +742,8 @@
 		},
 		"comparisons": {
 			"simple": [
-				"Dione is about as far from Saturn as our Moon is from Earth."
+				"Dione is about as far from Saturn as our Moon is from Earth.",
+				"If Earth were an orange, Dione would be a pea."
 			],
 			"standard": [
 				"Dione’s ice cliffs are hundreds of metres high – as tall as skyscrapers – and so bright that from far away they looked like thin wisps of frost."
@@ -726,15 +757,15 @@
 		"name": "Rhea",
 		"tagline": "A whiff of oxygen",
 		"description": {
-			"simple": "Rhea is Saturn’s second-biggest moon. It is a frozen ball of ice with some rock inside, covered in old craters. Around Rhea there is a tiny bit of oxygen – the gas we breathe. But there is so little of it that you could never breathe it.",
+			"simple": "Rhea is the second-biggest moon of Saturn. It is a frozen ball of ice with some rock inside. It is covered in old craters, round holes from crashes. Around Rhea there is a tiny bit of oxygen, the gas we breathe. But there is so little that you could never breathe it.",
 			"standard": "Rhea is about 1,527 km across, making it Saturn’s second-largest moon after Titan. It is roughly three-quarters ice and one-quarter rock, its surface is between −174 and −220 °C, and it is covered in ancient craters, including the Tirawa basin, about 400 km wide. In 2010, scientists announced that NASA’s Cassini spacecraft had detected an extremely thin “exosphere” of oxygen and carbon dioxide around Rhea. According to NASA, it was the first time a spacecraft had directly captured molecules of an oxygen atmosphere at a world other than Earth.",
 			"advanced": "Rhea (density 1.24 g/cm³) is a cold, heavily cratered mixture of about three-quarters ice and one-quarter rock by mass. Its exosphere, detected by Cassini’s instruments during flybys in 2005, 2007 and 2010, contains oxygen and carbon dioxide in a ratio of roughly 5 to 2, with only about 100,000 to 1,000,000 molecules per cm³ near the surface. The oxygen is produced by radiolysis: charged particles trapped in Saturn’s magnetic field strike the water-ice surface, break up water molecules and release oxygen. The source of the carbon dioxide is less certain – it may come from dry ice trapped since the moon formed or from irradiated organic material on the surface."
 		},
 		"facts": {
 			"simple": [
 				"Rhea takes about four and a half days to go around Saturn.",
-				"On Rhea it can get as cold as about −220 °C.",
-				"Rhea was discovered more than 350 years ago, in 1672."
+				"Rhea is much, much colder than any freezer.",
+				"Rhea was found long ago, when people still travelled by horse and carriage."
 			],
 			"standard": [
 				"Giovanni Domenico Cassini discovered Rhea on 23 December 1672.",
@@ -749,7 +780,8 @@
 		},
 		"comparisons": {
 			"simple": [
-				"About eight Rheas lined up side by side would stretch across Earth."
+				"About eight Rheas side by side would stretch across Earth.",
+				"If Earth were an orange, Rhea would be a pea."
 			],
 			"standard": [
 				"A single breath of air on Earth holds more oxygen molecules than a cube of Rhea’s thin exosphere more than a kilometre on each side."
@@ -761,16 +793,19 @@
 	},
 	"titan": {
 		"name": "Titan",
-		"tagline": "A world of methane rain",
+		"tagline": {
+			"simple": "The moon with rain and lakes",
+			"standard": "A world of methane rain"
+		},
 		"description": {
-			"simple": "Titan is Saturn’s biggest moon – it is even bigger than the planet Mercury. It is the only moon wrapped in thick air. On Titan it rains, and there are rivers, lakes and seas. But they are not made of water: at about −179 °C water is frozen as hard as rock, so the rain and the seas are liquid methane, a gas we burn on Earth for cooking and heating.",
+			"simple": "Titan is the biggest moon of Saturn. It is even bigger than the planet Mercury. Titan is the only moon wrapped in thick air. On Titan it rains, and there are rivers, lakes and seas. But they are not water. Titan is so cold that water is frozen as hard as rock. The rain and the seas are made of a gas that we burn for cooking. On Titan it is so cold that this gas turns into a liquid, like water.",
 			"standard": "Titan is about 5,150 km across – Saturn’s largest moon, the second-largest moon in the solar system and bigger than the planet Mercury. It is the only moon with a thick atmosphere, made mostly of nitrogen, and the pressure at its surface is about 1.5 times that on Earth. At about −179 °C, methane does what water does on Earth: it forms clouds, falls as rain, carves rivers and fills lakes and seas such as Kraken Mare and Ligeia Mare. In January 2005 the European Huygens probe landed on Titan – still the most distant landing ever – and NASA’s Dragonfly rotorcraft is due to launch in July 2028 and arrive in 2034.",
 			"advanced": "Titan (diameter 5,150 km, density 1.88 g/cm³) is about 6 % wider than Mercury but has only about 40 % of its mass. Its nitrogen atmosphere contains about 5 % methane near the ground; at about 1.45 bar and 94 K it is roughly four times denser than Earth’s air at sea level. Sunlight breaks up methane in the upper atmosphere, producing the orange organic haze and heavier hydrocarbons such as ethane, so the methane must somehow be replenished, possibly from the interior. Titan was long thought to hide a global water ocean, but a 2025 reanalysis of Cassini tracking data argued instead for thick, slushy high-pressure ice with pockets of liquid water – the question is still open."
 		},
 		"facts": {
 			"simple": [
-				"The Huygens probe landed on Titan in 2005 – no spacecraft has ever landed farther from Earth.",
-				"Titan is wrapped in orange haze, so normal cameras cannot see its surface from space.",
+				"A space probe called Huygens landed on Titan. No space probe has ever landed farther from Earth.",
+				"Titan is wrapped in orange haze. From space, normal cameras cannot see its ground.",
 				"Titan takes about 16 days to go around Saturn."
 			],
 			"standard": [
@@ -786,7 +821,8 @@
 		},
 		"comparisons": {
 			"simple": [
-				"On Titan the air is so thick and gravity so weak that a person with wings strapped to their arms might be able to fly."
+				"On Titan the air is thick and you would be very light. With wings strapped to your arms, you might even be able to fly!",
+				"If Earth were an orange, Titan would be a walnut."
 			],
 			"standard": [
 				"Titan is the only place besides Earth where we know of rivers, lakes and seas on the surface – but there they hold liquid methane and ethane at about −179 °C."
@@ -800,15 +836,15 @@
 		"name": "Hyperion",
 		"tagline": "The tumbling sponge",
 		"description": {
-			"simple": "Hyperion is a strange moon of Saturn. It is not round but shaped more like a potato, and its surface is full of holes, like a sponge. Hyperion also tumbles in such a wild, messy way that nobody can say exactly which way it will face next. It is so light for its size that much of its inside is probably empty space.",
+			"simple": "Hyperion is a strange moon of Saturn. It is not round. It is shaped more like a potato. Its surface is full of holes, like a sponge. Hyperion tumbles about in a wild, messy way. Nobody can say which way it will face next. It is so light for its size that much of its inside is probably empty space.",
 			"standard": "Hyperion measures about 360 × 266 × 205 km, making it one of the largest irregularly shaped moons in the solar system. Close-up images taken by the Cassini spacecraft in 2005 showed a surface packed with deep, sharp-edged craters that give it a sponge-like look. Its density is only about 0.54 g/cm³ – about half that of water ice – so scientists think roughly 40 % of it may be empty space. Hyperion does not spin steadily: tugs from Saturn and nearby Titan make it tumble chaotically, so its orientation cannot be predicted for long.",
 			"advanced": "Hyperion is locked in a 4:3 orbital resonance with Titan (four Hyperion orbits for every three of Titan), which keeps its orbit fairly eccentric (e ≈ 0.1). Because the moon is so elongated, Saturn’s tidal torques on it vary strongly around this eccentric orbit, so Hyperion cannot settle into synchronous rotation; instead its spin rate and axis change chaotically, and tiny differences grow exponentially within a few orbits. Wisdom, Peale and Mignard predicted this behaviour in 1984, later observations supported it, and Hyperion has been the textbook example of chaotic rotation ever since. Its porosity of roughly 40 % may also explain its strange craters: impacts compress the porous ice instead of blasting material out, leaving deep pits with little ejecta."
 		},
 		"facts": {
 			"simple": [
 				"Hyperion takes about three weeks to go around Saturn.",
-				"Many of Hyperion’s craters have dark stuff at the bottom, like dirt in the holes of a sponge.",
-				"Hyperion was found in 1848 by astronomers in America and in England at almost the same time."
+				"Many of its holes have dark stuff at the bottom, like dirt in a sponge.",
+				"Hyperion was found by people in America and in England at almost the same time."
 			],
 			"standard": [
 				"Hyperion was discovered in 1848 by William Cranch Bond and his son George Phillips Bond, and independently by William Lassell.",
@@ -823,7 +859,8 @@
 		},
 		"comparisons": {
 			"simple": [
-				"Hyperion is about as light for its size as a pumice stone, so it would float in water."
+				"Hyperion is so light for its size that it would float in water.",
+				"If Earth were an orange, Hyperion would be a pinhead."
 			],
 			"standard": [
 				"Hyperion tumbles like a rugby ball bouncing across a field: tiny differences send it spinning a different way, so nobody can predict for long which side will face Saturn."
@@ -837,15 +874,15 @@
 		"name": "Iapetus",
 		"tagline": "The two-faced moon",
 		"description": {
-			"simple": "Iapetus is a moon of Saturn with two very different sides. One half is dark like coal, and the other half is bright like snow. A long, high mountain ridge runs around its middle, which makes Iapetus look a little like a walnut. It is far from Saturn and takes more than two months to go around it once.",
+			"simple": "Iapetus is a moon of Saturn with two very different sides. One half is dark like coal. The other half is bright like snow. A long, high line of mountains runs around its middle. That makes Iapetus look a little like a walnut. Iapetus is far from Saturn. It takes more than two months to go around it once.",
 			"standard": "Iapetus is about 1,469 km across and Saturn’s third-largest moon. Its leading side – the side facing forward as it orbits – is as dark as coal, while the trailing side is almost as bright as snow. When Giovanni Domenico Cassini discovered Iapetus in 1671, he could see it only when it was on one side of Saturn, and he correctly guessed that one half must be much darker than the other. The Cassini spacecraft, named after him, later revealed a ridge along the equator about 1,300 km long with peaks up to about 20 km high, which gives Iapetus the shape of a walnut.",
 			"advanced": "Iapetus’s two-tone surface probably results from a runaway process. Dark dust, largely from the retrograde moon Phoebe and its enormous ring, sweeps onto Iapetus’s leading hemisphere; the darkened surface absorbs more sunlight during Iapetus’s long, 79-day days and warms slightly, so water ice sublimates there and refreezes on the colder, brighter trailing side and at the poles, making one side ever darker and the other ever brighter. The albedo ranges from about 0.03–0.05 in the dark region Cassini Regio to about 0.5–0.6 on the bright side. The equatorial ridge, up to about 20 km high and 1,300 km long, is still unexplained: proposals include a bulge frozen in from a time of faster spin, or material that fell from a collapsed ring."
 		},
 		"facts": {
 			"simple": [
-				"Iapetus’s tallest mountains are more than twice as high as Mount Everest.",
-				"From Iapetus you would have a wonderful view of Saturn’s rings, because its path around Saturn is tilted.",
-				"Iapetus was discovered more than 350 years ago, in 1671."
+				"Its tallest mountains are more than twice as high as the highest mountain on Earth.",
+				"From Iapetus you would have a wonderful view of Saturn’s rings.",
+				"The man who found Iapetus could see it only on one side of Saturn. On the other side, its dark half made it vanish."
 			],
 			"standard": [
 				"Iapetus orbits Saturn at about 3.56 million km – more than nine times the distance from Earth to the Moon.",
@@ -860,7 +897,8 @@
 		},
 		"comparisons": {
 			"simple": [
-				"If Iapetus were a football, its giant ridge would be a bump only about 3 mm high running around its middle."
+				"If Iapetus were a football, its giant mountains would be a bump only about 3 mm high.",
+				"If Earth were an orange, Iapetus would be a pea."
 			],
 			"standard": [
 				"Iapetus’s dark side reflects only about as much light as fresh asphalt, while its bright side reflects more than ten times as much – which is why Cassini could see the moon on one side of Saturn but not the other."
@@ -874,15 +912,15 @@
 		"name": "Phoebe",
 		"tagline": "Saturn’s wrong-way moon",
 		"description": {
-			"simple": "Phoebe is a small, dark moon of Saturn, about 200 km wide. It goes around Saturn the wrong way – in the opposite direction to Saturn’s big moons – and much farther out. Scientists think Phoebe did not form at Saturn but came from far out in the solar system and was caught by Saturn’s gravity. Dust knocked off Phoebe makes a huge, very faint ring around Saturn.",
+			"simple": "Phoebe is a small, dark moon of Saturn. It goes around Saturn the wrong way, the other way from Saturn’s big moons. It also goes round much farther out. Scientists think Phoebe was not born at Saturn. It probably came from far away, and Saturn’s pull caught it. Dust knocked off Phoebe makes a huge, very faint ring around Saturn.",
 			"standard": "Phoebe is about 213 km across and circles Saturn at an average distance of about 12.9 million km – more than three times as far out as Iapetus, the outermost of Saturn’s big moons. It orbits backwards (retrograde), which strongly suggests that Saturn captured it: Phoebe is probably a visitor from the outer solar system, related to the icy bodies of the Kuiper belt. Tiny impacts knock dust off its dark surface, and this dust forms the Phoebe ring, discovered in 2009 by NASA’s Spitzer Space Telescope. Some of the dust drifts inward and lands on one side of Iapetus, helping to make that side dark.",
 			"advanced": "Phoebe’s orbit – semi-major axis about 12.9 million km, eccentricity 0.16, inclination about 175° to its Laplace plane – is retrograde and lies far outside Saturn’s regular satellites, the signature of a captured body rather than one that formed in Saturn’s disc. Its density of about 1.64 g/cm³, higher than that of Saturn’s inner icy moons, and a dark surface (geometric albedo about 0.08) containing water ice, carbon dioxide and probably organic compounds point to an origin among Kuiper-belt objects or centaurs. Micrometeorite impacts feed the Phoebe ring, a vast, tenuous dust disc tilted, like Phoebe’s orbit, about 27° to Saturn’s main rings. Radiation pressure makes its grains slowly spiral inward, where Iapetus sweeps them up on its leading hemisphere – a key ingredient in that moon’s striking two-tone appearance."
 		},
 		"facts": {
 			"simple": [
 				"Phoebe needs about a year and a half to go once around Saturn.",
-				"Phoebe was the first moon ever discovered on photographs.",
-				"Phoebe spins around once in only about 9 hours – much faster than it travels around Saturn."
+				"Phoebe was the first moon ever found on photos.",
+				"Phoebe spins round once in about 9 hours."
 			],
 			"standard": [
 				"The Cassini spacecraft flew just 2,068 km past Phoebe on 11 June 2004, about three weeks before it went into orbit around Saturn.",
@@ -897,7 +935,8 @@
 		},
 		"comparisons": {
 			"simple": [
-				"Phoebe travels around Saturn like a car driving the wrong way round a roundabout."
+				"Phoebe travels around Saturn like a car driving the wrong way round a roundabout.",
+				"If Earth were an orange, Phoebe would be a poppy seed."
 			],
 			"standard": [
 				"The dust ring that comes from Phoebe is so vast that about a billion Earths would fit inside it – yet it is so faint that it was only found in 2009, with an infrared telescope."
@@ -911,7 +950,7 @@
 		"name": "Miranda",
 		"tagline": "The Frankenstein moon",
 		"description": {
-			"simple": "Miranda is the smallest of Uranus’s five big moons, about 470 km wide. Its surface looks as if it had been stitched together from different pieces, so people call it the Frankenstein moon. It has one of the tallest cliffs we know of anywhere. Only one spacecraft, Voyager 2, has ever flown past it, in 1986.",
+			"simple": "Miranda is the smallest of the five big moons of Uranus. Its surface looks as if it was stitched together from different pieces. So people call it the Frankenstein moon. It has one of the tallest cliffs we know of anywhere. Only one space probe, Voyager 2, has ever flown past it.",
 			"standard": "Miranda, about 470 km across, is the innermost and smallest of Uranus’s five large moons. When Voyager 2 flew past in January 1986, it revealed a jumble of wildly different landscapes: old cratered plains right next to huge regions of grooves and ridges, called coronae. Miranda also has Verona Rupes, a cliff estimated at between 5 and 20 km high – possibly the tallest in the solar system. The moon was discovered in 1948 by Gerard Kuiper, who named it after the daughter of the magician Prospero in Shakespeare’s The Tempest.",
 			"advanced": "Miranda’s three coronae – Arden, Elsinore and Inverness – are oval or polygonal provinces a few hundred kilometres across, ringed by parallel ridges and troughs that cut across older cratered terrain. Early ideas that Miranda was smashed apart and reassembled have largely given way to models in which tidal heating drove upwelling of warm ice, probably during a past orbital resonance with Umbriel that may also explain Miranda’s unusually large orbital inclination of about 4.3°. A 2024 study even suggested that Miranda might have had a subsurface ocean around 100 km deep within the last few hundred million years. Its low density of about 1.2 g/cm³ shows that it is mostly water ice."
 		},
@@ -919,7 +958,7 @@
 			"simple": [
 				"Miranda goes around Uranus in less than a day and a half.",
 				"Miranda is named after a girl in a play by William Shakespeare.",
-				"On Miranda you would weigh less than one hundredth of what you weigh on Earth."
+				"Its tallest cliff may be twice as high as the highest mountain on Earth."
 			],
 			"standard": [
 				"Voyager 2 passed only about 29,000 km from Miranda, closer than to any other moon of Uranus.",
@@ -934,7 +973,8 @@
 		},
 		"comparisons": {
 			"simple": [
-				"If Miranda’s surface were a jigsaw puzzle, the pieces would come from several different boxes."
+				"If Miranda’s surface were a jigsaw puzzle, the pieces would come from several different boxes.",
+				"If Earth were an orange, Miranda would be a small peppercorn."
 			],
 			"standard": [
 				"The cliff Verona Rupes may be up to 20 km high – more than twice the height of Mount Everest – and in Miranda’s weak gravity a dropped rock could fall for about 12 minutes before hitting the bottom."
@@ -948,15 +988,15 @@
 		"name": "Ariel",
 		"tagline": "Uranus’s bright young moon",
 		"description": {
-			"simple": "Ariel is one of Uranus’s five big moons, about 1,160 km wide. It is the brightest of them, with a fresh-looking, icy surface. Long, deep valleys called canyons run across it. Only one spacecraft, Voyager 2, has ever flown past it.",
+			"simple": "Ariel is one of the five big moons of Uranus. It is the brightest of them, with fresh-looking ice. Long, deep valleys run across it. Only one space probe, Voyager 2, has ever flown past it.",
 			"standard": "Ariel, about 1,160 km across, orbits Uranus every 2.5 days at a distance of about 190,900 km. It has the brightest surface of Uranus’s large moons and probably the youngest: it has fewer large craters than its neighbours, so something must have renewed its surface. Long canyons criss-cross it; one of them, Kachina Chasma, runs for more than 600 km. William Lassell discovered Ariel in 1851, on the same night as Umbriel, and its name comes from the spirit Ariel in Shakespeare’s The Tempest and a sprite in Alexander Pope’s poem The Rape of the Lock.",
 			"advanced": "With a geometric albedo of about 0.5, Ariel is the most reflective of the major Uranian moons, and its comparatively sparse large craters suggest the youngest surface of the five. Its canyons are grabens – blocks of crust that dropped between faults as the crust stretched, probably when the interior was heated by tides during a past orbital resonance or expanded as it froze – and some canyon floors appear to have been flooded by icy material. In 2024 the James Webb Space Telescope found surprisingly thick deposits of carbon dioxide ice, carbon monoxide ice and hints of carbonate minerals on Ariel. Some researchers see this as material from a possible subsurface ocean, although charged particles from Uranus’s magnetosphere also produce carbon dioxide on the surface, and both processes are probably involved."
 		},
 		"facts": {
 			"simple": [
 				"Ariel goes around Uranus in about two and a half days.",
-				"Ariel is named after a magical spirit in a play by William Shakespeare who could fly and even stir up a storm.",
-				"Ariel is made of roughly half ice and half rock."
+				"Ariel is named after a magic spirit in a play by William Shakespeare. The spirit could fly and even stir up storms.",
+				"Ariel is made of about half ice and half rock."
 			],
 			"standard": [
 				"Voyager 2 could photograph only about 35 % of Ariel’s surface during its 1986 flyby.",
@@ -971,7 +1011,8 @@
 		},
 		"comparisons": {
 			"simple": [
-				"Ariel’s longest canyon is so long that a car on a motorway would need more than six hours to drive from one end to the other."
+				"Ariel’s longest valley is so long that a car on a motorway would need about six hours to drive along it.",
+				"If Earth were an orange, Ariel would be a pea."
 			],
 			"standard": [
 				"Ariel and Umbriel are almost exactly the same size, but Ariel reflects about twice as much light and has far fewer big craters – like twins, one with a freshly washed face and one that has not been cleaned for billions of years."
@@ -985,15 +1026,15 @@
 		"name": "Umbriel",
 		"tagline": "Dark moon, bright ring",
 		"description": {
-			"simple": "Umbriel is one of Uranus’s five big moons, about 1,170 km wide. It is the darkest of them and is covered with old craters. On its dark surface there is a mysterious bright ring. Umbriel is named after a gloomy sprite in an old poem.",
+			"simple": "Umbriel is one of the five big moons of Uranus. It is the darkest of them. It is covered in old craters, round holes from crashes. On its dark ground there is a strange bright ring. Umbriel is named after a gloomy spirit in an old poem.",
 			"standard": "Umbriel, about 1,170 km across, is almost exactly as big as Ariel, but it is the darkest of Uranus’s large moons. Its surface is old and packed with craters, so it has probably changed little for billions of years. Near its equator lies the crater Wunda, about 131 km wide, with a strange bright ring on its floor – scientists are still not sure what it is. Umbriel was discovered in 1851 by William Lassell and named after a gloomy sprite in Alexander Pope’s poem The Rape of the Lock.",
 			"advanced": "Umbriel’s geometric albedo of about 0.26 is roughly half that of Ariel, and its heavily cratered surface, with craters up to about 210 km across, shows little sign of resurfacing, marking it as one of the oldest surfaces among Uranus’s large moons. Why it is so uniformly dark is still unclear; a coating of dark, carbon-rich material altered by radiation is one possibility. The bright annulus on the floor of Wunda may be an impact deposit or a patch of carbon dioxide frost – carbon dioxide ice has been detected on the trailing hemispheres of Uranus’s large moons. Voyager 2 imaged only about 40 % of Umbriel, at a resolution of about 5 km at best, so much of it remains unmapped."
 		},
 		"facts": {
 			"simple": [
 				"Umbriel goes around Uranus in about four days.",
-				"Umbriel’s name sounds like “umbra”, the Latin word for shadow – a good name for such a dark moon.",
-				"Umbriel was discovered on the same night as Ariel, in 1851."
+				"Umbriel’s name sounds like “umbra”, an old word for shadow. That is a good name for such a dark moon.",
+				"Umbriel was found on the same night as Ariel."
 			],
 			"standard": [
 				"In Pope’s poem, Umbriel is called “the dusky melancholy sprite”.",
@@ -1008,7 +1049,8 @@
 		},
 		"comparisons": {
 			"simple": [
-				"Umbriel and Ariel are almost the same size, but next to Ariel, Umbriel looks like a sooty snowball beside a clean one."
+				"Umbriel and Ariel are almost the same size. But next to Ariel, Umbriel looks like a sooty snowball beside a clean one.",
+				"If Earth were an orange, Umbriel would be a pea."
 			],
 			"standard": [
 				"On Umbriel’s dark face, the bright ring in the crater Wunda stands out like a white ring left by a cup on a dark table – and nobody knows for sure what made it."
@@ -1022,7 +1064,7 @@
 		"name": "Titania",
 		"tagline": "Queen of Uranus’s moons",
 		"description": {
-			"simple": "Titania is the biggest moon of Uranus, about 1,580 km wide – a bit less than half as wide as our Moon. It is named after the queen of the fairies in a play by William Shakespeare. Its icy surface is split by enormous canyons. William Herschel, the astronomer who discovered Uranus, found Titania in 1787.",
+			"simple": "Titania is the biggest moon of Uranus. It is a bit less than half as wide as our Moon. It is named after the queen of the fairies in a play by William Shakespeare. Its icy ground is split by huge valleys. William Herschel found Titania. He was the same man who found Uranus.",
 			"standard": "Titania, about 1,580 km across, is the largest moon of Uranus and the eighth-largest moon in the solar system. Its surface is cut by huge fault valleys; the longest, Messina Chasma, runs for about 1,500 km. These canyons probably formed when Titania’s interior expanded, cracking the icy crust like a bottle of water left in the freezer. William Herschel discovered Titania on 11 January 1787, on the same night as Oberon, and it is named after the fairy queen in Shakespeare’s A Midsummer Night’s Dream.",
 			"advanced": "Titania’s density of about 1.65 g/cm³ suggests roughly equal amounts of water ice and rock, probably separated into a rocky core and an icy mantle; some models allow a thin layer of liquid water, kept liquid by ammonia acting as antifreeze, at the boundary between them. Its canyons (chasmata) are grabens formed by global extension of the crust, and it has fewer large craters than Oberon, so its surface is probably younger. When Titania passed in front of a star in 2001, the star vanished abruptly, limiting any atmosphere to a surface pressure below about 10–20 nanobar. Voyager 2 imaged only about 40 % of its surface, almost all of it in the southern hemisphere, which faced the Sun in 1986."
 		},
@@ -1030,7 +1072,7 @@
 			"simple": [
 				"Titania takes almost nine days to go around Uranus.",
 				"Titania is made of about half ice and half rock.",
-				"Titania’s biggest crater, Gertrude, is more than 300 km wide."
+				"Its biggest crater, a round hole from a crash, is called Gertrude. It is so wide that a car would need more than three hours to drive across it."
 			],
 			"standard": [
 				"Titania orbits about 436,300 km from Uranus – a bit farther than our Moon is from Earth.",
@@ -1045,7 +1087,8 @@
 		},
 		"comparisons": {
 			"simple": [
-				"Titania’s longest canyon is so long that it reaches almost a third of the way around the whole moon."
+				"Titania’s longest valley reaches almost a third of the way around the whole moon.",
+				"If Earth were an orange, Titania would be a pea."
 			],
 			"standard": [
 				"Titania’s great canyon, Messina Chasma, is about 1,500 km long – more than three times the length of the Grand Canyon in the USA – on a moon less than half as wide as ours."
@@ -1059,7 +1102,7 @@
 		"name": "Oberon",
 		"tagline": "The old fairy king",
 		"description": {
-			"simple": "Oberon is the outermost of Uranus’s five big moons and the second biggest, about 1,520 km wide. It is named after the king of the fairies in a play by William Shakespeare – and Titania, the fairy queen, is its neighbour. Oberon’s surface is old and full of craters, some with dark floors. William Herschel found Oberon and Titania on the same night in 1787.",
+			"simple": "Oberon is the second-biggest moon of Uranus, and the farthest out of its five big moons. It is named after the king of the fairies in a play by William Shakespeare. Titania, the fairy queen, is its neighbour. Oberon’s ground is old and full of craters, round holes from crashes. Some of them have dark floors.",
 			"standard": "Oberon, about 1,520 km across, is the second-largest moon of Uranus and orbits farthest out of the five large moons, about 583,500 km from the planet, once every 13.5 days. Its surface is old and covered with impact craters, which suggests that little has changed there for billions of years. The floors of several large craters are covered with dark material, and Voyager 2 spotted a mountain about 11 km high on its edge. Oberon is named after the fairy king in Shakespeare’s A Midsummer Night’s Dream.",
 			"advanced": "Oberon is the most heavily cratered of Uranus’s large moons, with craters up to about 206 km across (Hamlet), which marks its surface as one of the oldest in the Uranian system. Dark deposits on the floors of craters such as Hamlet, Othello and Macbeth may be material that erupted from the interior after the impacts, but their origin is still unclear. Its orbit carries Oberon outside Uranus’s magnetosphere for part of the time, so its surface is exposed alternately to the planet’s trapped plasma and to the solar wind. Voyager 2 saw Oberon only from about 470,600 km away, imaging roughly 40 % of it at low resolution."
 		},
@@ -1067,7 +1110,7 @@
 			"simple": [
 				"Oberon takes about two weeks to go around Uranus.",
 				"Oberon always shows the same side to Uranus, just like our Moon does to Earth.",
-				"Craters on Oberon are named after characters from Shakespeare’s plays, like Hamlet and Macbeth."
+				"William Herschel found Oberon and Titania on the same night."
 			],
 			"standard": [
 				"Hamlet, the largest crater on Oberon, is about 206 km wide.",
@@ -1082,7 +1125,8 @@
 		},
 		"comparisons": {
 			"simple": [
-				"Oberon’s tallest mountain is about 11 km high – taller than Mount Everest, the highest mountain on Earth."
+				"Oberon has a mountain that is taller than the highest mountain on Earth.",
+				"If Earth were an orange, Oberon would be a pea."
 			],
 			"standard": [
 				"Oberon’s battered face is like a history book that nobody has erased: its craters still record impacts from billions of years ago."
@@ -1096,15 +1140,15 @@
 		"name": "Triton",
 		"tagline": "The moon going backwards",
 		"description": {
-			"simple": "Triton is Neptune’s biggest moon, and it goes around Neptune the wrong way – backwards compared to the way Neptune spins. That is a clue that Triton was not born there: it was probably caught by Neptune’s gravity long ago. Triton is one of the coldest places ever measured, and it has geysers that blow out dark dust. Very, very slowly, Triton is moving closer to Neptune.",
+			"simple": "Triton is the biggest moon of Neptune. It goes around Neptune backwards, the opposite way to how Neptune spins. That is a clue that Triton was not born there. Long ago, Neptune’s pull probably caught it. Triton is one of the coldest places we know. It has fountains of gas that blow out dark dust. Very slowly, Triton is moving closer to Neptune.",
 			"standard": "Triton is by far Neptune’s largest moon, 2,707 km across and a little bigger than the dwarf planet Pluto. It orbits Neptune backwards – against the planet’s rotation – and is the only large moon in the solar system to do so, which is why astronomers think Neptune captured it from the Kuiper belt long ago. When Voyager 2 flew past in 1989, it saw geysers of nitrogen gas carrying dark dust about 8 km high, on a surface at about −235 °C. Tides are slowly pulling Triton inward, so in billions of years it may be torn apart into rings or fall into Neptune.",
 			"advanced": "Triton’s orbit is retrograde and tilted about 157° to Neptune’s equator, which cannot be explained by formation in a disk around the planet; the leading explanation is the capture of a Kuiper belt object, perhaps one member of a binary pair whose partner was thrown away. Capture would have left Triton on a highly eccentric orbit, and damping that orbit to today’s near-perfect circle (e ≈ 0.00002) may have melted its interior and scattered or destroyed Neptune’s original moons. Its surface of nitrogen, methane and water ice reflects most of the sunlight it receives (albedo about 0.76), which helps keep it at about 38 K. Because it orbits against Neptune’s rotation, the tidal bulge it raises slowly drains its orbital energy; it may reach Neptune’s Roche limit in several billion years, although estimates range from about 3.6 to 28 billion years."
 		},
 		"facts": {
 			"simple": [
-				"Triton was found in 1846, only 17 days after Neptune itself was discovered.",
-				"Triton is so icy and bright that it reflects most of the sunlight that reaches it.",
-				"Only one spacecraft has ever visited Triton: Voyager 2, in 1989."
+				"Triton was found only 17 days after Neptune itself.",
+				"Triton is so icy and bright that it shines back most of the sunlight.",
+				"Only one space probe has ever visited Triton: Voyager 2."
 			],
 			"standard": [
 				"Triton contains more than 99.5 % of all the mass orbiting Neptune.",
@@ -1119,7 +1163,8 @@
 		},
 		"comparisons": {
 			"simple": [
-				"Triton is about 150 degrees colder than the coldest temperature ever measured on Earth."
+				"Triton is much, much colder than the coldest place on Earth.",
+				"If Earth were an orange, Triton would be a marble."
 			],
 			"standard": [
 				"Triton circles Neptune the wrong way round, like a car driving backwards around a roundabout – a clue that Neptune captured it from the Kuiper belt."
@@ -1131,16 +1176,19 @@
 	},
 	"nereid": {
 		"name": "Nereid",
-		"tagline": "The roller-coaster orbit",
+		"tagline": {
+			"simple": "The moon on a roller-coaster path",
+			"standard": "The roller-coaster orbit"
+		},
 		"description": {
-			"simple": "Nereid is a small, grey moon of Neptune. Its path around Neptune is not a circle but a long, stretched oval. Sometimes it comes quite close to Neptune, and then it swings far out again. Scientists think something big may have thrown it onto this strange path long ago.",
+			"simple": "Nereid is a small, grey moon of Neptune. Its path around Neptune is not a circle. It is a long, stretched oval. Sometimes Nereid comes quite close to Neptune. Then it swings far out again. Something big may have thrown it onto this strange path long ago.",
 			"standard": "Nereid is about 340 km across and has one of the most stretched-out orbits of any known moon. During its 360-day orbit, its distance from Neptune swings from about 1.4 million km to about 9.7 million km – nearly seven times farther. Gerard Kuiper discovered it in 1949; it was the second moon of Neptune ever found and the last one discovered before Voyager 2 arrived in 1989. Astronomers long thought Nereid was a captured object, but a 2026 study suggests it may be one of Neptune’s original moons, flung onto its wild orbit when Triton arrived.",
 			"advanced": "Nereid’s orbit has an eccentricity of about 0.75, one of the highest known for any moon, with its closest point near 1.37 million km and its farthest near 9.65 million km from Neptune. It is prograde and only modestly inclined, unlike typical irregular moons, which are thought to be captured bodies. Two origins have been proposed: a captured Kuiper belt object, or a regular moon of Neptune scattered outward when Triton was captured. In 2026, James Webb Space Telescope spectra showed crystalline water ice and carbon dioxide and a surface unlike Kuiper belt objects but similar to the moons of Uranus, favouring the second idea – if so, Nereid may be the last intact survivor of Neptune’s original family of moons."
 		},
 		"facts": {
 			"simple": [
-				"Nereid was discovered in 1949 by an astronomer called Gerard Kuiper.",
-				"Nereid is Neptune’s third-biggest moon.",
+				"Nereid was found by a scientist called Gerard Kuiper.",
+				"Nereid is the third-biggest moon of Neptune.",
 				"Nobody has ever seen a close-up picture of Nereid."
 			],
 			"standard": [
@@ -1156,7 +1204,8 @@
 		},
 		"comparisons": {
 			"simple": [
-				"Nereid takes almost exactly as long to go around Neptune as Earth takes to go around the Sun."
+				"Nereid takes almost exactly as long to go around Neptune as Earth takes to go around the Sun.",
+				"If Earth were an orange, Nereid would be a pinhead."
 			],
 			"standard": [
 				"Nereid swings in toward Neptune and back out again like a comet – at its farthest it is about seven times as far away as at its closest."
@@ -1170,15 +1219,15 @@
 		"name": "Proteus",
 		"tagline": "Hidden in Neptune’s glare",
 		"description": {
-			"simple": "Proteus is a dark, lumpy moon of Neptune, about 420 km wide. It is almost big enough for its own gravity to squeeze it into a ball – but not quite, so it looks like a dented box. Even though it is quite big, nobody saw it until the space probe Voyager 2 flew past Neptune in 1989. It had been hiding in Neptune’s bright glow.",
+			"simple": "Proteus is a dark, lumpy moon of Neptune. It is almost big enough to be round like a ball, but not quite. So it looks like a dented box. Nobody saw it until the space probe Voyager 2 flew past Neptune. It had been hiding in Neptune’s bright glow.",
 			"standard": "Proteus is Neptune’s second-largest moon, about 420 km across, yet it was only discovered in 1989 in images from Voyager 2. From Earth it is lost in the glare of Neptune, because it orbits only about 117,600 km from the planet’s centre – less than five Neptune radii – and its surface reflects only about a tenth of the sunlight that falls on it. Proteus is about as big as a body like it can get without its own gravity pulling it into a round shape, so it remains an irregular, box-like lump. It races around Neptune in just 27 hours.",
 			"advanced": "With a mean diameter of about 420 km, Proteus is close to the size at which self-gravity should overcome the strength of ice and rock and pull a body into a roughly spheroidal (hydrostatic) shape – yet it has stayed irregular. Its surface is dominated by the impact basin Pharos, about 255 km wide and 10–15 km deep, made by an impact that nearly shattered the moon. Scientists think Proteus did not form together with Neptune but re-accreted from debris after Neptune captured Triton, whose arrival would have disrupted the original moon system. The tiny moon Hippocamp, found in Hubble images in 2013, orbits only about 12,000 km inside Proteus’s orbit and may be a fragment knocked off by the Pharos impact."
 		},
 		"facts": {
 			"simple": [
 				"Proteus goes around Neptune in a little more than one day.",
-				"From Proteus, Neptune would look about 50 times as wide as the full Moon looks to us.",
-				"Proteus has a giant crater that is more than half as wide as the whole moon."
+				"From Proteus, Neptune would look almost 50 times as wide as the full Moon looks to us.",
+				"Proteus has a giant crater, a round hole from a crash, more than half as wide as the whole moon."
 			],
 			"standard": [
 				"Voyager 2 found Proteus in 1989, a few weeks before flying past Neptune.",
@@ -1193,7 +1242,8 @@
 		},
 		"comparisons": {
 			"simple": [
-				"Driving across Proteus on a motorway would take about four hours."
+				"Driving across Proteus on a motorway would take about four hours.",
+				"If Earth were an orange, Proteus would be a pinhead."
 			],
 			"standard": [
 				"Proteus is bigger than Nereid, which astronomers spotted from Earth in 1949, yet Proteus stayed hidden for another 40 years – a lump of coal sitting next to a floodlight."
@@ -1205,17 +1255,20 @@
 	},
 	"ceres": {
 		"name": "Ceres",
-		"tagline": "The dwarf planet of the asteroid belt",
+		"tagline": {
+			"simple": "The biggest world between Mars and Jupiter",
+			"standard": "The dwarf planet of the asteroid belt"
+		},
 		"description": {
-			"simple": "Ceres is the biggest object in the asteroid belt, the ring of space rocks between Mars and Jupiter. It is round like a ball, but much smaller than our Moon. When it was found in 1801, people thought it was a new planet. A spacecraft called Dawn flew around Ceres and found bright white spots – made of salt!",
+			"simple": "Ceres is the biggest thing in the asteroid belt. That is a ring of space rocks between Mars and Jupiter. Ceres is round like a ball, but much smaller than our Moon. When people first found it, they thought it was a new planet. A space probe called Dawn flew around Ceres. It found bright white spots, made of salt!",
 			"standard": "Ceres is the largest body in the asteroid belt between Mars and Jupiter and the only dwarf planet there. Giuseppe Piazzi discovered it on 1 January 1801, and for about half a century it was counted as a planet – until so many more rocks turned up in the same region that astronomers began calling them asteroids instead. Ceres is about 940 km across and made of rock mixed with ice. NASA’s Dawn spacecraft orbited it from 2015 to 2018 and found bright spots in Occator crater: salt left behind when salty water seeped up from below and evaporated.",
 			"advanced": "Ceres (mean diameter about 940 km) holds roughly a third of the asteroid belt’s mass and is the only object there massive enough to have pulled itself into a nearly round shape. Under the 2006 IAU definition that makes it a dwarf planet: it is round and orbits the Sun, but it has not cleared its orbit of the countless other bodies around it. Its low density of about 2.2 g/cm³ points to rock mixed with water ice, and Dawn found evidence of brine deep below the crust. The bright faculae in the 92-km Occator crater are mostly sodium carbonate, and Ahuna Mons, a lone mountain about 4 km high, is thought to be an ice volcano. Ceres orbits the Sun every 4.6 years at an average distance of 2.77 AU."
 		},
 		"facts": {
 			"simple": [
-				"Ceres is named after the Roman goddess of farming – that is where the word “cereal” comes from.",
+				"Ceres is named after the Roman goddess of farming. That is where the word “cereal” comes from.",
 				"A day on Ceres lasts only about 9 hours.",
-				"The asteroid belt is not crowded like in films: the asteroids are so far apart that spacecraft fly through it without having to steer around anything."
+				"The asteroid belt is not crowded like in films. The rocks are so far apart that space probes fly straight through."
 			],
 			"standard": [
 				"Ceres was the first asteroid ever discovered, on New Year’s Day 1801.",
@@ -1229,7 +1282,7 @@
 			]
 		},
 		"comparisons": {
-			"simple": ["If Earth were a football, Ceres would be a marble."],
+			"simple": ["If Earth were an orange, Ceres would be a small pea."],
 			"standard": [
 				"Ceres is only about a quarter as wide as our Moon: driving across it at 100 km/h would take less than 10 hours."
 			],
@@ -1242,15 +1295,15 @@
 		"name": "Pluto",
 		"tagline": "The dwarf planet with a heart",
 		"description": {
-			"simple": "Pluto is a small, icy world far beyond Neptune. For 76 years it was called the ninth planet. In 2006 astronomers decided that Pluto is a dwarf planet, because it shares its path around the Sun with many other icy objects. Pluto itself did not change – only the name for it did. On its surface there is a big, bright plain shaped like a heart.",
+			"simple": "Pluto is a small, icy world far beyond Neptune. For a long time it was called the ninth planet. Then scientists decided to call it a dwarf planet. That is a small, round world that shares its path with lots of other icy things. Pluto itself did not change. Only its name did. On Pluto there is a big, bright, flat patch shaped like a heart.",
 			"standard": "Pluto was discovered in 1930 by Clyde Tombaugh and was called the ninth planet for 76 years. Then, in 2005, astronomers found Eris, an icy world about as big as Pluto, and had to decide: was it a tenth planet? In 2006 the International Astronomical Union (IAU) agreed on the first official definition of a planet: it must orbit the Sun, be massive enough to be round, and have cleared the neighbourhood around its orbit. Pluto does the first two, but it shares its region, the Kuiper Belt, with thousands of other icy bodies – so it became a dwarf planet. Pluto did not change; our knowledge did, and that is how science works.",
 			"advanced": "When NASA’s New Horizons flew past on 14 July 2015, Pluto turned out to be surprisingly active. The western half of the bright, heart-shaped Tombaugh Regio is Sputnik Planitia, a basin about 1,000 km wide filled with slowly churning nitrogen ice and no visible craters, so its surface must be younger than about 10 million years. Mountains of water ice several kilometres high and a thin nitrogen atmosphere with layers of blue haze complete the picture. Pluto’s orbit is eccentric (0.25) and tilted by 17°; from 1979 to 1999 Pluto was closer to the Sun than Neptune, but a 3:2 orbital resonance – Pluto circles the Sun twice for every three orbits of Neptune – keeps the two from ever colliding."
 		},
 		"facts": {
 			"simple": [
 				"Pluto got its name from Venetia Burney, an 11-year-old girl from England.",
-				"The New Horizons spacecraft travelled for nine and a half years to reach Pluto.",
-				"One year on Pluto lasts almost 250 Earth years."
+				"The space probe New Horizons flew for nine and a half years to reach Pluto.",
+				"One trip around the Sun takes Pluto longer than three long human lives."
 			],
 			"standard": [
 				"New Horizons flew past Pluto on 14 July 2015 and sent back the first close-up pictures.",
@@ -1264,7 +1317,7 @@
 			]
 		},
 		"comparisons": {
-			"simple": ["If Earth were a football, Pluto would be a ping-pong ball."],
+			"simple": ["If Earth were an orange, Pluto would be a marble."],
 			"standard": [
 				"Pluto is only about two thirds as wide as our Moon – seven moons in the solar system are bigger than Pluto."
 			],
@@ -1277,15 +1330,15 @@
 		"name": "Haumea",
 		"tagline": "The spinning egg",
 		"description": {
-			"simple": "Haumea is a dwarf planet far out beyond Neptune. It spins so fast – once in less than four hours – that it has been stretched into the shape of an egg or a rugby ball. Haumea has two small moons and even a thin ring.",
+			"simple": "Haumea is a dwarf planet far out beyond Neptune. It spins round so fast, once in less than four hours, that it has been stretched. Now it is shaped like an egg or a rugby ball. Haumea has two small moons and even a thin ring.",
 			"standard": "Haumea lives in the Kuiper Belt, the zone of icy bodies beyond Neptune. A day there lasts less than four hours, which makes it one of the fastest-spinning large bodies in the solar system. The rapid spin has pulled it into a stretched, egg-like shape about twice as long as it is thick. In 2017 astronomers watched Haumea pass in front of a distant star and discovered a thin ring around it – the first ring found around a dwarf planet. Its two moons, Hiʻiaka and Namaka, are named like Haumea after Hawaiian goddesses.",
 			"advanced": "Haumea’s rotation period of 3.9 hours stretches it into an elongated ellipsoid roughly twice as long as it is thick – the shape in which its gravity and its spin balance each other. Its surface is covered in crystalline water ice, while its density points to a mostly rocky interior under a thin icy shell. Haumea, its moons and a family of icy bodies on similar orbits are thought to be fragments of an ancient giant collision, which may also explain its fast spin. It orbits the Sun every 283 years at an average distance of 43 AU, on an orbit inclined by 28°."
 		},
 		"facts": {
 			"simple": [
 				"A day on Haumea is shorter than a school morning: less than 4 hours.",
-				"Haumea is named after a Hawaiian goddess of birth and fertility.",
-				"Haumea has a ring, just like Saturn – only much thinner and fainter."
+				"Haumea is named after a Hawaiian goddess of birth.",
+				"Haumea has a ring, just like Saturn, only much thinner and fainter."
 			],
 			"standard": [
 				"Haumea’s ring was discovered in 2017 when the dwarf planet passed in front of a star and briefly blocked its light.",
@@ -1300,7 +1353,7 @@
 		},
 		"comparisons": {
 			"simple": [
-				"If Earth were a football, Haumea would be about the size and shape of a quail’s egg."
+				"If Earth were an orange, Haumea would be a tiny egg, about as long as a marble."
 			],
 			"standard": ["Haumea spins about six times faster than Earth."],
 			"advanced": [
@@ -1312,15 +1365,15 @@
 		"name": "Makemake",
 		"tagline": "The dwarf planet found at Easter",
 		"description": {
-			"simple": "Makemake is a small, reddish, icy world far beyond Neptune. It was found in 2005, just after Easter, so its discoverers named it after a god of the people of Easter Island. Makemake is one of the brightest objects in the Kuiper Belt, the zone of icy worlds beyond Neptune. It has one tiny, dark moon.",
+			"simple": "Makemake is a small, reddish, icy world far beyond Neptune. It was found just after Easter. So the people who found it named it after a god from Easter Island. Makemake is one of the brightest of the icy worlds beyond Neptune. It has one tiny, dark moon.",
 			"standard": "Makemake is a dwarf planet in the Kuiper Belt, about 1,400 km across – a bit more than half as wide as Pluto. Its discoverers spotted it on 31 March 2005, a few days after Easter, and later named it after Makemake, the creator god of the Rapa Nui people of Easter Island. After Pluto, it is the brightest known object in the Kuiper Belt, visible in a large amateur telescope. Its reddish-brown surface is covered with frozen methane. In 2016, Hubble images revealed a small, very dark moon.",
 			"advanced": "Makemake orbits the Sun every 308 years at an average distance of 45.6 AU, on an orbit inclined by 29°. Its spectrum is dominated by methane ice, with ethane and other compounds that sunlight has produced from it, which give the surface its reddish colour. When Makemake passed in front of a faint star in 2011, the star vanished and reappeared abruptly, showing that Makemake has at most an extremely thin atmosphere – unlike Pluto. Its moon, nicknamed MK2, is about 1,300 times fainter than Makemake and far darker; it was found in Hubble images taken in 2015."
 		},
 		"facts": {
 			"simple": [
-				"A year on Makemake lasts about 308 Earth years.",
-				"Its discoverers first nicknamed it “Easterbunny”.",
-				"Makemake is covered in frozen methane – the main gas in the natural gas many people cook with."
+				"One trip around the Sun takes Makemake almost four long human lives.",
+				"The people who found it first nicknamed it “Easterbunny”.",
+				"Makemake is covered in frozen gas, the same gas that many people cook with."
 			],
 			"standard": [
 				"Makemake was officially recognised as a dwarf planet in 2008.",
@@ -1334,9 +1387,7 @@
 			]
 		},
 		"comparisons": {
-			"simple": [
-				"If Earth were a football, Makemake would be about as big as a cherry."
-			],
+			"simple": ["If Earth were an orange, Makemake would be a pea."],
 			"standard": [
 				"Makemake is about 60 % as wide as Pluto and 40 % as wide as our Moon."
 			],
@@ -1347,17 +1398,20 @@
 	},
 	"eris": {
 		"name": "Eris",
-		"tagline": "The dwarf planet that sparked a debate",
+		"tagline": {
+			"simple": "The dwarf planet that started an argument",
+			"standard": "The dwarf planet that sparked a debate"
+		},
 		"description": {
-			"simple": "Eris is a dwarf planet almost exactly as big as Pluto, but much farther away. When it was found in 2005, some people called it the tenth planet. Instead, astronomers made a clear rule for what counts as a planet – and both Eris and Pluto became dwarf planets. Eris is named after the Greek goddess of quarrels, which fits, because it started a big one!",
+			"simple": "Eris is a dwarf planet. It is almost exactly as big as Pluto, but much farther away. When it was found, some people called it the tenth planet. Instead, scientists made a clear rule for what counts as a planet. Then both Eris and Pluto became dwarf planets. Eris is named after the Greek goddess of arguing. That fits, because it started a big argument!",
 			"standard": "Eris is about as wide as Pluto but about a quarter heavier, and it is one of the most distant known objects that orbit the Sun. Its discovery in 2005 forced astronomers to decide whether it was the tenth planet – or whether Pluto was really a planet at all. The answer was the 2006 IAU definition, which made both of them dwarf planets. Fittingly, Eris is named after the Greek goddess of strife and discord. Its orbit is so stretched and tilted (44°) that it takes about 560 years to go once around the Sun. Today Eris is about 96 times as far from the Sun as Earth, close to the farthest point of its orbit.",
 			"advanced": "Eris belongs to the scattered disc, a population of icy bodies beyond the Kuiper Belt whose eccentric, steeply inclined orbits were probably flung outwards by Neptune’s gravity. Its orbit (semi-major axis 68 AU, eccentricity 0.44, inclination 44°) carries it between about 38 and 98 AU from the Sun. When Eris passed in front of a star in 2010, its diameter was measured at about 2,330 km, just below Pluto’s 2,377 km, while the orbit of its moon Dysnomia gives a mass about 27 % greater than Pluto’s – so Eris is denser and rockier. Its surface reflects about 96 % of the light that hits it, one of the highest values in the solar system, probably thanks to fresh methane frost."
 		},
 		"facts": {
 			"simple": [
-				"A year on Eris lasts about 560 Earth years.",
+				"One trip around the Sun takes Eris about seven long human lives.",
 				"Eris has one moon, called Dysnomia.",
-				"Eris is one of the shiniest things in the solar system: like fresh snow, it reflects almost all the sunlight that hits it."
+				"Eris is one of the shiniest things in space. Like fresh snow, it shines back almost all the sunlight."
 			],
 			"standard": [
 				"Before it got its official name, Eris was nicknamed “Xena”, after the heroine of a TV series.",
@@ -1372,7 +1426,7 @@
 		},
 		"comparisons": {
 			"simple": [
-				"If Earth were a football, Eris would be a ping-pong ball – just a tiny bit smaller than Pluto."
+				"If Earth were an orange, Eris would be a marble, just a tiny bit smaller than Pluto."
 			],
 			"standard": [
 				"Light needs about 13 hours to reach Eris today; a passenger jet at 900 km/h would need about 1,800 years."
@@ -1386,15 +1440,15 @@
 		"name": "Charon",
 		"tagline": "Pluto’s giant partner",
 		"description": {
-			"simple": "Charon is Pluto’s biggest moon. It is about half as wide as Pluto – so big that Pluto and Charon swing around each other like two dancers holding hands. They always show each other the same side. If you stood on Pluto, Charon would hang in the sky without ever moving – or, on the other side of Pluto, you would never see it at all.",
+			"simple": "Charon is the biggest moon of Pluto. It is about half as wide as Pluto. It is so big that Pluto and Charon swing around each other, like two dancers holding hands. They always show each other the same side. If you stood on one side of Pluto, Charon would hang in the sky and never move. On the other side, you would never see it at all.",
 			"standard": "Charon is Pluto’s largest moon, about 1,200 km across – more than half as wide as Pluto. Because Charon is so heavy compared with Pluto, the point that both of them circle lies in the empty space between them, not inside Pluto. Both are tidally locked: they always turn the same face towards each other, and one day on Pluto lasts exactly as long as one orbit of Charon, 6.4 days. New Horizons revealed a reddish cap at Charon’s north pole and canyons far longer and deeper than the Grand Canyon.",
 			"advanced": "With about 12 % of Pluto’s mass, Charon is the largest moon relative to its parent of any planet or dwarf planet; the barycentre of the pair lies more than 900 km above Pluto’s surface, so some astronomers call Pluto and Charon a double dwarf planet. Its orbit allowed the first accurate measurement of Pluto’s mass. Its reddish polar cap, Mordor Macula, is thought to form when methane escaping from Pluto’s atmosphere freezes onto Charon’s cold winter pole and is turned into reddish compounds by ultraviolet light. Its water-ice surface is split by a belt of canyons, suggesting that an ancient subsurface ocean froze and expanded."
 		},
 		"facts": {
 			"simple": [
-				"Charon is named after the ferryman who, in Greek myths, carried souls across a river to the underworld.",
+				"Charon is named after a boatman in old Greek stories. He carried people across a river to the land of the dead.",
 				"Charon goes once around Pluto in a little less than a week.",
-				"Scientists nicknamed Charon’s dark red polar cap “Mordor”, after the dark land in The Lord of the Rings."
+				"Scientists nicknamed the dark red patch at its top “Mordor”, after the dark land in The Lord of the Rings."
 			],
 			"standard": [
 				"Charon is only about 19,600 km from Pluto – about a twentieth of the distance between Earth and the Moon.",
@@ -1409,7 +1463,7 @@
 		},
 		"comparisons": {
 			"simple": [
-				"If Earth were a football, Pluto would be a ping-pong ball and Charon a hazelnut 34 cm away."
+				"If Earth were an orange, Pluto would be a marble. Charon would be a pea, as far away as your hand is long."
 			],
 			"standard": [
 				"Charon orbits only about 19,600 km from Pluto – a passenger jet could fly that distance in less than a day."
@@ -1423,15 +1477,15 @@
 		"name": "Vesta",
 		"tagline": "The brightest asteroid",
 		"description": {
-			"simple": "Vesta is the second-biggest object in the asteroid belt. It is the brightest asteroid of all – on very dark nights you can sometimes even see it without a telescope. Long ago a huge crash knocked a giant hole into Vesta, and some of the pieces have landed on Earth as meteorites. So people can hold a piece of Vesta in their hands!",
+			"simple": "Vesta is the second-biggest thing in the asteroid belt, the ring of space rocks between Mars and Jupiter. It is the brightest of all the space rocks. On very dark nights you can sometimes see it without a telescope. Long ago, a huge crash knocked a giant hole into Vesta. Some of the pieces have landed on Earth. So people can hold a piece of Vesta in their hands!",
 			"standard": "Vesta is the second-largest body in the asteroid belt, about 525 km across. Unlike most asteroids, it has layers like a small rocky planet: an iron core, a rocky mantle and a crust of old lava. NASA’s Dawn spacecraft orbited Vesta from 2011 to 2012 and mapped Rheasilvia, a crater about 500 km wide – almost as wide as Vesta itself – with a central mountain more than twice as high as Mount Everest. The impact that made it blasted out rock that still falls to Earth: roughly one meteorite in twenty comes from Vesta.",
 			"advanced": "Vesta is a surviving protoplanet: early in its history it melted and separated into an iron core, a mantle and a basaltic crust – the same process that shaped Earth. Its southern hemisphere is dominated by two overlapping impact basins, Rheasilvia (about 500 km) and the older Veneneia. The Rheasilvia impact, about a billion years ago, blasted out around 1 % of Vesta’s volume and created a family of small asteroids, the vestoids. Some of those fragments reach Earth as howardite–eucrite–diogenite (HED) meteorites, which let us study Vesta’s crust in the laboratory. Because its shape is not quite round, Vesta is classed as an asteroid rather than a dwarf planet."
 		},
 		"facts": {
 			"simple": [
-				"Vesta is named after the Roman goddess of the home and the hearth fire.",
+				"Vesta is named after the Roman goddess of the home and the fireplace.",
 				"A day on Vesta lasts just over 5 hours.",
-				"The Dawn spacecraft visited Vesta first and then flew on to Ceres."
+				"The space probe Dawn visited Vesta first and then flew on to Ceres."
 			],
 			"standard": [
 				"Vesta was discovered in 1807 by Heinrich Olbers.",
@@ -1445,7 +1499,7 @@
 			]
 		},
 		"comparisons": {
-			"simple": ["If Earth were a football, Vesta would be a pea."],
+			"simple": ["If Earth were an orange, Vesta would be a small peppercorn."],
 			"standard": [
 				"Vesta is about 525 km wide – you could drive across it at 100 km/h in a little over 5 hours."
 			],
@@ -1458,15 +1512,15 @@
 		"name": "Pallas",
 		"tagline": "The tilted giant of the asteroid belt",
 		"description": {
-			"simple": "Pallas is one of the biggest asteroids, almost as big as Vesta. It goes around the Sun on a very tilted path, so it spends much of its time above or below the other asteroids. In films, the asteroid belt is full of rocks tumbling close together – but the real one is almost empty. Spacecraft fly straight through it without having to dodge anything.",
+			"simple": "Pallas is one of the biggest space rocks in the asteroid belt. It is almost as big as Vesta. Its path around the Sun is very tilted. So it spends a lot of time above or below the other space rocks. In films, the asteroid belt is full of rocks bumping into each other. But the real one is almost empty. Space probes fly straight through it.",
 			"standard": "Pallas was the second asteroid ever found, discovered by Heinrich Olbers in 1802. It is about 510 km across, almost as big as Vesta, but its orbit is tilted by about 35° compared with the planets’ – so steeply that it is hard to reach, and no spacecraft has visited it yet. Pallas is a good reminder of how empty the asteroid belt really is: neighbouring asteroids are on average about a million km apart, more than twice the distance from Earth to the Moon. Spacecraft such as Pioneer 10, Galileo, Cassini and New Horizons have crossed the belt without having to steer around anything.",
 			"advanced": "Pallas has a mean diameter of about 510 km and holds roughly 8 % of the asteroid belt’s mass. Its orbit is unusually inclined (34.9°) and eccentric (0.23), so it meets other asteroids at high relative speeds and collisions are especially violent – which may explain the heavily cratered, “golf ball” surface seen in 2020 images from the Very Large Telescope. The whole belt contains only about 3 % of the Moon’s mass, and Ceres, Vesta, Pallas and Hygiea together account for more than half of it. Pallas orbits at an average distance of 2.77 AU, almost exactly the same as Ceres."
 		},
 		"facts": {
 			"simple": [
 				"Pallas is named after Pallas Athena, the Greek goddess of wisdom.",
-				"One year on Pallas lasts more than four and a half Earth years.",
-				"All the asteroids in the belt together weigh much less than our Moon."
+				"One year on Pallas lasts more than four and a half of our years.",
+				"All the space rocks in the belt together weigh much less than our Moon."
 			],
 			"standard": [
 				"Like Ceres, Pallas was counted as a planet for decades after its discovery.",
@@ -1481,7 +1535,7 @@
 		},
 		"comparisons": {
 			"simple": [
-				"If Earth were a football, Pallas would be a pea – just like Vesta."
+				"If Earth were an orange, Pallas would be a small peppercorn, just like Vesta."
 			],
 			"standard": [
 				"All the asteroids together have only about a thirtieth of the Moon’s mass."
@@ -1495,15 +1549,15 @@
 		"name": "Juno",
 		"tagline": "The third asteroid ever found",
 		"description": {
-			"simple": "Juno is a big asteroid in the asteroid belt, about 250 km wide. It was the third asteroid ever found, in 1804. It is made of stone mixed with metal and is shaped a bit like a potato. Juno is named after the queen of the Roman gods.",
+			"simple": "Juno is a big space rock in the asteroid belt, between Mars and Jupiter. It was the third one ever found. It is made of stone mixed with metal. It is shaped a bit like a potato. Juno is named after the queen of the Roman gods.",
 			"standard": "Juno was the third asteroid to be discovered, found by Karl Harding in 1804. It is about 250 km across and one of the larger stony asteroids, made of silicate rock mixed with metal. Its orbit is quite stretched: Juno comes as close to the Sun as about 2 AU and swings out to about 3.4 AU. Don’t mix it up with NASA’s Juno spacecraft – that one was sent to Jupiter, not to this asteroid.",
 			"advanced": "Juno is an S-type asteroid: its surface is made of stony silicates mixed with nickel-iron, and it reflects more light than the dark, carbon-rich asteroids. With an eccentricity of 0.26, its distance from the Sun varies between about 297 and 502 million km, and it orbits once every 4.4 years. It rotates in about 7.2 hours, and its brightness changes as it turns because of its irregular shape. Together with Ceres, Pallas and Vesta, it was counted as a planet for several decades after its discovery."
 		},
 		"facts": {
 			"simple": [
-				"A year on Juno lasts almost four and a half Earth years.",
-				"Juno spins around once in about 7 hours.",
-				"Juno is too faint to see with your eyes alone – you need binoculars or a telescope."
+				"A year on Juno lasts almost four and a half of our years.",
+				"Juno spins round once in about 7 hours.",
+				"Juno is too faint to see with your eyes alone. You need binoculars or a telescope."
 			],
 			"standard": [
 				"Juno is named after the Roman queen of the gods, the wife of Jupiter.",
@@ -1517,7 +1571,7 @@
 			]
 		},
 		"comparisons": {
-			"simple": ["If Earth were a football, Juno would be a peppercorn."],
+			"simple": ["If Earth were an orange, Juno would be a pinhead."],
 			"standard": [
 				"Juno is about 250 km wide: at 100 km/h you could drive across it in two and a half hours."
 			],
@@ -1530,13 +1584,13 @@
 		"name": "Hygiea",
 		"tagline": "A possible dwarf planet",
 		"description": {
-			"simple": "Hygiea is the fourth-biggest object in the asteroid belt. It is very dark and nearly round like a ball. Some astronomers think it might one day count as a dwarf planet. It is named after the Greek goddess of health – that is where the word “hygiene” comes from.",
+			"simple": "Hygiea is the fourth-biggest thing in the asteroid belt, the ring of space rocks between Mars and Jupiter. It is very dark and nearly round, like a ball. Some scientists think it might one day be called a dwarf planet. It is named after the Greek goddess of health. That is where the word “hygiene” comes from: keeping clean to stay healthy.",
 			"standard": "Hygiea is the fourth-largest asteroid, about 410 km across, and orbits in the outer part of the belt at an average distance of 3.15 AU. It was discovered in 1849 by Annibale de Gasparis in Naples. Its surface is dark and rich in carbon, like that of many asteroids in the outer belt. In 2019, sharp images from the Very Large Telescope in Chile showed that Hygiea is almost perfectly round, so it could qualify as a dwarf planet – but the IAU has not changed its status.",
 			"advanced": "Hygiea is a C-type asteroid, a dark carbonaceous body, and the largest member of a family of asteroids produced by a giant impact. The 2019 observations with the Very Large Telescope surprisingly found no large impact basin on it; models suggest that the collision shattered Hygiea completely and that the fragments then gathered again into a sphere. Its round shape appears to meet the IAU’s roundness criterion for a dwarf planet, but its classification has not been changed. Ceres, Vesta, Pallas and Hygiea together hold more than half of the asteroid belt’s mass."
 		},
 		"facts": {
 			"simple": [
-				"One year on Hygiea lasts about five and a half Earth years.",
+				"One year on Hygiea lasts about five and a half of our years.",
 				"A day on Hygiea lasts almost 14 hours.",
 				"Hygiea is too faint to see without a telescope."
 			],
@@ -1552,9 +1606,7 @@
 			]
 		},
 		"comparisons": {
-			"simple": [
-				"If Earth were a football, Hygiea would be a small pea about 7 mm wide."
-			],
+			"simple": ["If Earth were an orange, Hygiea would be a pinhead."],
 			"standard": [
 				"Sunlight takes about 26 minutes to reach Hygiea – three times as long as it takes to reach Earth."
 			],
@@ -1567,15 +1619,15 @@
 		"name": "Eros",
 		"tagline": "The first asteroid a spacecraft landed on",
 		"description": {
-			"simple": "Eros is a long, peanut-shaped asteroid, about 34 km long. It comes closer to Earth than the asteroids in the main belt. In the year 2000 a spacecraft called NEAR Shoemaker went into orbit around Eros, and a year later it gently landed on it – even though it was never built for landing!",
+			"simple": "Eros is a long space rock shaped like a peanut. It comes closer to Earth than the rocks in the asteroid belt. A space probe called NEAR Shoemaker flew around Eros for a year. Then it gently landed on it, even though it was never built for landing!",
 			"standard": "Eros, discovered in 1898, was the first near-Earth asteroid ever found: its orbit brings it closer to the Sun than Mars, although it never crosses Earth’s path. It is about 34 km long. On 14 February 2000 – Valentine’s Day, fitting for an asteroid named after the Greek god of love – NASA’s NEAR Shoemaker became the first spacecraft to orbit an asteroid. After a year of mapping, it touched down on 12 February 2001, the first landing on an asteroid.",
 			"advanced": "Eros is an S-type asteroid on an orbit with a semi-major axis of 1.46 AU and an eccentricity of 0.22; it takes 1.76 years to go around the Sun, and its perihelion at 1.13 AU makes it a Mars-crossing near-Earth asteroid. Close approaches of Eros around 1900 and in 1931 were used to measure its parallax and thus the scale of the solar system, the length of the astronomical unit. NEAR Shoemaker found a bulk density of about 2.7 g/cm³, similar to Earth’s crust, which suggests a solid but heavily fractured body rather than a loose rubble pile, covered in boulders and ponds of fine dust."
 		},
 		"facts": {
 			"simple": [
-				"Eros is named after the Greek god of love – and the spacecraft arrived on Valentine’s Day!",
-				"Eros spins around once in just over 5 hours.",
-				"On Eros, gravity is so weak that you could throw a stone right off into space."
+				"Eros is named after the Greek god of love. And the space probe arrived on Valentine’s Day!",
+				"Eros spins round once in just over 5 hours.",
+				"On Eros, the pull is so weak that you could throw a stone right off into space."
 			],
 			"standard": [
 				"NEAR Shoemaker took about 160,000 pictures of Eros.",
@@ -1590,7 +1642,8 @@
 		},
 		"comparisons": {
 			"simple": [
-				"If Earth were a football, Eros would be as small as a grain of sand."
+				"A car on a motorway could drive from one end of Eros to the other in about 20 minutes.",
+				"If Earth were an orange, Eros would be a grain of sand."
 			],
 			"standard": [
 				"Eros is about 34 km long – a car at 100 km/h would drive its length in about 20 minutes."
@@ -1602,17 +1655,20 @@
 	},
 	"bennu": {
 		"name": "Bennu",
-		"tagline": "The rubble pile we brought home",
+		"tagline": {
+			"simple": "The rock pile we brought home",
+			"standard": "The rubble pile we brought home"
+		},
 		"description": {
-			"simple": "Bennu is a small asteroid, only about 500 m wide – if you could walk around its middle, it would take you only about 20 minutes. It is not one solid rock but a loose pile of rocks and gravel held together by its tiny gravity. In 2020 the spacecraft OSIRIS-REx touched Bennu for a few seconds and grabbed some dust and pebbles. In 2023 a capsule brought them safely back to Earth, where scientists are studying them.",
+			"simple": "Bennu is a small space rock. You could walk around its middle in less than half an hour. It is not one solid rock. It is a loose pile of rocks and gravel, held together by its tiny pull. A space probe touched Bennu for a few seconds and grabbed some dust and pebbles. Then a capsule brought them safely back to Earth. Now scientists are studying them.",
 			"standard": "Bennu is a near-Earth asteroid about 500 m across, discovered in 1999. NASA’s OSIRIS-REx spacecraft arrived in 2018 and found a rubble pile: a loose heap of boulders and gravel held together by weak gravity. When it touched the surface on 20 October 2020 to collect a sample, its sampling head sank in as if into a ball pit. The capsule with about 120 g of material landed in the Utah desert on 24 September 2023. The sample is rich in carbon and water-bearing minerals and contains amino acids, building blocks of life.",
 			"advanced": "Bennu is a carbon-rich B-type asteroid whose bulk density of only about 1.2 g/cm³ implies that a large part of its volume is empty space between the fragments. Its orbit (semi-major axis 1.13 AU, eccentricity 0.20) crosses Earth’s, which makes it one of the most closely watched potentially hazardous asteroids: based on the precise tracking by OSIRIS-REx, the chance of an impact on 24 September 2182 is about 1 in 2,700. The returned sample contains minerals that formed in liquid water and salts left behind by evaporating brine, evidence that Bennu’s parent body once held water."
 		},
 		"facts": {
 			"simple": [
-				"Bennu got its name from a 9-year-old boy who won a naming contest in 2013.",
-				"Bennu spins around once in just over 4 hours.",
-				"The pieces of Bennu brought back to Earth weigh about 120 g – a bit more than a bar of chocolate."
+				"Bennu got its name from a 9-year-old boy who won a naming contest.",
+				"Bennu spins round once in just over 4 hours.",
+				"The pieces of Bennu brought to Earth weigh a bit more than a bar of chocolate."
 			],
 			"standard": [
 				"Bennu goes once around the Sun about every 1.2 years.",
@@ -1639,17 +1695,20 @@
 	},
 	"arrokoth": {
 		"name": "Arrokoth",
-		"tagline": "The most distant world ever explored",
+		"tagline": {
+			"simple": "The farthest world we have ever visited",
+			"standard": "The most distant world ever explored"
+		},
 		"description": {
-			"simple": "Arrokoth is a small, reddish world made of ice and rock, far out in the Kuiper Belt beyond Neptune. It looks like two flat pancakes stuck together – or a snowman lying down. On New Year’s Day 2019 the New Horizons spacecraft flew past it. No spacecraft has ever visited anything farther away.",
+			"simple": "Arrokoth is a small, reddish world made of ice and rock. It is very far away, beyond Neptune. It looks like two flat pancakes stuck together, or a snowman lying down. On New Year’s Day, the space probe New Horizons flew past it. No space probe has ever visited anything farther away.",
 			"standard": "Arrokoth is a small icy body in the Kuiper Belt, about 36 km long. On 1 January 2019 NASA’s New Horizons flew past it – three and a half years after visiting Pluto – making it the most distant object ever explored up close, about 6.6 billion km from Earth. It turned out to be two flattened lobes gently stuck together, which shows how small worlds formed: pieces in a cloud of dust and ice slowly clumped together. Arrokoth has hardly changed in 4.5 billion years, so it is like a time capsule from the birth of the solar system.",
 			"advanced": "Arrokoth (486958, formerly 2014 MU69) was found in 2014 with the Hubble Space Telescope during a search for a target that New Horizons could reach after Pluto. It orbits in the cold classical Kuiper Belt on a nearly circular (eccentricity 0.04), low-inclination orbit at 44 AU, taking about 292 years per orbit. It is a contact binary: its two lobes once orbited each other and then merged gently, at no more than a few km/h – evidence that planetesimals formed by the gentle collapse of clouds of pebbles rather than by violent collisions. Its deep red colour comes from organic compounds made by radiation, and methanol ice was detected on its surface."
 		},
 		"facts": {
 			"simple": [
 				"Arrokoth means “sky” in the language of the Powhatan people.",
-				"Radio signals from New Horizons at Arrokoth needed about 6 hours to reach Earth.",
-				"Arrokoth is very red – even redder than Pluto."
+				"Messages from New Horizons at Arrokoth needed about 6 hours to reach Earth.",
+				"Arrokoth is very red, even redder than Pluto."
 			],
 			"standard": [
 				"Arrokoth was discovered in 2014 with the Hubble Space Telescope while scientists searched for a target for New Horizons.",
@@ -1664,7 +1723,7 @@
 		},
 		"comparisons": {
 			"simple": [
-				"If Earth were a football, Arrokoth would be a grain of sand more than 100 km away."
+				"If Earth were an orange, Arrokoth would be a grain of sand. It would be as far away as a marathon, the longest running race."
 			],
 			"standard": [
 				"Arrokoth is about 36 km long – a bit shorter than a marathon."
@@ -1678,15 +1737,15 @@
 		"name": "Halley",
 		"tagline": "Halley’s Comet, back every 75 to 76 years",
 		"description": {
-			"simple": "Halley’s Comet is the most famous comet of all. It is a lump of dirty ice about 15 km long. Every 75 or 76 years it comes close to the Sun: the ice turns into gas and dust, and the comet grows a long, glowing tail. The tail always points away from the Sun. Halley last visited in 1986 and will be back in 2061 – maybe you will see it!",
+			"simple": "Halley’s Comet is the most famous comet of all. A comet is a big lump of dirty ice. Halley’s is about as long as a big city. Every 75 or 76 years it comes close to the Sun. Then some of its ice turns into gas and dust, and the comet grows a long, glowing tail. The tail always points away from the Sun. Halley will be back when you are grown up. Maybe you will see it!",
 			"standard": "Halley’s Comet returns to the inner solar system every 75 to 76 years. Its nucleus is a dark lump of ice and dust about 15 × 8 km. As it nears the Sun, sunlight turns the ice into gas, which drags dust along and forms a glowing cloud, the coma, and two tails that are pushed away from the Sun: a straight, bluish gas tail and a curved, whitish dust tail. So when the comet moves away from the Sun again, its tails go ahead of it. Edmond Halley realised that the comets seen in 1531, 1607 and 1682 were one and the same and predicted its return in 1758; it came back, but Halley did not live to see it. Its last perihelion was on 9 February 1986, and the next will be on 28 July 2061.",
 			"advanced": "Comet 1P/Halley moves on a retrograde orbit (inclination 162°): it travels around the Sun in the opposite direction to the planets. Its very eccentric orbit (0.97) takes it from about 0.6 AU, inside the orbit of Venus, out to about 35 AU, beyond Neptune. In March 1986 ESA’s Giotto probe passed about 600 km from the nucleus and took the first close-up images of a comet’s nucleus: a surface darker than coal, with jets of gas and dust bursting from a few active areas on the sunlit side. Records of Halley’s Comet go back to at least 240 BC in China."
 		},
 		"facts": {
 			"simple": [
-				"Dust from Halley’s Comet makes two showers of shooting stars every year, in May and in October.",
-				"The writer Mark Twain was born in a Halley year, 1835, and died in the next one, 1910.",
-				"Halley’s Comet appears on the Bayeux Tapestry, an embroidery more than 900 years old."
+				"Dust from Halley’s Comet gives us shooting stars twice every year, in May and in October.",
+				"The writer Mark Twain was born in a year when Halley’s Comet came. He died the next time it came back.",
+				"Halley’s Comet is in a very old picture made of cloth, from the time of knights and castles."
 			],
 			"standard": [
 				"In 1986 a fleet of spacecraft from Europe, the Soviet Union and Japan flew past the comet.",
@@ -1701,7 +1760,8 @@
 		},
 		"comparisons": {
 			"simple": [
-				"Halley’s nucleus is only about 15 km long, but its tail can stretch for millions of kilometres – many times the distance from Earth to the Moon."
+				"Halley’s icy heart is only as long as a big city. But its tail can be many times longer than the way from Earth to the Moon.",
+				"If Earth were an orange, Halley’s icy heart would be a speck of dust."
 			],
 			"standard": [
 				"A child who sees Halley’s Comet in 2061 at the age of 10 will be about 85 when it comes back after that."
@@ -1715,14 +1775,14 @@
 		"name": "Encke",
 		"tagline": "The comet with the shortest year",
 		"description": {
-			"simple": "Comet Encke is a small comet that comes back to the Sun very often – about every 3 years and 4 months. Its nucleus is only about 5 km wide, and it is usually too faint to see without binoculars or a telescope. Dust it has left behind along its path gives us shooting stars in autumn.",
+			"simple": "Comet Encke is a small comet, a lump of dirty ice. It comes back to the Sun very often: about every three years. It is usually too faint to see without binoculars or a telescope. Dust it has left behind on its path gives us shooting stars in autumn.",
 			"standard": "Comet Encke (2P/Encke) has the shortest orbital period of any bright comet: it returns every 3.3 years. Pierre Méchain first saw it in 1786, but it is named after Johann Franz Encke, who calculated its orbit in 1819 and showed that it keeps coming back. It was only the second comet, after Halley’s, known to do so – which is why its catalogue name begins with “2P”. Its orbit takes it closer to the Sun than Mercury’s average distance and out to about 4 AU, still inside Jupiter’s orbit. Dust from Encke causes the Taurid meteor showers each October and November.",
 			"advanced": "Encke’s orbit (semi-major axis 2.22 AU, eccentricity 0.85) spans from 0.34 AU, closer to the Sun than Mercury’s average distance, to 4.1 AU. Encke noticed that the comet returned a few hours earlier each time than gravity alone predicted – one of the first signs of non-gravitational forces, which we now know come from jets of gas acting like small rocket engines on the rotating nucleus. Unlike most short-period comets, Encke never comes close to Jupiter, whose gravity usually reshapes such orbits; how it reached its present orbit is still debated. Seen at dozens of returns, it is one of the best-studied comets."
 		},
 		"facts": {
 			"simple": [
-				"Encke gives us the Taurid shooting stars in October and November.",
-				"Encke comes closer to the Sun than the planet Mercury is on average.",
+				"Encke gives us the shooting stars called the Taurids, in October and November.",
+				"Encke comes closer to the Sun than Mercury usually is.",
 				"Encke comes back to the Sun about three times every ten years."
 			],
 			"standard": [
@@ -1738,7 +1798,7 @@
 		},
 		"comparisons": {
 			"simple": [
-				"If Earth were a football, Encke’s nucleus would be about as thin as a hair."
+				"If Earth were an orange, the icy heart of Encke would be thinner than a hair."
 			],
 			"standard": [
 				"Encke returns about 23 times for every single return of Halley’s Comet."
@@ -1752,15 +1812,15 @@
 		"name": "67P",
 		"tagline": "The rubber-duck comet visited by Rosetta",
 		"description": {
-			"simple": "Comet 67P looks like a giant rubber duck made of ice and dust, about 4 km long. The spacecraft Rosetta flew around it for two years and watched it wake up as it came closer to the Sun: jets of gas and dust burst out of it. Rosetta even dropped a small lander called Philae onto the comet – the first landing on a comet ever.",
+			"simple": "Comet 67P looks like a giant rubber duck made of ice and dust. The space probe Rosetta flew around it for two years. It watched the comet wake up as it came closer to the Sun. Jets of gas and dust burst out of it. Rosetta even dropped a small lander called Philae onto the comet. It was the first landing on a comet ever.",
 			"standard": "Comet 67P/Churyumov–Gerasimenko was discovered in 1969 by Klim Churyumov and Svetlana Gerasimenko. It is made of two lobes joined by a narrow neck, which gives it its famous “rubber duck” shape, about 4 km long. ESA’s Rosetta spacecraft reached it in August 2014 and orbited it for more than two years, watching the ice turn to gas as the comet neared the Sun. On 12 November 2014 the lander Philae touched down – the first landing on a comet – but it bounced and came to rest in the shadow of a cliff. Rosetta ended its mission on 30 September 2016 with a slow, controlled crash onto the comet.",
 			"advanced": "67P is a Jupiter-family comet with a period of 6.4 years, travelling between 1.24 AU and about 5.7 AU from the Sun. Rosetta measured a density of only about 0.53 g/cm³: roughly 70 % of the nucleus is empty space. Its instruments found the amino acid glycine and phosphorus, as well as a ratio of heavy to ordinary water very different from that of Earth’s oceans, suggesting that comets like 67P did not supply most of Earth’s water. Philae’s harpoons failed to fire, so it bounced twice before coming to rest in shadow, where its battery ran out after about two and a half days of science."
 		},
 		"facts": {
 			"simple": [
-				"Gravity on 67P is so weak that one good jump would send you flying off into space.",
+				"On 67P the pull is so weak that one good jump would send you flying off into space.",
 				"The lander Philae bounced twice before it came to rest.",
-				"Rosetta needed ten years to reach 67P and then explored it for more than two years."
+				"Rosetta needed ten years to reach 67P. Then it explored it for more than two years."
 			],
 			"standard": [
 				"67P goes around the Sun every 6.4 years.",
@@ -1775,7 +1835,7 @@
 		},
 		"comparisons": {
 			"simple": [
-				"67P is about 4 km long – you could walk from one end to the other in less than an hour, if you did not float away."
+				"You could walk from one end of 67P to the other in about an hour, if you did not float away."
 			],
 			"standard": [
 				"If Earth were a football, 67P would be about as thick as a human hair."
@@ -1787,17 +1847,20 @@
 	},
 	"halebopp": {
 		"name": "Hale-Bopp",
-		"tagline": "The great comet of 1997",
+		"tagline": {
+			"simple": "The great comet your parents may remember",
+			"standard": "The great comet of 1997"
+		},
 		"description": {
-			"simple": "Hale-Bopp was one of the brightest comets of the last hundred years. In 1997 people all over the world could see it in the night sky without a telescope – even from brightly lit cities. It stayed visible for about a year and a half. Its nucleus is huge for a comet, about 60 km wide. It will not come back for about 2,400 years.",
+			"simple": "Hale-Bopp was one of the brightest comets for a very long time. People all over the world could see it in the night sky without a telescope, even from bright cities. It stayed in the sky for about a year and a half. Its icy heart is huge for a comet. Hale-Bopp will not come back for a very, very long time.",
 			"standard": "Comet Hale-Bopp (C/1995 O1) was discovered on 23 July 1995, independently on the same night, by Alan Hale in New Mexico and Thomas Bopp in Arizona. At that time it was still beyond Jupiter’s orbit, unusually far for a comet to be seen, because its nucleus is exceptionally large – roughly 60 km across. It passed closest to the Sun on 1 April 1997 and was probably seen by more people than any comet before. Its two tails, a bluish gas tail and a broad whitish dust tail, pointed in slightly different directions, but both away from the Sun.",
 			"advanced": "Hale-Bopp is a long-period comet on a nearly perpendicular (inclination 89°), extremely elongated orbit (eccentricity 0.995). Its previous visit was about 4,200 years ago; on its way in, it passed close to Jupiter in 1996, whose gravity shortened its period to about 2,400 years. Its nucleus, estimated at 40 to 80 km across, is one of the largest known for a comet. Besides the usual gas and dust tails, observers discovered a third, faint tail made of sodium atoms. Its orbit now reaches out to about 350 AU from the Sun."
 		},
 		"facts": {
 			"simple": [
-				"Hale-Bopp was discovered on the same night by two people in two different places.",
-				"Its nucleus is about four times as long as Halley’s.",
-				"The last time Hale-Bopp came by, about 4,200 years ago, the Egyptian pyramids were already standing."
+				"Hale-Bopp was found on the same night by two people in two different places.",
+				"Its icy heart is about four times as long as Halley’s.",
+				"The last time Hale-Bopp came by, the pyramids of Egypt were already standing."
 			],
 			"standard": [
 				"Hale-Bopp stayed visible to the naked eye for about 18 months, twice as long as the previous record holder, the Great Comet of 1811.",
@@ -1812,7 +1875,8 @@
 		},
 		"comparisons": {
 			"simple": [
-				"If Earth were a football, Hale-Bopp’s nucleus would be about the size of a poppy seed."
+				"A car would need more than half an hour to drive across the icy heart of Hale-Bopp.",
+				"If Earth were an orange, the icy heart of Hale-Bopp would be a grain of salt."
 			],
 			"standard": [
 				"Hale-Bopp comes back only every 2,400 years or so – about 30 times as long as Halley’s Comet takes."
@@ -1824,16 +1888,19 @@
 	},
 	"neowise": {
 		"name": "NEOWISE",
-		"tagline": "The great comet of 2020",
+		"tagline": {
+			"simple": "The great comet of a few years ago",
+			"standard": "The great comet of 2020"
+		},
 		"description": {
-			"simple": "Comet NEOWISE was a bright comet that people could see with their own eyes in July 2020. It was discovered in March 2020 by a space telescope called NEOWISE, which gave the comet its name. In photos you can clearly see its two tails: a curved, whitish dust tail and a thin, bluish gas tail. It will not return for about 6,800 years.",
+			"simple": "Comet NEOWISE was a bright comet. A few years ago, in July, people could see it with their own eyes. A space telescope called NEOWISE found it and gave it its name. In photos you can see its two tails. One is a curved, whitish tail of dust. The other is a thin, bluish tail of gas.",
 			"standard": "Comet NEOWISE (C/2020 F3) was discovered on 27 March 2020 by NASA’s NEOWISE space telescope, which hunted for asteroids and comets in infrared light. It passed closest to the Sun on 3 July 2020, inside Mercury’s orbit, and survived the heating. In July it became the brightest comet seen from the northern hemisphere since Hale-Bopp in 1997, easy to spot with the naked eye low in the morning and later the evening sky. Photos showed its two tails clearly: a curved, yellowish-white dust tail and a straight, faint blue gas tail, both pointing away from the Sun. It will not return for about 6,800 years.",
 			"advanced": "C/2020 F3 is a long-period comet on a steeply inclined (129°), retrograde orbit. At perihelion it was only 0.29 AU from the Sun, and it made its closest approach to Earth on 23 July 2020 at about 103 million km (0.69 AU). Gravitational tugs from the planets during this passage stretched its orbit: its period grew by more than 2,000 years to about 6,800 years, with its aphelion now more than 700 AU from the Sun. Its nucleus is about 5 km across. Spectra showed glowing sodium, and the SOHO observatory and Parker Solar Probe imaged it near perihelion."
 		},
 		"facts": {
 			"simple": [
 				"NEOWISE was the brightest comet in more than 20 years for people in the northern half of the world.",
-				"Astronauts on the International Space Station photographed it from space.",
+				"Astronauts on the International Space Station took photos of it from space.",
 				"Its next visit is so far in the future that nobody alive today will see it again."
 			],
 			"standard": [
@@ -1849,7 +1916,7 @@
 		},
 		"comparisons": {
 			"simple": [
-				"NEOWISE will next come back in about 6,800 years – longer than the whole time since people first learned to write."
+				"NEOWISE will not come back for a very, very long time. That is longer than the whole time since people first learned to write."
 			],
 			"standard": [
 				"NEOWISE takes about 90 times as long as Halley’s Comet to go once around the Sun."
@@ -1863,7 +1930,7 @@
 		"name": "Nix",
 		"tagline": "Pluto’s moon of the night",
 		"description": {
-			"simple": "Nix is one of Pluto’s small moons, only about 50 km long and shaped like a potato. Instead of always showing the same side to Pluto, it tumbles as it goes around. It is named after the Greek goddess of the night.",
+			"simple": "Nix is one of the small moons of Pluto. It is shaped like a potato. It does not always show the same side to Pluto. It tumbles as it goes around. It is named after the Greek goddess of the night.",
 			"standard": "Nix is a small, elongated moon about 50 × 33 × 31 km, discovered with the Hubble Space Telescope in 2005 together with Hydra. It orbits Pluto and Charon every 24.9 days. Like Pluto’s other small moons, it does not keep one face towards Pluto but tumbles chaotically, because it is pulled by two big bodies at once. It is named after Nyx, the Greek goddess of the night; the spelling with an i avoids confusion with an asteroid called Nyx.",
 			"advanced": "Nix orbits the Pluto–Charon barycentre at about 48,700 km with a period of 24.9 days, close to four times Charon’s orbital period. Its chaotic, tumbling rotation is caused by the constantly changing gravitational pull of the Pluto–Charon pair. New Horizons found a reddish area around a large crater on its otherwise bright surface of water ice. The initials of Nix and Hydra, N and H, were chosen to honour New Horizons."
 		}
@@ -1872,16 +1939,19 @@
 		"name": "Hydra",
 		"tagline": "Pluto’s outermost moon",
 		"description": {
-			"simple": "Hydra is the moon farthest from Pluto. It is small, about 51 km long, and tumbles as it goes around. It is named after a monster with many heads from Greek myths.",
+			"simple": "Hydra is the moon farthest from Pluto. It is small, and it tumbles as it goes around. It is named after a monster with many heads from old Greek stories.",
 			"standard": "Hydra is the outermost of Pluto’s known moons, about 51 × 36 × 31 km. It was discovered with the Hubble Space Telescope in 2005, together with Nix, and circles Pluto and Charon every 38.2 days. New Horizons showed that its surface is bright and mostly water ice. It is named after the many-headed serpent that Heracles fought in Greek mythology.",
 			"advanced": "Hydra orbits the Pluto–Charon barycentre at about 64,700 km, with a period of 38.2 days – almost exactly six times Charon’s orbital period. Like the other small moons, it rotates chaotically rather than being tidally locked. Its bright surface is dominated by relatively clean water ice. Together with Nix, it was named so that the initials N and H would honour the New Horizons mission."
 		}
 	},
 	"kerberos": {
 		"name": "Kerberos",
-		"tagline": "Pluto’s double-lobed moon",
+		"tagline": {
+			"simple": "Pluto’s moon made of two lumps",
+			"standard": "Pluto’s double-lobed moon"
+		},
 		"description": {
-			"simple": "Kerberos is a tiny moon of Pluto, only about 19 km long. It looks like two small lumps stuck together. It is named after the three-headed dog that guards the underworld in Greek myths.",
+			"simple": "Kerberos is a tiny moon of Pluto. It looks like two small lumps stuck together. It is named after the dog with three heads that guards the land of the dead in old Greek stories.",
 			"standard": "Kerberos is one of Pluto’s smallest moons, about 19 × 10 × 9 km, discovered with the Hubble Space Telescope in 2011. It orbits Pluto and Charon every 32.2 days. New Horizons showed that it is made of two lobes, a larger and a smaller one, and that its surface is brighter than scientists had expected. It is named after the three-headed dog guarding the entrance to the underworld in Greek mythology.",
 			"advanced": "Kerberos orbits the Pluto–Charon barycentre at about 57,800 km, with a period of 32.2 days – close to five times Charon’s orbital period, between the orbits of Nix and Hydra. New Horizons images revealed a double-lobed shape, perhaps two bodies that merged, and a bright, water-ice surface. Like Pluto’s other small moons, it probably formed from debris left over by the giant impact that is thought to have created Charon."
 		}
@@ -1890,7 +1960,7 @@
 		"name": "Styx",
 		"tagline": "Pluto’s smallest known moon",
 		"description": {
-			"simple": "Styx is the smallest known moon of Pluto, only about 16 km long. It was found in 2012 while scientists were checking whether the path of the New Horizons spacecraft was safe. It is named after a river of the underworld in Greek myths.",
+			"simple": "Styx is the smallest moon of Pluto that we know. Scientists found it while they were checking that the path of the space probe New Horizons was safe. It is named after a river of the land of the dead in old Greek stories.",
 			"standard": "Styx, about 16 × 9 × 8 km, is the smallest known moon of Pluto. It was discovered in 2012 with the Hubble Space Telescope, during a search for moons and dust that might endanger New Horizons. It orbits Pluto and Charon every 20.2 days, inside the orbit of Nix. It is named after the river that, in Greek mythology, separates the world of the living from the underworld.",
 			"advanced": "Styx orbits the Pluto–Charon barycentre at about 42,700 km with a period of 20.2 days, close to three times Charon’s orbital period, making it the innermost of Pluto’s four small moons. It was found in Hubble images taken in 2012 by a team led by Mark Showalter. New Horizons saw it only from a great distance, so little is known about its surface."
 		}
@@ -1899,7 +1969,7 @@
 		"name": "Dysnomia",
 		"tagline": "The moon that weighed Eris",
 		"description": {
-			"simple": "Dysnomia is the only known moon of the dwarf planet Eris. It is much darker than Eris, which is as bright as fresh snow. By watching how Dysnomia goes around Eris, astronomers could work out how heavy Eris is.",
+			"simple": "Dysnomia is the only moon of the dwarf planet Eris that we know. It is much darker than Eris, which is as bright as fresh snow. Scientists watched how Dysnomia goes around Eris. That told them how heavy Eris is.",
 			"standard": "Dysnomia is Eris’s only known moon, discovered in September 2005 with the Keck telescope in Hawaii. It circles Eris every 15.8 days at about 37,300 km. From its orbit, astronomers calculated that Eris is about a quarter heavier than Pluto. In Greek mythology, Dysnomia is the daughter of Eris and the spirit of lawlessness – a name that also nods to the actress Lucy Lawless, who played Xena, Eris’s early nickname.",
 			"advanced": "Dysnomia follows a nearly circular orbit about 37,300 km from Eris with a period of 15.8 days; applying Kepler’s third law to this orbit gives Eris’s mass, about 1.66 × 10²² kg, 27 % more than Pluto’s. Dysnomia is very dark, reflecting only a few per cent of the light that hits it, compared with about 96 % for Eris. It is probably several hundred km across, which would make it the second-largest known moon of a dwarf planet after Charon. Eris appears to rotate in step with Dysnomia’s orbit, a sign that tides have locked the pair."
 		}
@@ -1917,7 +1987,7 @@
 		"name": "Hiʻiaka",
 		"tagline": "Haumea’s outer moon",
 		"description": {
-			"simple": "Hiʻiaka is the bigger of the two moons of the dwarf planet Haumea. It is covered in ice and goes around Haumea in about seven weeks. It is named after a Hawaiian goddess of hula dancing, one of Haumea’s daughters.",
+			"simple": "Hiʻiaka is the bigger of the two moons of the dwarf planet Haumea. It is covered in ice. It goes around Haumea in about seven weeks. It is named after a Hawaiian goddess of hula dancing, one of Haumea’s daughters.",
 			"standard": "Hiʻiaka is the larger and outer of Haumea’s two moons, about 320 km across. It was discovered in January 2005 with the Keck telescope in Hawaii, even before Haumea had its name, and orbits Haumea every 49 days at about 49,900 km. Like Haumea, its surface is covered in water ice. It is named after Hiʻiaka, the Hawaiian patron goddess of the island of Hawaiʻi and of hula dancers, a daughter of Haumea.",
 			"advanced": "Hiʻiaka orbits Haumea at about 49,900 km with a period of 49 days, on a nearly circular orbit. Its spectrum shows crystalline water ice, much like Haumea’s own surface, which supports the idea that both moons are fragments of Haumea’s icy crust thrown off in an ancient collision. Tracking Hiʻiaka’s orbit is what first allowed astronomers to measure Haumea’s mass."
 		}
@@ -1926,7 +1996,7 @@
 		"name": "S/2015 (136472) 1",
 		"tagline": "Makemake’s dark little moon",
 		"description": {
-			"simple": "This tiny, dark moon circles the dwarf planet Makemake. It was so hard to see next to bright Makemake that it was found only in 2016, in pictures from the Hubble Space Telescope. Scientists nicknamed it MK2.",
+			"simple": "This tiny, dark moon goes around the dwarf planet Makemake. It was very hard to see next to bright Makemake. So it was found only a few years ago, in pictures from the Hubble Space Telescope. Scientists nicknamed it MK2.",
 			"standard": "S/2015 (136472) 1, nicknamed MK2, is the only known moon of Makemake. It was spotted in Hubble images taken in April 2015 and announced in 2016. It is about 1,300 times fainter than Makemake and very dark, probably less than 200 km across. Its name is still a provisional designation: S for satellite, 2015 for the year it was photographed, 136472 for Makemake’s catalogue number and 1 for the first moon found.",
 			"advanced": "MK2 was discovered in Hubble images from April 2015, about 21,000 km from Makemake. Its orbit is not yet well known; if we see it almost edge-on, the moon would spend much of its time lost in Makemake’s glare, which could explain why earlier searches missed it. Its dark surface contrasts with Makemake’s bright methane ice, perhaps because its weak gravity cannot hold on to such volatile ices. A well-measured orbit would give Makemake’s mass and density."
 		}

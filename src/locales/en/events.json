@@ -1,6 +1,9 @@
 {
 	"solar1999": {
-		"title": "Total solar eclipse over Europe",
+		"title": {
+			"simple": "Eclipse of the Sun over Europe",
+			"standard": "Total solar eclipse over Europe"
+		},
 		"where": "From Cornwall across France, Germany, Austria, Hungary and Romania to Turkey, Iran and India",
 		"look": {
 			"simple": "The Moon's shadow is a small dark spot on Europe. Everywhere inside that spot, the day went dark for two minutes.",
@@ -18,7 +21,10 @@
 		}
 	},
 	"solar2024": {
-		"title": "Total solar eclipse",
+		"title": {
+			"simple": "Eclipse of the Sun",
+			"standard": "Total solar eclipse"
+		},
 		"where": "Mexico, the United States and Canada",
 		"look": {
 			"simple": "The Moon is exactly between the Sun and the Earth. Its shadow makes a small dark spot on North America.",
@@ -27,7 +33,10 @@
 		}
 	},
 	"solar2026": {
-		"title": "Total solar eclipse over Spain",
+		"title": {
+			"simple": "Eclipse of the Sun over Spain",
+			"standard": "Total solar eclipse over Spain"
+		},
 		"where": "Greenland, Iceland and northern Spain, in the evening",
 		"look": {
 			"simple": "The Moon's shadow crosses Greenland, Iceland and Spain. In Spain the Sun was low in the evening sky.",
@@ -36,7 +45,10 @@
 		}
 	},
 	"annular2027": {
-		"title": "Annular solar eclipse: a ring of fire",
+		"title": {
+			"simple": "Eclipse of the Sun: a ring of fire",
+			"standard": "Annular solar eclipse: a ring of fire"
+		},
 		"where": "Chile, Argentina and Uruguay, then West Africa",
 		"look": {
 			"simple": "This time the Moon is a little too small to cover the whole Sun. A bright ring of Sun is left around it.",
@@ -45,7 +57,10 @@
 		}
 	},
 	"solar2027": {
-		"title": "The eclipse of the century",
+		"title": {
+			"simple": "A very long eclipse of the Sun",
+			"standard": "The eclipse of the century"
+		},
 		"where": "Southern Spain, North Africa, Egypt and Saudi Arabia",
 		"look": {
 			"simple": "The next big total eclipse! Near Luxor in Egypt, the day turns into night for more than six minutes.",
@@ -54,7 +69,10 @@
 		}
 	},
 	"lunar2018": {
-		"title": "The longest total lunar eclipse of the century",
+		"title": {
+			"simple": "The longest eclipse of the Moon for a very long time",
+			"standard": "The longest total lunar eclipse of the century"
+		},
 		"where": "Europe, Africa, Asia and Australia",
 		"look": {
 			"simple": "The Moon is in the Earth's shadow. It does not go black: it turns dark red.",
@@ -63,7 +81,10 @@
 		}
 	},
 	"lunar2025mar": {
-		"title": "Total lunar eclipse: a blood moon",
+		"title": {
+			"simple": "Eclipse of the Moon: a red Moon",
+			"standard": "Total lunar eclipse: a blood moon"
+		},
 		"where": "The Americas",
 		"look": {
 			"simple": "Full Moon, and the Earth is right between the Sun and the Moon. The Moon turns red.",
@@ -72,7 +93,10 @@
 		}
 	},
 	"lunar2025sep": {
-		"title": "Total lunar eclipse",
+		"title": {
+			"simple": "Eclipse of the Moon",
+			"standard": "Total lunar eclipse"
+		},
 		"where": "Asia and Australia; Europe and Africa at moonrise",
 		"look": {
 			"simple": "The Moon slides into the Earth's shadow and turns red.",
@@ -81,7 +105,10 @@
 		}
 	},
 	"lunar2026aug": {
-		"title": "Partial lunar eclipse",
+		"title": {
+			"simple": "Eclipse of most of the Moon",
+			"standard": "Partial lunar eclipse"
+		},
 		"where": "The Americas, Europe and Africa",
 		"look": {
 			"simple": "The Moon goes almost all the way into the Earth's shadow, but a thin slice stays bright.",
@@ -90,16 +117,22 @@
 		}
 	},
 	"lunar2028dec": {
-		"title": "A blood moon on New Year's Eve",
+		"title": {
+			"simple": "A red Moon on New Year's Eve",
+			"standard": "A blood moon on New Year's Eve"
+		},
 		"where": "Europe, Africa, Asia and Australia",
 		"look": {
-			"simple": "On the last evening of 2028, the Moon turns red in the Earth's shadow.",
+			"simple": "On the last evening of the year, the Moon turns red in the Earth's shadow.",
 			"standard": "The next total lunar eclipse: the full Moon moves into the Earth's shadow on New Year's Eve and glows red for more than an hour.",
 			"advanced": "Totality lasts about 71 minutes. Eclipses come in seasons about six months apart, when the line where the Moon's orbit crosses the Earth's points at the Sun."
 		}
 	},
 	"venusTransit": {
-		"title": "Transit of Venus",
+		"title": {
+			"simple": "Venus crosses the Sun",
+			"standard": "Transit of Venus"
+		},
 		"where": "The Pacific, Asia and Australia; North America in the evening",
 		"look": {
 			"simple": "Venus passes in front of the Sun. From Earth it is a small black dot on the Sun.",
@@ -108,7 +141,10 @@
 		}
 	},
 	"mercury2019": {
-		"title": "Transit of Mercury",
+		"title": {
+			"simple": "Mercury crosses the Sun",
+			"standard": "Transit of Mercury"
+		},
 		"where": "The Americas; Europe and Africa in the afternoon",
 		"look": {
 			"simple": "Tiny Mercury passes in front of the Sun. Can you find the little dot?",
@@ -117,7 +153,10 @@
 		}
 	},
 	"mercury2032": {
-		"title": "The next transit of Mercury",
+		"title": {
+			"simple": "Mercury crosses the Sun again",
+			"standard": "The next transit of Mercury"
+		},
 		"where": "Europe, Africa and Asia",
 		"look": {
 			"simple": "The next time Mercury passes in front of the Sun.",
@@ -126,7 +165,10 @@
 		}
 	},
 	"nextVenusTransit": {
-		"title": "The next transit of Venus",
+		"title": {
+			"simple": "Venus crosses the Sun again",
+			"standard": "The next transit of Venus"
+		},
 		"where": "East Asia and Australia; western North America in the evening",
 		"look": {
 			"simple": "The next time Venus crosses in front of the Sun. Will anyone in this room see it?",
@@ -135,7 +177,10 @@
 		}
 	},
 	"greatConjunction": {
-		"title": "The Great Conjunction",
+		"title": {
+			"simple": "Jupiter meets Saturn",
+			"standard": "The Great Conjunction"
+		},
 		"where": "Everywhere, low in the south-west after sunset",
 		"look": {
 			"simple": "Jupiter and Saturn look like they almost touch. In space they are very far apart!",
@@ -180,7 +225,10 @@
 		}
 	},
 	"marsClosest": {
-		"title": "Mars at its closest in 60,000 years",
+		"title": {
+			"simple": "Mars at its closest",
+			"standard": "Mars at its closest in 60,000 years"
+		},
 		"where": "Everywhere, all night",
 		"look": {
 			"simple": "Mars comes very close to the Earth. Through a telescope it looks bigger than it has for a very long time.",
@@ -192,16 +240,19 @@
 		"title": "Mars close to Earth, but a far one",
 		"where": "Everywhere, all night",
 		"look": {
-			"simple": "The Earth passes Mars again, but this time Mars is far away. Compare it with 2003!",
+			"simple": "The Earth passes Mars again. But this time Mars stays far away, so it looks small. Compare it with Mars at its closest!",
 			"standard": "Every 26 months the Earth overtakes Mars. This time Mars is near the far end of its orbit, so it stays 101 million km away and looks small: compare the view from Earth with 2003.",
 			"advanced": "An aphelic opposition: Mars's disc only 14 arcseconds. Mars's orbit is eccentric (0.093), so closest approaches range from 55 to 101 million km."
 		}
 	},
 	"mars2035": {
-		"title": "The next great approach of Mars",
+		"title": {
+			"simple": "Mars comes close again",
+			"standard": "The next great approach of Mars"
+		},
 		"where": "Everywhere, all night",
 		"look": {
-			"simple": "Mars comes almost as close as in 2003. It shines bright red all night.",
+			"simple": "Mars comes very close again, almost as close as it can ever get. It shines bright red all night.",
 			"standard": "The next time the Earth passes Mars near Mars's closest point to the Sun: 56.9 million km, almost as close as in 2003.",
 			"advanced": "Perihelic oppositions repeat every 15 or 17 years; this is the best one between 2003 and 2050."
 		}
@@ -216,7 +267,10 @@
 		}
 	},
 	"saturnEdgeOn2025": {
-		"title": "Saturn's rings edge-on",
+		"title": {
+			"simple": "Saturn's rings from the side",
+			"standard": "Saturn's rings edge-on"
+		},
 		"where": "Nowhere, sadly: Saturn was too close to the Sun to be seen",
 		"look": {
 			"simple": "We see Saturn's rings exactly from the side, and they almost vanish. They are very, very thin!",
@@ -225,7 +279,10 @@
 		}
 	},
 	"saturnEdgeOn2038": {
-		"title": "Saturn's rings edge-on again",
+		"title": {
+			"simple": "Saturn's rings from the side again",
+			"standard": "Saturn's rings edge-on again"
+		},
 		"where": "Low in the morning twilight",
 		"look": {
 			"simple": "Saturn's rings turn their edge to us again and nearly disappear.",
@@ -264,7 +321,7 @@
 		"title": "Sputnik 1 launches",
 		"where": "Baikonur, Kazakhstan",
 		"look": {
-			"simple": "The first satellite goes round the Earth. The space age begins!",
+			"simple": "The first satellite goes round the Earth. It is a small metal ball that people sent up into space. The space age begins!",
 			"standard": "The first artificial satellite starts the space age. It circled the Earth every 96 minutes, far too close and small to draw at this scale.",
 			"advanced": "Sputnik 1 orbited between about 215 and 940 km altitude for three months. Artificial satellites are not moons, so the app does not draw them."
 		}
@@ -273,7 +330,7 @@
 		"title": "First Moon landing",
 		"where": "The Sea of Tranquility, on the Moon",
 		"look": {
-			"simple": "Apollo 11 lands on the Moon. From Earth, the Moon is a crescent in the evening sky.",
+			"simple": "Apollo 11 lands on the Moon. From Earth, the Moon is in the evening sky, less than half lit up.",
 			"standard": "Apollo 11 touches down on the Moon. They landed just after sunrise at their spot, so the ground was not too hot. From Earth the Moon was a waxing crescent.",
 			"advanced": "The landing site in the Sea of Tranquility had the Sun about 10° high, long shadows making the terrain easy to read. The Moon was about 6 days old."
 		}
@@ -289,7 +346,10 @@
 	},
 	"voyagerNeptune": {
 		"title": "Voyager 2 reaches Neptune",
-		"where": "4.5 billion km from Earth",
+		"where": {
+			"simple": "At Neptune, very, very far from Earth",
+			"standard": "4.5 billion km from Earth"
+		},
 		"look": {
 			"simple": "After twelve years, Voyager 2 flies past Neptune. No one has visited it since.",
 			"standard": "Twelve years after launch: the only visit Neptune has ever had. The cyan diamond is Voyager 2, passing just 29,240 km from Neptune's centre.",

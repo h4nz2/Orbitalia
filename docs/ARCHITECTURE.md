@@ -1653,6 +1653,18 @@ src/locales/<locale>/help.json   the help page's words (#43, see Help page)
   not ICU. The Sun and the eight planets have every field at every level in every locale (tested); moons without
   content get a generated description from their data (`bodies.fallback.moonDescription`). Every featured moon (#17,
   see Moons) has every field at every level in every locale (tested).
+- **Writing at `simple` (#51):** short sentences, one idea each; no number above 100 (years included: "long, long
+  ago", "when your grandparents were young"), no thousands, millions or billions, no km for big distances, no AU,
+  K, °C, m/s² or scientific notation. A quantity becomes a word ("hotter than an oven", "colder than any freezer")
+  or a comparison on the shared yardsticks: Earth ("11 Earths side by side", "almost 30 of our years", "you would
+  weigh less than half as much"), a long human life (80 years), and one size scale built from the walk's objects
+  (#25), _if Earth were an orange_: the Sun as tall as a house and about 9 football pitches away, Jupiter almost an
+  exercise ball, Saturn a little smaller, Uranus and Neptune a bit bigger than a basketball, Venus a slightly
+  smaller orange, Mars a table tennis ball, Mercury and the biggest moons a walnut, the Moon a cherry 30 oranges
+  away (Io and Europa a cherry too), Pluto, Eris and Triton a marble, the mid-sized moons a pea, then a peppercorn,
+  a pinhead, a poppy seed, a grain of salt or sand. Hard words are swapped ("path" for orbit, "air" for atmosphere,
+  "fountain" for geyser, "pull" for gravity) or explained where they stand ("craters, round holes from crashing
+  space rocks"). A plain field whose text breaks this gets a `simple` variant.
 - `src/i18n/locales.test.ts` and `bodies.test.ts` are the contract: every locale has exactly English's keys and
   variants, parses, uses only known arguments and complete plurals, and mirrors English's body content structure.
 
