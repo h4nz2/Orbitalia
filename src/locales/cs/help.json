@@ -504,22 +504,23 @@
 				"simple": "Kniha o planetách"
 			},
 			"what": {
-				"standard": "Stránka pro Slunce a každou planetu s velkým otáčejícím se glóbem, mapami povrchu a vysvětlením nejdůležitějších čísel.",
-				"simple": "Stránka o Slunci a o každé planetě, s velkým točícím se obrázkem."
+				"standard": "Stránka pro Slunce a každou planetu: velký otáčející se glóbus s mapami povrchu, vysvětlení nejdůležitějších čísel a příběhy: z čeho se svět skládá, jak horko tam bývá, jaké má přezdívky a odkud má jméno.",
+				"simple": "Stránka o Slunci a o každé planetě. Uvidíš, co je uvnitř, jaké je tam horko a jaké má přezdívky."
 			},
 			"why": {
-				"standard": "Je to klidné místo, kde si můžeš číst o jednom světě po druhém, sloupnout z něj mraky nebo si prohlédnout jeho hory a oceány.",
-				"simple": "Čti o jedné planetě po druhé a prohlédni si její hory a mraky."
+				"standard": "Je to klidné místo, kde si můžeš číst o jednom světě po druhém: sloupni z něj mraky, podívej se do něj v řezu a najdi příběhy, které si děti zapamatují, třeba o planetě, která by plavala ve vaně. U každého údaje je odkaz na jeho zdroj.",
+				"simple": "Čti o jedné planetě po druhé. Podívej se dovnitř a zjisti, která planeta by plavala ve vaně!"
 			},
 			"how": {
 				"standard": [
 					"Otevři vpravo dole Nástroje a vyber „Obrazový slovník“: otevře se na světě, na který se právě díváš. Nebo stiskni „Víc ve slovníku“ na kartě světa.",
-					"Vyber svět v řadě teček nahoře, pak Povrch, Terén, Oceány nebo Mraky, pokud je má."
+					"Vyber svět v řadě teček nahoře, pak „Povrch“, „Terén“, „Oceány“ nebo „Mraky“, pokud je má.",
+					"Otevři „Z čeho se skládá“, „Počasí“ nebo „Jména“ vedle glóbu (na telefonu pod ním). Otevřená část zůstane otevřená, i když vybereš jiný svět, takže třída může světy porovnávat jeden po druhém."
 				],
 				"simple": [
 					"Stiskni Nástroje a pak „Kniha o planetách“.",
 					"Vyber planetu v řadě teček nahoře.",
-					"Zkus Terén a Mraky a obrázek se změní."
+					"Stiskni „Co je uvnitř?“, „Horko, nebo zima?“ nebo „Jména a přezdívky“."
 				]
 			}
 		},

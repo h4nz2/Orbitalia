@@ -1,0 +1,446 @@
+{
+	"layers": {
+		"core": {
+			"simple": "Hot middle",
+			"standard": "Core"
+		},
+		"radiativeZone": {
+			"simple": "Glowing layer",
+			"standard": "Radiative zone"
+		},
+		"convectiveZone": {
+			"simple": "Bubbling layer",
+			"standard": "Convective zone"
+		},
+		"ironCore": {
+			"simple": "Metal middle",
+			"standard": "Iron core"
+		},
+		"rockyShell": {
+			"simple": "Rock",
+			"standard": "Mantle and crust (rock)"
+		},
+		"innerCore": {
+			"simple": "Solid metal middle",
+			"standard": "Inner core (solid iron)"
+		},
+		"outerCore": {
+			"simple": "Melted metal",
+			"standard": "Outer core (liquid iron)"
+		},
+		"rockyMantle": {
+			"simple": "Rock",
+			"standard": "Mantle (rock)"
+		},
+		"crust": {
+			"simple": "Thin rocky skin",
+			"standard": "Crust"
+		},
+		"fuzzyCore": {
+			"simple": "Heavy middle",
+			"standard": "Fuzzy core"
+		},
+		"denseCore": {
+			"simple": "Rock and metal middle",
+			"standard": "Core (metal and rock)"
+		},
+		"metallicHydrogen": {
+			"simple": "Squeezed hydrogen",
+			"standard": "Liquid metallic hydrogen"
+		},
+		"hydrogenLayer": {
+			"simple": "Hydrogen and helium",
+			"standard": "Liquid and gaseous hydrogen"
+		},
+		"rockyCore": {
+			"simple": "Rocky middle",
+			"standard": "Rocky core"
+		},
+		"icyMantle": {
+			"simple": "Hot slushy ice",
+			"standard": "Icy mantle (water, methane, ammonia)"
+		},
+		"gasEnvelope": {
+			"simple": "Gas",
+			"standard": "Hydrogen, helium and methane"
+		}
+	},
+	"gases": {
+		"hydrogen": "Hydrogen",
+		"helium": "Helium",
+		"oxygen": "Oxygen",
+		"sodium": "Sodium",
+		"potassium": "Potassium",
+		"carbonDioxide": "Carbon dioxide",
+		"nitrogen": "Nitrogen",
+		"argon": "Argon",
+		"carbonMonoxide": "Carbon monoxide",
+		"methane": "Methane"
+	},
+	"worlds": {
+		"sun": {
+			"madeOf": {
+				"simple": "The Sun is a giant ball of glowing gas. There is no ground to stand on. In its middle, it makes its own light and heat.",
+				"standard": "The Sun is a huge ball of hot gas, almost all hydrogen and helium. In its core, out to about a quarter of the way to the surface, hydrogen fuses into helium and releases energy. That energy slowly works its way out through the radiative zone; in the convective zone, hot gas rises like water boiling in a pot and carries it up to the surface.",
+				"advanced": "The Sun is a sphere of hot plasma. Its core reaches out to about 25 % of the radius, where hydrogen fuses into helium; the radiative zone, out to about 70 %, carries the energy outwards as radiation, and the convective zone carries it the rest of the way to the visible surface in rising and sinking currents of gas."
+			},
+			"air": {
+				"simple": "The Sun has no air like ours: all of it is gas. Most of it is hydrogen. Some of it is helium, the gas in party balloons.",
+				"standard": "The Sun has no air to breathe: all of it is gas. Of every 100 atoms at its surface, about 91 are hydrogen and 9 are helium. Everything else, such as oxygen, carbon and iron, adds up to just a pinch.",
+				"advanced": "By number of atoms, the photosphere is about 91.0 % hydrogen and 8.9 % helium; oxygen, carbon, neon, nitrogen, iron and the other heavier elements together make up the remaining 0.15 %."
+			},
+			"weather": {
+				"simple": "The Sun is the hottest place in our solar system. Even its outside is far hotter than any fire. Its middle is much hotter still.",
+				"standard": "The surface we see is about 5,500 °C. In the core it is about 15 million °C: hot enough for hydrogen to fuse. Strangely, the Sun’s thin outer atmosphere, the corona, is far hotter than the surface below it: up to about 2 million °C.",
+				"advanced": "The photosphere is about 5,500 °C and the core about 15 million °C. Above the photosphere the temperature climbs again, to up to about 2 million °C in the corona; why the corona is so much hotter than the surface beneath it is still an open question."
+			},
+			"nicknames": {
+				"yellowDwarf": {
+					"name": "Yellow dwarf",
+					"story": {
+						"simple": "Scientists call stars like the Sun yellow dwarfs. Dwarf means it is smaller than the giant stars. But in photos from space, the Sun looks white!",
+						"standard": "Astronomers call stars like the Sun yellow dwarfs: an ordinary, middle-sized star that shines by turning hydrogen into helium. “Dwarf” only means it is small next to the giant stars. And in photos the Sun looks white, because it gives off all the colours we can see at once.",
+						"advanced": "“Yellow dwarf” is the everyday name for the Sun’s class, G2 V: a G-type star on the main sequence, the long, stable stage of hydrogen fusion; “dwarf” sets main-sequence stars apart from giants. In photographs the Sun appears white, since it emits all visible colours at once."
+					}
+				}
+			},
+			"name": {
+				"simple": "Long ago, the Romans called the Sun Sol. That is why the Sun’s family is called the solar system.",
+				"standard": "In Latin, the language of the ancient Romans, the Sun is called Sol: that is why we speak of the solar system and of solar panels. The ancient Greeks had a Sun god called Helios, whose name lives on in words like heliosphere.",
+				"advanced": "Latin “sol” is the root of the adjective “solar”; Helios, the Sun god of Greek mythology, lends his name to terms such as heliosphere and helioseismology, the study of the Sun’s interior through its vibrations."
+			},
+			"localName": {
+				"simple": "Long ago, the English word for the Sun was sunne. People called the Sun she, not he. And Sunday is still the Sun’s day!",
+				"standard": "In Old English the Sun, “sunne”, was a feminine word, as in most Germanic languages, and English writers called the Sun “she” until the 1500s. Sunday is still named after it: the day of the Sun.",
+				"advanced": "Old English “sunne” was feminine, as is usual in Germanic, and English kept calling the Sun “she” until the 16th century; “Sunday” renders the Latin “dies solis”, the day of the Sun."
+			},
+			"discovery": {
+				"simple": "People have always known the Sun. Long ago, some people even prayed to it as a god.",
+				"standard": "Everyone has always known the Sun, and the ancient Greeks even had a Sun god, Helios. Its big secret came much later: it is a star, just like the stars we see at night, only much closer. And about 500 years ago, Copernicus said that the planets, Earth too, go around it.",
+				"advanced": "Known since prehistory; in 1543 Nicolaus Copernicus published the idea that the planets, Earth among them, circle the Sun, not Earth. That the Sun is itself a star, of class G2 V, an ordinary member of the Milky Way, is the work of the astronomers who followed."
+			}
+		},
+		"mercury": {
+			"madeOf": {
+				"simple": "Mercury is made of rock and metal, like Earth. Its metal middle is very big. It fills most of the planet.",
+				"standard": "Mercury is a rocky planet with an enormous iron core: it reaches out to about 85 % of the way to the surface. Around it there is only a thin shell of rock, the mantle and crust together, about 400 km thick.",
+				"advanced": "Mercury’s metallic core has a radius of about 2,074 km, some 85 % of the planet’s radius, and is thought to be partly molten. The rocky mantle and crust above it are only about 400 km thick together, which makes Mercury the second densest planet, after Earth."
+			},
+			"air": {
+				"simple": "Mercury has almost no air. There is only a tiny bit of gas around it, far too little to breathe.",
+				"standard": "Mercury has no real atmosphere, only a very thin exosphere: a few atoms knocked off its surface, mostly oxygen, sodium, hydrogen, helium and potassium. It is far too thin to breathe or to hold any heat.",
+				"advanced": "Instead of an atmosphere Mercury has a surface-bounded exosphere, so thin that its pressure is below about 5 × 10⁻¹⁵ bar: essentially a vacuum. It is mostly oxygen, sodium, hydrogen, helium and potassium; the fact sheets give it as column abundances, not as shares."
+			},
+			"weather": {
+				"simple": "In the daytime, Mercury is hotter than an oven. At night, it is colder than anywhere on Earth. It has no air to keep the heat in.",
+				"standard": "Mercury has the biggest swing of all the planets: up to about 430 °C in the daytime and down to about −180 °C at night. With no real atmosphere to hold the heat, it escapes into space as soon as the Sun sets.",
+				"advanced": "Daytime temperatures reach about 430 °C and nights fall to about −180 °C: without an atmosphere to store and spread heat, the surface follows the Sun. Mercury is closest to the Sun, but it is not the hottest planet: Venus, with its thick atmosphere, is."
+			},
+			"nicknames": {
+				"apolloHermes": {
+					"name": "Apollo and Hermes",
+					"story": {
+						"simple": "Long ago, the Greeks saw Mercury in the morning and in the evening. They thought it was two different stars! They called the morning one Apollo and the evening one Hermes.",
+						"standard": "The ancient Greeks saw Mercury sometimes in the morning sky and sometimes in the evening sky, and gave it two names: Apollo when it was a morning star, Hermes when it was an evening star. Later they realised that both names belonged to the same world.",
+						"advanced": "Because Mercury is only ever seen near the Sun, before sunrise or after sunset, the ancient Greeks first took its two apparitions for two bodies: Apollo as the morning star, Hermes as the evening star, until they realised the two were one. Hermes, the swift messenger, is the Greek counterpart of the Roman Mercury."
+					}
+				}
+			},
+			"name": {
+				"simple": "Mercury is named after a Roman god. He was the messenger of the gods, and he was very fast. The planet is fast too!",
+				"standard": "Mercury is named after the swiftest of the Roman gods, their messenger. The name fits: Mercury is the fastest planet and races around the Sun in just 88 days.",
+				"advanced": "The Romans named it after Mercurius, the swift messenger of the gods, the Greek Hermes: a fitting name for the planet with the shortest year, 88 days, and the highest mean orbital speed, about 47 km/s."
+			},
+			"discovery": {
+				"simple": "People have seen Mercury since long, long ago, without any telescope. But it is hard to spot. It only shows up low in the sky, early in the morning or in the evening.",
+				"standard": "Mercury has been known since ancient times: the Romans could see five planets without a telescope, and Mercury was one of them. It is the hardest of the five to spot, because it only appears low in the sky in the morning or evening twilight.",
+				"advanced": "One of the five planets visible to the naked eye and known since antiquity; staying close to the Sun in our sky, it is seen only in twilight, which is why the Greeks first thought its morning and evening appearances were two different objects."
+			}
+		},
+		"venus": {
+			"madeOf": {
+				"simple": "Venus is made of rock and metal, like Earth. It is almost as big as Earth, too. It has lots and lots of volcanoes.",
+				"standard": "Venus is built much like Earth: an iron core, a mantle of hot rock and a thin rocky crust. Its surface has valleys, high mountains and thousands of volcanoes.",
+				"advanced": "Like Earth, Venus has an iron core, a hot-rock mantle and a thin crust. Tiny wobbles in its spin, measured by radar, suggest a core about 3,500 km in radius (2021); models give a crust about 40 km thick on average and at most 65 km. Volcanoes and tectonic forces have erased most traces of its early surface."
+			},
+			"air": {
+				"simple": "The air on Venus is very thick and heavy. It is a gas we cannot breathe. Its clouds are made of acid, which burns.",
+				"standard": "The air on Venus is almost all carbon dioxide, with a little nitrogen, and so thick that the pressure on the ground is about 93 times that on Earth, like being more than 900 m under the sea. Its clouds are made of sulfuric acid.",
+				"advanced": "The atmosphere is 96.5 % carbon dioxide and 3.5 % nitrogen by volume, with traces of sulfur dioxide, argon and water vapour; the surface pressure is about 92 bar, and the dense clouds are sulfuric acid."
+			},
+			"weather": {
+				"simple": "Venus is the hottest planet. It is hotter than an oven, by day and by night. Its thick air traps the Sun’s heat, like a blanket.",
+				"standard": "Venus is the hottest planet: about 464 °C on the ground, hot enough to melt lead, and just as hot at night as by day. Its thick carbon dioxide air traps the heat, so Venus is even hotter than Mercury, which is closer to the Sun.",
+				"advanced": "The mean surface temperature is about 464 °C, and the daily range is close to zero: the dense CO₂ atmosphere traps the heat (a runaway greenhouse effect) and spreads it around the planet, night side included."
+			},
+			"nicknames": {
+				"morningStar": {
+					"name": "The Morning Star and the Evening Star",
+					"story": {
+						"simple": "Venus is the brightest planet in our sky. You often see it just before sunrise or just after sunset. So people called it the Morning Star and the Evening Star. But it is not a star!",
+						"standard": "After the Sun and the Moon, Venus is the brightest thing in the sky. It shines in the morning before sunrise or in the evening after sunset, so the ancients thought it was two objects, a morning star and an evening star. It is not a star at all, but a planet.",
+						"advanced": "Venus is the third brightest object in the sky after the Sun and the Moon. Seen only in the dawn or the dusk, it was taken by the ancients for two objects, a morning star and an evening star, the names it still carries."
+					}
+				},
+				"earthsTwin": {
+					"name": "Earth’s twin",
+					"story": {
+						"simple": "Venus is almost as big as Earth. That is why people call it Earth’s twin. But it is so hot and poisonous that some call it Earth’s evil twin!",
+						"standard": "Venus is similar to Earth in size and structure, so it is sometimes called Earth’s twin. Because it is so hot and its air so poisonous, it is also called Earth’s evil twin.",
+						"advanced": "Similar to Earth in structure and size, with about 95 % of its diameter and 82 % of its mass, Venus is called Earth’s twin; its crushing, scorching atmosphere earned it the nickname Earth’s evil twin."
+					}
+				}
+			},
+			"name": {
+				"simple": "Venus is named after the Roman goddess of love and beauty. It is the only planet named after a goddess.",
+				"standard": "The Romans named the brightest planet after Venus, their goddess of love and beauty, called Aphrodite by the Greeks. It is the only planet named after a female god.",
+				"advanced": "Named after the Roman goddess of love and beauty, the Greek Aphrodite: the only planet named after a female god."
+			},
+			"discovery": {
+				"simple": "People have seen Venus since long, long ago. It is so bright that it is easy to find.",
+				"standard": "Venus has been known since ancient times: the Romans could easily see it, one of the five planets visible without a telescope. In 1610, Galileo saw through his telescope that Venus has phases like the Moon, which proved that it goes around the Sun.",
+				"advanced": "Known since antiquity as one of the five naked-eye planets; Galileo’s observation of its phases, from 1610, proved that it orbits the Sun, strong evidence for Copernicus’s Sun-centred system."
+			}
+		},
+		"earth": {
+			"madeOf": {
+				"simple": "Earth is made of rock and metal. In the middle is a ball of solid metal. Around it is melted metal, then a thick layer of hot rock. We live on its thin rocky skin.",
+				"standard": "Earth has four layers: a solid iron and nickel inner core, a liquid iron and nickel outer core, a thick mantle of hot rock and a thin crust, about 30 km deep under the continents and about 5 km under the oceans. It is the densest planet in the solar system.",
+				"advanced": "Earth’s inner core is solid iron and nickel about 1,221 km in radius, as hot as 5,400 °C; the liquid outer core around it is about 2,300 km thick, the hot, viscous rock of the mantle about 2,900 km. The crust averages about 30 km on land and 5 km under the oceans. Earth is the densest planet."
+			},
+			"air": {
+				"simple": "Earth’s air is the only air we can breathe. Most of it is a gas called nitrogen. It also has oxygen, which we need to live.",
+				"standard": "Earth’s air is about 78 % nitrogen and 21 % oxygen, with a little argon and carbon dioxide and some water vapour. It is the only air we know of that people and animals can breathe.",
+				"advanced": "By volume, dry air is 78.08 % nitrogen, 20.95 % oxygen and 0.934 % argon, with about 420 ppm (0.042 %) of carbon dioxide; water vapour adds about 1 %, varying from place to place."
+			},
+			"weather": {
+				"simple": "Earth is not too hot and not too cold. That is why water stays liquid and life is possible. But deserts can get very hot, and Antarctica very, very cold.",
+				"standard": "The hottest temperature ever measured on Earth is 56.7 °C, in Death Valley, California, in 1913; the coldest is −89.2 °C, at Vostok station in Antarctica, in 1983. On average Earth is about 15 °C: just right for liquid water.",
+				"advanced": "The World Meteorological Organization lists 56.7 °C (Furnace Creek, Death Valley, 10 July 1913) and −89.2 °C (Vostok, Antarctica, 21 July 1983) as the highest and lowest air temperatures ever measured; the global mean is about 15 °C."
+			},
+			"nicknames": {
+				"blueMarble": {
+					"name": "The Blue Marble",
+					"story": {
+						"simple": "Astronauts flying to the Moon took a famous photo of the whole Earth. It looked like a shiny blue marble. That is how Earth got this nickname.",
+						"standard": "On 7 December 1972, the crew of Apollo 17, on their way to the Moon, took a photo of the whole Earth lit by the Sun. The picture, called The Blue Marble, became one of the most famous photos ever taken.",
+						"advanced": "The Blue Marble was taken on 7 December 1972 by the crew of Apollo 17 on the way to the Moon: the fully lit disc of Earth, with Africa, Arabia and the Antarctic ice cap. It is one of the most reproduced images in history."
+					}
+				},
+				"paleBlueDot": {
+					"name": "The Pale Blue Dot",
+					"story": {
+						"simple": "A space probe called Voyager 1 looked back at Earth from very, very far away. Earth was just a tiny blue dot in the photo.",
+						"standard": "On 14 February 1990, Voyager 1, 6 billion km from the Sun, turned round and photographed Earth: a point of light about one pixel in size, in a ray of sunlight. The astronomer Carl Sagan, who had the idea for the picture, called Earth a pale blue dot.",
+						"advanced": "On 14 February 1990, Voyager 1, about 6 billion km from the Sun, took the 60 images of its “family portrait” of the planets; in one of them, Earth is a point of light about a pixel across, inside a scattered ray of sunlight. Carl Sagan had proposed the picture in 1981 and gave it its name in his book “Pale Blue Dot”."
+					}
+				}
+			},
+			"name": {
+				"simple": "Earth is the only planet not named after a god. Its name is an old word for the ground we walk on.",
+				"standard": "Earth is the only planet whose name does not come from a Greek or Roman god. Its name is about 1,000 years old and simply means “the ground”.",
+				"advanced": "Every other planet bears the name of a Greek or Roman god; the English name, about 1,000 years old, comes from Old English and Germanic and simply means “the ground”. In many languages, the planet’s name is the everyday word for land and soil."
+			},
+			"localName": {
+				"simple": "The word Earth is very, very old. Long ago, people said eorthe. It meant the ground and the soil.",
+				"standard": "The English word “Earth” comes from Old English “eorþe”, which meant the ground, the soil and dry land. It is the same old Germanic word as German “Erde”. Only about 600 years ago did people start using it for the whole planet.",
+				"advanced": "“Earth” continues Old English “eorþe”, “ground, soil, dirt, dry land; country”, from Proto-Germanic *ertho, the source also of German “Erde”; its use for the planet dates from about 1400."
+			},
+			"discovery": {
+				"simple": "We live on Earth, so people always knew it. But for a long time, they thought Earth stood still in the middle of everything. Then a man named Copernicus said that Earth goes around the Sun, like the other planets.",
+				"standard": "We have always known our home, but not that it is a planet. In 1515 Nicolaus Copernicus suggested that Earth is a planet like Venus or Saturn and that all the planets go around the Sun; he published the idea in 1543.",
+				"advanced": "Earth was recognised as a planet when Nicolaus Copernicus proposed, around 1515, that it circles the Sun like Venus or Saturn, and published the idea in “De revolutionibus orbium coelestium” in 1543; Kepler, Galileo and, in 1687, Newton made it stick."
+			}
+		},
+		"mars": {
+			"madeOf": {
+				"simple": "Mars is made of rock and metal, like Earth. It has a metal middle with lots of rock around it. Its outside is covered in red, rusty dust.",
+				"standard": "Mars has a core of iron, nickel and sulfur, between 1,500 and 2,100 km in radius, a rocky mantle and a crust 10 to 50 km deep. The dust that covers it is rusty: its iron minerals have oxidised.",
+				"advanced": "Mars has a dense core of iron, nickel and sulfur; the NASA facts give 1,500–2,100 km for its radius, and recent results suggest about 1,650–1,675 km. Above it lie a rocky mantle 1,240–1,880 km thick and a crust of iron, magnesium, aluminium, calcium and potassium, 10–50 km deep."
+			},
+			"air": {
+				"simple": "The air on Mars is very thin. It is mostly a gas we cannot breathe. Astronauts would need space suits there.",
+				"standard": "The air on Mars is about 95 % carbon dioxide, with a little nitrogen and argon. It is so thin that it holds very little heat.",
+				"advanced": "By volume the atmosphere is 95.1 % carbon dioxide, 2.59 % nitrogen and 1.94 % argon, with 0.16 % oxygen and 0.06 % carbon monoxide; the mean surface pressure is only about 6 millibars."
+			},
+			"weather": {
+				"simple": "On a summer day, Mars can be quite mild. But it can also get colder than anywhere on Earth. If you stood there, your feet would be warm and your head cold!",
+				"standard": "Mars can be as warm as about 20 °C or as cold as about −153 °C. Its thin air holds so little heat that at noon on the equator it can be 24 °C at your feet but 0 °C at your head.",
+				"advanced": "Temperatures range from about 20 °C to about −153 °C. The thin atmosphere holds little heat: at noon at the equator, the air can be 24 °C at the height of your feet but 0 °C at the height of your head. The mean is about −60 °C."
+			},
+			"nicknames": {
+				"redPlanet": {
+					"name": "The Red Planet",
+					"story": {
+						"simple": "Mars is called the Red Planet. Its dirt has rust in it, just like an old rusty nail. That makes it look red.",
+						"standard": "Mars is often called the Red Planet because the iron minerals in its dirt have rusted. That rusty dust, blown into the air, makes the whole planet look red.",
+						"advanced": "The nickname comes from oxidised, rust-coloured iron minerals in the Martian regolith; the dust kicked up into the atmosphere colours the sky as well as the ground."
+					}
+				}
+			},
+			"name": {
+				"simple": "Mars is named after the Roman god of war. People thought its red colour looked like blood.",
+				"standard": "The Romans named Mars after their god of war, because its reddish colour reminded them of blood. Long before them, the ancient Egyptians called it Her Desher, “the red one”.",
+				"advanced": "Named by the ancient Romans after their god of war, because its reddish colour was reminiscent of blood; the Egyptians had called it Her Desher, “the red one”."
+			},
+			"discovery": {
+				"simple": "People have seen Mars since long, long ago. It looks like a bright red star in the night sky.",
+				"standard": "Mars has been known since ancient times as one of the five planets you can see without a telescope. About 400 years ago, careful measurements of where Mars appeared in the sky helped Johannes Kepler discover that planets move on ellipses, not circles.",
+				"advanced": "Known since antiquity; Johannes Kepler, working with Tycho Brahe’s precise observations, concluded that the orbit of Mars is an ellipse, not a circle, the discovery behind his laws of planetary motion."
+			}
+		},
+		"jupiter": {
+			"madeOf": {
+				"simple": "Jupiter is a giant ball of gas. It is made mostly of hydrogen and helium, like the Sun. There is no ground to stand on.",
+				"standard": "Jupiter is made mostly of hydrogen and helium. Deeper down, the pressure squeezes the hydrogen gas into a liquid, the largest ocean in the solar system; deeper still, perhaps halfway to the centre, the hydrogen becomes a liquid that conducts electricity like a metal. Its core is fuzzy: partly dissolved, with no clear edge.",
+				"advanced": "Below the clouds, hydrogen and helium are compressed into a liquid, and deeper down into liquid metallic hydrogen; Juno found that the magnetic field is generated below about 81 % of the radius, in convecting metallic hydrogen. The core is dilute, partially dissolved, with no clear separation from the metallic hydrogen around it."
+			},
+			"air": {
+				"simple": "Jupiter’s air is mostly hydrogen and helium. Its stripes are bands of clouds.",
+				"standard": "Jupiter’s air is about 90 % hydrogen and 10 % helium, with small amounts of methane and ammonia. Its colourful stripes are bands of clouds.",
+				"advanced": "By volume about 89.8 % H₂ and 10.2 % He (each ± 2 %), with about 0.3 % methane and traces of ammonia, hydrogen deuteride, ethane and water."
+			},
+			"weather": {
+				"simple": "In its clouds, Jupiter is colder than anywhere on Earth. Deep inside, it is hotter than the surface of the Sun.",
+				"standard": "In its clouds Jupiter is about −110 °C. Deeper down the squeezed gas gets hotter and hotter, and near the centre it could be about 24,000 °C: much hotter than the surface of the Sun.",
+				"advanced": "At the 1-bar level the temperature is about 165 K (−108 °C), at 0.1 bar about 112 K; inward it rises steadily, to an estimated 24,000 °C near the centre."
+			},
+			"nicknames": {
+				"kingOfPlanets": {
+					"name": "King of the planets",
+					"story": {
+						"simple": "Jupiter is the biggest planet. It is heavier than all the other planets put together. So it is called the king of the planets.",
+						"standard": "Jupiter is called the king of the planets: it is the biggest one, more than twice as massive as all the other planets put together, and named after the king of the Roman gods.",
+						"advanced": "Fittingly for a namesake of the king of the gods, Jupiter is the largest planet and more than twice as massive as all the others combined."
+					}
+				}
+			},
+			"name": {
+				"simple": "Jupiter is named after the king of the Roman gods. The biggest planet got the name of the most important god.",
+				"standard": "The biggest planet gets its name from the king of the ancient Roman gods.",
+				"advanced": "Named after Jupiter, the king of the gods in Roman mythology: the largest planet for the highest god."
+			},
+			"discovery": {
+				"simple": "People have seen Jupiter since long, long ago. It is one of the brightest lights in the night sky.",
+				"standard": "Jupiter has been known since ancient times. In 1610 Galileo Galilei looked at it with a telescope and saw, for the first time in history, moons going around another world.",
+				"advanced": "Known since antiquity; Galileo’s telescope showed in 1610 four moons orbiting Jupiter, the first proof that not everything circles Earth."
+			}
+		},
+		"saturn": {
+			"madeOf": {
+				"simple": "Saturn is a giant ball of gas, like Jupiter. It is made mostly of hydrogen and helium. It is so light for its size that it would float in water!",
+				"standard": "Saturn is made mostly of hydrogen and helium. At its centre is a dense core of metals like iron and nickel, surrounded by rock, all squeezed hard by pressure and heat. Around it lies liquid metallic hydrogen, inside a layer of liquid hydrogen. It is the only planet less dense than water.",
+				"advanced": "At the centre is a dense core of metals and rock, enveloped by liquid metallic hydrogen inside a layer of liquid hydrogen. Waves in the rings, set off by vibrations of the planet itself, show that the core is diffuse: a mix of ice, rock and hydrogen of about 17 Earth masses, reaching out to about 60 % of the radius."
+			},
+			"air": {
+				"simple": "Saturn’s air is mostly hydrogen, with a little helium. Very strong winds blow around the planet.",
+				"standard": "Saturn’s air is about 96 % hydrogen and 3 % helium, with a little methane and ammonia. Near its equator the winds reach about 1,800 km/h.",
+				"advanced": "By volume about 96.3 % H₂ and 3.25 % He (each ± 2.4 %), with about 0.45 % methane and traces of ammonia, hydrogen deuteride and ethane; equatorial winds reach about 500 m/s."
+			},
+			"weather": {
+				"simple": "Saturn’s clouds are colder than anywhere on Earth. Higher up, it is even colder. Deep inside, it is very hot.",
+				"standard": "In its clouds Saturn is about −140 °C, and higher up about −190 °C. Deep inside, the pressure and heat are so great that they squeeze rock and metal together into a core.",
+				"advanced": "About 134 K (−139 °C) at the 1-bar level and 84 K (−189 °C) at 0.1 bar. Inside it heats up with depth; no measured value exists for the core."
+			},
+			"nicknames": {
+				"jewel": {
+					"name": "Jewel of the solar system",
+					"story": {
+						"simple": "Saturn has beautiful, shiny rings. They are made of ice and rock. With its rings, Saturn looks like a jewel.",
+						"standard": "With its bright rings of ice and rock, Saturn is the most beautiful planet to see through a telescope, which is why it is called the jewel of the solar system.",
+						"advanced": "Its broad, bright system of icy rings has made Saturn the “jewel of our solar system”, the showpiece of every telescope."
+					}
+				}
+			},
+			"name": {
+				"simple": "Saturn is named after the Roman god of farming. He was the father of Jupiter.",
+				"standard": "Around 400 BCE, Greek astronomers named this “wandering star” after Kronos, their god of farming; the Romans later renamed it Saturn, after their own god of farming and wealth, the father of Jupiter.",
+				"advanced": "Named for the Roman god of agriculture and wealth, father of Jupiter; around 400 BCE Greek astronomers had named it after Kronos, and the Romans swapped in their own god."
+			},
+			"localName": {
+				"simple": "In English, Saturday is named after Saturn. It is Saturn’s day!",
+				"standard": "In English, Saturday is still named after the planet: it is Saturn’s day, from the Latin name of the day. It is the only English weekday named after a planet other than the Sun and the Moon.",
+				"advanced": "“Saturday” comes from Old English “Sæternesdæg”, a rendering of Latin “Saturni dies”: the only English weekday that kept a Roman planet’s name, while Tuesday to Friday took Germanic gods instead."
+			},
+			"discovery": {
+				"simple": "People have seen Saturn since long, long ago. For a long time, it was the farthest planet anyone knew.",
+				"standard": "Saturn has been known since ancient times: it is the farthest planet you can see with your own eyes. In 1610 Galileo saw its rings but thought Saturn was a “triple planet”; in 1655 Christiaan Huygens discovered the rings and Saturn’s biggest moon, Titan.",
+				"advanced": "The farthest planet discovered by the unaided eye; Galileo saw the rings in July 1610 but took them for a “triple planet”, and Christiaan Huygens recognised them in 1655, the year he found Titan."
+			}
+		},
+		"uranus": {
+			"madeOf": {
+				"simple": "Uranus is an ice giant. Inside, it is mostly hot, slushy ice. In its middle there is rock. On the outside there is gas.",
+				"standard": "Uranus is an ice giant: 80 % or more of its mass is a hot, dense fluid of water, methane and ammonia, which scientists call ices, above a small rocky core. On top lies an atmosphere of hydrogen, helium and methane.",
+				"advanced": "At least 80 % of Uranus’s mass is a hot, dense fluid of “icy” materials (water, methane and ammonia) above a small rocky core, beneath an envelope of hydrogen, helium and methane."
+			},
+			"air": {
+				"simple": "Uranus’s air is mostly hydrogen and helium. A little bit of a gas called methane makes it blue-green.",
+				"standard": "Uranus’s air is about 83 % hydrogen and 15 % helium, with about 2 % methane. Methane soaks up red light, which gives the planet its blue-green colour.",
+				"advanced": "By volume about 82.5 % H₂ and 15.2 % He (each ± 3.3 %) with 2.3 % CH₄; methane absorbs the red part of sunlight, so the planet looks blue-green."
+			},
+			"weather": {
+				"simple": "Uranus has the coldest air of all the planets. It is colder than anywhere on Earth. Deep inside, it is far hotter than any fire.",
+				"standard": "In its clouds Uranus is about −197 °C, and its air gets as cold as −224 °C, the coldest of any planet. Near the core it heats up to about 5,000 °C.",
+				"advanced": "About 76 K (−197 °C) at the 1-bar level; the atmosphere’s minimum, 49 K (−224.2 °C), is the coldest of any planet. Near the core it reaches about 9,000 °F (4,982 °C)."
+			},
+			"nicknames": {
+				"sideways": {
+					"name": "The sideways planet",
+					"story": {
+						"simple": "Uranus lies on its side. It rolls around the Sun like a ball. Maybe something big crashed into it, long ago.",
+						"standard": "Uranus is tipped over by about 98 degrees, so it spins on its side and rolls around the Sun like a ball. That gives it the most extreme seasons in the solar system. A crash with an Earth-sized object long ago may have knocked it over.",
+						"advanced": "With an axial tilt of 97.77°, Uranus is the only planet whose equator is nearly at right angles to its orbit; for a quarter of each 84-year orbit one pole faces the Sun while the other half of the planet has a 21-year winter night. A collision with an Earth-sized body is the likely cause."
+					}
+				}
+			},
+			"name": {
+				"simple": "Uranus is named after the Greek god of the sky. He was the grandfather of Jupiter. It is the only planet named after a Greek god.",
+				"standard": "Uranus is named after the Greek god of the sky: the only planet named after a Greek god, not a Roman one. Its discoverer wanted to call it George’s Star, after his king, George III; the astronomer Johann Bode suggested Uranus, the father of Saturn, as Saturn was the father of Jupiter.",
+				"advanced": "William Herschel tried to name his discovery Georgium Sidus, after King George III; the name that stuck was Johann Bode’s proposal, Uranus, the Greek god of the sky, father of Saturn as Saturn was father of Jupiter, the one planet not named after a Roman god."
+			},
+			"discovery": {
+				"simple": "Uranus was the first planet found with a telescope. A man named William Herschel saw it from his garden. At first, he thought it was a comet.",
+				"standard": "Uranus was the first planet found with a telescope: William Herschel discovered it on 13 March 1781 from the back garden of his house in Bath, England. At first he thought it was a comet or a star.",
+				"advanced": "On 13 March 1781 William Herschel, observing from his garden in Bath with a 7-foot telescope, recorded a “nebulous star or perhaps a comet”: the first new planet discovered since antiquity."
+			}
+		},
+		"neptune": {
+			"madeOf": {
+				"simple": "Neptune is an ice giant, like Uranus. Inside, it is mostly hot, slushy ice. In its middle there is rock. On the outside there is gas.",
+				"standard": "Like Uranus, Neptune is an ice giant: 80 % or more of its mass is a hot, dense fluid of water, methane and ammonia above a small rocky core. On top lies an atmosphere of hydrogen, helium and methane. It is the densest of the giant planets.",
+				"advanced": "At least 80 % of Neptune’s mass is a hot, dense fluid of water, methane and ammonia; the hydrogen, helium and methane atmosphere merges into it, over a solid core of about one Earth mass. Of the giant planets, Neptune is the densest."
+			},
+			"air": {
+				"simple": "Neptune’s air is mostly hydrogen and helium. A little bit of methane makes it deep blue.",
+				"standard": "Neptune’s air is about 80 % hydrogen and 19 % helium, with about 1.5 % methane. The methane soaks up the other colours and reflects blue, which is why Neptune is blue.",
+				"advanced": "By volume about 80.0 % H₂ and 19.0 % He (each ± 3.2 %) and 1.5 % CH₄; methane absorbs the other colours and reflects blue."
+			},
+			"weather": {
+				"simple": "Neptune’s clouds are colder than anywhere on Earth. Higher up, it is even colder. Deep inside, it is hot.",
+				"standard": "In its clouds Neptune is about −200 °C, and higher up about −220 °C. Deep inside, under its air, lies a hot, dense fluid of water and other ices.",
+				"advanced": "About 72 K (−201 °C) at the 1-bar level and 55 K (−218 °C) at 0.1 bar; below lies the hot, dense fluid mantle. No measured value exists for the core."
+			},
+			"nicknames": {
+				"windiest": {
+					"name": "The windiest planet",
+					"story": {
+						"simple": "Neptune is the windiest planet. Its winds are much faster than the strongest storm on Earth.",
+						"standard": "Neptune is the windiest world in our solar system: its winds blow at more than 2,000 km/h, three times as strong as Jupiter’s and nine times as strong as Earth’s.",
+						"advanced": "The windiest world of the solar system: winds of more than 2,000 km/h, three times as strong as Jupiter’s and nine times as strong as Earth’s."
+					}
+				}
+			},
+			"name": {
+				"simple": "Neptune is named after the Roman god of the sea. Its deep blue colour looks like the ocean.",
+				"standard": "Neptune is named after the Roman god of the sea: a fitting name for the big blue planet.",
+				"advanced": "Named for the Roman god of the sea, a fitting name for the deep blue planet."
+			},
+			"discovery": {
+				"simple": "Neptune was found with maths! Scientists saw that something was pulling on Uranus. They worked out where it had to be, and there it was.",
+				"standard": "Neptune was the first planet found by maths. Urbain Le Verrier worked out where an unknown planet had to be to explain how Uranus moved, and on 23 September 1846 Johann Galle found it at the Berlin Observatory, about one degree from the predicted spot. John Couch Adams had made similar calculations in England. Galileo had seen it in 1612, but thought it was a star.",
+				"advanced": "Le Verrier predicted the position and mass of an unknown planet from irregularities in Uranus’s motion; Johann Galle found it at Berlin on 23 September 1846, his first night of searching, about one degree from the prediction. John Couch Adams had made similar, less accurate calculations independently, and Galileo had logged it as a fixed star in 1612 and 1613."
+			}
+		}
+	}
+}

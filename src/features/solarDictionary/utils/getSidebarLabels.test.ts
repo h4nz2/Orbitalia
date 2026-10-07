@@ -42,8 +42,8 @@ describe("getSidebarFacts", () => {
 		expect(mars.diameter.value).toBe("6,792 km")
 		expect(mars.orbitalPeriod.value).toBe("687 days")
 		expect(mars.gravity.value).toBe("3.71 m/s²")
-		expect(mars.avgTemp.value).toBe("210 K")
-		expect(mars.avgTemp.extra).toBe("That is about -63 °C.")
+		expect(mars.avgTemp.value).toBe("-63 °C")
+		expect(mars.avgTemp.extra).toBeNull()
 		expect(mars.orbitalPeriod.extra).toBe(
 			"You would wait 322 days longer for your birthday.",
 		)
@@ -110,11 +110,22 @@ describe("getSidebarFacts", () => {
 		)
 	})
 
-	it("does not compare Earth with itself, but still converts its temperature", () => {
+	it("does not compare Earth with itself", () => {
 		const own = facts("Earth")
 		expect(own.diameter.extra).toBeNull()
 		expect(own.gravity.extra).toBeNull()
-		expect(own.avgTemp.extra).toBe("That is about 15 °C.")
+		expect(own.avgTemp.value).toBe("15 °C")
+	})
+
+	it("gives the temperature in words, °C or kelvin by reading level (#51)", () => {
+		expect(facts("Mars", "en", "simple").avgTemp.value).toBe(
+			"Colder than any freezer",
+		)
+		expect(facts("Mars", "en", "standard").avgTemp.value).toBe("-63 °C")
+		expect(facts("Mars", "en", "advanced").avgTemp.value).toBe("210 K (-63 °C)")
+		expect(facts("Venus", "de", "simple").avgTemp.value).toBe(
+			"Heißer als ein Backofen",
+		)
 	})
 
 	it("leaves out facts without a value", () => {

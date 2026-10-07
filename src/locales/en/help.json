@@ -504,22 +504,23 @@
 				"simple": "The planet book"
 			},
 			"what": {
-				"standard": "A page for the Sun and each planet, with a big turning globe, its surface maps and the key numbers explained.",
-				"simple": "A page for the Sun and every planet, with a big spinning picture."
+				"standard": "A page for the Sun and each planet: a big turning globe with its surface maps, the key numbers explained, and its stories: what it is made of, how hot it gets, its nicknames and where its name comes from.",
+				"simple": "A page for the Sun and every planet. See what is inside it, how hot it gets and its nicknames."
 			},
 			"why": {
-				"standard": "It is the quiet way to read about one world at a time, and to peel off its clouds or see its mountains and oceans.",
-				"simple": "Read about one planet at a time, and see its mountains and clouds."
+				"standard": "It is the quiet way to read about one world at a time: peel off its clouds, look inside it in a cut-away picture, and find the stories children remember, like the planet that would float in a bathtub. Every fact links to its source.",
+				"simple": "Read about one planet at a time. Look inside it, and find out which planet would float in a bathtub!"
 			},
 			"how": {
 				"standard": [
 					"Open Tools at the bottom right and choose “Picture dictionary”: it opens on the world you are looking at. Or press “Read more in the dictionary” on a world’s card.",
-					"Pick a world in the row of dots at the top, then Surface, Terrain, Oceans or Clouds where it has them."
+					"Pick a world in the row of dots at the top, then Surface, Terrain, Oceans or Clouds where it has them.",
+					"Open “Made of”, “Weather” or “Names” beside the globe (under it on a phone). The open section stays open when you pick another world, so a class can compare them one by one."
 				],
 				"simple": [
 					"Press Tools, then “Planet book”.",
 					"Pick a planet in the row of dots at the top.",
-					"Try Terrain and Clouds to change the picture."
+					"Press “What is inside?”, “Hot or cold?” or “Its names”."
 				]
 			}
 		},

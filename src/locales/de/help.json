@@ -504,22 +504,23 @@
 				"simple": "Das Planetenbuch"
 			},
 			"what": {
-				"standard": "Eine Seite für die Sonne und jeden Planeten, mit einem großen, sich drehenden Globus, seinen Oberflächenkarten und den wichtigsten Zahlen, verständlich erklärt.",
-				"simple": "Eine Seite für die Sonne und jeden Planeten, mit einem großen Bild, das sich dreht."
+				"standard": "Eine Seite für die Sonne und jeden Planeten: ein großer, sich drehender Globus mit seinen Oberflächenkarten, die wichtigsten Zahlen verständlich erklärt und die Geschichten jeder Welt: woraus sie besteht, wie heiß sie wird, ihre Spitznamen und woher ihr Name kommt.",
+				"simple": "Eine Seite für die Sonne und jeden Planeten. Schau, was in ihnen steckt, wie heiß es dort wird und welche Spitznamen sie haben."
 			},
 			"why": {
-				"standard": "Hier liest du in Ruhe über eine Welt nach der anderen, kannst ihre Wolken abziehen oder ihre Berge und Ozeane sehen.",
-				"simple": "Lies über einen Planeten nach dem anderen und schau dir seine Berge und Wolken an."
+				"standard": "Hier liest du in Ruhe über eine Welt nach der anderen: Zieh ihre Wolken ab, schau in einem Schnittbild in sie hinein und finde die Geschichten, die Kinder sich merken, wie die vom Planeten, der in einer Badewanne schwimmen würde. Jede Angabe verlinkt ihre Quelle.",
+				"simple": "Lies über einen Planeten nach dem anderen. Schau in ihn hinein und finde heraus, welcher Planet in einer Badewanne schwimmen würde!"
 			},
 			"how": {
 				"standard": [
 					"Öffne unten rechts „Werkzeuge“ und wähle „Bildlexikon“: Es zeigt die Welt, die du gerade ansiehst. Oder drück „Mehr dazu im Lexikon“ im Steckbrief einer Welt.",
-					"Wähle eine Welt in der Punktreihe oben, dann „Oberfläche“, „Gelände“, „Ozeane“ oder „Wolken“, wo es sie gibt."
+					"Wähle eine Welt in der Punktreihe oben, dann „Oberfläche“, „Gelände“, „Ozeane“ oder „Wolken“, wo es sie gibt.",
+					"Öffne neben dem Globus (auf dem Handy darunter) „Aufbau“, „Wetter“ oder „Namen“. Der offene Abschnitt bleibt offen, wenn du eine andere Welt wählst, so kann eine Klasse die Welten eine nach der anderen vergleichen."
 				],
 				"simple": [
 					"Drück auf „Werkzeuge“ und dann auf „Planetenbuch“.",
 					"Wähl oben in der Punktreihe einen Planeten.",
-					"Probier „Gelände“ und „Wolken“ aus, dann verändert sich das Bild."
+					"Drück auf „Was steckt drin?“, „Heiß oder kalt?“ oder „Namen und Spitznamen“."
 				]
 			}
 		},
