@@ -8,13 +8,6 @@ import { openLayers } from "./support/hud"
 // Every route renders a three.js <Canvas>; the per-route check asserts a piece of real UI
 // so a crashed feature (or the router's error component) cannot pass as "rendered".
 const routes: Record<string, (page: Page) => Promise<void>> = {
-	"/": async (page) => {
-		await expect(
-			page.getByRole("heading", { name: /to the stars/i }),
-		).toBeVisible()
-		await expect(page.getByRole("link", { name: "Dictionary" })).toBeVisible()
-		await expect(page.getByRole("link", { name: "Solar Model" })).toBeVisible()
-	},
 	"/solar_dictionary": async (page) => {
 		// sidebar of the default selection (the Sun)
 		await expect(page.getByText("Sun", { exact: true })).toBeVisible()
@@ -53,7 +46,7 @@ const screenshotDir =
 	process.env.SMOKE_SCREENSHOT_DIR ?? path.join("test-results", "smoke")
 
 const screenshotName = (route: string) =>
-	route === "/" ? "index" : route.replace(/^\//, "").replace(/\//g, "_")
+	route.replace(/^\//, "").replace(/\//g, "_")
 
 for (const [route, expectRouteUI] of Object.entries(routes)) {
 	test(`renders ${route}`, async ({ page }) => {
@@ -194,7 +187,7 @@ test("unknown URLs render the not-found page with a way back", async ({
 		page.getByRole("heading", { name: /lost in space/i }),
 	).toBeVisible()
 	await page.getByRole("link", { name: /back to the stars/i }).click()
-	await expect(
-		page.getByRole("heading", { name: /to the stars/i }),
-	).toBeVisible()
+	// into the solar system (#45: there is no start page)
+	await expect(page).toHaveURL(/\/solar_system\?/)
+	await expect(page.getByRole("combobox", { name: "Focus body" })).toBeVisible()
 })

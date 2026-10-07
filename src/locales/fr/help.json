@@ -196,7 +196,7 @@
 				"standard": [
 					"En haut à gauche : le bouton maison (retour à tout le système), le nom du monde que tu regardes et sa fiche ; la flèche de la fiche ouvre ses infos, ses lunes et ses histoires.",
 					"En bas : lecture, pause et la date ; le bouton avec la vitesse (par exemple 1x) ouvre « Maintenant », les vitesses et la rotation.",
-					"En bas à droite : Visites, Calques (ce qui est dessiné), Échelle (quelle taille et quelle distance) et Outils (la vitesse de la lumière, le ciel de ce soir, les sondes, ton anniversaire, la chasse au trésor, côte à côte et prendre une photo). Un seul panneau s’ouvre à la fois ; le × le ferme.",
+					"En bas à droite : Visites, Calques (ce qui est dessiné), Échelle (quelle taille et quelle distance) et Outils (la vitesse de la lumière, le ciel de ce soir, les sondes, ton anniversaire, la chasse au trésor, côte à côte, le système solaire à pied, le dictionnaire illustré et prendre une photo). Un seul panneau s’ouvre à la fois ; le × le ferme.",
 					"En haut à droite : Présenter, Partager, l’œil barré qui cache tout (H le fait revenir), le son, Aide et la langue."
 				],
 				"simple": [
@@ -503,10 +503,11 @@
 			},
 			"how": {
 				"standard": [
-					"Ouvre-le depuis la page d’accueil, ou avec « En savoir plus dans le dictionnaire » sur la fiche d’un monde.",
+					"Ouvre Outils en bas à droite et choisis « Dictionnaire illustré » : il s’ouvre sur le monde que tu regardes. Ou clique sur « En savoir plus dans le dictionnaire » sur la fiche d’un monde.",
 					"Choisis un monde dans la rangée de points en haut, puis Surface, Relief, Océans ou Nuages quand il en a."
 				],
 				"simple": [
+					"Appuie sur Outils, puis sur « Livre des planètes ».",
 					"Choisis une planète dans la rangée de points en haut.",
 					"Essaie Relief et Nuages pour changer l’image."
 				]
@@ -755,11 +756,12 @@
 			},
 			"how": {
 				"standard": [
-					"Ouvre-la depuis la page d’accueil, ou avec « Parcours-le à pied » dans le panneau Échelle, à l’échelle réelle.",
+					"Ouvre Outils en bas à droite et choisis « Le système solaire à pied », ou clique sur « Parcours-le à pied » dans le panneau Échelle, à l’échelle réelle.",
 					"Choisis ce qu’est le Soleil (une orange, un ballon de foot, un ballon de basket, un ballon de gym) et un repère pour comparer.",
 					"Passe en Tableau et clique sur Imprimer pour l’emporter dehors."
 				],
 				"simple": [
+					"Appuie sur Outils, puis sur « Le système solaire à pied ».",
 					"Choisis un ballon pour le Soleil.",
 					"Lis jusqu’où il faut marcher pour chaque planète.",
 					"Imprime le tableau et fais le parcours dehors."
@@ -1261,7 +1263,7 @@
 		"mantine": "Boutons, menus, calendriers et boîtes de dialogue.",
 		"tabler": "Les icônes.",
 		"tanstack": "Les pages et les liens qui contiennent chaque vue.",
-		"gsap": "Les animations de la page d’accueil et du dictionnaire.",
+		"gsap": "Les transitions entre les pages et les animations du dictionnaire.",
 		"smallLibraries": "État de l’application, vérification des données, dates, QR codes et traductions avec pluriels.",
 		"orbitalia": "Réalisé par les contributeurs d’Orbitalia. Tout le monde peut ajouter une fonction, une visite guidée ou une traduction."
 	},

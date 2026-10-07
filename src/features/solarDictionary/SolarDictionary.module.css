@@ -1,0 +1,21 @@
+/* the way back into the solar system (#45), opposite help and the language menu */
+.back {
+	position: fixed;
+	top: 0.75rem;
+	left: 0.75rem;
+	z-index: 100;
+	/* opaque like the corner bar: a blur over the turning globe costs a pass every frame */
+	background: rgba(20, 22, 28, 0.9);
+	border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+/* phones: the arrow alone (its name stays its label), like the comparison's back */
+@media (max-width: 599px) {
+	.label {
+		display: none;
+	}
+
+	.back :global(.mantine-Button-section) {
+		margin: 0;
+	}
+}

@@ -35,17 +35,6 @@
 		"text": "Na této adrese nic není.",
 		"back": "Zpátky ke hvězdám"
 	},
-	"hero": {
-		"credits": "S láskou vytvořili odi a hrj",
-		"tagline": "Ke hvězdám!",
-		"dictionary": "Slovník",
-		"solarSystem": "Model soustavy",
-		"tour": "Prohlídka s průvodcem",
-		"birthday": "Tvoje narozeniny ve vesmíru",
-		"hunt": "Pátrací hra",
-		"solarWalk": "Projdi sluneční soustavu",
-		"skyTonight": "Co je dnes v noci na obloze?"
-	},
 	"units": {
 		"approx": "≈ {value}",
 		"au": "{value} au",
@@ -72,6 +61,7 @@
 	},
 	"dictionary": {
 		"pick": "Zobrazit: {name}",
+		"back": "Zpět",
 		"textures": {
 			"label": "Dostupné textury",
 			"base": "Povrch",
@@ -1343,13 +1333,20 @@
 		},
 		"hud": {
 			"tools": "Nástroje",
-			"toolsHint": "Rychlost světla, dnešní noční obloha, skutečné sondy, tvoje narozeniny, hledačka, porovnání světů a fotka: všechno se otevře tady.",
-			"toolsHint@simple": "Další věci na vyzkoušení: světlo, dnešní obloha, sondy, tvoje narozeniny, hledání pokladu, porovnání světů a fotka.",
+			"toolsHint": "Rychlost světla, dnešní noční obloha, skutečné sondy, tvoje narozeniny, hledačka, porovnání světů, procházka sluneční soustavou, obrazový slovník a fotka: všechno se otevře tady.",
+			"toolsHint@simple": "Další věci na vyzkoušení: světlo, dnešní obloha, sondy, tvoje narozeniny, hledání pokladu, porovnání světů, procházka sluneční soustavou, kniha o planetách a fotka.",
 			"entries": "Prohlídky, vrstvy, měřítko a nástroje",
 			"close": "Zavřít {panel}",
 			"compare": "Vedle sebe",
 			"compareHint": "Svět, na který se díváš, vedle jiného, ve skutečných velikostech",
 			"compareHint@simple": "Postav dva světy vedle sebe, stejně zmenšené, a uvidíš, který je větší",
+			"walk": "Projdi sluneční soustavu",
+			"walkHint": "Zmenši Slunce na basketbalový míč a odkrokuj planety na školním hřišti",
+			"walkHint@simple": "Zmenši Slunce na velikost míče a uvidíš, jak daleko musíš dojít ke každé planetě",
+			"dictionary": "Obrazový slovník",
+			"dictionary@simple": "Kniha o planetách",
+			"dictionaryHint": "Stránka pro Slunce a každou planetu: velký otáčející se glóbus, mapy povrchu a nejdůležitější čísla",
+			"dictionaryHint@simple": "Stránka pro každou planetu s velkým otáčejícím se obrázkem",
 			"customScale": "Vlastní",
 			"scaleButton": "Měřítko: {preset}",
 			"scaleHint": "Jak velké a jak daleko od sebe jsou světy nakreslené a jak daleko je to od pravdy. Skutečné měřítko je na jedno kliknutí.",
@@ -1430,7 +1427,7 @@
 		}
 	},
 	"solarWalk": {
-		"back": "3D model",
+		"back": "Zpět",
 		"title": "Kdyby bylo Slunce velké jako {object}…",
 		"lead": "…Země by byla velká jako {earth} a vzdálená {earthDistance}. Každá velikost a vzdálenost na této stránce je skutečná, jen zmenšená ve stejném poměru, aby se vešla na školní hřiště. Vezmi Slunce ven a projdi si to.",
 		"lead@simple": "…Země by byla malá jako {earth} a {earthDistance} daleko! Vezmi Slunce ven a projdi si sluneční soustavu.",
@@ -1751,6 +1748,13 @@
 		"credits": {
 			"title": "Poděkování a zdroje",
 			"licence": "Licence: {licence}"
+		},
+		"about": {
+			"title": "O aplikaci Orbitalia",
+			"tagline": "Ke hvězdám!",
+			"text": "Orbitalia je bezplatná aplikace pro objevování sluneční soustavy: jak velký je vesmír doopravdy a jak se v něm všechno pohybuje. Je určená pro školní třídy i pro každého, kdo se rád dívá na oblohu.",
+			"text@simple": "Orbitalia je aplikace zdarma, se kterou objevíš vesmír: jak je velký a jak se v něm všechno hýbe.",
+			"madeBy": "S láskou vytvořili odi a hrj."
 		},
 		"readingLevel": "Právě čteš verzi s náročností textu „{level}“. Jazyk a náročnost textu změníš v nabídce vpravo nahoře.",
 		"shortcutsLink": "Všechny funkce a jak je používat: otevři stránku nápovědy"

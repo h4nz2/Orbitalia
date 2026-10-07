@@ -323,7 +323,7 @@
 		{
 			"id": "fiber",
 			"section": "software",
-			"name": "React Three Fiber, drei, postprocessing (pmndrs)",
+			"name": "React Three Fiber and drei (pmndrs)",
 			"url": "https://docs.pmnd.rs/",
 			"licence": "mitZlib"
 		},

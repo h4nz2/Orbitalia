@@ -196,7 +196,7 @@
 				"standard": [
 					"Vlevo nahoře: tlačítko s domečkem (zpátky na celou soustavu), jméno světa, na který se díváš, a jeho karta; šipka na kartě rozbalí údaje, měsíce a příběhy.",
 					"Dole: spustit, pozastavit a datum; tlačítko s rychlostí (třeba 1x) otevře „Teď“, rychlosti a rotaci.",
-					"Vpravo dole: Prohlídky, Vrstvy (co se kreslí), Měřítko (jak velké a jak daleko) a Nástroje (rychlost světla, dnešní obloha, sondy, tvoje narozeniny, pátrací hra, vedle sebe a fotka). Otevřený je vždy jen jeden panel; × ho zavře.",
+					"Vpravo dole: Prohlídky, Vrstvy (co se kreslí), Měřítko (jak velké a jak daleko) a Nástroje (rychlost světla, dnešní obloha, sondy, tvoje narozeniny, pátrací hra, vedle sebe, procházka sluneční soustavou, obrazový slovník a fotka). Otevřený je vždy jen jeden panel; × ho zavře.",
 					"Vpravo nahoře: Prezentovat, Sdílet, přeškrtnuté oko, které všechno skryje (H to vrátí), zvuk, Nápověda a jazyk."
 				],
 				"simple": [
@@ -503,10 +503,11 @@
 			},
 			"how": {
 				"standard": [
-					"Otevři ho z úvodní stránky, nebo tlačítkem „Víc ve slovníku“ na kartě světa.",
+					"Otevři vpravo dole Nástroje a vyber „Obrazový slovník“: otevře se na světě, na který se právě díváš. Nebo stiskni „Víc ve slovníku“ na kartě světa.",
 					"Vyber svět v řadě teček nahoře, pak Povrch, Terén, Oceány nebo Mraky, pokud je má."
 				],
 				"simple": [
+					"Stiskni Nástroje a pak „Kniha o planetách“.",
 					"Vyber planetu v řadě teček nahoře.",
 					"Zkus Terén a Mraky a obrázek se změní."
 				]
@@ -755,11 +756,12 @@
 			},
 			"how": {
 				"standard": [
-					"Otevři ji z úvodní stránky, nebo ve skutečném měřítku odkazem „Projdi si to“ v panelu Měřítko.",
+					"Otevři vpravo dole Nástroje a vyber „Projdi sluneční soustavu“, nebo ve skutečném měřítku odkaz „Projdi si to“ v panelu Měřítko.",
 					"Vyber, co bude Slunce (pomeranč, fotbalový míč, basketbalový míč, gymnastický míč), a s čím vzdálenosti porovnat.",
 					"Přepni na „Tabulka“ a stiskni „Tisk“, ať ji můžeš vzít ven."
 				],
 				"simple": [
+					"Stiskni Nástroje a pak „Projdi sluneční soustavu“.",
 					"Vyber míč, který bude Slunce.",
 					"Přečti si, jak daleko musíš dojít ke každé planetě.",
 					"Vytiskni tabulku a projdi to venku."
@@ -1261,7 +1263,7 @@
 		"mantine": "Tlačítka, nabídky, kalendáře a dialogová okna.",
 		"tabler": "Ikony.",
 		"tanstack": "Stránky a odkazy, které uchovávají každý pohled.",
-		"gsap": "Animace na úvodní stránce a ve slovníku.",
+		"gsap": "Přechody mezi stránkami a animace ve slovníku.",
 		"smallLibraries": "Stav aplikace, kontrola dat, práce s kalendářním datem, QR kódy a překlady s tvary podle čísla.",
 		"orbitalia": "Vytvořili přispěvatelé projektu Orbitalia. Kdokoli může přidat novou funkci, prohlídku nebo překlad."
 	},

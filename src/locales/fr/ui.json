@@ -35,17 +35,6 @@
 		"text": "Il n’y a rien à cette adresse.",
 		"back": "Retour vers les étoiles"
 	},
-	"hero": {
-		"credits": "Fait avec amour par odi et hrj",
-		"tagline": "Vers les étoiles !",
-		"dictionary": "Dictionnaire",
-		"solarSystem": "Modèle solaire",
-		"tour": "Faire une visite guidée",
-		"birthday": "Ton anniversaire dans l’espace",
-		"hunt": "Chasse au trésor",
-		"solarWalk": "Le système solaire à pied",
-		"skyTonight": "Qu’y a-t-il dans le ciel cette nuit ?"
-	},
 	"units": {
 		"approx": "≈ {value}",
 		"au": "{value} ua",
@@ -72,6 +61,7 @@
 	},
 	"dictionary": {
 		"pick": "Afficher {name}",
+		"back": "Retour",
 		"textures": {
 			"label": "Textures disponibles",
 			"base": "Surface",
@@ -1343,13 +1333,20 @@
 		},
 		"hud": {
 			"tools": "Outils",
-			"toolsHint": "La vitesse de la lumière, le ciel de ce soir, de vraies sondes, ton anniversaire, la chasse au trésor, comparer des mondes et prendre une photo : tout s’ouvre ici.",
-			"toolsHint@simple": "D’autres choses à essayer : la lumière, le ciel de ce soir, les sondes, ton anniversaire, une chasse au trésor, comparer des mondes et prendre une photo.",
+			"toolsHint": "La vitesse de la lumière, le ciel de ce soir, de vraies sondes, ton anniversaire, la chasse au trésor, comparer des mondes, le système solaire à pied, le dictionnaire illustré et prendre une photo : tout s’ouvre ici.",
+			"toolsHint@simple": "D’autres choses à essayer : la lumière, le ciel de ce soir, les sondes, ton anniversaire, une chasse au trésor, comparer des mondes, le système solaire à pied, le livre des planètes et prendre une photo.",
 			"entries": "Visites, calques, échelle et outils",
 			"close": "Fermer : {panel}",
 			"compare": "Côte à côte",
 			"compareHint": "Le monde que tu regardes à côté d’un autre, à leurs vraies tailles",
 			"compareHint@simple": "Mets deux mondes l’un à côté de l’autre, rétrécis pareil, pour voir lequel est le plus grand",
+			"walk": "Le système solaire à pied",
+			"walkHint": "Réduis le Soleil à un ballon de basket et parcours les planètes à pied sur le terrain de l’école",
+			"walkHint@simple": "Rends le Soleil aussi petit qu’un ballon et vois jusqu’où il faut marcher pour chaque planète",
+			"dictionary": "Dictionnaire illustré",
+			"dictionary@simple": "Livre des planètes",
+			"dictionaryHint": "Une page pour le Soleil et chaque planète : un grand globe qui tourne, ses cartes de surface et les chiffres clés",
+			"dictionaryHint@simple": "Une page pour chaque planète, avec une grande image qui tourne",
 			"customScale": "Personnalisée",
 			"scaleButton": "Échelle : {preset}",
 			"scaleHint": "La taille des mondes et leurs distances telles qu’elles sont dessinées, et l’écart avec la réalité. L’échelle réelle est à un clic.",
@@ -1430,7 +1427,7 @@
 		}
 	},
 	"solarWalk": {
-		"back": "Modèle 3D",
+		"back": "Retour",
 		"title": "Si le Soleil était {object}…",
 		"lead": "…la Terre serait grosse comme {earth}, à {earthDistance}. Chaque taille et chaque distance sur cette page est la vraie, réduite dans la même proportion pour tenir sur un terrain de sport. Emporte le Soleil dehors et fais le parcours à pied.",
 		"lead@simple": "…la Terre serait aussi petite que {earth}, à {earthDistance} ! Emporte le Soleil dehors et parcours le système solaire à pied.",
@@ -1751,6 +1748,13 @@
 		"credits": {
 			"title": "Crédits et sources",
 			"licence": "Licence : {licence}"
+		},
+		"about": {
+			"title": "À propos d’Orbitalia",
+			"tagline": "Vers les étoiles !",
+			"text": "Orbitalia est une application gratuite pour explorer le système solaire : la vraie taille de l’espace, et la façon dont tout y bouge. Elle est faite pour les classes, et pour tous ceux qui aiment lever les yeux au ciel.",
+			"text@simple": "Orbitalia est une application gratuite pour explorer l’espace : sa taille, et la façon dont tout y bouge.",
+			"madeBy": "Fait avec amour par odi et hrj."
 		},
 		"readingLevel": "Tu lis cette page au niveau {level}. Change la langue et le niveau de lecture dans le menu en haut à droite.",
 		"shortcutsLink": "Toutes les fonctions et comment les utiliser : ouvre la page d’aide"

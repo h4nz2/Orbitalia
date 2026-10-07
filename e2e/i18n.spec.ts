@@ -9,18 +9,14 @@ import { expandCard, openLayers, openTime } from "./support/hud"
 test("the URL always states the language and reading level, and links keep them", async ({
 	page,
 }) => {
-	// the hero's software-rendered Sun is slow to load headless
 	test.slow()
-	await page.goto("/?reading=simple")
+	await page.goto("/solar_dictionary?reading=simple")
 	// a missing language is written into the URL at once
 	await expect(page).toHaveURL(/[?&]lang=en(&|$)/)
 	await expect(page.locator("html")).toHaveAttribute("lang", "en")
 
-	await page.goto("/?lang=de&reading=simple")
-	await expect(
-		page.getByRole("heading", { name: "Zu den Sternen!" }),
-	).toBeVisible({ timeout: 20_000 })
-	await page.getByRole("link", { name: "Sonnensystem" }).click()
+	await page.goto("/solar_dictionary?lang=de&reading=simple")
+	await page.getByRole("button", { name: "Zurück" }).click()
 	await expect(page).toHaveURL(/\/solar_system\?/, { timeout: 20_000 })
 	await expect(page).toHaveURL(/[?&]lang=de(&|$)/)
 	await expect(page).toHaveURL(/[?&]reading=simple(&|$)/)
@@ -129,9 +125,9 @@ test.describe("with a Swiss German browser", () => {
 	})
 
 	test("an explicit link still wins over the browser", async ({ page }) => {
-		await page.goto("/?lang=en")
+		await page.goto("/solar_system?lang=en")
 		await expect(
-			page.getByRole("heading", { name: "To the stars!" }),
+			page.getByRole("combobox", { name: "Focus body" }),
 		).toBeVisible()
 	})
 })

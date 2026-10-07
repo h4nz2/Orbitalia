@@ -6,7 +6,7 @@ import { createI18n } from "@/i18n"
 import { dictionaryBodyId } from "@/features/solarDictionary/utils/bodyId"
 
 import { headlineFacts, roughly, surfaceGravity } from "./bodyFacts"
-import { dictionaryEntry } from "./dictionaryEntry"
+import { dictionaryEntry, nearestDictionaryEntry } from "./dictionaryEntry"
 
 const en = createI18n({ locale: "en" })
 const de = createI18n({ locale: "de" })
@@ -136,5 +136,13 @@ describe("dictionaryEntry", () => {
 			expect(dictionaryEntry(dictionaryBodyId(item))).toBe(i)
 		})
 		expect(dictionaryEntry("io")).toBeNull()
+	})
+
+	it("opens the world a moon circles, and the Sun for anything else", () => {
+		expect(nearestDictionaryEntry("mars")).toBe(4)
+		expect(nearestDictionaryEntry("io")).toBe(5)
+		expect(nearestDictionaryEntry("ceres")).toBe(0)
+		expect(nearestDictionaryEntry("voyager1")).toBe(0)
+		expect(nearestDictionaryEntry(null)).toBe(0)
 	})
 })

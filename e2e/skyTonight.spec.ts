@@ -221,13 +221,11 @@ test("'Why can I see it?' holds Earth still at that moment, seen from above", as
 	await expect(sky.getByTestId("sky-place")).toHaveText("Zurich, Switzerland")
 })
 
-test("opens from the start page and gives way to the birthday panel", async ({
+test("opens from a link and gives way to the birthday panel", async ({
 	page,
 }) => {
 	await setup(page)
-	await page.goto("/?lang=en")
-	await page.getByRole("link", { name: "What is in the sky tonight?" }).click()
-	await expect(page).toHaveURL(/\/solar_system/)
+	await page.goto("/solar_system?sky=true&lang=en")
 	await expect(panel(page)).toBeVisible({ timeout: 15_000 })
 	await openTool(page, "birthday")
 	await expect(panel(page)).toHaveCount(0)

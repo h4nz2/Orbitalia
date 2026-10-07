@@ -3,11 +3,13 @@
  * (looking around, time, size and distance, light, comparing, teachers,
  * games), each with what it is, why it is worth using, how to use it and a
  * "try it" link that opens the app with the feature ready; then the controls
- * and shortcuts, and the credits with their licences.
+ * and shortcuts, what Orbitalia is (#45: what the start page used to say), and
+ * the credits with their licences.
  *
  * Content is data (`src/data/help.json` + `src/locales/<locale>/help.json`,
  * see content.ts): adding a feature's entry needs no code. `?q=` is the
- * search, `?topic=` scrolls to an entry, a group, `controls` or `credits`.
+ * search, `?topic=` scrolls to an entry, a group, `controls`, `about` or
+ * `credits`.
  */
 import { useEffect, useMemo, useState, type MouseEvent } from "react"
 import {
@@ -25,13 +27,9 @@ import {
 	IconExternalLink,
 	IconSearch,
 } from "@tabler/icons-react"
-import {
-	Link,
-	getRouteApi,
-	useCanGoBack,
-	useRouter,
-} from "@tanstack/react-router"
+import { Link, getRouteApi, useRouter } from "@tanstack/react-router"
 
+import { useBackToSolarSystem } from "@/hooks/useBackToSolarSystem"
 import { useI18n, type I18n } from "@/i18n"
 
 import {
@@ -56,7 +54,7 @@ import classes from "./Help.module.css"
 
 const route = getRouteApi("/help")
 
-/** DOM id of a topic (an entry, a group, `controls`, `credits`). */
+/** DOM id of a topic (an entry, a group, `controls`, `about`, `credits`). */
 const anchorId = (topic: string) => `help-${topic}`
 
 /** How long the search waits for the typing to pause before it writes `?q=`, ms. */
@@ -197,6 +195,37 @@ function ControlsTable({ i18n, words }: { i18n: I18n; words: string[] }) {
 	)
 }
 
+function About({ i18n }: { i18n: I18n }) {
+	const { t } = i18n
+	return (
+		<section
+			id={anchorId("about")}
+			className={classes.section}
+			tabIndex={-1}
+			aria-labelledby={`${anchorId("about")}-title`}
+			data-testid="help-about"
+		>
+			<Title
+				order={2}
+				id={`${anchorId("about")}-title`}
+				className={classes.groupTitle}
+			>
+				{t("help.about.title")}
+			</Title>
+			<Text
+				component="p"
+				variant="gradient"
+				gradient={{ from: "yellow", to: "red" }}
+				className={classes.tagline}
+			>
+				{t("help.about.tagline")}
+			</Text>
+			<Text className={classes.about}>{t("help.about.text")}</Text>
+			<Text className={classes.about}>{t("help.about.madeBy")}</Text>
+		</section>
+	)
+}
+
 function Credits({ i18n }: { i18n: I18n }) {
 	const { t } = i18n
 	return (
@@ -263,7 +292,7 @@ const Help = () => {
 	const search = route.useSearch()
 	const navigate = route.useNavigate()
 	const router = useRouter()
-	const canGoBack = useCanGoBack()
+	const back = useBackToSolarSystem()
 
 	// the box is local state; the URL follows once the typing pauses
 	const [draft, setDraft] = useState(search.q ?? "")
@@ -313,11 +342,6 @@ const Help = () => {
 			unsubscribe()
 		}
 	}, [search.topic, router])
-
-	const back = () => {
-		if (canGoBack) router.history.back()
-		else void navigate({ to: "/solar_system" })
-	}
 
 	const groups = helpFile.groups
 		.map((group) => ({
@@ -402,6 +426,13 @@ const Help = () => {
 							{t("help.controls.title")}
 						</a>
 						<a
+							href={`#${anchorId("about")}`}
+							onClick={jump("about")}
+							className={classes.chip}
+						>
+							{t("help.about.title")}
+						</a>
+						<a
 							href={`#${anchorId("credits")}`}
 							onClick={jump("credits")}
 							className={classes.chip}
@@ -446,6 +477,7 @@ const Help = () => {
 			})}
 
 			<ControlsTable i18n={i18n} words={words} />
+			{!searching && <About i18n={i18n} />}
 			{!searching && <Credits i18n={i18n} />}
 			<footer className={classes.footer}>{t("app.name")}</footer>
 		</main>

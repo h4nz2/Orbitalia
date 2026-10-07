@@ -1,5 +1,9 @@
-import { createFileRoute } from "@tanstack/react-router"
+import { createFileRoute, redirect } from "@tanstack/react-router"
 
-import Hero from "@/features/hero/components"
-
-export const Route = createFileRoute("/")({ component: Hero })
+// The solar system is the app (#45): the bare address opens it. Old links to
+// `/` keep their search, so `/?lang=de&reading=simple` lands in German, simple.
+export const Route = createFileRoute("/")({
+	beforeLoad: () => {
+		throw redirect({ to: "/solar_system", search: true, replace: true })
+	},
+})

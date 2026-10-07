@@ -36,7 +36,15 @@ export async function openTime(page: Page): Promise<Locator> {
 }
 
 export type ToolId =
-	"light" | "sky" | "birthday" | "hunt" | "spacecraft" | "compare" | "postcard"
+	| "light"
+	| "sky"
+	| "birthday"
+	| "hunt"
+	| "spacecraft"
+	| "compare"
+	| "walk"
+	| "dictionary"
+	| "postcard"
 
 /** Opens a tool from the Tools menu at the bottom right. */
 export async function openTool(page: Page, tool: ToolId): Promise<void> {

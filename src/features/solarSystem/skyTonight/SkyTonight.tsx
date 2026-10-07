@@ -28,9 +28,9 @@ const closeSkyWhenOpened = (
 
 /**
  * The sky panel's place on the page: nothing until opened. A link with
- * `?sky=true` (the hero page's button) opens it on arrival. Opening the
- * birthday or the hunt panel closes it. Leaving the page closes it; the chosen place stays
- * in memory until the tab is closed or "Change place" is pressed.
+ * `?sky=true` opens it on arrival. Opening the birthday or the hunt panel
+ * closes it. Leaving the page closes it; the chosen place stays in memory
+ * until the tab is closed or "Change place" is pressed.
  */
 export const SkyTonightSlot = () => {
 	const open = useSkyTonightStore((state) => state.open)
