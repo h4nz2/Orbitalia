@@ -2,7 +2,8 @@
  * The moons part of the focused view's card (#17, docs/ARCHITECTURE.md,
  * "Moons"). For a planet: its featured moons by name (a click flies there),
  * "See the whole moon system" (a shot that fits every drawn orbit) and the
- * switch for the long tail ("Show 53 smaller moons"). For a moon: the planet
+ * switch for the long tail ("Show 53 smaller moons"; in Poster, which hides
+ * the long tail, a line saying so, #54). For a moon: the planet
  * it belongs to (a click flies back), its written story behind "Read more",
  * because moons have no dictionary entry, and where its surface map comes from (#37).
  */
@@ -33,6 +34,7 @@ const PlanetMoons = ({ planet }: { planet: Body }) => {
 	const goTo = useSimStore((state) => state.goTo)
 	const showMoons = useSimStore((state) => state.showMoons)
 	const showAllMoons = useSimStore((state) => state.showAllMoons)
+	const longTailHidden = useSimStore((state) => state.longTailHidden)
 	const setShowMoons = useSimStore((state) => state.setShowMoons)
 	const setShowAllMoons = useSimStore((state) => state.setShowAllMoons)
 	const { featured, others } = moonSystemOf(planet.id)
@@ -45,7 +47,7 @@ const PlanetMoons = ({ planet }: { planet: Body }) => {
 		)
 	}
 
-	const allShown = showMoons && showAllMoons
+	const allShown = showMoons && showAllMoons && !longTailHidden
 	const drawn = allShown ? [...featured, ...others] : featured
 	const viewSystem = () => {
 		if (!showMoons) setShowMoons(true)
@@ -103,7 +105,7 @@ const PlanetMoons = ({ planet }: { planet: Body }) => {
 				>
 					{t("solarSystem.moons.viewSystem")}
 				</Button>
-				{others.length > 0 && (
+				{others.length > 0 && !longTailHidden && (
 					<Button
 						size="compact-xs"
 						variant="subtle"
@@ -119,6 +121,11 @@ const PlanetMoons = ({ planet }: { planet: Body }) => {
 					</Button>
 				)}
 			</Group>
+			{others.length > 0 && longTailHidden && (
+				<p className={classes.note} data-testid="other-moons-hidden">
+					{t("solarSystem.moons.othersHidden", { count: others.length })}
+				</p>
+			)}
 		</section>
 	)
 }

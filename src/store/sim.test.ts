@@ -2,7 +2,7 @@ import { afterEach, describe, expect, it } from "vitest"
 
 import { J2000_JD, dateToJD } from "@/sim"
 
-import { WARP_PRESETS, isBodyShown, useSimStore } from "./sim"
+import { WARP_PRESETS, allMoonsShown, isBodyShown, useSimStore } from "./sim"
 
 const reset = () => useSimStore.setState(useSimStore.getInitialState(), true)
 
@@ -78,6 +78,30 @@ describe("sim store", () => {
 		// a focused long-tail moon is always drawn
 		expect(isBodyShown(ymir, { ...story, focusId: "ymir" })).toBe(true)
 		expect(useSimStore.getState().showAllMoons).toBe(false)
+	})
+
+	it("hides the long tail while the scale does, All moons or not (#54, Poster)", () => {
+		const titan = { id: "titan", kind: "moon", featured: true } as const
+		const ymir = { id: "ymir", kind: "moon" } as const
+		const poster = {
+			showMoons: true,
+			showAllMoons: true,
+			focusId: "saturn",
+			longTailHidden: true,
+		}
+		expect(isBodyShown(ymir, poster)).toBe(false)
+		expect(isBodyShown(titan, poster)).toBe(true)
+		// the focus is always drawn
+		expect(isBodyShown(ymir, { ...poster, focusId: "ymir" })).toBe(true)
+		expect(allMoonsShown(poster)).toBe(false)
+		expect(allMoonsShown({ ...poster, longTailHidden: false })).toBe(true)
+		// the choice is kept for when the scale lets the long tail back
+		useSimStore.getState().setShowAllMoons(true)
+		useSimStore.getState().setLongTailHidden(true)
+		expect(useSimStore.getState().showAllMoons).toBe(true)
+		expect(allMoonsShown(useSimStore.getState())).toBe(false)
+		useSimStore.getState().setLongTailHidden(false)
+		expect(allMoonsShown(useSimStore.getState())).toBe(true)
 	})
 
 	it("keeps the focus visible while the moons are hidden", () => {

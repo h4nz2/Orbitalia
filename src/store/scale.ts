@@ -17,6 +17,7 @@ import { create } from "zustand"
 
 import {
 	DEFAULT_SCALE_PRESET,
+	HIDES_LONG_TAIL,
 	SCALE_PRESETS,
 	easeInOutSine,
 	interpolateScale,
@@ -27,6 +28,8 @@ import {
 	type ScalePresetId,
 	type ScaleSettings,
 } from "@/sim"
+
+import { useSimStore } from "./sim"
 
 /**
  * Length of an animated preset switch. Long enough to watch Earth shrink to a
@@ -139,5 +142,16 @@ export const useScaleStore = create<ScaleState>()((set, get) => ({
 		get().setScale({ ...get().scale, [factor]: value })
 	},
 }))
+
+/** Whether the chosen preset hides the long tail of moons (#54: Poster). */
+export const hidesLongTail = (targetId: ScalePresetId | null): boolean =>
+	targetId !== null && HIDES_LONG_TAIL.has(targetId)
+
+// the moons a preset hides go from the click on, and come back with the next one
+useScaleStore.subscribe((state, previous) => {
+	if (state.targetId !== previous.targetId) {
+		useSimStore.getState().setLongTailHidden(hidesLongTail(state.targetId))
+	}
+})
 
 export default useScaleStore

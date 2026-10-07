@@ -148,6 +148,85 @@ const cometKm = new Float64Array(3)
 const velocity = new Float64Array(3)
 const headKm = new Float64Array(3)
 const probeKm = new Float64Array(3)
+const reachKm = new Float64Array(3)
+
+/** Most steps `trueReachKm` takes: it ends far sooner, once the point is drawn within 1e-9 of the target. */
+const REACH_STEPS = 60
+
+/** How far from the drawn nucleus (`headKm`) the point `reach` true km along `away` is drawn. */
+function drawnReachKm(
+	frame: FrontFrame,
+	root: number,
+	p: Float64Array,
+	c: number,
+	reach: number,
+): number {
+	mapTruePointKm(
+		frame,
+		root,
+		root,
+		p[c] + away[0] * reach,
+		p[c + 1] + away[1] * reach,
+		p[c + 2] + away[2] * reach,
+		reachKm,
+	)
+	return Math.hypot(
+		reachKm[0] - headKm[0],
+		reachKm[1] - headKm[1],
+		reachKm[2] - headKm[2],
+	)
+}
+
+/**
+ * True km along `away` from the nucleus (true position `p[c..c + 2]`, drawn at `headKm`)
+ * whose drawn point lies `drawnKm` from the drawn nucleus. The drawing along the tail is
+ * monotone but not linear, and a preset that enlarges the nucleus a lot puts its surface
+ * and its coma's edge far out: in Poster (#54) Encke's 2 km nucleus is drawn 20,000 km
+ * wide, so near perihelion the coma's edge lies some 20 million true km out, across the
+ * anchor at Mercury's orbit where the drawn scale more than doubles. So the probe's linear
+ * guess only starts the search: bracket the reach, then close in on it by false position
+ * (Illinois), which needs a handful of steps.
+ */
+function trueReachKm(
+	frame: FrontFrame,
+	root: number,
+	p: Float64Array,
+	c: number,
+	drawnKm: number,
+	guessKm: number,
+): number {
+	let lo = 0
+	let low = -drawnKm
+	let hi = guessKm
+	let high = drawnReachKm(frame, root, p, c, hi) - drawnKm
+	for (let step = 0; high < 0 && step < REACH_STEPS; step++) {
+		lo = hi
+		low = high
+		hi *= 2
+		high = drawnReachKm(frame, root, p, c, hi) - drawnKm
+	}
+	if (!(high >= 0)) return hi
+	let reach = hi
+	let kept = 0
+	for (let step = 0; step < REACH_STEPS; step++) {
+		reach = (lo * high - hi * low) / (high - low)
+		const miss = drawnReachKm(frame, root, p, c, reach) - drawnKm
+		if (!(Math.abs(miss) > 1e-9 * drawnKm)) break
+		if (miss < 0) {
+			lo = reach
+			low = miss
+			if (kept < 0) high /= 2
+			kept = -1
+		} else {
+			hi = reach
+			high = miss
+			if (kept > 0) low /= 2
+			kept = 1
+		}
+	}
+	return reach
+}
+
 const drawn = new Float64Array(3)
 
 /** A true point (km) drawn like a body there, then made relative to the render origin (scene units). */
@@ -232,8 +311,14 @@ export function writeTail(
 	out.head[1] = toUnits(headKm[1] - frame.originKm[1])
 	out.head[2] = toUnits(headKm[2] - frame.originKm[2])
 	// true km from the nucleus to its drawn surface and to the coma's drawn edge
-	const surface = drawnPerKm > 0 ? nucleusKm / drawnPerKm : 0
-	const edge = drawnPerKm > 0 ? comaKm / drawnPerKm : 0
+	const surface =
+		drawnPerKm > 0
+			? trueReachKm(frame, root, p, c, nucleusKm, nucleusKm / drawnPerKm)
+			: 0
+	const edge =
+		drawnPerKm > 0
+			? trueReachKm(frame, root, p, c, comaKm, comaKm / drawnPerKm)
+			: 0
 
 	cometKm[0] = p[c] - p[root * 3]
 	cometKm[1] = p[c + 1] - p[root * 3 + 1]

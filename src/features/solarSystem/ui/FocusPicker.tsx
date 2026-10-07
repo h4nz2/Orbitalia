@@ -19,7 +19,7 @@ import {
 } from "@/data"
 import { useI18n, type I18n } from "@/i18n"
 import { bodyName } from "@/i18n/bodies"
-import { useSimStore } from "@/store/sim"
+import { allMoonsShown, useSimStore } from "@/store/sim"
 
 import { freeCentreId } from "./centre"
 import { cycleFocus } from "./focusCycle"
@@ -78,11 +78,12 @@ export function focusOptions(
 const handleKeyDown = (event: KeyboardEvent): void => {
 	if (hasModifier(event) || isEditableTarget(event.target)) return
 	if (event.key !== "ArrowLeft" && event.key !== "ArrowRight") return
-	const { focusId, setFocus, showAllMoons } = useSimStore.getState()
+	const state = useSimStore.getState()
+	const { focusId, setFocus } = state
 	const next = cycleFocus(
 		focusId,
 		event.key === "ArrowRight" ? 1 : -1,
-		showAllMoons,
+		allMoonsShown(state),
 	)
 	if (next === focusId) return
 	event.preventDefault()

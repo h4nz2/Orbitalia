@@ -690,23 +690,25 @@
 				"simple": "Les vraies tailles"
 			},
 			"what": {
-				"standard": "D’habitude, la scène dessine les mondes plus grands et plus proches les uns des autres pour que tu puisses les voir ; un clic montre les vraies tailles et les vraies distances.",
-				"simple": "D’habitude, les planètes sont dessinées beaucoup trop grandes. Un clic montre à quel point elles sont petites en vrai."
+				"standard": "D’habitude, la scène dessine les mondes plus grands et plus proches les uns des autres pour que tu puisses les voir ; un clic montre les vraies tailles et les vraies distances, un autre l’Affiche, comme celle de la classe, où chaque planète est assez grande pour être reconnue.",
+				"simple": "D’habitude, les planètes sont dessinées beaucoup trop grandes. Un clic montre à quel point elles sont petites en vrai. Un autre les rend grandes, comme sur une affiche."
 			},
 			"why": {
-				"standard": "À l’échelle réelle, les planètes disparaissent dans le vide : c’est la leçon la plus surprenante de l’application, et une phrase indique toujours à quel point l’image s’écarte de la réalité.",
+				"standard": "À l’échelle réelle, les planètes disparaissent dans le vide : c’est la leçon la plus surprenante de l’application, et une phrase indique toujours à quel point l’image s’écarte de la réalité. L’Affiche ment dans l’autre sens : tailles 5 à 60 fois trop grandes, distances 50 à 500 fois trop petites.",
 				"simple": "Avec les vraies tailles, on ne voit même plus les planètes. L’espace est vraiment, vraiment vide !"
 			},
 			"how": {
 				"standard": [
-					"Appuie sur Échelle en bas à droite (le bouton dit quelle échelle tu vois) et clique sur Échelle réelle, Manuel scolaire ou Tout visible, ou appuie sur S.",
+					"Appuie sur Échelle en bas à droite (le bouton dit quelle échelle tu vois) et clique sur Échelle réelle, Manuel scolaire, Tout visible ou Affiche, ou appuie sur S.",
 					"Les interrupteurs Tailles et Distances changent un seul mensonge à la fois.",
+					"Affiche montre les huit planètes dans l’ordre et avec leurs propres couleurs, Saturne avec ses anneaux, sans qu’aucune ne touche l’orbite d’une autre. Les petites lunes y sont masquées, faute de place ; les interrupteurs Tailles et Distances ramènent aux autres échelles.",
 					"À l’échelle réelle, les points montrent où sont les planètes ; désactive Repères (dans Calques) pour voir le peu qu’il en reste."
 				],
 				"simple": [
 					"Appuie sur Échelle en bas à droite.",
 					"Clique sur Échelle réelle.",
-					"Où sont passées les planètes ? Les points montrent où elles sont."
+					"Où sont passées les planètes ? Les points montrent où elles sont.",
+					"Clique sur Affiche pour voir toutes les planètes en grand à la fois. C’est l’image la moins vraie !"
 				]
 			}
 		},

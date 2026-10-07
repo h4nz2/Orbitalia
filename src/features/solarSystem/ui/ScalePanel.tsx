@@ -7,6 +7,7 @@ import { Hint } from "@/primitives/hint"
 import {
 	SCALE_LIES,
 	SCALE_PRESETS,
+	isGridPreset,
 	presetForLies,
 	type DistanceLie,
 	type ScalePresetId,
@@ -22,14 +23,16 @@ import { scaleSentences, statementSubject } from "./scaleStatement"
 import classes from "./ScalePanel.module.css"
 
 /**
- * The presets offered by name, from the truth to the most readable lie. The
- * fourth cell of the grid ("Big planets": enlarged sizes at real distances)
- * is reached through the separate Sizes / Distances switches.
+ * The presets offered by name, from the truth to the most distorted lie
+ * (Poster, #54, which sits beside the sizes x distances grid). The fourth
+ * cell of the grid ("Big planets": enlarged sizes at real distances) is
+ * reached through the separate Sizes / Distances switches.
  */
 export const NAMED_PRESETS: readonly ScalePresetId[] = [
 	"trueScale",
 	"textbook",
 	"everythingVisible",
+	"poster",
 ]
 
 /** Presets in which the planets are sub-pixel specks from the overview: the markers are what finds them. */
@@ -61,6 +64,10 @@ function chooseScale(id: ScalePresetId): void {
  * The scale picker (#21): the named presets, the two separate lies (sizes and
  * distances) each switchable on its own, and the honesty statement saying how
  * far from true the body in view is drawn. A teacher never types a number.
+ *
+ * Poster (#54) tells both lies harder than any cell of the grid: while it is
+ * on, the switches name no cell, and flipping one leaves Poster for the cell
+ * that switch picks (from Poster's enlarged, squeezed lies).
  */
 export interface ScalePanelProps {
 	/** Show the panel's own "Scale" heading (false inside the dock, #42, whose panel is titled already; it stays the region's name). */
@@ -87,6 +94,8 @@ const ScalePanel = ({ heading = true }: ScalePanelProps) => {
 	const sentences = scaleSentences(subject, scale, name)
 	// a custom mix (reachable only from the console) has no name and no cell in the grid
 	const lies = targetId === null ? null : SCALE_LIES[targetId]
+	// Poster tells a cell's lies without being its preset: the switches name no cell
+	const cell = targetId !== null && isGridPreset(targetId) ? lies : null
 
 	const setSizes = (sizes: SizeLie) =>
 		chooseScale(
@@ -119,6 +128,7 @@ const ScalePanel = ({ heading = true }: ScalePanelProps) => {
 					color="orange"
 					aria-label={t("solarSystem.scale.presetsLabel")}
 					className={classes.presets}
+					classNames={{ label: classes.presetLabel }}
 					value={
 						targetId !== null && NAMED_PRESETS.includes(targetId)
 							? targetId
@@ -150,7 +160,7 @@ const ScalePanel = ({ heading = true }: ScalePanelProps) => {
 					<SegmentedControl
 						size="xs"
 						aria-labelledby={sizesId}
-						value={lies?.sizes ?? ""}
+						value={cell?.sizes ?? ""}
 						onChange={(value) => setSizes(value as SizeLie)}
 						data={[
 							{ value: "true", label: t("solarSystem.scale.sizesTrue") },
@@ -178,7 +188,7 @@ const ScalePanel = ({ heading = true }: ScalePanelProps) => {
 					<SegmentedControl
 						size="xs"
 						aria-labelledby={distancesId}
-						value={lies?.distances ?? ""}
+						value={cell?.distances ?? ""}
 						onChange={(value) => setDistances(value as DistanceLie)}
 						data={[
 							{ value: "true", label: t("solarSystem.scale.distancesTrue") },

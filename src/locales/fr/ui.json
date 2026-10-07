@@ -222,6 +222,8 @@
 			},
 			"reason": {
 				"allMoons": "Active d’abord Lunes.",
+				"allMoonsPoster": "Affiche masque les petites lunes : elles n’ont pas de place entre les planètes. Choisis une autre échelle pour les voir.",
+				"allMoonsPoster@simple": "Sur l’affiche, les petites lunes sont cachées. Il n’y a pas de place pour elles !",
 				"orbitNames": "{missing, select, orbits {Active d’abord Orbites.} labels {Active d’abord Noms.} other {Active d’abord Orbites et Noms.}}"
 			},
 			"smallBodies": "Petits corps"
@@ -233,7 +235,8 @@
 				"trueScale": "Échelle réelle",
 				"textbook": "Manuel scolaire",
 				"bigPlanets": "Grosses planètes",
-				"everythingVisible": "Tout visible"
+				"everythingVisible": "Tout visible",
+				"poster": "Affiche"
 			},
 			"summary": {
 				"trueScale": "Tailles réelles, distances réelles. L’espace est presque entièrement vide.",
@@ -247,7 +250,10 @@
 				"bigPlanets@advanced": "Distances exactes, tailles exagérées : même agrandies dix fois, les planètes ne sont que des points sur leurs orbites.",
 				"everythingVisible": "Fait pour tout montrer à la fois : les planètes sont dessinées trop grandes et trop proches. Pas à l’échelle !",
 				"everythingVisible@simple": "Les planètes sont agrandies et rapprochées pour que tu les voies toutes. En vrai, ce n’est pas comme ça !",
-				"everythingVisible@advanced": "Tailles exagérées et distances comprimées, pour que tous les astres soient visibles à la fois. Pas à l’échelle."
+				"everythingVisible@advanced": "Tailles exagérées et distances comprimées, pour que tous les astres soient visibles à la fois. Pas à l’échelle.",
+				"poster": "Comme une affiche de classe : chaque planète est assez grande pour les voir toutes à la fois, dans le bon ordre. Tailles 5 à 60 fois trop grandes, distances 50 à 500 fois trop petites. L’image la moins vraie de toutes !",
+				"poster@simple": "Comme une affiche au mur de la classe : toutes les planètes sont grandes et très proches. C’est l’image la moins vraie de toutes !",
+				"poster@advanced": "Rayons comprimés vers celui du Soleil et chaque orbite placée à la main, ordre conservé : tailles 5 à 60 fois trop grandes, distances 50 à 500 fois trop petites. Le réglage le plus déformé."
 			},
 			"sizes": "Tailles",
 			"sizesTrue": "Réelles",
@@ -487,6 +493,8 @@
 			"hideOthers": "Masquer les petites lunes",
 			"othersNote": "Surtout des rochers de quelques kilomètres, dont beaucoup ont été capturés. Les astronomes en découvrent sans cesse de nouveaux.",
 			"othersNote@simple": "Surtout de petits rochers. Les scientifiques en découvrent sans arrêt de nouveaux.",
+			"othersHidden": "{count, plural, one {# petite lune est masquée} many {# de petites lunes sont masquées} other {# petites lunes sont masquées}} sur l’affiche : elles n’ont pas de place entre les planètes.",
+			"othersHidden@simple": "{count, plural, one {# petite lune est cachée} many {# de petites lunes sont cachées} other {# petites lunes sont cachées}} ici. Il n’y a pas de place pour elles !",
 			"readMore": "Lire son histoire",
 			"readLess": "Afficher moins"
 		},
@@ -1072,7 +1080,10 @@
 				"bigPlanets@advanced": "Pas à l’échelle : distances réelles, tailles exagérées.",
 				"everythingVisible": "Pas à l’échelle : les corps sont dessinés plus grands et plus proches qu’en réalité.",
 				"everythingVisible@simple": "Pas comme en vrai : en réalité, les planètes sont bien plus petites et bien plus éloignées.",
-				"everythingVisible@advanced": "Pas à l’échelle : tailles exagérées et distances comprimées."
+				"everythingVisible@advanced": "Pas à l’échelle : tailles exagérées et distances comprimées.",
+				"poster": "Pas à l’échelle : une vue d’affiche, les planètes jusqu’à 60 fois trop grandes et jusqu’à 500 fois trop proches.",
+				"poster@simple": "Pas comme en vrai : en réalité, les planètes sont bien, bien plus petites et très éloignées.",
+				"poster@advanced": "Pas à l’échelle : tailles exagérées jusqu’à 60 fois, distances comprimées jusqu’à 500 fois."
 			},
 			"hint": {
 				"names": "Garde le nom des astres sur l’image. Désactive-les pour une image épurée ou un quiz.",

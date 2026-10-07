@@ -20,7 +20,8 @@ export function orbitNamesMissing(
 /**
  * Switches for the orbit lines, the labels, the moons (all of them, #17), the
  * markers, the orbit names, the small bodies (#23) and the "always lit" teaching mode. Each has a hint
- * (#39) saying what it does and, while disabled, what to turn on first.
+ * (#39) saying what it does and, while disabled, what to turn on first (or, for All
+ * moons in Poster, that the scale hides them, #54).
  */
 const SceneToggles = () => {
 	const { t } = useI18n()
@@ -28,6 +29,7 @@ const SceneToggles = () => {
 	const showLabels = useSimStore((state) => state.showLabels)
 	const showMoons = useSimStore((state) => state.showMoons)
 	const showAllMoons = useSimStore((state) => state.showAllMoons)
+	const longTailHidden = useSimStore((state) => state.longTailHidden)
 	const showMarkers = useSimStore((state) => state.showMarkers)
 	const showOrbitLabels = useSimStore((state) => state.showOrbitLabels)
 	const setShowOrbits = useSimStore((state) => state.setShowOrbits)
@@ -79,14 +81,20 @@ const SceneToggles = () => {
 			</Hint>
 			<Hint
 				text={t("solarSystem.layers.hint.allMoons")}
-				reason={showMoons ? undefined : t("solarSystem.layers.reason.allMoons")}
+				reason={
+					longTailHidden
+						? t("solarSystem.layers.reason.allMoonsPoster")
+						: showMoons
+							? undefined
+							: t("solarSystem.layers.reason.allMoons")
+				}
 			>
 				<Switch
 					size="xs"
 					color="orange"
 					label={t("solarSystem.layers.allMoons")}
 					checked={showAllMoons}
-					disabled={!showMoons}
+					disabled={!showMoons || longTailHidden}
 					onChange={(event) => setShowAllMoons(event.currentTarget.checked)}
 				/>
 			</Hint>

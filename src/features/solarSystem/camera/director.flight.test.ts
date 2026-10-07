@@ -173,7 +173,10 @@ describe("the flight between bodies", () => {
 						)
 					}
 				}
-				expect(distances[top] / distances[0]).toBeGreaterThan(100)
+				// Poster (#54) draws Earth so big that the whole system is only ~100 Earth radii across
+				expect(distances[top] / distances[0]).toBeGreaterThan(
+					preset === "poster" ? 15 : 100,
+				)
 				expect(bothInView).toBe(true)
 				// ends framed on the destination, tracking it
 				const snap = h.snapshot()

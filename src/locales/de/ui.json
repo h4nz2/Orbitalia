@@ -222,6 +222,8 @@
 			},
 			"reason": {
 				"allMoons": "Schalte zuerst Monde ein.",
+				"allMoonsPoster": "Der Maßstab „Poster“ blendet die kleineren Monde aus: Zwischen den Planeten ist kein Platz für sie. Wähle einen anderen Maßstab, um sie zu sehen.",
+				"allMoonsPoster@simple": "Im Poster sind die kleinen Monde versteckt. Es ist kein Platz für sie da!",
 				"orbitNames": "{missing, select, orbits {Schalte zuerst Umlaufbahnen ein.} labels {Schalte zuerst Beschriftungen ein.} other {Schalte zuerst Umlaufbahnen und Beschriftungen ein.}}"
 			},
 			"smallBodies": "Kleinkörper"
@@ -233,7 +235,8 @@
 				"trueScale": "Echter Maßstab",
 				"textbook": "Schulbuch",
 				"bigPlanets": "Große Planeten",
-				"everythingVisible": "Alles sichtbar"
+				"everythingVisible": "Alles sichtbar",
+				"poster": "Poster"
 			},
 			"summary": {
 				"trueScale": "Echte Größen, echte Abstände. Der Weltraum ist fast vollständig leer.",
@@ -247,7 +250,10 @@
 				"bigPlanets@advanced": "Abstände echt, Größen übertrieben: Selbst zehnfach vergrößert sind die Planeten nur Pünktchen auf ihren Bahnen.",
 				"everythingVisible": "Gemacht, um alles auf einmal zu zeigen: Die Planeten sind zu groß und zu nah beieinander gezeichnet. Nicht maßstabsgetreu!",
 				"everythingVisible@simple": "Die Planeten sind größer gemacht und näher zusammengeschoben, damit du alle sehen kannst. In Wirklichkeit ist es nicht so!",
-				"everythingVisible@advanced": "Größen übertrieben und Abstände gestaucht, damit jeder Körper gleichzeitig sichtbar ist. Nicht maßstabsgetreu."
+				"everythingVisible@advanced": "Größen übertrieben und Abstände gestaucht, damit jeder Körper gleichzeitig sichtbar ist. Nicht maßstabsgetreu.",
+				"poster": "Wie ein Poster im Klassenzimmer: Jeder Planet ist groß genug, damit alle auf einmal zu sehen sind, in der richtigen Reihenfolge. Größen 5- bis 60-mal zu groß, Abstände 50- bis 500-mal zu klein. Das am wenigsten echte Bild von allen!",
+				"poster@simple": "Wie ein Poster an der Wand im Klassenzimmer: Alle Planeten sind groß und nah beieinander. Das ist das am wenigsten echte Bild von allen!",
+				"poster@advanced": "Radien zur Sonne hin gestaucht und jede Bahn von Hand gesetzt, die Reihenfolge bleibt: Größen 5- bis 60-fach zu groß, Abstände 50- bis 500-fach zu klein. Die am stärksten verzerrte Einstellung."
 			},
 			"sizes": "Größen",
 			"sizesTrue": "Echt",
@@ -487,6 +493,8 @@
 			"hideOthers": "Kleinere Monde ausblenden",
 			"othersNote": "Meist Gesteinsbrocken von wenigen Kilometern, viele davon eingefangen. Astronomen entdecken immer weitere.",
 			"othersNote@simple": "Meist kleine Felsbrocken. Forscher entdecken immer noch neue.",
+			"othersHidden": "{count, plural, one {# kleinerer Mond ist} other {# kleinere Monde sind}} im Maßstab „Poster“ ausgeblendet: Zwischen den Planeten ist kein Platz für sie.",
+			"othersHidden@simple": "{count, plural, one {# kleiner Mond ist} other {# kleine Monde sind}} hier versteckt. Es ist kein Platz für sie da!",
 			"readMore": "Die ganze Geschichte lesen",
 			"readLess": "Weniger zeigen"
 		},
@@ -1070,7 +1078,10 @@
 				"bigPlanets@advanced": "Nicht maßstabsgetreu: Abstände echt, Größen übertrieben.",
 				"everythingVisible": "Nicht maßstabsgetreu: Die Himmelskörper sind größer und näher beieinander gezeichnet, als sie sind.",
 				"everythingVisible@simple": "Nicht wie in echt: In Wirklichkeit sind die Planeten viel kleiner und viel weiter voneinander entfernt.",
-				"everythingVisible@advanced": "Nicht maßstabsgetreu: Größen übertrieben, Abstände gestaucht."
+				"everythingVisible@advanced": "Nicht maßstabsgetreu: Größen übertrieben, Abstände gestaucht.",
+				"poster": "Nicht maßstabsgetreu: eine Posteransicht, die Planeten bis zu 60-mal zu groß und bis zu 500-mal zu nah gezeichnet.",
+				"poster@simple": "Nicht wie in echt: In Wirklichkeit sind die Planeten viel, viel kleiner und sehr weit voneinander entfernt.",
+				"poster@advanced": "Nicht maßstabsgetreu: Größen bis zu 60-fach übertrieben, Abstände bis zu 500-fach gestaucht."
 			},
 			"compareTitle": "{a} und {b} im Vergleich",
 			"compareScale": "Echte Größenverhältnisse: Alle Himmelskörper sind im gleichen Maßstab gezeichnet.",

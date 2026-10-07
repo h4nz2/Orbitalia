@@ -690,23 +690,25 @@
 				"simple": "Skutečné velikosti"
 			},
 			"what": {
-				"standard": "Scéna normálně kreslí světy větší a blíž k sobě, aby byly vidět; jedno kliknutí ukáže skutečné velikosti a skutečné vzdálenosti.",
-				"simple": "Normálně jsou planety nakreslené moc velké. Jedním kliknutím uvidíš, jak jsou doopravdy malé."
+				"standard": "Scéna normálně kreslí světy větší a blíž k sobě, aby byly vidět; jedno kliknutí ukáže skutečné velikosti a skutečné vzdálenosti, jiné Plakát jako ve třídě, kde je každá planeta dost velká, abys ji poznal.",
+				"simple": "Normálně jsou planety nakreslené moc velké. Jedním kliknutím uvidíš, jak jsou doopravdy malé. Jiné kliknutí je zvětší jako na plakátu."
 			},
 			"why": {
-				"standard": "Ve skutečném měřítku planety zmizí v prázdném prostoru: to je nejpřekvapivější lekce celé aplikace a vždycky je napsané, jak moc se obrázek liší od skutečnosti.",
+				"standard": "Ve skutečném měřítku planety zmizí v prázdném prostoru: to je nejpřekvapivější lekce celé aplikace a vždycky je napsané, jak moc se obrázek liší od skutečnosti. Plakát lže opačně: velikosti 5× až 60× větší, vzdálenosti 50× až 500× menší.",
 				"simple": "Ve skutečné velikosti planety nejsou ani vidět. Vesmír je hrozně, hrozně prázdný!"
 			},
 			"how": {
 				"standard": [
-					"Stiskni vpravo dole Měřítko (tlačítko říká, jaké měřítko právě vidíš) a klikni na „Skutečné měřítko“, „Jako v učebnici“ nebo „Vše viditelné“, nebo stiskni S.",
+					"Stiskni vpravo dole Měřítko (tlačítko říká, jaké měřítko právě vidíš) a klikni na „Skutečné měřítko“, „Jako v učebnici“, „Vše viditelné“ nebo „Plakát“, nebo stiskni S.",
 					"Přepínače Velikosti a Vzdálenosti opraví vždy jen jedno zkreslení.",
+					"Plakát ukáže všech osm planet ve správném pořadí a v jejich vlastních barvách, Saturn s prstenci, žádná se nedotkne dráhy jiné. Menší měsíce tam nejsou, protože pro ně není místo; přepínače Velikosti a Vzdálenosti vedou zpět k ostatním měřítkům.",
 					"Ve skutečném měřítku ukazují tečky, kde planety jsou; vypni Značky (ve Vrstvách) a uvidíš, jak málo zbude."
 				],
 				"simple": [
 					"Stiskni vpravo dole Měřítko.",
 					"Klikni na „Skutečné měřítko“.",
-					"Kam se planety poděly? Tečky ukazují, kde jsou."
+					"Kam se planety poděly? Tečky ukazují, kde jsou.",
+					"Klikni na „Plakát“ a uvidíš všechny planety velké najednou. Je to nejméně skutečný obrázek!"
 				]
 			}
 		},

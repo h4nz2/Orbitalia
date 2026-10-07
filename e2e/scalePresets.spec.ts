@@ -3,7 +3,7 @@ import path from "node:path"
 
 import { expect, test, type Page } from "@playwright/test"
 
-import { openScale } from "./support/hud"
+import { openLayers, openScale } from "./support/hud"
 
 // True scale and the scale presets (#21): one click to true scale, an animated
 // switch, the honesty statement, the two separate lies, and the URL.
@@ -167,5 +167,58 @@ test("the statement reads at every level, in German too", async ({ page }) => {
 	await expect(
 		panel.getByRole("radio", { name: "Schulbuch", exact: true }),
 	).toBeChecked()
+	expect(errors).toEqual([])
+})
+
+test("Poster: every planet a disc, beside the Sizes and Distances switches, the small moons hidden (#54)", async ({
+	page,
+}) => {
+	test.slow()
+	const errors = collectErrors(page)
+	await page.setViewportSize({ width: 1366, height: 768 })
+	await page.goto("/solar_system?t=2461308&paused=true")
+	await page.waitForLoadState("networkidle")
+	await openScale(page)
+	const canvas = page.locator("canvas").first()
+	const panel = scalePanel(page)
+	const radio = (name: string) =>
+		panel.getByRole("radio", { name, exact: true })
+
+	await pick(page, "Scale preset", "Poster")
+	await expect(page).toHaveURL(/scale=poster/)
+	await expect(panel).toContainText("Sizes 5 to 60× too big")
+	await expect(panel).toContainText("Earth is drawn 29× too big.")
+	await expect(panel).toContainText("Earth is drawn 60× too close to the Sun.")
+	await expect(canvas).toHaveAttribute("data-scale-preset", "poster", {
+		timeout: 10_000,
+	})
+	await expect(radio("Poster")).toBeChecked()
+	// beside the grid: the switches name none of their four cells
+	for (const group of ["Sizes", "Distances"]) {
+		await expect(
+			panel
+				.getByRole("radiogroup", { name: group })
+				.getByRole("radio", { checked: true }),
+		).toHaveCount(0)
+	}
+	mkdirSync(screenshotDir, { recursive: true })
+	await page.screenshot({ path: path.join(screenshotDir, "poster.png") })
+
+	// the long tail has no room: All moons waits, and says why
+	const layers = await openLayers(page)
+	const allMoons = layers.getByRole("switch", { name: "All moons" })
+	await expect(allMoons).toBeDisabled()
+	await expect(allMoons).toHaveAccessibleDescription(
+		/Choose another scale to see them\.$/,
+	)
+
+	// a switch leaves Poster for the cell it picks: real sizes, squeezed distances
+	await openScale(page)
+	await pick(page, "Sizes", "Real")
+	await expect(radio("Textbook")).toBeChecked()
+	await expect(page).toHaveURL(/scale=textbook/)
+	await expect(
+		(await openLayers(page)).getByRole("switch", { name: "All moons" }),
+	).toBeEnabled()
 	expect(errors).toEqual([])
 })

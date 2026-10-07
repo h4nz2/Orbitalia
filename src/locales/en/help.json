@@ -690,23 +690,25 @@
 				"simple": "Real sizes"
 			},
 			"what": {
-				"standard": "The scene normally draws the worlds bigger and closer together so you can see them; one click shows real sizes and real distances.",
-				"simple": "Normally the planets are drawn much too big. One click shows how small they really are."
+				"standard": "The scene normally draws the worlds bigger and closer together so you can see them; one click shows real sizes and real distances, another the Poster, the classroom poster with every planet big enough to recognise.",
+				"simple": "Normally the planets are drawn much too big. One click shows how small they really are. Another makes them big, like on a poster."
 			},
 			"why": {
-				"standard": "At true scale the planets vanish into empty space: the most surprising lesson in the app, and a statement always says how far the picture is from the truth.",
+				"standard": "At true scale the planets vanish into empty space: the most surprising lesson in the app, and a statement always says how far the picture is from the truth. Poster is the opposite lie: sizes 5 to 60× too big, distances 50 to 500× too close.",
 				"simple": "At real size you cannot even see the planets. Space is very, very empty!"
 			},
 			"how": {
 				"standard": [
-					"Press Scale at the bottom right (it names the scale on screen) and click True scale, Textbook or Everything visible, or press S.",
+					"Press Scale at the bottom right (it names the scale on screen) and click True scale, Textbook, Everything visible or Poster, or press S.",
 					"The Sizes and Distances switches change one lie at a time.",
+					"Poster shows all eight planets in order and in their own colours, Saturn with its rings, none touching another's path. It hides the smaller moons, which have no room there; the Sizes and Distances switches lead back to the other scales.",
 					"At true scale, the dots show where the planets are; turn Markers off (under Layers) to see how little is left."
 				],
 				"simple": [
 					"Press Scale at the bottom right.",
 					"Click True scale.",
-					"Where did the planets go? The dots show where they are."
+					"Where did the planets go? The dots show where they are.",
+					"Click Poster to see all the planets big at once. It is the least real picture!"
 				]
 			}
 		},

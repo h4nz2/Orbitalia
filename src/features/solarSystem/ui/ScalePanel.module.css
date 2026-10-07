@@ -29,6 +29,13 @@
 	background: rgba(255, 255, 255, 0.06);
 }
 
+/* four presets in a 24rem panel (#54): a long name wraps instead of being cut */
+.presetLabel {
+	white-space: normal;
+	line-height: 1.2;
+	padding-inline: 0.25rem;
+}
+
 .summary {
 	font-size: var(--mantine-font-size-xs);
 	line-height: 1.35;

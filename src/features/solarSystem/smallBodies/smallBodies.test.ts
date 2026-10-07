@@ -47,6 +47,28 @@ const at = (id: string) => bodies.findIndex((body) => body.id === id)
 const HALLEY_PERIHELION = 2446469.97
 const J2000 = 2451545
 
+/** The belt shader's anchored curve (beltSpline) in JS, doubles. */
+function splineDistance(u: BeltUniforms, x: number): number {
+	const v = Math.log(x)
+	const end = u.uSplineEnd.value
+	if (v >= end.x) return end.y + end.z * (v - end.x)
+	const U = u.uSplineU.value
+	const Y = u.uSplineY.value
+	const M = u.uSplineM.value
+	for (let k = 0; k + 1 < u.uSplineCount.value; k++) {
+		if (v >= U[k + 1]) continue
+		const h = U[k + 1] - U[k]
+		const t = (v - U[k]) / h
+		return (
+			(2 * t ** 3 - 3 * t ** 2 + 1) * Y[k] +
+			(t ** 3 - 2 * t ** 2 + t) * h * M[k] +
+			(-2 * t ** 3 + 3 * t ** 2) * Y[k + 1] +
+			(t ** 3 - t ** 2) * h * M[k + 1]
+		)
+	}
+	return end.y
+}
+
 /** The belt vertex shader's arithmetic in JS (beltShader.ts), doubles. */
 function shaderPosition(
 	u: BeltUniforms,
@@ -63,8 +85,12 @@ function shaderPosition(
 		const r = u.uRootRadiusKm.value
 		const xr = d / r
 		const { x: knee, y: exponent, z: gain } = u.uCurve.value
-		const f =
-			xr <= knee ? xr : knee * (1 + gain * ((xr / knee) ** exponent - 1))
+		let f = xr <= knee ? xr : knee * (1 + gain * ((xr / knee) ** exponent - 1))
+		const share = u.uSplineShare.value
+		if (xr > knee && share > 0) {
+			const s = splineDistance(u, xr)
+			f = share >= 1 ? s : f ** (1 - share) * s ** share
+		}
 		const k = (r * f) / d
 		return [x * k, y * k, z * k]
 	}

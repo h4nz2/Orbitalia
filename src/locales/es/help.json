@@ -690,23 +690,25 @@
 				"simple": "Tamaños reales"
 			},
 			"what": {
-				"standard": "Normalmente la escena dibuja los mundos más grandes y más juntos para que puedas verlos; un clic muestra los tamaños y las distancias reales.",
-				"simple": "Normalmente los planetas se dibujan muchísimo más grandes. Un clic muestra lo pequeños que son de verdad."
+				"standard": "Normalmente la escena dibuja los mundos más grandes y más juntos para que puedas verlos; un clic muestra los tamaños y las distancias reales, y otro el Póster, como el de clase, con cada planeta lo bastante grande para reconocerlo.",
+				"simple": "Normalmente los planetas se dibujan muchísimo más grandes. Un clic muestra lo pequeños que son de verdad. Otro los hace grandes, como en un póster."
 			},
 			"why": {
-				"standard": "A escala real, los planetas desaparecen en el espacio vacío: la lección más sorprendente de la aplicación. Y un texto siempre indica cuánto se aleja la imagen de la realidad.",
+				"standard": "A escala real, los planetas desaparecen en el espacio vacío: la lección más sorprendente de la aplicación. Y un texto siempre indica cuánto se aleja la imagen de la realidad. El Póster miente al revés: tamaños de 5 a 60 veces mayores, distancias de 50 a 500 veces menores.",
 				"simple": "Con su tamaño real, ni siquiera puedes ver los planetas. ¡El espacio está muy, muy vacío!"
 			},
 			"how": {
 				"standard": [
-					"Pulsa Escala abajo a la derecha (el botón dice qué escala ves) y haz clic en Escala real, Libro de texto o Todo visible, o pulsa S.",
+					"Pulsa Escala abajo a la derecha (el botón dice qué escala ves) y haz clic en Escala real, Libro de texto, Todo visible o Póster, o pulsa S.",
 					"Los interruptores Tamaños y Distancias cambian una sola mentira cada vez.",
+					"Póster muestra los ocho planetas en orden y con sus propios colores, Saturno con sus anillos, sin que ninguno toque la órbita de otro. Oculta las lunas pequeñas, que no caben; los interruptores Tamaños y Distancias llevan de vuelta a las otras escalas.",
 					"A escala real, los puntos muestran dónde están los planetas; desactiva Marcadores (en Capas) para ver lo poco que queda."
 				],
 				"simple": [
 					"Pulsa Escala abajo a la derecha.",
 					"Haz clic en Escala real.",
-					"¿Adónde han ido los planetas? Los puntos muestran dónde están."
+					"¿Adónde han ido los planetas? Los puntos muestran dónde están.",
+					"Haz clic en Póster para ver todos los planetas grandes a la vez. ¡Es la imagen menos real!"
 				]
 			}
 		},

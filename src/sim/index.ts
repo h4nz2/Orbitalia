@@ -53,14 +53,19 @@ export {
 export type { OrbitingBody, WritableVec3 } from "./positions"
 export {
 	DEFAULT_SCALE_PRESET,
+	HIDES_LONG_TAIL,
 	SCALE_PRESETS,
 	SCALE_PRESET_IDS,
 	TRUE_SCALE,
+	anchorSpline,
+	anchorWeightOf,
+	anchoredDistance,
 	childDistanceCurve,
 	computeDisplayPositions,
 	computeDisplayRadii,
 	displayBodyLengthKm,
 	displayDistanceKm,
+	displayMoonRadiusKm,
 	displayOffset,
 	displayRadiusKm,
 	distanceFactor,
@@ -70,6 +75,7 @@ export {
 	isTrueScale,
 	isValidScale,
 	mapDistance,
+	moonSizeOf,
 	presetOf,
 	rootIndexOf,
 	sameScale,
@@ -78,6 +84,8 @@ export {
 	unmapDistance,
 } from "./scale"
 export type {
+	AnchorSpline,
+	DistanceAnchor,
 	DistanceCurve,
 	ScalableBody,
 	ScaleFactor,
@@ -141,7 +149,12 @@ export {
 	ringU,
 	slantOpacity,
 } from "./rings"
-export { SCALE_LIES, bodyDistortion, presetForLies } from "./scaleLies"
+export {
+	SCALE_LIES,
+	bodyDistortion,
+	isGridPreset,
+	presetForLies,
+} from "./scaleLies"
 export type {
 	BodyDistortion,
 	DistanceLie,

@@ -197,7 +197,8 @@ Build rules (`scripts/lib/`):
   its measured profile: C, B, A and F rings with the Maxwell, Huygens, Encke and Keeler gaps, opacity
   `1 - exp(-optical depth)`, sources in the file's `sources`). Strips run
   u = 0 (inner) to u = 1 (outer), gray level = face-on opacity. Every ring lies within 3 planet radii (the moon curve's
-  knee, so rings stay true to their planet in every preset; Jupiter's Thebe gossamer ring, out to 3.2, is left out).
+  knee, so rings stay true to their planet in every preset; Jupiter's Thebe gossamer ring, out to 3.2, is left out;
+  Poster's knee is 2.65, just outside Jupiter's 2.59-radius ring, and hides the ring moons, see Scale).
   A missing ring texture fails the build.
 - Small bodies (#23): `dwarfPlanets` (Ceres was moved there from `asteroids`), `asteroids` and `comets` are emitted
   with their kind, but only with real elements (`hasRealElements`: a semi-major axis, a period and a phase not all 0);
@@ -244,7 +245,7 @@ Build rules (`scripts/lib/`):
 ## Scale (`src/sim/scale.ts`, `src/store/scale.ts`; #8)
 
 The simulation and every fact shown as text use true kilometres. Only what is drawn goes through the scale engine,
-which applies three independent, named lies ("display space"):
+which applies independent, named lies ("display space"):
 
 ```ts
 interface SizeCurve {
@@ -254,18 +255,33 @@ interface DistanceCurve {
 	knee: number
 	exponent: number
 	gain: number
+	anchors?: [trueRadii, drawnRadii][] // #54: drawn distances pinned one by one
+	anchorWeight?: number // 0..1, default 1 with anchors
 } // parent radii -> drawn parent radii
 interface ScaleSettings {
 	bodySize: SizeCurve
+	moonSize?: SizeCurve // #54: moons against their parent; absent = bodySize
 	orbitDistance: DistanceCurve
 	moonDistance: DistanceCurve
+	overviewFit?: number // #54: 0 (absent) the shared overview fit, 1 the tight one; a framing hint, not a lie
 }
 ```
 
+- **Presets are named data on top of true scale**: frozen `ScaleSettings` in `SCALE_PRESETS`, listed in
+  `SCALE_PRESET_IDS` (iterate it; every preset-wide test does). A new preset is a new entry, never a code path.
 - The Sun always keeps its true size. `orbitDistance` places the root's children, `moonDistance` everything deeper
-  (`childDistanceCurve` decides by depth, never by kind).
+  (`childDistanceCurve` decides by depth, never by kind). `moonSize` sizes those deeper bodies against their parent
+  (`displayMoonRadiusKm`: parent's drawn radius x `(r / rParent) ** exponent`); absent, they follow `bodySize`, and
+  equal exponents are computed the root's way, so every preset but Poster draws exactly what it drew before #54.
 - A distance curve is the identity up to `knee`, then `knee * (1 + gain * ((x / knee) ** exponent - 1))`: monotone and
   never below `min(x, knee)`, so nothing is drawn inside its parent.
+- **Anchored curves** (#54): with `anchors`, beyond the knee the curve is a monotone cubic (Fritsch-Carlson slopes) in
+  the log of the true distance through `(knee, knee)` and every anchor, and past the last anchor a straight line in
+  the log at the last slope (dwarf planets, comets and spacecraft keep their order). No power law can space a poster:
+  Venus and Earth are only 1.35x apart, Mars and Jupiter 3.4x, so a log-like curve leaves Venus and Earth touching
+  long before Earth is big enough to see from the overview. `anchorWeight` w blends `power ** (1 - w) * anchored ** w`
+  (geometric, so monotone); `interpolateScale` moves w, which is how a switch to or from Poster animates.
+  `unmapDistance` inverts it by bisection in the log; `anchorSpline` (the nodes and slopes) feeds the belt shader.
 - The one rule: display position = parent's display position + the true parent -> child direction, rescaled to
   `parentDrawnRadius * curve(trueDistance / parentTrueRadius)` (`displayOffset`, `computeDisplayPositions`). Directions
   are true in every preset; anything measured between non-parent/child bodies must use true positions.
@@ -273,18 +289,45 @@ interface ScaleSettings {
   (`displayBodyLengthKm`) all derive from the drawn radius and `displayOffset`. Non-body objects near an anchor body map
   through the same `displayOffset`.
 
-| preset              | bodySize | orbitDistance (knee, exp, gain) | moonDistance (knee, exp, gain) | reads as                                                 |
-| ------------------- | -------- | ------------------------------- | ------------------------------ | -------------------------------------------------------- |
-| `trueScale`         | 1        | 1, 1, 1                         | 3, 1, 1                        | real sizes and distances; planets are specks             |
-| `textbook`          | 1        | 1, 0.53, 0.12                   | 3, 0.2, 1                      | sizes true to each other, distances squeezed hard        |
-| `bigPlanets`        | 0.5      | 1, 1, 1                         | 3, 0.2, 2                      | enlarged bodies at real distances: still lost in space   |
-| `everythingVisible` | 0.5      | 1, 0.52, 1                      | 3, 0.2, 2                      | **the default**: small bodies enlarged, orbits pulled in |
+| preset              | bodySize | orbitDistance (knee, exp, gain) | moonDistance (knee, exp, gain) | reads as                                                  |
+| ------------------- | -------- | ------------------------------- | ------------------------------ | --------------------------------------------------------- |
+| `trueScale`         | 1        | 1, 1, 1                         | 3, 1, 1                        | real sizes and distances; planets are specks              |
+| `textbook`          | 1        | 1, 0.53, 0.12                   | 3, 0.2, 1                      | sizes true to each other, distances squeezed hard         |
+| `bigPlanets`        | 0.5      | 1, 1, 1                         | 3, 0.2, 2                      | enlarged bodies at real distances: still lost in space    |
+| `everythingVisible` | 0.5      | 1, 0.52, 1                      | 3, 0.2, 2                      | **the default**: small bodies enlarged, orbits pulled in  |
+| `poster` (#54)      | 0.28     | 1, anchored (see below)         | 2.65, 0.05, 1.76               | the classroom poster: every planet a disc in the overview |
 
 `scale.test.ts` guards the non-true presets (orbit order kept, moon systems separated, rings and ring moons true to
-proportion). `interpolateScale` blends presets for animated changes; also `presetOf`, `sameScale`, `isValidScale`,
-`sizeExaggeration`, `distanceFactor`. `scene/ScaleSync.tsx` pushes the store into the SimFrame and sets
-`data-scale-preset` on the canvas (`custom` mid-switch). On a scale change the camera keeps the framed body's
-on-screen size (in the overview: the whole drawn planetary system).
+proportion); `poster.test.ts` (sim and camera) guards Poster. `interpolateScale` blends presets for animated changes;
+also `presetOf`, `sameScale`, `isValidScale`, `sizeExaggeration`, `distanceFactor`. `scene/ScaleSync.tsx` pushes the
+store into the SimFrame and sets `data-scale-preset` on the canvas (`custom` mid-switch). On a scale change the camera
+keeps the framed body's on-screen size (in the overview: the whole drawn planetary system, so a switch to or from
+Poster glides the camera between the two overview fits).
+
+**Poster** (#54), the most distorted preset: every planet a recognisable disc in the whole-system view, in true order of
+size and distance. `moonSize` 1 (moons true to their planet's drawn size), `overviewFit` 1, the planets on anchors at
+their semi-major axes (in solar radii: Mercury 1.54, Venus 2.43, Earth 3.56, Mars 4.94, Jupiter 7.06, Saturn 9.43,
+Uranus 11.82, Neptune 13.69; the power law under them is Everything visible's, so a switch between the two only moves
+the planets in). What it guarantees (tested, at the default overview on 1366x768, each planet wherever it is on its
+orbit): Earth at least 12 px across (12.2-13.9; 11.4 at 1280x720, 17 at 1080p), Jupiter 22-29 px and Saturn 20-29 px
+the biggest, Saturn's rings more than twice Jupiter across, the Sun 48 px and inside Mercury's orbit, every planet a
+drawn Earth radius clear of the Sun and of its neighbours' paths, every disc on screen. Its texts state sizes 5 to 60x
+too big and distances 50 to 500x too close (Earth 29x and 60x), checked against `bodyDistortion`.
+
+- **Its moon rule differs**, for a reason: the shared rule (every moon system, long tail included, within half the gap
+  to the neighbouring orbits) cannot hold with a 12 px Earth. A 12 px Earth is 2.2 % of the drawn system's radius;
+  moon systems start at the moon curve's knee (about 3 planet radii, where rings and ring moons stay true), so half
+  gaps would need about 7 planet radii per giant on each side, and the planets would no longer fit (the best Earth
+  under the shared rule, with any curve and the shared framing, is about 6 px). So in Poster the **featured** moons stay clear of the
+  neighbouring planets' orbits with 5 % to spare (the full gap: only the focus family's moon orbits are drawn), major
+  moons stay apart as everywhere, featured moons stay outside the rings, and the **long tail is hidden**
+  (`HIDES_LONG_TAIL`; see Moons). Ring moons, part of the long tail, are not in their ring gaps there (the knee is
+  below them), which no one sees.
+- **Its overview is framed tight** (`overviewFit` 1, `camera/framing.ts` `tightFitDistance`): the drawn orbits seen
+  from the home elevation, their near edge at 85 % of the half-height (the time bar's room), their sides at 90 % of
+  the half-width, instead of the shared sphere x 1.3. Tilting the camera steeper than 45 deg brings the near edge
+  closer to the bottom; the other presets' overview is unchanged (only the drawn disc of the farthest planet is now
+  part of every preset's overview radius, a fraction of a pixel outside Poster).
 
 ### Scale presets, the experience (#21)
 
@@ -292,21 +335,28 @@ on-screen size (in the overview: the whole drawn planetary system).
   sizes `true | enlarged` x distances `true | squeezed` (`SCALE_LIES`, `presetForLies`): `trueScale` (true/true),
   `textbook` (true/squeezed), `bigPlanets` (enlarged/true), `everythingVisible` (enlarged/squeezed). The squeeze is
   tuned to the sizes, so the grid names presets rather than mixing factors. `bodyDistortion` gives drawn over
-  true size and distance from the parent, in kilometres: the numbers the honesty statement shows.
+  true size and distance from the parent, in kilometres: the numbers the honesty statement shows. **Poster** (#54)
+  sits beside the grid: it tells Everything visible's lies (enlarged/squeezed), harder, but is not their cell
+  (`isGridPreset` false, `presetForLies` never returns it).
 - **The store** (`useScaleStore`): `scale`, `presetId` (null mid-switch or for a console mix), `targetId` (the
   preset the user chose, from the click on), `transition`. `switchTo(id, nowMs, durationMs = SCALE_TRANSITION_MS)`
   animates from whatever is on screen (a switch can turn around mid-way), `setPreset` jumps (links, reduced
   motion), `stepTransition(nowMs)` eases (`easeInOutSine`, 2.5 s) and lands on the preset's frozen object.
   `scene/ScaleTransition.tsx` steps it in `useFrame` at priority -2, before SimClock and the camera director.
-- **The panel** (`ui/ScalePanel.tsx`, in the dock behind the Scale entry point since #42, which names the preset on screen): the three named presets, the Sizes and
-  Distances switches (the only way to `bigPlanets`), the preset's one-line summary ("Not to scale!") and the
+- **The panel** (`ui/ScalePanel.tsx`, in the dock behind the Scale entry point since #42, which names the preset on screen): the four named presets
+  (True scale, Textbook, Everything visible, Poster: from the truth to the most distorted lie; a long name wraps), the Sizes and
+  Distances switches (the only way to `bigPlanets`; while Poster is on they show no cell, and flipping one leaves
+  Poster for the cell it picks from Poster's enlarged/squeezed: Sizes Real is Textbook, Distances Real is Big
+  planets), the preset's one-line summary ("Not to scale!"; Poster's states its factors) and the
   honesty statement (`ui/scaleStatement.ts`): two sentences about the selected body, else the focus, else Earth
   ("Earth is drawn 10x too big." / "... 13x too close to the Sun."), factors rounded to two significant digits,
   within 5 % of 1 said as "real". Every string has simple/standard/advanced variants in every locale; German picks
   articles and cases by `subjectId`/`parentId` selects. In `trueScale`/`bigPlanets` a line points at the markers.
   At the bottom, in every preset, the walk's card (#48, `walk/WalkOffer.tsx` `ScaleWalkOffer`, independent of the
   preset list; see "The walk's ways in").
-- **URL, not storage:** `?scale=<preset id>` (absent = the default, unknown ids ignored), written at the click;
+- **Keys:** the presenter's S (#29) cycles Everything visible, Textbook, True scale; Poster is one click in the panel
+  (S from Poster goes to Everything visible).
+- **URL, not storage:** `?scale=<preset id>` (absent = the default, unknown ids ignored; `?scale=poster`), written at the click;
   a link opens in its preset without animating. Nothing is kept in localStorage: every fresh visit starts in
   Everything visible, so the switch to true scale stays the lesson.
 - **True scale's navigation aid** is the marker layer (a dot for every body, on by default) plus labels, the focus
@@ -648,14 +698,18 @@ specks and ties an orbit tangle round Jupiter and Saturn, so the rule is **curat
   a moon: add it to the JSON, write its content, `pnpm build:data`.
 - **The long tail** (every other moon) is drawn only while `showAllMoons` is on: the "All moons" switch
   (`allMoons=true` in the URL, off by default, needs the Moons switch), or "Show 53 smaller moons" in a planet's
-  card. A focused moon is always drawn. `isBodyShown` (store/sim.ts) is the one rule, so meshes, orbit lines,
+  card. A scale in `HIDES_LONG_TAIL` (Poster, #54) hides it whatever the switch says: the scale store keeps the sim
+  store's `longTailHidden` in step with the chosen preset (from the click on), `allMoonsShown` is the effective
+  switch, All moons is disabled with a reason in its hint, and the card says how many moons are hidden instead of
+  offering them; the choice comes back with the next preset. A focused moon is always drawn. `isBodyShown` (store/sim.ts) is the one rule, so meshes, orbit lines,
   markers, picking, labels, shadows, the too-fast warning and the arrow keys (`focusRing`) all follow it.
 - **Appear when meaningful**: a moon's orbit line fades in with its drawn size on screen
   (`bodies/moonOrbitFade.ts`: hidden below 14 px radius, full from 48 px), so from the overview (any preset) moon
   systems are clean dots and approaching a planet draws its system in. Long-tail orbits are drawn at 40 % of a
   featured orbit's opacity, so the swarm stays behind the story. Moon dots and names stay limited to the focus
   family (Markers, Labels); names rank featured moons first (`MOON_LABEL_BUDGET` 10: all 9 of Saturn's).
-- **Moon distances** are the scale engine's `moonDistance` curve (see Scale), not a second model.
+- **Moon distances** are the scale engine's `moonDistance` curve (see Scale), not a second model; moon sizes its
+  `bodySize`, or in Poster `moonSize` (true to the planet's drawn size).
 - **Card** (`ui/MoonSystem.tsx`, `ui/moonSystem.ts`): a planet's card lists its featured moons (a click flies
   there), "See the whole moon system" (`goTo` the planet with a shot fitting the outermost drawn orbit,
   `moonSystemShotDistance`, from 35 deg elevation) and the long-tail switch; a moon's card has "Read its story"
@@ -816,7 +870,9 @@ preset and are their true length at true scale. The coma's drawn radius is its t
 drawn there, but never less than `COMA_NUCLEUS_RADII` (4) drawn radii of the nucleus, so it surrounds the enlarged nucleus
 in every preset (the presets come from `SCALE_PRESET_IDS` in the tests). Each tail starts with a fade-in from the
 nucleus's drawn surface and is at full strength from the coma's edge, where its length is counted from; a tail of
-length 0 folds into the nucleus. `CometTails.tsx` draws camera-facing additive ribbons (gas `#4d8dff`, dust
+length 0 folds into the nucleus. Where those two lie in true km is solved, not extrapolated (`trueReachKm`, a few secant
+steps from the 1e5 km probe's guess): Poster (#54) draws a nucleus so big that its surface lies millions of true km
+out, where the drawn scale differs from the probe's by a few per cent. `CometTails.tsx` draws camera-facing additive ribbons (gas `#4d8dff`, dust
 `#ffe2a8`; never thinner than 1.5 / 3 px; no wider at the start than the coma) whose opacity follows the activity
 (`tailBrightness`, its square root) and a coma sprite (`comaGrowth`, its fourth root, for its size and glow, so the
 head shows long before the tails, as Hale-Bopp's did beyond Jupiter; at least 3 px), for every shown body with `tail`.
@@ -831,7 +887,8 @@ Kuiper belt's plutinos, cold and hot classical belt and scattered disc). `src/si
 once, deterministically (`seededRandom(hashSeed(id))`): a, e, |normal| inclination, random node, periapsis and phase,
 mean motion from the parent's mass; `beltDotPositionKm` is the double-precision twin of the shader. `Belts.tsx`
 draws one `Points` per belt; `beltShader.ts` solves Kepler per dot on the GPU (8 Newton steps), maps the true
-position with the root's `orbitDistance` curve and blends the anchored frames exactly like `applyReferenceFrame`
+position with the root's `orbitDistance` curve (its power law, plus an anchored curve's nodes and slopes as uniform arrays,
+`BELT_SPLINE_NODES` 12, and its share; #54) and blends the anchored frames exactly like `applyReferenceFrame`
 (`updateBeltUniforms` feeds the root's and anchors' drawn and true positions; a unit test re-implements the shader
 in JS and matches `mapTruePointKm` in every preset and frame). 10,000 dots, no per-frame CPU work beyond a few
 uniforms. Dots are `BELT_DOT_PX` (2.2 px) at 45 % opacity whatever the zoom: flying into the belt shows a sparse
@@ -856,7 +913,7 @@ near the camera jitters.
 
 ```
 simTimeJD, timeWarp, paused, clock, lastTickMs    time; change only through the actions below
-hoverId, showOrbits, showLabels, showMoons, showAllMoons (#17), showMarkers, showOrbitLabels, showSmallBodies (#23)
+hoverId, showOrbits, showLabels, showMoons, showAllMoons (#17), longTailHidden (#54, the scale's), showMarkers, showOrbitLabels, showSmallBodies (#23)
 ...NavigationSlice
 setTimeWarp(n), togglePause(), setPaused(b)       re-anchor the clock: nothing moves at the change
 setSimTime(jd)                                    instant jump
@@ -933,7 +990,8 @@ export const useSimFrame = (): SimFrame // throws outside the provider
   body is wider than 6 px, and moon dots show only within the focused family (`isMoonDotShown`). The dots are drawn
   only; picking is `BodyPicking`'s (see Picking). Labels join the same picking (see Labels).
 - Camera (`camera/framing.ts`, `camera/input.ts`): `minDistance = max(1.2 R, R + 2 near)` of the drawn radius, bodies
-  framed from 6 radii, the overview fits the drawn planetary system x 1.3 from azimuth 0 / elevation 45. Orbit with
+  framed from 6 radii, the overview fits the drawn planetary system (the farthest aphelion plus that planet's drawn
+  disc) x 1.3 from azimuth 0 / elevation 45, Poster tighter (`overviewFit`, see Scale). Orbit with
   left button or one finger; dolly with wheel, pinch (ctrl+wheel via `pinchAsDolly`) or middle button; pan with the right
   button, Shift + left, two or three fingers (see Re-centring). A point's zoom limits are its anchor's.
 - Visibility: `isBodyShown(body, state)` is the one rule for meshes, orbits and markers (featured moons, the long tail

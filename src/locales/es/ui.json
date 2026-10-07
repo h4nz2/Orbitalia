@@ -222,6 +222,8 @@
 			},
 			"reason": {
 				"allMoons": "Activa primero Lunas.",
+				"allMoonsPoster": "Póster oculta las lunas pequeñas: no caben entre los planetas. Elige otra escala para verlas.",
+				"allMoonsPoster@simple": "En Póster las lunas pequeñas están escondidas. ¡No hay sitio para ellas!",
 				"orbitNames": "{missing, select, orbits {Activa primero Órbitas.} labels {Activa primero Etiquetas.} other {Activa primero Órbitas y Etiquetas.}}"
 			},
 			"smallBodies": "Cuerpos menores"
@@ -233,7 +235,8 @@
 				"trueScale": "Escala real",
 				"textbook": "Libro de texto",
 				"bigPlanets": "Planetas grandes",
-				"everythingVisible": "Todo visible"
+				"everythingVisible": "Todo visible",
+				"poster": "Póster"
 			},
 			"summary": {
 				"trueScale": "Tamaños reales, distancias reales. El espacio está casi completamente vacío.",
@@ -247,7 +250,10 @@
 				"bigPlanets@advanced": "Distancias reales, tamaños exagerados: incluso ampliados diez veces, los planetas son simples motas a lo largo de sus órbitas.",
 				"everythingVisible": "Pensado para mostrarlo todo a la vez: los planetas se dibujan demasiado grandes y demasiado juntos. ¡No está a escala!",
 				"everythingVisible@simple": "Los planetas se muestran más grandes y más juntos para que puedas verlos todos. ¡En realidad no es así!",
-				"everythingVisible@advanced": "Tamaños exagerados y distancias comprimidas para que todos los cuerpos sean visibles a la vez. No está a escala."
+				"everythingVisible@advanced": "Tamaños exagerados y distancias comprimidas para que todos los cuerpos sean visibles a la vez. No está a escala.",
+				"poster": "Como un póster de clase: cada planeta es lo bastante grande para verlos todos a la vez, en el orden correcto. Tamaños de 5 a 60 veces mayores, distancias de 50 a 500 veces menores. ¡La imagen menos real de todas!",
+				"poster@simple": "Como un póster en la pared de la clase: todos los planetas son grandes y están muy juntos. ¡Es la imagen menos real de todas!",
+				"poster@advanced": "Radios comprimidos hacia el del Sol y cada órbita colocada a mano, conservando el orden: tamaños de 5 a 60 veces mayores, distancias de 50 a 500 veces menores. El ajuste más distorsionado."
 			},
 			"sizes": "Tamaños",
 			"sizesTrue": "Reales",
@@ -487,6 +493,8 @@
 			"hideOthers": "Ocultar las lunas más pequeñas",
 			"othersNote": "Sobre todo rocas de unos pocos kilómetros, muchas de ellas capturadas. Los astrónomos siguen descubriendo más.",
 			"othersNote@simple": "Sobre todo rocas pequeñas. Los científicos siguen encontrando más.",
+			"othersHidden": "{count, plural, one {# luna más pequeña está oculta} many {# de lunas más pequeñas están ocultas} other {# lunas más pequeñas están ocultas}} en Póster: no caben entre los planetas.",
+			"othersHidden@simple": "{count, plural, one {# luna pequeña está escondida} many {# de lunas pequeñas están escondidas} other {# lunas pequeñas están escondidas}} aquí. ¡No hay sitio para ellas!",
 			"readMore": "Leer su historia",
 			"readLess": "Mostrar menos"
 		},
@@ -1072,7 +1080,10 @@
 				"bigPlanets@advanced": "No está a escala: distancias reales, tamaños exagerados.",
 				"everythingVisible": "No está a escala: los cuerpos aparecen más grandes y más juntos de lo que son.",
 				"everythingVisible@simple": "No es como en la realidad: los planetas son mucho más pequeños y están mucho más lejos unos de otros.",
-				"everythingVisible@advanced": "No está a escala: tamaños exagerados y distancias comprimidas."
+				"everythingVisible@advanced": "No está a escala: tamaños exagerados y distancias comprimidas.",
+				"poster": "No está a escala: una vista de póster, con los planetas hasta 60 veces más grandes y hasta 500 veces más cerca.",
+				"poster@simple": "No es como en la realidad: los planetas son mucho, mucho más pequeños y están muy lejos unos de otros.",
+				"poster@advanced": "No está a escala: tamaños exagerados hasta 60 veces, distancias comprimidas hasta 500 veces."
 			},
 			"hint": {
 				"names": "Deja los nombres de los cuerpos en la imagen. Desactívalo para una imagen limpia o un juego de preguntas.",

@@ -53,6 +53,14 @@
 	color: var(--mantine-color-gray-4);
 }
 
+/* Poster hides the long tail (#54): a quiet line instead of the switch */
+.note {
+	margin: 0.375rem 0 0;
+	color: var(--mantine-color-gray-4);
+	font-size: var(--mantine-font-size-xs);
+	line-height: 1.4;
+}
+
 /* where the moon's surface map comes from (#37): quiet, it is a footnote */
 .surface {
 	margin: 0.375rem 0 0;
