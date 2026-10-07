@@ -20,6 +20,8 @@ const MIN_PRINTED_CIRCLE_MM = 0.3
 export type WalkTableProps = {
 	walk: SolarWalk
 	landmark: LandmarkId | null
+	/** The body a link opened the walk on (#48): its row is marked. */
+	focus?: string | null
 }
 
 /**
@@ -27,7 +29,7 @@ export type WalkTableProps = {
  * takes outside (a tick column for each stop reached). Small bodies carry a
  * circle drawn at their model size, which is exact on paper (CSS millimetres).
  */
-const WalkTable = ({ walk, landmark }: WalkTableProps) => {
+const WalkTable = ({ walk, landmark, focus = null }: WalkTableProps) => {
 	const i18n = useI18n()
 	const { t, formatLocale, number } = i18n
 	const name = useBodyName()
@@ -59,6 +61,7 @@ const WalkTable = ({ walk, landmark }: WalkTableProps) => {
 			</td>
 		)
 	}
+	const focused = (bodyId: string) => (bodyId === focus ? true : undefined)
 	const tick = (
 		<td className={classes.tick}>
 			<span className={classes.box} aria-hidden />
@@ -88,7 +91,7 @@ const WalkTable = ({ walk, landmark }: WalkTableProps) => {
 				</tr>
 			</thead>
 			<tbody>
-				<tr data-row="sun">
+				<tr data-row="sun" data-focused={focused("sun")}>
 					<td>{t("solarWalk.start")}</td>
 					<th scope="row">{name("sun")}</th>
 					<td>{length(walk.sun.sizeM)}</td>
@@ -99,7 +102,7 @@ const WalkTable = ({ walk, landmark }: WalkTableProps) => {
 					{tick}
 				</tr>
 				{walk.stops.map((stop, index) => [
-					<tr key={stop.id} data-row={stop.id}>
+					<tr key={stop.id} data-row={stop.id} data-focused={focused(stop.id)}>
 						<td>{index + 1}</td>
 						<th scope="row">{name(stop.id)}</th>
 						{sizeCell(stop)}
@@ -112,7 +115,12 @@ const WalkTable = ({ walk, landmark }: WalkTableProps) => {
 						{tick}
 					</tr>,
 					...stop.moons.map((moon) => (
-						<tr key={moon.id} data-row={moon.id} className={classes.moonRow}>
+						<tr
+							key={moon.id}
+							data-row={moon.id}
+							data-focused={focused(moon.id)}
+							className={classes.moonRow}
+						>
 							<td />
 							<th scope="row">{name(moon.id)}</th>
 							{sizeCell(moon)}

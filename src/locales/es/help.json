@@ -234,6 +234,7 @@
 					"Vuela a un mundo: aparece su ficha con su nombre y una frase.",
 					"La flecha de la ficha abre sus datos, lunas e historias; se queda abierta para el siguiente mundo.",
 					"«Leer más en el diccionario» abre su página; «Comparar con…» lo pone junto a otro mundo.",
+					"Debajo de la comparación, «Encoge el Sol hasta un balón de baloncesto…» encuentra el mundo en el paseo por el patio del colegio.",
 					"La última línea de la ficha abierta dice de dónde viene la imagen del mundo: un mapa de una nave espacial o, donde no hay un mapa completo, una pintura hecha a partir de fotos de naves."
 				],
 				"simple": [
@@ -753,7 +754,7 @@
 		},
 		"solarWalk": {
 			"title": {
-				"standard": "El sistema solar con un balón de baloncesto",
+				"standard": "Encoge el Sol y recorre a pie el sistema solar",
 				"simple": "Recorre el sistema solar a pie"
 			},
 			"what": {
@@ -766,12 +767,14 @@
 			},
 			"how": {
 				"standard": [
-					"Abre Herramientas abajo a la derecha y elige «Recorre el sistema solar a pie», o pulsa «Recórrelo a pie» en el panel Escala, a escala real.",
+					"Abre Herramientas abajo a la derecha y elige «Recorre el sistema solar a pie», o pulsa Escala y luego «Encoge el Sol hasta un balón de baloncesto…» al final del panel, en cualquier escala.",
+					"En la ficha de un mundo, despliega los datos: debajo de su comparación, «Encoge el Sol hasta un balón de baloncesto y camina hasta este mundo» abre el paseo justo en ese mundo.",
 					"Elige qué es el Sol (una naranja, un balón de fútbol, un balón de baloncesto, una pelota de gimnasia) y un lugar conocido con el que comparar.",
 					"Cambia a Tabla y pulsa Imprimir para llevártela afuera."
 				],
 				"simple": [
 					"Pulsa Herramientas y luego «Recorre el sistema solar a pie».",
+					"O pulsa Escala y luego «Convierte el Sol en un balón de baloncesto…».",
 					"Elige una pelota para el Sol.",
 					"Lee cuánto tienes que caminar hasta cada planeta.",
 					"Imprime la tabla y haz el paseo afuera."

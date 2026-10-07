@@ -225,8 +225,8 @@
 			"markersOn@simple": "Tečky ukazují, kde jsou planety. Samotné planety jsou moc malé, aby byly vidět!",
 			"markersOff": "Značky jsou vypnuté: zapni je a planety najdeš.",
 			"markersOff@simple": "Zapni Značky a najdeš planety!",
-			"walk": "Příliš malé na představu? Projdi si to: sluneční soustava se Sluncem velkým jako basketbalový míč.",
-			"walk@simple": "Není nic vidět? Projdi si sluneční soustavu na školním hřišti!",
+			"walk": "Zmenši Slunce na basketbalový míč a projdi sluneční soustavu na školním hřišti",
+			"walk@simple": "Udělej ze Slunce basketbalový míč a dojdi ke každé planetě",
 			"hint": {
 				"sizesTrue": "Kreslí každé těleso v jeho skutečné velikosti. Z dálky jsou pak planety příliš malé, aby byly vidět.",
 				"sizesTrue@simple": "Planety tak velké, jak doopravdy jsou. Z dálky jsou moc malé, aby byly vidět!",
@@ -419,7 +419,15 @@
 			"showFacts": "Zobrazit údaje",
 			"hideFacts": "Skrýt údaje",
 			"close": "Zavřít",
-			"compare": "Porovnat s…"
+			"compare": "Porovnat s…",
+			"walk": "{bodyId, select, sun {Zmenši Slunce na basketbalový míč a projdi sluneční soustavu} other {Zmenši Slunce na basketbalový míč a dojdi až k tomuto světu}}",
+			"walk@simple": "{bodyId, select, sun {Udělej ze Slunce basketbalový míč a dojdi k planetám} other {Udělej ze Slunce basketbalový míč a dojdi k tomuto světu}}"
+		},
+		"walkNudge": {
+			"title": "Kam se poděly planety?",
+			"text": "Ve skutečném měřítku jsou příliš malé, aby byly vidět, a jsou od sebe hodně daleko. Zkus si ty vzdálenosti projít pěšky:",
+			"text@simple": "Teď jsou moc malé, takže je nevidíš. A jsou od sebe hodně daleko. Zkus to projít pěšky!",
+			"dismiss": "Zavřít tip"
 		},
 		"moons": {
 			"label": "Měsíce",
@@ -1397,8 +1405,8 @@
 				"trueScale": {
 					"title": "Skutečné měřítko",
 					"title@simple": "Skutečná velikost",
-					"text": "Teď jsou všechny velikosti a vzdálenosti skutečné a planety mizí v prázdném prostoru: tečky jen ukazují, kde jsou. Měřítko vpravo dole přepíná mezi pravdou a obrázky, na kterých je něco vidět.",
-					"text@simple": "Takhle velké je všechno doopravdy. Planety jsou tak malé, že je nevidíš! Tečky ukazují, kde jsou. Měřítkem vpravo dole to přepneš."
+					"text": "Teď jsou všechny velikosti a vzdálenosti skutečné a planety mizí v prázdném prostoru: tečky jen ukazují, kde jsou. Měřítko vpravo dole přepíná mezi pravdou a obrázky, na kterých je něco vidět. Najdeš tam i to, jak zmenšit Slunce na basketbalový míč a projít sluneční soustavu na školním hřišti.",
+					"text@simple": "Takhle velké je všechno doopravdy. Planety jsou tak malé, že je nevidíš! Tečky ukazují, kde jsou. Měřítkem vpravo dole to přepneš. Tam můžeš taky dojít k planetám u vaší školy."
 				},
 				"time": {
 					"title": "Cestuj časem",

@@ -227,6 +227,19 @@ export function buildWalk(sunObject: SunObjectId): SolarWalk {
 	}
 }
 
+/**
+ * The stop a body's line is on (#48, `?focus=`): a planet's own stop, or the
+ * stop of the planet a big moon circles; null for the Sun (the start) and for
+ * anything the walk leaves out.
+ */
+export function stopOf(walk: SolarWalk, id: string): WalkStop | null {
+	return (
+		walk.stops.find(
+			(stop) => stop.id === id || stop.moons.some((moon) => moon.id === id),
+		) ?? null
+	)
+}
+
 /** Where on the walk the first whole landmark length is reached. */
 export interface LandmarkOnWalk {
 	/** The index of the stop it comes before (a pitch's end between Mars and Jupiter comes before Jupiter). */

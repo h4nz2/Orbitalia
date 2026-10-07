@@ -225,8 +225,8 @@
 			"markersOn@simple": "Les points montrent où sont les planètes. Les planètes sont trop petites pour être vues !",
 			"markersOff": "Les repères sont désactivés : active-les pour trouver les planètes.",
 			"markersOff@simple": "Active les Repères pour trouver les planètes !",
-			"walk": "Trop petit pour l’imaginer ? Parcours-le à pied : le système solaire avec un Soleil gros comme un ballon de basket.",
-			"walk@simple": "Trop petit pour être vu ? Parcours le système solaire à pied dans la cour de l’école !",
+			"walk": "Réduis le Soleil à un ballon de basket et parcours le système solaire à pied sur le terrain de l’école",
+			"walk@simple": "Transforme le Soleil en ballon de basket et marche jusqu’à chaque planète",
 			"hint": {
 				"sizesTrue": "Dessine chaque astre à sa taille réelle. De loin, les planètes deviennent trop petites pour être vues.",
 				"sizesTrue@simple": "Les planètes aussi grandes qu’en vrai. De loin, elles sont trop petites pour être vues !",
@@ -419,7 +419,15 @@
 			"showFacts": "Afficher les infos",
 			"hideFacts": "Masquer les infos",
 			"close": "Fermer",
-			"compare": "Comparer avec…"
+			"compare": "Comparer avec…",
+			"walk": "{bodyId, select, sun {Réduis le Soleil à un ballon de basket et parcours le système solaire à pied} other {Réduis le Soleil à un ballon de basket et marche jusqu’à ce monde}}",
+			"walk@simple": "{bodyId, select, sun {Transforme le Soleil en ballon de basket et marche jusqu’aux planètes} other {Transforme le Soleil en ballon de basket et marche jusqu’à ce monde}}"
+		},
+		"walkNudge": {
+			"title": "Où sont passées les planètes ?",
+			"text": "À l’échelle réelle, elles sont bien trop petites pour être vues, et très éloignées les unes des autres. Ressens les distances à pied :",
+			"text@simple": "Maintenant, elles sont trop petites pour être vues. Et elles sont très loin les unes des autres. Essaie de faire le parcours à pied !",
+			"dismiss": "Fermer l’astuce"
 		},
 		"moons": {
 			"label": "Lunes",
@@ -1397,8 +1405,8 @@
 				"trueScale": {
 					"title": "Échelle réelle",
 					"title@simple": "La vraie taille",
-					"text": "Maintenant chaque taille et chaque distance sont vraies, et les planètes disparaissent dans l’espace vide : les points montrent seulement où elles sont. Échelle, en bas à droite, passe de la vérité à des images où l’on voit quelque chose.",
-					"text@simple": "Voici la vraie taille de tout. Les planètes sont si petites que tu ne les vois pas ! Les points montrent où elles sont. Appuie sur Échelle en bas à droite pour changer."
+					"text": "Maintenant chaque taille et chaque distance sont vraies, et les planètes disparaissent dans l’espace vide : les points montrent seulement où elles sont. Échelle, en bas à droite, passe de la vérité à des images où l’on voit quelque chose. On y réduit aussi le Soleil à un ballon de basket pour parcourir le système solaire à pied sur le terrain de l’école.",
+					"text@simple": "Voici la vraie taille de tout. Les planètes sont si petites que tu ne les vois pas ! Les points montrent où elles sont. Appuie sur Échelle en bas à droite pour changer. Là, tu peux aussi marcher jusqu’aux planètes à l’école."
 				},
 				"time": {
 					"title": "Voyage dans le temps",

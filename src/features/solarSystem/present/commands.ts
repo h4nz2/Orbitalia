@@ -13,6 +13,7 @@ import { useScaleStore } from "@/store/scale"
 import { useSimStore } from "@/store/sim"
 
 import { switchScale } from "../ui/ScalePanel"
+import { nudgeTowardsWalk } from "../walk/walkNudge"
 import {
 	nextScalePreset,
 	presenterStep,
@@ -96,6 +97,8 @@ export function runCommand(
 			const next = nextScalePreset(useScaleStore.getState().targetId)
 			if (instant) useScaleStore.getState().setPreset(next)
 			else switchScale(next)
+			// the viewer's own switch: the first time to True scale, the walk's tip (#48; never while presenting)
+			nudgeTowardsWalk(next)
 			return t("solarSystem.present.announce.scale", {
 				preset: t(`solarSystem.scale.preset.${next}`),
 			})

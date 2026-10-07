@@ -17,6 +17,10 @@
 					"simple": "Voici notre système solaire. Au milieu, il y a le Soleil, une étoile. Huit planètes tournent autour de lui, et beaucoup ont des lunes. Nous vivons sur la troisième planète : la Terre. Allons les visiter toutes !",
 					"standard": "Une étoile, huit planètes et des centaines de lunes. Tout ici tourne autour du Soleil, retenu par sa gravité, et toutes les planètes tournent dans le même sens, presque dans un même plan. Les planètes sont dessinées bien plus grandes qu’en réalité, pour que tu puisses les voir. Visitons-les une à une, de l’intérieur vers l’extérieur.",
 					"advanced": "Une étoile, huit planètes et des centaines de lunes connues, toutes nées il y a environ 4,6 milliards d’années d’un même nuage aplati de gaz et de poussière. C’est pourquoi les planètes tournent presque dans le même plan et dans le même sens. Tailles et distances sont faussées dans cette vue (voir le panneau Échelle) ; tous les chiffres de la visite utilisent les vraies valeurs."
+				},
+				"link": {
+					"simple": "Transforme le Soleil en ballon de basket et marche jusqu’à chaque planète",
+					"standard": "Réduis le Soleil à un ballon de basket et parcours le système solaire à pied"
 				}
 			},
 			"sun": {
@@ -209,9 +213,8 @@
 					"advanced": "À l’échelle de 1 : 5,8 milliards, le Soleil est un ballon de basket de 24 cm, la Terre une tête d’épingle de 2,2 mm à 26 m, Jupiter 24 mm à 134 m et Neptune 8,5 mm à 776 m. Proxima du Centaure, à 4,2 années-lumière, serait à 6 900 km : le système solaire est une île minuscule dans un océan de rien."
 				},
 				"link": {
-					"simple": "Le parcourir dehors",
-					"standard": "Parcourir le modèle",
-					"advanced": "Parcourir le modèle"
+					"simple": "Fais le parcours à pied à l’école",
+					"standard": "Parcours ce modèle à pied sur le terrain de l’école"
 				}
 			}
 		}

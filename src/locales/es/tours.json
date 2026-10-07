@@ -17,6 +17,10 @@
 					"simple": "Este es nuestro sistema solar. En el centro está el Sol, que es una estrella. Ocho planetas giran a su alrededor, y muchos tienen lunas. Nosotros vivimos en el tercer planeta: la Tierra. ¡Vamos a visitarlos todos!",
 					"standard": "Una estrella, ocho planetas y cientos de lunas. Todo gira aquí alrededor del Sol, sujeto por su gravedad, y todos los planetas giran en el mismo sentido, casi en un mismo plano. Los planetas están dibujados mucho más grandes de lo que son, para que puedas verlos. Vamos a visitarlos uno a uno, de dentro hacia fuera.",
 					"advanced": "Una estrella, ocho planetas y cientos de lunas conocidas, todos nacidos hace unos 4600 millones de años de una misma nube aplanada de gas y polvo. Por eso los planetas orbitan casi en el mismo plano y en el mismo sentido. En esta vista, tamaños y distancias están deformados (mira el panel Escala); todos los datos de la visita usan los valores reales."
+				},
+				"link": {
+					"simple": "Convierte el Sol en un balón de baloncesto y camina hasta cada planeta",
+					"standard": "Encoge el Sol hasta un balón de baloncesto y recorre a pie el sistema solar"
 				}
 			},
 			"sun": {
@@ -209,9 +213,8 @@
 					"advanced": "A escala 1 : 5800 millones, el Sol es un balón de baloncesto de 24 cm, la Tierra una cabeza de alfiler de 2,2 mm a 26 m, Júpiter 24 mm a 134 m y Neptuno 8,5 mm a 776 m. Próxima Centauri, a 4,2 años luz, quedaría a 6900 km: el sistema solar es una isla diminuta en un océano de nada."
 				},
 				"link": {
-					"simple": "Recórrelo fuera",
-					"standard": "Recorre el modelo",
-					"advanced": "Recorre el modelo"
+					"simple": "Recórrelo a pie en tu escuela",
+					"standard": "Recorre este modelo a pie en el patio del colegio"
 				}
 			}
 		}

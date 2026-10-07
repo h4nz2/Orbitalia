@@ -234,6 +234,7 @@
 					"Leť k nějakému světu: objeví se jeho karta se jménem a jednou větou.",
 					"Šipka na kartě rozbalí údaje, měsíce a příběhy; karta pak zůstane rozbalená i u dalšího světa.",
 					"„Víc ve slovníku“ otevře jeho stránku, „Porovnat s…“ ho postaví vedle jiného světa.",
+					"Pod přirovnáním najde „Zmenši Slunce na basketbalový míč…“ tento svět na procházce po školním hřišti.",
 					"Poslední řádek rozbalené karty říká, odkud je obrázek světa: mapa ze sondy, nebo malba podle snímků ze sond tam, kde úplná mapa neexistuje."
 				],
 				"simple": [
@@ -753,7 +754,7 @@
 		},
 		"solarWalk": {
 			"title": {
-				"standard": "Sluneční soustava s basketbalovým míčem",
+				"standard": "Zmenši Slunce a projdi sluneční soustavu",
 				"simple": "Projdi sluneční soustavu"
 			},
 			"what": {
@@ -766,12 +767,14 @@
 			},
 			"how": {
 				"standard": [
-					"Otevři vpravo dole Nástroje a vyber „Projdi sluneční soustavu“, nebo ve skutečném měřítku odkaz „Projdi si to“ v panelu Měřítko.",
+					"Otevři vpravo dole Nástroje a vyber „Projdi sluneční soustavu“, nebo stiskni Měřítko a pak dole v panelu „Zmenši Slunce na basketbalový míč…“, v každém měřítku.",
+					"Na kartě světa rozbal fakta: pod jeho přirovnáním otevře „Zmenši Slunce na basketbalový míč a dojdi až k tomuto světu“ procházku právě u tohoto světa.",
 					"Vyber, co bude Slunce (pomeranč, fotbalový míč, basketbalový míč, gymnastický míč), a s čím vzdálenosti porovnat.",
 					"Přepni na „Tabulka“ a stiskni „Tisk“, ať ji můžeš vzít ven."
 				],
 				"simple": [
 					"Stiskni Nástroje a pak „Projdi sluneční soustavu“.",
+					"Nebo stiskni Měřítko a pak „Udělej ze Slunce basketbalový míč…“.",
 					"Vyber míč, který bude Slunce.",
 					"Přečti si, jak daleko musíš dojít ke každé planetě.",
 					"Vytiskni tabulku a projdi to venku."

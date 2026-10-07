@@ -234,6 +234,7 @@
 					"Fliege zu einer Welt: Ihr Steckbrief erscheint mit Namen und einem Satz.",
 					"Der Pfeil im Steckbrief klappt Fakten, Monde und Geschichten auf; so bleibt er auch für die nächste Welt.",
 					"„Mehr dazu im Lexikon“ öffnet ihre Seite, „Vergleichen mit …“ stellt sie neben eine andere Welt.",
+					"Unter dem Vergleich findet „Schrumpf die Sonne auf einen Basketball …“ die Welt auf dem Weg über den Sportplatz.",
 					"Die letzte Zeile des geöffneten Steckbriefs sagt, woher das Bild der Welt stammt: eine Karte einer Raumsonde oder, wo es keine vollständige Karte gibt, nach Fotos von Raumsonden gemalt."
 				],
 				"simple": [
@@ -753,7 +754,7 @@
 		},
 		"solarWalk": {
 			"title": {
-				"standard": "Das Basketball-Sonnensystem",
+				"standard": "Schrumpf die Sonne und lauf das Sonnensystem ab",
 				"simple": "Das Sonnensystem ablaufen"
 			},
 			"what": {
@@ -766,12 +767,14 @@
 			},
 			"how": {
 				"standard": [
-					"Öffne unten rechts „Werkzeuge“ und wähle „Das Sonnensystem ablaufen“, oder im echten Maßstab „Lauf es ab“ im Feld „Maßstab“.",
+					"Öffne unten rechts „Werkzeuge“ und wähle „Das Sonnensystem ablaufen“, oder drücke auf „Maßstab“ und dann unten im Feld auf „Schrumpf die Sonne auf einen Basketball …“, in jedem Maßstab.",
+					"Im Steckbrief einer Welt: Klapp die Fakten auf; unter ihrem Vergleich öffnet „Schrumpf die Sonne auf einen Basketball und lauf bis zu dieser Welt“ den Weg genau bei dieser Welt.",
 					"Wähle, was die Sonne ist (eine Orange, ein Fußball, ein Basketball, ein Gymnastikball), und bei „Vergleichen mit“ etwas, woran du die Strecken messen kannst.",
 					"Wechsle zu „Tabelle“ und drucke sie mit „Drucken“ aus, um sie mit nach draußen zu nehmen."
 				],
 				"simple": [
 					"Drück auf „Werkzeuge“ und dann auf „Das Sonnensystem ablaufen“.",
+					"Oder drück auf „Maßstab“ und dann auf „Mach die Sonne zu einem Basketball …“.",
 					"Wähl einen Ball für die Sonne.",
 					"Lies, wie weit du zu jedem Planeten laufen musst.",
 					"Druck die Tabelle aus und lauf draußen los."

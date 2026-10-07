@@ -17,6 +17,10 @@
 					"simple": "Tohle je naše sluneční soustava. Uprostřed je Slunce, což je hvězda. Kolem něj obíhá osm planet a mnohé z nich mají měsíce. My žijeme na třetí planetě: na Zemi. Pojďme je navštívit všechny!",
 					"standard": "Jedna hvězda, osm planet a stovky měsíců. Všechno tady obíhá kolem Slunce, drží to jeho gravitace, a všechny planety obíhají stejným směrem, skoro v jedné rovině. Planety jsou nakreslené mnohem větší, než ve skutečnosti jsou, abys je vůbec viděl. Navštívíme je jednu po druhé, zevnitř ven.",
 					"advanced": "Jedna hvězda, osm planet a stovky známých měsíců, které vznikly asi před 4,6 miliardy let z jediného zploštělého oblaku plynu a prachu. Proto planety obíhají téměř v jedné rovině a stejným směrem. Velikosti a vzdálenosti jsou v tomto pohledu zkreslené (viz panel Měřítko); všechny údaje v prohlídce ale používají skutečné hodnoty."
+				},
+				"link": {
+					"simple": "Udělej ze Slunce basketbalový míč a dojdi ke každé planetě",
+					"standard": "Zmenši Slunce na basketbalový míč a projdi sluneční soustavu"
 				}
 			},
 			"sun": {
@@ -209,9 +213,8 @@
 					"advanced": "V měřítku 1 : 5,8 miliardy je Slunce basketbalový míč o průměru 24 cm, Země špendlíková hlavička 2,2 mm ve 26 m, Jupiter 24 mm ve 134 m a Neptun 8,5 mm v 776 m. Proxima Centauri, vzdálená 4,2 světelného roku, by byla 6 900 km daleko: sluneční soustava je malinký ostrov v oceánu ničeho."
 				},
 				"link": {
-					"simple": "Projdi ho venku",
-					"standard": "Projdi model",
-					"advanced": "Projdi model"
+					"simple": "Projdi to u vaší školy",
+					"standard": "Projdi tento model na školním hřišti"
 				}
 			}
 		}

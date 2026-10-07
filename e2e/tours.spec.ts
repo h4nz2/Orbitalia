@@ -145,7 +145,7 @@ test("autoplay moves on by itself", async ({ page }) => {
 		timeout: 90_000,
 	})
 	await expect(
-		card(page).getByRole("link", { name: /Walk the model/ }),
+		card(page).getByRole("link", { name: /Walk this model/ }),
 	).toHaveAttribute("href", /\/solar_walk\?lang=en&reading=standard$/)
 	// the last stop stays; Finish ends the tour
 	await card(page).getByRole("button", { name: "Finish" }).click()

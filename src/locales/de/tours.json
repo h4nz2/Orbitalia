@@ -21,6 +21,10 @@
 					"simple": "Das ist unser Sonnensystem. In der Mitte ist die Sonne, ein Stern. Acht Planeten kreisen um sie, und viele davon haben Monde. Wir wohnen auf dem dritten Planeten: der Erde. Besuchen wir sie alle!",
 					"standard": "Ein Stern, acht Planeten und Hunderte von Monden. Alles hier kreist um die Sonne, festgehalten von ihrer Schwerkraft, und alle Planeten laufen in dieselbe Richtung, fast in einer flachen Ebene. Die Planeten sind viel größer gezeichnet, als sie wirklich sind, damit du sie sehen kannst. Wir besuchen sie alle, von innen nach außen.",
 					"advanced": "Ein Stern, acht Planeten und Hunderte bekannter Monde, entstanden vor etwa 4,6 Milliarden Jahren aus einer einzigen abgeflachten Wolke aus Gas und Staub. Deshalb laufen die Planeten fast in derselben Ebene und in dieselbe Richtung. Größen und Abstände sind in dieser Ansicht verzerrt (siehe das Feld „Maßstab“); alle Angaben der Tour verwenden die wahren Werte."
+				},
+				"link": {
+					"simple": "Mach die Sonne zu einem Basketball und lauf zu jedem Planeten",
+					"standard": "Schrumpf die Sonne auf einen Basketball und lauf das Sonnensystem ab"
 				}
 			},
 			"sun": {
@@ -213,9 +217,8 @@
 					"advanced": "Im Maßstab 1 : 5,8 Milliarden ist die Sonne ein Basketball von 24 cm, die Erde ein Stecknadelkopf von 2,2 mm in 26 m, Jupiter 24 mm in 134 m und Neptun 8,5 mm in 776 m. Proxima Centauri, 4,2 Lichtjahre entfernt, läge 6900 km weit weg: Das Sonnensystem ist eine winzige Insel in einem Ozean aus Nichts."
 				},
 				"link": {
-					"simple": "Draußen ablaufen",
-					"standard": "Das Modell ablaufen",
-					"advanced": "Das Modell ablaufen"
+					"simple": "Lauf es an deiner Schule ab",
+					"standard": "Lauf dieses Modell auf dem Sportplatz ab"
 				}
 			}
 		}

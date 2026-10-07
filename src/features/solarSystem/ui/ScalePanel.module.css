@@ -63,12 +63,6 @@
 	font-style: italic;
 }
 
-/* true scale's way out onto the school field (#25) */
-.walk {
-	font-size: var(--mantine-font-size-xs);
-	line-height: 1.35;
-}
-
 /* phones: the panel sits over the scene; the preset's description gives way to the statement */
 @media (max-width: 599px) {
 	.summary {
