@@ -63,6 +63,9 @@ test("the walk and the dictionary lead back to where the visitor left", async ({
 
 	await openTool(page, "walk")
 	await expect(page).toHaveURL(/\/solar_walk/)
+	// the URL changes before the walk is drawn, and until then the scene's own
+	// Back (#46) and "Back to overview" answer to the name too
+	await expect(page.locator("li[data-stop]").first()).toBeVisible()
 	await page.getByRole("button", { name: "Back" }).click()
 	await expect(page).toHaveURL(/\/solar_system\?/)
 	await expect(focusPicker(page)).toHaveValue("Mars")

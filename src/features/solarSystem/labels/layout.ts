@@ -60,9 +60,10 @@ export const LABEL_EDGE_MARGIN_PX = 4
 /** A moon's name shows only once the moon is this far outside its planet's disc, px. */
 export const MOON_MIN_SEPARATION_PX = 10
 /**
- * Hysteresis, px: a label that is showing survives overlaps this small, one
- * that is hidden needs this much clear space more to appear, so a label on the
- * edge of a collision does not flicker while the camera moves.
+ * Hysteresis, px: a label that is showing survives overlaps this small where
+ * it is, one that is hidden or moves to another side needs this much clear
+ * space more, so a label on the edge of a collision does not flicker while the
+ * camera moves.
  */
 export const LABEL_HYSTERESIS_PX = 2
 /**
@@ -488,7 +489,9 @@ export function placeLabels(layout: LabelLayout): void {
 			putOnSide(layout, i, layout.side[i] >= 0 ? (layout.side[i] as Side) : 0)
 			continue
 		}
-		const pad = wasVisible ? -LABEL_HYSTERESIS_PX : LABEL_HYSTERESIS_PX
+		// a shown label survives a small overlap where it is; moving to another
+		// side is appearing there, which needs the clear space more
+		const stay = wasVisible ? -LABEL_HYSTERESIS_PX : LABEL_HYSTERESIS_PX
 		const centred = layout.centred[i] === 1
 		const previous = centred ? SIDE.centre : layout.side[i]
 		let placed = false
@@ -496,11 +499,11 @@ export function placeLabels(layout: LabelLayout): void {
 		for (let pass = 0; pass < 2 && !placed; pass++) {
 			const allDots = pass === 0
 			if (previous >= 0) {
-				placed = tryPlace(layout, i, previous as Side, pad, allDots)
+				placed = tryPlace(layout, i, previous as Side, stay, allDots)
 			}
 			for (let s = 0; s < SIDES.length && !placed && !centred; s++) {
 				if (SIDES[s] === previous) continue
-				placed = tryPlace(layout, i, SIDES[s], pad, allDots)
+				placed = tryPlace(layout, i, SIDES[s], LABEL_HYSTERESIS_PX, allDots)
 			}
 		}
 		if (!placed) putOnSide(layout, i, previous >= 0 ? (previous as Side) : 0)

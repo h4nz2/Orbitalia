@@ -14,8 +14,15 @@ const screenshotDir = path.join("test-results", "labels")
 // software WebGL is slow, and flights must land before anything is measured
 test.describe.configure({ timeout: 180_000 })
 
+/**
+ * A fixed date (24 September 2026): where the planets stand decides which
+ * names crowd each other near the Sun, so the overview must not depend on the
+ * day the suite runs.
+ */
+const T = 2461308
+
 const ready = async (page: Page, url: string) => {
-	await page.goto(url)
+	await page.goto(`${url}${url.includes("?") ? "&" : "?"}t=${T}`)
 	await page.waitForFunction(() => window.__orbitalia !== undefined, null, {
 		timeout: 60_000,
 	})
