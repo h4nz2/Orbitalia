@@ -30,6 +30,7 @@ import {
 	eventsWithJD,
 	fillPath,
 	fillTrack,
+	flybyPathTimes,
 	isoToJD,
 	pathTimes,
 	type CraftSegment,
@@ -82,12 +83,25 @@ const orbitWindows = (
 	k: number,
 	trajectory: CraftTrajectory,
 ): OrbitWindow[] =>
-	craftFrame.craft[k].orbits.map((orbit) => ({
-		from: isoToJD(orbit.from),
-		to: orbit.to === undefined ? trajectory.toJD : isoToJD(orbit.to),
-		center: orbit.center,
-		trackDays: orbit.trackDays,
-	}))
+	craftFrame.craft[k].orbits.map((orbit) => {
+		const from = isoToJD(orbit.from)
+		// the craft is drawn as bound from periapsis if the insertion burn
+		// ends after it (#56): the track takes over there
+		const arrival = trajectory.encounters.find(
+			(e) =>
+				e.kind === "arrival" &&
+				e.center === orbit.center &&
+				e.hyperTo < from &&
+				e.hyperTo >= from - 1 &&
+				e.to >= from,
+		)
+		return {
+			from: arrival === undefined ? from : arrival.hyperTo,
+			to: orbit.to === undefined ? trajectory.toJD : isoToJD(orbit.to),
+			center: orbit.center,
+			trackDays: orbit.trackDays,
+		}
+	})
 
 const inOrbit = (
 	orbits: readonly OrbitWindow[],
@@ -104,9 +118,19 @@ export function buildCruisePath(
 ): CruisePath {
 	const orbits = orbitWindows(craftFrame, k, trajectory)
 	const all: CraftSegment[] = [...trajectory.helio, ...trajectory.planetary]
-	const times = pathTimes(all, trajectory.fromJD, trajectory.toJD).filter(
-		(t) => inOrbit(orbits, t) === null,
+	// near a planet the drawing spreads the turn over more time (#56): extra vertices there
+	const passages = flybyPathTimes(
+		trajectory,
+		frame,
+		trajectory.fromJD,
+		trajectory.toJD,
 	)
+	const times = pathTimes(
+		all,
+		trajectory.fromJD,
+		trajectory.toJD,
+		passages,
+	).filter((t) => inOrbit(orbits, t) === null)
 	const root = rootIndexOf(frame.bodies)
 	const display = fillPath(
 		trajectory,
@@ -434,8 +458,9 @@ export function updatePathRuntime(
 			)
 			runtime.trackCentre = jd
 		}
+		// the orbits only: the approach before the insertion is the cruise path's
 		const times = runtime.trackTimes.subarray(
-			countUpTo(runtime.trackTimes, jd - days),
+			countUpTo(runtime.trackTimes, Math.max(jd - days, orbit.from)),
 			countUpTo(runtime.trackTimes, jd + days),
 		)
 		const written = fillTrack(segment, times, frame, runtime.trackDisplay)
