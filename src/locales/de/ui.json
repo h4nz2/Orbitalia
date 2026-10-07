@@ -490,6 +490,14 @@
 			"close": "Schließen",
 			"show": "Zeigen",
 			"showHint": "Ansicht zu {name} fliegen",
+			"follow": "Mitfliegen",
+			"following": "Im Mitflug",
+			"followCraft": "Mitfliegen: {name}",
+			"followSpot": "Mitflug: {name}",
+			"watch": "Ansehen",
+			"watchEvent": "Ansehen: {event}",
+			"nearest": "Nächster Planet",
+			"nearestValue": "{planet}: {distance}",
 			"launched": "Gestartet",
 			"launched@simple": "Losgeflogen",
 			"phase": {
@@ -543,10 +551,17 @@
 				"layer": "Zeigt die echten Raumsonden, die Menschen ausgesandt haben, dort, wo sie am angezeigten Datum sind.",
 				"layer@simple": "Zeigt die Raumsonden, die Menschen ins All geschickt haben.",
 				"allPaths": "Zeichnet die ganze Reise jeder Raumsonde, nicht nur die der ausgewählten.",
-				"allPaths@simple": "Zeigt den Weg jeder Raumsonde."
+				"allPaths@simple": "Zeigt den Weg jeder Raumsonde.",
+				"follow": "Mitfliegen: Die Kamera hält die Sonde in der Mitte, während die Zeit läuft. Ziehen dreht die Ansicht, Scrollen zoomt; das Haus oder Escape beendet den Mitflug.",
+				"follow@simple": "Flieg mit! Die Sonde bleibt in der Mitte, während die Zeit läuft.",
+				"watch": "Zusehen, wie es passiert: Die Zeit geht kurz davor, läuft so schnell, dass es etwa eine halbe Minute dauert, und die Kamera fliegt mit.",
+				"watch@simple": "Sieh zu, wie es passiert, und flieg dabei mit. Es dauert etwa eine halbe Minute.",
+				"spot": "Mitflug: {name} bleibt in der Mitte, während die Zeit läuft. Ziehen zum Umsehen, Scrollen zum Zoomen. Wähle eine Welt oder drücke Escape oder das Haus, um aufzuhören.",
+				"spot@simple": "Du fliegst mit. Drück auf das Haus, um aufzuhören."
 			},
 			"reason": {
-				"allPaths": "Schalte zuerst Raumsonden ein."
+				"allPaths": "Schalte zuerst Raumsonden ein.",
+				"follow": "An diesem Datum ist die Sonde nicht im All."
 			}
 		},
 		"pick": {

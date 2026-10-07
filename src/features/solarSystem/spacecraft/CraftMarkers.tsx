@@ -17,6 +17,7 @@ import {
 } from "three"
 
 import { toUnits } from "@/sim"
+import { followedCraftId } from "@/store/navigation"
 import { useSimStore } from "@/store/sim"
 import { useSpacecraftStore } from "@/store/spacecraft"
 
@@ -90,7 +91,12 @@ export function fillCraftMarkers(
 	camera: PerspectiveCamera,
 	widthPx: number,
 	heightPx: number,
-	always: { selected: string | null; hovered: string | null },
+	always: {
+		selected: string | null
+		hovered: string | null
+		/** The craft the camera follows (#57). */
+		followed?: string | null
+	},
 ): number {
 	const { positions, colors, vertexCraft, shown } = buffers
 	let drawn = 0
@@ -105,7 +111,9 @@ export function fillCraftMarkers(
 				camera,
 				widthPx,
 				heightPx,
-				id === always.selected || id === always.hovered,
+				id === always.selected ||
+					id === always.hovered ||
+					id === always.followed,
 				shown[k] === 1,
 				point,
 			)
@@ -186,6 +194,7 @@ function CraftMarkers({ frame, craftFrame, labels }: CraftMarkersProps) {
 					{
 						selected: craftState.selectedCraftId,
 						hovered: craftState.hoverCraftId,
+						followed: followedCraftId(useSimStore.getState().view),
 					},
 				)
 			: 0

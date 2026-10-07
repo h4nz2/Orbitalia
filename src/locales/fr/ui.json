@@ -490,6 +490,14 @@
 			"close": "Fermer",
 			"show": "Montrer",
 			"showHint": "Amener la vue jusqu’à {name}",
+			"follow": "Suivre",
+			"following": "Suivi en cours",
+			"followCraft": "Suivre : {name}",
+			"followSpot": "Suivi : {name}",
+			"watch": "Regarder",
+			"watchEvent": "Regarder : {event}",
+			"nearest": "Planète la plus proche",
+			"nearestValue": "{planet} : {distance}",
 			"launched": "Lancement",
 			"launched@simple": "Partie de la Terre",
 			"phase": {
@@ -543,10 +551,17 @@
 				"layer": "Montre les vraies sondes spatiales envoyées par l’humanité, là où elles sont à la date affichée.",
 				"layer@simple": "Montre les sondes que les gens ont envoyées dans l’espace.",
 				"allPaths": "Trace le voyage complet de chaque sonde, pas seulement celle que tu as choisie.",
-				"allPaths@simple": "Montre le chemin de chaque sonde."
+				"allPaths@simple": "Montre le chemin de chaque sonde.",
+				"follow": "Voyage avec la sonde : la caméra la garde au centre pendant que le temps passe. Fais glisser pour tourner, la molette pour zoomer ; la maison ou Échap arrête le suivi.",
+				"follow@simple": "Voyage avec la sonde ! Elle reste au centre pendant que le temps passe.",
+				"watch": "Regarde-le se passer : le temps va juste avant, avance à une vitesse qui le montre en une demi-minute environ, et la caméra voyage avec la sonde.",
+				"watch@simple": "Regarde-le se passer en voyageant avec la sonde. Ça dure environ une demi-minute.",
+				"spot": "Tu voyages avec {name} : la sonde reste au centre pendant que le temps passe. Fais glisser pour regarder autour, la molette pour zoomer. Choisis un monde ou appuie sur Échap ou la maison pour arrêter.",
+				"spot@simple": "Tu voyages avec la sonde. Appuie sur la maison pour arrêter."
 			},
 			"reason": {
-				"allPaths": "Active d’abord Sondes spatiales."
+				"allPaths": "Active d’abord Sondes spatiales.",
+				"follow": "À cette date, la sonde n’est pas dans l’espace."
 			}
 		},
 		"pick": {

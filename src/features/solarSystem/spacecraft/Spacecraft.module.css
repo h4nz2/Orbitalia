@@ -8,9 +8,14 @@ span.label {
 	letter-spacing: 0.03em;
 }
 
-/* the info panel (in place of the body info, in the same style) */
+/*
+ * the info panel (in place of the body info, in the same style); a definite
+ * width, so the HUD's panel round it (sized to its content) is not widened to
+ * the length of the description's longest line
+ */
 .panel {
-	width: min(26rem, 100%);
+	width: 26rem;
+	max-width: 100%;
 	font-size: var(--mantine-font-size-sm);
 }
 
@@ -132,6 +137,22 @@ span.label {
 	padding: 0;
 }
 
+/* a milestone, and Watch beside it for a flyby or an arrival (#57) */
+.milestoneRow {
+	display: flex;
+	align-items: center;
+	gap: 0.25rem;
+}
+
+.milestoneRow > .milestone {
+	flex: 1;
+	min-width: 0;
+}
+
+.watch {
+	flex: none;
+}
+
 .milestone {
 	display: grid;
 	grid-template-columns: 6.5rem minmax(0, 1fr) auto;
@@ -173,8 +194,17 @@ span.label {
 	max-width: calc(100vw - 1rem);
 }
 
+/* a craft of the list, and its follow button (#57) */
+.craftRow {
+	display: flex;
+	align-items: center;
+	gap: 0.25rem;
+}
+
 .craft {
 	display: grid;
+	flex: 1;
+	min-width: 0;
 	width: 100%;
 	padding: 0.375rem 0.5rem;
 	border-radius: var(--mantine-radius-sm);

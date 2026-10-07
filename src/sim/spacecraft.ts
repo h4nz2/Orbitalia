@@ -805,6 +805,14 @@ export interface CraftState {
 	anchorIndex: number
 	/** Weight of the planet segment in the true position (0 when only the Sun's applies). */
 	planetWeight: number
+	/**
+	 * The planet whose passage (or bound phase) draws the craft right now
+	 * (#56), -1 when the Sun-centred map alone places it; and that drawing's
+	 * weight (0..1, 1 while bound), the rest being the Sun-centred map's. A
+	 * camera following the craft (#57) rescales with it on a scale change.
+	 */
+	drawnPlanet: number
+	drawnWeight: number
 }
 
 export const createCraftState = (): CraftState => ({
@@ -814,6 +822,8 @@ export const createCraftState = (): CraftState => ({
 	displayKm: new Float64Array(3),
 	anchorIndex: -1,
 	planetWeight: 0,
+	drawnPlanet: -1,
+	drawnWeight: 0,
 })
 
 /**
@@ -893,6 +903,8 @@ function placeCraft(
 ): void {
 	const out = state.displayKm
 	const encounter = encounterAt(trajectory, jd)
+	state.drawnPlanet = -1
+	state.drawnWeight = 0
 	if (encounter === null) {
 		placeAroundSun(trajectory, frame, state.trueKm, centres, map, out)
 		return
@@ -908,6 +920,8 @@ function placeCraft(
 		jd <= encounter.hyperTo
 	if (!passing) {
 		// bound: drawn like a moon (as the local track of an orbit phase is)
+		state.drawnPlanet = planet
+		state.drawnWeight = 1
 		if (map !== undefined) {
 			map(planet, state.trueKm[0], state.trueKm[1], state.trueKm[2], out)
 			return
@@ -938,6 +952,8 @@ function placeCraft(
 		out.set(sunPlaced)
 		return
 	}
+	state.drawnPlanet = planet
+	state.drawnWeight = weight
 	const then = trueTimeAt(geometry.hyperbola, F)
 	if (!trueOffsetAt(trajectory, frame.bodies, planet, then, offsetThen)) {
 		// no data at the matching true time: follow the osculating hyperbola
@@ -1171,6 +1187,74 @@ export function fillPath(
 			out[o] = out[o - 3]
 			out[o + 1] = out[o - 2]
 			out[o + 2] = out[o - 1]
+		}
+	}
+	return out
+}
+
+/**
+ * How far out (in drawn closest approaches) a passage is drawn relative to
+ * its planet (#57, `passageTimes`).
+ */
+export const PASSAGE_REACH = 30
+
+/**
+ * Times (JD, ascending) at which to draw a passage relative to its planet
+ * (#57): steps of `PATH_FLYBY_STEP` in hyperbolic anomaly along the drawn
+ * hyperbola, out to where the planet-centred drawing hands over to the
+ * Sun-centred map or `PASSAGE_REACH` drawn closest approaches, whichever is
+ * nearer; only within the passage itself (an arrival ends at its capture).
+ * Empty when the passage is drawn as the true path (true scale) or not at all.
+ */
+export function passageTimes(
+	trajectory: CraftTrajectory,
+	encounter: CraftEncounter,
+	frame: CentreFrame,
+): number[] {
+	const prepared = flybyScaleOf(trajectory, encounter, frame)
+	const geometry = encounter.flyby
+	if (prepared === null || geometry === null || prepared.identity) return []
+	const { a, e } = geometry.hyperbola
+	// the drawn distance is about k times the true one near the planet, less beyond
+	const reachKm = (PASSAGE_REACH * prepared.periapsisKm) / prepared.k
+	const reach = (km: number) => Math.acosh(Math.max(1, (km / a + 1) / e))
+	const first = -reach(Math.min(prepared.nearKm[0], reachKm))
+	const last = reach(Math.min(prepared.nearKm[1], reachKm))
+	const times: number[] = []
+	for (let F = first; F <= last; F += PATH_FLYBY_STEP) {
+		const t = drawnTimeAt(geometry, prepared, F)
+		if (t >= encounter.hyperFrom && t <= encounter.hyperTo) times.push(t)
+	}
+	return times
+}
+
+/**
+ * A passage drawn relative to its planet (#57): the craft's drawn offset from
+ * the drawn planet (display km, 3 per time) at each of `times`, each with the
+ * centres where they were at that time. Drawn round where the planet is now,
+ * like a moon's orbit line, it is the hyperbola the drawing follows, with the
+ * planet's true turn, and it passes through the marker at the frame's time.
+ */
+export function fillPassage(
+	trajectory: CraftTrajectory,
+	encounter: Pick<CraftEncounter, "planet">,
+	times: readonly number[],
+	frame: CentreFrame,
+	out: Float64Array,
+): Float64Array {
+	const centres = createCentresAt(trajectory.root)
+	const state = createCraftState()
+	for (let k = 0; k < times.length; k++) {
+		centres.jd = times[k]
+		craftStateAt(trajectory, times[k], frame, state, centres.lookup)
+		const o = k * 3
+		if (!state.available) {
+			if (k > 0) out.copyWithin(o, o - 3, o)
+			continue
+		}
+		centres.lookup(frame, encounter.planet)
+		for (let c = 0; c < 3; c++) {
+			out[o + c] = state.displayKm[c] - centreDisplayScratch[c]
 		}
 	}
 	return out

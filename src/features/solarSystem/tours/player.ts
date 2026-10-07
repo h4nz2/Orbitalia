@@ -24,6 +24,7 @@ import { FLIGHT_PROFILE } from "@/store/flight"
 import { HOME_SHOT, OVERVIEW_BODY_ID, type Sequence } from "@/store/navigation"
 import { useScaleStore } from "@/store/scale"
 import { useSimStore, type SimState } from "@/store/sim"
+import { useSpacecraftStore } from "@/store/spacecraft"
 import {
 	TOUR_LAYER_FIELDS,
 	isListedTour,
@@ -39,6 +40,7 @@ import { withoutSteps } from "@/store/viewHistory"
 import { arrivalJD } from "../ui/timeTravel"
 import {
 	stopFrame,
+	stopCraft,
 	stopSelection,
 	stopSettings,
 	timeJD,
@@ -159,6 +161,9 @@ function showStop(index: number, mode: EnterMode): void {
 	sim.playSequence(steps, at)
 	if (jump) useSimStore.getState().finishMove()
 	sim.select(stopSelection(stop))
+	// a stop riding along with a spacecraft (#57) shows its card
+	const craft = stopCraft(stop)
+	if (craft !== null) useSpacecraftStore.getState().selectCraft(craft)
 }
 
 export interface StartOptions {

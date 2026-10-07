@@ -490,6 +490,14 @@
 			"close": "Zavřít",
 			"show": "Ukázat",
 			"showHint": "Přesunout pohled: {name}",
+			"follow": "Sledovat",
+			"following": "Sledujete",
+			"followCraft": "Sledovat: {name}",
+			"followSpot": "Sledujete: {name}",
+			"watch": "Podívat se",
+			"watchEvent": "Podívat se: {event}",
+			"nearest": "Nejbližší planeta",
+			"nearestValue": "{planet}: {distance}",
 			"launched": "Start",
 			"launched@simple": "Start ze Země",
 			"phase": {
@@ -543,10 +551,17 @@
 				"layer": "Ukazuje skutečné kosmické sondy, které lidé vyslali, tam, kde jsou k zobrazenému datu.",
 				"layer@simple": "Ukazuje sondy, které lidé poslali do vesmíru.",
 				"allPaths": "Kreslí celou cestu každé sondy, nejen té vybrané.",
-				"allPaths@simple": "Ukazuje cestu každé sondy."
+				"allPaths@simple": "Ukazuje cestu každé sondy.",
+				"follow": "Leť spolu se sondou: kamera ji drží uprostřed, zatímco běží čas. Tažením pohled otočíš, kolečkem přiblížíš; domeček nebo Esc sledování ukončí.",
+				"follow@simple": "Leť spolu se sondou. Zůstane uprostřed, zatímco běží čas.",
+				"watch": "Podívej se, jak se to stalo: čas skočí těsně před a poběží tak rychle, že to zabere asi půl minuty, a kamera poletí se sondou.",
+				"watch@simple": "Podívej se, jak se to stalo, a leť přitom se sondou. Trvá to asi půl minuty.",
+				"spot": "Letíš se sondou {name}: zůstává uprostřed, zatímco běží čas. Tažením se rozhlédneš, kolečkem přiblížíš. Vyber svět nebo stiskni Esc či domeček a sledování skončí.",
+				"spot@simple": "Letíš se sondou. Domečkem to ukončíš."
 			},
 			"reason": {
-				"allPaths": "Nejdřív zapni Kosmické sondy."
+				"allPaths": "Nejdřív zapni Kosmické sondy.",
+				"follow": "K tomuto datu sonda není ve vesmíru."
 			}
 		},
 		"pick": {

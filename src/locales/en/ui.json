@@ -490,6 +490,14 @@
 			"close": "Close",
 			"show": "Show",
 			"showHint": "Fly the view to {name}",
+			"follow": "Follow",
+			"following": "Following",
+			"followCraft": "Follow {name}",
+			"followSpot": "Following {name}",
+			"watch": "Watch",
+			"watchEvent": "Watch: {event}",
+			"nearest": "Nearest planet",
+			"nearestValue": "{planet}: {distance}",
 			"launched": "Launched",
 			"launched@simple": "Left Earth",
 			"phase": {
@@ -543,10 +551,17 @@
 				"layer": "Shows the real spacecraft people have sent out, where they are on the date shown.",
 				"layer@simple": "Shows the space probes people have sent into space.",
 				"allPaths": "Draws the whole journey of every spacecraft, not only the one you picked.",
-				"allPaths@simple": "Shows the path of every space probe."
+				"allPaths@simple": "Shows the path of every space probe.",
+				"follow": "Ride along with {name}: the camera keeps it in the middle while time runs. Drag to turn, scroll to zoom; the house or Escape ends it.",
+				"follow@simple": "Ride along with {name}. It stays in the middle while time runs.",
+				"watch": "Watch it happen: time goes to just before, runs at a speed that shows it in about half a minute, and the camera rides along.",
+				"watch@simple": "Watch it happen while you ride along. It takes about half a minute.",
+				"spot": "You are riding along with {name}: it stays in the middle while time runs. Drag to look around, scroll to zoom. Pick a world, press Escape or the house to stop.",
+				"spot@simple": "You are riding along with {name}. Press the house to stop."
 			},
 			"reason": {
-				"allPaths": "Turn on Spacecraft first."
+				"allPaths": "Turn on Spacecraft first.",
+				"follow": "It is not in space on this date."
 			}
 		},
 		"pick": {

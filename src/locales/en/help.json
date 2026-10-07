@@ -533,6 +533,32 @@
 				]
 			}
 		},
+		"rideAlong": {
+			"title": {
+				"standard": "Ride along with a spacecraft",
+				"simple": "Fly with a space probe"
+			},
+			"what": {
+				"standard": "Follow a spacecraft and the camera stays with it while time runs, at any speed, forwards or backwards: Voyager swinging past Jupiter, Juno arriving, Parker diving past Venus. “Watch” beside a flyby sets it all up for you.",
+				"simple": "The camera flies along with a space probe. You see a planet swing past it."
+			},
+			"why": {
+				"standard": "A planet's gravity bends a craft's path and flings it on to the next world. Riding along, you see Jupiter and its moons sweep past and the path bend round it: the trick that took Voyager to the outer planets.",
+				"simple": "A planet can pull a probe and throw it on, faster, like a slingshot. When you fly along, you can watch it happen."
+			},
+			"how": {
+				"standard": [
+					"Open Tools at the bottom right, choose “Real spacecraft” and press the follow button beside a craft, or “Follow” on its card.",
+					"On the card, “Watch” beside a flyby or an arrival goes to just before it and plays it in about half a minute.",
+					"Drag to turn and scroll to zoom while you ride; the name at the top left shows what you follow. The house, Escape, choosing a world or Back ends it."
+				],
+				"simple": [
+					"Press Tools at the bottom right and choose “Real spacecraft”.",
+					"Pick Voyager 1, then press “Watch” beside Jupiter.",
+					"Watch Jupiter swing past. Press the house to stop."
+				]
+			}
+		},
 		"dictionary": {
 			"title": {
 				"standard": "The picture dictionary",

@@ -3,6 +3,36 @@
 	max-width: 100%;
 }
 
+/* following a spacecraft (#57): its name, in the spacecraft colour, beside a pulsing mark */
+.select[data-following] input::placeholder,
+.select input[data-following]::placeholder {
+	color: #7fe3f7;
+	opacity: 1;
+	font-weight: 600;
+}
+
+.select[data-following] input,
+.select input[data-following] {
+	border-color: rgba(127, 227, 247, 0.55);
+}
+
+.following {
+	color: #7fe3f7;
+	animation: follow-pulse 2s ease-in-out infinite;
+}
+
+@keyframes follow-pulse {
+	50% {
+		opacity: 0.45;
+	}
+}
+
+@media (prefers-reduced-motion: reduce) {
+	.following {
+		animation: none;
+	}
+}
+
 .option {
 	display: flex;
 	justify-content: space-between;

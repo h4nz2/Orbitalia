@@ -15,6 +15,7 @@ import { levelsOf } from "@/i18n/bodies"
 import { isScalePresetId } from "@/sim"
 import { MOMENT_IDS } from "@/features/solarSystem/ui/moments"
 import { skyEventById } from "@/data/skyEvents"
+import { spacecraftById } from "@/data/spacecraft"
 import { ToursTextFile, tourContent } from "@/features/solarSystem/tours/text"
 
 import { bodyById } from "./index"
@@ -54,6 +55,9 @@ describe("tour files (src/data/tours)", () => {
 				}
 				if (stop.select != null) {
 					expect(bodyById.has(stop.select), `${where} select`).toBe(true)
+				}
+				if (stop.follow !== undefined) {
+					expect(spacecraftById.has(stop.follow), `${where} follow`).toBe(true)
 				}
 				if (stop.fit?.around !== undefined) {
 					expect(bodyById.has(stop.fit.around), `${where} fit`).toBe(true)

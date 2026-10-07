@@ -1,6 +1,7 @@
 /**
  * "Back to the start" (#29, R / Home): the view the page was opened with, the
- * prepared lesson link, restored as a whole: body, point of view (#31),
+ * prepared lesson link, restored as a whole: body or spacecraft followed
+ * (#57), point of view (#31),
  * camera, selection, date, speed, pause, layers and scale. A teacher who has
  * wandered off mid-lesson is one key away from the known state the lesson
  * began in. Without a link that is the app's own opening state: the overview,
@@ -21,6 +22,7 @@ import { isFrameAnchored } from "@/store/navigation"
 import { useScaleStore } from "@/store/scale"
 import { useSimStore } from "@/store/sim"
 import type { SimSearch } from "@/store/simSearch"
+import { useSpacecraftStore } from "@/store/spacecraft"
 import {
 	DEFAULT_TIME_WARP,
 	frameFromSearch,
@@ -64,6 +66,8 @@ export function restoreStart(search: SimSearch, instant: boolean): void {
 		useSimStore.getState().goTo(view, request)
 	}
 	useSimStore.getState().select(selectedId)
+	// a lesson that rides along with a spacecraft (#57) shows its card again
+	if (view.kind === "craft") useSpacecraftStore.getState().selectCraft(view.id)
 
 	useSimStore.setState(layersFromSearch(search))
 	const scale = scaleFromSearch(search)

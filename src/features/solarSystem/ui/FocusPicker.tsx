@@ -5,7 +5,7 @@ import {
 	type ComboboxItemGroup,
 	type ComboboxLikeRenderOptionInput,
 } from "@mantine/core"
-import { IconFocus2 } from "@tabler/icons-react"
+import { IconCurrentLocation, IconFocus2 } from "@tabler/icons-react"
 
 import {
 	asteroids,
@@ -19,6 +19,9 @@ import {
 } from "@/data"
 import { formatSize, isSimple, useI18n, type I18n } from "@/i18n"
 import { bodyName } from "@/i18n/bodies"
+import { getSpacecraftText } from "@/i18n/spacecraft"
+import { Hint } from "@/primitives/hint"
+import { followedCraftId } from "@/store/navigation"
 import { allMoonsShown, useSimStore } from "@/store/sim"
 
 import { freeCentreId } from "./centre"
@@ -90,15 +93,22 @@ const handleKeyDown = (event: KeyboardEvent): void => {
 	setFocus(next)
 }
 
-/** Searchable picker of the focused body, grouped by planet. */
+/**
+ * Searchable picker of the focused body, grouped by planet: the "what you are
+ * looking at" spot (#42). While a spacecraft is followed (#57) it names the
+ * craft beside the follow mark; choosing a world there ends the ride.
+ */
 const FocusPicker = () => {
 	// a free centre (#15) is not the anchor body: the badge names it instead
 	const focusId = useSimStore((state) =>
 		freeCentreId(state) === null ? state.focusId : null,
 	)
+	const followed = useSimStore((state) => followedCraftId(state.view))
 	const setFocus = useSimStore((state) => state.setFocus)
 	const i18n = useI18n()
 	const { t, chain } = i18n
+	const craftName =
+		followed === null ? null : getSpacecraftText(followed, i18n).name
 	const data = useMemo(() => focusOptions(chain, t), [chain, t])
 	useWindowKeydown(handleKeyDown)
 
@@ -127,23 +137,46 @@ const FocusPicker = () => {
 	}
 
 	return (
-		<Select
-			className={classes.select}
-			aria-label={t("solarSystem.picker.label")}
-			placeholder={t("solarSystem.picker.placeholder")}
-			leftSection={<IconFocus2 size={16} />}
-			data={data}
-			value={focusId}
-			onChange={(value) => {
-				if (value !== null) setFocus(value)
-			}}
-			renderOption={renderOption}
-			searchable
-			nothingFoundMessage={t("solarSystem.picker.nothingFound")}
-			allowDeselect={false}
-			maxDropdownHeight={320}
-			comboboxProps={{ shadow: "md" }}
-		/>
+		<Hint
+			text={
+				craftName === null
+					? undefined
+					: t("solarSystem.spacecraft.hint.spot", { name: craftName })
+			}
+		>
+			<Select
+				className={classes.select}
+				data-following={followed ?? undefined}
+				aria-label={
+					craftName === null
+						? t("solarSystem.picker.label")
+						: t("solarSystem.spacecraft.followSpot", { name: craftName })
+				}
+				placeholder={craftName ?? t("solarSystem.picker.placeholder")}
+				leftSection={
+					craftName === null ? (
+						<IconFocus2 size={16} />
+					) : (
+						<IconCurrentLocation
+							size={16}
+							className={classes.following}
+							data-follow-mark
+						/>
+					)
+				}
+				data={data}
+				value={craftName === null ? focusId : null}
+				onChange={(value) => {
+					if (value !== null) setFocus(value)
+				}}
+				renderOption={renderOption}
+				searchable
+				nothingFoundMessage={t("solarSystem.picker.nothingFound")}
+				allowDeselect={false}
+				maxDropdownHeight={320}
+				comboboxProps={{ shadow: "md" }}
+			/>
+		</Hint>
 	)
 }
 

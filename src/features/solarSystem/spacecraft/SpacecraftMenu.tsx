@@ -1,17 +1,26 @@
-import { Group, Stack, Switch, Text, UnstyledButton } from "@mantine/core"
+import {
+	ActionIcon,
+	Group,
+	Stack,
+	Switch,
+	Text,
+	UnstyledButton,
+} from "@mantine/core"
+import { IconCurrentLocation } from "@tabler/icons-react"
 
 import { spacecraft } from "@/data/spacecraft"
 import { useI18n } from "@/i18n"
 import { Hint } from "@/primitives/hint"
 import { getSpacecraftText } from "@/i18n/spacecraft"
-import { craftPhase } from "@/sim/spacecraft"
+import { craftPhase, isInSpace } from "@/sim/spacecraft"
 import { useScaleStore } from "@/store/scale"
 import type { Spacecraft } from "@/data/spacecraft"
+import { useSimStore } from "@/store/sim"
 import { useSpacecraftStore } from "@/store/spacecraft"
 
 import useThrottledSimTime from "../scene/useThrottledSimTime"
 import { formatDayUTC } from "../ui/timeTravel"
-import { showCraft } from "./facts"
+import { followCraft, showCraft } from "./facts"
 
 import classes from "./Spacecraft.module.css"
 
@@ -19,7 +28,8 @@ import classes from "./Spacecraft.module.css"
  * The spacecraft list (#35), a panel of the dock since #42 (Tools → Real
  * spacecraft): the layer switch, "show every path", and every craft with
  * what it is and whether it is working at the simulation date. Picking one
- * selects it and flies the view there (`onPicked` then closes the panel).
+ * selects it and flies the view there, its follow button rides along with it
+ * (#57); either way `onPicked` then closes the panel.
  */
 export const SpacecraftList = ({ onPicked }: { onPicked: () => void }) => {
 	const i18n = useI18n()
@@ -29,6 +39,9 @@ export const SpacecraftList = ({ onPicked }: { onPicked: () => void }) => {
 	const show = useSpacecraftStore((state) => state.showSpacecraft)
 	const allPaths = useSpacecraftStore((state) => state.showAllPaths)
 	const selected = useSpacecraftStore((state) => state.selectedCraftId)
+	const followed = useSimStore((state) =>
+		state.view.kind === "craft" ? state.view.id : null,
+	)
 	const { setShowSpacecraft, setShowAllPaths } = useSpacecraftStore.getState()
 	const day = (iso: string) => formatDayUTC(new Date(iso), i18n.formatLocale)
 	const phaseText = (
@@ -80,22 +93,52 @@ export const SpacecraftList = ({ onPicked }: { onPicked: () => void }) => {
 					const phase = craftPhase(craft, jd)
 					const status = phaseText(craft, phase)
 					return (
-						<UnstyledButton
-							key={craft.id}
-							className={classes.craft}
-							data-craft={craft.id}
-							data-phase={phase}
-							data-selected={craft.id === selected || undefined}
-							onClick={() => {
-								setShowSpacecraft(true)
-								showCraft(craft.id, scale)
-								onPicked()
-							}}
-						>
-							<span className={classes.craftName}>{text.name}</span>
-							<span className={classes.craftTagline}>{text.tagline}</span>
-							<span className={classes.craftStatus}>{status}</span>
-						</UnstyledButton>
+						<div key={craft.id} className={classes.craftRow}>
+							<UnstyledButton
+								className={classes.craft}
+								data-craft={craft.id}
+								data-phase={phase}
+								data-selected={craft.id === selected || undefined}
+								onClick={() => {
+									setShowSpacecraft(true)
+									showCraft(craft.id, scale)
+									onPicked()
+								}}
+							>
+								<span className={classes.craftName}>{text.name}</span>
+								<span className={classes.craftTagline}>{text.tagline}</span>
+								<span className={classes.craftStatus}>{status}</span>
+							</UnstyledButton>
+							<Hint
+								text={t("solarSystem.spacecraft.hint.follow", {
+									name: text.name,
+								})}
+								reason={
+									isInSpace(phase)
+										? undefined
+										: t("solarSystem.spacecraft.reason.follow")
+								}
+							>
+								<ActionIcon
+									variant={craft.id === followed ? "filled" : "subtle"}
+									color="cyan"
+									size="lg"
+									data-follow={craft.id}
+									aria-label={t("solarSystem.spacecraft.followCraft", {
+										name: text.name,
+									})}
+									aria-pressed={craft.id === followed}
+									disabled={!isInSpace(phase)}
+									onClick={() => {
+										setShowSpacecraft(true)
+										followCraft(craft.id, scale)
+										onPicked()
+									}}
+								>
+									<IconCurrentLocation size={18} />
+								</ActionIcon>
+							</Hint>
+						</div>
 					)
 				})}
 			</Stack>

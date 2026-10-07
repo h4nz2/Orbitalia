@@ -18,7 +18,9 @@ import {
 } from "@/sim/spacecraft"
 
 import { rootIndexOf } from "@/sim"
+import { craftLengthScale } from "@/sim/follow"
 
+import type { CraftLocator } from "../camera/director"
 import { mapTruePointKm } from "../light/lightFront"
 import type { SimFrame } from "../scene/simFrame"
 import { trajectoryOf } from "./trajectories"
@@ -100,3 +102,46 @@ export const craftIndexOf = (
 	id: string | null,
 ): number =>
 	id === null ? -1 : craftFrame.craft.findIndex((craft) => craft.id === id)
+
+/**
+ * The craft frame as the camera director reads it (#57): where a craft is
+ * drawn now, the body whose neighbourhood it is in, and the drawing's local
+ * scale round it.
+ */
+export function createCraftLocator(
+	craftFrame: CraftFrame,
+	frame: SimFrame,
+): CraftLocator {
+	const root = rootIndexOf(frame.bodies)
+	const distance = (state: CraftState, body: number) => {
+		const o = body * 3
+		return Math.hypot(
+			state.trueKm[0] - frame.positionsKm[o],
+			state.trueKm[1] - frame.positionsKm[o + 1],
+			state.trueKm[2] - frame.positionsKm[o + 2],
+		)
+	}
+	return {
+		locate: (id, out) => {
+			const k = craftIndexOf(craftFrame, id)
+			if (k < 0 || craftFrame.present[k] !== 1) return -1
+			const state = craftFrame.states[k]
+			out.set(state.displayKm)
+			return Math.max(0, state.anchorIndex)
+		},
+		lengthScale: (id) => {
+			const k = craftIndexOf(craftFrame, id)
+			if (k < 0 || craftFrame.present[k] !== 1) return Number.NaN
+			const state = craftFrame.states[k]
+			const planet = state.drawnPlanet
+			return craftLengthScale(
+				frame.scale,
+				frame.bodies[root],
+				distance(state, root),
+				planet < 0 ? null : frame.bodies[planet],
+				planet < 0 ? 0 : distance(state, planet),
+				state.drawnWeight,
+			)
+		},
+	}
+}

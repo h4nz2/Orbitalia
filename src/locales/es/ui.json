@@ -490,6 +490,14 @@
 			"close": "Cerrar",
 			"show": "Mostrar",
 			"showHint": "Llevar la vista hasta {name}",
+			"follow": "Seguir",
+			"following": "Siguiendo",
+			"followCraft": "Seguir: {name}",
+			"followSpot": "Siguiendo: {name}",
+			"watch": "Ver",
+			"watchEvent": "Ver: {event}",
+			"nearest": "Planeta más cercano",
+			"nearestValue": "{planet}: {distance}",
 			"launched": "Lanzamiento",
 			"launched@simple": "Salió de la Tierra",
 			"phase": {
@@ -543,10 +551,17 @@
 				"layer": "Muestra las naves espaciales reales que ha enviado la humanidad, donde están en la fecha que se ve.",
 				"layer@simple": "Muestra las sondas que la gente ha enviado al espacio.",
 				"allPaths": "Dibuja el viaje completo de cada nave, no solo el de la que elegiste.",
-				"allPaths@simple": "Muestra el camino de cada nave."
+				"allPaths@simple": "Muestra el camino de cada nave.",
+				"follow": "Viaja con la nave: la cámara la mantiene en el centro mientras corre el tiempo. Arrastra para girar y usa la rueda para acercarte; la casa o Escape lo terminan.",
+				"follow@simple": "¡Viaja con la nave! Se queda en el centro mientras pasa el tiempo.",
+				"watch": "Míralo pasar: el tiempo va a justo antes, avanza a una velocidad que lo muestra en medio minuto más o menos, y la cámara viaja con la nave.",
+				"watch@simple": "Míralo pasar mientras viajas con la nave. Dura más o menos medio minuto.",
+				"spot": "Viajas con {name}: se queda en el centro mientras corre el tiempo. Arrastra para mirar alrededor y usa la rueda para acercarte. Elige un mundo o pulsa Escape o la casa para parar.",
+				"spot@simple": "Viajas con la nave. Pulsa la casa para parar."
 			},
 			"reason": {
-				"allPaths": "Activa primero Naves espaciales."
+				"allPaths": "Activa primero Naves espaciales.",
+				"follow": "En esta fecha la nave no está en el espacio."
 			}
 		},
 		"pick": {

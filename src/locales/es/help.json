@@ -533,6 +533,32 @@
 				]
 			}
 		},
+		"rideAlong": {
+			"title": {
+				"standard": "Viajar con una nave espacial",
+				"simple": "Vuela con una sonda"
+			},
+			"what": {
+				"standard": "Sigue una nave espacial y la cámara se queda con ella mientras corre el tiempo, a cualquier velocidad, hacia delante o hacia atrás: la Voyager pasando junto a Júpiter, Juno llegando, la Parker rozando Venus. «Ver» junto a un sobrevuelo lo prepara todo por ti.",
+				"simple": "La cámara vuela junto a una sonda espacial. Ves cómo un planeta pasa a su lado."
+			},
+			"why": {
+				"standard": "La gravedad de un planeta curva la trayectoria de una nave y la lanza hacia el siguiente mundo. Viajando con ella ves pasar Júpiter y sus lunas y cómo la trayectoria se curva a su alrededor: el truco que llevó a la Voyager a los planetas exteriores.",
+				"simple": "Un planeta puede atraer una sonda y lanzarla más rápido, como un tirachinas. Si vuelas con ella, puedes verlo pasar."
+			},
+			"how": {
+				"standard": [
+					"Abre Herramientas abajo a la derecha, elige «Naves espaciales reales» y pulsa el botón de seguir junto a una nave, o «Seguir» en su tarjeta.",
+					"En la tarjeta, «Ver» junto a un sobrevuelo o una llegada va a justo antes y lo muestra en medio minuto más o menos.",
+					"Arrastra para girar y usa la rueda para acercarte mientras viajas; arriba a la izquierda ves a quién sigues. La casa, Escape, elegir un mundo o Atrás lo terminan."
+				],
+				"simple": [
+					"Pulsa Herramientas abajo a la derecha y elige «Naves espaciales reales».",
+					"Elige la Voyager 1 y pulsa «Ver» junto a Júpiter.",
+					"Mira cómo pasa Júpiter. Pulsa la casa para parar."
+				]
+			}
+		},
 		"dictionary": {
 			"title": {
 				"standard": "El diccionario visual",

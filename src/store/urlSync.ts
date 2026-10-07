@@ -32,6 +32,7 @@ import {
 } from "@tanstack/react-router"
 
 import { bodyById } from "@/data"
+import { spacecraftById } from "@/data/spacecraft"
 import {
 	DEFAULT_SCALE_PRESET,
 	dateToJD,
@@ -42,6 +43,7 @@ import {
 import {
 	HOME_SHOT,
 	OVERVIEW,
+	followedCraftId,
 	formatOffset,
 	formatShot,
 	isFrameAnchored,
@@ -131,7 +133,9 @@ type MirroredClock = Pick<SimState, "timeWarp" | "simTimeJD">
  * Defaults (the overview, the home camera, a selection equal to the focus,
  * 1x, a layer switch that is on) are left out to keep the URL short. A point
  * view (the pivot moved into empty space, #15) is its anchor in `focus` and
- * its offset in `at`, in true radii of the anchor (scale free). The warp is
+ * its offset in `at`, in true radii of the anchor (scale free); following a
+ * spacecraft (#57) is `craft=<id>&follow=true`, with the neighbourhood it is
+ * in as `focus`. The warp is
  * written as it is (not rounded), so a link runs at exactly the speed it was
  * taken at,
  * backwards included; a zero warp (which the schema rejects) is left out.
@@ -146,8 +150,11 @@ export function searchFromState(
 	const { timeWarp, view, shot } = state
 	const focus = view.kind === "overview" ? undefined : viewBodyId(view)
 	const anchor = view.kind === "point" ? bodyById.get(view.anchorId) : undefined
+	const craft = followedCraftId(view) ?? undefined
 	const search: SimSearch = {
 		focus,
+		craft,
+		follow: craft === undefined ? undefined : true,
 		at:
 			view.kind === "point" && anchor !== undefined
 				? formatOffset(view.offsetKm, anchor.radiusKm)
@@ -188,6 +195,8 @@ export function searchFromState(
 
 export const sameSearch = (a: SimSearch, b: SimSearch): boolean =>
 	a.focus === b.focus &&
+	a.craft === b.craft &&
+	a.follow === b.follow &&
 	a.at === b.at &&
 	a.sel === b.sel &&
 	a.frame === b.frame &&
@@ -204,8 +213,9 @@ export const sameSearch = (a: SimSearch, b: SimSearch): boolean =>
 	LAYER_PARAMS.every(([param]) => a[param] === b[param])
 
 /**
- * The view a search describes: `focus` (a known body; with a valid `at`, a
- * point near it) or the overview, its camera and selection.
+ * The view a search describes: a spacecraft followed (`craft` with
+ * `follow=true`, #57), `focus` (a known body; with a valid `at`, a point near
+ * it) or the overview, its camera and selection.
  */
 export function viewFromSearch(search: SimSearch): {
 	view: View
@@ -218,6 +228,21 @@ export function viewFromSearch(search: SimSearch): {
 			: null
 	const sel =
 		search.sel !== undefined && bodyById.has(search.sel) ? search.sel : null
+	if (
+		search.follow === true &&
+		search.craft !== undefined &&
+		spacecraftById.has(search.craft)
+	) {
+		return {
+			view: {
+				kind: "craft",
+				id: search.craft,
+				anchorId: focus ?? OVERVIEW_BODY_ID,
+			},
+			shot: parseShot(search.cam),
+			selectedId: sel,
+		}
+	}
 	const anchor = focus === null ? undefined : bodyById.get(focus)
 	const offsetKm =
 		anchor === undefined ? null : parseOffset(search.at, anchor.radiusKm)
@@ -270,6 +295,7 @@ export function waypointFromSearch(search: SimSearch): Waypoint {
 		}
 	}
 	const { view, shot, selectedId } = viewFromSearch(search)
+	if (view.kind === "craft") return { kind: "follow", craftId: view.id, shot }
 	return {
 		kind: "view",
 		view,
@@ -358,10 +384,14 @@ export function useSimUrlSync(): void {
 		const { view, shot, selectedId } = viewFromSearch(searchRef.current)
 		const frameId = frameFromSearch(searchRef.current)
 		store.jumpTo(view, shot)
-		if (frameId !== null) {
+		if (frameId !== null && view.kind !== "craft") {
 			store.anchorFrame(frameId, { shot: shot ?? undefined, durationMs: 0 })
 		}
 		store.select(selectedId)
+		// following a spacecraft (#57): its card is the one shown
+		if (view.kind === "craft") {
+			useSpacecraftStore.getState().selectCraft(view.id)
+		}
 		// the layer switches are plain fields
 		useSimStore.setState(layersFromSearch(searchRef.current))
 		// the scale: a jump as well, the switch animates only when the user makes it

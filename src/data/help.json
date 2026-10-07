@@ -157,6 +157,11 @@
 			"try": "/solar_system?craft=voyager1"
 		},
 		{
+			"id": "rideAlong",
+			"group": "sizeDistance",
+			"try": "/solar_system?craft=voyager1&follow=true&focus=jupiter&t=2443901.1808&warp=172800&cam=-122.1_65_3.21"
+		},
+		{
 			"id": "dayNight",
 			"group": "light",
 			"try": "/solar_system?focus=earth&t=2461122.5"
