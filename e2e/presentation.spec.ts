@@ -353,7 +353,7 @@ const controlsInView = async (page: Page) => {
 	expect(canvas!.height).toBeCloseTo(size.height, 0)
 }
 
-test("second screen: the projector layout fits laptop and projector sizes, and follows the pixel ratio", async ({
+test("second screen: the projector layout fits laptop and projector sizes", async ({
 	page,
 }) => {
 	await page.setViewportSize({ width: 1280, height: 720 })
@@ -373,34 +373,61 @@ test("second screen: the projector layout fits laptop and projector sizes, and f
 			.toBeCloseTo(size.width, 0)
 		await controlsInView(page)
 	}
+})
 
-	// a screen with another pixel ratio: the canvas re-renders at it
-	await page.setViewportSize({ width: 1024, height: 768 })
-	const cdp = await page.context().newCDPSession(page)
-	const sharper = () =>
-		cdp.send("Emulation.setDeviceMetricsOverride", {
-			width: 1024,
-			height: 768,
-			deviceScaleFactor: 2,
-			mobile: false,
+test("second screen: dragged to a sharper projector and back, the canvas follows the pixel ratio", async ({
+	browser,
+	headless,
+	storageState,
+}) => {
+	test.skip(!headless, "only a headless browser can be given a second screen")
+	// a real window on two screens, with no emulated viewport: it takes its pixel
+	// ratio from the screen it is on, as on a laptop with a projector. (An
+	// emulated ratio, `Emulation.setDeviceMetricsOverride`, changes
+	// `devicePixelRatio` without telling any `matchMedia` listener: DprSync never
+	// hears it, and the canvas follows only when a resize happens to come along.)
+	const context = await browser.newContext({
+		viewport: null,
+		deviceScaleFactor: undefined,
+		storageState,
+	})
+	const page = await context.newPage()
+	const cdp = await context.newCDPSession(page)
+	const { windowId } = await cdp.send("Browser.getWindowForTarget")
+	const { screenInfo: projector } = await cdp.send("Emulation.addScreen", {
+		left: 4000,
+		top: 0,
+		width: 3840,
+		height: 2160,
+		devicePixelRatio: 2,
+	})
+	const moveTo = (left: number) =>
+		cdp.send("Browser.setWindowBounds", { windowId, bounds: { left, top: 0 } })
+	const ratio = () =>
+		page.evaluate(() => {
+			const canvas = document.querySelector("canvas")!
+			return canvas.width / canvas.clientWidth
 		})
-	await sharper()
-	await expect
-		.poll(async () => {
-			const { ratio, canvas } = await page.evaluate(() => {
-				const canvas = document.querySelector("canvas")!
-				return {
-					ratio: window.devicePixelRatio,
-					canvas: canvas.width / canvas.clientWidth,
-				}
-			})
-			// Playwright's own session emulates the context's ratio (1) too and may
-			// re-assert it after this one: then the screen changes again, and the
-			// canvas must follow that change as well
-			if (ratio !== 2) await sharper()
-			return canvas
-		})
-		.toBeCloseTo(2, 1)
+	try {
+		await open(page, "present=true&lang=en")
+		await expect.poll(ratio).toBeCloseTo(1, 1)
+		// the Canvas also re-reads the ratio whenever it re-renders, as when its
+		// box moves: wait until the page has slid into place
+		await expect
+			.poll(async () => (await page.locator("canvas").first().boundingBox())!.y)
+			.toBe(0)
+		// the window keeps its size: only the pixel ratio changes
+		await moveTo(projector.left)
+		await expect.poll(ratio).toBeCloseTo(2, 1)
+		// and back to the laptop, not at twice the pixels it needs there. (The
+		// first resize after loading may re-render the Canvas once; this second
+		// one is DprSync's alone: without it, the canvas stays at 2.)
+		await moveTo(0)
+		await expect.poll(ratio).toBeCloseTo(1, 1)
+	} finally {
+		await cdp.send("Emulation.removeScreen", { screenId: projector.id })
+		await context.close()
+	}
 })
 
 test("short screens: a tall body card never pushes the time controls off screen", async ({

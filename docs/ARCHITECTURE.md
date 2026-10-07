@@ -1420,6 +1420,9 @@ the URL, so "save the lesson" is the link itself (plus `paused`, `present`, `con
     the clock shows the same minute), so it is not trimmed further.
 - **Second screen**: the layout is viewport-relative; `present/DprSync.tsx` in the Canvas re-applies the `dpr` range
   when the device pixel ratio changes (dragging the window to a projector), which the Canvas otherwise reads once.
+  `e2e/presentation.spec.ts` drags a real window to a second, sharper screen and back (CDP `Emulation.addScreen`,
+  headless only). An emulated ratio (`Emulation.setDeviceMetricsOverride`) cannot test this: it changes
+  `devicePixelRatio` without firing any `matchMedia` listener.
 - **For #28 (tours):** PageDown/PageUp already step a running `playSequence` (`presenterStep`: next, resume after an
   interruption, previous); a tour played through the navigation model is presentable from a remote with no extra
   code. Number keys stay the planets unless a tour decides otherwise. **For #32 (sound):** it must start muted.
