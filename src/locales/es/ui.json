@@ -1182,6 +1182,15 @@
 			"skip": "Saltar la intro",
 			"skip@simple": "Saltar",
 			"progress": "Parte {beat, number} de {count, number}",
+			"pause": "Pausar",
+			"resume": "Continuar",
+			"resume@simple": "Seguir",
+			"paused": "En pausa",
+			"next": "Siguiente",
+			"pauseHint": "Quédate en este texto todo el tiempo que quieras, para leerlo o hablar de él. La barra espaciadora o un toque en la escena hacen lo mismo; otra vez, y continúa.",
+			"pauseHint@simple": "Para aquí para leer. También puedes pulsar la barra espaciadora o tocar la imagen. Otra vez, y sigue.",
+			"nextHint": "Pasa ya a la siguiente parte; si está en pausa, avanza parte a parte. La flecha derecha hace lo mismo.",
+			"nextHint@simple": "Ve ya a la siguiente parte.",
 			"earth": {
 				"title": "Esta es la Tierra.",
 				"detail": "Todas las personas que conoces viven aquí.",
@@ -1204,15 +1213,15 @@
 			"system": {
 				"title": "Todo el sistema solar, a su tamaño real",
 				"title@simple": "Todo, a su tamaño real",
-				"detail": "Los planetas son demasiado pequeños para verlos. Los puntos solo indican dónde están.",
+				"detail": "Los planetas son demasiado pequeños para verlos. Los puntos indican dónde están.",
 				"detail@simple": "¡Los planetas son tan diminutos que no se ven! Los puntos muestran dónde están.",
-				"detail@advanced": "La Tierra es ahora mucho más pequeña que un píxel, y el espacio está casi totalmente vacío. Los puntos solo marcan los planetas."
+				"detail@advanced": "La Tierra es menor que un píxel; el espacio, casi vacío. Los puntos marcan los planetas."
 			},
 			"scale": {
 				"title": "Por eso los dibujamos más grandes y más cerca",
 				"title@simple": "¡Por eso los dibujamos más grandes!",
-				"detail": "Ahora ves todos los planetas, pero no a escala. El panel «Escala» vuelve a los tamaños reales.",
-				"detail@simple": "Ahora ves todos los planetas. En el panel «Escala» vuelves a ver su tamaño real.",
+				"detail": "Ahora visibles, pero no a escala. «Escala» da el tamaño real.",
+				"detail@simple": "Ahora ves todos los planetas. El panel «Escala» muestra su tamaño real.",
 				"detail@advanced": "«Todo visible»: tamaños aumentados, distancias comprimidas. «Escala real», en el panel «Escala», muestra la realidad."
 			},
 			"hint": {

@@ -1182,6 +1182,15 @@
 			"skip": "Intro überspringen",
 			"skip@simple": "Überspringen",
 			"progress": "Teil {beat, number} von {count, number}",
+			"pause": "Anhalten",
+			"resume": "Fortsetzen",
+			"resume@simple": "Weiterschauen",
+			"paused": "Angehalten",
+			"next": "Weiter",
+			"pauseHint": "Bleib bei diesem Text, so lange du willst, um ihn zu lesen oder darüber zu sprechen. Die Leertaste oder ein Tippen auf die Szene tun dasselbe; noch einmal, und es geht weiter.",
+			"pauseHint@simple": "Halte hier an, um zu lesen. Du kannst auch die Leertaste drücken oder auf das Bild tippen. Noch einmal, und es geht weiter.",
+			"nextHint": "Gleich zum nächsten Teil; ist das Intro angehalten, geht es Teil für Teil weiter. Die Pfeiltaste nach rechts tut dasselbe.",
+			"nextHint@simple": "Geh gleich zum nächsten Teil.",
 			"earth": {
 				"title": "Das ist die Erde.",
 				"detail": "Alle Menschen, die du kennst, leben hier.",
@@ -1204,14 +1213,14 @@
 			"system": {
 				"title": "Das ganze Sonnensystem in echter Größe",
 				"title@simple": "Alles in echter Größe",
-				"detail": "Die Planeten sind viel zu klein, um sie zu sehen. Die Punkte zeigen nur, wo sie sind.",
+				"detail": "Die Planeten sind zu klein, um sie zu sehen. Punkte zeigen, wo sie sind.",
 				"detail@simple": "Die Planeten sind zu winzig, um sie zu sehen! Die Punkte zeigen, wo sie sind.",
-				"detail@advanced": "Die Erde ist jetzt viel kleiner als ein Pixel, und der Raum ist fast völlig leer. Die Punkte markieren nur die Planeten."
+				"detail@advanced": "Die Erde ist jetzt kleiner als ein Pixel, der Raum fast leer. Punkte markieren die Planeten."
 			},
 			"scale": {
 				"title": "Darum zeichnen wir sie größer und näher",
 				"title@simple": "Darum zeichnen wir sie größer!",
-				"detail": "Jetzt siehst du jeden Planeten, aber nicht maßstabsgetreu. Im Feld „Maßstab“ geht es zurück zur echten Größe.",
+				"detail": "Alle sind sichtbar, aber nicht maßstabsgetreu. Das Feld „Maßstab“ zeigt echte Größen.",
 				"detail@simple": "Jetzt siehst du jeden Planeten. Im Feld „Maßstab“ siehst du wieder ihre echte Größe.",
 				"detail@advanced": "„Alles sichtbar“: Größen vergrößert, Abstände gestaucht. „Echter Maßstab“ im Feld „Maßstab“ zeigt die Wirklichkeit."
 			},

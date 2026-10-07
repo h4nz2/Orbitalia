@@ -293,6 +293,72 @@ describe("sequences", () => {
 		expect(store().sequence!.phase).toBe("waiting")
 	})
 
+	it("pauses on a stop and carries on with what was left of the hold (#49)", () => {
+		store().playSequence(steps)
+		arrive(100)
+		expect(store().sequence).toMatchObject({
+			phase: "holding",
+			holdUntil: 1100,
+		})
+		store().setSequencePaused(true, 400)
+		expect(store().sequence).toMatchObject({
+			index: 0,
+			phase: "waiting",
+			paused: true,
+			holdUntil: null,
+			holdLeftMs: 700,
+		})
+		store().tickSequence(1e9)
+		expect(store().sequence!.index).toBe(0)
+		// looking around while paused is not an interruption
+		store().userInput()
+		expect(store().sequence!.phase).toBe("waiting")
+		store().setSequencePaused(false, 5000)
+		expect(store().sequence).toMatchObject({
+			phase: "holding",
+			paused: false,
+			holdUntil: 5700,
+		})
+		store().tickSequence(5700)
+		expect(store().sequence!.index).toBe(1)
+	})
+
+	it("paused while moving, arrives and waits with the whole hold to come", () => {
+		store().playSequence(steps)
+		store().setSequencePaused(true, 50)
+		expect(store().sequence).toMatchObject({ phase: "moving", paused: true })
+		store().userInput()
+		expect(store().sequence!.phase).toBe("moving")
+		arrive(100)
+		expect(store().sequence).toMatchObject({
+			phase: "waiting",
+			holdLeftMs: 1000,
+		})
+		store().setSequencePaused(false, 2000)
+		expect(store().sequence).toMatchObject({
+			phase: "holding",
+			holdUntil: 3000,
+		})
+	})
+
+	it("stays paused when stepped, and ignores a pause without a running sequence", () => {
+		store().setSequencePaused(true)
+		expect(store().sequence).toBeNull()
+		store().playSequence(steps)
+		store().setSequencePaused(true, 0)
+		store().nextStep()
+		expect(store().sequence).toMatchObject({ index: 1, paused: true })
+		store().goToStep(0)
+		expect(store().sequence).toMatchObject({ index: 0, paused: true })
+		// a new sequence starts unpaused; an interrupted one cannot be paused
+		store().playSequence(steps)
+		expect(store().sequence!.paused ?? false).toBe(false)
+		store().userInput()
+		store().setSequencePaused(true)
+		expect(store().sequence).toMatchObject({ phase: "interrupted" })
+		expect(store().sequence!.paused ?? false).toBe(false)
+	})
+
 	it("skips a whole sequence to its last view", () => {
 		store().playSequence(steps)
 		store().skip()

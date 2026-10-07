@@ -13,6 +13,10 @@
  * - one that only brought the window into focus (a teacher clicking the app
  *   to the front): the page had no focus when it went down, or the window
  *   came into focus within `FOCUS_CLICK_MS` before it or while it was held.
+ *
+ * The camera follows the same rule (#49): a press takes it only once it is
+ * a gesture (`isPressGrab`: it wandered beyond the allowance, or a second
+ * finger joined), so a tap never grabs the camera.
  */
 
 /** Longest travel between press and release that is still a tap, px. */
@@ -122,6 +126,14 @@ export function createPressTracker() {
 			if (press.multi || isFocusPress(press, focusedAt)) return false
 			return isTap(Math.max(deltaPx, press.travel), kind)
 		},
+		/**
+		 * Whether the press under way has become a gesture: it wandered beyond
+		 * the allowance, or another finger joined it (#49). Until then the
+		 * camera stays where it is.
+		 */
+		isGrab(): boolean {
+			return press.multi || !isTap(press.travel, press.kind)
+		},
 	}
 }
 
@@ -166,3 +178,13 @@ export const isTapEvent = (event: {
 	delta: number
 	nativeEvent: Event
 }): boolean => presses.isTap(event.delta, pointerKindOf(event.nativeEvent))
+
+/**
+ * For DOM click events (the opening's tap to pause, #49): the same rule as
+ * `isTapEvent`, measured over the whole press.
+ */
+export const isTapClick = (event: Event): boolean =>
+	presses.isTap(0, pointerKindOf(event))
+
+/** The camera director: the press under way is a drag or a pinch now, not a tap (#49). */
+export const isPressGrab = (): boolean => presses.isGrab()

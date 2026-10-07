@@ -64,8 +64,8 @@
 				"simple": "La película de inicio"
 			},
 			"what": {
-				"standard": "Catorce segundos que empiezan muy cerca de la Tierra, a su tamaño real, y se alejan hasta que la Tierra es más pequeña que un píxel; después todo se dibuja más grande para que puedas verlo.",
-				"simple": "Una película corta que vuela desde la Tierra hasta todo el sistema solar."
+				"standard": "Alrededor de un minuto que empieza muy cerca de la Tierra, a su tamaño real, y se aleja hasta que la Tierra es más pequeña que un píxel; después todo se dibuja más grande para que puedas verlo. Cada texto se queda el tiempo suficiente para leerlo en voz alta.",
+				"simple": "Una película que vuela desde la Tierra hasta todo el sistema solar. Va despacio, para que puedas leer cada palabra."
 			},
 			"why": {
 				"standard": "Cuenta de qué va la aplicación antes de leer una sola palabra: el espacio es enorme y está casi vacío. Funciona sin sonido.",
@@ -74,12 +74,16 @@
 			"how": {
 				"standard": [
 					"Se reproduce una vez, en la primera visita; «Saltar la intro», arrastrar o Esc la terminan en cualquier momento.",
+					"Para quedarte en un texto, pulsa la barra espaciadora, toca la escena o pulsa el botón de pausa; otra vez, y continúa. En pausa puedes girar la vista sin terminar la introducción.",
+					"«Siguiente» (o la flecha derecha) pasa ya a la siguiente parte; en pausa, de una en una.",
 					"Después de la primera introducción, la aplicación pregunta una vez si quieres ver rápidamente lo que puedes hacer (mira «Un vistazo rápido»).",
 					"Para verla otra vez, abre la flecha junto a «Ayuda» y elige «Ver la introducción otra vez».",
 					"«Mostrar cómo moverse», en el mismo menú, vuelve a mostrar las pistas para arrastrar, acercar y hacer clic."
 				],
 				"simple": [
 					"Se ve la primera vez que entras.",
+					"Pulsa la barra espaciadora o toca la imagen para pararla. Otra vez, y sigue.",
+					"«Siguiente» muestra la parte siguiente.",
 					"Para verla otra vez, pulsa la flecha junto a «Ayuda» y luego «Ver la introducción otra vez»."
 				]
 			}

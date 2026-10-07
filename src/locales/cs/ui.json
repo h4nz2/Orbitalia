@@ -1182,6 +1182,15 @@
 			"skip": "Přeskočit úvod",
 			"skip@simple": "Přeskočit",
 			"progress": "Část {beat, number} z {count, number}",
+			"pause": "Pozastavit",
+			"resume": "Pokračovat",
+			"resume@simple": "Pustit dál",
+			"paused": "Pozastaveno",
+			"next": "Dál",
+			"pauseHint": "Zůstaň u tohoto textu, jak dlouho chceš, a přečti si ho nebo si o něm povídejte. Totéž udělá mezerník nebo klepnutí na scénu; znovu, a pokračuje se.",
+			"pauseHint@simple": "Zastav tady a čti. Můžeš taky stisknout mezerník nebo ťuknout na obrázek. Znovu, a jede se dál.",
+			"nextHint": "Hned na další část; když je úvod pozastavený, jde se po jednotlivých částech. Totéž udělá šipka doprava.",
+			"nextHint@simple": "Jdi hned na další část.",
 			"earth": {
 				"title": "Tohle je Země.",
 				"detail": "Žijí tu všichni, které znáš.",
@@ -1211,7 +1220,7 @@
 			"scale": {
 				"title": "Proto je kreslíme větší a blíž",
 				"title@simple": "Proto je kreslíme větší!",
-				"detail": "Teď vidíš každou planetu, ale ne ve správném měřítku. Panel „Měřítko“ tě vrátí ke skutečným velikostem.",
+				"detail": "Teď vidíš všechny planety, ale ne ve správném měřítku. Panel „Měřítko“ ukáže skutečné velikosti.",
 				"detail@simple": "Teď vidíš každou planetu. V panelu „Měřítko“ uvidíš zase jejich skutečnou velikost.",
 				"detail@advanced": "„Vše viditelné“: velikosti zvětšené, vzdálenosti stlačené. „Skutečné měřítko“ v panelu „Měřítko“ ukáže skutečnost."
 			},

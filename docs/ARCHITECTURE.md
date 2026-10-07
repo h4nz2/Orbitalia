@@ -371,7 +371,9 @@ viewMode(state)             "overview" | "focused" | "free" | "transit"
 
 Actions: `select`, `setFocus` (click: select + focus; a flight from another body, see Flights), `focus`, `overview`, `goTo(view, request?)`, `jumpTo`, `reset`
 (the way out), `skip`, `finishMove` (skip the move, stay in the sequence), `anchorFrame(id, request?)` / `releaseFrame()` (#31), and sequences (`playSequence`, `goToStep`,
-`nextStep`, `resumeSequence`, `stopSequence`). A request carries a partial `shot`, `durationMs`, a `profile` and a
+`nextStep`, `resumeSequence`, `stopSequence`, `setSequencePaused(paused, now?)`: #49's pause, where a step still
+arrives and then waits, resuming holds what was left of its hold, stepping keeps it paused, and input while paused
+does not interrupt). A request carries a partial `shot`, `durationMs`, a `profile` and a
 `fit` region (`{ km, around }`: frame a sphere of `km` TRUE km around the centre, drawn as a distance from body
 `around` is; overrides the shot's distance), an `eye` (#41: `{ anchorId, offsetKm }`, TRUE km from a body, drawn
 like a point view: the camera stands there and looks at the view's centre, and the director keeps it there every frame
@@ -385,7 +387,9 @@ Director (`camera/director.ts`, unit-tested frame by frame):
 - Every request starts a new move from wherever the camera is, so retargeting mid-flight never snaps back. Both pivots
   and the arrival distance are re-read every frame.
 - User input during a move takes over distance and direction while the pivot still glides home; it also interrupts
-  automatic sequence steps. A pan while settled is folded into a pending pan (nothing moves on screen) and committed
+  automatic sequence steps. A press counts once it moves past the tap allowance or a second finger lands
+  (`scene/tap.ts` `isPressGrab`, #49): a tap is not a grab, so a tap during a sequence leaves it running (and pauses
+  the opening); a wheel always counts. A pan while settled is folded into a pending pan (nothing moves on screen) and committed
   when released (see Re-centring).
 - A non-finite camera or a view of a missing body resets to the overview.
 - Profiles (`camera/profiles.ts`): the default `smooth` is van Wijk and Nuij's zoom-and-pan (`camera/pose.ts`), 0.8–3 s;
@@ -430,18 +434,38 @@ Director (`camera/director.ts`, unit-tested frame by frame):
 - **What plays:** on a first visit, close on Earth (from its sunlit side, `sunlitAzimuthDeg`) in **true scale**, then
   pull back: the Moon's orbit, the inner planets, the whole system (Earth far below a pixel, the markers showing where
   the planets are), and finally the animated switch to Everything visible ("so we draw them bigger and closer"). It
-  ends on exactly the overview a reset shows, in the default preset. 14 s (`introSteps` in `intro/script.ts`, pure;
-  tested under `INTRO_MAX_MS` = 15 s). With `prefers-reduced-motion` the same shots are cuts, held a little longer,
-  and the scale switch jumps.
+  ends on exactly the overview a reset shows, in the default preset (`introSteps` in `intro/script.ts`, pure).
+- **Slow enough to read (#49):** every caption stays up, fully faded in and with the camera and the scale still, for
+  `readingMs` = max(3.5 s, 1.5 s + 0.45 s a word) (reading aloud at a calm pace, about 130 words a minute). The words
+  are those of the caption's longest translation (title and detail) at the reading level the opening starts in
+  (`captionReadingMs(level)` in `intro/captions.ts`, worked out from the texts, so a longer translation gets its time
+  without anyone typing a number; `startIntro(level)` is given the level by `IntroController` and the Help menu). A
+  beat's hold is that reading time plus whatever is still settling when the camera arrives: the caption's fade
+  (`CAPTION_FADE_MS`, 600 ms, set inline on the caption), and in the last beat the 2.5 s scale switch (`settleMs`).
+  Moves: 2.6, 3.2 and 2.8 s; there is no cap. With the present texts: about 54 s at standard, 51 s at simple, 62 s at
+  advanced (42 s at standard with `prefers-reduced-motion`: the same shots as cuts, the scale switch a jump, no fade,
+  the same reading time). Captions stay short: title and detail at most 20 words (24 at advanced) in every locale.
+  `captions.test.ts` holds every caption in every locale and level to both rules.
+- **At the viewer's own pace (#49):** Space, a tap on the scene or the card's pause button hold the opening on the
+  caption on screen (`toggleIntroPause` → the sequence's own `setSequencePaused`; "Paused" shows in the card, the
+  segment stops filling); again carries on with the rest of the hold. "Next" or → goes on to the next beat
+  (`nextBeat` → `nextStep`; after the last one the opening ends as if it ran out), ← back one (true scale again
+  before the last beat); a paused opening stays paused while stepped. `intro/pace.ts` (installed by
+  `IntroController`) listens on the window in the capture phase while it plays, so Space never also pauses the clock
+  (`ui/TimeControls`), the arrows never cycle the focus (`ui/FocusPicker`), and a tap on the canvas (`isTapClick`)
+  never flies to a body or resets; a focused button keeps its own Space. PageDown/PageUp step it through the
+  presenter's keys (#29) as well.
 - **Mechanism:** a plain `playSequence` (one step per beat, explicit `durationMs`/`holdMs`, `fit` regions for the Moon
   and the inner planets). The scale is the one non-camera cue: `intro/intro.ts` (`useIntroStore`, `watchIntro`)
   watches the sequence and switches the scale at the last beat (`useScaleStore.switchTo`). Tours (#28) should do the
   same for their own cues; there is no second player.
-- **Never in the way:** anything that interrupts a sequence ends the opening at once (a drag, wheel or pinch, a click
-  on a body, the picker, Escape, the home button, the Skip button, another sequence); an interrupted opening's
-  sequence is stopped, never left for a tour player to resume. An early end restores Everything visible (1 s ease
-  after a camera grab, a jump after Skip/Escape) unless the viewer picked a scale themselves, which is kept. The HUD
-  is dimmed while it plays (`html[data-intro="playing"]`), still usable (hover or focus brings a panel back).
+- **Never in the way:** anything that interrupts a sequence ends the opening at once (a drag, wheel or pinch, a body
+  chosen in the picker, Escape, the home button, the Skip button, another sequence); an interrupted opening's
+  sequence is stopped, never left for a tour player to resume. While it is paused a drag only looks around (a paused
+  sequence is not interrupted by input); Skip, Escape and the picker still end it. An early end restores Everything
+  visible (1 s ease after a camera grab, a jump after Skip/Escape) unless the viewer picked a scale themselves, which
+  is kept. The HUD is dimmed while it plays (`html[data-intro="playing"]`), still usable (hover or focus brings a
+  panel back).
 - **Once per device, never over a link:** it plays on arrival only when no simulation parameter is in the URL
   (`hasExplicitView`: any key of `simSearchSchema`; `lang`/`reading` do not count) and localStorage
   `orbitalia.introSeen` is unset (set when it starts; guarded, nothing is sent anywhere). A link with a view opens
@@ -888,8 +912,8 @@ export const useSimFrame = (): SimFrame // throws outside the provider
   Share, hide, then `SoundControl` (#32), Help (#43) and `LanguageMenu`), `EntryBar` (Tours, Layers → `SceneToggles`,
   Scale → `ScalePanel` (#21), Tools). Escape, the overview button and a click on empty space call `reset()`; the card's close button only clears the selection and hides the focused body's card (`useHudStore.cardClosedFor`) until another body is focused or selected, the camera staying put. The clock shows the locale's date format inside
   `<time dateTime="2026-09-24T10:35Z">`; warp labels come from the value (`ui/warp.ts` `warpParts`).
-  Keys (ignored in fields and with modifiers): Space pause, `+`/`-` next faster/slower preset (direction kept),
-  ArrowLeft/Right cycle siblings, M sound on/mute (#32); the presenter's keys (PageUp/Down, digits, letters) are #29's (see Presentation).
+  Keys (ignored in fields and with modifiers): Space pause (the opening's own pause while it plays, #49), `+`/`-` next faster/slower preset (direction kept),
+  ArrowLeft/Right cycle siblings (step the opening or a tour while one plays), M sound on/mute (#32); the presenter's keys (PageUp/Down, digits, letters) are #29's (see Presentation).
 - Page (`index.tsx`): `<UrlSync />`, then `scene/Scene.tsx` (Canvas + `SimFrameContext.Provider`, `ScaleSync`,
   `ScaleTransition`, `ReferenceFrameSync`, `SimClock`, `SpinClock`, `HoverCursor`, `Bodies`, `OrbitLines`, `Trails`, `Markers`, `Belts`, `CometTails`, `LightFront`, `Labels`, `BodyPicking`, `CameraRig`,
   `HighlightTracker`, `SceneCapture` (#33), `SoundProbe` (#32), later `Effects`; then the `LabelLayer` beside the Canvas), `ui/BodyHighlight`, and the HUD.
@@ -924,7 +948,10 @@ hover ring, name and cursor apply to labels too.
   during which a second pointer went down (`isPrimary` false; the end of a pinch, one finger lifting after the
   other, or a tap beside a resting thumb), and the click that brought the window into focus (`isFocusPress`: the
   page had no focus at `pointerdown`, or the window's `focus` event came within `FOCUS_CLICK_MS` = 500 ms before the
-  press or while it was held; the two arrive in either order).
+  press or while it was held; the two arrive in either order). The camera director asks the same tracker
+  (`isPressGrab`, #49): a press takes the camera only once it wanders past the allowance or a second finger lands.
+- **During the opening** a tap anywhere on the scene pauses it instead and never reaches the picker, and the hover
+  ring stays hidden (`intro/pace.ts`, #49).
 - **Hover**: `hoverId` follows the pointer, but never for a finger or while a button is held (an orbit drag).
   `HoverCursor` shows `cursor: pointer` for click targets (`isClickTarget` = `bodyClickAction` is not `none`).
   `ui/BodyHighlight.tsx` renders a white ring with the body's name and "Click to fly there" around the hovered target,
@@ -1529,7 +1556,7 @@ import { Hint, hintKey } from "@/primitives/hint"
   `solarSystem.scale.summary.*`), the spin modes (reusing `solarSystem.spin.hint.*`, one per mode), reverse / pause /
   play / Now / the speed presets, the point-of-view menu, the Present, Share and Layers buttons, the projector and
   high-contrast switches, the postcard's switches and button, the birthday, hunt and light buttons and the two
-  "stop the flash" buttons (#38), the sound toggle and its settings button (#32), the sky-tonight launcher and "Show me in space" (#36), the Help menu (#30), the spacecraft menu, its two switches and "Show" (#35), the tours menu and the tour card's autoplay toggle (#28), the Help button (every page) and its "more" chevron (#43), and Overview. The tour card's share button keeps its Mantine `Tooltip`: it doubles as the "Link copied" confirmation. Plain tabs (the light
+  "stop the flash" buttons (#38), the sound toggle and its settings button (#32), the sky-tonight launcher and "Show me in space" (#36), the Help menu (#30), the opening's pause and Next (#49), the spacecraft menu, its two switches and "Show" (#35), the tours menu and the tour card's autoplay toggle (#28), the Help button (every page) and its "more" chevron (#43), and Overview. The tour card's share button keeps its Mantine `Tooltip`: it doubles as the "Link copied" confirmation. Plain tabs (the light
   panel's, the birthday panel's) have none, by design. A switch that already shows a Mantine `description` under
   its label is explained in place; wrap it in `<Hint>` only to add something the description does not say (the
   projector switch) or a disabled `reason` (high contrast), as the sound panel's switches show.

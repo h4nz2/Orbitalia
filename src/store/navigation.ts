@@ -165,6 +165,14 @@ export interface Sequence {
 	readonly holdUntil: number | null
 	/** The transition that carries the current step. */
 	readonly transitionId: number
+	/**
+	 * Paused by the viewer (#49, `setSequencePaused`): a step still arrives,
+	 * then waits instead of holding, and stepping keeps the pause. Looking
+	 * around meanwhile does not interrupt it. Absent: not paused.
+	 */
+	readonly paused?: boolean
+	/** While paused at a stop with a hold: what is left of the hold, ms; resuming holds that long. */
+	readonly holdLeftMs?: number | null
 }
 
 export interface NavigationSlice {
@@ -252,6 +260,12 @@ export interface NavigationSlice {
 	nextStep: () => void
 	/** After an interruption: flies back to the current stop and carries on. */
 	resumeSequence: () => void
+	/**
+	 * Pauses (true) or resumes (false) the automatic advance of the running
+	 * sequence (#49): a paused step arrives and waits; resuming holds what was
+	 * left of its hold. Ignored without a sequence or while it is interrupted.
+	 */
+	setSequencePaused: (paused: boolean, now?: number) => void
 	stopSequence: () => void
 	/** Camera rig, every frame while a step is holding: advances once the hold is over. */
 	tickSequence: (now: number) => void
@@ -538,7 +552,11 @@ export function createNavigationSlice(
 		return { sequence: { ...sequence, phase: "interrupted", holdUntil: null } }
 	}
 
-	const playStep = (steps: readonly SequenceStep[], index: number): void => {
+	const playStep = (
+		steps: readonly SequenceStep[],
+		index: number,
+		paused = false,
+	): void => {
 		const step = steps[index]
 		const id = start(step.view, step)
 		set({
@@ -548,6 +566,7 @@ export function createNavigationSlice(
 				phase: "moving",
 				holdUntil: null,
 				transitionId: id,
+				...(paused ? { paused, holdLeftMs: null } : {}),
 			},
 		})
 	}
@@ -657,6 +676,19 @@ export function createNavigationSlice(
 			}
 			const holdMs = sequence.steps[sequence.index].holdMs
 			const hold = holdMs !== undefined && Number.isFinite(holdMs)
+			if (sequence.paused === true) {
+				// arrived while paused: the whole hold is still to come
+				set({
+					transition: null,
+					sequence: {
+						...sequence,
+						phase: "waiting",
+						holdUntil: null,
+						holdLeftMs: hold ? Math.max(0, holdMs) : null,
+					},
+				})
+				return
+			}
 			set({
 				transition: null,
 				sequence: {
@@ -672,10 +704,11 @@ export function createNavigationSlice(
 			if (transition !== null && !transition.handedOver) {
 				next.transition = { ...transition, handedOver: true }
 			}
-			// looking around while a stop waits for the presenter is part of the lesson;
-			// only an automatic advance (moving, holding) is interrupted
+			// looking around while a stop waits for the presenter (or is paused) is part
+			// of the lesson; only an automatic advance (moving, holding) is interrupted
 			if (
 				sequence !== null &&
+				sequence.paused !== true &&
 				(sequence.phase === "moving" || sequence.phase === "holding")
 			) {
 				next.sequence = { ...sequence, phase: "interrupted", holdUntil: null }
@@ -718,7 +751,11 @@ export function createNavigationSlice(
 				set({ sequence: null })
 				return
 			}
-			playStep(sequence.steps, Math.max(0, Math.trunc(index)))
+			playStep(
+				sequence.steps,
+				Math.max(0, Math.trunc(index)),
+				sequence.paused === true,
+			)
 		},
 		nextStep: () => {
 			const { sequence, goToStep } = get()
@@ -728,6 +765,42 @@ export function createNavigationSlice(
 			const { sequence } = get()
 			if (sequence === null || sequence.phase !== "interrupted") return
 			playStep(sequence.steps, sequence.index)
+		},
+		setSequencePaused: (paused, now = performance.now()) => {
+			const { sequence } = get()
+			if (
+				sequence === null ||
+				sequence.phase === "interrupted" ||
+				(sequence.paused === true) === paused
+			) {
+				return
+			}
+			if (paused) {
+				const holding = sequence.phase === "holding"
+				set({
+					sequence: {
+						...sequence,
+						paused: true,
+						phase: holding ? "waiting" : sequence.phase,
+						holdUntil: null,
+						holdLeftMs: holding
+							? Math.max(0, (sequence.holdUntil ?? now) - now)
+							: null,
+					},
+				})
+				return
+			}
+			const left = sequence.holdLeftMs ?? null
+			set({
+				sequence: {
+					...sequence,
+					paused: false,
+					holdLeftMs: null,
+					...(sequence.phase === "waiting" && left !== null
+						? { phase: "holding", holdUntil: now + left }
+						: {}),
+				},
+			})
 		},
 		stopSequence: () => {
 			if (get().sequence !== null) set({ sequence: null })

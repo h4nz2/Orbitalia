@@ -10,18 +10,25 @@
  * switches to Everything visible. A scale the viewer picked mid-way is theirs
  * and is kept.
  *
+ * Own pace (#49): Space, a tap on the scene or the pause button holds the
+ * opening on the caption on screen (`toggleIntroPause`, the sequence's own
+ * pause: looking around meanwhile does not end it), Next or the right arrow
+ * goes on to the next beat (`nextBeat`), the left arrow back (`previousBeat`).
+ *
  * Status: `off` (nothing to show), `playing` (the sequence runs; captions and
  * the Skip button are up), `handover` (it ended; the hints fade and Earth
  * pulses until the viewer does something).
  */
 import { create } from "zustand"
 
+import { DEFAULT_READING_LEVEL, type ReadingLevel } from "@/i18n"
 import { readPreference, writePreference } from "@/i18n/storage"
 import type { SequenceStep } from "@/store/navigation"
 import { useScaleStore } from "@/store/scale"
 import { useSimStore, type SimState } from "@/store/sim"
 import type { SimSearch } from "@/store/simSearch"
 
+import { captionReadingMs } from "./captions"
 import {
 	HANDOVER_SCALE,
 	INTRO_SCALE,
@@ -52,6 +59,8 @@ export interface IntroState {
 	steps: readonly SequenceStep[] | null
 	/** The beat on screen (index into `INTRO_BEATS`). */
 	beat: number
+	/** Held on the caption on screen by the viewer (#49). */
+	paused: boolean
 	reducedMotion: boolean
 	/** How the last opening ended, while handing over. */
 	ended: IntroEnd | null
@@ -65,6 +74,7 @@ export const useIntroStore = create<IntroState>()(() => ({
 	status: "off",
 	steps: null,
 	beat: 0,
+	paused: false,
 	reducedMotion: false,
 	ended: null,
 	pulse: false,
@@ -101,9 +111,12 @@ const withOwnScale = (change: () => void) => {
 /**
  * Plays the opening from the start (first visit, or "Play the opening again"):
  * back to a known state (overview, Sun-centred, nothing selected), true scale,
- * then the sequence. Marks the opening as seen on this device.
+ * then the sequence, its captions timed for `readingLevel`. Marks the opening
+ * as seen on this device.
  */
-export function startIntro(): void {
+export function startIntro(
+	readingLevel: ReadingLevel = DEFAULT_READING_LEVEL,
+): void {
 	if (useIntroStore.getState().status === "playing") return
 	const reducedMotion = prefersReducedMotion()
 	const sim = useSimStore.getState()
@@ -111,11 +124,13 @@ export function startIntro(): void {
 	const steps = introSteps({
 		earthAzimuthDeg: sunlitAzimuthDeg(sim.simTimeJD),
 		reducedMotion,
+		readMs: captionReadingMs(readingLevel),
 	})
 	useIntroStore.setState({
 		status: "playing",
 		steps,
 		beat: 0,
+		paused: false,
 		reducedMotion,
 		ended: null,
 		pulse: false,
@@ -134,6 +149,7 @@ export function endIntro(how: IntroEnd, now: number = performance.now()): void {
 	useIntroStore.setState({
 		status: "handover",
 		steps: null,
+		paused: false,
 		ended: how,
 		pulse: false,
 		hints: true,
@@ -168,6 +184,34 @@ export function skipIntro(): void {
 	else endIntro("stopped")
 }
 
+/** The running opening's sequence, or null (not playing, or not started yet). */
+const ownSequence = () => {
+	const { status, steps } = useIntroStore.getState()
+	const { sequence } = useSimStore.getState()
+	return status === "playing" && sequence !== null && sequence.steps === steps
+		? sequence
+		: null
+}
+
+/** Space, a tap on the scene, the pause button: holds the opening on this caption, or carries on. */
+export function toggleIntroPause(now: number = performance.now()): void {
+	const sequence = ownSequence()
+	if (sequence === null) return
+	useSimStore.getState().setSequencePaused(sequence.paused !== true, now)
+}
+
+/** Next (and the right arrow): on to the next beat now; after the last one the opening ends. A pause holds. */
+export function nextBeat(): void {
+	if (ownSequence() !== null) useSimStore.getState().nextStep()
+}
+
+/** The left arrow: back to the beat before (the first one stays). */
+export function previousBeat(): void {
+	const sequence = ownSequence()
+	if (sequence === null) return
+	useSimStore.getState().goToStep(Math.max(0, sequence.index - 1))
+}
+
 /** Leaving the page: nothing of the opening survives. */
 export function cancelIntro(): void {
 	const intro = useIntroStore.getState()
@@ -179,6 +223,7 @@ export function cancelIntro(): void {
 		status: "off",
 		steps: null,
 		beat: 0,
+		paused: false,
 		ended: null,
 		pulse: false,
 		hints: false,
@@ -225,13 +270,15 @@ export function onSimChange(
 			endIntro("interrupted", now)
 			return
 		}
+		const paused = sequence.paused === true
+		if (paused !== intro.paused) useIntroStore.setState({ paused })
 		if (sequence.index !== intro.beat) {
 			useIntroStore.setState({ beat: sequence.index })
-			if (sequence.index === SCALE_BEAT) {
+			// the last beat draws everything bigger; stepping back before it, true scale again
+			const target = sequence.index >= SCALE_BEAT ? HANDOVER_SCALE : INTRO_SCALE
+			if (useScaleStore.getState().targetId !== target) {
 				const ms = intro.reducedMotion ? 0 : SCALE_REVEAL_MS
-				withOwnScale(() =>
-					useScaleStore.getState().switchTo(HANDOVER_SCALE, now, ms),
-				)
+				withOwnScale(() => useScaleStore.getState().switchTo(target, now, ms))
 			}
 		}
 		return

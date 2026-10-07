@@ -64,8 +64,8 @@
 				"simple": "Úvodní film"
 			},
 			"what": {
-				"standard": "Čtrnáct sekund, které začnou těsně u Země v její skutečné velikosti a vzdalují se, dokud Země není menší než pixel; pak se vše nakreslí větší, abys to viděl.",
-				"simple": "Krátký film, který letí od Země až k celé sluneční soustavě."
+				"standard": "Asi minuta, která začne těsně u Země v její skutečné velikosti a vzdaluje se, dokud Země není menší než pixel; pak se vše nakreslí větší, abys to viděl. Každý text zůstane na obrazovce dost dlouho, aby se dal přečíst nahlas.",
+				"simple": "Film, který letí od Země až k celé sluneční soustavě. Jde pomalu, abys stihl přečíst každé slovo."
 			},
 			"why": {
 				"standard": "Ukáže smysl aplikace dřív, než kdokoli přečte slovo: vesmír je obrovský a skoro prázdný. Funguje i bez zvuku.",
@@ -74,12 +74,16 @@
 			"how": {
 				"standard": [
 					"Přehraje se jednou, při první návštěvě; „Přeskočit úvod“, tažení nebo Esc ho kdykoli ukončí.",
+					"Chceš u textu zůstat? Stiskni mezerník, klepni na scénu nebo na tlačítko pauzy; znovu, a pokračuje se. Když je úvod pozastavený, můžeš otáčet pohledem a neskončí.",
+					"„Dál“ (nebo šipka doprava) přejde hned na další část; když je pozastavený, po jedné části.",
 					"Po prvním úvodu se aplikace jednou zeptá, jestli se chceš rychle podívat, co tu jde (viz „Rychlý pohled“).",
 					"Chceš ho vidět znovu? Otevři šipku vedle „Nápověda“ a vyber „Přehrát úvod znovu“.",
 					"„Ukázat, jak se pohybovat“ ve stejné nabídce vrátí nápovědu k tažení, přibližování a klikání."
 				],
 				"simple": [
 					"Přehraje se, když přijdeš poprvé.",
+					"Stiskni mezerník nebo ťukni na obrázek a úvod se zastaví. Znovu, a jede dál.",
+					"„Dál“ ukáže další část.",
 					"Chceš ho vidět znovu? Stiskni šipku vedle „Nápověda“ a pak „Přehrát úvod znovu“."
 				]
 			}

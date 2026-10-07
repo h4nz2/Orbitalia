@@ -64,8 +64,8 @@
 				"simple": "The start film"
 			},
 			"what": {
-				"standard": "Fourteen seconds that start close on Earth at its real size and pull back until Earth is smaller than a pixel, then draw everything bigger so you can see it.",
-				"simple": "A short film that flies from Earth out to the whole solar system."
+				"standard": "About a minute that starts close on Earth at its real size and pulls back until Earth is smaller than a pixel, then draws everything bigger so you can see it. Every caption stays up long enough to read it aloud.",
+				"simple": "A film that flies from Earth out to the whole solar system. It goes slowly, so you can read every word."
 			},
 			"why": {
 				"standard": "It makes the point of the app before anyone reads a word: space is huge and almost empty. It works without sound.",
@@ -74,12 +74,16 @@
 			"how": {
 				"standard": [
 					"It plays once, on the first visit; “Skip intro”, a drag or Esc ends it at any time.",
+					"To stay on a caption, press Space, tap the scene or press the pause button; do it again to carry on. While it is paused you can turn the view without ending it.",
+					"“Next” (or the right arrow key) goes straight on to the next part; while paused, one part at a time.",
 					"After the first opening the app asks once whether you want a quick look at what you can do (see “A quick look”).",
 					"To see it again, open the arrow next to Help and choose “Play the opening again”.",
 					"“Show how to move around” in the same menu brings back the hints for dragging, zooming and clicking."
 				],
 				"simple": [
 					"It plays the first time you come.",
+					"Press Space or tap the picture to stop it. Do it again to go on.",
+					"“Next” shows the next part.",
 					"To watch it again, press the arrow next to Help, then “Play the opening again”."
 				]
 			}
