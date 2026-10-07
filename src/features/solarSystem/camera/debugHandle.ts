@@ -10,6 +10,7 @@ import { useSimStore } from "@/store/sim"
 import { useViewHistoryStore } from "@/store/viewHistory"
 
 import { placeRing, type RingPlacement } from "../scene/highlight"
+import { projectDisplayKm, type ScreenPoint } from "../spacecraft/screen"
 import type { CameraDirector, CameraSnapshot } from "./director"
 
 export interface OrbitaliaDebugHandle {
@@ -24,6 +25,11 @@ export interface OrbitaliaDebugHandle {
 	 * top left, and its drawn radius), or null when it is off screen (#16).
 	 */
 	screenOf: (id: string) => RingPlacement | null
+	/**
+	 * Where a spacecraft is drawn on the canvas right now (CSS px from the
+	 * canvas's top left), or null when it is not drawn or behind the camera (#57).
+	 */
+	craftScreenOf: (id: string) => { x: number; y: number } | null
 }
 
 declare global {
@@ -54,6 +60,22 @@ export function exposeDebugHandle(
 				canvas.clientWidth,
 				canvas.clientHeight,
 			)
+		},
+		craftScreenOf: (id) => {
+			const at = new Float64Array(3)
+			if (canvas === undefined || director.crafts === null) return null
+			if (director.crafts.locate(id, at) < 0) return null
+			director.camera.updateMatrixWorld()
+			const point: ScreenPoint = { x: 0, y: 0, depth: 0 }
+			const front = projectDisplayKm(
+				director.frame,
+				at,
+				director.camera,
+				canvas.clientWidth,
+				canvas.clientHeight,
+				point,
+			)
+			return front ? { x: point.x, y: point.y } : null
 		},
 	}
 	window.__orbitalia = handle

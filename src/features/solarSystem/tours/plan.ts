@@ -13,6 +13,7 @@
  * sets one, and restored from the latest one when a stop is re-entered.
  */
 import { bodies, bodyById, type Body } from "@/data"
+import { spacecraftById } from "@/data/spacecraft"
 import type { Tour, TourSpeed, TourStop, TourTime } from "@/data/tours"
 import { AU_KM, dateToJD, isScalePresetId, type ScalePresetId } from "@/sim"
 import { truePositionAt } from "@/sim/light"
@@ -21,6 +22,7 @@ import {
 	HOME_SHOT,
 	OVERVIEW,
 	OVERVIEW_BODY_ID,
+	followedCraftId,
 	type CameraShot,
 	type SequenceStep,
 	type View,
@@ -66,12 +68,27 @@ export const DEFAULT_ELEVATION_DEG = 15
 
 const RAD = 180 / Math.PI
 
-/** The view a stop shows: the overview, or a known body (unknown ids: the overview). */
-export function stopView(stop: Pick<TourStop, "view">): View {
+/**
+ * The view a stop shows: a spacecraft followed (#57, its `follow`), the
+ * overview, or a known body (unknown ids: the overview).
+ */
+export function stopView(stop: Pick<TourStop, "view" | "follow">): View {
+	if (stop.follow !== undefined && spacecraftById.has(stop.follow)) {
+		return {
+			kind: "craft",
+			id: stop.follow,
+			anchorId: bodyById.has(stop.view) ? stop.view : OVERVIEW_BODY_ID,
+		}
+	}
 	return stop.view !== "overview" && bodyById.has(stop.view)
 		? { kind: "body", id: stop.view }
 		: OVERVIEW
 }
+
+/** The spacecraft a stop follows (#57), if any. */
+export const stopCraft = (
+	stop: Pick<TourStop, "view" | "follow">,
+): string | null => followedCraftId(stopView(stop))
 
 /** The body a stop is centred on (the Sun for the overview). */
 export const stopBodyId = (stop: Pick<TourStop, "view">): string => {
@@ -89,7 +106,7 @@ export function stopFrame(stop: Pick<TourStop, "view" | "frame">): string {
 
 /** The body a stop selects: its `select` (null: nothing), else the body in view (nothing in the overview). */
 export function stopSelection(
-	stop: Pick<TourStop, "view" | "select">,
+	stop: Pick<TourStop, "view" | "select" | "follow">,
 ): string | null {
 	if (stop.select === null) return null
 	if (stop.select !== undefined) {

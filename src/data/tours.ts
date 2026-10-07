@@ -135,6 +135,12 @@ export const TourStop = z
 		layers: TourLayers.optional(),
 		/** The body to select (its card, label and trail); default: the body in view. null: nothing. */
 		select: z.string().nullable().optional(),
+		/**
+		 * Ride along with this spacecraft (#57, an id of src/data/spacecraft.json):
+		 * the camera follows it, its card is shown; `view` names the body whose
+		 * neighbourhood it is in. Only for this stop.
+		 */
+		follow: z.string().optional(),
 		/** A button to another page of the app. */
 		link: z.enum(TOUR_LINKS).optional(),
 		/** With autoplay: seconds to stay after arriving (default: from the narration's length). */

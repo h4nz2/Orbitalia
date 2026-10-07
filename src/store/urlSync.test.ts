@@ -331,6 +331,55 @@ describe("urlSync helpers", () => {
 		})
 	})
 
+	it("writes and reads following a spacecraft (#57): craft, follow and its neighbourhood", () => {
+		const taken = state({
+			view: { kind: "craft", id: "voyager1", anchorId: "jupiter" },
+			shot: { azimuthDeg: -27.5, elevationDeg: 68.4, distance: 3.21 },
+			timeWarp: 172800,
+		})
+		const search = searchFromState(taken, {})
+		expect(search).toMatchObject({
+			craft: "voyager1",
+			follow: true,
+			focus: "jupiter",
+			cam: "-27.5_68.4_3.21",
+			warp: 172800,
+		})
+		expect(search.at).toBeUndefined()
+		const parsed = simSearchSchema.parse(search)
+		expect(viewFromSearch(parsed)).toEqual({
+			view: taken.view,
+			shot: taken.shot,
+			selectedId: null,
+		})
+		expect(waypointFromSearch(parsed)).toEqual({
+			kind: "follow",
+			craftId: "voyager1",
+			shot: taken.shot,
+		})
+		// a follow link without its neighbourhood waits at the Sun
+		expect(viewFromSearch({ craft: "juno", follow: true }).view).toEqual({
+			kind: "craft",
+			id: "juno",
+			anchorId: "sun",
+		})
+		// `craft` alone is only an instruction (select and show), unknown craft nothing
+		expect(viewFromSearch({ craft: "voyager1" }).view).toEqual(OVERVIEW)
+		expect(viewFromSearch({ craft: "enterprise", follow: true }).view).toEqual(
+			OVERVIEW,
+		)
+		expect(simSearchSchema.parse({ follow: "yes" }).follow).toBeUndefined()
+		// not following: neither is written
+		const body = searchFromState(
+			state({ view: { kind: "body", id: "io" } }),
+			{},
+		)
+		expect(body.craft).toBeUndefined()
+		expect(body.follow).toBeUndefined()
+		expect(sameSearch(search, { ...search, follow: undefined })).toBe(false)
+		expect(sameSearch(search, { ...search, craft: "juno" })).toBe(false)
+	})
+
 	it("seeds the wall clock on mount when the URL carries no t", () => {
 		const now = new Date("2026-09-24T12:00:00Z")
 		expect(mountState({}, now)).toEqual({ simTimeJD: dateToJD(now) })

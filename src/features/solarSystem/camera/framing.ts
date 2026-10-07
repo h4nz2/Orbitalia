@@ -36,6 +36,16 @@ export const CAMERA_MAX_DISTANCE = toUnits(1e11)
 export const MIN_DISTANCE_RADII = 1.2
 /** Default distance of a focused body, in its drawn radii. */
 export const FRAMING_RADII = 6
+/**
+ * A followed spacecraft's `distance: 1` (#57), scene units: a million drawn
+ * km in every preset. The camera keeps its own distance from a craft (it is
+ * not a multiple of the neighbourhood's size), so it never jumps when the
+ * craft leaves a planet behind; a scale change rescales it with the drawing
+ * round the craft (`craftLengthScale` in src/sim/follow.ts).
+ */
+export const CRAFT_FRAMING_DISTANCE = toUnits(1e6)
+/** Closest dolly to a followed spacecraft, scene units (100 km): it has no size to stop at. */
+export const CRAFT_MIN_DISTANCE = toUnits(100)
 export const CAMERA_SMOOTH_TIME_S = 0.4
 /**
  * Room around the planetary system in the overview, so the HUD panels at the
@@ -155,7 +165,8 @@ export const viewRadius = (view: View, frame: FramingFrame): number =>
  * system for the overview and for a point in interplanetary space (a point
  * anchored to the Sun, #15), `FRAMING_RADII` drawn radii of the body (or of
  * the anchor of a point in its neighbourhood) otherwise, so Jupiter and
- * Mercury fill the same share of the screen.
+ * Mercury fill the same share of the screen; a fixed distance for a
+ * followed spacecraft (`CRAFT_FRAMING_DISTANCE`).
  */
 export function defaultDistance(
 	view: View,
@@ -163,6 +174,7 @@ export function defaultDistance(
 	fovDeg: number,
 	aspect: number,
 ): number {
+	if (view.kind === "craft") return CRAFT_FRAMING_DISTANCE
 	if (
 		view.kind === "overview" ||
 		(view.kind === "point" && view.anchorId === sun.id)
@@ -178,6 +190,10 @@ export function defaultDistance(
  * (the body whose neighbourhood it is in): around the Sun that stops a dolly
  * into empty interplanetary space at a sensible distance instead of creeping
  * towards the pivot forever, near Mercury it lets the camera come close.
+ * A followed spacecraft has a fixed one, which does not change with the
+ * neighbourhood it flies through (#57).
  */
 export const minViewDistance = (view: View, frame: FramingFrame): number =>
-	minDollyDistance(viewRadius(view, frame))
+	view.kind === "craft"
+		? CRAFT_MIN_DISTANCE
+		: minDollyDistance(viewRadius(view, frame))

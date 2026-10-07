@@ -533,6 +533,32 @@
 				]
 			}
 		},
+		"rideAlong": {
+			"title": {
+				"standard": "Let se sondou",
+				"simple": "Leť se sondou"
+			},
+			"what": {
+				"standard": "Sleduj kosmickou sondu a kamera s ní zůstane, zatímco běží čas, v jakékoli rychlosti, dopředu i dozadu: Voyager míjí Jupiter, Juno přilétá, Parker se řítí kolem Venuše. „Podívat se“ u průletu všechno připraví za tebe.",
+				"simple": "Kamera letí spolu s kosmickou sondou. Uvidíš, jak kolem ní proletí planeta."
+			},
+			"why": {
+				"standard": "Gravitace planety ohne dráhu sondy a vymrští ji k dalšímu světu. Když letíš s ní, vidíš, jak kolem proletí Jupiter se svými měsíci a dráha se kolem něj ohne: právě tímhle trikem se Voyager dostal k vnějším planetám.",
+				"simple": "Planeta umí sondu přitáhnout a hodit dál, rychleji, jako prak. Když letíš s ní, uvidíš to na vlastní oči."
+			},
+			"how": {
+				"standard": [
+					"Otevři vpravo dole Nástroje, vyber „Skutečné kosmické sondy“ a stiskni tlačítko sledování vedle sondy, nebo „Sledovat“ na její kartičce.",
+					"Na kartičce „Podívat se“ vedle průletu nebo příletu přesune čas těsně před něj a přehraje ho asi za půl minuty.",
+					"Tažením otáčíš, kolečkem přibližuješ; vlevo nahoře je vidět, co sleduješ. Domeček, Esc, výběr světa nebo Zpět sledování ukončí."
+				],
+				"simple": [
+					"Stiskni vpravo dole Nástroje a vyber „Skutečné kosmické sondy“.",
+					"Vyber Voyager 1 a stiskni „Podívat se“ vedle Jupiteru.",
+					"Dívej se, jak Jupiter proletí kolem. Domečkem to ukončíš."
+				]
+			}
+		},
 		"dictionary": {
 			"title": {
 				"standard": "Obrazový slovník",

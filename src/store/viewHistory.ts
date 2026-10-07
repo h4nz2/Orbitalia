@@ -41,9 +41,9 @@ export interface TourAt {
 }
 
 /**
- * Where an entry of the history returns to. A new kind of view (#57: following
- * a spacecraft) is one more member here, a case in `sameWaypoint` and
- * `waypointOf`, and one in the solar system's `returnTo`.
+ * Where an entry of the history returns to. A new kind of view is one more
+ * member here, a case in `sameWaypoint` and `waypointOf`, and one in the
+ * solar system's `returnTo` (as following a spacecraft is, #57).
  */
 export type Waypoint =
 	/**
@@ -51,6 +51,13 @@ export type Waypoint =
 	 * is the tour's own move (#28), which restores the stop's whole scene.
 	 */
 	| { readonly kind: "tourStop"; readonly tour: TourAt }
+	/** Riding along with a spacecraft (#57), and the camera round it. */
+	| {
+			readonly kind: "follow"
+			readonly craftId: string
+			/** The camera as it last came to rest; null: not known (it was moving). */
+			readonly shot: CameraShot | null
+	  }
 	/** What was in view, and from where. */
 	| {
 			readonly kind: "view"
@@ -72,7 +79,19 @@ const sameTourAt = (a: TourAt | null, b: TourAt | null): boolean =>
 
 export function sameWaypoint(a: Waypoint, b: Waypoint): boolean {
 	if (a.kind === "tourStop" || b.kind === "tourStop") {
-		return a.kind === b.kind && sameTourAt(a.tour, b.tour)
+		return (
+			a.kind === "tourStop" &&
+			b.kind === "tourStop" &&
+			sameTourAt(a.tour, b.tour)
+		)
+	}
+	if (a.kind === "follow" || b.kind === "follow") {
+		return (
+			a.kind === "follow" &&
+			b.kind === "follow" &&
+			a.craftId === b.craftId &&
+			sameShot(a.shot, b.shot)
+		)
 	}
 	return (
 		sameView(a.view, b.view) &&
@@ -84,7 +103,10 @@ export function sameWaypoint(a: Waypoint, b: Waypoint): boolean {
 	)
 }
 
-/** The scene as a waypoint: a tour stop while the camera is on a menu tour or sky event, else the view. */
+/**
+ * The scene as a waypoint: a tour stop while the camera is on a menu tour or
+ * sky event, a spacecraft while following one (#57), else the view.
+ */
 export function waypointOf(
 	sim: Pick<
 		NavigationSlice,
@@ -103,6 +125,9 @@ export function waypointOf(
 		sim.sequence.steps === tour.steps &&
 		sim.sequence.phase !== "interrupted"
 	if (open !== null && onTour) return { kind: "tourStop", tour: open }
+	if (sim.view.kind === "craft") {
+		return { kind: "follow", craftId: sim.view.id, shot: sim.shot }
+	}
 	return {
 		kind: "view",
 		view: sim.view,

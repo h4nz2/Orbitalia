@@ -533,6 +533,32 @@
 				]
 			}
 		},
+		"rideAlong": {
+			"title": {
+				"standard": "Voyager avec une sonde",
+				"simple": "Vole avec une sonde"
+			},
+			"what": {
+				"standard": "Suis une sonde spatiale et la caméra reste avec elle pendant que le temps passe, à n’importe quelle vitesse, en avant comme en arrière : Voyager frôlant Jupiter, Juno qui arrive, Parker qui plonge près de Vénus. « Regarder » à côté d’un survol prépare tout pour toi.",
+				"simple": "La caméra vole avec une sonde spatiale. Tu vois une planète passer à côté d’elle."
+			},
+			"why": {
+				"standard": "La gravité d’une planète courbe la route d’une sonde et la lance vers le monde suivant. En voyageant avec elle, tu vois Jupiter et ses lunes défiler et la trajectoire se courber autour : l’astuce qui a mené Voyager jusqu’aux planètes lointaines.",
+				"simple": "Une planète peut attirer une sonde et la relancer plus vite, comme une fronde. En volant avec elle, tu peux le voir."
+			},
+			"how": {
+				"standard": [
+					"Ouvre Outils en bas à droite, choisis « Sondes spatiales réelles » et appuie sur le bouton de suivi à côté d’une sonde, ou sur « Suivre » dans sa fiche.",
+					"Dans la fiche, « Regarder » à côté d’un survol ou d’une arrivée va juste avant et le montre en une demi-minute environ.",
+					"Fais glisser pour tourner et la molette pour zoomer pendant le voyage ; en haut à gauche, tu vois ce que tu suis. La maison, Échap, le choix d’un monde ou Retour l’arrêtent."
+				],
+				"simple": [
+					"Appuie sur Outils en bas à droite et choisis « Sondes spatiales réelles ».",
+					"Choisis Voyager 1, puis appuie sur « Regarder » à côté de Jupiter.",
+					"Regarde Jupiter passer. Appuie sur la maison pour arrêter."
+				]
+			}
+		},
 		"dictionary": {
 			"title": {
 				"standard": "Le dictionnaire illustré",

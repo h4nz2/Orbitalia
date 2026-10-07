@@ -114,7 +114,7 @@ function Scene() {
 						extension={craftLabels}
 					/>
 					<BodyPicking />
-					<CameraRig />
+					<CameraRig craftFrame={craftFrame} />
 					<HighlightTracker />
 					<IntroPulseTracker />
 					<HuntSpotTracker />

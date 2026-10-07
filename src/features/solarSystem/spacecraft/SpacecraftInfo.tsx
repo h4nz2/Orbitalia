@@ -2,19 +2,23 @@
  * The info panel for the selected spacecraft (issue #35), shown in place of
  * the body info: what it is, whether it still works, when it launched, where
  * it is now and how long its signal takes to reach us, its milestones (each
- * one a trip in time), and a button that flies the view to it. Every number
- * comes from true positions at the simulation time (10 Hz).
+ * one a trip in time, a flyby or arrival one to watch, #57), a button that
+ * flies the view to it and one that rides along with it (#57). Every number
+ * comes from true positions at the instant the drawing shows (10 Hz): the
+ * simulation time, except in the slow motion of a planet passage (#56);
+ * while following, the card adds the nearest planet and how far it is.
  */
 import { useMemo, type ReactNode } from "react"
 import {
 	Badge,
 	Button,
 	CloseButton,
+	Group,
 	ScrollArea,
 	Text,
 	UnstyledButton,
 } from "@mantine/core"
-import { IconFocus2 } from "@tabler/icons-react"
+import { IconCurrentLocation, IconEye, IconFocus2 } from "@tabler/icons-react"
 
 import {
 	spacecraftAsOf,
@@ -32,13 +36,21 @@ import {
 import { useBodyName } from "@/i18n/bodies"
 import { useSpacecraftText } from "@/i18n/spacecraft"
 import { kmToAu } from "@/sim"
+import { isWatchedKind } from "@/sim/follow"
 import { eventsWithJD, isoToJD } from "@/sim/spacecraft"
 import { useScaleStore } from "@/store/scale"
+import { useSimStore } from "@/store/sim"
 import { useSpacecraftStore } from "@/store/spacecraft"
 
 import useThrottledSimTime from "../scene/useThrottledSimTime"
 import { formatDayUTC } from "../ui/timeTravel"
-import { craftFacts, showCraft, showEvent } from "./facts"
+import {
+	craftFacts,
+	followCraft,
+	showCraft,
+	showEvent,
+	watchEvent,
+} from "./facts"
 import { formatDuration } from "../light/lightTravel"
 import { eventLabel } from "./text"
 
@@ -86,10 +98,15 @@ const Fact = ({
 
 const asOfJD = isoToJD(`${spacecraftAsOf}T00:00Z`)
 
+/** True while the camera rides along with craft `id` (#57). */
+const useFollowing = (id: string): boolean =>
+	useSimStore((state) => state.view.kind === "craft" && state.view.id === id)
+
 const Milestones = ({ craft }: { craft: Spacecraft }) => {
 	const i18n = useI18n()
 	const bodyName = useBodyName()
 	const scale = useScaleStore((state) => state.scale)
+	const ready = useSpacecraftStore((state) => state.trajectoriesReady)
 	const { t, formatLocale } = i18n
 	const events = useMemo(
 		() => [
@@ -111,17 +128,21 @@ const Milestones = ({ craft }: { craft: Spacecraft }) => {
 			<ul className={classes.milestones}>
 				{events.map((event) => {
 					const date = formatDayUTC(new Date(event.date), formatLocale)
+					const label = eventLabel(event, i18n, bodyName)
 					return (
-						<li key={`${event.kind}-${event.date}`}>
+						<li
+							key={`${event.kind}-${event.date}`}
+							className={classes.milestoneRow}
+						>
 							<UnstyledButton
 								className={classes.milestone}
 								data-event={event.kind}
-								aria-label={`${eventLabel(event, i18n, bodyName)}, ${t("solarSystem.spacecraft.goTo", { date })}`}
+								aria-label={`${label}, ${t("solarSystem.spacecraft.goTo", { date })}`}
 								onClick={() => showEvent(craft, event, scale)}
 							>
 								<span className={classes.milestoneDate}>{date}</span>
 								<span className={classes.milestoneText}>
-									{eventLabel(event, i18n, bodyName)}
+									{label}
 									{"distanceKm" in event &&
 										event.distanceKm !== undefined &&
 										// a flyby's distance from the centre is a detail for the older readers
@@ -139,6 +160,29 @@ const Milestones = ({ craft }: { craft: Spacecraft }) => {
 									</Badge>
 								)}
 							</UnstyledButton>
+							{isWatchedKind(event.kind) && (
+								<Hint text={t("solarSystem.spacecraft.hint.watch")}>
+									<Button
+										size="compact-xs"
+										variant="subtle"
+										color="cyan"
+										className={classes.watch}
+										data-watch={event.kind}
+										leftSection={<IconEye size={12} />}
+										aria-label={t("solarSystem.spacecraft.watchEvent", {
+											event: label,
+										})}
+										disabled={!ready}
+										onClick={() => {
+											if (!watchEvent(craft, event, scale)) {
+												showEvent(craft, event, scale)
+											}
+										}}
+									>
+										{t("solarSystem.spacecraft.watch")}
+									</Button>
+								</Hint>
+							)}
 						</li>
 					)
 				})}
@@ -156,9 +200,10 @@ const CraftPanel = ({ craft }: { craft: Spacecraft }) => {
 	const ready = useSpacecraftStore((state) => state.trajectoriesReady)
 	const scale = useScaleStore((state) => state.scale)
 	const facts = useMemo(
-		() => (ready ? craftFacts(craft, jd) : null),
-		[craft, jd, ready],
+		() => (ready ? craftFacts(craft, jd, scale) : null),
+		[craft, jd, ready, scale],
 	)
+	const following = useFollowing(craft.id)
 	const day = (iso: string) => formatDayUTC(new Date(iso), formatLocale)
 	const phase =
 		facts?.phase ?? (jd < isoToJD(craft.launch) ? "planned" : "active")
@@ -245,6 +290,14 @@ const CraftPanel = ({ craft }: { craft: Spacecraft }) => {
 						>
 							{formatSpeed(facts.speedKmS, i18n)}
 						</Fact>
+						{following && (
+							<Fact label={t("solarSystem.spacecraft.nearest")} id="nearest">
+								{t("solarSystem.spacecraft.nearestValue", {
+									planet: bodyName(facts.nearestPlanetId),
+									distance: formatDistance(facts.nearestPlanetKm, i18n),
+								})}
+							</Fact>
+						)}
 					</>
 				)}
 			</dl>
@@ -259,19 +312,43 @@ const CraftPanel = ({ craft }: { craft: Spacecraft }) => {
 			{known && facts.predicted && (
 				<p className={classes.note}>{t("solarSystem.spacecraft.predicted")}</p>
 			)}
-			<Hint text={t("solarSystem.spacecraft.showHint", { name: text.name })}>
-				<Button
-					size="compact-sm"
-					variant="light"
-					color="cyan"
-					mt={6}
-					leftSection={<IconFocus2 size={14} />}
-					disabled={!known}
-					onClick={() => showCraft(craft.id, scale)}
+			<Group gap="xs" mt={6}>
+				<Hint text={t("solarSystem.spacecraft.showHint", { name: text.name })}>
+					<Button
+						size="compact-sm"
+						variant="light"
+						color="cyan"
+						leftSection={<IconFocus2 size={14} />}
+						disabled={!known}
+						onClick={() => showCraft(craft.id, scale)}
+					>
+						{t("solarSystem.spacecraft.show")}
+					</Button>
+				</Hint>
+				<Hint
+					text={t("solarSystem.spacecraft.hint.follow", { name: text.name })}
+					reason={
+						known || following
+							? undefined
+							: t("solarSystem.spacecraft.reason.follow")
+					}
 				>
-					{t("solarSystem.spacecraft.show")}
-				</Button>
-			</Hint>
+					<Button
+						size="compact-sm"
+						variant={following ? "filled" : "light"}
+						color="cyan"
+						leftSection={<IconCurrentLocation size={14} />}
+						aria-pressed={following}
+						data-follow={craft.id}
+						disabled={!known && !following}
+						onClick={() => followCraft(craft.id, scale)}
+					>
+						{following
+							? t("solarSystem.spacecraft.following")
+							: t("solarSystem.spacecraft.follow")}
+					</Button>
+				</Hint>
+			</Group>
 			<ScrollArea.Autosize
 				mah="min(9rem, 20dvh)"
 				type="auto"

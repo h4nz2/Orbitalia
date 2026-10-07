@@ -1,5 +1,6 @@
 /**
  * Search params of `/solar_system?focus=io&at=<x_y_z>&sel=europa&frame=io&cam=<az_el_dist>&t=<jd>&warp=<n>&moons=false&scale=trueScale`
+ * (`craft=voyager1&follow=true` while following a spacecraft, #57)
  * (the layer switches `orbits`, `labels`, `moons`, `markers` alike; `paused`,
  * `present`, `contrast` for #29).
  *
@@ -85,8 +86,12 @@ export const simSearchSchema = z.object({
 	// only an instruction, never written back
 	look: z.literal("play").optional().catch(undefined),
 	// `?craft=<spacecraft id>` selects that spacecraft (#35) and flies to it on
-	// arrival (the help page's link, #43); only an instruction, never written back
+	// arrival (the help page's link, #43); only an instruction, never written
+	// back. With `follow=true` (#57) the camera follows it: that is the view
+	// itself, written while following (`focus` then names the neighbourhood it
+	// is in, so the scene opens there before the trajectories have loaded)
 	craft: z.string().optional().catch(undefined),
+	follow: layerSwitch,
 	// the scavenger hunt (#34): `true` opens the chooser, a hunt id or question
 	// ids joined by "." play that hunt (resolveHunt in features/solarSystem/hunt);
 	// kept on every navigation of the page (the route's retainSearchParams)

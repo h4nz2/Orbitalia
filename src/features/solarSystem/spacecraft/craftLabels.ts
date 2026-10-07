@@ -11,6 +11,8 @@
  */
 import type { PerspectiveCamera } from "three"
 
+import { followedCraftId } from "@/store/navigation"
+import { useSimStore } from "@/store/sim"
 import { useSpacecraftStore } from "@/store/spacecraft"
 
 import {
@@ -49,6 +51,8 @@ export function createCraftLabels(
 		fill(layout: LabelLayout, camera: PerspectiveCamera) {
 			const { showSpacecraft, selectedCraftId, hoverCraftId } =
 				useSpacecraftStore.getState()
+			// the craft the camera follows (#57) is named like the selected one
+			const followed = followedCraftId(useSimStore.getState().view)
 			const { eligible, visible, opacity } = layout
 			const n = frame.bodies.length
 			for (let k = 0; k < craftFrame.craft.length; k++) {
@@ -57,7 +61,7 @@ export function createCraftLabels(
 				eligible[slot] = 0
 				const id = craftFrame.craft[k].id
 				const hovered = id === hoverCraftId
-				const selected = id === selectedCraftId
+				const selected = id === selectedCraftId || id === followed
 				const shown =
 					showSpacecraft &&
 					craftFrame.present[k] === 1 &&

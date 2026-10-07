@@ -11,7 +11,8 @@
  * View states: `overview` (the whole system, Sun-centred), `focused` (a body
  * framed and tracked), `free` (the pivot is a point in space, anchored to a
  * body so it keeps its place in that body's neighbourhood; the user gets
- * there by panning, #15), and `transit`
+ * there by panning, #15), `following` (the pivot is a spacecraft, kept
+ * centred while time runs, #57), and `transit`
  * (a transition toward one of those is running). Every request starts from
  * wherever the camera is at that moment, so a second request, a reset or a
  * skip in the middle of a transition retargets instead of snapping back.
@@ -20,6 +21,7 @@
  * itself (`setFocus` is the click gesture that does both).
  */
 import { bodyById, sun } from "@/data"
+import { spacecraftById } from "@/data/spacecraft"
 
 import { FLIGHT_PROFILE } from "./flight"
 
@@ -45,8 +47,20 @@ export type View =
 			 */
 			readonly offsetKm: Vec3Km
 	  }
+	| {
+			/** Riding along with a spacecraft (#57): it stays centred while time runs. */
+			readonly kind: "craft"
+			/** The spacecraft (an id of src/data/spacecraft.json). */
+			readonly id: string
+			/**
+			 * The body whose neighbourhood it is in (the planet it is passing,
+			 * else the Sun): the zoom's moon family and the name rules follow
+			 * it, like a point's anchor. The camera rig keeps it current.
+			 */
+			readonly anchorId: string
+	  }
 
-export type ViewMode = "overview" | "focused" | "free" | "transit"
+export type ViewMode = "overview" | "focused" | "free" | "following" | "transit"
 
 /**
  * The camera around a view's pivot. Angles are scale free; the distance is a
@@ -299,7 +313,7 @@ export const HOME_SHOT: CameraShot = {
 }
 export const MAX_ELEVATION_DEG = 89.9
 
-/** The view states of the issue: overview, focused, free (a point in space), or in transit. */
+/** The view states: overview, focused, free (a point in space), following a spacecraft, or in transit. */
 export const viewMode = (
 	state: Pick<NavigationSlice, "view" | "transition">,
 ): ViewMode => {
@@ -311,10 +325,12 @@ export const viewMode = (
 			return "focused"
 		case "point":
 			return "free"
+		case "craft":
+			return "following"
 	}
 }
 
-/** The body a view is centred on (the Sun for the overview, the anchor of a point). */
+/** The body a view is centred on (the Sun for the overview, the anchor of a point or of a followed craft). */
 export const viewBodyId = (view: View): string => {
 	switch (view.kind) {
 		case "overview":
@@ -322,9 +338,14 @@ export const viewBodyId = (view: View): string => {
 		case "body":
 			return view.id
 		case "point":
+		case "craft":
 			return view.anchorId
 	}
 }
+
+/** The spacecraft a view follows (#57), or null. */
+export const followedCraftId = (view: View): string | null =>
+	view.kind === "craft" ? view.id : null
 
 /** True while the reference frame is anchored to a body other than the Sun (#31). */
 export const isFrameAnchored = (state: Pick<NavigationSlice, "frameId">) =>
@@ -332,10 +353,13 @@ export const isFrameAnchored = (state: Pick<NavigationSlice, "frameId">) =>
 
 /**
  * The frame a view gets (#31): the Sun-centred frame stays Sun-centred; an
- * anchored frame follows the view's centre, and the overview releases it.
+ * anchored frame follows the view's centre, and the overview releases it, as
+ * does following a spacecraft (#57: its path is drawn in the Sun's frame).
  */
 export const frameForView = (frameId: string, view: View): string =>
-	frameId === OVERVIEW_BODY_ID || view.kind === "overview"
+	frameId === OVERVIEW_BODY_ID ||
+	view.kind === "overview" ||
+	view.kind === "craft"
 		? OVERVIEW_BODY_ID
 		: viewBodyId(view)
 
@@ -359,6 +383,8 @@ export const isValidView = (view: View): boolean => {
 				view.offsetKm.length === 3 &&
 				view.offsetKm.every(Number.isFinite)
 			)
+		case "craft":
+			return spacecraftById.has(view.id) && bodyById.has(view.anchorId)
 		default:
 			return false
 	}
@@ -368,6 +394,14 @@ export const sameView = (a: View, b: View): boolean => {
 	if (a.kind === "overview" || b.kind === "overview") return a.kind === b.kind
 	if (a.kind === "body" || b.kind === "body") {
 		return a.kind === "body" && b.kind === "body" && a.id === b.id
+	}
+	if (a.kind === "craft" || b.kind === "craft") {
+		return (
+			a.kind === "craft" &&
+			b.kind === "craft" &&
+			a.id === b.id &&
+			a.anchorId === b.anchorId
+		)
 	}
 	return (
 		a.anchorId === b.anchorId &&

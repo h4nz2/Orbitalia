@@ -104,11 +104,30 @@ function returnToView(target: Extract<Waypoint, { kind: "view" }>): void {
 	useSpacecraftStore.getState().selectCraft(target.craftId)
 }
 
+/** Following a spacecraft (#57): it is followed again, from where the camera was left. */
+function returnToFollow(target: Extract<Waypoint, { kind: "follow" }>): void {
+	const open = useTourStore.getState().tour
+	if (open !== null && isListedTour(open.id)) exitTour()
+	const sim = useSimStore.getState()
+	useSpacecraftStore.getState().selectCraft(target.craftId)
+	// the neighbourhood is the camera rig's to put right as soon as the craft is drawn
+	sim.goTo(
+		{ kind: "craft", id: target.craftId, anchorId: sim.focusId },
+		{
+			shot: target.shot ?? undefined,
+			durationMs: prefersReducedMotion() ? 0 : undefined,
+		},
+	)
+}
+
 /** Goes to `target`: what Back (and Forward) does once the browser is on its entry. */
 export function returnTo(target: Waypoint): void {
 	switch (target.kind) {
 		case "tourStop":
 			returnToStop(target.tour)
+			return
+		case "follow":
+			returnToFollow(target)
 			return
 		case "view":
 			returnToView(target)

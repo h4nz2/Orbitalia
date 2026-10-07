@@ -11,6 +11,13 @@
  *   current time, like a moon's orbit line; the cruise path ends at arrival.
  * - Milestones: small rings on the path of the selected craft where its
  *   events happened (flybys, the heliopause).
+ * - The passage relative to its planet (#57), while the camera follows the
+ *   craft past one: the drawn hyperbola (#56) round where the planet is now,
+ *   like a moon's orbit line, so the turn the planet gives the craft shows
+ *   (in the Sun's frame the same stretch is only a gentle curve). It fades
+ *   in and out with the planet-centred drawing's share of the craft's place
+ *   and before either end of its stretch, so it always meets the cruise path
+ *   at the marker; the cruise path dims while it shows.
  *
  * Paths are drawn for the selected and the pointed-at craft, or for every
  * craft with "Show every path" on. Vertices are rebuilt relative to the
@@ -26,16 +33,23 @@ import {
 } from "three"
 
 import { rootIndexOf, toUnits } from "@/sim"
+import { smoothstep } from "@/sim/flyby"
 import {
+	encounterAt,
 	eventsWithJD,
+	fillPassage,
 	fillPath,
 	fillTrack,
 	flybyPathTimes,
 	isoToJD,
+	passageTimes,
 	pathTimes,
+	type CraftEncounter,
 	type CraftSegment,
 	type CraftTrajectory,
 } from "@/sim/spacecraft"
+import { followedCraftId } from "@/store/navigation"
+import { useSimStore } from "@/store/sim"
 import { useSpacecraftStore } from "@/store/spacecraft"
 
 import { anchoredWeight } from "../frame/frameBlend"
@@ -53,6 +67,8 @@ const CRAFT_HEX = `rgb(${CRAFT_COLOR.map((c) => Math.round(c * 255)).join(",")})
 export const PATH_OPACITY = {
 	selected: { flown: 0.95, future: 0.35 },
 	other: { flown: 0.45, future: 0.15 },
+	/** A passage relative to its planet (#57): what is still to come shows the turn ahead. */
+	passage: { flown: 0.95, future: 0.6 },
 } as const
 
 export type PathEmphasis = keyof typeof PATH_OPACITY
@@ -336,6 +352,21 @@ function SplitLine({
 
 /** Most vertices a local track can have (its times are subdivided like a path). */
 const TRACK_CAPACITY = 8192
+/** Most vertices a passage relative to its planet can have (#57). */
+const PASSAGE_CAPACITY = 2048
+/** The passage line fades in and out over this share of its stretch at either end. */
+const PASSAGE_EDGE = 0.15
+/** How much the cruise path dims while the passage relative to the planet shows. */
+const PASSAGE_DIMS_CRUISE = 0.6
+
+/** A passage drawn relative to its planet (#57), for one encounter under one scale. */
+interface PassagePath {
+	readonly encounter: CraftEncounter
+	readonly scaleVersion: number
+	readonly times: Float64Array
+	/** Drawn offsets from the drawn planet, display km, 3 per time. */
+	readonly offsets: Float64Array
+}
 
 /** Everything one drawn path needs between frames. */
 export interface PathRuntime {
@@ -355,6 +386,10 @@ export interface PathRuntime {
 	events: Points | null
 	readonly eventPositions: Float32Array
 	readonly split: PathSplit
+	/** The camera follows this craft (#57): its passages are drawn relative to their planets. */
+	following: boolean
+	readonly passage: LineSlot
+	passagePath: PassagePath | null
 }
 
 export function createPathRuntime(
@@ -379,7 +414,97 @@ export function createPathRuntime(
 		events: null,
 		eventPositions: new Float32Array(Math.max(1, path.eventTimes.length) * 3),
 		split: { count: 0, flownCount: 0, futureStart: 0 },
+		following: false,
+		passage: createLineSlot(PASSAGE_CAPACITY + 1),
+		passagePath: null,
 	}
+}
+
+const passageOrigin = new Float64Array(3)
+const passageCraft = new Float64Array(3)
+
+/**
+ * The passage relative to its planet (#57), while the camera follows the
+ * craft through one; returns how far it is faded in (0..1).
+ */
+function updatePassage(
+	runtime: PathRuntime,
+	frame: SimFrame,
+	craftFrame: CraftFrame,
+): number {
+	const { index, trajectory } = runtime
+	const jd = craftFrame.jd
+	const state = craftFrame.states[index]
+	const encounter =
+		runtime.following && craftFrame.present[index] === 1
+			? encounterAt(trajectory, jd)
+			: null
+	if (
+		encounter === null ||
+		encounter.flyby === null ||
+		state.drawnPlanet !== encounter.planet ||
+		jd < encounter.hyperFrom ||
+		jd > encounter.hyperTo
+	) {
+		applySplit(runtime.passage, emptySplit)
+		fadeSlot(runtime.passage, 0, "passage")
+		return 0
+	}
+	let path = runtime.passagePath
+	if (
+		path === null ||
+		path.encounter !== encounter ||
+		path.scaleVersion !== frame.scaleVersion
+	) {
+		const times = passageTimes(trajectory, encounter, frame).slice(
+			0,
+			PASSAGE_CAPACITY,
+		)
+		path = {
+			encounter,
+			scaleVersion: frame.scaleVersion,
+			times: Float64Array.from(times),
+			offsets: fillPassage(
+				trajectory,
+				encounter,
+				times,
+				frame,
+				new Float64Array(times.length * 3),
+			),
+		}
+		runtime.passagePath = path
+	}
+	const count = path.times.length
+	if (count < 2) {
+		applySplit(runtime.passage, emptySplit)
+		fadeSlot(runtime.passage, 0, "passage")
+		return 0
+	}
+	// drawn round where the planet is now, like a moon's orbit line
+	const p = encounter.planet * 3
+	for (let k = 0; k < 3; k++) {
+		passageOrigin[k] = frame.originKm[k] - frame.displayKm[p + k]
+		passageCraft[k] = state.displayKm[k] - frame.displayKm[p + k]
+	}
+	const split = writeSplitPath(
+		path.times,
+		path.offsets,
+		count,
+		jd,
+		passageCraft,
+		passageOrigin,
+		runtime.passage.positions,
+		runtime.split,
+	)
+	applySplit(runtime.passage, split)
+	// in with the planet-centred drawing, out before the marker leaves the line
+	const along = countUpTo(path.times, jd) / count
+	const fade =
+		state.drawnWeight *
+		smoothstep(along / PASSAGE_EDGE) *
+		smoothstep((1 - along) / PASSAGE_EDGE)
+	fadeSlot(runtime.passage, fade, "passage")
+	return fade
 }
 
 export function attachEvents(
@@ -393,12 +518,18 @@ const emptySplit: PathSplit = { count: 0, flownCount: 0, futureStart: 0 }
 const pathOrigin = new Float64Array(3)
 const pathCraft = new Float64Array(3)
 
-/** One frame of a path: rebuild on a scale change, split at the craft, the local track, the milestones. */
+/**
+ * One frame of a path: rebuild on a scale change, split at the craft, the
+ * passage relative to its planet while `following` (#57), the local track,
+ * the milestones.
+ */
 export function updatePathRuntime(
 	runtime: PathRuntime,
 	frame: SimFrame,
 	craftFrame: CraftFrame,
+	following = false,
 ): void {
+	runtime.following = following
 	const { index, trajectory, split } = runtime
 	if (runtime.pathScale !== frame.scaleVersion) {
 		runtime.path = buildCruisePath(frame, craftFrame, index, trajectory)
@@ -427,11 +558,14 @@ export function updatePathRuntime(
 		split,
 	)
 	applySplit(runtime.cruise, split)
+	const passage = updatePassage(runtime, frame, craftFrame)
 	// the cruise path is drawn in the Sun's frame: it fades out while a body is
-	// held still (#31), like the orbit lines around the Sun
+	// held still (#31), like the orbit lines around the Sun, and gives way to
+	// a passage drawn relative to its planet (#57)
 	fadeSlot(
 		runtime.cruise,
-		1 - anchoredWeight(frame.frameBlend, cruise.root),
+		(1 - anchoredWeight(frame.frameBlend, cruise.root)) *
+			(1 - PASSAGE_DIMS_CRUISE * passage),
 		runtime.emphasis,
 	)
 
@@ -500,6 +634,8 @@ export interface CraftPathProps {
 	emphasis: PathEmphasis
 	/** Draw the milestone rings (the selected craft). */
 	milestones: boolean
+	/** The camera follows the craft (#57): draw its passages relative to their planets. */
+	following?: boolean
 }
 
 export function CraftPath({
@@ -509,17 +645,19 @@ export function CraftPath({
 	trajectory,
 	emphasis,
 	milestones,
+	following = false,
 }: CraftPathProps) {
 	const runtime = useMemo(
 		() => createPathRuntime(frame, craftFrame, index, trajectory, emphasis),
 		[frame, craftFrame, index, trajectory, emphasis],
 	)
-	useFrame(() => updatePathRuntime(runtime, frame, craftFrame))
+	useFrame(() => updatePathRuntime(runtime, frame, craftFrame, following))
 
 	return (
 		<>
 			<SplitLine slot={runtime.cruise} emphasis={emphasis} />
 			<SplitLine slot={runtime.track} emphasis={emphasis} />
+			<SplitLine slot={runtime.passage} emphasis="passage" />
 			{milestones && (
 				<points
 					ref={(points: Points | null) => attachEvents(runtime, points)}
@@ -571,11 +709,12 @@ function CraftPaths({ frame, craftFrame }: CraftPathsProps) {
 	const selected = useSpacecraftStore((state) => state.selectedCraftId)
 	const hovered = useSpacecraftStore((state) => state.hoverCraftId)
 	const ready = useSpacecraftStore((state) => state.trajectoriesReady)
+	const followed = useSimStore((state) => followedCraftId(state.view))
 	if (!show || !ready) return null
 	return (
 		<>
 			{craftFrame.craft.map((craft, index) => {
-				const isSelected = craft.id === selected
+				const isSelected = craft.id === selected || craft.id === followed
 				if (!all && !isSelected && craft.id !== hovered) return null
 				const trajectory = trajectoryOf(craft.id)
 				if (trajectory === null) return null
@@ -588,6 +727,7 @@ function CraftPaths({ frame, craftFrame }: CraftPathsProps) {
 						trajectory={trajectory}
 						emphasis={isSelected ? "selected" : "other"}
 						milestones={isSelected}
+						following={craft.id === followed}
 					/>
 				)
 			})}

@@ -12,12 +12,13 @@ import { loadTrajectories } from "./trajectories"
  * `?craft=voyager1` (the help page's "try it" link, #43): selects that
  * spacecraft (#35) on arrival and flies to it once its trajectory has loaded.
  * Like `?light=`, only an instruction: the URL mirror drops it, so a reload
- * or a shared view does not fly anywhere by itself.
+ * or a shared view does not fly anywhere by itself. With `follow=true` (#57)
+ * it is the view itself, which the URL sync opens (src/store/urlSync.ts).
  */
 const CraftLink = () => {
 	const craft = useSearch({
 		from: "/solar_system",
-		select: (search) => search.craft,
+		select: (search) => (search.follow === true ? undefined : search.craft),
 	})
 	// read once, on arrival: the URL mirror drops `craft` at once, long before
 	// the trajectories have loaded

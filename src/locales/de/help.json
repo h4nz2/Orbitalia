@@ -533,6 +533,32 @@
 				]
 			}
 		},
+		"rideAlong": {
+			"title": {
+				"standard": "Mit einer Raumsonde mitfliegen",
+				"simple": "Mit einer Sonde mitfliegen"
+			},
+			"what": {
+				"standard": "Flieg mit einer Raumsonde mit: Die Kamera bleibt bei ihr, während die Zeit läuft, in jedem Tempo, vorwärts wie rückwärts. Voyager am Jupiter vorbei, Juno bei der Ankunft, Parker dicht an der Venus vorbei. „Ansehen“ neben einem Vorbeiflug richtet alles für dich ein.",
+				"simple": "Die Kamera fliegt mit einer Raumsonde mit. Du siehst, wie ein Planet an ihr vorbeizieht."
+			},
+			"why": {
+				"standard": "Die Schwerkraft eines Planeten biegt die Bahn einer Sonde und schleudert sie zur nächsten Welt weiter. Beim Mitfliegen ziehen Jupiter und seine Monde vorbei, und die Bahn biegt sich um ihn herum: Mit diesem Trick kam Voyager zu den äußeren Planeten.",
+				"simple": "Ein Planet kann eine Sonde anziehen und schneller weiterschleudern, wie eine Schleuder. Beim Mitfliegen siehst du, wie das passiert."
+			},
+			"how": {
+				"standard": [
+					"Öffne unten rechts „Werkzeuge“, wähle „Echte Raumsonden“ und drück den Mitflug-Knopf neben einer Sonde oder „Mitfliegen“ auf ihrem Steckbrief.",
+					"Auf dem Steckbrief geht „Ansehen“ neben einem Vorbeiflug oder einer Ankunft kurz davor und spielt es in etwa einer halben Minute ab.",
+					"Ziehen dreht die Ansicht, Scrollen zoomt; oben links steht, mit wem du fliegst. Das Haus, Escape, eine gewählte Welt oder „Zurück“ beenden den Mitflug."
+				],
+				"simple": [
+					"Drück unten rechts auf „Werkzeuge“ und wähl „Echte Raumsonden“.",
+					"Wähl Voyager 1 und drück dann „Ansehen“ neben Jupiter.",
+					"Sieh zu, wie Jupiter vorbeizieht. Drück auf das Haus, um aufzuhören."
+				]
+			}
+		},
 		"dictionary": {
 			"title": {
 				"standard": "Das Bildlexikon",

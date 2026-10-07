@@ -7,9 +7,11 @@
  * Invariant: the camera orbits its pivot, and the pivot is the render origin.
  * camera-controls' target sits at (0, 0, 0) and the SimFrame's `originKm` is
  * the pivot in world km: a body (focused, tracked every frame), the Sun (the
- * overview), a point anchored to a body (free), or during a transit a blend of
- * the start pivot and the destination, both re-read every frame so a moving
- * destination is met where it is, not where it was.
+ * overview), a point anchored to a body (free), a spacecraft (followed, #57:
+ * read from the craft frame every frame, so it stays centred at any speed),
+ * or during a transit a blend of the start pivot and the destination, both
+ * re-read every frame so a moving destination is met where it is, not where
+ * it was.
  *
  * Every transition starts from the camera as it is at that moment (pivot and
  * pose), so a new request, a reset or a skip mid-flight retargets and never
@@ -106,6 +108,25 @@ export interface StoreLike {
 	getState(): SimState
 }
 
+/**
+ * Where the spacecraft are drawn (#57): the craft frame, which a camera
+ * following one reads every frame (`spacecraft/craftFrame.ts`
+ * `createCraftLocator`). Updated before the director runs.
+ */
+export interface CraftLocator {
+	/**
+	 * Craft `id` now: writes its drawn position (display km) into `out` and
+	 * returns the index of the body whose neighbourhood it is in; -1 while it
+	 * is not drawn (its data still loading, before launch, after its end).
+	 */
+	locate(id: string, out: Float64Array): number
+	/**
+	 * How many drawn km a true km round it is drawn as under the frame's
+	 * scale (`craftLengthScale`, src/sim/follow.ts); NaN while it is not drawn.
+	 */
+	lengthScale(id: string): number
+}
+
 /** Where the director records flights for the readout (#18). */
 export interface FlightLogLike {
 	getState(): Pick<FlightState, "depart" | "transitionStarted" | "arrive">
@@ -157,6 +178,7 @@ const scratchSpherical = new Spherical()
 const scratchPivot = new Float64Array(3)
 const scratchEye = new Float64Array(3)
 const scratchEyePivot = new Float64Array(3)
+const scratchCraft = new Float64Array(3)
 
 /** camera-controls' ACTION.NONE: no gesture in progress. */
 const ACTION_NONE = 0
@@ -215,6 +237,21 @@ export class CameraDirector {
 	/** A pointer is pressed on the canvas (between camera-controls' controlstart and controlend). */
 	private pressing = false
 
+	/**
+	 * The followed craft's last known place (#57), its neighbourhood's body
+	 * and its drawn offset from it, where the pivot waits while the craft is
+	 * not drawn (before its launch, after its end); and its local scale last
+	 * frame, which a scale change rescales the camera's distance by.
+	 */
+	private readonly craftLast: Anchored = {
+		index: -1,
+		offsetKm: new Float64Array(3),
+	}
+	private craftLastId: string | null = null
+	private craftScale = Number.NaN
+	/** camera-controls' pan speed, put back when following ends (a followed craft stays centred: no pan). */
+	private readonly truckSpeed: number
+
 	private readonly onPress = () => {
 		this.pressing = true
 	}
@@ -235,7 +272,10 @@ export class CameraDirector {
 		readonly frame: SimFrame,
 		readonly store: StoreLike,
 		readonly flights: FlightLogLike = useFlightStore,
-	) {}
+		readonly crafts: CraftLocator | null = null,
+	) {
+		this.truckSpeed = controls.truckSpeed
+	}
 
 	/** Starts listening to the controls (user input hands transitions over; rest publishes the shot). */
 	attach(): void {
@@ -276,6 +316,9 @@ export class CameraDirector {
 		}
 		if (this.runningId === null) this.hold()
 
+		// a followed craft stays centred (#57): looking around and zooming, no pan
+		this.controls.truckSpeed =
+			this.store.getState().view.kind === "craft" ? 0 : this.truckSpeed
 		this.controls.update(deltaS)
 		this.settlePan()
 
@@ -559,13 +602,14 @@ export class CameraDirector {
 	/** Settled: keep the origin on the view's pivot (tracking it) and fold a moved target into it. */
 	private hold(): void {
 		const state = this.store.getState()
-		const view = state.view
+		let view = state.view
 		const index = this.anchorIndex(view)
 		if (index === undefined) {
 			state.reset()
 			return
 		}
-		this.heldIndex = index
+		if (view.kind === "craft") view = this.followCraft(view)
+		this.heldIndex = this.anchorIndex(view) ?? index
 		const pivot = this.toKm
 		if (this.pendingPan !== null) this.anchoredKm(this.pendingPan, pivot)
 		else this.pivotOf(view, pivot)
@@ -666,18 +710,45 @@ export class CameraDirector {
 	 * screen while everything else moves to where the new scale puts it.
 	 */
 	private followScale(view: View): void {
+		// a followed craft (#57): with the drawing round it, measured now and last frame
+		const craftScale =
+			view.kind === "craft"
+				? (this.crafts?.lengthScale(view.id) ?? Number.NaN)
+				: Number.NaN
+		const craftRatio = craftScale / this.craftScale
+		this.craftScale = craftScale
 		if (this.frame.scaleVersion === this.followedVersion) return
 		const from = this.followedDefault
 		this.follow(view)
 		if (!(from > 0) || this.pendingPan !== null) return
+		const ratio =
+			view.kind === "craft"
+				? Number.isFinite(craftRatio) && craftRatio > 0
+					? craftRatio
+					: 1
+				: this.followedDefault / from
 		const radius = this.readPose(this.pose, true).radius
 		const min = minViewDistance(view, this.frame)
 		// the new limit first: dollyTo clamps to it
 		this.controls.minDistance = min
-		void this.controls.dollyTo(
-			Math.max(min, (radius * this.followedDefault) / from),
-			false,
-		)
+		void this.controls.dollyTo(Math.max(min, radius * ratio), false)
+	}
+
+	/**
+	 * Following a craft (#57), every settled frame: the view's neighbourhood
+	 * follows the craft's (the planet it passes, else the Sun), so the moons,
+	 * names and limits round it are the ones it is among. Returns the view
+	 * in force.
+	 */
+	private followCraft(view: Extract<View, { kind: "craft" }>): View {
+		const anchor = this.crafts?.locate(view.id, scratchCraft) ?? -1
+		if (anchor < 0) return view
+		const anchorId = this.frame.bodies[anchor].id
+		if (anchorId === view.anchorId) return view
+		const next: View = { kind: "craft", id: view.id, anchorId }
+		this.store.getState().settleAt(next)
+		this.follow(next)
+		return this.store.getState().view
 	}
 
 	/**
@@ -859,11 +930,42 @@ export class CameraDirector {
 		if (view.kind === "point") {
 			return pointDisplayKm(this.frame, index, view.offsetKm, out)
 		}
+		if (view.kind === "craft") return this.craftPivot(view.id, index, out)
 		const at = index * 3
 		const positions = this.frame.displayKm
 		out[0] = positions[at]
 		out[1] = positions[at + 1]
 		out[2] = positions[at + 2]
+		return out
+	}
+
+	/**
+	 * Where a followed craft is drawn (#57); while it is not drawn, where it
+	 * was last seen (kept with its neighbourhood), else, before its data has
+	 * arrived, the centre of the neighbourhood the view names (`anchor`).
+	 */
+	private craftPivot(
+		id: string,
+		anchor: number,
+		out: Float64Array,
+	): Float64Array {
+		const near = this.crafts?.locate(id, out) ?? -1
+		const positions = this.frame.displayKm
+		const last = this.craftLast
+		if (near >= 0) {
+			last.index = near
+			for (let k = 0; k < 3; k++) {
+				last.offsetKm[k] = out[k] - positions[near * 3 + k]
+			}
+			this.craftLastId = id
+			return out
+		}
+		if (this.craftLastId === id && last.index >= 0) {
+			return this.anchoredKm(last, out)
+		}
+		out[0] = positions[anchor * 3]
+		out[1] = positions[anchor * 3 + 1]
+		out[2] = positions[anchor * 3 + 2]
 		return out
 	}
 

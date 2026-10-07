@@ -132,6 +132,35 @@ describe("waypoints", () => {
 		).toBe(false)
 		expect(sameWaypoint(stop, view("mars"))).toBe(false)
 	})
+
+	it("are the spacecraft while following one (#57), whatever neighbourhood it is in", () => {
+		const shot = { azimuthDeg: -27.5, elevationDeg: 68.4, distance: 3.21 }
+		const following = scene({
+			view: { kind: "craft", id: "voyager1", anchorId: "jupiter" },
+			shot,
+		})
+		expect(following).toEqual({ kind: "follow", craftId: "voyager1", shot })
+		expect(
+			sameWaypoint(
+				following,
+				scene({
+					view: { kind: "craft", id: "voyager1", anchorId: "sun" },
+					shot,
+				}),
+			),
+		).toBe(true)
+		expect(
+			sameWaypoint(following, { kind: "follow", craftId: "juno", shot }),
+		).toBe(false)
+		expect(
+			sameWaypoint(following, {
+				kind: "follow",
+				craftId: "voyager1",
+				shot: null,
+			}),
+		).toBe(false)
+		expect(sameWaypoint(following, view("jupiter"))).toBe(false)
+	})
 })
 
 /** A recorder on fake deps, with the scene and the history driven by hand. */

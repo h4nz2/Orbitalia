@@ -28,6 +28,7 @@ import { useHudStore } from "@/store/hud"
 import { useSimStore } from "@/store/sim"
 
 import { useSimFrame } from "../scene/simFrame"
+import { createCraftLocator, type CraftFrame } from "../spacecraft/craftFrame"
 import { MotionWatch } from "./motion"
 import { exposeDebugHandle } from "./debugHandle"
 import { CAMERA_FRAME_PRIORITY, CameraDirector } from "./director"
@@ -55,7 +56,12 @@ CameraControlsImpl.install({
 	},
 })
 
-function CameraRig() {
+export interface CameraRigProps {
+	/** The spacecraft (#35), which the camera can follow (#57). */
+	craftFrame?: CraftFrame
+}
+
+function CameraRig({ craftFrame }: CameraRigProps) {
 	const frame = useSimFrame()
 	const camera = useThree((state) => state.camera)
 	const gl = useThree((state) => state.gl)
@@ -67,9 +73,18 @@ function CameraRig() {
 	const director = useMemo(
 		() =>
 			camera instanceof PerspectiveCamera
-				? new CameraDirector(controls, camera, frame, useSimStore)
+				? new CameraDirector(
+						controls,
+						camera,
+						frame,
+						useSimStore,
+						undefined,
+						craftFrame === undefined
+							? null
+							: createCraftLocator(craftFrame, frame),
+					)
 				: null,
-		[camera, controls, frame],
+		[camera, controls, frame, craftFrame],
 	)
 
 	useEffect(() => {

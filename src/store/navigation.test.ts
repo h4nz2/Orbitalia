@@ -3,8 +3,10 @@ import { afterEach, describe, expect, it } from "vitest"
 import {
 	HOME_SHOT,
 	OVERVIEW,
+	followedCraftId,
 	formatShot,
 	isValidView,
+	sameView,
 	parseShot,
 	roundShot,
 	sanitizeShot,
@@ -80,6 +82,53 @@ describe("view states", () => {
 		expect(store().selectedId).toBeNull()
 		expect(isValidView({ kind: "body", id: "io" })).toBe(true)
 		expect(isValidView({ kind: "nowhere" } as never)).toBe(false)
+	})
+})
+
+describe("following a spacecraft (#57)", () => {
+	const voyager = {
+		kind: "craft",
+		id: "voyager1",
+		anchorId: "jupiter",
+	} as const
+
+	it("is a view of its own, centred on the neighbourhood the craft is in", () => {
+		expect(isValidView(voyager)).toBe(true)
+		expect(isValidView({ ...voyager, id: "enterprise" })).toBe(false)
+		expect(isValidView({ ...voyager, anchorId: "vulcan" })).toBe(false)
+		expect(viewBodyId(voyager)).toBe("jupiter")
+		expect(followedCraftId(voyager)).toBe("voyager1")
+		expect(followedCraftId(OVERVIEW)).toBeNull()
+		expect(sameView(voyager, { ...voyager })).toBe(true)
+		expect(sameView(voyager, { ...voyager, anchorId: "sun" })).toBe(false)
+		expect(sameView(voyager, { kind: "body", id: "jupiter" })).toBe(false)
+		store().goTo(voyager)
+		expect(store().focusId).toBe("jupiter")
+		arrive()
+		expect(viewMode(store())).toBe("following")
+		// the camera rig keeps the neighbourhood current
+		store().settleAt({ ...voyager, anchorId: "sun" })
+		expect(store().focusId).toBe("sun")
+		expect(viewMode(store())).toBe("following")
+	})
+
+	it("is Sun-centred: a body held still lets go", () => {
+		store().anchorFrame("earth")
+		arrive()
+		expect(store().frameId).toBe("earth")
+		store().goTo(voyager)
+		expect(store().frameId).toBe("sun")
+	})
+
+	it("ends with the way out, or a body chosen", () => {
+		store().goTo(voyager)
+		arrive()
+		store().setFocus("saturn")
+		expect(store().view).toEqual({ kind: "body", id: "saturn" })
+		store().goTo(voyager)
+		arrive()
+		store().reset()
+		expect(store().view).toEqual(OVERVIEW)
 	})
 })
 

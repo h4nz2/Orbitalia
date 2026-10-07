@@ -425,14 +425,16 @@ view (an ESLint rule keeps drei camera controls inside `camera/`). The navigatio
 ```
 selectedId: string | null   drives info panels, labels, the URL; never moves the camera
 view: View                  { kind: "overview" } | { kind: "body", id } | { kind: "point", anchorId, offsetKm }
-                            (a point: offsetKm is TRUE km from the anchor, drawn through the scale engine; #15)
-focusId: string             body the view is centred on (the Sun for the overview, a point's anchor)
+                            | { kind: "craft", id, anchorId }
+                            (a point: offsetKm is TRUE km from the anchor, drawn through the scale engine; #15;
+                            a craft: the spacecraft followed, anchorId its neighbourhood, kept current; #57)
+focusId: string             body the view is centred on (the Sun for the overview, a point's or a craft's anchor)
 frameId: string             body the reference frame holds still (#31): the Sun (Sun-centred) or focusId
 shot: CameraShot | null     { azimuthDeg, elevationDeg, distance } at rest; distance is a multiple of the default framing
 transition, sequence        the running move and the running tour
 panning: boolean            a pan (or its damped glide) is moving the pivot right now
 step: number                counts the steps Back can undo (#46, see "Back: the view history")
-viewMode(state)             "overview" | "focused" | "free" | "transit"
+viewMode(state)             "overview" | "focused" | "free" | "following" | "transit"
 ```
 
 Actions: `select`, `setFocus` (click: select + focus; a flight from another body, see Flights), `focus`, `overview`, `goTo(view, request?)`, `jumpTo`, `reset`
@@ -459,6 +461,8 @@ Director (`camera/director.ts`, unit-tested frame by frame):
   the opening); a wheel always counts. A pan while settled is folded into a pending pan (nothing moves on screen) and committed
   when released (see Re-centring).
 - A non-finite camera or a view of a missing body resets to the overview.
+- A followed spacecraft (#57) is read every frame from the craft frame (`CraftLocator`, handed in by `CameraRig`);
+  see "Following and watching a spacecraft".
 - Profiles (`camera/profiles.ts`): the default `smooth` is van Wijk and Nuij's zoom-and-pan (`camera/pose.ts`), 0.8–3 s;
   `fly` is the flight between bodies (see Flights). A profile may add `lift` to its sample and its own `durationMs`.
 - `window.__orbitalia` (`camera/debugHandle.ts`) exposes `camera()` (`director.snapshot()`) and the store for the
@@ -650,7 +654,8 @@ and angle it was left at. It is one step; the overview button is the way out, al
   digits, Page Up/Down and 0), the flight that comes with it, the way out (`ui/OverviewButton.tsx` `wayOut`: the
   house and Escape; the centre badge's "Back to overview"), a stop of a menu tour or sky event (`tours/player.ts`
   `enterStop`), a spacecraft's milestone (`showEvent`), a hunt's "Show me" and holding a body still (`anchorFrame`,
-  `releaseFrame`), an Easy hunt clue's start view (#52), "Back to the start" (R / Home), and leaving a sky event, which flies back to where it began. Not
+  `releaseFrame`), an Easy hunt clue's start view (#52), "Back to the start" (R / Home), following a spacecraft
+  and watching one of its passages (#57), and leaving a sky event, which flies back to where it began. Not
   steps: dragging, zooming, panning, time, layers and the scale; arriving on a link (the URL seeding, `?craft=`,
   a link onto a tour stop: `withoutSteps`); a tour another feature plays (the quick look, #44); anything while
   the opening plays (#30, #49: `watchIntro` sets `held` through `holdSteps`, so its reset and beats, and a choice
@@ -678,8 +683,9 @@ and angle it was left at. It is one step; the overview button is the way out, al
 - **UI** (`back/BackButton.tsx`): the arrow before the overview button in the where panel (#42), shown disabled
   (`aria-disabled`, still hoverable) with a hint saying why when there is nothing to go back to. Backspace is a
   presenter key (`present/keys.ts`; text fields keep theirs) and in the shortcut list. Strings: `solarSystem.back.*`.
-- **For #57 (following a spacecraft):** add a member to `Waypoint` (`{ kind: "follow", craftId, shot }`), its case
-  in `sameWaypoint`, `waypointOf` and `returnTo`, and mark starting to follow as a step.
+- **Following a spacecraft (#57)** is a waypoint of its own, `{ kind: "follow", craftId, shot }` (the neighbourhood
+  the craft is in is the camera rig's), read from `craft=<id>&follow=true` for an entry with no record; starting to
+  follow (Follow, Watch) is a step, and going back to it follows the craft again from where the camera was left.
 
 ## Lighting (`src/sim/lighting.ts`, `features/solarSystem/lighting/`, `src/store/lighting.ts`; #22)
 
@@ -981,7 +987,7 @@ React UI subscribes with selectors, and reads the clock only through `useThrottl
 URL: `/solar_system?focus=io&sel=europa&cam=<az_el_dist>&t=<jd>&warp=<n>&moons=false&scale=trueScale` (`scale`: see
 Scale presets). `smallBodies=true` while the small bodies are shown (#23, off by default). The layer switches `orbits`,
 `labels`, `moons`, `markers` (`LAYER_PARAMS` in `urlSync.ts`) are written as `=false` while off; the orbit names,
-off by default, as `orbitNames=true` while on, and so is `allMoons=true` (#17, the long tail of moons); `frame=<id>` while a body is held still (#31); `tour=<id>&stop=<n>` (and `autoplay=true`) while a guided tour runs (#28). Defaults (overview, home shot `0_45_1`, `warp=1`, a switch that is on)
+off by default, as `orbitNames=true` while on, and so is `allMoons=true` (#17, the long tail of moons); `frame=<id>` while a body is held still (#31); `tour=<id>&stop=<n>` (and `autoplay=true`) while a guided tour runs (#28); `craft=<id>&follow=true` while a spacecraft is followed (#57, with `focus` naming the neighbourhood it is in). Defaults (overview, home shot `0_45_1`, `warp=1`, a switch that is on)
 are left out; a link without a switch turns it on. `simSearch.ts` drops invalid or blank values (never coerces them to
 0). `useSimUrlSync()` runs once, in `<UrlSync />` rendered before `<Scene />`: it seeds the store before the Canvas
 mounts (no `t` means the wall clock at mount), then writes back with `replace: true`, `t` at most once per second and
@@ -1044,7 +1050,8 @@ export const useSimFrame = (): SimFrame // throws outside the provider
   only; picking is `BodyPicking`'s (see Picking). Labels join the same picking (see Labels).
 - Camera (`camera/framing.ts`, `camera/input.ts`): `minDistance = max(1.2 R, R + 2 near)` of the drawn radius, bodies
   framed from 6 radii, the overview fits the drawn planetary system (the farthest aphelion plus that planet's drawn
-  disc) x 1.3 from azimuth 0 / elevation 45, Poster tighter (`overviewFit`, see Scale). Orbit with
+  disc) x 1.3 from azimuth 0 / elevation 45, Poster tighter (`overviewFit`, see Scale), a followed spacecraft from
+  a fixed `CRAFT_FRAMING_DISTANCE` (a million drawn km; its closest dolly 100 km; #57). Orbit with
   left button or one finger; dolly with wheel, pinch (ctrl+wheel via `pinchAsDolly`) or middle button; pan with the right
   button, Shift + left, two or three fingers (see Re-centring). A point's zoom limits are its anchor's.
 - Visibility: `isBodyShown(body, state)` is the one rule for meshes, orbits and markers (featured moons, the long tail
@@ -1284,15 +1291,73 @@ updates it at `useFrame` priority -0.9 (after SimClock, before the director) and
 
 **Store (`src/store/spacecraft.ts`).** `showSpacecraft` (on), `showAllPaths` (off), `selectedCraftId`,
 `hoverCraftId`, `trajectoriesReady`. Selecting a craft clears the body selection; choosing a body or any request for
-the overview (home, Escape) clears the craft. Not mirrored in the URL; `?craft=<id>` selects and shows one on arrival (#43, `CraftLink.tsx`).
+the overview (home, Escape) clears the craft. Not mirrored in the URL; `?craft=<id>` selects and shows one on arrival (#43, `CraftLink.tsx`);
+following one is the view itself (`craft=<id>&follow=true`, #57).
 
 **HUD.** `SpacecraftList` (`spacecraft/SpacecraftMenu.tsx`; Tools → Real spacecraft, a panel of the dock since #42): layer switch, "Show every path", every craft
 with its tagline and status at the simulation date; picking one selects it and flies there (`showCraft`: a point
-view at the craft, anchored to its neighbourhood, framed so the Sun or the planet stays in view).
+view at the craft, anchored to its neighbourhood, framed so the Sun or the planet stays in view); the follow button
+beside it rides along (#57).
 `SpacecraftInfo` replaces `BodyInfo` while a craft is selected: status lamp, launch, distance from the Sun and
-Earth, signal time, speed, "Show", the reading-level description and the milestones; a milestone glides time there
-(`travelAndStop`) and focuses the planet (or the craft's position). Events after `asOf` are marked "planned";
-positions at a future date "predicted".
+Earth, signal time, speed (the nearest planet too while following), "Show" and "Follow", the reading-level
+description and the milestones; a milestone glides time there (`travelAndStop`) and focuses the planet (or the
+craft's position), and "Watch" beside a flyby or an arrival plays it (#57). Its numbers are true positions at the
+instant the drawing shows (`craftFacts(craft, jd, scale)` through `drawnPhaseAt`: in a passage's slow motion they
+describe the craft on screen, not one days away). Events after `asOf` are marked "planned"; positions at a future
+date "predicted".
+
+### Following and watching a spacecraft (`src/sim/follow.ts`, `spacecraft/facts.ts`; #57)
+
+- **Follow** (the card's "Follow", the list's follow button; `followCraft`, a step of the view history): the view
+  `{ kind: "craft", id, anchorId }`. The director reads the craft's drawn position every frame
+  (`createCraftLocator` in `spacecraft/craftFrame.ts`, handed to it by `CameraRig`), so the craft stays centred at
+  any speed, forwards and backwards. The camera keeps its own direction (the stars stay put, the planet sweeps past)
+  and its own distance: a followed craft's `distance: 1` is the fixed `CRAFT_FRAMING_DISTANCE` (a million drawn km)
+  and its closest dolly a fixed 100 km, so nothing jumps when the craft moves between a planet's neighbourhood and
+  open space. The view's `anchorId` follows the craft's neighbourhood (`settleAt`, so the zoom's moons and names are
+  the ones round it). Orbit and zoom as round a planet; no pan (camera-controls' `truckSpeed` 0), so the craft
+  cannot be dragged off centre. While the craft is not drawn (before launch, after its end, its data still loading)
+  the pivot waits where it was last seen. Following starts at "Show"'s framing near a planet and half the craft's
+  drawn distance from the Sun between the planets, releases a held body (#31), always shows the craft's marker, name
+  and path, and ends with the way out, Escape, a world chosen (picker or click) or Back; dragging does not end it.
+- **The spot**: the focus picker names the craft in cyan beside a pulsing follow mark (`data-following`), with a
+  hint on how to stop; choosing a world there ends the ride.
+- **Smooth** (`src/data/spacecraftFollow.test.ts`, every craft, every preset): the followed point's drawn velocity
+  has no jolt at any hand-over (segment edges, a passage's window, the end of its planet-centred drawing; 1 min and
+  1 h steps) and changes by under 25 % a step through every hand-over band. By #56's design an orbit insertion
+  (Cassini, Juno) switches from the slowed passage to the bound drawing in real time, so the craft speeds up at once
+  there; in Poster the legs' catch-up runs the drawn craft up to about 17 times faster for a while, smoothly. On a
+  scale change the director scales its distance by the change of `craftLengthScale` (drawn over true distance: the
+  moon curve's at the craft's distance from the planet drawing it, blended in the log by that drawing's weight,
+  `CraftState.drawnWeight`, with the Sun-centred map's), so the drawing round the craft keeps its size on screen.
+- **The passage relative to its planet**: in the Sun's frame #56's drawn passage is a gentle curve, so while a
+  followed craft passes a planet `CraftPaths` also draws the passage relative to it (`passageTimes`, `fillPassage`
+  in `src/sim/spacecraft.ts`: the craft's drawn offset from the drawn planet along the drawn hyperbola, out to the
+  hand-over or `PASSAGE_REACH` = 30 drawn closest approaches), round where the planet is now, like a moon's orbit
+  line: the true turn shows. It passes through the marker (flown part bright, the rest at 0.6), fades in and out
+  with the drawing's weight and before either end of its stretch, and the cruise path dims to 40 % meanwhile. Not
+  the anchored frame (#31): holding the planet still redraws the whole scene round it, fades the cruise path out,
+  blends for 1.2 s at each end of every passage and changes the badge and the link; the extra line stays local.
+- **Watch** (beside every flyby, orbit insertion and arrival milestone; `watchEvent`, a step): `watchPlan` takes
+  the passage as the stretch within `WATCH_REACH` (4) closest approaches of what it passes (a planet's hyperbola;
+  for a moon, Pluto or Arrokoth the closest approach measured from the true positions; JWST's L2 a day either side),
+  finds the clock times at which the drawing shows its start, closest approach and end (`clockTimeOf`, the inverse
+  of `drawnPhaseAt`: near a planet the drawing runs slower than the clock, 3 to 500 times in Everything visible and
+  up to 5,000 times in Poster), and
+  picks the speed of `WATCH_WARPS` (whole minutes to months per second, at most 1.5 times apart) that shows it
+  closest to 30 s. Time glides to the start and runs on (a jump with reduced motion), the camera follows, framed so
+  the closest approach and what it passes are in view, seen for a flyby near the plane of the planets from 65°
+  above it with the planet to the right of the craft at closest approach (away from the card), a steeper one from
+  above its own plane. Tested for every flyby and arrival in the data in every preset: 20 to 40 s on screen,
+  measured by stepping the clock through `drawnPhaseAt`.
+- **Shareable**: `?craft=<id>&follow=true` (plus `focus`, the neighbourhood, so the scene opens there while the
+  trajectories load, and `cam`, `t`, `warp` as for any view), validated in `simSearch.ts`; the URL sync opens it as
+  the view (a jump, never a step; `CraftLink` leaves follow links alone). Presentation's "Back to the start" (#29)
+  restores it, and a tour stop's `follow` field (#28) rides along too.
+- Known limits: the orbit insertion's jump in speed (above); the clock still reads the slowed drawing's own time
+  while the card describes the phase shown; turned towards a planet drawn close to the craft, the camera can end up
+  inside it (no collision); a craft's moon flybys and New Horizons at Pluto are watched at the true instants, not
+  where the drawn moons or the drawn Pluto are (#56's limit).
 
 **Content.** `src/locales/<locale>/spacecraft.json` (`@/i18n/spacecraft`: `useSpacecraftText`,
 `spacecraftName`): name, tagline and a description at every reading level, tested for every locale. UI strings
@@ -1365,8 +1430,8 @@ While someone looks around, space owns the screen. At 1366x768 with a planet foc
 unobstructed (`e2e/quietHud.spec.ts` measures it). Every control is at most two actions away.
 
 - **Always on screen** (`SolarSystem.module.css`, a grid over the canvas):
-  - top left, "where": Back (#46, one step back), the overview button (the way out), the focus picker (the name)
-    and the point of view (#31);
+  - top left, "where": Back (#46, one step back), the overview button (the way out), the focus picker (the name;
+    a followed spacecraft's name with the follow mark, #57) and the point of view (#31);
     under them the frame badge (#31), the light's running clock while a flash is out (#27/#38) and the body card;
   - top centre: the free-view badge (#15), only in a free view;
   - top right, the corner: Present (tinted, easy to find), Share, hide the controls, sound, Help, language;
@@ -1711,7 +1776,8 @@ entry, in every locale and reading level, in the same change.
 - `?light=flash|delay|beyond` on `/solar_system` (`light/LightLink.tsx`) opens the light panel on that tab, `flash`
   with a flash already sent from the Sun: an instruction only, dropped from the URL like `birthday`.
   `?craft=<spacecraft id>` (`spacecraft/CraftLink.tsx`) selects a spacecraft (#35) and flies to it once its
-  trajectory has loaded, the same kind of instruction.
+  trajectory has loaded, the same kind of instruction; with `&follow=true` it is the follow view itself (#57, the
+  `rideAlong` entry's link opens Voyager 1 shortly before Jupiter at Watch's speed).
 - Every image source is credited one by one under "Surface maps", read from `src/data/credits.json` (the Sun's and
   the planets' textures from `data/planet-textures.json`, the moons' from `data/moon-surfaces.json`); the ring models
   are credited under "Data".
@@ -1851,7 +1917,8 @@ import { Hint, hintKey } from "@/primitives/hint"
   `solarSystem.scale.summary.*`), the spin modes (reusing `solarSystem.spin.hint.*`, one per mode), reverse / pause /
   play / Now / the speed presets, the point-of-view menu, the Present, Share and Layers buttons, the projector and
   high-contrast switches, the postcard's switches and button, the birthday, hunt and light buttons, the hunt's difficulty
-  choice, speakers and certificate (#52), the two "stop the flash" buttons (#38), the sound toggle and its settings button (#32), the sky-tonight launcher and "Show me in space" (#36), the Help menu (#30), the opening's pause and Next (#49), the spacecraft menu, its two switches and "Show" (#35), the tours menu and the tour card's autoplay toggle (#28), the Help button (every page) and its "more" chevron (#43), Overview, and Back (#46, with a disabled `reason`). The tour card's share button keeps its Mantine `Tooltip`: it doubles as the "Link copied" confirmation. Plain tabs (the light
+  choice, speakers and certificate (#52), the two "stop the flash" buttons (#38), the sound toggle and its settings button (#32), the sky-tonight launcher and "Show me in space" (#36), the Help menu (#30), the opening's pause and Next (#49), the spacecraft menu, its two switches and "Show" (#35), "Follow" (card and list, with a disabled `reason`),
+  "Watch" and the followed spot (#57), the tours menu and the tour card's autoplay toggle (#28), the Help button (every page) and its "more" chevron (#43), Overview, and Back (#46, with a disabled `reason`). The tour card's share button keeps its Mantine `Tooltip`: it doubles as the "Link copied" confirmation. Plain tabs (the light
   panel's, the birthday panel's) have none, by design. A switch that already shows a Mantine `description` under
   its label is explained in place; wrap it in `<Hint>` only to add something the description does not say (the
   projector switch) or a disabled `reason` (high contrast), as the sound panel's switches show.
@@ -1872,7 +1939,8 @@ body held still) plus narration. Adding one is data only; `src/data/tours/README
   `fit` in AU or km; `move` fly / glide / jump, flying by default between two bodies; `camera.light` picks the
   azimuth that sees the body lit as asked from the TRUE Sun direction at the stop's date, `sunlitAzimuthDeg`).
   `stopSettings` folds scale, speed and layers forward from the tour's baseline (the scene when it started), so
-  any stop can be entered on its own and looks as it did in order; `frame` and `select` belong to one stop.
+  any stop can be entered on its own and looks as it did in order; `frame`, `select` and `follow` (ride along with a
+  spacecraft, #57: the stop's view is the craft, `view` names its neighbourhood) belong to one stop.
   `autoHoldMs`: the stop's `autoSeconds`, else the narration read aloud (330 ms a word + 3 s, 7..40 s).
 - **Player** (`tours/player.ts`; `useTourStore` in `src/store/tour.ts` is its plain state: `tour`, `index`,
   `steps`, `auto`, `baseline`, `collapsed`). `startTour(tour | id, { startAt, auto, jump })`, `nextStop` (after the

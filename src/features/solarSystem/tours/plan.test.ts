@@ -13,6 +13,7 @@ import {
 	AUTO_MIN_MS,
 	LIGHT_ANGLE_DEG,
 	autoHoldMs,
+	stopCraft,
 	stopFrame,
 	stopSelection,
 	stopSettings,
@@ -138,6 +139,28 @@ describe("what belongs to one stop", () => {
 		expect(stopFrame({ view: "earth", frame: "earth" })).toBe("earth")
 		expect(stopFrame({ view: "earth" })).toBe("sun")
 		expect(stopFrame({ view: "mars", frame: "earth" })).toBe("sun")
+	})
+
+	it("rides along with a spacecraft, in the neighbourhood the view names (#57)", () => {
+		const stop = { view: "jupiter", follow: "voyager1" }
+		expect(
+			stopStep(
+				{
+					...tour,
+					stops: [tour.stops[0], { id: "v", ...stop, camera: { distance: 3 } }],
+				},
+				1,
+				J2000_JD,
+			),
+		).toMatchObject({
+			view: { kind: "craft", id: "voyager1", anchorId: "jupiter" },
+			shot: { distance: 3 },
+		})
+		expect(stopCraft(stop)).toBe("voyager1")
+		expect(stopSelection(stop)).toBeNull()
+		expect(stopFrame({ ...stop, frame: "jupiter" })).toBe("sun")
+		expect(stopCraft({ view: "jupiter", follow: "enterprise" })).toBeNull()
+		expect(stopCraft({ view: "jupiter" })).toBeNull()
 	})
 
 	it("selects the body in view unless told otherwise", () => {
