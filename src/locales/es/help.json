@@ -45,6 +45,16 @@
 				"standard": "Busca mundos, descubre tu edad en Marte y haz una foto para guardarla.",
 				"simple": "Juega a buscar mundos, descubre cuántos años tienes en Marte y haz una foto."
 			}
+		},
+		"community": {
+			"title": {
+				"standard": "Mejorar Orbitalia",
+				"simple": "Ayuda a mejorar Orbitalia"
+			},
+			"intro": {
+				"standard": "Orbitalia es gratuita y de código abierto: mejora con cada error que nos cuentas y cada idea que nos envías.",
+				"simple": "Avísanos cuando algo se rompa o cuando tengas una idea."
+			}
 		}
 	},
 	"entries": {
@@ -1101,6 +1111,32 @@
 					"Pulsa Herramientas abajo a la derecha y luego «Hacer una foto».",
 					"Escribe algo sobre tu foto.",
 					"Pulsa «Guardar imagen»."
+				]
+			}
+		},
+		"feedback": {
+			"title": {
+				"standard": "Enviar comentarios",
+				"simple": "Dinos qué piensas"
+			},
+			"what": {
+				"standard": "Un formulario corto que envía tu aviso de error, tu idea o tu pregunta directamente a quienes hacen Orbitalia, con la vista que estabas mirando si quieres.",
+				"simple": "Escribe a quienes hacen Orbitalia cuando algo se rompa o cuando tengas una idea."
+			},
+			"why": {
+				"standard": "Orbitalia es de código abierto y crece con lo que nos cuentan docentes, estudiantes y aficionados al espacio; un enlace a la vista con el error hace que se arregle rápido.",
+				"simple": "¡Tu idea podría estar en la aplicación la próxima vez!"
+			},
+			"how": {
+				"standard": [
+					"En el sistema solar, abre la flecha junto a Ayuda, arriba a la derecha, y elige «Enviar comentarios»: si quieres, se adjunta la vista que estás mirando.",
+					"Elige de qué se trata, escribe unas palabras y pulsa «Enviar». El correo es opcional: ponlo solo si quieres una respuesta.",
+					"Con una cuenta de GitHub también puedes informar en GitHub o hablar con otros en GitHub Discussions; la página enlaza a ambos."
+				],
+				"simple": [
+					"Pulsa la flecha junto a Ayuda y luego «Dinos qué piensas».",
+					"Escribe qué se ha roto, o tu idea.",
+					"Pulsa «Enviar». No hace falta que pongas tu correo."
 				]
 			}
 		}

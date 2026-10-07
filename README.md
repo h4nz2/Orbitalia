@@ -77,11 +77,22 @@ The site is served by Cloudflare Workers at [orbitalia.app](https://orbitalia.ap
 pnpm build && npx wrangler deploy
 ```
 
-## Contributing
+The Worker in `worker/` answers `/api/feedback` (the feedback form) and needs two secrets, set once with
+`npx wrangler secret put`: `TURNSTILE_SECRET` and `FEEDBACK_TO` (see "Feedback" in
+[docs/ARCHITECTURE.md](docs/ARCHITECTURE.md)). To try the form locally, copy `.dev.vars.example` to `.dev.vars` and
+run `pnpm build && npx wrangler dev`.
 
-- If you'd like to contribute, by all means fork the repository and use a feature branch.
-- Pull requests are warmly welcome.
-- There are few known bugs and some unintentional behaviors.
+## Feedback and contributing
+
+Bug reports, ideas and any kind of feedback are very welcome:
+
+- in the app: the arrow next to Help → **Send feedback** (or [orbitalia.app/feedback](https://orbitalia.app/feedback)), no account needed;
+- on GitHub: [report a bug](https://github.com/h4nz2/Orbitalia/issues/new?template=bug.yml),
+  [suggest an idea](https://github.com/h4nz2/Orbitalia/issues/new?template=idea.yml), or join
+  [Discussions](https://github.com/h4nz2/Orbitalia/discussions);
+- by email: [feedback@orbitalia.app](mailto:feedback@orbitalia.app).
+
+Pull requests are warmly welcome too: translations, tours, facts and code. See [CONTRIBUTING.md](CONTRIBUTING.md).
 
 ## Licensing
 

@@ -15,6 +15,7 @@ export const TRY_ROUTES = [
 	"/solar_walk",
 	"/compare",
 	"/help",
+	"/feedback",
 ] as const
 export type TryRoute = (typeof TRY_ROUTES)[number]
 

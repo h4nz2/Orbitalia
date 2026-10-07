@@ -1,0 +1,42 @@
+name: Something is wrong
+description: A bug, a wrong fact or something confusing in Orbitalia.
+labels: [bug]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thank you for taking the time! No GitHub account? The app's **Help → Send feedback** reaches us too.
+        Please do not post personal details (names of students, emails): issues are public.
+  - type: textarea
+    id: what
+    attributes:
+      label: What happened?
+      description: What you did, and what you saw.
+      placeholder: When I zoom in close to Saturn, its rings disappear.
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: What did you expect instead?
+  - type: input
+    id: link
+    attributes:
+      label: Link to the view
+      description: Every view of the app is in its address. Press Share in the app (or copy the address bar) and paste it here, so we see exactly what you saw.
+      placeholder: https://orbitalia.app/solar_system?focus=saturn
+  - type: input
+    id: device
+    attributes:
+      label: Device and browser
+      placeholder: School laptop, Chrome 141 / iPad, Safari / projector at 1280×720
+  - type: dropdown
+    id: language
+    attributes:
+      label: Language of the app
+      options:
+        - English
+        - Deutsch
+        - Čeština
+        - Español
+        - Français

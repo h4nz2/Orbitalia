@@ -8,17 +8,19 @@ it, and if it must change, change it in the same change set.
 ## Stack
 
 - Vite + React 19 + TypeScript (strict), pnpm, Node 22 (`.nvmrc`).
-- TanStack Router, file routes in `src/routes`. URLs stay `/solar_system`, `/solar_dictionary`, plus `/solar_walk` (#25), `/compare` (#24) and `/help` (#43); `/` redirects to `/solar_system` with its search (#45, see "The way in and the way back"). Search params are
+- TanStack Router, file routes in `src/routes`. URLs stay `/solar_system`, `/solar_dictionary`, plus `/solar_walk` (#25), `/compare` (#24), `/help` (#43) and `/feedback`; `/` redirects to `/solar_system` with its search (#45, see "The way in and the way back"). Search params are
   zod-validated and invalid values fall back to defaults (`/solar_dictionary?entity=<0..8>&texture=<base|topo|specular|clouds>`).
 - 3D: `three`, `@react-three/fiber` 9, `@react-three/drei` 10, `@react-three/postprocessing` 3.
 - UI: Mantine 9 + CSS modules (no emotion, `createStyles` or `sx`), `@tabler/icons-react`. Animation: `gsap`. State: `zustand`.
-- Data: static JSON validated with zod at build time. No GraphQL, no server.
+- Data: static JSON validated with zod at build time. No GraphQL, no database; the one endpoint is the feedback
+  form's (`worker/`).
 - Tests: Vitest (`src/**/*.test.ts`, `scripts/**/*.test.ts`); Playwright smoke tests (`e2e/`, against `vite preview`).
   `astronomy-engine` is the tests' reference ephemeris and, since #36, the observing astronomy of Sky tonight.
 - ESLint 10 flat config + typescript-eslint + react-hooks; Prettier (tabs, no semicolons).
 - Hosting: static `dist/` on Cloudflare Workers at https://orbitalia.app (`wrangler.jsonc`: SPA fallback for deep
-  links, custom domain route). Deploy by hand: `pnpm build && npx wrangler deploy` (`wrangler` is a pinned
-  devDependency). `VITE_BASE` sets Vite `base` for serving from a sub path.
+  links, custom domain route). The only server code is `worker/index.ts`, which runs for `/api/*` alone (the feedback
+  form, see "Feedback"); every other request is a static asset. Deploy by hand: `pnpm build && npx wrangler deploy`
+  (`wrangler` is a pinned devDependency). `VITE_BASE` sets Vite `base` for serving from a sub path.
 - No CI: the husky pre-commit hook runs `pnpm format:check && pnpm lint && pnpm typecheck`; run `pnpm test`,
   `pnpm check:data` and `pnpm test:e2e` yourself before deploying.
 - Known noise: fiber 9.8 logs a `THREE.Clock` deprecation once per `<Canvas>` mount. Do not pin `three` down for it.
@@ -38,6 +40,8 @@ data/spacecraft.json         curated spacecraft catalogue (#35); scripts/build-s
 scripts/gen-moon-surfaces.ts data/moon-surfaces.json -> public/assets/textures/<planet>/satellites/<id>.jpg (pnpm gen:surfaces)
 scripts/gen-planet-textures.ts  data/planet-textures.json -> public/assets/textures/<body>/*.jpg (run by pnpm gen:surfaces)
 src/routes/                  file routes; src/routeTree.gen.ts is generated and committed
+worker/                      the Cloudflare Worker for /api/* (feedback.ts: POST /api/feedback, tested in feedback.test.ts)
+.github/ISSUE_TEMPLATE/      the GitHub issue forms (bug, idea) and the chooser's links (Discussions, the app's form)
 src/providers/               Mantine theme, I18nProvider, GSAP transition context, Layout
 src/i18n/                    languages and reading levels (see i18n); body content in bodies.ts ("@/i18n/bodies")
 src/locales/                 translation resources: config.json, <locale>/ui.json, <locale>/bodies.json
@@ -50,7 +54,8 @@ src/store/                   sim.ts, navigation.ts, flight.ts, scale.ts, lightin
                              urlSync.ts
 src/features/                solarDictionary/, solarSystem/ (index.tsx, scene/, bodies/, camera/, dock/, frame/, hunt/, intro/, labels/, lighting/, light/, postcard/, present/, rings/,
                              smallBodies/ (#23), sound/, tours/, ui/, birthday/, skyTonight/),
-                             solarWalk/ (the basketball solar system, #25), compare/ (side by side, #24), help/ (the help page, #43)
+                             solarWalk/ (the basketball solar system, #25), compare/ (side by side, #24), help/ (the help page, #43),
+                             feedback/ (the feedback page, its schema shared with the Worker, the error page)
 src/primitives/hint/         hover hints for every control (#39, see Hints)
 src/GSAPAnimation/ hooks/ primitives/ utils/   shared bits (hooks/useBackToSolarSystem.ts: every page's way back, #45)
 public/assets/textures/      pruned; unreferenced tiered variants are kept for later phases
@@ -1307,7 +1312,7 @@ the feature ready; then the controls and shortcuts (mouse, touch, keyboard) and 
 entry, in every locale and reading level, in the same change.
 
 - **Content is data.** `src/data/help.json` holds the groups in page order (`lookingAround`, `time`, `sizeDistance`,
-  `light`, `comparing`, `teachers`, `games`: the way people think, not the code), the entries (`id`, `group`, `try`: an
+  `light`, `comparing`, `teachers`, `games`, `community`: the way people think, not the code), the entries (`id`, `group`, `try`: an
   app path with its search params, never `lang`/`reading`), the rows of the controls table and the credits (`name`,
   `url`, `section` data/maps/software/app, `licence` id). The words live in `src/locales/<locale>/help.json`
   (`entries.<id>.{title, what, why, how[]}`, `groups`, `controls.<id>.{action, mouse?, touch?, keys?}`,
@@ -1340,6 +1345,43 @@ entry, in every locale and reading level, in the same change.
 - Every image source is credited one by one under "Surface maps", read from `src/data/credits.json` (the Sun's and
   the planets' textures from `data/planet-textures.json`, the moons' from `data/moon-surfaces.json`); the ring models
   are credited under "Data".
+
+## Feedback (`features/feedback`, route `/feedback`, `worker/`)
+
+Reporting a bug, sending an idea or just a word is welcome, and the app says so without ever interrupting: no
+popups, no prompts, nothing timed. The way in waits where people already look for help.
+
+- **Ways in:** the Help menu on the scene (the chevron: "Send feedback", with the view on screen as `from`), the help
+  page (the "Make Orbitalia better" group's entry and the About section, with GitHub and Discussions), one sentence on
+  the quick look's last step, the not-found page ("Report a broken link") and the error page
+  (`feedback/AppError.tsx`, the router's `defaultErrorComponent`: plain elements, as it may render outside the
+  providers; "Tell us what happened" attaches the broken view). Never during presentation, never as a panel.
+- **The page** (`feedback/index.tsx`, `?kind=bug|idea|other&from=<app path>`, `search.ts` zod only): the kind, the
+  message, an optional email ("only if you would like an answer"; the simple level says to ask a grown-up first), the
+  view to attach (checked; shown as a path), what else is sent (browser, screen size, language, reading level, app
+  version: `__APP_VERSION__` from `vite.config.ts`, the package version and the commit), then Turnstile and Send.
+  Under the form, the other ways: the GitHub issue form for the kind, Discussions, the address, the code.
+- **Turnstile** (`feedback/Turnstile.tsx`): the script loads only on this page (`render=explicit`). The site key is the
+  orbitalia.app widget's on that host and Cloudflare's always-passing test key anywhere else (localhost, previews,
+  forks). A token is good for one try: a failed send remounts the widget. If the script cannot load (a school
+  filter), the page offers the address instead.
+- **The Worker** (`worker/feedback.ts`, `POST /api/feedback`): reads at most 32 kB, validates with the same zod schema
+  as the page (`feedback/schema.ts`: `FeedbackRequest`, strict), checks the token with Turnstile's siteverify, then
+  mails the report with the `send_email` binding (`FEEDBACK_EMAIL`) from feedback@orbitalia.app to `FEEDBACK_TO`,
+  replying to the sender's email when given. Mail, not a GitHub issue: children use the form, and what they type must
+  not become public. The mail ends with a link that opens it as a GitHub issue (title, body, label; never the email)
+  for a maintainer to file after a look. Answers `{ ok: true }` or `{ ok: false, error }` with `invalid` (400, 413),
+  `challenge` (403), `send` (502) or `method` (405).
+- **Cloudflare setup** (once): Email Routing on orbitalia.app forwards feedback@orbitalia.app to the maintainer's
+  inbox, which is also the verified destination the Worker sends to; the Turnstile widget "Orbitalia feedback"
+  (managed, orbitalia.app); the secrets `TURNSTILE_SECRET` and `FEEDBACK_TO` (`npx wrangler secret put`). The inbox
+  address is a secret so it stays out of the repository.
+- **Locally:** `pnpm dev` has no Worker (the form shows its error and the address). For the whole thing, copy
+  `.dev.vars.example` to `.dev.vars` and run `pnpm build && npx wrangler dev` (the mail is logged, not sent).
+- **Tests:** `worker/feedback.test.ts` (validation, Turnstile, the mail and the issue link); `e2e/feedback.spec.ts`
+  with Turnstile and the Worker stubbed (`e2e/support/feedback.ts`; `help.spec.ts` stubs Turnstile too).
+- **GitHub:** the issue forms in `.github/ISSUE_TEMPLATE/` (bug, idea; the chooser links Discussions and the app's
+  form), Discussions (Q&A, Ideas, Show and tell, …) and `CONTRIBUTING.md`.
 
 ## Sound (`features/solarSystem/sound`, `src/store/sound.ts`; #32)
 

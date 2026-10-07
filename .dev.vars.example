@@ -1,0 +1,5 @@
+# Copy to .dev.vars for `npx wrangler dev` (the Worker and the built site on localhost:8787).
+# Cloudflare's Turnstile test secret: every token passes (the page uses the matching test site key off orbitalia.app).
+TURNSTILE_SECRET=1x0000000000000000000000000000000AA
+# Where reports go; wrangler dev only logs the mail instead of sending it.
+FEEDBACK_TO=you@example.org

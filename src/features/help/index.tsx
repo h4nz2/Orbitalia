@@ -3,8 +3,8 @@
  * (looking around, time, size and distance, light, comparing, teachers,
  * games), each with what it is, why it is worth using, how to use it and a
  * "try it" link that opens the app with the feature ready; then the controls
- * and shortcuts, what Orbitalia is (#45: what the start page used to say), and
- * the credits with their licences.
+ * and shortcuts, what Orbitalia is (#45: what the start page used to say, and
+ * the ways to take part), and the credits with their licences.
  *
  * Content is data (`src/data/help.json` + `src/locales/<locale>/help.json`,
  * see content.ts): adding a feature's entry needs no code. `?q=` is the
@@ -24,7 +24,10 @@ import {
 import {
 	IconArrowLeft,
 	IconArrowRight,
+	IconBrandGithub,
 	IconExternalLink,
+	IconMessageCircle,
+	IconMessages,
 	IconSearch,
 } from "@tabler/icons-react"
 import { Link, getRouteApi, useRouter } from "@tanstack/react-router"
@@ -53,6 +56,8 @@ import { parseTryLink } from "./links"
 import classes from "./Help.module.css"
 
 const route = getRouteApi("/help")
+
+const REPO = "https://github.com/h4nz2/Orbitalia"
 
 /** DOM id of a topic (an entry, a group, `controls`, `about`, `credits`). */
 const anchorId = (topic: string) => `help-${topic}`
@@ -222,6 +227,40 @@ function About({ i18n }: { i18n: I18n }) {
 			</Text>
 			<Text className={classes.about}>{t("help.about.text")}</Text>
 			<Text className={classes.about}>{t("help.about.madeBy")}</Text>
+			<Text className={classes.about}>{t("help.about.openSource")}</Text>
+			<div className={classes.aboutLinks}>
+				<Button
+					component={Link}
+					to="/feedback"
+					variant="light"
+					color="orange"
+					leftSection={<IconMessageCircle size={16} aria-hidden />}
+				>
+					{t("feedback.title")}
+				</Button>
+				<Button
+					component="a"
+					href={`${REPO}/discussions`}
+					target="_blank"
+					rel="noreferrer"
+					variant="subtle"
+					color="gray"
+					leftSection={<IconMessages size={16} aria-hidden />}
+				>
+					{t("help.about.discussions")}
+				</Button>
+				<Button
+					component="a"
+					href={REPO}
+					target="_blank"
+					rel="noreferrer"
+					variant="subtle"
+					color="gray"
+					leftSection={<IconBrandGithub size={16} aria-hidden />}
+				>
+					{t("help.about.code")}
+				</Button>
+			</div>
 		</section>
 	)
 }

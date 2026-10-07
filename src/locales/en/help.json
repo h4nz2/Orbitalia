@@ -45,6 +45,16 @@
 				"standard": "Hunt for worlds, find your age on Mars and take a picture to keep.",
 				"simple": "Play a hunt, find out how old you are on Mars, and take a picture."
 			}
+		},
+		"community": {
+			"title": {
+				"standard": "Make Orbitalia better",
+				"simple": "Help make Orbitalia better"
+			},
+			"intro": {
+				"standard": "Orbitalia is free and open source: it gets better with every bug you report and every idea you send.",
+				"simple": "Tell us when something is broken, or when you have an idea."
+			}
 		}
 	},
 	"entries": {
@@ -1101,6 +1111,32 @@
 					"Press Tools at the bottom right, then “Take a picture”.",
 					"Write something about your picture.",
 					"Press Save picture."
+				]
+			}
+		},
+		"feedback": {
+			"title": {
+				"standard": "Send feedback",
+				"simple": "Tell us what you think"
+			},
+			"what": {
+				"standard": "A short form that sends your bug report, idea or question straight to the people who make Orbitalia, with the view you were looking at attached if you like.",
+				"simple": "Write to the people who make Orbitalia when something is broken or when you have an idea."
+			},
+			"why": {
+				"standard": "Orbitalia is open source and grows with what teachers, students and space fans tell us; a link to the broken view makes a bug quick to fix.",
+				"simple": "Your idea could be in the app next time!"
+			},
+			"how": {
+				"standard": [
+					"On the solar system, open the arrow next to Help at the top right and choose “Send feedback”: the view you are looking at goes with it, if you like.",
+					"Choose what it is about, write a few words and press “Send”. Your email is optional: give it only if you would like an answer.",
+					"With a GitHub account you can also report it on GitHub or talk with others in GitHub Discussions; the page links to both."
+				],
+				"simple": [
+					"Press the arrow next to Help, then “Tell us what you think”.",
+					"Write what is broken, or your idea.",
+					"Press “Send”. You do not need to give your email."
 				]
 			}
 		}

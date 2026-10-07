@@ -45,6 +45,16 @@
 				"standard": "Geh auf Schnitzeljagd, finde heraus, wie alt du auf dem Mars bist, und mach ein Bild zum Behalten.",
 				"simple": "Spiel eine Schnitzeljagd, finde heraus, wie alt du auf dem Mars bist, und mach ein Foto."
 			}
+		},
+		"community": {
+			"title": {
+				"standard": "Orbitalia besser machen",
+				"simple": "Hilf mit, Orbitalia besser zu machen"
+			},
+			"intro": {
+				"standard": "Orbitalia ist kostenlos und Open Source: Mit jedem gemeldeten Fehler und jeder Idee wird es besser.",
+				"simple": "Sag uns, wenn etwas kaputt ist oder wenn du eine Idee hast."
+			}
 		}
 	},
 	"entries": {
@@ -1101,6 +1111,32 @@
 					"Drück unten rechts auf „Werkzeuge“ und dann auf „Foto machen“.",
 					"Schreib etwas zu deinem Bild.",
 					"Drück „Bild speichern“."
+				]
+			}
+		},
+		"feedback": {
+			"title": {
+				"standard": "Feedback senden",
+				"simple": "Sag uns deine Meinung"
+			},
+			"what": {
+				"standard": "Ein kurzes Formular, das deine Fehlermeldung, Idee oder Frage direkt an die Leute schickt, die Orbitalia machen, auf Wunsch mit der Ansicht, die du gerade siehst.",
+				"simple": "Schreib den Leuten, die Orbitalia machen, wenn etwas kaputt ist oder wenn du eine Idee hast."
+			},
+			"why": {
+				"standard": "Orbitalia ist Open Source und wächst mit dem, was Lehrkräfte, Schülerinnen und Schüler und Weltraumfans uns erzählen; ein Link zur fehlerhaften Ansicht macht einen Fehler schnell behebbar.",
+				"simple": "Vielleicht ist deine Idee beim nächsten Mal in der App!"
+			},
+			"how": {
+				"standard": [
+					"Öffne im Sonnensystem den Pfeil neben „Hilfe“ oben rechts und wähle „Feedback senden“: Auf Wunsch geht die Ansicht, die du gerade siehst, mit.",
+					"Wähle, worum es geht, schreib ein paar Worte und drück „Senden“. Die E-Mail-Adresse ist freiwillig: Gib sie nur an, wenn du eine Antwort möchtest.",
+					"Mit einem GitHub-Konto kannst du es auch auf GitHub melden oder auf GitHub Discussions mit anderen reden; die Seite verlinkt beides."
+				],
+				"simple": [
+					"Drück auf den Pfeil neben „Hilfe“ und dann auf „Sag uns deine Meinung“.",
+					"Schreib, was kaputt ist, oder deine Idee.",
+					"Drück auf „Senden“. Deine E-Mail-Adresse brauchst du nicht."
 				]
 			}
 		}

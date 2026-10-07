@@ -33,7 +33,14 @@
 	"notFound": {
 		"title": "Perdido en el espacio",
 		"text": "No hay nada en esta dirección.",
-		"back": "Volver a las estrellas"
+		"back": "Volver a las estrellas",
+		"report": "Informar de un enlace roto"
+	},
+	"error": {
+		"title": "Algo ha salido mal",
+		"text": "Orbitalia ha encontrado un problema que no ha podido resolver por sí sola. Recargar la página suele ayudar.",
+		"reload": "Recargar la página",
+		"report": "Cuéntanos qué ha pasado"
 	},
 	"units": {
 		"approx": "≈ {value}",
@@ -1420,8 +1427,8 @@
 				"more": {
 					"title": "Hay más",
 					"title@simple": "Hay más",
-					"text": "Cada función, cómo se usa y un enlace para probarla están en la página de ayuda: el botón Ayuda de arriba a la derecha. ¡Que disfrutes explorando!",
-					"text@simple": "Hay muchas más cosas por descubrir. El botón Ayuda de arriba a la derecha te lo cuenta todo. ¡Diviértete!"
+					"text": "Cada función, cómo se usa y un enlace para probarla están en la página de ayuda: el botón Ayuda de arriba a la derecha. ¿Algo no va bien o tienes una idea? «Enviar comentarios», en la flecha junto a Ayuda, llega a quienes hacen Orbitalia. ¡Que disfrutes explorando!",
+					"text@simple": "Hay muchas más cosas por descubrir. El botón Ayuda de arriba a la derecha te lo cuenta todo. ¿Algo se ha roto o tienes una idea? Cuéntanoslo con «Dinos qué piensas», junto a Ayuda. ¡Diviértete!"
 				}
 			}
 		}
@@ -1754,9 +1761,67 @@
 			"tagline": "¡Hacia las estrellas!",
 			"text": "Orbitalia es una aplicación gratuita para explorar el sistema solar: lo grande que es de verdad el espacio y cómo se mueve todo en él. Está hecha para las clases y para cualquiera a quien le guste mirar al cielo.",
 			"text@simple": "Orbitalia es una aplicación gratis para explorar el espacio: lo grande que es y cómo se mueve todo en él.",
-			"madeBy": "Hecho con cariño por odi y hrj."
+			"madeBy": "Hecho con cariño por odi y hrj.",
+			"openSource": "Orbitalia es de código abierto: el código, los datos y las traducciones están en GitHub, y cualquiera puede mejorarlos.",
+			"code": "El código en GitHub",
+			"discussions": "GitHub Discussions"
 		},
 		"readingLevel": "Nivel de lectura: {level}. Puedes cambiar el idioma y el nivel de lectura en el menú de arriba a la derecha.",
 		"shortcutsLink": "Todas las funciones y cómo usarlas: abre la página de ayuda"
+	},
+	"feedback": {
+		"title": "Enviar comentarios",
+		"title@simple": "Dinos qué piensas",
+		"lead": "¿Algo no va bien, tienes una idea o quieres decirnos algo? Orbitalia es gratuita y de código abierto, y mejora con lo que nos cuentas. Leemos todos los mensajes.",
+		"lead@simple": "¿Algo se ha roto? ¿Tienes una idea? Escríbenos. ¡Leemos todos los mensajes!",
+		"back": "Volver",
+		"kindLabel": "¿De qué se trata?",
+		"kind": {
+			"bug": "Algo no va bien",
+			"bug@simple": "Algo se ha roto",
+			"idea": "Una idea",
+			"idea@simple": "Tengo una idea",
+			"other": "Otra cosa"
+		},
+		"message": {
+			"label": "Tu mensaje",
+			"placeholderBug": "¿Qué ha pasado y qué esperabas? Por ejemplo: «Los anillos de Saturno desaparecen cuando me acerco mucho».",
+			"placeholderIdea": "¿Qué te gustaría que hiciera Orbitalia? Por ejemplo: «Mostrar dónde fueron los alunizajes».",
+			"placeholderOther": "Cualquier cosa que quieras contarnos.",
+			"count": "{count, number} / {max, number} caracteres"
+		},
+		"email": {
+			"label": "Tu correo electrónico (opcional)",
+			"description": "Solo si quieres una respuesta. No se usa para nada más y nunca se muestra ni se comparte.",
+			"description@simple": "No hace falta que pongas tu correo. Si quieres una respuesta, pregunta antes a un adulto.",
+			"invalid": "Esto no parece una dirección de correo."
+		},
+		"view": {
+			"label": "Adjuntar la vista que estaba mirando",
+			"description": "Así vemos exactamente lo que viste:"
+		},
+		"whatIsSent": "Con tu mensaje enviamos tu navegador, el tamaño de la pantalla y el idioma, que nos ayudan a encontrar errores. La aplicación no guarda nada.",
+		"whatIsSent@simple": "También enviamos qué navegador usas. Eso nos ayuda a arreglar cosas.",
+		"unavailable": "El formulario no puede llegar hasta nosotros desde aquí (quizá lo bloquea un filtro del colegio). Escríbenos a",
+		"error": {
+			"invalid": "Escribe un poco más y revisa la dirección de correo.",
+			"challenge": "No pudimos comprobar que eres una persona. Pulsa «Enviar» otra vez.",
+			"send": "No se pudo enviar tu mensaje. Inténtalo de nuevo en un momento o escribe a"
+		},
+		"send": "Enviar",
+		"sentTitle": "¡Gracias!",
+		"sentText": "Tu mensaje está en camino. Si dejaste tu correo, te responderemos.",
+		"sentText@simple": "Hemos recibido tu mensaje. ¡Gracias por ayudar a mejorar Orbitalia!",
+		"another": "Enviar otro",
+		"other": {
+			"title": "Otras formas de participar",
+			"issue": "Informar en GitHub",
+			"issueText": "Con una cuenta de GitHub: el formulario pide todo lo que necesitamos y puedes seguir lo que pasa con tu aviso. Los avisos son públicos.",
+			"discussions": "Hablar con otros en GitHub Discussions",
+			"discussionsText": "Haz preguntas, comparte una clase, una visita o una búsqueda del tesoro que hayas creado, o comenta una idea.",
+			"email": "Escribir un correo",
+			"code": "Leer o mejorar el código",
+			"codeText": "Orbitalia es de código abierto (licencia MIT). Las traducciones, visitas y correcciones son bienvenidas."
+		}
 	}
 }

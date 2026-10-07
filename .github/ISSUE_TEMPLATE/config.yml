@@ -1,0 +1,8 @@
+blank_issues_enabled: true
+contact_links:
+  - name: Questions, lesson ideas and chat
+    url: https://github.com/h4nz2/Orbitalia/discussions
+    about: Ask how to show something to a class, share a tour or a hunt you made, or talk about an idea before it becomes an issue.
+  - name: Send feedback without a GitHub account
+    url: https://orbitalia.app/feedback
+    about: The form in the app sends your message privately to the people who make Orbitalia.

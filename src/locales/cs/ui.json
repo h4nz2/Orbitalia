@@ -33,7 +33,14 @@
 	"notFound": {
 		"title": "Ztraceni ve vesmíru",
 		"text": "Na této adrese nic není.",
-		"back": "Zpátky ke hvězdám"
+		"back": "Zpátky ke hvězdám",
+		"report": "Nahlásit nefunkční odkaz"
+	},
+	"error": {
+		"title": "Něco se pokazilo",
+		"text": "Orbitalia narazila na problém, který nedokázala vyřešit sama. Obvykle pomůže stránku znovu načíst.",
+		"reload": "Znovu načíst stránku",
+		"report": "Napiš nám, co se stalo"
 	},
 	"units": {
 		"approx": "≈ {value}",
@@ -1420,8 +1427,8 @@
 				"more": {
 					"title": "Je toho víc",
 					"title@simple": "Je toho víc",
-					"text": "Každá funkce, jak se používá a odkaz na vyzkoušení, je na stránce nápovědy: tlačítko Nápověda vpravo nahoře. Hodně zábavy při objevování!",
-					"text@simple": "Je tu ještě spousta dalších věcí. Tlačítko Nápověda vpravo nahoře ti poví o všem. Hodně zábavy!"
+					"text": "Každá funkce, jak se používá a odkaz na vyzkoušení, je na stránce nápovědy: tlačítko Nápověda vpravo nahoře. Něco nefunguje, nebo máš nápad? „Poslat zpětnou vazbu“ pod šipkou vedle Nápovědy se dostane k lidem, kteří Orbitalii dělají. Hodně zábavy při objevování!",
+					"text@simple": "Je tu ještě spousta dalších věcí. Tlačítko Nápověda vpravo nahoře ti poví o všem. Něco se rozbilo, nebo máš nápad? Napiš nám přes „Napiš nám, co si myslíš“ vedle Nápovědy. Hodně zábavy!"
 				}
 			}
 		}
@@ -1754,9 +1761,67 @@
 			"tagline": "Ke hvězdám!",
 			"text": "Orbitalia je bezplatná aplikace pro objevování sluneční soustavy: jak velký je vesmír doopravdy a jak se v něm všechno pohybuje. Je určená pro školní třídy i pro každého, kdo se rád dívá na oblohu.",
 			"text@simple": "Orbitalia je aplikace zdarma, se kterou objevíš vesmír: jak je velký a jak se v něm všechno hýbe.",
-			"madeBy": "S láskou vytvořili odi a hrj."
+			"madeBy": "S láskou vytvořili odi a hrj.",
+			"openSource": "Orbitalia je open source: kód, data i překlady jsou na GitHubu a kdokoli je smí vylepšovat.",
+			"code": "Kód na GitHubu",
+			"discussions": "GitHub Discussions"
 		},
 		"readingLevel": "Právě čteš verzi s náročností textu „{level}“. Jazyk a náročnost textu změníš v nabídce vpravo nahoře.",
 		"shortcutsLink": "Všechny funkce a jak je používat: otevři stránku nápovědy"
+	},
+	"feedback": {
+		"title": "Poslat zpětnou vazbu",
+		"title@simple": "Napiš nám, co si myslíš",
+		"lead": "Něco nefunguje, máš nápad, nebo nám chceš něco říct? Orbitalia je zdarma a open source a zlepšuje se s tím, co nám napíšeš. Čteme každou zprávu.",
+		"lead@simple": "Něco se rozbilo? Máš nápad? Napiš nám. Čteme každou zprávu!",
+		"back": "Zpět",
+		"kindLabel": "O co jde?",
+		"kind": {
+			"bug": "Něco nefunguje",
+			"bug@simple": "Něco se rozbilo",
+			"idea": "Nápad",
+			"idea@simple": "Mám nápad",
+			"other": "Něco jiného"
+		},
+		"message": {
+			"label": "Tvoje zpráva",
+			"placeholderBug": "Co se stalo a co jsi čekal(a)? Třeba: „Když přiblížím Saturn, jeho prstence zmizí.“",
+			"placeholderIdea": "Co by Orbitalia měla umět? Třeba: „Ukázat, kde lidé přistáli na Měsíci.“",
+			"placeholderOther": "Cokoli, co nám chceš říct.",
+			"count": "{count, number} / {max, number} znaků"
+		},
+		"email": {
+			"label": "Tvůj e-mail (nepovinné)",
+			"description": "Jen pokud chceš odpověď. K ničemu jinému ho nepoužijeme a nikde ho neukážeme ani nesdílíme.",
+			"description@simple": "E-mail psát nemusíš. Jestli chceš odpověď, zeptej se nejdřív dospělého.",
+			"invalid": "Tohle nevypadá jako e-mailová adresa."
+		},
+		"view": {
+			"label": "Přiložit pohled, na který jsem se díval(a)",
+			"description": "Abychom viděli přesně to, co ty:"
+		},
+		"whatIsSent": "Se zprávou posíláme i tvůj prohlížeč, velikost obrazovky a jazyk, abychom snáz našli chyby. V aplikaci se nic neukládá.",
+		"whatIsSent@simple": "Posíláme i to, jaký prohlížeč používáš. Pomůže nám to opravit chyby.",
+		"unavailable": "Formulář se odsud k nám nedostane (možná ho blokuje školní filtr). Napiš nám prosím na",
+		"error": {
+			"invalid": "Napiš prosím trochu víc a zkontroluj e-mailovou adresu.",
+			"challenge": "Nepodařilo se ověřit, že jsi člověk. Stiskni prosím znovu „Odeslat“.",
+			"send": "Zprávu se nepodařilo odeslat. Zkus to prosím za chvíli znovu, nebo napiš na"
+		},
+		"send": "Odeslat",
+		"sentTitle": "Děkujeme!",
+		"sentText": "Tvoje zpráva je na cestě. Pokud jsi nechal(a) e-mail, ozveme se.",
+		"sentText@simple": "Tvoji zprávu máme. Díky, že pomáháš Orbitalii zlepšovat!",
+		"another": "Poslat další",
+		"other": {
+			"title": "Další způsoby, jak se zapojit",
+			"issue": "Nahlásit na GitHubu",
+			"issueText": "S účtem na GitHubu: formulář se zeptá na vše potřebné a uvidíš, co se s hlášením děje. Hlášení jsou veřejná.",
+			"discussions": "Diskutovat s ostatními na GitHub Discussions",
+			"discussionsText": "Ptej se, sdílej hodinu, prohlídku nebo pátrací hru, kterou jsi vytvořil(a), nebo s ostatními prober nápad.",
+			"email": "Napsat e-mail",
+			"code": "Prohlédnout nebo vylepšit kód",
+			"codeText": "Orbitalia je open source (licence MIT). Překlady, prohlídky a opravy jsou vítané."
+		}
 	}
 }

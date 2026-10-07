@@ -1,0 +1,134 @@
+/*
+ * The feedback page: one calm column, the form first, the other ways to take
+ * part under it. Dark like the help page, sized in rem so projector mode (#29)
+ * and the browser's zoom scale it.
+ */
+.page {
+	/* the page scrolls itself: the body never does (index.html) */
+	height: 100vh;
+	height: 100dvh;
+	overflow-y: auto;
+	display: flex;
+	flex-direction: column;
+	gap: 1.5rem;
+	padding: 0.75rem 1rem 2rem;
+	background: #050609;
+	color: var(--mantine-color-gray-2);
+}
+
+.page > header,
+.page > section {
+	width: 100%;
+	max-width: 44rem;
+	margin-inline: auto;
+}
+
+.header {
+	display: flex;
+	flex-direction: column;
+	align-items: flex-start;
+	gap: 0.5rem;
+	/* room for help and the language menu in the corner */
+	padding-top: 2.5rem;
+}
+
+.back {
+	margin-left: -0.75rem;
+}
+
+.title {
+	margin: 0;
+	font-size: clamp(1.6rem, 1.1rem + 1.6vw, 2.5rem);
+	font-weight: 700;
+	line-height: 1.15;
+	color: var(--mantine-color-orange-4);
+}
+
+.lead {
+	font-size: var(--mantine-font-size-lg);
+	color: var(--mantine-color-gray-2);
+}
+
+.card {
+	padding: 1.25rem;
+	border-radius: var(--mantine-radius-md);
+	background: var(--mantine-color-dark-7);
+	border: 1px solid var(--mantine-color-dark-5);
+}
+
+.form,
+.thanks {
+	display: flex;
+	flex-direction: column;
+	gap: 1rem;
+}
+
+.field {
+	display: flex;
+	flex-direction: column;
+	gap: 0.35rem;
+}
+
+.label {
+	font-size: var(--mantine-font-size-sm);
+	font-weight: 500;
+}
+
+.cardTitle {
+	margin: 0;
+	font-size: var(--mantine-font-size-xl);
+	color: var(--mantine-color-gray-0);
+}
+
+.view {
+	word-break: break-all;
+	color: var(--mantine-color-gray-4);
+}
+
+.note {
+	font-size: var(--mantine-font-size-sm);
+	color: var(--mantine-color-gray-5);
+}
+
+.actions {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 0.5rem;
+}
+
+.other {
+	display: flex;
+	flex-direction: column;
+	gap: 0.75rem;
+}
+
+.ways {
+	display: grid;
+	gap: 0.75rem;
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+
+.way {
+	display: flex;
+	align-items: flex-start;
+	gap: 0.75rem;
+}
+
+.wayIcon {
+	flex: none;
+	margin-top: 0.15rem;
+	color: var(--mantine-color-orange-4);
+}
+
+.wayTitle {
+	display: block;
+	font-weight: 600;
+}
+
+.wayText {
+	display: block;
+	font-size: var(--mantine-font-size-sm);
+	color: var(--mantine-color-gray-4);
+}

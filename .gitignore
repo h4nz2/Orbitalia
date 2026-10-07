@@ -12,3 +12,8 @@ playwright/.cache
 
 # downloaded source maps (pnpm gen:surfaces)
 .cache
+
+# wrangler dev: local secrets and state
+.dev.vars*
+!.dev.vars.example
+.wrangler
