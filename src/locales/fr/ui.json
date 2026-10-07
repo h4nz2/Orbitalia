@@ -837,7 +837,8 @@
 					"arrows": "← / →",
 					"digits": "1 – 8",
 					"home": "Début",
-					"esc": "Échap"
+					"esc": "Échap",
+					"backspace": "Retour arrière"
 				},
 				"pause": "Pause ou lecture",
 				"speed": "Plus vite ou plus lentement",
@@ -845,6 +846,7 @@
 				"planets": "Les planètes, de Mercure (1) à Neptune (8)",
 				"overview": "Tout le système solaire",
 				"reset": "Retour à la vue d’ensemble, où que tu sois",
+				"back": "Revenir là où tu étais (pendant une visite : l’étape précédente)",
 				"start": "Retour au début : la vue ouverte par le lien",
 				"scale": "Échelle suivante : Tout visible, Manuel scolaire, Échelle réelle",
 				"scale@simple": "Passer des tailles inventées aux vraies tailles",
@@ -860,6 +862,7 @@
 				"focus": "Affiché maintenant : {body}",
 				"overview": "Tout le système solaire",
 				"start": "Retour au début",
+				"back": "Retour à la vue précédente",
 				"scale": "Échelle : {preset}",
 				"labelsOn": "Noms affichés",
 				"labelsOff": "Noms masqués",
@@ -1038,6 +1041,13 @@
 		},
 		"overviewHint": "Le chemin du retour vers tout le système solaire, de n’importe où (Échap). Un clic dans le vide laisse la vue telle quelle.",
 		"overviewHint@simple": "Reviens voir tout le système solaire (Échap). Si tu cliques dans le vide, tu restes où tu es.",
+		"back": {
+			"label": "Retour",
+			"hint": "Un pas en arrière, là où tu étais : le monde, la sonde ou l’endroit que tu regardais, comme tu l’as laissé (Retour arrière). Pendant une visite, l’étape précédente.",
+			"hint@simple": "Reviens d’un pas en arrière, à ce que tu regardais avant (Retour arrière).",
+			"reason": "Rien où revenir pour l’instant : choisis d’abord un monde.",
+			"reason@simple": "Choisis d’abord une planète. Ensuite, tu pourras revenir."
+		},
 		"sky": {
 			"open": "Le ciel cette nuit",
 			"openHint": "Quelles planètes peux-tu voir cette nuit, quand et où ?",

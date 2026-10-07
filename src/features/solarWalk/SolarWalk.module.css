@@ -22,12 +22,8 @@
 }
 
 .back {
-	display: inline-flex;
-	align-items: center;
-	gap: 0.25rem;
-	font-size: var(--mantine-font-size-sm);
-	color: var(--mantine-color-gray-4);
 	align-self: flex-start;
+	margin-left: -0.75rem;
 }
 
 .title {

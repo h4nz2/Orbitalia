@@ -7,6 +7,7 @@
  */
 import { useScaleStore } from "@/store/scale"
 import { useSimStore } from "@/store/sim"
+import { useViewHistoryStore } from "@/store/viewHistory"
 
 import { placeRing, type RingPlacement } from "../scene/highlight"
 import type { CameraDirector, CameraSnapshot } from "./director"
@@ -15,6 +16,8 @@ export interface OrbitaliaDebugHandle {
 	store: typeof useSimStore
 	/** The scale store (presets), for the console and e2e tests. */
 	scale: typeof useScaleStore
+	/** The view history (#46): the entry on screen and what each entry returns to. */
+	history: typeof useViewHistoryStore
 	camera: () => CameraSnapshot
 	/**
 	 * Where a body is drawn on the canvas right now (CSS px from the canvas's
@@ -38,6 +41,7 @@ export function exposeDebugHandle(
 	const handle: OrbitaliaDebugHandle = {
 		store: useSimStore,
 		scale: useScaleStore,
+		history: useViewHistoryStore,
 		camera: () => director.snapshot(),
 		screenOf: (id) => {
 			const index = director.frame.index.get(id)

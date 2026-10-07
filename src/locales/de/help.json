@@ -138,6 +138,33 @@
 				]
 			}
 		},
+		"goBack": {
+			"title": {
+				"standard": "Zurück dorthin, wo du gerade warst",
+				"simple": "Zurück"
+			},
+			"what": {
+				"standard": "Der Pfeil neben dem Haus-Knopf bringt dich einen Schritt zurück: zur Welt, Raumsonde oder Stelle, die du vorher angeschaut hast, aus demselben Abstand und Winkel. Drück ihn noch einmal, dann geht es weiter zurück.",
+				"simple": "Der Pfeil oben links bringt dich zurück zu dem, was du vorher gesehen hast."
+			},
+			"why": {
+				"standard": "Aus Versehen einen Mond angeklickt, oder hat dich ein Meilenstein einer Raumsonde weit weggebracht? Nichts ist verloren: Zurück macht den Sprung rückgängig, der Haus-Knopf dagegen geht ganz hinaus zum ganzen System.",
+				"simple": "Falschen Planeten angeklickt? Kein Problem. Geh einfach zurück."
+			},
+			"how": {
+				"standard": [
+					"Klick eine Welt an, zum Beispiel den Mond, dann eine andere, etwa den Mars.",
+					"Drück den Pfeil oben links oder die Rücktaste: Die Kamera fliegt zurück zum Mond, so wie du ihn verlassen hast. Drück noch einmal, um weiter zurückzugehen; wenn nichts mehr da ist, ist der Pfeil ausgegraut.",
+					"Die Zurück-Taste deines Browsers und die Zurück-Geste deines Handys tun dasselbe. In einer Tour geht Zurück zur Station davor.",
+					"Drehen, Zoomen, die Zeit, die Ebenen und der Maßstab sind keine Schritte: Zurück überspringt sie."
+				],
+				"simple": [
+					"Klick auf den Mond. Dann klick auf den Mars.",
+					"Drück auf den Pfeil oben links. Du fliegst zurück zum Mond.",
+					"Drück noch einmal, dann geht es weiter zurück."
+				]
+			}
+		},
 		"findByName": {
 			"title": {
 				"standard": "Eine Welt über ihren Namen finden",
@@ -206,13 +233,13 @@
 			},
 			"how": {
 				"standard": [
-					"Oben links: der Haus-Knopf (zurück zum ganzen System), der Name der Welt im Blick und ihr Steckbrief; der Pfeil im Steckbrief klappt Fakten, Monde und Geschichten auf.",
+					"Oben links: der Pfeil zurück dorthin, wo du gerade warst, der Haus-Knopf (zurück zum ganzen System), der Name der Welt im Blick und ihr Steckbrief; der Pfeil im Steckbrief klappt Fakten, Monde und Geschichten auf.",
 					"Unten: Abspielen, Pause und das Datum; der Knopf mit dem Tempo (zum Beispiel 1x) öffnet „Jetzt“, die Tempi und die Drehung.",
 					"Unten rechts: Touren, Ebenen (was gezeichnet wird), Maßstab (wie groß und wie weit) und Werkzeuge (Lichtgeschwindigkeit, der Himmel heute Nacht, Raumsonden, dein Geburtstag, die Schnitzeljagd, Nebeneinander, das Sonnensystem ablaufen, das Bildlexikon und ein Foto). Es ist immer nur ein Feld offen; × schließt es.",
 					"Oben rechts: Präsentieren, Teilen, das durchgestrichene Auge, das alles ausblendet (H holt es zurück), Ton, Hilfe und die Sprache."
 				],
 				"simple": [
-					"Der Haus-Knopf oben links bringt dich zurück zu allen Planeten.",
+					"Der Pfeil oben links geht einen Schritt zurück. Der Haus-Knopf daneben bringt dich zurück zu allen Planeten.",
 					"Drück unten rechts auf Ebenen, Maßstab oder Werkzeuge, dann findest du mehr.",
 					"Drück oben rechts auf das durchgestrichene Auge, dann verschwinden alle Knöpfe. Mit H kommen sie zurück."
 				]
@@ -1172,6 +1199,12 @@
 			"mouse": "Den Haus-Knopf oben links anklicken",
 			"touch": "Den Haus-Knopf oben links antippen",
 			"keys": "Esc"
+		},
+		"stepBack": {
+			"action": "Zurück dorthin, wo du gerade warst",
+			"mouse": "Der Pfeil neben dem Haus-Knopf",
+			"touch": "Der Pfeil oder die Zurück-Geste des Handys",
+			"keys": "Rücktaste"
 		},
 		"name": {
 			"action": "Den Namen einer Welt sehen",

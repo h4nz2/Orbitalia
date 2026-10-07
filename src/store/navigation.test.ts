@@ -368,3 +368,52 @@ describe("camera shots in the URL", () => {
 		).toEqual({ azimuthDeg: 180, elevationDeg: 0, distance: 1 })
 	})
 })
+
+describe("steps (#46)", () => {
+	/** How many steps `act` marks. */
+	const marks = (act: () => void) => {
+		const before = store().step
+		act()
+		return store().step - before
+	}
+
+	it("are marked by choosing a body and by holding one still, before anything changes", () => {
+		const seen: (string | null)[] = []
+		const unsubscribe = useSimStore.subscribe((state, previous) => {
+			// the view being left is still there when the mark arrives
+			if (state.step !== previous.step) seen.push(state.view.kind)
+		})
+		expect(marks(() => store().setFocus("mars"))).toBe(1)
+		expect(seen).toEqual(["overview"])
+		unsubscribe()
+		expect(marks(() => store().anchorFrame("mars"))).toBe(1)
+		expect(marks(() => store().releaseFrame())).toBe(1)
+		// unknown bodies are no step
+		expect(marks(() => store().setFocus("vulcan"))).toBe(0)
+		expect(marks(() => store().anchorFrame("vulcan"))).toBe(0)
+	})
+
+	it("are never marked by the camera, the rig or plain requests", () => {
+		expect(marks(() => store().focus("mars"))).toBe(0)
+		expect(marks(() => store().goTo({ kind: "body", id: "earth" }))).toBe(0)
+		expect(marks(() => store().select("venus"))).toBe(0)
+		expect(marks(() => arrive())).toBe(0)
+		expect(
+			marks(() =>
+				store().publishShot({ azimuthDeg: 5, elevationDeg: 5, distance: 3 }),
+			),
+		).toBe(0)
+		expect(
+			marks(() =>
+				store().settleAt({
+					kind: "point",
+					anchorId: "earth",
+					offsetKm: [1e5, 0, 0],
+				}),
+			),
+		).toBe(0)
+		// the way out is a step where the user takes it (the house, Escape), not in the slice
+		expect(marks(() => store().reset())).toBe(0)
+		expect(marks(() => store().markStep())).toBe(1)
+	})
+})

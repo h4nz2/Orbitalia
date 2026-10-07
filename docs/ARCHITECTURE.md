@@ -51,8 +51,8 @@ src/sim/                     pure simulation, no React or three objects (import 
 src/data/skyEvents.json      the sky events (#41): real instants and the check that each happens in the simulation
 src/store/                   sim.ts, navigation.ts, flight.ts, scale.ts, lighting.ts, spin.ts, trails.ts, light.ts, hunt.ts,
                              hud.ts (the quiet HUD, #42), presentation.ts, postcard.ts, sound.ts, birthday.ts, skyTonight.ts, tour.ts, simSearch.ts (URL schema),
-                             urlSync.ts
-src/features/                solarDictionary/, solarSystem/ (index.tsx, scene/, bodies/, camera/, dock/, frame/, hunt/, intro/, labels/, lighting/, light/, postcard/, present/, rings/,
+                             urlSync.ts, viewHistory.ts (Back, #46)
+src/features/                solarDictionary/, solarSystem/ (index.tsx, back/ (#46), scene/, bodies/, camera/, dock/, frame/, hunt/, intro/, labels/, lighting/, light/, postcard/, present/, rings/,
                              smallBodies/ (#23), sound/, tours/, ui/, birthday/, skyTonight/, walk/ (the walk's ways in, #48)),
                              solarWalk/ (the basketball solar system, #25), compare/ (side by side, #24), help/ (the help page, #43),
                              feedback/ (the feedback page, its schema shared with the Worker, the error page)
@@ -366,11 +366,13 @@ frameId: string             body the reference frame holds still (#31): the Sun 
 shot: CameraShot | null     { azimuthDeg, elevationDeg, distance } at rest; distance is a multiple of the default framing
 transition, sequence        the running move and the running tour
 panning: boolean            a pan (or its damped glide) is moving the pivot right now
+step: number                counts the steps Back can undo (#46, see "Back: the view history")
 viewMode(state)             "overview" | "focused" | "free" | "transit"
 ```
 
 Actions: `select`, `setFocus` (click: select + focus; a flight from another body, see Flights), `focus`, `overview`, `goTo(view, request?)`, `jumpTo`, `reset`
-(the way out), `skip`, `finishMove` (skip the move, stay in the sequence), `anchorFrame(id, request?)` / `releaseFrame()` (#31), and sequences (`playSequence`, `goToStep`,
+(the way out), `skip`, `finishMove` (skip the move, stay in the sequence), `anchorFrame(id, request?)` / `releaseFrame()` (#31), `markStep()` (#46: what follows in this task is a step;
+`setFocus`, `anchorFrame` and `releaseFrame` mark themselves), and sequences (`playSequence`, `goToStep`,
 `nextStep`, `resumeSequence`, `stopSequence`). A request carries a partial `shot`, `durationMs`, a `profile` and a
 `fit` region (`{ km, around }`: frame a sphere of `km` TRUE km around the centre, drawn as a distance from body
 `around` is; overrides the shot's distance), an `eye` (#41: `{ anchorId, offsetKm }`, TRUE km from a body, drawn
@@ -543,6 +545,50 @@ become the sky's motions (the Sun's yearly circle, Mercury's and Venus's flowers
   of a body of the same family) beside a map of the same moment from above the Sun (`frame/inset.ts`, true
   proportions, line of sight) or the phase disc, and holds "Back to Sun-centred" and "Restart the trails".
   Strings: `solarSystem.frame.*`.
+
+### Back: the view history (`src/store/viewHistory.ts`, `features/solarSystem/back`; #46)
+
+Back returns to where you just were: the body, spacecraft or point in space that was in view, at the camera distance
+and angle it was left at. It is one step; the overview button is the way out, all the way to the overview.
+
+- **Steps are browser history entries.** A step is a change of what is in view that Back can undo; everything else
+  rewrites the entry on screen (`replace`), as before. So the Back button, Backspace, the browser's back and the
+  phone's back gesture do the same, Forward re-applies a step, and from the first view of the visit the browser's
+  back leaves the page as it always did. The address of every entry still describes its view.
+- **What is a step** (marked with `markStep()` before it changes anything): choosing a body or spacecraft (a click
+  or tap on it or its label, `scene/BodyPicking.tsx` `activateBody`; the picker, search, arrow keys and the centre
+  badge through `setFocus`; a craft's marker, `spacecraft/facts.ts` `showCraft`; a comet's watch; the presenter's
+  digits, Page Up/Down and 0), the flight that comes with it, the way out (`ui/OverviewButton.tsx` `wayOut`: the
+  house and Escape; the centre badge's "Back to overview"), a stop of a menu tour or sky event (`tours/player.ts`
+  `enterStop`), a spacecraft's milestone (`showEvent`), a hunt's "Show me" and holding a body still (`anchorFrame`,
+  `releaseFrame`), "Back to the start" (R / Home), and leaving a sky event, which flies back to where it began. Not
+  steps: dragging, zooming, panning, time, layers and the scale; arriving on a link (the URL seeding, `?craft=`,
+  a link onto a tour stop: `withoutSteps`); a tour another feature plays (the quick look, #44); the opening.
+- **One entry per step** (`createRecorder`, driven by `urlSync.ts`): the first mark of a task keeps the view being
+  left as a `Waypoint` and holds the URL writes; at the end of the task (a microtask) the address is written once,
+  pushed when the waypoint changed (`state.orbitaliaStep` makes an entry of a step the address cannot show, a
+  spacecraft chosen), else in place. So a click that selects and flies is one entry, however many actions it took.
+- **Waypoints** (`waypointOf`): `{ kind: "view", view, shot, frameId, selectedId, craftId, tour }`, the camera as it
+  last came to rest; or `{ kind: "tourStop", tour: { id, index } }` while the camera is on a menu tour or sky event.
+  They are kept by the entry's place in the browser history (TanStack's `__TSR_index`) in `useViewHistoryStore`,
+  for this visit: the entry left by a step, back or forward keeps the scene exactly as it was left. Each entry's key
+  is kept too, so an entry another page wrote over (a link from the help page) is told apart; an entry with no
+  record (after a reload) is read from its address (`waypointFromSearch`). The Back button is enabled while the
+  entry behind is a view of the solar system (`canGoBack`), or a tour is past its first stop.
+- **Going back** (`back/back.ts` `returnTo`, registered with `onArrive` by the Back button): back or forward between
+  two entries of the solar system goes to the entry's waypoint. A view flies there (#18's flight between two
+  bodies, a glide otherwise; a jump with `prefers-reduced-motion`) with its shot, held body, selection and
+  spacecraft; going back to before a tour leaves the tour (`exitTour`). A tour stop is the tour's own move:
+  `previousStop` (or `goToStop`) while the tour is open, else the tour begun again on that stop (`startTour`,
+  `startEvent`).
+- **During a tour** Back is the stop before (`goBack` → `tourBack`). The tour card's Back, the left arrow and Page Up
+  use `tourBack` too: through the browser's history when the entry behind is that stop, else `previousStop`, so the
+  browser's back and the app's agree on where Back goes.
+- **UI** (`back/BackButton.tsx`): the arrow before the overview button in the where panel (#42), shown disabled
+  (`aria-disabled`, still hoverable) with a hint saying why when there is nothing to go back to. Backspace is a
+  presenter key (`present/keys.ts`; text fields keep theirs) and in the shortcut list. Strings: `solarSystem.back.*`.
+- **For #57 (following a spacecraft):** add a member to `Waypoint` (`{ kind: "follow", craftId, shot }`), its case
+  in `sameWaypoint`, `waypointOf` and `returnTo`, and mark starting to follow as a step.
 
 ## Lighting (`src/sim/lighting.ts`, `features/solarSystem/lighting/`, `src/store/lighting.ts`; #22)
 
@@ -818,7 +864,8 @@ off by default, as `orbitNames=true` while on, and so is `allMoons=true` (#17, t
 are left out; a link without a switch turns it on. `simSearch.ts` drops invalid or blank values (never coerces them to
 0). `useSimUrlSync()` runs once, in `<UrlSync />` rendered before `<Scene />`: it seeds the store before the Canvas
 mounts (no `t` means the wall clock at mount), then writes back with `replace: true`, `t` at most once per second and
-only while paused or at |warp| <= 60, and never while a birth date is entered (#26, see Birthday).
+only while paused or at |warp| <= 60, and never while a birth date is entered (#26, see Birthday); a step (#46) is
+written once at its end, as a new history entry (see "Back: the view history").
 `?birthday=true` opens the birthday panel, `?sky=true` the sky tonight panel (#36; never written back); `?hunt=` the
 scavenger hunt (see Scavenger hunt). `paused=true` (written
 while paused, so a prepared moment opens standing still), `present=true` and `contrast=high` belong to #29 (see
@@ -1109,8 +1156,8 @@ the URL, so "save the lesson" is the link itself (plus `paused`, `present`, `con
   top-right corner (`present/TeacherBar.tsx` `HideButton`), with or without presenting. `PresentationLayer` (outside the HUD) keeps a "Show the controls"
   button that appears on pointer movement or focus, and hides an idle pointer.
 - **Keys** (`present/keys.ts` pure mapping, `present/commands.ts` actions, `present/usePresenterKeys.ts` listener):
-  PageDown/PageUp next/previous (presenter remotes), 0 the whole system, 1-8 the planets from the Sun, R/Home back to
-  the start, S next named scale preset, L names, H controls, F full screen, P projector, C contrast, ? the shortcut
+  PageDown/PageUp next/previous (presenter remotes), 0 the whole system, 1-8 the planets from the Sun, Backspace
+  Back (#46), R/Home back to the start, S next named scale preset, L names, H controls, F full screen, P projector, C contrast, ? the shortcut
   list. Ctrl/Cmd/Alt combinations are never taken; text fields and open lists keep their keys, radio buttons and
   switches do not (a clicked speed preset never leaves the keys dead); inside a modal dialog only "?" counts, and
   Escape in a modal closes only the modal (`ui/OverviewButton.tsx`). Each command returns a sentence for the polite
@@ -1149,7 +1196,8 @@ While someone looks around, space owns the screen. At 1366x768 with a planet foc
 unobstructed (`e2e/quietHud.spec.ts` measures it). Every control is at most two actions away.
 
 - **Always on screen** (`SolarSystem.module.css`, a grid over the canvas):
-  - top left, "where": the overview button (the way out), the focus picker (the name) and the point of view (#31);
+  - top left, "where": Back (#46, one step back), the overview button (the way out), the focus picker (the name)
+    and the point of view (#31);
     under them the frame badge (#31), the light's running clock while a flash is out (#27/#38) and the body card;
   - top centre: the free-view badge (#15), only in a free view;
   - top right, the corner: Present (tinted, easy to find), Share, hide the controls, sound, Help, language;
@@ -1189,8 +1237,10 @@ The solar system is the app: there is no start page or main menu.
   whatever is in view (`ui/dictionaryEntry.ts` `nearestDictionaryEntry`: the body, else the world it circles, else
   the Sun).
 - **Inside the solar system, the way back to the overview** is the overview button (top left, its hint says so)
-  and Escape, from anywhere; a click on empty space never moves the camera (#47, see Picking).
-- **Every other page leads back** (`hooks/useBackToSolarSystem.ts`): the browser's back when the visitor came from
+  and Escape, from anywhere; a click on empty space never moves the camera (#47, see Picking). One step back is
+  Back, the arrow beside it (#46, see "Back: the view history").
+- **Every other page leads back** (`hooks/useBackToSolarSystem.ts`; the dictionary, the walk, the comparison and
+  help, each with the same left-arrow "Back" button): the browser's back when the visitor came from
   inside the app, so they land exactly where they left (every view is in its address); a page opened straight from
   a link goes to a sensible view instead (the dictionary: its world; the walk: true scale; the comparison: its first
   body; help: the overview). The not-found page links to `/solar_system`.
@@ -1529,7 +1579,7 @@ import { Hint, hintKey } from "@/primitives/hint"
   `solarSystem.scale.summary.*`), the spin modes (reusing `solarSystem.spin.hint.*`, one per mode), reverse / pause /
   play / Now / the speed presets, the point-of-view menu, the Present, Share and Layers buttons, the projector and
   high-contrast switches, the postcard's switches and button, the birthday, hunt and light buttons and the two
-  "stop the flash" buttons (#38), the sound toggle and its settings button (#32), the sky-tonight launcher and "Show me in space" (#36), the Help menu (#30), the spacecraft menu, its two switches and "Show" (#35), the tours menu and the tour card's autoplay toggle (#28), the Help button (every page) and its "more" chevron (#43), and Overview. The tour card's share button keeps its Mantine `Tooltip`: it doubles as the "Link copied" confirmation. Plain tabs (the light
+  "stop the flash" buttons (#38), the sound toggle and its settings button (#32), the sky-tonight launcher and "Show me in space" (#36), the Help menu (#30), the spacecraft menu, its two switches and "Show" (#35), the tours menu and the tour card's autoplay toggle (#28), the Help button (every page) and its "more" chevron (#43), Overview, and Back (#46, with a disabled `reason`). The tour card's share button keeps its Mantine `Tooltip`: it doubles as the "Link copied" confirmation. Plain tabs (the light
   panel's, the birthday panel's) have none, by design. A switch that already shows a Mantine `description` under
   its label is explained in place; wrap it in `<Hint>` only to add something the description does not say (the
   projector switch) or a disabled `reason` (high contrast), as the sound panel's switches show.
@@ -1580,6 +1630,10 @@ index)` with no holds (stops wait for the presenter; `finishMove()` when jumping
   `camera.from: "earth"` (stand on the Earth looking at the body in view; at an event's time, where it is seen best)
   with `camera.fov` (the lens in degrees), and `returnOnExit` (leaving goes back to the scene before the tour; the
   baseline then carries `scene`). See Sky events.
+- **Back (#46):** entering a stop of a menu tour or sky event is a step of the view history (a link opening on a
+  stop, `jump`, and a tour another feature plays are not); the card's Back and the left arrow / Page Up are
+  `back/back.ts` `tourBack`, the previous stop through the browser's history where it can (see "Back: the view
+  history").
 - **For #29 (presentation mode):** call the player functions (`nextStop`, `previousStop`, `resumeTour`,
   `exitTour`, `startTour`) rather than `nextStep()`; `[data-tour-card]` marks the card for hiding the chrome.
 

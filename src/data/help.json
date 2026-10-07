@@ -27,6 +27,11 @@
 			"try": "/solar_system?focus=earth"
 		},
 		{
+			"id": "goBack",
+			"group": "lookingAround",
+			"try": "/solar_system?focus=earth"
+		},
+		{
 			"id": "findByName",
 			"group": "lookingAround",
 			"try": "/solar_system"
@@ -253,6 +258,7 @@
 		"move",
 		"fly",
 		"back",
+		"stepBack",
 		"name",
 		"hint",
 		"siblings",

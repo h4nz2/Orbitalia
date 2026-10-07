@@ -3,6 +3,7 @@ import { useSearch } from "@tanstack/react-router"
 
 import { spacecraftById } from "@/data/spacecraft"
 import { useScaleStore } from "@/store/scale"
+import { withoutSteps } from "@/store/viewHistory"
 
 import { showCraft } from "./facts"
 import { loadTrajectories } from "./trajectories"
@@ -25,7 +26,10 @@ const CraftLink = () => {
 		if (requested === undefined || !spacecraftById.has(requested)) return
 		let live = true
 		void loadTrajectories().then(() => {
-			if (live) showCraft(requested, useScaleStore.getState().scale)
+			// arriving on a link is not a step of the view history (#46)
+			if (live) {
+				withoutSteps(() => showCraft(requested, useScaleStore.getState().scale))
+			}
 		})
 		return () => {
 			live = false

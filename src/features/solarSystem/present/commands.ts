@@ -12,6 +12,7 @@ import { usePresentationStore } from "@/store/presentation"
 import { useScaleStore } from "@/store/scale"
 import { useSimStore } from "@/store/sim"
 
+import { goBack } from "../back/back"
 import { switchScale } from "../ui/ScalePanel"
 import { nudgeTowardsWalk } from "../walk/walkNudge"
 import {
@@ -37,6 +38,7 @@ export interface CommandContext {
  */
 export function showBody(id: string, instant: boolean): void {
 	const state = useSimStore.getState()
+	state.markStep()
 	state.select(id)
 	if (state.view.kind === "body" && state.view.id === id) return
 	state.focus(id, instant ? { durationMs: 0 } : undefined)
@@ -84,6 +86,7 @@ export function runCommand(
 		case "view": {
 			const id = viewBodyOfKey(command.index)
 			if (id === null) {
+				useSimStore.getState().markStep()
 				useSimStore.getState().overview(instant ? { durationMs: 0 } : undefined)
 				return t("solarSystem.present.announce.overview")
 			}
@@ -93,6 +96,8 @@ export function runCommand(
 		case "start":
 			restoreStart(presentation.startSearch ?? {}, instant)
 			return t("solarSystem.present.announce.start")
+		case "back":
+			return goBack() ? t("solarSystem.present.announce.back") : null
 		case "scale": {
 			const next = nextScalePreset(useScaleStore.getState().targetId)
 			if (instant) useScaleStore.getState().setPreset(next)

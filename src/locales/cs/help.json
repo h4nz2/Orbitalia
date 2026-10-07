@@ -138,6 +138,33 @@
 				]
 			}
 		},
+		"goBack": {
+			"title": {
+				"standard": "Zpět na předchozí pohled",
+				"simple": "Zpátky"
+			},
+			"what": {
+				"standard": "Šipka vedle tlačítka s domečkem vrátí pohled o krok zpět: ke světu, sondě nebo místu, které bylo předtím v záběru, ze stejné vzdálenosti a stejného úhlu. Dalším stisknutím se vrátíš ještě dál.",
+				"simple": "Šipka vlevo nahoře tě vrátí k tomu, co bylo vidět předtím."
+			},
+			"why": {
+				"standard": "Omylem kliknutý měsíc, nebo tě milník sondy zavedl daleko? Nic se neztratí: Zpět ten skok vrátí, kdežto tlačítko s domečkem jde až na celou soustavu.",
+				"simple": "Špatná planeta? Nevadí. Prostě se vrať."
+			},
+			"how": {
+				"standard": [
+					"Klikni na nějaký svět, třeba na Měsíc, a potom na jiný, například na Mars.",
+					"Stiskni šipku vlevo nahoře nebo Backspace: kamera doletí zpátky k Měsíci, do stejného pohledu jako předtím. Dalším stisknutím jdeš ještě dál zpět; když už není kam, šipka zešedne.",
+					"Tlačítko zpět v prohlížeči i gesto zpět na telefonu dělají totéž. Během prohlídky vede Zpět na předchozí zastávku.",
+					"Otáčení, přibližování, čas, vrstvy ani měřítko nejsou kroky: Zpět je přeskočí."
+				],
+				"simple": [
+					"Klikni na Měsíc. Pak klikni na Mars.",
+					"Stiskni šipku vlevo nahoře. Doletíš zpátky k Měsíci.",
+					"Stiskni ji znovu a vrátíš se ještě dál."
+				]
+			}
+		},
 		"findByName": {
 			"title": {
 				"standard": "Najdi svět podle názvu",
@@ -206,13 +233,13 @@
 			},
 			"how": {
 				"standard": [
-					"Vlevo nahoře: tlačítko s domečkem (zpátky na celou soustavu), jméno světa, na který se díváš, a jeho karta; šipka na kartě rozbalí údaje, měsíce a příběhy.",
+					"Vlevo nahoře: šipka zpět na předchozí pohled, tlačítko s domečkem (zpátky na celou soustavu), jméno světa, na který se díváš, a jeho karta; šipka na kartě rozbalí údaje, měsíce a příběhy.",
 					"Dole: spustit, pozastavit a datum; tlačítko s rychlostí (třeba 1x) otevře „Teď“, rychlosti a rotaci.",
 					"Vpravo dole: Prohlídky, Vrstvy (co se kreslí), Měřítko (jak velké a jak daleko) a Nástroje (rychlost světla, dnešní obloha, sondy, tvoje narozeniny, pátrací hra, vedle sebe, procházka sluneční soustavou, obrazový slovník a fotka). Otevřený je vždy jen jeden panel; × ho zavře.",
 					"Vpravo nahoře: Prezentovat, Sdílet, přeškrtnuté oko, které všechno skryje (H to vrátí), zvuk, Nápověda a jazyk."
 				],
 				"simple": [
-					"Tlačítko s domečkem vlevo nahoře tě vrátí ke všem planetám.",
+					"Šipka vlevo nahoře tě vrátí o krok zpět. Tlačítko s domečkem vedle ní tě vrátí ke všem planetám.",
 					"Stiskni vpravo dole Vrstvy, Měřítko nebo Nástroje a najdeš víc.",
 					"Stiskni vpravo nahoře přeškrtnuté oko a všechna tlačítka zmizí. Klávesou H se vrátí."
 				]
@@ -1172,6 +1199,12 @@
 			"mouse": "Klikni na tlačítko s domečkem vlevo nahoře",
 			"touch": "Ťukni na tlačítko s domečkem vlevo nahoře",
 			"keys": "Esc"
+		},
+		"stepBack": {
+			"action": "Zpět na předchozí pohled",
+			"mouse": "Šipka vedle tlačítka s domečkem",
+			"touch": "Šipka nebo gesto zpět na telefonu",
+			"keys": "Backspace"
 		},
 		"name": {
 			"action": "Zobrazit název světa",

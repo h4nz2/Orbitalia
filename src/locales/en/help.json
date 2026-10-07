@@ -138,6 +138,33 @@
 				]
 			}
 		},
+		"goBack": {
+			"title": {
+				"standard": "Back to where you just were",
+				"simple": "Go back"
+			},
+			"what": {
+				"standard": "The arrow next to the house button takes you back one step: to the world, spacecraft or place you were looking at before, from the same distance and angle. Press it again to go further back.",
+				"simple": "The arrow at the top left takes you back to what you saw before."
+			},
+			"why": {
+				"standard": "Clicked a moon by mistake, or did a spacecraft’s milestone take you far away? Nothing is lost: Back undoes the jump, while the house button goes all the way out to the whole system.",
+				"simple": "Clicked the wrong planet? No problem. Just go back."
+			},
+			"how": {
+				"standard": [
+					"Click a world, for example the Moon, then another one, like Mars.",
+					"Press the arrow at the top left, or Backspace: the camera flies back to the Moon, as you left it. Press it again to go further back; when there is nothing left, it is greyed out.",
+					"Your browser’s back button and your phone’s back gesture do the same. During a tour, Back goes to the stop before.",
+					"Turning, zooming, time, layers and the scale are not steps: Back skips them."
+				],
+				"simple": [
+					"Click the Moon. Then click Mars.",
+					"Press the arrow at the top left. You fly back to the Moon.",
+					"Press it again to go back more."
+				]
+			}
+		},
 		"findByName": {
 			"title": {
 				"standard": "Find a world by name",
@@ -206,13 +233,13 @@
 			},
 			"how": {
 				"standard": [
-					"Top left: the house button (back to the whole system), the name of the world in view and its card; the arrow on the card opens its facts, moons and stories.",
+					"Top left: the arrow back to where you just were, the house button (back to the whole system), the name of the world in view and its card; the arrow on the card opens its facts, moons and stories.",
 					"Bottom: play, pause and the date; the button with the speed (like 1x) opens Now, the speeds and the spin.",
 					"Bottom right: Tours, Layers (what is drawn), Scale (how big and how far) and Tools (the speed of light, tonight's sky, spacecraft, your birthday, the scavenger hunt, side by side, walking the solar system, the picture dictionary and taking a picture). One panel opens at a time; × closes it.",
 					"Top right: Present, Share, the crossed-out eye that hides everything (H brings it back), sound, Help and the language."
 				],
 				"simple": [
-					"The house button at the top left takes you back to all the planets.",
+					"The arrow at the top left goes back one step. The house button next to it takes you back to all the planets.",
 					"Press Layers, Scale or Tools at the bottom right to find more.",
 					"Press the crossed-out eye at the top right to hide all the buttons. Press H to get them back."
 				]
@@ -1172,6 +1199,12 @@
 			"mouse": "Click the house button at the top left",
 			"touch": "Tap the house button at the top left",
 			"keys": "Esc"
+		},
+		"stepBack": {
+			"action": "Back to where you just were",
+			"mouse": "The arrow next to the house button",
+			"touch": "The arrow, or your phone’s back gesture",
+			"keys": "Backspace"
 		},
 		"name": {
 			"action": "See a world’s name",

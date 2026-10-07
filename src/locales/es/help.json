@@ -138,6 +138,33 @@
 				]
 			}
 		},
+		"goBack": {
+			"title": {
+				"standard": "Volver a donde estabas",
+				"simple": "Volver atrás"
+			},
+			"what": {
+				"standard": "La flecha junto al botón de la casa te lleva un paso atrás: al mundo, la nave o el lugar que mirabas antes, desde la misma distancia y el mismo ángulo. Púlsala otra vez para seguir retrocediendo.",
+				"simple": "La flecha de arriba a la izquierda te lleva a lo que veías antes."
+			},
+			"why": {
+				"standard": "¿Hiciste clic en una luna sin querer, o un hito de una nave te llevó muy lejos? No se pierde nada: Atrás deshace el salto, mientras que el botón de la casa vuelve hasta todo el sistema.",
+				"simple": "¿Elegiste el planeta equivocado? No pasa nada. Vuelve atrás."
+			},
+			"how": {
+				"standard": [
+					"Haz clic en un mundo, por ejemplo la Luna, y luego en otro, como Marte.",
+					"Pulsa la flecha de arriba a la izquierda o la tecla Retroceso: la cámara vuelve volando a la Luna, tal como la dejaste. Púlsala otra vez para retroceder más; cuando no queda nada, se ve en gris.",
+					"El botón atrás del navegador y el gesto atrás del móvil hacen lo mismo. En una visita guiada, Atrás va a la parada anterior.",
+					"Girar, hacer zoom, el tiempo, las capas y la escala no son pasos: Atrás se los salta."
+				],
+				"simple": [
+					"Haz clic en la Luna. Luego haz clic en Marte.",
+					"Pulsa la flecha de arriba a la izquierda. Vuelves volando a la Luna.",
+					"Púlsala otra vez para volver más atrás."
+				]
+			}
+		},
 		"findByName": {
 			"title": {
 				"standard": "Busca un mundo por su nombre",
@@ -206,13 +233,13 @@
 			},
 			"how": {
 				"standard": [
-					"Arriba a la izquierda: el botón de la casa (volver a todo el sistema), el nombre del mundo que ves y su ficha; la flecha de la ficha abre sus datos, lunas e historias.",
+					"Arriba a la izquierda: la flecha para volver a donde estabas, el botón de la casa (volver a todo el sistema), el nombre del mundo que ves y su ficha; la flecha de la ficha abre sus datos, lunas e historias.",
 					"Abajo: reproducir, pausar y la fecha; el botón con la velocidad (como 1x) abre «Ahora», las velocidades y la rotación.",
 					"Abajo a la derecha: Visitas, Capas (lo que se dibuja), Escala (qué tamaño y a qué distancia) y Herramientas (la velocidad de la luz, el cielo de esta noche, naves, tu cumpleaños, la búsqueda del tesoro, lado a lado, recorrer el sistema solar a pie, el diccionario visual y hacer una foto). Solo se abre un panel a la vez; la × lo cierra.",
 					"Arriba a la derecha: Presentar, Compartir, el ojo tachado que lo oculta todo (H lo devuelve), el sonido, Ayuda y el idioma."
 				],
 				"simple": [
-					"El botón de la casa, arriba a la izquierda, te lleva de vuelta a todos los planetas.",
+					"La flecha de arriba a la izquierda vuelve un paso atrás. El botón de la casa, a su lado, te lleva de vuelta a todos los planetas.",
 					"Pulsa Capas, Escala o Herramientas abajo a la derecha para encontrar más.",
 					"Pulsa el ojo tachado arriba a la derecha para ocultar todos los botones. Pulsa H para recuperarlos."
 				]
@@ -1172,6 +1199,12 @@
 			"mouse": "Hacer clic en el botón de la casa, arriba a la izquierda",
 			"touch": "Tocar el botón de la casa, arriba a la izquierda",
 			"keys": "Esc"
+		},
+		"stepBack": {
+			"action": "Volver a donde estabas",
+			"mouse": "La flecha junto al botón de la casa",
+			"touch": "La flecha o el gesto atrás del móvil",
+			"keys": "Retroceso"
 		},
 		"name": {
 			"action": "Ver el nombre de un mundo",

@@ -837,7 +837,8 @@
 					"arrows": "← / →",
 					"digits": "1 – 8",
 					"home": "Inicio",
-					"esc": "Esc"
+					"esc": "Esc",
+					"backspace": "Retroceso"
 				},
 				"pause": "Pausar o reproducir",
 				"speed": "Más rápido o más lento",
@@ -845,6 +846,7 @@
 				"planets": "Los planetas, de Mercurio (1) a Neptuno (8)",
 				"overview": "Todo el sistema solar",
 				"reset": "Volver a la vista general desde cualquier lugar",
+				"back": "Volver a donde estabas (en una visita, a la parada anterior)",
 				"start": "Volver al inicio: la vista con la que se abrió el enlace",
 				"scale": "Siguiente escala: Todo visible, Libro de texto, Escala real",
 				"scale@simple": "Cambiar entre tamaños inventados y tamaños reales",
@@ -860,6 +862,7 @@
 				"focus": "Ahora se muestra: {body}",
 				"overview": "Todo el sistema solar",
 				"start": "De vuelta al inicio",
+				"back": "De vuelta a la vista anterior",
 				"scale": "Escala: {preset}",
 				"labelsOn": "Nombres visibles",
 				"labelsOff": "Nombres ocultos",
@@ -1038,6 +1041,13 @@
 		},
 		"overviewHint": "El camino de vuelta a todo el sistema solar, desde cualquier sitio (Esc). Un clic en el espacio vacío deja la vista como está.",
 		"overviewHint@simple": "Vuelve y mira todo el sistema solar (Esc). Si haces clic en el espacio vacío, te quedas donde estás.",
+		"back": {
+			"label": "Atrás",
+			"hint": "Un paso atrás, a donde estabas: al mundo, la nave o el lugar que veías antes, tal como lo dejaste (Retroceso). En una visita guiada, a la parada anterior.",
+			"hint@simple": "Vuelve un paso atrás, a lo que mirabas antes (Retroceso).",
+			"reason": "Aún no hay adónde volver: primero elige un mundo.",
+			"reason@simple": "Primero elige un planeta. Luego puedes volver."
+		},
 		"sky": {
 			"open": "El cielo esta noche",
 			"openHint": "¿Qué planetas puedes ver esta noche, cuándo y dónde?",

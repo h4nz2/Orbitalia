@@ -837,7 +837,8 @@
 					"arrows": "← / →",
 					"digits": "1 – 8",
 					"home": "Home",
-					"esc": "Esc"
+					"esc": "Esc",
+					"backspace": "Backspace"
 				},
 				"pause": "Pozastavit nebo spustit",
 				"speed": "Rychleji nebo pomaleji",
@@ -845,6 +846,7 @@
 				"planets": "Planety od Merkuru (1) po Neptun (8)",
 				"overview": "Celá sluneční soustava",
 				"reset": "Odkudkoli zpět na přehled",
+				"back": "Zpět na předchozí pohled (při prohlídce na předchozí zastávku)",
 				"start": "Zpět na začátek: pohled, se kterým se odkaz otevřel",
 				"scale": "Další měřítko: Vše viditelné, Jako v učebnici, Skutečné měřítko",
 				"scale@simple": "Přepínání mezi zvětšenými a skutečnými velikostmi",
@@ -860,6 +862,7 @@
 				"focus": "Teď se zobrazuje: {body}",
 				"overview": "Celá sluneční soustava",
 				"start": "Zpět na začátku",
+				"back": "Zpět na předchozí pohled",
 				"scale": "Měřítko: {preset}",
 				"labelsOn": "Názvy zobrazeny",
 				"labelsOff": "Názvy skryty",
@@ -1038,6 +1041,13 @@
 		},
 		"overviewHint": "Cesta zpět na celou sluneční soustavu, odkudkoli (Esc). Kliknutí do prázdného prostoru pohled nezmění.",
 		"overviewHint@simple": "Vrať se a podívej se na celou sluneční soustavu (Esc). Když klikneš do prázdna, zůstaneš, kde jsi.",
+		"back": {
+			"label": "Zpět",
+			"hint": "O krok zpět na předchozí pohled: na svět, sondu nebo místo, které bylo v záběru, ze stejné vzdálenosti a stejného úhlu (Backspace). Během prohlídky na předchozí zastávku.",
+			"hint@simple": "O krok zpátky, na to, co bylo vidět předtím (Backspace).",
+			"reason": "Zatím není kam se vrátit: nejdřív vyber nějaký svět.",
+			"reason@simple": "Nejdřív vyber planetu. Potom se můžeš vrátit."
+		},
 		"sky": {
 			"open": "Obloha dnes v noci",
 			"openHint": "Které planety dnes v noci uvidíš, kdy a kde?",

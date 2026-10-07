@@ -138,6 +138,33 @@
 				]
 			}
 		},
+		"goBack": {
+			"title": {
+				"standard": "Revenir là où tu étais",
+				"simple": "Revenir en arrière"
+			},
+			"what": {
+				"standard": "La flèche à côté du bouton maison te ramène un pas en arrière : au monde, à la sonde ou à l’endroit que tu regardais, à la même distance et sous le même angle. Appuie encore pour remonter plus loin.",
+				"simple": "La flèche en haut à gauche te ramène à ce que tu voyais avant."
+			},
+			"why": {
+				"standard": "Tu as cliqué sur une lune par erreur, ou une étape d’une sonde t’a emmené très loin ? Rien n’est perdu : Retour annule le saut, alors que le bouton maison ramène jusqu’à tout le système.",
+				"simple": "Tu t’es trompé de planète ? Pas grave. Reviens en arrière."
+			},
+			"how": {
+				"standard": [
+					"Clique sur un monde, par exemple la Lune, puis sur un autre, comme Mars.",
+					"Appuie sur la flèche en haut à gauche, ou sur Retour arrière : la caméra revole vers la Lune, comme tu l’avais laissée. Appuie encore pour remonter plus loin ; quand il n’y a plus rien, elle est grisée.",
+					"Le bouton retour de ton navigateur et le geste retour de ton téléphone font la même chose. Pendant une visite, Retour mène à l’étape précédente.",
+					"Tourner, zoomer, le temps, les calques et l’échelle ne sont pas des pas : Retour les saute."
+				],
+				"simple": [
+					"Clique sur la Lune. Puis clique sur Mars.",
+					"Appuie sur la flèche en haut à gauche. Tu reviens vers la Lune.",
+					"Appuie encore pour revenir plus loin."
+				]
+			}
+		},
 		"findByName": {
 			"title": {
 				"standard": "Chercher un monde par son nom",
@@ -206,13 +233,13 @@
 			},
 			"how": {
 				"standard": [
-					"En haut à gauche : le bouton maison (retour à tout le système), le nom du monde que tu regardes et sa fiche ; la flèche de la fiche ouvre ses infos, ses lunes et ses histoires.",
+					"En haut à gauche : la flèche pour revenir là où tu étais, le bouton maison (retour à tout le système), le nom du monde que tu regardes et sa fiche ; la flèche de la fiche ouvre ses infos, ses lunes et ses histoires.",
 					"En bas : lecture, pause et la date ; le bouton avec la vitesse (par exemple 1x) ouvre « Maintenant », les vitesses et la rotation.",
 					"En bas à droite : Visites, Calques (ce qui est dessiné), Échelle (quelle taille et quelle distance) et Outils (la vitesse de la lumière, le ciel de ce soir, les sondes, ton anniversaire, la chasse au trésor, côte à côte, le système solaire à pied, le dictionnaire illustré et prendre une photo). Un seul panneau s’ouvre à la fois ; le × le ferme.",
 					"En haut à droite : Présenter, Partager, l’œil barré qui cache tout (H le fait revenir), le son, Aide et la langue."
 				],
 				"simple": [
-					"Le bouton maison en haut à gauche te ramène à toutes les planètes.",
+					"La flèche en haut à gauche revient d’un pas en arrière. Le bouton maison à côté te ramène à toutes les planètes.",
 					"Appuie sur Calques, Échelle ou Outils en bas à droite pour en trouver plus.",
 					"Appuie sur l’œil barré en haut à droite pour cacher tous les boutons. Appuie sur H pour les faire revenir."
 				]
@@ -1172,6 +1199,12 @@
 			"mouse": "Cliquer sur le bouton maison, en haut à gauche",
 			"touch": "Toucher le bouton maison, en haut à gauche",
 			"keys": "Échap"
+		},
+		"stepBack": {
+			"action": "Revenir là où tu étais",
+			"mouse": "La flèche à côté du bouton maison",
+			"touch": "La flèche, ou le geste retour du téléphone",
+			"keys": "Retour arrière"
 		},
 		"name": {
 			"action": "Voir le nom d’un monde",
