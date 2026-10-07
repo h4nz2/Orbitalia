@@ -7,10 +7,11 @@ import { belts, type Belt, type Body } from "@/data"
 import type { I18n } from "@/i18n"
 import { AU_KM, jdToDate, propagate, type Vec3 } from "@/sim"
 import {
-	TAIL_ONSET_KM,
+	activityAt,
+	dustTailLengthKm,
+	ionTailLengthKm,
 	nextPerihelionJD,
 	previousPerihelionJD,
-	tailLengthKm,
 } from "@/sim/comet"
 
 import { LATEST_WATCH_JD } from "./cometWatch"
@@ -18,6 +19,9 @@ import { formatDayUTC } from "../ui/timeTravel"
 
 /** Mean distance from the Earth to the Moon (km): the ruler for "how empty". */
 export const EARTH_MOON_KM = 384400
+
+/** Below this length (km) a comet's tail has hardly begun: the card says it is waking up. */
+export const WAKING_TAIL_KM = 1e5
 
 /** Rounds to two significant digits: "about 380", "about 17", "2.6". */
 const roughly = (value: number): number =>
@@ -78,14 +82,18 @@ export interface CometSentences {
 const now: Vec3 = { x: 0, y: 0, z: 0 }
 const later: Vec3 = { x: 0, y: 0, z: 0 }
 
-/** Where a comet is at `jd`, what its tail is doing and when it is next (or was last) closest to the Sun. */
+/**
+ * Where a comet is at `jd`, what its tail is doing (its true length; that it is waking up;
+ * or where it will) and when it is next (or was last) closest to the Sun; null for a body
+ * without a tail.
+ */
 export function cometSentences(
 	body: Pick<Body, "orbit" | "tail">,
 	jd: number,
 	i18n: I18n,
 ): CometSentences | null {
-	const orbit = body.orbit
-	if (orbit === null) return null
+	const { orbit, tail: comet } = body
+	if (orbit === null || comet === undefined) return null
 	propagate(orbit, jd, now)
 	propagate(orbit, jd + 0.01, later)
 	const r = Math.hypot(now.x, now.y, now.z)
@@ -97,18 +105,25 @@ export function cometSentences(
 		}),
 		direction,
 	})
-	const length = body.tail === undefined ? 0 : tailLengthKm(body.tail, r)
+	// the longer of its tails (67P grew only a dust tail, Encke only a gas tail)
+	const activity = activityAt(orbit, comet, jd)
+	const length = Math.max(
+		ionTailLengthKm(comet, activity),
+		dustTailLengthKm(comet, activity),
+	)
 	const tail =
-		length > 0
+		length >= WAKING_TAIL_KM
 			? i18n.t("solarSystem.smallBodies.comet.tail", {
 					length: lengthText(length, i18n),
 					direction,
 				})
-			: i18n.t("solarSystem.smallBodies.comet.noTail", {
-					onset: i18n.t("units.au", {
-						value: i18n.number(TAIL_ONSET_KM / AU_KM),
-					}),
-				})
+			: length > 0
+				? i18n.t("solarSystem.smallBodies.comet.waking")
+				: i18n.t("solarSystem.smallBodies.comet.noTail", {
+						onset: i18n.t("units.au", {
+							value: i18n.significant(comet.onsetKm / AU_KM, 2),
+						}),
+					})
 	const next = nextPerihelionJD(orbit, jd)
 	const day = (at: number) => formatDayUTC(jdToDate(at), i18n.formatLocale)
 	const perihelion =

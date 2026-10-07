@@ -585,10 +585,51 @@ export const hasRealElements = (raw: Raw): boolean =>
 		(value) => nonZero(num(value)) !== null,
 	)
 
-/** A comet's tail from its curated length at 1 AU (`tailLengthKmAt1Au`). */
-const tailOf = (raw: Raw): Body["tail"] => {
-	const lengthKmAt1Au = positive(num(raw.tailLengthKmAt1Au))
-	return lengthKmAt1Au === null ? undefined : { lengthKmAt1Au }
+/** The source (a link or a citation) a curated tail value needs, or a build error. */
+const tailSource = (sources: Raw | null, key: string, label: string): void => {
+	if (str(sources?.[key]) === null) {
+		throw new BuildError(`${label}: the tail's ${key} has no source`)
+	}
+}
+
+/**
+ * A comet's curated `tail` (#23, #55): where it wakes up and where it is fully active
+ * (`onsetAu`, `fullAu`), its longest observed tails (`ionLengthKm`, `dustLengthKm`, 0 for one
+ * it does not grow) and an optional `lagDays`, each with its source in `sources`. AU in the source, km in the output;
+ * anything missing, inconsistent or without a source stops the build.
+ */
+export const tailOf = (raw: Raw, label = "comet"): Body["tail"] => {
+	const tail = rec(raw.tail)
+	if (tail === null) return undefined
+	const onsetAu = positive(num(tail.onsetAu))
+	const fullAu = positive(num(tail.fullAu))
+	const ionLengthKm = num(tail.ionLengthKm)
+	const dustLengthKm = num(tail.dustLengthKm)
+	const lagDays = num(tail.lagDays)
+	if (
+		onsetAu === null ||
+		fullAu === null ||
+		ionLengthKm === null ||
+		dustLengthKm === null ||
+		ionLengthKm < 0 ||
+		dustLengthKm < 0 ||
+		!(ionLengthKm > 0 || dustLengthKm > 0) ||
+		!(fullAu < onsetAu)
+	) {
+		throw new BuildError(`${label}: incomplete tail`)
+	}
+	const sources = rec(tail.sources)
+	for (const key of ["onset", "full", "ionLength", "dustLength"]) {
+		tailSource(sources, key, label)
+	}
+	if (lagDays !== null && lagDays !== 0) tailSource(sources, "lag", label)
+	return {
+		onsetKm: Math.round(onsetAu * AU_KM),
+		fullKm: Math.round(fullAu * AU_KM),
+		ionLengthKm,
+		dustLengthKm,
+		...(lagDays === null || lagDays === 0 ? {} : { lagDays }),
+	}
 }
 
 const buildPlanet = (
@@ -641,7 +682,7 @@ const buildPlanet = (
 			extraTextures,
 		),
 		rings: ringsOf(raw, id, ctx),
-		tail: tailOf(raw),
+		tail: tailOf(raw, name),
 		info: infoOf([raw]),
 	})
 }

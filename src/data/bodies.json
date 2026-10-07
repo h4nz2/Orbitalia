@@ -9490,7 +9490,10 @@
 		},
 		"rings": null,
 		"tail": {
-			"lengthKmAt1Au": 2000000
+			"onsetKm": 243844529,
+			"fullKm": 74798935,
+			"ionLengthKm": 13000000,
+			"dustLengthKm": 0
 		},
 		"info": {
 			"discoveredBy": "Pierre Méchain",
@@ -9527,7 +9530,11 @@
 		},
 		"rings": null,
 		"tail": {
-			"lengthKmAt1Au": 1000000
+			"onsetKm": 643270844,
+			"fullKm": 194477232,
+			"ionLengthKm": 0,
+			"dustLengthKm": 2200000,
+			"lagDays": 20
 		},
 		"info": {
 			"discoveredBy": "Klim Churyumov, Svetlana Gerasimenko",
@@ -9568,7 +9575,11 @@
 		},
 		"rings": null,
 		"tail": {
-			"lengthKmAt1Au": 18000000
+			"onsetKm": 897587224,
+			"fullKm": 104718509,
+			"ionLengthKm": 50000000,
+			"dustLengthKm": 25000000,
+			"lagDays": 11
 		},
 		"info": {
 			"density": 1,
@@ -9609,7 +9620,10 @@
 		},
 		"rings": null,
 		"tail": {
-			"lengthKmAt1Au": 70000000
+			"onsetKm": 1944772319,
+			"fullKm": 149597871,
+			"ionLengthKm": 148000000,
+			"dustLengthKm": 77000000
 		},
 		"info": {
 			"discoveredBy": "Alan Hale, Thomas Bopp",
@@ -9646,7 +9660,10 @@
 		},
 		"rings": null,
 		"tail": {
-			"lengthKmAt1Au": 15000000
+			"onsetKm": 448793612,
+			"fullKm": 67319042,
+			"ionLengthKm": 36000000,
+			"dustLengthKm": 21000000
 		},
 		"info": {
 			"discoveredBy": "Wide-Field Infrared Survey Explorer",

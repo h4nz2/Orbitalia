@@ -29,19 +29,20 @@ import { isBodyShown, useSimStore } from "@/store/sim"
 import { pixelsPerUnitAtDistanceOne } from "../scene/picking"
 import { useSimFrame } from "../scene/simFrame"
 import {
-	DUST_TAIL_SHARE,
 	TAIL_SAMPLES,
+	comaGrowth,
 	createTailFrame,
 	tailAlpha,
+	tailBrightness,
 	type TailFrame,
 	writeRibbon,
 	writeTail,
 } from "./cometTail"
 
 /** The gas tail: straight away from the Sun, glowing blue. */
-export const ION_COLOR = "#7fb8ff"
+export const ION_COLOR = "#4d8dff"
 /** The dust tail: sunlight on dust, yellowish white. */
-export const DUST_COLOR = "#fff0d0"
+export const DUST_COLOR = "#ffe2a8"
 export const ION_OPACITY = 0.7
 export const DUST_OPACITY = 0.5
 /** Never thinner on screen than this (px), so a tail reads from far away. */
@@ -108,7 +109,7 @@ const createTailObjects = (): TailObjects => {
 		const color = tail === 0 ? ion : dust
 		const opacity = tail === 0 ? ION_OPACITY : DUST_OPACITY
 		for (let k = 0; k < TAIL_SAMPLES; k++) {
-			const alpha = opacity * tailAlpha(k / (TAIL_SAMPLES - 1))
+			const alpha = opacity * tailAlpha(k)
 			for (let side = 0; side < 2; side++) {
 				const v = ((tail * TAIL_SAMPLES + k) * 2 + side) * 4
 				colors[v] = color.r
@@ -151,7 +152,8 @@ const createTailObjects = (): TailObjects => {
 
 /**
  * Per frame: the tail's state from the SimFrame, both ribbons facing the camera and the
- * coma at the nucleus. Hides everything while the comet is asleep.
+ * coma round the nucleus, all as bright as the comet is active. Hides everything while the
+ * comet is asleep.
  */
 export function updateCometTail(
 	frame: Parameters<typeof writeTail>[0],
@@ -173,6 +175,7 @@ export function updateCometTail(
 		tail.ion,
 		tail.ionUnits,
 		ION_WIDTH_SHARE,
+		tail.comaUnits,
 		ION_MIN_PX,
 		eye,
 		pxPerUnit,
@@ -181,8 +184,9 @@ export function updateCometTail(
 	)
 	writeRibbon(
 		tail.dust,
-		tail.ionUnits * DUST_TAIL_SHARE,
+		tail.dustUnits,
 		DUST_WIDTH_SHARE,
+		tail.comaUnits,
 		DUST_MIN_PX,
 		eye,
 		pxPerUnit,
@@ -190,17 +194,18 @@ export function updateCometTail(
 		TAIL_SAMPLES * 6,
 	)
 	objects.mesh.geometry.attributes.position.needsUpdate = true
-	// the coma: its drawn size, but never less than a few pixels while active
-	const distance = Math.hypot(
-		eye.x - tail.ion[0],
-		eye.y - tail.ion[1],
-		eye.z - tail.ion[2],
+	;(objects.mesh.material as MeshBasicMaterial).opacity = tailBrightness(
+		tail.activity,
 	)
+	// the coma: its drawn size, but never less than a few pixels while active
+	const head = tail.head
+	const distance = Math.hypot(eye.x - head[0], eye.y - head[1], eye.z - head[2])
 	const minRadius = pxPerUnit > 0 ? (COMA_MIN_PX * distance) / pxPerUnit : 0
-	const radius = Math.max(tail.comaUnits, minRadius * tail.activity)
-	objects.coma.position.set(tail.ion[0], tail.ion[1], tail.ion[2])
+	const growth = comaGrowth(tail.activity)
+	const radius = Math.max(tail.comaUnits, minRadius * growth)
+	objects.coma.position.set(head[0], head[1], head[2])
 	objects.coma.scale.setScalar(2 * radius)
-	objects.coma.material.opacity = 0.35 + 0.65 * tail.activity
+	objects.coma.material.opacity = growth
 }
 
 function CometTail({ index }: { index: number }) {

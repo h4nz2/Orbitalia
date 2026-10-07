@@ -170,12 +170,29 @@ export const Rotation = z
 	)
 
 /**
- * A comet's tail (#23), a presentation hint like `rings`: the true length (km) of its tail
- * at 1 AU from the Sun; src/sim/comet.ts grows and shrinks it with the distance.
+ * A comet's activity and tails (#23, #55), a presentation hint like `rings`, from what was
+ * observed (the sources are in data/ourDB.json): it wakes up inside `onsetKm` from the Sun
+ * and is fully active inside `fullKm`; its tails then reach the longest observed lengths
+ * (true km; 0: a tail it does not grow, as Encke's dust tail or 67P's ion tail). `lagDays`:
+ * its activity answers to where it was that many days earlier (more active after
+ * perihelion); absent, 0. src/sim/comet.ts turns this into what is drawn.
  */
-export const Tail = z.object({
-	lengthKmAt1Au: z.number().positive(),
-})
+export const Tail = z
+	.object({
+		onsetKm: z.number().positive(),
+		fullKm: z.number().positive(),
+		ionLengthKm: z.number().nonnegative(),
+		dustLengthKm: z.number().nonnegative(),
+		lagDays: z.number().optional(),
+	})
+	.refine((tail) => tail.fullKm < tail.onsetKm, {
+		message: "a comet is fully active closer to the Sun than it wakes up",
+		path: ["fullKm"],
+	})
+	.refine((tail) => tail.ionLengthKm > 0 || tail.dustLengthKm > 0, {
+		message: "a comet with a tail has at least one",
+		path: ["ionLengthKm"],
+	})
 
 export const Body = z
 	.object({

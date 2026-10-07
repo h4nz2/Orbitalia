@@ -1348,6 +1348,8 @@
 				"tail@simple": "Sein Schweif ist etwa {length} lang. Er zeigt immer von der Sonne weg{direction, select, out { – sogar jetzt, wo der Komet mit dem Schweif voran davonfliegt} other {}}!",
 				"noTail": "Gerade kein Schweif: Er wächst erst innerhalb von etwa {onset} um die Sonne, wo das Sonnenlicht das Eis des Kometen in Gas verwandelt.",
 				"noTail@simple": "Gerade kein Schweif. Der Schweif wächst erst, wenn der Komet der Sonne nahe kommt und sein Eis zu Gas wird.",
+				"waking": "Er wacht gerade auf: Das Sonnenlicht beginnt, sein Eis in Gas zu verwandeln, und eine Koma bildet sich. Sein Schweif hat kaum zu wachsen begonnen.",
+				"waking@simple": "Er wacht gerade auf! Die Sonne fängt an, sein Eis in Gas zu verwandeln. Bald bekommt er einen Schweif.",
 				"next": "Das nächste Mal der Sonne am nächsten: {date}.",
 				"last": "Zuletzt der Sonne am nächsten: {date}. Er kommt erst in etwa {years, number} Jahren wieder.",
 				"watch": "Zusehen, wie er an der Sonne vorbeizieht",

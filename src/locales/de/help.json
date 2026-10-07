@@ -382,18 +382,19 @@
 				"simple": "Kometen"
 			},
 			"what": {
-				"standard": "Fünf Kometen auf ihren echten, langgestreckten Bahnen bekommen nahe der Sonne einen leuchtenden Kopf und zwei Schweife und verlieren sie wieder, wenn sie davonziehen.",
-				"simple": "Kometen bekommen einen langen Schweif, wenn sie der Sonne nahe kommen."
+				"standard": "Fünf Kometen auf ihren echten, langgestreckten Bahnen wachen nahe der Sonne auf, jeder in seinem eigenen Abstand (der große Hale-Bopp schon jenseits des Saturn, der kleine Encke erst dicht an der Sonne): Zuerst erscheint ein leuchtender Kopf, dann wachsen ein gerader blauer Gasschweif und ein gebogener, gelblicher Staubschweif, so lang und hell, wie man sie wirklich gesehen hat, und verblassen wieder, wenn der Komet davonzieht.",
+				"simple": "Kometen wachen auf, wenn sie der Sonne nahe kommen. Große Kometen wachen schon weit draußen auf, kleine erst dicht an der Sonne. Dann bekommen sie einen langen, leuchtenden Schweif."
 			},
 			"why": {
-				"standard": "Der Schweif zeigt immer von der Sonne weg, also fliegt ein Komet auf dem Rückweg mit dem Schweif voran – zum Ansehen, nicht nur zum Erzählen.",
+				"standard": "Der Schweif zeigt immer von der Sonne weg, also fliegt ein Komet auf dem Rückweg mit dem Schweif voran – zum Ansehen, nicht nur zum Erzählen. Der Staubschweif bleibt zurück und biegt sich, am stärksten, wenn ein Komet dicht um die Sonne saust.",
 				"simple": "Der Schweif zeigt immer von der Sonne weg, auch wenn der Komet davonfliegt!"
 			},
 			"how": {
 				"standard": [
 					"Wähle oben links Halley oder Encke (Gruppe Kometen).",
 					"Klapp die Karte mit dem Pfeil auf und drücke „Zusehen, wie er an der Sonne vorbeizieht“: Die App springt zum nächsten Besuch und spielt ihn in etwa anderthalb Minuten ab.",
-					"Achte darauf, wohin der Schweif auf dem Hinweg und auf dem Rückweg zeigt."
+					"Achte darauf, wohin der Schweif auf dem Hinweg und auf dem Rückweg zeigt.",
+					"Probiere auch Hale-Bopp: Sein Kopf erscheint schon weit jenseits des Jupiter, lange bevor seine Schweife wachsen."
 				],
 				"simple": [
 					"Wähle oben links Halley.",
