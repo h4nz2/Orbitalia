@@ -486,7 +486,7 @@
 			},
 			"why": {
 				"standard": "Voyager 1 sendet noch immer Nachrichten von weit jenseits der Planeten: Ihr Steckbrief zeigt, wie lange ihr Signal bis zu uns braucht und warum die Reise so viele Swing-by-Manöver brauchte.",
-				"simple": "Voyager 1 ist 1977 losgeflogen und fliegt immer noch. Eine Nachricht von ihr braucht fast einen Tag bis zu uns!"
+				"simple": "Voyager 1 ist losgeflogen, als deine Großeltern jung waren, und fliegt immer noch. Eine Nachricht von ihr braucht fast einen Tag bis zu uns!"
 			},
 			"how": {
 				"standard": [
@@ -736,7 +736,7 @@
 			},
 			"what": {
 				"standard": "Der Schalter „Kleinkörper“ zeigt den Asteroidengürtel und den Kuipergürtel als Punktwolken, dazu die Zwergplaneten, sieben benannte Asteroiden und fünf Kometen.",
-				"simple": "Ein Schalter zeigt den Asteroidengürtel, den eisigen Kuipergürtel, die Zwergplaneten und Kometen."
+				"simple": "Ein Schalter zeigt den Asteroidengürtel, einen Ring aus Felsbrocken zwischen Mars und Jupiter. Er zeigt auch die eisigen Welten hinter Neptun und Kometen."
 			},
 			"why": {
 				"standard": "Filme zeigen ein dichtes Feld aus Felsen. Die Karte sagt die Wahrheit: Jeder Punkt steht für etwa 380 Asteroiden, und Nachbarn sind rund eine Million km voneinander entfernt – Raumsonden fliegen einfach hindurch.",

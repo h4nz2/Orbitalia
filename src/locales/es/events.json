@@ -1,6 +1,9 @@
 {
 	"solar1999": {
-		"title": "Eclipse total de Sol sobre Europa",
+		"title": {
+			"simple": "Eclipse de Sol sobre Europa",
+			"standard": "Eclipse total de Sol sobre Europa"
+		},
 		"where": "De Cornualles a Francia, Alemania, Austria, Hungría y Rumanía, hasta Turquía, Irán y la India",
 		"look": {
 			"simple": "La sombra de la Luna es una mancha oscura pequeña sobre Europa. En toda esa mancha se hizo de noche durante dos minutos.",
@@ -18,7 +21,10 @@
 		}
 	},
 	"solar2024": {
-		"title": "Eclipse total de Sol",
+		"title": {
+			"simple": "Eclipse de Sol",
+			"standard": "Eclipse total de Sol"
+		},
 		"where": "México, Estados Unidos y Canadá",
 		"look": {
 			"simple": "La Luna está justo entre el Sol y la Tierra. Su sombra hace una mancha oscura pequeña sobre América del Norte.",
@@ -27,7 +33,10 @@
 		}
 	},
 	"solar2026": {
-		"title": "Eclipse total de Sol sobre España",
+		"title": {
+			"simple": "Eclipse de Sol sobre España",
+			"standard": "Eclipse total de Sol sobre España"
+		},
 		"where": "Groenlandia, Islandia y el norte de España, al atardecer",
 		"look": {
 			"simple": "La sombra de la Luna cruza Groenlandia, Islandia y España. En España el Sol ya estaba bajo en el cielo de la tarde.",
@@ -36,7 +45,10 @@
 		}
 	},
 	"annular2027": {
-		"title": "Eclipse anular de Sol: un anillo de fuego",
+		"title": {
+			"simple": "Eclipse de Sol: un anillo de fuego",
+			"standard": "Eclipse anular de Sol: un anillo de fuego"
+		},
 		"where": "Chile, Argentina y Uruguay, y luego África occidental",
 		"look": {
 			"simple": "Esta vez la Luna es un poco pequeña para tapar todo el Sol. Queda un anillo brillante de Sol a su alrededor.",
@@ -45,7 +57,10 @@
 		}
 	},
 	"solar2027": {
-		"title": "El eclipse del siglo",
+		"title": {
+			"simple": "Un eclipse de Sol muy largo",
+			"standard": "El eclipse del siglo"
+		},
 		"where": "Sur de España, norte de África, Egipto y Arabia Saudí",
 		"look": {
 			"simple": "¡El próximo gran eclipse total! Cerca de Luxor, en Egipto, el día se vuelve noche durante más de seis minutos.",
@@ -54,7 +69,10 @@
 		}
 	},
 	"lunar2018": {
-		"title": "El eclipse total de Luna más largo del siglo",
+		"title": {
+			"simple": "El eclipse de Luna más largo en muchísimo tiempo",
+			"standard": "El eclipse total de Luna más largo del siglo"
+		},
 		"where": "Europa, África, Asia y Australia",
 		"look": {
 			"simple": "La Luna está en la sombra de la Tierra. No se pone negra: se vuelve rojo oscuro.",
@@ -63,7 +81,10 @@
 		}
 	},
 	"lunar2025mar": {
-		"title": "Eclipse total de Luna: una luna de sangre",
+		"title": {
+			"simple": "Eclipse de Luna: una Luna roja",
+			"standard": "Eclipse total de Luna: una luna de sangre"
+		},
 		"where": "América",
 		"look": {
 			"simple": "Luna llena, y la Tierra está justo entre el Sol y la Luna. La Luna se pone roja.",
@@ -72,7 +93,10 @@
 		}
 	},
 	"lunar2025sep": {
-		"title": "Eclipse total de Luna",
+		"title": {
+			"simple": "Eclipse de Luna",
+			"standard": "Eclipse total de Luna"
+		},
 		"where": "Asia y Australia; Europa y África al salir la Luna",
 		"look": {
 			"simple": "La Luna se desliza dentro de la sombra de la Tierra y se pone roja.",
@@ -81,7 +105,10 @@
 		}
 	},
 	"lunar2026aug": {
-		"title": "Eclipse parcial de Luna",
+		"title": {
+			"simple": "Eclipse de casi toda la Luna",
+			"standard": "Eclipse parcial de Luna"
+		},
 		"where": "América, Europa y África",
 		"look": {
 			"simple": "La Luna entra casi entera en la sombra de la Tierra, pero una franja fina sigue brillante.",
@@ -90,16 +117,22 @@
 		}
 	},
 	"lunar2028dec": {
-		"title": "Una luna de sangre en Nochevieja",
+		"title": {
+			"simple": "Una Luna roja en Nochevieja",
+			"standard": "Una luna de sangre en Nochevieja"
+		},
 		"where": "Europa, África, Asia y Australia",
 		"look": {
-			"simple": "La última noche de 2028, la Luna se pone roja en la sombra de la Tierra.",
+			"simple": "La última noche del año, la Luna se pone roja en la sombra de la Tierra.",
 			"standard": "El próximo eclipse total de Luna: la luna llena entra en la sombra de la Tierra en Nochevieja y brilla roja durante más de una hora.",
 			"advanced": "La totalidad dura unos 71 minutos. Los eclipses llegan en temporadas separadas unos seis meses, cuando la línea donde la órbita de la Luna cruza la de la Tierra apunta al Sol."
 		}
 	},
 	"venusTransit": {
-		"title": "Tránsito de Venus",
+		"title": {
+			"simple": "Venus cruza por delante del Sol",
+			"standard": "Tránsito de Venus"
+		},
 		"where": "El Pacífico, Asia y Australia; América del Norte por la tarde",
 		"look": {
 			"simple": "Venus pasa por delante del Sol. Desde la Tierra es un puntito negro sobre el Sol.",
@@ -108,7 +141,10 @@
 		}
 	},
 	"mercury2019": {
-		"title": "Tránsito de Mercurio",
+		"title": {
+			"simple": "Mercurio cruza por delante del Sol",
+			"standard": "Tránsito de Mercurio"
+		},
 		"where": "América; Europa y África por la tarde",
 		"look": {
 			"simple": "El diminuto Mercurio pasa por delante del Sol. ¿Encuentras el puntito?",
@@ -117,7 +153,10 @@
 		}
 	},
 	"mercury2032": {
-		"title": "El próximo tránsito de Mercurio",
+		"title": {
+			"simple": "Mercurio vuelve a cruzar por delante del Sol",
+			"standard": "El próximo tránsito de Mercurio"
+		},
 		"where": "Europa, África y Asia",
 		"look": {
 			"simple": "La próxima vez que Mercurio pase por delante del Sol.",
@@ -126,7 +165,10 @@
 		}
 	},
 	"nextVenusTransit": {
-		"title": "El próximo tránsito de Venus",
+		"title": {
+			"simple": "Venus vuelve a cruzar por delante del Sol",
+			"standard": "El próximo tránsito de Venus"
+		},
 		"where": "Asia oriental y Australia; el oeste de América del Norte por la tarde",
 		"look": {
 			"simple": "La próxima vez que Venus pase por delante del Sol. ¿Lo verá alguien de esta sala?",
@@ -135,7 +177,10 @@
 		}
 	},
 	"greatConjunction": {
-		"title": "La gran conjunción",
+		"title": {
+			"simple": "Júpiter se encuentra con Saturno",
+			"standard": "La gran conjunción"
+		},
 		"where": "En todo el mundo, bajo hacia el suroeste tras la puesta de Sol",
 		"look": {
 			"simple": "Júpiter y Saturno parecen casi tocarse. ¡En el espacio están muy lejos uno del otro!",
@@ -180,7 +225,10 @@
 		}
 	},
 	"marsClosest": {
-		"title": "Marte, más cerca que en 60 000 años",
+		"title": {
+			"simple": "Marte, más cerca que nunca",
+			"standard": "Marte, más cerca que en 60 000 años"
+		},
 		"where": "En todo el mundo, toda la noche",
 		"look": {
 			"simple": "Marte se acerca mucho a la Tierra. En el telescopio se ve más grande que en muchísimo tiempo.",
@@ -192,16 +240,19 @@
 		"title": "Marte cerca de la Tierra, pero lejos esta vez",
 		"where": "En todo el mundo, toda la noche",
 		"look": {
-			"simple": "La Tierra adelanta otra vez a Marte, pero esta vez Marte está lejos. ¡Compáralo con 2003!",
+			"simple": "La Tierra vuelve a adelantar a Marte. Pero esta vez Marte se queda lejos, así que se ve pequeño. ¡Compáralo con «Marte, más cerca que nunca»!",
 			"standard": "Cada 26 meses la Tierra adelanta a Marte. Esta vez Marte está cerca del extremo lejano de su órbita, se queda a 101 millones de km y se ve pequeño: compara la vista desde la Tierra con la de 2003.",
 			"advanced": "Una oposición afélica: el disco de Marte mide solo 14 segundos de arco. La órbita de Marte es excéntrica (0,093), así que los acercamientos van de 55 a 101 millones de km."
 		}
 	},
 	"mars2035": {
-		"title": "El próximo gran acercamiento de Marte",
+		"title": {
+			"simple": "Marte vuelve a acercarse",
+			"standard": "El próximo gran acercamiento de Marte"
+		},
 		"where": "En todo el mundo, toda la noche",
 		"look": {
-			"simple": "Marte se acerca casi tanto como en 2003. Brilla rojo toda la noche.",
+			"simple": "Marte vuelve a acercarse muchísimo, casi lo más cerca que puede llegar. Brilla rojo toda la noche.",
 			"standard": "La próxima vez que la Tierra adelanta a Marte cerca de su punto más cercano al Sol: 56,9 millones de km, casi tanto como en 2003.",
 			"advanced": "Las oposiciones perihélicas se repiten cada 15 o 17 años; esta es la mejor entre 2003 y 2050."
 		}
@@ -216,7 +267,10 @@
 		}
 	},
 	"saturnEdgeOn2025": {
-		"title": "Los anillos de Saturno de canto",
+		"title": {
+			"simple": "Los anillos de Saturno vistos de lado",
+			"standard": "Los anillos de Saturno de canto"
+		},
 		"where": "En ningún sitio, por desgracia: Saturno estaba demasiado cerca del Sol",
 		"look": {
 			"simple": "Vemos los anillos de Saturno justo de lado y casi desaparecen. ¡Son muy, muy finos!",
@@ -225,10 +279,13 @@
 		}
 	},
 	"saturnEdgeOn2038": {
-		"title": "Los anillos de Saturno de canto otra vez",
-		"where": "Bajo en el crepúsculo de la mañana",
+		"title": {
+			"simple": "Los anillos de Saturno vistos de lado otra vez",
+			"standard": "Los anillos de Saturno de canto otra vez"
+		},
+		"where": "Bajo en el cielo, antes del amanecer",
 		"look": {
-			"simple": "Los anillos de Saturno vuelven a ponerse de canto y casi desaparecen.",
+			"simple": "Los anillos de Saturno vuelven a verse de lado y casi desaparecen.",
 			"standard": "Medio año de Saturno después de 2025, la Tierra vuelve a cruzar el plano de los anillos. Entretanto, los anillos se abren mucho y se vuelven a cerrar.",
 			"advanced": "Este cruce abre una serie de tres (octubre de 2038, abril y julio de 2039), porque la órbita de la Tierra la lleva de un lado a otro del plano de los anillos, que gira despacio."
 		}
@@ -264,7 +321,7 @@
 		"title": "Lanzamiento del Sputnik 1",
 		"where": "Baikonur, Kazajistán",
 		"look": {
-			"simple": "El primer satélite da vueltas a la Tierra. ¡Empieza la era espacial!",
+			"simple": "El primer satélite da vueltas a la Tierra. Es una pequeña bola de metal que la gente mandó al espacio. ¡Empieza la era espacial!",
 			"standard": "El primer satélite artificial inaugura la era espacial. Daba una vuelta a la Tierra cada 96 minutos, demasiado cerca y demasiado pequeño para dibujarlo a esta escala.",
 			"advanced": "El Sputnik 1 orbitó durante tres meses a entre unos 215 y 940 km de altura. Los satélites artificiales no son lunas, así que la app no los dibuja."
 		}
@@ -273,7 +330,7 @@
 		"title": "Primer alunizaje",
 		"where": "El mar de la Tranquilidad, en la Luna",
 		"look": {
-			"simple": "El Apolo 11 se posa en la Luna. Desde la Tierra, la Luna es una luna creciente en el cielo de la tarde.",
+			"simple": "El Apolo 11 se posa en la Luna. Desde la Tierra, la Luna se ve en el cielo de la tarde, con menos de la mitad iluminada.",
 			"standard": "El Apolo 11 se posa en la Luna. Alunizaron poco después del amanecer en su zona, para que el suelo no estuviera demasiado caliente. Desde la Tierra, la Luna era creciente.",
 			"advanced": "En el lugar del alunizaje, en el mar de la Tranquilidad, el Sol estaba a unos 10° de altura; las sombras largas hacían fácil leer el terreno. La Luna tenía unos 6 días."
 		}
@@ -289,7 +346,10 @@
 	},
 	"voyagerNeptune": {
 		"title": "La Voyager 2 llega a Neptuno",
-		"where": "A 4500 millones de km de la Tierra",
+		"where": {
+			"simple": "En Neptuno, muy, muy lejos de la Tierra",
+			"standard": "A 4500 millones de km de la Tierra"
+		},
 		"look": {
 			"simple": "Después de doce años, la Voyager 2 pasa junto a Neptuno. Nadie ha vuelto desde entonces.",
 			"standard": "Doce años después del lanzamiento: la única visita que ha recibido Neptuno. El rombo turquesa es la Voyager 2, a solo 29 240 km del centro de Neptuno.",

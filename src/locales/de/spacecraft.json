@@ -7,7 +7,7 @@
 			"advanced": "Das am weitesten entfernte von Menschen gebaute Objekt, im interstellaren Raum"
 		},
 		"description": {
-			"simple": "Voyager 1 ist 1977 von der Erde gestartet. Die Sonde ist an Jupiter und Saturn vorbeigeflogen und hat Bilder von ihnen gemacht. Heute ist sie weiter weg als alles andere, was Menschen gebaut haben, draußen zwischen den Sternen. Sie schickt immer noch leise Nachrichten nach Hause.",
+			"simple": "Voyager 1 ist eine Raumsonde, ein Raumschiff ohne Menschen an Bord. Sie ist vor langer Zeit von der Erde gestartet, als deine Großeltern jung waren. Sie ist an Jupiter und Saturn vorbeigeflogen und hat Bilder von ihnen gemacht. Heute ist sie weiter weg als alles andere, was Menschen gebaut haben. Sie ist draußen zwischen den Sternen. Sie schickt immer noch Nachrichten nach Hause, ganz leise.",
 			"standard": "Voyager 1 startete 1977, flog 1979 an Jupiter und 1980 an Saturn vorbei und nahm dort den Mond Titan genau unter die Lupe. 1990 drehte sie sich um und fotografierte die Erde als blassblauen Punkt. Seit 1998 ist sie das am weitesten entfernte von Menschen gebaute Objekt, und im August 2012 überquerte sie die Heliopause, wo der Sonnenwind dem Gas zwischen den Sternen weicht. Sie funkt noch immer Daten zur Erde, mit etwa 20 Watt.",
 			"advanced": "Voyager 1 nutzte ein Swing-by an Jupiter (März 1979), um Saturn zu erreichen (November 1980); der nahe Vorbeiflug an Titan lenkte ihre Bahn steil aus der Ebene der Planeten. Im Februar 1998 überholte sie Pioneer 10 als entfernteste Raumsonde, und am 25. August 2012 überquerte sie etwa 121 AE von der Sonne entfernt die Heliopause in den interstellaren Raum. Ihre nukleare Stromquelle verliert pro Jahr etwa 4 Watt, deshalb werden die Instrumente nach und nach abgeschaltet."
 		}
@@ -16,25 +16,31 @@
 		"name": "Voyager 2",
 		"tagline": "Der einzige Besucher von Uranus und Neptun",
 		"description": {
-			"simple": "Voyager 2 ist der Zwilling von Voyager 1. Sie ist die einzige Raumsonde, die alle vier Riesenplaneten besucht hat: Jupiter, Saturn, Uranus und Neptun. Sie ist 1977 gestartet, fliegt immer noch und schickt Nachrichten.",
+			"simple": "Voyager 2 ist der Zwilling von Voyager 1. Sie ist die einzige Raumsonde, die alle vier Riesenplaneten besucht hat: Jupiter, Saturn, Uranus und Neptun. Sie ist vor langer Zeit gestartet, als deine Großeltern jung waren. Sie fliegt immer noch und schickt Nachrichten.",
 			"standard": "Voyager 2 startete im August 1977, 16 Tage vor ihrem Zwilling. Eine seltene Stellung der äußeren Planeten ließ sie von Jupiter (1979) zu Saturn (1981), Uranus (1986) und Neptun (1989) schwingen: die „Grand Tour“. Sie ist bis heute die einzige Raumsonde, die Uranus und Neptun besucht hat. Im November 2018 überquerte sie die Heliopause in den interstellaren Raum.",
 			"advanced": "Jeder Vorbeiflug von Voyager 2 war ein Swing-by, der ihre Bahn umlenkte und sie für den nächsten Planeten beschleunigte; so wurde aus einer 30-jährigen Reise zu Neptun eine von 12 Jahren. Die Planetenstellung, die das möglich machte, kehrt nur etwa alle 175 Jahre wieder. Nach Neptun und seinem Mond Triton (August 1989) flog sie südlich der Planetenebene weiter und überquerte am 5. November 2018, etwa 119 AE von der Sonne entfernt, die Heliopause."
 		}
 	},
 	"pioneer10": {
 		"name": "Pioneer 10",
-		"tagline": "Die erste Sonde zu Jupiter",
+		"tagline": {
+			"simple": "Die erste Raumsonde zu Jupiter",
+			"standard": "Die erste Sonde zu Jupiter"
+		},
 		"description": {
-			"simple": "Pioneer 10 war die erste Raumsonde, die durch den Asteroidengürtel und an Jupiter vorbeigeflogen ist, 1973. Sie trägt eine Metallplakette mit einem Bild von zwei Menschen, falls sie jemals jemand findet. Zuletzt haben wir 2003 von ihr gehört.",
+			"simple": "Pioneer 10 war die erste Raumsonde, die durch den Asteroidengürtel und an Jupiter vorbeigeflogen ist. Sie trägt eine Metallplatte mit einem Bild von zwei Menschen, falls sie jemals jemand findet. Sie hat schon vor langer Zeit aufgehört, Nachrichten zu schicken.",
 			"standard": "Pioneer 10 startete im März 1972. Sie durchquerte als erste Raumsonde den Asteroidengürtel und besuchte im Dezember 1973 als erste Jupiter. Danach flog sie weiter, hinaus aus dem Sonnensystem. Ihr letztes schwaches Signal erreichte die Erde am 23. Januar 2003; seitdem fliegt sie stumm weiter.",
 			"advanced": "Pioneer 10 flog etwa 200.000 km vom Jupitermittelpunkt entfernt vorbei und vermaß seine starken Strahlungsgürtel, ein Wissen, das alle späteren Missionen prägte. Jahrzehntelang diente ihre Bahn als Test der Schwerkraft fern der Sonne: Die winzige „Pioneer-Anomalie“ in ihrer Bewegung erwies sich 2012 als Wärme ihrer eigenen Stromquelle, die sie anschob. 2003 riss der Kontakt ab, als diese Stromquelle zu schwach geworden war."
 		}
 	},
 	"pioneer11": {
 		"name": "Pioneer 11",
-		"tagline": "Die erste Sonde zu Saturn",
+		"tagline": {
+			"simple": "Die erste Raumsonde zu Saturn",
+			"standard": "Die erste Sonde zu Saturn"
+		},
 		"description": {
-			"simple": "Pioneer 11 ist an Jupiter vorbeigeflogen und hat dann 1979 als erste Raumsonde Saturn besucht. Ihr Strom wurde knapp, und 1995 wurde sie still. Sie fliegt immer noch von der Sonne weg.",
+			"simple": "Pioneer 11 ist an Jupiter vorbeigeflogen. Dann hat sie als erste Raumsonde Saturn besucht. Später wurde ihr Strom knapp, und sie wurde still. Sie fliegt immer noch von der Sonne weg.",
 			"standard": "Pioneer 11 startete im April 1973. Im Dezember 1974 flog sie nur 42.000 km über den Wolken an Jupiter vorbei und nutzte seine Schwerkraft, um quer durch das Sonnensystem zu Saturn zu schwingen: im September 1979 der erste Besuch bei Saturn überhaupt. Im September 1995 endete ihre wissenschaftliche Arbeit, weil der Strom nicht mehr reichte.",
 			"advanced": "Der nahe Vorbeiflug an Jupiter war ein Swing-by, der Pioneer 11 quer durch das Sonnensystem zurück zu Saturn schleuderte. Dort flog sie unter den Ringen hindurch, entdeckte den schmalen F-Ring und bewies, dass eine Sonde die Ringebene sicher durchqueren kann, worauf sich die Voyagers verließen. Der reguläre Betrieb endete am 30. September 1995."
 		}
@@ -43,7 +49,7 @@
 		"name": "New Horizons",
 		"tagline": "Der erste Besuch bei Pluto",
 		"description": {
-			"simple": "New Horizons ist eine kleine, schnelle Raumsonde, etwa so groß wie ein Klavier. Sie ist 2015 an Pluto vorbeigeflogen und hat die ersten Nahaufnahmen geschickt, mit einer großen herzförmigen Ebene aus Eis. 2019 hat sie Arrokoth besucht, eine kleine Eiswelt noch weiter draußen.",
+			"simple": "New Horizons ist eine kleine, schnelle Raumsonde, etwa so groß wie ein Klavier. Sie ist an Pluto vorbeigeflogen und hat die ersten Bilder aus der Nähe geschickt. Darauf sah man eine große Fläche aus Eis in der Form eines Herzens. Später hat sie Arrokoth besucht, eine kleine Eiswelt noch weiter draußen.",
 			"standard": "New Horizons startete im Januar 2006 als schnellste Raumsonde, die je die Erde verlassen hat, schwang 2007 an Jupiter vorbei und flog am 14. Juli 2015 nur 12.500 km über der Oberfläche an Pluto vorbei. Am 1. Januar 2019 passierte sie Arrokoth, das entfernteste Objekt, das je eine Raumsonde besucht hat. Heute erforscht sie den Kuipergürtel.",
 			"advanced": "New Horizons verließ die Erde mit etwa 16 km/s, der höchsten Startgeschwindigkeit aller Raumsonden, und ein Swing-by an Jupiter verkürzte die Reise um etwa drei Jahre. Im Pluto-System (14. Juli 2015) fand sie Berge aus Wassereis und eine junge Ebene aus Stickstoffeis, Sputnik Planitia. Arrokoth erwies sich als zwei Teile, die einst sanft verschmolzen sind, ein Hinweis darauf, wie die ersten Bausteine der Planeten entstanden."
 		}
@@ -52,7 +58,7 @@
 		"name": "Cassini",
 		"tagline": "Dreizehn Jahre bei Saturn",
 		"description": {
-			"simple": "Cassini ist zu Saturn geflogen und hat ihn 13 Jahre lang umkreist, um den Planeten, seine Ringe und seine Monde zu erforschen. An Bord war ein kleiner Lander, Huygens, der auf dem Mond Titan gelandet ist. Am Ende ist Cassini absichtlich in Saturn gestürzt und verglüht.",
+			"simple": "Cassini ist zu Saturn geflogen und 13 Jahre lang um ihn gekreist. Sie hat den Planeten, seine Ringe und seine Monde erforscht. An Bord war eine kleine Raumsonde, Huygens, die auf dem Mond Titan gelandet ist. Am Ende ist Cassini absichtlich in Saturn gestürzt und verglüht.",
 			"standard": "Cassini startete 1997 und brauchte Swing-bys an Venus (zweimal), Erde und Jupiter, um im Juli 2004 Saturn zu erreichen. Ihre Sonde Huygens landete im Januar 2005 auf Titan, und Cassini entdeckte Wasserfontänen, die aus Enceladus schießen. Fast ohne Treibstoff wurde sie am 15. September 2017 in Saturn gelenkt, damit sie nie auf einen Mond stürzen konnte, auf dem es Leben geben könnte.",
 			"advanced": "Cassini-Huygens war eine gemeinsame Mission von NASA, ESA und der italienischen Raumfahrtagentur. Auf 294 Umläufen um Saturn nutzte sie nahe Vorbeiflüge an Titan, um ohne Treibstoff den Kurs zu ändern. Huygens gelang die erste Landung im äußeren Sonnensystem. Cassinis 22 letzte „Grand Finale“-Umläufe führten zwischen Planet und Ringen hindurch, bevor sie in Saturns Atmosphäre verglühte."
 		}
@@ -70,16 +76,19 @@
 		"name": "James-Webb-Weltraumteleskop",
 		"tagline": "Ein Riesenteleskop weit hinter dem Mond",
 		"description": {
-			"simple": "Das James-Webb-Weltraumteleskop ist ein riesiges Teleskop mit einem goldenen Spiegel. Es sieht Wärmelicht (Infrarot) von den allerersten Sternen und Galaxien. Es schwebt etwa 1,5 Millionen km von der Erde entfernt, immer auf der Seite, die von der Sonne wegzeigt.",
+			"simple": "Das James-Webb-Weltraumteleskop ist ein riesiges Fernrohr mit einem goldenen Spiegel. Es sieht Wärmelicht, eine Art Licht, das unsere Augen nicht sehen können. Damit findet es die allerersten Sterne und Galaxien, die riesigen Gruppen von Sternen weit draußen. Es schwebt etwa viermal so weit weg wie der Mond, auf der Seite der Erde, die von der Sonne wegzeigt.",
 			"standard": "Webb startete am 25. Dezember 2021 und brauchte einen Monat bis zu seinem Platz beim Lagrange-Punkt L2 von Sonne und Erde, 1,5 Millionen km hinter der Erde auf der sonnenabgewandten Seite: etwa viermal so weit wie der Mond. Dort hält ein Sonnenschild so groß wie ein Tennisplatz seinen 6,5-m-Spiegel kalt genug, um Infrarotlicht der frühesten Galaxien zu sehen.",
 			"advanced": "Bei L2 halten die Anziehung von Sonne und Erde gemeinsam eine Sonde im Takt des Erdjahres. Webb sitzt nicht auf dem Punkt, sondern umkreist ihn auf einer großen Halo-Bahn von etwa sechs Monaten, die es aus dem Erdschatten heraushält. Bei etwa 40 K (−233 °C) sehen Spiegel und Instrumente Licht, das die Ausdehnung des Universums ins Infrarote gedehnt hat."
 		}
 	},
 	"juno": {
 		"name": "Juno",
-		"tagline": "Im Orbit um Jupiter",
+		"tagline": {
+			"simple": "Immer rund um Jupiter",
+			"standard": "Im Orbit um Jupiter"
+		},
 		"description": {
-			"simple": "Juno umkreist Jupiter seit 2016. Die Sonde saust ganz nah über Jupiters Wolken, um herauszufinden, was im Inneren des Planeten ist. Sie dreht sich langsam, und mit ihren drei langen Solarflügeln sieht sie aus wie ein Windrad.",
+			"simple": "Juno kreist schon viele Jahre um Jupiter. Die Raumsonde saust ganz nah über Jupiters Wolken, um herauszufinden, was im Inneren des Planeten ist. Sie dreht sich langsam. Mit ihren drei langen Flügeln aus Solarzellen sieht sie aus wie ein Windrad.",
 			"standard": "Juno startete 2011, holte 2013 bei einem Vorbeiflug an der Erde Schwung und erreichte Jupiter am 5. Juli 2016. Auf einer langen, gestreckten Bahn über die Pole taucht sie bis auf wenige tausend Kilometer über die Wolken hinab und steigt dann weit hinaus. Sie war die erste Raumsonde, die Jupiter allein mit Sonnenstrom erreichte.",
 			"advanced": "Juno vermisst Jupiters Schwerefeld und Magnetfeld, um zu erfahren, was tief im Inneren liegt: Der Kern erwies sich als groß und verdünnt, vermischt mit dem Wasserstoff um ihn herum. Ihre Polbahn weicht dem Schlimmsten der Strahlungsgürtel aus. Seit 2021 führt ihre Bahn sie auch an den Monden Ganymed, Europa und Io vorbei."
 		}
@@ -88,7 +97,7 @@
 		"name": "Europa Clipper",
 		"tagline": "Unterwegs zum Jupitermond Europa",
 		"description": {
-			"simple": "Europa Clipper ist auf dem Weg zu Jupiter. Dort wird die Sonde immer wieder an Jupiters Eismond Europa vorbeifliegen. Unter Europas Eis gibt es wahrscheinlich einen salzigen Ozean, und die Forschenden wollen wissen, ob dort Leben möglich wäre.",
+			"simple": "Europa Clipper ist auf dem Weg zu Jupiter. Dort wird die Raumsonde immer wieder an Jupiters Eismond Europa vorbeifliegen. Unter Europas Eis gibt es wahrscheinlich einen salzigen Ozean. Die Forschenden wollen wissen, ob dort Leben möglich wäre.",
 			"standard": "Europa Clipper startete im Oktober 2024 und ist die größte Raumsonde, die die NASA je für eine Planetenmission gebaut hat. Sie nutzt die Schwerkraft von Mars (2025) und Erde (2026), um 2030 Jupiter zu erreichen, und soll dann in Dutzenden naher Vorbeiflüge an Europa den Ozean unter dem Eis erforschen.",
 			"advanced": "Europa liegt tief in Jupiters Strahlungsgürteln, deshalb wird Clipper Jupiter umkreisen statt Europa und für etwa 50 Vorbeiflüge hineintauchen, die Elektronik geschützt in einem dickwandigen Tresor. Sie soll die Dicke des Eispanzers, den Salzgehalt des Ozeans und die Chemie der Oberfläche messen, um zu beurteilen, ob Europa Leben ermöglichen könnte."
 		}
