@@ -375,18 +375,19 @@
 				"simple": "Los cometas"
 			},
 			"what": {
-				"standard": "Cinco cometas en sus órbitas reales y alargadas desarrollan una cabeza brillante y dos colas al acercarse al Sol, y las pierden al alejarse.",
-				"simple": "Los cometas tienen una cola larga cuando se acercan al Sol."
+				"standard": "Cinco cometas en sus órbitas reales y alargadas se despiertan al acercarse al Sol, cada uno a su propia distancia (el gran Hale-Bopp ya más allá de Saturno, el pequeño Encke solo muy cerca del Sol): primero aparece una cabeza brillante y luego crecen una cola de gas azul y recta y una cola de polvo amarillenta y curvada, tan largas y brillantes como se vieron de verdad, que se apagan de nuevo cuando el cometa se aleja.",
+				"simple": "Los cometas se despiertan cuando se acercan al Sol. Los cometas grandes se despiertan muy lejos y los pequeños solo cerca del Sol. Entonces les crece una cola larga y brillante."
 			},
 			"why": {
-				"standard": "La cola apunta siempre en sentido contrario al Sol, así que un cometa que se aleja va con la cola por delante: algo para ver, no solo para contar.",
+				"standard": "La cola apunta siempre en sentido contrario al Sol, así que un cometa que se aleja va con la cola por delante: algo para ver, no solo para contar. La cola de polvo se queda atrás y se curva, sobre todo cuando el cometa pasa rozando el Sol.",
 				"simple": "¡La cola apunta siempre lejos del Sol, incluso cuando el cometa se va!"
 			},
 			"how": {
 				"standard": [
 					"Elige Halley o Encke en la casilla de arriba a la izquierda (grupo Cometas).",
 					"Abre su tarjeta con la flecha y pulsa el botón para verlo pasar junto al Sol: la aplicación va a su próxima visita y la muestra en un minuto y medio.",
-					"Fíjate hacia dónde apunta la cola a la ida y a la vuelta."
+					"Fíjate hacia dónde apunta la cola a la ida y a la vuelta.",
+					"Prueba también Hale-Bopp: su cabeza aparece ya mucho más allá de Júpiter, mucho antes de que le crezcan las colas."
 				],
 				"simple": [
 					"Elige Halley en la casilla de arriba a la izquierda.",

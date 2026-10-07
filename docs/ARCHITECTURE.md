@@ -130,7 +130,14 @@ interface Body {
 		outerRadiusKm: number
 		textures: { alpha: string; color: string }
 	} | null
-	tail?: { lengthKmAt1Au: number } // a comet's tail (#23), a presentation hint like rings
+	tail?: {
+		// a comet's activity and tails (#23, #55), a presentation hint like rings; sources in data/ourDB.json
+		onsetKm: number // wakes up inside this distance from the Sun
+		fullKm: number // fully active inside this one
+		ionLengthKm: number // longest gas tail observed (0: none, as 67P)
+		dustLengthKm: number // longest dust tail observed (0: none, as Encke)
+		lagDays?: number // more active after perihelion: answers to where it was this many days earlier
+	}
 	info: Record<string, unknown> // dictionary fields passed through; a source 0 ("unknown") is dropped
 	featured?: true // a moon with a story, shown by default (data/featured-moons.json; see Moons)
 }
@@ -199,7 +206,10 @@ Build rules (`scripts/lib/`):
   moons from JPL Horizons). Small bodies without a map get a stand-in texture (`SMALL_BODY_TEXTURES`: neutral rock,
   darker for comet nuclei; the source's Pluto map on Eris, Haumea and Makemake was dropped). Pluto's IAU pole is the
   north-side one with a negative rate (the report gives the positive pole) and its map was turned to match
-  (`public/assets/textures/pluto/pluto.jpg`). A comet's `tailLengthKmAt1Au` becomes `tail`. The belts come from the
+  (`public/assets/textures/pluto/pluto.jpg`). A comet's curated `tail` (#55: `onsetAu`,
+  `fullAu`, `ionLengthKm`, `dustLengthKm`, optional `lagDays`, each with a link or citation in `tail.sources`) becomes
+  `tail` in km (`tailOf`); a missing value, `fullAu >= onsetAu`, no tail at all or a value without its source stops
+  the build. The belts come from the
   curated `asteroidBelt` / `kuiperBelt` records (zones in AU, converted to km; shares must sum to 1).
 - Corrections to the source (typos, planet J2000 elements from JPL/Standish, the Moon and Galileans' elements, the
   Moon's precession rates from Meeus ch. 47 and its true sidereal month 27.321661 d, Hyperion's eccentricity 0.105 from JPL
@@ -728,18 +738,41 @@ Only these kind rules exist, all additive:
 - Very elongated orbits (e >= `TRUE_ANOMALY_SAMPLING_E` 0.9: Halley, Hale-Bopp, NEOWISE) are sampled at uniform
   true anomalies (`bodies/OrbitLine.tsx`), so the hairpin round the Sun stays round; everything else is unchanged.
 
-**Comets.** `src/sim/comet.ts` is the whole model, in true km: `cometActivity(r)` (0 beyond `TAIL_ONSET_KM` 4 AU,
-smooth to 1 at `TAIL_FULL_KM` 1.5 AU), `tailLengthKm(tail, r)` (the curated length at 1 AU x activity x 1 AU / r),
-`antiSunDirection` (from the TRUE positions: the Sun direction of #22's lighting), `nextPerihelionJD` /
-`previousPerihelionJD`. `smallBodies/cometTail.ts` samples the gas tail straight along the anti-Sun direction and the
-dust tail (0.6 of the length) bent back against the motion, and draws every sample with `mapTruePointKm` (the
-planets' rule and the anchored frames of #31): the tail points away from the drawn Sun in every preset and is its
-true length at true scale. `CometTails.tsx` draws them as camera-facing additive ribbons (never thinner than
-1.5 / 3 px) plus a coma sprite (true radius 1e5 km x activity, at least 3 px), for every shown body with `tail`.
+**Comets** (#23; checked against real comets in #55, findings and screenshots on that issue). `src/sim/comet.ts`
+is the whole model, in true km, driven by each comet's observed `tail` data:
+
+- **Activity** `cometActivity(tail, r)`: 0 from the comet's own `onsetKm` out (Hale-Bopp 13 AU, Halley 6, 67P 4.3,
+  NEOWISE 3, Encke 1.63), 1 from its `fullKm` in, between them `(full / r)^4` lowered to start from 0 at the onset
+  (`ACTIVITY_POWER`, fitted to Halley's tail lengths on its way in, 1985/86). `activityAt(orbit, tail, jd)` uses the
+  distance `lagDays` earlier: Halley (11 d) and 67P (20 d) are more active after perihelion than before; the others
+  are symmetric (Hale-Bopp's light curve was; NEOWISE's +4 d and Encke's changing asymmetry are too weak to model).
+- **Lengths** `ionTailLengthKm`, `dustTailLengthKm`: the longest tail observed times the activity, so they grow and
+  saturate at the observed length (Hale-Bopp's ion tail 148 million km; Encke has no dust tail, 67P no ion tail).
+  True scale gets no minimum length: it stays honest (only the on-screen width has a minimum).
+- **Direction**: `antiSunDirection` from the TRUE positions (the Sun direction of #22's lighting). The gas tail is
+  straight along it. The dust tail is a syndyne: `grainOffsetKm` follows a grain of `DUST_BETA` (0.5) that left the
+  nucleus with the comet's velocity, on its own Kepler orbit under (1 - beta) of the Sun's pull
+  (`propagateState`, universal variables), so it curves back along the orbit, slightly far out and strongly at a
+  close perihelion (NEOWISE). `dustAgeDays` picks the oldest grain for the tail's length; a unit test matches the
+  grains against a step-by-step integration.
+- `nextPerihelionJD` / `previousPerihelionJD`.
+
+`smallBodies/cometTail.ts` draws it: the gas tail and the dust tail's 22 grains (`writeDustShape`, worked out again
+only once the clock has moved `DUST_REFRESH_DAYS`, so a paused or slow clock costs nothing), every point mapped with
+`mapTruePointKm` (the planets' rule and the anchored frames of #31): the tails point away from the drawn Sun in every
+preset and are their true length at true scale. The coma's drawn radius is its true one (1e5 km x `comaGrowth`) as
+drawn there, but never less than `COMA_NUCLEUS_RADII` (4) drawn radii of the nucleus, so it surrounds the enlarged nucleus
+in every preset (the presets come from `SCALE_PRESET_IDS` in the tests). Each tail starts with a fade-in from the
+nucleus's drawn surface and is at full strength from the coma's edge, where its length is counted from; a tail of
+length 0 folds into the nucleus. `CometTails.tsx` draws camera-facing additive ribbons (gas `#4d8dff`, dust
+`#ffe2a8`; never thinner than 1.5 / 3 px; no wider at the start than the coma) whose opacity follows the activity
+(`tailBrightness`, its square root) and a coma sprite (`comaGrowth`, its fourth root, for its size and glow, so the
+head shows long before the tails, as Hale-Bopp's did beyond Jupiter; at least 3 px), for every shown body with `tail`.
 `cometWatch.ts`: "Watch it pass the Sun" selects and centres the comet (fit: its perihelion distance around the
-Sun, so the Sun is in the frame), glides to where it crosses 4 AU inbound (or stays, mid-passage) and runs at the
-speed preset that shows the whole passage in about 90 s; comets returning after 2999 (Hale-Bopp, NEOWISE) replay
-their last passage.
+Sun, so the Sun is in the frame), glides to where it wakes up (its onset inbound, plus its lag; or stays,
+mid-passage) and runs at the speed preset that shows the whole passage in about 90 s; comets returning after 2999
+(Hale-Bopp, NEOWISE) replay their last passage. The card (`smallBodyText.ts`) gives the longer tail's true length,
+"waking up" while it is under 100,000 km, and otherwise where the comet will wake up.
 
 **Belts.** `src/data/belts.json` describes each belt by zones (the main belt's four between the Kirkwood gaps; the
 Kuiper belt's plutinos, cold and hot classical belt and scattered disc). `src/sim/belts.ts` turns a belt into dots

@@ -9,6 +9,7 @@ import {
 	buildBelts,
 	buildBodies,
 	hasRealElements,
+	tailOf,
 } from "./build"
 
 const elements = {
@@ -20,6 +21,19 @@ const elements = {
 	mainAnomaly: 274.4,
 	sideralOrbit: 1679.85,
 	epochJD: 2461200.5,
+}
+
+const halleyTail = {
+	onsetAu: 6,
+	fullAu: 1,
+	ionLengthKm: 2e7,
+	dustLengthKm: 6e6,
+	sources: {
+		onset: "https://example.org/onset",
+		full: "https://example.org/full",
+		ionLength: "https://example.org/ion",
+		dustLength: "https://example.org/dust",
+	},
 }
 
 const fixture = {
@@ -74,7 +88,7 @@ const fixture = {
 			...elements,
 			semimajorAxis: 2682000000,
 			eccentricity: 0.9679,
-			tailLengthKmAt1Au: 1.8e7,
+			tail: halleyTail,
 		},
 		{ englishName: "Shoemaker-Levy 9", meanRadius: 1.2 },
 	],
@@ -131,9 +145,40 @@ describe("small bodies in the build (#23)", () => {
 
 	it("keeps each body's own epoch and a curated tail", () => {
 		expect(byId.get("ceres")?.orbit?.epochJD).toBe(2461200.5)
-		expect(byId.get("halley")?.tail).toEqual({ lengthKmAt1Au: 1.8e7 })
+		expect(byId.get("halley")?.tail).toEqual({
+			onsetKm: Math.round(6 * 149597870.7),
+			fullKm: Math.round(149597870.7),
+			ionLengthKm: 2e7,
+			dustLengthKm: 6e6,
+		})
 		expect(byId.get("ceres")?.tail).toBeUndefined()
 		expect(byId.get("tiny")?.parentId).toBe("ceres")
+	})
+
+	it("refuses a tail that is incomplete, inconsistent or without its sources", () => {
+		const lagged = {
+			...halleyTail,
+			lagDays: 20,
+			sources: { ...halleyTail.sources, lag: "https://example.org/lag" },
+		}
+		expect(tailOf({ tail: lagged })?.lagDays).toBe(20)
+		// a comet may grow only one of the two tails
+		expect(
+			tailOf({ tail: { ...halleyTail, dustLengthKm: 0 } })?.dustLengthKm,
+		).toBe(0)
+		expect(tailOf({})).toBeUndefined()
+		for (const broken of [
+			{ ...halleyTail, onsetAu: undefined },
+			{ ...halleyTail, fullAu: 7 },
+			{ ...halleyTail, ionLengthKm: 0, dustLengthKm: 0 },
+			{ ...halleyTail, dustLengthKm: -1 },
+			{ ...halleyTail, sources: { ...halleyTail.sources, onset: " " } },
+			{ ...halleyTail, lagDays: 20 },
+		]) {
+			expect(() => tailOf({ tail: broken }), JSON.stringify(broken)).toThrow(
+				BuildError,
+			)
+		}
 	})
 
 	it("falls back to stand-in textures for small bodies without a map", () => {

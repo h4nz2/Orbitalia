@@ -8,10 +8,11 @@ import {
 	SCALE_PRESETS,
 	SCALE_PRESET_IDS,
 	TRUE_SCALE,
+	propagate,
 	toUnits,
 } from "@/sim"
 import { beltDotPositionKm, generateBeltOrbits } from "@/sim/belts"
-import { tailLengthKm } from "@/sim/comet"
+import { activityAt, ionTailLengthKm, previousPerihelionJD } from "@/sim/comet"
 import { WARP_PRESETS } from "@/store/sim"
 
 import { mapTruePointKm } from "../light/lightFront"
@@ -32,8 +33,11 @@ import {
 	watchWarp,
 } from "./cometWatch"
 import {
+	COMA_NUCLEUS_RADII,
 	TAIL_SAMPLES,
+	comaGrowth,
 	createTailFrame,
+	tailBrightness,
 	writeRibbon,
 	writeTail,
 } from "./cometTail"
@@ -156,6 +160,22 @@ describe("belt dots as drawn", () => {
 	})
 })
 
+const comets = bodies.filter((body) => body.tail !== undefined)
+
+/** Moments of a comet's last passage: from where it wakes up to its perihelion and out again. */
+const passageMoments = (body: (typeof bodies)[number]): number[] => {
+	const orbit = body.orbit!
+	const q = previousPerihelionJD(orbit, 2461308.5)
+	const moments: number[] = []
+	for (let days = -1500; days <= 400; days += 25) {
+		if (activityAt(orbit, body.tail!, q + days) > 0) moments.push(q + days)
+	}
+	return moments
+}
+
+const point = (axis: Float32Array, k: number) =>
+	new Vector3().fromArray(axis, k * 3)
+
 describe("a comet's tail as drawn", () => {
 	it("is asleep far from the Sun and grows toward perihelion", () => {
 		const frame = createSimFrame(bodies, 2461308.5, TRUE_SCALE)
@@ -168,11 +188,114 @@ describe("a comet's tail as drawn", () => {
 		expect(before).toBeGreaterThan(0)
 		expect(atPerihelion).toBeGreaterThan(before)
 		expect(tail.activity).toBe(1)
+		expect(atPerihelion).toBe(getBody("halley").tail!.ionLengthKm)
+	})
+
+	it("switches each comet on at its own distance", () => {
+		const tail = createTailFrame()
+		for (const comet of comets) {
+			const orbit = comet.orbit!
+			const t = comet.tail!
+			// the day it crosses its own onset on the way in, plus its lag
+			const q = previousPerihelionJD(orbit, 2461308.5)
+			let far = q - orbit.periodDays / 2
+			let near = q
+			for (let k = 0; k < 60; k++) {
+				const mid = (far + near) / 2
+				const p = { x: 0, y: 0, z: 0 }
+				propagate(orbit, mid, p)
+				if (Math.hypot(p.x, p.y, p.z) > t.onsetKm) far = mid
+				else near = mid
+			}
+			const wakes = near + (t.lagDays ?? 0)
+			const frame = createSimFrame(bodies, wakes - 1, TRUE_SCALE)
+			expect(writeTail(frame, at(comet.id), tail).visible, comet.id).toBe(false)
+			updateSimFrame(frame, wakes + 1)
+			expect(writeTail(frame, at(comet.id), tail).visible, comet.id).toBe(true)
+		}
+		// at the same distance, 5 AU: Hale-Bopp awake, Halley and Encke not yet
+		const tail5 = (id: string) => {
+			const t = getBody(id).tail!
+			return t.onsetKm > 5 * AU_KM
+		}
+		expect(tail5("halebopp")).toBe(true)
+		expect(tail5("halley")).toBe(true)
+		expect(tail5("encke")).toBe(false)
+	})
+
+	it("brightens as the comet wakes up and grows active", () => {
+		let previous = -1
+		for (let activity = 0; activity <= 1; activity += 0.05) {
+			expect(tailBrightness(activity)).toBeGreaterThan(previous)
+			expect(comaGrowth(activity)).toBeGreaterThanOrEqual(
+				tailBrightness(activity),
+			)
+			previous = tailBrightness(activity)
+		}
+		expect(tailBrightness(0)).toBe(0)
+		expect(comaGrowth(0)).toBe(0)
+		expect(tailBrightness(1)).toBe(1)
+		// along Halley's way in: brighter at every step, full at perihelion
+		const frame = createSimFrame(bodies, HALLEY_PERIHELION, TRUE_SCALE)
+		const tail = createTailFrame()
+		const brightness: number[] = []
+		for (const days of [-500, -400, -300, -200, -100, 0]) {
+			updateSimFrame(frame, HALLEY_PERIHELION + days)
+			brightness.push(
+				tailBrightness(writeTail(frame, at("halley"), tail).activity),
+			)
+		}
+		for (let k = 1; k < brightness.length; k++) {
+			expect(brightness[k], `step ${k}`).toBeGreaterThan(brightness[k - 1])
+		}
+		expect(brightness.at(-1)).toBe(1)
+	})
+
+	it("surrounds the drawn nucleus with its coma in every preset, and starts the tails outside it", () => {
+		const tail = createTailFrame()
+		for (const presetId of SCALE_PRESET_IDS) {
+			for (const comet of comets) {
+				for (const jd of passageMoments(comet)) {
+					const frame = createSimFrame(bodies, jd, SCALE_PRESETS[presetId])
+					updateSimFrame(frame, jd, at(comet.id))
+					writeTail(frame, at(comet.id), tail)
+					const label = `${presetId} ${comet.id} ${jd}`
+					expect(tail.visible, label).toBe(true)
+					const nucleus = toUnits(frame.displayRadiiKm[at(comet.id)])
+					expect(tail.nucleusUnits, label).toBeCloseTo(nucleus, 9)
+					expect(tail.comaUnits, label).toBeGreaterThanOrEqual(
+						COMA_NUCLEUS_RADII * nucleus * (1 - 1e-9),
+					)
+					const head = new Vector3().fromArray(tail.head)
+					const tolerance = 1e-3 * nucleus
+					for (const axis of [
+						...(tail.lengthKm > 0 ? [tail.ion] : []),
+						...(tail.dustLengthKm > 0 ? [tail.dust] : []),
+					]) {
+						// the fade-in starts on the nucleus's surface, the tail proper at the coma's edge
+						expect(
+							point(axis, 0).distanceTo(head),
+							label,
+						).toBeGreaterThanOrEqual(nucleus - tolerance)
+						expect(
+							Math.abs(point(axis, 1).distanceTo(head) - tail.comaUnits) /
+								tail.comaUnits,
+							label,
+						).toBeLessThan(1e-3)
+						for (let k = 2; k < TAIL_SAMPLES; k++) {
+							expect(
+								point(axis, k).distanceTo(head),
+								`${label} ${k}`,
+							).toBeGreaterThan(nucleus)
+						}
+					}
+				}
+			}
+		}
 	})
 
 	it("points straight away from the drawn Sun in every preset, and is its true length at true scale", () => {
 		for (const presetId of SCALE_PRESET_IDS) {
-			const frame = createSimFrame(bodies, HALLEY_PERIHELION + 30)
 			// render origin on the comet, like a camera focused on it
 			const scale = SCALE_PRESETS[presetId]
 			const drawn = createSimFrame(bodies, HALLEY_PERIHELION + 30, scale)
@@ -180,47 +303,66 @@ describe("a comet's tail as drawn", () => {
 			const tail = writeTail(drawn, at("halley"), createTailFrame())
 			expect(tail.visible).toBe(true)
 			const sunAt = drawn.renderPosition(0, new Vector3())
-			const head = new Vector3(tail.ion[0], tail.ion[1], tail.ion[2])
-			const end = new Vector3().fromArray(tail.ion, (TAIL_SAMPLES - 1) * 3)
+			const head = new Vector3().fromArray(tail.head)
 			const outward = head.clone().sub(sunAt).normalize()
-			const along = end.clone().sub(head).normalize()
-			expect(outward.angleTo(along), presetId).toBeLessThan(1e-4)
+			for (const k of [0, 1, TAIL_SAMPLES - 1]) {
+				const along = point(tail.ion, k).sub(head).normalize()
+				expect(outward.angleTo(along), `${presetId} ${k}`).toBeLessThan(1e-4)
+			}
 			// the head is the comet as drawn
 			const comet = drawn.renderPosition(at("halley"), new Vector3())
 			expect(head.distanceTo(comet)).toBeLessThan(1e-6 * comet.length() + 1e-9)
 			if (presetId === "trueScale") {
 				expect(tail.ionUnits).toBeCloseTo(toUnits(tail.lengthKm), 0)
-				const o = at("halley") * 3
-				const r = Math.hypot(
-					frame.positionsKm[o],
-					frame.positionsKm[o + 1],
-					frame.positionsKm[o + 2],
-				)
+				const halley = getBody("halley")
 				expect(tail.lengthKm).toBeCloseTo(
-					tailLengthKm(getBody("halley").tail!, r),
+					ionTailLengthKm(
+						halley.tail!,
+						activityAt(halley.orbit!, halley.tail!, HALLEY_PERIHELION + 30),
+					),
 					0,
 				)
+				expect(tail.dustUnits).toBeCloseTo(toUnits(tail.dustLengthKm), 0)
 			}
 		}
 	})
 
 	it("bends the dust tail back along the orbit", () => {
-		const frame = createSimFrame(bodies, HALLEY_PERIHELION + 30, TRUE_SCALE)
+		for (const comet of comets.filter((body) => body.tail!.dustLengthKm > 0)) {
+			const q = previousPerihelionJD(comet.orbit!, 2461308.5)
+			const frame = createSimFrame(bodies, q + 10, TRUE_SCALE)
+			const tail = writeTail(frame, at(comet.id), createTailFrame())
+			const last = TAIL_SAMPLES - 1
+			const later = createSimFrame(bodies, q + 10.01, TRUE_SCALE)
+			const o = at(comet.id) * 3
+			const motion = new Vector3(
+				later.positionsKm[o] - frame.positionsKm[o],
+				later.positionsKm[o + 1] - frame.positionsKm[o + 1],
+				later.positionsKm[o + 2] - frame.positionsKm[o + 2],
+			)
+			const head = point(tail.dust, 1)
+			const bent = point(tail.dust, last).sub(head)
+			const straight = point(tail.ion, last).sub(head).setLength(bent.length())
+			expect(bent.sub(straight).dot(motion), comet.id).toBeLessThan(0)
+			// and keeps the length the data gives it
+			expect(tail.dustUnits / toUnits(tail.dustLengthKm), comet.id).toBeCloseTo(
+				1,
+				2,
+			)
+		}
+	})
+
+	it("works out the dust tail's curve again only when the clock has moved", () => {
+		const frame = createSimFrame(bodies, HALLEY_PERIHELION, TRUE_SCALE)
 		const tail = writeTail(frame, at("halley"), createTailFrame())
-		const last = (TAIL_SAMPLES - 1) * 3
-		const ionEnd = new Vector3().fromArray(tail.ion, last)
-		const dustEnd = new Vector3().fromArray(tail.dust, last)
-		const later = createSimFrame(bodies, HALLEY_PERIHELION + 30.01, TRUE_SCALE)
-		const o = at("halley") * 3
-		const motion = new Vector3(
-			later.positionsKm[o] - frame.positionsKm[o],
-			later.positionsKm[o + 1] - frame.positionsKm[o + 1],
-			later.positionsKm[o + 2] - frame.positionsKm[o + 2],
-		)
-		const head = new Vector3(tail.dust[0], tail.dust[1], tail.dust[2])
-		const bent = dustEnd.clone().sub(head)
-		const straight = ionEnd.clone().sub(head).setLength(bent.length())
-		expect(bent.sub(straight).dot(motion)).toBeLessThan(0)
+		const shape = Float64Array.from(tail.dustShape)
+		expect(tail.dustJD).toBe(HALLEY_PERIHELION)
+		writeTail(frame, at("halley"), tail)
+		expect(tail.dustJD).toBe(HALLEY_PERIHELION)
+		updateSimFrame(frame, HALLEY_PERIHELION + 3)
+		writeTail(frame, at("halley"), tail)
+		expect(tail.dustJD).toBe(HALLEY_PERIHELION + 3)
+		expect(tail.dustShape).not.toEqual(shape)
 	})
 
 	it("is never thinner than its minimum on screen", () => {
@@ -228,7 +370,7 @@ describe("a comet's tail as drawn", () => {
 		for (let k = 0; k < TAIL_SAMPLES; k++) axis[k * 3] = k
 		const positions = new Float32Array(TAIL_SAMPLES * 6)
 		// 1000 px per unit at distance 1, camera 100 units away: a pixel is 0.1 unit
-		writeRibbon(axis, 23, 0, 2, { x: 0, y: 0, z: 100 }, 1000, positions, 0)
+		writeRibbon(axis, 23, 0, 0, 2, { x: 0, y: 0, z: 100 }, 1000, positions, 0)
 		const last = (TAIL_SAMPLES - 1) * 6
 		const width = Math.hypot(
 			positions[last] - positions[last + 3],
@@ -237,36 +379,74 @@ describe("a comet's tail as drawn", () => {
 		)
 		expect(width).toBeGreaterThanOrEqual(0.2 * 0.99)
 	})
+
+	it("starts no wider than the coma and widens to its end", () => {
+		const axis = new Float32Array(TAIL_SAMPLES * 3)
+		for (let k = 0; k < TAIL_SAMPLES; k++) axis[k * 3] = k
+		const positions = new Float32Array(TAIL_SAMPLES * 6)
+		writeRibbon(axis, 22, 0.1, 0.3, 0, { x: 0, y: 0, z: 100 }, 0, positions, 0)
+		const width = (k: number) =>
+			Math.hypot(
+				positions[k * 6] - positions[k * 6 + 3],
+				positions[k * 6 + 1] - positions[k * 6 + 4],
+				positions[k * 6 + 2] - positions[k * 6 + 5],
+			)
+		expect(width(1)).toBeCloseTo(0.6, 4)
+		expect(width(TAIL_SAMPLES - 1)).toBeCloseTo(2 * 0.1 * 22, 4)
+	})
 })
 
 describe("watching a comet pass the Sun", () => {
 	const halley = getBody("halley").orbit!
+	const halleyTail = getBody("halley").tail!
+	const distance = (orbit: typeof halley, jd: number) => {
+		const p = { x: 0, y: 0, z: 0 }
+		propagate(orbit, jd, p)
+		return Math.hypot(p.x, p.y, p.z)
+	}
 
-	it("frames the passage from 4 AU in to 4 AU out", () => {
-		const passage = passageAround(halley, HALLEY_PERIHELION)
+	it("frames the passage from where the comet wakes up on the way in to the same distance on the way out", () => {
+		const passage = passageAround(halley, halleyTail, HALLEY_PERIHELION)
 		expect(passage.perihelionJD).toBe(HALLEY_PERIHELION)
-		// Halley crossed 4 AU inbound in the autumn of 1985 and outbound in mid 1986... about 4 months each way
+		// it crosses its onset, and wakes up its lag later
+		expect(
+			distance(halley, passage.startJD - (halleyTail.lagDays ?? 0)) /
+				halleyTail.onsetKm,
+		).toBeCloseTo(1, 6)
+		// months on either side, the same both ways but for the lag
+		const lag = halleyTail.lagDays ?? 0
 		expect(HALLEY_PERIHELION - passage.startJD).toBeGreaterThan(100)
-		expect(HALLEY_PERIHELION - passage.startJD).toBeLessThan(300)
-		expect(passage.endJD - HALLEY_PERIHELION).toBeCloseTo(
-			HALLEY_PERIHELION - passage.startJD,
+		expect(HALLEY_PERIHELION - passage.startJD).toBeLessThan(1000)
+		expect(passage.endJD - lag - HALLEY_PERIHELION).toBeCloseTo(
+			HALLEY_PERIHELION - (passage.startJD - lag),
 			1,
 		)
+		// a comet with a lag wakes up (and falls asleep) that much later
+		const p67 = getBody("67p")
+		const lagged = passageAround(p67.orbit!, p67.tail!, 2457247.59)
+		const plain = passageAround(
+			p67.orbit!,
+			{ ...p67.tail!, lagDays: undefined },
+			2457247.59,
+		)
+		expect(lagged.startJD - plain.startJD).toBeCloseTo(p67.tail!.lagDays!, 6)
+		expect(lagged.endJD - plain.endJD).toBeCloseTo(p67.tail!.lagDays!, 6)
 	})
 
 	it("goes to the next passage, the one under way, or for a comet that returns after 3000 the last one", () => {
 		const now = 2461308.5
-		const next = passageToWatch(halley, now)
+		const next = passageToWatch(halley, halleyTail, now)
 		expect(Math.abs(next.perihelionJD - 2474034)).toBeLessThan(1)
 		expect(watchStartJD(next, now)).toBe(next.startJD)
-		const during = passageToWatch(halley, HALLEY_PERIHELION + 5)
+		const during = passageToWatch(halley, halleyTail, HALLEY_PERIHELION + 5)
 		expect(during.perihelionJD).toBeCloseTo(HALLEY_PERIHELION, 2)
 		expect(watchStartJD(during, HALLEY_PERIHELION + 5)).toBe(
 			HALLEY_PERIHELION + 5,
 		)
-		const neowise = passageToWatch(getBody("neowise").orbit!, now)
-		expect(neowise.perihelionJD).toBeLessThan(now)
-		expect(Math.abs(neowise.perihelionJD - 2459034.18)).toBeLessThan(1)
+		const neowise = getBody("neowise")
+		const last = passageToWatch(neowise.orbit!, neowise.tail!, now)
+		expect(last.perihelionJD).toBeLessThan(now)
+		expect(Math.abs(last.perihelionJD - 2459034.18)).toBeLessThan(1)
 		expect(LATEST_WATCH_JD).toBeGreaterThan(now)
 	})
 

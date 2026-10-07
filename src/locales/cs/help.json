@@ -375,18 +375,19 @@
 				"simple": "Komety"
 			},
 			"what": {
-				"standard": "Pět komet na svých skutečných protáhlých drahách dostane u Slunce zářící hlavu a dva ohony a zase je ztratí, když odlétají.",
-				"simple": "Komety dostanou dlouhý ohon, když se přiblíží ke Slunci."
+				"standard": "Pět komet na svých skutečných protáhlých drahách se u Slunce probouzí, každá v jiné vzdálenosti (velká Hale-Bopp už za Saturnem, malá Encke až blízko Slunce): nejdřív se objeví zářící hlava, pak naroste rovný modrý plynný ohon a zahnutý nažloutlý prachový ohon, tak dlouhé a jasné, jak je lidé opravdu viděli, a když kometa odlétá, zase slábnou.",
+				"simple": "Komety se probouzejí, když se přiblíží ke Slunci. Velké komety se probudí už daleko, malé až blízko Slunce. Pak jim naroste dlouhý zářící ohon."
 			},
 			"why": {
-				"standard": "Ohon vždy míří od Slunce, takže kometa, která odlétá, letí ohonem napřed – dá se to vidět, ne jen slyšet.",
+				"standard": "Ohon vždy míří od Slunce, takže kometa, která odlétá, letí ohonem napřed – dá se to vidět, ne jen slyšet. Prachový ohon zaostává a ohýbá se, nejvíc když kometa prolétá těsně kolem Slunce.",
 				"simple": "Ohon vždy míří od Slunce, i když kometa odlétá!"
 			},
 			"how": {
 				"standard": [
 					"Vlevo nahoře vyber Halley nebo Encke (skupina Komety).",
 					"Rozbal kartu šipkou a stiskni tlačítko pro sledování průletu kolem Slunce: aplikace skočí k jejímu příštímu návratu a přehraje ho asi za minutu a půl.",
-					"Sleduj, kam ohon míří cestou tam a cestou zpět."
+					"Sleduj, kam ohon míří cestou tam a cestou zpět.",
+					"Vyzkoušej i Hale-Bopp: její hlava se objeví už daleko za Jupiterem, dlouho předtím, než jí narostou ohony."
 				],
 				"simple": [
 					"Vlevo nahoře vyber Halley.",

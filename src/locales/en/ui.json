@@ -1271,6 +1271,8 @@
 				"tail@simple": "Its tail is about {length} long. It always points away from the Sun{direction, select, out { – even now, when the comet flies away tail first} other {}}!",
 				"noTail": "No tail right now: it only grows within about {onset} of the Sun, where sunlight turns the comet’s ice into gas.",
 				"noTail@simple": "No tail right now. The tail only grows when the comet comes close to the Sun and its ice starts to melt into gas.",
+				"waking": "It is waking up: sunlight has begun to turn its ice into gas, and a coma is forming. Its tail has hardly started to grow.",
+				"waking@simple": "It is waking up! The Sun is starting to turn its ice into gas. Soon it will grow a tail.",
 				"next": "Next time closest to the Sun: {date}.",
 				"last": "Last time closest to the Sun: {date}. It returns in about {years, number} years.",
 				"watch": "Watch it pass the Sun",

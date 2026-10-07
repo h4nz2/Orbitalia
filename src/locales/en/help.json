@@ -375,18 +375,19 @@
 				"simple": "Comets"
 			},
 			"what": {
-				"standard": "Five comets on their real, stretched orbits grow a glowing head and two tails as they near the Sun, and lose them as they leave.",
-				"simple": "Comets grow a long tail when they come close to the Sun."
+				"standard": "Five comets on their real, stretched orbits wake up as they near the Sun, each at its own distance (big Hale-Bopp already beyond Saturn, little Encke only close in): first a glowing head appears, then a straight blue gas tail and a curved, yellowish dust tail grow as long and bright as they were really seen, and fade again as the comet leaves.",
+				"simple": "Comets wake up when they come close to the Sun. Big comets wake up far away, small ones only close to the Sun. Then they grow a long, glowing tail."
 			},
 			"why": {
-				"standard": "The tail always points away from the Sun, so a comet that is leaving flies tail first: something to see, not only to be told.",
+				"standard": "The tail always points away from the Sun, so a comet that is leaving flies tail first: something to see, not only to be told. The dust tail lags behind and curves, most of all when a comet whips close round the Sun.",
 				"simple": "The tail always points away from the Sun, even when the comet flies away!"
 			},
 			"how": {
 				"standard": [
 					"Pick Halley or Encke in the box at the top left (group Comets).",
 					"Open its card with the arrow and press “Watch it pass the Sun”: the app goes to its next visit and plays it in about a minute and a half.",
-					"Watch which way the tail points on the way in and on the way out."
+					"Watch which way the tail points on the way in and on the way out.",
+					"Try Hale-Bopp too: its head appears far beyond Jupiter, long before its tails grow."
 				],
 				"simple": [
 					"Pick Halley in the box at the top left.",

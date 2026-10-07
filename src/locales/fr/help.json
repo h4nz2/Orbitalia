@@ -375,18 +375,19 @@
 				"simple": "Les comètes"
 			},
 			"what": {
-				"standard": "Cinq comètes sur leurs vraies orbites très allongées se parent d’une tête lumineuse et de deux queues près du Soleil, et les perdent en s’éloignant.",
-				"simple": "Les comètes ont une longue queue quand elles s’approchent du Soleil."
+				"standard": "Cinq comètes sur leurs vraies orbites très allongées se réveillent près du Soleil, chacune à sa propre distance (la grosse Hale-Bopp déjà au-delà de Saturne, la petite Encke seulement tout près du Soleil) : une tête lumineuse apparaît d’abord, puis poussent une queue de gaz bleue et droite et une queue de poussière jaunâtre et courbée, aussi longues et brillantes que celles réellement observées, qui pâlissent à nouveau quand la comète s’éloigne.",
+				"simple": "Les comètes se réveillent quand elles s’approchent du Soleil. Les grosses comètes se réveillent très loin, les petites seulement près du Soleil. Puis il leur pousse une longue queue lumineuse."
 			},
 			"why": {
-				"standard": "La queue pointe toujours à l’opposé du Soleil : une comète qui s’éloigne vole donc queue en avant. Il faut le voir pour le croire.",
+				"standard": "La queue pointe toujours à l’opposé du Soleil : une comète qui s’éloigne vole donc queue en avant. Il faut le voir pour le croire. La queue de poussière traîne en arrière et se courbe, surtout quand la comète frôle le Soleil.",
 				"simple": "La queue pointe toujours à l’opposé du Soleil, même quand la comète s’en va !"
 			},
 			"how": {
 				"standard": [
 					"Choisis Halley ou Encke dans le champ en haut à gauche (groupe Comètes).",
 					"Ouvre sa carte avec la flèche et appuie sur le bouton pour la regarder passer près du Soleil : l’application va à son prochain passage et le joue en une minute et demie environ.",
-					"Regarde où pointe la queue à l’aller et au retour."
+					"Regarde où pointe la queue à l’aller et au retour.",
+					"Essaie aussi Hale-Bopp : sa tête apparaît déjà bien au-delà de Jupiter, longtemps avant que ses queues ne poussent."
 				],
 				"simple": [
 					"Choisis Halley dans le champ en haut à gauche.",
