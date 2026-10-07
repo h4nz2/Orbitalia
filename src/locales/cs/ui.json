@@ -1028,8 +1028,8 @@
 				"link": "Odkaz na tento pohled je na QR kód příliš dlouhý."
 			}
 		},
-		"overviewHint": "Zpět na celou sluneční soustavu, odkudkoli (Esc).",
-		"overviewHint@simple": "Vrať se a podívej se na celou sluneční soustavu (Esc).",
+		"overviewHint": "Cesta zpět na celou sluneční soustavu, odkudkoli (Esc). Kliknutí do prázdného prostoru pohled nezmění.",
+		"overviewHint@simple": "Vrať se a podívej se na celou sluneční soustavu (Esc). Když klikneš do prázdna, zůstaneš, kde jsi.",
 		"sky": {
 			"open": "Obloha dnes v noci",
 			"openHint": "Které planety dnes v noci uvidíš, kdy a kde?",

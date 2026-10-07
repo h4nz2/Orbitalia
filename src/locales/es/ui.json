@@ -1028,8 +1028,8 @@
 				"link": "El enlace a esta vista es demasiado largo para un código QR."
 			}
 		},
-		"overviewHint": "Vuelve a todo el sistema solar, desde cualquier sitio (Esc).",
-		"overviewHint@simple": "Vuelve y mira todo el sistema solar (Esc).",
+		"overviewHint": "El camino de vuelta a todo el sistema solar, desde cualquier sitio (Esc). Un clic en el espacio vacío deja la vista como está.",
+		"overviewHint@simple": "Vuelve y mira todo el sistema solar (Esc). Si haces clic en el espacio vacío, te quedas donde estás.",
 		"sky": {
 			"open": "El cielo esta noche",
 			"openHint": "¿Qué planetas puedes ver esta noche, cuándo y dónde?",

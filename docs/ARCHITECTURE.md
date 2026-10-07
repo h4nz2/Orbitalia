@@ -501,8 +501,8 @@ become the sky's motions (the Sun's yearly circle, Mercury's and Venus's flowers
   on the body held still or becomes a point anchored to it (never a new frame, never the Sun's neighbourhood).
 - **Clicks** (#16's `scene/picking.ts`): while a body is held still, a click on another body selects it
   (`bodyClickAction` "select": its trail brightens, the badge reads its motion) instead of flying there, and a click
-  on empty space only deselects; the picker and "Hold ... still" move the frame on purpose, the badge, the home button
-  and Escape leave it.
+  on empty space only deselects it (as everywhere since #47); the picker and "Hold ... still" move the frame on
+  purpose, the badge, the home button and Escape leave it.
 - **Trails** (`frame/trails.ts`, `frame/Trails.tsx`): one line per top-level body (the Sun and the planets) but P,
   relative to P, as a pure function of time: the window `trailWindow(jd, sinceJD)` (the last `TRAIL_LENGTH_DAYS`,
   two years; from `sinceJD` after "Restart the trails", `src/store/trails.ts`) sampled on whole Julian days plus the
@@ -885,9 +885,19 @@ hover ring, name and cursor apply to labels too.
   apparently empty space never flies to an invisible moon.
 - **Click on a body** (`bodyClickAction`): `setFocus` (select + fly, framing 6 drawn radii, tracked); the focus after
   the camera was dollied beyond `REFRAME_DISTANCE` x its framing flies back to the close-up; the framed, selected
-  focus does nothing. **Click on empty space** (`emptyClickAction`): `reset()` from a focused or free view,
-  `select(null)` in the overview; nothing on a near miss (within `NEAR_MISS_FACTOR` x the target radius of a drawn
-  edge) or while a sequence (tour) runs. Only taps count (`isTapEvent`).
+  focus does nothing. **Click on empty space** (`emptyClickAction`) **never moves the camera** (#47): leaving a body
+  is always deliberate (the way out, Escape, or choosing another body). It only lets go of a body selected besides
+  the one in view (`select(null)`; in the overview, a free view or while a body is held still, its card closes or
+  gives way to the focused body's); the focused body stays selected, so its card stays and the planet filling the
+  view never turns into a click target. Nothing on a near miss (within `NEAR_MISS_FACTOR` x the target
+  radius of a drawn edge) or while a sequence (tour) runs.
+- **Only taps count** (`scene/tap.ts` `isTapEvent`, used by every clickable thing in the scene; the pure
+  `createPressTracker` is fed by window listeners and unit-tested): the press may wander at most `TAP_MAX_TRAVEL_PX`
+  (mouse 4, pen 8, touch 12) from where it went down at any moment, for as long as it is held. Never a tap: a press
+  during which a second pointer went down (`isPrimary` false; the end of a pinch, one finger lifting after the
+  other, or a tap beside a resting thumb), and the click that brought the window into focus (`isFocusPress`: the
+  page had no focus at `pointerdown`, or the window's `focus` event came within `FOCUS_CLICK_MS` = 500 ms before the
+  press or while it was held; the two arrive in either order).
 - **Hover**: `hoverId` follows the pointer, but never for a finger or while a button is held (an orbit drag).
   `HoverCursor` shows `cursor: pointer` for click targets (`isClickTarget` = `bodyClickAction` is not `none`).
   `ui/BodyHighlight.tsx` renders a white ring with the body's name and "Click to fly there" around the hovered target,
@@ -1138,6 +1148,8 @@ The solar system is the app: there is no start page or main menu.
   sky, your birthday, the hunt, side by side, the walk and the dictionary. Tools → the dictionary opens the entry of
   whatever is in view (`ui/dictionaryEntry.ts` `nearestDictionaryEntry`: the body, else the world it circles, else
   the Sun).
+- **Inside the solar system, the way back to the overview** is the overview button (top left, its hint says so)
+  and Escape, from anywhere; a click on empty space never moves the camera (#47, see Picking).
 - **Every other page leads back** (`hooks/useBackToSolarSystem.ts`): the browser's back when the visitor came from
   inside the app, so they land exactly where they left (every view is in its address); a page opened straight from
   a link goes to a sensible view instead (the dictionary: its world; the walk: true scale; the comparison: its first

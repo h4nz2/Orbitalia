@@ -3,13 +3,15 @@ import path from "node:path"
 
 import { expect, test, type Page } from "@playwright/test"
 import { expandCard } from "./support/hud"
-import { cameraAtRest } from "./support/scene"
+import { cameraAtRest, nextFrames } from "./support/scene"
 
 // Click a body to focus on it (#16), in the real browser: hover feedback,
 // generous targets for tiny bodies (true scale, touch), the focused view's
-// card with comparative facts, the ways out (Escape and the home button are
-// covered in navigation.spec.ts; here the click on empty space) and the card's
-// own close button, which leaves the camera where it is.
+// card with comparative facts, and the card's own close button, which leaves
+// the camera where it is. A stray click never loses the view (#47): clicks
+// and taps on empty space, the end of a pinch and the click that brings the
+// window to the front leave the camera where it was; the way out (the home
+// button here, Escape in navigation.spec.ts) is the way back.
 
 const screenshotDir = path.join("test-results", "click-focus")
 
@@ -36,6 +38,15 @@ const state = (page: Page) =>
 		return { view, selectedId, hoverId }
 	})
 
+/** The camera round its pivot, rounded: equal means it has not moved. */
+const pose = (page: Page) =>
+	page.evaluate(() => {
+		const camera = window.__orbitalia!.camera()
+		return [camera.distance, camera.azimuthDeg, camera.elevationDeg].map(
+			(value) => value.toPrecision(5),
+		)
+	})
+
 /** Where a body is on the page right now (the canvas fills the viewport). */
 const screenOf = async (page: Page, id: string) => {
 	const placement = await page.evaluate(
@@ -47,32 +58,55 @@ const screenOf = async (page: Page, id: string) => {
 }
 
 /**
- * A point on the bare canvas (no HUD panel over it) at least `clearance` px
- * from every listed body.
+ * Points on the bare canvas (no HUD panel over them), on a 40 px grid, at
+ * least `clearance` px from every listed body; at least one.
  */
-const emptySpot = async (page: Page, ids: string[], clearance = 90) => {
-	const bodies = await Promise.all(
-		ids.map((id) =>
-			page.evaluate((id) => window.__orbitalia!.screenOf(id), id),
-		),
+const emptySpots = async (page: Page, ids: string[], clearance = 90) => {
+	const spots = await page.evaluate(
+		({ ids, clearance }) => {
+			const bodies = ids.map((id) => window.__orbitalia!.screenOf(id))
+			const found: { x: number; y: number }[] = []
+			for (let y = 120; y < window.innerHeight - 160; y += 40) {
+				for (let x = 40; x < window.innerWidth - 40; x += 40) {
+					const clear = bodies.every(
+						(b) =>
+							b === null || Math.hypot(b.x - x, b.y - y) > b.ringPx + clearance,
+					)
+					if (clear && document.elementFromPoint(x, y)?.tagName === "CANVAS") {
+						found.push({ x, y })
+					}
+				}
+			}
+			return found
+		},
+		{ ids, clearance },
 	)
-	const viewport = page.viewportSize()!
-	for (let y = 120; y < viewport.height - 160; y += 40) {
-		for (let x = 40; x < viewport.width - 40; x += 40) {
-			const clear = bodies.every(
-				(b) =>
-					b === null || Math.hypot(b.x - x, b.y - y) > b.ringPx + clearance,
-			)
-			if (!clear) continue
-			const onCanvas = await page.evaluate(
-				([x, y]) => document.elementFromPoint(x, y)?.tagName === "CANVAS",
-				[x, y],
-			)
-			if (onCanvas) return { x, y }
-		}
-	}
-	throw new Error("no empty spot on screen")
+	expect(spots.length, "empty spots on screen").toBeGreaterThan(0)
+	return spots
 }
+
+/** The Sun, the planets and the moons of Earth and Mars. */
+const WORLDS = [
+	"sun",
+	"mercury",
+	"venus",
+	"earth",
+	"moon",
+	"mars",
+	"phobos",
+	"deimos",
+	"jupiter",
+	"saturn",
+	"uranus",
+	"neptune",
+]
+
+/** `count` of `spots`, spread over all of them (repeating when there are fewer). */
+const spread = <T>(spots: T[], count: number): T[] =>
+	Array.from(
+		{ length: count },
+		(_, i) => spots[Math.floor((i * spots.length) / count) % spots.length],
+	)
 
 /** `distance` px beyond a body, straight away from the Sun on screen. */
 const beside = async (page: Page, id: string, distance: number) => {
@@ -175,25 +209,70 @@ test("at true scale a sub-pixel planet is hit anywhere within its target", async
 	await shot(page, "true-scale-focused-jupiter")
 })
 
-test("a click on empty space is the way out, a near miss is not", async ({
+test("clicks on empty space never move the camera; the way out does, in one click", async ({
 	page,
 }) => {
 	await ready(page, "/solar_system?focus=mars")
 	expect((await state(page)).selectedId).toBe("mars")
+	const card = page.getByTestId("body-card")
+	await expect(card).toHaveAttribute("data-card-body", "mars")
 	const mars = await screenOf(page, "mars")
+	const before = await pose(page)
 
-	// just beside the disc: a near miss keeps the view
+	// just beside the disc (a near miss), then 20 clicks all over empty space
 	await page.mouse.click(mars.x + mars.discPx + 12, mars.y)
-	// a way out would have started a flight by now: let any flight land first
+	const spots = await emptySpots(page, ["mars", "phobos", "deimos"])
+	for (const spot of spread(spots, 20)) await page.mouse.click(spot.x, spot.y)
+	// a way out would have started a flight by now: let any move land first
 	await settled(page)
+	expect(await state(page)).toMatchObject({
+		view: { kind: "body", id: "mars" },
+		selectedId: "mars",
+	})
+	expect(await pose(page)).toEqual(before)
+	await expect(card).toHaveAttribute("data-card-body", "mars")
+
+	// a world selected besides the one in view: an empty click lets go of it, the view stays
+	await page.evaluate(() =>
+		window.__orbitalia!.store.getState().select("phobos"),
+	)
+	await expect(card).toHaveAttribute("data-card-body", "phobos")
+	// well clear of every world a near miss could be aimed at
+	const [clear] = await emptySpots(page, WORLDS, 50)
+	await page.mouse.click(clear.x, clear.y)
+	await expect.poll(async () => (await state(page)).selectedId).toBeNull()
+	await expect(card).toHaveAttribute("data-card-body", "mars")
 	expect((await state(page)).view).toEqual({ kind: "body", id: "mars" })
 
-	const spot = await emptySpot(page, ["mars", "phobos", "deimos"])
-	await page.mouse.click(spot.x, spot.y)
+	// the way out: one click
+	await page
+		.getByRole("button", { name: "Back to overview", exact: true })
+		.click()
 	await expect.poll(async () => (await state(page)).view.kind).toBe("overview")
-	expect((await state(page)).selectedId).toBeNull()
 	await settled(page)
 	await expect(page.getByTestId("click-hint")).toBeVisible()
+})
+
+test("the click that brings the window to the front does nothing", async ({
+	page,
+}) => {
+	await ready(page)
+	const saturn = await screenOf(page, "saturn")
+	await page.mouse.move(saturn.x + 4, saturn.y + 3)
+	await page.mouse.down()
+	// the window comes into focus with this very press
+	await page.evaluate(() => window.dispatchEvent(new FocusEvent("focus")))
+	await page.mouse.up()
+	await nextFrames(page)
+	expect(await state(page)).toMatchObject({
+		view: { kind: "overview" },
+		selectedId: null,
+	})
+
+	// a moment later (FOCUS_CLICK_MS in scene/tap.ts), a click is a click again
+	await page.waitForTimeout(600)
+	await page.mouse.click(saturn.x + 4, saturn.y + 3)
+	await expect.poll(async () => (await state(page)).selectedId).toBe("saturn")
 })
 
 test("the card's close button closes the card and keeps the camera", async ({
@@ -239,5 +318,49 @@ test.describe("on a phone", () => {
 		await card.getByRole("button", { name: "Show facts" }).tap()
 		await expect(card.locator("[data-fact=size]")).toBeVisible()
 		await shot(page, "phone-expanded")
+	})
+
+	test("taps on empty space keep the view, and the end of a pinch is no tap", async ({
+		page,
+	}) => {
+		await ready(page, "/solar_system?focus=mars")
+		const before = await pose(page)
+		const spots = await emptySpots(page, ["mars", "phobos", "deimos"], 60)
+		for (const spot of spread(spots, 20)) {
+			await page.touchscreen.tap(spot.x, spot.y)
+		}
+		await settled(page)
+		expect(await state(page)).toMatchObject({
+			view: { kind: "body", id: "mars" },
+			selectedId: "mars",
+		})
+		expect(await pose(page)).toEqual(before)
+
+		// in the overview, a gentle pinch with one finger on the Sun: the other finger
+		// lifts first, then the one on the Sun, which must not count as a tap on it
+		await page.getByRole("button", { name: "Back to overview" }).tap()
+		await settled(page)
+		const sun = await screenOf(page, "sun")
+		const cdp = await page.context().newCDPSession(page)
+		const fingers = (points: { x: number; y: number; id: number }[]) =>
+			cdp.send("Input.dispatchTouchEvent", {
+				type: points.length === 0 ? "touchEnd" : "touchMove",
+				touchPoints: points,
+			})
+		const onSun = { x: sun.x, y: sun.y, id: 1 }
+		await cdp.send("Input.dispatchTouchEvent", {
+			type: "touchStart",
+			touchPoints: [onSun, { x: sun.x, y: sun.y + 120, id: 2 }],
+		})
+		for (let spread = 2; spread <= 8; spread += 2) {
+			await fingers([onSun, { x: sun.x, y: sun.y + 120 + spread, id: 2 }])
+		}
+		await fingers([onSun])
+		await fingers([])
+		await settled(page)
+		expect(await state(page)).toMatchObject({
+			view: { kind: "overview" },
+			selectedId: null,
+		})
 	})
 })

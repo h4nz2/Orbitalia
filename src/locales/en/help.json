@@ -127,12 +127,14 @@
 				"standard": [
 					"Point at a planet or its name: a ring appears with “Click to fly there”.",
 					"Click or tap it. To land at once, press Skip in the readout.",
-					"On a small dot, click anywhere near it: the target is generous."
+					"On a small dot, click anywhere near it: the target is generous.",
+					"The house button at the top left (or Esc) is the way back to the whole solar system; a click on empty space leaves the view where it is."
 				],
 				"simple": [
 					"Move the mouse over a planet. A ring shows up.",
 					"Click it. Now watch the trip.",
-					"Press “Be there now” if you do not want to wait."
+					"Press “Be there now” if you do not want to wait.",
+					"Press the house button at the top left to see all the planets again."
 				]
 			}
 		},
@@ -1164,8 +1166,8 @@
 		},
 		"back": {
 			"action": "Back to the whole solar system",
-			"mouse": "Click empty space, or the house button",
-			"touch": "Tap empty space, or the house button",
+			"mouse": "Click the house button at the top left",
+			"touch": "Tap the house button at the top left",
 			"keys": "Esc"
 		},
 		"name": {
