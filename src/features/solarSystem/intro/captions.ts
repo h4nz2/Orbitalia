@@ -1,12 +1,21 @@
 /**
  * The words of the opening (#30): one short title and one line of detail per
  * beat, at every reading level, plus the hand-over hints. Every number comes
- * from the data and is formatted for the locale.
+ * from the data and is formatted for the locale. How long each caption stays
+ * up follows from these words (#49, `captionReadingMs`).
  */
 import { bodyById } from "@/data"
-import type { I18n } from "@/i18n"
+import { LOCALES, createI18n, type I18n, type ReadingLevel } from "@/i18n"
+import { bodyName } from "@/i18n/bodies"
 
-import { MOON_DISTANCE_KM, type IntroBeat } from "./script"
+import {
+	INTRO_BEATS,
+	MOON_DISTANCE_KM,
+	countWords,
+	readingMs,
+	type IntroBeat,
+	type ReadingTimes,
+} from "./script"
 
 export interface Caption {
 	title: string
@@ -82,4 +91,37 @@ export function introCaption(
 				detail: t("solarSystem.intro.scale.detail"),
 			}
 	}
+}
+
+/** The words a caption has to be read in: its title and its detail. */
+export const captionWords = (caption: Caption): number =>
+	countWords(caption.title) + countWords(caption.detail)
+
+const readingTimes = new Map<ReadingLevel, ReadingTimes>()
+
+/**
+ * How long each beat's caption stays up at `readingLevel` (#49): the reading
+ * time of its longest translation at that level, so a class reading aloud in
+ * a second language finishes it too. Worked out once per level, from the
+ * words themselves: a caption that grows in translation gets its time with it.
+ */
+export function captionReadingMs(readingLevel: ReadingLevel): ReadingTimes {
+	const known = readingTimes.get(readingLevel)
+	if (known !== undefined) return known
+	const longest = Object.fromEntries(
+		INTRO_BEATS.map((beat) => [beat, 0]),
+	) as Record<IntroBeat, number>
+	for (const locale of LOCALES) {
+		const i18n = createI18n({ locale, readingLevel })
+		const name = (id: string) => bodyName(id, i18n.chain)
+		for (const beat of INTRO_BEATS) {
+			const words = captionWords(introCaption(beat, i18n, name))
+			longest[beat] = Math.max(longest[beat], words)
+		}
+	}
+	const times = Object.fromEntries(
+		INTRO_BEATS.map((beat) => [beat, readingMs(longest[beat])]),
+	) as Record<IntroBeat, number>
+	readingTimes.set(readingLevel, times)
+	return times
 }

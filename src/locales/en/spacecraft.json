@@ -7,7 +7,7 @@
 			"advanced": "The most distant human-made object, in interstellar space"
 		},
 		"description": {
-			"simple": "Voyager 1 left Earth in 1977. It flew past Jupiter and Saturn and took pictures of them. Now it is farther away than anything else people have made, out between the stars. It still sends messages home, very quietly.",
+			"simple": "Voyager 1 left Earth long ago, when your grandparents were young. It flew past Jupiter and Saturn and took pictures of them. Now it is farther away than anything else people have made. It is out between the stars. It still sends messages home, very quietly.",
 			"standard": "Launched in 1977, Voyager 1 flew past Jupiter in 1979 and Saturn in 1980, where it took a close look at the moon Titan. In 1990 it turned round and photographed Earth as a pale blue dot. Since 1998 it has been the most distant human-made object, and in August 2012 it crossed the heliopause, where the Sun's wind gives way to the gas between the stars. It still sends data home on about 20 watts.",
 			"advanced": "Voyager 1 used a gravity assist at Jupiter (March 1979) to reach Saturn (November 1980); its close pass of Titan bent its path steeply out of the plane of the planets. It overtook Pioneer 10 as the most distant spacecraft in February 1998 and on 25 August 2012, about 121 AU from the Sun, crossed the heliopause into interstellar space. Its nuclear power source loses about 4 watts a year, so its instruments are being switched off one by one."
 		}
@@ -16,25 +16,31 @@
 		"name": "Voyager 2",
 		"tagline": "The only visitor to Uranus and Neptune",
 		"description": {
-			"simple": "Voyager 2 is Voyager 1's twin. It is the only spacecraft that has visited all four giant planets: Jupiter, Saturn, Uranus and Neptune. It left Earth in 1977 and is still flying and sending messages.",
+			"simple": "Voyager 2 is the twin of Voyager 1. It is the only space probe that has visited all four giant planets: Jupiter, Saturn, Uranus and Neptune. It left Earth long ago, when your grandparents were young. It is still flying and sending messages.",
 			"standard": "Voyager 2 launched 16 days before its twin, in August 1977. A rare line-up of the outer planets let it swing from Jupiter (1979) to Saturn (1981), Uranus (1986) and Neptune (1989): the Grand Tour. It is still the only spacecraft to have visited Uranus and Neptune. In November 2018 it crossed the heliopause into interstellar space.",
 			"advanced": "Each flyby of Voyager 2 was a gravity assist that bent its path and sped it up towards the next planet, turning a 30-year trip to Neptune into 12 years. The alignment that made this possible comes round only about every 175 years. After Neptune and its moon Triton (August 1989) it headed south of the plane of the planets and crossed the heliopause on 5 November 2018, about 119 AU from the Sun."
 		}
 	},
 	"pioneer10": {
 		"name": "Pioneer 10",
-		"tagline": "The first probe to Jupiter",
+		"tagline": {
+			"simple": "The first space probe to Jupiter",
+			"standard": "The first probe to Jupiter"
+		},
 		"description": {
-			"simple": "Pioneer 10 was the first spacecraft to fly through the asteroid belt and past Jupiter, in 1973. It carries a metal plaque with a picture of two people, in case anyone ever finds it. We last heard from it in 2003.",
+			"simple": "Pioneer 10 was the first space probe to fly through the asteroid belt and past Jupiter. It carries a metal plate with a picture of two people, in case anyone ever finds it. It stopped sending messages a long time ago.",
 			"standard": "Launched in March 1972, Pioneer 10 was the first spacecraft to cross the asteroid belt and the first to visit Jupiter, in December 1973. Then it kept going, out of the solar system. Its last faint signal reached Earth on 23 January 2003; since then it has flown on in silence.",
 			"advanced": "Pioneer 10 passed about 200,000 km from Jupiter's centre and measured its intense radiation belts, knowledge that shaped every later mission. For decades its path was used to test gravity far from the Sun: the tiny 'Pioneer anomaly' in its motion turned out, in 2012, to be heat from its own power source pushing it. Contact was lost in 2003 when that power had become too weak."
 		}
 	},
 	"pioneer11": {
 		"name": "Pioneer 11",
-		"tagline": "The first probe to Saturn",
+		"tagline": {
+			"simple": "The first space probe to Saturn",
+			"standard": "The first probe to Saturn"
+		},
 		"description": {
-			"simple": "Pioneer 11 flew past Jupiter and then became the first spacecraft to visit Saturn, in 1979. Its power ran low and it went quiet in 1995. It is still flying away from the Sun.",
+			"simple": "Pioneer 11 flew past Jupiter. Then it became the first space probe to visit Saturn. Later its power ran low, and it went quiet. It is still flying away from the Sun.",
 			"standard": "Pioneer 11 launched in April 1973. It passed Jupiter in December 1974, only 42,000 km above the clouds, and used Jupiter's gravity to swing across the solar system to Saturn in September 1979: the first visit to Saturn ever. Its science work ended in September 1995, when its power ran too low.",
 			"advanced": "Pioneer 11's close pass of Jupiter was a gravity assist that flung it back across the solar system to Saturn. There it flew beneath the rings, discovered the thin F ring and showed that a spacecraft could cross the ring plane safely, which the Voyagers relied on. Routine operations ended on 30 September 1995."
 		}
@@ -43,7 +49,7 @@
 		"name": "New Horizons",
 		"tagline": "The first visit to Pluto",
 		"description": {
-			"simple": "New Horizons is a small, fast spacecraft about the size of a piano. It flew past Pluto in 2015 and sent back the first close-up pictures, with a big heart-shaped plain of ice. In 2019 it visited Arrokoth, a small icy world even farther away.",
+			"simple": "New Horizons is a small, fast space probe, about the size of a piano. It flew past Pluto and sent back the first close-up pictures. They showed a big patch of ice shaped like a heart. Later it visited Arrokoth, a small icy world even farther away.",
 			"standard": "Launched in January 2006 as the fastest spacecraft ever to leave Earth, New Horizons swung past Jupiter in 2007 and flew by Pluto on 14 July 2015, only 12,500 km above its surface. On 1 January 2019 it passed Arrokoth, the most distant object any spacecraft has visited. It is now exploring the Kuiper Belt.",
 			"advanced": "New Horizons left Earth at about 16 km/s, the highest launch speed of any spacecraft, and a gravity assist at Jupiter cut about three years off the trip. In the Pluto system (14 July 2015) it found mountains of water ice and a young plain of nitrogen ice, Sputnik Planitia. Arrokoth turned out to be two lobes that once merged gently, a clue to how the first building blocks of planets formed."
 		}
@@ -52,7 +58,7 @@
 		"name": "Cassini",
 		"tagline": "Thirteen years at Saturn",
 		"description": {
-			"simple": "Cassini flew to Saturn and circled it for 13 years, studying the planet, its rings and its moons. It carried a small lander, Huygens, that landed on the moon Titan. At the end, Cassini dived into Saturn on purpose and burned up.",
+			"simple": "Cassini flew to Saturn and went round it for 13 years. It studied the planet, its rings and its moons. It carried a small probe, Huygens, that landed on the moon Titan. At the end, Cassini dived into Saturn on purpose and burned up.",
 			"standard": "Cassini launched in 1997 and needed gravity assists from Venus (twice), Earth and Jupiter to reach Saturn in July 2004. Its Huygens probe landed on Titan in January 2005, and Cassini found geysers of water shooting out of Enceladus. Almost out of fuel, it was steered into Saturn on 15 September 2017, so it could never crash into a moon that might hold life.",
 			"advanced": "Cassini–Huygens was a joint mission of NASA, ESA and the Italian space agency. In 294 orbits of Saturn it used close flybys of Titan to change course without fuel. Huygens made the first landing in the outer solar system. Cassini's 22 final 'Grand Finale' orbits dived between the planet and its rings before it burned up in Saturn's atmosphere."
 		}
@@ -70,16 +76,19 @@
 		"name": "James Webb Space Telescope",
 		"tagline": "A giant telescope far beyond the Moon",
 		"description": {
-			"simple": "The James Webb Space Telescope is a huge telescope with a golden mirror. It sees heat light (infrared) from the very first stars and galaxies. It floats about 1.5 million km from Earth, always on the side away from the Sun.",
+			"simple": "The James Webb Space Telescope is a huge telescope with a golden mirror. It sees heat light, a kind of light our eyes cannot see. With it, it finds the very first stars and galaxies, the giant groups of stars far away. It floats about four times as far away as the Moon, on the side of Earth away from the Sun.",
 			"standard": "Webb launched on 25 December 2021 and took a month to reach its home near the Sun–Earth L2 point, 1.5 million km beyond Earth on the side away from the Sun: about four times farther than the Moon. There a sunshield the size of a tennis court keeps its 6.5 m mirror cold enough to see infrared light from the earliest galaxies.",
 			"advanced": "At L2 the pull of the Sun and Earth together keeps a spacecraft in step with Earth's year. Webb does not sit on the point but circles it on a large halo orbit about six months long, which keeps it out of Earth's shadow. At about 40 K (−233 °C) its mirror and instruments see light that the expansion of the universe has stretched into the infrared."
 		}
 	},
 	"juno": {
 		"name": "Juno",
-		"tagline": "In orbit around Jupiter",
+		"tagline": {
+			"simple": "Going round and round Jupiter",
+			"standard": "In orbit around Jupiter"
+		},
 		"description": {
-			"simple": "Juno has been circling Jupiter since 2016. It swoops very close over Jupiter's clouds to find out what is inside the planet. It spins slowly, and its three long solar panels make it look like a windmill.",
+			"simple": "Juno has been going round Jupiter for many years. It swoops very close over Jupiter's clouds to find out what is inside the planet. It spins slowly. Its three long solar panels make it look like a windmill.",
 			"standard": "Juno launched in 2011, swung past Earth in 2013 to gain speed and arrived at Jupiter on 5 July 2016. On a long, stretched orbit over the poles it dives within a few thousand kilometres of the cloud tops, then climbs far out again. It was the first spacecraft to reach Jupiter on solar power alone.",
 			"advanced": "Juno maps Jupiter's gravity and magnetic field to learn what lies deep inside: the core turned out to be large and diluted, mixed into the hydrogen around it. Its polar orbit dodges the worst of the radiation belts. Since 2021 its orbit has also carried it past the moons Ganymede, Europa and Io."
 		}

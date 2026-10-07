@@ -24,11 +24,12 @@ const BackButton = () => {
 
 	const index = useViewHistoryStore((state) => state.index)
 	const entries = useViewHistoryStore((state) => state.entries)
+	const held = useViewHistoryStore((state) => state.held)
 	const sequence = useSimStore((state) => state.sequence)
 	const tour = useTourStore((state) => state.tour)
 	const tourIndex = useTourStore((state) => state.index)
 	const steps = useTourStore((state) => state.steps)
-	const enabled = canStepBack({ index, entries }, sequence, {
+	const enabled = canStepBack({ index, entries, held }, sequence, {
 		tour,
 		index: tourIndex,
 		steps,

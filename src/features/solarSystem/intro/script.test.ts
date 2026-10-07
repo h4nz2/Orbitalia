@@ -5,27 +5,45 @@ import { propagate, radToDeg } from "@/sim"
 import { HOME_SHOT, OVERVIEW, isValidView } from "@/store/navigation"
 
 import {
+	CAPTION_FADE_MS,
 	EARTH_PHASE_DEG,
 	INTRO_BEATS,
-	INTRO_MAX_MS,
+	READ_MIN_MS,
 	SCALE_BEAT,
 	SCALE_REVEAL_MS,
 	beatStartsMs,
+	countWords,
 	hasExplicitView,
 	introSteps,
+	readingMs,
 	sequenceLengthMs,
+	settleMs,
 	sunlitAzimuthDeg,
 	turnToward,
+	type ReadingTimes,
 } from "./script"
 
 const J2000 = 2451545
 const angleBetween = (a: number, b: number) =>
 	Math.abs(((((a - b + 180) % 360) + 360) % 360) - 180)
 
+/** Reading times as the captions give them (captions.test.ts holds them to the words). */
+const readMs: ReadingTimes = {
+	earth: 9000,
+	moon: 6000,
+	inner: 11_000,
+	system: 15_000,
+	scale: 13_000,
+}
+
 describe("the opening's script", () => {
 	for (const reducedMotion of [false, true]) {
 		describe(reducedMotion ? "reduced motion" : "with motion", () => {
-			const steps = introSteps({ earthAzimuthDeg: 120, reducedMotion })
+			const steps = introSteps({
+				earthAzimuthDeg: 120,
+				reducedMotion,
+				readMs,
+			})
 
 			it("is one step per beat, every view valid, every step timed", () => {
 				expect(steps).toHaveLength(INTRO_BEATS.length)
@@ -36,9 +54,39 @@ describe("the opening's script", () => {
 				}
 			})
 
-			it("lasts under fifteen seconds", () => {
-				expect(sequenceLengthMs(steps)).toBeLessThan(INTRO_MAX_MS)
-				expect(sequenceLengthMs(steps)).toBeGreaterThan(10_000)
+			it("holds every beat for its reading time once the caption is in and nothing moves (#49)", () => {
+				for (const [index, beat] of INTRO_BEATS.entries()) {
+					const step = steps[index]
+					const move = step.durationMs ?? 0
+					const hold = step.holdMs ?? 0
+					// the caption appears as the beat starts and fades in; the last beat's scale switch moves the scene
+					const still = reducedMotion
+						? 0
+						: Math.max(
+								move,
+								CAPTION_FADE_MS,
+								beat === "scale" ? SCALE_REVEAL_MS : 0,
+							)
+					expect(settleMs(beat, reducedMotion)).toBe(still)
+					expect(move + hold - still).toBe(readMs[beat])
+				}
+				// no more than the reading, the moves, the fades and the scale switch
+				const moves = steps.reduce((ms, step) => ms + (step.durationMs ?? 0), 0)
+				const reading = Object.values(readMs).reduce((ms, read) => ms + read, 0)
+				expect(sequenceLengthMs(steps)).toBeLessThanOrEqual(
+					reading + moves + CAPTION_FADE_MS + SCALE_REVEAL_MS,
+				)
+			})
+
+			it("never holds a caption for less than the minimum", () => {
+				const short = introSteps({
+					earthAzimuthDeg: 0,
+					reducedMotion,
+					readMs: { earth: 0, moon: 0, inner: 0, system: 0, scale: 0 },
+				})
+				for (const step of short) {
+					expect(step.holdMs).toBeGreaterThanOrEqual(READ_MIN_MS)
+				}
 			})
 
 			it("opens close on Earth with a cut and ends on the overview a reset shows", () => {
@@ -83,7 +131,11 @@ describe("the opening's script", () => {
 	}
 
 	it("turns the camera from Earth's sunlit side to the home direction over the pull-back", () => {
-		const steps = introSteps({ earthAzimuthDeg: 150, reducedMotion: false })
+		const steps = introSteps({
+			earthAzimuthDeg: 150,
+			reducedMotion: false,
+			readMs,
+		})
 		const az = steps.map((step) => step.shot?.azimuthDeg ?? NaN)
 		// the shorter way round: 150 degrees of turn in all, never 210
 		const gaps = az.slice(1).map((a, i) => angleBetween(a, az[i]))
@@ -92,13 +144,35 @@ describe("the opening's script", () => {
 	})
 
 	it("gives each beat's start for the progress bar", () => {
-		const steps = introSteps({ earthAzimuthDeg: 0, reducedMotion: false })
+		const steps = introSteps({
+			earthAzimuthDeg: 0,
+			reducedMotion: false,
+			readMs,
+		})
 		const starts = beatStartsMs(steps)
 		expect(starts[0]).toBe(0)
 		expect(starts[1]).toBe(steps[0].holdMs)
 		for (let i = 1; i < starts.length; i++) {
 			expect(starts[i]).toBeGreaterThan(starts[i - 1])
 		}
+	})
+})
+
+describe("reading time (#49)", () => {
+	it("is 1.5 s plus 0.45 s a word, at least 3.5 s", () => {
+		expect(readingMs(0)).toBe(3500)
+		expect(readingMs(4)).toBe(3500)
+		expect(readingMs(5)).toBe(3750)
+		expect(readingMs(20)).toBe(10_500)
+	})
+
+	it("counts words between spaces, not punctuation on its own", () => {
+		expect(countWords("This is Earth.")).toBe(3)
+		expect(countWords("  Mercury, Venus, Earth, and Mars  ")).toBe(5)
+		expect(countWords("El panel «Escala» vuelve – ya")).toBe(5)
+		// French groups thousands with a narrow no-break space: read aloud, still words
+		expect(countWords("384\u202f000 km")).toBe(3)
+		expect(countWords("")).toBe(0)
 	})
 })
 

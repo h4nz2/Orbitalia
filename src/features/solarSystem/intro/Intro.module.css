@@ -25,6 +25,7 @@
 	text-align: center;
 }
 
+/* the fade's length is set inline from CAPTION_FADE_MS (script.ts): the reading time counts from its end */
 .caption {
 	animation: captionIn 600ms ease-out both;
 }
@@ -48,17 +49,52 @@
 
 .footer {
 	display: flex;
+	flex-wrap: wrap;
 	align-items: center;
 	justify-content: space-between;
-	gap: 1rem;
+	gap: 0.5rem 1rem;
 	margin-top: 0.75rem;
+}
+
+/* the segments and, while the opening holds, "Paused" */
+.progress {
+	display: flex;
+	align-items: center;
+	gap: 0.6rem;
+	flex: 1 1 8rem;
+	min-width: 0;
+	max-width: 20rem;
 }
 
 .segments {
 	display: flex;
 	gap: 0.3rem;
 	flex: 1;
+	min-width: 5rem;
 	max-width: 14rem;
+}
+
+.paused {
+	display: inline-flex;
+	align-items: center;
+	gap: 0.3rem;
+	flex: none;
+	font-size: 0.85rem;
+	color: var(--mantine-color-gray-4);
+	white-space: nowrap;
+}
+
+/* pause, Next and Skip */
+.buttons {
+	display: flex;
+	align-items: center;
+	gap: 0.35rem;
+	flex: none;
+	margin-left: auto;
+}
+
+.control {
+	color: var(--mantine-color-gray-2);
 }
 
 .segment {

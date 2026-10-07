@@ -120,10 +120,59 @@
 			"gravitySimilar@advanced": "La gravité de surface diffère de moins de 5 % de celle de la Terre.",
 			"gravityLess": "Tu ne pèserais que {percent, number, ::percent} de ton poids sur Terre.",
 			"gravityLess@simple": "Si tu pèses 30 kg sur Terre, là-bas tu ne pèserais que {kg, number} kg !",
-			"gravityLess@advanced": "La gravité de surface vaut {percent, number, ::percent} de celle de la Terre : ton poids diminuerait, mais ta masse resterait la même.",
-			"temperature": "Cela fait environ {celsius, number} °C.",
-			"temperature@simple": "{range, select, hot {Cela fait environ {celsius, number} °C – plus chaud qu’un four !} cold {Cela fait environ {celsius, number} °C – plus froid que n’importe quel congélateur !} other {Cela fait environ {celsius, number} °C.}}",
-			"temperature@advanced": "Cela fait {celsius, number} °C ; le zéro absolu, 0 K, vaut −273,15 °C."
+			"gravityLess@advanced": "La gravité de surface vaut {percent, number, ::percent} de celle de la Terre : ton poids diminuerait, mais ta masse resterait la même."
+		},
+		"section": {
+			"label": "{name} : en savoir plus",
+			"madeOf": "Composition",
+			"madeOf@simple": "Qu’y a-t-il dedans ?",
+			"weather": "Météo",
+			"weather@simple": "Chaud ou froid ?",
+			"weather@advanced": "Températures",
+			"names": "Noms",
+			"names@simple": "Ses noms"
+		},
+		"madeOf": {
+			"pictureTitle": "{name} en coupe",
+			"pictureDescription": "Image en coupe : {name}. Du centre vers l’extérieur : {layers}.",
+			"scaleNote": "{thickened, select, yes {Les couches sont dessinées à l’échelle ; les plus fines sont un peu épaissies pour qu’on puisse les voir.} other {Les couches sont dessinées à l’échelle.}}",
+			"scaleNote@simple": "{thickened, select, yes {Les couches très fines sont dessinées un peu plus épaisses, pour que tu puisses les voir.} other {Les couches sont dessinées à leur vraie taille.}}",
+			"estimateNote": "Personne ne peut voir à l’intérieur : ces couches sont les meilleures estimations des scientifiques, tirées de sa gravité, de sa rotation et de modèles.",
+			"estimateNote@simple": "Personne n’est jamais allé à l’intérieur. Les scientifiques ont calculé ces couches.",
+			"layerSize": "{centre, select, yes {rayon de {size}} other {{size} d’épaisseur}}",
+			"air": "{star, select, yes {De quoi est fait son gaz} other {Son air}}",
+			"air@simple": "{star, select, yes {Son gaz} other {Son air}}",
+			"air@advanced": "{star, select, yes {Composition chimique} other {Atmosphère}}",
+			"gas": "{name} {share, number, ::percent @##}",
+			"basis": "{basis, select, atoms {Part dans le nombre de ses atomes.} other {Part dans son air, en volume.}}",
+			"heavy": "Poids",
+			"heavy@simple": "Ça pèse combien ?",
+			"heavy@advanced": "Masse",
+			"dense": "Poids pour sa taille",
+			"dense@simple": "Ça flotterait ?",
+			"dense@advanced": "Masse volumique moyenne"
+		},
+		"weather": {
+			"high": "{range, select, dayNight {Le jour} extremes {Au plus chaud} records {Record de chaleur mesuré} cloudsCore {Près du noyau} cloudLevels {Dans les nuages} surfaceCore {Au cœur} other {Jour et nuit}}",
+			"low": "{range, select, dayNight {La nuit} extremes {Au plus froid} records {Record de froid mesuré} cloudsCore {Dans les nuages} cloudLevels {Plus haut} surfaceCore {À la surface} other {Jour et nuit}}"
+		},
+		"names": {
+			"origin": "D’où vient son nom",
+			"inOurLanguage": "En français",
+			"discovery": "Sa découverte",
+			"discovery@simple": "Qui a trouvé ce monde ?"
+		},
+		"sources": "Sources :",
+		"quantity": {
+			"feel": "{band, select, hotterThanSun {Plus chaud que la surface du Soleil} fire {Bien plus chaud que n’importe quel feu} oven {Plus chaud qu’un four} boiling {Plus chaud que l’eau qui bout} desert {Aussi chaud que le plus chaud des déserts} warm {Chaud, comme un jour d’été} mild {Ni trop chaud, ni trop froid} chilly {Froid, comme un jour d’hiver} freezer {Plus froid que n’importe quel congélateur} coldest {Plus froid que n’importe où sur Terre} other {Si froid que l’air gèlerait}}",
+			"celsius": "{big, select, yes {{value} de °C} other {{value} °C}}",
+			"kelvin": "{big, select, yes {{kelvin} de K ({celsius} de °C)} other {{kelvin} K ({celsius} °C)}}",
+			"mass": "{band, select, earth {L’étalon : on pèse les autres mondes en Terres} similar {{percent, number, ::percent} de la masse de la Terre} lighter {{count, plural, one {Il en faudrait # pour peser autant que la Terre} many {Il en faudrait # pour peser autant que la Terre} other {Il en faudrait # pour peser autant que la Terre}}} other {{count, plural, one {Pèse autant que # Terre} many {Pèse autant que # de Terres} other {Pèse autant que # Terres}}}}",
+			"mass@simple": "{band, select, star {Plus lourd que toutes les planètes réunies} earth {C’est la Terre qui sert de mesure : on pèse les autres mondes en Terres} huge {Plus lourd que 100 Terres réunies} similar {Presque aussi lourd que la Terre} lighter {{count, plural, one {Aussi lourd que la Terre} many {Il en faudrait # pour peser autant que la Terre} other {Il en faudrait # pour peser autant que la Terre}}} other {{count, plural, one {Aussi lourd que # Terre} many {Aussi lourd que # de Terres} other {Aussi lourd que # Terres}}}}",
+			"mass@advanced": "{band, select, earth {{kg} kg} other {{earths} fois la masse de la Terre ({kg} kg)}}",
+			"density": "{band, select, floats {{value} g/cm³ : moins dense que l’eau, donc dans une baignoire assez grande, cet astre flotterait} sinks {{value} g/cm³ : un peu plus dense que l’eau} other {{value} g/cm³ : {ratio, number} fois plus dense que l’eau}}",
+			"density@simple": "{band, select, floats {Plus léger que l’eau : dans une baignoire géante, ça flotterait !} sinks {Un peu plus lourd que l’eau : ça coulerait, doucement} other {{buckets, plural, one {Un seau rempli de sa matière pèserait autant que # seau d’eau} many {Un seau rempli de sa matière pèserait autant que # de seaux d’eau} other {Un seau rempli de sa matière pèserait autant que # seaux d’eau}}}}",
+			"density@advanced": "{band, select, floats {{value} g/cm³, moins que l’eau (1 g/cm³)} other {{value} g/cm³ (eau : 1 g/cm³)}}"
 		}
 	},
 	"solarSystem": {
@@ -1192,6 +1241,15 @@
 			"skip": "Passer l’intro",
 			"skip@simple": "Passer",
 			"progress": "Partie {beat, number} sur {count, number}",
+			"pause": "Mettre en pause",
+			"resume": "Reprendre",
+			"resume@simple": "Continuer",
+			"paused": "En pause",
+			"next": "Suivant",
+			"pauseHint": "Reste sur ce texte aussi longtemps que tu veux, pour le lire ou en parler. La barre d’espace ou un toucher sur la scène font la même chose ; encore une fois, et ça reprend.",
+			"pauseHint@simple": "Arrête-toi ici pour lire. Tu peux aussi appuyer sur la barre d’espace ou toucher l’image. Encore une fois, et ça repart.",
+			"nextHint": "Passe tout de suite à la partie suivante ; en pause, elle avance une partie à la fois. La flèche droite fait la même chose.",
+			"nextHint@simple": "Va tout de suite à la partie suivante.",
 			"earth": {
 				"title": "Voici la Terre.",
 				"detail": "Tous les gens que tu connais vivent ici.",
@@ -1214,14 +1272,14 @@
 			"system": {
 				"title": "Tout le Système solaire, à sa vraie taille",
 				"title@simple": "Tout, à sa vraie taille",
-				"detail": "Les planètes sont bien trop petites pour être vues. Les points montrent seulement où elles sont.",
-				"detail@simple": "Les planètes sont si minuscules qu’on ne les voit pas ! Les points montrent où elles sont.",
-				"detail@advanced": "La Terre est maintenant bien plus petite qu’un pixel, et l’espace est presque entièrement vide. Les points ne font que repérer les planètes."
+				"detail": "Les planètes, trop petites, sont invisibles. Les points montrent où elles sont.",
+				"detail@simple": "Les planètes sont minuscules, on ne les voit pas ! Les points montrent où elles sont.",
+				"detail@advanced": "La Terre est plus petite qu’un pixel, l’espace presque vide. Les points repèrent les planètes."
 			},
 			"scale": {
 				"title": "Alors on les dessine plus grosses et plus proches",
 				"title@simple": "Alors on les dessine plus grosses !",
-				"detail": "Tu vois maintenant chaque planète, mais pas à l’échelle. Le panneau « Échelle » te ramène aux vraies tailles.",
+				"detail": "Toutes visibles, mais pas à l’échelle. « Échelle » montre la réalité.",
 				"detail@simple": "Tu vois maintenant chaque planète. Dans le panneau « Échelle », tu retrouves leur vraie taille.",
 				"detail@advanced": "« Tout visible » : tailles agrandies, distances resserrées. « Échelle réelle », dans le panneau « Échelle », montre la réalité."
 			},
@@ -1289,6 +1347,8 @@
 				"tail@simple": "Sa queue mesure environ {length}. Elle pointe toujours à l’opposé du Soleil{direction, select, out { – même maintenant, alors que la comète s’en va la queue en avant} other {}} !",
 				"noTail": "Pas de queue pour l’instant : elle ne se forme qu’à moins d’environ {onset} du Soleil, là où la lumière solaire transforme la glace de la comète en gaz.",
 				"noTail@simple": "Pas de queue pour l’instant. La queue n’apparaît que lorsque la comète s’approche du Soleil et que sa glace commence à se changer en gaz.",
+				"waking": "Elle se réveille : la lumière du Soleil commence à transformer sa glace en gaz, et une chevelure se forme autour du noyau. Sa queue commence à peine à pousser.",
+				"waking@simple": "Elle se réveille ! Le Soleil commence à changer sa glace en gaz. Bientôt, elle aura une queue.",
 				"next": "Prochain passage au plus près du Soleil : {date}.",
 				"last": "Dernier passage au plus près du Soleil : {date}. Elle reviendra dans environ {years, number} ans.",
 				"watch": "Voir son passage près du Soleil",

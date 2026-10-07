@@ -120,10 +120,59 @@
 			"gravitySimilar@advanced": "Surface gravity is within 5 % of Earth’s.",
 			"gravityLess": "You would weigh only {percent, number, ::percent} of your weight on Earth.",
 			"gravityLess@simple": "If you weigh 30 kg on Earth, you would weigh only {kg, number} kg there!",
-			"gravityLess@advanced": "Surface gravity is {percent, number, ::percent} of Earth’s: your weight would drop, but your mass would stay the same.",
-			"temperature": "That is about {celsius, number} °C.",
-			"temperature@simple": "{range, select, hot {That is about {celsius, number} °C – hotter than an oven!} cold {That is about {celsius, number} °C – colder than any freezer!} other {That is about {celsius, number} °C.}}",
-			"temperature@advanced": "That is {celsius, number} °C; absolute zero, 0 K, is −273.15 °C."
+			"gravityLess@advanced": "Surface gravity is {percent, number, ::percent} of Earth’s: your weight would drop, but your mass would stay the same."
+		},
+		"section": {
+			"label": "More about {name}",
+			"madeOf": "Made of",
+			"madeOf@simple": "What is inside?",
+			"weather": "Weather",
+			"weather@simple": "Hot or cold?",
+			"weather@advanced": "Temperatures",
+			"names": "Names",
+			"names@simple": "Its names"
+		},
+		"madeOf": {
+			"pictureTitle": "Inside {name}",
+			"pictureDescription": "A cut-away picture of {name}. From the centre outwards: {layers}.",
+			"scaleNote": "{thickened, select, yes {The layers are drawn to scale; the thinnest are drawn a little thicker so you can see them.} other {The layers are drawn to scale.}}",
+			"scaleNote@simple": "{thickened, select, yes {Thin layers are drawn a bit thicker, so you can see them.} other {The layers are drawn at their real sizes.}}",
+			"estimateNote": "Nobody can look inside it: these layers are scientists’ best estimates from its gravity, its spin and models.",
+			"estimateNote@simple": "Nobody has been inside. Scientists worked these layers out.",
+			"layerSize": "{centre, select, yes {radius {size}} other {{size} thick}}",
+			"air": "{star, select, yes {What its gas is made of} other {Its air}}",
+			"air@simple": "{star, select, yes {Its gas} other {Its air}}",
+			"air@advanced": "{star, select, yes {Composition} other {Atmosphere}}",
+			"gas": "{name} {share, number, ::percent @##}",
+			"basis": "{basis, select, atoms {Share of all its atoms.} other {Share of its air, by volume.}}",
+			"heavy": "How heavy",
+			"heavy@simple": "How heavy?",
+			"heavy@advanced": "Mass",
+			"dense": "Heavy for its size",
+			"dense@simple": "Would it float?",
+			"dense@advanced": "Mean density"
+		},
+		"weather": {
+			"high": "{range, select, dayNight {By day} extremes {Warmest} records {Hottest ever measured} cloudsCore {Near the core} cloudLevels {In the clouds} surfaceCore {In the core} other {Day and night}}",
+			"low": "{range, select, dayNight {At night} extremes {Coldest} records {Coldest ever measured} cloudsCore {In the clouds} cloudLevels {Higher up} surfaceCore {At the surface} other {Day and night}}"
+		},
+		"names": {
+			"origin": "Where the name comes from",
+			"inOurLanguage": "In English",
+			"discovery": "How it was found",
+			"discovery@simple": "Who found it?"
+		},
+		"sources": "Sources:",
+		"quantity": {
+			"feel": "{band, select, hotterThanSun {Hotter than the surface of the Sun} fire {Far hotter than any fire} oven {Hotter than an oven} boiling {Hotter than boiling water} desert {As hot as the hottest desert} warm {Warm, like a summer day} mild {Not too hot, not too cold} chilly {Cold, like a winter day} freezer {Colder than any freezer} coldest {Colder than anywhere on Earth} other {So cold that air would freeze}}",
+			"celsius": "{big, select, other {{value} °C}}",
+			"kelvin": "{big, select, other {{kelvin} K ({celsius} °C)}}",
+			"mass": "{band, select, earth {The yardstick: the other worlds are weighed in Earths} similar {{percent, number, ::percent} of Earth’s mass} lighter {{count, plural, one {# of them would weigh as much as Earth} other {# of them would weigh as much as Earth}}} other {{count, plural, one {As heavy as # Earth} other {As heavy as # Earths}}}}",
+			"mass@simple": "{band, select, star {Heavier than all the planets put together} earth {Earth is the yardstick: the other worlds are weighed in Earths} huge {Heavier than 100 Earths put together} similar {Almost as heavy as Earth} lighter {{count, plural, one {As heavy as Earth} other {It would take # of them to weigh as much as Earth}}} other {{count, plural, one {As heavy as # Earth} other {As heavy as # Earths}}}}",
+			"mass@advanced": "{band, select, earth {{kg} kg} other {{earths} Earth masses ({kg} kg)}}",
+			"density": "{band, select, floats {{value} g/cm³: lighter than water, so in a big enough bathtub it would float} sinks {{value} g/cm³: a little denser than water} other {{value} g/cm³: {ratio, number} times as dense as water}}",
+			"density@simple": "{band, select, floats {Lighter than water: in a giant bathtub, it would float!} sinks {A little heavier than water: it would sink, slowly} other {{buckets, plural, one {A bucket full of it would weigh as much as # bucket of water} other {A bucket full of it would weigh as much as # buckets of water}}}}",
+			"density@advanced": "{band, select, floats {{value} g/cm³, less than water (1 g/cm³)} other {{value} g/cm³ (water: 1 g/cm³)}}"
 		}
 	},
 	"solarSystem": {
@@ -1192,6 +1241,15 @@
 			"skip": "Skip intro",
 			"skip@simple": "Skip",
 			"progress": "Part {beat, number} of {count, number}",
+			"pause": "Pause",
+			"resume": "Continue",
+			"resume@simple": "Go on",
+			"paused": "Paused",
+			"next": "Next",
+			"pauseHint": "Stay on this caption as long as you like, to read it or talk about it. Space or a tap on the scene does the same; press again to carry on.",
+			"pauseHint@simple": "Stop here to read. You can also press Space or tap the picture. Press again to go on.",
+			"nextHint": "Go on to the next part now; while paused, it moves one part at a time. The right arrow key does the same.",
+			"nextHint@simple": "Go to the next part now.",
 			"earth": {
 				"title": "This is Earth.",
 				"detail": "Everyone you know lives here.",
@@ -1214,14 +1272,14 @@
 			"system": {
 				"title": "The whole solar system, at its real size",
 				"title@simple": "Everything, at its real size",
-				"detail": "The planets are far too small to see. The dots only show where they are.",
+				"detail": "The planets are too small to see. Dots mark where they are.",
 				"detail@simple": "The planets are too tiny to see! The dots show where they are.",
-				"detail@advanced": "Earth is now much smaller than one pixel, and space is almost entirely empty. The dots only mark the planets."
+				"detail@advanced": "Earth is now smaller than a pixel, and space is almost empty. Dots mark the planets."
 			},
 			"scale": {
 				"title": "So we draw them bigger and closer",
 				"title@simple": "So we draw them bigger!",
-				"detail": "Now you can see every planet, but not to scale. The Scale panel switches back to real sizes.",
+				"detail": "They’re all visible, but not to scale. The Scale panel shows real sizes.",
 				"detail@simple": "Now you can see every planet. The Scale panel shows their real size again.",
 				"detail@advanced": "“Everything visible”: sizes enlarged, distances squeezed. “True scale” in the Scale panel shows the real thing."
 			},
@@ -1289,6 +1347,8 @@
 				"tail@simple": "Its tail is about {length} long. It always points away from the Sun{direction, select, out { – even now, when the comet flies away tail first} other {}}!",
 				"noTail": "No tail right now: it only grows within about {onset} of the Sun, where sunlight turns the comet’s ice into gas.",
 				"noTail@simple": "No tail right now. The tail only grows when the comet comes close to the Sun and its ice starts to melt into gas.",
+				"waking": "It is waking up: sunlight has begun to turn its ice into gas, and a coma is forming. Its tail has hardly started to grow.",
+				"waking@simple": "It is waking up! The Sun is starting to turn its ice into gas. Soon it will grow a tail.",
 				"next": "Next time closest to the Sun: {date}.",
 				"last": "Last time closest to the Sun: {date}. It returns in about {years, number} years.",
 				"watch": "Watch it pass the Sun",

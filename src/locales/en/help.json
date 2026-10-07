@@ -64,8 +64,8 @@
 				"simple": "The start film"
 			},
 			"what": {
-				"standard": "Fourteen seconds that start close on Earth at its real size and pull back until Earth is smaller than a pixel, then draw everything bigger so you can see it.",
-				"simple": "A short film that flies from Earth out to the whole solar system."
+				"standard": "About a minute that starts close on Earth at its real size and pulls back until Earth is smaller than a pixel, then draws everything bigger so you can see it. Every caption stays up long enough to read it aloud.",
+				"simple": "A film that flies from Earth out to the whole solar system. It goes slowly, so you can read every word."
 			},
 			"why": {
 				"standard": "It makes the point of the app before anyone reads a word: space is huge and almost empty. It works without sound.",
@@ -74,12 +74,16 @@
 			"how": {
 				"standard": [
 					"It plays once, on the first visit; “Skip intro”, a drag or Esc ends it at any time.",
+					"To stay on a caption, press Space, tap the scene or press the pause button; do it again to carry on. While it is paused you can turn the view without ending it.",
+					"“Next” (or the right arrow key) goes straight on to the next part; while paused, one part at a time.",
 					"After the first opening the app asks once whether you want a quick look at what you can do (see “A quick look”).",
 					"To see it again, open the arrow next to Help and choose “Play the opening again”.",
 					"“Show how to move around” in the same menu brings back the hints for dragging, zooming and clicking."
 				],
 				"simple": [
 					"It plays the first time you come.",
+					"Press Space or tap the picture to stop it. Do it again to go on.",
+					"“Next” shows the next part.",
 					"To watch it again, press the arrow next to Help, then “Play the opening again”."
 				]
 			}
@@ -405,18 +409,19 @@
 				"simple": "Comets"
 			},
 			"what": {
-				"standard": "Five comets on their real, stretched orbits grow a glowing head and two tails as they near the Sun, and lose them as they leave.",
-				"simple": "Comets grow a long tail when they come close to the Sun."
+				"standard": "Five comets on their real, stretched orbits wake up as they near the Sun, each at its own distance (big Hale-Bopp already beyond Saturn, little Encke only close in): first a glowing head appears, then a straight blue gas tail and a curved, yellowish dust tail grow as long and bright as they were really seen, and fade again as the comet leaves.",
+				"simple": "Comets wake up when they come close to the Sun. Big comets wake up far away, small ones only close to the Sun. Then they grow a long, glowing tail."
 			},
 			"why": {
-				"standard": "The tail always points away from the Sun, so a comet that is leaving flies tail first: something to see, not only to be told.",
+				"standard": "The tail always points away from the Sun, so a comet that is leaving flies tail first: something to see, not only to be told. The dust tail lags behind and curves, most of all when a comet whips close round the Sun.",
 				"simple": "The tail always points away from the Sun, even when the comet flies away!"
 			},
 			"how": {
 				"standard": [
 					"Pick Halley or Encke in the box at the top left (group Comets).",
 					"Open its card with the arrow and press “Watch it pass the Sun”: the app goes to its next visit and plays it in about a minute and a half.",
-					"Watch which way the tail points on the way in and on the way out."
+					"Watch which way the tail points on the way in and on the way out.",
+					"Try Hale-Bopp too: its head appears far beyond Jupiter, long before its tails grow."
 				],
 				"simple": [
 					"Pick Halley in the box at the top left.",
@@ -513,7 +518,7 @@
 			},
 			"why": {
 				"standard": "Voyager 1 is still sending messages from far beyond the planets: its card shows how long its signal takes to reach us, and why the trip took so many gravity assists.",
-				"simple": "Voyager 1 left Earth in 1977 and is still flying. A message from it takes almost a day to reach us!"
+				"simple": "Voyager 1 left Earth when your grandparents were young, and it is still flying. A message from it takes almost a day to reach us!"
 			},
 			"how": {
 				"standard": [
@@ -534,22 +539,23 @@
 				"simple": "The planet book"
 			},
 			"what": {
-				"standard": "A page for the Sun and each planet, with a big turning globe, its surface maps and the key numbers explained.",
-				"simple": "A page for the Sun and every planet, with a big spinning picture."
+				"standard": "A page for the Sun and each planet: a big turning globe with its surface maps, the key numbers explained, and its stories: what it is made of, how hot it gets, its nicknames and where its name comes from.",
+				"simple": "A page for the Sun and every planet. See what is inside it, how hot it gets and its nicknames."
 			},
 			"why": {
-				"standard": "It is the quiet way to read about one world at a time, and to peel off its clouds or see its mountains and oceans.",
-				"simple": "Read about one planet at a time, and see its mountains and clouds."
+				"standard": "It is the quiet way to read about one world at a time: peel off its clouds, look inside it in a cut-away picture, and find the stories children remember, like the planet that would float in a bathtub. Every fact links to its source.",
+				"simple": "Read about one planet at a time. Look inside it, and find out which planet would float in a bathtub!"
 			},
 			"how": {
 				"standard": [
 					"Open Tools at the bottom right and choose “Picture dictionary”: it opens on the world you are looking at. Or press “Read more in the dictionary” on a world’s card.",
-					"Pick a world in the row of dots at the top, then Surface, Terrain, Oceans or Clouds where it has them."
+					"Pick a world in the row of dots at the top, then Surface, Terrain, Oceans or Clouds where it has them.",
+					"Open “Made of”, “Weather” or “Names” beside the globe (under it on a phone). The open section stays open when you pick another world, so a class can compare them one by one."
 				],
 				"simple": [
 					"Press Tools, then “Planet book”.",
 					"Pick a planet in the row of dots at the top.",
-					"Try Terrain and Clouds to change the picture."
+					"Press “What is inside?”, “Hot or cold?” or “Its names”."
 				]
 			}
 		},
@@ -763,7 +769,7 @@
 			},
 			"what": {
 				"standard": "The Small bodies switch shows the asteroid belt and the Kuiper belt as fields of dots, plus the dwarf planets, seven named asteroids and five comets.",
-				"simple": "A switch shows the asteroid belt, the icy Kuiper belt, the dwarf planets and comets."
+				"simple": "A switch shows the asteroid belt, a ring of space rocks between Mars and Jupiter. It also shows the icy worlds beyond Neptune, and comets."
 			},
 			"why": {
 				"standard": "Films show a crowded field of rocks. The card says the truth: each dot stands for about 380 asteroids, and neighbours are about a million km apart, so spacecraft fly straight through.",

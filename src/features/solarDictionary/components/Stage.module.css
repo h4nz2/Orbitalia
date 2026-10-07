@@ -1,3 +1,35 @@
 .base {
 	height: 100%;
 }
+
+/* the written side, opposite the fact sidebar: the description, then the story sections (#53) */
+.column {
+	position: fixed;
+	top: 10rem;
+	right: 2rem;
+	width: min(36ch, 32vw);
+	max-height: calc(100vh - 11rem);
+	max-height: calc(100dvh - 11rem);
+	overflow-y: auto;
+	scrollbar-width: thin;
+	overscroll-behavior: contain;
+	font-family: arial;
+	color: white;
+}
+
+/* phones and narrow windows: the globe keeps the middle, the sections sit at the bottom */
+@media (max-width: 899px) {
+	.column {
+		top: auto;
+		bottom: 0;
+		left: 0;
+		right: 0;
+		width: auto;
+		max-height: 55vh;
+		max-height: 55dvh;
+		padding: 0 0.75rem 0.5rem;
+		/* opaque: the bright globe would show through any transparency */
+		background: rgb(20, 22, 28);
+		border-top: 1px solid rgba(255, 255, 255, 0.08);
+	}
+}

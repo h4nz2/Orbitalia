@@ -221,3 +221,32 @@ test("the arrow sits beside the house, on a laptop and on a phone", async ({
 		await page.screenshot({ path: path.join(dir, `${name}.png`) })
 	}
 })
+
+test.describe("a first visit", () => {
+	test.use({ storageState: { cookies: [], origins: [] } })
+
+	test("while the opening plays Back does nothing, and it leaves no step behind", async ({
+		page,
+	}) => {
+		test.slow()
+		await page.goto("/solar_system?lang=en")
+		await expect(page.getByTestId("intro-skip")).toBeVisible({
+			timeout: 60_000,
+		})
+		await expect(backButton(page)).toHaveAttribute("aria-disabled", "true")
+		const playing = () =>
+			page.evaluate(() => window.__orbitalia!.history.getState().held)
+		expect(await playing()).toBe(true)
+		await page.evaluate(() =>
+			(document.activeElement as HTMLElement | null)?.blur(),
+		)
+		await page.keyboard.press("Backspace")
+		await expect(page.getByTestId("intro-skip")).toBeVisible()
+		// Escape ends it: the way out, but no step to go back to
+		await page.keyboard.press("Escape")
+		await expect(page.getByTestId("intro-skip")).toBeHidden()
+		await expect.poll(playing).toBe(false)
+		await expect(backButton(page)).toHaveAttribute("aria-disabled", "true")
+		expect((await state(page)).index).toBe(0)
+	})
+})

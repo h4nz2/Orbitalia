@@ -127,10 +127,13 @@ export const tourHasPrevious = (
 
 /** Whether Back does anything now (the button is shown disabled otherwise). */
 export const canStepBack = (
-	history: Pick<ViewHistoryState, "index" | "entries">,
+	history: Pick<ViewHistoryState, "index" | "entries"> &
+		Partial<Pick<ViewHistoryState, "held">>,
 	sequence: Sequence | null,
 	tour: Pick<TourState, "tour" | "index" | "steps">,
-): boolean => tourHasPrevious(sequence, tour) || canGoBack(history)
+): boolean =>
+	history.held !== true &&
+	(tourHasPrevious(sequence, tour) || canGoBack(history))
 
 /**
  * The tour's Back (the card's button, the left arrow, Page Up; #28): the
@@ -154,6 +157,8 @@ export function tourBack(): void {
  * the view before this one. Returns false when there is nothing to go back to.
  */
 export function goBack(): boolean {
+	// nothing while the opening plays (#49)
+	if (useViewHistoryStore.getState().held) return false
 	const tour = useTourStore.getState()
 	if (tourHasPrevious(useSimStore.getState().sequence, tour)) {
 		tourBack()

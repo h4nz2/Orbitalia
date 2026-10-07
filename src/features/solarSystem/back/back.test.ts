@@ -17,6 +17,7 @@ import { useTourStore } from "@/store/tour"
 import { useTrailStore } from "@/store/trails"
 import {
 	createRecorder,
+	holdSteps,
 	setHistoryBack,
 	useViewHistoryStore,
 	waypointOf,
@@ -291,5 +292,22 @@ describe("what is a step", () => {
 		expect(entriesAdded(() => startTour(quickLook))).toBe(0)
 		expect(entriesAdded(() => nextStop())).toBe(0)
 		expect(entriesAdded(() => withoutSteps(() => sim().setFocus("io")))).toBe(0)
+	})
+})
+
+describe("while the opening plays (#49)", () => {
+	it("nothing is a step and Back does nothing", () => {
+		holdSteps(true)
+		useViewHistoryStore.setState({ index: 1, entries: { 0: view({}) } })
+		expect(entriesAdded(() => wayOut())).toBe(0)
+		expect(entriesAdded(() => sim().setFocus("moon"))).toBe(0)
+		expect(
+			canStepBack(useViewHistoryStore.getState(), sim().sequence, tours()),
+		).toBe(false)
+		expect(goBack()).toBe(false)
+		expect(backs).toBe(0)
+		holdSteps(false)
+		expect(goBack()).toBe(true)
+		expect(backs).toBe(1)
 	})
 })

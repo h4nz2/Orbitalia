@@ -26,7 +26,7 @@
 			"sun": {
 				"title": "Le Soleil",
 				"text": {
-					"simple": "Le Soleil est une étoile : une boule géante de gaz brûlant. Il est si grand que plus d’un million de Terres tiendraient dedans. Sa lumière nous donne la chaleur et le jour.",
+					"simple": "Le Soleil est une étoile : une énorme boule de gaz brûlant. Il est si grand que toutes les planètes ensemble tiendraient dedans. Sa lumière nous donne la chaleur et le jour.",
 					"standard": "Le Soleil contient 99,8 % de toute la masse du système solaire. Il est large comme 109 Terres, et environ 1,3 million de Terres tiendraient à l’intérieur. Au fond de son cœur, à 15 millions de °C, l’hydrogène fusionne en hélium. C’est de là que vient toute sa lumière.",
 					"advanced": "Une étoile ordinaire d’âge moyen : 1,39 million de km de diamètre, 99,86 % de la masse du système solaire. Dans son cœur, à environ 15 millions de K, elle fusionne chaque seconde quelque 600 millions de tonnes d’hydrogène en hélium et convertit 4 millions de tonnes de masse en énergie (E = mc²). La lumière qui quitte sa surface atteint la Terre 8 minutes et 20 secondes plus tard."
 				}
@@ -34,7 +34,7 @@
 			"mercury": {
 				"title": "Mercure",
 				"text": {
-					"simple": "Mercure est la plus petite planète et la plus proche du Soleil. Elle n’a pas d’air pour la garder au chaud : du côté du jour, il fait assez chaud pour faire fondre du plomb, et du côté de la nuit, c’est glacial.",
+					"simple": "Mercure est la plus petite planète et la plus proche du Soleil. Elle n’a pas d’air pour la garder au chaud. Alors, du côté du jour, il fait plus chaud que dans un four. Du côté de la nuit, il fait plus froid que dans n’importe quel congélateur.",
 					"standard": "La plus petite planète, et la plus rapide : un tour du Soleil ne lui prend que 88 jours. Mercure n’a presque pas d’atmosphère pour garder la chaleur : son côté jour atteint 430 °C, tandis que son côté nuit tombe à −180 °C.",
 					"advanced": "La planète la plus intérieure, 4 879 km de diamètre, avec une année de 88 jours. Elle tourne si lentement qu’un jour solaire (d’un lever de Soleil au suivant) dure 176 jours terrestres : deux de ses années. Sans atmosphère, la surface oscille entre 430 °C et −180 °C. Son énorme noyau de fer occupe environ 85 % de son rayon."
 				}
@@ -42,7 +42,7 @@
 			"venus": {
 				"title": "Vénus",
 				"text": {
-					"simple": "Vénus est presque aussi grande que la Terre, mais personne ne pourrait y vivre. D’épais nuages retiennent la chaleur, et il y fait plus chaud que dans un four : c’est la planète la plus chaude. En plus, elle tourne à l’envers.",
+					"simple": "Vénus est presque aussi grande que la Terre, mais personne ne pourrait y vivre. D’épais nuages retiennent la chaleur. Il y fait plus chaud que dans un four : c’est la planète la plus chaude. En plus, elle tourne à l’envers.",
 					"standard": "Vénus est presque la jumelle de la Terre par sa taille, mais son air épais de dioxyde de carbone emprisonne la chaleur du Soleil : à 465 °C, elle est plus chaude que Mercure, alors qu’elle est deux fois plus loin du Soleil. Elle tourne à l’envers, si lentement qu’un jour sur Vénus dure plus longtemps que son année.",
 					"advanced": "12 104 km de diamètre, presque la taille de la Terre. Son atmosphère est à 96 % du dioxyde de carbone, à 92 fois la pression terrestre, et un effet de serre emballé maintient la surface à 465 °C, jour et nuit. Elle tourne dans le sens rétrograde en 243 jours, plus que son année de 225 jours ; le Soleil s’y lève à l’ouest."
 				}
@@ -50,7 +50,7 @@
 			"earth": {
 				"title": "La Terre",
 				"text": {
-					"simple": "Chez nous ! La Terre est le seul endroit où nous connaissons la vie. Il y a de l’eau liquide, de l’air pour respirer et juste la bonne chaleur du Soleil. La Lune tourne autour d’elle une fois par mois.",
+					"simple": "Chez nous ! La Terre est le seul endroit où nous connaissons la vie. Il y a de l’eau, de l’air pour respirer et juste la bonne chaleur du Soleil. La Lune tourne autour d’elle une fois par mois.",
 					"standard": "Notre planète est le seul monde connu où il y a de la vie. Elle est juste à la bonne distance du Soleil pour que l’eau reste liquide, et l’eau couvre 71 % de sa surface. Son axe incliné nous donne les saisons. Regarde le panneau de vol : il t’indique la vraie distance de chaque trajet de cette visite.",
 					"advanced": "12 742 km de diamètre, à 150 millions de km (1 unité astronomique) du Soleil. De l’eau liquide, un champ magnétique protecteur et une atmosphère d’azote et d’oxygène (produit par la vie elle-même) en font le seul monde habité connu. Son axe est incliné de 23,4°, ce qui crée les saisons."
 				}
@@ -58,7 +58,7 @@
 			"mars": {
 				"title": "Mars",
 				"text": {
-					"simple": "Mars est rouge parce que sa poussière est rouillée. Elle a le plus haut volcan du système solaire, et il y a très longtemps, des rivières y coulaient. Aujourd’hui, des robots roulent sur Mars et l’explorent pour nous.",
+					"simple": "Mars est rouge parce que sa poussière est rouillée. Elle a le plus haut volcan de toutes les planètes. Il y a très longtemps, des rivières y coulaient. Aujourd’hui, des robots roulent sur Mars et l’explorent pour nous.",
 					"standard": "La planète rouge doit sa couleur à l’oxyde de fer : la rouille. Mars est deux fois moins large que la Terre et possède l’Olympus Mons, un volcan d’environ 22 km de haut, deux fois et demie la hauteur de l’Everest. Des lits de rivières asséchés montrent que de l’eau a coulé ici. Ses deux petites lunes s’appellent Phobos et Déimos.",
 					"advanced": "6 779 km de diamètre, avec une fine atmosphère de dioxyde de carbone à moins de 1 % de la pression terrestre. L’Olympus Mons s’élève à environ 22 km ; le canyon Valles Marineris mesure 4 000 km de long. D’anciens deltas et fonds de lacs montrent que Mars a été plus humide et plus chaude ; il reste de la glace d’eau aux pôles et dans le sol. Un jour dure environ 24 h 40 min, une année 687 jours."
 				}
@@ -66,7 +66,7 @@
 			"jupiter": {
 				"title": "Jupiter",
 				"text": {
-					"simple": "Jupiter est la plus grande planète. Plus de mille Terres tiendraient dedans ! On ne peut pas marcher dessus : c’est une énorme boule de gaz avec des bandes de nuages et une tempête géante, la Grande Tache rouge.",
+					"simple": "Jupiter est la plus grande planète. Toutes les autres planètes ensemble tiendraient dedans ! On ne peut pas marcher dessus. C’est une énorme boule de gaz, avec des bandes de nuages et une tempête géante, la Grande Tache rouge.",
 					"standard": "La géante : large comme 11 Terres, et plus de deux fois plus massive que toutes les autres planètes réunies. Jupiter est surtout faite d’hydrogène et d’hélium, sans surface solide. La Grande Tache rouge est une tempête plus large que la Terre qui souffle depuis bien plus de 150 ans. Ses quatre grandes lunes ont été découvertes par Galilée en 1610.",
 					"advanced": "139 820 km de diamètre et 318 masses terrestres : 2,5 fois toutes les autres planètes réunies. Elle tourne sur elle-même en moins de 10 heures, ce qui l’aplatit visiblement et étire ses nuages en bandes. La Grande Tache rouge, un anticyclone plus large que la Terre, est observée au moins depuis 1831. Ganymède, la plus grande lune du système solaire, est plus grande que Mercure."
 				}
@@ -74,7 +74,7 @@
 			"saturn": {
 				"title": "Saturne",
 				"text": {
-					"simple": "Saturne a les plus beaux anneaux. Ils sont faits de milliards de morceaux de glace, certains petits comme du sable, d’autres grands comme une maison. Saturne est si légère qu’elle flotterait dans une baignoire géante !",
+					"simple": "Saturne a les plus beaux anneaux. Ils sont faits d’énormément de morceaux de glace. Certains sont petits comme du sable, d’autres grands comme une maison. Saturne est si légère qu’elle flotterait dans une baignoire géante !",
 					"standard": "Les anneaux de Saturne sont faits d’innombrables blocs de glace d’eau. Ils font environ 280 000 km de large, mais la plupart du temps seulement une dizaine de mètres d’épaisseur. Saturne est large comme 9 Terres, et pourtant c’est la seule planète moins dense que l’eau. Sa lune Titan est plus grande que la planète Mercure.",
 					"advanced": "116 460 km de diamètre, pour une densité moyenne de 0,69 g/cm³, inférieure à celle de l’eau. Ses anneaux principaux s’étendent sur environ 280 000 km mais n’ont en général qu’une dizaine de mètres d’épaisseur : surtout de la glace d’eau, en morceaux allant de la poussière à la taille d’une maison. Ils pourraient être bien plus jeunes que Saturne elle-même. Parmi ses nombreuses lunes, Titan a une atmosphère épaisse et Encelade projette un océan dans l’espace."
 				}
@@ -82,7 +82,7 @@
 			"uranus": {
 				"title": "Uranus",
 				"text": {
-					"simple": "Uranus tourne autour du Soleil couchée sur le côté, comme une balle qui roule. Il y a très longtemps, quelque chose d’énorme l’a peut-être renversée. C’est une géante de glace, et il y fait très, très froid.",
+					"simple": "Uranus tourne autour du Soleil couchée sur le côté, comme une balle qui roule. Il y a très longtemps, quelque chose d’énorme l’a peut-être renversée. Il y fait très, très froid.",
 					"standard": "Uranus est renversée : son axe est presque couché dans le plan de son orbite. Regarde comment ses lunes tournent autour d’elle, de haut en bas. Une année sur Uranus dure 84 années terrestres : chaque pôle a donc 42 ans de Soleil, puis 42 ans d’obscurité. C’est la première planète découverte avec un télescope, en 1781.",
 					"advanced": "Une géante de glace de 50 724 km de diamètre, dont l’axe de rotation est incliné de 98°, sans doute à cause d’un impact géant au début de son histoire. Ses lunes et ses anneaux tournent dans son plan équatorial basculé. Au cours de son orbite de 84 ans, chaque pôle passe environ 42 ans en plein jour. Découverte par William Herschel en 1781, c’est la première planète trouvée au télescope."
 				}
@@ -90,7 +90,7 @@
 			"neptune": {
 				"title": "Neptune",
 				"text": {
-					"simple": "Neptune est la planète la plus lointaine : la lumière du Soleil met environ 4 heures pour y arriver. Elle a les vents les plus rapides du système solaire. On l’a trouvée en faisant des calculs, avant que quelqu’un la voie !",
+					"simple": "Neptune est la planète la plus lointaine. La lumière du Soleil met environ 4 heures pour y arriver. Elle a les vents les plus rapides de toutes les planètes. On l’a trouvée en faisant des calculs, avant que quelqu’un la voie !",
 					"standard": "La planète la plus éloignée, à 4,5 milliards de km du Soleil. Une année y dure 165 années terrestres. Neptune a les vents les plus rapides du système solaire, jusqu’à 2 100 km/h. Elle a été trouvée en 1846 par le calcul : des astronomes ont remarqué qu’Uranus était tirée hors de sa route et ont calculé où devait se cacher la planète invisible.",
 					"advanced": "À 30 ua du Soleil, là où la lumière solaire est 900 fois plus faible que sur Terre. Ses vents atteignent environ 2 100 km/h. En 1846, Johann Galle l’a trouvée à moins de 1° de la position calculée par Urbain Le Verrier à partir des irrégularités de l’orbite d’Uranus : la première planète découverte par les mathématiques. Sa grande lune Triton tourne à l’envers, sans doute un objet de la ceinture de Kuiper capturé."
 				}
@@ -102,7 +102,7 @@
 					"advanced": "Au-delà de Neptune"
 				},
 				"text": {
-					"simple": "Le système solaire ne s’arrête pas à Neptune. Plus loin, il y a des mondes glacés comme Pluton. La sonde Voyager 1 vole depuis presque 50 ans : c’est l’objet fabriqué par les humains le plus lointain.",
+					"simple": "Le système solaire ne s’arrête pas à Neptune. Plus loin, il y a des mondes glacés comme Pluton. La sonde spatiale Voyager 1 vole depuis que tes grands-parents étaient jeunes. Aujourd’hui, c’est l’objet fabriqué par les humains le plus lointain.",
 					"standard": "Au-delà de Neptune s’étend la ceinture de Kuiper, un anneau de corps glacés dont fait partie la planète naine Pluton. Beaucoup plus loin, le nuage d’Oort, plein de comètes, s’étend peut-être sur un tiers du chemin jusqu’à l’étoile la plus proche. Voyager 1, lancée en 1977, est à plus de 25 milliards de km : vers la fin de 2026, son signal radio mettra une journée entière à nous parvenir.",
 					"advanced": "Au-delà de 30 ua, la ceinture de Kuiper (environ 30 à 50 ua) contient des restes glacés de la formation des planètes, dont Pluton. Le nuage d’Oort, réservoir de comètes, s’étend peut-être au-delà de 100 000 ua. Voyager 1, lancée en 1977, a quitté l’héliosphère du Soleil en 2012 et se trouvera à un jour-lumière de la Terre vers la fin de 2026. L’étoile la plus proche, Proxima du Centaure, est à 4,2 années-lumière."
 				}
@@ -160,7 +160,7 @@
 					"advanced": "Le Soleil à sa vraie taille"
 				},
 				"text": {
-					"simple": "Voici le Soleil à sa vraie taille. Il est large comme 109 Terres ! Si le Soleil était creux, plus d’un million de Terres tiendraient dedans.",
+					"simple": "Voici le Soleil à sa vraie taille. Si la Terre était une orange, le Soleil serait aussi haut qu’une maison ! Si le Soleil était creux, toutes les planètes ensemble tiendraient dedans, et il resterait plein de place.",
 					"standard": "Le Soleil mesure 1,4 million de km de large : 109 Terres côte à côte. En volume, environ 1,3 million de Terres tiendraient à l’intérieur. Tout le système Terre–Lune que tu viens de voir tiendrait dans le Soleil, et il resterait de la place.",
 					"advanced": "Diamètre 1,39 million de km, 109 diamètres terrestres ; volume de 1,3 million de Terres. L’orbite entière de la Lune (768 800 km de diamètre) tiendrait dans le Soleil, avec plus d’un demi-million de km de marge. Il contient pourtant 99,86 % de la masse du système solaire."
 				}
@@ -172,7 +172,7 @@
 					"advanced": "Une unité astronomique"
 				},
 				"text": {
-					"simple": "Tu trouves la Terre ? Le cercle montre seulement où elle est. La vraie Terre est bien trop petite pour être vue d’ici. Une voiture qui roulerait jusqu’au Soleil sans s’arrêter mettrait plus de 170 ans !",
+					"simple": "Tu trouves la Terre ? Le cercle montre seulement où elle est. La vraie Terre est bien trop petite pour être vue d’ici. Une voiture qui roulerait jusqu’au Soleil sans jamais s’arrêter mettrait plus de deux longues vies humaines !",
 					"standard": "La Terre est à 150 millions de km du Soleil : 11 700 Terres alignées. À cette échelle réelle, elle est bien trop petite pour être vue ; le point et l’anneau montrent seulement où elle se trouve. Une voiture à 100 km/h mettrait 171 ans pour y arriver. La lumière du Soleil le fait en 8 minutes et 20 secondes.",
 					"advanced": "1 ua = 149,6 millions de km, 11 740 diamètres terrestres. Le point dessiné n’est qu’un repère : le vrai disque de la Terre est ici une infime fraction de pixel. En voiture à 100 km/h : 171 ans ; en avion de ligne : 19 ans ; à la vitesse de la lumière : 499 secondes. Chaque fois que tu vois le Soleil, tu le vois tel qu’il était il y a 8 minutes."
 				}
@@ -184,7 +184,7 @@
 					"advanced": "Jusqu’à Neptune"
 				},
 				"text": {
-					"simple": "Voici toutes les planètes à leurs vraies distances. Les planètes intérieures se serrent près du Soleil, et les autres sont très loin les unes des autres. La lumière du Soleil met environ quatre heures pour atteindre Neptune.",
+					"simple": "Voici toutes les planètes à leurs vraies distances. Les planètes proches du Soleil se serrent les unes contre les autres, et les autres sont très loin les unes des autres. La lumière du Soleil met environ quatre heures pour atteindre Neptune.",
 					"standard": "Tout le système des planètes à l’échelle réelle. Neptune est 30 fois plus loin du Soleil que la Terre : 4,5 milliards de km. La lumière du Soleil, ce qu’il y a de plus rapide, met plus de 4 heures pour y arriver. Les quatre planètes intérieures se serrent au milieu ; on peut à peine les distinguer.",
 					"advanced": "L’orbite de Neptune, de 30 ua (4,5 milliards de km) de rayon. La lumière met 4,2 heures pour la parcourir. L’espacement est très inégal : les quatre planètes rocheuses tiennent toutes dans 1,5 ua, puis vient un grand vide jusqu’à Jupiter à 5,2 ua, et chaque géante est 1,5 à 2 fois plus loin que la précédente."
 				}
@@ -196,7 +196,7 @@
 					"advanced": "Presque entièrement vide"
 				},
 				"text": {
-					"simple": "Maintenant, on éteint les points et les noms. Voilà à quoi ressemble vraiment le système solaire : le Soleil est un tout petit point, et les planètes sont beaucoup trop petites pour être vues. L’espace est presque complètement vide !",
+					"simple": "Maintenant, on éteint les points et les noms. Voilà à quoi ressemble vraiment le système solaire. Le Soleil est un tout petit point, et les planètes sont beaucoup trop petites pour être vues. L’espace est presque complètement vide !",
 					"standard": "Les repères et les noms sont éteints. Voilà ce qu’il y a vraiment : un petit Soleil et, aussi loin que ton œil puisse voir, rien d’autre. Le Soleil et toutes les planètes réunis occupent moins d’un cent-milliardième de l’espace à l’intérieur de l’orbite de Neptune. L’espace est presque parfaitement vide.",
 					"advanced": "Repères et noms éteints : à l’échelle réelle, aucune planète ne couvre ici un seul pixel. Le Soleil et les planètes occupent moins de 10⁻¹¹ du volume d’une sphère ayant pour rayon l’orbite de Neptune. Ce vide, et non la taille des objets, est la vraie leçon de l’échelle."
 				}
@@ -208,7 +208,7 @@
 					"advanced": "Le Soleil en ballon de basket"
 				},
 				"text": {
-					"simple": "Imagine que le Soleil soit un ballon de basket. Alors la Terre serait une tête d’épingle à 26 mètres, Jupiter une cerise à 134 mètres et Neptune un petit pois à presque 800 mètres. L’étoile la plus proche serait à 6 900 km !",
+					"simple": "Imagine que le Soleil soit un ballon de basket. Alors la Terre serait une tête d’épingle à 26 mètres. Jupiter serait une cerise, à plus d’un terrain de foot. Neptune serait un petit pois, à plus de 7 terrains de foot. Et l’étoile la plus proche ? Elle serait si loin qu’un avion mettrait environ 8 heures pour y aller !",
 					"standard": "Réduis tout jusqu’à ce que le Soleil soit un ballon de basket : la Terre devient une tête d’épingle à 26 m, Jupiter une cerise à 134 m, Neptune un petit pois à 776 m. À cette échelle, l’étoile la plus proche, Proxima du Centaure, est à 6 900 km. Tu peux parcourir ce modèle à pied dans la cour de l’école.",
 					"advanced": "À l’échelle de 1 : 5,8 milliards, le Soleil est un ballon de basket de 24 cm, la Terre une tête d’épingle de 2,2 mm à 26 m, Jupiter 24 mm à 134 m et Neptune 8,5 mm à 776 m. Proxima du Centaure, à 4,2 années-lumière, serait à 6 900 km : le système solaire est une île minuscule dans un océan de rien."
 				},
@@ -298,7 +298,7 @@
 					"advanced": "1610 : les preuves de la lunette"
 				},
 				"text": {
-					"simple": "En 1610, Galilée a regardé Jupiter avec sa nouvelle lunette. Il a vu quatre petites lunes tourner autour d’elle. Donc tout ne tourne pas autour de la Terre ! Cela a aidé les gens à croire à la nouvelle idée.",
+					"simple": "Il y a très, très longtemps, Galilée a regardé Jupiter avec sa nouvelle lunette, l’un des premiers télescopes. Il a vu quatre petites lunes tourner autour d’elle. Donc tout ne tourne pas autour de la Terre ! Cela a aidé les gens à croire à la nouvelle idée.",
 					"standard": "Nous voici revenus en janvier 1610. Galilée a pointé sa nouvelle lunette vers Jupiter et a trouvé quatre lunes qui tournent autour : la preuve que tout ne tourne pas autour de la Terre. Il a aussi vu Vénus passer par toutes ses phases, comme notre Lune. Ce n’est possible que si Vénus tourne autour du Soleil.",
 					"advanced": "Janvier 1610 : Galilée découvre Io, Europe, Ganymède et Callisto, un système en miniature dont le centre n’est pas la Terre. Plus tard dans l’année, il observe le cycle complet des phases de Vénus, y compris des phases gibbeuses que la disposition de Ptolémée ne peut pas produire. Cela réfutait Ptolémée, mais pas encore le modèle hybride de Tycho Brahe."
 				}
@@ -310,7 +310,7 @@
 					"advanced": "La preuve : aberration et parallaxe"
 				},
 				"text": {
-					"simple": "Aujourd’hui, on en est sûr : la Terre fait le tour du Soleil en un an, à environ 30 km chaque seconde. Il a fallu environ 2 000 ans pour en être tout à fait sûr. Les sondes spatiales utilisent ce savoir pour voler vers les autres planètes.",
+					"simple": "Aujourd’hui, on en est sûr : la Terre file autour du Soleil en un an. En une seule seconde, elle va à peu près aussi loin que toi à pied en toute une journée ! Il a fallu très, très longtemps aux gens pour en être tout à fait sûrs. Les sondes spatiales utilisent ce savoir pour voler vers les autres planètes.",
 					"standard": "La Terre file autour du Soleil à environ 30 km par seconde. La preuve définitive est arrivée en 1838, quand Friedrich Bessel a mesuré une étoile proche qui se décale d’avant en arrière au fil de l’année : la vue depuis une Terre en mouvement. De la première idée d’Aristarque à Bessel, il s’est écoulé plus de deux mille ans. Chaque sonde que nous envoyons vers Mars compte là-dessus.",
 					"advanced": "La preuve directe du mouvement de la Terre est venue de l’aberration de la lumière des étoiles de James Bradley (1729) et de la parallaxe de 61 Cygni mesurée par Friedrich Bessel (1838), 0,3 seconde d’arc : le décalage apparent des étoiles pendant que la Terre traverse son orbite sur 300 millions de km. La vitesse orbitale de la Terre est de 29,8 km/s. Les ellipses de Kepler (1609) et la gravitation de Newton (1687) ont fait de cette image de la physique."
 				}
@@ -336,7 +336,7 @@
 					"advanced": "Les ingrédients de la vie"
 				},
 				"text": {
-					"simple": "Tous les êtres vivants sur Terre ont besoin d’eau. Ils ont aussi besoin d’énergie, comme la lumière du Soleil ou la chaleur, et des bons ingrédients. La vie se trouve dans des endroits étonnants : dans la glace, dans des sources bouillantes et au fond de la mer, dans le noir.",
+					"simple": "Tous les êtres vivants sur Terre ont besoin d’eau. Ils ont aussi besoin de nourriture ou de lumière du Soleil pour vivre. On trouve des êtres vivants dans des endroits étonnants : dans la glace, dans des sources bouillantes et au fond de la mer, dans le noir.",
 					"standard": "Toute la vie que nous connaissons a besoin de trois choses : de l’eau liquide, une source d’énergie et la bonne chimie, fondée sur le carbone. Sur Terre, la vie apparaît presque partout où ces trois choses se rencontrent : dans la glace de l’Antarctique, dans des sources bouillantes et autour de cheminées chaudes au fond de l’océan obscur. Alors, où ailleurs dans le système solaire se rencontrent-elles ?",
 					"advanced": "La vie telle que nous la connaissons exige de l’eau liquide comme solvant, une source d’énergie (lumière ou gradients chimiques) et une chimie du carbone avec des éléments comme l’azote, le phosphore et le soufre. Les extrêmophiles prospèrent des saumures à −20 °C jusqu’aux sources hydrothermales au-delà de 120 °C, certains sans aucune lumière solaire. Cela élargit la recherche bien au-delà des planètes semblables à la Terre."
 				}
@@ -348,7 +348,7 @@
 					"advanced": "Mars : un passé habitable"
 				},
 				"text": {
-					"simple": "Aujourd’hui, Mars est froide et sèche. Mais il y a très longtemps, elle avait des rivières et des lacs. Peut-être que de minuscules êtres vivants y habitaient. Le rover Perseverance ramasse des roches dans un ancien lac pour chercher des indices.",
+					"simple": "Aujourd’hui, Mars est froide et sèche. Mais il y a très longtemps, elle avait des rivières et des lacs. Peut-être que de minuscules êtres vivants y habitaient. Une voiture-robot appelée Perseverance ramasse des roches dans un ancien lac pour chercher des indices.",
 					"standard": "Mars est froide et sèche aujourd’hui, avec un air bien trop fin pour que de l’eau liquide y dure. Mais il y a des milliards d’années, des rivières remplissaient des lacs. Depuis 2021, le rover Perseverance explore le cratère Jezero, un ancien fond de lac, et y prélève des roches. Certaines montrent des motifs qui, sur Terre, sont souvent faits par des microbes ; seul un laboratoire sur Terre pourra le dire avec certitude.",
 					"advanced": "Il y a environ 3,5 milliards d’années, Mars avait des rivières, des deltas et des lacs. Perseverance, dans le cratère Jezero depuis 2021, a mis de côté des échantillons des anciens dépôts lacustres ; une roche trouvée en 2024 montre des motifs minéraux souvent associés aux microbes sur Terre, mais qui pourraient aussi se former sans vie. De la glace d’eau subsiste aux pôles et dans le sous-sol."
 				}
@@ -360,7 +360,7 @@
 					"advanced": "Europe : un océan souterrain"
 				},
 				"text": {
-					"simple": "Cette lune de Jupiter est couverte de glace. Sous la glace, il y a un immense océan d’eau salée, avec plus d’eau que toutes les mers de la Terre réunies ! Une sonde est déjà en route.",
+					"simple": "Cette lune de Jupiter est couverte de glace. Sous la glace, il y a un immense océan d’eau salée. Il contient plus d’eau que toutes les mers de la Terre réunies ! Une sonde est déjà en route.",
 					"standard": "Europe, l’une des grandes lunes de Jupiter, est couverte d’une carapace de glace épaisse de plusieurs kilomètres. En dessous se trouve un océan salé qui contient environ deux fois plus d’eau que tous les océans de la Terre. Les marées de Jupiter malaxent la lune et la gardent chaude à l’intérieur. La sonde Europa Clipper de la NASA, lancée en 2024, arrive en 2030.",
 					"advanced": "Les mesures du magnétomètre de la sonde Galileo ont révélé un océan salé et conducteur sous une coquille de glace épaisse peut-être de 15 à 25 km, avec environ deux fois l’eau des océans terrestres. Les déformations de marée dues à Jupiter fournissent la chaleur, et le fond de l’océan pourrait être au contact de la roche, comme autour des sources hydrothermales sur Terre. Europa Clipper (lancée en 2024) arrive en 2030."
 				}

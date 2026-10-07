@@ -9,7 +9,7 @@ it, and if it must change, change it in the same change set.
 
 - Vite + React 19 + TypeScript (strict), pnpm, Node 22 (`.nvmrc`).
 - TanStack Router, file routes in `src/routes`. URLs stay `/solar_system`, `/solar_dictionary`, plus `/solar_walk` (#25), `/compare` (#24), `/help` (#43) and `/feedback`; `/` redirects to `/solar_system` with its search (#45, see "The way in and the way back"). Search params are
-  zod-validated and invalid values fall back to defaults (`/solar_dictionary?entity=<0..8>&texture=<base|topo|specular|clouds>`).
+  zod-validated and invalid values fall back to defaults (`/solar_dictionary?entity=<0..8>&texture=<base|topo|specular|clouds>&section=<madeOf|weather|names>`).
 - 3D: `three`, `@react-three/fiber` 9, `@react-three/drei` 10, `@react-three/postprocessing` 3.
 - UI: Mantine 9 + CSS modules (no emotion, `createStyles` or `sx`), `@tabler/icons-react`. Animation: `gsap`. State: `zustand`.
 - Data: static JSON validated with zod at build time. No GraphQL, no database; the one endpoint is the feedback
@@ -49,6 +49,7 @@ src/data/                    bodies.json, belts.json (#23), credits.json (image 
                              tours.ts + tours/*.json (guided tours, #28)
 src/sim/                     pure simulation, no React or three objects (import from "@/sim"); testing/ is test-only
 src/data/skyEvents.json      the sky events (#41): real instants and the check that each happens in the simulation
+src/data/worlds.json         the dictionary's stories (#53): layers, air, temperatures, nicknames, names, discovery, each with its source
 src/store/                   sim.ts, navigation.ts, flight.ts, scale.ts, lighting.ts, spin.ts, trails.ts, light.ts, hunt.ts,
                              hud.ts (the quiet HUD, #42), presentation.ts, postcard.ts, sound.ts, birthday.ts, skyTonight.ts, tour.ts, simSearch.ts (URL schema),
                              urlSync.ts, viewHistory.ts (Back, #46)
@@ -130,7 +131,14 @@ interface Body {
 		outerRadiusKm: number
 		textures: { alpha: string; color: string }
 	} | null
-	tail?: { lengthKmAt1Au: number } // a comet's tail (#23), a presentation hint like rings
+	tail?: {
+		// a comet's activity and tails (#23, #55), a presentation hint like rings; sources in data/ourDB.json
+		onsetKm: number // wakes up inside this distance from the Sun
+		fullKm: number // fully active inside this one
+		ionLengthKm: number // longest gas tail observed (0: none, as 67P)
+		dustLengthKm: number // longest dust tail observed (0: none, as Encke)
+		lagDays?: number // more active after perihelion: answers to where it was this many days earlier
+	}
 	info: Record<string, unknown> // dictionary fields passed through; a source 0 ("unknown") is dropped
 	featured?: true // a moon with a story, shown by default (data/featured-moons.json; see Moons)
 }
@@ -199,7 +207,10 @@ Build rules (`scripts/lib/`):
   moons from JPL Horizons). Small bodies without a map get a stand-in texture (`SMALL_BODY_TEXTURES`: neutral rock,
   darker for comet nuclei; the source's Pluto map on Eris, Haumea and Makemake was dropped). Pluto's IAU pole is the
   north-side one with a negative rate (the report gives the positive pole) and its map was turned to match
-  (`public/assets/textures/pluto/pluto.jpg`). A comet's `tailLengthKmAt1Au` becomes `tail`. The belts come from the
+  (`public/assets/textures/pluto/pluto.jpg`). A comet's curated `tail` (#55: `onsetAu`,
+  `fullAu`, `ionLengthKm`, `dustLengthKm`, optional `lagDays`, each with a link or citation in `tail.sources`) becomes
+  `tail` in km (`tailOf`); a missing value, `fullAu >= onsetAu`, no tail at all or a value without its source stops
+  the build. The belts come from the
   curated `asteroidBelt` / `kuiperBelt` records (zones in AU, converted to km; shares must sum to 1).
 - Corrections to the source (typos, planet J2000 elements from JPL/Standish, the Moon and Galileans' elements, the
   Moon's precession rates from Meeus ch. 47 and its true sidereal month 27.321661 d, Hyperion's eccentricity 0.105 from JPL
@@ -373,7 +384,9 @@ viewMode(state)             "overview" | "focused" | "free" | "transit"
 Actions: `select`, `setFocus` (click: select + focus; a flight from another body, see Flights), `focus`, `overview`, `goTo(view, request?)`, `jumpTo`, `reset`
 (the way out), `skip`, `finishMove` (skip the move, stay in the sequence), `anchorFrame(id, request?)` / `releaseFrame()` (#31), `markStep()` (#46: what follows in this task is a step;
 `setFocus`, `anchorFrame` and `releaseFrame` mark themselves), and sequences (`playSequence`, `goToStep`,
-`nextStep`, `resumeSequence`, `stopSequence`). A request carries a partial `shot`, `durationMs`, a `profile` and a
+`nextStep`, `resumeSequence`, `stopSequence`, `setSequencePaused(paused, now?)`: #49's pause, where a step still
+arrives and then waits, resuming holds what was left of its hold, stepping keeps it paused, and input while paused
+does not interrupt). A request carries a partial `shot`, `durationMs`, a `profile` and a
 `fit` region (`{ km, around }`: frame a sphere of `km` TRUE km around the centre, drawn as a distance from body
 `around` is; overrides the shot's distance), an `eye` (#41: `{ anchorId, offsetKm }`, TRUE km from a body, drawn
 like a point view: the camera stands there and looks at the view's centre, and the director keeps it there every frame
@@ -387,7 +400,9 @@ Director (`camera/director.ts`, unit-tested frame by frame):
 - Every request starts a new move from wherever the camera is, so retargeting mid-flight never snaps back. Both pivots
   and the arrival distance are re-read every frame.
 - User input during a move takes over distance and direction while the pivot still glides home; it also interrupts
-  automatic sequence steps. A pan while settled is folded into a pending pan (nothing moves on screen) and committed
+  automatic sequence steps. A press counts once it moves past the tap allowance or a second finger lands
+  (`scene/tap.ts` `isPressGrab`, #49): a tap is not a grab, so a tap during a sequence leaves it running (and pauses
+  the opening); a wheel always counts. A pan while settled is folded into a pending pan (nothing moves on screen) and committed
   when released (see Re-centring).
 - A non-finite camera or a view of a missing body resets to the overview.
 - Profiles (`camera/profiles.ts`): the default `smooth` is van Wijk and Nuij's zoom-and-pan (`camera/pose.ts`), 0.8–3 s;
@@ -432,18 +447,38 @@ Director (`camera/director.ts`, unit-tested frame by frame):
 - **What plays:** on a first visit, close on Earth (from its sunlit side, `sunlitAzimuthDeg`) in **true scale**, then
   pull back: the Moon's orbit, the inner planets, the whole system (Earth far below a pixel, the markers showing where
   the planets are), and finally the animated switch to Everything visible ("so we draw them bigger and closer"). It
-  ends on exactly the overview a reset shows, in the default preset. 14 s (`introSteps` in `intro/script.ts`, pure;
-  tested under `INTRO_MAX_MS` = 15 s). With `prefers-reduced-motion` the same shots are cuts, held a little longer,
-  and the scale switch jumps.
+  ends on exactly the overview a reset shows, in the default preset (`introSteps` in `intro/script.ts`, pure).
+- **Slow enough to read (#49):** every caption stays up, fully faded in and with the camera and the scale still, for
+  `readingMs` = max(3.5 s, 1.5 s + 0.45 s a word) (reading aloud at a calm pace, about 130 words a minute). The words
+  are those of the caption's longest translation (title and detail) at the reading level the opening starts in
+  (`captionReadingMs(level)` in `intro/captions.ts`, worked out from the texts, so a longer translation gets its time
+  without anyone typing a number; `startIntro(level)` is given the level by `IntroController` and the Help menu). A
+  beat's hold is that reading time plus whatever is still settling when the camera arrives: the caption's fade
+  (`CAPTION_FADE_MS`, 600 ms, set inline on the caption), and in the last beat the 2.5 s scale switch (`settleMs`).
+  Moves: 2.6, 3.2 and 2.8 s; there is no cap. With the present texts: about 54 s at standard, 51 s at simple, 62 s at
+  advanced (42 s at standard with `prefers-reduced-motion`: the same shots as cuts, the scale switch a jump, no fade,
+  the same reading time). Captions stay short: title and detail at most 20 words (24 at advanced) in every locale.
+  `captions.test.ts` holds every caption in every locale and level to both rules.
+- **At the viewer's own pace (#49):** Space, a tap on the scene or the card's pause button hold the opening on the
+  caption on screen (`toggleIntroPause` → the sequence's own `setSequencePaused`; "Paused" shows in the card, the
+  segment stops filling); again carries on with the rest of the hold. "Next" or → goes on to the next beat
+  (`nextBeat` → `nextStep`; after the last one the opening ends as if it ran out), ← back one (true scale again
+  before the last beat); a paused opening stays paused while stepped. `intro/pace.ts` (installed by
+  `IntroController`) listens on the window in the capture phase while it plays, so Space never also pauses the clock
+  (`ui/TimeControls`), the arrows never cycle the focus (`ui/FocusPicker`), and a tap on the canvas (`isTapClick`)
+  never flies to a body or resets; a focused button keeps its own Space. PageDown/PageUp step it through the
+  presenter's keys (#29) as well.
 - **Mechanism:** a plain `playSequence` (one step per beat, explicit `durationMs`/`holdMs`, `fit` regions for the Moon
   and the inner planets). The scale is the one non-camera cue: `intro/intro.ts` (`useIntroStore`, `watchIntro`)
   watches the sequence and switches the scale at the last beat (`useScaleStore.switchTo`). Tours (#28) should do the
   same for their own cues; there is no second player.
-- **Never in the way:** anything that interrupts a sequence ends the opening at once (a drag, wheel or pinch, a click
-  on a body, the picker, Escape, the home button, the Skip button, another sequence); an interrupted opening's
-  sequence is stopped, never left for a tour player to resume. An early end restores Everything visible (1 s ease
-  after a camera grab, a jump after Skip/Escape) unless the viewer picked a scale themselves, which is kept. The HUD
-  is dimmed while it plays (`html[data-intro="playing"]`), still usable (hover or focus brings a panel back).
+- **Never in the way:** anything that interrupts a sequence ends the opening at once (a drag, wheel or pinch, a body
+  chosen in the picker, Escape, the home button, the Skip button, another sequence); an interrupted opening's
+  sequence is stopped, never left for a tour player to resume. While it is paused a drag only looks around (a paused
+  sequence is not interrupted by input); Skip, Escape and the picker still end it. An early end restores Everything
+  visible (1 s ease after a camera grab, a jump after Skip/Escape) unless the viewer picked a scale themselves, which
+  is kept. The HUD is dimmed while it plays (`html[data-intro="playing"]`), still usable (hover or focus brings a
+  panel back).
 - **Once per device, never over a link:** it plays on arrival only when no simulation parameter is in the URL
   (`hasExplicitView`: any key of `simSearchSchema`; `lang`/`reading` do not count) and localStorage
   `orbitalia.introSeen` is unset (set when it starts; guarded, nothing is sent anywhere). A link with a view opens
@@ -563,7 +598,9 @@ and angle it was left at. It is one step; the overview button is the way out, al
   `enterStop`), a spacecraft's milestone (`showEvent`), a hunt's "Show me" and holding a body still (`anchorFrame`,
   `releaseFrame`), "Back to the start" (R / Home), and leaving a sky event, which flies back to where it began. Not
   steps: dragging, zooming, panning, time, layers and the scale; arriving on a link (the URL seeding, `?craft=`,
-  a link onto a tour stop: `withoutSteps`); a tour another feature plays (the quick look, #44); the opening.
+  a link onto a tour stop: `withoutSteps`); a tour another feature plays (the quick look, #44); anything while
+  the opening plays (#30, #49: `watchIntro` sets `held` through `holdSteps`, so its reset and beats, and a choice
+  that ends it, leave no entry, and Back and Backspace do nothing meanwhile).
 - **One entry per step** (`createRecorder`, driven by `urlSync.ts`): the first mark of a task keeps the view being
   left as a `Waypoint` and holds the URL writes; at the end of the task (a microtask) the address is written once,
   pushed when the waypoint changed (`state.orbitaliaStep` makes an entry of a step the address cannot show, a
@@ -801,18 +838,41 @@ Only these kind rules exist, all additive:
 - Very elongated orbits (e >= `TRUE_ANOMALY_SAMPLING_E` 0.9: Halley, Hale-Bopp, NEOWISE) are sampled at uniform
   true anomalies (`bodies/OrbitLine.tsx`), so the hairpin round the Sun stays round; everything else is unchanged.
 
-**Comets.** `src/sim/comet.ts` is the whole model, in true km: `cometActivity(r)` (0 beyond `TAIL_ONSET_KM` 4 AU,
-smooth to 1 at `TAIL_FULL_KM` 1.5 AU), `tailLengthKm(tail, r)` (the curated length at 1 AU x activity x 1 AU / r),
-`antiSunDirection` (from the TRUE positions: the Sun direction of #22's lighting), `nextPerihelionJD` /
-`previousPerihelionJD`. `smallBodies/cometTail.ts` samples the gas tail straight along the anti-Sun direction and the
-dust tail (0.6 of the length) bent back against the motion, and draws every sample with `mapTruePointKm` (the
-planets' rule and the anchored frames of #31): the tail points away from the drawn Sun in every preset and is its
-true length at true scale. `CometTails.tsx` draws them as camera-facing additive ribbons (never thinner than
-1.5 / 3 px) plus a coma sprite (true radius 1e5 km x activity, at least 3 px), for every shown body with `tail`.
+**Comets** (#23; checked against real comets in #55, findings and screenshots on that issue). `src/sim/comet.ts`
+is the whole model, in true km, driven by each comet's observed `tail` data:
+
+- **Activity** `cometActivity(tail, r)`: 0 from the comet's own `onsetKm` out (Hale-Bopp 13 AU, Halley 6, 67P 4.3,
+  NEOWISE 3, Encke 1.63), 1 from its `fullKm` in, between them `(full / r)^4` lowered to start from 0 at the onset
+  (`ACTIVITY_POWER`, fitted to Halley's tail lengths on its way in, 1985/86). `activityAt(orbit, tail, jd)` uses the
+  distance `lagDays` earlier: Halley (11 d) and 67P (20 d) are more active after perihelion than before; the others
+  are symmetric (Hale-Bopp's light curve was; NEOWISE's +4 d and Encke's changing asymmetry are too weak to model).
+- **Lengths** `ionTailLengthKm`, `dustTailLengthKm`: the longest tail observed times the activity, so they grow and
+  saturate at the observed length (Hale-Bopp's ion tail 148 million km; Encke has no dust tail, 67P no ion tail).
+  True scale gets no minimum length: it stays honest (only the on-screen width has a minimum).
+- **Direction**: `antiSunDirection` from the TRUE positions (the Sun direction of #22's lighting). The gas tail is
+  straight along it. The dust tail is a syndyne: `grainOffsetKm` follows a grain of `DUST_BETA` (0.5) that left the
+  nucleus with the comet's velocity, on its own Kepler orbit under (1 - beta) of the Sun's pull
+  (`propagateState`, universal variables), so it curves back along the orbit, slightly far out and strongly at a
+  close perihelion (NEOWISE). `dustAgeDays` picks the oldest grain for the tail's length; a unit test matches the
+  grains against a step-by-step integration.
+- `nextPerihelionJD` / `previousPerihelionJD`.
+
+`smallBodies/cometTail.ts` draws it: the gas tail and the dust tail's 22 grains (`writeDustShape`, worked out again
+only once the clock has moved `DUST_REFRESH_DAYS`, so a paused or slow clock costs nothing), every point mapped with
+`mapTruePointKm` (the planets' rule and the anchored frames of #31): the tails point away from the drawn Sun in every
+preset and are their true length at true scale. The coma's drawn radius is its true one (1e5 km x `comaGrowth`) as
+drawn there, but never less than `COMA_NUCLEUS_RADII` (4) drawn radii of the nucleus, so it surrounds the enlarged nucleus
+in every preset (the presets come from `SCALE_PRESET_IDS` in the tests). Each tail starts with a fade-in from the
+nucleus's drawn surface and is at full strength from the coma's edge, where its length is counted from; a tail of
+length 0 folds into the nucleus. `CometTails.tsx` draws camera-facing additive ribbons (gas `#4d8dff`, dust
+`#ffe2a8`; never thinner than 1.5 / 3 px; no wider at the start than the coma) whose opacity follows the activity
+(`tailBrightness`, its square root) and a coma sprite (`comaGrowth`, its fourth root, for its size and glow, so the
+head shows long before the tails, as Hale-Bopp's did beyond Jupiter; at least 3 px), for every shown body with `tail`.
 `cometWatch.ts`: "Watch it pass the Sun" selects and centres the comet (fit: its perihelion distance around the
-Sun, so the Sun is in the frame), glides to where it crosses 4 AU inbound (or stays, mid-passage) and runs at the
-speed preset that shows the whole passage in about 90 s; comets returning after 2999 (Hale-Bopp, NEOWISE) replay
-their last passage.
+Sun, so the Sun is in the frame), glides to where it wakes up (its onset inbound, plus its lag; or stays,
+mid-passage) and runs at the speed preset that shows the whole passage in about 90 s; comets returning after 2999
+(Hale-Bopp, NEOWISE) replay their last passage. The card (`smallBodyText.ts`) gives the longer tail's true length,
+"waking up" while it is under 100,000 km, and otherwise where the comet will wake up.
 
 **Belts.** `src/data/belts.json` describes each belt by zones (the main belt's four between the Kirkwood gaps; the
 Kuiper belt's plutinos, cold and hot classical belt and scattered disc). `src/sim/belts.ts` turns a belt into dots
@@ -935,8 +995,8 @@ export const useSimFrame = (): SimFrame // throws outside the provider
   Share, hide, then `SoundControl` (#32), Help (#43) and `LanguageMenu`), `EntryBar` (Tours, Layers → `SceneToggles`,
   Scale → `ScalePanel` (#21), Tools). Escape, the overview button and a click on empty space call `reset()`; the card's close button only clears the selection and hides the focused body's card (`useHudStore.cardClosedFor`) until another body is focused or selected, the camera staying put. The clock shows the locale's date format inside
   `<time dateTime="2026-09-24T10:35Z">`; warp labels come from the value (`ui/warp.ts` `warpParts`).
-  Keys (ignored in fields and with modifiers): Space pause, `+`/`-` next faster/slower preset (direction kept),
-  ArrowLeft/Right cycle siblings, M sound on/mute (#32); the presenter's keys (PageUp/Down, digits, letters) are #29's (see Presentation).
+  Keys (ignored in fields and with modifiers): Space pause (the opening's own pause while it plays, #49), `+`/`-` next faster/slower preset (direction kept),
+  ArrowLeft/Right cycle siblings (step the opening or a tour while one plays), M sound on/mute (#32); the presenter's keys (PageUp/Down, digits, letters) are #29's (see Presentation).
 - Page (`index.tsx`): `<UrlSync />`, then `scene/Scene.tsx` (Canvas + `SimFrameContext.Provider`, `ScaleSync`,
   `ScaleTransition`, `ReferenceFrameSync`, `SimClock`, `SpinClock`, `HoverCursor`, `Bodies`, `OrbitLines`, `Trails`, `Markers`, `Belts`, `CometTails`, `LightFront`, `Labels`, `BodyPicking`, `CameraRig`,
   `HighlightTracker`, `SceneCapture` (#33), `SoundProbe` (#32), later `Effects`; then the `LabelLayer` beside the Canvas), `ui/BodyHighlight`, and the HUD.
@@ -971,7 +1031,10 @@ hover ring, name and cursor apply to labels too.
   during which a second pointer went down (`isPrimary` false; the end of a pinch, one finger lifting after the
   other, or a tap beside a resting thumb), and the click that brought the window into focus (`isFocusPress`: the
   page had no focus at `pointerdown`, or the window's `focus` event came within `FOCUS_CLICK_MS` = 500 ms before the
-  press or while it was held; the two arrive in either order).
+  press or while it was held; the two arrive in either order). The camera director asks the same tracker
+  (`isPressGrab`, #49): a press takes the camera only once it wanders past the allowance or a second finger lands.
+- **During the opening** a tap anywhere on the scene pauses it instead and never reaches the picker, and the hover
+  ring stays hidden (`intro/pace.ts`, #49).
 - **Hover**: `hoverId` follows the pointer, but never for a finger or while a button is held (an orbit drag).
   `HoverCursor` shows `cursor: pointer` for click targets (`isClickTarget` = `bodyClickAction` is not `none`).
   `ui/BodyHighlight.tsx` renders a white ring with the body's name and "Click to fly there" around the hovered target,
@@ -1301,6 +1364,55 @@ handed to the visitor. Everything happens on the device: no upload, no server, n
   `usePostcardStore.getState().show(...)` and renders `<PostcardButton onTake>` and `<PostcardSlot />`: the
   comparison is the worked example (`features/compare/picture.ts`).
 
+## The dictionary (`features/solarDictionary`, route `/solar_dictionary`; #53)
+
+One page per world for the Sun and the eight planets (decided 6 Oct 2026: no dwarf planets or moons): a turning
+globe with its surface maps, the key numbers compared with Earth (`utils/getSidebarLabels.ts`), the tagline and
+description, and the stories a reader opens.
+
+- **Sections the reader opens** (`components/WorldStories.tsx`, a Mantine `Accordion`, one open at a time, closed
+  panels unmounted): _Made of_, _Weather_ and _Names_. The open one is URL state (`?section=madeOf|weather|names`,
+  `search.ts`) and stays open from world to world, so a class can go through the planets' weather one by one. On a
+  desktop they sit under the description in the right-hand column, which scrolls; below 900 px the description is
+  hidden and the sections form a bottom sheet (at most 55 % of the height) under the globe.
+- **Made of** (`MadeOf.tsx`): the cut-away picture (`CutAway.tsx`, an inline SVG drawn from the layer data: the
+  world's outside in its `surface` colour with a quarter cut away, one wedge per layer from `outer` and `color`; a
+  layer never thinner than `MIN_BAND` of the radius so a crust shows, which its note says), the legend (the layers'
+  thickness from the body model's radius, not at the simple level), what it is made of, its air (the gases and their
+  shares, not at the simple level) and how heavy it is: mass in Earths and mean density from the body model's mass and
+  mean radius (`utils/heft.ts`), told as "would it float in a bathtub" (only Saturn does). The SVG is `role="img"`
+  with a `<title>` and a `<desc>` that lists the layers.
+- **Weather** (`Weather.tsx`): both ends of the range with what they are (`TEMPERATURE_RANGES`: day and night,
+  warmest and coldest, the measured records, the clouds and near the core, the clouds and higher up where no core
+  temperature is published (Saturn, Neptune), the surface and the core, or the same day and night for Venus), then
+  why. **Names** (`Names.tsx`): each nickname with its picture and how it came about, where the name comes from, the
+  story of this language's own name where it has one (`localName`, only the active locale's, never borrowed: Erde,
+  Země, Tierra, Terre, the Romance weekdays, the old Czech planet names), and how it was found. Each section ends
+  with links to its sources. At the simple level every section leads with a picture or an icon (`icons.ts`).
+- **Facts are data, with their sources.** `src/data/worlds.json` (zod schema `src/data/worlds.ts`) holds per world
+  the layers (`outer` as a fraction of the mean radius, colours), the gases (percent by volume or by atoms, where
+  the source gives shares), the temperatures (`{ c }` or `{ k }`, as the source states them), the nicknames (id,
+  icon), the discovery (`ancient`, `home`, `telescope` or `predicted`, with its year), the locales whose own name has
+  a story, and for every fact its `sources`: the public pages that state it (NASA fact sheets and NASA Science, the
+  WMO records, Juno and Cassini results, etymological dictionaries: etymonline, DWDS, SSJČ, RAE, CNRTL). The giants'
+  layer boundaries are model estimates and their texts say so. Mass and density stay in the body model;
+  `heft.sources` says where they are stated. The words are `src/locales/<locale>/worlds.json` (`worldText.ts`:
+  `layers`, `gases`, `worlds.<id>.{madeOf, air, weather, nicknames.<id>.{name, story}, name, localName?,
+discovery}`), plain text, one value or one per reading level. No text may state a fact its sources do not.
+- **Quantities follow the reading level through one function** (`utils/quantity.ts` `levelQuantity`, #51's rule):
+  temperatures in words at simple ("hotter than an oven", `feelBand`), °C at standard, kelvin with °C at advanced;
+  mass in Earths (at simple never above 100: "heavier than 100 Earths put together"); density against water
+  (buckets of water at simple); layer thickness in km, not at simple. The sidebar's average temperature uses it too.
+  When #51's app-wide formatters land, this function delegates to them.
+- **The contract** (`stories.test.ts`): every world has layers for its picture, its air, a range the right way
+  round, a nickname, a name origin and a discovery, each with https sources; every locale has exactly the facts'
+  worlds, nicknames, layers and gases, every story at every reading level, a local name story exactly where the data
+  lists that locale, simple texts without numbers above 100 or units, and the year of every discovery in its standard
+  text. `e2e/dictionary.spec.ts` opens the sections. Adding a world's story: its facts in `worlds.json`, its words
+  in every locale.
+- **Entry:** Tools → the dictionary (the world in view, #45) and "Read more in the dictionary" on a world's card
+  (`ui/dictionaryEntry.ts`: Sun 0, planets 1..8).
+
 ## Comparison (`features/compare`, route `/compare`; #24)
 
 Two or more bodies side by side at true relative size, independent of where they are, with comparisons a class can
@@ -1579,7 +1691,7 @@ import { Hint, hintKey } from "@/primitives/hint"
   `solarSystem.scale.summary.*`), the spin modes (reusing `solarSystem.spin.hint.*`, one per mode), reverse / pause /
   play / Now / the speed presets, the point-of-view menu, the Present, Share and Layers buttons, the projector and
   high-contrast switches, the postcard's switches and button, the birthday, hunt and light buttons and the two
-  "stop the flash" buttons (#38), the sound toggle and its settings button (#32), the sky-tonight launcher and "Show me in space" (#36), the Help menu (#30), the spacecraft menu, its two switches and "Show" (#35), the tours menu and the tour card's autoplay toggle (#28), the Help button (every page) and its "more" chevron (#43), Overview, and Back (#46, with a disabled `reason`). The tour card's share button keeps its Mantine `Tooltip`: it doubles as the "Link copied" confirmation. Plain tabs (the light
+  "stop the flash" buttons (#38), the sound toggle and its settings button (#32), the sky-tonight launcher and "Show me in space" (#36), the Help menu (#30), the opening's pause and Next (#49), the spacecraft menu, its two switches and "Show" (#35), the tours menu and the tour card's autoplay toggle (#28), the Help button (every page) and its "more" chevron (#43), Overview, and Back (#46, with a disabled `reason`). The tour card's share button keeps its Mantine `Tooltip`: it doubles as the "Link copied" confirmation. Plain tabs (the light
   panel's, the birthday panel's) have none, by design. A switch that already shows a Mantine `description` under
   its label is explained in place; wrap it in `<Hint>` only to add something the description does not say (the
   projector switch) or a disabled `reason` (high contrast), as the sound panel's switches show.
@@ -1742,6 +1854,7 @@ src/locales/<locale>/ui.json     UI strings: a tree of ICU MessageFormat message
 src/locales/<locale>/bodies.json editorial body content, keyed by body id (src/data/bodies.json)
 src/locales/<locale>/hunts.json  the scavenger hunt's clues, hints and discoveries (#34, see Scavenger hunt)
 src/locales/<locale>/help.json   the help page's words (#43, see Help page)
+src/locales/<locale>/worlds.json the dictionary's stories (#53, see The dictionary)
 ```
 
 - Messages are ICU MessageFormat (plural, select, `{n, number}`, `{n, number, ::percent}`); never build sentences
@@ -1759,6 +1872,18 @@ src/locales/<locale>/help.json   the help page's words (#43, see Help page)
   not ICU. The Sun and the eight planets have every field at every level in every locale (tested); moons without
   content get a generated description from their data (`bodies.fallback.moonDescription`). Every featured moon (#17,
   see Moons) has every field at every level in every locale (tested).
+- **Writing at `simple` (#51):** short sentences, one idea each; no number above 100 (years included: "long, long
+  ago", "when your grandparents were young"), no thousands, millions or billions, no km for big distances, no AU,
+  K, °C, m/s² or scientific notation. A quantity becomes a word ("hotter than an oven", "colder than any freezer")
+  or a comparison on the shared yardsticks: Earth ("11 Earths side by side", "almost 30 of our years", "you would
+  weigh less than half as much"), a long human life (80 years), and one size scale built from the walk's objects
+  (#25), _if Earth were an orange_: the Sun as tall as a house and about 9 football pitches away, Jupiter almost an
+  exercise ball, Saturn a little smaller, Uranus and Neptune a bit bigger than a basketball, Venus a slightly
+  smaller orange, Mars a table tennis ball, Mercury and the biggest moons a walnut, the Moon a cherry 30 oranges
+  away (Io and Europa a cherry too), Pluto, Eris and Triton a marble, the mid-sized moons a pea, then a peppercorn,
+  a pinhead, a poppy seed, a grain of salt or sand. Hard words are swapped ("path" for orbit, "air" for atmosphere,
+  "fountain" for geyser, "pull" for gravity) or explained where they stand ("craters, round holes from crashing
+  space rocks"). A plain field whose text breaks this gets a `simple` variant.
 - `src/i18n/locales.test.ts` and `bodies.test.ts` are the contract: every locale has exactly English's keys and
   variants, parses, uses only known arguments and complete plurals, and mirrors English's body content structure.
 

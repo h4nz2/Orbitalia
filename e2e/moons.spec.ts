@@ -119,7 +119,9 @@ test("moon stories are translated and a moonless planet says so", async ({
 	page,
 }) => {
 	await ready(page, "/solar_system?focus=titan&lang=de&reading=simple")
-	await expect(card(page).getByText("Eine Welt mit Methanregen")).toBeVisible()
+	await expect(
+		card(page).getByText("Der Mond mit Regen und Seen"),
+	).toBeVisible()
 	await expect(
 		page.getByRole("button", { name: "Die ganze Geschichte lesen" }),
 	).toBeVisible()

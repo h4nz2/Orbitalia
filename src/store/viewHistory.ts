@@ -123,18 +123,26 @@ export interface ViewHistoryState {
 	 * that is no longer the one recorded (another page wrote over it) is told apart.
 	 */
 	keys: Readonly<Record<number, string>>
+	/**
+	 * The opening plays (#30, #49): nothing is a step and Back does nothing,
+	 * so its own moves and a choice that ends it never leave an entry behind.
+	 */
+	held: boolean
 }
 
 export const useViewHistoryStore = create<ViewHistoryState>()(() => ({
 	index: 0,
 	entries: {},
+	held: false,
 	keys: {},
 }))
 
 /** True when the entry behind the one on screen is a view of the solar system to go back to. */
 export const canGoBack = (
-	state: Pick<ViewHistoryState, "index" | "entries">,
-): boolean => state.entries[state.index - 1] !== undefined
+	state: Pick<ViewHistoryState, "index" | "entries"> &
+		Partial<Pick<ViewHistoryState, "held">>,
+): boolean =>
+	state.held !== true && state.entries[state.index - 1] !== undefined
 
 /** The waypoint Back returns to, if any. */
 export const entryBehind = (
@@ -235,7 +243,9 @@ export function createRecorder(
 			})
 		},
 		step: () => {
-			if (leaving !== null || quiet > 0 || disposed) return
+			if (leaving !== null || quiet > 0 || disposed || store.getState().held) {
+				return
+			}
 			leaving = deps.now()
 			defer(end)
 		},
@@ -282,6 +292,13 @@ export function withoutSteps<T>(fn: () => T): T {
 		return fn()
 	} finally {
 		quiet -= 1
+	}
+}
+
+/** While `held` (the opening plays, #49), nothing is a step and Back does nothing. */
+export function holdSteps(held: boolean): void {
+	if (useViewHistoryStore.getState().held !== held) {
+		useViewHistoryStore.setState({ held })
 	}
 }
 

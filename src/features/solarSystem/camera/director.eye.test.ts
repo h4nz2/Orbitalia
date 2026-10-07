@@ -144,7 +144,7 @@ describe("a camera standing at an eye point", () => {
 		h.step(60)
 		expect(distance(h.cameraKm(), h.bodyKm("earth"))).toBeCloseTo(offset, -1)
 		// the user drags: the eye is let go
-		h.controls.dispatchEvent({ type: "controlstart" })
+		h.controls.dispatchEvent({ type: "control" })
 		h.step()
 		expect(h.director.snapshot(h.now).eyeHeld).toBe(false)
 	})

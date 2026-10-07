@@ -14,6 +14,7 @@ import { CornerBar } from "@/features/help/HelpButton"
 import { bodyName } from "@/i18n/bodies"
 import Loader from "@/primitives/Loader"
 import Navbar from "./components/Navbar"
+import type { DictionarySection } from "./search"
 import { dictionaryBodyId } from "./utils/bodyId"
 import { getSidebarFacts, type FactKey } from "./utils/getSidebarLabels"
 import Stage from "./components/Stage"
@@ -47,8 +48,9 @@ const volumeKm3 = (item: SolarDictionaryItem | undefined): number | null => {
 const sunIdx = 0
 const earthIdx = 3
 
-// The selection is URL state (`?entity=3&texture=topo`, validated in
-// src/routes/solar_dictionary.tsx) so every body can be deep-linked.
+// The selection is URL state (`?entity=3&texture=topo&section=weather`,
+// validated in src/routes/solar_dictionary.tsx) so every body, and every
+// story section, can be deep-linked.
 const route = getRouteApi("/solar_dictionary")
 
 export type SolarDictionaryProps = {
@@ -62,6 +64,7 @@ const SolarDictionary: FC<SolarDictionaryProps> = () => {
 	const {
 		entity: activeEntityIndex = sunIdx,
 		texture: requestedTexture = defaultTexture,
+		section = null,
 	} = route.useSearch()
 	const navigate = route.useNavigate()
 
@@ -77,15 +80,26 @@ const SolarDictionary: FC<SolarDictionaryProps> = () => {
 		? requestedTexture
 		: defaultTexture
 
-	// a newly selected body always starts on its base texture; defaults stay out of the URL
+	// a newly selected body always starts on its base texture, but keeps the open
+	// section, so a class can go through the planets' weather one by one;
+	// defaults stay out of the URL
 	const onEntityChange = (newIndex: number) => {
 		const entity =
 			newIndex > solarDict.length - 1 || newIndex < 0 ? sunIdx : newIndex
 		void navigate({
-			search: { entity: entity === sunIdx ? undefined : entity },
+			search: (prev) => ({
+				entity: entity === sunIdx ? undefined : entity,
+				section: prev.section,
+			}),
 			replace: true,
 		})
 	}
+
+	const onSectionChange = (next: DictionarySection | null) =>
+		void navigate({
+			search: (prev) => ({ ...prev, section: next ?? undefined }),
+			replace: true,
+		})
 
 	const onTextureChange = (texture: Texture) =>
 		void navigate({
@@ -140,6 +154,8 @@ const SolarDictionary: FC<SolarDictionaryProps> = () => {
 				texture={currentEntity.textures?.[activeTexture] ?? undefined}
 				facts={facts}
 				bodyId={dictionaryBodyId(currentEntity)}
+				section={section}
+				onSectionChange={onSectionChange}
 			/>
 		</Box>
 	)
