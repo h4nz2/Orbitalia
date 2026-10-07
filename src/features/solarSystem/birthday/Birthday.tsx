@@ -11,9 +11,9 @@ const BirthdayPanel = lazy(() => import("./BirthdayPanel"))
 
 /**
  * The birthday panel's place on the page: nothing until opened. A link with
- * `?birthday=true` (the hero page's button) opens it on arrival. Leaving the
- * page closes it; the birth date stays in memory until the tab is closed or
- * "Forget my birthday" is pressed.
+ * `?birthday=true` opens it on arrival. Leaving the page closes it; the birth
+ * date stays in memory until the tab is closed or "Forget my birthday" is
+ * pressed.
  */
 export const BirthdayPanelSlot = () => {
 	const open = useBirthdayStore((state) => state.open)

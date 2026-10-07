@@ -35,17 +35,6 @@
 		"text": "No hay nada en esta dirección.",
 		"back": "Volver a las estrellas"
 	},
-	"hero": {
-		"credits": "Hecho con cariño por odi y hrj",
-		"tagline": "¡Hacia las estrellas!",
-		"dictionary": "Diccionario",
-		"solarSystem": "Modelo solar",
-		"tour": "Hacer una visita guiada",
-		"birthday": "Tu cumpleaños en el espacio",
-		"hunt": "Búsqueda del tesoro",
-		"solarWalk": "Paseo por el sistema solar",
-		"skyTonight": "¿Qué hay en el cielo esta noche?"
-	},
 	"units": {
 		"approx": "≈ {value}",
 		"au": "{value} ua",
@@ -72,6 +61,7 @@
 	},
 	"dictionary": {
 		"pick": "Mostrar {name}",
+		"back": "Volver",
 		"textures": {
 			"label": "Texturas disponibles",
 			"base": "Superficie",
@@ -1343,13 +1333,20 @@
 		},
 		"hud": {
 			"tools": "Herramientas",
-			"toolsHint": "La velocidad de la luz, el cielo de esta noche, naves espaciales reales, tu cumpleaños, la búsqueda del tesoro, comparar mundos y hacer una foto: todo se abre aquí.",
-			"toolsHint@simple": "Más cosas para probar: la luz, el cielo de esta noche, naves, tu cumpleaños, una búsqueda del tesoro, comparar mundos y hacer una foto.",
+			"toolsHint": "La velocidad de la luz, el cielo de esta noche, naves espaciales reales, tu cumpleaños, la búsqueda del tesoro, comparar mundos, recorrer el sistema solar a pie, el diccionario visual y hacer una foto: todo se abre aquí.",
+			"toolsHint@simple": "Más cosas para probar: la luz, el cielo de esta noche, naves, tu cumpleaños, una búsqueda del tesoro, comparar mundos, recorrer el sistema solar a pie, el libro de los planetas y hacer una foto.",
 			"entries": "Visitas, capas, escala y herramientas",
 			"close": "Cerrar {panel}",
 			"compare": "Lado a lado",
 			"compareHint": "El mundo que estás mirando junto a otro, a sus tamaños reales",
 			"compareHint@simple": "Pon dos mundos uno al lado del otro, encogidos igual, para ver cuál es más grande",
+			"walk": "Recorre el sistema solar a pie",
+			"walkHint": "Encoge el Sol hasta un balón de baloncesto y recorre los planetas en el patio del colegio",
+			"walkHint@simple": "Haz el Sol tan pequeño como una pelota y mira cuánto tienes que caminar hasta cada planeta",
+			"dictionary": "Diccionario visual",
+			"dictionary@simple": "Libro de los planetas",
+			"dictionaryHint": "Una página para el Sol y cada planeta: un gran globo que gira, sus mapas de superficie y las cifras clave",
+			"dictionaryHint@simple": "Una página para cada planeta, con un gran dibujo que gira",
 			"customScale": "Propia",
 			"scaleButton": "Escala: {preset}",
 			"scaleHint": "Lo grandes y lo separados que se dibujan los mundos, y lo lejos que está eso de la realidad. La escala real está a un clic.",
@@ -1430,7 +1427,7 @@
 		}
 	},
 	"solarWalk": {
-		"back": "Modelo 3D",
+		"back": "Volver",
 		"title": "Si el Sol fuera {object}…",
 		"lead": "…la Tierra sería {earth}, a {earthDistance}. Todos los tamaños y distancias de esta página son los reales, reducidos en la misma proporción para que quepan en el patio de la escuela. Saca el Sol afuera y recórrelo.",
 		"lead@simple": "…¡la Tierra sería tan pequeña como {earth} y estaría a {earthDistance}! Saca el Sol afuera y recorre el sistema solar.",
@@ -1751,6 +1748,13 @@
 		"credits": {
 			"title": "Créditos y fuentes",
 			"licence": "Licencia: {licence}"
+		},
+		"about": {
+			"title": "Acerca de Orbitalia",
+			"tagline": "¡Hacia las estrellas!",
+			"text": "Orbitalia es una aplicación gratuita para explorar el sistema solar: lo grande que es de verdad el espacio y cómo se mueve todo en él. Está hecha para las clases y para cualquiera a quien le guste mirar al cielo.",
+			"text@simple": "Orbitalia es una aplicación gratis para explorar el espacio: lo grande que es y cómo se mueve todo en él.",
+			"madeBy": "Hecho con cariño por odi y hrj."
 		},
 		"readingLevel": "Nivel de lectura: {level}. Puedes cambiar el idioma y el nivel de lectura en el menú de arriba a la derecha.",
 		"shortcutsLink": "Todas las funciones y cómo usarlas: abre la página de ayuda"

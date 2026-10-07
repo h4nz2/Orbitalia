@@ -1,9 +1,0 @@
-.root {
-	padding-top: var(--mantine-spacing-xl);
-	height: 100vh;
-	background: var(--mantine-color-dark-7);
-	display: flex;
-	flex-direction: column;
-	justify-content: start;
-	align-items: start;
-}

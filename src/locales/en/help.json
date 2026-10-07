@@ -196,7 +196,7 @@
 				"standard": [
 					"Top left: the house button (back to the whole system), the name of the world in view and its card; the arrow on the card opens its facts, moons and stories.",
 					"Bottom: play, pause and the date; the button with the speed (like 1x) opens Now, the speeds and the spin.",
-					"Bottom right: Tours, Layers (what is drawn), Scale (how big and how far) and Tools (the speed of light, tonight's sky, spacecraft, your birthday, the scavenger hunt, side by side and taking a picture). One panel opens at a time; × closes it.",
+					"Bottom right: Tours, Layers (what is drawn), Scale (how big and how far) and Tools (the speed of light, tonight's sky, spacecraft, your birthday, the scavenger hunt, side by side, walking the solar system, the picture dictionary and taking a picture). One panel opens at a time; × closes it.",
 					"Top right: Present, Share, the crossed-out eye that hides everything (H brings it back), sound, Help and the language."
 				],
 				"simple": [
@@ -503,10 +503,11 @@
 			},
 			"how": {
 				"standard": [
-					"Open it from the start page, or with “Read more in the dictionary” on a world’s card.",
+					"Open Tools at the bottom right and choose “Picture dictionary”: it opens on the world you are looking at. Or press “Read more in the dictionary” on a world’s card.",
 					"Pick a world in the row of dots at the top, then Surface, Terrain, Oceans or Clouds where it has them."
 				],
 				"simple": [
+					"Press Tools, then “Planet book”.",
 					"Pick a planet in the row of dots at the top.",
 					"Try Terrain and Clouds to change the picture."
 				]
@@ -755,11 +756,12 @@
 			},
 			"how": {
 				"standard": [
-					"Open it from the start page, or with “Walk it” in the Scale panel at true scale.",
+					"Open Tools at the bottom right and choose “Walk the solar system”, or press “Walk it” in the Scale panel at true scale.",
 					"Choose what the Sun is (an orange, a football, a basketball, an exercise ball) and a landmark to measure against.",
 					"Switch to Table and Print it to take outside."
 				],
 				"simple": [
+					"Press Tools, then “Walk the solar system”.",
 					"Choose a ball for the Sun.",
 					"Read how far to walk to each planet.",
 					"Print the table and walk it outside."
@@ -1261,7 +1263,7 @@
 		"mantine": "Buttons, menus, calendars and dialogs.",
 		"tabler": "The icons.",
 		"tanstack": "Pages and the links that hold every view.",
-		"gsap": "Animations on the start page and the dictionary.",
+		"gsap": "Page transitions and the dictionary’s animations.",
 		"smallLibraries": "App state, data checks, dates, QR codes and translations with plurals.",
 		"orbitalia": "Made by the Orbitalia contributors. Anyone can add a feature, a tour or a translation."
 	},

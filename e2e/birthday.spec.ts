@@ -1,6 +1,6 @@
 /**
- * "Your birthday in space" (issue #26): reachable from the start page and the
- * time controls, a birthday picked in the calendar (never typed), the planets
+ * "Your birthday in space" (issue #26): reachable from Tools and from a link,
+ * a birthday picked in the calendar (never typed), the planets
  * flown to that day, ages / days / weights on other worlds, the next birthday
  * on Mars as a trip, a picture saved on the device, and the birth date kept
  * out of the URL until it is forgotten.
@@ -39,12 +39,10 @@ const expectedEarthAge = (page: Page) =>
 		return now.getFullYear() - 2014 - (had ? 0 : 1)
 	})
 
-test("from the start page to the ages on every planet, without the date in the URL", async ({
+test("from a link to the ages on every planet, without the date in the URL", async ({
 	page,
 }) => {
-	await page.goto("/")
-	await page.getByRole("link", { name: "Your birthday in space" }).click()
-	await expect(page).toHaveURL(/\/solar_system/)
+	await page.goto("/solar_system?birthday=true")
 	await expect(panel(page)).toBeVisible({ timeout: 15_000 })
 	await expect(panel(page)).toContainText("Nothing is saved or sent anywhere")
 

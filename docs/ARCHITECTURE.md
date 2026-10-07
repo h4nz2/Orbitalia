@@ -1,14 +1,14 @@
 # Orbitalia architecture (rebuild, September 2026)
 
 A true-scale, interactive 3D model of the solar system (Sun, planets, moons, and since #23 dwarf planets, asteroids,
-comets and the two belts) plus the visual dictionary and hero page,
+comets and the two belts) plus the visual dictionary, the walk, the comparison and the help page,
 shipped as a client-only static site. This is the shared contract for humans and agents working on the rebuild: follow
 it, and if it must change, change it in the same change set.
 
 ## Stack
 
 - Vite + React 19 + TypeScript (strict), pnpm, Node 22 (`.nvmrc`).
-- TanStack Router, file routes in `src/routes`. URLs stay `/`, `/solar_dictionary`, `/solar_system`, plus `/solar_walk` (#25), `/compare` (#24) and `/help` (#43). Search params are
+- TanStack Router, file routes in `src/routes`. URLs stay `/solar_system`, `/solar_dictionary`, plus `/solar_walk` (#25), `/compare` (#24) and `/help` (#43); `/` redirects to `/solar_system` with its search (#45, see "The way in and the way back"). Search params are
   zod-validated and invalid values fall back to defaults (`/solar_dictionary?entity=<0..8>&texture=<base|topo|specular|clouds>`).
 - 3D: `three`, `@react-three/fiber` 9, `@react-three/drei` 10, `@react-three/postprocessing` 3.
 - UI: Mantine 9 + CSS modules (no emotion, `createStyles` or `sx`), `@tabler/icons-react`. Animation: `gsap`. State: `zustand`.
@@ -41,18 +41,18 @@ src/routes/                  file routes; src/routeTree.gen.ts is generated and 
 src/providers/               Mantine theme, I18nProvider, GSAP transition context, Layout
 src/i18n/                    languages and reading levels (see i18n); body content in bodies.ts ("@/i18n/bodies")
 src/locales/                 translation resources: config.json, <locale>/ui.json, <locale>/bodies.json
-src/data/                    bodies.json, belts.json (#23), credits.json (image sources + licences, #37 and planet textures), schema.ts (zod), index.ts (lookups), solarDictionary.ts (dictionary + hero adapter),
+src/data/                    bodies.json, belts.json (#23), credits.json (image sources + licences, #37 and planet textures), schema.ts (zod), index.ts (lookups), solarDictionary.ts (dictionary adapter),
                              tours.ts + tours/*.json (guided tours, #28)
 src/sim/                     pure simulation, no React or three objects (import from "@/sim"); testing/ is test-only
 src/data/skyEvents.json      the sky events (#41): real instants and the check that each happens in the simulation
 src/store/                   sim.ts, navigation.ts, flight.ts, scale.ts, lighting.ts, spin.ts, trails.ts, light.ts, hunt.ts,
                              hud.ts (the quiet HUD, #42), presentation.ts, postcard.ts, sound.ts, birthday.ts, skyTonight.ts, tour.ts, simSearch.ts (URL schema),
                              urlSync.ts
-src/features/                hero/, solarDictionary/, solarSystem/ (index.tsx, scene/, bodies/, camera/, dock/, frame/, hunt/, intro/, labels/, lighting/, light/, postcard/, present/, rings/,
+src/features/                solarDictionary/, solarSystem/ (index.tsx, scene/, bodies/, camera/, dock/, frame/, hunt/, intro/, labels/, lighting/, light/, postcard/, present/, rings/,
                              smallBodies/ (#23), sound/, tours/, ui/, birthday/, skyTonight/),
                              solarWalk/ (the basketball solar system, #25), compare/ (side by side, #24), help/ (the help page, #43)
 src/primitives/hint/         hover hints for every control (#39, see Hints)
-src/GSAPAnimation/ hooks/ primitives/ utils/   shared bits
+src/GSAPAnimation/ hooks/ primitives/ utils/   shared bits (hooks/useBackToSolarSystem.ts: every page's way back, #45)
 public/assets/textures/      pruned; unreferenced tiered variants are kept for later phases
 public/assets/sounds/        the real space recordings (#32) and their CREDITS.md (sources, licences)
 ```
@@ -316,8 +316,9 @@ True scale taken out onto the school field: "if the Sun were a basketball, Earth
   table: controls hidden, black on white, a tick column, bodies up to 30 mm drawn at their model size in CSS mm.
 - **URL:** `?sun=<object>&landmark=pitch|track|none&view=walk|table` (`search.ts`, zod only, so the route chunk
   stays light); defaults are left out.
-- **Links with the 3D model:** the Scale panel shows "Walk it" in True scale; every stop opens
-  `/solar_system?scale=trueScale&focus=<id>`. The hero page has a button.
+- **Links with the 3D model:** Tools → "Walk the solar system" (#45) and "Walk it" in the Scale panel in True scale
+  lead here; every stop opens `/solar_system?scale=trueScale&focus=<id>`; Back returns to where the visitor left
+  (`useBackToSolarSystem`), or to true scale when the page was opened from a link.
 
 ## Navigation (`src/store/navigation.ts`, `features/solarSystem/camera`; #10)
 
@@ -1101,7 +1102,7 @@ unobstructed (`e2e/quietHud.spec.ts` measures it). Every control is at most two 
     speed presets and the spin), with the flight readout above it and the too-fast / not-to-the-clock notes under it;
   - bottom right, the entry points (`dock/Dock.tsx` `EntryBar`): Tours (#28), Layers, Scale (named after the
     preset on screen, so the honest word stays visible), Tools (`dock/ToolsMenu.tsx`: light, tonight's sky, spacecraft,
-    birthday, hunt, side by side, picture).
+    birthday, hunt, side by side, the walk, the dictionary, picture; it scrolls on a short screen).
 - **The dock** (right column, above the entry points; on phones a sheet from the bottom above the time bar) holds
   one panel at a time: Layers, Scale and the spacecraft list (`useHudStore.panel`) or a tool with its own store
   (light, birthday, sky tonight, hunt). `dock/exclusive.ts` `keepOneOpen` closes the previous one whichever way the
@@ -1121,6 +1122,22 @@ unobstructed (`e2e/quietHud.spec.ts` measures it). Every control is at most two 
   point; a panel goes into the dock through Tools; never a new permanent panel. Update the help entry's "how" with
   where it lives.
 
+### The way in and the way back (#45)
+
+The solar system is the app: there is no start page or main menu.
+
+- **The bare address opens it.** `src/routes/index.tsx` redirects `/` to `/solar_system` (`replace`, keeping the
+  search, so `/?lang=de&reading=simple` still works). A first visit gets the opening (#30) and the quick look (#44)
+  there, since a redirect carries no simulation parameter (`hasExplicitView`).
+- **Everything the old menu offered is at most two actions away:** Tours (an entry point), and in Tools tonight's
+  sky, your birthday, the hunt, side by side, the walk and the dictionary. Tools → the dictionary opens the entry of
+  whatever is in view (`ui/dictionaryEntry.ts` `nearestDictionaryEntry`: the body, else the world it circles, else
+  the Sun).
+- **Every other page leads back** (`hooks/useBackToSolarSystem.ts`): the browser's back when the visitor came from
+  inside the app, so they land exactly where they left (every view is in its address); a page opened straight from
+  a link goes to a sensible view instead (the dictionary: its world; the walk: true scale; the comparison: its first
+  body; help: the overview). The not-found page links to `/solar_system`.
+
 ## Birthday (`features/solarSystem/birthday`, `src/store/birthday.ts`; #26)
 
 "Your birthday in space": a birth date picked in a calendar (never typed) gives the age on every planet, the next
@@ -1135,8 +1152,8 @@ weight on the Sun, the planets and the seven large moons.
   length (Ramanujan) x orbits since birth.
 - UI: Tools → Your birthday opens it (#42); `Birthday.tsx` has the panel slot, rendered in the HUD's dock; `BirthdayPanel.tsx` (lazy, with
   `@mantine/dates`) is a non-modal panel of the dock (a sheet on phones) so the scene stays visible. Picking
-  a date `travelAndStop`s there; each planet's next birthday is a button that does the same. The hero page links to
-  `/solar_system?birthday=true`.
+  a date `travelAndStop`s there; each planet's next birthday is a button that does the same.
+  `/solar_system?birthday=true` opens it (the help page's link).
 - Privacy: `useBirthdayStore` is memory only (no storage, nothing sent). While a birth date is entered the URL
   carries no `t` (`hidesTimeInUrl`, read by `urlSync.ts`), because the clock then shows the birth date. "Save as
   picture" is the postcard of the view (#33, see Postcard) with the ages and distance from `card.ts` (`cardText`)
@@ -1307,11 +1324,13 @@ entry, in every locale and reading level, in the same change.
   comparison bodies). `e2e/help.spec.ts` clicks every "try it" on the page and fails on any console or page error.
 - **Links** (`links.ts`): `parseTryLink` parses a `try` with the router's `defaultParseSearch` into a `<Link>`'s `to`
   and `search`; the root route keeps the viewer's `lang` and `reading`. `/help?q=` is the search (every word, in the
-  reader's language, case and accents folded), `/help?topic=<entry | group | controls | credits>` scrolls there and
+  reader's language, case and accents folded), `/help?topic=<entry | group | controls | about | credits>` scrolls there and
   highlights it (for #44's last step; the shortcut list's link uses `topic=controls`).
 - **One click from every screen, in one place:** `HelpButton` beside the language menu, top right: in the solar
-  system's teacher bar, and `CornerBar` (help + language, fixed top right) on every page without the HUD (start page,
-  dictionary, walk, comparison, not found). A new page renders `<CornerBar />`.
+  system's teacher bar, and `CornerBar` (help + language, fixed top right) on every page without the HUD (dictionary,
+  walk, comparison, not found). A new page renders `<CornerBar />`, and a way back (`useBackToSolarSystem`, #45).
+- **About** (#45): what the start page used to say (the name, "To the stars!", who made it) is the page's "About
+  Orbitalia" section (`help.about.*` in `ui.json`), before the credits.
 - **On the scene** the Help button opens the page in one click; its chevron (#30's `IntroMenu`) holds the page again,
   "Play the opening again" and "Show how to move around". `?intro=play` replays the opening (the `opening` entry).
 - `?light=flash|delay|beyond` on `/solar_system` (`light/LightLink.tsx`) opens the light panel on that tab, `flash`
@@ -1462,8 +1481,7 @@ index)` with no holds (stops wait for the presenter; `finishMove()` when jumping
   `TourSync` (after `UrlSync`): opens `?tour=<id>&stop=<n>&autoplay=true` as a jump, follows the sequence, runs
   autoplay (a timer on a waiting stop; the camera coming to rest after a look around restarts it; the last stop
   never auto-finishes), and the presenter keys in the capture phase while a tour exists: ArrowRight / PageDown
-  next, ArrowLeft / PageUp back (so arrows step the tour instead of cycling bodies). The hero page links to the
-  Grand Tour.
+  next, ArrowLeft / PageUp back (so arrows step the tour instead of cycling bodies).
 - **Sky events (#41) extend the format:** `time: { "event": id }` (the instant the simulation shows the event best),
   `camera.from: "earth"` (stand on the Earth looking at the body in view; at an event's time, where it is seen best)
   with `camera.fov` (the lens in degrees), and `returnOnExit` (leaving goes back to the scene before the tour; the
@@ -1545,8 +1563,8 @@ telescope), why the hidden ones are hidden, and the geometry behind each sightin
   every continent), picked as country, then city; country names from `Intl.DisplayNames`, city names per language
   in the data (German in the rows, Czech, Spanish and French in `EXONYMS`: Curych, Ginebra, Vienne). `suggestedCity`
   guesses from the device's time zone (legacy zone names mapped), else the language's region, else London.
-- **Location and privacy.** Children use the app, so: the panel never opens by itself (button, or `?sky=true` from the
-  hero); it asks before it shows anything, offering the time-zone guess as a question to confirm with one tap
+- **Location and privacy.** Children use the app, so: the panel never opens by itself (Tools, or a link with
+  `?sky=true`); it asks before it shows anything, offering the time-zone guess as a question to confirm with one tap
   ("Are you near Zurich?"), the country and city lists, and "Use my device's location", which first explains (the
   simple level says "ask a grown-up first") and calls the Geolocation API only on a second tap, with low accuracy.
   A device position is rounded to 0.1 deg (about 10 km) on arrival and named by the nearest listed city. The place lives

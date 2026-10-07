@@ -1,6 +1,7 @@
 # Orbitalia
 
-Live at **[orbitalia.app](https://orbitalia.app)**.
+Live at **[orbitalia.app](https://orbitalia.app)**: it opens straight into the 3D solar system, and everything
+else (tours, the walk, the dictionary, comparisons, the help page) is reached from there.
 
 _Klassenlager 2022 project_
 

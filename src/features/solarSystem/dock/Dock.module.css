@@ -67,6 +67,12 @@
 	flex: none;
 }
 
+/* the Tools menu scrolls on a short screen rather than running off its top */
+.toolsMenu {
+	max-height: calc(100dvh - 4.5rem);
+	overflow-y: auto;
+}
+
 /* the preset on screen, beside "Scale": the honest word in view while the panel is closed */
 .preset {
 	margin-inline-start: 0.375rem;

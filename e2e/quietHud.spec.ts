@@ -124,7 +124,7 @@ test("every control is two actions away, behind named entry points", async ({
 
 	await page.getByTestId("tools-menu").click()
 	const tools = page.locator("[data-tool]")
-	await expect(tools).toHaveCount(7)
+	await expect(tools).toHaveCount(9)
 	for (const id of [
 		"light",
 		"sky",
@@ -132,6 +132,8 @@ test("every control is two actions away, behind named entry points", async ({
 		"birthday",
 		"hunt",
 		"compare",
+		"walk",
+		"dictionary",
 		"postcard",
 	])
 		await expect(page.locator(`[data-tool=${id}]`)).toBeVisible()

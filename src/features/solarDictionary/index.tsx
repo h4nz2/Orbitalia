@@ -1,5 +1,6 @@
 import { FC, useMemo } from "react"
-import { Box } from "@mantine/core"
+import { Box, Button } from "@mantine/core"
+import { IconArrowLeft } from "@tabler/icons-react"
 import { getRouteApi } from "@tanstack/react-router"
 import {
 	useSolarDictionary,
@@ -7,6 +8,7 @@ import {
 	type Textures,
 } from "@/data/solarDictionary"
 import { bodyById } from "@/data"
+import { useBackToSolarSystem } from "@/hooks/useBackToSolarSystem"
 import { useI18n } from "@/i18n"
 import { CornerBar } from "@/features/help/HelpButton"
 import { bodyName } from "@/i18n/bodies"
@@ -15,6 +17,8 @@ import Navbar from "./components/Navbar"
 import { dictionaryBodyId } from "./utils/bodyId"
 import { getSidebarFacts, type FactKey } from "./utils/getSidebarLabels"
 import Stage from "./components/Stage"
+
+import classes from "./SolarDictionary.module.css"
 
 export type Texture = keyof Textures
 
@@ -62,6 +66,10 @@ const SolarDictionary: FC<SolarDictionaryProps> = () => {
 	const navigate = route.useNavigate()
 
 	const currentEntity = solarDict[activeEntityIndex]
+	// opened from a link: the solar system on the world this page shows
+	const back = useBackToSolarSystem(
+		currentEntity ? { focus: dictionaryBodyId(currentEntity) } : {},
+	)
 
 	// a valid texture name the body does not have (`?entity=1&texture=topo`) falls back to
 	// base for the menu and the stage alike, so the highlighted item is always the shown one
@@ -109,6 +117,18 @@ const SolarDictionary: FC<SolarDictionaryProps> = () => {
 	return (
 		<Box w="100%" h="100vh">
 			<CornerBar />
+			<Button
+				variant="subtle"
+				color="gray"
+				size="compact-md"
+				className={classes.back}
+				leftSection={<IconArrowLeft size={18} aria-hidden />}
+				aria-label={i18n.t("dictionary.back")}
+				onClick={back}
+				data-testid="dictionary-back"
+			>
+				<span className={classes.label}>{i18n.t("dictionary.back")}</span>
+			</Button>
 			<Navbar
 				activeEntityIndex={activeEntityIndex}
 				activeTexture={activeTexture}

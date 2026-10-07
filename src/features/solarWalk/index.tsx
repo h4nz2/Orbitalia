@@ -1,9 +1,17 @@
 import { Fragment, useId, useMemo } from "react"
 import { useNavigate, useSearch } from "@tanstack/react-router"
-import { Button, Group, SegmentedControl, Text, Title } from "@mantine/core"
+import {
+	Anchor,
+	Button,
+	Group,
+	SegmentedControl,
+	Text,
+	Title,
+} from "@mantine/core"
 import { useMediaQuery } from "@mantine/hooks"
 import { IconArrowLeft, IconPlanet, IconPrinter } from "@tabler/icons-react"
 
+import { useBackToSolarSystem } from "@/hooks/useBackToSolarSystem"
 import { useI18n } from "@/i18n"
 import { CornerBar } from "@/features/help/HelpButton"
 import { useBodyName } from "@/i18n/bodies"
@@ -51,6 +59,8 @@ const SolarWalk = () => {
 	const narrow = useMediaQuery("(max-width: 40em)") ?? false
 	const search = useSearch({ from: "/solar_walk" })
 	const navigate = useNavigate({ from: "/solar_walk" })
+	// opened from a link: the 3D model at the same true scale
+	const back = useBackToSolarSystem({ scale: "trueScale" })
 
 	const sunObject = search.sun ?? DEFAULT_SUN_OBJECT
 	const landmarkOption = search.landmark ?? DEFAULT_LANDMARK
@@ -82,14 +92,15 @@ const SolarWalk = () => {
 			</div>
 			<div className={classes.inner}>
 				<header className={classes.header}>
-					<AnchorLink
-						to="/solar_system"
-						search={{ scale: "trueScale" }}
+					<Anchor
+						component="button"
+						type="button"
+						onClick={back}
 						className={classes.back}
 					>
 						<IconArrowLeft size={16} aria-hidden />
 						{t("solarWalk.back")}
-					</AnchorLink>
+					</Anchor>
 					<Title order={1} className={classes.title}>
 						{titleText(walk, i18n)}
 					</Title>

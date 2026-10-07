@@ -245,6 +245,17 @@
 	color: var(--mantine-color-gray-0);
 }
 
+.tagline {
+	margin: -0.25rem 0 0;
+	font-size: var(--mantine-font-size-xl);
+	font-weight: 700;
+}
+
+.about {
+	max-width: 44rem;
+	color: var(--mantine-color-gray-3);
+}
+
 .creditIntro {
 	margin: 0.25rem 0 0.5rem;
 	font-size: var(--mantine-font-size-sm);

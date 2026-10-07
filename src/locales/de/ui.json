@@ -35,17 +35,6 @@
 		"text": "An dieser Adresse gibt es nichts.",
 		"back": "Zurück zu den Sternen"
 	},
-	"hero": {
-		"credits": "Mit Liebe gemacht von odi und hrj",
-		"tagline": "Zu den Sternen!",
-		"dictionary": "Lexikon",
-		"solarSystem": "Sonnensystem",
-		"tour": "Geführte Tour",
-		"birthday": "Geburtstag im Weltall",
-		"hunt": "Schnitzeljagd",
-		"solarWalk": "Planetenweg",
-		"skyTonight": "Was ist heute Nacht am Himmel?"
-	},
 	"units": {
 		"approx": "≈ {value}",
 		"au": "{value} AE",
@@ -72,6 +61,7 @@
 	},
 	"dictionary": {
 		"pick": "{name} anzeigen",
+		"back": "Zurück",
 		"textures": {
 			"label": "Verfügbare Texturen",
 			"base": "Oberfläche",
@@ -1343,13 +1333,20 @@
 		},
 		"hud": {
 			"tools": "Werkzeuge",
-			"toolsHint": "Lichtgeschwindigkeit, der Himmel heute Nacht, echte Raumsonden, dein Geburtstag, die Schnitzeljagd, Welten vergleichen und ein Bild machen: Alles öffnet sich hier.",
-			"toolsHint@simple": "Noch mehr zum Ausprobieren: Licht, der Himmel heute Nacht, Raumsonden, dein Geburtstag, eine Schatzsuche, Welten vergleichen und ein Foto machen.",
+			"toolsHint": "Lichtgeschwindigkeit, der Himmel heute Nacht, echte Raumsonden, dein Geburtstag, die Schnitzeljagd, Welten vergleichen, das Sonnensystem ablaufen, das Bildlexikon und ein Bild machen: Alles öffnet sich hier.",
+			"toolsHint@simple": "Noch mehr zum Ausprobieren: Licht, der Himmel heute Nacht, Raumsonden, dein Geburtstag, eine Schatzsuche, Welten vergleichen, das Sonnensystem ablaufen, das Planetenbuch und ein Foto machen.",
 			"entries": "Touren, Ebenen, Maßstab und Werkzeuge",
 			"close": "{panel} schließen",
 			"compare": "Nebeneinander",
 			"compareHint": "Die Welt, die du gerade ansiehst, neben einer anderen, in ihren wahren Größen",
 			"compareHint@simple": "Stell zwei Welten nebeneinander, gleich stark verkleinert, und sieh, welche größer ist",
+			"walk": "Das Sonnensystem ablaufen",
+			"walkHint": "Schrumpf die Sonne auf einen Basketball und lauf die Planeten auf dem Sportplatz ab",
+			"walkHint@simple": "Mach die Sonne so klein wie einen Ball und sieh, wie weit du zu jedem Planeten laufen musst",
+			"dictionary": "Bildlexikon",
+			"dictionary@simple": "Planetenbuch",
+			"dictionaryHint": "Eine Seite für die Sonne und jeden Planeten: ein großer drehender Globus, seine Oberflächenkarten und die wichtigsten Zahlen",
+			"dictionaryHint@simple": "Eine Seite für jeden Planeten, mit einem großen drehenden Bild",
 			"customScale": "Eigener",
 			"scaleButton": "Maßstab: {preset}",
 			"scaleHint": "Wie groß und wie weit auseinander die Welten gezeichnet sind, und wie weit das von der Wahrheit entfernt ist. Der wahre Maßstab ist einen Klick entfernt.",
@@ -1430,7 +1427,7 @@
 		}
 	},
 	"solarWalk": {
-		"back": "3D-Modell",
+		"back": "Zurück",
 		"title": "Wenn die Sonne {object} wäre …",
 		"lead": "… wäre die Erde {earth}, {earthDistance} entfernt. Jede Größe und jeder Abstand auf dieser Seite ist echt, nur alles gleich stark verkleinert, bis es auf einen Sportplatz passt. Nimm die Sonne mit nach draußen und lauf es ab.",
 		"lead@simple": "… wäre die Erde so klein wie {earth} und {earthDistance} weit weg! Nimm die Sonne mit nach draußen und lauf das Sonnensystem ab.",
@@ -1751,6 +1748,13 @@
 		"credits": {
 			"title": "Mitwirkende und Quellen",
 			"licence": "Lizenz: {licence}"
+		},
+		"about": {
+			"title": "Über Orbitalia",
+			"tagline": "Zu den Sternen!",
+			"text": "Orbitalia ist eine kostenlose App, mit der du das Sonnensystem erkundest: wie groß der Weltraum wirklich ist und wie sich alles darin bewegt. Sie ist für den Unterricht gemacht und für alle, die gern nach oben schauen.",
+			"text@simple": "Orbitalia ist eine kostenlose App, mit der du den Weltraum entdeckst: wie groß er ist und wie sich alles darin bewegt.",
+			"madeBy": "Mit Liebe gemacht von odi und hrj."
 		},
 		"readingLevel": "Du liest die Version „{level}“. Sprache und Lesestufe änderst du im Menü oben rechts.",
 		"shortcutsLink": "Alle Funktionen und wie du sie nutzt: die Hilfeseite öffnen"

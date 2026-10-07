@@ -192,7 +192,6 @@ describe("the help page's words (src/locales/<locale>/help.json)", () => {
 
 /** The schema of each page a "try it" link may open. */
 const SCHEMAS: Record<TryRoute, z.ZodType> = {
-	"/": helpSearchSchema.pick({}),
 	"/solar_system": simSearchSchema,
 	"/solar_dictionary": dictionarySearchSchema,
 	"/solar_walk": solarWalkSearchSchema,

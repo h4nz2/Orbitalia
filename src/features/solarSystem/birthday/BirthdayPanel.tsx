@@ -452,8 +452,8 @@ const Results = ({
 /**
  * "Your birthday in space" (issue #26): a non-modal panel beside the scene, so
  * the planets can be watched gliding back to the birth date while the ages
- * are read. Loaded lazily with the calendar; opened from the time controls,
- * the hero page or `?birthday=true`.
+ * are read. Loaded lazily with the calendar; opened from Tools or
+ * `?birthday=true`.
  */
 const BirthdayPanel = () => {
 	const { t } = useI18n()

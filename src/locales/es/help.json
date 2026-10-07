@@ -196,7 +196,7 @@
 				"standard": [
 					"Arriba a la izquierda: el botón de la casa (volver a todo el sistema), el nombre del mundo que ves y su ficha; la flecha de la ficha abre sus datos, lunas e historias.",
 					"Abajo: reproducir, pausar y la fecha; el botón con la velocidad (como 1x) abre «Ahora», las velocidades y la rotación.",
-					"Abajo a la derecha: Visitas, Capas (lo que se dibuja), Escala (qué tamaño y a qué distancia) y Herramientas (la velocidad de la luz, el cielo de esta noche, naves, tu cumpleaños, la búsqueda del tesoro, lado a lado y hacer una foto). Solo se abre un panel a la vez; la × lo cierra.",
+					"Abajo a la derecha: Visitas, Capas (lo que se dibuja), Escala (qué tamaño y a qué distancia) y Herramientas (la velocidad de la luz, el cielo de esta noche, naves, tu cumpleaños, la búsqueda del tesoro, lado a lado, recorrer el sistema solar a pie, el diccionario visual y hacer una foto). Solo se abre un panel a la vez; la × lo cierra.",
 					"Arriba a la derecha: Presentar, Compartir, el ojo tachado que lo oculta todo (H lo devuelve), el sonido, Ayuda y el idioma."
 				],
 				"simple": [
@@ -503,10 +503,11 @@
 			},
 			"how": {
 				"standard": [
-					"Ábrelo desde la página de inicio o con «Leer más en el diccionario» en la ficha de un mundo.",
+					"Abre Herramientas abajo a la derecha y elige «Diccionario visual»: se abre en el mundo que estás mirando. O pulsa «Leer más en el diccionario» en la ficha de un mundo.",
 					"Elige un mundo en la fila de puntos de arriba y luego Superficie, Relieve, Océanos o Nubes, si los tiene."
 				],
 				"simple": [
+					"Pulsa Herramientas y luego «Libro de los planetas».",
 					"Elige un planeta en la fila de puntos de arriba.",
 					"Prueba Relieve y Nubes para cambiar el dibujo."
 				]
@@ -755,11 +756,12 @@
 			},
 			"how": {
 				"standard": [
-					"Ábrela desde la página de inicio o con «Recórrelo a pie» en el panel Escala, a escala real.",
+					"Abre Herramientas abajo a la derecha y elige «Recorre el sistema solar a pie», o pulsa «Recórrelo a pie» en el panel Escala, a escala real.",
 					"Elige qué es el Sol (una naranja, un balón de fútbol, un balón de baloncesto, una pelota de gimnasia) y un lugar conocido con el que comparar.",
 					"Cambia a Tabla y pulsa Imprimir para llevártela afuera."
 				],
 				"simple": [
+					"Pulsa Herramientas y luego «Recorre el sistema solar a pie».",
 					"Elige una pelota para el Sol.",
 					"Lee cuánto tienes que caminar hasta cada planeta.",
 					"Imprime la tabla y haz el paseo afuera."
@@ -1261,7 +1263,7 @@
 		"mantine": "Botones, menús, calendarios y cuadros de diálogo.",
 		"tabler": "Los iconos.",
 		"tanstack": "Las páginas y los enlaces que guardan cada vista.",
-		"gsap": "Animaciones de la página de inicio y del diccionario.",
+		"gsap": "Las transiciones entre páginas y las animaciones del diccionario.",
 		"smallLibraries": "Estado de la aplicación, comprobación de datos, fechas, códigos QR y traducciones con plurales.",
 		"orbitalia": "Hecho por las personas que colaboran en Orbitalia. Cualquiera puede añadir una función, una visita guiada o una traducción."
 	},

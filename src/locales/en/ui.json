@@ -35,17 +35,6 @@
 		"text": "There is nothing at this address.",
 		"back": "Back to the stars"
 	},
-	"hero": {
-		"credits": "Made with love by odi and hrj",
-		"tagline": "To the stars!",
-		"dictionary": "Dictionary",
-		"solarSystem": "Solar Model",
-		"tour": "Take a guided tour",
-		"birthday": "Your birthday in space",
-		"hunt": "Scavenger hunt",
-		"solarWalk": "Walk the solar system",
-		"skyTonight": "What is in the sky tonight?"
-	},
 	"units": {
 		"approx": "≈ {value}",
 		"au": "{value} AU",
@@ -72,6 +61,7 @@
 	},
 	"dictionary": {
 		"pick": "Show {name}",
+		"back": "Back",
 		"textures": {
 			"label": "Available textures",
 			"base": "Surface",
@@ -1343,13 +1333,20 @@
 		},
 		"hud": {
 			"tools": "Tools",
-			"toolsHint": "Speed of light, tonight's sky, real spacecraft, your birthday, the scavenger hunt, comparing worlds and taking a picture: each opens here.",
-			"toolsHint@simple": "More things to try: light, tonight's sky, spacecraft, your birthday, a treasure hunt, comparing worlds and taking a picture.",
+			"toolsHint": "Speed of light, tonight's sky, real spacecraft, your birthday, the scavenger hunt, comparing worlds, walking the solar system, the picture dictionary and taking a picture: each opens here.",
+			"toolsHint@simple": "More things to try: light, tonight's sky, spacecraft, your birthday, a treasure hunt, comparing worlds, walking the solar system, the planet book and taking a picture.",
 			"entries": "Tours, layers, scale and tools",
 			"close": "Close {panel}",
 			"compare": "Side by side",
 			"compareHint": "The world you are looking at beside another, at their true sizes",
 			"compareHint@simple": "Put two worlds next to each other, shrunk the same, to see which is bigger",
+			"walk": "Walk the solar system",
+			"walkHint": "Shrink the Sun to a basketball and pace out the planets on a school field",
+			"walkHint@simple": "Make the Sun as small as a ball and see how far you must walk to each planet",
+			"dictionary": "Picture dictionary",
+			"dictionary@simple": "Planet book",
+			"dictionaryHint": "A page for the Sun and each planet: a big turning globe, its surface maps and the key numbers",
+			"dictionaryHint@simple": "A page for every planet, with a big spinning picture",
 			"customScale": "Custom",
 			"scaleButton": "Scale: {preset}",
 			"scaleHint": "How big and how far apart the worlds are drawn, and how far that is from the truth. True scale is one click away.",
@@ -1430,7 +1427,7 @@
 		}
 	},
 	"solarWalk": {
-		"back": "3D model",
+		"back": "Back",
 		"title": "If the Sun were {object}…",
 		"lead": "…Earth would be {earth}, {earthDistance} away. Every size and distance on this page is the real one, shrunk by the same amount to fit a school field. Take the Sun outside and walk it.",
 		"lead@simple": "…Earth would be as small as {earth} and {earthDistance} away! Take the Sun outside and walk the solar system.",
@@ -1751,6 +1748,13 @@
 		"credits": {
 			"title": "Credits and sources",
 			"licence": "Licence: {licence}"
+		},
+		"about": {
+			"title": "About Orbitalia",
+			"tagline": "To the stars!",
+			"text": "Orbitalia is a free app for exploring the solar system: how big space really is, and how everything in it moves. It is made for classrooms, and for anyone who loves to look up.",
+			"text@simple": "Orbitalia is a free app for exploring space: how big it is, and how everything in it moves.",
+			"madeBy": "Made with love by odi and hrj."
 		},
 		"readingLevel": "You are reading the {level} version. Change the language and reading level in the menu at the top right.",
 		"shortcutsLink": "Every feature and how to use it: open the help page"

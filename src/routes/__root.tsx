@@ -34,7 +34,7 @@ function NotFound() {
 				<Text c="dimmed">{t("notFound.text")}</Text>
 				<Button
 					component={Link}
-					to="/"
+					to="/solar_system"
 					variant="gradient"
 					gradient={{ from: "yellow", to: "red" }}
 				>

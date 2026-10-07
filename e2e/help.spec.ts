@@ -42,7 +42,6 @@ test("the help page is one click away from every page, in the same place", async
 	test.slow()
 	const errors = collectErrors(page)
 	for (const path of [
-		"/",
 		"/solar_dictionary",
 		"/solar_walk",
 		"/compare?bodies=earth,sun",

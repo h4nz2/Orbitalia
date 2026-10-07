@@ -40,8 +40,8 @@ export interface CornerBarProps {
 }
 
 /**
- * The top-right corner of pages without the 3D scene's HUD (start page,
- * dictionary, walk, comparison, not found, help): help and the language menu.
+ * The top-right corner of pages without the 3D scene's HUD (dictionary, walk,
+ * comparison, not found, help): help and the language menu.
  * The solar system puts the same two buttons at the end of its teacher bar.
  */
 export function CornerBar({ help = true }: CornerBarProps) {

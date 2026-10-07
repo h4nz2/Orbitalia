@@ -9,8 +9,9 @@
 import { useLayoutEffect, useMemo, useState } from "react"
 import { Box, Button } from "@mantine/core"
 import { IconArrowLeft } from "@tabler/icons-react"
-import { getRouteApi, useCanGoBack, useRouter } from "@tanstack/react-router"
+import { getRouteApi } from "@tanstack/react-router"
 
+import { useBackToSolarSystem } from "@/hooks/useBackToSolarSystem"
 import { useI18n } from "@/i18n"
 import { CornerBar } from "@/features/help/HelpButton"
 import { useBodyName } from "@/i18n/bodies"
@@ -39,8 +40,6 @@ const Compare = () => {
 	const name = useBodyName()
 	const search = route.useSearch()
 	const navigate = route.useNavigate()
-	const router = useRouter()
-	const canGoBack = useCanGoBack()
 	const ids = useMemo(
 		() => completeBodies(parseBodies(search.bodies)),
 		[search.bodies],
@@ -67,10 +66,7 @@ const Compare = () => {
 		}
 	}, [search.bodies, listed, navigate])
 
-	const back = () => {
-		if (canGoBack) router.history.back()
-		else void navigate({ to: "/solar_system", search: { focus: ids[0] } })
-	}
+	const back = useBackToSolarSystem({ focus: ids[0] })
 
 	return (
 		<main className={classes.page} data-testid="compare-page">

@@ -9,6 +9,7 @@ import type { ReactNode } from "react"
 import { Button, Menu, Text } from "@mantine/core"
 import {
 	IconBolt,
+	IconBook,
 	IconCake,
 	IconCamera,
 	IconMapSearch,
@@ -16,6 +17,7 @@ import {
 	IconSatellite,
 	IconScale,
 	IconTools,
+	IconWalk,
 } from "@tabler/icons-react"
 import { useNavigate } from "@tanstack/react-router"
 
@@ -33,11 +35,20 @@ import { useSkyTonightStore } from "@/store/skyTonight"
 import { takePostcard } from "../postcard/take"
 import { openSky } from "../skyTonight/SkyTonight"
 import { cardBodyId } from "../ui/BodyInfo"
+import { nearestDictionaryEntry } from "../ui/dictionaryEntry"
 
 import classes from "./Dock.module.css"
 
 export type ToolId =
-	"light" | "sky" | "birthday" | "hunt" | "spacecraft" | "compare" | "postcard"
+	| "light"
+	| "sky"
+	| "birthday"
+	| "hunt"
+	| "spacecraft"
+	| "compare"
+	| "walk"
+	| "dictionary"
+	| "postcard"
 
 interface Tool {
 	readonly id: ToolId
@@ -85,6 +96,18 @@ export const TOOLS: readonly Tool[] = [
 		description: "solarSystem.hud.compareHint",
 	},
 	{
+		id: "walk",
+		icon: <IconWalk size={18} aria-hidden />,
+		label: "solarSystem.hud.walk",
+		description: "solarSystem.hud.walkHint",
+	},
+	{
+		id: "dictionary",
+		icon: <IconBook size={18} aria-hidden />,
+		label: "solarSystem.hud.dictionary",
+		description: "solarSystem.hud.dictionaryHint",
+	},
+	{
 		id: "postcard",
 		icon: <IconCamera size={18} aria-hidden />,
 		label: "solarSystem.postcard.take",
@@ -92,7 +115,7 @@ export const TOOLS: readonly Tool[] = [
 	},
 ]
 
-/** Whether a tool's panel is on screen (compare and the picture open no panel). */
+/** Whether a tool's panel is on screen (the pages and the picture open no panel). */
 function useOpenTool(): ToolId | null {
 	const light = useLightStore((state) => state.open)
 	const sky = useSkyTonightStore((state) => state.open)
@@ -137,6 +160,18 @@ const ToolsMenu = () => {
 				})
 				return
 			}
+			case "walk":
+				void navigate({ to: "/solar_walk" })
+				return
+			case "dictionary": {
+				const state = useSimStore.getState()
+				const entry = nearestDictionaryEntry(cardBodyId(state) ?? state.focusId)
+				void navigate({
+					to: "/solar_dictionary",
+					search: { entity: entry === 0 ? undefined : entry },
+				})
+				return
+			}
 			case "postcard":
 				takePostcard()
 				return
@@ -158,7 +193,7 @@ const ToolsMenu = () => {
 						{t("solarSystem.hud.tools")}
 					</Button>
 				</Menu.Target>
-				<Menu.Dropdown>
+				<Menu.Dropdown className={classes.toolsMenu}>
 					<Menu.Label>{t("solarSystem.hud.tools")}</Menu.Label>
 					{TOOLS.map((tool) => (
 						<Menu.Item

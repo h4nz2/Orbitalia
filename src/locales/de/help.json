@@ -196,7 +196,7 @@
 				"standard": [
 					"Oben links: der Haus-Knopf (zurück zum ganzen System), der Name der Welt im Blick und ihr Steckbrief; der Pfeil im Steckbrief klappt Fakten, Monde und Geschichten auf.",
 					"Unten: Abspielen, Pause und das Datum; der Knopf mit dem Tempo (zum Beispiel 1x) öffnet „Jetzt“, die Tempi und die Drehung.",
-					"Unten rechts: Touren, Ebenen (was gezeichnet wird), Maßstab (wie groß und wie weit) und Werkzeuge (Lichtgeschwindigkeit, der Himmel heute Nacht, Raumsonden, dein Geburtstag, die Schnitzeljagd, Nebeneinander und ein Foto). Es ist immer nur ein Feld offen; × schließt es.",
+					"Unten rechts: Touren, Ebenen (was gezeichnet wird), Maßstab (wie groß und wie weit) und Werkzeuge (Lichtgeschwindigkeit, der Himmel heute Nacht, Raumsonden, dein Geburtstag, die Schnitzeljagd, Nebeneinander, das Sonnensystem ablaufen, das Bildlexikon und ein Foto). Es ist immer nur ein Feld offen; × schließt es.",
 					"Oben rechts: Präsentieren, Teilen, das durchgestrichene Auge, das alles ausblendet (H holt es zurück), Ton, Hilfe und die Sprache."
 				],
 				"simple": [
@@ -503,10 +503,11 @@
 			},
 			"how": {
 				"standard": [
-					"Öffne es auf der Startseite oder mit „Mehr dazu im Lexikon“ im Steckbrief einer Welt.",
+					"Öffne unten rechts „Werkzeuge“ und wähle „Bildlexikon“: Es zeigt die Welt, die du gerade ansiehst. Oder drück „Mehr dazu im Lexikon“ im Steckbrief einer Welt.",
 					"Wähle eine Welt in der Punktreihe oben, dann „Oberfläche“, „Gelände“, „Ozeane“ oder „Wolken“, wo es sie gibt."
 				],
 				"simple": [
+					"Drück auf „Werkzeuge“ und dann auf „Planetenbuch“.",
 					"Wähl oben in der Punktreihe einen Planeten.",
 					"Probier „Gelände“ und „Wolken“ aus, dann verändert sich das Bild."
 				]
@@ -755,11 +756,12 @@
 			},
 			"how": {
 				"standard": [
-					"Öffne den Planetenweg auf der Startseite, oder im echten Maßstab mit „Lauf es ab“ im Feld „Maßstab“.",
+					"Öffne unten rechts „Werkzeuge“ und wähle „Das Sonnensystem ablaufen“, oder im echten Maßstab „Lauf es ab“ im Feld „Maßstab“.",
 					"Wähle, was die Sonne ist (eine Orange, ein Fußball, ein Basketball, ein Gymnastikball), und bei „Vergleichen mit“ etwas, woran du die Strecken messen kannst.",
 					"Wechsle zu „Tabelle“ und drucke sie mit „Drucken“ aus, um sie mit nach draußen zu nehmen."
 				],
 				"simple": [
+					"Drück auf „Werkzeuge“ und dann auf „Das Sonnensystem ablaufen“.",
 					"Wähl einen Ball für die Sonne.",
 					"Lies, wie weit du zu jedem Planeten laufen musst.",
 					"Druck die Tabelle aus und lauf draußen los."
@@ -1261,7 +1263,7 @@
 		"mantine": "Knöpfe, Menüs, Kalender und Dialoge.",
 		"tabler": "Die Symbole.",
 		"tanstack": "Die Seiten und die Links, die jede Ansicht festhalten.",
-		"gsap": "Animationen auf der Startseite und im Lexikon.",
+		"gsap": "Seitenübergänge und die Animationen im Lexikon.",
 		"smallLibraries": "App-Zustand, Datenprüfungen, Datumsangaben, QR-Codes und Übersetzungen mit Pluralformen.",
 		"orbitalia": "Gemacht von den Mitwirkenden an Orbitalia. Alle können eine Funktion, eine Tour oder eine Übersetzung beitragen."
 	},

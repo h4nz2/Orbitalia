@@ -10,7 +10,6 @@ import { defaultParseSearch } from "@tanstack/react-router"
 
 /** The pages a "try it" link may open. */
 export const TRY_ROUTES = [
-	"/",
 	"/solar_system",
 	"/solar_dictionary",
 	"/solar_walk",
