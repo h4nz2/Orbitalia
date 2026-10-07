@@ -4,7 +4,13 @@
  * the belt really is, and what a comet is doing right now.
  */
 import { belts, type Belt, type Body } from "@/data"
-import type { I18n } from "@/i18n"
+import {
+	distanceInWords,
+	durationInWords,
+	formatCount,
+	isSimple,
+	type I18n,
+} from "@/i18n"
 import { AU_KM, jdToDate, propagate, type Vec3 } from "@/sim"
 import {
 	activityAt,
@@ -41,8 +47,12 @@ export function beltOf(body: Pick<Body, "orbit" | "parentId">): Belt | null {
 	)
 }
 
-/** A length for a sentence: "1 million km", "60 million km", "400,000 km". */
+/**
+ * A length for a sentence: "1 million km", "60 million km", "400,000 km";
+ * at the simple level in words ("26 times as far as the Moon is from Earth", #51).
+ */
 export function lengthText(km: number, i18n: I18n): string {
+	if (isSimple(i18n)) return distanceInWords(km, i18n)
 	return km >= 1e6
 		? i18n.t("units.millionKm", { value: roughly(km / 1e6) })
 		: i18n.quantity(roughly(km), "kilometer")
@@ -57,17 +67,21 @@ export interface BeltSentences {
 
 /** What a belt's dots stand for and how far apart its members really are. */
 export function beltSentences(belt: Belt, i18n: I18n): BeltSentences {
+	const perDot = roughly(belt.members.count / belt.dots)
+	const moons = roughly(belt.meanSeparationKm / EARTH_MOON_KM)
 	return {
 		name: i18n.t("solarSystem.smallBodies.beltName", { belt: belt.id }),
 		perDot: i18n.t("solarSystem.smallBodies.perDot", {
 			belt: belt.id,
-			count: roughly(belt.members.count / belt.dots),
+			count: perDot,
+			n: formatCount(perDot, i18n),
 			size: i18n.quantity(belt.members.minDiameterKm, "kilometer"),
 			total: i18n.number(belt.members.count),
 		}),
 		spacing: i18n.t("solarSystem.smallBodies.spacing", {
 			distance: lengthText(belt.meanSeparationKm, i18n),
-			moons: roughly(belt.meanSeparationKm / EARTH_MOON_KM),
+			moons,
+			n: formatCount(moons, i18n),
 		}),
 		dotSize: i18n.t("solarSystem.smallBodies.dotSize"),
 	}
@@ -100,9 +114,9 @@ export function cometSentences(
 	const direction = Math.hypot(later.x, later.y, later.z) < r ? "in" : "out"
 	const au = r / AU_KM
 	const where = i18n.t("solarSystem.smallBodies.comet.where", {
-		distance: i18n.t("units.au", {
-			value: i18n.significant(au, au < 10 ? 2 : 3),
-		}),
+		distance: isSimple(i18n)
+			? distanceInWords(r, i18n)
+			: i18n.t("units.au", { value: i18n.significant(au, au < 10 ? 2 : 3) }),
 		direction,
 	})
 	// the longer of its tails (67P grew only a dust tail, Encke only a gas tail)
@@ -128,10 +142,14 @@ export function cometSentences(
 	const day = (at: number) => formatDayUTC(jdToDate(at), i18n.formatLocale)
 	const perihelion =
 		next <= LATEST_WATCH_JD
-			? i18n.t("solarSystem.smallBodies.comet.next", { date: day(next) })
+			? i18n.t("solarSystem.smallBodies.comet.next", {
+					date: day(next),
+					duration: durationInWords((next - jd) * 86_400, i18n),
+				})
 			: i18n.t("solarSystem.smallBodies.comet.last", {
 					date: day(previousPerihelionJD(orbit, jd)),
 					years: roughly((next - jd) / 365.25),
+					duration: durationInWords((next - jd) * 86_400, i18n),
 				})
 	return { where, tail, perihelion }
 }

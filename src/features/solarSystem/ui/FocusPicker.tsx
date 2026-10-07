@@ -17,7 +17,7 @@ import {
 	sun,
 	type Body,
 } from "@/data"
-import { useI18n, type I18n } from "@/i18n"
+import { formatSize, isSimple, useI18n, type I18n } from "@/i18n"
 import { bodyName } from "@/i18n/bodies"
 import { allMoonsShown, useSimStore } from "@/store/sim"
 
@@ -106,13 +106,18 @@ const FocusPicker = () => {
 		option,
 	}: ComboboxLikeRenderOptionInput<ComboboxItem>) => {
 		const body = bodyById.get(option.value)
-		const radius = body && i18n.quantity(body.radiusKm, "kilometer")
+		// the simple level: a size word ("huge") instead of the kilometres (#51)
+		const radius =
+			body &&
+			(isSimple(i18n)
+				? formatSize(2 * body.radiusKm, i18n)
+				: i18n.quantity(body.radiusKm, "kilometer"))
 		return (
 			<span className={classes.option}>
 				<span>{option.label}</span>
 				{body !== undefined && radius !== undefined && (
 					<span className={classes.meta}>
-						{body.radiusEstimated
+						{body.radiusEstimated && !isSimple(i18n)
 							? t("units.approx", { value: radius })
 							: radius}
 					</span>

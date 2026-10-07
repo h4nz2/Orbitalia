@@ -18,7 +18,7 @@
 		"readingLevel": {
 			"simple": {
 				"name": "Einfach",
-				"description": "8–11 Jahre: kurze Sätze, Vergleiche aus dem Alltag"
+				"description": "6–11 Jahre: kurze Sätze, Vergleiche statt großer Zahlen"
 			},
 			"standard": {
 				"name": "Standard",
@@ -46,9 +46,105 @@
 		"approx": "≈ {value}",
 		"au": "{value} AE",
 		"gravity": "{value} m/s²",
-		"kelvin": "{value} K",
 		"millionKm": "{value} Mio. km",
 		"billionKm": "{value} Mrd. km"
+	},
+	"quantity": {
+		"moreThan": "mehr als {limit, number}",
+		"temperature": {
+			"hotterThanSun": "heißer als die Oberfläche der Sonne",
+			"fire": "viel heißer als jedes Feuer",
+			"oven": "heißer als ein Backofen",
+			"boiling": "heißer als kochendes Wasser",
+			"desert": "so heiß wie die heißeste Wüste",
+			"warm": "warm wie ein Sommertag",
+			"mild": "nicht zu heiß und nicht zu kalt",
+			"chilly": "kalt wie ein Wintertag",
+			"freezer": "kälter als jede Tiefkühltruhe",
+			"colderThanEarth": "kälter als irgendwo auf der Erde",
+			"airFreezes": "so kalt, dass Luft gefrieren würde"
+		},
+		"temperatureRange": "von {min} bis {max}",
+		"celsius": "{big, select, other {{value} °C}}",
+		"kelvin": "{big, select, other {{kelvin} K ({celsius} °C)}}",
+		"size": {
+			"gigantic": "gigantisch",
+			"huge": "riesig",
+			"big": "groß",
+			"small": "klein",
+			"tiny": "winzig"
+		},
+		"sizeVsEarth": {
+			"wider": "{count, plural, one {so breit wie {n} Erde} other {so breit wie {n} Erden}}",
+			"similar": "etwa so breit wie die Erde",
+			"narrower": "so klein, dass {n} davon quer über die Erde passen würden"
+		},
+		"everyday": "{fit, select, smaller {Wäre die Erde so klein wie {earth}, wäre {bodyId, select, sun {die Sonne} venus {die Venus} moon {der Mond} other {{body}}} noch kleiner als {thing}} bigger {Wäre die Erde so klein wie {earth}, wäre {bodyId, select, sun {die Sonne} venus {die Venus} moon {der Mond} other {{body}}} noch größer als {thing}} other {Wäre die Erde so klein wie {earth}, wäre {bodyId, select, sun {die Sonne} venus {die Venus} moon {der Mond} other {{body}}} so groß wie {thing}}}",
+		"thing": {
+			"fineSand": "ein feines Sandkorn",
+			"salt": "ein Salzkorn",
+			"sugar": "ein Zuckerkorn",
+			"poppySeed": "ein Mohnkorn",
+			"pinhead": "ein Stecknadelkopf",
+			"peppercorn": "ein Pfefferkorn",
+			"pea": "eine Erbse",
+			"marble": "eine Murmel",
+			"cherry": "eine Kirsche",
+			"walnut": "eine Walnuss",
+			"tableTennisBall": "ein Tischtennisball",
+			"tennisBall": "ein Tennisball",
+			"orange": "eine Orange",
+			"grapefruit": "eine Grapefruit",
+			"melon": "eine kleine Melone",
+			"football": "ein Fußball",
+			"exerciseBall": "ein Gymnastikball",
+			"house": "ein Haus"
+		},
+		"distance": {
+			"lessThanEarth": "nicht einmal so weit, wie die Erde breit ist",
+			"earths": "{count, plural, =1 {so weit, wie die Erde breit ist} one {so weit wie {n} Erde in einer Reihe} other {so weit wie {n} Erden in einer Reihe}}",
+			"moons": "{n}-mal so weit wie der Mond von der Erde",
+			"partOfSun": "{part, select, quarter {etwa ein Viertel so weit wie die Erde von der Sonne} third {etwa ein Drittel so weit wie die Erde von der Sonne} half {etwa halb so weit wie die Erde von der Sonne} other {etwa drei Viertel so weit wie die Erde von der Sonne}}",
+			"sun": "etwa so weit wie die Erde von der Sonne",
+			"suns": "{n}-mal so weit wie die Erde von der Sonne"
+		},
+		"unit": {
+			"second": "{count, plural, one {# Sekunde} other {# Sekunden}}",
+			"minute": "{count, plural, one {# Minute} other {# Minuten}}",
+			"hour": "{count, plural, one {# Stunde} other {# Stunden}}",
+			"day": "{count, plural, one {# Tag} other {# Tage}}",
+			"month": "{count, plural, one {# Monat} other {# Monate}}",
+			"year": "{count, plural, one {# Jahr} other {# Jahre}}"
+		},
+		"duration": {
+			"lessThanSecond": "weniger als eine Sekunde",
+			"lifetimes": "{count, plural, one {{n} langes Menschenleben} other {{n} lange Menschenleben}}",
+			"pyramids": "länger, als es die Pyramiden gibt",
+			"people": "länger, als es Menschen gibt",
+			"dinosaurs": "länger als seit dem Aussterben der Dinosaurier"
+		},
+		"dayVsEarth": {
+			"longer": "{count, plural, one {Ein Tag dort dauert so lange wie {n} Tag zu Hause} other {Ein Tag dort dauert so lange wie {n} Tage zu Hause}}",
+			"similar": "Ein Tag dort dauert etwa so lange wie zu Hause",
+			"shorter": "Ein Tag dort dauert nur {time}"
+		},
+		"yearVsEarth": {
+			"longer": "{count, plural, one {Ein Jahr dort dauert so lange wie {n} Jahr zu Hause} other {Ein Jahr dort dauert so lange wie {n} Jahre zu Hause}}",
+			"similar": "Ein Jahr dort dauert etwa so lange wie zu Hause",
+			"shorter": "{count, plural, one {In einem Jahr zu Hause vergeht dort {n} Jahr} other {In einem Jahr zu Hause vergehen dort {n} Jahre}}"
+		},
+		"weightVsEarth": {
+			"more": "{count, plural, =2 {Du würdest doppelt so viel wiegen wie zu Hause} one {Du würdest {n}-mal so viel wiegen wie zu Hause} other {Du würdest {n}-mal so viel wiegen wie zu Hause}}",
+			"similar": "Du würdest etwa so viel wiegen wie zu Hause",
+			"less": "Du wärst {n}-mal leichter als zu Hause"
+		},
+		"weight": "{n} kg",
+		"massVsEarth": {
+			"more": "{count, plural, one {wiegt so viel wie {n} Erde} other {wiegt so viel wie {n} Erden}}",
+			"similar": "wiegt etwa so viel wie die Erde",
+			"less": "erst {n} davon wiegen so viel wie die Erde"
+		},
+		"speed": "{n} km in jeder Sekunde"
 	},
 	"bodies": {
 		"kind": {
@@ -61,8 +157,8 @@
 			"comet": "Komet"
 		},
 		"fallback": {
-			"moonDescription": "{name} ist ein Mond {parentId, select, earth {der Erde} eris {der Eris} haumea {der Haumea} other {des {parent}}}. Er hat einen Durchmesser von etwa {diameter} und umrundet {parentId, select, pluto {seinen Zwergplaneten} eris {seinen Zwergplaneten} haumea {seinen Zwergplaneten} makemake {seinen Zwergplaneten} other {seinen Planeten}} einmal in {period}.",
-			"moonDescription@simple": "{name} ist einer der Monde, die {parentId, select, earth {die Erde} eris {die Eris} haumea {die Haumea} other {den {parent}}} umkreisen. Er ist etwa {diameter} breit.",
+			"moonDescription": "{name} ist ein Mond {parentId, select, earth {der Erde} eris {der Eris} haumea {der Haumea} other {des {parent}}}. Er hat einen Durchmesser von etwa {diameter} und braucht {period} für eine Runde um {parentId, select, pluto {seinen Zwergplaneten} eris {seinen Zwergplaneten} haumea {seinen Zwergplaneten} makemake {seinen Zwergplaneten} other {seinen Planeten}}.",
+			"moonDescription@simple": "{name} ist einer der Monde, die {parentId, select, earth {die Erde} eris {die Eris} haumea {die Haumea} other {den {parent}}} umkreisen. {everyday}.",
 			"moonDescription@advanced": "{name} umläuft {parentId, select, earth {die Erde} eris {die Eris} haumea {die Haumea} other {den {parent}}} in einem mittleren Abstand von {distance} mit einer Umlaufzeit von {period}. Sein mittlerer Durchmesser beträgt etwa {diameter}."
 		}
 	},
@@ -86,40 +182,34 @@
 		},
 		"compare": {
 			"sizeBigger": "{count, plural, one {Die Erde passt # Mal hinein.} other {Die Erde passt # Mal hinein.}}",
-			"sizeBigger@simple": "{count, plural, one {# Erde würde hineinpassen!} other {# Erden würden hineinpassen!}}",
+			"sizeBigger@simple": "{count, plural, one {{n} Erde würde hineinpassen!} other {{n} Erden würden hineinpassen!}}",
 			"sizeBigger@advanced": "{count, plural, one {Das Volumen entspricht dem der Erde.} other {Das Volumen ist etwa #-mal so groß wie das der Erde.}}",
 			"sizeSmaller": "{count, plural, one {Die Erde ist etwa gleich groß.} other {Die Erde ist etwa #-mal so groß.}}",
-			"sizeSmaller@simple": "{count, plural, one {Genauso groß wie die Erde!} other {# davon würden in die Erde passen!}}",
+			"sizeSmaller@simple": "{count, plural, one {Genauso groß wie die Erde!} other {{n} davon würden in die Erde passen!}}",
 			"sizeSmaller@advanced": "{count, plural, one {Die Erde hat dasselbe Volumen.} other {Die Erde hat etwa das #-fache Volumen.}}",
 			"sizeSimilar": "Die Größe ist ähnlich wie die unseres Planeten.",
 			"sizeSimilar@simple": "Fast genauso groß wie die Erde!",
 			"sizeSimilar@advanced": "Das Volumen liegt nahe bei dem der Erde.",
 			"dayLonger": "{days, plural, one {Ein Tag dort dauert # Erdtag.} other {Ein Tag dort dauert # Erdtage.}}",
-			"dayLonger@simple": "{days, plural, one {Ein Tag dort ist so lang wie # Tag auf der Erde!} other {Ein Tag dort ist so lang wie # Tage auf der Erde!}}",
 			"dayLonger@advanced": "{days, plural, one {Von einem Sonnenaufgang zum nächsten vergeht # Erdtag.} other {Von einem Sonnenaufgang zum nächsten vergehen # Erdtage.}}",
 			"dayShorter": "{hours, plural, one {Ein Tag dort dauert nur # Stunde.} other {Ein Tag dort dauert nur # Stunden.}}",
-			"dayShorter@simple": "{hours, plural, one {Ein Tag dort ist schon nach # Stunde vorbei!} other {Ein Tag dort ist schon nach # Stunden vorbei!}}",
 			"dayShorter@advanced": "{hours, plural, one {Ein Sonnentag dauert nur # Stunde, {fraction, number, ::percent} eines Erdtages.} other {Ein Sonnentag dauert nur # Stunden, {fraction, number, ::percent} eines Erdtages.}}",
 			"daySimilar": "Ein Tag dort ist etwa so lang wie auf der Erde.",
-			"daySimilar@simple": "Ein Tag dort ist fast so lang wie ein Tag auf der Erde!",
 			"daySimilar@advanced": "{minutes, plural, one {Der Sonnentag weicht nur um # Minute von dem der Erde ab.} other {Der Sonnentag weicht nur um # Minuten von dem der Erde ab.}}",
 			"yearLonger": "{years, plural, one {Ein Jahr dort dauert # Erdjahr – eine lange Wartezeit auf den nächsten Geburtstag!} other {Ein Jahr dort dauert # Erdjahre – eine lange Wartezeit auf den nächsten Geburtstag!}}",
-			"yearLonger@simple": "{years, plural, one {Du müsstest # Jahr auf deinen nächsten Geburtstag warten!} other {Du müsstest # Jahre auf deinen nächsten Geburtstag warten!}}",
 			"yearLonger@advanced": "{years, plural, one {Die Umlaufzeit beträgt etwa # Erdjahr.} other {Die Umlaufzeit beträgt etwa # Erdjahre.}}",
 			"yearLongerDays": "{days, plural, one {Du würdest # Tag länger auf deinen Geburtstag warten.} other {Du würdest # Tage länger auf deinen Geburtstag warten.}}",
-			"yearLongerDays@simple": "{days, plural, one {Du müsstest # Tag länger auf deinen Geburtstag warten!} other {Du müsstest # Tage länger auf deinen Geburtstag warten!}}",
 			"yearLongerDays@advanced": "{days, plural, one {Das Jahr ist # Tag länger als ein Erdjahr.} other {Das Jahr ist # Tage länger als ein Erdjahr.}}",
 			"yearShorter": "{times, plural, one {Ein Jahr dort dauert nur {period} – das ist # Geburtstag pro Erdjahr.} other {Ein Jahr dort dauert nur {period} – das sind # Geburtstage pro Erdjahr!}}",
-			"yearShorter@simple": "{times, plural, one {Du hättest # Mal pro Erdjahr Geburtstag!} other {Du hättest etwa # Mal pro Erdjahr Geburtstag!}}",
 			"yearShorter@advanced": "{times, plural, one {Die Umlaufzeit beträgt {period}; das entspricht # Umlauf pro Erdjahr.} other {Die Umlaufzeit beträgt {period}; das entspricht # Umläufen pro Erdjahr.}}",
 			"gravityMore": "Du würdest {ratio, number}-mal so viel wiegen wie auf der Erde!",
-			"gravityMore@simple": "Wenn du auf der Erde 30 kg wiegst, würdest du dort {kg, number} kg wiegen!",
+			"gravityMore@simple": "Wenn du auf der Erde 30 kg wiegst, würdest du dort {weight} wiegen!",
 			"gravityMore@advanced": "Die Schwerkraft an der Oberfläche ist {ratio, number}-mal so stark wie auf der Erde: Dein Gewicht würde steigen, deine Masse bliebe gleich.",
 			"gravitySimilar": "Du würdest etwa gleich viel wiegen wie auf der Erde.",
 			"gravitySimilar@simple": "Du würdest dich genauso schwer fühlen wie auf der Erde.",
 			"gravitySimilar@advanced": "Die Schwerkraft an der Oberfläche weicht um weniger als 5 % von der irdischen ab.",
 			"gravityLess": "Du würdest nur {percent, number, ::percent} deines Gewichts auf der Erde wiegen.",
-			"gravityLess@simple": "Wenn du auf der Erde 30 kg wiegst, würdest du dort nur {kg, number} kg wiegen!",
+			"gravityLess@simple": "Wenn du auf der Erde 30 kg wiegst, würdest du dort nur {weight} wiegen!",
 			"gravityLess@advanced": "Die Schwerkraft an der Oberfläche beträgt {percent, number, ::percent} der irdischen: Dein Gewicht würde sinken, deine Masse bliebe gleich."
 		},
 		"section": {
@@ -164,9 +254,6 @@
 		},
 		"sources": "Quellen:",
 		"quantity": {
-			"feel": "{band, select, hotterThanSun {Heißer als die Oberfläche der Sonne} fire {Viel heißer als jedes Feuer} oven {Heißer als ein Backofen} boiling {Heißer als kochendes Wasser} desert {So heiß wie die heißeste Wüste} warm {Warm wie ein Sommertag} mild {Nicht zu heiß und nicht zu kalt} chilly {Kalt wie ein Wintertag} freezer {Kälter als jede Tiefkühltruhe} coldest {Kälter als irgendwo auf der Erde} other {So kalt, dass Luft gefrieren würde}}",
-			"celsius": "{big, select, other {{value} °C}}",
-			"kelvin": "{big, select, other {{kelvin} K ({celsius} °C)}}",
 			"mass": "{band, select, earth {Der Maßstab: Die anderen Welten werden in Erden gewogen} similar {{percent, number, ::percent} der Erdmasse} lighter {{count, plural, one {# davon wäre so schwer wie die Erde} other {# davon wären zusammen so schwer wie die Erde}}} other {{count, plural, one {So schwer wie # Erde} other {So schwer wie # Erden}}}}",
 			"mass@simple": "{band, select, star {Schwerer als alle Planeten zusammen} earth {Die Erde ist der Maßstab: Die anderen Welten werden in Erden gewogen} huge {Schwerer als 100 Erden zusammen} similar {Fast so schwer wie die Erde} lighter {{count, plural, one {So schwer wie die Erde} other {Man bräuchte # davon, um so viel zu wiegen wie die Erde}}} other {{count, plural, one {So schwer wie # Erde} other {So schwer wie # Erden}}}}",
 			"mass@advanced": "{band, select, earth {{kg} kg} other {{earths} Erdmassen ({kg} kg)}}",
@@ -265,16 +352,16 @@
 			"sizeTrue@simple": "{subjectId, select, earth {Die Erde} venus {Die Venus} moon {Der Mond} other {{subject}}} ist hier so groß wie in Wirklichkeit.",
 			"sizeTrue@advanced": "{subject}: Radius maßstabsgetreu.",
 			"sizeBigger": "{subjectId, select, earth {Die Erde} venus {Die Venus} moon {Der Mond} other {{subject}}} ist {factor, number}-mal zu groß gezeichnet.",
-			"sizeBigger@simple": "{subjectId, select, earth {Die Erde} venus {Die Venus} moon {Der Mond} other {{subject}}} ist hier {factor, number}-mal größer als in Wirklichkeit!",
+			"sizeBigger@simple": "{subjectId, select, earth {Die Erde} venus {Die Venus} moon {Der Mond} other {{subject}}} ist hier {n}-mal größer als in Wirklichkeit!",
 			"sizeBigger@advanced": "{subject}: Radius mit dem {factor, number}-Fachen des wahren Werts gezeichnet.",
 			"distanceTrue": "{subjectId, select, earth {Die Erde} venus {Die Venus} moon {Der Mond} other {{subject}}} ist im echten Abstand {parentId, select, sun {zur Sonne} earth {zur Erde} venus {zur Venus} other {zum {parent}}} gezeichnet.",
 			"distanceTrue@simple": "{subjectId, select, earth {Die Erde} venus {Die Venus} moon {Der Mond} other {{subject}}} ist hier genauso weit {parentId, select, sun {von der Sonne} earth {von der Erde} venus {von der Venus} other {vom {parent}}} weg wie in Wirklichkeit.",
 			"distanceTrue@advanced": "{subject}: Abstand {parentId, select, sun {zur Sonne} earth {zur Erde} venus {zur Venus} other {zum {parent}}} maßstabsgetreu.",
 			"distanceCloser": "{subjectId, select, earth {Die Erde} venus {Die Venus} moon {Der Mond} other {{subject}}} ist {factor, number}-mal zu nah {parentId, select, sun {an der Sonne} earth {an der Erde} venus {an der Venus} other {am {parent}}} gezeichnet.",
-			"distanceCloser@simple": "{subjectId, select, earth {Die Erde} venus {Die Venus} moon {Der Mond} other {{subject}}} ist hier {factor, number}-mal näher {parentId, select, sun {an der Sonne} earth {an der Erde} venus {an der Venus} other {am {parent}}} als in Wirklichkeit!",
+			"distanceCloser@simple": "{subjectId, select, earth {Die Erde} venus {Die Venus} moon {Der Mond} other {{subject}}} ist hier {n}-mal näher {parentId, select, sun {an der Sonne} earth {an der Erde} venus {an der Venus} other {am {parent}}} als in Wirklichkeit!",
 			"distanceCloser@advanced": "{subject}: Abstand {parentId, select, sun {zur Sonne} earth {zur Erde} venus {zur Venus} other {zum {parent}}} mit 1/{factor, number} des wahren Werts gezeichnet.",
 			"distanceFarther": "{subjectId, select, earth {Die Erde} venus {Die Venus} moon {Der Mond} other {{subject}}} ist {factor, number}-mal zu weit {parentId, select, sun {von der Sonne} earth {von der Erde} venus {von der Venus} other {vom {parent}}} entfernt gezeichnet.",
-			"distanceFarther@simple": "{subjectId, select, earth {Die Erde} venus {Die Venus} moon {Der Mond} other {{subject}}} ist hier {factor, number}-mal weiter {parentId, select, sun {von der Sonne} earth {von der Erde} venus {von der Venus} other {vom {parent}}} weg als in Wirklichkeit!",
+			"distanceFarther@simple": "{subjectId, select, earth {Die Erde} venus {Die Venus} moon {Der Mond} other {{subject}}} ist hier {n}-mal weiter {parentId, select, sun {von der Sonne} earth {von der Erde} venus {von der Venus} other {vom {parent}}} weg als in Wirklichkeit!",
 			"distanceFarther@advanced": "{subject}: Abstand {parentId, select, sun {zur Sonne} earth {zur Erde} venus {zur Venus} other {zum {parent}}} mit dem {factor, number}-Fachen des wahren Werts gezeichnet.",
 			"markersOn": "Die Punkte markieren nur, wo die Planeten sind: Die Planeten selbst sind zu klein, um sie zu sehen.",
 			"markersOn@simple": "Die Punkte zeigen, wo die Planeten sind. Die Planeten sind zu klein, um sie zu sehen!",
@@ -322,7 +409,7 @@
 			"reverseHint": "Zeit rückwärts laufen lassen",
 			"controls": "Abspielen, anhalten oder rückwärts",
 			"tooFast": "{body} umrundet {parentId, select, sun {die Sonne} other {{parent}}} {count, plural, one {# Mal} other {# Mal}} pro Sekunde – zu schnell für den Bildschirm, darum kann die Bewegung springen oder sogar rückwärts wirken.",
-			"tooFast@simple": "{body} saust {count, plural, one {# Mal} other {# Mal}} pro Sekunde um {parentId, select, sun {die Sonne} other {{parent}}}! Das ist zu schnell, um es richtig zu sehen.",
+			"tooFast@simple": "{body} saust {count, plural, one {{n} Mal} other {{n} Mal}} pro Sekunde um {parentId, select, sun {die Sonne} other {{parent}}}! Das ist zu schnell, um es richtig zu sehen.",
 			"travel": {
 				"open": "Zu einem Datum reisen",
 				"title": "Zeitreise",
@@ -330,6 +417,7 @@
 				"pickDate": "Datum wählen",
 				"arrival": "Bei der Ankunft hält die Zeit an. Mit Abspielen geht es weiter.",
 				"range": "Jeder Tag vom Jahr {first} bis {last}. Ankunft ist um 12 Uhr (UTC).",
+				"range@simple": "Such dir einen Tag aus: lange her oder weit in der Zukunft. Du kommst mittags an.",
 				"close": "Schließen",
 				"calendar": {
 					"nextMonth": "Nächster Monat",
@@ -432,6 +520,7 @@
 				"launch": "Start",
 				"flyby": "{targetId, select, earth {Vorbeiflug an der Erde} venus {Vorbeiflug an der Venus} mars {Vorbeiflug am Mars} jupiter {Vorbeiflug am Jupiter} saturn {Vorbeiflug am Saturn} uranus {Vorbeiflug am Uranus} neptune {Vorbeiflug am Neptun} other {Vorbeiflug an {target}}}",
 				"orbitInsertion": "{targetId, select, other {Schwenkt in eine Umlaufbahn um {target} ein}}",
+				"orbitInsertion@simple": "{targetId, select, other {Fängt an, um {target} zu kreisen}}",
 				"probeLanding": "{targetId, select, other {Ihre Landesonde landet auf {target}}}",
 				"impact": "{targetId, select, saturn {Stürzt in den Saturn} jupiter {Stürzt in den Jupiter} other {Stürzt in {target}}}",
 				"arrival": "{targetId, select, l2 {Erreicht den Lagrange-Punkt L2 von Sonne und Erde} other {Erreicht {target}}}",
@@ -490,6 +579,7 @@
 			"viewSystem": "Das ganze Mondsystem ansehen",
 			"viewSystem@simple": "Alle seine Monde ansehen",
 			"showOthers": "{count, plural, one {# kleineren Mond zeigen} other {# kleinere Monde zeigen}}",
+			"showOthers@simple": "Auch die kleineren Monde zeigen",
 			"hideOthers": "Kleinere Monde ausblenden",
 			"othersNote": "Meist Gesteinsbrocken von wenigen Kilometern, viele davon eingefangen. Astronomen entdecken immer weitere.",
 			"othersNote@simple": "Meist kleine Felsbrocken. Forscher entdecken immer noch neue.",
@@ -513,7 +603,7 @@
 			"haze": "Der Boden von {moon} liegt unter dichtem orangefarbenem Dunst verborgen. So sieht {moon} für unsere Augen aus.",
 			"haze@simple": "Dichter orangefarbener Dunst verdeckt den Boden von {moon}. So sieht {moon} für unsere Augen aus.",
 			"paintedVisited": "{probe} ist {year} an {moon} vorbeigeflogen, aber ihre Bilder sind noch nicht in der App. Diese Oberfläche ist nach dem gemalt, was bekannt ist: der Farbe und wie viel Sonnenlicht sie zurückwirft.",
-			"paintedVisited@simple": "{probe} hat {year} Bilder von {moon} gemacht, aber sie sind noch nicht in der App. Diese Oberfläche ist in der echten Farbe gemalt."
+			"paintedVisited@simple": "{probe} hat Bilder von {moon} gemacht, aber sie sind noch nicht in der App. Diese Oberfläche ist in der echten Farbe gemalt."
 		},
 		"facts": {
 			"label": {
@@ -528,17 +618,22 @@
 				"weight": "Dein Gewicht"
 			},
 			"sizeWider": "{ref, select, moon {{count, plural, one {So breit wie # Mond} other {So breit wie # Monde}}} other {{count, plural, one {So breit wie # Erde} other {So breit wie # Erden}}}}",
+			"sizeWider@simple": "{ref, select, moon {{count, plural, one {So breit wie {n} Mond} other {So breit wie {n} Monde}}} other {{count, plural, one {So breit wie {n} Erde} other {So breit wie {n} Erden}}}}",
 			"sizeSimilar": "{ref, select, moon {Etwa so breit wie unser Mond} other {Etwa so breit wie die Erde}}",
 			"sizeNarrower": "{ref, select, moon {Unser Mond ist {count, number}-mal so breit} other {Die Erde ist {count, number}-mal so breit}}",
+			"sizeNarrower@simple": "{ref, select, moon {Unser Mond ist {n}-mal so breit} other {Die Erde ist {n}-mal so breit}}",
 			"across": "{value} Durchmesser",
 			"sunlight": "Das Sonnenlicht braucht {time} bis hierher",
 			"sunlight@simple": "Licht von der Sonne braucht {time} bis hierher",
 			"gap": "{parentId, select, earth {Die Erde} other {{parent}}} würde {count, number}-mal in die Lücke passen",
+			"gap@simple": "{parentId, select, earth {Die Erde} other {{parent}}} würde {n}-mal in die Lücke passen",
 			"fromParent": "{distance} von {parentId, select, earth {der Erde} other {{parent}}} entfernt",
-			"lap": "Umrundet {parentId, select, earth {die Erde} other {den {parent}}} einmal in {period}",
+			"lap": "Braucht {period} für eine Runde um {parentId, select, earth {die Erde} other {den {parent}}}",
 			"yearEarth": "Eine Runde um die Sonne: genau das ist ein Jahr",
 			"yearLonger": "{count, plural, one {Eine Runde um die Sonne dauert # Erdjahr} other {Eine Runde um die Sonne dauert # Erdjahre}}",
+			"yearLonger@simple": "{count, plural, one {Eine Runde um die Sonne dauert {n} Erdjahr} other {Eine Runde um die Sonne dauert {n} Erdjahre}}",
 			"yearShorter": "Umrundet die Sonne {count, number}-mal in einem Erdjahr",
+			"yearShorter@simple": "Umrundet die Sonne {n}-mal in einem Erdjahr",
 			"weightMore": "Du würdest {count, number}-mal so viel wiegen wie auf der Erde",
 			"weightMore@simple": "30 kg auf der Erde wären hier {kg} kg",
 			"weightSimilar": "Du würdest etwa so viel wiegen wie auf der Erde",
@@ -552,10 +647,10 @@
 			"route": "{from} → {to}",
 			"route@simple": "Reise: {from} → {to}",
 			"distance": "An diesem Tag {distance} voneinander entfernt",
-			"distance@simple": "{distance} weit weg",
+			"distance@simple": "Das ist {distance}",
 			"distance@advanced": "{distance} ({au}) Luftlinie an diesem Datum",
 			"crossed": "{distance} zurückgelegt",
-			"crossed@simple": "{distance} geschafft",
+			"crossed@simple": "Bisher: {distance}",
 			"question": "Wie lange würde die Reise dauern?",
 			"question@simple": "Wie lange bräuchte man bis dorthin?",
 			"question@advanced": "Reisezeit bei gleichbleibender Geschwindigkeit",
@@ -596,17 +691,19 @@
 				"weight": "Gewicht"
 			},
 			"distance": "Seit deiner Geburt hat dich die Erde {distance} Kilometer um die Sonne getragen, mit etwa {speed, number} km pro Sekunde. Das sind {trips, plural, one {# Reise} other {# Reisen}} zum Mond und zurück.",
-			"distance@simple": "Seit deiner Geburt bist du {distance} Kilometer um die Sonne gereist – ohne je den Boden zu verlassen! So weit ist es {trips, plural, one {# Mal} other {# Mal}} zum Mond und zurück.",
+			"distance@simple": "Seit deiner Geburt hat dich die Erde {laps, plural, =0 {noch nicht einmal} one {einmal} other {{n}-mal}} um die Sonne getragen – ohne dass du je den Boden verlassen hast!",
 			"distance@advanced": "Seit deiner Geburt hat dich die Bahnbewegung der Erde {distance} km um die Sonne getragen, mit im Mittel {speed, number} km/s: {trips, plural, one {# Hin- und Rückflug} other {# Hin- und Rückflüge}} zum Mond.",
 			"years": {
 				"intro": "Ein Jahr ist eine Runde um die Sonne. Dein Geburtstag auf einem anderen Planeten ist, wenn er wieder dort steht, wo er an deinem Geburtstag war.",
 				"intro@simple": "Ein Jahr ist eine Runde um die Sonne. Weit entfernte Planeten brauchen viel länger, darum bist du dort jünger!",
 				"intro@advanced": "Ein Jahr ist die siderische Umlaufzeit: Dein Geburtstag auf einem Planeten ist, wenn er den Punkt seiner Bahn wieder erreicht, an dem er bei deiner Geburt stand.",
 				"age": "{age, plural, =0 {noch nicht 1 Jahr alt} one {# Jahr alt} other {# Jahre alt}}",
+				"age@simple": "{age, plural, =0 {noch nicht 1 Jahr alt} one {{n} Jahr alt} other {{n} Jahre alt}}",
 				"exact": "{orbits} Umläufe",
 				"next": "Nächster Geburtstag: {date}",
 				"first": "Erster Geburtstag: {date}",
 				"earthAgeThen": "{age, plural, one {Auf der Erde bist du dann #.} other {Auf der Erde bist du dann #.}}",
+				"earthAgeThen@simple": "{age, plural, one {Auf der Erde bist du dann {n}.} other {Auf der Erde bist du dann {n}.}}",
 				"go": "{planetId, select, venus {Reise zu deinem nächsten Geburtstag auf der {planet}} earth {Reise zu deinem nächsten Geburtstag auf der {planet}} other {Reise zu deinem nächsten Geburtstag auf dem {planet}}}",
 				"today": "{planetId, select, earth {Alles Gute zum Geburtstag!} venus {Alles Gute zum Geburtstag auf der {planet}!} other {Alles Gute zum Geburtstag auf dem {planet}!}}"
 			},
@@ -615,6 +712,7 @@
 				"intro@simple": "Ein Tag dauert von einem Sonnenaufgang bis zum nächsten. Auf manchen Planeten geht die Sonne nach ein paar Stunden wieder auf, auf anderen erst nach Monaten!",
 				"intro@advanced": "Ein Sonnentag (Sonnenaufgang bis Sonnenaufgang) folgt aus siderischer Rotation und Umlauf: 1/Sonnentag = 1/Rotation − 1/Jahr. Die Venus dreht sich rückwärts, darum geht ihre Sonne alle 117 Erdtage auf.",
 				"lived": "{count, plural, one {# Tag erlebt} other {# Tage erlebt}}",
+				"lived@simple": "{count, plural, one {{n} Tag erlebt} other {{n} Tage erlebt}}",
 				"length": "Ein Tag dort: {length}"
 			},
 			"weight": {
@@ -635,6 +733,7 @@
 				"title": "Wie alt bin ich auf den anderen Planeten?",
 				"date": "Am {date}",
 				"distance": "Ich bin {distance} km um die Sonne gereist.",
+				"distance@simple": "Ich bin {laps, plural, =0 {noch nicht einmal} one {einmal} other {{n}-mal}} um die Sonne gereist.",
 				"fileName": "mein-alter-auf-den-planeten",
 				"footer": "Orbitalia – unser Sonnensystem"
 			}
@@ -720,13 +819,14 @@
 			"listenLabel": "Anhören: {title}",
 			"stopLabel": "Stopp: {title}",
 			"credit": "{mission}, {year} · {credit}",
+			"credit@simple": "{mission} · {credit}",
 			"shortcut": "Ton an oder aus (beim Öffnen der App immer aus)",
 			"recording": {
 				"sunRadioBursts": {
 					"title": "Radioblitze der Sonne",
 					"title@simple": "Radioblitze der Sonne",
 					"what": "Kein Schall: Radiowellen einer riesigen Sonneneruption vom 28. Oktober 2003, aufgefangen von der Sonde Cassini und so weit nach unten verschoben, dass wir sie hören. Das fallende Pfeifen ist ein Schwall Elektronen, der von der Sonne wegrast.",
-					"what@simple": "2003 gab es auf der Sonne eine riesige Explosion. Die Raumsonde Cassini hat ihre Radiowellen aufgefangen, und Forschende haben daraus Töne gemacht. Das fallende Pfeifen ist der Ausbruch, der von der Sonne wegsaust.",
+					"what@simple": "Einmal gab es auf der Sonne eine riesige Explosion. Die Raumsonde Cassini hat ihre Radiowellen aufgefangen, und Forschende haben daraus Töne gemacht. Das fallende Pfeifen ist der Ausbruch, der von der Sonne wegsaust.",
 					"what@advanced": "Typ-III-Radiobursts der X17-Eruption vom 28. Oktober 2003, aufgezeichnet vom Radio and Plasma Wave Science-Instrument der Sonde Cassini in 8,7 AE Sonnenabstand. Elektronen aus der Eruption regen Plasmaschwingungen an, deren Frequenz fällt, je dünner das Plasma weiter draußen wird; die Aufnahme ist in den hörbaren Bereich verschoben."
 				},
 				"earthChorus": {
@@ -968,7 +1068,7 @@
 			"travelling": "Das Licht ist unterwegs seit",
 			"travelling@simple": "So lange ist das Licht schon unterwegs:",
 			"covered": "{distance} zurückgelegt",
-			"covered@simple": "{distance} geschafft",
+			"covered@simple": "Bisher: {distance}",
 			"waiting": "Die Zeit ist auf die Zeit vor dem Lichtblitz zurückgelaufen.",
 			"clock": {
 				"realTime": "Echtzeit: Eine Sekunde hier ist eine echte Sekunde.",
@@ -982,7 +1082,7 @@
 			"arrivals": "Wann das Licht ankommt",
 			"arrivals@simple": "Wann das Licht dort ist",
 			"reached": "erreicht",
-			"pending": "in {duration}",
+			"pending": "noch {duration}",
 			"announce": "Angekommen {id, select, sun {bei der Sonne} venus {bei der Venus} earth {bei der Erde} moon {beim Mond} other {beim {body}}} nach {duration}.",
 			"announce@simple": "Das Licht ist {id, select, sun {bei der Sonne} venus {bei der Venus} earth {bei der Erde} moon {beim Mond} other {beim {body}}}! Es hat {duration} gebraucht.",
 			"leftPlanets": "Das Licht hat alle Planeten hinter sich gelassen. Den nächsten Stern erreicht es erst in {years, number} Jahren.",
@@ -999,6 +1099,7 @@
 				"oneWay": "Hinweg",
 				"roundTrip": "Hin und zurück",
 				"now": "Gerade {distance} entfernt",
+				"now@simple": "Gerade ist es {distance}",
 				"now@advanced": "Gerade {distance} ({au} AE) entfernt",
 				"range": "Je nachdem, wo beide auf ihren Bahnen stehen, dauert es zwischen {min} und {max}.",
 				"range@simple": "Die Planeten bewegen sich, darum ändert sich das: von {min} bis {max}.",
@@ -1341,10 +1442,10 @@
 		"smallBodies": {
 			"beltName": "{belt, select, asteroidbelt {Asteroidengürtel} kuiperbelt {Kuipergürtel} other {{belt}}}",
 			"perDot": "{belt, select, asteroidbelt {Jeder Punkt steht für etwa {count, number} Asteroiden, die größer als {size} sind.} other {Jeder Punkt steht für etwa {count, number} Eiskörper, die größer als {size} sind.}}",
-			"perDot@simple": "{belt, select, asteroidbelt {Jeder Punkt steht für etwa {count, number} echte Felsbrocken, größer als {size}.} other {Jeder Punkt steht für etwa {count, number} echte kleine Eiswelten, größer als {size}.}}",
+			"perDot@simple": "{belt, select, asteroidbelt {Jeder Punkt steht für {n} echte Felsbrocken, größer als {size}.} other {Jeder Punkt steht für {n} echte kleine Eiswelten, größer als {size}.}}",
 			"perDot@advanced": "{belt, select, asteroidbelt {Ein Punkt für rund {count, number} der geschätzt {total} Asteroiden über {size}.} other {Ein Punkt für rund {count, number} der geschätzt {total} Körper über {size}.}}",
 			"spacing": "Nachbarn sind etwa {distance} voneinander entfernt – {moons, number}-mal so weit wie der Mond von der Erde. Raumsonden fliegen einfach hindurch, ohne irgendetwas ausweichen zu müssen.",
-			"spacing@simple": "Aber sie sind sehr weit voneinander weg: {moons, number}-mal so weit wie von der Erde zum Mond. Raumsonden fliegen mitten hindurch, ohne irgendwo anzustoßen.",
+			"spacing@simple": "Aber sie sind sehr weit voneinander weg: {n}-mal so weit wie von der Erde zum Mond. Raumsonden fliegen mitten hindurch, ohne irgendwo anzustoßen.",
 			"spacing@advanced": "Typischer Abstand zwischen Nachbarn: etwa {distance}, das {moons, number}-Fache der Entfernung Erde–Mond. Sonden durchqueren den Gürtel auf gewöhnlichen Bahnen; keine musste dabei je einem Asteroiden ausweichen.",
 			"dotSize": "Die Punkte sind viel größer gezeichnet als die echten Körper: in wahrer Größe würdest du gar nichts sehen. Im Film ist das ein dichtes Feld aus Felsen – im All ist es fast leer.",
 			"dotSize@simple": "Die Punkte sind viel zu groß gezeichnet. Im Film ist es voller Felsen, die zusammenstoßen – im echten Weltall ist es fast leer.",
@@ -1353,15 +1454,17 @@
 			"comet": {
 				"label": "Komet",
 				"where": "{distance} von der Sonne entfernt, {direction, select, in {auf dem Weg zu ihr} other {auf dem Weg von ihr weg}}.",
-				"where@simple": "Er ist {distance} von der Sonne entfernt und {direction, select, in {kommt ihr näher} other {fliegt von ihr weg}}.",
+				"where@simple": "{direction, select, in {Er kommt der Sonne näher. Gerade ist er {distance}.} other {Er fliegt von der Sonne weg. Gerade ist er {distance}.}}",
 				"tail": "Sein Schweif ist etwa {length} lang und zeigt von der Sonne weg{direction, select, out { – deshalb fliegt er jetzt voraus} other {}}.",
-				"tail@simple": "Sein Schweif ist etwa {length} lang. Er zeigt immer von der Sonne weg{direction, select, out { – sogar jetzt, wo der Komet mit dem Schweif voran davonfliegt} other {}}!",
+				"tail@simple": "Sein Schweif reicht {length}. Er zeigt immer von der Sonne weg{direction, select, out { – sogar jetzt, wo der Komet mit dem Schweif voran davonfliegt} other {}}!",
 				"noTail": "Gerade kein Schweif: Er wächst erst innerhalb von etwa {onset} um die Sonne, wo das Sonnenlicht das Eis des Kometen in Gas verwandelt.",
 				"noTail@simple": "Gerade kein Schweif. Der Schweif wächst erst, wenn der Komet der Sonne nahe kommt und sein Eis zu Gas wird.",
 				"waking": "Er wacht gerade auf: Das Sonnenlicht beginnt, sein Eis in Gas zu verwandeln, und eine Koma bildet sich. Sein Schweif hat kaum zu wachsen begonnen.",
 				"waking@simple": "Er wacht gerade auf! Die Sonne fängt an, sein Eis in Gas zu verwandeln. Bald bekommt er einen Schweif.",
 				"next": "Das nächste Mal der Sonne am nächsten: {date}.",
+				"next@simple": "Bis er der Sonne wieder am nächsten ist: {duration}.",
 				"last": "Zuletzt der Sonne am nächsten: {date}. Er kommt erst in etwa {years, number} Jahren wieder.",
+				"last@simple": "Bis er wiederkommt: {duration}.",
 				"watch": "Zusehen, wie er an der Sonne vorbeizieht",
 				"watch@simple": "Zusehen, wie er an der Sonne vorbeifliegt"
 			}
@@ -1373,6 +1476,7 @@
 				"solarEclipse": "Sonnenfinsternisse",
 				"lunarEclipse": "Mondfinsternisse",
 				"transit": "Durchgänge vor der Sonne",
+				"transit@simple": "Planeten ziehen vor der Sonne vorbei",
 				"gathering": "Planeten beisammen",
 				"closeApproach": "Mars kommt nah",
 				"shadowsRings": "Schatten und Ringe",
@@ -1499,7 +1603,7 @@
 					"title": "Welten vergleichen",
 					"title@simple": "Welten vergleichen",
 					"text": "Die Sonne und die Erde in ihren wahren Größen: Etwa 109 Erden passen quer über die Sonne. „Vergleichen mit …“ im Steckbrief jeder Welt stellt sie neben eine andere.",
-					"text@simple": "Hier sind die Sonne und die Erde in echter Größe. 109 Erden passen quer über die Sonne! Drück im Steckbrief auf „Vergleichen mit …“ und probier es aus."
+					"text@simple": "Hier sind die Sonne und die Erde in echter Größe. Mehr als 100 Erden passen quer über die Sonne! Drück im Steckbrief auf „Vergleichen mit …“ und probier es aus."
 				},
 				"light": {
 					"title": "Dem Licht zusehen",
@@ -1545,7 +1649,9 @@
 		"landmarkOption": {
 			"none": "Nur Meter",
 			"pitch": "Fußballfeld ({length})",
-			"track": "Laufbahn ({length} pro Runde)"
+			"pitch@simple": "Fußballfeld",
+			"track": "Laufbahn ({length} pro Runde)",
+			"track@simple": "Laufbahn"
 		},
 		"viewLabel": "Anzeigen als",
 		"view": {
@@ -1573,15 +1679,19 @@
 		"moon@advanced": "{name}: {size} (in Wirklichkeit {trueSize}), {distance} vom Planeten (in Wirklichkeit {trueDistance})",
 		"landmarkCount": {
 			"pitch": "{count, plural, one {# Fußballfeld} other {# Fußballfelder}}",
-			"track": "{count, plural, one {# Runde auf der Laufbahn} other {# Runden auf der Laufbahn}}"
+			"pitch@simple": "{count, plural, one {{n} Fußballfeld} other {{n} Fußballfelder}}",
+			"track": "{count, plural, one {# Runde auf der Laufbahn} other {# Runden auf der Laufbahn}}",
+			"track@simple": "{count, plural, one {{n} Runde auf der Laufbahn} other {{n} Runden auf der Laufbahn}}"
 		},
 		"landmarkMarker": {
 			"pitch": "Ende eines Fußballfelds: {length} von der Sonne",
-			"track": "Eine Runde auf der Laufbahn: {length} von der Sonne"
+			"pitch@simple": "Ende eines Fußballfelds",
+			"track": "Eine Runde auf der Laufbahn: {length} von der Sonne",
+			"track@simple": "Eine Runde auf der Laufbahn"
 		},
 		"starTitle": "Der nächste Stern",
 		"star": "Und jetzt weiter. In diesem Maßstab ist der nächste Stern nach der Sonne, Proxima Centauri, {distance} entfernt – mit dem Flugzeug etwa {flight}. Dein ganzer Weg bis zum Neptun passt {times}-mal hinein.",
-		"star@simple": "Und der nächste Stern? In diesem Maßstab ist er {distance} weit weg! Sogar ein Flugzeug bräuchte etwa {flight} bis dorthin.",
+		"star@simple": "Und der nächste Stern? In diesem Maßstab ist er so weit weg, dass sogar ein Flugzeug etwa {flight} bis dorthin bräuchte!",
 		"star@advanced": "Proxima Centauri, 4,25 Lichtjahre entfernt, läge {distance} vom Start: {times}-mal der Weg bis zum Neptun, etwa {flight} Flug bei 900 km/h. Der kleine Rote Zwerg hätte {size} Durchmesser, etwa so groß wie {thing}.",
 		"starLesson": "Das Sonnensystem, das du gerade abgelaufen bist, ist eine winzige Insel in einem Ozean aus leerem Raum.",
 		"starLesson@simple": "Der Weltraum ist wirklich, wirklich leer!",
@@ -1590,6 +1700,7 @@
 		"lineUp@simple": "In Wirklichkeit stehen die Planeten nie so in einer Reihe. Jeder fliegt auf seiner eigenen Bahn um die Sonne.",
 		"lineUp@advanced": "Die Planeten stehen nie in einer Linie: Der Weg setzt jeden in seinen mittleren Abstand zur Sonne (die große Halbachse seiner Bahn). Größen sind mittlere Durchmesser, aus denselben Daten wie das 3D-Modell. Proxima Centauri: 4,2465 Lichtjahre (Gaia DR3).",
 		"tableCaption": "Wenn die Sonne {object} wäre: das Sonnensystem im Maßstab 1 : {ratio}",
+		"tableCaption@simple": "Wenn die Sonne {object} wäre",
 		"column": {
 			"stop": "Nr.",
 			"body": "Himmelskörper",
@@ -1605,24 +1716,6 @@
 		},
 		"moonDistance": "{distance} vom Planeten",
 		"printNote": "Die Kreise sind in ihrer Größe im Modell gedruckt.",
-		"thing": {
-			"fineSand": "ein feines Sandkorn",
-			"salt": "ein Salzkorn",
-			"sugar": "ein Zuckerkorn",
-			"poppySeed": "ein Mohnkorn",
-			"pinhead": "ein Stecknadelkopf",
-			"peppercorn": "ein Pfefferkorn",
-			"pea": "eine Erbse",
-			"marble": "eine Murmel",
-			"cherry": "eine Kirsche",
-			"walnut": "eine Walnuss",
-			"tableTennisBall": "ein Tischtennisball",
-			"tennisBall": "ein Tennisball",
-			"orange": "eine Orange",
-			"grapefruit": "eine Grapefruit",
-			"melon": "eine kleine Melone",
-			"football": "ein Fußball"
-		},
 		"starName": "Proxima Centauri"
 	},
 	"compare": {
@@ -1666,7 +1759,7 @@
 			"sunEarth@simple": "Neben der Sonne ist unsere große Erde nur ein winziger Punkt.",
 			"sunPlanets": "In der Sonne stecken 99,8 % der gesamten Masse des Sonnensystems.",
 			"sunPlanets@advanced": "Die Sonne vereint 99,86 % der Masse des Sonnensystems; vom Rest entfällt das meiste auf Jupiter.",
-			"sunPlanets@simple": "Die Sonne ist schwerer als alle Planeten zusammen, etwa 750-mal.",
+			"sunPlanets@simple": "Die Sonne ist viel, viel schwerer als alle Planeten zusammen.",
 			"jupiterAcrossSun": "Etwa zehn Jupiter passen quer über die Sonne und elf Erden quer über Jupiter.",
 			"jupiterAcrossSun@advanced": "Jeder Schritt ist etwa ein Faktor zehn: Die Sonne misst 10 Jupiterdurchmesser, Jupiter 11 Erddurchmesser.",
 			"jupiterAcrossSun@simple": "Leg zehn Jupiter nebeneinander, dann reichen sie quer über die Sonne. Elf Erden reichen quer über Jupiter.",
@@ -1690,7 +1783,7 @@
 			"bigMoons@simple": "Unser Mond ist nur der fünftgrößte. Vier dieser sieben kreisen um Jupiter.",
 			"galileanMoons": "Galilei sah sie 1610 um Jupiter kreisen: der Beweis, dass sich nicht alles um die Erde dreht.",
 			"galileanMoons@advanced": "1610 von Galilei entdeckt; Io, Europa und Ganymed umlaufen Jupiter im Takt 4 : 2 : 1.",
-			"galileanMoons@simple": "1610 sah Galilei diese Monde um Jupiter kreisen. Es dreht sich also nicht alles um die Erde!",
+			"galileanMoons@simple": "Vor langer Zeit sah Galilei diese Monde um Jupiter kreisen. Es dreht sich also nicht alles um die Erde!",
 			"potatoMoons": "Die zwei Monde des Mars sind unförmige Brocken von der Größe einer Stadt: Phobos ist nur 22 km breit.",
 			"potatoMoons@advanced": "Phobos (etwa 22 km) und Deimos (etwa 12 km) sind zu klein, als dass die Schwerkraft sie rund ziehen könnte; vielleicht sind es eingefangene Asteroiden.",
 			"potatoMoons@simple": "Der Mars hat zwei winzige, unförmige Monde, die wie Kartoffeln aussehen. Der größere würde in eine Stadt passen.",
@@ -1715,7 +1808,7 @@
 		"stage": {
 			"label": "{names}, nebeneinander in echter Größe zueinander gezeichnet",
 			"scale": "Ein Maßstab für alle: 1 Pixel = {km}.",
-			"scale@simple": "Alles ist gleich stark verkleinert: 1 Pixel steht für {km}.",
+			"scale@simple": "Alles ist gleich stark verkleinert, so siehst du, was größer ist.",
 			"scale@advanced": "Gemeinsamer Maßstab, 1 px : {km}. Achsen geneigt wie im All.",
 			"tiny": "{count, plural, one {In diesem Maßstab so klein, dass ein Kreis die Stelle zeigt: {names}.} other {In diesem Maßstab so klein, dass Kreise die Stellen zeigen: {names}.}}",
 			"tiny@simple": "{count, plural, one {Ohne den Kreis würdest du hier kaum finden: {names}.} other {Ohne die Kreise würdest du hier kaum finden: {names}.}}",
@@ -1756,7 +1849,7 @@
 				"similar@advanced": "Die Durchmesser von {a} und {b} unterscheiden sich nur um {percent} %."
 			},
 			"volume": "Etwa {n} {smallId, select, earth {{count, plural, one {Erde} other {Erden}}} moon {{count, plural, one {Mond} other {Monde}}} other {{count, plural, one {Kugel} other {Kugeln}} so groß wie {smallId, select, sun {die Sonne} earth {die Erde} venus {die Venus} moon {der Mond} other {{small}}}}} würden in {bigId, select, sun {die Sonne} earth {die Erde} venus {die Venus} moon {den Mond} mercury {den Merkur} mars {den Mars} jupiter {den Jupiter} saturn {den Saturn} uranus {den Uranus} neptune {den Neptun} other {{big}}} passen.",
-			"volume@simple": "{bigId, select, sun {Die Sonne} earth {Die Erde} venus {Die Venus} moon {Der Mond} other {{big}}} ist so groß, dass etwa {n} {smallId, select, earth {{count, plural, one {Erde} other {Erden}}} moon {{count, plural, one {Mond} other {Monde}}} other {{count, plural, one {Kugel} other {Kugeln}} so groß wie {smallId, select, sun {die Sonne} earth {die Erde} venus {die Venus} moon {der Mond} other {{small}}}}} hineinpassen würden.",
+			"volume@simple": "{bigId, select, sun {Die Sonne} earth {Die Erde} venus {Die Venus} moon {Der Mond} other {{big}}} ist so groß, dass {n} {smallId, select, earth {{count, plural, one {Erde} other {Erden}}} moon {{count, plural, one {Mond} other {Monde}}} other {{count, plural, one {Kugel} other {Kugeln}} so groß wie {smallId, select, sun {die Sonne} earth {die Erde} venus {die Venus} moon {der Mond} other {{small}}}}} hineinpassen würden.",
 			"volume@advanced": "Verhältnis der Volumen: {big} zu {small} = {n} : 1.",
 			"mass": {
 				"times": "{bigId, select, sun {Die Sonne} earth {Die Erde} venus {Die Venus} moon {Der Mond} other {{big}}} hat {n}-mal so viel Masse wie {smallId, select, sun {die Sonne} earth {die Erde} venus {die Venus} moon {der Mond} other {{small}}}.",
@@ -1877,7 +1970,8 @@
 			"placeholderBug": "Was ist passiert, und was hast du erwartet? Zum Beispiel: „Saturns Ringe verschwinden, wenn ich nah heranzoome.“",
 			"placeholderIdea": "Was soll Orbitalia können? Zum Beispiel: „Zeigen, wo die Mondlandungen waren.“",
 			"placeholderOther": "Alles, was du uns sagen möchtest.",
-			"count": "{count, number} / {max, number} Zeichen"
+			"count": "{count, number} / {max, number} Zeichen",
+			"count@simple": "Schreib so viel, wie du willst."
 		},
 		"email": {
 			"label": "Deine E-Mail-Adresse (freiwillig)",

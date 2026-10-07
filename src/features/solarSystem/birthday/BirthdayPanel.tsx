@@ -22,7 +22,14 @@ import {
 } from "@tabler/icons-react"
 
 import { getBody } from "@/data"
-import { useI18n } from "@/i18n"
+import {
+	SIMPLE_LIMIT,
+	durationInWords,
+	formatCount,
+	isSimple,
+	useI18n,
+	type I18n,
+} from "@/i18n"
 import { useBodyName } from "@/i18n/bodies"
 import { useBirthdayStore } from "@/store/birthday"
 import type { PostcardExtra } from "@/store/postcard"
@@ -49,7 +56,7 @@ import {
 	type BirthdayFacts,
 } from "./birthday"
 import { takePostcard } from "../postcard/take"
-import { cardText, worldColor, type CardText } from "./card"
+import { cardText, lapsArgs, worldColor, type CardText } from "./card"
 
 import "@mantine/dates/styles.css"
 import classes from "./BirthdayPanel.module.css"
@@ -110,7 +117,8 @@ const Dot = ({ id }: { id: string }) => (
 
 /** Ages on every planet and the next birthday there, with a button to travel to it. */
 const YearsList = ({ facts }: { facts: BirthdayFacts }) => {
-	const { t, number, formatLocale, readingLevel } = useI18n()
+	const i18n = useI18n()
+	const { t, number, formatLocale, readingLevel } = i18n
 	const name = useBodyName()
 	const earthAge = facts.worlds.find((world) => world.id === "earth")?.age ?? 0
 	return (
@@ -140,6 +148,7 @@ const YearsList = ({ facts }: { facts: BirthdayFacts }) => {
 									<Text size="xs" c="dimmed">
 										{t("solarSystem.birthday.years.earthAgeThen", {
 											age: world.earthAgeThen,
+											n: formatCount(world.earthAgeThen, i18n),
 										})}
 									</Text>
 								) : null}
@@ -154,7 +163,10 @@ const YearsList = ({ facts }: { facts: BirthdayFacts }) => {
 							</div>
 							<div className={classes.value}>
 								<Text size="md" fw={700} className={classes.age}>
-									{t("solarSystem.birthday.years.age", { age: world.age })}
+									{t("solarSystem.birthday.years.age", {
+										age: world.age,
+										n: formatCount(world.age, i18n),
+									})}
 								</Text>
 								{readingLevel === "advanced" ? (
 									<Text size="xs" c="dimmed">
@@ -193,7 +205,8 @@ const YearsList = ({ facts }: { facts: BirthdayFacts }) => {
 
 /** Local days (sunrise to sunrise) lived on every planet. */
 const DaysList = ({ facts }: { facts: BirthdayFacts }) => {
-	const { t, quantity } = useI18n()
+	const i18n = useI18n()
+	const { t, quantity } = i18n
 	const name = useBodyName()
 	return (
 		<Stack gap="xs">
@@ -206,9 +219,11 @@ const DaysList = ({ facts }: { facts: BirthdayFacts }) => {
 					const length =
 						day === null
 							? null
-							: day < 2
-								? quantity(day * 24, "hour", "long")
-								: quantity(day, "day", "long")
+							: isSimple(i18n)
+								? durationInWords(day * 86_400, i18n)
+								: day < 2
+									? quantity(day * 24, "hour", "long")
+									: quantity(day, "day", "long")
 					return (
 						<li key={world.id} className={classes.row} data-world={world.id}>
 							<Dot id={world.id} />
@@ -227,6 +242,7 @@ const DaysList = ({ facts }: { facts: BirthdayFacts }) => {
 									<Text size="md" fw={700} className={classes.age}>
 										{t("solarSystem.birthday.days.lived", {
 											count: world.daysLived,
+											n: formatCount(world.daysLived, i18n),
 										})}
 									</Text>
 								) : null}
@@ -240,12 +256,23 @@ const DaysList = ({ facts }: { facts: BirthdayFacts }) => {
 }
 
 const WEIGHT_MARKS = [20, 40, 60, 80, 100].map((value) => ({ value }))
+/** The slider's top: 120 kg, at the simple level the limit of its numbers (#51). */
+const WEIGHT_MAX_KG = 120
+
+/** A weight for the list: `formatKg`, at the simple level "76", "more than 100". */
+const kgText = (kg: number, i18n: I18n): string =>
+	isSimple(i18n) ? formatCount(kg, i18n) : formatKg(kg, i18n.formatLocale)
 
 /** What a scale would show on the Sun, the planets and the large moons. */
 const WeightList = () => {
-	const { t, formatLocale } = useI18n()
+	const i18n = useI18n()
+	const { t } = i18n
 	const name = useBodyName()
-	const weightKg = useBirthdayStore((state) => state.weightKg)
+	const maxKg = isSimple(i18n) ? SIMPLE_LIMIT : WEIGHT_MAX_KG
+	const weightKg = Math.min(
+		useBirthdayStore((state) => state.weightKg),
+		maxKg,
+	)
 	const setWeightKg = useBirthdayStore((state) => state.setWeightKg)
 	return (
 		<Stack gap="xs">
@@ -254,14 +281,14 @@ const WeightList = () => {
 			</Text>
 			<Text size="sm" fw={600} ta="center">
 				{t("solarSystem.birthday.weight.onEarth", {
-					kg: formatKg(weightKg, formatLocale),
+					kg: kgText(weightKg, i18n),
 				})}
 			</Text>
 			<Slider
 				className={classes.slider}
 				color="orange"
 				min={5}
-				max={120}
+				max={maxKg}
 				step={1}
 				marks={WEIGHT_MARKS}
 				value={weightKg}
@@ -300,7 +327,7 @@ const WeightList = () => {
 									{kg === null
 										? "—"
 										: t("solarSystem.birthday.weight.kg", {
-												kg: formatKg(kg, formatLocale),
+												kg: kgText(kg, i18n),
 											})}
 								</Text>
 							</div>
@@ -383,6 +410,7 @@ const Results = ({
 			<Text size="sm" className={classes.distance} lh={1.45}>
 				{t("solarSystem.birthday.distance", {
 					distance,
+					...lapsArgs(facts, i18n),
 					speed: Math.round(facts.orbitSpeedKmS * 10) / 10,
 					trips:
 						facts.moonTrips < 100

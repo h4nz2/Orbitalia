@@ -591,12 +591,12 @@
 				"simple": "Tu idioma"
 			},
 			"what": {
-				"standard": "Orbitalia habla inglés, alemán, checo, español y francés, cada uno con tres niveles de lectura: sencillo, estándar y avanzado.",
-				"simple": "Lee todo en tu idioma y con palabras fáciles."
+				"standard": "Orbitalia habla inglés, alemán, checo, español y francés, cada uno con tres niveles de lectura: sencillo (para niños de 6 a 11 años, con comparaciones en lugar de números grandes), estándar y avanzado.",
+				"simple": "Lee todo en tu idioma. El nivel sencillo es para niños de 6 a 11 años: nada de números grandes, solo comparaciones como «11 Tierras de ancho»."
 			},
 			"why": {
-				"standard": "La misma vista se puede explicar a un niño de nueve años y a un alumno de bachillerato, y un enlace compartido conserva las dos elecciones.",
-				"simple": "Palabras sencillas para los más pequeños, más detalles para los mayores."
+				"standard": "La misma vista se puede explicar a un niño de seis años y a un alumno de bachillerato: en el nivel sencillo, «139.822 km» se convierte en «11 Tierras de ancho» y «−63 °C» en «más frío que en cualquier congelador». Un enlace compartido conserva las dos elecciones.",
+				"simple": "Palabras sencillas y comparaciones para los más pequeños, números exactos para los mayores."
 			},
 			"how": {
 				"standard": [

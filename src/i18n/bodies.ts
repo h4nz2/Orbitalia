@@ -25,6 +25,7 @@ import {
 } from "./catalog"
 import { useI18n } from "./context"
 import type { I18n } from "./core"
+import { everydaySize } from "./quantities"
 
 const levelIds = READING_LEVELS as readonly string[]
 
@@ -163,13 +164,20 @@ function fallbackDescription(body: Body, i18n: I18n): string {
 	if (body.kind !== "moon" || body.parentId === null || body.orbit === null) {
 		return ""
 	}
+	const name = bodyName(body.id, i18n.chain)
 	return i18n.t("bodies.fallback.moonDescription", {
-		name: bodyName(body.id, i18n.chain),
+		name,
 		parentId: body.parentId,
 		parent: bodyName(body.parentId, i18n.chain),
 		diameter: i18n.quantity(2 * body.radiusKm, "kilometer"),
 		distance: i18n.quantity(body.orbit.semiMajorAxisKm, "kilometer"),
 		period: orbitDuration(body.orbit.periodDays, i18n),
+		// the simple level's picture of its size (#51)
+		everyday:
+			everydaySize(
+				{ id: body.id, name, diameterKm: 2 * body.radiusKm },
+				i18n,
+			) ?? "",
 	})
 }
 

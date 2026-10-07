@@ -488,13 +488,22 @@ describe("what the card says", () => {
 	it("says how many asteroids a dot stands for and how empty the belt is, in every language and level", () => {
 		const belt = belts[0]
 		for (const locale of ["en", "de"] as const) {
-			for (const readingLevel of ["simple", "standard", "advanced"] as const) {
+			for (const readingLevel of ["standard", "advanced"] as const) {
 				const text = beltSentences(belt, createI18n({ locale, readingLevel }))
 				expect(text.perDot).toMatch(/380/)
 				expect(text.spacing).toMatch(/2[.,]6/)
 				expect(text.name.length).toBeGreaterThan(3)
 			}
 		}
+		// the simple level: no number above 100 (#51)
+		const simple = beltSentences(
+			belt,
+			createI18n({ locale: "en", readingLevel: "simple" }),
+		)
+		expect(simple.perDot).toBe(
+			"Every dot stands for more than 100 real space rocks bigger than 1 km.",
+		)
+		expect(simple.spacing).toMatch(/: 2\.5 times as far as from the Earth/)
 		const en = beltSentences(belt, createI18n())
 		expect(en.name).toBe("Asteroid belt")
 		expect(en.perDot).toBe(

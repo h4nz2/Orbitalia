@@ -18,7 +18,10 @@ not need to write code to help.
 ## Help without code
 
 - **Translations:** every word of the app is in `src/locales/<language>/`. Fixing a translation or adding a language
-  needs no code (see "i18n" in [docs/ARCHITECTURE.md](docs/ARCHITECTURE.md)).
+  needs no code (see "i18n" in [docs/ARCHITECTURE.md](docs/ARCHITECTURE.md)). The **simple** reading level is
+  for children aged 6 to 11: no number above 100 (years included), no thousands, millions or billions, no AU,
+  kelvin, m/s² or °C. Say it with comparisons instead: "11 Earths wide", "If Earth were an orange, the Moon would
+  be a cherry", "hotter than an oven". `pnpm test` points at every simple line that breaks the rule.
 - **Guided tours:** a tour is a JSON file; [src/data/tours/README.md](src/data/tours/README.md) explains the format.
 - **Facts and stories:** the texts about each world are in `src/locales/<language>/bodies.json`; corrections with a
   source are very welcome.

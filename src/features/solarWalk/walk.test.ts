@@ -178,7 +178,8 @@ describe("everyday comparisons", () => {
 		expect(nearestThing(0.008)).toBe("pea")
 		expect(nearestThing(0.0021)).toBe("pinhead")
 		expect(nearestThing(1e-6)).toBe("fineSand")
-		expect(nearestThing(5)).toBe("football")
+		expect(nearestThing(0.3)).toBe("football")
+		expect(nearestThing(5)).toBe("house")
 	})
 })
 

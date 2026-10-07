@@ -159,9 +159,12 @@ test("true scale, in German at the simple reading level", async ({ page }) => {
 	await flySlowly(page, "moon", 8000)
 	const readout = page.getByRole("region", { name: "Reise" })
 	await expect(readout.getByText("Reise: Erde → Mond")).toBeVisible()
-	await expect(readout.getByText(/^\d{3}\.\d{3} km weit weg$/)).toBeVisible()
+	// no kilometres at the simple level: Earth is the yardstick (#51)
+	await expect(
+		readout.getByText(/^Das ist so weit wie \d{2} Erden in einer Reihe$/),
+	).toBeVisible()
 	await expect(readout.getByRole("listitem").first()).toHaveText(
-		/^Licht, das Schnellste, was es gibt\s*1,\d Sekunden$/,
+		/^Licht, das Schnellste, was es gibt\s*1(,5)? Sekunden?$/,
 	)
 	await cameraAtRest(page)
 	expect((await camera(page)).mode).toBe("focused")

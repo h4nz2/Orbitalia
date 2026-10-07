@@ -591,12 +591,12 @@
 				"simple": "Your language"
 			},
 			"what": {
-				"standard": "Orbitalia speaks English, German, Czech, Spanish and French, each at three reading levels: simple, standard and advanced.",
-				"simple": "Read everything in your language, and in easy words."
+				"standard": "Orbitalia speaks English, German, Czech, Spanish and French, each at three reading levels: simple (for ages 6 to 11, with comparisons instead of big numbers), standard and advanced.",
+				"simple": "Read everything in your language. Simple is for children from 6 to 11: no big numbers, just comparisons like “11 Earths wide”."
 			},
 			"why": {
-				"standard": "The same view can be explained to a nine-year-old and to a sixth-former, and a shared link keeps both choices.",
-				"simple": "Simple words for younger readers, more detail for older ones."
+				"standard": "The same view can be explained to a six-year-old and to a sixth-former: at the simple level “139,822 km” becomes “11 Earths wide” and “−63 °C” “colder than any freezer”. A shared link keeps both choices.",
+				"simple": "Simple words and comparisons for younger readers, exact numbers for older ones."
 			},
 			"how": {
 				"standard": [

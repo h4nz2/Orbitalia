@@ -26,7 +26,7 @@ import {
 } from "@mantine/core"
 import { IconBolt, IconBoltOff, IconCheck, IconX } from "@tabler/icons-react"
 
-import { useI18n, type I18n } from "@/i18n"
+import { distanceInWords, isSimple, useI18n, type I18n } from "@/i18n"
 import { useBodyName } from "@/i18n/bodies"
 import { Hint } from "@/primitives/hint"
 import { kmToAu } from "@/sim"
@@ -63,8 +63,9 @@ import classes from "./LightPanel.module.css"
 
 const YEAR_SECONDS = 365.25 * 86400
 
-/** "384,400 km", "150 million km" / "150 Millionen km". */
+/** "384,400 km", "150 million km" / "150 Millionen km"; words at the simple level (#51). */
 export function formatDistanceKm(km: number, i18n: I18n): string {
+	if (isSimple(i18n)) return distanceInWords(km, i18n)
 	const value =
 		km < 1e6
 			? i18n.number(Math.round(km))

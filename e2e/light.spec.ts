@@ -136,10 +136,11 @@ test("beyond the solar system, and in German", async ({ page }) => {
 	const panel = page.locator("[data-light-panel]")
 	await panel.getByText("Noch weiter", { exact: true }).click()
 	await expect(panel.locator("[data-beyond=proximaCentauri]")).toContainText(
-		"4,2 Jahre",
+		"4 Jahre",
 	)
+	// no number above 100 at the simple level (#51)
 	await expect(panel.locator("[data-beyond=galacticCentre]")).toContainText(
-		"26.000 Jahre",
+		"länger, als es die Pyramiden gibt",
 	)
 	await panel.getByText("Lichtblitz", { exact: true }).click()
 	await panel.getByRole("button", { name: "Lichtblitz senden" }).click()

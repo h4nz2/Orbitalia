@@ -591,12 +591,12 @@
 				"simple": "Deine Sprache"
 			},
 			"what": {
-				"standard": "Orbitalia spricht Englisch, Deutsch, Tschechisch, Spanisch und Französisch, jeweils in drei Lesestufen: Einfach, Standard und Vertieft.",
-				"simple": "Lies alles in deiner Sprache und in einfachen Worten."
+				"standard": "Orbitalia spricht Englisch, Deutsch, Tschechisch, Spanisch und Französisch, jeweils in drei Lesestufen: Einfach (für 6- bis 11-Jährige, mit Vergleichen statt großer Zahlen), Standard und Vertieft.",
+				"simple": "Lies alles in deiner Sprache. „Einfach“ ist für Kinder von 6 bis 11: keine großen Zahlen, sondern Vergleiche wie „so breit wie 11 Erden“."
 			},
 			"why": {
-				"standard": "Dieselbe Ansicht lässt sich einem Kind von neun Jahren und jemandem aus der Oberstufe erklären, und ein geteilter Link behält beide Einstellungen.",
-				"simple": "Einfache Wörter für Jüngere, mehr Einzelheiten für Ältere."
+				"standard": "Dieselbe Ansicht lässt sich einem Kind von sechs Jahren und jemandem aus der Oberstufe erklären: In der Stufe Einfach wird aus „139.822 km“ „so breit wie 11 Erden“ und aus „−63 °C“ „kälter als jede Tiefkühltruhe“. Ein geteilter Link behält beide Einstellungen.",
+				"simple": "Einfache Wörter und Vergleiche für Jüngere, genaue Zahlen für Ältere."
 			},
 			"how": {
 				"standard": [

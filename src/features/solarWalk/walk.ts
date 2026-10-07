@@ -12,6 +12,7 @@
  * Pure: no React, no strings. Lengths are in metres.
  */
 import { bodyById, moonsOf, planets, sun, type Body } from "@/data"
+import { nearestThing, type ThingId } from "@/i18n"
 import { TRUE_SCALE, bodyDistortion } from "@/sim"
 
 import type { LandmarkId, SunObjectId } from "./search"
@@ -50,46 +51,11 @@ export const LANDMARKS: Readonly<Record<LandmarkId, { lengthM: number }>> = {
 }
 
 /**
- * Everyday things to compare a model body with, by typical diameter. Chosen to
- * be familiar in every shipped language (no national coins or foods) and close
- * enough together that the nearest one is never off by more than about 1.4x.
+ * Everyday things to compare a model body with: the app's shared set (#51),
+ * defined with the quantities in `@/i18n` so every comparison in the app
+ * uses the same objects. Walk bodies are never bigger than a small melon.
  */
-export const THINGS = {
-	fineSand: { diameterM: 0.0002 }, // fine sand: 0.125–0.25 mm
-	salt: { diameterM: 0.0003 }, // a grain of table salt: about 0.3 mm
-	sugar: { diameterM: 0.0006 }, // a grain of granulated sugar: 0.5–0.8 mm
-	poppySeed: { diameterM: 0.001 }, // about 1 mm
-	pinhead: { diameterM: 0.002 }, // the head of a dressmaker's pin: 1.5–2 mm
-	peppercorn: { diameterM: 0.0045 }, // black pepper: 4–5 mm
-	pea: { diameterM: 0.008 }, // a garden pea: 7–10 mm
-	marble: { diameterM: 0.016 }, // the standard marble
-	cherry: { diameterM: 0.022 }, // 2–2.5 cm
-	walnut: { diameterM: 0.032 }, // 3–3.5 cm
-	tableTennisBall: { diameterM: 0.04 }, // exactly 40 mm (ITTF)
-	tennisBall: { diameterM: 0.067 }, // 6.54–6.86 cm (ITF)
-	orange: { diameterM: 0.08 },
-	grapefruit: { diameterM: 0.11 },
-	melon: { diameterM: 0.15 }, // a small melon (Galia, cantaloupe)
-	football: { diameterM: 0.22 },
-} as const satisfies Record<string, { diameterM: number }>
-
-export type ThingId = keyof typeof THINGS
-
-const THING_IDS = Object.keys(THINGS) as ThingId[]
-
-/** The everyday thing closest in size to `diameterM` (nearest on a log scale). */
-export function nearestThing(diameterM: number): ThingId {
-	let best: ThingId = THING_IDS[0]
-	let bestMiss = Infinity
-	for (const id of THING_IDS) {
-		const miss = Math.abs(Math.log(diameterM / THINGS[id].diameterM))
-		if (miss < bestMiss) {
-			best = id
-			bestMiss = miss
-		}
-	}
-	return best
-}
+export { THINGS, nearestThing, type ThingId } from "@/i18n"
 
 /**
  * The nearest star after the Sun. Not a body of the app (stars beyond the Sun

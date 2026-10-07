@@ -163,5 +163,8 @@ test("the Sun's recording in German at the simple level", async ({ page }) => {
 	await expect(
 		recording.getByRole("button", { name: "Anhören: Radioblitze der Sonne" }),
 	).toBeVisible()
-	await expect(recording.getByText(/^2003 gab es auf der Sonne/)).toBeVisible()
+	// no years at the simple level (#51)
+	await expect(
+		recording.getByText(/^Einmal gab es auf der Sonne/),
+	).toBeVisible()
 })

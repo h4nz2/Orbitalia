@@ -591,12 +591,12 @@
 				"simple": "Tvůj jazyk"
 			},
 			"what": {
-				"standard": "Orbitalia mluví anglicky, německy, česky, španělsky a francouzsky, a to vždy na třech úrovních náročnosti: jednoduché, běžné a pokročilé.",
-				"simple": "Čti všechno ve svém jazyce a jednoduchými slovy."
+				"standard": "Orbitalia mluví anglicky, německy, česky, španělsky a francouzsky, a to vždy na třech úrovních náročnosti: jednoduché (pro děti od 6 do 11 let, s přirovnáními místo velkých čísel), běžné a pokročilé.",
+				"simple": "Čti všechno ve svém jazyce. Jednoduchá úroveň je pro děti od 6 do 11 let: žádná velká čísla, jen přirovnání typu „jako 11 Zemí vedle sebe“."
 			},
 			"why": {
-				"standard": "Stejný pohled se dá vysvětlit devítiletému dítěti i středoškolákovi a sdílený odkaz si pamatuje obě volby.",
-				"simple": "Jednoduchá slova pro mladší čtenáře, víc podrobností pro starší."
+				"standard": "Stejný pohled se dá vysvětlit šestiletému dítěti i středoškolákovi: na jednoduché úrovni se ze „139 822 km“ stane „jako 11 Zemí vedle sebe“ a z „−63 °C“ „větší zima než v jakémkoli mrazáku“. Sdílený odkaz si pamatuje obě volby.",
+				"simple": "Jednoduchá slova a přirovnání pro mladší čtenáře, přesná čísla pro starší."
 			},
 			"how": {
 				"standard": [
