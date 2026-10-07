@@ -225,8 +225,8 @@
 			"markersOn@simple": "The dots show where the planets are. The planets are too small to see!",
 			"markersOff": "Markers are off: switch them on to find the planets.",
 			"markersOff@simple": "Switch on Markers to find the planets!",
-			"walk": "Too small to imagine? Walk it: the solar system with the Sun as a basketball.",
-			"walk@simple": "Too small to see? Walk the solar system on your school field!",
+			"walk": "Shrink the Sun to a basketball and walk the solar system on a school field",
+			"walk@simple": "Make the Sun a basketball and walk to every planet",
 			"hint": {
 				"sizesTrue": "Draws every body at its real size. From far away the planets become too small to see.",
 				"sizesTrue@simple": "Planets as big as they really are. From far away they are too small to see!",
@@ -419,7 +419,15 @@
 			"showFacts": "Show facts",
 			"hideFacts": "Hide facts",
 			"close": "Close",
-			"compare": "Compare with…"
+			"compare": "Compare with…",
+			"walk": "{bodyId, select, sun {Shrink the Sun to a basketball and walk the solar system} other {Shrink the Sun to a basketball and walk out to this world}}",
+			"walk@simple": "{bodyId, select, sun {Make the Sun a basketball and walk to the planets} other {Make the Sun a basketball and walk to this world}}"
+		},
+		"walkNudge": {
+			"title": "Where did the planets go?",
+			"text": "At true scale they are far too small to see, and very far apart. Feel the distances on foot:",
+			"text@simple": "They are too small to see now. And they are very far apart. Try walking it!",
+			"dismiss": "Close the tip"
 		},
 		"moons": {
 			"label": "Moons",
@@ -1397,8 +1405,8 @@
 				"trueScale": {
 					"title": "True scale",
 					"title@simple": "The real size",
-					"text": "Now every size and distance is real, and the planets vanish into empty space: the dots only show where they are. Scale, at the bottom right, switches between the truth and pictures you can see.",
-					"text@simple": "This is the real size of everything. The planets are so small you cannot see them! The dots show where they are. Press Scale at the bottom right to switch."
+					"text": "Now every size and distance is real, and the planets vanish into empty space: the dots only show where they are. Scale, at the bottom right, switches between the truth and pictures you can see. Its panel also lets you shrink the Sun to a basketball and walk the solar system on a school field.",
+					"text@simple": "This is the real size of everything. The planets are so small you cannot see them! The dots show where they are. Press Scale at the bottom right to switch. There you can also walk to the planets at school."
 				},
 				"time": {
 					"title": "Travel in time",

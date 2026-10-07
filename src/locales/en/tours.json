@@ -21,6 +21,10 @@
 					"simple": "This is our solar system. In the middle is the Sun, a star. Eight planets go round it, and many of them have moons. We live on the third planet: Earth. Let's visit them all!",
 					"standard": "One star, eight planets and hundreds of moons. Everything here circles the Sun, held by its gravity, and all the planets go round it in the same direction, almost in one flat plane. The planets are drawn much bigger than they really are, so you can see them. Let's visit each one, from the inside out.",
 					"advanced": "One star, eight planets and hundreds of known moons, all formed about 4.6 billion years ago from one flattened cloud of gas and dust. That is why the planets orbit in nearly the same plane and in the same direction. Sizes and distances are distorted in this view (see the Scale panel); every fact in the tour uses the true values."
+				},
+				"link": {
+					"simple": "Make the Sun a basketball and walk to every planet",
+					"standard": "Shrink the Sun to a basketball and walk the solar system"
 				}
 			},
 			"sun": {
@@ -213,9 +217,8 @@
 					"advanced": "At a scale of 1 : 5.8 billion the Sun is a 24 cm basketball, Earth a 2.2 mm pinhead at 26 m, Jupiter 24 mm at 134 m and Neptune 8.5 mm at 776 m. Proxima Centauri, 4.2 light-years away, would be 6,900 km off: the solar system is a tiny island in an ocean of nothing."
 				},
 				"link": {
-					"simple": "Walk it outside",
-					"standard": "Walk the model",
-					"advanced": "Walk the model"
+					"simple": "Walk it at your school",
+					"standard": "Walk this model on your school field"
 				}
 			}
 		}

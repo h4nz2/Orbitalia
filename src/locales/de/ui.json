@@ -225,8 +225,8 @@
 			"markersOn@simple": "Die Punkte zeigen, wo die Planeten sind. Die Planeten sind zu klein, um sie zu sehen!",
 			"markersOff": "Die Markierungen sind aus: Schalte sie ein, um die Planeten zu finden.",
 			"markersOff@simple": "Schalte die Markierungen ein, um die Planeten zu finden!",
-			"walk": "Zu klein, um es sich vorzustellen? Lauf es ab: das Sonnensystem mit der Sonne als Basketball.",
-			"walk@simple": "Zu klein zum Sehen? Lauf das Sonnensystem auf dem Sportplatz ab!",
+			"walk": "Schrumpf die Sonne auf einen Basketball und lauf das Sonnensystem auf dem Sportplatz ab",
+			"walk@simple": "Mach die Sonne zu einem Basketball und lauf zu jedem Planeten",
 			"hint": {
 				"sizesTrue": "Zeichnet jeden Himmelskörper in seiner echten Größe. Aus der Ferne werden die Planeten zu klein zum Sehen.",
 				"sizesTrue@simple": "Planeten so groß, wie sie wirklich sind. Von weit weg sind sie zu klein zum Sehen!",
@@ -419,7 +419,15 @@
 			"showFacts": "Fakten zeigen",
 			"hideFacts": "Fakten ausblenden",
 			"close": "Schließen",
-			"compare": "Vergleichen mit …"
+			"compare": "Vergleichen mit …",
+			"walk": "{bodyId, select, sun {Schrumpf die Sonne auf einen Basketball und lauf das Sonnensystem ab} other {Schrumpf die Sonne auf einen Basketball und lauf bis zu dieser Welt}}",
+			"walk@simple": "{bodyId, select, sun {Mach die Sonne zu einem Basketball und lauf zu den Planeten} other {Mach die Sonne zu einem Basketball und lauf zu dieser Welt}}"
+		},
+		"walkNudge": {
+			"title": "Wo sind die Planeten hin?",
+			"text": "Im echten Maßstab sind sie viel zu klein, um sie zu sehen, und sehr weit voneinander entfernt. Spür die Abstände zu Fuß:",
+			"text@simple": "Jetzt sind sie zu klein zum Sehen. Und sie sind sehr weit voneinander weg. Lauf es doch einmal ab!",
+			"dismiss": "Tipp schließen"
 		},
 		"moons": {
 			"label": "Monde",
@@ -1397,8 +1405,8 @@
 				"trueScale": {
 					"title": "Echter Maßstab",
 					"title@simple": "Die echte Größe",
-					"text": "Jetzt sind alle Größen und Abstände echt, und die Planeten verschwinden im leeren Raum: Die Punkte zeigen nur, wo sie sind. „Maßstab“ unten rechts wechselt zwischen der Wahrheit und Bildern, auf denen man etwas sieht.",
-					"text@simple": "So groß ist alles wirklich. Die Planeten sind so klein, dass du sie nicht siehst! Die Punkte zeigen, wo sie sind. Mit „Maßstab“ unten rechts schaltest du um."
+					"text": "Jetzt sind alle Größen und Abstände echt, und die Planeten verschwinden im leeren Raum: Die Punkte zeigen nur, wo sie sind. „Maßstab“ unten rechts wechselt zwischen der Wahrheit und Bildern, auf denen man etwas sieht. Dort schrumpfst du auch die Sonne auf einen Basketball und läufst das Sonnensystem auf dem Sportplatz ab.",
+					"text@simple": "So groß ist alles wirklich. Die Planeten sind so klein, dass du sie nicht siehst! Die Punkte zeigen, wo sie sind. Mit „Maßstab“ unten rechts schaltest du um. Dort kannst du auch an deiner Schule zu den Planeten laufen."
 				},
 				"time": {
 					"title": "Reise durch die Zeit",

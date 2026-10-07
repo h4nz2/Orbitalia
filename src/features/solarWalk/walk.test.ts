@@ -11,7 +11,9 @@ import {
 	landmarkOnWalk,
 	landmarkCount,
 	nearestThing,
+	stopOf,
 } from "./walk"
+import { WALK_FOCUS_IDS } from "./search"
 
 const basketball = buildWalk("basketball")
 const stop = (id: string) => {
@@ -124,6 +126,24 @@ describe("one model: #21's true scale with the Sun as the ruler", () => {
 			uranus: [],
 			neptune: ["triton"],
 		})
+	})
+})
+
+describe("opening the walk on a body (?focus=, #48)", () => {
+	it("offers exactly the bodies the walk has a line for", () => {
+		const lines = [
+			"sun",
+			...basketball.stops.flatMap((s) => [s.id, ...s.moons.map((m) => m.id)]),
+		]
+		expect([...WALK_FOCUS_IDS].sort()).toEqual(lines.sort())
+	})
+
+	it("finds a planet's stop, and a big moon on its planet's", () => {
+		expect(stopOf(basketball, "jupiter")?.id).toBe("jupiter")
+		expect(stopOf(basketball, "titan")?.id).toBe("saturn")
+		expect(stopOf(basketball, "moon")?.id).toBe("earth")
+		expect(stopOf(basketball, "sun")).toBeNull()
+		expect(stopOf(basketball, "phobos")).toBeNull()
 	})
 })
 

@@ -207,9 +207,11 @@ test("German, simple reading level", async ({ page }) => {
 test("true scale in 3D and the walk lead to each other", async ({ page }) => {
 	test.slow()
 	await page.goto("/solar_system?scale=trueScale")
-	// the walk's link is in the Scale panel (#42)
+	// the walk's card is in the Scale panel (#42, #48)
 	await openScale(page)
-	const link = page.getByRole("link", { name: /Walk it/ })
+	const link = page.getByRole("link", {
+		name: /Shrink the Sun to a basketball/,
+	})
 	await expect(link).toBeVisible()
 	await link.click()
 	await expect(page).toHaveURL(/\/solar_walk/)

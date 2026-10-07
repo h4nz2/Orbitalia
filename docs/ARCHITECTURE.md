@@ -53,7 +53,7 @@ src/store/                   sim.ts, navigation.ts, flight.ts, scale.ts, lightin
                              hud.ts (the quiet HUD, #42), presentation.ts, postcard.ts, sound.ts, birthday.ts, skyTonight.ts, tour.ts, simSearch.ts (URL schema),
                              urlSync.ts
 src/features/                solarDictionary/, solarSystem/ (index.tsx, scene/, bodies/, camera/, dock/, frame/, hunt/, intro/, labels/, lighting/, light/, postcard/, present/, rings/,
-                             smallBodies/ (#23), sound/, tours/, ui/, birthday/, skyTonight/),
+                             smallBodies/ (#23), sound/, tours/, ui/, birthday/, skyTonight/, walk/ (the walk's ways in, #48)),
                              solarWalk/ (the basketball solar system, #25), compare/ (side by side, #24), help/ (the help page, #43),
                              feedback/ (the feedback page, its schema shared with the Worker, the error page)
 src/primitives/hint/         hover hints for every control (#39, see Hints)
@@ -293,6 +293,8 @@ on-screen size (in the overview: the whole drawn planetary system).
   ("Earth is drawn 10x too big." / "... 13x too close to the Sun."), factors rounded to two significant digits,
   within 5 % of 1 said as "real". Every string has simple/standard/advanced variants in every locale; German picks
   articles and cases by `subjectId`/`parentId` selects. In `trueScale`/`bigPlanets` a line points at the markers.
+  At the bottom, in every preset, the walk's card (#48, `walk/WalkOffer.tsx` `ScaleWalkOffer`, independent of the
+  preset list; see "The walk's ways in").
 - **URL, not storage:** `?scale=<preset id>` (absent = the default, unknown ids ignored), written at the click;
   a link opens in its preset without animating. Nothing is kept in localStorage: every fresh visit starts in
   Everything visible, so the switch to true scale stays the lesson.
@@ -319,11 +321,36 @@ True scale taken out onto the school field: "if the Sun were a basketball, Earth
   "149.6 million km" for true values, "1 : 5.8 billion" for the scale).
 - **Views:** the walk (a path of stop cards, the default) and a table (projectable). Printing always prints the
   table: controls hidden, black on white, a tick column, bodies up to 30 mm drawn at their model size in CSS mm.
-- **URL:** `?sun=<object>&landmark=pitch|track|none&view=walk|table` (`search.ts`, zod only, so the route chunk
+- **URL:** `?sun=<object>&landmark=pitch|track|none&view=walk|table&focus=<body>` (`search.ts`, zod only, so the route chunk
   stays light); defaults are left out.
-- **Links with the 3D model:** Tools → "Walk the solar system" (#45) and "Walk it" in the Scale panel in True scale
-  lead here; every stop opens `/solar_system?scale=trueScale&focus=<id>`; Back returns to where the visitor left
-  (`useBackToSolarSystem`), or to true scale when the page was opened from a link.
+- **Opened on a body** (`?focus=<id>`, #48): `WALK_FOCUS_IDS` (the Sun, the planets, the seven big moons; held to
+  the walk by `walk.test.ts`, anything else is dropped) marks that line (`data-focused`; its stop gets
+  `aria-current="location"`, a big moon's stop is its planet's, `stopOf`) and scrolls it to the middle of the view on
+  show, walk or table. Printing ignores it.
+- **Links with the 3D model:** see "The walk's ways in" below for the ways here; every stop opens
+  `/solar_system?scale=trueScale&focus=<id>`; Back returns to where the visitor left (`useBackToSolarSystem`), or
+  to true scale when the page was opened from a link.
+
+### The walk's ways in (`features/solarSystem/walk`; #48)
+
+The walk is the strongest scale lesson the app has, so the solar system offers it wherever size and distance come
+up, each time named for the idea ("Shrink the Sun to a basketball and walk the solar system"), never for the page.
+From the default view it is at most two actions away from three places (`e2e/walkFindable.spec.ts`):
+
+- **Tools** → "Walk the solar system" (`dock/ToolsMenu.tsx`, its own icon, right after Side by side; #45).
+- **The Scale panel**, in every preset: `WalkCard` (an icon and one line, `solarSystem.scale.walk`), rendered by
+  `ScaleWalkOffer` at the panel's end and independent of the preset list, so a new preset needs nothing here.
+- **A world's card**: under its authored comparison (unfolded), `solarSystem.card.walk` opens
+  `/solar_walk?focus=<id>` on that world, for the bodies the walk has (`isWalkFocusId`); others get no link.
+- **Tours**: the grand tour's first stop (where it says the planets are drawn too big) and How big's last stop
+  carry `"link": "solarWalk"`; the quick look's true-scale step mentions it.
+- **One tip, once** (`walk/walkNudge.ts`, `useWalkNudgeStore`): the viewer's own first switch to True scale (the
+  Scale panel's presets and lies, `chooseScale`; the S key) shows "Where did the planets go?" and the card. Inside
+  the Scale panel when it is open, else as a small panel in the dock (`WalkNudge`, never a panel of its own on the
+  scene, #42). Shown once per browser (`orbitalia.walkNudgeShown`, written when it appears, guarded; blocked storage:
+  once per visit); never for a tour, the quick look, the opening or a link, never while presenting or while a tour
+  talks. It goes on its close button, after 20 s, when the scale leaves True scale, when presenting or a tour starts,
+  and with the page. `playwright.config.ts` presets the key, as it does the opening's.
 
 ## Navigation (`src/store/navigation.ts`, `features/solarSystem/camera`; #10)
 
@@ -1113,9 +1140,9 @@ unobstructed (`e2e/quietHud.spec.ts` measures it). Every control is at most two 
   (light, birthday, sky tonight, hunt). `dock/exclusive.ts` `keepOneOpen` closes the previous one whichever way the
   next one opened (button, Tools menu, link, key); a new tool adds one `DockEntry` there. `DockPanel` is the shell
   (title, close, focus moves in on open and back to the opener on close). The tour card (#28) sits in the dock too,
-  under the panel. On phones a dock panel or a tour takes the body card's place.
+  under the panel, and so does the walk's one-time tip while the Scale panel is closed (#48). On phones a dock panel or a tour takes the body card's place.
 - **The body card starts small**: name, one sentence, Compare, the unfold arrow and close. The facts, moons, stories
-  and recordings unfold on demand; the choice (`useHudStore.cardExpanded`) holds from body to body while the page
+  (the comparison with its way to the walk, #48) and recordings unfold on demand; the choice (`useHudStore.cardExpanded`) holds from body to body while the page
   is open.
 - **Stepping back while the camera moves**: `camera/motion.ts` `MotionWatch` (fed by `CameraRig` every frame:
   the pose round the pivot changing, or a transition running; a camera following its body while time runs counts

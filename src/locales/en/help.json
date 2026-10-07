@@ -234,6 +234,7 @@
 					"Fly to a world: its card appears with its name and one sentence.",
 					"Press the arrow on the card to open its facts, moons and stories; it stays open for the next world.",
 					"“Read more in the dictionary” opens its page, “Compare with…” puts it next to another world.",
+					"Under the comparison, “Shrink the Sun to a basketball…” finds the world on the walk across the school field.",
 					"The last line of the open card says where the picture of the world comes from: a spacecraft’s map, or painted after spacecraft photos where no complete map exists."
 				],
 				"simple": [
@@ -753,7 +754,7 @@
 		},
 		"solarWalk": {
 			"title": {
-				"standard": "The basketball solar system",
+				"standard": "Shrink the Sun and walk the solar system",
 				"simple": "Walk the solar system"
 			},
 			"what": {
@@ -766,12 +767,14 @@
 			},
 			"how": {
 				"standard": [
-					"Open Tools at the bottom right and choose “Walk the solar system”, or press “Walk it” in the Scale panel at true scale.",
+					"Open Tools at the bottom right and choose “Walk the solar system”, or press Scale and then “Shrink the Sun to a basketball…” at the bottom of its panel, in every scale.",
+					"On a world’s card, unfold the facts: under its comparison, “Shrink the Sun to a basketball and walk out to this world” opens the walk on that world.",
 					"Choose what the Sun is (an orange, a football, a basketball, an exercise ball) and a landmark to measure against.",
 					"Switch to Table and Print it to take outside."
 				],
 				"simple": [
 					"Press Tools, then “Walk the solar system”.",
+					"Or press Scale, then “Make the Sun a basketball…”.",
 					"Choose a ball for the Sun.",
 					"Read how far to walk to each planet.",
 					"Print the table and walk it outside."

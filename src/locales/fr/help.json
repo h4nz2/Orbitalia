@@ -234,6 +234,7 @@
 					"Vole vers un monde : sa fiche apparaît avec son nom et une phrase.",
 					"La flèche de la fiche ouvre ses infos, ses lunes et ses histoires ; elle reste ouverte pour le monde suivant.",
 					"« En savoir plus dans le dictionnaire » ouvre sa page, « Comparer avec… » le place à côté d’un autre monde.",
+					"Sous la comparaison, « Réduis le Soleil à un ballon de basket… » retrouve ce monde sur le parcours à travers le terrain de l’école.",
 					"La dernière ligne de la fiche ouverte dit d’où vient l’image du monde : une carte faite par une sonde ou, là où il n’existe pas de carte complète, une peinture d’après des photos de sondes."
 				],
 				"simple": [
@@ -753,7 +754,7 @@
 		},
 		"solarWalk": {
 			"title": {
-				"standard": "Le système solaire en ballon de basket",
+				"standard": "Réduis le Soleil et parcours le système solaire à pied",
 				"simple": "Le système solaire à pied"
 			},
 			"what": {
@@ -766,12 +767,14 @@
 			},
 			"how": {
 				"standard": [
-					"Ouvre Outils en bas à droite et choisis « Le système solaire à pied », ou clique sur « Parcours-le à pied » dans le panneau Échelle, à l’échelle réelle.",
+					"Ouvre Outils en bas à droite et choisis « Le système solaire à pied », ou appuie sur Échelle puis sur « Réduis le Soleil à un ballon de basket… » en bas du panneau, à toutes les échelles.",
+					"Sur la fiche d’un monde, déplie les infos : sous sa comparaison, « Réduis le Soleil à un ballon de basket et marche jusqu’à ce monde » ouvre le parcours sur ce monde.",
 					"Choisis ce qu’est le Soleil (une orange, un ballon de foot, un ballon de basket, un ballon de gym) et un repère pour comparer.",
 					"Passe en Tableau et clique sur Imprimer pour l’emporter dehors."
 				],
 				"simple": [
-					"Appuie sur Outils, puis sur « Le système solaire à pied ».",
+					"Appuie sur Outils, puis sur « Le système solaire à pied ».",
+					"Ou appuie sur Échelle, puis sur « Transforme le Soleil en ballon de basket… ».",
 					"Choisis un ballon pour le Soleil.",
 					"Lis jusqu’où il faut marcher pour chaque planète.",
 					"Imprime le tableau et fais le parcours dehors."

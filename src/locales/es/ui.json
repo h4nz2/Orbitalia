@@ -225,8 +225,8 @@
 			"markersOn@simple": "Los puntos muestran dónde están los planetas. ¡Los planetas son demasiado pequeños para verlos!",
 			"markersOff": "Los marcadores están desactivados: actívalos para encontrar los planetas.",
 			"markersOff@simple": "¡Activa los Marcadores para encontrar los planetas!",
-			"walk": "¿Demasiado pequeño para imaginarlo? Recórrelo a pie: el sistema solar con el Sol del tamaño de un balón de baloncesto.",
-			"walk@simple": "¿Demasiado pequeño para verlo? ¡Recorre a pie el sistema solar en el patio de tu escuela!",
+			"walk": "Encoge el Sol hasta un balón de baloncesto y recorre a pie el sistema solar en el patio del colegio",
+			"walk@simple": "Convierte el Sol en un balón de baloncesto y camina hasta cada planeta",
 			"hint": {
 				"sizesTrue": "Dibuja cada cuerpo con su tamaño real. De lejos, los planetas son demasiado pequeños para verse.",
 				"sizesTrue@simple": "Planetas tan grandes como son de verdad. ¡De lejos son demasiado pequeños para verlos!",
@@ -419,7 +419,15 @@
 			"showFacts": "Mostrar datos",
 			"hideFacts": "Ocultar datos",
 			"close": "Cerrar",
-			"compare": "Comparar con…"
+			"compare": "Comparar con…",
+			"walk": "{bodyId, select, sun {Encoge el Sol hasta un balón de baloncesto y recorre a pie el sistema solar} other {Encoge el Sol hasta un balón de baloncesto y camina hasta este mundo}}",
+			"walk@simple": "{bodyId, select, sun {Convierte el Sol en un balón de baloncesto y camina hasta los planetas} other {Convierte el Sol en un balón de baloncesto y camina hasta este mundo}}"
+		},
+		"walkNudge": {
+			"title": "¿Adónde se han ido los planetas?",
+			"text": "A escala real son demasiado pequeños para verlos y están muy lejos unos de otros. Siente las distancias a pie:",
+			"text@simple": "Ahora son demasiado pequeños para verlos. Y están muy lejos unos de otros. ¡Prueba a recorrerlo a pie!",
+			"dismiss": "Cerrar el consejo"
 		},
 		"moons": {
 			"label": "Lunas",
@@ -1397,8 +1405,8 @@
 				"trueScale": {
 					"title": "Escala real",
 					"title@simple": "El tamaño real",
-					"text": "Ahora cada tamaño y cada distancia son reales, y los planetas desaparecen en el espacio vacío: los puntos solo muestran dónde están. Escala, abajo a la derecha, cambia entre la realidad y dibujos en los que se ve algo.",
-					"text@simple": "Este es el tamaño real de todo. ¡Los planetas son tan pequeños que no los ves! Los puntos muestran dónde están. Pulsa Escala abajo a la derecha para cambiar."
+					"text": "Ahora cada tamaño y cada distancia son reales, y los planetas desaparecen en el espacio vacío: los puntos solo muestran dónde están. Escala, abajo a la derecha, cambia entre la realidad y dibujos en los que se ve algo. Ahí también encoges el Sol hasta un balón de baloncesto para recorrer a pie el sistema solar en el patio del colegio.",
+					"text@simple": "Este es el tamaño real de todo. ¡Los planetas son tan pequeños que no los ves! Los puntos muestran dónde están. Pulsa Escala abajo a la derecha para cambiar. Ahí también puedes caminar hasta los planetas en tu escuela."
 				},
 				"time": {
 					"title": "Viaja en el tiempo",
