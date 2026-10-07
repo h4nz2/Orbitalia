@@ -1076,29 +1076,33 @@
 			"why": "Die Jagd passt zum Thema des Tages, und ein Link startet sie für alle Schülerinnen und Schüler in deiner Sprache.",
 			"how": [
 				"Öffne „Werkzeuge“ → „Schnitzeljagd“ und wähle „Eigene Jagd zusammenstellen“.",
-				"Hake die Rätsel an, dann „Starten“, oder „Teilen“, um den Link für die Klasse zu bekommen."
+				"Hake Rätsel aus jeder Stufe an, dann „Starten“, oder „Teilen“, um den Link für die Klasse zu bekommen. Leichte Rätsel behalten ihre Bilder und ihre Stimme."
 			]
 		},
 		"hunt": {
 			"title": "Schnitzeljagd",
 			"what": {
-				"standard": "Rätsel, die du löst, indem du die richtige Welt in der Szene findest und anklickst, mit Tipps, wenn du feststeckst, und einer Geschichte, wenn du sie gefunden hast.",
-				"simple": "Lies ein Rätsel, finde die richtige Welt und klick sie an!"
+				"standard": "Rätsel, die du löst, indem du die richtige Welt in der Szene findest und anklickst, auf drei Stufen: „Leicht“ (6–8 Jahre) mit einem Bild und einer Stimme für jedes Rätsel, „Mittel“ (9–11) und „Knifflig“ (ab 12). Tipps, wenn du feststeckst, eine Geschichte und ein Stern für jeden Fund und am Ende eine Urkunde.",
+				"simple": "Finde die richtige Welt und klick sie an! Leichte Rätsel haben ein Bild, und eine Stimme kann sie dir vorlesen. Für jeden Fund bekommst du einen Stern."
 			},
 			"why": {
-				"standard": "Beim Suchen erkundest du: Es gibt keine Punkte und kein Zeitlimit, und jeder falsche Versuch ist eine Welt, die du gerade besucht hast.",
-				"simple": "Beim Suchen lernst du eine Menge. Es gibt keine Uhr, und verlieren kannst du auch nicht."
+				"standard": "Beim Suchen erkundest du: Es gibt keine Punkte und kein Zeitlimit, und jeder falsche Versuch ist eine Welt, die du gerade besucht hast. „Leicht“ funktioniert auch für Kinder, die noch nicht lesen können: Sie vergleichen mit dem Bild, die Tipps lassen eine Stelle am Himmel aufleuchten, und alles kann vorgelesen werden, auch für eine ganze Klasse am Beamer.",
+				"simple": "Beim Suchen lernst du eine Menge. Es gibt keine Uhr, und verlieren kannst du auch nicht. Du musst nicht einmal lesen können: Schau dir das Bild an und hör zu."
 			},
 			"how": {
 				"standard": [
-					"Öffne unten rechts „Werkzeuge“, wähle „Schnitzeljagd“ und dann eine Jagd: „Leicht“, „Mittel“ oder „Knifflig“.",
-					"Lies das Rätsel, finde die Welt und klicke sie an.",
-					"Du steckst fest? „Brauchst du einen Tipp?“, und nach dem letzten Tipp „Zeig es mir“."
+					"Öffne unten rechts „Werkzeuge“ und wähle „Schnitzeljagd“.",
+					"Wähle, wie schwer es sein soll („Leicht“, „Mittel“ oder „Knifflig“; vorausgewählt ist die Stufe, die zu deiner Lesestufe passt), dann eine Jagd.",
+					"Lies das Rätsel oder drücke auf den Lautsprecher, um es zu hören. Finde dann die Welt und klicke sie an.",
+					"Du steckst fest? „Brauchst du einen Tipp?“: Bei „Leicht“ lässt der erste Tipp eine Stelle am Himmel aufleuchten, und der zweite lässt die Lösung blinken; nach dem letzten kommt „Zeig es mir“.",
+					"Am Ende macht dir „Urkunde erstellen“ ein Bild zum Speichern oder Ausdrucken."
 				],
 				"simple": [
 					"Drück auf „Werkzeuge“ und dann auf „Schnitzeljagd“.",
-					"Wähl eine leichte Jagd.",
-					"Lies das Rätsel und klick die richtige Welt an."
+					"Wähl „Leicht“ und dann eine Jagd.",
+					"Schau dir das Bild an und finde es. Drück auf den Lautsprecher, um das Rätsel zu hören.",
+					"Du kommst nicht weiter? Drück auf „Brauchst du einen Tipp?“.",
+					"Am Ende drückst du auf „Hol dir deine Urkunde“."
 				]
 			}
 		},

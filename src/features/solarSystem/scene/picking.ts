@@ -42,6 +42,12 @@ export const TARGET_RADIUS_PX: Readonly<Record<PointerKind, number>> = {
 }
 
 /**
+ * While an Easy clue of the scavenger hunt is on screen (#52), small bodies'
+ * targets are this much larger: a child aiming at a dot is forgiven a miss.
+ */
+export const EASY_TARGET_FACTOR = 2
+
+/**
  * A click within this multiple of the target radius of a body is a near miss,
  * not a click on empty space: aiming at a tiny moon and missing by a hair
  * must not close the card of what is selected.

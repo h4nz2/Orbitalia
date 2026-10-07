@@ -21,6 +21,7 @@ import { CAMERA_FAR, CAMERA_FOV_DEG, CAMERA_NEAR } from "../camera/framing"
 import Corona from "../events/Corona"
 import ReferenceFrameSync from "../frame/ReferenceFrameSync"
 import Trails from "../frame/Trails"
+import HuntSpotTracker from "../hunt/HuntSpotTracker"
 import IntroPulseTracker from "../intro/IntroPulseTracker"
 import { createLabelBoard } from "../labels/board"
 import LabelLayer from "../labels/LabelLayer"
@@ -116,6 +117,7 @@ function Scene() {
 					<CameraRig />
 					<HighlightTracker />
 					<IntroPulseTracker />
+					<HuntSpotTracker />
 					<SceneCapture />
 					<SoundProbe />
 				</SimFrameContext.Provider>

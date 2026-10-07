@@ -748,17 +748,43 @@
 			"intro": "Cada pista describe un mundo. Encuéntralo en la escena y haz clic en él: esa es tu respuesta. Las ayudas son gratis y no hay puntuación ni límite de tiempo.",
 			"intro@simple": "Lee la pista, encuentra el mundo y ¡haz clic en él! ¿Te has atascado? Pide una ayuda.",
 			"choose": "Elige una búsqueda",
+			"difficultyLabel": "¿Qué dificultad?",
 			"difficulty": {
 				"easy": "Fácil",
 				"medium": "Media",
 				"hard": "Complicada"
 			},
+			"ages": {
+				"easy": "6–8 años",
+				"medium": "9–11 años",
+				"hard": "12 años o más"
+			},
+			"hint": {
+				"easy": "Encuentra lo que muestra la imagen. Las pistas se leen en voz alta y las ayudas señalan el cielo. De 6 a 8 años.",
+				"easy@simple": "Mira la imagen y encuéntrala en el espacio. Una voz puede leerte la pista.",
+				"medium": "Pistas sobre lo que hace especial a cada mundo. De 9 a 11 años.",
+				"medium@simple": "Pistas sobre lo que hace especial a cada mundo.",
+				"hard": "Acertijos para los que necesitas las fichas, el reloj y los puntos de vista. A partir de 12 años.",
+				"hard@simple": "Acertijos difíciles. Tienes que leer las fichas.",
+				"readAloud": "Escúchalo leído en el idioma de la pantalla.",
+				"readAloud@simple": "Pulsa para escucharlo.",
+				"certificate": "Una imagen de la escena con los mundos que encontraste, para guardar o imprimir.",
+				"certificate@simple": "Una imagen para guardar, con todos los mundos que encontraste."
+			},
+			"easyNote": "Con imágenes: encuentra lo que ves.",
+			"easyNote@simple": "¡Mira la imagen y luego encuéntrala!",
+			"easyNoteVoice": "Con imágenes, y una voz lee cada pista.",
+			"easyNoteVoice@simple": "¡Mira la imagen y luego encuéntrala! Una voz lee las pistas.",
+			"none": "Todavía no hay búsquedas en este nivel: crea la tuya más abajo.",
 			"clueCount": "{count, plural, one {# pista} many {# de pistas} other {# pistas}}",
 			"inProgress": "Continúa: pista {step} de {total}",
 			"progress": "Pista {step} de {total}",
 			"progressLabel": "{found} de {total} encontrados",
 			"answerHow": "Encuéntralo en la escena y haz clic en él.",
 			"answerHow@simple": "¡Encuéntralo y haz clic en él!",
+			"weAreAt": "Estamos junto a {bodyId, select, earth {la Tierra} other {{name}}}.",
+			"readAloud": "Leer en voz alta",
+			"stopReading": "Dejar de leer",
 			"firstHint": "¿Necesitas una ayuda?",
 			"moreHint": "Otra ayuda",
 			"hintLabel": "Ayuda {n}",
@@ -771,19 +797,23 @@
 				"almost": "¡Sí, {name}! Ahora obsérvalo desde {frameId, select, sun {el Sol} earth {la Tierra} moon {la Luna} other {{frame}}}: elige el punto de vista arriba a la izquierda."
 			},
 			"found": "¡Encontrado!",
+			"star": "¡Una estrella para ti!",
 			"next": "Siguiente pista",
 			"finish": "Terminar",
 			"done": {
 				"title": "¡Búsqueda completada!",
 				"text": "{count, plural, one {Has resuelto la pista.} many {Has resuelto las # de pistas.} other {Has resuelto las # pistas.}}",
 				"text@simple": "{count, plural, one {¡Lo lograste!} many {¡Lo lograste: encontraste los # de mundos!} other {¡Lo lograste: encontraste los # mundos!}}",
+				"stars": "{count, plural, one {# estrella} many {# de estrellas} other {# estrellas}}",
 				"found": "Los mundos que encontraste. Haz clic en uno para volver a visitarlo:",
 				"again": "Jugar otra vez",
-				"other": "Elegir otra búsqueda"
+				"other": "Elegir otra búsqueda",
+				"certificate": "Crear un diploma",
+				"certificate@simple": "Consigue tu diploma"
 			},
 			"custom": {
 				"title": "Crea tu propia búsqueda",
-				"intro": "Marca las pistas para tu clase y luego empieza la búsqueda o compártela con tus alumnos.",
+				"intro": "Marca las pistas para tu clase, de cualquier nivel, y luego empieza la búsqueda o compártela con tus alumnos. Las pistas del nivel Fácil conservan sus imágenes y su voz.",
 				"name": "Tu propia búsqueda",
 				"count": "{count, plural, =0 {Ninguna pista elegida} one {# pista elegida} many {# de pistas elegidas} other {# pistas elegidas}}",
 				"start": "Empezar"
@@ -796,7 +826,16 @@
 				"copied": "Copiado",
 				"link": "Enlace a esta búsqueda"
 			},
-			"otherHunts": "Otras búsquedas"
+			"otherHunts": "Otras búsquedas",
+			"certificate": {
+				"title": "Diploma de exploración espacial",
+				"title@simple": "¡Misión espacial cumplida!",
+				"caption": "{hunt}: {count, plural, one {# pista resuelta} many {las # de pistas resueltas} other {las # pistas resueltas}}",
+				"caption@simple": "{hunt}: {count, plural, one {¡lo encontraste!} many {¡encontraste los # de mundos!} other {¡encontraste los # mundos!}}",
+				"row": "Pista {n}",
+				"note": "¡Felicidades por tu viaje por el espacio!",
+				"fileName": "mi-busqueda-espacial"
+			}
 		},
 		"sound": {
 			"toggle": "Sonido",

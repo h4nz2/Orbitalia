@@ -1,9 +1,23 @@
 {
 	"hunts": {
+		"lookAndFind": {
+			"title": "Look and find",
+			"description": {
+				"simple": "Look at the picture, then find it in space!",
+				"standard": "Five worlds to find by looking, each with a picture, read aloud."
+			}
+		},
+		"sunAndMoons": {
+			"title": "Sun and moons",
+			"description": {
+				"simple": "Find the Sun, the nearest and the farthest planet, then two moons.",
+				"standard": "From the Sun out to the last planet, then two moons: five finds by looking."
+			}
+		},
 		"firstSteps": {
 			"title": "First steps",
 			"description": {
-				"simple": "Six easy clues about the Moon and the planets.",
+				"simple": "Six clues about the Moon and the planets.",
 				"standard": "Six clues to get to know the planets and our Moon.",
 				"advanced": "A warm-up: six clues across the planets and the Moon."
 			}
@@ -34,19 +48,106 @@
 		}
 	},
 	"questions": {
+		"seeHome": {
+			"clue": "Find the planet we live on.",
+			"hints": [
+				"Look inside the yellow circle for a blue and white planet.",
+				"The blinking one is our home, Earth!"
+			],
+			"found": "Yes, that is Earth, our home!"
+		},
+		"seeRed": {
+			"clue": "Find the red planet.",
+			"hints": [
+				"Look inside the yellow circle for a red planet.",
+				"The blinking one is Mars!"
+			],
+			"found": "Yes, that is Mars, red with rusty dust!"
+		},
+		"seeBiggest": {
+			"clue": "Find the biggest planet.",
+			"hints": [
+				"Look inside the yellow circle for a big planet with stripes.",
+				"The blinking one is the giant, Jupiter!"
+			],
+			"found": "Yes, that is Jupiter, as wide as 11 Earths!"
+		},
+		"seeRings": {
+			"clue": "Find the planet with big rings.",
+			"hints": [
+				"Look inside the yellow circle for a planet with rings.",
+				"The blinking one is Saturn!"
+			],
+			"found": "Yes, that is Saturn, with rings made of ice!"
+		},
+		"seeMoon": {
+			"clue": "Find the Moon!",
+			"hints": [
+				"Look inside the yellow circle, close to Earth.",
+				"The blinking one is our Moon!"
+			],
+			"found": "Yes, that is the Moon, where people have walked!"
+		},
+		"seeSun": {
+			"clue": "Find the Sun.",
+			"hints": [
+				"Look inside the yellow circle, right in the middle.",
+				"The blinking one is the Sun!"
+			],
+			"found": "Yes, that is the Sun, the star that gives us light!"
+		},
+		"seeNearest": {
+			"clue": "Find the planet closest to the Sun.",
+			"hints": [
+				"Look inside the yellow circle, very close to the Sun.",
+				"The blinking one is Mercury!"
+			],
+			"found": "Yes, that is Mercury, the fastest planet of all!"
+		},
+		"seeFarthest": {
+			"clue": "Find the planet farthest from the Sun.",
+			"hints": [
+				"Look inside the yellow circle, far out at the edge.",
+				"The blinking one is Neptune!"
+			],
+			"found": "Yes, that is Neptune, dark and icy cold!"
+		},
+		"seeYellowMoon": {
+			"clue": "Find Jupiter's yellow moon!",
+			"hints": [
+				"Look inside the yellow circle, close to Jupiter.",
+				"The blinking one is Io!"
+			],
+			"found": "Yes, that is Io, full of volcanoes!"
+		},
+		"seeBiggestMoon": {
+			"clue": "Find Saturn's biggest moon!",
+			"hints": [
+				"Look inside the yellow circle for a big orange moon.",
+				"The blinking one is Titan!"
+			],
+			"found": "Yes, that is Titan, wrapped in orange fog!"
+		},
 		"walkedOn": {
 			"clue": {
 				"simple": "Find the only world where people have walked, apart from Earth.",
 				"standard": "Find the only world besides Earth where people have walked.",
 				"advanced": "Find the only other world that humans have set foot on."
 			},
-			"hints": [
-				"It is closer to us than any planet.",
-				"It goes around Earth: click Earth first and look close by.",
-				"It is the Moon. Click Earth, then click the Moon next to it."
-			],
+			"hints": {
+				"simple": [
+					"It is closer to us than any planet.",
+					"It goes around Earth. Click Earth, then look close by.",
+					"It is the Moon. Click Earth, then click the Moon next to it."
+				],
+				"standard": [
+					"It is closer to us than any planet.",
+					"It goes around Earth: click Earth first and look close by.",
+					"It is the Moon. Click Earth, then click the Moon next to it."
+				]
+			},
 			"found": {
-				"simple": "Yes, the Moon! Twelve astronauts walked on it between 1969 and 1972. Their footprints are still there, because there is no wind to blow them away.",
+				"simple": "Yes, the Moon! Twelve astronauts walked on it, long ago. Their footprints are still there, because there is no wind to blow them away.",
 				"standard": "The Moon! Twelve astronauts walked on it during the Apollo missions between 1969 and 1972. With no air and no wind, their footprints are still there.",
 				"advanced": "The Moon. Twelve Apollo astronauts walked on it between 1969 and 1972 and brought back 382 kg of rock. With no atmosphere to wear them away, their footprints could last for millions of years."
 			}
@@ -57,11 +158,18 @@
 				"standard": "Find the red planet, home of the tallest volcano on any planet.",
 				"advanced": "Find the planet whose rusty dust makes it shine red in our night sky, and which carries the tallest volcano on any planet."
 			},
-			"hints": [
-				"It is the next planet out from Earth, away from the Sun.",
-				"Look for a small orange-red planet between Earth and Jupiter.",
-				"It is Mars, the fourth planet from the Sun. Click it."
-			],
+			"hints": {
+				"simple": [
+					"It is the next planet after Earth, farther from the Sun.",
+					"Look for a small red planet between Earth and Jupiter.",
+					"It is Mars. Click it."
+				],
+				"standard": [
+					"It is the next planet out from Earth, away from the Sun.",
+					"Look for a small orange-red planet between Earth and Jupiter.",
+					"It is Mars, the fourth planet from the Sun. Click it."
+				]
+			},
 			"found": {
 				"simple": "Mars! Its dust is full of rust, so it looks red. Its volcano Olympus Mons is about two and a half times as tall as Mount Everest.",
 				"standard": "Mars. Its soil contains a lot of iron oxide – rust – which makes it red. Olympus Mons, its largest volcano, is about 22 km high.",
@@ -70,17 +178,24 @@
 		},
 		"biggestPlanet": {
 			"clue": {
-				"simple": "Find the biggest planet. More than a thousand Earths could fit inside it!",
+				"simple": "Find the biggest planet. It is 11 Earths wide!",
 				"standard": "Find the biggest planet: more than 1,300 Earths would fit inside it.",
 				"advanced": "Find the planet with more mass than all the other planets put together."
 			},
-			"hints": [
-				"It is a giant made of gas, with stripes of clouds.",
-				"It is the fifth planet from the Sun, the first one after Mars.",
-				"It is Jupiter. Click the big striped planet after Mars."
-			],
+			"hints": {
+				"simple": [
+					"It is a giant ball of gas with stripes.",
+					"It is the planet after Mars.",
+					"It is Jupiter. Click the big striped planet after Mars."
+				],
+				"standard": [
+					"It is a giant made of gas, with stripes of clouds.",
+					"It is the fifth planet from the Sun, the first one after Mars.",
+					"It is Jupiter. Click the big striped planet after Mars."
+				]
+			},
 			"found": {
-				"simple": "Jupiter! It is so big that 11 Earths would fit side by side across it. Its Great Red Spot is a storm bigger than Earth.",
+				"simple": "Jupiter! It has a giant storm called the Great Red Spot. The storm is bigger than Earth.",
 				"standard": "Jupiter: 11 Earths wide, and more than twice as heavy as all the other planets together. Its Great Red Spot is a storm wider than Earth.",
 				"advanced": "Jupiter: 2.5 times the mass of all the other planets combined and 11 Earth diameters wide. Its Great Red Spot is a storm wider than Earth that has been watched for more than 150 years."
 			}
@@ -91,13 +206,20 @@
 				"standard": "Find the planet with the brightest rings in the solar system.",
 				"advanced": "Find the planet whose rings would reach most of the way from Earth to the Moon, yet are mostly thinner than a kilometre."
 			},
-			"hints": [
-				"Its rings are made of countless pieces of ice.",
-				"It is the sixth planet from the Sun, after Jupiter.",
-				"It is Saturn. Click the planet with the big rings after Jupiter."
-			],
+			"hints": {
+				"simple": [
+					"Its rings are made of lots of pieces of ice.",
+					"It is the planet after Jupiter.",
+					"It is Saturn. Click the planet with the big rings."
+				],
+				"standard": [
+					"Its rings are made of countless pieces of ice.",
+					"It is the sixth planet from the Sun, after Jupiter.",
+					"It is Saturn. Click the planet with the big rings after Jupiter."
+				]
+			},
 			"found": {
-				"simple": "Saturn! Its rings are made of billions of pieces of ice. Some are as small as grains of sand, some as big as a house.",
+				"simple": "Saturn! Its rings are made of lots and lots of pieces of ice. Some are as small as grains of sand, some as big as a house.",
 				"standard": "Saturn. Its rings are billions of chunks of water ice, from specks of dust to boulders the size of a house, all circling the planet.",
 				"advanced": "Saturn. Its main rings are about 270,000 km across but typically only about 10 metres thick, made of water-ice particles from dust grains to boulders several metres wide."
 			}
@@ -108,13 +230,20 @@
 				"standard": "Find the hottest planet – and no, it is not the one closest to the Sun.",
 				"advanced": "Find the planet with the hottest surface, even though another planet is closer to the Sun."
 			},
-			"hints": [
-				"Its thick clouds trap the heat like a blanket.",
-				"It is the second planet from the Sun, between Mercury and Earth.",
-				"It is Venus. Click the second planet from the Sun."
-			],
+			"hints": {
+				"simple": [
+					"Its thick clouds keep the heat in, like a blanket.",
+					"It is the second planet from the Sun.",
+					"It is Venus. Click the second planet from the Sun."
+				],
+				"standard": [
+					"Its thick clouds trap the heat like a blanket.",
+					"It is the second planet from the Sun, between Mercury and Earth.",
+					"It is Venus. Click the second planet from the Sun."
+				]
+			},
 			"found": {
-				"simple": "Venus! Its thick air traps the Sun's heat, so the ground is about 465 °C – hot enough to melt lead.",
+				"simple": "Venus! Its thick air keeps the Sun's heat in. The ground is hotter than a pizza oven, hot enough to melt metal.",
 				"standard": "Venus. Its thick air of carbon dioxide traps heat, so the surface is about 465 °C, day and night – hotter than Mercury.",
 				"advanced": "Venus. A runaway greenhouse effect in its dense carbon-dioxide atmosphere, about 90 times Earth's surface pressure, keeps the ground near 465 °C day and night – hotter than Mercury's day side."
 			}
@@ -125,11 +254,18 @@
 				"standard": "Find the planet with the shortest year: it goes around the Sun in less than three Earth months.",
 				"advanced": "Find the planet that completes more than four orbits of the Sun in one Earth year."
 			},
-			"hints": [
-				"The closer a planet is to the Sun, the faster it goes around.",
-				"Look at the planet closest to the Sun. Its card tells you how long its year is.",
-				"It is Mercury, the first planet from the Sun. Click it."
-			],
+			"hints": {
+				"simple": [
+					"Planets close to the Sun go around it faster.",
+					"Look at the planet closest to the Sun. Its card tells you how long its year is.",
+					"It is Mercury, the planet closest to the Sun. Click it."
+				],
+				"standard": [
+					"The closer a planet is to the Sun, the faster it goes around.",
+					"Look at the planet closest to the Sun. Its card tells you how long its year is.",
+					"It is Mercury, the first planet from the Sun. Click it."
+				]
+			},
 			"found": {
 				"simple": "Mercury! Its year is only 88 days. If you lived there, you would have a birthday about every three months.",
 				"standard": "Mercury. It goes around the Sun in just 88 days, rushing along at about 47 km every second.",
@@ -142,11 +278,18 @@
 				"standard": "Find a planet that spins backwards – the opposite way to Earth.",
 				"advanced": "Find a planet with retrograde rotation: it spins against the direction in which it orbits the Sun."
 			},
-			"hints": [
-				"Click a planet and look at how it spins on its card.",
-				"There are two of them: one is Earth's neighbour, the other lies on its side.",
-				"Try Venus, the second planet from the Sun – or Uranus, the seventh."
-			],
+			"hints": {
+				"simple": [
+					"Click a planet and look at how it spins on its card.",
+					"There are two. One is Earth's neighbour. The other lies on its side.",
+					"Try Venus, the second planet. Or Uranus, the seventh."
+				],
+				"standard": [
+					"Click a planet and look at how it spins on its card.",
+					"There are two of them: one is Earth's neighbour, the other lies on its side.",
+					"Try Venus, the second planet from the Sun – or Uranus, the seventh."
+				]
+			},
 			"found": {
 				"simple": "Right! Venus spins backwards, so there the Sun rises in the west. Uranus spins backwards too, because it is tipped over.",
 				"standard": "Yes! Venus spins backwards, so the Sun rises in the west there. Uranus counts as spinning backwards too: it is tipped over so far that it rolls on its side.",
@@ -159,11 +302,18 @@
 				"standard": "Find a moon with geysers that spray water from a hidden ocean into space.",
 				"advanced": "Find the moon whose geysers at its south pole feed one of its planet's rings with ice."
 			},
-			"hints": [
-				"It belongs to the planet with the big bright rings.",
-				"Click Saturn, then look at the small moons close to it. It is the whitest of them.",
-				"It is Enceladus, a moon of Saturn. Click Saturn, then click Enceladus."
-			],
+			"hints": {
+				"simple": [
+					"It belongs to the planet with the big bright rings.",
+					"Click Saturn. Then look at the small moons close to it. It is the whitest one.",
+					"It is Enceladus, a moon of Saturn. Click Saturn, then click Enceladus."
+				],
+				"standard": [
+					"It belongs to the planet with the big bright rings.",
+					"Click Saturn, then look at the small moons close to it. It is the whitest of them.",
+					"It is Enceladus, a moon of Saturn. Click Saturn, then click Enceladus."
+				]
+			},
 			"found": {
 				"simple": "Enceladus! Under its ice there is a salty ocean. Water shoots out of cracks at its south pole, like giant fountains.",
 				"standard": "Enceladus. The Cassini spacecraft saw geysers shooting water vapour and ice out of long cracks near its south pole. They come from a salty ocean under the ice.",
@@ -176,11 +326,18 @@
 				"standard": "Find the only large moon that orbits its planet the wrong way round.",
 				"advanced": "Find the only large moon on a retrograde orbit – a strong sign that it was captured."
 			},
-			"hints": [
-				"Its planet is the one farthest from the Sun.",
-				"Click Neptune, set the speed to 1 day/s and watch which way its biggest moon goes.",
-				"It is Triton, Neptune's biggest moon. Click Neptune, then click Triton."
-			],
+			"hints": {
+				"simple": [
+					"Its planet is the one farthest from the Sun.",
+					"Click Neptune. Make time go faster and watch its biggest moon.",
+					"It is Triton, Neptune's biggest moon. Click Neptune, then click Triton."
+				],
+				"standard": [
+					"Its planet is the one farthest from the Sun.",
+					"Click Neptune, set the speed to 1 day/s and watch which way its biggest moon goes.",
+					"It is Triton, Neptune's biggest moon. Click Neptune, then click Triton."
+				]
+			},
 			"found": {
 				"simple": "Triton! It goes around Neptune backwards. Neptune probably caught it a long time ago.",
 				"standard": "Triton. It orbits Neptune against the planet's spin. It probably formed far out in the Kuiper belt and was later captured by Neptune.",
@@ -193,13 +350,20 @@
 				"standard": "Find the planet where a day lasts longer than a year.",
 				"advanced": "Find the planet that takes longer to turn once on its axis than to go once around the Sun."
 			},
-			"hints": [
-				"Compare how long a planet takes to spin once with how long its year is. The cards show both.",
-				"It is a rocky planet close to the Sun, hidden under thick clouds.",
-				"It is Venus. Click it and compare the spin with the year on its card."
-			],
+			"hints": {
+				"simple": [
+					"A day is one spin. A year is one trip around the Sun. The cards show both.",
+					"It is a rocky planet near the Sun, hidden under thick clouds.",
+					"It is Venus. Click it and look at its card."
+				],
+				"standard": [
+					"Compare how long a planet takes to spin once with how long its year is. The cards show both.",
+					"It is a rocky planet close to the Sun, hidden under thick clouds.",
+					"It is Venus. Click it and compare the spin with the year on its card."
+				]
+			},
 			"found": {
-				"simple": "Venus! It spins so slowly that one turn takes 243 days, but its year is only 225 days.",
+				"simple": "Venus! It spins so slowly that one spin takes longer than one trip around the Sun.",
 				"standard": "Venus. One turn on its axis takes 243 Earth days, but one trip around the Sun takes only 225.",
 				"advanced": "Venus: one sidereal rotation takes 243 days, one orbit 225 days. Because it spins backwards, its solar day – from one sunrise to the next – is shorter, about 117 days."
 			}
@@ -210,13 +374,20 @@
 				"standard": "Find the world where a spacecraft measured one of the coldest temperatures in the solar system: below −240 °C, in craters that never see sunlight.",
 				"advanced": "Find the world where a spacecraft measured about −247 °C, colder than the surface of Pluto, at the bottom of craters that have not seen sunlight for billions of years."
 			},
-			"hints": [
-				"It is much closer than you think – not at the edge of the solar system.",
-				"It goes around Earth. The coldest spots are in craters near its poles.",
-				"It is our Moon. Click Earth, then click the Moon."
-			],
+			"hints": {
+				"simple": [
+					"It is much closer than you think.",
+					"It goes around Earth. The coldest spots are in deep holes near its poles.",
+					"It is our Moon. Click Earth, then click the Moon."
+				],
+				"standard": [
+					"It is much closer than you think – not at the edge of the solar system.",
+					"It goes around Earth. The coldest spots are in craters near its poles.",
+					"It is our Moon. Click Earth, then click the Moon."
+				]
+			},
 			"found": {
-				"simple": "Our Moon! Deep craters near its poles are always in shadow, so they are even colder than Pluto. There may be ice hidden inside them.",
+				"simple": "Our Moon! Some deep holes near its poles, called craters, are always in shadow. They are even colder than Pluto, and there may be ice inside them.",
 				"standard": "Our Moon. Near its poles, deep craters are always in shadow. NASA's Lunar Reconnaissance Orbiter measured below −240 °C there – colder than Pluto's surface. Water ice hides in them. Neptune's moon Triton comes close, at about −235 °C.",
 				"advanced": "The Moon. Its axis is tilted only 1.5°, so some crater floors near the poles never see the Sun. NASA's Lunar Reconnaissance Orbiter measured about 26 K there, and the craters trap water ice – a resource for future bases. The coldest surface Voyager 2 measured, on Neptune's moon Triton, was about 38 K."
 			}
@@ -227,11 +398,18 @@
 				"standard": "Find the planet that is tipped over so far that it rolls around the Sun on its side.",
 				"advanced": "Find the planet whose axis is tilted by almost 98°, so each pole gets about 42 years of sunlight and then 42 years of darkness."
 			},
-			"hints": [
-				"Look at the rings: on this planet they stand almost upright.",
-				"It is a pale blue-green ice giant, far beyond Saturn.",
-				"It is Uranus, the seventh planet. Click it and look at its rings."
-			],
+			"hints": {
+				"simple": [
+					"Look at the rings. On this planet they stand almost straight up.",
+					"It is a pale blue planet, far beyond Saturn.",
+					"It is Uranus, the seventh planet. Click it and look at its rings."
+				],
+				"standard": [
+					"Look at the rings: on this planet they stand almost upright.",
+					"It is a pale blue-green ice giant, far beyond Saturn.",
+					"It is Uranus, the seventh planet. Click it and look at its rings."
+				]
+			},
 			"found": {
 				"simple": "Uranus! It lies on its side, maybe because something huge crashed into it long ago. Its rings stand up too.",
 				"standard": "Uranus. Its axis is tipped over by 98°, so it rolls along its orbit. A giant collision long ago may have knocked it over.",
@@ -244,11 +422,18 @@
 				"standard": "Find the planet that is less dense than water: in a big enough bathtub, it would float.",
 				"advanced": "Find the only planet with a mean density lower than that of water."
 			},
-			"hints": [
-				"It is a gas giant, made mostly of hydrogen and helium.",
-				"It is not the biggest giant, but the one with the wide bright rings.",
-				"It is Saturn, the sixth planet. Click it."
-			],
+			"hints": {
+				"simple": [
+					"It is a giant made mostly of gas.",
+					"It is not the biggest giant. It is the one with the wide bright rings.",
+					"It is Saturn, the sixth planet. Click it."
+				],
+				"standard": [
+					"It is a gas giant, made mostly of hydrogen and helium.",
+					"It is not the biggest giant, but the one with the wide bright rings.",
+					"It is Saturn, the sixth planet. Click it."
+				]
+			},
 			"found": {
 				"simple": "Saturn! It is huge, but made mostly of the lightest gases. For its size, it is lighter than water.",
 				"standard": "Saturn. It is made mostly of hydrogen and helium, the lightest gases, so on average it is only about 70 % as dense as water.",
@@ -257,15 +442,22 @@
 		},
 		"volcanoMoon": {
 			"clue": {
-				"simple": "Find the moon with hundreds of volcanoes that are erupting right now.",
+				"simple": "Find the moon with lots of volcanoes that are erupting right now.",
 				"standard": "Find the most volcanic world in the solar system: a moon with hundreds of active volcanoes.",
 				"advanced": "Find the moon heated so strongly by tides that it is the most volcanically active body in the solar system."
 			},
-			"hints": [
-				"It goes around the biggest planet.",
-				"Click Jupiter and look at its four big moons. It is the yellow, spotty one closest to Jupiter.",
-				"It is Io. Click Jupiter, then click Io."
-			],
+			"hints": {
+				"simple": [
+					"It goes around the biggest planet.",
+					"Click Jupiter. Look at its four big moons. It is the yellow, spotty one closest to Jupiter.",
+					"It is Io. Click Jupiter, then click Io."
+				],
+				"standard": [
+					"It goes around the biggest planet.",
+					"Click Jupiter and look at its four big moons. It is the yellow, spotty one closest to Jupiter.",
+					"It is Io. Click Jupiter, then click Io."
+				]
+			},
 			"found": {
 				"simple": "Io! Jupiter squeezes it again and again, which makes it hot inside. Its volcanoes shoot material high into space.",
 				"standard": "Io has about 400 active volcanoes. Jupiter's gravity squeezes it as it orbits, heating its insides. Some plumes rise hundreds of kilometres high.",
@@ -278,13 +470,20 @@
 				"standard": "Find the only moon with a thick atmosphere, denser than the air on Earth.",
 				"advanced": "Find the only moon with a dense atmosphere – 1.5 times Earth's surface pressure – and lakes of liquid methane."
 			},
-			"hints": [
-				"It is the second-biggest moon in the solar system.",
-				"It belongs to Saturn. It is by far Saturn's biggest moon.",
-				"It is Titan. Click Saturn, then click Titan."
-			],
+			"hints": {
+				"simple": [
+					"It is the second-biggest moon of all.",
+					"It belongs to Saturn. It is Saturn's biggest moon by far.",
+					"It is Titan. Click Saturn, then click Titan."
+				],
+				"standard": [
+					"It is the second-biggest moon in the solar system.",
+					"It belongs to Saturn. It is by far Saturn's biggest moon.",
+					"It is Titan. Click Saturn, then click Titan."
+				]
+			},
 			"found": {
-				"simple": "Titan! It is wrapped in orange haze and has lakes and rivers – not of water, but of liquid methane. In 2005 the Huygens probe landed there.",
+				"simple": "Titan! It is wrapped in orange haze. It has lakes and rivers, but not of water: they are a liquid gas called methane. A small spacecraft called Huygens landed there.",
 				"standard": "Titan. Its thick nitrogen air hides the surface under orange haze. It has rain, rivers and lakes – of liquid methane. The Huygens probe landed there in 2005.",
 				"advanced": "Titan: a nitrogen atmosphere with 1.5 bar at the surface and a methane cycle like Earth's water cycle – clouds, rain, rivers and seas of liquid hydrocarbons. Huygens landed in 2005; NASA's Dragonfly is due to arrive in the 2030s."
 			}
@@ -295,11 +494,18 @@
 				"standard": "Find a moon that is wider than the planet Mercury.",
 				"advanced": "Find a moon with a larger diameter than the planet Mercury. There are two."
 			},
-			"hints": [
-				"Compare sizes on the cards: Mercury is about 4,900 km wide.",
-				"Look at the biggest moons of Jupiter and Saturn.",
-				"Ganymede (a moon of Jupiter) and Titan (a moon of Saturn) both count. Click Jupiter, then Ganymede."
-			],
+			"hints": {
+				"simple": [
+					"Compare the sizes on the cards. Mercury is a small planet.",
+					"Look at the biggest moons of Jupiter and Saturn.",
+					"Ganymede (a moon of Jupiter) and Titan (a moon of Saturn) both count. Click Jupiter, then Ganymede."
+				],
+				"standard": [
+					"Compare sizes on the cards: Mercury is about 4,900 km wide.",
+					"Look at the biggest moons of Jupiter and Saturn.",
+					"Ganymede (a moon of Jupiter) and Titan (a moon of Saturn) both count. Click Jupiter, then Ganymede."
+				]
+			},
 			"found": {
 				"simple": "Yes! Ganymede and Titan are both wider than Mercury. But Mercury is made of heavy rock and iron, so it still weighs more.",
 				"standard": "Right! Ganymede (5,268 km) and Titan (5,150 km) are both wider than Mercury (4,879 km). Mercury is still more than twice as heavy: it is rock and iron, they are rock and ice.",
@@ -312,11 +518,18 @@
 				"standard": "Find the smoothest moon: a ball of cracked ice hiding an ocean with more water than all of Earth's seas.",
 				"advanced": "Find the moon whose cracked ice shell covers a salty ocean holding about twice as much water as all of Earth's oceans."
 			},
-			"hints": [
-				"It goes around the biggest planet.",
-				"Click Jupiter and look at its four big moons. It is the smallest of them, pale with long brown cracks.",
-				"It is Europa. Click Jupiter, then click Europa."
-			],
+			"hints": {
+				"simple": [
+					"It goes around the biggest planet.",
+					"Click Jupiter. Look at its four big moons. It is the smallest one, pale with long brown cracks.",
+					"It is Europa. Click Jupiter, then click Europa."
+				],
+				"standard": [
+					"It goes around the biggest planet.",
+					"Click Jupiter and look at its four big moons. It is the smallest of them, pale with long brown cracks.",
+					"It is Europa. Click Jupiter, then click Europa."
+				]
+			},
 			"found": {
 				"simple": "Europa! Under the ice is a huge salty ocean. Scientists wonder if something could live in it. A spacecraft called Europa Clipper is on its way.",
 				"standard": "Europa. Under an ice shell many kilometres thick lies a salty ocean. It is one of the best places to look for life beyond Earth – NASA's Europa Clipper arrives in 2030.",
@@ -329,11 +542,18 @@
 				"standard": "Find the planet that sunlight needs more than four hours to reach.",
 				"advanced": "Find the planet that sunlight takes over four hours to reach – 30 times as long as it takes to reach Earth."
 			},
-			"hints": [
-				"The cards tell you how long sunlight takes to get there.",
-				"The farther out a planet is, the longer the light travels. Try the planets at the edge.",
-				"It is Neptune, the farthest planet. Click it and read its card."
-			],
+			"hints": {
+				"simple": [
+					"The cards tell you how long sunlight takes to get there.",
+					"The farther out a planet is, the longer the light travels. Try the planets at the edge.",
+					"It is Neptune, the farthest planet. Click it and read its card."
+				],
+				"standard": [
+					"The cards tell you how long sunlight takes to get there.",
+					"The farther out a planet is, the longer the light travels. Try the planets at the edge.",
+					"It is Neptune, the farthest planet. Click it and read its card."
+				]
+			},
 			"found": {
 				"simple": "Neptune! Its sunlight has been travelling for about four hours. To reach Earth, it needs only 8 minutes.",
 				"standard": "Neptune. Sunlight takes about 4 hours 10 minutes to get there, but only 8 minutes to reach Earth. So Neptune gets 900 times less light than Earth.",
@@ -370,11 +590,18 @@
 				"standard": "Find the planet with the shortest day: one spin takes less than 10 hours.",
 				"advanced": "Find the planet that rotates fastest – so fast that it is visibly flattened at the poles."
 			},
-			"hints": [
-				"The cards show how long each planet takes to spin once.",
-				"Big planets spin fast. Try the giants.",
-				"It is Jupiter. Click it and look at its spin on the card."
-			],
+			"hints": {
+				"simple": [
+					"The cards show how long each planet takes to spin once.",
+					"Big planets spin fast. Try the giants.",
+					"It is Jupiter. Click it and look at its spin on the card."
+				],
+				"standard": [
+					"The cards show how long each planet takes to spin once.",
+					"Big planets spin fast. Try the giants.",
+					"It is Jupiter. Click it and look at its spin on the card."
+				]
+			},
 			"found": {
 				"simple": "Jupiter! Even though it is the biggest planet, it spins around in under 10 hours. A day there is less than half as long as on Earth.",
 				"standard": "Jupiter spins once every 9 hours 56 minutes, the shortest day of any planet – even though it is the biggest.",
@@ -387,11 +614,18 @@
 				"standard": "Find the planet with the coldest air ever measured on a planet – it is not the farthest one.",
 				"advanced": "Find the planet whose atmosphere reaches the lowest temperature of any planet, about −224 °C, although it is not the most distant."
 			},
-			"hints": [
-				"It is one of the two blue ice giants at the edge of the solar system.",
-				"Of those two, it is the one closer to the Sun – the one lying on its side.",
-				"It is Uranus, the seventh planet. Click it."
-			],
+			"hints": {
+				"simple": [
+					"It is one of the two blue planets at the edge.",
+					"Of those two, it is the one closer to the Sun. It lies on its side.",
+					"It is Uranus, the seventh planet. Click it."
+				],
+				"standard": [
+					"It is one of the two blue ice giants at the edge of the solar system.",
+					"Of those two, it is the one closer to the Sun – the one lying on its side.",
+					"It is Uranus, the seventh planet. Click it."
+				]
+			},
 			"found": {
 				"simple": "Uranus! It is even colder than Neptune, which is farther away. Uranus has almost no heat left inside it.",
 				"standard": "Uranus: its atmosphere drops to about −224 °C, colder than Neptune's. Unlike the other giants, Uranus gives off almost no heat of its own.",
@@ -404,11 +638,18 @@
 				"standard": "Saturn's rings are famous, but it is not the only ringed planet. Find another one.",
 				"advanced": "Find a ringed planet other than Saturn. The others' rings were only discovered from 1977 on."
 			},
-			"hints": [
-				"The other rings are thin and dark, so fly close to see them.",
-				"Only the giant planets have rings. Try one that is not Saturn.",
-				"Jupiter, Uranus and Neptune all have rings. Click Uranus and look closely."
-			],
+			"hints": {
+				"simple": [
+					"The other rings are thin and dark. Fly close to see them.",
+					"Only the giant planets have rings. Try one that is not Saturn.",
+					"Jupiter, Uranus and Neptune all have rings. Click Uranus and look closely."
+				],
+				"standard": [
+					"The other rings are thin and dark, so fly close to see them.",
+					"Only the giant planets have rings. Try one that is not Saturn.",
+					"Jupiter, Uranus and Neptune all have rings. Click Uranus and look closely."
+				]
+			},
 			"found": {
 				"simple": "Yes! Jupiter, Uranus and Neptune all have rings. They are thin and dark, so they were only found with spacecraft and big telescopes.",
 				"standard": "Right: Jupiter, Uranus and Neptune all have rings. They are thin and dark, made of dust and dark rock rather than bright ice, so they were not found until 1977 to 1989.",

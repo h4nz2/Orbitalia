@@ -748,17 +748,43 @@
 			"intro": "Každá hádanka popisuje jeden svět. Najdi ho ve scéně a klikni na něj: to je tvoje odpověď. Nápovědy jsou zdarma a nepočítají se body ani čas.",
 			"intro@simple": "Přečti si hádanku, najdi svět a klikni na něj! Nevíš si rady? Řekni si o nápovědu.",
 			"choose": "Vyber si hru",
+			"difficultyLabel": "Jak těžká?",
 			"difficulty": {
 				"easy": "Lehká",
 				"medium": "Střední",
 				"hard": "Záludná"
 			},
+			"ages": {
+				"easy": "6–8 let",
+				"medium": "9–11 let",
+				"hard": "Od 12 let"
+			},
+			"hint": {
+				"easy": "Najdi, co ukazuje obrázek. Hádanky se čtou nahlas a nápovědy ukazují na oblohu. Pro děti od 6 do 8 let.",
+				"easy@simple": "Podívej se na obrázek a najdi ho ve vesmíru. Hádanku ti může přečíst hlas.",
+				"medium": "Hádanky o tom, čím je každý svět výjimečný. Pro děti od 9 do 11 let.",
+				"medium@simple": "Hádanky o tom, čím je každý svět výjimečný.",
+				"hard": "Hlavolamy, ke kterým potřebuješ karty, ovládání času a úhly pohledu. Od 12 let.",
+				"hard@simple": "Těžké hádanky. Musíš si číst karty.",
+				"readAloud": "Poslechni si hádanku nahlas, v jazyce na obrazovce.",
+				"readAloud@simple": "Stiskni a poslouchej.",
+				"certificate": "Obrázek scény se všemi nalezenými světy, který můžeš uložit nebo vytisknout.",
+				"certificate@simple": "Obrázek na památku se všemi světy, které se ti podařilo najít."
+			},
+			"easyNote": "S obrázky: najdi, co vidíš.",
+			"easyNote@simple": "Podívej se na obrázek a najdi ho!",
+			"easyNoteVoice": "S obrázky a s hlasem, který přečte každou hádanku.",
+			"easyNoteVoice@simple": "Podívej se na obrázek a najdi ho! Hádanky ti přečte hlas.",
+			"none": "Pro tuto obtížnost tu zatím žádná hra není: vytvoř si vlastní níže.",
 			"clueCount": "{count, plural, one {# hádanka} few {# hádanky} many {# hádanky} other {# hádanek}}",
 			"inProgress": "Pokračuj: hádanka {step} z {total}",
 			"progress": "Hádanka {step} z {total}",
 			"progressLabel": "Nalezeno {found} z {total}",
 			"answerHow": "Najdi ho ve scéně a klikni na něj.",
 			"answerHow@simple": "Najdi ho a klikni na něj!",
+			"weAreAt": "Jsme u {bodyId, select, earth {Země} mars {Marsu} jupiter {Jupiteru} saturn {Saturnu} uranus {Uranu} neptune {Neptunu} other {{name}}}.",
+			"readAloud": "Přečíst nahlas",
+			"stopReading": "Přestat číst",
 			"firstHint": "Potřebuješ nápovědu?",
 			"moreHint": "Další nápověda",
 			"hintLabel": "Nápověda {n}",
@@ -771,19 +797,23 @@
 				"almost": "Ano, {name}! Teď to sleduj {frameId, select, sun {ze Slunce} mercury {z Merkuru} venus {z Venuše} earth {ze Země} mars {z Marsu} jupiter {z Jupiteru} saturn {ze Saturnu} uranus {z Uranu} neptune {z Neptunu} moon {z Měsíce} other {z měsíce {frame}}}: úhel pohledu vyber vlevo nahoře."
 			},
 			"found": "Nalezeno!",
+			"star": "Hvězdička pro tebe!",
 			"next": "Další hádanka",
 			"finish": "Dokončit",
 			"done": {
 				"title": "Hra dokončena!",
 				"text": "{count, plural, one {Hádanka je vyřešená.} few {Všechny # hádanky jsou vyřešené.} many {Vyřešeno: # hádanky.} other {Všech # hádanek je vyřešeno.}}",
 				"text@simple": "{count, plural, one {Hotovo!} few {Hotovo: všechny # nalezeny!} many {Hotovo: nalezeno #!} other {Hotovo: všech # nalezeno!}}",
+				"stars": "{count, plural, one {# hvězdička} few {# hvězdičky} many {# hvězdičky} other {# hvězdiček}}",
 				"found": "Nalezené světy. Klikni na některý a navštiv ho znovu:",
 				"again": "Hrát znovu",
-				"other": "Vybrat jinou hru"
+				"other": "Vybrat jinou hru",
+				"certificate": "Vytvořit diplom",
+				"certificate@simple": "Získej svůj diplom"
 			},
 			"custom": {
 				"title": "Vytvoř si vlastní hru",
-				"intro": "Zaškrtni hádanky pro svou hodinu a pak hru spusť nebo ji sdílej se třídou.",
+				"intro": "Zaškrtni hádanky pro svou hodinu, z jakékoli obtížnosti, a pak hru spusť nebo ji sdílej se třídou. Lehké hádanky si ponechají obrázky i hlas.",
 				"name": "Vlastní hra",
 				"count": "{count, plural, =0 {Není vybrána žádná hádanka} one {Vybrána # hádanka} few {Vybrány # hádanky} many {Vybráno # hádanky} other {Vybráno # hádanek}}",
 				"start": "Začít"
@@ -796,7 +826,16 @@
 				"copied": "Zkopírováno",
 				"link": "Odkaz na tuto hru"
 			},
-			"otherHunts": "Další hry"
+			"otherHunts": "Další hry",
+			"certificate": {
+				"title": "Diplom za průzkum vesmíru",
+				"title@simple": "Vesmírná mise splněna!",
+				"caption": "{hunt}: {count, plural, one {# hádanka vyřešena} few {všechny # hádanky vyřešeny} many {vyřešeno # hádanky} other {všech # hádanek vyřešeno}}",
+				"caption@simple": "{hunt}: {count, plural, one {nalezeno!} few {všechny # nalezeny!} many {nalezeno #!} other {všech # nalezeno!}}",
+				"row": "Hádanka {n}",
+				"note": "Skvělá práce, vesmír je tvůj!",
+				"fileName": "moje-vesmirna-patraci-hra"
+			}
 		},
 		"sound": {
 			"toggle": "Zvuk",

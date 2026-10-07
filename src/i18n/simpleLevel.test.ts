@@ -96,13 +96,7 @@ type Resource =
  * rewrite for #51 removes its entry when the resource is clean (the test
  * fails if a listed one already is).
  */
-const PENDING: Readonly<Record<string, readonly Resource[]>> = {
-	en: ["hunts"],
-	de: ["hunts"],
-	cs: ["hunts"],
-	es: ["hunts"],
-	fr: ["hunts"],
-}
+const PENDING: Readonly<Record<string, readonly Resource[]>> = {}
 
 /**
  * `ui.json` keys the code never shows at the simple level (it formats or

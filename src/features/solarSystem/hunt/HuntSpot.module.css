@@ -1,0 +1,87 @@
+/*
+ * The Easy hints that show (#52, ./spot.ts): over the canvas, under the HUD
+ * panels, never catching the pointer. Placed every frame by
+ * HuntSpotTracker.tsx (size, transform, visibility, data-kind).
+ */
+.layer {
+	position: absolute;
+	inset: 0;
+	overflow: hidden;
+	pointer-events: none;
+}
+
+.spot {
+	position: absolute;
+	top: 0;
+	left: 0;
+	visibility: hidden;
+	border-radius: 50%;
+	will-change: transform;
+}
+
+/* the first hint: a soft light over a part of the sky, "around here" */
+.spot[data-kind="area"] {
+	border: 2px dashed rgba(255, 212, 59, 0.85);
+	background: radial-gradient(
+		circle,
+		rgba(255, 212, 59, 0.16) 0%,
+		rgba(255, 212, 59, 0.08) 60%,
+		rgba(255, 212, 59, 0) 100%
+	);
+	box-shadow: 0 0 24px rgba(255, 212, 59, 0.3);
+	animation: glow 2.4s ease-in-out infinite;
+}
+
+/* the second: the answer itself pulses, "this one" */
+.spot[data-kind="pulse"] {
+	border: 3px solid rgba(255, 212, 59, 0.95);
+	box-shadow:
+		0 0 0 1px rgba(0, 0, 0, 0.6),
+		0 0 16px rgba(255, 212, 59, 0.6);
+}
+
+.wave {
+	display: none;
+	position: absolute;
+	inset: -3px;
+	border-radius: 50%;
+	border: 3px solid rgba(255, 212, 59, 0.85);
+	animation: wave 1.6s ease-out infinite;
+}
+
+.spot[data-kind="pulse"] .wave {
+	display: block;
+}
+
+@keyframes glow {
+	0%,
+	100% {
+		opacity: 0.75;
+	}
+	50% {
+		opacity: 1;
+	}
+}
+
+@keyframes wave {
+	from {
+		transform: scale(1);
+		opacity: 0.9;
+	}
+	to {
+		transform: scale(2.6);
+		opacity: 0;
+	}
+}
+
+/* reduced motion: the same circle and ring, still */
+@media (prefers-reduced-motion: reduce) {
+	.spot[data-kind="area"] {
+		animation: none;
+	}
+
+	.wave {
+		animation: none;
+		opacity: 0;
+	}
+}

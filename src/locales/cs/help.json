@@ -1076,29 +1076,33 @@
 			"why": "Hra sedí k tématu hodiny a odkaz ji spustí každému žákovi ve tvém jazyce.",
 			"how": [
 				"Otevři Nástroje → „Pátrací hra“ a vyber „Vytvoř si vlastní hru“.",
-				"Zaškrtni hádanky a pak stiskni „Začít“, nebo „Sdílet“ a získáš odkaz pro třídu."
+				"Zaškrtni hádanky z jakékoli obtížnosti a pak stiskni „Začít“, nebo „Sdílet“ a získáš odkaz pro třídu. Lehké hádanky si ponechají obrázky i hlas."
 			]
 		},
 		"hunt": {
 			"title": "Pátrací hra",
 			"what": {
-				"standard": "Hádanky, které vyřešíš tak, že ve scéně najdeš správný svět a klikneš na něj; když nevíš kudy kam, pomůže nápověda, a když ho najdeš, dostaneš jeho příběh.",
-				"simple": "Přečti si hádanku, najdi správný svět a klikni na něj!"
+				"standard": "Hádanky, které vyřešíš tak, že ve scéně najdeš správný svět a klikneš na něj, ve třech obtížnostech: Lehká (6–8 let) s obrázkem a hlasem u každé hádanky, Střední (9–11 let) a Záludná (od 12 let). Když nevíš kudy kam, pomůže nápověda, za každý nález dostaneš příběh a hvězdičku a na konci diplom.",
+				"simple": "Najdi správný svět a klikni na něj! Lehké hádanky mají obrázek a hlas ti je může přečíst. Za každý nález dostaneš hvězdičku."
 			},
 			"why": {
-				"standard": "Hledání tě přiměje objevovat: nepočítají se body ani čas a každý špatný tip je další navštívený svět.",
-				"simple": "Při hledání se toho spoustu naučíš. Neběží žádné hodiny a prohrát se nedá."
+				"standard": "Hledání tě přiměje objevovat: nepočítají se body ani čas a každý špatný tip je další navštívený svět. Lehká obtížnost se hodí i pro děti, které ještě neumějí číst: hledají, co vidí na obrázku, nápovědy rozsvítí kus oblohy a všechno se dá přečíst nahlas, i pro celou třídu u projektoru.",
+				"simple": "Při hledání se toho spoustu naučíš. Neběží žádné hodiny a prohrát se nedá. Ani nemusíš umět číst: podívej se na obrázek a poslouchej."
 			},
 			"how": {
 				"standard": [
-					"Otevři vpravo dole Nástroje, vyber „Pátrací hra“ a pak hru: Lehká, Střední nebo Záludná.",
-					"Přečti si hádanku, najdi svět a klikni na něj.",
-					"Nevíš si rady? „Potřebuješ nápovědu?“, a po poslední nápovědě „Ukaž mi to“."
+					"Otevři vpravo dole Nástroje a vyber „Pátrací hra“.",
+					"Vyber, jak těžká má být (Lehká, Střední nebo Záludná; nejdřív se nabídne ta, která odpovídá tvé náročnosti textu), a pak hru.",
+					"Přečti si hádanku, nebo si ji poslechni tlačítkem s reproduktorem, a pak najdi svět a klikni na něj.",
+					"Nevíš si rady? „Potřebuješ nápovědu?“: u obtížnosti Lehká rozsvítí první nápověda část oblohy a druhá rozbliká odpověď; po poslední nápovědě „Ukaž mi to“.",
+					"Na konci ti „Vytvořit diplom“ dá obrázek, který si můžeš uložit nebo vytisknout."
 				],
 				"simple": [
 					"Stiskni Nástroje a pak „Pátrací hra“.",
-					"Vyber lehkou hru.",
-					"Přečti si hádanku a klikni na správný svět."
+					"Vyber „Lehká“ a pak hru.",
+					"Podívej se na obrázek a najdi ho. Stiskni tlačítko s reproduktorem a uslyšíš hádanku.",
+					"Nevíš si rady? Stiskni „Potřebuješ nápovědu?“.",
+					"Na konci stiskni „Získej svůj diplom“."
 				]
 			}
 		},

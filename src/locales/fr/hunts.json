@@ -1,9 +1,23 @@
 {
 	"hunts": {
+		"lookAndFind": {
+			"title": "Regarde et trouve",
+			"description": {
+				"simple": "Regarde l’image, puis trouve ce monde dans l’espace !",
+				"standard": "Cinq mondes à trouver du regard, chacun avec une image et une énigme lue à voix haute."
+			}
+		},
+		"sunAndMoons": {
+			"title": "Le Soleil et les lunes",
+			"description": {
+				"simple": "Trouve le Soleil, la planète la plus proche, la plus lointaine, puis deux lunes.",
+				"standard": "Du Soleil jusqu’à la dernière planète, puis deux lunes : cinq mondes à trouver du regard."
+			}
+		},
 		"firstSteps": {
 			"title": "Premiers pas",
 			"description": {
-				"simple": "Six indices faciles sur la Lune et les planètes.",
+				"simple": "Six énigmes sur la Lune et les planètes.",
 				"standard": "Six indices pour faire connaissance avec les planètes et notre Lune.",
 				"advanced": "Pour s’échauffer : six indices à travers les planètes et la Lune."
 			}
@@ -34,19 +48,106 @@
 		}
 	},
 	"questions": {
+		"seeHome": {
+			"clue": "Trouve la planète où nous vivons.",
+			"hints": [
+				"Cherche dans le cercle jaune une planète bleue et blanche.",
+				"Celle qui clignote, c’est notre maison, la Terre !"
+			],
+			"found": "Oui, c’est la Terre, notre maison !"
+		},
+		"seeRed": {
+			"clue": "Trouve la planète rouge.",
+			"hints": [
+				"Cherche dans le cercle jaune une planète rouge.",
+				"Celle qui clignote, c’est Mars !"
+			],
+			"found": "Oui, c’est Mars, toute rouge de poussière rouillée !"
+		},
+		"seeBiggest": {
+			"clue": "Trouve la plus grosse planète.",
+			"hints": [
+				"Cherche dans le cercle jaune une grosse planète à rayures.",
+				"Celle qui clignote, c’est la géante Jupiter !"
+			],
+			"found": "Oui, c’est Jupiter, aussi large que 11 Terres !"
+		},
+		"seeRings": {
+			"clue": "Trouve la planète aux grands anneaux.",
+			"hints": [
+				"Cherche dans le cercle jaune une planète avec des anneaux.",
+				"Celle qui clignote, c’est Saturne !"
+			],
+			"found": "Oui, c’est Saturne, avec ses anneaux de glace !"
+		},
+		"seeMoon": {
+			"clue": "Trouve la Lune !",
+			"hints": [
+				"Regarde dans le cercle jaune, tout près de la Terre.",
+				"Celle qui clignote, c’est notre Lune !"
+			],
+			"found": "Oui, c’est la Lune, où des gens ont marché !"
+		},
+		"seeSun": {
+			"clue": "Trouve le Soleil.",
+			"hints": [
+				"Regarde dans le cercle jaune, juste au milieu.",
+				"Celui qui clignote, c’est le Soleil !"
+			],
+			"found": "Oui, c’est le Soleil, l’étoile qui nous donne la lumière !"
+		},
+		"seeNearest": {
+			"clue": "Trouve la planète la plus proche du Soleil.",
+			"hints": [
+				"Regarde dans le cercle jaune, tout près du Soleil.",
+				"Celle qui clignote, c’est Mercure !"
+			],
+			"found": "Oui, c’est Mercure, la planète la plus rapide de toutes !"
+		},
+		"seeFarthest": {
+			"clue": "Trouve la planète la plus éloignée du Soleil.",
+			"hints": [
+				"Regarde dans le cercle jaune, tout au bord, très loin.",
+				"Celle qui clignote, c’est Neptune !"
+			],
+			"found": "Oui, c’est Neptune, sombre et froide comme la glace !"
+		},
+		"seeYellowMoon": {
+			"clue": "Trouve la lune jaune de Jupiter !",
+			"hints": [
+				"Regarde dans le cercle jaune, tout près de Jupiter.",
+				"Celle qui clignote, c’est Io !"
+			],
+			"found": "Oui, c’est Io, pleine de volcans !"
+		},
+		"seeBiggestMoon": {
+			"clue": "Trouve la plus grande lune de Saturne !",
+			"hints": [
+				"Cherche dans le cercle jaune une grande lune orange.",
+				"Celle qui clignote, c’est Titan !"
+			],
+			"found": "Oui, c’est Titan, enveloppée d’un brouillard orange !"
+		},
 		"walkedOn": {
 			"clue": {
 				"simple": "Trouve le seul monde, à part la Terre, où des gens ont marché.",
 				"standard": "Trouve le seul monde, en dehors de la Terre, où des humains ont marché.",
 				"advanced": "Trouve le seul autre monde où des êtres humains ont posé le pied."
 			},
-			"hints": [
-				"Il est plus près de nous que n’importe quelle planète.",
-				"Il tourne autour de la Terre : clique d’abord sur la Terre et regarde tout près.",
-				"C’est la Lune. Clique sur la Terre, puis sur la Lune juste à côté."
-			],
+			"hints": {
+				"simple": [
+					"Il est plus près de nous que n’importe quelle planète.",
+					"Il tourne autour de la Terre. Clique sur la Terre, puis regarde tout près.",
+					"C’est la Lune. Clique sur la Terre, puis sur la Lune juste à côté."
+				],
+				"standard": [
+					"Il est plus près de nous que n’importe quelle planète.",
+					"Il tourne autour de la Terre : clique d’abord sur la Terre et regarde tout près.",
+					"C’est la Lune. Clique sur la Terre, puis sur la Lune juste à côté."
+				]
+			},
 			"found": {
-				"simple": "Oui, la Lune ! Douze astronautes y ont marché entre 1969 et 1972. Leurs traces de pas sont toujours là, car il n’y a pas de vent pour les effacer.",
+				"simple": "Oui, la Lune ! Douze astronautes y ont marché, il y a longtemps. Leurs traces de pas sont toujours là, car il n’y a pas de vent pour les effacer.",
 				"standard": "La Lune ! Douze astronautes y ont marché pendant les missions Apollo, entre 1969 et 1972. Sans air et sans vent, leurs traces de pas sont toujours là.",
 				"advanced": "La Lune. Douze astronautes d’Apollo y ont marché entre 1969 et 1972 et en ont rapporté 382 kg de roches. Sans atmosphère pour les user, leurs empreintes pourraient durer des millions d’années."
 			}
@@ -57,11 +158,18 @@
 				"standard": "Trouve la planète rouge, où se dresse le plus haut volcan de toutes les planètes.",
 				"advanced": "Trouve la planète dont la poussière rouillée la fait briller en rouge dans notre ciel nocturne, et qui porte le plus haut volcan de toutes les planètes."
 			},
-			"hints": [
-				"C’est la planète suivante après la Terre, en s’éloignant du Soleil.",
-				"Cherche une petite planète rouge orangé entre la Terre et Jupiter.",
-				"C’est Mars, la quatrième planète à partir du Soleil. Clique dessus."
-			],
+			"hints": {
+				"simple": [
+					"C’est la planète juste après la Terre, plus loin du Soleil.",
+					"Cherche une petite planète rouge entre la Terre et Jupiter.",
+					"C’est Mars. Clique dessus."
+				],
+				"standard": [
+					"C’est la planète suivante après la Terre, en s’éloignant du Soleil.",
+					"Cherche une petite planète rouge orangé entre la Terre et Jupiter.",
+					"C’est Mars, la quatrième planète à partir du Soleil. Clique dessus."
+				]
+			},
 			"found": {
 				"simple": "Mars ! Sa poussière est pleine de rouille, c’est pour ça qu’elle a l’air rouge. Son volcan Olympus Mons est environ deux fois et demie plus haut que l’Everest.",
 				"standard": "Mars. Son sol contient beaucoup d’oxyde de fer – de la rouille –, ce qui la rend rouge. Olympus Mons, son plus grand volcan, mesure environ 22 km de haut.",
@@ -70,17 +178,24 @@
 		},
 		"biggestPlanet": {
 			"clue": {
-				"simple": "Trouve la plus grosse planète. Plus de mille Terres pourraient tenir dedans !",
+				"simple": "Trouve la plus grosse planète. Elle fait 11 Terres de large !",
 				"standard": "Trouve la plus grosse planète : plus de 1 300 Terres tiendraient à l’intérieur.",
 				"advanced": "Trouve la planète qui a plus de masse que toutes les autres planètes réunies."
 			},
-			"hints": [
-				"C’est une géante faite de gaz, avec des bandes de nuages.",
-				"C’est la cinquième planète à partir du Soleil, la première après Mars.",
-				"C’est Jupiter. Clique sur la grosse planète rayée après Mars."
-			],
+			"hints": {
+				"simple": [
+					"C’est une énorme boule de gaz avec des rayures.",
+					"C’est la planète après Mars.",
+					"C’est Jupiter. Clique sur la grosse planète rayée après Mars."
+				],
+				"standard": [
+					"C’est une géante faite de gaz, avec des bandes de nuages.",
+					"C’est la cinquième planète à partir du Soleil, la première après Mars.",
+					"C’est Jupiter. Clique sur la grosse planète rayée après Mars."
+				]
+			},
 			"found": {
-				"simple": "Jupiter ! Elle est si grande que 11 Terres tiendraient côte à côte d’un bord à l’autre. Sa Grande Tache rouge est une tempête plus grande que la Terre.",
+				"simple": "Jupiter ! Elle a une tempête géante appelée la Grande Tache rouge. Cette tempête est plus grande que la Terre.",
 				"standard": "Jupiter : 11 Terres de large, et plus de deux fois plus lourde que toutes les autres planètes réunies. Sa Grande Tache rouge est une tempête plus large que la Terre.",
 				"advanced": "Jupiter : 2,5 fois la masse de toutes les autres planètes réunies et 11 diamètres terrestres de large. Sa Grande Tache rouge est une tempête plus large que la Terre, observée depuis plus de 150 ans."
 			}
@@ -91,13 +206,20 @@
 				"standard": "Trouve la planète qui a les anneaux les plus brillants du système solaire.",
 				"advanced": "Trouve la planète dont les anneaux couvriraient presque toute la distance de la Terre à la Lune, alors qu’ils sont presque partout plus fins qu’un kilomètre."
 			},
-			"hints": [
-				"Ses anneaux sont faits d’innombrables morceaux de glace.",
-				"C’est la sixième planète à partir du Soleil, après Jupiter.",
-				"C’est Saturne. Clique sur la planète aux grands anneaux, après Jupiter."
-			],
+			"hints": {
+				"simple": [
+					"Ses anneaux sont faits de plein de morceaux de glace.",
+					"C’est la planète après Jupiter.",
+					"C’est Saturne. Clique sur la planète aux grands anneaux."
+				],
+				"standard": [
+					"Ses anneaux sont faits d’innombrables morceaux de glace.",
+					"C’est la sixième planète à partir du Soleil, après Jupiter.",
+					"C’est Saturne. Clique sur la planète aux grands anneaux, après Jupiter."
+				]
+			},
 			"found": {
-				"simple": "Saturne ! Ses anneaux sont faits de milliards de morceaux de glace. Certains sont aussi petits que des grains de sable, d’autres aussi gros qu’une maison.",
+				"simple": "Saturne ! Ses anneaux sont faits de très, très nombreux morceaux de glace. Certains sont aussi petits que des grains de sable, d’autres aussi gros qu’une maison.",
 				"standard": "Saturne. Ses anneaux sont des milliards de blocs de glace d’eau, du grain de poussière au rocher grand comme une maison, qui tournent tous autour de la planète.",
 				"advanced": "Saturne. Ses anneaux principaux font environ 270 000 km de diamètre, mais en général seulement une dizaine de mètres d’épaisseur. Ils sont faits de particules de glace d’eau, du grain de poussière au bloc de plusieurs mètres."
 			}
@@ -108,13 +230,20 @@
 				"standard": "Trouve la planète la plus chaude – et non, ce n’est pas la plus proche du Soleil.",
 				"advanced": "Trouve la planète dont la surface est la plus chaude, alors qu’une autre planète est plus proche du Soleil."
 			},
-			"hints": [
-				"Ses nuages épais retiennent la chaleur comme une couverture.",
-				"C’est la deuxième planète à partir du Soleil, entre Mercure et la Terre.",
-				"C’est Vénus. Clique sur la deuxième planète à partir du Soleil."
-			],
+			"hints": {
+				"simple": [
+					"Ses nuages épais gardent la chaleur, comme une couverture.",
+					"C’est la deuxième planète à partir du Soleil.",
+					"C’est Vénus. Clique sur la deuxième planète à partir du Soleil."
+				],
+				"standard": [
+					"Ses nuages épais retiennent la chaleur comme une couverture.",
+					"C’est la deuxième planète à partir du Soleil, entre Mercure et la Terre.",
+					"C’est Vénus. Clique sur la deuxième planète à partir du Soleil."
+				]
+			},
 			"found": {
-				"simple": "Vénus ! Son air épais retient la chaleur du Soleil, alors le sol est à environ 465 °C – assez chaud pour faire fondre du plomb.",
+				"simple": "Vénus ! Son air épais garde la chaleur du Soleil. Le sol est plus chaud qu’un four à pizza, assez chaud pour faire fondre du métal.",
 				"standard": "Vénus. Son air épais, fait de dioxyde de carbone, retient la chaleur : la surface est à environ 465 °C, de jour comme de nuit – plus chaude que Mercure.",
 				"advanced": "Vénus. Un effet de serre emballé dans son atmosphère dense de dioxyde de carbone, à environ 90 fois la pression au sol de la Terre, maintient le sol vers 465 °C jour et nuit – plus chaud que la face éclairée de Mercure."
 			}
@@ -125,11 +254,18 @@
 				"standard": "Trouve la planète qui a l’année la plus courte : elle fait le tour du Soleil en moins de trois mois terrestres.",
 				"advanced": "Trouve la planète qui fait plus de quatre fois le tour du Soleil en une année terrestre."
 			},
-			"hints": [
-				"Plus une planète est proche du Soleil, plus elle en fait vite le tour.",
-				"Regarde la planète la plus proche du Soleil. Sa fiche te dit combien de temps dure son année.",
-				"C’est Mercure, la première planète à partir du Soleil. Clique dessus."
-			],
+			"hints": {
+				"simple": [
+					"Les planètes proches du Soleil en font le tour plus vite.",
+					"Regarde la planète la plus proche du Soleil. Sa fiche te dit combien de temps dure son année.",
+					"C’est Mercure, la planète la plus proche du Soleil. Clique dessus."
+				],
+				"standard": [
+					"Plus une planète est proche du Soleil, plus elle en fait vite le tour.",
+					"Regarde la planète la plus proche du Soleil. Sa fiche te dit combien de temps dure son année.",
+					"C’est Mercure, la première planète à partir du Soleil. Clique dessus."
+				]
+			},
 			"found": {
 				"simple": "Mercure ! Son année ne dure que 88 jours. Si tu vivais là-bas, tu fêterais ton anniversaire environ tous les trois mois.",
 				"standard": "Mercure. Elle fait le tour du Soleil en seulement 88 jours, en filant à environ 47 km par seconde.",
@@ -142,11 +278,18 @@
 				"standard": "Trouve une planète qui tourne à l’envers – dans le sens opposé à la Terre.",
 				"advanced": "Trouve une planète à rotation rétrograde : elle tourne sur elle-même dans le sens contraire de sa course autour du Soleil."
 			},
-			"hints": [
-				"Clique sur une planète et regarde sur sa fiche comment elle tourne.",
-				"Il y en a deux : l’une est la voisine de la Terre, l’autre est couchée sur le côté.",
-				"Essaie Vénus, la deuxième planète à partir du Soleil – ou Uranus, la septième."
-			],
+			"hints": {
+				"simple": [
+					"Clique sur une planète et regarde sur sa fiche comment elle tourne.",
+					"Il y en a deux. L’une est la voisine de la Terre. L’autre est couchée sur le côté.",
+					"Essaie Vénus, la deuxième planète. Ou Uranus, la septième."
+				],
+				"standard": [
+					"Clique sur une planète et regarde sur sa fiche comment elle tourne.",
+					"Il y en a deux : l’une est la voisine de la Terre, l’autre est couchée sur le côté.",
+					"Essaie Vénus, la deuxième planète à partir du Soleil – ou Uranus, la septième."
+				]
+			},
 			"found": {
 				"simple": "Bravo ! Vénus tourne à l’envers, alors là-bas le Soleil se lève à l’ouest. Uranus tourne aussi à l’envers, parce qu’elle est renversée.",
 				"standard": "Oui ! Vénus tourne à l’envers, donc le Soleil s’y lève à l’ouest. Uranus compte aussi : elle est tellement penchée qu’elle roule sur le côté.",
@@ -159,11 +302,18 @@
 				"standard": "Trouve une lune dont les geysers crachent dans l’espace l’eau d’un océan caché.",
 				"advanced": "Trouve la lune dont les geysers, à son pôle Sud, alimentent en glace l’un des anneaux de sa planète."
 			},
-			"hints": [
-				"Elle appartient à la planète aux grands anneaux brillants.",
-				"Clique sur Saturne, puis regarde les petites lunes toutes proches. C’est la plus blanche d’entre elles.",
-				"C’est Encelade, une lune de Saturne. Clique sur Saturne, puis sur Encelade."
-			],
+			"hints": {
+				"simple": [
+					"Elle appartient à la planète aux grands anneaux brillants.",
+					"Clique sur Saturne. Puis regarde les petites lunes toutes proches. C’est la plus blanche.",
+					"C’est Encelade, une lune de Saturne. Clique sur Saturne, puis sur Encelade."
+				],
+				"standard": [
+					"Elle appartient à la planète aux grands anneaux brillants.",
+					"Clique sur Saturne, puis regarde les petites lunes toutes proches. C’est la plus blanche d’entre elles.",
+					"C’est Encelade, une lune de Saturne. Clique sur Saturne, puis sur Encelade."
+				]
+			},
 			"found": {
 				"simple": "Encelade ! Sous sa glace, il y a un océan salé. L’eau jaillit de fissures à son pôle Sud, comme des fontaines géantes.",
 				"standard": "Encelade. La sonde Cassini a vu des geysers projeter de la vapeur d’eau et de la glace par de longues fissures près de son pôle Sud. Ils viennent d’un océan salé sous la glace.",
@@ -176,11 +326,18 @@
 				"standard": "Trouve la seule grande lune qui tourne autour de sa planète dans le mauvais sens.",
 				"advanced": "Trouve la seule grande lune sur une orbite rétrograde – un indice sérieux qu’elle a été capturée."
 			},
-			"hints": [
-				"Sa planète est la plus éloignée du Soleil.",
-				"Clique sur Neptune, règle la vitesse sur 1 jour/s et regarde dans quel sens va sa plus grande lune.",
-				"C’est Triton, la plus grande lune de Neptune. Clique sur Neptune, puis sur Triton."
-			],
+			"hints": {
+				"simple": [
+					"Sa planète est la plus éloignée du Soleil.",
+					"Clique sur Neptune. Fais passer le temps plus vite et regarde sa plus grande lune.",
+					"C’est Triton, la plus grande lune de Neptune. Clique sur Neptune, puis sur Triton."
+				],
+				"standard": [
+					"Sa planète est la plus éloignée du Soleil.",
+					"Clique sur Neptune, règle la vitesse sur 1 jour/s et regarde dans quel sens va sa plus grande lune.",
+					"C’est Triton, la plus grande lune de Neptune. Clique sur Neptune, puis sur Triton."
+				]
+			},
 			"found": {
 				"simple": "Triton ! Elle tourne autour de Neptune à l’envers. Neptune l’a sans doute attrapée il y a très longtemps.",
 				"standard": "Triton. Elle tourne autour de Neptune dans le sens contraire de la rotation de la planète. Elle s’est sans doute formée loin, dans la ceinture de Kuiper, puis a été capturée par Neptune.",
@@ -193,13 +350,20 @@
 				"standard": "Trouve la planète où un jour dure plus longtemps qu’une année.",
 				"advanced": "Trouve la planète qui met plus de temps à faire un tour sur elle-même qu’à faire un tour du Soleil."
 			},
-			"hints": [
-				"Compare le temps qu’une planète met pour tourner une fois sur elle-même avec la durée de son année. Les fiches montrent les deux.",
-				"C’est une planète rocheuse proche du Soleil, cachée sous d’épais nuages.",
-				"C’est Vénus. Clique dessus et compare sa rotation avec son année sur sa fiche."
-			],
+			"hints": {
+				"simple": [
+					"Un jour, c’est un tour de la planète sur elle-même. Une année, c’est un tour du Soleil. Les fiches montrent les deux.",
+					"C’est une planète rocheuse près du Soleil, cachée sous d’épais nuages.",
+					"C’est Vénus. Clique dessus et regarde sa fiche."
+				],
+				"standard": [
+					"Compare le temps qu’une planète met pour tourner une fois sur elle-même avec la durée de son année. Les fiches montrent les deux.",
+					"C’est une planète rocheuse proche du Soleil, cachée sous d’épais nuages.",
+					"C’est Vénus. Clique dessus et compare sa rotation avec son année sur sa fiche."
+				]
+			},
 			"found": {
-				"simple": "Vénus ! Elle tourne si lentement qu’un tour lui prend 243 jours, alors que son année ne dure que 225 jours.",
+				"simple": "Vénus ! Elle tourne si lentement sur elle-même qu’un tour lui prend plus de temps qu’un tour du Soleil.",
 				"standard": "Vénus. Un tour sur elle-même lui prend 243 jours terrestres, mais un tour du Soleil seulement 225.",
 				"advanced": "Vénus : une rotation sidérale dure 243 jours, une orbite 225 jours. Comme elle tourne à l’envers, son jour solaire – d’un lever de Soleil au suivant – est plus court : environ 117 jours."
 			}
@@ -210,13 +374,20 @@
 				"standard": "Trouve le monde où une sonde a mesuré l’une des températures les plus froides du système solaire : moins de −240 °C, dans des cratères qui ne voient jamais la lumière du Soleil.",
 				"advanced": "Trouve le monde où une sonde a mesuré environ −247 °C, plus froid que la surface de Pluton, au fond de cratères qui n’ont pas vu le Soleil depuis des milliards d’années."
 			},
-			"hints": [
-				"Il est bien plus près que tu ne le crois – pas au bord du système solaire.",
-				"Il tourne autour de la Terre. Les endroits les plus froids sont dans des cratères près de ses pôles.",
-				"C’est notre Lune. Clique sur la Terre, puis sur la Lune."
-			],
+			"hints": {
+				"simple": [
+					"Il est bien plus près que tu ne le crois.",
+					"Il tourne autour de la Terre. Les endroits les plus froids sont dans des trous profonds près de ses pôles.",
+					"C’est notre Lune. Clique sur la Terre, puis sur la Lune."
+				],
+				"standard": [
+					"Il est bien plus près que tu ne le crois – pas au bord du système solaire.",
+					"Il tourne autour de la Terre. Les endroits les plus froids sont dans des cratères près de ses pôles.",
+					"C’est notre Lune. Clique sur la Terre, puis sur la Lune."
+				]
+			},
 			"found": {
-				"simple": "Notre Lune ! Près de ses pôles, des cratères profonds sont toujours à l’ombre, alors ils sont encore plus froids que Pluton. Il y a peut-être de la glace cachée dedans.",
+				"simple": "Notre Lune ! Près de ses pôles, des trous profonds, appelés cratères, sont toujours à l’ombre. Ils sont encore plus froids que Pluton, et il y a peut-être de la glace dedans.",
 				"standard": "Notre Lune. Près de ses pôles, des cratères profonds sont toujours à l’ombre. La sonde Lunar Reconnaissance Orbiter de la NASA y a mesuré moins de −240 °C – plus froid que la surface de Pluton. De la glace d’eau s’y cache. Triton, la lune de Neptune, s’en approche, avec environ −235 °C.",
 				"advanced": "La Lune. Son axe n’est incliné que de 1,5°, alors le fond de certains cratères près des pôles ne voit jamais le Soleil. La sonde Lunar Reconnaissance Orbiter de la NASA y a mesuré environ 26 K, et ces cratères piègent de la glace d’eau – une ressource pour de futures bases. La surface la plus froide mesurée par Voyager 2, sur Triton, la lune de Neptune, était à environ 38 K."
 			}
@@ -227,11 +398,18 @@
 				"standard": "Trouve la planète tellement penchée qu’elle roule autour du Soleil sur le côté.",
 				"advanced": "Trouve la planète dont l’axe est incliné de presque 98°, si bien que chaque pôle a environ 42 ans de Soleil, puis 42 ans de nuit."
 			},
-			"hints": [
-				"Regarde les anneaux : sur cette planète, ils sont presque debout.",
-				"C’est une géante de glace bleu-vert pâle, bien au-delà de Saturne.",
-				"C’est Uranus, la septième planète. Clique dessus et regarde ses anneaux."
-			],
+			"hints": {
+				"simple": [
+					"Regarde les anneaux. Sur cette planète, ils sont presque debout.",
+					"C’est une planète bleu pâle, bien plus loin que Saturne.",
+					"C’est Uranus, la septième planète. Clique dessus et regarde ses anneaux."
+				],
+				"standard": [
+					"Regarde les anneaux : sur cette planète, ils sont presque debout.",
+					"C’est une géante de glace bleu-vert pâle, bien au-delà de Saturne.",
+					"C’est Uranus, la septième planète. Clique dessus et regarde ses anneaux."
+				]
+			},
 			"found": {
 				"simple": "Uranus ! Elle est couchée sur le côté, peut-être parce que quelque chose d’énorme l’a percutée il y a très longtemps. Ses anneaux sont debout, eux aussi.",
 				"standard": "Uranus. Son axe est incliné de 98°, alors elle roule le long de son orbite. Une collision géante, il y a très longtemps, l’a peut-être renversée.",
@@ -244,11 +422,18 @@
 				"standard": "Trouve la planète moins dense que l’eau : dans une baignoire assez grande, elle flotterait.",
 				"advanced": "Trouve la seule planète dont la densité moyenne est plus faible que celle de l’eau."
 			},
-			"hints": [
-				"C’est une géante gazeuse, faite surtout d’hydrogène et d’hélium.",
-				"Ce n’est pas la plus grosse des géantes, mais celle qui a de larges anneaux brillants.",
-				"C’est Saturne, la sixième planète. Clique dessus."
-			],
+			"hints": {
+				"simple": [
+					"C’est une géante faite surtout de gaz.",
+					"Ce n’est pas la plus grosse des géantes. C’est celle qui a de larges anneaux brillants.",
+					"C’est Saturne, la sixième planète. Clique dessus."
+				],
+				"standard": [
+					"C’est une géante gazeuse, faite surtout d’hydrogène et d’hélium.",
+					"Ce n’est pas la plus grosse des géantes, mais celle qui a de larges anneaux brillants.",
+					"C’est Saturne, la sixième planète. Clique dessus."
+				]
+			},
 			"found": {
 				"simple": "Saturne ! Elle est énorme, mais faite surtout des gaz les plus légers. Pour sa taille, elle est plus légère que l’eau.",
 				"standard": "Saturne. Elle est faite surtout d’hydrogène et d’hélium, les gaz les plus légers : en moyenne, elle n’est qu’à environ 70 % de la densité de l’eau.",
@@ -257,15 +442,22 @@
 		},
 		"volcanoMoon": {
 			"clue": {
-				"simple": "Trouve la lune qui a des centaines de volcans en éruption en ce moment même.",
+				"simple": "Trouve la lune qui a plein de volcans en éruption en ce moment même.",
 				"standard": "Trouve le monde le plus volcanique du système solaire : une lune avec des centaines de volcans actifs.",
 				"advanced": "Trouve la lune chauffée si fort par les marées qu’elle est le corps le plus volcaniquement actif du système solaire."
 			},
-			"hints": [
-				"Elle tourne autour de la plus grosse planète.",
-				"Clique sur Jupiter et regarde ses quatre grandes lunes. C’est la jaune tachetée, la plus proche de Jupiter.",
-				"C’est Io. Clique sur Jupiter, puis sur Io."
-			],
+			"hints": {
+				"simple": [
+					"Elle tourne autour de la plus grosse planète.",
+					"Clique sur Jupiter. Regarde ses quatre grandes lunes. C’est la jaune tachetée, la plus proche de Jupiter.",
+					"C’est Io. Clique sur Jupiter, puis sur Io."
+				],
+				"standard": [
+					"Elle tourne autour de la plus grosse planète.",
+					"Clique sur Jupiter et regarde ses quatre grandes lunes. C’est la jaune tachetée, la plus proche de Jupiter.",
+					"C’est Io. Clique sur Jupiter, puis sur Io."
+				]
+			},
 			"found": {
 				"simple": "Io ! Jupiter la presse encore et encore, ce qui la chauffe de l’intérieur. Ses volcans projettent de la matière très haut dans l’espace.",
 				"standard": "Io a environ 400 volcans actifs. En tournant autour de Jupiter, elle est pressée par sa gravité, ce qui chauffe son intérieur. Certains panaches montent à des centaines de kilomètres.",
@@ -278,13 +470,20 @@
 				"standard": "Trouve la seule lune qui a une atmosphère épaisse, plus dense que l’air sur Terre.",
 				"advanced": "Trouve la seule lune qui a une atmosphère dense – 1,5 fois la pression au sol de la Terre – et des lacs de méthane liquide."
 			},
-			"hints": [
-				"C’est la deuxième plus grande lune du système solaire.",
-				"Elle appartient à Saturne. C’est de loin la plus grande lune de Saturne.",
-				"C’est Titan. Clique sur Saturne, puis sur Titan."
-			],
+			"hints": {
+				"simple": [
+					"C’est la deuxième plus grande lune de toutes.",
+					"Elle appartient à Saturne. C’est de loin la plus grande lune de Saturne.",
+					"C’est Titan. Clique sur Saturne, puis sur Titan."
+				],
+				"standard": [
+					"C’est la deuxième plus grande lune du système solaire.",
+					"Elle appartient à Saturne. C’est de loin la plus grande lune de Saturne.",
+					"C’est Titan. Clique sur Saturne, puis sur Titan."
+				]
+			},
 			"found": {
-				"simple": "Titan ! Elle est enveloppée d’une brume orange et a des lacs et des rivières – pas d’eau, mais de méthane liquide. En 2005, la sonde Huygens s’y est posée.",
+				"simple": "Titan ! Elle est enveloppée d’une brume orange. Elle a des lacs et des rivières, mais pas d’eau : ils sont remplis d’un gaz devenu liquide, le méthane. Un petit engin spatial appelé Huygens s’y est posé.",
 				"standard": "Titan. Son air épais d’azote cache la surface sous une brume orange. Il y a de la pluie, des rivières et des lacs – de méthane liquide. La sonde Huygens s’y est posée en 2005.",
 				"advanced": "Titan : une atmosphère d’azote à 1,5 bar au sol et un cycle du méthane comparable au cycle de l’eau sur Terre – nuages, pluie, rivières et mers d’hydrocarbures liquides. Huygens s’y est posée en 2005 ; Dragonfly, de la NASA, doit y arriver dans les années 2030."
 			}
@@ -295,11 +494,18 @@
 				"standard": "Trouve une lune plus large que la planète Mercure.",
 				"advanced": "Trouve une lune dont le diamètre est plus grand que celui de la planète Mercure. Il y en a deux."
 			},
-			"hints": [
-				"Compare les tailles sur les fiches : Mercure fait environ 4 900 km de large.",
-				"Regarde les plus grandes lunes de Jupiter et de Saturne.",
-				"Ganymède (une lune de Jupiter) et Titan (une lune de Saturne) comptent toutes les deux. Clique sur Jupiter, puis sur Ganymède."
-			],
+			"hints": {
+				"simple": [
+					"Compare les tailles sur les fiches. Mercure est une petite planète.",
+					"Regarde les plus grandes lunes de Jupiter et de Saturne.",
+					"Ganymède (une lune de Jupiter) et Titan (une lune de Saturne) comptent toutes les deux. Clique sur Jupiter, puis sur Ganymède."
+				],
+				"standard": [
+					"Compare les tailles sur les fiches : Mercure fait environ 4 900 km de large.",
+					"Regarde les plus grandes lunes de Jupiter et de Saturne.",
+					"Ganymède (une lune de Jupiter) et Titan (une lune de Saturne) comptent toutes les deux. Clique sur Jupiter, puis sur Ganymède."
+				]
+			},
 			"found": {
 				"simple": "Oui ! Ganymède et Titan sont toutes les deux plus larges que Mercure. Mais Mercure est faite de roche lourde et de fer, alors elle pèse quand même plus lourd.",
 				"standard": "Bravo ! Ganymède (5 268 km) et Titan (5 150 km) sont toutes les deux plus larges que Mercure (4 879 km). Mercure reste plus de deux fois plus lourde : elle est faite de roche et de fer, elles de roche et de glace.",
@@ -312,13 +518,20 @@
 				"standard": "Trouve la lune la plus lisse : une boule de glace fissurée qui cache un océan contenant plus d’eau que toutes les mers de la Terre.",
 				"advanced": "Trouve la lune dont la carapace de glace fissurée recouvre un océan salé contenant environ deux fois plus d’eau que tous les océans de la Terre."
 			},
-			"hints": [
-				"Elle tourne autour de la plus grosse planète.",
-				"Clique sur Jupiter et regarde ses quatre grandes lunes. C’est la plus petite d’entre elles, pâle, avec de longues fissures brunes.",
-				"C’est Europe. Clique sur Jupiter, puis sur Europe."
-			],
+			"hints": {
+				"simple": [
+					"Elle tourne autour de la plus grosse planète.",
+					"Clique sur Jupiter. Regarde ses quatre grandes lunes. C’est la plus petite, pâle, avec de longues fissures brunes.",
+					"C’est Europe. Clique sur Jupiter, puis sur Europe."
+				],
+				"standard": [
+					"Elle tourne autour de la plus grosse planète.",
+					"Clique sur Jupiter et regarde ses quatre grandes lunes. C’est la plus petite d’entre elles, pâle, avec de longues fissures brunes.",
+					"C’est Europe. Clique sur Jupiter, puis sur Europe."
+				]
+			},
 			"found": {
-				"simple": "Europe ! Sous la glace se trouve un immense océan salé. Les scientifiques se demandent si quelque chose pourrait y vivre. Une sonde appelée Europa Clipper est en route.",
+				"simple": "Europe ! Sous la glace se trouve un immense océan salé. Les scientifiques se demandent si quelque chose pourrait y vivre. Un engin spatial appelé Europa Clipper est en route.",
 				"standard": "Europe. Sous une carapace de glace épaisse de plusieurs kilomètres se trouve un océan salé. C’est l’un des meilleurs endroits pour chercher de la vie ailleurs que sur Terre – Europa Clipper, de la NASA, arrive en 2030.",
 				"advanced": "Europe. Sa surface jeune, presque sans cratères, flotte sur un océan salé global d’environ 100 km de profondeur, maintenu liquide par le chauffage de marée. Europa Clipper, lancée en 2024, arrive en 2030 pour savoir s’il pourrait abriter la vie."
 			}
@@ -329,11 +542,18 @@
 				"standard": "Trouve la planète que la lumière du Soleil met plus de quatre heures à atteindre.",
 				"advanced": "Trouve la planète que la lumière du Soleil met plus de quatre heures à atteindre – 30 fois plus longtemps que pour atteindre la Terre."
 			},
-			"hints": [
-				"Les fiches te disent combien de temps la lumière du Soleil met pour y arriver.",
-				"Plus une planète est loin, plus la lumière voyage longtemps. Essaie les planètes du bord.",
-				"C’est Neptune, la planète la plus éloignée. Clique dessus et lis sa fiche."
-			],
+			"hints": {
+				"simple": [
+					"Les fiches te disent combien de temps la lumière du Soleil met pour y arriver.",
+					"Plus une planète est loin, plus la lumière voyage longtemps. Essaie les planètes du bord.",
+					"C’est Neptune, la planète la plus éloignée. Clique dessus et lis sa fiche."
+				],
+				"standard": [
+					"Les fiches te disent combien de temps la lumière du Soleil met pour y arriver.",
+					"Plus une planète est loin, plus la lumière voyage longtemps. Essaie les planètes du bord.",
+					"C’est Neptune, la planète la plus éloignée. Clique dessus et lis sa fiche."
+				]
+			},
 			"found": {
 				"simple": "Neptune ! Sa lumière du Soleil voyage depuis environ quatre heures. Pour arriver jusqu’à la Terre, il ne lui faut que 8 minutes.",
 				"standard": "Neptune. La lumière du Soleil met environ 4 heures et 10 minutes pour y arriver, mais seulement 8 minutes pour atteindre la Terre. Neptune reçoit donc 900 fois moins de lumière que la Terre.",
@@ -370,11 +590,18 @@
 				"standard": "Trouve la planète qui a le jour le plus court : un tour sur elle-même prend moins de 10 heures.",
 				"advanced": "Trouve la planète qui tourne le plus vite sur elle-même – si vite qu’elle est visiblement aplatie aux pôles."
 			},
-			"hints": [
-				"Les fiches montrent combien de temps chaque planète met pour faire un tour sur elle-même.",
-				"Les grosses planètes tournent vite. Essaie les géantes.",
-				"C’est Jupiter. Clique dessus et regarde sa rotation sur la fiche."
-			],
+			"hints": {
+				"simple": [
+					"Les fiches montrent combien de temps chaque planète met pour faire un tour sur elle-même.",
+					"Les grosses planètes tournent vite. Essaie les géantes.",
+					"C’est Jupiter. Clique dessus et regarde sa rotation sur la fiche."
+				],
+				"standard": [
+					"Les fiches montrent combien de temps chaque planète met pour faire un tour sur elle-même.",
+					"Les grosses planètes tournent vite. Essaie les géantes.",
+					"C’est Jupiter. Clique dessus et regarde sa rotation sur la fiche."
+				]
+			},
 			"found": {
 				"simple": "Jupiter ! C’est la plus grosse planète, et pourtant elle fait un tour sur elle-même en moins de 10 heures. Un jour là-bas dure moins de la moitié d’un jour sur Terre.",
 				"standard": "Jupiter fait un tour sur elle-même toutes les 9 heures 56 minutes : le jour le plus court de toutes les planètes – alors que c’est la plus grosse.",
@@ -387,11 +614,18 @@
 				"standard": "Trouve la planète où l’on a mesuré l’air le plus froid de toutes les planètes – ce n’est pas la plus éloignée.",
 				"advanced": "Trouve la planète dont l’atmosphère atteint la température la plus basse de toutes les planètes, environ −224 °C, bien qu’elle ne soit pas la plus lointaine."
 			},
-			"hints": [
-				"C’est l’une des deux géantes de glace bleues au bord du système solaire.",
-				"Des deux, c’est la plus proche du Soleil – celle qui est couchée sur le côté.",
-				"C’est Uranus, la septième planète. Clique dessus."
-			],
+			"hints": {
+				"simple": [
+					"C’est l’une des deux planètes bleues, tout au bord.",
+					"Des deux, c’est la plus proche du Soleil. Elle est couchée sur le côté.",
+					"C’est Uranus, la septième planète. Clique dessus."
+				],
+				"standard": [
+					"C’est l’une des deux géantes de glace bleues au bord du système solaire.",
+					"Des deux, c’est la plus proche du Soleil – celle qui est couchée sur le côté.",
+					"C’est Uranus, la septième planète. Clique dessus."
+				]
+			},
 			"found": {
 				"simple": "Uranus ! Elle est encore plus froide que Neptune, qui est pourtant plus loin. Uranus n’a presque plus de chaleur à l’intérieur.",
 				"standard": "Uranus : son atmosphère descend à environ −224 °C, plus froid que celle de Neptune. Contrairement aux autres géantes, Uranus ne dégage presque pas de chaleur propre.",
@@ -404,13 +638,20 @@
 				"standard": "Les anneaux de Saturne sont célèbres, mais ce n’est pas la seule planète à anneaux. Trouves-en une autre.",
 				"advanced": "Trouve une planète à anneaux autre que Saturne. Les anneaux des autres n’ont été découverts qu’à partir de 1977."
 			},
-			"hints": [
-				"Les autres anneaux sont fins et sombres : approche-toi pour les voir.",
-				"Seules les planètes géantes ont des anneaux. Essaie-en une qui n’est pas Saturne.",
-				"Jupiter, Uranus et Neptune ont toutes des anneaux. Clique sur Uranus et regarde de près."
-			],
+			"hints": {
+				"simple": [
+					"Les autres anneaux sont fins et sombres. Approche-toi pour les voir.",
+					"Seules les planètes géantes ont des anneaux. Essaie-en une qui n’est pas Saturne.",
+					"Jupiter, Uranus et Neptune ont toutes des anneaux. Clique sur Uranus et regarde de près."
+				],
+				"standard": [
+					"Les autres anneaux sont fins et sombres : approche-toi pour les voir.",
+					"Seules les planètes géantes ont des anneaux. Essaie-en une qui n’est pas Saturne.",
+					"Jupiter, Uranus et Neptune ont toutes des anneaux. Clique sur Uranus et regarde de près."
+				]
+			},
 			"found": {
-				"simple": "Oui ! Jupiter, Uranus et Neptune ont toutes des anneaux. Ils sont fins et sombres, alors on ne les a trouvés qu’avec des sondes et de grands télescopes.",
+				"simple": "Oui ! Jupiter, Uranus et Neptune ont toutes des anneaux. Ils sont fins et sombres, alors on ne les a trouvés qu’avec des engins spatiaux et de grands télescopes.",
 				"standard": "Bravo : Jupiter, Uranus et Neptune ont toutes des anneaux. Ils sont fins et sombres, faits de poussière et de roche sombre plutôt que de glace brillante, alors on ne les a découverts qu’entre 1977 et 1989.",
 				"advanced": "Exact. Les anneaux d’Uranus ont été découverts en 1977 quand ils ont atténué une étoile passant derrière eux, ceux de Jupiter par Voyager 1 en 1979, et ceux de Neptune ont été confirmés par Voyager 2 en 1989. Ils sont faits de poussière et de roche sombres, pas de glace brillante comme ceux de Saturne."
 			}

@@ -1076,29 +1076,33 @@
 			"why": "La chasse colle au sujet du jour, et un lien la lance pour chaque élève dans ta langue.",
 			"how": [
 				"Ouvre Outils → « Chasse au trésor » et choisis « Crée ta propre chasse ».",
-				"Coche les énigmes, puis Commencer, ou Partager pour obtenir le lien pour la classe."
+				"Coche des énigmes de n’importe quel niveau, puis Commencer, ou Partager pour obtenir le lien pour la classe. Les énigmes faciles gardent leurs images et leur voix."
 			]
 		},
 		"hunt": {
 			"title": "Chasse au trésor",
 			"what": {
-				"standard": "Des énigmes à résoudre en trouvant le bon monde dans la scène et en cliquant dessus, avec des indices quand tu bloques et une histoire quand tu le trouves.",
-				"simple": "Lis une énigme, trouve le bon monde et clique dessus !"
+				"standard": "Des énigmes à résoudre en trouvant le bon monde dans la scène et en cliquant dessus, à trois niveaux : Facile (6–8 ans), avec une image et une voix pour chaque énigme, Moyen (9–11 ans) et Corsé (dès 12 ans). Des indices quand tu bloques, une histoire et une étoile pour chaque monde trouvé, et un diplôme à la fin.",
+				"simple": "Trouve le bon monde et clique dessus ! Les énigmes faciles ont une image, et une voix peut te les lire. Chaque monde trouvé te donne une étoile."
 			},
 			"why": {
-				"standard": "Chercher pousse à explorer : il n’y a ni score ni chrono, et chaque mauvaise réponse est un monde que tu viens de visiter.",
-				"simple": "Tu apprends plein de choses en cherchant. Il n’y a pas de chrono, et tu ne peux pas perdre."
+				"standard": "Chercher pousse à explorer : il n’y a ni score ni chrono, et chaque mauvaise réponse est un monde que tu viens de visiter. Le niveau Facile convient aux enfants qui ne savent pas encore lire : ils comparent avec l’image, les indices éclairent une partie du ciel, et tout peut être lu à voix haute, aussi pour toute une classe devant le vidéoprojecteur.",
+				"simple": "Tu apprends plein de choses en cherchant. Il n’y a pas de chrono, et tu ne peux pas perdre. Tu n’as même pas besoin de savoir lire : regarde l’image et écoute."
 			},
 			"how": {
 				"standard": [
-					"Ouvre Outils en bas à droite, choisis « Chasse au trésor » puis une chasse : Facile, Moyen ou Corsé.",
-					"Lis l’énigme, trouve le monde et clique dessus.",
-					"Tu bloques ? « Besoin d’un indice ? », et après le dernier indice, « Montre-moi »."
+					"Ouvre Outils en bas à droite et choisis « Chasse au trésor ».",
+					"Choisis la difficulté (Facile, Moyen ou Corsé ; celle de ton niveau de lecture est choisie au départ), puis une chasse.",
+					"Lis l’énigme ou appuie sur le haut-parleur pour l’écouter, puis trouve le monde et clique dessus.",
+					"Tu bloques ? « Besoin d’un indice ? » : au niveau Facile, le premier indice éclaire une partie du ciel et le second fait clignoter la réponse ; après le dernier, « Montre-moi ».",
+					"À la fin, « Créer un diplôme » te donne une image à enregistrer ou à imprimer."
 				],
 				"simple": [
 					"Appuie sur Outils, puis sur « Chasse au trésor ».",
-					"Choisis une chasse facile.",
-					"Lis l’énigme et clique sur le bon monde."
+					"Choisis « Facile », puis une chasse.",
+					"Regarde l’image et trouve ce monde. Appuie sur le haut-parleur pour écouter l’énigme.",
+					"Tu bloques ? Appuie sur « Besoin d’un indice ? ».",
+					"À la fin, appuie sur « Reçois ton diplôme »."
 				]
 			}
 		},

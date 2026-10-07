@@ -748,17 +748,43 @@
 			"intro": "Every clue describes a world. Find it in the scene and click it: that is your answer. Hints are free, and there is no score and no time limit.",
 			"intro@simple": "Read the clue, find the world and click it! Stuck? Ask for a hint.",
 			"choose": "Pick a hunt",
+			"difficultyLabel": "How hard?",
 			"difficulty": {
 				"easy": "Easy",
 				"medium": "Medium",
 				"hard": "Tricky"
 			},
+			"ages": {
+				"easy": "Ages 6–8",
+				"medium": "Ages 9–11",
+				"hard": "Ages 12+"
+			},
+			"hint": {
+				"easy": "Find what the picture shows. The clues are read aloud, and the hints point at the sky. For ages 6 to 8.",
+				"easy@simple": "Look at the picture and find it in space. A voice can read the clue.",
+				"medium": "Clues about what makes each world special. For ages 9 to 11.",
+				"medium@simple": "Clues about what makes each world special.",
+				"hard": "Riddles that need the cards, the clock and the points of view. For 12 and up.",
+				"hard@simple": "Hard riddles. You need to read the cards.",
+				"readAloud": "Hear it read out in the language on screen.",
+				"readAloud@simple": "Press to hear it.",
+				"certificate": "A picture of the scene with the worlds you found, to save or print.",
+				"certificate@simple": "A picture to keep, with all the worlds you found."
+			},
+			"easyNote": "With pictures: find what you see.",
+			"easyNote@simple": "Look at the picture, then find it!",
+			"easyNoteVoice": "With pictures, and a voice reads every clue.",
+			"easyNoteVoice@simple": "Look at the picture, then find it! A voice reads the clues.",
+			"none": "No hunts at this level yet: make your own below.",
 			"clueCount": "{count, plural, one {# clue} other {# clues}}",
 			"inProgress": "Carry on: clue {step} of {total}",
 			"progress": "Clue {step} of {total}",
 			"progressLabel": "{found} of {total} found",
 			"answerHow": "Find it in the scene and click it.",
 			"answerHow@simple": "Find it and click it!",
+			"weAreAt": "We are at {bodyId, select, other {{name}}}.",
+			"readAloud": "Read it aloud",
+			"stopReading": "Stop reading",
 			"firstHint": "Need a hint?",
 			"moreHint": "Another hint",
 			"hintLabel": "Hint {n}",
@@ -771,19 +797,23 @@
 				"almost": "Yes, {name}! Now watch it from {frameId, select, other {{frame}}}: choose the point of view at the top left."
 			},
 			"found": "Found it!",
+			"star": "A star for you!",
 			"next": "Next clue",
 			"finish": "Finish",
 			"done": {
 				"title": "Hunt complete!",
 				"text": "{count, plural, one {You solved the clue.} other {You solved all # clues.}}",
 				"text@simple": "{count, plural, one {You did it!} other {You did it: all # found!}}",
+				"stars": "{count, plural, one {# star} other {# stars}}",
 				"found": "The worlds you found. Click one to visit it again:",
 				"again": "Play again",
-				"other": "Choose another hunt"
+				"other": "Choose another hunt",
+				"certificate": "Make a certificate",
+				"certificate@simple": "Get your certificate"
 			},
 			"custom": {
 				"title": "Make your own hunt",
-				"intro": "Tick the clues for your lesson, then start the hunt or share it with your class.",
+				"intro": "Tick the clues for your lesson, from any level, then start the hunt or share it with your class. Easy clues keep their pictures and their voice.",
 				"name": "Your own hunt",
 				"count": "{count, plural, =0 {No clues picked} one {# clue picked} other {# clues picked}}",
 				"start": "Start"
@@ -796,7 +826,16 @@
 				"copied": "Copied",
 				"link": "Link to this hunt"
 			},
-			"otherHunts": "Other hunts"
+			"otherHunts": "Other hunts",
+			"certificate": {
+				"title": "Space explorer certificate",
+				"title@simple": "Space explorer!",
+				"caption": "{hunt}: {count, plural, one {# clue solved} other {all # clues solved}}",
+				"caption@simple": "{hunt}: {count, plural, one {you found it!} other {you found all #!}}",
+				"row": "Clue {n}",
+				"note": "Well done, space explorer!",
+				"fileName": "my-space-hunt"
+			}
 		},
 		"sound": {
 			"toggle": "Sound",

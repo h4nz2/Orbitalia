@@ -748,17 +748,43 @@
 			"intro": "Jedes Rätsel beschreibt eine Welt. Finde sie in der Szene und klick sie an: Das ist deine Antwort. Tipps sind gratis, und es gibt keine Punkte und kein Zeitlimit.",
 			"intro@simple": "Lies das Rätsel, finde die Welt und klick sie an! Du kommst nicht weiter? Hol dir einen Tipp.",
 			"choose": "Wähle eine Jagd",
+			"difficultyLabel": "Wie schwer?",
 			"difficulty": {
 				"easy": "Leicht",
 				"medium": "Mittel",
 				"hard": "Knifflig"
 			},
+			"ages": {
+				"easy": "6–8 Jahre",
+				"medium": "9–11 Jahre",
+				"hard": "Ab 12 Jahren"
+			},
+			"hint": {
+				"easy": "Finde, was das Bild zeigt. Die Rätsel werden vorgelesen, und die Tipps zeigen dir die Stelle am Himmel. Für 6- bis 8-Jährige.",
+				"easy@simple": "Schau dir das Bild an und finde es im Weltall. Eine Stimme kann dir das Rätsel vorlesen.",
+				"medium": "Rätsel darüber, was jede Welt besonders macht. Für 9- bis 11-Jährige.",
+				"medium@simple": "Rätsel darüber, was jede Welt besonders macht.",
+				"hard": "Rätsel, für die man die Karten, die Uhr und die Blickwinkel braucht. Ab 12 Jahren.",
+				"hard@simple": "Schwere Rätsel. Du musst die Karten lesen.",
+				"readAloud": "Lass es dir in der Sprache auf dem Bildschirm vorlesen.",
+				"readAloud@simple": "Drück hier, um es zu hören.",
+				"certificate": "Ein Bild der Szene mit den Welten, die du gefunden hast, zum Speichern oder Ausdrucken.",
+				"certificate@simple": "Ein Bild zum Behalten, mit allen Welten, die du gefunden hast."
+			},
+			"easyNote": "Mit Bildern: Finde, was du siehst.",
+			"easyNote@simple": "Schau dir das Bild an und finde es!",
+			"easyNoteVoice": "Mit Bildern, und eine Stimme liest jedes Rätsel vor.",
+			"easyNoteVoice@simple": "Schau dir das Bild an und finde es! Eine Stimme liest die Rätsel vor.",
+			"none": "Auf dieser Stufe gibt es noch keine Jagden: Stell dir unten deine eigene zusammen.",
 			"clueCount": "{count, plural, one {# Rätsel} other {# Rätsel}}",
 			"inProgress": "Weitermachen: Rätsel {step} von {total}",
 			"progress": "Rätsel {step} von {total}",
 			"progressLabel": "{found} von {total} gefunden",
 			"answerHow": "Finde sie in der Szene und klick sie an.",
 			"answerHow@simple": "Finde sie und klick sie an!",
+			"weAreAt": "Wir sind {bodyId, select, earth {bei der Erde} jupiter {beim Jupiter} saturn {beim Saturn} other {bei {name}}}.",
+			"readAloud": "Vorlesen",
+			"stopReading": "Vorlesen stoppen",
 			"firstHint": "Brauchst du einen Tipp?",
 			"moreHint": "Noch ein Tipp",
 			"hintLabel": "Tipp {n}",
@@ -771,19 +797,23 @@
 				"almost": "Ja, {name}! Jetzt schau {frameId, select, earth {von der Erde} other {von {frame}}} aus zu: Wähle oben links den Blickwinkel."
 			},
 			"found": "Gefunden!",
+			"star": "Ein Stern für dich!",
 			"next": "Nächstes Rätsel",
 			"finish": "Fertig",
 			"done": {
 				"title": "Geschafft!",
 				"text": "{count, plural, one {Du hast das Rätsel gelöst.} other {Du hast alle # Rätsel gelöst.}}",
 				"text@simple": "{count, plural, one {Du hast es geschafft!} other {Du hast es geschafft: alle # gefunden!}}",
+				"stars": "{count, plural, one {# Stern} other {# Sterne}}",
 				"found": "Diese Welten hast du gefunden. Klick eine an, um sie noch einmal zu besuchen:",
 				"again": "Noch einmal spielen",
-				"other": "Andere Jagd wählen"
+				"other": "Andere Jagd wählen",
+				"certificate": "Urkunde erstellen",
+				"certificate@simple": "Hol dir deine Urkunde"
 			},
 			"custom": {
 				"title": "Eigene Jagd zusammenstellen",
-				"intro": "Hake die Rätsel für deine Stunde an und starte die Jagd oder teile sie mit deiner Klasse.",
+				"intro": "Hake die Rätsel für deine Stunde an, aus jeder Stufe, und starte dann die Jagd oder teile sie mit deiner Klasse. Leichte Rätsel behalten ihre Bilder und ihre Stimme.",
 				"name": "Deine eigene Jagd",
 				"count": "{count, plural, =0 {Kein Rätsel gewählt} one {# Rätsel gewählt} other {# Rätsel gewählt}}",
 				"start": "Starten"
@@ -796,7 +826,16 @@
 				"copied": "Kopiert",
 				"link": "Link zu dieser Jagd"
 			},
-			"otherHunts": "Andere Jagden"
+			"otherHunts": "Andere Jagden",
+			"certificate": {
+				"title": "Weltraum-Urkunde",
+				"title@simple": "Weltraum-Profi!",
+				"caption": "{hunt}: {count, plural, one {# Rätsel gelöst} other {alle # Rätsel gelöst}}",
+				"caption@simple": "{hunt}: {count, plural, one {Du hast es gefunden!} other {Du hast alle # gefunden!}}",
+				"row": "Rätsel {n}",
+				"note": "Super gemacht, Weltraum-Profi!",
+				"fileName": "meine-weltraum-jagd"
+			}
 		},
 		"sound": {
 			"toggle": "Ton",

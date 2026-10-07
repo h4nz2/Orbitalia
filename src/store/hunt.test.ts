@@ -21,6 +21,8 @@ const reset = () => {
 		collapsed: false,
 		choosing: false,
 		guess: null,
+		difficulty: null,
+		assist: false,
 	})
 }
 
@@ -110,6 +112,21 @@ describe("useHuntStore", () => {
 			choosing: false,
 			phase: "found",
 		})
+	})
+
+	it("keeps the chooser's difficulty and the Easy assist out of the progress (#52)", () => {
+		const store = useHuntStore.getState()
+		store.setDifficulty("easy")
+		store.setAssist(true)
+		store.start("lookAndFind")
+		expect(useHuntStore.getState()).toMatchObject({
+			difficulty: "easy",
+			assist: true,
+		})
+		const saved = JSON.parse(sessionStorage.getItem(HUNT_STORAGE_KEY)!)
+		expect(Object.keys(saved).sort()).toEqual(
+			["found", "hints", "key", "phase", "step"].sort(),
+		)
 	})
 
 	it("keeps the progress in sessionStorage", () => {

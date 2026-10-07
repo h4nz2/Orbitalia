@@ -4,8 +4,9 @@
  *
  * A step is a change of what is in view that Back can undo: choosing a body or
  * a spacecraft, a flight, the way out, a tour stop, a milestone, a sky event, a
- * hunt's "Show me", holding a body still. Each one is marked in the navigation
- * slice (`markStep()`, which bumps `step`) before it changes anything, and adds
+ * hunt's "Show me" and an Easy clue's start view, holding a body still. Each
+ * one is marked in the navigation slice (`markStep()`, which bumps `step`)
+ * before it changes anything, and adds
  * an entry to the browser's history; everything else (dragging, zooming, time
  * passing, layers, the scale) keeps rewriting the entry on screen. So the
  * browser's and the phone's back do exactly what the Back button does, and

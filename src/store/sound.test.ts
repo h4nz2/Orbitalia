@@ -24,7 +24,12 @@ const sound = () => useSoundStore.getState()
 beforeEach(() => {
 	local.clear()
 	session.clear()
-	useSoundStore.setState({ ...DEFAULT_PREFS, enabled: false, playing: null })
+	useSoundStore.setState({
+		...DEFAULT_PREFS,
+		enabled: false,
+		playing: null,
+		muted: false,
+	})
 })
 
 /** A fresh copy of the store module, as a new page load would see it. */
@@ -72,6 +77,25 @@ describe("useSoundStore", () => {
 		expect(sound().volume).toBe(0)
 		sound().setVolume(Number.NaN)
 		expect(sound().volume).toBe(0)
+	})
+
+	it("remembers a mute for the visit, so nothing turns sound back on by itself (#52)", async () => {
+		expect(sound().muted).toBe(false)
+		// never on, so never muted: an Easy hunt may ask for its voice
+		sound().setEnabled(false)
+		expect(sound().muted).toBe(false)
+		sound().setEnabled(true)
+		sound().mute()
+		expect(sound().muted).toBe(true)
+		// the viewer turning it on again clears it
+		sound().setEnabled(true)
+		expect(sound().muted).toBe(false)
+		sound().mute()
+		sound().setPlaying("jupiterWhistlers")
+		expect(sound().muted).toBe(false)
+		// a new page load starts unmuted (and silent)
+		sound().mute()
+		expect((await reload()).muted).toBe(false)
 	})
 
 	it("mute silences everything at once, recordings included", () => {

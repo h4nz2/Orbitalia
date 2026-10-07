@@ -1,9 +1,23 @@
 {
 	"hunts": {
+		"lookAndFind": {
+			"title": "Dívej se a hledej",
+			"description": {
+				"simple": "Podívej se na obrázek a pak ho najdi ve vesmíru!",
+				"standard": "Pět světů, které najdeš podle obrázku, s hádankami čtenými nahlas."
+			}
+		},
+		"sunAndMoons": {
+			"title": "Slunce a měsíce",
+			"description": {
+				"simple": "Najdi Slunce, nejbližší a nejvzdálenější planetu a pak dva měsíce.",
+				"standard": "Od Slunce až k poslední planetě a pak dva měsíce: pět světů k nalezení podle obrázku."
+			}
+		},
 		"firstSteps": {
 			"title": "První kroky",
 			"description": {
-				"simple": "Šest snadných hádanek o Měsíci a planetách.",
+				"simple": "Šest hádanek o Měsíci a planetách.",
 				"standard": "Šest hádanek, se kterými poznáš planety a náš Měsíc.",
 				"advanced": "Na rozehřátí: šest hádanek napříč planetami a Měsícem."
 			}
@@ -34,19 +48,106 @@
 		}
 	},
 	"questions": {
+		"seeHome": {
+			"clue": "Najdi planetu, na které žijeme.",
+			"hints": [
+				"Hledej ve žlutém kruhu modrobílou planetu.",
+				"Ta, která bliká, je náš domov, Země!"
+			],
+			"found": "Ano, to je Země, náš domov!"
+		},
+		"seeRed": {
+			"clue": "Najdi červenou planetu.",
+			"hints": [
+				"Hledej ve žlutém kruhu červenou planetu.",
+				"Ta, která bliká, je Mars!"
+			],
+			"found": "Ano, to je Mars, červený od rezavého prachu!"
+		},
+		"seeBiggest": {
+			"clue": "Najdi největší planetu.",
+			"hints": [
+				"Hledej ve žlutém kruhu velkou planetu s pruhy.",
+				"Ta, která bliká, je obr Jupiter!"
+			],
+			"found": "Ano, to je Jupiter, široký jako 11 Zemí!"
+		},
+		"seeRings": {
+			"clue": "Najdi planetu s velkými prstenci.",
+			"hints": [
+				"Hledej ve žlutém kruhu planetu s prstenci.",
+				"Ta, která bliká, je Saturn!"
+			],
+			"found": "Ano, to je Saturn s prstenci z ledu!"
+		},
+		"seeMoon": {
+			"clue": "Najdi Měsíc!",
+			"hints": [
+				"Podívej se do žlutého kruhu, blízko Země.",
+				"Ten, který bliká, je náš Měsíc!"
+			],
+			"found": "Ano, to je Měsíc, po kterém už chodili lidé!"
+		},
+		"seeSun": {
+			"clue": "Najdi Slunce.",
+			"hints": [
+				"Podívej se do žlutého kruhu, úplně doprostřed.",
+				"To, co bliká, je Slunce!"
+			],
+			"found": "Ano, to je Slunce, hvězda, která nám dává světlo!"
+		},
+		"seeNearest": {
+			"clue": "Najdi planetu, která je nejblíž Slunci.",
+			"hints": [
+				"Podívej se do žlutého kruhu, úplně blízko Slunce.",
+				"Ta, která bliká, je Merkur!"
+			],
+			"found": "Ano, to je Merkur, nejrychlejší planeta ze všech!"
+		},
+		"seeFarthest": {
+			"clue": "Najdi planetu, která je nejdál od Slunce.",
+			"hints": [
+				"Podívej se do žlutého kruhu, daleko na okraj.",
+				"Ta, která bliká, je Neptun!"
+			],
+			"found": "Ano, to je Neptun, tmavý a ledově studený!"
+		},
+		"seeYellowMoon": {
+			"clue": "Najdi žlutý měsíc Jupiteru!",
+			"hints": [
+				"Podívej se do žlutého kruhu, blízko Jupiteru.",
+				"Ten, který bliká, je Io!"
+			],
+			"found": "Ano, to je Io, měsíc plný sopek!"
+		},
+		"seeBiggestMoon": {
+			"clue": "Najdi největší měsíc Saturnu!",
+			"hints": [
+				"Hledej ve žlutém kruhu velký oranžový měsíc.",
+				"Ten, který bliká, je Titan!"
+			],
+			"found": "Ano, to je Titan, zahalený do oranžové mlhy!"
+		},
 		"walkedOn": {
 			"clue": {
 				"simple": "Najdi jediný svět kromě Země, po kterém chodili lidé.",
 				"standard": "Najdi jediný svět kromě Země, po kterém se procházeli lidé.",
 				"advanced": "Najdi jediný další svět, na který vstoupila lidská noha."
 			},
-			"hints": [
-				"Je nám blíž než kterákoli planeta.",
-				"Obíhá kolem Země: klikni nejdřív na Zemi a podívej se kousek vedle.",
-				"Je to Měsíc. Klikni na Zemi a pak na Měsíc vedle ní."
-			],
+			"hints": {
+				"simple": [
+					"Je nám blíž než kterákoli planeta.",
+					"Obíhá kolem Země. Klikni na Zemi a pak se podívej kousek vedle.",
+					"Je to Měsíc. Klikni na Zemi a pak na Měsíc vedle ní."
+				],
+				"standard": [
+					"Je nám blíž než kterákoli planeta.",
+					"Obíhá kolem Země: klikni nejdřív na Zemi a podívej se kousek vedle.",
+					"Je to Měsíc. Klikni na Zemi a pak na Měsíc vedle ní."
+				]
+			},
 			"found": {
-				"simple": "Ano, Měsíc! Mezi lety 1969 a 1972 po něm chodilo dvanáct astronautů. Jejich stopy tam jsou dodnes, protože tam nefouká žádný vítr, který by je odvál.",
+				"simple": "Ano, Měsíc! Kdysi dávno po něm chodilo dvanáct astronautů. Jejich stopy tam jsou dodnes, protože tam nefouká žádný vítr, který by je odvál.",
 				"standard": "Měsíc! Během misí Apollo v letech 1969 až 1972 po něm chodilo dvanáct astronautů. Není tam vzduch ani vítr, a tak tam jejich stopy zůstaly dodnes.",
 				"advanced": "Měsíc. Dvanáct astronautů programu Apollo po něm chodilo v letech 1969 až 1972 a přivezli 382 kg hornin. Bez atmosféry, která by je obrousila, mohou jejich stopy vydržet miliony let."
 			}
@@ -57,11 +158,18 @@
 				"standard": "Najdi rudou planetu, domov nejvyšší sopky na všech planetách.",
 				"advanced": "Najdi planetu, kterou rezavý prach barví na naší noční obloze do červena a která nese nejvyšší sopku ze všech planet."
 			},
-			"hints": [
-				"Je to další planeta za Zemí, směrem od Slunce.",
-				"Hledej malou oranžovo-červenou planetu mezi Zemí a Jupiterem.",
-				"Je to Mars, čtvrtá planeta od Slunce. Klikni na něj."
-			],
+			"hints": {
+				"simple": [
+					"Je to další planeta za Zemí, dál od Slunce.",
+					"Hledej malou červenou planetu mezi Zemí a Jupiterem.",
+					"Je to Mars. Klikni na něj."
+				],
+				"standard": [
+					"Je to další planeta za Zemí, směrem od Slunce.",
+					"Hledej malou oranžovo-červenou planetu mezi Zemí a Jupiterem.",
+					"Je to Mars, čtvrtá planeta od Slunce. Klikni na něj."
+				]
+			},
 			"found": {
 				"simple": "Mars! Jeho prach je plný rzi, a proto vypadá červeně. Jeho sopka Olympus Mons je asi dva a půlkrát vyšší než Mount Everest.",
 				"standard": "Mars. Jeho půda obsahuje hodně oxidu železa – rzi – a ten ho barví do červena. Olympus Mons, jeho největší sopka, je vysoká asi 22 km.",
@@ -70,17 +178,24 @@
 		},
 		"biggestPlanet": {
 			"clue": {
-				"simple": "Najdi největší planetu. Vešlo by se do ní přes tisíc Zemí!",
+				"simple": "Najdi největší planetu. Je široká jako 11 Zemí!",
 				"standard": "Najdi největší planetu: vešlo by se do ní přes 1 300 Zemí.",
 				"advanced": "Najdi planetu, která má větší hmotnost než všechny ostatní planety dohromady."
 			},
-			"hints": [
-				"Je to plynný obr s pruhy mraků.",
-				"Je to pátá planeta od Slunce, první za Marsem.",
-				"Je to Jupiter. Klikni na velkou pruhovanou planetu za Marsem."
-			],
+			"hints": {
+				"simple": [
+					"Je to obří koule z plynu, celá v pruzích.",
+					"Je to planeta hned za Marsem.",
+					"Je to Jupiter. Klikni na velkou pruhovanou planetu za Marsem."
+				],
+				"standard": [
+					"Je to plynný obr s pruhy mraků.",
+					"Je to pátá planeta od Slunce, první za Marsem.",
+					"Je to Jupiter. Klikni na velkou pruhovanou planetu za Marsem."
+				]
+			},
 			"found": {
-				"simple": "Jupiter! Je tak velký, že by se přes něj vešlo 11 Zemí vedle sebe. Jeho Velká rudá skvrna je bouře větší než Země.",
+				"simple": "Jupiter! Má obří bouři, které se říká Velká rudá skvrna. Ta bouře je větší než Země.",
 				"standard": "Jupiter: široký jako 11 Zemí a víc než dvakrát těžší než všechny ostatní planety dohromady. Jeho Velká rudá skvrna je bouře širší než Země.",
 				"advanced": "Jupiter: 2,5krát hmotnější než všechny ostatní planety dohromady a široký 11 průměrů Země. Jeho Velká rudá skvrna je bouře širší než Země, kterou lidé pozorují už víc než 150 let."
 			}
@@ -91,13 +206,20 @@
 				"standard": "Najdi planetu s nejjasnějšími prstenci ve Sluneční soustavě.",
 				"advanced": "Najdi planetu, jejíž prstence by sahaly skoro celou cestu ze Země k Měsíci, a přitom jsou většinou tenčí než kilometr."
 			},
-			"hints": [
-				"Její prstence tvoří nespočet kousků ledu.",
-				"Je to šestá planeta od Slunce, hned za Jupiterem.",
-				"Je to Saturn. Klikni na planetu s velkými prstenci za Jupiterem."
-			],
+			"hints": {
+				"simple": [
+					"Její prstence jsou z mnoha kousků ledu.",
+					"Je to planeta hned za Jupiterem.",
+					"Je to Saturn. Klikni na planetu s velkými prstenci."
+				],
+				"standard": [
+					"Její prstence tvoří nespočet kousků ledu.",
+					"Je to šestá planeta od Slunce, hned za Jupiterem.",
+					"Je to Saturn. Klikni na planetu s velkými prstenci za Jupiterem."
+				]
+			},
 			"found": {
-				"simple": "Saturn! Jeho prstence tvoří miliardy kousků ledu. Některé jsou malé jako zrnka písku, jiné velké jako dům.",
+				"simple": "Saturn! Jeho prstence jsou z mnoha a mnoha kousků ledu. Některé jsou malé jako zrnka písku, jiné velké jako dům.",
 				"standard": "Saturn. Jeho prstence jsou miliardy kusů vodního ledu, od prachových zrnek po balvany velké jako dům, a všechny obíhají kolem planety.",
 				"advanced": "Saturn. Jeho hlavní prstence mají v průměru asi 270 000 km, ale obvykle jsou silné jen asi 10 metrů. Tvoří je částice vodního ledu od prachových zrnek po balvany široké několik metrů."
 			}
@@ -108,13 +230,20 @@
 				"standard": "Najdi nejteplejší planetu – a ne, není to ta, která je nejblíž Slunci.",
 				"advanced": "Najdi planetu s nejteplejším povrchem, přestože jiná planeta je Slunci blíž."
 			},
-			"hints": [
-				"Její husté mraky drží teplo jako peřina.",
-				"Je to druhá planeta od Slunce, mezi Merkurem a Zemí.",
-				"Je to Venuše. Klikni na druhou planetu od Slunce."
-			],
+			"hints": {
+				"simple": [
+					"Její husté mraky drží teplo uvnitř, jako peřina.",
+					"Je to druhá planeta od Slunce.",
+					"Je to Venuše. Klikni na druhou planetu od Slunce."
+				],
+				"standard": [
+					"Její husté mraky drží teplo jako peřina.",
+					"Je to druhá planeta od Slunce, mezi Merkurem a Zemí.",
+					"Je to Venuše. Klikni na druhou planetu od Slunce."
+				]
+			},
 			"found": {
-				"simple": "Venuše! Její hustý vzduch zadržuje sluneční teplo, takže na povrchu je asi 465 °C – takové horko, že by se v něm roztavilo olovo.",
+				"simple": "Venuše! Její hustý vzduch nepustí sluneční teplo ven. Povrch je tam rozpálenější než pec na pizzu, tak horký, že by se roztavil i kov.",
 				"standard": "Venuše. Její hustá atmosféra z oxidu uhličitého zadržuje teplo, takže povrch má ve dne i v noci asi 465 °C – víc než Merkur.",
 				"advanced": "Venuše. Nekontrolovatelný skleníkový efekt v její husté atmosféře z oxidu uhličitého, s tlakem asi 90krát vyšším než na povrchu Země, udržuje povrch ve dne i v noci na zhruba 465 °C – víc než na denní straně Merkuru."
 			}
@@ -125,11 +254,18 @@
 				"standard": "Najdi planetu s nejkratším rokem: oběhne Slunce za méně než tři pozemské měsíce.",
 				"advanced": "Najdi planetu, která za jeden pozemský rok stihne oběhnout Slunce víc než čtyřikrát."
 			},
-			"hints": [
-				"Čím blíž je planeta Slunci, tím rychleji ho oběhne.",
-				"Podívej se na planetu nejblíž Slunci. Její karta ti prozradí, jak dlouhý má rok.",
-				"Je to Merkur, první planeta od Slunce. Klikni na něj."
-			],
+			"hints": {
+				"simple": [
+					"Planety blízko Slunce ho oběhnou rychleji.",
+					"Podívej se na planetu nejblíž Slunci. Její karta ti prozradí, jak dlouhý má rok.",
+					"Je to Merkur, planeta nejblíž Slunci. Klikni na něj."
+				],
+				"standard": [
+					"Čím blíž je planeta Slunci, tím rychleji ho oběhne.",
+					"Podívej se na planetu nejblíž Slunci. Její karta ti prozradí, jak dlouhý má rok.",
+					"Je to Merkur, první planeta od Slunce. Klikni na něj."
+				]
+			},
 			"found": {
 				"simple": "Merkur! Jeho rok trvá jen 88 dní. Kdo by tam bydlel, slavil by narozeniny zhruba každé tři měsíce.",
 				"standard": "Merkur. Oběhne Slunce za pouhých 88 dní a řítí se přitom rychlostí asi 47 km za sekundu.",
@@ -142,11 +278,18 @@
 				"standard": "Najdi planetu, která se otáčí pozpátku – opačným směrem než Země.",
 				"advanced": "Najdi planetu s retrográdní rotací: otáčí se proti směru, kterým obíhá kolem Slunce."
 			},
-			"hints": [
-				"Klikni na planetu a podívej se na její kartě, jak se otáčí.",
-				"Jsou dvě: jedna je soused Země, druhá leží na boku.",
-				"Zkus Venuši, druhou planetu od Slunce – nebo Uran, sedmou."
-			],
+			"hints": {
+				"simple": [
+					"Klikni na planetu a podívej se na její kartě, jak se točí.",
+					"Jsou dvě. Jedna je soused Země. Druhá leží na boku.",
+					"Zkus Venuši, druhou planetu. Nebo Uran, sedmou."
+				],
+				"standard": [
+					"Klikni na planetu a podívej se na její kartě, jak se otáčí.",
+					"Jsou dvě: jedna je soused Země, druhá leží na boku.",
+					"Zkus Venuši, druhou planetu od Slunce – nebo Uran, sedmou."
+				]
+			},
 			"found": {
 				"simple": "Správně! Venuše se točí pozpátku, takže tam Slunce vychází na západě. Uran se točí pozpátku taky, protože je převrácený.",
 				"standard": "Ano! Venuše se otáčí pozpátku, takže tam Slunce vychází na západě. I o Uranu se říká, že se točí pozpátku: je převrácený tak moc, že se kutálí po boku.",
@@ -159,11 +302,18 @@
 				"standard": "Najdi měsíc s gejzíry, které stříkají do vesmíru vodu ze skrytého oceánu.",
 				"advanced": "Najdi měsíc, jehož gejzíry na jižním pólu zásobují ledem jeden z prstenců jeho planety."
 			},
-			"hints": [
-				"Patří k planetě s velkými jasnými prstenci.",
-				"Klikni na Saturn a pak se podívej na malé měsíce blízko něj. Je z nich nejbělejší.",
-				"Je to Enceladus, měsíc Saturnu. Klikni na Saturn a pak na Enceladus."
-			],
+			"hints": {
+				"simple": [
+					"Patří k planetě s velkými jasnými prstenci.",
+					"Klikni na Saturn. Pak se podívej na malé měsíce blízko něj. Je ze všech nejbělejší.",
+					"Je to Enceladus, měsíc Saturnu. Klikni na Saturn a pak na Enceladus."
+				],
+				"standard": [
+					"Patří k planetě s velkými jasnými prstenci.",
+					"Klikni na Saturn a pak se podívej na malé měsíce blízko něj. Je z nich nejbělejší.",
+					"Je to Enceladus, měsíc Saturnu. Klikni na Saturn a pak na Enceladus."
+				]
+			},
 			"found": {
 				"simple": "Enceladus! Pod jeho ledem je slaný oceán. Z trhlin na jižním pólu tryská voda jako z obřích fontán.",
 				"standard": "Enceladus. Sonda Cassini viděla gejzíry, které z dlouhých trhlin poblíž jeho jižního pólu chrlí vodní páru a led. Pocházejí ze slaného oceánu pod ledem.",
@@ -176,11 +326,18 @@
 				"standard": "Najdi jediný velký měsíc, který obíhá kolem své planety opačným směrem.",
 				"advanced": "Najdi jediný velký měsíc na retrográdní dráze – silné znamení, že byl zachycen."
 			},
-			"hints": [
-				"Jeho planeta je ze všech nejdál od Slunce.",
-				"Klikni na Neptun, nastav rychlost na 1 den/s a sleduj, kterým směrem obíhá jeho největší měsíc.",
-				"Je to Triton, největší měsíc Neptunu. Klikni na Neptun a pak na Triton."
-			],
+			"hints": {
+				"simple": [
+					"Jeho planeta je ze všech nejdál od Slunce.",
+					"Klikni na Neptun. Zrychli čas a sleduj jeho největší měsíc.",
+					"Je to Triton, největší měsíc Neptunu. Klikni na Neptun a pak na Triton."
+				],
+				"standard": [
+					"Jeho planeta je ze všech nejdál od Slunce.",
+					"Klikni na Neptun, nastav rychlost na 1 den/s a sleduj, kterým směrem obíhá jeho největší měsíc.",
+					"Je to Triton, největší měsíc Neptunu. Klikni na Neptun a pak na Triton."
+				]
+			},
 			"found": {
 				"simple": "Triton! Obíhá kolem Neptunu pozpátku. Neptun ho nejspíš kdysi dávno chytil.",
 				"standard": "Triton. Obíhá kolem Neptunu proti směru jeho rotace. Nejspíš vznikl daleko v Kuiperově pásu a Neptun ho později zachytil.",
@@ -193,13 +350,20 @@
 				"standard": "Najdi planetu, kde den trvá déle než rok.",
 				"advanced": "Najdi planetu, které jedno otočení kolem osy trvá déle než jeden oběh kolem Slunce."
 			},
-			"hints": [
-				"Porovnej, jak dlouho se planeta otáčí jednou dokola a jak dlouhý má rok. Karty ukazují obojí.",
-				"Je to kamenná planeta blízko Slunce, skrytá pod hustými mraky.",
-				"Je to Venuše. Klikni na ni a porovnej na její kartě rotaci s rokem."
-			],
+			"hints": {
+				"simple": [
+					"Den je jedna otočka. Rok je jedna cesta kolem Slunce. Karty ukazují obojí.",
+					"Je to kamenná planeta blízko Slunce, schovaná pod hustými mraky.",
+					"Je to Venuše. Klikni na ni a podívej se na její kartu."
+				],
+				"standard": [
+					"Porovnej, jak dlouho se planeta otáčí jednou dokola a jak dlouhý má rok. Karty ukazují obojí.",
+					"Je to kamenná planeta blízko Slunce, skrytá pod hustými mraky.",
+					"Je to Venuše. Klikni na ni a porovnej na její kartě rotaci s rokem."
+				]
+			},
 			"found": {
-				"simple": "Venuše! Točí se tak pomalu, že jedna otočka trvá 243 dní, ale její rok má jen 225 dní.",
+				"simple": "Venuše! Točí se tak pomalu, že jedna otočka trvá déle než jedna cesta kolem Slunce.",
 				"standard": "Venuše. Jedno otočení kolem osy jí trvá 243 pozemských dní, ale jeden oběh kolem Slunce jen 225.",
 				"advanced": "Venuše: jedna hvězdná rotace trvá 243 dní, jeden oběh 225 dní. Protože se točí pozpátku, je její sluneční den – od jednoho východu Slunce k dalšímu – kratší, asi 117 dní."
 			}
@@ -210,13 +374,20 @@
 				"standard": "Najdi svět, kde sonda naměřila jednu z nejnižších teplot ve Sluneční soustavě: pod −240 °C, v kráterech, kam nikdy nedopadne sluneční světlo.",
 				"advanced": "Najdi svět, kde sonda naměřila asi −247 °C, méně než na povrchu Pluta, a to na dně kráterů, které miliardy let neviděly sluneční světlo."
 			},
-			"hints": [
-				"Je mnohem blíž, než si myslíš – ne na okraji Sluneční soustavy.",
-				"Obíhá kolem Země. Nejstudenější místa jsou v kráterech u jeho pólů.",
-				"Je to náš Měsíc. Klikni na Zemi a pak na Měsíc."
-			],
+			"hints": {
+				"simple": [
+					"Je mnohem blíž, než si myslíš.",
+					"Obíhá kolem Země. Nejstudenější místa jsou v hlubokých dírách u jeho pólů.",
+					"Je to náš Měsíc. Klikni na Zemi a pak na Měsíc."
+				],
+				"standard": [
+					"Je mnohem blíž, než si myslíš – ne na okraji Sluneční soustavy.",
+					"Obíhá kolem Země. Nejstudenější místa jsou v kráterech u jeho pólů.",
+					"Je to náš Měsíc. Klikni na Zemi a pak na Měsíc."
+				]
+			},
 			"found": {
-				"simple": "Náš Měsíc! Hluboké krátery u jeho pólů jsou pořád ve stínu, takže jsou ještě studenější než Pluto. Možná se v nich skrývá led.",
+				"simple": "Náš Měsíc! Některé hluboké díry u jeho pólů, kterým se říká krátery, jsou pořád ve stínu. Jsou ještě studenější než Pluto a možná je v nich led.",
 				"standard": "Náš Měsíc. U jeho pólů jsou hluboké krátery, které jsou pořád ve stínu. Sonda NASA Lunar Reconnaissance Orbiter tam naměřila méně než −240 °C – méně než na povrchu Pluta. Skrývá se v nich vodní led. Neptunův měsíc Triton se tomu blíží, má asi −235 °C.",
 				"advanced": "Měsíc. Jeho osa je skloněná jen o 1,5°, takže na dno některých kráterů u pólů nikdy nezasvítí Slunce. Sonda NASA Lunar Reconnaissance Orbiter tam naměřila asi 26 K a krátery v sobě uchovávají vodní led – zásobu pro budoucí základny. Nejstudenější povrch, jaký naměřil Voyager 2, byl na Neptunově měsíci Tritonu: asi 38 K."
 			}
@@ -227,11 +398,18 @@
 				"standard": "Najdi planetu, která je převrácená tak moc, že se kolem Slunce kutálí po boku.",
 				"advanced": "Najdi planetu, jejíž osa je skloněná skoro o 98°, takže každý pól má asi 42 let slunečního světla a pak 42 let tmy."
 			},
-			"hints": [
-				"Podívej se na prstence: u této planety stojí skoro svisle.",
-				"Je to bledě modrozelený ledový obr, daleko za Saturnem.",
-				"Je to Uran, sedmá planeta. Klikni na něj a podívej se na jeho prstence."
-			],
+			"hints": {
+				"simple": [
+					"Podívej se na prstence. U této planety stojí skoro rovně nahoru.",
+					"Je to bledě modrá planeta, daleko za Saturnem.",
+					"Je to Uran, sedmá planeta. Klikni na něj a podívej se na jeho prstence."
+				],
+				"standard": [
+					"Podívej se na prstence: u této planety stojí skoro svisle.",
+					"Je to bledě modrozelený ledový obr, daleko za Saturnem.",
+					"Je to Uran, sedmá planeta. Klikni na něj a podívej se na jeho prstence."
+				]
+			},
 			"found": {
 				"simple": "Uran! Leží na boku, možná proto, že do něj kdysi dávno narazilo něco obrovského. I jeho prstence stojí.",
 				"standard": "Uran. Jeho osa je nakloněná o 98°, takže se po své dráze kutálí. Možná ho kdysi dávno převrátila obří srážka.",
@@ -244,11 +422,18 @@
 				"standard": "Najdi planetu, která má menší hustotu než voda: v dost velké vaně by plavala.",
 				"advanced": "Najdi jedinou planetu s průměrnou hustotou nižší, než má voda."
 			},
-			"hints": [
-				"Je to plynný obr, složený hlavně z vodíku a helia.",
-				"Není to největší obr, ale ten se širokými jasnými prstenci.",
-				"Je to Saturn, šestá planeta. Klikni na něj."
-			],
+			"hints": {
+				"simple": [
+					"Je to obr, který je skoro celý z plynu.",
+					"Není to největší obr. Je to ten se širokými jasnými prstenci.",
+					"Je to Saturn, šestá planeta. Klikni na něj."
+				],
+				"standard": [
+					"Je to plynný obr, složený hlavně z vodíku a helia.",
+					"Není to největší obr, ale ten se širokými jasnými prstenci.",
+					"Je to Saturn, šestá planeta. Klikni na něj."
+				]
+			},
 			"found": {
 				"simple": "Saturn! Je obrovský, ale skládá se hlavně z nejlehčích plynů. Na svou velikost je lehčí než voda.",
 				"standard": "Saturn. Skládá se hlavně z vodíku a helia, nejlehčích plynů, takže v průměru má jen asi 70 % hustoty vody.",
@@ -257,15 +442,22 @@
 		},
 		"volcanoMoon": {
 			"clue": {
-				"simple": "Najdi měsíc se stovkami sopek, které právě teď soptí.",
+				"simple": "Najdi měsíc se spoustou sopek, které právě teď soptí.",
 				"standard": "Najdi nejvulkaničtější svět Sluneční soustavy: měsíc se stovkami činných sopek.",
 				"advanced": "Najdi měsíc, který slapové síly zahřívají tak silně, že je vulkanicky nejaktivnějším tělesem Sluneční soustavy."
 			},
-			"hints": [
-				"Obíhá kolem největší planety.",
-				"Klikni na Jupiter a podívej se na jeho čtyři velké měsíce. Je to ten žlutý, flekatý, nejblíž k Jupiteru.",
-				"Je to Io. Klikni na Jupiter a pak na Io."
-			],
+			"hints": {
+				"simple": [
+					"Obíhá kolem největší planety.",
+					"Klikni na Jupiter. Podívej se na jeho čtyři velké měsíce. Je to ten žlutý, flekatý, nejblíž k Jupiteru.",
+					"Je to Io. Klikni na Jupiter a pak na Io."
+				],
+				"standard": [
+					"Obíhá kolem největší planety.",
+					"Klikni na Jupiter a podívej se na jeho čtyři velké měsíce. Je to ten žlutý, flekatý, nejblíž k Jupiteru.",
+					"Je to Io. Klikni na Jupiter a pak na Io."
+				]
+			},
 			"found": {
 				"simple": "Io! Jupiter ho pořád dokola mačká, a proto je uvnitř horký. Jeho sopky vystřelují materiál vysoko do vesmíru.",
 				"standard": "Io má asi 400 činných sopek. Jupiterova gravitace ho při oběhu hněte a zahřívá jeho nitro. Některé výtrysky stoupají stovky kilometrů vysoko.",
@@ -278,13 +470,20 @@
 				"standard": "Najdi jediný měsíc s hustou atmosférou, hustší než vzduch na Zemi.",
 				"advanced": "Najdi jediný měsíc s hustou atmosférou – s tlakem 1,5krát vyšším než na povrchu Země – a s jezery kapalného metanu."
 			},
-			"hints": [
-				"Je to druhý největší měsíc Sluneční soustavy.",
-				"Patří k Saturnu. Je to zdaleka největší Saturnův měsíc.",
-				"Je to Titan. Klikni na Saturn a pak na Titan."
-			],
+			"hints": {
+				"simple": [
+					"Je to druhý největší měsíc ze všech.",
+					"Patří k Saturnu. Je to zdaleka největší Saturnův měsíc.",
+					"Je to Titan. Klikni na Saturn a pak na Titan."
+				],
+				"standard": [
+					"Je to druhý největší měsíc Sluneční soustavy.",
+					"Patří k Saturnu. Je to zdaleka největší Saturnův měsíc.",
+					"Je to Titan. Klikni na Saturn a pak na Titan."
+				]
+			},
 			"found": {
-				"simple": "Titan! Je zahalený do oranžového oparu a má jezera a řeky – ne z vody, ale z kapalného metanu. V roce 2005 tam přistála sonda Huygens.",
+				"simple": "Titan! Je zahalený do oranžového oparu. Má jezera a řeky, ale ne z vody: jsou z tekutého plynu, kterému se říká metan. Přistála tam malá kosmická loď jménem Huygens.",
 				"standard": "Titan. Jeho hustá dusíková atmosféra skrývá povrch pod oranžovým oparem. Prší tam a jsou tam řeky i jezera – z kapalného metanu. Sonda Huygens tam přistála v roce 2005.",
 				"advanced": "Titan: dusíková atmosféra s tlakem 1,5 baru na povrchu a metanový koloběh podobný pozemskému koloběhu vody – mraky, déšť, řeky a moře kapalných uhlovodíků. Huygens přistál v roce 2005; sonda NASA Dragonfly má dorazit ve 30. letech tohoto století."
 			}
@@ -295,11 +494,18 @@
 				"standard": "Najdi měsíc, který je širší než planeta Merkur.",
 				"advanced": "Najdi měsíc s větším průměrem, než má planeta Merkur. Jsou dva."
 			},
-			"hints": [
-				"Porovnej velikosti na kartách: Merkur je široký asi 4 900 km.",
-				"Podívej se na největší měsíce Jupiteru a Saturnu.",
-				"Počítá se Ganymed (měsíc Jupiteru) i Titan (měsíc Saturnu). Klikni na Jupiter a pak na Ganymed."
-			],
+			"hints": {
+				"simple": [
+					"Porovnej velikosti na kartách. Merkur je malá planeta.",
+					"Podívej se na největší měsíce Jupiteru a Saturnu.",
+					"Počítá se Ganymed (měsíc Jupiteru) i Titan (měsíc Saturnu). Klikni na Jupiter a pak na Ganymed."
+				],
+				"standard": [
+					"Porovnej velikosti na kartách: Merkur je široký asi 4 900 km.",
+					"Podívej se na největší měsíce Jupiteru a Saturnu.",
+					"Počítá se Ganymed (měsíc Jupiteru) i Titan (měsíc Saturnu). Klikni na Jupiter a pak na Ganymed."
+				]
+			},
 			"found": {
 				"simple": "Ano! Ganymed i Titan jsou širší než Merkur. Jenže Merkur je z těžkých hornin a železa, takže i tak váží víc.",
 				"standard": "Správně! Ganymed (5 268 km) i Titan (5 150 km) jsou širší než Merkur (4 879 km). Merkur je přesto víc než dvakrát těžší: je z hornin a železa, oni z hornin a ledu.",
@@ -312,13 +518,20 @@
 				"standard": "Najdi nejhladší měsíc: kouli z popraskaného ledu, která skrývá oceán s větším množstvím vody než všechna moře na Zemi.",
 				"advanced": "Najdi měsíc, jehož popraskaná ledová slupka zakrývá slaný oceán s asi dvakrát větším množstvím vody než všechny oceány Země."
 			},
-			"hints": [
-				"Obíhá kolem největší planety.",
-				"Klikni na Jupiter a podívej se na jeho čtyři velké měsíce. Je to nejmenší z nich, bledý, s dlouhými hnědými prasklinami.",
-				"Je to Europa. Klikni na Jupiter a pak na Europu."
-			],
+			"hints": {
+				"simple": [
+					"Obíhá kolem největší planety.",
+					"Klikni na Jupiter. Podívej se na jeho čtyři velké měsíce. Je to nejmenší z nich, bledý, s dlouhými hnědými prasklinami.",
+					"Je to Europa. Klikni na Jupiter a pak na Europu."
+				],
+				"standard": [
+					"Obíhá kolem největší planety.",
+					"Klikni na Jupiter a podívej se na jeho čtyři velké měsíce. Je to nejmenší z nich, bledý, s dlouhými hnědými prasklinami.",
+					"Je to Europa. Klikni na Jupiter a pak na Europu."
+				]
+			},
 			"found": {
-				"simple": "Europa! Pod ledem je obrovský slaný oceán. Vědci přemýšlejí, jestli by v něm mohlo něco žít. Už k ní letí sonda Europa Clipper.",
+				"simple": "Europa! Pod ledem je obrovský slaný oceán. Vědci přemýšlejí, jestli by v něm mohlo něco žít. Už k ní letí kosmická loď Europa Clipper.",
 				"standard": "Europa. Pod ledovou slupkou silnou mnoho kilometrů leží slaný oceán. Je to jedno z nejlepších míst, kde hledat život mimo Zemi – sonda NASA Europa Clipper tam dorazí v roce 2030.",
 				"advanced": "Europa. Její mladý, sotva pokráterovaný povrch plave na globálním slaném oceánu hlubokém asi 100 km, který v kapalném stavu udržuje slapové zahřívání. Sonda Europa Clipper, vypuštěná v roce 2024, dorazí v roce 2030, aby zjistila, zda by tam mohl existovat život."
 			}
@@ -329,11 +542,18 @@
 				"standard": "Najdi planetu, ke které sluneční světlo letí déle než čtyři hodiny.",
 				"advanced": "Najdi planetu, ke které sluneční světlo letí přes čtyři hodiny – 30krát déle než k Zemi."
 			},
-			"hints": [
-				"Na kartách je napsané, jak dlouho k planetě letí sluneční světlo.",
-				"Čím dál planeta je, tím déle k ní světlo letí. Zkus planety na okraji.",
-				"Je to Neptun, nejvzdálenější planeta. Klikni na něj a přečti si jeho kartu."
-			],
+			"hints": {
+				"simple": [
+					"Na kartách je napsané, jak dlouho k planetě letí sluneční světlo.",
+					"Čím dál planeta je, tím déle k ní světlo letí. Zkus planety na okraji.",
+					"Je to Neptun, nejvzdálenější planeta. Klikni na něj a přečti si jeho kartu."
+				],
+				"standard": [
+					"Na kartách je napsané, jak dlouho k planetě letí sluneční světlo.",
+					"Čím dál planeta je, tím déle k ní světlo letí. Zkus planety na okraji.",
+					"Je to Neptun, nejvzdálenější planeta. Klikni na něj a přečti si jeho kartu."
+				]
+			},
 			"found": {
 				"simple": "Neptun! Sluneční světlo k němu letí asi čtyři hodiny. K Zemi dorazí už za 8 minut.",
 				"standard": "Neptun. Sluneční světlo tam letí asi 4 hodiny 10 minut, k Zemi jen 8 minut. Neptun proto dostává 900krát méně světla než Země.",
@@ -370,11 +590,18 @@
 				"standard": "Najdi planetu s nejkratším dnem: jedna otočka jí trvá méně než 10 hodin.",
 				"advanced": "Najdi planetu, která rotuje nejrychleji – tak rychle, že je na pólech viditelně zploštělá."
 			},
-			"hints": [
-				"Na kartách je vidět, jak dlouho se každá planeta otáčí jednou dokola.",
-				"Velké planety se točí rychle. Zkus obry.",
-				"Je to Jupiter. Klikni na něj a podívej se na kartě na jeho rotaci."
-			],
+			"hints": {
+				"simple": [
+					"Na kartách je vidět, jak dlouho se každá planeta otáčí jednou dokola.",
+					"Velké planety se točí rychle. Zkus obry.",
+					"Je to Jupiter. Klikni na něj a podívej se na kartě na jeho rotaci."
+				],
+				"standard": [
+					"Na kartách je vidět, jak dlouho se každá planeta otáčí jednou dokola.",
+					"Velké planety se točí rychle. Zkus obry.",
+					"Je to Jupiter. Klikni na něj a podívej se na kartě na jeho rotaci."
+				]
+			},
 			"found": {
 				"simple": "Jupiter! I když je to největší planeta, otočí se za necelých 10 hodin. Den tam trvá méně než polovinu pozemského dne.",
 				"standard": "Jupiter se otočí jednou za 9 hodin 56 minut, a má tak nejkratší den ze všech planet – přestože je největší.",
@@ -387,11 +614,18 @@
 				"standard": "Najdi planetu s nejstudenějším vzduchem, jaký byl kdy na planetě naměřen – a není to ta nejvzdálenější.",
 				"advanced": "Najdi planetu, jejíž atmosféra dosahuje nejnižší teploty ze všech planet, asi −224 °C, přestože není nejvzdálenější."
 			},
-			"hints": [
-				"Je to jeden ze dvou modrých ledových obrů na okraji Sluneční soustavy.",
-				"Z těch dvou je to ten blíž ke Slunci – ten, který leží na boku.",
-				"Je to Uran, sedmá planeta. Klikni na něj."
-			],
+			"hints": {
+				"simple": [
+					"Je to jedna ze dvou modrých planet na okraji.",
+					"Z těch dvou je to ta blíž ke Slunci. Leží na boku.",
+					"Je to Uran, sedmá planeta. Klikni na něj."
+				],
+				"standard": [
+					"Je to jeden ze dvou modrých ledových obrů na okraji Sluneční soustavy.",
+					"Z těch dvou je to ten blíž ke Slunci – ten, který leží na boku.",
+					"Je to Uran, sedmá planeta. Klikni na něj."
+				]
+			},
 			"found": {
 				"simple": "Uran! Je ještě studenější než Neptun, který je dál. Uran už v sobě skoro žádné teplo nemá.",
 				"standard": "Uran: jeho atmosféra se ochlazuje až na asi −224 °C, víc než Neptunova. Na rozdíl od ostatních obrů Uran sám skoro žádné teplo nevyzařuje.",
@@ -404,13 +638,20 @@
 				"standard": "Saturnovy prstence jsou slavné, ale Saturn není jediná planeta s prstenci. Najdi jinou.",
 				"advanced": "Najdi jinou planetu s prstenci než Saturn. Prstence těch ostatních byly objeveny až od roku 1977."
 			},
-			"hints": [
-				"Ostatní prstence jsou tenké a tmavé, takže k nim musíš přiletět hodně blízko.",
-				"Prstence mají jen obří planety. Zkus jinou než Saturn.",
-				"Prstence mají Jupiter, Uran i Neptun. Klikni na Uran a pořádně se podívej."
-			],
+			"hints": {
+				"simple": [
+					"Ostatní prstence jsou tenké a tmavé. Musíš k nim přiletět hodně blízko.",
+					"Prstence mají jen obří planety. Zkus jinou než Saturn.",
+					"Prstence mají Jupiter, Uran i Neptun. Klikni na Uran a pořádně se podívej."
+				],
+				"standard": [
+					"Ostatní prstence jsou tenké a tmavé, takže k nim musíš přiletět hodně blízko.",
+					"Prstence mají jen obří planety. Zkus jinou než Saturn.",
+					"Prstence mají Jupiter, Uran i Neptun. Klikni na Uran a pořádně se podívej."
+				]
+			},
 			"found": {
-				"simple": "Ano! Prstence mají Jupiter, Uran i Neptun. Jsou tenké a tmavé, takže je objevily až sondy a velké dalekohledy.",
+				"simple": "Ano! Prstence mají Jupiter, Uran i Neptun. Jsou tenké a tmavé, takže je objevily až kosmické lodě a velké dalekohledy.",
 				"standard": "Správně: prstence mají Jupiter, Uran i Neptun. Jsou tenké a tmavé, z prachu a tmavých hornin místo jasného ledu, a proto byly objeveny až v letech 1977 až 1989.",
 				"advanced": "Správně. Prstence Uranu byly objeveny v roce 1977, když zeslabily světlo hvězdy, která prošla za nimi, Jupiterovy objevil Voyager 1 v roce 1979 a Neptunovy potvrdil Voyager 2 v roce 1989. Jsou z tmavého prachu a hornin, ne z jasného ledu jako Saturnovy."
 			}

@@ -1,0 +1,92 @@
+/*
+ * A body's picture (BodyPicture.tsx): its own texture on a shaded disc, the
+ * way the comparison draws its globes (#24), small enough for a label and
+ * big enough for a clue (#52). The size is the element's font size: 1em is
+ * the globe's diameter.
+ */
+.picture {
+	position: relative;
+	display: inline-block;
+	flex: none;
+	width: 1em;
+	height: 1em;
+	vertical-align: middle;
+}
+
+/* room for the rings either side, so nothing around clips them */
+.picture[data-rings] {
+	margin-inline: 0.68em;
+}
+
+.globe,
+.ring {
+	position: absolute;
+	border-radius: 50%;
+}
+
+.globe {
+	inset: 0;
+	/* half the map (180 degrees of longitude) across the disc */
+	background-size: 200% 100%;
+	background-position: 50% 50%;
+	background-color: #5b6472;
+	overflow: hidden;
+}
+
+/* light from the upper left, a dark limb: a disc that reads as a sphere */
+.globe::after {
+	content: "";
+	position: absolute;
+	inset: 0;
+	border-radius: 50%;
+	background: radial-gradient(
+		circle at 34% 30%,
+		rgba(255, 255, 255, 0.12) 0%,
+		rgba(255, 255, 255, 0) 38%,
+		rgba(0, 0, 0, 0.22) 72%,
+		rgba(0, 0, 0, 0.6) 100%
+	);
+}
+
+/* the Sun shines: no shade, a glow */
+.globe[data-kind="star"] {
+	background-color: #ffb347;
+	box-shadow: 0 0 0.25em 0.04em rgba(255, 150, 40, 0.6);
+}
+
+.globe[data-kind="star"]::after {
+	background: radial-gradient(
+		circle,
+		rgba(255, 220, 150, 0.15) 0%,
+		rgba(255, 170, 60, 0) 55%,
+		rgba(150, 50, 0, 0.4) 100%
+	);
+}
+
+/*
+ * bright rings (Saturn's reach out to 2.35 globe radii, the inner edge at 1.28),
+ * seen a little from above; the back half behind the globe, the front half
+ * over it
+ */
+.ring {
+	left: -0.68em;
+	width: 2.36em;
+	top: 0.08em;
+	height: 0.84em;
+	background: radial-gradient(
+		closest-side,
+		rgba(214, 196, 158, 0) 53%,
+		rgba(214, 196, 158, 0.45) 55%,
+		rgba(226, 208, 170, 0.95) 66%,
+		rgba(196, 178, 142, 0.8) 94%,
+		rgba(196, 178, 142, 0) 100%
+	);
+}
+
+.ringBack {
+	clip-path: inset(0 0 50% 0);
+}
+
+.ringFront {
+	clip-path: inset(50% 0 0 0);
+}

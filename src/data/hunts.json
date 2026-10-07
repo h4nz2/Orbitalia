@@ -1,25 +1,97 @@
 {
 	"questions": [
-		{ "id": "walkedOn", "answers": ["moon"] },
-		{ "id": "redPlanet", "answers": ["mars"] },
-		{ "id": "biggestPlanet", "answers": ["jupiter"] },
-		{ "id": "famousRings", "answers": ["saturn"] },
-		{ "id": "hottestPlanet", "answers": ["venus"] },
-		{ "id": "shortestYear", "answers": ["mercury"] },
-		{ "id": "spinsBackwards", "answers": ["venus", "uranus"] },
-		{ "id": "geysers", "answers": ["enceladus"] },
-		{ "id": "wrongWayMoon", "answers": ["triton"] },
-		{ "id": "dayLongerThanYear", "answers": ["venus"] },
-		{ "id": "coldestPlace", "answers": ["moon"] },
-		{ "id": "onItsSide", "answers": ["uranus"] },
-		{ "id": "floatingPlanet", "answers": ["saturn"] },
-		{ "id": "volcanoMoon", "answers": ["io"] },
-		{ "id": "thickAir", "answers": ["titan"] },
-		{ "id": "biggerThanMercury", "answers": ["ganymede", "titan"] },
-		{ "id": "oceanMoon", "answers": ["europa"] },
-		{ "id": "lightHours", "answers": ["neptune"] },
+		{
+			"id": "seeHome",
+			"difficulty": "easy",
+			"answers": ["earth"],
+			"picture": "earth"
+		},
+		{
+			"id": "seeRed",
+			"difficulty": "easy",
+			"answers": ["mars"],
+			"picture": "mars"
+		},
+		{
+			"id": "seeBiggest",
+			"difficulty": "easy",
+			"answers": ["jupiter"],
+			"picture": "jupiter"
+		},
+		{
+			"id": "seeRings",
+			"difficulty": "easy",
+			"answers": ["saturn"],
+			"picture": "saturn"
+		},
+		{
+			"id": "seeMoon",
+			"difficulty": "easy",
+			"answers": ["moon"],
+			"picture": "moon",
+			"at": "earth"
+		},
+		{
+			"id": "seeSun",
+			"difficulty": "easy",
+			"answers": ["sun"],
+			"picture": "sun"
+		},
+		{
+			"id": "seeNearest",
+			"difficulty": "easy",
+			"answers": ["mercury"],
+			"picture": "mercury"
+		},
+		{
+			"id": "seeFarthest",
+			"difficulty": "easy",
+			"answers": ["neptune"],
+			"picture": "neptune"
+		},
+		{
+			"id": "seeYellowMoon",
+			"difficulty": "easy",
+			"answers": ["io"],
+			"picture": "io",
+			"at": "jupiter"
+		},
+		{
+			"id": "seeBiggestMoon",
+			"difficulty": "easy",
+			"answers": ["titan"],
+			"picture": "titan",
+			"at": "saturn"
+		},
+		{ "id": "walkedOn", "difficulty": "medium", "answers": ["moon"] },
+		{ "id": "redPlanet", "difficulty": "medium", "answers": ["mars"] },
+		{ "id": "biggestPlanet", "difficulty": "medium", "answers": ["jupiter"] },
+		{ "id": "famousRings", "difficulty": "medium", "answers": ["saturn"] },
+		{ "id": "hottestPlanet", "difficulty": "medium", "answers": ["venus"] },
+		{ "id": "shortestYear", "difficulty": "medium", "answers": ["mercury"] },
+		{
+			"id": "spinsBackwards",
+			"difficulty": "hard",
+			"answers": ["venus", "uranus"]
+		},
+		{ "id": "geysers", "difficulty": "medium", "answers": ["enceladus"] },
+		{ "id": "wrongWayMoon", "difficulty": "medium", "answers": ["triton"] },
+		{ "id": "dayLongerThanYear", "difficulty": "hard", "answers": ["venus"] },
+		{ "id": "coldestPlace", "difficulty": "hard", "answers": ["moon"] },
+		{ "id": "onItsSide", "difficulty": "hard", "answers": ["uranus"] },
+		{ "id": "floatingPlanet", "difficulty": "hard", "answers": ["saturn"] },
+		{ "id": "volcanoMoon", "difficulty": "medium", "answers": ["io"] },
+		{ "id": "thickAir", "difficulty": "medium", "answers": ["titan"] },
+		{
+			"id": "biggerThanMercury",
+			"difficulty": "medium",
+			"answers": ["ganymede", "titan"]
+		},
+		{ "id": "oceanMoon", "difficulty": "medium", "answers": ["europa"] },
+		{ "id": "lightHours", "difficulty": "hard", "answers": ["neptune"] },
 		{
 			"id": "retrogradeLoop",
+			"difficulty": "hard",
 			"answers": [
 				"mars",
 				"venus",
@@ -31,14 +103,31 @@
 			],
 			"frame": "earth"
 		},
-		{ "id": "shortestDay", "answers": ["jupiter"] },
-		{ "id": "coldestPlanet", "answers": ["uranus"] },
-		{ "id": "hiddenRings", "answers": ["jupiter", "uranus", "neptune"] }
+		{ "id": "shortestDay", "difficulty": "hard", "answers": ["jupiter"] },
+		{ "id": "coldestPlanet", "difficulty": "hard", "answers": ["uranus"] },
+		{
+			"id": "hiddenRings",
+			"difficulty": "hard",
+			"answers": ["jupiter", "uranus", "neptune"]
+		}
 	],
 	"hunts": [
 		{
+			"id": "lookAndFind",
+			"questions": ["seeHome", "seeRed", "seeBiggest", "seeRings", "seeMoon"]
+		},
+		{
+			"id": "sunAndMoons",
+			"questions": [
+				"seeSun",
+				"seeNearest",
+				"seeFarthest",
+				"seeYellowMoon",
+				"seeBiggestMoon"
+			]
+		},
+		{
 			"id": "firstSteps",
-			"difficulty": "easy",
 			"questions": [
 				"walkedOn",
 				"redPlanet",
@@ -49,8 +138,19 @@
 			]
 		},
 		{
+			"id": "moonSafari",
+			"questions": [
+				"walkedOn",
+				"thickAir",
+				"volcanoMoon",
+				"biggerThanMercury",
+				"geysers",
+				"oceanMoon",
+				"wrongWayMoon"
+			]
+		},
+		{
 			"id": "weirdWorlds",
-			"difficulty": "medium",
 			"questions": [
 				"spinsBackwards",
 				"geysers",
@@ -63,21 +163,7 @@
 			]
 		},
 		{
-			"id": "moonSafari",
-			"difficulty": "medium",
-			"questions": [
-				"walkedOn",
-				"thickAir",
-				"volcanoMoon",
-				"biggerThanMercury",
-				"geysers",
-				"oceanMoon",
-				"wrongWayMoon"
-			]
-		},
-		{
 			"id": "lightAndMotion",
-			"difficulty": "hard",
 			"questions": [
 				"lightHours",
 				"shortestDay",
