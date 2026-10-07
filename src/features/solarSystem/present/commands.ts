@@ -134,6 +134,8 @@ export function runCommand(
 					: "solarSystem.present.announce.contrastOn",
 			)
 		case "help":
+			// one dialog at a time: the list takes the class QR code's place (#50)
+			if (!presentation.helpOpen) presentation.setQrOpen(false)
 			presentation.setHelpOpen(!presentation.helpOpen)
 			return null
 		case "stopLight": {

@@ -4,7 +4,7 @@
  * key brings back the start; high contrast, reduced motion and the screen
  * reader's live region; sharing; and a layout that survives a projector.
  */
-import { expect, test, type Page } from "@playwright/test"
+import { expect, test, type Locator, type Page } from "@playwright/test"
 
 import { cameraAtRest } from "./support/scene"
 import { expandCard } from "./support/hud"
@@ -210,12 +210,56 @@ test("high contrast, reduced motion and the screen reader: German, simple readin
 	).toBeVisible()
 })
 
+/**
+ * The points of the class QR code a phone needs, and what covers them (#50):
+ * its four corners (the white margin), the centres of its three finder
+ * squares and its centre. Each point names the element on top there when
+ * that is not the code itself; an empty list means the whole code is in
+ * view. Everything is hit-tested, click-through layers (labels, hints)
+ * included.
+ */
+const qrCovers = (qr: Locator) =>
+	qr.evaluate((svg) => {
+		const size = (svg as SVGSVGElement).viewBox.baseVal.width
+		const box = svg.getBoundingClientRect()
+		// the finder squares' centres lie 3.5 modules inside the 4-module quiet zone
+		const finder = (4 + 3.5) / size
+		const inset = 1 / box.width
+		const points: [string, number, number][] = [
+			["top left corner", inset, inset],
+			["top right corner", 1 - inset, inset],
+			["bottom left corner", inset, 1 - inset],
+			["bottom right corner", 1 - inset, 1 - inset],
+			["top left finder", finder, finder],
+			["top right finder", 1 - finder, finder],
+			["bottom left finder", finder, 1 - finder],
+			["centre", 0.5, 0.5],
+		]
+		const style = document.createElement("style")
+		style.textContent = "* { pointer-events: auto !important; }"
+		document.head.append(style)
+		const covered = points.flatMap(([name, fx, fy]) => {
+			const top = document.elementFromPoint(
+				box.left + fx * box.width,
+				box.top + fy * box.height,
+			)
+			if (top !== null && svg.contains(top)) return []
+			const by =
+				top === null
+					? "nothing (off screen)"
+					: `${top.tagName.toLowerCase()}.${[...top.classList].join(".")}`
+			return [`${name}: ${by}`]
+		})
+		style.remove()
+		return covered
+	})
+
 test("share: the link is the view, copied or scanned", async ({
 	page,
 	context,
 }) => {
 	await context.grantPermissions(["clipboard-read", "clipboard-write"])
-	await page.setViewportSize({ width: 1280, height: 800 })
+	await page.setViewportSize({ width: 1366, height: 768 })
 	await open(page, "focus=jupiter&lang=en")
 	// a running clock rewrites `t` in the address every second: hold it still, so the
 	// shared link and the address are compared at the same instant
@@ -239,19 +283,43 @@ test("share: the link is the view, copied or scanned", async ({
 		page.url(),
 	)
 
-	await panel
-		.getByRole("button", { name: "Show the QR code to the class" })
-		.click()
+	// the class code takes the panel's place, and nothing covers it (#50): a
+	// laptop, a phone, and a laptop and a full-HD projector in projector mode
+	const share = page.getByRole("button", { name: "Share", exact: true })
 	const large = page.getByRole("dialog", {
 		name: "Scan to open this view on a phone or tablet",
 	})
-	await expect(large).toBeVisible()
-	const box = await large
-		.getByRole("img", { name: "QR code of the link to this view" })
-		.boundingBox()
-	expect(box!.width).toBeGreaterThan(400)
-	await page.keyboard.press("Escape")
-	await expect(large).toBeHidden()
+	for (const { width, height, present } of [
+		{ width: 1366, height: 768, present: false },
+		{ width: 390, height: 844, present: false },
+		{ width: 1366, height: 768, present: true },
+		{ width: 1920, height: 1080, present: true },
+	]) {
+		const where = `${width}x${height}${present ? ", presenting" : ""}`
+		await page.setViewportSize({ width, height })
+		if (present) {
+			if ((await html(page).getAttribute("data-presenting")) === null)
+				await page.keyboard.press("p")
+			await expect(html(page)).toHaveAttribute("data-presenting", "")
+		}
+		if (!(await panel.isVisible())) await share.click()
+		await panel
+			.getByRole("button", { name: "Show the QR code to the class" })
+			.click()
+		await expect(large, where).toBeVisible()
+		await expect(panel, where).toBeHidden()
+		const qr = large.getByRole("img", {
+			name: "QR code of the link to this view",
+		})
+		await expect.poll(() => qrCovers(qr), { message: where }).toEqual([])
+		const box = await qr.boundingBox()
+		expect(box!.width, where).toBeGreaterThan(Math.min(400, 0.65 * width))
+		// closing the code comes back to Share, not to the panel
+		await page.keyboard.press("Escape")
+		await expect(large, where).toBeHidden()
+		await expect(panel, where).toBeHidden()
+		await expect(share, where).toBeFocused()
+	}
 	expect((await state(page)).focusId).toBe("jupiter")
 })
 

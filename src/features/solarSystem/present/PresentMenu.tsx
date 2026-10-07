@@ -1,4 +1,11 @@
-import { Suspense, lazy, useEffect, useState, type ReactNode } from "react"
+import {
+	Suspense,
+	lazy,
+	useEffect,
+	useRef,
+	useState,
+	type ReactNode,
+} from "react"
 import {
 	Button,
 	Kbd,
@@ -8,6 +15,7 @@ import {
 	Switch,
 	Text,
 } from "@mantine/core"
+import { useDidUpdate } from "@mantine/hooks"
 import {
 	IconArrowBackUp,
 	IconEyeOff,
@@ -223,20 +231,35 @@ export function PresentMenu() {
 	)
 }
 
-/** "Share this view" (#29): the link to what is on screen, to copy or to scan. */
+/**
+ * "Share this view" (#29): the link to what is on screen, to copy or to scan.
+ * The class QR code takes the panel's place (#50): opening it closes the
+ * panel, and closing it comes back to Share, not to the panel.
+ */
 export function ShareMenu() {
 	const { t } = useI18n()
+	const [opened, setOpened] = useState(false)
+	const qrOpen = usePresentationStore((state) => state.qrOpen)
+	const button = useRef<HTMLButtonElement>(null)
+	// the code's dialog mounts open, so Mantine has nothing to return focus to
+	useDidUpdate(() => {
+		if (!qrOpen) button.current?.focus({ preventScroll: true })
+	}, [qrOpen])
 	return (
 		<Hint text={t("solarSystem.present.share.hint")}>
 			<Popover
+				opened={opened}
+				onChange={setOpened}
 				position="bottom-end"
 				width={340}
 				shadow="md"
 				trapFocus
-				returnFocus
+				// the code's dialog takes the focus when it replaces the panel
+				returnFocus={!qrOpen}
 			>
 				<Popover.Target>
 					<Button
+						ref={button}
 						variant="subtle"
 						color="gray"
 						size="compact-sm"
@@ -245,6 +268,7 @@ export function ShareMenu() {
 						aria-label={t("solarSystem.present.share.button")}
 						aria-haspopup="dialog"
 						data-testid="share-menu"
+						onClick={() => setOpened((open) => !open)}
 						classNames={{ section: classes.shareSection }}
 					>
 						<span className={classes.shareLabel}>
@@ -257,7 +281,7 @@ export function ShareMenu() {
 						{t("solarSystem.present.share.title")}
 					</Text>
 					<Suspense fallback={<Loader size="sm" />}>
-						<SharePanel />
+						<SharePanel onClose={() => setOpened(false)} />
 					</Suspense>
 				</Popover.Dropdown>
 			</Popover>
