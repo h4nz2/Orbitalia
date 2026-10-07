@@ -22,7 +22,7 @@
 			"sun": {
 				"title": "El Sol",
 				"text": {
-					"simple": "El Sol es una estrella: una bola gigante de gas ardiendo. Es tan grande que dentro cabrían más de un millón de Tierras. Su luz nos da calor y el día.",
+					"simple": "El Sol es una estrella: una bola gigante de gas ardiendo. Es tan grande que todos los planetas juntos cabrían dentro de él. Su luz nos da calor y la luz del día.",
 					"standard": "El Sol contiene el 99,8 % de toda la masa del sistema solar. Mide 109 Tierras de ancho, y dentro cabrían unos 1,3 millones de Tierras. En lo más hondo de su núcleo, a 15 millones de °C, el hidrógeno se fusiona en helio. De ahí sale toda su luz.",
 					"advanced": "Una estrella corriente de mediana edad: 1,39 millones de km de diámetro, el 99,86 % de la masa del sistema solar. En su núcleo, a unos 15 millones de K, fusiona cada segundo unos 600 millones de toneladas de hidrógeno en helio y convierte 4 millones de toneladas de masa en energía (E = mc²). La luz que sale de su superficie llega a la Tierra 8 minutos y 20 segundos después."
 				}
@@ -30,7 +30,7 @@
 			"mercury": {
 				"title": "Mercurio",
 				"text": {
-					"simple": "Mercurio es el planeta más pequeño y el más cercano al Sol. No tiene aire que lo abrigue, así que en el lado de día hace tanto calor que se derretiría el plomo, y en el lado de noche hace un frío helador.",
+					"simple": "Mercurio es el planeta más pequeño y el más cercano al Sol. No tiene aire que lo abrigue. Por eso, en el lado de día hace más calor que en un horno. En el lado de noche hace más frío que en cualquier congelador.",
 					"standard": "El planeta más pequeño y el más rápido: una vuelta al Sol le lleva solo 88 días. Mercurio casi no tiene atmósfera que guarde el calor, así que su lado de día llega a 430 °C y su lado de noche baja a −180 °C.",
 					"advanced": "El planeta más interior, de 4879 km de diámetro, con un año de 88 días. Gira tan despacio que un día solar (de un amanecer al siguiente) dura 176 días terrestres: dos de sus años. Sin atmósfera, la superficie oscila entre 430 °C y −180 °C. Su enorme núcleo de hierro ocupa cerca del 85 % de su radio."
 				}
@@ -38,7 +38,7 @@
 			"venus": {
 				"title": "Venus",
 				"text": {
-					"simple": "Venus es casi tan grande como la Tierra, pero nadie podría vivir allí. Unas nubes espesas atrapan el calor y hace más calor que en un horno: es el planeta más caliente de todos. Además, gira al revés.",
+					"simple": "Venus es casi tan grande como la Tierra, pero nadie podría vivir allí. Unas nubes espesas atrapan el calor. Hace más calor que en un horno: es el planeta más caliente de todos. Además, gira al revés.",
 					"standard": "Venus es casi gemela de la Tierra en tamaño, pero su espeso aire de dióxido de carbono atrapa el calor del Sol: con 465 °C es más caliente que Mercurio, aunque está el doble de lejos del Sol. Gira al revés, y tan despacio que un día en Venus dura más que su año.",
 					"advanced": "12 104 km de diámetro, casi el tamaño de la Tierra. Su atmósfera es en un 96 % dióxido de carbono, a 92 veces la presión terrestre, y un efecto invernadero desbocado mantiene la superficie a 465 °C, de día y de noche. Rota en sentido retrógrado en 243 días, más que su año de 225 días; allí el Sol sale por el oeste."
 				}
@@ -46,7 +46,7 @@
 			"earth": {
 				"title": "La Tierra",
 				"text": {
-					"simple": "¡Nuestra casa! La Tierra es el único lugar donde sabemos que hay vida. Tiene agua líquida, aire para respirar y el calor justo del Sol. La Luna le da una vuelta cada mes.",
+					"simple": "¡Nuestra casa! La Tierra es el único lugar donde sabemos que hay vida. Tiene agua, aire para respirar y el calor justo del Sol. La Luna le da una vuelta cada mes.",
 					"standard": "Nuestro planeta es el único mundo conocido con vida. Está a la distancia justa del Sol para que el agua siga siendo líquida, y el agua cubre el 71 % de su superficie. Su eje inclinado nos da las estaciones. Fíjate en el panel de vuelo: te dice lo lejos que está de verdad cada trayecto de esta visita.",
 					"advanced": "12 742 km de diámetro, a 150 millones de km (1 unidad astronómica) del Sol. El agua líquida, un campo magnético protector y una atmósfera de nitrógeno y oxígeno (producido por la propia vida) la convierten en el único mundo habitado conocido. Su eje está inclinado 23,4°, lo que causa las estaciones."
 				}
@@ -54,7 +54,7 @@
 			"mars": {
 				"title": "Marte",
 				"text": {
-					"simple": "Marte es rojo porque su polvo está oxidado. Tiene el volcán más alto del sistema solar, y hace muchísimo tiempo por allí corrían ríos. Hoy hay robots que recorren Marte y lo exploran por nosotros.",
+					"simple": "Marte es rojo porque su polvo está oxidado, como un clavo viejo. Tiene el volcán más alto de todos los planetas. Hace muchísimo tiempo, por allí corrían ríos. Hoy hay robots que recorren Marte y lo exploran por nosotros.",
 					"standard": "El planeta rojo debe su color al óxido de hierro: la herrumbre. Marte mide la mitad de ancho que la Tierra y tiene el Olympus Mons, un volcán de unos 22 km de altura, dos veces y media el Everest. Los cauces secos de antiguos ríos muestran que aquí corrió el agua. Sus dos lunas pequeñas se llaman Fobos y Deimos.",
 					"advanced": "6779 km de diámetro, con una fina atmósfera de dióxido de carbono a menos del 1 % de la presión terrestre. El Olympus Mons se eleva unos 22 km; el cañón Valles Marineris mide 4000 km de largo. Antiguos deltas y lechos de lagos muestran que Marte fue más húmedo y cálido; aún queda hielo de agua en los polos y bajo el suelo. Un día dura unas 24 h 40 min, y un año, 687 días."
 				}
@@ -62,7 +62,7 @@
 			"jupiter": {
 				"title": "Júpiter",
 				"text": {
-					"simple": "Júpiter es el planeta más grande. ¡Dentro cabrían más de mil Tierras! No se puede pisar: es una bola enorme de gas con franjas de nubes y una tormenta gigante, la Gran Mancha Roja.",
+					"simple": "Júpiter es el planeta más grande. ¡Todos los demás planetas juntos cabrían dentro de él! No tiene suelo donde ponerse de pie. Es una bola enorme de gas, con franjas de nubes y una tormenta gigante llamada la Gran Mancha Roja.",
 					"standard": "El gigante: mide 11 Tierras de ancho y tiene más del doble de masa que todos los demás planetas juntos. Júpiter está hecho sobre todo de hidrógeno y helio, sin superficie sólida. La Gran Mancha Roja es una tormenta más ancha que la Tierra que lleva soplando mucho más de 150 años. Sus cuatro lunas grandes las descubrió Galileo en 1610.",
 					"advanced": "139 820 km de diámetro y 318 masas terrestres: 2,5 veces todos los demás planetas juntos. Gira sobre sí mismo en menos de 10 horas, lo que lo achata a simple vista y estira sus nubes en bandas. La Gran Mancha Roja, un anticiclón más ancho que la Tierra, se observa al menos desde 1831. Ganímedes, la luna más grande del sistema solar, es mayor que Mercurio."
 				}
@@ -70,7 +70,7 @@
 			"saturn": {
 				"title": "Saturno",
 				"text": {
-					"simple": "Saturno tiene los anillos más bonitos. Están hechos de miles de millones de trozos de hielo, unos pequeños como granos de arena y otros grandes como una casa. ¡Saturno es tan ligero que flotaría en una bañera gigante!",
+					"simple": "Saturno tiene los anillos más bonitos. Están hechos de muchísimos trozos de hielo. Unos son pequeños como granos de arena y otros grandes como una casa. ¡Saturno es tan ligero que flotaría en una bañera gigante!",
 					"standard": "Los anillos de Saturno están hechos de incontables bloques de hielo de agua. Miden unos 280 000 km de ancho, pero casi siempre solo unos 10 m de grosor. Saturno mide 9 Tierras de ancho y, aun así, es el único planeta menos denso que el agua. Su luna Titán es más grande que el planeta Mercurio.",
 					"advanced": "116 460 km de diámetro y una densidad media de 0,69 g/cm³, menor que la del agua. Sus anillos principales abarcan unos 280 000 km, pero suelen tener solo unos 10 m de grosor: sobre todo hielo de agua, en trozos que van del polvo al tamaño de una casa. Podrían ser mucho más jóvenes que el propio Saturno. Entre sus muchas lunas, Titán tiene una atmósfera densa y Encélado lanza un océano al espacio."
 				}
@@ -78,7 +78,7 @@
 			"uranus": {
 				"title": "Urano",
 				"text": {
-					"simple": "Urano da vueltas al Sol tumbado de lado, como una pelota que rueda. Puede que hace muchísimo tiempo algo enorme lo volcara. Es un gigante de hielo, y allí hace muchísimo frío.",
+					"simple": "Urano da vueltas al Sol tumbado de lado, como una pelota que rueda. Puede que hace muchísimo tiempo algo enorme lo volcara. Allí hace muchísimo frío.",
 					"standard": "Urano está volcado: su eje queda casi tumbado en su órbita. Mira cómo giran sus lunas a su alrededor, de arriba abajo. Un año en Urano dura 84 años terrestres, así que cada polo tiene 42 años de Sol y luego 42 años de oscuridad. Fue el primer planeta descubierto con un telescopio, en 1781.",
 					"advanced": "Un gigante de hielo de 50 724 km de diámetro, con el eje de rotación inclinado 98°, probablemente por un impacto gigante al principio de su historia. Sus lunas y anillos orbitan en su plano ecuatorial inclinado. A lo largo de su órbita de 84 años, cada polo pasa unos 42 años de día continuo. Lo descubrió William Herschel en 1781: el primer planeta encontrado con un telescopio."
 				}
@@ -86,7 +86,7 @@
 			"neptune": {
 				"title": "Neptuno",
 				"text": {
-					"simple": "Neptuno es el planeta más lejano: la luz del Sol tarda unas 4 horas en llegar. Tiene los vientos más rápidos del sistema solar. ¡Lo encontraron haciendo cuentas antes de que nadie lo viera!",
+					"simple": "Neptuno es el planeta más lejano. La luz del Sol tarda unas 4 horas en llegar hasta allí. Tiene los vientos más rápidos de todos los planetas. ¡Lo encontraron haciendo cuentas, antes de que nadie lo viera!",
 					"standard": "El planeta más exterior, a 4500 millones de km del Sol. Un año aquí dura 165 años terrestres. Neptuno tiene los vientos más rápidos del sistema solar, de hasta 2100 km/h. Se encontró en 1846 calculando: los astrónomos notaron que algo desviaba a Urano de su camino y calcularon dónde tenía que estar el planeta invisible.",
 					"advanced": "A 30 ua del Sol, donde la luz solar es 900 veces más débil que en la Tierra. Sus vientos alcanzan unos 2100 km/h. En 1846, Johann Galle lo encontró a menos de 1° de la posición que Urbain Le Verrier había calculado a partir de las irregularidades de la órbita de Urano: el primer planeta descubierto con matemáticas. Su gran luna Tritón orbita al revés; probablemente es un objeto capturado del cinturón de Kuiper."
 				}
@@ -98,7 +98,7 @@
 					"advanced": "Más allá de Neptuno"
 				},
 				"text": {
-					"simple": "El sistema solar no termina en Neptuno. Más lejos hay mundos helados como Plutón. La sonda Voyager 1 lleva casi 50 años volando y es lo más lejano que ha fabricado el ser humano.",
+					"simple": "El sistema solar no termina en Neptuno. Más lejos hay mundos helados como Plutón. La sonda espacial Voyager 1 lleva volando desde que tus abuelos eran jóvenes. Ahora es lo más lejano que ha fabricado el ser humano.",
 					"standard": "Más allá de Neptuno está el cinturón de Kuiper, un anillo de cuerpos helados al que pertenece el planeta enano Plutón. Mucho más lejos, la nube de Oort, llena de cometas, quizá llegue a un tercio del camino hasta la estrella más cercana. La Voyager 1, lanzada en 1977, está a más de 25 000 millones de km: hacia finales de 2026, su señal de radio tardará un día entero en llegarnos.",
 					"advanced": "Más allá de 30 ua, el cinturón de Kuiper (de unas 30 a 50 ua) guarda restos helados de la formación de los planetas, entre ellos Plutón. La nube de Oort, reserva de cometas, puede extenderse más allá de 100 000 ua. La Voyager 1, lanzada en 1977, salió de la heliosfera del Sol en 2012 y estará a un día luz de la Tierra hacia finales de 2026. La estrella más cercana, Próxima Centauri, está a 4,2 años luz."
 				}
@@ -156,7 +156,7 @@
 					"advanced": "El Sol a tamaño real"
 				},
 				"text": {
-					"simple": "Aquí está el Sol a su tamaño real. ¡Mide 109 Tierras de ancho! Si el Sol fuera hueco, dentro cabrían más de un millón de Tierras.",
+					"simple": "Aquí está el Sol a su tamaño real. ¡Si la Tierra fuera una naranja, el Sol sería tan alto como una casa! Si el Sol fuera hueco, todos los planetas juntos cabrían dentro, y aún sobraría muchísimo sitio.",
 					"standard": "El Sol mide 1,4 millones de km de ancho: 109 Tierras una al lado de otra. En volumen, dentro cabrían unos 1,3 millones de Tierras. Todo el sistema Tierra-Luna que acabas de ver cabría dentro del Sol, y aún sobraría sitio.",
 					"advanced": "Diámetro de 1,39 millones de km, 109 diámetros terrestres; volumen de 1,3 millones de Tierras. La órbita entera de la Luna (768 800 km de diámetro) cabría dentro del Sol con más de medio millón de km de margen. Aun así, contiene el 99,86 % de la masa del sistema solar."
 				}
@@ -168,7 +168,7 @@
 					"advanced": "Una unidad astronómica"
 				},
 				"text": {
-					"simple": "¿Encuentras la Tierra? El círculo solo muestra dónde está. La Tierra de verdad es demasiado pequeña para verla desde aquí. ¡Un coche que fuera hasta el Sol sin parar tardaría más de 170 años!",
+					"simple": "¿Encuentras la Tierra? El círculo solo muestra dónde está. La Tierra de verdad es demasiado pequeña para verla desde aquí. ¡Un coche que fuera hasta el Sol sin parar nunca tardaría más de lo que duran dos vidas humanas largas!",
 					"standard": "La Tierra está a 150 millones de km del Sol: 11 700 Tierras en fila. A esta escala real es demasiado pequeña para verla; el punto y el anillo solo muestran dónde está. Un coche a 100 km/h tardaría 171 años en llegar. La luz del Sol lo hace en 8 minutos y 20 segundos.",
 					"advanced": "1 ua = 149,6 millones de km, 11 740 diámetros terrestres. El punto dibujado es solo un marcador: el disco real de la Tierra es aquí una fracción diminuta de píxel. En coche a 100 km/h: 171 años; en avión de pasajeros: 19 años; a la velocidad de la luz: 499 segundos. Cada vez que ves el Sol, lo ves como era hace 8 minutos."
 				}
@@ -180,7 +180,7 @@
 					"advanced": "Hasta Neptuno"
 				},
 				"text": {
-					"simple": "Aquí están todos los planetas a sus distancias reales. Los planetas interiores se apiñan cerca del Sol, y los demás están muy lejos unos de otros. La luz del Sol tarda unas cuatro horas en llegar a Neptuno.",
+					"simple": "Aquí están todos los planetas a sus distancias reales. Los planetas cercanos al Sol están muy juntos, y los demás están muy lejos unos de otros. La luz del Sol tarda unas cuatro horas en llegar a Neptuno.",
 					"standard": "Todo el sistema de planetas a escala real. Neptuno está 30 veces más lejos del Sol que la Tierra: a 4500 millones de km. La luz del Sol, lo más rápido que existe, tarda más de 4 horas en llegar. Los cuatro planetas interiores se apiñan en el centro; apenas se distinguen.",
 					"advanced": "La órbita de Neptuno, de 30 ua (4500 millones de km) de radio. La luz tarda 4,2 horas en recorrerla. El reparto es muy desigual: los cuatro planetas rocosos caben dentro de 1,5 ua, luego viene un gran hueco hasta Júpiter, a 5,2 ua, y cada gigante está entre 1,5 y 2 veces más lejos que el anterior."
 				}
@@ -192,7 +192,7 @@
 					"advanced": "Casi completamente vacío"
 				},
 				"text": {
-					"simple": "Ahora apagamos los puntos y los nombres. Así es el sistema solar de verdad: el Sol es un puntito y los planetas son demasiado pequeños para verlos. ¡El espacio está casi completamente vacío!",
+					"simple": "Ahora apagamos los puntos y los nombres. Así es el sistema solar de verdad. El Sol es un puntito, y los planetas son demasiado pequeños para verlos. ¡El espacio está casi completamente vacío!",
 					"standard": "Los marcadores y los nombres están apagados. Esto es lo que hay de verdad: un Sol pequeño y, hasta donde alcanza la vista, nada más. El Sol y todos los planetas juntos ocupan menos de una cienmilmillonésima parte del espacio que hay dentro de la órbita de Neptuno. El espacio está casi perfectamente vacío.",
 					"advanced": "Marcadores y etiquetas apagados: a escala real, ningún planeta ocupa aquí ni un solo píxel. El Sol y los planetas ocupan menos de 10⁻¹¹ del volumen de una esfera cuyo radio es la órbita de Neptuno. Ese vacío, y no el tamaño de los objetos, es la verdadera lección de la escala."
 				}
@@ -204,7 +204,7 @@
 					"advanced": "El Sol como balón de baloncesto"
 				},
 				"text": {
-					"simple": "Imagina que el Sol es un balón de baloncesto. Entonces la Tierra sería una cabeza de alfiler a 26 metros, Júpiter una cereza a 134 metros y Neptuno un guisante a casi 800 metros. ¡La estrella más cercana estaría a 6900 km!",
+					"simple": "Imagina que el Sol es un balón de baloncesto. Entonces la Tierra sería una cabeza de alfiler a 26 metros. Júpiter sería una cereza a más de un campo de fútbol. Neptuno sería un guisante a más de 7 campos de fútbol. ¿Y la estrella más cercana? ¡Estaría tan lejos que un avión tardaría unas 8 horas en llegar!",
 					"standard": "Encoge todo hasta que el Sol sea un balón de baloncesto: la Tierra es una cabeza de alfiler a 26 m, Júpiter una cereza a 134 m y Neptuno un guisante a 776 m. A esa escala, la estrella más cercana, Próxima Centauri, está a 6900 km. Puedes recorrer este modelo a pie en el patio del colegio.",
 					"advanced": "A escala 1 : 5800 millones, el Sol es un balón de baloncesto de 24 cm, la Tierra una cabeza de alfiler de 2,2 mm a 26 m, Júpiter 24 mm a 134 m y Neptuno 8,5 mm a 776 m. Próxima Centauri, a 4,2 años luz, quedaría a 6900 km: el sistema solar es una isla diminuta en un océano de nada."
 				},
@@ -235,7 +235,7 @@
 					"advanced": "Planetes: las errantes"
 				},
 				"text": {
-					"simple": "Hace muchísimo tiempo, la gente vio que algunas estrellas se mueven por el cielo. Las llamaron errantes. Marte casi siempre avanza hacia el mismo lado, pero a veces se para y va hacia atrás un rato. ¿Por qué? Vamos a descubrirlo.",
+					"simple": "Hace muchísimo tiempo, la gente vio que algunas estrellas se mueven por el cielo. Las llamaron «errantes», que quiere decir viajeras. Marte casi siempre avanza hacia el mismo lado, pero a veces se para y va hacia atrás un rato. ¿Por qué? Vamos a descubrirlo.",
 					"standard": "Llevamos miles de años observando el cielo. La mayoría de las estrellas se quedan en su sitio, pero unas pocas vagan: los antiguos griegos las llamaron «planetes», errantes. Marte suele avanzar hacia el este delante de las estrellas, pero más o menos cada dos años se detiene, retrocede durante dos o tres meses y luego sigue. Esto es octubre de 2024, justo antes de que pasara.",
 					"advanced": "Los astrónomos babilonios anotaron durante siglos las posiciones de los planetas, y los griegos llamaron «planetes» a esas luces errantes. Marte se mueve normalmente hacia el este frente a las estrellas, pero en torno a cada oposición (cada 780 días) gira hacia el oeste durante 60 a 80 días: el movimiento retrógrado. Esto es el 1 de octubre de 2024, dos meses antes del bucle de 2024-2025."
 				}
@@ -295,7 +295,7 @@
 					"advanced": "1610: las pruebas del telescopio"
 				},
 				"text": {
-					"simple": "En 1610, Galileo miró Júpiter con su nuevo telescopio. Vio cuatro lunas pequeñas girando a su alrededor. ¡Así que no todo gira alrededor de la Tierra! Eso ayudó a la gente a creer en la nueva idea.",
+					"simple": "Hace muchísimo tiempo, Galileo miró Júpiter con su nuevo telescopio. Vio cuatro lunas pequeñas dando vueltas a su alrededor. ¡Así que no todo gira alrededor de la Tierra! Eso ayudó a la gente a creer en la nueva idea.",
 					"standard": "Hemos viajado atrás hasta enero de 1610. Galileo apuntó su nuevo telescopio hacia Júpiter y encontró cuatro lunas girando a su alrededor: la prueba de que no todo gira alrededor de la Tierra. También vio que Venus pasa por todas sus fases, como nuestra Luna. Eso solo es posible si Venus gira alrededor del Sol.",
 					"advanced": "Enero de 1610: Galileo descubre Ío, Europa, Ganímedes y Calisto, un sistema en miniatura con un centro que no es la Tierra. Ese mismo año observa el ciclo completo de fases de Venus, incluidas fases gibosas que la disposición de Ptolomeo no puede producir. Eso refutaba a Ptolomeo, aunque todavía no el modelo mixto de Tycho Brahe."
 				}
@@ -307,7 +307,7 @@
 					"advanced": "La prueba: aberración y paralaje"
 				},
 				"text": {
-					"simple": "Hoy lo sabemos seguro: la Tierra da una vuelta al Sol cada año, a unos 30 km cada segundo. Hicieron falta unos 2000 años para estar completamente seguros. Las sondas espaciales usan este saber para volar a otros planetas.",
+					"simple": "Hoy lo sabemos seguro: la Tierra da una vuelta al Sol cada año, a toda velocidad. ¡En un solo segundo recorre más o menos lo que tú podrías andar en un día entero! La gente tardó muchísimo tiempo en estar completamente segura. Las sondas espaciales usan este saber para volar a otros planetas.",
 					"standard": "La Tierra corre alrededor del Sol a unos 30 km por segundo. La prueba definitiva llegó en 1838, cuando Friedrich Bessel midió cómo una estrella cercana se desplaza de un lado a otro a lo largo del año: la vista desde una Tierra en movimiento. De la primera idea de Aristarco a Bessel pasaron más de dos mil años. Cada sonda que enviamos a Marte depende de ello.",
 					"advanced": "La prueba directa del movimiento de la Tierra llegó con la aberración de la luz estelar de James Bradley (1729) y el paralaje de 61 Cygni de Friedrich Bessel (1838), 0,3 segundos de arco: el desplazamiento aparente de las estrellas mientras la Tierra cruza su órbita a lo largo de 300 millones de km. La velocidad orbital de la Tierra es de 29,8 km/s. Las elipses de Kepler (1609) y la gravitación de Newton (1687) convirtieron esa imagen en física."
 				}
@@ -333,7 +333,7 @@
 					"advanced": "Los ingredientes de la vida"
 				},
 				"text": {
-					"simple": "Todos los seres vivos de la Tierra necesitan agua. También necesitan energía, como la luz del Sol o el calor, y los ingredientes adecuados. Hay vida en sitios asombrosos: en el hielo, en fuentes hirviendo y en el fondo oscuro del mar.",
+					"simple": "Todos los seres vivos de la Tierra necesitan agua. También necesitan comida o luz del Sol para seguir adelante. Hay vida en sitios asombrosos: en el hielo, en fuentes de agua hirviendo y en el fondo oscuro del mar.",
 					"standard": "Toda la vida que conocemos necesita tres cosas: agua líquida, una fuente de energía y la química adecuada, basada en el carbono. En la Tierra, la vida aparece casi en cualquier sitio donde se juntan: en el hielo de la Antártida, en fuentes termales hirviendo y alrededor de chimeneas calientes en el fondo oscuro del océano. ¿Dónde más del sistema solar se juntan?",
 					"advanced": "La vida tal como la conocemos necesita agua líquida como disolvente, una fuente de energía (luz o gradientes químicos) y una química basada en el carbono con elementos como el nitrógeno, el fósforo y el azufre. Los extremófilos prosperan desde salmueras a −20 °C hasta fuentes hidrotermales de más de 120 °C, algunos sin nada de luz solar. Eso amplía la búsqueda mucho más allá de los planetas parecidos a la Tierra."
 				}
@@ -345,7 +345,7 @@
 					"advanced": "Marte: un pasado habitable"
 				},
 				"text": {
-					"simple": "Hoy Marte es frío y seco. Pero hace muchísimo tiempo tenía ríos y lagos. Quizá vivieran allí seres diminutos. El róver Perseverance recoge rocas de un lago antiguo para buscar pistas.",
+					"simple": "Hoy Marte es frío y seco. Pero hace muchísimo tiempo tenía ríos y lagos. Quizá vivieran allí seres diminutos. Un coche robot llamado Perseverance recoge rocas de un lago antiguo para buscar pistas.",
 					"standard": "Hoy Marte es frío y seco, con un aire demasiado fino para que el agua líquida dure. Pero hace miles de millones de años, los ríos llenaban lagos aquí. Desde 2021, el róver Perseverance explora el cráter Jezero, un antiguo lecho de lago, y recoge muestras de roca. Algunas muestran dibujos que en la Tierra suelen hacer los microbios; solo un laboratorio en la Tierra podrá decirlo con seguridad.",
 					"advanced": "Hace unos 3500 millones de años, Marte tenía ríos, deltas y lagos. Perseverance, en el cráter Jezero desde 2021, ha guardado muestras de los antiguos sedimentos del lago; una roca hallada en 2024 muestra patrones minerales que en la Tierra suelen asociarse a microbios, aunque también podrían formarse sin vida. Todavía queda hielo de agua en los polos y bajo el suelo."
 				}
@@ -357,7 +357,7 @@
 					"advanced": "Europa: un océano subterráneo"
 				},
 				"text": {
-					"simple": "Esta luna de Júpiter está cubierta de hielo. Debajo del hielo hay un océano enorme de agua salada, ¡con más agua que todos los mares de la Tierra juntos! Una nave espacial ya va de camino.",
+					"simple": "Esta luna de Júpiter está cubierta de hielo. Debajo del hielo hay un océano enorme de agua salada. ¡Tiene más agua que todos los mares de la Tierra juntos! Una sonda espacial ya va de camino.",
 					"standard": "Europa, una de las grandes lunas de Júpiter, está cubierta por una coraza de hielo de muchos kilómetros de grosor. Debajo hay un océano salado con unas dos veces más agua que todos los océanos de la Tierra. Las mareas de Júpiter amasan la luna y la mantienen caliente por dentro. La sonda Europa Clipper de la NASA, lanzada en 2024, llegará en 2030.",
 					"advanced": "Los datos del magnetómetro de la sonda Galileo revelaron un océano salado y conductor bajo una capa de hielo de quizá 15 a 25 km de grosor, con unas dos veces el agua de los océanos terrestres. La deformación por mareas de Júpiter aporta el calor, y el fondo del océano podría estar en contacto con la roca, como en las fuentes hidrotermales de la Tierra. Europa Clipper (lanzada en 2024) llegará en 2030."
 				}
