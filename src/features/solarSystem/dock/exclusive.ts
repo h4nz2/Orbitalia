@@ -2,7 +2,8 @@
  * One panel at a time (#42). The dock holds whichever panel was opened last:
  * the HUD's own panels (Layers, Scale, the spacecraft list; `src/store/hud.ts`)
  * and the tools that keep their open flag in their own store (the light, the
- * birthday, tonight's sky, the scavenger hunt). Opening one closes the one
+ * birthday, tonight's sky, the scavenger hunt), and on a phone held upright
+ * the time controls in the sheet (#60). Opening one closes the one
  * before, whichever way it was opened: a button, the Tools menu, a link
  * (`?sky=true`, `?hunt=…`) or a key.
  *
@@ -12,6 +13,7 @@ import { useBirthdayStore } from "@/store/birthday"
 import { useHudStore } from "@/store/hud"
 import { useHuntStore } from "@/store/hunt"
 import { useLightStore } from "@/store/light"
+import { useSheetStore } from "@/store/sheet"
 import { useSkyTonightStore } from "@/store/skyTonight"
 
 /** A panel that shares the dock: whether it is open, how to close it, and when to look again. */
@@ -65,6 +67,12 @@ export const DOCK_ENTRIES: readonly DockEntry[] = [
 	toolEntry("birthday", useBirthdayStore),
 	toolEntry("sky", useSkyTonightStore),
 	toolEntry("hunt", useHuntStore),
+	{
+		id: "time",
+		isOpen: () => useSheetStore.getState().timeOpen,
+		close: () => useSheetStore.getState().setTimeOpen(false),
+		subscribe: (listener) => useSheetStore.subscribe(listener),
+	},
 ]
 
 /** Starts keeping the solar system's dock to one panel; returns the stop function. */

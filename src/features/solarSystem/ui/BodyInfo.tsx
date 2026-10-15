@@ -144,6 +144,7 @@ const BodyCard = ({ bodyId }: { bodyId: string }) => {
 			aria-label={t("solarSystem.info.label")}
 			data-testid="body-card"
 			data-card-body={body.id}
+			data-sheet-folds
 		>
 			<header className={classes.header}>
 				<div className={classes.title}>
@@ -169,6 +170,7 @@ const BodyCard = ({ bodyId }: { bodyId: string }) => {
 					aria-label={close}
 					title={close}
 					data-testid="card-close"
+					data-sheet-close
 					onClick={onClose}
 				/>
 			</header>

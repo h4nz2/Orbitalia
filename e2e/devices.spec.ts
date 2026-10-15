@@ -6,9 +6,9 @@
  *
  * One spec over five screens, not whole-suite projects: every test drives a
  * software-WebGL scene. The scene shares are what the interface leaves today
- * (#42's measure): the phone's one row at the top (#59) raised them, and the
- * phone's sheet (#60) is to raise them further. More itself is
- * e2e/phoneTop.spec.ts.
+ * (#42's measure): the phone's one row at the top (#59) and its sheet at
+ * the bottom (#60) raised them. More itself is e2e/phoneTop.spec.ts, the
+ * sheet e2e/phoneSheet.spec.ts.
  */
 import { readFileSync } from "node:fs"
 import path from "node:path"
@@ -51,9 +51,9 @@ const DEVICES: Device[] = [
 		height: 844,
 		touch: true,
 		phone: true,
-		// one row at the top (#59): 67 % and 31 % before
-		scene: 0.7,
-		unfolded: 0.33,
+		// one row at the top (#59), the sheet at the bottom (#60): 67 % and 31 % before
+		scene: 0.75,
+		unfolded: 0.45,
 	},
 	{
 		name: "a small phone",
@@ -61,8 +61,8 @@ const DEVICES: Device[] = [
 		height: 640,
 		touch: true,
 		phone: true,
-		scene: 0.62,
-		unfolded: 0.28,
+		scene: 0.63,
+		unfolded: 0.42,
 	},
 	{
 		name: "a phone on its side",

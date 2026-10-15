@@ -201,10 +201,12 @@ const TourCard = ({ className = "" }: { className?: string }) => {
 			data-stop={stop.id}
 			data-status={status}
 			data-collapsed={collapsed}
+			data-sheet-kind="tour"
+			data-sheet-folds
 		>
 			{header}
 			{collapsed ? (
-				<div className={classes.controls}>
+				<div className={classes.controls} data-sheet-footer>
 					{back}
 					{away && (
 						<Button
@@ -275,7 +277,7 @@ const TourCard = ({ className = "" }: { className?: string }) => {
 							</li>
 						))}
 					</ol>
-					<div className={classes.controls}>
+					<div className={classes.controls} data-sheet-footer>
 						{back}
 						<div className={classes.tools}>
 							<Hint text={t("solarSystem.tours.autoplayHint")}>

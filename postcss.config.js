@@ -1,7 +1,8 @@
 import { readFileSync } from "node:fs"
 
-// The size classes (#58): `@media $phone` and `@media $touch` in every CSS
-// module, from the one definition code reads too (src/utils/sizeClasses.ts).
+// The size classes (#58): `@media $phone`, `@media $touch` and (#60) `@media
+// $uprightPhone` in every CSS module, from the one definition code reads too
+// (src/utils/sizeClasses.ts).
 const sizeClasses = JSON.parse(
 	readFileSync(
 		new URL("./src/utils/sizeClasses.json", import.meta.url),
@@ -21,6 +22,7 @@ export default {
 				"mantine-breakpoint-xl": "88em",
 				phone: sizeClasses.phone,
 				touch: sizeClasses.touch,
+				uprightPhone: sizeClasses.uprightPhone,
 			},
 		},
 	},

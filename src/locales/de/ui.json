@@ -1645,6 +1645,18 @@
 			"timeHint": "Wie schnell die Zeit läuft, zurück zu jetzt, und wie schnell sich die Planeten drehen. + und − ändern die Geschwindigkeit über die Tastatur.",
 			"timeHint@simple": "Lass die Zeit schneller oder langsamer laufen, oder spring zurück zu jetzt."
 		},
+		"sheet": {
+			"handle": "Höhe des Felds: {height}. Drücken, um sie zu ändern.",
+			"handleHint": "Zieh daran oder am Titel des Felds, um es höher oder niedriger zu machen. Ein Tipp macht es eine Stufe höher, die Pfeiltasten heben und senken es.",
+			"handleHint@simple": "Zieh es hoch, um mehr zu sehen, oder runter, um mehr vom Weltraum zu sehen.",
+			"height": {
+				"small": "klein",
+				"half": "halb",
+				"full": "ganz"
+			},
+			"chipHint": "Öffnet die ganze Zeit im Feld: rückwärts, das Datum, „Jetzt“, die Tempi und die Drehung.",
+			"chipHint@simple": "Lass die Zeit schneller, langsamer oder rückwärts laufen."
+		},
 		"quickLook": {
 			"ask": {
 				"title": "Willst du kurz sehen, was du hier alles machen kannst?",

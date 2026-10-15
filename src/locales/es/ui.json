@@ -1645,6 +1645,18 @@
 			"timeHint": "Lo rápido que pasa el tiempo, volver a ahora y lo rápido que giran los planetas. + y − cambian la velocidad desde el teclado.",
 			"timeHint@simple": "Haz que el tiempo vaya más rápido o más lento, o vuelve a ahora."
 		},
+		"sheet": {
+			"handle": "Altura del panel: {height}. Pulsa para cambiarla.",
+			"handleHint": "Arrástralo, o el título del panel, para hacer el panel más alto o más bajo. Un toque lo sube un paso, y las flechas lo suben y lo bajan.",
+			"handleHint@simple": "Súbelo para ver más, o bájalo para ver más espacio.",
+			"height": {
+				"small": "pequeña",
+				"half": "media",
+				"full": "completa"
+			},
+			"chipHint": "Abre todo el tiempo en el panel: hacia atrás, la fecha, «Ahora», las velocidades y la rotación.",
+			"chipHint@simple": "Haz que el tiempo vaya más rápido, más lento o hacia atrás."
+		},
 		"quickLook": {
 			"ask": {
 				"title": "¿Quieres ver rápidamente lo que puedes hacer aquí?",

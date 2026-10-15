@@ -115,11 +115,15 @@ function CameraRig({ craftFrame }: CameraRigProps) {
 
 	// the quiet interface (#42) dims its secondary controls while the camera moves
 	const motion = useMemo(() => new MotionWatch(), [])
-	// camera-controls' distance and angles, read through getters (nothing allocated per frame)
+	// camera-controls' distance and angles, read through getters (nothing allocated per frame);
+	// the distance as a multiple of the framing, so a re-frame the interface caused itself
+	// (the free band of #61 following a phone's sheet, #60; a resize; a turned screen) is
+	// no camera move and dims nothing
 	const pose = useMemo(
 		() => ({
 			get distance() {
-				return controls.distance
+				const framing = director?.framingDistance() ?? Number.NaN
+				return framing > 0 ? controls.distance / framing : controls.distance
 			},
 			get azimuth() {
 				return controls.azimuthAngle
@@ -128,7 +132,7 @@ function CameraRig({ craftFrame }: CameraRigProps) {
 				return controls.polarAngle
 			},
 		}),
-		[controls],
+		[controls, director],
 	)
 	useEffect(() => () => useHudStore.getState().setCameraMoving(false), [])
 

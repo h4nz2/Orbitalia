@@ -75,6 +75,9 @@ const handleKeyDown = (event: KeyboardEvent): void => {
 	}
 }
 
+/** Space, "+" and "-" for the clock: the time bar's, or on a phone held upright the time chip's (#60). */
+export const useTimeKeys = (): void => useWindowKeydown(handleKeyDown)
+
 /** Runs the clock in `direction` at the current speed, un-pausing it. */
 const play = (direction: Direction): void => {
 	const { timeWarp, setTimeWarp, setPaused } = useSimStore.getState()
@@ -88,7 +91,7 @@ const play = (direction: Direction): void => {
  * A phone (#58) shows the date over the time, so the bar keeps to one row
  * with finger-sized buttons; the text is the same.
  */
-const SimDateTime = () => {
+export const SimDateTime = () => {
 	const jd = useThrottledSimTime()
 	const { formatLocale } = useI18n()
 	const date = jdToDate(jd)
@@ -173,7 +176,7 @@ const Transport = () => {
  * The speed presets, slowest first: each step multiplies the speed, so the
  * row is a logarithmic scale. They set the speed only; the direction stays.
  */
-const SpeedPresets = () => {
+const SpeedPresets = ({ portal = false }: { portal?: boolean }) => {
 	const timeWarp = useSimStore((state) => state.timeWarp)
 	const setTimeWarp = useSimStore((state) => state.setTimeWarp)
 	const compact = useMediaQuery(COMPACT_QUERY, false, {
@@ -209,8 +212,9 @@ const SpeedPresets = () => {
 						value: String(item.value),
 					}))}
 					allowDeselect={false}
-					// inside the time popover (#42): its list must not count as a click outside it
-					comboboxProps={{ shadow: "md", withinPortal: false }}
+					// inside the time popover (#42): its list must not count as a click
+					// outside it; in the phone's sheet (#60) it must not be clipped by it
+					comboboxProps={{ shadow: "md", withinPortal: portal }}
 					className={classes.speedSelect}
 				/>
 			) : (
@@ -229,6 +233,57 @@ const SpeedPresets = () => {
 }
 
 /**
+ * The rest of time (#42): Now, the speed presets and the spin. In the time
+ * bar's popover, or in the phone's sheet (#60) under the transport and the
+ * date. `title`: name it ("Time") beside Now, where nothing else does.
+ */
+export const TimeSettings = ({
+	title = false,
+	portal = false,
+}: {
+	title?: boolean
+	portal?: boolean
+}) => {
+	const { t } = useI18n()
+	const setNow = useSimStore((state) => state.setNow)
+	return (
+		<Stack gap="sm" align="center">
+			<Group
+				justify={title ? "space-between" : "center"}
+				w="100%"
+				wrap="nowrap"
+			>
+				{title && (
+					<Text fw={700} size="sm">
+						{t("solarSystem.hud.time")}
+					</Text>
+				)}
+				<Hint text={t("solarSystem.time.nowHint")}>
+					<Button
+						variant="light"
+						color="orange"
+						size="compact-sm"
+						onClick={setNow}
+					>
+						{t("solarSystem.time.now")}
+					</Button>
+				</Hint>
+			</Group>
+			<div className={classes.speedRow}>
+				<span className={classes.speedLabel} aria-hidden>
+					<IconGauge size={16} />
+					{t("solarSystem.time.warp.label")}
+				</span>
+				<div className={classes.warp}>
+					<SpeedPresets portal={portal} />
+				</div>
+			</div>
+			<SpinControl notice={false} />
+		</Stack>
+	)
+}
+
+/**
  * The speed on the time bar (#42): what one real second is worth right now,
  * and the way into the rest of time: Now, the speed presets and the spin.
  * `+` and `-` still step the speed without opening anything.
@@ -238,7 +293,6 @@ const TimeMenu = () => {
 	const { t } = i18n
 	const [opened, setOpened] = useState(false)
 	const speed = useSimStore((state) => Math.abs(state.timeWarp))
-	const setNow = useSimStore((state) => state.setNow)
 	const label = warpLabel(speed, i18n)
 	return (
 		<Popover
@@ -275,33 +329,7 @@ const TimeMenu = () => {
 				aria-label={t("solarSystem.hud.time")}
 				data-testid="time-panel"
 			>
-				<Stack gap="sm" align="center">
-					<Group justify="space-between" w="100%" wrap="nowrap">
-						<Text fw={700} size="sm">
-							{t("solarSystem.hud.time")}
-						</Text>
-						<Hint text={t("solarSystem.time.nowHint")}>
-							<Button
-								variant="light"
-								color="orange"
-								size="compact-sm"
-								onClick={setNow}
-							>
-								{t("solarSystem.time.now")}
-							</Button>
-						</Hint>
-					</Group>
-					<div className={classes.speedRow}>
-						<span className={classes.speedLabel} aria-hidden>
-							<IconGauge size={16} />
-							{t("solarSystem.time.warp.label")}
-						</span>
-						<div className={classes.warp}>
-							<SpeedPresets />
-						</div>
-					</div>
-					<SpinControl notice={false} />
-				</Stack>
+				<TimeSettings title />
 			</Popover.Dropdown>
 		</Popover>
 	)
@@ -315,7 +343,7 @@ const TimeMenu = () => {
  * they apply.
  */
 const TimeControls = () => {
-	useWindowKeydown(handleKeyDown)
+	useTimeKeys()
 
 	return (
 		<div className={classes.root}>
@@ -331,5 +359,25 @@ const TimeControls = () => {
 		</div>
 	)
 }
+
+/**
+ * The whole time in the phone's sheet (#60), opened from the time chip:
+ * reverse, pause and play, the date (time travel), the notes while they
+ * apply, then Now, the speeds and the spin. The keys stay with the time chip
+ * (always there), so they never act twice.
+ */
+export const TimeSheetControls = () => (
+	<div className={classes.root} data-testid="time-panel">
+		<div className={classes.row}>
+			<Transport />
+			<TimeTravel>
+				<SimDateTime />
+			</TimeTravel>
+		</div>
+		<TooFastHint />
+		<SpinNotice />
+		<TimeSettings portal />
+	</div>
+)
 
 export default TimeControls

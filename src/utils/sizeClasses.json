@@ -1,4 +1,5 @@
 {
 	"phone": "(max-width: 599px), (max-height: 479px)",
-	"touch": "(pointer: coarse)"
+	"touch": "(pointer: coarse)",
+	"uprightPhone": "(max-width: 599px) and (orientation: portrait)"
 }

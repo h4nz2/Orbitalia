@@ -76,6 +76,7 @@ export function QuickLookAsk({ className = "" }: { className?: string }) {
 			className={`${className} ${classes.ask}`}
 			aria-labelledby={titleId}
 			data-testid="quick-look-ask"
+			data-sheet-kind="quickLook"
 		>
 			<Group gap="xs" wrap="nowrap" align="flex-start">
 				<IconSparkles size={20} aria-hidden className={classes.icon} />
@@ -136,6 +137,7 @@ export function QuickLookCard({ className = "" }: { className?: string }) {
 			aria-labelledby={titleId}
 			data-testid="quick-look"
 			data-step={step.id}
+			data-sheet-kind="quickLook"
 		>
 			<header className={classes.header}>
 				<IconSparkles size={18} aria-hidden className={classes.icon} />
@@ -199,7 +201,7 @@ export function QuickLookCard({ className = "" }: { className?: string }) {
 					/>
 				))}
 			</div>
-			<div className={classes.controls}>
+			<div className={classes.controls} data-sheet-footer>
 				<Button
 					variant="default"
 					size="compact-md"

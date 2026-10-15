@@ -205,11 +205,12 @@ test.describe("on a phone", () => {
 		// the entry points sit at the bottom, the full width
 		expect(bar.y + bar.height).toBeGreaterThan(844 - 20)
 		expect(bar.width).toBeGreaterThan(390 - 30)
-		expect(await unobstructed(page)).toBeGreaterThanOrEqual(0.6)
+		expect(await unobstructed(page)).toBeGreaterThanOrEqual(0.75)
 
-		const layers = await openLayers(page)
-		const sheet = (await layers.boundingBox())!
-		expect(sheet.y + sheet.height).toBeLessThanOrEqual(bar.y)
+		await openLayers(page)
+		// in the phone's sheet (#60), above its bottom row of entry points
+		const sheet = (await page.getByTestId("sheet-content").boundingBox())!
+		expect(sheet.y + sheet.height).toBeLessThanOrEqual(bar.y + 1)
 		expect(sheet.y).toBeGreaterThan(844 * 0.3)
 		// the card makes way while a panel is up
 		await expect(card).toBeHidden()

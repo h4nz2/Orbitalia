@@ -503,7 +503,7 @@ const LightPanel = () => {
 			aria-label={t("solarSystem.light.title")}
 			data-light-panel
 		>
-			<Group justify="space-between" wrap="nowrap" mb={6}>
+			<Group justify="space-between" wrap="nowrap" mb={6} data-sheet-summary>
 				<Group gap={6} wrap="nowrap">
 					<IconBolt size={16} className={classes.icon} />
 					<Text fw={700} size="sm">
@@ -514,6 +514,7 @@ const LightPanel = () => {
 					size="sm"
 					aria-label={t("solarSystem.light.close")}
 					onClick={() => setOpen(false)}
+					data-sheet-close
 				/>
 			</Group>
 			<SegmentedControl<LightTab>

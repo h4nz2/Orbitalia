@@ -36,6 +36,7 @@ import {
 	IconVolume,
 } from "@tabler/icons-react"
 
+import { useUprightPhone } from "@/hooks/useSizeClass"
 import { useI18n } from "@/i18n"
 import { useBodyName } from "@/i18n/bodies"
 import { Hint } from "@/primitives/hint"
@@ -470,6 +471,7 @@ const Asking = ({ question }: { question: HuntQuestion }) => {
 	const guess = useHuntStore((state) => state.guess)
 	const collapsed = useHuntStore((state) => state.collapsed)
 	const hint = useHuntStore((state) => state.hint)
+	const upright = useUprightPhone()
 	const { locale } = i18n
 	const voice = useVoice(locale)
 
@@ -510,6 +512,33 @@ const Asking = ({ question }: { question: HuntQuestion }) => {
 						bodyId: guess.bodyId,
 						name: name(guess.bodyId),
 					})
+
+	const hintButton =
+		hints < words.hints.length ? (
+			<Button
+				variant="light"
+				color="yellow"
+				size={easy ? "sm" : "compact-sm"}
+				leftSection={<IconBulb size={14} />}
+				onClick={nextHint}
+			>
+				{hints === 0
+					? t("solarSystem.hunt.firstHint")
+					: t("solarSystem.hunt.moreHint")}
+			</Button>
+		) : (
+			<Tooltip label={t("solarSystem.hunt.showMeHint")} openDelay={400}>
+				<Button
+					variant="light"
+					color="yellow"
+					size={easy ? "sm" : "compact-sm"}
+					leftSection={<IconEye size={14} />}
+					onClick={() => showAnswer(question)}
+				>
+					{t("solarSystem.hunt.showMe")}
+				</Button>
+			</Tooltip>
+		)
 
 	return (
 		<Stack gap="sm">
@@ -554,35 +583,11 @@ const Asking = ({ question }: { question: HuntQuestion }) => {
 							))}
 						</ol>
 					)}
-					<Group gap="xs">
-						{hints < words.hints.length ? (
-							<Button
-								variant="light"
-								color="yellow"
-								size={easy ? "sm" : "compact-sm"}
-								leftSection={<IconBulb size={14} />}
-								onClick={nextHint}
-							>
-								{hints === 0
-									? t("solarSystem.hunt.firstHint")
-									: t("solarSystem.hunt.moreHint")}
-							</Button>
-						) : (
-							<Tooltip label={t("solarSystem.hunt.showMeHint")} openDelay={400}>
-								<Button
-									variant="light"
-									color="yellow"
-									size={easy ? "sm" : "compact-sm"}
-									leftSection={<IconEye size={14} />}
-									onClick={() => showAnswer(question)}
-								>
-									{t("solarSystem.hunt.showMe")}
-								</Button>
-							</Tooltip>
-						)}
-					</Group>
+					<Group gap="xs">{hintButton}</Group>
 				</>
 			)}
+			{/* folded in the phone's sheet (#60): the clue keeps its hint button */}
+			{collapsed && upright && <Group gap="xs">{hintButton}</Group>}
 			<div aria-live="polite" className={classes.guess}>
 				{guessText !== null && (
 					<Text size="sm" c={guess?.kind === "other" ? "gray.4" : "yellow.3"}>
@@ -777,6 +782,7 @@ const HuntPanel = () => {
 	const setCollapsed = useHuntStore((state) => state.setCollapsed)
 	const setOpen = useHuntStore((state) => state.setOpen)
 	const browse = useHuntStore((state) => state.browse)
+	const upright = useUprightPhone()
 	const hunt = useMemo(() => resolveHunt(key), [key])
 
 	// closing the panel or leaving the page stops the voice
@@ -800,6 +806,8 @@ const HuntPanel = () => {
 			aria-labelledby="hunt-title"
 			data-collapsed={collapsed || undefined}
 			data-easy={easy || undefined}
+			data-sheet-kind="hunt"
+			data-sheet-folds={hunt === null ? undefined : ""}
 		>
 			<header className={classes.header}>
 				<Group gap="xs" wrap="nowrap" justify="space-between">
@@ -851,12 +859,15 @@ const HuntPanel = () => {
 							</Text>
 							{!collapsed && <ShareButton huntKey={hunt.key} />}
 						</Group>
-						<ProgressStars
-							total={total}
-							solved={solved}
-							current={step}
-							large={easy}
-						/>
+						{/* folded in the phone's sheet (#60), the clue needs the room */}
+						{!(collapsed && upright) && (
+							<ProgressStars
+								total={total}
+								solved={solved}
+								current={step}
+								large={easy}
+							/>
+						)}
 					</>
 				)}
 			</header>

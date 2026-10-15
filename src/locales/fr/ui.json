@@ -1645,6 +1645,18 @@
 			"timeHint": "La vitesse du temps, le retour à maintenant et la vitesse de rotation des planètes. + et − changent la vitesse au clavier.",
 			"timeHint@simple": "Fais passer le temps plus vite ou plus lentement, ou reviens à maintenant."
 		},
+		"sheet": {
+			"handle": "Hauteur du panneau : {height}. Appuie pour la changer.",
+			"handleHint": "Fais-la glisser, ou le titre du panneau, pour le rendre plus haut ou plus bas. Un appui le monte d’un cran, les flèches le montent et le descendent.",
+			"handleHint@simple": "Tire-le vers le haut pour voir plus, ou vers le bas pour voir plus d’espace.",
+			"height": {
+				"small": "petite",
+				"half": "moitié",
+				"full": "pleine"
+			},
+			"chipHint": "Ouvre tout le temps dans le panneau : à l’envers, la date, « Maintenant », les vitesses et la rotation.",
+			"chipHint@simple": "Fais aller le temps plus vite, plus lentement ou à l’envers."
+		},
 		"quickLook": {
 			"ask": {
 				"title": "Tu veux un petit aperçu de ce que tu peux faire ici ?",

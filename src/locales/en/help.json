@@ -238,14 +238,15 @@
 			"how": {
 				"standard": [
 					"Always on screen: the arrow back to where you just were, the house button (back to the whole system), the name of the world in view with its card, and the time bar. The arrow on the card opens its facts, moons and stories.",
-					"In the time bar: play, pause and the date; the button with the speed (like 1x) opens Now, the speeds and the spin.",
-					"Tours, Layers (what is drawn), Scale (how big and how far) and Tools (the speed of light, tonight's sky, spacecraft, your birthday, the scavenger hunt, side by side, walking the solar system, the picture dictionary and taking a picture) open everything else. One panel opens at a time; × closes it.",
+					"In the time bar: play, pause and the date; the button with the speed (like 1x) opens Now, the speeds and the spin. On a phone held upright the time chip above the panel stands in for it: play or pause, and the speed with the date, which opens all of time in the panel.",
+					"Tours, Layers (what is drawn), Scale (how big and how far) and Tools (the speed of light, tonight's sky, spacecraft, your birthday, the scavenger hunt, side by side, walking the solar system, the picture dictionary and taking a picture) open everything else. One panel opens at a time; × closes it. On a phone held upright they open in one panel at the bottom, with Tours, Layers, Scale and Tools as its last row. Drag its handle (the short bar on top) or its title to make it small, half or full; a tap on the handle steps it up, and a tap on the empty sky lowers it.",
 					"Buttons for presenting and settings: Present, Share, the crossed-out eye that hides everything (H brings it back), sound, Help and the language. On a phone they are all under More.",
 					"On a phone or tablet, a tap on the empty sky hides every control, and the next tap anywhere brings them back; it never moves the view."
 				],
 				"simple": [
 					"The Back arrow goes back one step. The house button next to it takes you back to all the planets.",
 					"Press Layers, Scale or Tools to find more.",
+					"On a phone, everything opens in a panel at the bottom. Pull it up to see more, or down to see more of space.",
 					"To hide all the buttons, tap the empty sky on a phone or tablet, or press the crossed-out eye. Tap again, or press H, to get them back.",
 					"On a phone, press More to share, for sound, for help and for your language."
 				]
@@ -270,12 +271,14 @@
 					"Press the arrow on the card to open its facts, moons and stories; it stays open for the next world.",
 					"“Read more in the dictionary” opens its page, “Compare with…” puts it next to another world.",
 					"Under the comparison, “Shrink the Sun to a basketball…” finds the world on the walk across the school field.",
-					"The last line of the open card says where the picture of the world comes from: a spacecraft’s map, or painted after spacecraft photos where no complete map exists."
+					"The last line of the open card says where the picture of the world comes from: a spacecraft’s map, or painted after spacecraft photos where no complete map exists.",
+					"On a phone held upright the card sits in the panel at the bottom: pull the panel up (or press the arrow) to read more, and down to see more of space. A tap on the handle, the short bar on top, steps it through small, half and full."
 				],
 				"simple": [
 					"Fly to a planet.",
 					"Read its card.",
-					"Press the little arrow to see more."
+					"Press the little arrow to see more.",
+					"On a phone, pull the panel up to read more."
 				]
 			}
 		},
@@ -654,12 +657,14 @@
 				"standard": [
 					"Press ▶ to play, ⏸ to pause, ◀ to run backwards (Space pauses too).",
 					"The button next to the date shows the speed (like 1x): press it and pick another, or press + and −.",
-					"“Now”, in the same place, brings you back to the present."
+					"“Now”, in the same place, brings you back to the present.",
+					"On a phone held upright the time chip above the panel stands in for the time bar: its button plays and pauses, and its speed and date open all of time in the panel: backwards, the date, Now, the speeds and the spin."
 				],
 				"simple": [
 					"Press the play button.",
 					"Press the speed button next to the date and pick 1 month/s.",
-					"Press Space to stop."
+					"Press Space to stop.",
+					"On a phone, press the speed and the date above the panel, then pick a speed."
 				]
 			}
 		},
@@ -1032,12 +1037,14 @@
 				"standard": [
 					"Press “Tours” and pick a tour.",
 					"Step with “Next” and “Back” on the card, the arrow keys, or a presenter remote (Page Down / Page Up).",
-					"Look around at any time; “Back to the tour” restores the stop. “Autoplay” moves on by itself, and the link button copies a link to the current stop. Teachers can write their own tours as data (src/data/tours/README.md)."
+					"Look around at any time; “Back to the tour” restores the stop. “Autoplay” moves on by itself, and the link button copies a link to the current stop. Teachers can write their own tours as data (src/data/tours/README.md).",
+					"On a phone held upright a stop opens in the panel at the bottom, half high so its words can be read; pull it down to see more of the view. Back and Next stay at its foot."
 				],
 				"simple": [
 					"Press “Tours” and pick one.",
 					"Read the card, then press “Next” or an arrow key.",
-					"Look around whenever you like, then press “Back to the tour”."
+					"Look around whenever you like, then press “Back to the tour”.",
+					"On a phone, pull the panel down to see more of space, and up to read."
 				]
 			}
 		},
@@ -1257,6 +1264,11 @@
 			"touch": "Press and hold it",
 			"keys": "Tab to it"
 		},
+		"sheet": {
+			"action": "Make the panel at the bottom taller or shorter (a phone held upright)",
+			"touch": "Drag its handle or its title; tap the handle",
+			"keys": "Tab to the handle, then ↑ / ↓"
+		},
 		"siblings": {
 			"action": "Next or previous world of the same family",
 			"keys": "← / →"
@@ -1274,7 +1286,7 @@
 		"speed": {
 			"action": "Faster or slower",
 			"mouse": "The speed button next to the date",
-			"touch": "The speed button next to the date",
+			"touch": "The speed button next to the date (on a phone, the time chip)",
 			"keys": "+ / −"
 		},
 		"step": {

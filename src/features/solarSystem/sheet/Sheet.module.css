@@ -1,0 +1,110 @@
+/*
+ * The phone sheet's own parts (#60): the handle's strip and the handle. The
+ * sheet's place in the HUD is in SolarSystem.module.css (`.sheet`), next to
+ * the pieces it holds.
+ */
+
+/* the strip above the content: the handle, and at full height the time chip */
+.strip {
+	position: relative;
+	flex: none;
+	height: 1.5rem; /* STRIP_PX in Sheet.tsx */
+	touch-action: none;
+}
+
+:global([data-sheet-height="full"]) > .strip {
+	height: 3.75rem; /* STRIP_FULL_PX */
+}
+
+/* a finger-sized button, drawn as a short bar */
+.handle {
+	position: absolute;
+	left: 50%;
+	top: -0.625rem;
+	width: 5.5rem;
+	height: 2.75rem; /* 44 px (#58) */
+	transform: translateX(-50%);
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	padding: 0;
+	border: 0;
+	border-radius: var(--mantine-radius-md);
+	background: transparent;
+	color: inherit;
+	cursor: grab;
+	touch-action: none;
+	-webkit-tap-highlight-color: transparent;
+}
+
+:global([data-sheet-height="full"]) > .strip > .handle {
+	top: 0.5rem;
+}
+
+.handle:active {
+	cursor: grabbing;
+}
+
+.handle:focus-visible {
+	outline: 2px solid var(--mantine-color-orange-4);
+	outline-offset: -2px;
+}
+
+.grabber {
+	display: block;
+	width: 2.5rem;
+	height: 0.3125rem;
+	border-radius: 999px;
+	background: rgba(255, 255, 255, 0.35);
+}
+
+.handle:hover .grabber,
+.handle:focus-visible .grabber {
+	background: rgba(255, 255, 255, 0.6);
+}
+
+/* the time chip (#60): play or pause, and the speed with a short date, which opens the time controls */
+.chip {
+	display: inline-flex;
+	align-items: center;
+	gap: 0.25rem;
+	padding: 0.25rem;
+}
+
+.chipOpen {
+	font-variant-numeric: tabular-nums;
+}
+
+.chipSpeed {
+	font-weight: 700;
+}
+
+.chipDate {
+	margin-inline-start: 0.5rem;
+	font-weight: 500;
+	color: var(--mantine-color-gray-3);
+	font-family: var(--mantine-font-family-monospace);
+	font-size: var(--mantine-font-size-xs);
+}
+
+/* at full height, tucked into the strip beside the handle: play or pause and the speed */
+:global([data-sheet-height="full"]) .chipDate,
+:global([data-sheet-height="full"]) .chipOpen :global(.mantine-Button-section) {
+	display: none;
+}
+
+/* the time controls in the sheet: the transport and the date, then Now, the speeds and the spin */
+.time {
+	display: flex;
+	flex-direction: column;
+	gap: 0.75rem;
+}
+
+/* the band the scene is seen in (#61), for tests and for looking at: never seen, never in the way */
+.band {
+	position: absolute;
+	left: 0;
+	right: 0;
+	visibility: hidden;
+	pointer-events: none;
+}

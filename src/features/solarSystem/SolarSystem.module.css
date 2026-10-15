@@ -352,6 +352,187 @@
 }
 
 /*
+ * The phone's sheet (#60, sheet/Sheet.tsx). Everywhere but on a phone held
+ * upright the wrapper and its content are `display: contents`, so the card,
+ * the dock and the bottom row keep their places in the grid above (and
+ * nothing remounts when a phone turns). On an upright phone they become one
+ * sheet from the bottom: the handle's strip, what it shows (one thing at a
+ * time, at its height), and the entry buttons as its bottom row, with the
+ * time chip above it. The scene keeps everything above the chip.
+ */
+.sheet,
+.sheetContent {
+	display: contents;
+}
+
+/* the time chip's panel (an upright phone only): the chip brings its own padding */
+.chip {
+	padding: 0;
+}
+
+@media $uprightPhone {
+	/* three rows: the top row, the open row (the free view's badge at its top), the sheet */
+	.hud {
+		grid-template-columns: minmax(0, 1fr) auto;
+		grid-template-rows: auto minmax(0, 1fr) auto;
+		grid-template-areas:
+			"picker corner"
+			". ."
+			"sheet sheet";
+	}
+
+	.centre {
+		grid-row: 2;
+		grid-column: 1 / -1;
+		align-self: start;
+	}
+
+	.sheet {
+		grid-area: sheet;
+		position: relative;
+		display: flex;
+		flex-direction: column;
+		min-width: 0;
+		/* room for the time chip above it (it tucks into the strip at full height) */
+		margin-top: 3.25rem;
+		padding: 0 0.25rem 0.125rem;
+		pointer-events: auto;
+		background: rgba(18, 20, 26, 0.95);
+		backdrop-filter: blur(10px);
+		-webkit-backdrop-filter: blur(10px);
+		border: 1px solid rgba(255, 255, 255, 0.08);
+		border-radius: var(--mantine-radius-lg);
+		box-shadow: 0 -6px 24px rgba(0, 0, 0, 0.35);
+	}
+
+	.sheet[data-sheet-height="full"] {
+		margin-top: 0;
+	}
+
+	.sheetContent {
+		display: block;
+		flex: none;
+		min-height: 0;
+		overflow-y: auto;
+		overscroll-behavior: contain;
+		transition: height 240ms cubic-bezier(0.2, 0.8, 0.2, 1);
+	}
+
+	.sheet[data-sheet-dragging] .sheetContent {
+		transition: none;
+	}
+
+	/* reduced motion: the sheet moves to its height at once, no glide */
+	@media (prefers-reduced-motion: reduce) {
+		.sheetContent {
+			transition: none;
+		}
+	}
+
+	/* what it holds has no floating panel of its own: the sheet is the panel */
+	.sheetContent .panel,
+	.sheetContent .dock > * {
+		background: none;
+		border: 0;
+		border-radius: 0;
+		box-shadow: none;
+		backdrop-filter: none;
+		-webkit-backdrop-filter: none;
+	}
+
+	/* one thing at a time: what came last into the dock, else the card */
+	.sheet .info {
+		display: block;
+		max-height: none;
+		overflow: visible;
+		width: 100%;
+		padding-block: 0.25rem;
+	}
+
+	.sheet .info:empty,
+	.sheet .sheetContent:has(.dock > [data-sheet-shown]) .info,
+	.sheet .dock > :not([data-sheet-shown]) {
+		display: none;
+	}
+
+	.sheet .dock {
+		display: block;
+		max-height: none;
+		width: 100%;
+	}
+
+	.sheet .dock > * {
+		width: 100%;
+		max-height: none;
+		overflow: visible;
+	}
+
+	/* the header of what it shows stays in view while its words scroll, and drags the sheet */
+	.sheet .dock > [data-sheet-shown] > header,
+	.sheet .info > * > header {
+		position: sticky;
+		top: 0;
+		z-index: 2;
+		background: rgb(18, 20, 26);
+		touch-action: none;
+	}
+
+	/* a card's own way on (a tour's Back and Next) stays in reach while its words scroll */
+	.sheet [data-sheet-shown] [data-sheet-footer] {
+		position: sticky;
+		bottom: 0;
+		z-index: 2;
+		padding-block: 0.375rem;
+		background: rgb(18, 20, 26);
+	}
+
+	/* the bottom row: the entry buttons, at every height */
+	.sheet .bottom {
+		display: contents;
+	}
+
+	.sheet .bottom > nav {
+		order: 10;
+		width: auto;
+		margin: 0;
+		padding-block: 0.125rem;
+		background: none;
+		border: 0;
+		border-top: 1px solid rgba(255, 255, 255, 0.06);
+		border-radius: 0;
+		box-shadow: none;
+		backdrop-filter: none;
+		-webkit-backdrop-filter: none;
+	}
+
+	/* the time chip (in the time bar's place) and a flight's readout float above the sheet */
+	.sheet .time {
+		position: absolute;
+		left: 0;
+		bottom: calc(100% + 0.5rem);
+		width: auto;
+		max-width: 100%;
+		align-items: flex-start;
+	}
+
+	/* at full height the chip tucks into the strip, so it covers nothing */
+	.sheet[data-sheet-height="full"] .time {
+		top: 0.25rem;
+		bottom: auto;
+		left: 0.25rem;
+	}
+
+	.sheet[data-sheet-height="full"] .time > :not(.chip) {
+		display: none;
+	}
+
+	/* the opening (#30) gets the whole screen but the top row */
+	:global(html[data-intro="playing"]) .sheet {
+		display: none;
+	}
+}
+
+/*
  * The camera moves (#42; `data-camera="moving"`, set by dock/Dock.tsx from
  * camera/motion.ts): the secondary controls step back, never away. They stay
  * on screen and usable, and pointing at one or focusing one brings it back.
@@ -491,4 +672,12 @@
 	)
 	.info {
 	display: none;
+}
+
+/* an upright phone (#60): the opening's captions and hints sit in the open row, above the sheet */
+@media $uprightPhone {
+	.intro,
+	:global(html[data-intro="hints"]) .intro {
+		grid-row: 2;
+	}
 }
