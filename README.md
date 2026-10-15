@@ -4,8 +4,6 @@
 
 **[▶ Open orbitalia.app](https://orbitalia.app)**: no install or account. It runs in the browser on desktop, tablet and phone.
 
-![Orbitalia: the solar system in 3D](docs/screenshot.png)
-
 ## Why Orbitalia
 
 Textbook diagrams squeeze the planets onto one page, so most of us never get a real feel for the distances and sizes involved. Orbitalia uses true-scale 3D graphics and interaction to make that scale tangible: how tiny the planets are next to the Sun, how far apart everything is, and how bodies actually move.
