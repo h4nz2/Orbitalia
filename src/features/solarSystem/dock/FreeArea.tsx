@@ -1,5 +1,6 @@
 import { useLayoutEffect, useRef } from "react"
 
+import { useUprightPhone } from "@/hooks/useSizeClass"
 import { useFreeAreaStore, type FreeArea as Area } from "@/store/freeArea"
 
 /**
@@ -31,7 +32,12 @@ export interface FreeAreaProps {
 	className?: string
 }
 
+/** The band on a phone on its side; on an upright one the sheet writes it (#60, `sheet/Sheet.tsx`). */
 function FreeArea({ className }: FreeAreaProps) {
+	return useUprightPhone() ? null : <FreeAreaCell className={className} />
+}
+
+function FreeAreaCell({ className }: FreeAreaProps) {
 	const ref = useRef<HTMLDivElement>(null)
 
 	useLayoutEffect(() => {

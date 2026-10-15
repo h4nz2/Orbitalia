@@ -25,6 +25,7 @@ import {
 	FREE_AREA_SETTLE_MS,
 	type FreeAreaLike,
 } from "./director"
+import { MotionWatch } from "./motion"
 import {
 	BODY_FIT_SHARE,
 	CAMERA_FAR,
@@ -181,6 +182,32 @@ describe("framing what is free (#61)", () => {
 		h.free.area = PHONE
 		h.step(90)
 		expect(h.director.snapshot().distance).toBeCloseTo(before.distance, 6)
+	})
+
+	it("a band the interface moved is no camera move: the distance keeps its multiple of the framing (#60)", () => {
+		const h = new Harness(PHONE)
+		store().jumpTo(earth, null)
+		h.pastSettling()
+		const watch = new MotionWatch()
+		const pose = () => ({
+			distance: h.controls.distance / h.director.framingDistance(),
+			azimuth: h.controls.azimuthAngle,
+			polar: h.controls.polarAngle,
+		})
+		watch.update(h.now, pose(), false)
+		const before = h.controls.distance
+		// the phone's sheet rises: the band glides, the camera backs off with it
+		h.free.area = UNFOLDED
+		for (let i = 0; i < 90; i++) {
+			h.step()
+			expect(pose().distance).toBeCloseTo(1, 6)
+			expect(watch.update(h.now, pose(), false), `frame ${i}`).toBe(false)
+		}
+		expect(h.controls.distance).toBeGreaterThan(before * 1.01)
+		// a zoom of the viewer's own still counts
+		void h.controls.dollyTo(h.controls.distance * 0.8, false)
+		h.step()
+		expect(watch.update(h.now, pose(), false)).toBe(true)
 	})
 
 	it("opens the overview of an upright screen from its steeper home shot", () => {

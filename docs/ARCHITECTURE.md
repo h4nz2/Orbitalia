@@ -579,7 +579,7 @@ and the help page. About a minute, moving on by itself.
   adds each step's extras: `useQuickLookStore.spot` (mirrored to `data-quick-look-spot` on `<html>`; the glow in
   `QuickLook.module.css` rings the real control: the picker, Scale, the time bar, the card's Compare, Tools,
   Present, Help — a soft ring, not an arrow, per #30; on a phone Present and Help are under More, which glows for both,
-  #59), and `flash` sends #27's flash.
+  #59, and the time is the chip, #60), and `flash` sends #27's flash.
 - **UI** (`QuickLook.tsx`): `QuickLookController` (watcher, glow, `?look=play`), `QuickLookAsk` and `QuickLookCard`
   in the HUD's dock (#42). The card: "n of N", the step's words (`solarSystem.quickLook.steps.<id>` at every reading
   level), the comparison drawing (`features/compare/Stage`, lazy) where the step has one, dots, Back, autoplay,
@@ -655,14 +655,16 @@ become the sky's motions (the Sun's yearly circle, Mercury's and Venus's flowers
 
 ### Framing what is free: phones (`src/store/freeArea.ts`, `camera/framing.ts`, `camera/lift.ts`, `dock/FreeArea.tsx`; #61)
 
-On a phone the HUD stacks its controls in bands at the top (the one row of where and More, #59) and the bottom (the dock, the card, the
-time bar, the entry points), so the camera centres what it looks at in the band between them and fits it there.
+On a phone the HUD stacks its controls in bands at the top (the one row of where and More, #59) and the bottom (on an
+upright phone the sheet with the time chip above it, #60; on its side the paired rows of #58), so the camera centres
+what it looks at in the band between them and fits it there.
 Elsewhere (laptops, tablets, a phone on its side) nothing covers the scene in bands and the framing is the whole
 canvas, exactly as before.
 
 - **The free area** (`useFreeAreaStore`, `src/store/freeArea.ts`): `{ width, height, top, bottom }`, CSS px of the
   canvas and of what covers it at its top and bottom (0 where nothing covers it in bands). Whoever covers the screen
-  writes it; nothing else does. Today that is `dock/FreeArea.tsx`, an empty, invisible cell of the HUD grid that the
+  writes it; nothing else does. On an upright phone that is the sheet (#60, "The phone's sheet"); on a phone on its
+  side it is `dock/FreeArea.tsx`, an empty, invisible cell of the HUD grid that the
   phone's arrangement puts in its open row (`.free` in `SolarSystem.module.css`, `display: none` outside the phone
   media query; on a phone on its side, #58, the paired rows' middle row across the width, the card at its left and
   a panel at its right, so the body is centred between them): its box is exactly what can be seen, read against the
@@ -671,14 +673,14 @@ canvas, exactly as before.
   every piece of the HUD (a `MutationObserver` adds new ones), never per frame; hiding the controls (#29) leaves the whole canvas. `insetShares(area)` turns it into
   shares of the height and never leaves less than `MIN_FREE_SHARE` (15 %) between them (a band round the free
   band's centre, kept on the canvas): a thinner band would shrink the subject to a speck.
-- **For #60 (the bottom sheet): feed the sheet's resting height here.** Call
-  `useFreeAreaStore.getState().setArea({ width, height, top, bottom })` with the canvas size, the bottom of the top
-  stack (px from the canvas's top) and the sheet's top edge measured from the canvas's bottom (plus anything under
-  it), whenever the sheet comes to rest at a height (small, half, full) and when the screen resizes; not during a
-  drag (the camera eases on its own, so a writer may jump). At full height report what is still visible (or keep
-  the last resting value if the sheet covers the scene). Then retire `.free` and `dock/FreeArea.tsx`, or keep the
-  cell as the sheet's measuring point; either way only one writer. Every reader (the director, the hunt, the
-  moon system shot) picks it up with no other change.
+- **The sheet's band (#60).** On an upright phone `sheet/Sheet.tsx` writes `{ width, height, top, bottom }`: the
+  bottom of the top row (`[data-sheet-top]`: where, More, the badges under them) and the top of the time chip
+  (`[data-sheet-above]`) or of the sheet, whichever is higher, measured from the canvas's bottom. It writes when the
+  sheet comes to rest (after a snap's `transitionend`, or at most `SNAP_WAIT_MS` later on a busy machine), when the
+  screen or the top row resizes, and when the controls hide or show; never during a drag. `dock/FreeArea.tsx`
+  renders nothing there (`useUprightPhone()`), so there is one writer at a time, and `SheetBand` draws an invisible
+  `[data-free-area]` box over the band that was written, for tests. Every reader (the director, the hunt, the moon
+  system shot) picks it up with no other change.
 - **The lens of the band** (`lensOf(fovDeg, aspect, insets)`): the band as a camera of its own, with the canvas's
   pixels per radian: its vertical field `2 atan(tan(fov / 2) x share)` and aspect `aspect / share`, plus `upright`
   (the canvas is taller than wide) and `banded`. `defaultDistance`, `overviewDistance`, `fitDistanceIn` and the
@@ -1288,6 +1290,12 @@ Everything goes through the clock actions of #9; nothing here touches the clock 
   the active format locale (`calendarLabels`, `firstDayOfWeek` in `ui/timeTravel.ts`), so a new locale needs no
   date locale data. Both use `travelAndStop(jd)`: pause, then `travelTo` — the glide lands paused, so the moment
   stays on screen and its `t` goes into the link. Tours (#28) and birthdays (#26) should reuse it.
+- **On an upright phone** (#60, `sheet/TimeChip.tsx`) the time bar gives way to the time chip above the sheet: play
+  or pause, then the speed with a short date, which opens `TimePanel` (a `DockPanel`, so one at a time and at half
+  height) holding `TimeSheetControls`: reverse / pause / play, the date (time travel), the notes, then
+  `TimeSettings` (Now, the speeds, the spin) inline. The chip carries the keys (`useTimeKeys`: Space, +, -) in the
+  bar's place, so they never act twice. Hiding the controls hides the chip; at full height it tucks into the
+  sheet's strip, its date left out so it clears the handle.
 - `TooFastHint.tsx` / `ui/tooFast.ts`: the wagon-wheel warning. When the fastest body in view (planets, plus the
   focused family's moons while shown) laps more than a sixth of an orbit per drawn frame (`TOO_FAST_LAPS_PER_FRAME`,
   frame rate measured by `useFrameRate()` from the ticks), a line under the presets names it and its laps per second.
@@ -1546,31 +1554,37 @@ unobstructed (`e2e/quietHud.spec.ts` measures it). Every control is at most two 
     phone, all of it is More at the end of the one top row, #59: see "The phone's top row, More and a tap on the
     sky");
   - bottom: the time bar (reverse/pause/play, the date → time travel, the speed button → a popover with Now, the
-    speed presets and the spin), with the flight readout above it and the too-fast / not-to-the-clock notes under it;
+    speed presets and the spin), with the flight readout above it and the too-fast / not-to-the-clock notes under it
+    (on an upright phone the time chip above the sheet, #60);
   - bottom right, the entry points (`dock/Dock.tsx` `EntryBar`): Tours (#28), Layers, Scale (named after the
     preset on screen, so the honest word stays visible), Tools (`dock/ToolsMenu.tsx`: light, tonight's sky, spacecraft,
     birthday, hunt, side by side, the walk, the dictionary, picture; it scrolls on a short screen).
-- **The dock** (right column, above the entry points; on phones a sheet from the bottom above the time bar) holds
+- **The dock** (right column, above the entry points; on an upright phone the sheet, #60, "The phone's sheet") holds
   one panel at a time: Layers, Scale and the spacecraft list (`useHudStore.panel`) or a tool with its own store
   (light, birthday, sky tonight, hunt). `dock/exclusive.ts` `keepOneOpen` closes the previous one whichever way the
-  next one opened (button, Tools menu, link, key); a new tool adds one `DockEntry` there. `DockPanel` is the shell
-  (title, close, focus moves in on open and back to the opener on close). On phones the HUD's open row holds an
-  empty, invisible cell (`dock/FreeArea.tsx`) that tells the camera which part of the screen the scene is seen in
-  (#61, "Framing what is free"). The tour card (#28) sits in the dock too,
+  next one opened (button, Tools menu, link, key; on an upright phone the time controls are one of them too); a new
+  tool adds one `DockEntry` there. `DockPanel` is the shell
+  (title, close, focus moves in on open and back to the opener on close). On a phone on its side the HUD's open row
+  holds an empty, invisible cell (`dock/FreeArea.tsx`) that tells the camera which part of the screen the scene is
+  seen in (#61, "Framing what is free"); on an upright phone the sheet tells it. The tour card (#28) sits in the dock too,
   under the panel, and so does the walk's one-time tip while the Scale panel is closed (#48). On phones a dock panel or a tour takes the body card's place.
 - **The body card starts small**: name, one sentence, Compare, the unfold arrow and close. The facts, moons, stories
   (the comparison with its way to the walk, #48) and recordings unfold on demand; the choice (`useHudStore.cardExpanded`) holds from body to body while the page
   is open.
 - **Stepping back while the camera moves**: `camera/motion.ts` `MotionWatch` (fed by `CameraRig` every frame:
   the pose round the pivot changing, or a transition running; a camera following its body while time runs counts
-  as still) sets `useHudStore.cameraMoving`; `dock/Dock.tsx` mirrors it to `data-camera="moving"` on `<html>`.
+  as still; the distance as a multiple of the framing, `CameraDirector.framingDistance()`, so a re-frame the
+  interface caused itself, the band of #61 following a phone's sheet (#60), a resize, a turned screen or a scale
+  switch, is no camera move and never dims the panel just opened) sets `useHudStore.cameraMoving`; `dock/Dock.tsx` mirrors it to `data-camera="moving"` on `<html>`.
   The CSS dims every panel to 35 % except `data-steady` ones (the where panel, the time bar, the card's header), the
   flight readout and the tour card; inside steady panels only `data-dim` parts dim (point of view, speed). Hover or
   focus brings a panel back at once; nothing hides, there is no idle timer, and reduced motion drops the fade.
 - **The rule for new features** (also in Conventions and `CLAUDE.md`): put the control behind an existing entry
   point; a panel goes into the dock through Tools; never a new permanent panel. Update the help entry's "how" with
   where it lives, naming the control or entry point ("under Tools"), never a screen corner. On a phone it lives behind
-  the same entry points (the corner's are under More, #59) and is finger-sized under `$touch` (#58).
+  the same entry points (the corner's are under More, #59) and is finger-sized under `$touch` (#58); on an upright
+  phone a panel opens in the sheet (#60): a `DockPanel` needs nothing more, other content gives its root a
+  `data-sheet-kind`, its one-line part `data-sheet-summary` (a `<header>` counts) and its × `data-sheet-close`.
 
 ### Size classes, finger sizes and screen edges (#58)
 
@@ -1582,13 +1596,13 @@ the same features at every size and shows fewer at once). Laptops with a mouse l
   a finger (phones, tablets; a touchscreen laptop with a mouse stays fine). CSS modules write `@media $phone { … }`
   and `@media $touch { … }` (postcss-simple-vars; `postcss.config.js` reads the JSON); code uses `usePhone()` /
   `useTouch()` (`@/hooks/useSizeClass`, live on rotation, resizing and split screen) or `isPhone()` / `isTouch()`
-  (`@/utils/sizeClasses`). Do not write `max-width: 599px` again. Breakpoints that say when one row stops fitting
+  (`@/utils/sizeClasses`). `uprightPhone` = `(max-width: 599px) and (orientation: portrait)` (#60, `$uprightPhone`,
+  `useUprightPhone()`, `isUprightPhone()`) is the phone held upright, the one with the bottom sheet. Do not write `max-width: 599px` again. Breakpoints that say when one row stops fitting
   (719 px for the speed presets, 899, 1099, 1199 px, the walk's and the help table's 40em) are not size classes and stay.
-- **The phone arrangement** (until #60 gives the bottom its sheet): one column, top to bottom one row with the
-  "where" panel and More (#59, see below), the scene, the dock or the card (one at a time), the time bar
-  (the date over the time, so it keeps to one row) and the entry points sharing the width. A phone on its side keeps
-  it with the rows paired: the name beside More, the time bar beside the entry points, the card rising at the left
-  and a panel at the right, so the body in the centre stays in view.
+- **The phone arrangement**: upright, three rows: the "where" panel with More (#59, see below), the scene, and the
+  sheet with the time chip above it (#60, "The phone's sheet"). A phone on its side keeps #58's arrangement with
+  its rows paired: the name beside More, the time bar (the date over the time, so it keeps to one row) beside the
+  entry points, the card rising at the left and a panel at the right, so the body in the centre stays in view.
 - **Finger sizes** (`src/providers/touch.css`, loaded by the Mantine provider): under `$touch` every control is at
   least 44×44 px (`--touch-target`; WCAG 2.5.5, Apple). The sheet lifts Mantine's size scales (ActionIcon, Button,
   CloseButton, inputs, SegmentedControl, Switch, Checkbox, Slider, Menu and Combobox items, the date pickers), so a
@@ -1640,12 +1654,12 @@ took a second row of six bare icons. The phone keeps one quiet row instead, and 
   from inside the tap (browsers want a user gesture). Sent: More closes. Cancelled (`AbortError`): silent, More stays.
   Impossible after all (`canShare` false, `NotAllowedError`): the share panel instead. The class QR code takes
   More's place as it takes the panel's (#50), and closing it gives the focus back to More.
-- **For #60:** `MorePanel` is More's content alone (`onClose`, `onQr`), so the bottom sheet can show it as it shows
-  a panel; the popover is just today's container.
+- **More stays a popover at the top** (#60 decided): its button is up there. `MorePanel` is More's content alone
+  (`onClose`, `onQr`), should it ever open in the sheet.
 - **A tap on the sky hides the controls** on a touch screen (`$touch`: phones and tablets; the tap's own pointer must
   not be a mouse), and the next tap anywhere brings them back (Apple's "going full screen"). `scene/BodyPicking.tsx`
-  calls `hideOnSkyTap` when a tap on empty space had no other job: letting go of a second selected body (#47) comes
-  first, and a tap that might have been meant for a body (`nearBody`: the full near miss round a dot, one target
+  calls `onSkyTap` when a tap on empty space had no other job: letting go of a second selected body (#47) comes
+  first, then lowering the phone's sheet from half or full to small (#60, by finger or mouse; `skyTapAction`), and a tap that might have been meant for a body (`nearBody`: the full near miss round a dot, one target
   radius round a big disc's plain edge) does nothing. `skyTapHides` (pure, unit-tested) also says no while the
   opening plays or its hints are up, while the hunt's panel is up (the clue is the point), while the quick look asks
   or plays, when the press closed a menu, a popover or a hint (`pressDismisses`, noted at `pointerdown` in the
@@ -1665,6 +1679,66 @@ took a second row of six bare icons. The phone keeps one quiet row instead, and 
   multiple or the selection; a hidden tap on Mars or its moons; the deselect that comes first; a tap closing a popover;
   a tour; the iPad's corner; a laptop that never hides; a narrow laptop window), `skyTap.test.ts`,
   `fullscreen.test.ts`, `nativeShare.test.ts`, `picking.test.ts` (the disc reach), `e2e/devices.spec.ts`.
+
+### The phone's sheet (`sheet/Sheet.tsx`, `sheet/heights.ts`, `src/store/sheet.ts`; #60)
+
+Map apps solved a phone's bottom long ago: one sheet that rests at a few heights, one thing at a time, with the
+content behind it still usable (Apple's sheets, Android's supporting pane, NASA's Eyes). On a phone held upright
+(`$uprightPhone`) the body card, a dock panel (Layers, Scale, the spacecraft list, the light, tonight's sky, the
+birthday, the hunt), the tour card (and a sky event's), the quick look and the time controls share it; More stays a
+popover at the top and Tools a menu. Laptops, tablets and a phone on its side keep the dock.
+
+- **One tree, two arrangements.** `index.tsx` always renders `Sheet` around the card's place, the dock and the
+  bottom row; `.sheet` and `.sheetContent` are `display: contents` except on an upright phone, so those elements
+  keep their grid places everywhere else and nothing remounts as a phone turns (a panel open upright is still open
+  on its side). Upright the HUD grid has three rows (the top row, the open row with the free view's badge and the
+  opening's captions, the sheet). The sheet: the handle's strip, the content (one thing, with a set height that
+  scrolls inside), and the entry buttons as its bottom row at every height. The time chip (and a flight's readout)
+  float above it (`.time`, `[data-sheet-above]`).
+- **One at a time.** The sheet watches the dock's children (a `MutationObserver`): whatever appeared last is on
+  show (`data-sheet-shown`; the CSS hides the others and the card), and when the dock is empty, the card. Opening a
+  panel still closes the one before (`dock/exclusive.ts`); a tour starting puts the time controls away. A new thing
+  opens at its kind's height (`DEFAULT_HEIGHT`: the card small, a panel and the time half, a tour stop half, the hunt
+  small, the quick look half); the kind is `data-sheet-kind` on its root (`DockPanel` says "panel" or its `kind`).
+- **Three heights** (`heights.ts`, pure, unit-tested; content px): `small` shows one line of it: a panel's header
+  (`:scope > header` or `[data-sheet-summary]`), and what folds itself (`data-sheet-folds`: the card, a tour, a sky
+  event, the hunt) folded, its fold and the sheet's height being one and the same both ways (`cardExpanded`, the
+  tour's and the hunt's `collapsed`): the card's arrow raises the sheet to half, lowering it folds the card. A
+  folded hunt keeps its hint button and leaves out its stars. `half` is the whole sheet at `HALF_SHARE` (44 %) of
+  the screen, `full` stops under the top row (the grid's gaps kept), which stays in view. Content shorter than a
+  height shows whole at it, and equal heights count once. Headers stick to the top while the content scrolls, and a
+  card's own way on (`data-sheet-footer`: a tour's Back and Next) sticks to its foot. The snap is a 240 ms height
+  transition, none with reduced motion or during a drag.
+- **Moving it.** The handle is a 44 px button drawn as a bar: a tap (Enter, Space) steps up and from full back to
+  small, ArrowUp / ArrowDown raise and lower, Home / End go to the ends; its name says the height ("Panel height:
+  half") and its hint how to move it. A drag on the handle or the header (pointer events, `touch-action: none`)
+  moves it both ways; on the content only a touch that starts with the content scrolled to its top and moves down
+  does (touch events, so it can `preventDefault` the scroll; scrolling inside never moves the sheet). Released, it
+  rests at the next height after a flick (`FLICK_PX_PER_MS`, measured over the last 120 ms, so a finger that
+  stopped first flicks nothing), else at the nearest; pulled well below small it presses the shown thing's ×
+  (`data-sheet-close`), except a tour or the quick look, whose × is their own way out. The click a drag leaves on a
+  button is swallowed; the next press clears that. The sheet takes its own events, so a drag never reaches the
+  scene, and the scene stays fully usable above a small or half sheet.
+- **A tap on the sky** (#59) with the sheet at half or full lowers it to small first (`skyTapAction` "lower"; a
+  finger or a mouse); at small it hides the controls, as before.
+- **Back and Escape** (decided): no sheet state is a step of the view history, so the phone's back gesture keeps
+  stepping through views (#46). Escape keeps its one meaning on every screen, the way out to the whole system
+  (#45): it does not lower the sheet first. The sheet lowers and closes with its handle (keys included), its ×, a
+  drag and a tap on the sky; a phone rarely has a keyboard, and a keyboard user has the handle's arrows.
+- **Accessibility:** the handle is a real button with its height in its name; a `DockPanel` moves the focus to its
+  title as it opens and back to its opener as it closes (the time controls give it back to the chip); every control
+  in the sheet is 44 px.
+- **The band** (#61): the sheet is its one writer on an upright phone (see "Framing what is free"). With a hunt's
+  clue at small on a 360 x 640 phone every world "Look and find" asks for is in sight above it (#61's open limit).
+- **For #62:** a shared link's thing already opens in the sheet at its kind's height (a tour stop half, a hunt
+  small, a planet's card small, a tool's panel half); a sideways swipe on the card would join the content's touch
+  handling in `Sheet.tsx` (it only takes vertical moves today); Tools as tiles would be a `DockPanel` of its own in
+  the sheet instead of the Tools menu on an upright phone.
+- **Tests:** `e2e/phoneSheet.spec.ts` (390 x 844 and 360 x 640: the scene shares, two rows in the sheet, half for
+  panels, the card and tours, the handle by tap, keys and its name, drags by handle and header, the pull from the
+  content's top and no drag while it scrolls, closing, the scene never moving, the chip, the sky's lowering, the
+  band at rest and never during a drag, turning the phone, the hunt's worlds above the clue, Earth at half; laptops
+  and tablets have no sheet), `heights.test.ts`, `skyTap.test.ts`.
 
 ### The way in and the way back (#45)
 
@@ -2132,7 +2206,8 @@ import { Hint, hintKey } from "@/primitives/hint"
   high-contrast switches, the postcard's switches and button, the birthday, hunt and light buttons, the hunt's difficulty
   choice, speakers and certificate (#52), the two "stop the flash" buttons (#38), the sound toggle and its settings button (#32), the sky-tonight launcher and "Show me in space" (#36), the Help menu (#30), the opening's pause and Next (#49), the spacecraft menu, its two switches and "Show" (#35), "Follow" (card and list, with a disabled `reason`),
   "Watch" and the followed spot (#57), the tours menu and the tour card's autoplay toggle (#28), the Help button (every page) and its "more" chevron (#43), Overview, and Back (#46, with a disabled `reason`), More
-  and its Share, "Link and QR code", sound, language, hiding, presenting and Home Screen items (#59). The tour card's share button keeps its Mantine `Tooltip`: it doubles as the "Link copied" confirmation. Plain tabs (the light
+  and its Share, "Link and QR code", sound, language, hiding, presenting and Home Screen items (#59), the sheet's
+  handle and the time chip's two buttons (#60). The tour card's share button keeps its Mantine `Tooltip`: it doubles as the "Link copied" confirmation. Plain tabs (the light
   panel's, the birthday panel's) have none, by design. A switch that already shows a Mantine `description` under
   its label is explained in place; wrap it in `<Hint>` only to add something the description does not say (the
   projector switch) or a disabled `reason` (high contrast), as the sound panel's switches show.

@@ -1,7 +1,7 @@
 import { Suspense } from "react"
 
 import { HelpButton } from "@/features/help/HelpButton"
-import { usePhone } from "@/hooks/useSizeClass"
+import { usePhone, useUprightPhone } from "@/hooks/useSizeClass"
 import { LanguageMenu } from "@/i18n"
 import Loader from "@/primitives/Loader"
 import { isFrameAnchored } from "@/store/navigation"
@@ -23,6 +23,8 @@ import { MoreMenu } from "./present/MoreMenu"
 import { TeacherBar } from "./present/TeacherBar"
 import PresentationLayer from "./present/PresentationLayer"
 import Scene from "./scene/Scene"
+import { Sheet, SheetBand } from "./sheet/Sheet"
+import { TimeChip, TimePanel } from "./sheet/TimeChip"
 import { DockPanels, EntryBar } from "./dock/Dock"
 import FreeArea from "./dock/FreeArea"
 import SoundControl from "./sound/SoundControl"
@@ -68,7 +70,7 @@ const CentreBadgePanel = () => {
 	const free = useSimStore((state) => freeCentreId(state) !== null)
 	if (!free) return null
 	return (
-		<div className={`${classes.panel} ${classes.centre}`}>
+		<div className={`${classes.panel} ${classes.centre}`} data-sheet-top>
 			<CentreBadge />
 		</div>
 	)
@@ -96,6 +98,7 @@ const Corner = () => {
 			className={`${classes.panel} ${classes.corner}`}
 			data-testid="corner"
 			data-hud-corner
+			data-sheet-top
 		>
 			{phone ? (
 				<MoreMenu />
@@ -124,6 +127,7 @@ const Corner = () => {
  * camera moves.
  */
 const SolarSystem = () => {
+	const upright = useUprightPhone()
 	return (
 		<div className={classes.page}>
 			<UrlSync />
@@ -140,9 +144,10 @@ const SolarSystem = () => {
 			<HuntSpot />
 			<CentreMarker />
 			<div className={classes.hud} data-testid="hud">
-				{/* the band the scene is seen in on a phone, measured for the camera (#61) */}
+				{/* the band the scene is seen in on a phone, measured for the camera (#61); on an upright phone the sheet writes it (#60) */}
 				<FreeArea className={classes.free} />
-				<div className={classes.pickerStack}>
+				<SheetBand />
+				<div className={classes.pickerStack} data-sheet-top>
 					<div
 						className={`${classes.panel} ${classes.picker}`}
 						data-steady
@@ -164,26 +169,54 @@ const SolarSystem = () => {
 				<CentreBadgePanel />
 				<Corner />
 				<IntroOverlay className={classes.intro} />
-				<div className={`${classes.panel} ${classes.info}`} data-steady>
-					<SpacecraftInfo fallback={<BodyInfo />} />
-				</div>
-				<div className={classes.dock} data-testid="dock">
-					<DockPanels />
-					<WalkNudge className={classes.panel} />
-					<TourCard className={`${classes.panel} ${classes.tour}`} />
-					<EventCard className={`${classes.panel} ${classes.tour}`} />
-					<QuickLookAsk className={`${classes.panel} ${classes.tour}`} />
-					<QuickLookCard className={`${classes.panel} ${classes.tour}`} />
-				</div>
-				<div className={classes.bottom}>
-					<div className={classes.time}>
-						<FlightReadout className={classes.panel} />
-						<div className={classes.panel} data-steady data-testid="time-bar">
-							<TimeControls />
+				{/* on a phone held upright one sheet from the bottom (#60); elsewhere these keep their places in the grid */}
+				<Sheet
+					content={
+						<>
+							<div
+								className={`${classes.panel} ${classes.info}`}
+								data-steady
+								data-info
+							>
+								<SpacecraftInfo fallback={<BodyInfo />} />
+							</div>
+							<div className={classes.dock} data-testid="dock" data-dock>
+								<DockPanels />
+								<WalkNudge className={classes.panel} />
+								<TourCard className={`${classes.panel} ${classes.tour}`} />
+								<EventCard className={`${classes.panel} ${classes.tour}`} />
+								<QuickLookAsk className={`${classes.panel} ${classes.tour}`} />
+								<QuickLookCard className={`${classes.panel} ${classes.tour}`} />
+								<TimePanel />
+							</div>
+						</>
+					}
+					bottom={
+						<div className={classes.bottom}>
+							<div className={classes.time} data-sheet-above>
+								<FlightReadout className={classes.panel} />
+								{/* an upright phone: the time chip in the time bar's place (#60) */}
+								{upright ? (
+									<div
+										className={`${classes.panel} ${classes.chip}`}
+										data-steady
+									>
+										<TimeChip />
+									</div>
+								) : (
+									<div
+										className={classes.panel}
+										data-steady
+										data-testid="time-bar"
+									>
+										<TimeControls />
+									</div>
+								)}
+							</div>
+							<EntryBar />
 						</div>
-					</div>
-					<EntryBar />
-				</div>
+					}
+				/>
 			</div>
 			<CraftLink />
 			<LightLink />

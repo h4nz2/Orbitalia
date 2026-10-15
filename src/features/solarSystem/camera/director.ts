@@ -383,6 +383,20 @@ export class CameraDirector {
 		}
 	}
 
+	/**
+	 * The distance the settled camera is framed against: the view's default
+	 * framing for the lens and the free band in force (#61). The camera's
+	 * distance divided by it is what the viewer chose (their zoom); a new band,
+	 * a resize, a turned screen or a scale switch changes both together
+	 * (`followFraming`), so the quotient holds. `NaN` before the first framing.
+	 * The quiet interface (#42) watches the quotient, not the distance: a
+	 * re-frame the interface caused itself (a phone's sheet rising, #60) is no
+	 * camera move and dims nothing.
+	 */
+	framingDistance(): number {
+		return this.followedDefault > 0 ? this.followedDefault : Number.NaN
+	}
+
 	/** Where the camera is and what it is doing; `now` (ms) only feeds `progress`. */
 	snapshot(now: number = performance.now()): CameraSnapshot {
 		const state = this.store.getState()

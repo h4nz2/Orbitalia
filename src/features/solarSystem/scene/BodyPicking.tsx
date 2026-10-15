@@ -8,8 +8,9 @@
  * - a tap on a body selects it and flies there (`setFocus`), or flies back to
  *   the close-up of the focus after the camera was dollied far out;
  * - a tap on empty space never moves the camera: at most it clears the
- *   selection (`emptyClickAction`, #47); where it has no such job, a finger's
- *   tap on a touch screen hides the controls (#59, `present/skyTap.ts`);
+ *   selection (`emptyClickAction`, #47); where it has no such job, it lowers
+ *   the phone's raised sheet (#60), or a finger's tap on a touch screen hides
+ *   the controls (#59, `present/skyTap.ts`);
  * - while an Easy hunt clue is on screen (#52) small targets are larger
  *   (`EASY_TARGET_FACTOR`);
  * - hovering sets `hoverId` for the pointer cursor and the highlight ring,
@@ -32,7 +33,7 @@ import { useHuntStore } from "@/store/hunt"
 import { isBodyShown, useSimStore } from "@/store/sim"
 
 import { CAMERA_FAR } from "../camera/framing"
-import { hideOnSkyTap } from "../present/skyTap"
+import { onSkyTap } from "../present/skyTap"
 import { isMoonDotShown } from "./Markers"
 import {
 	EASY_TARGET_FACTOR,
@@ -164,8 +165,9 @@ function BodyPicking() {
 			store.select(null)
 			return
 		}
-		// a tap on the sky with no other job: on a touch screen, the controls step aside (#59)
-		if (!nearBody.current) hideOnSkyTap(event.nativeEvent)
+		// a tap on the sky with no other job: a raised sheet lowers (#60), else on a
+		// touch screen the controls step aside (#59)
+		if (!nearBody.current) onSkyTap(event.nativeEvent)
 	}
 
 	const onPointerMove = (event: ThreeEvent<PointerEvent>) => {

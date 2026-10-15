@@ -1,6 +1,11 @@
 import { describe, expect, it } from "vitest"
 
-import { skyTapHides, tapRestores, type SkyTapContext } from "./skyTap"
+import {
+	skyTapAction,
+	skyTapHides,
+	tapRestores,
+	type SkyTapContext,
+} from "./skyTap"
 
 /** A finger on a phone, the controls on screen, nothing else going on. */
 const calm: SkyTapContext = {
@@ -12,6 +17,7 @@ const calm: SkyTapContext = {
 	hunt: false,
 	quickLook: false,
 	dismissing: false,
+	sheetRaised: false,
 }
 
 describe("a tap on the sky (#59)", () => {
@@ -51,5 +57,29 @@ describe("the tap that brings the controls back", () => {
 		expect(tapRestores({ ...hidden, pointer: "mouse" })).toBe(false)
 		expect(tapRestores({ ...hidden, touch: false })).toBe(false)
 		expect(tapRestores({ ...hidden, opening: true })).toBe(false)
+	})
+})
+
+describe("a tap on the sky with the phone's sheet raised (#60)", () => {
+	const raised = { ...calm, sheetRaised: true }
+
+	it("lowers the sheet first, by finger or mouse, and hides nothing", () => {
+		expect(skyTapAction(raised)).toBe("lower")
+		expect(skyTapAction({ ...raised, pointer: "mouse", touch: false })).toBe(
+			"lower",
+		)
+		// over the hunt's clue too: lowering frees the sky to tap the answer
+		expect(skyTapAction({ ...raised, hunt: true })).toBe("lower")
+	})
+
+	it("at small height, hides as before; a mouse does nothing", () => {
+		expect(skyTapAction(calm)).toBe("hide")
+		expect(skyTapAction({ ...calm, pointer: "mouse" })).toBe("none")
+	})
+
+	it("never when the tap closed a menu, while hidden or while the opening plays", () => {
+		expect(skyTapAction({ ...raised, dismissing: true })).toBe("none")
+		expect(skyTapAction({ ...raised, hidden: true })).toBe("none")
+		expect(skyTapAction({ ...raised, opening: true })).toBe("none")
 	})
 })

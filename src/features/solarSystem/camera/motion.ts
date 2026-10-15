@@ -7,7 +7,10 @@
  * angle) changing from one frame to the next, or a transition running (a
  * flight, a tour's move, a re-centre). A camera that follows a planet round
  * the Sun while time runs keeps its pose round the planet and so counts as
- * still: nothing dims just because time is running.
+ * still: nothing dims just because time is running. The distance it is given
+ * is a multiple of the framing (`CameraDirector.framingDistance`), so the
+ * camera backing off to keep a planet whole in a smaller band (#61: a phone's
+ * sheet rising, #60) counts as still too: the panel just opened never dims.
  */
 
 /** The camera's pose round its pivot: camera-controls' distance and angles. */

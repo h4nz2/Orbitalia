@@ -9,10 +9,14 @@
  * - **Touch**: the primary pointer is a finger (`pointer: coarse`): phones and
  *   tablets. Every control is at least 44×44 px there. A laptop with a mouse,
  *   touchscreen or not, keeps the dense look.
+ * - **Upright phone** (#60): a phone held upright (narrower than 600 px, taller
+ *   than wide). Its card, panels, tours and time share one sheet from the
+ *   bottom; a phone on its side keeps #58's paired rows.
  *
- * CSS modules write `@media $phone { … }` and `@media $touch { … }`
- * (postcss-simple-vars; `postcss.config.cjs` reads the same JSON). Code uses
- * the queries below, or `usePhone` / `useTouch` (`@/hooks/useSizeClass`).
+ * CSS modules write `@media $phone { … }`, `@media $touch { … }` and `@media
+ * $uprightPhone { … }` (postcss-simple-vars; `postcss.config.js` reads the
+ * same JSON). Code uses the queries below, or `usePhone` / `useTouch` /
+ * `useUprightPhone` (`@/hooks/useSizeClass`).
  */
 import sizeClasses from "./sizeClasses.json"
 
@@ -21,6 +25,9 @@ export const PHONE_QUERY: string = sizeClasses.phone
 
 /** The primary pointer is a finger: finger-sized controls. */
 export const TOUCH_QUERY: string = sizeClasses.touch
+
+/** A phone held upright: the bottom sheet (#60). */
+export const UPRIGHT_PHONE_QUERY: string = sizeClasses.uprightPhone
 
 /** The smallest side of a control where the pointer is a finger (WCAG 2.5.5, Apple). */
 export const TOUCH_TARGET_PX = 44
@@ -35,3 +42,6 @@ export const isPhone = (): boolean => matches(PHONE_QUERY)
 
 /** Whether the primary pointer is a finger right now. */
 export const isTouch = (): boolean => matches(TOUCH_QUERY)
+
+/** Whether the screen is a phone held upright right now: the bottom sheet (#60). */
+export const isUprightPhone = (): boolean => matches(UPRIGHT_PHONE_QUERY)

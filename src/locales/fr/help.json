@@ -238,14 +238,15 @@
 			"how": {
 				"standard": [
 					"Toujours à l’écran : la flèche pour revenir là où tu étais, le bouton maison (retour à tout le système), le nom du monde que tu regardes avec sa fiche, et la barre du temps. La flèche de la fiche ouvre ses infos, ses lunes et ses histoires.",
-					"Dans la barre du temps : lecture, pause et la date ; le bouton avec la vitesse (par exemple 1x) ouvre « Maintenant », les vitesses et la rotation.",
-					"Visites, Calques (ce qui est dessiné), Échelle (quelle taille et quelle distance) et Outils (la vitesse de la lumière, le ciel de ce soir, les sondes, ton anniversaire, la chasse au trésor, côte à côte, le système solaire à pied, le dictionnaire illustré et prendre une photo) ouvrent tout le reste. Un seul panneau s’ouvre à la fois ; le × le ferme.",
+					"Dans la barre du temps : lecture, pause et la date ; le bouton avec la vitesse (par exemple 1x) ouvre « Maintenant », les vitesses et la rotation. Sur un téléphone tenu droit, le bouton du temps au-dessus du panneau la remplace : lecture ou pause, et la vitesse avec la date, qui ouvre tout le temps dans le panneau.",
+					"Visites, Calques (ce qui est dessiné), Échelle (quelle taille et quelle distance) et Outils (la vitesse de la lumière, le ciel de ce soir, les sondes, ton anniversaire, la chasse au trésor, côte à côte, le système solaire à pied, le dictionnaire illustré et prendre une photo) ouvrent tout le reste. Un seul panneau s’ouvre à la fois ; le × le ferme. Sur un téléphone tenu droit, tout s’ouvre dans un panneau en bas, avec Visites, Calques, Échelle et Outils comme dernière ligne. Fais glisser sa poignée (la petite barre en haut) ou son titre pour le mettre petit, à moitié ou plein ; un appui sur la poignée le monte d’un cran, un appui sur le ciel vide le baisse.",
 					"Les boutons pour présenter et pour les réglages : Présenter, Partager, l’œil barré qui cache tout (H le fait revenir), le son, Aide et la langue. Sur un téléphone, ils sont tous sous Plus.",
 					"Sur un téléphone ou une tablette, un appui sur le ciel vide masque toutes les commandes, et l’appui suivant, n’importe où, les fait revenir ; la vue ne bouge jamais."
 				],
 				"simple": [
 					"La flèche Retour revient d’un pas en arrière. Le bouton maison à côté te ramène à toutes les planètes.",
 					"Appuie sur Calques, Échelle ou Outils pour en trouver plus.",
+					"Sur un téléphone, tout s’ouvre dans un panneau en bas. Tire-le vers le haut pour voir plus, ou vers le bas pour voir plus d’espace.",
 					"Pour cacher tous les boutons, touche le ciel vide sur un téléphone ou une tablette, ou appuie sur l’œil barré. Touche encore, ou appuie sur H, pour les faire revenir.",
 					"Sur un téléphone, appuie sur Plus pour partager, pour le son, pour l’aide et pour ta langue."
 				]
@@ -270,12 +271,14 @@
 					"La flèche de la fiche ouvre ses infos, ses lunes et ses histoires ; elle reste ouverte pour le monde suivant.",
 					"« En savoir plus dans le dictionnaire » ouvre sa page, « Comparer avec… » le place à côté d’un autre monde.",
 					"Sous la comparaison, « Réduis le Soleil à un ballon de basket… » retrouve ce monde sur le parcours à travers le terrain de l’école.",
-					"La dernière ligne de la fiche ouverte dit d’où vient l’image du monde : une carte faite par une sonde ou, là où il n’existe pas de carte complète, une peinture d’après des photos de sondes."
+					"La dernière ligne de la fiche ouverte dit d’où vient l’image du monde : une carte faite par une sonde ou, là où il n’existe pas de carte complète, une peinture d’après des photos de sondes.",
+					"Sur un téléphone tenu droit, la fiche est dans le panneau du bas : tire le panneau vers le haut (ou appuie sur la flèche) pour en lire plus, et vers le bas pour voir plus d’espace. Un appui sur la poignée, la petite barre en haut, le fait passer de petit à moitié et à plein."
 				],
 				"simple": [
 					"Vole vers une planète.",
 					"Lis sa fiche.",
-					"Touche la petite flèche pour en voir plus."
+					"Touche la petite flèche pour en voir plus.",
+					"Sur un téléphone, tire le panneau vers le haut pour en lire plus."
 				]
 			}
 		},
@@ -654,12 +657,14 @@
 				"standard": [
 					"Appuie sur ▶ pour lancer, sur ⏸ pour mettre en pause, sur ◀ pour reculer (Espace met aussi en pause).",
 					"Le bouton à côté de la date montre la vitesse (par exemple 1x) : appuie dessus et choisis-en une autre, ou appuie sur + et −.",
-					"« Maintenant », au même endroit, te ramène au présent."
+					"« Maintenant », au même endroit, te ramène au présent.",
+					"Sur un téléphone tenu droit, le bouton du temps au-dessus du panneau remplace la barre du temps : son bouton lance et met en pause, et sa vitesse avec la date ouvre tout le temps dans le panneau : à l’envers, la date, « Maintenant », les vitesses et la rotation."
 				],
 				"simple": [
 					"Appuie sur le bouton de lecture.",
 					"Appuie sur le bouton de la vitesse à côté de la date et choisis 1 mois/s.",
-					"Appuie sur Espace pour arrêter."
+					"Appuie sur Espace pour arrêter.",
+					"Sur un téléphone, appuie sur la vitesse et la date au-dessus du panneau, puis choisis une vitesse."
 				]
 			}
 		},
@@ -1032,12 +1037,14 @@
 				"standard": [
 					"Appuie sur « Visites » et choisis une visite.",
 					"Avance avec « Suivant » et « Retour » sur la carte, les flèches ou une télécommande de présentation (Page suiv. / Page préc.).",
-					"Regarde autour de toi quand tu veux ; « Retour à la visite » rétablit l’étape. « Lecture automatique » avance toute seule, et le bouton lien copie un lien vers l’étape en cours. Les enseignants peuvent écrire leurs propres visites sous forme de données (src/data/tours/README.md)."
+					"Regarde autour de toi quand tu veux ; « Retour à la visite » rétablit l’étape. « Lecture automatique » avance toute seule, et le bouton lien copie un lien vers l’étape en cours. Les enseignants peuvent écrire leurs propres visites sous forme de données (src/data/tours/README.md).",
+					"Sur un téléphone tenu droit, chaque étape s’ouvre dans le panneau du bas, à mi-hauteur pour qu’on lise le texte ; tire-le vers le bas pour voir plus de la vue. « Retour » et « Suivant » restent au pied du panneau."
 				],
 				"simple": [
 					"Appuie sur « Visites » et choisis-en une.",
 					"Lis la carte, puis appuie sur « Suivant » ou sur une flèche.",
-					"Regarde autour de toi quand tu veux, puis appuie sur « Retour à la visite »."
+					"Regarde autour de toi quand tu veux, puis appuie sur « Retour à la visite ».",
+					"Sur un téléphone, tire le panneau vers le bas pour voir plus d’espace, et vers le haut pour lire."
 				]
 			}
 		},
@@ -1257,6 +1264,11 @@
 			"touch": "Garde le doigt appuyé",
 			"keys": "Va dessus avec Tab"
 		},
+		"sheet": {
+			"action": "Rendre le panneau du bas plus haut ou plus bas (un téléphone tenu droit)",
+			"touch": "Fais glisser sa poignée ou son titre ; touche la poignée",
+			"keys": "Avec Tab jusqu’à la poignée, puis ↑ / ↓"
+		},
 		"siblings": {
 			"action": "Monde suivant ou précédent de la même famille",
 			"keys": "← / →"
@@ -1274,7 +1286,7 @@
 		"speed": {
 			"action": "Plus vite ou plus lentement",
 			"mouse": "Le bouton de la vitesse à côté de la date",
-			"touch": "Le bouton de la vitesse à côté de la date",
+			"touch": "Le bouton de la vitesse à côté de la date (sur un téléphone, le bouton du temps)",
 			"keys": "+ / −"
 		},
 		"step": {

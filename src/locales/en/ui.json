@@ -1645,6 +1645,18 @@
 			"timeHint": "How fast time runs, back to now, and how fast the planets spin. + and − change the speed from the keyboard.",
 			"timeHint@simple": "Make time go faster or slower, or jump back to now."
 		},
+		"sheet": {
+			"handle": "Panel height: {height}. Press to change it.",
+			"handleHint": "Drag it, or the panel's title, to make the panel taller or shorter. A tap steps it up, and the arrow keys raise and lower it.",
+			"handleHint@simple": "Pull it up to see more, or down to see more of space.",
+			"height": {
+				"small": "small",
+				"half": "half",
+				"full": "full"
+			},
+			"chipHint": "Opens the whole time in the panel: reverse, the date, Now, the speeds and the spin.",
+			"chipHint@simple": "Make time go faster, slower or backwards."
+		},
 		"quickLook": {
 			"ask": {
 				"title": "Want a quick look at what you can do here?",

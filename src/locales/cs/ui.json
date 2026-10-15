@@ -1645,6 +1645,18 @@
 			"timeHint": "Jak rychle běží čas, návrat do teď a jak rychle se planety otáčejí. + a − mění rychlost z klávesnice.",
 			"timeHint@simple": "Zrychli nebo zpomal čas, nebo skoč zpátky do teď."
 		},
+		"sheet": {
+			"handle": "Výška panelu: {height}. Stiskem ji změníš.",
+			"handleHint": "Táhni za něj nebo za název panelu a panel bude vyšší nebo nižší. Ťuknutí ho zvedne o stupeň, šipky ho zvedají a snižují.",
+			"handleHint@simple": "Vytáhni ho nahoru a uvidíš víc, nebo dolů a uvidíš víc vesmíru.",
+			"height": {
+				"small": "malá",
+				"half": "poloviční",
+				"full": "plná"
+			},
+			"chipHint": "Otevře v panelu celé ovládání času: pozpátku, datum, „Teď“, rychlosti a rotaci.",
+			"chipHint@simple": "Pusť čas rychleji, pomaleji nebo pozpátku."
+		},
 		"quickLook": {
 			"ask": {
 				"title": "Chceš se rychle podívat, co tu všechno jde?",

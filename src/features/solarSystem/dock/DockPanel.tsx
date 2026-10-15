@@ -2,6 +2,7 @@ import { useId, useLayoutEffect, useRef, type ReactNode } from "react"
 import { CloseButton } from "@mantine/core"
 
 import { useI18n } from "@/i18n"
+import type { SheetKind } from "@/store/sheet"
 
 import hudClasses from "../SolarSystem.module.css"
 import classes from "./Dock.module.css"
@@ -19,6 +20,8 @@ export interface DockPanelProps {
 	 * never two regions called the same.
 	 */
 	labelled?: boolean
+	/** What it is to the phone's sheet (#60), which decides the height it opens at; a panel by default. */
+	kind?: SheetKind
 	children: ReactNode
 }
 
@@ -26,7 +29,9 @@ export interface DockPanelProps {
  * A panel of the dock (#42): a named, non-modal region with a close button.
  * Opening it moves the keyboard focus to its title, so a keyboard user lands
  * in it; closing gives the focus back to the button that opened it. The scene stays usable
- * beside it, and it dims while the camera moves.
+ * beside it, and it dims while the camera moves. On a phone held upright it
+ * is what the sheet shows (#60): its header is the sheet's summary at small
+ * height, and its × is what a pull below small presses.
  */
 export function DockPanel({
 	title,
@@ -34,6 +39,7 @@ export function DockPanel({
 	onClose,
 	id,
 	labelled = true,
+	kind = "panel",
 	children,
 }: DockPanelProps) {
 	const { t } = useI18n()
@@ -58,6 +64,7 @@ export function DockPanel({
 			className={`${hudClasses.panel} ${classes.panel}`}
 			aria-labelledby={labelled ? titleId : undefined}
 			data-dock-panel={id}
+			data-sheet-kind={kind}
 		>
 			<header className={classes.header}>
 				{icon}
@@ -68,6 +75,7 @@ export function DockPanel({
 					size="sm"
 					aria-label={t("solarSystem.hud.close", { panel: title })}
 					onClick={onClose}
+					data-sheet-close
 				/>
 			</header>
 			<div className={classes.body}>{children}</div>

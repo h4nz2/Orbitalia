@@ -8,7 +8,7 @@
  *
  * - **Hiding** is never automatic: only a tap on empty space that has no other
  *   job hides (`skyTapHides`). Letting go of a second selected body (#47)
- *   comes first; a near miss beside a small body, a tap while the opening
+ *   comes first, then lowering the phone's raised sheet to small (#60); a near miss beside a small body, a tap while the opening
  *   plays (it pauses the opening, #49) or its hints say "Tap a planet", while
  *   the hunt's panel is up (the clue is the point) or while the quick look
  *   asks or plays never hides. Nor does the tap that closes a menu, a popover
@@ -28,6 +28,7 @@ import { useEffect } from "react"
 
 import { useHuntStore } from "@/store/hunt"
 import { usePresentationStore } from "@/store/presentation"
+import { useSheetStore } from "@/store/sheet"
 import { useTourStore } from "@/store/tour"
 import { isTouch } from "@/utils/sizeClasses"
 
@@ -54,6 +55,8 @@ export interface SkyTapContext {
 	quickLook: boolean
 	/** The press closed something: an open menu, popover or hint. */
 	dismissing: boolean
+	/** The phone's sheet (#60) stands at half or full height. */
+	sheetRaised: boolean
 }
 
 const byFinger = (context: Pick<SkyTapContext, "touch" | "pointer">) =>
@@ -71,6 +74,22 @@ export const skyTapHides = (context: SkyTapContext): boolean =>
 	!context.hunt &&
 	!context.quickLook &&
 	!context.dismissing
+
+/** What a tap on the sky with no other job (#47) does. */
+export type SkyTapAction = "lower" | "hide" | "none"
+
+/**
+ * What a tap on empty space that let go of nothing (#47) and was no near
+ * miss does, pure: with the phone's sheet raised it lowers it to small first
+ * (#60, with a finger or a mouse); else, on a touch screen, it hides the
+ * controls (`skyTapHides`). Never when it closed a menu, while hidden, or
+ * while the opening plays.
+ */
+export function skyTapAction(context: SkyTapContext): SkyTapAction {
+	if (context.dismissing || context.hidden || context.opening) return "none"
+	if (context.sheetRaised) return "lower"
+	return skyTapHides(context) ? "hide" : "none"
+}
 
 /** Whether a tap, anywhere, only brings the hidden controls back. Pure. */
 export const tapRestores = (
@@ -99,6 +118,9 @@ const currentContext = (event: Event): SkyTapContext => ({
 		useQuickLookStore.getState().asking ||
 		isQuickLook(useTourStore.getState().tour?.id),
 	dismissing: pressDismisses,
+	sheetRaised:
+		useSheetStore.getState().active &&
+		useSheetStore.getState().height !== "small",
 })
 
 /** Says a change to screen readers (installed by `useSkyTap`). */
@@ -106,13 +128,17 @@ let announceChrome: ((hidden: boolean) => void) | null = null
 
 /**
  * The scene's tap on empty space had no other job (`scene/BodyPicking.tsx`):
- * on a touch screen it hides the controls. Returns whether it did.
+ * it lowers the phone's raised sheet (#60), or on a touch screen hides the
+ * controls. Returns what it did.
  */
-export function hideOnSkyTap(event: Event): boolean {
-	if (!skyTapHides(currentContext(event))) return false
-	setChromeHidden(true)
-	announceChrome?.(true)
-	return true
+export function onSkyTap(event: Event): SkyTapAction {
+	const action = skyTapAction(currentContext(event))
+	if (action === "lower") useSheetStore.getState().lower()
+	if (action === "hide") {
+		setChromeHidden(true)
+		announceChrome?.(true)
+	}
+	return action
 }
 
 /** Notes, as a press goes down, whether it closes something rather than tapping the sky. */

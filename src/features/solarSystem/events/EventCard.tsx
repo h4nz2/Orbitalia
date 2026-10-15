@@ -131,6 +131,8 @@ const EventCard = ({ className = "" }: { className?: string }) => {
 			data-view={view}
 			data-status={status}
 			data-collapsed={collapsed}
+			data-sheet-kind="tour"
+			data-sheet-folds
 		>
 			<header className={classes.header}>
 				<IconSunMoon className={classes.icon} size={20} aria-hidden />
@@ -230,7 +232,7 @@ const EventCard = ({ className = "" }: { className?: string }) => {
 					</Button>
 				</div>
 			)}
-			<div className={classes.controls}>
+			<div className={classes.controls} data-sheet-footer>
 				<ShareButton event={event} stop={index} />
 				<Hint text={t("solarSystem.events.leaveLabel")}>
 					<Button

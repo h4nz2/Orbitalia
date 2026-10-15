@@ -520,6 +520,7 @@ const BirthdayPanel = () => {
 				wrap="nowrap"
 				gap="xs"
 				className={classes.header}
+				data-sheet-summary
 			>
 				<Title
 					order={2}

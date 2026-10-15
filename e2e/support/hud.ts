@@ -95,7 +95,8 @@ export interface Box {
 
 /**
  * The HUD's panels (#42): every element of the HUD that takes the pointer
- * (the HUD layer itself lets it through to the scene).
+ * (the HUD layer itself lets it through to the scene), and on an upright
+ * phone the time chip above the sheet (#60).
  */
 export const hudPanels = (page: Page): Promise<Box[]> =>
 	page.evaluate(() => {
@@ -119,6 +120,23 @@ export const hudPanels = (page: Page): Promise<Box[]> =>
 		}
 		const hud = document.querySelector("[data-testid=hud]")
 		if (hud !== null) walk(hud)
+		// above the phone's sheet (#60), outside its box: the time chip, a flight's readout
+		for (const child of document.querySelectorAll(
+			"[data-testid=sheet] [data-sheet-above] > *",
+		)) {
+			const style = getComputedStyle(child)
+			if (style.display === "none" || style.visibility === "hidden") continue
+			const { left, top, right, bottom, width, height } =
+				child.getBoundingClientRect()
+			if (width > 0 && height > 0)
+				panels.push({
+					name: (child as HTMLElement).dataset.testid ?? "above the sheet",
+					left,
+					top,
+					right,
+					bottom,
+				})
+		}
 		return panels
 	})
 

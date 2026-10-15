@@ -158,7 +158,9 @@ test.describe("a first visit", () => {
 			await question(page)
 				.getByRole("button", { name: "Ja, zeig es mir" })
 				.click()
-			await expect(card(page)).toBeInViewport({ ratio: 1 })
+			// in the phone's sheet (#60): the sheet fits, its words scroll inside it
+			await expect(page.getByTestId("sheet")).toBeInViewport({ ratio: 1 })
+			await expect(card(page)).toBeVisible()
 			await expect(card(page)).toContainText("Ein kurzer Blick")
 			await card(page)
 				.getByRole("button", { name: "Den Rest überspringen" })

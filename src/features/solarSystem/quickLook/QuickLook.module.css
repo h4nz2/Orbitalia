@@ -167,6 +167,8 @@
 :global(html[data-quick-look-spot="picker"]) :global([data-testid="where"]),
 :global(html[data-quick-look-spot="scale"]) :global([data-entry="scale"]),
 :global(html[data-quick-look-spot="time"]) :global([data-testid="time-bar"]),
+/* on a phone held upright, time is the chip above the sheet (#60) */
+:global(html[data-quick-look-spot="time"]) :global([data-testid="time-chip"]),
 :global(html[data-quick-look-spot="compare"]) :global([data-spot="compare"]),
 :global(html[data-quick-look-spot="tools"]) :global([data-testid="tools-menu"]),
 :global(html[data-quick-look-spot="present"])

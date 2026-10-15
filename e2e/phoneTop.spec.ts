@@ -500,12 +500,12 @@ test.describe("a tap on the sky, on a phone", () => {
 		page,
 	}) => {
 		await ready(page, "/solar_system?focus=mars&lang=en")
-		// the topmost patch of sky, clear of the time popover at the bottom
+		// the topmost patch of sky, clear of the Tools menu over the sheet
 		const [spot] = await skySpots(page, ["mars", "phobos", "deimos"])
-		await page.getByTestId("time-menu").tap()
-		await expect(page.getByTestId("time-panel")).toBeVisible()
+		await page.getByTestId("tools-menu").tap()
+		await expect(page.locator("[data-tool]").first()).toBeVisible()
 		await page.touchscreen.tap(spot.x, spot.y)
-		await expect(page.getByTestId("time-panel")).toBeHidden()
+		await expect(page.locator("[data-tool]").first()).toBeHidden()
 		expect(await hidden(page)).toBe(false)
 		// and the next tap on the sky does
 		await page.touchscreen.tap(spot.x, spot.y)
@@ -522,6 +522,13 @@ test.describe("a tap on the sky, on a phone", () => {
 			page.evaluate(() => window.__orbitalia!.store.getState().sequence?.index)
 		const at = await stop()
 		const spots = await skySpots(page, WORLDS, 70)
+		// a stop opens the phone's sheet at half height: the first tap lowers it (#60)
+		await page.touchscreen.tap(spots[0].x, spots[0].y)
+		await expect(page.getByTestId("sheet")).toHaveAttribute(
+			"data-sheet-height",
+			"small",
+		)
+		expect(await hidden(page)).toBe(false)
 		await page.touchscreen.tap(spots[0].x, spots[0].y)
 		await expect(html(page)).toHaveAttribute("data-chrome", "hidden")
 		expect(await stop()).toBe(at)

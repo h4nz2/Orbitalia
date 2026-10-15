@@ -68,7 +68,10 @@ export const HuntPanelSlot = () => {
 	return (
 		<Suspense
 			fallback={
-				<div className={`${hudClasses.panel} ${classes.panel}`}>
+				<div
+					className={`${hudClasses.panel} ${classes.panel}`}
+					data-sheet-kind="hunt"
+				>
 					<Center p="md">
 						<Loader size="sm" color="orange" />
 					</Center>
