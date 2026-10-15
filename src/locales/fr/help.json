@@ -77,14 +77,14 @@
 					"Pour rester sur un texte, appuie sur la barre d’espace, touche la scène ou appuie sur le bouton pause ; encore une fois, et ça reprend. En pause, tu peux tourner la vue sans arrêter l’introduction.",
 					"« Suivant » (ou la flèche droite) passe tout de suite à la partie suivante ; en pause, une partie à la fois.",
 					"Après la première introduction, l’application demande une fois si tu veux un petit aperçu de ce que tu peux faire (voir « Un petit aperçu »).",
-					"Pour la revoir, ouvre la flèche à côté de « Aide » (sur un téléphone, « Aide » lui-même) et choisis « Revoir l’introduction ».",
+					"Pour la revoir, ouvre la flèche à côté de « Aide » (sur un téléphone, « Plus ») et choisis « Revoir l’introduction ».",
 					"« Montrer comment se déplacer », dans le même menu, fait revenir les conseils pour glisser, zoomer et cliquer."
 				],
 				"simple": [
 					"Elle passe la première fois que tu viens.",
 					"Appuie sur la barre d’espace ou touche l’image pour l’arrêter. Encore une fois, et ça repart.",
 					"« Suivant » montre la partie suivante.",
-					"Pour la revoir, appuie sur la flèche à côté de « Aide » (sur un téléphone, sur « Aide » lui-même), puis sur « Revoir l’introduction »."
+					"Pour la revoir, appuie sur la flèche à côté de « Aide » (sur un téléphone, sur « Plus »), puis sur « Revoir le début »."
 				]
 			}
 		},
@@ -105,12 +105,12 @@
 				"standard": [
 					"À ta première visite, après l’introduction, réponds « Oui, montre-moi ». La question n’est posée qu’une fois dans ce navigateur, jamais sur un lien partagé ni pendant une présentation.",
 					"Il avance tout seul ; « Retour », « Suivant » et les flèches le parcourent pas à pas, et « Passer la suite » ou × l’arrêtent à tout moment, pour revenir à une vue calme.",
-					"Pour le revoir, ouvre la flèche à côté de « Aide » (sur un téléphone, « Aide » lui-même) et choisis « Revoir le petit aperçu »."
+					"Pour le revoir, ouvre la flèche à côté de « Aide » (sur un téléphone, « Plus ») et choisis « Revoir le petit aperçu »."
 				],
 				"simple": [
 					"Après l’introduction, appuie sur « Oui, montre-moi ».",
 					"Regarde, ou appuie sur « Suivant ».",
-					"Pour le revoir, appuie sur la flèche à côté de « Aide » (sur un téléphone, sur « Aide » lui-même)."
+					"Pour le revoir, appuie sur la flèche à côté de « Aide » (sur un téléphone, sur « Plus »)."
 				]
 			}
 		},
@@ -240,12 +240,14 @@
 					"Toujours à l’écran : la flèche pour revenir là où tu étais, le bouton maison (retour à tout le système), le nom du monde que tu regardes avec sa fiche, et la barre du temps. La flèche de la fiche ouvre ses infos, ses lunes et ses histoires.",
 					"Dans la barre du temps : lecture, pause et la date ; le bouton avec la vitesse (par exemple 1x) ouvre « Maintenant », les vitesses et la rotation.",
 					"Visites, Calques (ce qui est dessiné), Échelle (quelle taille et quelle distance) et Outils (la vitesse de la lumière, le ciel de ce soir, les sondes, ton anniversaire, la chasse au trésor, côte à côte, le système solaire à pied, le dictionnaire illustré et prendre une photo) ouvrent tout le reste. Un seul panneau s’ouvre à la fois ; le × le ferme.",
-					"Les boutons pour présenter et pour les réglages : Présenter, Partager, l’œil barré qui cache tout (H le fait revenir), le son, Aide et la langue."
+					"Les boutons pour présenter et pour les réglages : Présenter, Partager, l’œil barré qui cache tout (H le fait revenir), le son, Aide et la langue. Sur un téléphone, ils sont tous sous Plus.",
+					"Sur un téléphone ou une tablette, un appui sur le ciel vide masque toutes les commandes, et l’appui suivant, n’importe où, les fait revenir ; la vue ne bouge jamais."
 				],
 				"simple": [
 					"La flèche Retour revient d’un pas en arrière. Le bouton maison à côté te ramène à toutes les planètes.",
 					"Appuie sur Calques, Échelle ou Outils pour en trouver plus.",
-					"Appuie sur l’œil barré pour cacher tous les boutons. Appuie sur H pour les faire revenir."
+					"Pour cacher tous les boutons, touche le ciel vide sur un téléphone ou une tablette, ou appuie sur l’œil barré. Touche encore, ou appuie sur H, pour les faire revenir.",
+					"Sur un téléphone, appuie sur Plus pour partager, pour le son, pour l’aide et pour ta langue."
 				]
 			}
 		},
@@ -600,12 +602,12 @@
 			},
 			"how": {
 				"standard": [
-					"À l’ouverture de l’application, le son est toujours coupé. Appuie sur le bouton haut-parleur, ou sur M, pour l’activer. Sur un téléphone, le haut-parleur ouvre plutôt les réglages du son : active l’interrupteur « Son activé ».",
-					"La flèche à côté (sur un téléphone, le haut-parleur lui-même) ouvre le volume, « Ambiance sonore », « Sons de mouvement » et « Écoute l’espace ».",
+					"À l’ouverture de l’application, le son est toujours coupé. Appuie sur le bouton haut-parleur, ou sur M, pour l’activer. Sur un téléphone, ouvre Plus et active « Son activé ».",
+					"La flèche à côté (sur un téléphone, « Réglages du son » sous Plus) ouvre le volume, « Ambiance sonore », « Sons de mouvement » et « Écoute l’espace ».",
 					"Vole vers le Soleil, la Terre, Jupiter ou Saturne et lance son enregistrement depuis la fiche ; le texte explique ce que tu entends."
 				],
 				"simple": [
-					"Appuie sur le bouton haut-parleur. Sur un téléphone, active aussi « Son activé ».",
+					"Appuie sur le bouton haut-parleur. Sur un téléphone, appuie sur Plus, puis sur « Son activé ».",
 					"Vole vers Jupiter.",
 					"Appuie sur lecture dans sa fiche et écoute."
 				]
@@ -626,11 +628,11 @@
 			},
 			"how": {
 				"standard": [
-					"Ouvre le menu des langues (son bouton affiche FR, EN, …).",
+					"Ouvre le menu des langues (son bouton affiche FR, EN, … ; sur un téléphone, il est sous Plus).",
 					"Choisis une langue et un niveau de lecture ; chaque page et chaque lien suivent."
 				],
 				"simple": [
-					"Clique sur le bouton FR.",
+					"Clique sur le bouton FR. Sur un téléphone, appuie d’abord sur Plus.",
 					"Choisis ta langue, puis choisis Simple."
 				]
 			}
@@ -1044,8 +1046,8 @@
 			"what": "Du texte, des noms et des boutons plus grands, lisibles depuis le fond de la salle.",
 			"why": "Un écran d’ordinateur portable projeté au mur est trop petit pour être lu ; le mode vidéoprojecteur règle ça d’une seule touche.",
 			"how": [
-				"Ouvre Présenter et choisis « Grand texte pour vidéoprojecteur », ou appuie sur P.",
-				"Appuie sur F pour passer en plein écran.",
+				"Ouvre Présenter (sur un téléphone, Plus) et choisis « Grand texte pour vidéoprojecteur », ou appuie sur P.",
+				"Appuie sur F, ou choisis « Plein écran » dans le même menu. Un iPhone ne peut pas passer Safari en plein écran : Plus explique comment ajouter Orbitalia à l’écran d’accueil, d’où il s’ouvre sur tout l’écran.",
 				"Tout le reste continue de fonctionner : les touches, les liens et les commandes."
 			]
 		},
@@ -1054,7 +1056,7 @@
 			"what": "Des couleurs et des contours plus marqués pour les projecteurs pâles et les salles très claires.",
 			"why": "Un vidéoprojecteur pâle en plein jour efface le texte gris et les lignes fines ; le contraste élevé garde tout lisible.",
 			"how": [
-				"Ouvre Présenter et choisis « Contraste élevé », ou appuie sur C.",
+				"Ouvre Présenter (sur un téléphone, Plus) et choisis « Contraste élevé », ou appuie sur C.",
 				"Il s’active aussi tout seul quand l’ordinateur demande plus de contraste."
 			]
 		},
@@ -1073,8 +1075,9 @@
 			"what": "Retire tous les boutons et tous les panneaux de l’écran, pour qu’il ne reste que l’espace.",
 			"why": "Pour observer, pour les captures d’écran et pour le vidéoprojecteur : la classe voit le système solaire, pas l’interface.",
 			"how": [
-				"Appuie sur H ou sur l’œil barré (il est aussi dans le menu Présenter). Cela marche en présentation comme en dehors.",
-				"Appuie à nouveau sur H, ou bouge la souris et clique sur « Afficher les commandes », pour les faire revenir. Les touches continuent de marcher pendant qu’elles sont cachées."
+				"Appuie sur H ou sur l’œil barré (il est aussi dans le menu Présenter ; sur un téléphone, sous Plus). Cela marche en présentation comme en dehors.",
+				"Sur un téléphone ou une tablette, touche le ciel vide. Si cet appui a déjà une autre tâche, comme lâcher un monde sélectionné, il fait celle-là à la place.",
+				"Appuie à nouveau sur H, ou bouge la souris et clique sur « Afficher les commandes », pour les faire revenir ; sur un téléphone ou une tablette, touche n’importe où. Cet appui ne fait que les faire revenir : il ne choisit aucun monde et ne bouge pas la vue. Les touches continuent de marcher pendant qu’elles sont cachées."
 			]
 		},
 		"prepareLesson": {
@@ -1092,7 +1095,7 @@
 			"what": "Un lien vers exactement ce qui est à l’écran, avec un bouton pour le copier et un QR code assez grand pour être scanné depuis le dernier rang.",
 			"why": "Les élèves ouvrent la même vue sur leur propre tablette et explorent à partir de là, sans rien taper.",
 			"how": [
-				"Ouvre Partager.",
+				"Ouvre Partager. Sur un téléphone, ouvre Plus : « Partager » envoie le lien directement dans une discussion ou un e-mail, et « Lien et QR code » ouvre ce panneau.",
 				"Copie le lien, ou appuie sur « Montrer le QR code à la classe »."
 			]
 		},
@@ -1199,12 +1202,12 @@
 			},
 			"how": {
 				"standard": [
-					"Dans le système solaire, ouvre la flèche à côté d’Aide (sur un téléphone, Aide lui-même) et choisis « Envoyer un avis » : si tu veux, la vue que tu regardes est jointe.",
+					"Dans le système solaire, ouvre la flèche à côté d’Aide (sur un téléphone, Plus) et choisis « Envoyer un avis » : si tu veux, la vue que tu regardes est jointe.",
 					"Choisis de quoi il s’agit, écris quelques mots et appuie sur « Envoyer ». L’e-mail est facultatif : ne le donne que si tu veux une réponse.",
 					"Avec un compte GitHub, tu peux aussi signaler sur GitHub ou discuter avec d’autres sur GitHub Discussions ; la page mène aux deux."
 				],
 				"simple": [
-					"Appuie sur la flèche à côté d’Aide (sur un téléphone, sur Aide lui-même), puis sur « Dis-nous ce que tu en penses ».",
+					"Appuie sur la flèche à côté d’Aide (sur un téléphone, sur Plus), puis sur « Dis-nous ce que tu en penses ».",
 					"Écris ce qui est cassé, ou ton idée.",
 					"Appuie sur « Envoyer ». Tu n’as pas besoin de donner ton e-mail."
 				]
@@ -1303,31 +1306,31 @@
 		"hide": {
 			"action": "Masquer ou afficher les commandes",
 			"mouse": "L’œil barré",
-			"touch": "L’œil barré",
+			"touch": "Toucher le ciel vide ; toucher n’importe où pour les faire revenir",
 			"keys": "H"
 		},
 		"fullscreen": {
 			"action": "Activer ou quitter le plein écran",
 			"mouse": "Présenter → Plein écran",
-			"touch": "Présenter → Plein écran",
+			"touch": "Présenter → Plein écran (sur un téléphone, sous Plus)",
 			"keys": "F"
 		},
 		"projector": {
 			"action": "Grand texte pour vidéoprojecteur",
 			"mouse": "Présenter → Grand texte",
-			"touch": "Présenter → Grand texte",
+			"touch": "Présenter → Grand texte (sur un téléphone, sous Plus)",
 			"keys": "P"
 		},
 		"contrast": {
 			"action": "Activer ou désactiver le contraste élevé",
 			"mouse": "Présenter → Contraste élevé",
-			"touch": "Présenter → Contraste élevé",
+			"touch": "Présenter → Contraste élevé (sur un téléphone, sous Plus)",
 			"keys": "C"
 		},
 		"sound": {
 			"action": "Activer ou couper le son (toujours coupé à l’ouverture de l’application)",
 			"mouse": "Le bouton haut-parleur",
-			"touch": "Le bouton haut-parleur (sur un téléphone : le haut-parleur, puis « Son activé »)",
+			"touch": "Le bouton haut-parleur (sur un téléphone : Plus → « Son activé »)",
 			"keys": "M"
 		},
 		"shortcuts": {

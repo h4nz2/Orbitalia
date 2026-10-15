@@ -258,18 +258,3 @@
 		gap: 0.3rem 0.9rem;
 	}
 }
-
-/* the Help menu's button (IntroMenu.tsx): a chevron beside Help, or Help itself on a phone (#58) */
-.menuHelp {
-	display: none;
-}
-
-@media $phone {
-	.menuChevron {
-		display: none;
-	}
-
-	.menuHelp {
-		display: block;
-	}
-}

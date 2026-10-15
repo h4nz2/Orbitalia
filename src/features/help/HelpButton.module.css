@@ -41,13 +41,4 @@
 	.section {
 		margin: 0;
 	}
-
-	/*
-	 * the solar system's corner on a phone (#58): Help and its "more help"
-	 * chevron are one finger-sized button, the menu (intro/IntroMenu.tsx),
-	 * whose first item is this page
-	 */
-	:global([data-hud-corner]) .button {
-		display: none;
-	}
 }

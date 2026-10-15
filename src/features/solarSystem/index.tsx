@@ -1,6 +1,7 @@
 import { Suspense } from "react"
 
 import { HelpButton } from "@/features/help/HelpButton"
+import { usePhone } from "@/hooks/useSizeClass"
 import { LanguageMenu } from "@/i18n"
 import Loader from "@/primitives/Loader"
 import { isFrameAnchored } from "@/store/navigation"
@@ -18,6 +19,7 @@ import IntroPulse from "./intro/IntroPulse"
 import { PostcardSlot } from "./postcard/Postcard"
 import LightLink from "./light/LightLink"
 import { LightSlot } from "./light/LightPanel"
+import { MoreMenu } from "./present/MoreMenu"
 import { TeacherBar } from "./present/TeacherBar"
 import PresentationLayer from "./present/PresentationLayer"
 import Scene from "./scene/Scene"
@@ -84,12 +86,42 @@ const FrameBadgePanel = () => {
 }
 
 /**
+ * The teacher's corner (#29, #42): Present, Share, hiding, sound, Help and the
+ * language. On a phone it is one button, More, at the end of the top row (#59).
+ */
+const Corner = () => {
+	const phone = usePhone()
+	return (
+		<div
+			className={`${classes.panel} ${classes.corner}`}
+			data-testid="corner"
+			data-hud-corner
+		>
+			{phone ? (
+				<MoreMenu />
+			) : (
+				<TeacherBar>
+					<SoundControl />
+					{/* Help and its chevron wrap together (#58) */}
+					<span className={classes.split}>
+						<HelpButton />
+						<IntroMenu />
+					</span>
+					<LanguageMenu />
+				</TeacherBar>
+			)}
+		</div>
+	)
+}
+
+/**
  * The solar system page: the 3D scene filling the viewport with a quiet HUD
  * floating above it (#42; docs/ARCHITECTURE.md, "HUD layout"). On screen all
  * the time: what you look at, Back and the way out (top left), whether time runs
- * (the time bar), the teacher's corner (top right) and the four entry points
- * (bottom right). Everything else waits behind those, one panel at a time in
- * the dock, and the secondary controls dim while the camera moves.
+ * (the time bar), the teacher's corner (top right; More on a phone) and the
+ * four entry points (bottom right). Everything else waits behind those, one
+ * panel at a time in the dock, and the secondary controls dim while the
+ * camera moves.
  */
 const SolarSystem = () => {
 	return (
@@ -130,21 +162,7 @@ const SolarSystem = () => {
 					/>
 				</div>
 				<CentreBadgePanel />
-				<div
-					className={`${classes.panel} ${classes.corner}`}
-					data-testid="corner"
-					data-hud-corner
-				>
-					<TeacherBar>
-						<SoundControl />
-						{/* Help and its chevron wrap together (#58) */}
-						<span className={classes.split}>
-							<HelpButton />
-							<IntroMenu />
-						</span>
-						<LanguageMenu />
-					</TeacherBar>
-				</div>
+				<Corner />
 				<IntroOverlay className={classes.intro} />
 				<div className={`${classes.panel} ${classes.info}`} data-steady>
 					<SpacecraftInfo fallback={<BodyInfo />} />

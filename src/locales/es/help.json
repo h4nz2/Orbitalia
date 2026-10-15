@@ -77,14 +77,14 @@
 					"Para quedarte en un texto, pulsa la barra espaciadora, toca la escena o pulsa el botón de pausa; otra vez, y continúa. En pausa puedes girar la vista sin terminar la introducción.",
 					"«Siguiente» (o la flecha derecha) pasa ya a la siguiente parte; en pausa, de una en una.",
 					"Después de la primera introducción, la aplicación pregunta una vez si quieres ver rápidamente lo que puedes hacer (mira «Un vistazo rápido»).",
-					"Para verla otra vez, abre la flecha junto a «Ayuda» (en un móvil, el propio botón «Ayuda») y elige «Ver la introducción otra vez».",
+					"Para verla otra vez, abre la flecha junto a «Ayuda» (en un móvil, «Más») y elige «Ver la introducción otra vez».",
 					"«Mostrar cómo moverse», en el mismo menú, vuelve a mostrar las pistas para arrastrar, acercar y hacer clic."
 				],
 				"simple": [
 					"Se ve la primera vez que entras.",
 					"Pulsa la barra espaciadora o toca la imagen para pararla. Otra vez, y sigue.",
 					"«Siguiente» muestra la parte siguiente.",
-					"Para verla otra vez, pulsa la flecha junto a «Ayuda» (en un móvil, el propio botón «Ayuda») y luego «Ver la introducción otra vez»."
+					"Para verla otra vez, pulsa la flecha junto a «Ayuda» (en un móvil, «Más») y luego «Ver el principio otra vez»."
 				]
 			}
 		},
@@ -105,12 +105,12 @@
 				"standard": [
 					"En tu primera visita, después de la introducción, responde «Sí, enséñamelo». Solo se pregunta una vez en este navegador, nunca en un enlace compartido ni al presentar.",
 					"Avanza solo; «Atrás», «Siguiente» y las flechas lo recorren paso a paso, y «Saltar el resto» o × lo terminan cuando quieras, de vuelta a una vista tranquila.",
-					"Para verlo otra vez, abre la flecha junto a «Ayuda» (en un móvil, el propio botón «Ayuda») y elige «Ver otra vez el vistazo rápido»."
+					"Para verlo otra vez, abre la flecha junto a «Ayuda» (en un móvil, «Más») y elige «Ver otra vez el vistazo rápido»."
 				],
 				"simple": [
 					"Después de la introducción, pulsa «Sí, enséñamelo».",
 					"Mira, o pulsa «Siguiente».",
-					"Para verlo otra vez, pulsa la flecha junto a «Ayuda» (en un móvil, el propio botón «Ayuda»)."
+					"Para verlo otra vez, pulsa la flecha junto a «Ayuda» (en un móvil, «Más»)."
 				]
 			}
 		},
@@ -240,12 +240,14 @@
 					"Siempre en pantalla: la flecha para volver a donde estabas, el botón de la casa (volver a todo el sistema), el nombre del mundo que ves con su ficha y la barra del tiempo. La flecha de la ficha abre sus datos, lunas e historias.",
 					"En la barra del tiempo: reproducir, pausar y la fecha; el botón con la velocidad (como 1x) abre «Ahora», las velocidades y la rotación.",
 					"Visitas, Capas (lo que se dibuja), Escala (qué tamaño y a qué distancia) y Herramientas (la velocidad de la luz, el cielo de esta noche, naves, tu cumpleaños, la búsqueda del tesoro, lado a lado, recorrer el sistema solar a pie, el diccionario visual y hacer una foto) abren todo lo demás. Solo se abre un panel a la vez; la × lo cierra.",
-					"Los botones para presentar y para los ajustes: Presentar, Compartir, el ojo tachado que lo oculta todo (H lo devuelve), el sonido, Ayuda y el idioma."
+					"Los botones para presentar y para los ajustes: Presentar, Compartir, el ojo tachado que lo oculta todo (H lo devuelve), el sonido, Ayuda y el idioma. En un móvil están todos en Más.",
+					"En un móvil o una tableta, tocar el cielo vacío oculta todos los controles, y el siguiente toque en cualquier sitio los devuelve; la vista nunca se mueve."
 				],
 				"simple": [
 					"La flecha Atrás vuelve un paso atrás. El botón de la casa, a su lado, te lleva de vuelta a todos los planetas.",
 					"Pulsa Capas, Escala o Herramientas para encontrar más.",
-					"Pulsa el ojo tachado para ocultar todos los botones. Pulsa H para recuperarlos."
+					"Para ocultar todos los botones, toca el cielo vacío en un móvil o una tableta, o pulsa el ojo tachado. Toca otra vez, o pulsa H, para recuperarlos.",
+					"En un móvil, pulsa Más para compartir, para el sonido, para la ayuda y para tu idioma."
 				]
 			}
 		},
@@ -600,12 +602,12 @@
 			},
 			"how": {
 				"standard": [
-					"Al abrir la aplicación el sonido siempre está apagado. Pulsa el botón del altavoz, o M, para activarlo. En un móvil, el altavoz abre en su lugar los ajustes de sonido: activa allí «Sonido activado».",
-					"La flecha de al lado (en un móvil, el propio altavoz) abre el volumen, el «Sonido de fondo», los «Sonidos de movimiento» y «Escucha el espacio».",
+					"Al abrir la aplicación el sonido siempre está apagado. Pulsa el botón del altavoz, o M, para activarlo. En un móvil, abre Más y activa «Sonido activado».",
+					"La flecha de al lado (en un móvil, «Ajustes de sonido» en Más) abre el volumen, el «Sonido de fondo», los «Sonidos de movimiento» y «Escucha el espacio».",
 					"Vuela al Sol, a la Tierra, a Júpiter o a Saturno y reproduce su grabación desde la tarjeta; el texto explica lo que oyes."
 				],
 				"simple": [
-					"Pulsa el botón del altavoz. En un móvil, activa también «Sonido activado».",
+					"Pulsa el botón del altavoz. En un móvil, pulsa Más y luego «Sonido activado».",
 					"Vuela a Júpiter.",
 					"Pulsa reproducir en su tarjeta y escucha."
 				]
@@ -626,11 +628,11 @@
 			},
 			"how": {
 				"standard": [
-					"Abre el menú de idioma (su botón muestra ES, EN, …).",
+					"Abre el menú de idioma (su botón muestra ES, EN, …; en un móvil, está en Más).",
 					"Elige un idioma y un nivel de lectura; todas las páginas y enlaces se adaptan."
 				],
 				"simple": [
-					"Haz clic en el botón con ES.",
+					"Haz clic en el botón con ES. En un móvil, pulsa antes Más.",
 					"Elige tu idioma, y elige Sencillo."
 				]
 			}
@@ -1044,8 +1046,8 @@
 			"what": "Texto, nombres y botones más grandes, legibles desde el fondo de la clase.",
 			"why": "La pantalla de un portátil en un proyector es demasiado pequeña para leerla; el modo proyector lo arregla con una tecla.",
 			"how": [
-				"Abre Presentar y elige «Texto grande para proyector», o pulsa P.",
-				"Pulsa F para la pantalla completa.",
+				"Abre Presentar (en un móvil, Más) y elige «Texto grande para proyector», o pulsa P.",
+				"Pulsa F, o elige «Pantalla completa» en el mismo menú. Un iPhone no puede poner Safari en pantalla completa: Más explica cómo añadir Orbitalia a la pantalla de inicio, desde donde se abre en toda la pantalla.",
 				"Todo lo demás sigue funcionando: las teclas, los enlaces y los controles."
 			]
 		},
@@ -1054,7 +1056,7 @@
 			"what": "Colores y contornos más marcados para proyectores con colores apagados y aulas muy iluminadas.",
 			"why": "Un proyector pálido a plena luz del día esconde el texto gris y las líneas finas; el alto contraste mantiene todo legible.",
 			"how": [
-				"Abre Presentar y elige «Alto contraste», o pulsa C.",
+				"Abre Presentar (en un móvil, Más) y elige «Alto contraste», o pulsa C.",
 				"También se activa solo cuando el equipo pide más contraste."
 			]
 		},
@@ -1073,8 +1075,9 @@
 			"what": "Quita de la pantalla todos los botones y paneles, para que solo quede el espacio.",
 			"why": "Para mirar, para hacer capturas de pantalla y para el proyector: la clase ve el sistema solar, no la interfaz.",
 			"how": [
-				"Pulsa H o el ojo tachado (también está en el menú Presentar). Funciona presentando o no.",
-				"Pulsa H otra vez, o mueve el ratón y haz clic en «Mostrar los controles», para recuperarlos. Las teclas siguen funcionando mientras están ocultos."
+				"Pulsa H o el ojo tachado (también está en el menú Presentar; en un móvil, en Más). Funciona presentando o no.",
+				"En un móvil o una tableta, toca el cielo vacío. Si ese toque ya tiene otra tarea, como soltar un mundo seleccionado, hace esa en su lugar.",
+				"Pulsa H otra vez, o mueve el ratón y haz clic en «Mostrar los controles», para recuperarlos; en un móvil o una tableta, toca en cualquier sitio. Ese toque solo los devuelve: no elige ningún mundo ni mueve la vista. Las teclas siguen funcionando mientras están ocultos."
 			]
 		},
 		"prepareLesson": {
@@ -1092,7 +1095,7 @@
 			"what": "Un enlace a exactamente lo que hay en pantalla, con un botón para copiarlo y un código QR lo bastante grande para escanearlo desde la última fila.",
 			"why": "Los alumnos abren la misma vista en sus propias tabletas y exploran desde ahí, sin tener que escribir nada.",
 			"how": [
-				"Abre Compartir.",
+				"Abre Compartir. En un móvil, abre Más: «Compartir» manda el enlace directamente a un chat o a un correo, y «Enlace y código QR» abre este panel.",
 				"Copia el enlace o pulsa «Mostrar el código QR a la clase»."
 			]
 		},
@@ -1199,12 +1202,12 @@
 			},
 			"how": {
 				"standard": [
-					"En el sistema solar, abre la flecha junto a Ayuda (en un móvil, el propio botón Ayuda) y elige «Enviar comentarios»: si quieres, se adjunta la vista que estás mirando.",
+					"En el sistema solar, abre la flecha junto a Ayuda (en un móvil, Más) y elige «Enviar comentarios»: si quieres, se adjunta la vista que estás mirando.",
 					"Elige de qué se trata, escribe unas palabras y pulsa «Enviar». El correo es opcional: ponlo solo si quieres una respuesta.",
 					"Con una cuenta de GitHub también puedes informar en GitHub o hablar con otros en GitHub Discussions; la página enlaza a ambos."
 				],
 				"simple": [
-					"Pulsa la flecha junto a Ayuda (en un móvil, el propio botón Ayuda) y luego «Dinos qué piensas».",
+					"Pulsa la flecha junto a Ayuda (en un móvil, Más) y luego «Dinos qué piensas».",
 					"Escribe qué se ha roto, o tu idea.",
 					"Pulsa «Enviar». No hace falta que pongas tu correo."
 				]
@@ -1303,31 +1306,31 @@
 		"hide": {
 			"action": "Ocultar o mostrar los controles",
 			"mouse": "El ojo tachado",
-			"touch": "El ojo tachado",
+			"touch": "Toca el cielo vacío; toca en cualquier sitio para recuperarlos",
 			"keys": "H"
 		},
 		"fullscreen": {
 			"action": "Activar o desactivar la pantalla completa",
 			"mouse": "Presentar → Pantalla completa",
-			"touch": "Presentar → Pantalla completa",
+			"touch": "Presentar → Pantalla completa (en un móvil, en Más)",
 			"keys": "F"
 		},
 		"projector": {
 			"action": "Texto grande para proyector",
 			"mouse": "Presentar → Texto grande para proyector",
-			"touch": "Presentar → Texto grande para proyector",
+			"touch": "Presentar → Texto grande para proyector (en un móvil, en Más)",
 			"keys": "P"
 		},
 		"contrast": {
 			"action": "Activar o desactivar el alto contraste",
 			"mouse": "Presentar → Alto contraste",
-			"touch": "Presentar → Alto contraste",
+			"touch": "Presentar → Alto contraste (en un móvil, en Más)",
 			"keys": "C"
 		},
 		"sound": {
 			"action": "Activar o desactivar el sonido (siempre apagado al abrir la aplicación)",
 			"mouse": "El botón del altavoz",
-			"touch": "El botón del altavoz (en un móvil: el altavoz y luego «Sonido activado»)",
+			"touch": "El botón del altavoz (en un móvil: Más → «Sonido activado»)",
 			"keys": "M"
 		},
 		"shortcuts": {

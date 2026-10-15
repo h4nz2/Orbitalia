@@ -286,6 +286,9 @@ test("share: the link is the view, copied or scanned", async ({
 	// the class code takes the panel's place, and nothing covers it (#50): a
 	// laptop, a phone, and a laptop and a full-HD projector in projector mode
 	const share = page.getByRole("button", { name: "Share", exact: true })
+	// on a phone, Share is under More (#59): "Link and QR code" is the same panel
+	const more = page.getByTestId("more-menu")
+	const morePanel = page.getByTestId("more-panel")
 	const large = page.getByRole("dialog", {
 		name: "Scan to open this view on a phone or tablet",
 	})
@@ -296,29 +299,38 @@ test("share: the link is the view, copied or scanned", async ({
 		{ width: 1920, height: 1080, present: true },
 	]) {
 		const where = `${width}x${height}${present ? ", presenting" : ""}`
+		const phone = width < 600
 		await page.setViewportSize({ width, height })
 		if (present) {
 			if ((await html(page).getAttribute("data-presenting")) === null)
 				await page.keyboard.press("p")
 			await expect(html(page)).toHaveAttribute("data-presenting", "")
 		}
-		if (!(await panel.isVisible())) await share.click()
-		await panel
-			.getByRole("button", { name: "Show the QR code to the class" })
-			.click()
+		if (phone) {
+			await more.click()
+			await morePanel.getByRole("button", { name: "Link and QR code" }).click()
+			await morePanel
+				.getByRole("button", { name: "Show the QR code to the class" })
+				.click()
+		} else {
+			if (!(await panel.isVisible())) await share.click()
+			await panel
+				.getByRole("button", { name: "Show the QR code to the class" })
+				.click()
+		}
 		await expect(large, where).toBeVisible()
-		await expect(panel, where).toBeHidden()
+		await expect(phone ? morePanel : panel, where).toBeHidden()
 		const qr = large.getByRole("img", {
 			name: "QR code of the link to this view",
 		})
 		await expect.poll(() => qrCovers(qr), { message: where }).toEqual([])
 		const box = await qr.boundingBox()
 		expect(box!.width, where).toBeGreaterThan(Math.min(400, 0.65 * width))
-		// closing the code comes back to Share, not to the panel
+		// closing the code comes back to Share (More on a phone), not to the panel
 		await page.keyboard.press("Escape")
 		await expect(large, where).toBeHidden()
-		await expect(panel, where).toBeHidden()
-		await expect(share, where).toBeFocused()
+		await expect(phone ? morePanel : panel, where).toBeHidden()
+		await expect(phone ? more : share, where).toBeFocused()
 	}
 	expect((await state(page)).focusId).toBe("jupiter")
 })

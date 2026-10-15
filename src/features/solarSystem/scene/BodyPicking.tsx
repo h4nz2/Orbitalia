@@ -8,7 +8,8 @@
  * - a tap on a body selects it and flies there (`setFocus`), or flies back to
  *   the close-up of the focus after the camera was dollied far out;
  * - a tap on empty space never moves the camera: at most it clears the
- *   selection (`emptyClickAction`, #47);
+ *   selection (`emptyClickAction`, #47); where it has no such job, a finger's
+ *   tap on a touch screen hides the controls (#59, `present/skyTap.ts`);
  * - while an Easy hunt clue is on screen (#52) small targets are larger
  *   (`EASY_TARGET_FACTOR`);
  * - hovering sets `hoverId` for the pointer cursor and the highlight ring,
@@ -31,6 +32,7 @@ import { useHuntStore } from "@/store/hunt"
 import { isBodyShown, useSimStore } from "@/store/sim"
 
 import { CAMERA_FAR } from "../camera/framing"
+import { hideOnSkyTap } from "../present/skyTap"
 import { isMoonDotShown } from "./Markers"
 import {
 	EASY_TARGET_FACTOR,
@@ -77,6 +79,11 @@ function BodyPicking() {
 	const heightPx = useThree((state) => state.size.height)
 	/** Whether the last ray into empty space passed close to a body. */
 	const nearMiss = useRef(false)
+	/**
+	 * Whether it passed close enough to have been meant for a body: near a dot,
+	 * or just off a big disc's plain edge. Clear of that, a tap is on the sky (#59).
+	 */
+	const nearBody = useRef(false)
 	const groupRef = useRef<Group>(null)
 
 	const raycast = useCallback(
@@ -109,14 +116,21 @@ function BodyPicking() {
 					),
 			})
 			if (pick === null) {
+				const reachPx = targetRadiusPx * NEAR_MISS_FACTOR
 				nearMiss.current = isNearAnyBody(
 					frame,
 					origin,
 					direction,
 					pxPerUnit,
-					targetRadiusPx * NEAR_MISS_FACTOR,
+					reachPx,
 					isShown,
 				)
+				nearBody.current =
+					nearMiss.current &&
+					isNearAnyBody(frame, origin, direction, pxPerUnit, reachPx, isShown, {
+						minRadiusPx: targetRadiusPx,
+						reachPx: targetRadiusPx,
+					})
 			}
 			const distance = pick?.distance ?? CAMERA_FAR
 			hits.push({
@@ -148,7 +162,10 @@ function BodyPicking() {
 		}
 		if (emptyClickAction(store, nearMiss.current) === "deselect") {
 			store.select(null)
+			return
 		}
+		// a tap on the sky with no other job: on a touch screen, the controls step aside (#59)
+		if (!nearBody.current) hideOnSkyTap(event.nativeEvent)
 	}
 
 	const onPointerMove = (event: ThreeEvent<PointerEvent>) => {

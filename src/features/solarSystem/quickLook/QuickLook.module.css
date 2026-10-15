@@ -172,7 +172,10 @@
 :global(html[data-quick-look-spot="present"])
 	:global([data-testid="present-menu"]),
 :global(html[data-quick-look-spot="help"])
-	:global([data-testid="help-button"]) {
+	:global([data-testid="help-button"]),
+/* on a phone, Present and Help are under More (#59): it is what glows */
+:global(html[data-quick-look-spot="present"]) :global([data-testid="more-menu"]),
+:global(html[data-quick-look-spot="help"]) :global([data-testid="more-menu"]) {
 	outline: 2px solid var(--mantine-color-orange-4);
 	outline-offset: 3px;
 	box-shadow: 0 0 0 6px rgba(255, 146, 43, 0.25);

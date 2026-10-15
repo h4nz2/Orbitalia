@@ -49,7 +49,14 @@
 }
 
 @media $phone {
+	/*
+	 * the name shares the one top row with More (#59): the follow mark and the
+	 * chevron keep to their own width, not the 44 px a finger-sized input would
+	 * give them, so the name itself has the room (the whole box is the target)
+	 */
 	.select {
 		width: 100%;
+		--input-left-section-width: 2rem;
+		--input-right-section-width: 1.75rem;
 	}
 }

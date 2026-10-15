@@ -77,14 +77,14 @@
 					"Chceš u textu zůstat? Stiskni mezerník, klepni na scénu nebo na tlačítko pauzy; znovu, a pokračuje se. Když je úvod pozastavený, můžeš otáčet pohledem a neskončí.",
 					"„Dál“ (nebo šipka doprava) přejde hned na další část; když je pozastavený, po jedné části.",
 					"Po prvním úvodu se aplikace jednou zeptá, jestli se chceš rychle podívat, co tu jde (viz „Rychlý pohled“).",
-					"Chceš ho vidět znovu? Otevři šipku vedle „Nápověda“ (na telefonu přímo „Nápověda“) a vyber „Přehrát úvod znovu“.",
+					"Chceš ho vidět znovu? Otevři šipku vedle „Nápověda“ (na telefonu „Více“) a vyber „Přehrát úvod znovu“.",
 					"„Ukázat, jak se pohybovat“ ve stejné nabídce vrátí nápovědu k tažení, přibližování a klikání."
 				],
 				"simple": [
 					"Přehraje se, když přijdeš poprvé.",
 					"Stiskni mezerník nebo ťukni na obrázek a úvod se zastaví. Znovu, a jede dál.",
 					"„Dál“ ukáže další část.",
-					"Chceš ho vidět znovu? Stiskni šipku vedle „Nápověda“ (na telefonu přímo „Nápověda“) a pak „Přehrát úvod znovu“."
+					"Chceš ho vidět znovu? Stiskni šipku vedle „Nápověda“ (na telefonu „Více“) a pak „Pustit začátek ještě jednou“."
 				]
 			}
 		},
@@ -105,12 +105,12 @@
 				"standard": [
 					"Při první návštěvě po úvodu odpověz „Ano, ukaž mi to“. Otázka přijde v tomto prohlížeči jen jednou, nikdy přes sdílený odkaz a nikdy při prezentaci.",
 					"Pokračuje sám; „Zpět“, „Dál“ a šipky jím krokují a „Přeskočit zbytek“ nebo × ho kdykoli ukončí, zpátky do klidného pohledu.",
-					"Chceš ho vidět znovu? Otevři šipku vedle „Nápověda“ (na telefonu přímo „Nápověda“) a vyber „Znovu rychlý pohled“."
+					"Chceš ho vidět znovu? Otevři šipku vedle „Nápověda“ (na telefonu „Více“) a vyber „Znovu rychlý pohled“."
 				],
 				"simple": [
 					"Po úvodu stiskni „Ano, ukaž mi to“.",
 					"Dívej se, nebo stiskni „Dál“.",
-					"Chceš ho vidět znovu? Stiskni šipku vedle „Nápověda“ (na telefonu přímo „Nápověda“)."
+					"Chceš ho vidět znovu? Stiskni šipku vedle „Nápověda“ (na telefonu „Více“)."
 				]
 			}
 		},
@@ -240,12 +240,14 @@
 					"Pořád na obrazovce: šipka zpět na předchozí pohled, tlačítko s domečkem (zpátky na celou soustavu), jméno světa, na který se díváš, s jeho kartou a časová lišta. Šipka na kartě rozbalí údaje, měsíce a příběhy.",
 					"V časové liště: spustit, pozastavit a datum; tlačítko s rychlostí (třeba 1x) otevře „Teď“, rychlosti a rotaci.",
 					"Prohlídky, Vrstvy (co se kreslí), Měřítko (jak velké a jak daleko) a Nástroje (rychlost světla, dnešní obloha, sondy, tvoje narozeniny, pátrací hra, vedle sebe, procházka sluneční soustavou, obrazový slovník a fotka) otevřou všechno ostatní. Otevřený je vždy jen jeden panel; × ho zavře.",
-					"Tlačítka pro prezentaci a nastavení: Prezentovat, Sdílet, přeškrtnuté oko, které všechno skryje (H to vrátí), zvuk, Nápověda a jazyk."
+					"Tlačítka pro prezentaci a nastavení: Prezentovat, Sdílet, přeškrtnuté oko, které všechno skryje (H to vrátí), zvuk, Nápověda a jazyk. Na telefonu jsou všechna pod Více.",
+					"Na telefonu a tabletu skryje ťuknutí na prázdnou oblohu všechno ovládání a další ťuknutí kamkoli ho vrátí; pohled se přitom nikdy nepohne."
 				],
 				"simple": [
 					"Šipka Zpět tě vrátí o krok zpět. Tlačítko s domečkem vedle ní tě vrátí ke všem planetám.",
 					"Stiskni Vrstvy, Měřítko nebo Nástroje a najdeš víc.",
-					"Stiskni přeškrtnuté oko a všechna tlačítka zmizí. Klávesou H se vrátí."
+					"Na telefonu nebo tabletu ťukni na prázdnou oblohu, nebo stiskni přeškrtnuté oko, a všechna tlačítka zmizí. Ťukni znovu nebo stiskni H a vrátí se.",
+					"Na telefonu najdeš pod Více sdílení, zvuk, nápovědu a svůj jazyk."
 				]
 			}
 		},
@@ -600,12 +602,12 @@
 			},
 			"how": {
 				"standard": [
-					"Po otevření aplikace je zvuk vždy vypnutý. Zapneš ho tlačítkem s reproduktorem nebo klávesou M. Na telefonu tlačítko s reproduktorem místo toho otevře nastavení zvuku: tam zapni „Zvuk zapnutý“.",
-					"Šipka vedle něj (na telefonu přímo tlačítko s reproduktorem) otevře hlasitost, „Zvuk v pozadí“, „Zvuky pohybu“ a „Poslechni si vesmír“.",
+					"Po otevření aplikace je zvuk vždy vypnutý. Zapneš ho tlačítkem s reproduktorem nebo klávesou M. Na telefonu otevři Více a zapni „Zvuk zapnutý“.",
+					"Šipka vedle něj (na telefonu „Nastavení zvuku“ pod Více) otevře hlasitost, „Zvuk v pozadí“, „Zvuky pohybu“ a „Poslechni si vesmír“.",
 					"Leť ke Slunci, k Zemi, k Jupiteru nebo k Saturnu a na kartičce pusť jeho nahrávku; text vysvětlí, co slyšíš."
 				],
 				"simple": [
-					"Stiskni tlačítko s reproduktorem. Na telefonu pak ještě zapni „Zvuk zapnutý“.",
+					"Stiskni tlačítko s reproduktorem. Na telefonu stiskni Více a pak „Zvuk zapnutý“.",
 					"Leť k Jupiteru.",
 					"Na kartičce stiskni přehrát a poslouchej."
 				]
@@ -626,11 +628,11 @@
 			},
 			"how": {
 				"standard": [
-					"Otevři nabídku jazyka (její tlačítko ukazuje CS, EN, …).",
+					"Otevři nabídku jazyka (její tlačítko ukazuje CS, EN, …; na telefonu je pod Více).",
 					"Vyber jazyk a náročnost textu; řídí se jimi každá stránka i každý odkaz."
 				],
 				"simple": [
-					"Klikni na tlačítko s CS.",
+					"Klikni na tlačítko s CS. Na telefonu nejdřív stiskni Více.",
 					"Vyber svůj jazyk a náročnost „Jednoduchá“."
 				]
 			}
@@ -1044,8 +1046,8 @@
 			"what": "Větší písmo, jména a tlačítka, čitelné i z poslední lavice.",
 			"why": "Obrazovka notebooku je na projektoru příliš malá na čtení; režim pro projektor to spraví jedinou klávesou.",
 			"how": [
-				"Otevři „Prezentovat“ a vyber „Velké písmo pro projektor“, nebo stiskni P.",
-				"Klávesou F zapneš celou obrazovku.",
+				"Otevři „Prezentovat“ (na telefonu Více) a vyber „Velké písmo pro projektor“, nebo stiskni P.",
+				"Stiskni F, nebo ve stejné nabídce vyber „Celá obrazovka“. iPhone v Safari celou obrazovku neumí: Více vysvětlí, jak přidat Orbitalii na plochu; odtud se otevře přes celou obrazovku.",
 				"Všechno ostatní funguje dál: klávesy, odkazy i ovládání."
 			]
 		},
@@ -1054,7 +1056,7 @@
 			"what": "Sytější barvy a obrysy pro vybledlé projektory a světlé místnosti.",
 			"why": "Bledý projektor za denního světla schová šedý text i slabé čáry; vysoký kontrast udrží všechno čitelné.",
 			"how": [
-				"Otevři „Prezentovat“ a vyber „Vysoký kontrast“, nebo stiskni C.",
+				"Otevři „Prezentovat“ (na telefonu Více) a vyber „Vysoký kontrast“, nebo stiskni C.",
 				"Zapne se i sám, když si počítač řekne o vyšší kontrast."
 			]
 		},
@@ -1073,8 +1075,9 @@
 			"what": "Z obrazovky zmizí všechna tlačítka a panely a zůstane jen vesmír.",
 			"why": "Na prohlížení, na snímky obrazovky i na projektor: třída vidí sluneční soustavu, ne rozhraní.",
 			"how": [
-				"Stiskni H nebo přeškrtnuté oko (je i v nabídce Prezentovat). Funguje to s prezentací i bez ní.",
-				"Dalším H, nebo pohybem myši a kliknutím na „Zobrazit ovládání“, ho vrátíš. Klávesy fungují, i když je ovládání skryté."
+				"Stiskni H nebo přeškrtnuté oko (je i v nabídce Prezentovat, na telefonu pod Více). Funguje to s prezentací i bez ní.",
+				"Na telefonu a tabletu ťukni na prázdnou oblohu. Když má to ťuknutí jiný úkol, třeba pustit vybraný svět, udělá místo toho ten.",
+				"Dalším H, nebo pohybem myši a kliknutím na „Zobrazit ovládání“, ho vrátíš; na telefonu a tabletu ťukni kamkoli. To ťuknutí ovládání jen vrátí: nevybere žádný svět a nepohne pohledem. Klávesy fungují, i když je ovládání skryté."
 			]
 		},
 		"prepareLesson": {
@@ -1092,7 +1095,7 @@
 			"what": "Odkaz přesně na to, co je na obrazovce, s tlačítkem pro kopírování a QR kódem tak velkým, že ho naskenují i v poslední lavici.",
 			"why": "Žáci si stejný pohled otevřou na svých tabletech a pokračují v objevování sami, bez opisování adresy.",
 			"how": [
-				"Otevři „Sdílet“.",
+				"Otevři „Sdílet“. Na telefonu otevři Více: „Sdílet“ pošle odkaz rovnou do chatu nebo e-mailu a „Odkaz a QR kód“ otevře tento panel.",
 				"Zkopíruj odkaz, nebo stiskni „Ukázat QR kód třídě“."
 			]
 		},
@@ -1199,12 +1202,12 @@
 			},
 			"how": {
 				"standard": [
-					"Ve sluneční soustavě otevři šipku vedle Nápovědy (na telefonu přímo Nápovědu) a vyber „Poslat zpětnou vazbu“: pokud chceš, přiloží se pohled, na který se díváš.",
+					"Ve sluneční soustavě otevři šipku vedle Nápovědy (na telefonu Více) a vyber „Poslat zpětnou vazbu“: pokud chceš, přiloží se pohled, na který se díváš.",
 					"Vyber, o co jde, napiš pár slov a stiskni „Odeslat“. E-mail je nepovinný: vyplň ho, jen pokud chceš odpověď.",
 					"S účtem na GitHubu to můžeš nahlásit i na GitHubu nebo diskutovat s ostatními na GitHub Discussions; stránka odkazuje na obojí."
 				],
 				"simple": [
-					"Stiskni šipku vedle Nápovědy (na telefonu přímo Nápovědu) a pak „Napiš nám, co si myslíš“.",
+					"Stiskni šipku vedle Nápovědy (na telefonu Více) a pak „Napiš nám, co si myslíš“.",
 					"Napiš, co se rozbilo, nebo svůj nápad.",
 					"Stiskni „Odeslat“. E-mail psát nemusíš."
 				]
@@ -1303,31 +1306,31 @@
 		"hide": {
 			"action": "Skrýt nebo zobrazit ovládání",
 			"mouse": "Přeškrtnuté oko",
-			"touch": "Přeškrtnuté oko",
+			"touch": "Ťuknout na prázdnou oblohu; ťuknutí kamkoli ho vrátí",
 			"keys": "H"
 		},
 		"fullscreen": {
 			"action": "Zapnout nebo vypnout celou obrazovku",
 			"mouse": "Prezentovat → Celá obrazovka",
-			"touch": "Prezentovat → Celá obrazovka",
+			"touch": "Prezentovat → Celá obrazovka (na telefonu pod Více)",
 			"keys": "F"
 		},
 		"projector": {
 			"action": "Velké písmo pro projektor",
 			"mouse": "Prezentovat → Velké písmo pro projektor",
-			"touch": "Prezentovat → Velké písmo pro projektor",
+			"touch": "Prezentovat → Velké písmo pro projektor (na telefonu pod Více)",
 			"keys": "P"
 		},
 		"contrast": {
 			"action": "Zapnout nebo vypnout vysoký kontrast",
 			"mouse": "Prezentovat → Vysoký kontrast",
-			"touch": "Prezentovat → Vysoký kontrast",
+			"touch": "Prezentovat → Vysoký kontrast (na telefonu pod Více)",
 			"keys": "C"
 		},
 		"sound": {
 			"action": "Zapnout nebo vypnout zvuk (po otevření aplikace je vždy vypnutý)",
 			"mouse": "Tlačítko s reproduktorem",
-			"touch": "Tlačítko s reproduktorem (na telefonu: reproduktor a pak „Zvuk zapnutý“)",
+			"touch": "Tlačítko s reproduktorem (na telefonu: Více → „Zvuk zapnutý“)",
 			"keys": "M"
 		},
 		"shortcuts": {

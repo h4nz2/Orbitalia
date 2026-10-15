@@ -6,7 +6,9 @@
  *
  * One spec over five screens, not whole-suite projects: every test drives a
  * software-WebGL scene. The scene shares are what the interface leaves today
- * (#42's measure); the phone's sheet (#60) is to raise them.
+ * (#42's measure): the phone's one row at the top (#59) raised them, and the
+ * phone's sheet (#60) is to raise them further. More itself is
+ * e2e/phoneTop.spec.ts.
  */
 import { readFileSync } from "node:fs"
 import path from "node:path"
@@ -49,8 +51,9 @@ const DEVICES: Device[] = [
 		height: 844,
 		touch: true,
 		phone: true,
-		scene: 0.64,
-		unfolded: 0.28,
+		// one row at the top (#59): 67 % and 31 % before
+		scene: 0.7,
+		unfolded: 0.33,
 	},
 	{
 		name: "a small phone",
@@ -58,8 +61,8 @@ const DEVICES: Device[] = [
 		height: 640,
 		touch: true,
 		phone: true,
-		scene: 0.54,
-		unfolded: 0.2,
+		scene: 0.62,
+		unfolded: 0.28,
 	},
 	{
 		name: "a phone on its side",
@@ -67,8 +70,8 @@ const DEVICES: Device[] = [
 		height: 390,
 		touch: true,
 		phone: true,
-		scene: 0.68,
-		unfolded: 0.48,
+		scene: 0.72,
+		unfolded: 0.52,
 	},
 	{
 		name: "an iPad",
@@ -225,16 +228,19 @@ test.describe("turning a phone", () => {
 		const corner = page.getByTestId("corner")
 		const box = async (locator: typeof where) => (await locator.boundingBox())!
 
-		// upright: the corner under the name, the card across the width
-		expect((await box(corner)).y).toBeGreaterThan(
-			(await box(where)).y + (await box(where)).height - 1,
-		)
+		// upright: one row at the top, the name with More beside it (#59)
+		await expect
+			.poll(async () => Math.abs((await box(corner)).y - (await box(where)).y))
+			.toBeLessThan(2)
+		await expect(page.getByTestId("more-menu")).toBeVisible()
+		await expect(page.getByTestId("present-menu")).toBeHidden()
 
-		// on its side: the name beside the corner, the time bar beside the entry points
+		// on its side: the name beside More, the time bar beside the entry points
 		await page.setViewportSize({ width: 844, height: 390 })
 		await expect
 			.poll(async () => Math.abs((await box(corner)).y - (await box(where)).y))
 			.toBeLessThan(2)
+		await expect(page.getByTestId("more-menu")).toBeVisible()
 		const time = await box(page.getByTestId("time-bar"))
 		const entries = await box(page.getByTestId("entry-bar"))
 		expect(
@@ -242,9 +248,11 @@ test.describe("turning a phone", () => {
 		).toBeLessThan(2)
 		await expectTidy(page, "on its side")
 
-		// a tablet's size: the laptop arrangement, with finger sizes
+		// a tablet's size: the laptop arrangement and its corner, with finger sizes
 		await page.setViewportSize({ width: 1024, height: 768 })
 		await expect.poll(() => matches(page, sizeClasses.phone)).toBe(false)
+		await expect(page.getByTestId("present-menu")).toBeVisible()
+		await expect(page.getByTestId("more-menu")).toHaveCount(0)
 		expect(await smallControls(page)).toEqual([])
 		await expectTidy(page, "1024x768")
 	})
