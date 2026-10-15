@@ -26,6 +26,7 @@ export function HelpButton() {
 				leftSection={<IconHelp size={16} aria-hidden />}
 				aria-label={t("help.button")}
 				data-testid="help-button"
+				className={classes.button}
 				classNames={{ section: classes.section }}
 			>
 				<span className={classes.label}>{t("help.button")}</span>

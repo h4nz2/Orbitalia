@@ -568,12 +568,12 @@
 			},
 			"hints": {
 				"simple": [
-					"Look at the top left for the button that says \"Sun in the middle\".",
+					"Look next to the name box for the button that says \"Sun in the middle\".",
 					"Choose \"From Earth: the planets\" and let time run.",
 					"Mars is a good one: choose \"From Earth: the planets\" and click Mars while its loop draws itself."
 				],
 				"standard": [
-					"Look at the top left for the button that says \"Sun-centred\": it changes the point of view.",
+					"Look next to the name box for the button that says \"Sun-centred\": it changes the point of view.",
 					"Choose \"Seen from Earth: the planets\" and let time run.",
 					"Mars is a good one: choose \"Seen from Earth: the planets\" and select Mars while its loop draws itself."
 				]

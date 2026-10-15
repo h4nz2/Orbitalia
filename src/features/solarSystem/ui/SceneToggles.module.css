@@ -1,5 +1,5 @@
 /* phones: eight switches (#23 added "Small bodies") in three rows, so the scale panel stays clear of the planets */
-@media (max-width: 599px) {
+@media $phone {
 	.layers.layers {
 		column-gap: 0.625rem;
 		row-gap: 0.5rem;

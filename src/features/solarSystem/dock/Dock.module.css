@@ -49,6 +49,23 @@
 	gap: 0.625rem;
 }
 
+/* fingers (#58): each switch's row is 44 px tall already, which is the room between them */
+@media $touch {
+	.layers > [role="group"] {
+		gap: 0;
+	}
+}
+
+/* phones (#58): two switches a line, so eight finger-sized rows leave the scene in view */
+@media $phone {
+	.layers > [role="group"] {
+		display: grid;
+		grid-template-columns: repeat(2, minmax(0, 1fr));
+		column-gap: 0.75rem;
+		align-items: stretch;
+	}
+}
+
 /* the light panel in the dock (its own module sets its width) */
 .lightPanel {
 	max-height: 100%;
@@ -67,12 +84,6 @@
 	flex: none;
 }
 
-/* the Tools menu scrolls on a short screen rather than running off its top */
-.toolsMenu {
-	max-height: calc(100dvh - 4.5rem);
-	overflow-y: auto;
-}
-
 /* the preset on screen, beside "Scale": the honest word in view while the panel is closed */
 .preset {
 	margin-inline-start: 0.375rem;
@@ -87,14 +98,20 @@
 }
 
 /* phones: the dock is a sheet from the bottom, and the entry points share the row evenly */
-@media (max-width: 599px) {
+@media $phone {
 	.panel {
 		width: 100%;
 	}
 
+	/* the preset's name needs the width of a laptop's entry row (a phone on its side, #58) */
+	.preset {
+		display: none;
+	}
+
 	.entries {
 		justify-content: space-between;
-		gap: 0;
+		/* a little room between neighbours, for fingers (#58) */
+		gap: 0.25rem;
 		min-width: 0;
 	}
 

@@ -809,7 +809,7 @@
 				"other": "Das ist {bodyId, select, sun {die Sonne} earth {die Erde} moon {der Mond} venus {die Venus} other {{name}}} – leider nicht die Lösung. Such weiter!",
 				"other@simple": "Das ist {bodyId, select, sun {die Sonne} earth {die Erde} moon {der Mond} venus {die Venus} other {{name}}}. Versuch eine andere Welt!",
 				"warm": "Warm! Die Lösung ist in der Nähe {bodyId, select, earth {der Erde} other {von {name}}}. Schau dich dort um.",
-				"almost": "Ja, {name}! Jetzt schau {frameId, select, earth {von der Erde} other {von {frame}}} aus zu: Wähle oben links den Blickwinkel."
+				"almost": "Ja, {name}! Jetzt schau {frameId, select, earth {von der Erde} other {von {frame}}} aus zu: Wähle neben dem Namensfeld den Blickwinkel."
 			},
 			"found": "Gefunden!",
 			"star": "Ein Stern für dich!",
@@ -1638,20 +1638,20 @@
 				"fly": {
 					"title": "Klick einen Planeten an, um hinzufliegen",
 					"title@simple": "Klick einen Planeten an",
-					"text": "Jeder Planet und jeder Mond: anklicken oder oben links seinen Namen eintippen. Unterwegs zählt die Anzeige unten die echte Entfernung und sagt, wie lange Licht, die schnellste Rakete und ein Auto bräuchten.",
-					"text@simple": "Klick einen Planeten an, und du fliegst hin. Das Feld unten sagt dir, wie weit er wirklich weg ist und wie lange eine Rakete bräuchte."
+					"text": "Jeder Planet und jeder Mond: anklicken oder seinen Namen ins Namensfeld eintippen. Unterwegs zählt eine Anzeige die echte Entfernung und sagt, wie lange Licht, die schnellste Rakete und ein Auto bräuchten.",
+					"text@simple": "Klick einen Planeten an, und du fliegst hin. Unterwegs sagt dir ein Feld, wie weit er wirklich weg ist und wie lange eine Rakete bräuchte."
 				},
 				"trueScale": {
 					"title": "Echter Maßstab",
 					"title@simple": "Die echte Größe",
-					"text": "Jetzt sind alle Größen und Abstände echt, und die Planeten verschwinden im leeren Raum: Die Punkte zeigen nur, wo sie sind. „Maßstab“ unten rechts wechselt zwischen der Wahrheit und Bildern, auf denen man etwas sieht. Dort schrumpfst du auch die Sonne auf einen Basketball und läufst das Sonnensystem auf dem Sportplatz ab.",
-					"text@simple": "So groß ist alles wirklich. Die Planeten sind so klein, dass du sie nicht siehst! Die Punkte zeigen, wo sie sind. Mit „Maßstab“ unten rechts schaltest du um. Dort kannst du auch an deiner Schule zu den Planeten laufen."
+					"text": "Jetzt sind alle Größen und Abstände echt, und die Planeten verschwinden im leeren Raum: Die Punkte zeigen nur, wo sie sind. Der Knopf „Maßstab“ wechselt zwischen der Wahrheit und Bildern, auf denen man etwas sieht. Dort schrumpfst du auch die Sonne auf einen Basketball und läufst das Sonnensystem auf dem Sportplatz ab.",
+					"text@simple": "So groß ist alles wirklich. Die Planeten sind so klein, dass du sie nicht siehst! Die Punkte zeigen, wo sie sind. Mit „Maßstab“ schaltest du um. Dort kannst du auch an deiner Schule zu den Planeten laufen."
 				},
 				"time": {
 					"title": "Reise durch die Zeit",
 					"title@simple": "Reise durch die Zeit",
-					"text": "Jede Sekunde vergeht ein Monat, so siehst du die Planeten um die Sonne laufen. Die Zeitleiste unten hält an, läuft rückwärts und wird schneller; ein Klick aufs Datum springt zu jedem Tag oder zu einer Finsternis.",
-					"text@simple": "Jetzt vergeht jede Sekunde ein ganzer Monat. Schau, wie die Planeten um die Sonne laufen! Die Knöpfe unten machen die Zeit schneller, langsamer oder lassen sie rückwärts laufen."
+					"text": "Jede Sekunde vergeht ein Monat, so siehst du die Planeten um die Sonne laufen. Die Zeitleiste hält an, läuft rückwärts und wird schneller; ein Klick aufs Datum springt zu jedem Tag oder zu einer Finsternis.",
+					"text@simple": "Jetzt vergeht jede Sekunde ein ganzer Monat. Schau, wie die Planeten um die Sonne laufen! Die Zeitknöpfe machen die Zeit schneller, langsamer oder lassen sie rückwärts laufen."
 				},
 				"compare": {
 					"title": "Welten vergleichen",
@@ -1668,14 +1668,14 @@
 				"teachers": {
 					"title": "Für Lehrkräfte: Präsentieren",
 					"title@simple": "Für Lehrkräfte",
-					"text": "„Präsentieren“ oben rechts macht die Schrift groß für den Beamer, bietet hohen Kontrast und Tasten für einen Presenter und blendet mit H die Bedienelemente aus. „Teilen“ gibt der Klasse einen Link oder QR-Code zu genau dieser Ansicht.",
-					"text@simple": "Lehrkräfte: Drück oben rechts auf „Präsentieren“, um das Sonnensystem einer Klasse auf einem großen Bildschirm zu zeigen."
+					"text": "„Präsentieren“ macht die Schrift groß für den Beamer, bietet hohen Kontrast und Tasten für einen Presenter und blendet mit H die Bedienelemente aus. „Teilen“ gibt der Klasse einen Link oder QR-Code zu genau dieser Ansicht.",
+					"text@simple": "Lehrkräfte: Drück auf „Präsentieren“, um das Sonnensystem einer Klasse auf einem großen Bildschirm zu zeigen."
 				},
 				"more": {
 					"title": "Es gibt noch mehr",
 					"title@simple": "Es gibt noch mehr",
-					"text": "Jede Funktion, wie man sie benutzt, mit einem Link zum Ausprobieren, steht auf der Hilfeseite: der Knopf „Hilfe“ oben rechts. Stimmt etwas nicht, oder hast du eine Idee? „Feedback senden“ unter dem Pfeil neben „Hilfe“ erreicht die Leute, die Orbitalia machen. Viel Spaß beim Entdecken!",
-					"text@simple": "Es gibt noch viel mehr zu entdecken. Der Knopf „Hilfe“ oben rechts erklärt dir alles. Ist etwas kaputt, oder hast du eine Idee? Sag es uns mit „Sag uns deine Meinung“ neben „Hilfe“. Viel Spaß!"
+					"text": "Jede Funktion, wie man sie benutzt, mit einem Link zum Ausprobieren, steht auf der Hilfeseite: Drück auf „Hilfe“. Stimmt etwas nicht, oder hast du eine Idee? „Feedback senden“ unter dem Pfeil neben „Hilfe“ (auf dem Handy unter „Hilfe“ selbst) erreicht die Leute, die Orbitalia machen. Viel Spaß beim Entdecken!",
+					"text@simple": "Es gibt noch viel mehr zu entdecken. Der Knopf „Hilfe“ erklärt dir alles. Ist etwas kaputt, oder hast du eine Idee? Sag es uns mit „Sag uns deine Meinung“ neben „Hilfe“ (auf dem Handy unter „Hilfe“). Viel Spaß!"
 				}
 			}
 		}
@@ -2002,7 +2002,7 @@
 			"code": "Der Code auf GitHub",
 			"discussions": "GitHub Discussions"
 		},
-		"readingLevel": "Du liest die Version „{level}“. Sprache und Lesestufe änderst du im Menü oben rechts.",
+		"readingLevel": "Du liest die Version „{level}“. Sprache und Lesestufe änderst du mit dem Sprachknopf (dort steht DE).",
 		"shortcutsLink": "Alle Funktionen und wie du sie nutzt: die Hilfeseite öffnen"
 	},
 	"feedback": {

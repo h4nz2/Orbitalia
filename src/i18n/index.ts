@@ -20,6 +20,7 @@ export { createI18n, type I18n, type I18nOptions } from "./core"
 export { useI18n, type I18nContextValue } from "./context"
 export {
 	formatDateTimeUTC,
+	formatDateTimeUTCParts,
 	formatNumber,
 	formatQuantity,
 	formatSignificant,

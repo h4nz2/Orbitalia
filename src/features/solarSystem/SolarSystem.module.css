@@ -32,7 +32,16 @@
 		"info . dock"
 		"bottom bottom bottom";
 	gap: 0.75rem;
-	padding: 0.75rem;
+	/*
+	 * Clear of the notch, the rounded corners and the home indicator (#58),
+	 * upright or on its side; the scene itself runs edge to edge under them
+	 * (`viewport-fit=cover` in index.html).
+	 */
+	--hud-pad: 0.75rem;
+	padding: max(var(--hud-pad), env(safe-area-inset-top))
+		max(var(--hud-pad), env(safe-area-inset-right))
+		max(var(--hud-pad), env(safe-area-inset-bottom))
+		max(var(--hud-pad), env(safe-area-inset-left));
 	pointer-events: none;
 }
 
@@ -97,6 +106,14 @@
 	padding: 0.25rem;
 	min-width: 0;
 	max-width: 100%;
+}
+
+/* a split button (Help and its chevron) never wraps apart when the corner takes two lines (#58) */
+.split {
+	display: inline-flex;
+	align-items: center;
+	gap: 4px; /* the teacher bar's own gap */
+	flex-shrink: 0;
 }
 
 /* the light's running clock and its stop button (#27, #38), while a flash is out */
@@ -204,7 +221,7 @@
 }
 
 /* phones: one column; the scene keeps the middle, the panels come up from the bottom */
-@media (max-width: 599px) {
+@media $phone {
 	.free {
 		display: block;
 		grid-row: 4;
@@ -224,7 +241,7 @@
 			"info"
 			"bottom";
 		gap: 0.5rem;
-		padding: 0.5rem;
+		--hud-pad: 0.5rem;
 	}
 
 	.pickerStack {
@@ -242,6 +259,12 @@
 		align-items: stretch;
 		max-height: 55dvh;
 		--light-panel-body-max: 30dvh;
+	}
+
+	/* a card or panel taller than its room (a tour stop on a phone on its side, #58) scrolls, it never spills */
+	.dock > * {
+		overflow-y: auto;
+		overscroll-behavior: contain;
 	}
 
 	.info {
@@ -264,6 +287,65 @@
 
 	.bottom > nav {
 		width: 100%;
+	}
+
+	/*
+	 * A phone on its side (#58) keeps the phone arrangement (one panel at a
+	 * time, the card making way), with its rows paired up so the scene keeps
+	 * the middle of a 390 px high screen: the name beside the corner, the time
+	 * bar beside the entry points. The card rises at the left and a panel at
+	 * the right, as on a laptop, rather than across the width over the body
+	 * in the centre. A layout of its own for this is out of scope (#58).
+	 */
+	@media (orientation: landscape) {
+		.hud {
+			grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
+			grid-template-rows: auto minmax(0, 1fr) auto;
+			grid-template-areas:
+				"picker centre corner"
+				"info . dock"
+				"bottom bottom bottom";
+		}
+
+		.pickerStack {
+			justify-self: start;
+			align-items: flex-start;
+		}
+
+		.centre {
+			justify-self: center;
+		}
+
+		.info {
+			justify-self: start;
+			align-self: end;
+			max-width: min(22rem, 100%);
+			max-height: 100%;
+		}
+
+		.dock {
+			justify-self: end;
+			align-items: flex-end;
+			max-height: 100%;
+		}
+
+		.dock > * {
+			width: min(24rem, 100%);
+		}
+
+		.time {
+			width: auto;
+		}
+
+		.bottom > nav {
+			width: auto;
+		}
+
+		/* the open part is the middle row, between the name and the time bar (#61) */
+		.free {
+			grid-row: 2;
+			grid-column: 1 / -1;
+		}
 	}
 }
 
@@ -342,7 +424,7 @@
 	}
 }
 
-@media (max-width: 599px) {
+@media $phone {
 	.intro {
 		grid-row: 4;
 	}
@@ -361,6 +443,14 @@
 
 	:global(html[data-intro="hints"]) .intro {
 		grid-row: 6;
+	}
+
+	/* on its side (#58) the rows are paired: the captions and hints sit in the open middle row */
+	@media (orientation: landscape) {
+		.intro,
+		:global(html[data-intro="hints"]) .intro {
+			grid-row: 2;
+		}
 	}
 }
 

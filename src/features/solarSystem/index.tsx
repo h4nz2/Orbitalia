@@ -137,8 +137,11 @@ const SolarSystem = () => {
 				>
 					<TeacherBar>
 						<SoundControl />
-						<HelpButton />
-						<IntroMenu />
+						{/* Help and its chevron wrap together (#58) */}
+						<span className={classes.split}>
+							<HelpButton />
+							<IntroMenu />
+						</span>
 						<LanguageMenu />
 					</TeacherBar>
 				</div>

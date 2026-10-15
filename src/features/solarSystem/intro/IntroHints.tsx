@@ -6,7 +6,6 @@
  * words ("Pinch to zoom", "Tap a planet").
  */
 import { useEffect, useState } from "react"
-import { useMediaQuery } from "@mantine/hooks"
 import {
 	IconHandClick,
 	IconHandFinger,
@@ -15,6 +14,7 @@ import {
 	IconZoomIn,
 } from "@tabler/icons-react"
 
+import { useTouch } from "@/hooks/useSizeClass"
 import { useI18n } from "@/i18n"
 
 import { hideHints, useIntroStore } from "./intro"
@@ -30,7 +30,7 @@ const FADE_MS = 700
 
 const Hints = () => {
 	const { t } = useI18n()
-	const touch = useMediaQuery("(pointer: coarse)") ?? false
+	const touch = useTouch()
 	const [leaving, setLeaving] = useState(false)
 
 	useEffect(() => {

@@ -1,16 +1,13 @@
 import { SegmentedControl, Select } from "@mantine/core"
-import { useMediaQuery } from "@mantine/hooks"
 import { IconRotate360 } from "@tabler/icons-react"
 
+import { usePhone } from "@/hooks/useSizeClass"
 import { useI18n } from "@/i18n"
 import { Hint } from "@/primitives/hint"
 import { MIN_SECONDS_PER_EARTH_TURN, SPIN_MODES, isSpinMode } from "@/sim"
 import { useSpinStore } from "@/store/spin"
 
 import classes from "./SpinControl.module.css"
-
-/** Below this width the four modes become a Select, like the warp presets. */
-const COMPACT_QUERY = "(max-width: 599px)"
 
 /**
  * How fast the bodies spin, independently of the time warp (issue #13;
@@ -38,9 +35,8 @@ export const SpinNotice = () => {
 const SpinControl = ({ notice = true }: SpinControlProps) => {
 	const mode = useSpinStore((state) => state.mode)
 	const setMode = useSpinStore((state) => state.setMode)
-	const compact = useMediaQuery(COMPACT_QUERY, false, {
-		getInitialValueInEffect: false,
-	})
+	// on a phone the four modes become a Select, like the warp presets
+	const compact = usePhone()
 	const { t } = useI18n()
 
 	const items = SPIN_MODES.map((value) => ({

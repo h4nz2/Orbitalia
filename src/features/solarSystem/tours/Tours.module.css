@@ -78,6 +78,8 @@
 
 .link {
 	align-self: flex-start;
+	/* a short card (a phone on its side, #58) scrolls its text, it never squeezes the link's two lines */
+	flex-shrink: 0;
 	max-width: 100%;
 	height: auto;
 	min-height: var(--button-height);
@@ -145,6 +147,26 @@
 	background: var(--mantine-color-orange-3);
 }
 
+/* fingers (#58): 44 px stops with the same dot in the middle; a long tour takes two lines */
+@media $touch {
+	.dots {
+		gap: 0;
+	}
+
+	.dot {
+		width: var(--touch-target);
+		height: var(--touch-target);
+	}
+
+	.dot::after {
+		inset: calc(50% - 0.25rem);
+	}
+
+	.dot[data-current]::after {
+		inset: calc(50% - 0.4rem);
+	}
+}
+
 .dot:focus-visible {
 	outline: 2px solid var(--mantine-color-orange-6);
 	outline-offset: -2px;
@@ -168,7 +190,7 @@
 	flex: none;
 }
 
-@media (max-width: 599px) {
+@media $phone {
 	.card {
 		width: auto;
 	}

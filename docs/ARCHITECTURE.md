@@ -12,6 +12,7 @@ it, and if it must change, change it in the same change set.
   zod-validated and invalid values fall back to defaults (`/solar_dictionary?entity=<0..8>&texture=<base|topo|specular|clouds>&section=<madeOf|weather|names>`).
 - 3D: `three`, `@react-three/fiber` 9, `@react-three/drei` 10, `@react-three/postprocessing` 3.
 - UI: Mantine 9 + CSS modules (no emotion, `createStyles` or `sx`), `@tabler/icons-react`. Animation: `gsap`. State: `zustand`.
+  CSS modules get `$phone` and `$touch` (`@media $phone { … }`) from `postcss.config.js` (postcss-simple-vars, #58).
 - Data: static JSON validated with zod at build time. No GraphQL, no database; the one endpoint is the feedback
   form's (`worker/`).
 - Tests: Vitest (`src/**/*.test.ts`, `scripts/**/*.test.ts`); Playwright smoke tests (`e2e/`, against `vite preview`).
@@ -42,7 +43,8 @@ scripts/gen-planet-textures.ts  data/planet-textures.json -> public/assets/textu
 src/routes/                  file routes; src/routeTree.gen.ts is generated and committed
 worker/                      the Cloudflare Worker for /api/* (feedback.ts: POST /api/feedback, tested in feedback.test.ts)
 .github/ISSUE_TEMPLATE/      the GitHub issue forms (bug, idea) and the chooser's links (Discussions, the app's form)
-src/providers/               Mantine theme, I18nProvider, GSAP transition context, Layout
+src/providers/               Mantine theme (touch.css: finger sizes, fit.css: dropdowns that fit, #58), I18nProvider, GSAP transition context, Layout
+src/utils/sizeClasses.*      the phone and touch size classes (#58), read by CSS (postcss.config.js) and code (hooks/useSizeClass.ts)
 src/i18n/                    languages and reading levels (see i18n); body content in bodies.ts ("@/i18n/bodies")
 src/locales/                 translation resources: config.json, <locale>/ui.json, <locale>/bodies.json
 src/data/                    bodies.json, belts.json (#23), credits.json (image sources + licences, #37 and planet textures), schema.ts (zod), index.ts (lookups), solarDictionary.ts (dictionary adapter),
@@ -76,6 +78,11 @@ public/assets/sounds/        the real space recordings (#32) and their CREDITS.m
   (Tours, Layers, Scale, Tools, the time popover, the Present menu, a body's card), never as a new permanent panel on
   the scene. A tool that needs a panel registers in the Tools menu (`dock/ToolsMenu.tsx`) and renders into the dock,
   one panel at a time (`dock/exclusive.ts`). Its help entry says where it lives.
+- **Phones and fingers (#58, see "Size classes, finger sizes and screen edges").** The arrangement follows the
+  screen's size: `@media $phone` (narrower than 600 px or lower than 480 px) and `@media $touch` (the primary
+  pointer is a finger), defined once in `src/utils/sizeClasses.json`; code uses `usePhone`/`useTouch`. Under `$touch`
+  every control is at least 44×44 px. A new control says where it lives on a phone (behind the same entry points,
+  nothing new permanently on screen), and help texts name the control, never a screen corner.
 - Every toggle, and every choice that changes the scene and is not self-explanatory, has a hint: wrap it in
   `<Hint text={t("…hint.x")}>` (see Hints). No `title=` attributes and no Mantine `Tooltip` for this.
 - Nobody commits; the orchestrator commits at the end of each phase.
@@ -1518,7 +1525,8 @@ the URL, so "save the lesson" is the link itself (plus `paused`, `present`, `con
 While someone looks around, space owns the screen. At 1366x768 with a planet focused at least 80 % of the scene is
 unobstructed (`e2e/quietHud.spec.ts` measures it). Every control is at most two actions away.
 
-- **Always on screen** (`SolarSystem.module.css`, a grid over the canvas):
+- **Always on screen** (`SolarSystem.module.css`, a grid over the canvas; this is the laptop and tablet arrangement,
+  phones stack the same pieces, see "Size classes, finger sizes and screen edges"):
   - top left, "where": Back (#46, one step back), the overview button (the way out), the focus picker (the name;
     a followed spacecraft's name with the follow mark, #57) and the point of view (#31);
     under them the frame badge (#31), the light's running clock while a flash is out (#27/#38) and the body card;
@@ -1548,7 +1556,52 @@ unobstructed (`e2e/quietHud.spec.ts` measures it). Every control is at most two 
   focus brings a panel back at once; nothing hides, there is no idle timer, and reduced motion drops the fade.
 - **The rule for new features** (also in Conventions and `CLAUDE.md`): put the control behind an existing entry
   point; a panel goes into the dock through Tools; never a new permanent panel. Update the help entry's "how" with
-  where it lives.
+  where it lives, naming the control or entry point ("under Tools"), never a screen corner. On a phone it lives behind
+  the same entry points and is finger-sized under `$touch` (#58).
+
+### Size classes, finger sizes and screen edges (#58)
+
+The arrangement follows the screen's size, never the kind of device (Android's window size classes; Apple keeps
+the same features at every size and shows fewer at once). Laptops with a mouse look exactly as before.
+
+- **One definition** (`src/utils/sizeClasses.json`): `phone` = `(max-width: 599px), (max-height: 479px)`, an upright
+  phone and a phone on its side (a compact width or height); `touch` = `(pointer: coarse)`, the _primary_ pointer is
+  a finger (phones, tablets; a touchscreen laptop with a mouse stays fine). CSS modules write `@media $phone { … }`
+  and `@media $touch { … }` (postcss-simple-vars; `postcss.config.js` reads the JSON); code uses `usePhone()` /
+  `useTouch()` (`@/hooks/useSizeClass`, live on rotation, resizing and split screen) or `isPhone()` / `isTouch()`
+  (`@/utils/sizeClasses`). Do not write `max-width: 599px` again. Breakpoints that say when one row stops fitting
+  (719 px for the speed presets, 899, 1099, 1199 px, the walk's and the help table's 40em) are not size classes and stay.
+- **The phone arrangement** (until #59 and #60 give phones their own): one column, top to bottom the "where" row,
+  the corner, the scene, the dock or the card (one at a time), the time bar (the date over the time, so it keeps to
+  one row) and the entry points sharing the width. A phone on its side keeps it with the rows paired: the name beside
+  the corner, the time bar beside the entry points, the card rising at the left and a panel at the right, so the body
+  in the centre stays in view. On a phone the split buttons are one button each, by CSS alone: the speaker opens the
+  sound settings, whose first switch turns sound on; Help opens the Help menu, whose first item is the help page.
+- **Finger sizes** (`src/providers/touch.css`, loaded by the Mantine provider): under `$touch` every control is at
+  least 44×44 px (`--touch-target`; WCAG 2.5.5, Apple). The sheet lifts Mantine's size scales (ActionIcon, Button,
+  CloseButton, inputs, SegmentedControl, Switch, Checkbox, Slider, Menu and Combobox items, the date pickers), so a
+  Mantine control needs nothing. A control a module styles itself (the tour's and the quick look's dots, the moons on
+  the card, chips, links that stand alone) adds its own `@media $touch` rule with `var(--touch-target)`, drawing the
+  same small dot in the middle of a 44 px target where the look is a dot. Exempt: links inside running text (WCAG's
+  inline exception) and the scene's labels and markers (they pick with generous radii, #16, #20). Tablets keep the
+  laptop arrangement with these sizes; where the corner's half of the top row is too narrow (an upright iPad) it
+  wraps onto a second line, a split button wrapping as one (`.split`).
+- **Screen edges**: `index.html` keeps `viewport-fit=cover`, so the scene runs under the notch, the rounded corners
+  and the home indicator. The HUD's padding (`--hud-pad`), the other pages' padding and fixed bars (`CornerBar`, the
+  dictionary's Back and columns, "Show the controls") and full-screen dialogs use
+  `max(<padding>, env(safe-area-inset-*))`. Browser emulation reports every inset as 0: only a real phone shows it.
+- **Everything fits the screen** (`src/providers/fit.css`, `Styles.tsx`): every Mantine Popover and Menu measures
+  the room beside its button (Floating UI's `size` middleware as a theme default, `--dropdown-max-height`) and
+  scrolls when it is taller; a popover with an arrow sets `data-own-scroll` and scrolls inside, keeping its arrow.
+- **Help texts name the control, not the corner** ("Press Layers", "the house button", "the arrow next to Help (on
+  a phone, Help itself)"), so one text fits every arrangement; `src/i18n/screenCorners.test.ts` fails on a screen
+  corner in any locale ("top right", "unten rechts", "en haut à droite", "vpravo nahoře", …).
+- **Tests**: `e2e/devices.spec.ts` on a 390×844 and a 360×640 phone, a phone on its side (844×390) and an iPad
+  (768×1024), all with touch, and a 1366×768 laptop with a mouse: the pointer and the size class match the device,
+  the unobstructed share (#42) with Earth's card small and unfolded, no panel over another or off the screen, the
+  Layers switches all reachable, every control at least 44 px on the touch screens (`e2e/support/touch.ts`
+  `smallControls`) and the laptop still dense, the arrangement switching live as a phone turns, and every other page
+  at phone and iPad size. One spec, not whole-suite projects: every test drives a software-WebGL scene.
 
 ### The way in and the way back (#45)
 
@@ -1867,6 +1920,7 @@ entry, in every locale and reading level, in the same change.
   Orbitalia" section (`help.about.*` in `ui.json`), before the credits.
 - **On the scene** the Help button opens the page in one click; its chevron (#30's `IntroMenu`) holds the page again,
   "Play the opening again" and "Show how to move around". `?intro=play` replays the opening (the `opening` entry).
+  On a phone (#58) the two are one button, the menu, whose first item is the page.
 - `?light=flash|delay|beyond` on `/solar_system` (`light/LightLink.tsx`) opens the light panel on that tab, `flash`
   with a flash already sent from the Sun: an instruction only, dropped from the URL like `birthday`.
   `?craft=<spacecraft id>` (`spacecraft/CraftLink.tsx`) selects a spacecraft (#35) and flies to it once its
@@ -1961,7 +2015,8 @@ rule decides the defaults: **off until asked, never a surprise**.
   recordings bus). Words in `solarSystem.sound.recording.<id>.{title, what}` at every level; each `what` starts
   by saying it is not sound, and the settings popover adds why space is silent (`solarSystem.sound.honest`).
 - **UI**: `SoundControl` (beside the language button: a speaker that toggles, `aria-pressed`, crossed out and grey
-  while off, and a chevron popover with the master switch, volume slider, the two layers and all recordings);
+  while off, and a chevron popover with the master switch, volume slider, the two layers and all recordings; on a
+  phone, #58, the two are one button showing the speaker, which opens the popover);
   `BodyRecording` in the body card under the facts (Listen/Stop, the explanation and the credit with the licence
   linked to its source, always visible so nothing depends on hearing it).
 

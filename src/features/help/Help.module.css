@@ -13,7 +13,10 @@
 	display: flex;
 	flex-direction: column;
 	gap: 2rem;
-	padding: 0.75rem 1rem 2rem;
+	/* clear of the notch, the rounded corners and the home indicator (#58) */
+	padding: max(0.75rem, env(safe-area-inset-top))
+		max(1rem, env(safe-area-inset-right)) max(2rem, env(safe-area-inset-bottom))
+		max(1rem, env(safe-area-inset-left));
 	background: #050609;
 	color: var(--mantine-color-gray-2);
 }
@@ -89,6 +92,22 @@
 .chip:focus-visible {
 	border-color: var(--mantine-color-orange-6);
 	color: var(--mantine-color-orange-3);
+}
+
+/* fingers (#58): the contents' chips and the credits' links are 44 px targets */
+@media $touch {
+	.chip {
+		display: inline-flex;
+		align-items: center;
+		min-height: var(--touch-target);
+	}
+
+	a.creditName {
+		display: flex;
+		align-items: center;
+		flex-wrap: wrap;
+		min-height: var(--touch-target);
+	}
 }
 
 .section {

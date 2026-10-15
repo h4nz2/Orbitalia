@@ -3,7 +3,9 @@
  * only deliberately from here; the movement hints can be called back too.
  * Since #43 it is the chevron beside the Help button (a split button): the
  * button opens the help page in one click, the chevron offers the rest, last
- * "Send feedback" with the view on screen offered to attach.
+ * "Send feedback" with the view on screen offered to attach. On a phone (#58)
+ * the chevron is the only Help button: it shows the help icon and its menu
+ * starts with the help page.
  */
 import { ActionIcon, Menu } from "@mantine/core"
 import { Link, useRouter } from "@tanstack/react-router"
@@ -11,6 +13,7 @@ import {
 	IconBook,
 	IconChevronDown,
 	IconHandClick,
+	IconHelp,
 	IconMessageCircle,
 	IconPlayerPlay,
 	IconSparkles,
@@ -21,6 +24,8 @@ import { Hint } from "@/primitives/hint"
 
 import { startQuickLook } from "../quickLook/quickLook"
 import { showHints, startIntro } from "./intro"
+
+import classes from "./Intro.module.css"
 
 const IntroMenu = () => {
 	const { t, readingLevel } = useI18n()
@@ -45,7 +50,8 @@ const IntroMenu = () => {
 						aria-label={label}
 						data-testid="intro-menu"
 					>
-						<IconChevronDown size={16} />
+						<IconChevronDown size={16} className={classes.menuChevron} />
+						<IconHelp size={18} aria-hidden className={classes.menuHelp} />
 					</ActionIcon>
 				</Menu.Target>
 				<Menu.Dropdown>

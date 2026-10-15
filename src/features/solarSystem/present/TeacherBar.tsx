@@ -43,11 +43,13 @@ export function HideButton() {
  * The top-right corner of the solar system (#29, #42): Present (the teacher's
  * menu, easy to find on purpose), Share, hide the controls, then whatever is
  * passed (sound, help and the language menu, which sit in the same corner on
- * every page).
+ * every page). Where its half of the top row is too narrow for finger-sized
+ * buttons (an upright tablet, #58) it wraps onto a second line rather than
+ * squeezing the name of the world in view.
  */
 export function TeacherBar({ children }: { children?: ReactNode }) {
 	return (
-		<Group gap={4} justify="flex-end" wrap="nowrap">
+		<Group gap={4} justify="flex-end" wrap="wrap">
 			<PresentMenu />
 			<ShareMenu />
 			<HideButton />

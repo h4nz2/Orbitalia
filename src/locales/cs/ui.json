@@ -809,7 +809,7 @@
 				"other": "To je {name}. Tohle to není – pátrej dál!",
 				"other@simple": "To je {name}. Zkus jiný!",
 				"warm": "Přihořívá! Odpověď je blízko {bodyId, select, sun {Slunce} mercury {Merkuru} venus {Venuše} earth {Země} mars {Marsu} jupiter {Jupiteru} saturn {Saturnu} uranus {Uranu} neptune {Neptunu} moon {Měsíce} other {měsíce {name}}}. Rozhlédni se kolem.",
-				"almost": "Ano, {name}! Teď to sleduj {frameId, select, sun {ze Slunce} mercury {z Merkuru} venus {z Venuše} earth {ze Země} mars {z Marsu} jupiter {z Jupiteru} saturn {ze Saturnu} uranus {z Uranu} neptune {z Neptunu} moon {z Měsíce} other {z měsíce {frame}}}: úhel pohledu vyber vlevo nahoře."
+				"almost": "Ano, {name}! Teď to sleduj {frameId, select, sun {ze Slunce} mercury {z Merkuru} venus {z Venuše} earth {ze Země} mars {z Marsu} jupiter {z Jupiteru} saturn {ze Saturnu} uranus {z Uranu} neptune {z Neptunu} moon {z Měsíce} other {z měsíce {frame}}}: úhel pohledu vyber vedle pole se jménem."
 			},
 			"found": "Nalezeno!",
 			"star": "Hvězdička pro tebe!",
@@ -1638,20 +1638,20 @@
 				"fly": {
 					"title": "Klikni na planetu a leť k ní",
 					"title@simple": "Klikni na planetu",
-					"text": "Kterákoli planeta nebo měsíc: klikni na ni, nebo napiš její jméno do pole vlevo nahoře. Cestou ukazatel dole počítá skutečnou vzdálenost a jak dlouho by letělo světlo, nejrychlejší raketa a auto.",
-					"text@simple": "Klikni na planetu a poletíš k ní. Pole dole ti řekne, jak daleko opravdu je a jak dlouho by letěla raketa."
+					"text": "Kterákoli planeta nebo měsíc: klikni na ni, nebo napiš její jméno do pole se jménem. Cestou ukazatel počítá skutečnou vzdálenost a jak dlouho by letělo světlo, nejrychlejší raketa a auto.",
+					"text@simple": "Klikni na planetu a poletíš k ní. Cestou ti okénko řekne, jak daleko opravdu je a jak dlouho by letěla raketa."
 				},
 				"trueScale": {
 					"title": "Skutečné měřítko",
 					"title@simple": "Skutečná velikost",
-					"text": "Teď jsou všechny velikosti a vzdálenosti skutečné a planety mizí v prázdném prostoru: tečky jen ukazují, kde jsou. Měřítko vpravo dole přepíná mezi pravdou a obrázky, na kterých je něco vidět. Najdeš tam i to, jak zmenšit Slunce na basketbalový míč a projít sluneční soustavu na školním hřišti.",
-					"text@simple": "Takhle velké je všechno doopravdy. Planety jsou tak malé, že je nevidíš! Tečky ukazují, kde jsou. Měřítkem vpravo dole to přepneš. Tam můžeš taky dojít k planetám u vaší školy."
+					"text": "Teď jsou všechny velikosti a vzdálenosti skutečné a planety mizí v prázdném prostoru: tečky jen ukazují, kde jsou. Tlačítko Měřítko přepíná mezi pravdou a obrázky, na kterých je něco vidět. Najdeš tam i to, jak zmenšit Slunce na basketbalový míč a projít sluneční soustavu na školním hřišti.",
+					"text@simple": "Takhle velké je všechno doopravdy. Planety jsou tak malé, že je nevidíš! Tečky ukazují, kde jsou. Tlačítkem Měřítko to přepneš. Tam můžeš taky dojít k planetám u vaší školy."
 				},
 				"time": {
 					"title": "Cestuj časem",
 					"title@simple": "Cestuj časem",
-					"text": "Každou sekundu uběhne měsíc, takže vidíš, jak planety obíhají Slunce. Časová lišta dole čas pozastaví, pustí pozpátku a zrychlí; kliknutím na datum skočíš na kterýkoli den nebo k zatmění.",
-					"text@simple": "Teď uběhne každou sekundu celý měsíc. Podívej, jak planety obíhají Slunce! Tlačítka dole čas zrychlí, zpomalí nebo pustí pozpátku."
+					"text": "Každou sekundu uběhne měsíc, takže vidíš, jak planety obíhají Slunce. Časová lišta čas pozastaví, pustí pozpátku a zrychlí; kliknutím na datum skočíš na kterýkoli den nebo k zatmění.",
+					"text@simple": "Teď uběhne každou sekundu celý měsíc. Podívej, jak planety obíhají Slunce! Čas zrychlíš, zpomalíš nebo pustíš pozpátku tlačítky času."
 				},
 				"compare": {
 					"title": "Porovnej světy",
@@ -1668,14 +1668,14 @@
 				"teachers": {
 					"title": "Pro učitele: Prezentovat",
 					"title@simple": "Pro učitele",
-					"text": "Prezentovat vpravo nahoře zvětší písmo pro projektor, přidá vysoký kontrast a klávesy pro prezentační ovladač a klávesou H skryje ovládání. Sdílet dá třídě odkaz nebo QR kód přesně na tento pohled.",
-					"text@simple": "Učitelé: stiskněte vpravo nahoře Prezentovat a ukažte sluneční soustavu třídě na velké obrazovce."
+					"text": "Prezentovat zvětší písmo pro projektor, přidá vysoký kontrast a klávesy pro prezentační ovladač a klávesou H skryje ovládání. Sdílet dá třídě odkaz nebo QR kód přesně na tento pohled.",
+					"text@simple": "Učitelé: stiskněte Prezentovat a ukažte sluneční soustavu třídě na velké obrazovce."
 				},
 				"more": {
 					"title": "Je toho víc",
 					"title@simple": "Je toho víc",
-					"text": "Každá funkce, jak se používá a odkaz na vyzkoušení, je na stránce nápovědy: tlačítko Nápověda vpravo nahoře. Něco nefunguje, nebo máš nápad? „Poslat zpětnou vazbu“ pod šipkou vedle Nápovědy se dostane k lidem, kteří Orbitalii dělají. Hodně zábavy při objevování!",
-					"text@simple": "Je tu ještě spousta dalších věcí. Tlačítko Nápověda vpravo nahoře ti poví o všem. Něco se rozbilo, nebo máš nápad? Napiš nám přes „Napiš nám, co si myslíš“ vedle Nápovědy. Hodně zábavy!"
+					"text": "Každá funkce, jak se používá a odkaz na vyzkoušení, je na stránce nápovědy: stiskni Nápovědu. Něco nefunguje, nebo máš nápad? „Poslat zpětnou vazbu“ pod šipkou vedle Nápovědy (na telefonu přímo pod Nápovědou) se dostane k lidem, kteří Orbitalii dělají. Hodně zábavy při objevování!",
+					"text@simple": "Je tu ještě spousta dalších věcí. Tlačítko Nápověda ti poví o všem. Něco se rozbilo, nebo máš nápad? Napiš nám přes „Napiš nám, co si myslíš“ vedle Nápovědy (na telefonu pod Nápovědou). Hodně zábavy!"
 				}
 			}
 		}
@@ -2002,7 +2002,7 @@
 			"code": "Kód na GitHubu",
 			"discussions": "GitHub Discussions"
 		},
-		"readingLevel": "Právě čteš verzi s náročností textu „{level}“. Jazyk a náročnost textu změníš v nabídce vpravo nahoře.",
+		"readingLevel": "Právě čteš verzi s náročností textu „{level}“. Jazyk a náročnost textu změníš tlačítkem jazyka (ukazuje CS).",
 		"shortcutsLink": "Všechny funkce a jak je používat: otevři stránku nápovědy"
 	},
 	"feedback": {

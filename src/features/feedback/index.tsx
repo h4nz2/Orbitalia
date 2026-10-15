@@ -19,7 +19,6 @@ import {
 	Textarea,
 	Title,
 } from "@mantine/core"
-import { useMediaQuery } from "@mantine/hooks"
 import {
 	IconArrowLeft,
 	IconBrandGithub,
@@ -32,6 +31,7 @@ import { getRouteApi } from "@tanstack/react-router"
 
 import { CornerBar } from "@/features/help/HelpButton"
 import { useBackToSolarSystem } from "@/hooks/useBackToSolarSystem"
+import { usePhone } from "@/hooks/useSizeClass"
 import { useI18n, type MessageKey } from "@/i18n"
 
 import {
@@ -90,7 +90,7 @@ const Feedback = () => {
 	const search = route.useSearch()
 	const back = useBackToSolarSystem()
 	// phones: the three kinds stack instead of squeezing their words
-	const narrow = useMediaQuery("(max-width: 30em)") ?? false
+	const narrow = usePhone()
 
 	const [kind, setKind] = useState<FeedbackKind>(search.kind ?? "bug")
 	const [message, setMessage] = useState("")

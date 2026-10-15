@@ -77,14 +77,14 @@
 					"To stay on a caption, press Space, tap the scene or press the pause button; do it again to carry on. While it is paused you can turn the view without ending it.",
 					"“Next” (or the right arrow key) goes straight on to the next part; while paused, one part at a time.",
 					"After the first opening the app asks once whether you want a quick look at what you can do (see “A quick look”).",
-					"To see it again, open the arrow next to Help and choose “Play the opening again”.",
+					"To see it again, open the arrow next to Help (on a phone, Help itself) and choose “Play the opening again”.",
 					"“Show how to move around” in the same menu brings back the hints for dragging, zooming and clicking."
 				],
 				"simple": [
 					"It plays the first time you come.",
 					"Press Space or tap the picture to stop it. Do it again to go on.",
 					"“Next” shows the next part.",
-					"To watch it again, press the arrow next to Help, then “Play the opening again”."
+					"To watch it again, press the arrow next to Help (on a phone, Help itself), then “Play the opening again”."
 				]
 			}
 		},
@@ -105,12 +105,12 @@
 				"standard": [
 					"On your first visit, after the opening, answer “Yes, show me”. It is asked only once in this browser, and never over a shared link or while presenting.",
 					"It moves on by itself; Back, Next and the arrow keys step it, and “Skip the rest” or × leave it at any time, back to a calm view.",
-					"To see it again, open the arrow next to Help and choose “Take the quick look again”."
+					"To see it again, open the arrow next to Help (on a phone, Help itself) and choose “Take the quick look again”."
 				],
 				"simple": [
 					"After the opening, press “Yes, show me”.",
 					"Watch, or press Next.",
-					"To see it again, press the arrow next to Help."
+					"To see it again, press the arrow next to Help (on a phone, Help itself)."
 				]
 			}
 		},
@@ -132,13 +132,13 @@
 					"Point at a planet or its name: a ring appears with “Click to fly there”.",
 					"Click or tap it. To land at once, press Skip in the readout.",
 					"On a small dot, click anywhere near it: the target is generous.",
-					"The house button at the top left (or Esc) is the way back to the whole solar system; a click on empty space leaves the view where it is."
+					"The house button (or Esc) is the way back to the whole solar system; a click on empty space leaves the view where it is."
 				],
 				"simple": [
 					"Move the mouse over a planet. A ring shows up.",
 					"Click it. Now watch the trip.",
 					"Press “Be there now” if you do not want to wait.",
-					"Press the house button at the top left to see all the planets again."
+					"Press the house button to see all the planets again."
 				]
 			}
 		},
@@ -149,7 +149,7 @@
 			},
 			"what": {
 				"standard": "The arrow next to the house button takes you back one step: to the world, spacecraft or place you were looking at before, from the same distance and angle. Press it again to go further back.",
-				"simple": "The arrow at the top left takes you back to what you saw before."
+				"simple": "The Back arrow, next to the house button, takes you back to what you saw before."
 			},
 			"why": {
 				"standard": "Clicked a moon by mistake, or did a spacecraft’s milestone take you far away? Nothing is lost: Back undoes the jump, while the house button goes all the way out to the whole system.",
@@ -158,13 +158,13 @@
 			"how": {
 				"standard": [
 					"Click a world, for example the Moon, then another one, like Mars.",
-					"Press the arrow at the top left, or Backspace: the camera flies back to the Moon, as you left it. Press it again to go further back; when there is nothing left, it is greyed out.",
+					"Press the Back arrow next to the house button, or Backspace: the camera flies back to the Moon, as you left it. Press it again to go further back; when there is nothing left, it is greyed out.",
 					"Your browser’s back button and your phone’s back gesture do the same. During a tour, Back goes to the stop before.",
 					"Turning, zooming, time, layers and the scale are not steps: Back skips them."
 				],
 				"simple": [
 					"Click the Moon. Then click Mars.",
-					"Press the arrow at the top left. You fly back to the Moon.",
+					"Press the Back arrow, next to the house button. You fly back to the Moon.",
 					"Press it again to go back more."
 				]
 			}
@@ -175,7 +175,7 @@
 				"simple": "Find a world by its name"
 			},
 			"what": {
-				"standard": "The box at the top left lists the Sun, every planet and the moons with a story; type to search.",
+				"standard": "The name box, which shows the world in view, lists the Sun, every planet and the moons with a story; type to search.",
 				"simple": "Type the name of a planet or moon, and you go there."
 			},
 			"why": {
@@ -184,12 +184,12 @@
 			},
 			"how": {
 				"standard": [
-					"Click the box at the top left and type a name, such as “Titan”.",
+					"Click the name box (it shows the world you are looking at) and type a name, such as “Titan”.",
 					"Pick it from the list: the camera flies there.",
 					"Press ← or → to visit the next world of the same family; the house button or Esc takes you back to the whole system."
 				],
 				"simple": [
-					"Click the box at the top left.",
+					"Click the box with the name of the world.",
 					"Type a name, like Titan, and pick it.",
 					"Press Esc to see the whole solar system again."
 				]
@@ -228,8 +228,8 @@
 				"simple": "Where are the buttons?"
 			},
 			"what": {
-				"standard": "The screen belongs to space. Only what you are looking at, the way back and the time stay on it; everything else waits behind four buttons at the bottom right: Tours, Layers, Scale and Tools. While you turn, zoom or fly, the controls step back a little.",
-				"simple": "Most buttons stay out of the way so you can see space. Four buttons at the bottom right open the rest."
+				"standard": "The screen belongs to space. Only what you are looking at, the way back and the time stay on it; everything else waits behind four buttons: Tours, Layers, Scale and Tools. While you turn, zoom or fly, the controls step back a little.",
+				"simple": "Most buttons stay out of the way so you can see space. Four buttons open the rest: Tours, Layers, Scale and Tools."
 			},
 			"why": {
 				"standard": "The planets are the lesson, not the buttons: the class sees the solar system, and every control is still at most two clicks away.",
@@ -237,15 +237,15 @@
 			},
 			"how": {
 				"standard": [
-					"Top left: the arrow back to where you just were, the house button (back to the whole system), the name of the world in view and its card; the arrow on the card opens its facts, moons and stories.",
-					"Bottom: play, pause and the date; the button with the speed (like 1x) opens Now, the speeds and the spin.",
-					"Bottom right: Tours, Layers (what is drawn), Scale (how big and how far) and Tools (the speed of light, tonight's sky, spacecraft, your birthday, the scavenger hunt, side by side, walking the solar system, the picture dictionary and taking a picture). One panel opens at a time; × closes it.",
-					"Top right: Present, Share, the crossed-out eye that hides everything (H brings it back), sound, Help and the language."
+					"Always on screen: the arrow back to where you just were, the house button (back to the whole system), the name of the world in view with its card, and the time bar. The arrow on the card opens its facts, moons and stories.",
+					"In the time bar: play, pause and the date; the button with the speed (like 1x) opens Now, the speeds and the spin.",
+					"Tours, Layers (what is drawn), Scale (how big and how far) and Tools (the speed of light, tonight's sky, spacecraft, your birthday, the scavenger hunt, side by side, walking the solar system, the picture dictionary and taking a picture) open everything else. One panel opens at a time; × closes it.",
+					"Buttons for presenting and settings: Present, Share, the crossed-out eye that hides everything (H brings it back), sound, Help and the language."
 				],
 				"simple": [
-					"The arrow at the top left goes back one step. The house button next to it takes you back to all the planets.",
-					"Press Layers, Scale or Tools at the bottom right to find more.",
-					"Press the crossed-out eye at the top right to hide all the buttons. Press H to get them back."
+					"The Back arrow goes back one step. The house button next to it takes you back to all the planets.",
+					"Press Layers, Scale or Tools to find more.",
+					"Press the crossed-out eye to hide all the buttons. Press H to get them back."
 				]
 			}
 		},
@@ -316,13 +316,13 @@
 			},
 			"how": {
 				"standard": [
-					"Press Layers at the bottom right: the switches open above it.",
+					"Press Layers: its switches open in a panel.",
 					"Press L to hide or show every name at once.",
 					"All moons works only while Moons is on.",
 					"Rest the pointer on a switch, or press and hold it, to read what it does; a greyed-out switch says what to turn on first."
 				],
 				"simple": [
-					"Press Layers at the bottom right.",
+					"Press Layers.",
 					"Click a switch to turn it off, and again to turn it back on.",
 					"Press L to hide all the names.",
 					"Hold the mouse over a switch to find out what it does."
@@ -393,12 +393,12 @@
 			},
 			"how": {
 				"standard": [
-					"Type “Pluto” in the box at the top left and pick it: it is shown even while Small bodies is off.",
+					"Type “Pluto” in the name box and pick it: it is shown even while Small bodies is off.",
 					"Open the card with its arrow: Charon is listed there; “See the whole moon system” frames all five moons.",
 					"← / → move to the next dwarf planet."
 				],
 				"simple": [
-					"Type “Pluto” in the box at the top left.",
+					"Type “Pluto” in the name box.",
 					"Pick Pluto and you fly there."
 				]
 			}
@@ -418,13 +418,13 @@
 			},
 			"how": {
 				"standard": [
-					"Pick Halley or Encke in the box at the top left (group Comets).",
+					"Pick Halley or Encke in the name box (group Comets).",
 					"Open its card with the arrow and press “Watch it pass the Sun”: the app goes to its next visit and plays it in about a minute and a half.",
 					"Watch which way the tail points on the way in and on the way out.",
 					"Try Hale-Bopp too: its head appears far beyond Jupiter, long before its tails grow."
 				],
 				"simple": [
-					"Pick Halley in the box at the top left.",
+					"Pick Halley in the name box.",
 					"Open its card with the little arrow and press “Watch it fly past the Sun”."
 				]
 			}
@@ -451,7 +451,7 @@
 				"simple": [
 					"Fly to Earth.",
 					"Make time go faster.",
-					"Press the speed button at the bottom and choose Slow motion to watch Earth spin."
+					"Press the speed button next to the date and choose Slow motion to watch Earth spin."
 				]
 			}
 		},
@@ -471,11 +471,11 @@
 			"how": {
 				"standard": [
 					"Click “Sun-centred” next to the name box and choose “Seen from Earth: the planets” or “Seen from Earth: the Moon”.",
-					"Watch the badge at the top: it says what the selected world is doing in our sky.",
+					"Watch the badge that appears: it says what the selected world is doing in our sky.",
 					"“Hold … still” works for any world; “Back to Sun-centred” returns."
 				],
 				"simple": [
-					"Click “Sun in the middle” at the top left.",
+					"Click “Sun in the middle”, next to the name box.",
 					"Choose “From Earth: the planets”.",
 					"Watch Mars make a loop."
 				]
@@ -496,7 +496,7 @@
 			},
 			"how": {
 				"standard": [
-					"Open Tools at the bottom right, choose “Tonight’s sky” and pick your town (the app never asks for your location on its own).",
+					"Open Tools, choose “Tonight’s sky” and pick your town (the app never asks for your location on its own).",
 					"Read the list: what you can see, when, where and with what.",
 					"Press “Why can I see it?” next to a planet to see the reason in space."
 				],
@@ -522,12 +522,12 @@
 			},
 			"how": {
 				"standard": [
-					"Open Tools at the bottom right, choose “Real spacecraft” and pick a craft: the view flies to it.",
+					"Open Tools, choose “Real spacecraft” and pick a craft: the view flies to it.",
 					"Its card shows launch, distance, signal time and milestones; a milestone takes time to that moment.",
 					"“Show every path” draws all their routes at once; the Spacecraft switch hides them."
 				],
 				"simple": [
-					"Press Tools at the bottom right.",
+					"Press Tools.",
 					"Choose “Real spacecraft”, then Voyager 1.",
 					"Read how far away it is."
 				]
@@ -548,12 +548,12 @@
 			},
 			"how": {
 				"standard": [
-					"Open Tools at the bottom right, choose “Real spacecraft” and press the follow button beside a craft, or “Follow” on its card.",
+					"Open Tools, choose “Real spacecraft” and press the follow button beside a craft, or “Follow” on its card.",
 					"On the card, “Watch” beside a flyby or an arrival goes to just before it and plays it in about half a minute.",
-					"Drag to turn and scroll to zoom while you ride; the name at the top left shows what you follow. The house, Escape, choosing a world or Back ends it."
+					"Drag to turn and scroll to zoom while you ride; the name box shows what you follow. The house, Escape, choosing a world or Back ends it."
 				],
 				"simple": [
-					"Press Tools at the bottom right and choose “Real spacecraft”.",
+					"Press Tools and choose “Real spacecraft”.",
 					"Pick Voyager 1, then press “Watch” beside Jupiter.",
 					"Watch Jupiter swing past. Press the house to stop."
 				]
@@ -574,7 +574,7 @@
 			},
 			"how": {
 				"standard": [
-					"Open Tools at the bottom right and choose “Picture dictionary”: it opens on the world you are looking at. Or press “Read more in the dictionary” on a world’s card.",
+					"Open Tools and choose “Picture dictionary”: it opens on the world you are looking at. Or press “Read more in the dictionary” on a world’s card.",
 					"Pick a world in the row of dots at the top, then Surface, Terrain, Oceans or Clouds where it has them.",
 					"Open “Made of”, “Weather” or “Names” beside the globe (under it on a phone). The open section stays open when you pick another world, so a class can compare them one by one."
 				],
@@ -600,12 +600,12 @@
 			},
 			"how": {
 				"standard": [
-					"Sound is always off when the app opens. Press the speaker button at the top right, or M, to turn it on.",
-					"The arrow next to it opens the volume, the background hum, the motion sounds and “Listen to space”.",
+					"Sound is always off when the app opens. Press the speaker button, or M, to turn it on. On a phone, the speaker opens the sound settings instead: switch on “Sound on” there.",
+					"The arrow next to it (on a phone, the speaker itself) opens the volume, the background hum, the motion sounds and “Listen to space”.",
 					"Fly to the Sun, Earth, Jupiter or Saturn and play its recording from the card; the text says what you hear."
 				],
 				"simple": [
-					"Press the speaker button at the top right.",
+					"Press the speaker button. On a phone, also switch on “Sound on”.",
 					"Fly to Jupiter.",
 					"Press play on its card and listen."
 				]
@@ -626,11 +626,11 @@
 			},
 			"how": {
 				"standard": [
-					"Open the language menu at the top right (it shows EN, DE, …).",
+					"Open the language menu (its button shows EN, DE, …).",
 					"Pick a language and a reading level; every page and link follows."
 				],
 				"simple": [
-					"Click the button with EN at the top right.",
+					"Click the button with EN on it.",
 					"Choose your language, and choose Simple."
 				]
 			}
@@ -641,8 +641,8 @@
 				"simple": "Make time go faster"
 			},
 			"what": {
-				"standard": "Buttons at the bottom run time forwards or backwards, pause it, and pick a speed from real time to ten years a second.",
-				"simple": "Buttons at the bottom make time go, stop, go faster or go backwards."
+				"standard": "The buttons of the time bar run time forwards or backwards, pause it, and pick a speed from real time to ten years a second.",
+				"simple": "The time buttons make time go, stop, go faster or go backwards."
 			},
 			"why": {
 				"standard": "At real time nothing seems to move; at a month a second the inner planets race and the outer ones crawl, which is Kepler’s law you can see.",
@@ -655,7 +655,7 @@
 					"“Now”, in the same place, brings you back to the present."
 				],
 				"simple": [
-					"Press the play button at the bottom.",
+					"Press the play button.",
 					"Press the speed button next to the date and pick 1 month/s.",
 					"Press Space to stop."
 				]
@@ -676,12 +676,12 @@
 			},
 			"how": {
 				"standard": [
-					"Click the date and time at the bottom.",
+					"Click the date and time in the time bar.",
 					"Choose “Pick a date” and click the year, the month and the day (famous moments are under “Sky events”).",
 					"The planets glide there and time stops; press play to run on."
 				],
 				"simple": [
-					"Click the date at the bottom.",
+					"Click the date.",
 					"Pick “Mars at its closest” or pick a day.",
 					"Watch the planets move there."
 				]
@@ -702,12 +702,12 @@
 			},
 			"how": {
 				"standard": [
-					"Click the date at the bottom and choose “Sky events”.",
+					"Click the date in the time bar and choose “Sky events”.",
 					"Pick an event, for example “Total solar eclipse” (8 April 2024).",
 					"Switch between “From space” and “From Earth” on the card; press “Leave” to go back to where you were."
 				],
 				"simple": [
-					"Click the date at the bottom, then “Sky events”.",
+					"Click the date, then “Sky events”.",
 					"Pick an eclipse.",
 					"Press “From Earth” to see the Moon cover the Sun."
 				]
@@ -752,13 +752,13 @@
 			},
 			"how": {
 				"standard": [
-					"Press Scale at the bottom right (it names the scale on screen) and click True scale, Textbook, Everything visible or Poster, or press S.",
+					"Press Scale (it names the scale on screen) and click True scale, Textbook, Everything visible or Poster, or press S.",
 					"The Sizes and Distances switches change one lie at a time.",
 					"Poster shows all eight planets in order and in their own colours, Saturn with its rings, none touching another's path. It hides the smaller moons, which have no room there; the Sizes and Distances switches lead back to the other scales.",
 					"At true scale, the dots show where the planets are; turn Markers off (under Layers) to see how little is left."
 				],
 				"simple": [
-					"Press Scale at the bottom right.",
+					"Press Scale.",
 					"Click True scale.",
 					"Where did the planets go? The dots show where they are.",
 					"Click Poster to see all the planets big at once. It is the least real picture!"
@@ -805,8 +805,8 @@
 			},
 			"how": {
 				"standard": [
-					"Press Layers at the bottom right and switch on “Small bodies”.",
-					"Read the note in the card at the top left.",
+					"Press Layers and switch on “Small bodies”.",
+					"Read the note on the card.",
 					"Choose True scale in the Scale panel, then fly to Vesta or Ceres: the belt stays a sparse scatter."
 				],
 				"simple": [
@@ -830,7 +830,7 @@
 			},
 			"how": {
 				"standard": [
-					"Open Tools at the bottom right and choose “Walk the solar system”, or press Scale and then “Shrink the Sun to a basketball…” at the bottom of its panel, in every scale.",
+					"Open Tools and choose “Walk the solar system”, or press Scale and then “Shrink the Sun to a basketball…” at the bottom of its panel, in every scale.",
 					"On a world’s card, unfold the facts: under its comparison, “Shrink the Sun to a basketball and walk out to this world” opens the walk on that world.",
 					"Choose what the Sun is (an orange, a football, a basketball, an exercise ball) and a landmark to measure against.",
 					"Switch to Table and Print it to take outside."
@@ -907,7 +907,7 @@
 			},
 			"how": {
 				"standard": [
-					"Open Tools at the bottom right, choose “Speed of light”, then “Send a flash”.",
+					"Open Tools, choose “Speed of light”, then “Send a flash”.",
 					"Pick where it starts; the list shows when it reaches each world.",
 					"Time switches to real time; a faster speed is allowed and the panel still counts true travel time.",
 					"To stop it, press “Stop the flash”, the × on its label or the × beside its clock under the name box, or X. Once it has passed Neptune it fades by itself."
@@ -1028,12 +1028,12 @@
 			},
 			"how": {
 				"standard": [
-					"Press “Tours” at the bottom right and pick a tour.",
+					"Press “Tours” and pick a tour.",
 					"Step with “Next” and “Back” on the card, the arrow keys, or a presenter remote (Page Down / Page Up).",
 					"Look around at any time; “Back to the tour” restores the stop. “Autoplay” moves on by itself, and the link button copies a link to the current stop. Teachers can write their own tours as data (src/data/tours/README.md)."
 				],
 				"simple": [
-					"Press “Tours” at the bottom right and pick one.",
+					"Press “Tours” and pick one.",
 					"Read the card, then press “Next” or an arrow key.",
 					"Look around whenever you like, then press “Back to the tour”."
 				]
@@ -1044,7 +1044,7 @@
 			"what": "Larger text, names and buttons, readable from the back of the room.",
 			"why": "A laptop screen on a projector is too small to read; projector mode fixes that with one key.",
 			"how": [
-				"Open Present at the top right and choose “Large text for a projector”, or press P.",
+				"Open Present and choose “Large text for a projector”, or press P.",
 				"Press F for full screen.",
 				"Everything else keeps working: keys, links and the controls."
 			]
@@ -1073,7 +1073,7 @@
 			"what": "Take every button and panel off the screen, so only space is left.",
 			"why": "For looking, for screenshots and for a projector: the class sees the solar system, not the interface.",
 			"how": [
-				"Press H, or the crossed-out eye at the top right (it is also in the Present menu). It works with or without presenting.",
+				"Press H, or the crossed-out eye (it is also in the Present menu). It works with or without presenting.",
 				"Press H again, or move the mouse and click “Show the controls”, to bring them back. Keys keep working while hidden."
 			]
 		},
@@ -1092,7 +1092,7 @@
 			"what": "A link to exactly what is on screen, with a copy button and a QR code big enough to scan from the back row.",
 			"why": "Students open the same view on their own tablets and explore from there, with no typing.",
 			"how": [
-				"Open Share at the top right.",
+				"Open Share.",
 				"Copy the link, or press “Show the QR code to the class”."
 			]
 		},
@@ -1117,7 +1117,7 @@
 			},
 			"how": {
 				"standard": [
-					"Open Tools at the bottom right and choose “Scavenger hunt”.",
+					"Open Tools and choose “Scavenger hunt”.",
 					"Pick how hard it should be (Easy, Medium or Tricky; it starts on the one for your reading level), then a hunt.",
 					"Read the clue or press the speaker to hear it, then find the world and click it.",
 					"Stuck? “Need a hint?”: at Easy the first hint lights up a part of the sky and the second makes the answer blink; after the last one, “Show me”.",
@@ -1147,7 +1147,7 @@
 			},
 			"how": {
 				"standard": [
-					"Open Tools at the bottom right, choose “Your birthday” and pick the year, the month and the day.",
+					"Open Tools, choose “Your birthday” and pick the year, the month and the day.",
 					"The planets fly to the day you were born; ⏭ next to a planet travels to your next birthday there.",
 					"Your date is never saved or sent anywhere: it is forgotten when you close the page, or at once with “Forget my birthday”."
 				],
@@ -1173,12 +1173,12 @@
 			},
 			"how": {
 				"standard": [
-					"Open Tools at the bottom right and choose “Take a picture”.",
+					"Open Tools and choose “Take a picture”.",
 					"Write a caption, switch the names or the QR code off.",
 					"Save, copy or share the picture. It is made on your device; nothing is uploaded."
 				],
 				"simple": [
-					"Press Tools at the bottom right, then “Take a picture”.",
+					"Press Tools, then “Take a picture”.",
 					"Write something about your picture.",
 					"Press Save picture."
 				]
@@ -1199,12 +1199,12 @@
 			},
 			"how": {
 				"standard": [
-					"On the solar system, open the arrow next to Help at the top right and choose “Send feedback”: the view you are looking at goes with it, if you like.",
+					"On the solar system, open the arrow next to Help (on a phone, Help itself) and choose “Send feedback”: the view you are looking at goes with it, if you like.",
 					"Choose what it is about, write a few words and press “Send”. Your email is optional: give it only if you would like an answer.",
 					"With a GitHub account you can also report it on GitHub or talk with others in GitHub Discussions; the page links to both."
 				],
 				"simple": [
-					"Press the arrow next to Help, then “Tell us what you think”.",
+					"Press the arrow next to Help (on a phone, Help itself), then “Tell us what you think”.",
 					"Write what is broken, or your idea.",
 					"Press “Send”. You do not need to give your email."
 				]
@@ -1234,8 +1234,8 @@
 		},
 		"back": {
 			"action": "Back to the whole solar system",
-			"mouse": "Click the house button at the top left",
-			"touch": "Tap the house button at the top left",
+			"mouse": "Click the house button",
+			"touch": "Tap the house button",
 			"keys": "Esc"
 		},
 		"stepBack": {
@@ -1284,8 +1284,8 @@
 		},
 		"scale": {
 			"action": "Next scale: Everything visible, Textbook, True scale",
-			"mouse": "Scale, bottom right",
-			"touch": "Scale, bottom right",
+			"mouse": "The Scale button",
+			"touch": "The Scale button",
 			"keys": "S"
 		},
 		"stopLight": {
@@ -1302,8 +1302,8 @@
 		},
 		"hide": {
 			"action": "Hide or show the controls",
-			"mouse": "The crossed-out eye, top right",
-			"touch": "The crossed-out eye, top right",
+			"mouse": "The crossed-out eye",
+			"touch": "The crossed-out eye",
 			"keys": "H"
 		},
 		"fullscreen": {
@@ -1327,7 +1327,7 @@
 		"sound": {
 			"action": "Sound on or off (always off when the app opens)",
 			"mouse": "The speaker button",
-			"touch": "The speaker button",
+			"touch": "The speaker button (on a phone: the speaker, then “Sound on”)",
 			"keys": "M"
 		},
 		"shortcuts": {

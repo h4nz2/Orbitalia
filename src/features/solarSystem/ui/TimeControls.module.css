@@ -22,9 +22,19 @@
 	white-space: nowrap;
 }
 
-@media (max-width: 599px) {
+@media $phone {
 	.date {
 		font-size: var(--mantine-font-size-xs);
+		line-height: 1.25;
+	}
+
+	/* the date over the time (#58): the bar keeps to one row with finger-sized buttons */
+	.datePart {
+		display: block;
+	}
+
+	.dateSeparator {
+		display: none;
 	}
 
 	.row {

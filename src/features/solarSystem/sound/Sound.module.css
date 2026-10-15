@@ -3,8 +3,36 @@
 	flex-shrink: 0;
 }
 
+/* the speaker on the settings button: only on a phone, where the two are one */
+.speaker {
+	display: none;
+}
+
+.speaker[data-on] {
+	color: var(--mantine-color-orange-4);
+}
+
+/*
+ * Phones (#58): one finger-sized button instead of two side by side, so the
+ * corner keeps to one row; the popover's first switch turns sound on or off.
+ */
+@media $phone {
+	.toggle,
+	.chevron {
+		display: none;
+	}
+
+	.speaker {
+		display: flex;
+	}
+}
+
 .settings {
 	font-size: var(--mantine-font-size-sm);
+	/* taller than a phone on its side (#58): it scrolls inside its popover, which keeps its arrow */
+	max-height: calc(var(--dropdown-max-height, 100dvh) - 1.5rem);
+	overflow-y: auto;
+	overscroll-behavior: contain;
 }
 
 .slider {

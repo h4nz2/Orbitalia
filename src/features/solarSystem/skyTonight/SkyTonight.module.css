@@ -19,7 +19,7 @@
 	transition: opacity 250ms ease;
 }
 
-@media (max-width: 599px) {
+@media $phone {
 	.panel {
 		width: 100%;
 	}

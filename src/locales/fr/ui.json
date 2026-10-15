@@ -809,7 +809,7 @@
 				"other": "C’est {bodyId, select, sun {le Soleil} earth {la Terre} moon {la Lune} other {{name}}}. Ce n’est pas la bonne réponse – continue d’explorer !",
 				"other@simple": "C’est {bodyId, select, sun {le Soleil} earth {la Terre} moon {la Lune} other {{name}}}. Essaie un autre monde !",
 				"warm": "Tu chauffes ! La réponse est près {bodyId, select, sun {du Soleil} earth {de la Terre} moon {de la Lune} uranus {d’{name}} io {d’{name}} europa {d’{name}} enceladus {d’{name}} hyperion {d’{name}} ariel {d’{name}} umbriel {d’{name}} oberon {d’{name}} other {de {name}}}. Regarde tout autour.",
-				"almost": "Oui, {name} ! Maintenant, observe la scène depuis {frameId, select, sun {le Soleil} earth {la Terre} moon {la Lune} other {{frame}}} : choisis le point de vue en haut à gauche."
+				"almost": "Oui, {name} ! Maintenant, observe la scène depuis {frameId, select, sun {le Soleil} earth {la Terre} moon {la Lune} other {{frame}}} : choisis le point de vue à côté du champ des noms."
 			},
 			"found": "Trouvé !",
 			"star": "Une étoile pour toi !",
@@ -1638,20 +1638,20 @@
 				"fly": {
 					"title": "Clique sur une planète pour y voler",
 					"title@simple": "Clique sur une planète",
-					"text": "N’importe quelle planète ou lune : clique dessus, ou tape son nom dans la case en haut à gauche. En route, l’affichage en bas compte la vraie distance et le temps qu’il faudrait à la lumière, à la fusée la plus rapide et à une voiture.",
-					"text@simple": "Clique sur une planète et tu voles jusqu’à elle. La case en bas te dit à quelle distance elle est vraiment, et combien de temps il faudrait à une fusée."
+					"text": "N’importe quelle planète ou lune : clique dessus, ou tape son nom dans le champ des noms. En route, un affichage compte la vraie distance et le temps qu’il faudrait à la lumière, à la fusée la plus rapide et à une voiture.",
+					"text@simple": "Clique sur une planète et tu voles jusqu’à elle. En route, une case te dit à quelle distance elle est vraiment, et combien de temps il faudrait à une fusée."
 				},
 				"trueScale": {
 					"title": "Échelle réelle",
 					"title@simple": "La vraie taille",
-					"text": "Maintenant chaque taille et chaque distance sont vraies, et les planètes disparaissent dans l’espace vide : les points montrent seulement où elles sont. Échelle, en bas à droite, passe de la vérité à des images où l’on voit quelque chose. On y réduit aussi le Soleil à un ballon de basket pour parcourir le système solaire à pied sur le terrain de l’école.",
-					"text@simple": "Voici la vraie taille de tout. Les planètes sont si petites que tu ne les vois pas ! Les points montrent où elles sont. Appuie sur Échelle en bas à droite pour changer. Là, tu peux aussi marcher jusqu’aux planètes à l’école."
+					"text": "Maintenant chaque taille et chaque distance sont vraies, et les planètes disparaissent dans l’espace vide : les points montrent seulement où elles sont. Le bouton Échelle passe de la vérité à des images où l’on voit quelque chose. On y réduit aussi le Soleil à un ballon de basket pour parcourir le système solaire à pied sur le terrain de l’école.",
+					"text@simple": "Voici la vraie taille de tout. Les planètes sont si petites que tu ne les vois pas ! Les points montrent où elles sont. Appuie sur Échelle pour changer. Là, tu peux aussi marcher jusqu’aux planètes à l’école."
 				},
 				"time": {
 					"title": "Voyage dans le temps",
 					"title@simple": "Voyage dans le temps",
-					"text": "Un mois passe à chaque seconde : tu vois les planètes tourner autour du Soleil. La barre du temps en bas met en pause, recule et accélère ; clique sur la date pour sauter à n’importe quel jour ou à une éclipse.",
-					"text@simple": "Maintenant, un mois entier passe à chaque seconde. Regarde les planètes tourner autour du Soleil ! Les boutons en bas font aller le temps plus vite, plus lentement ou en arrière."
+					"text": "Un mois passe à chaque seconde : tu vois les planètes tourner autour du Soleil. La barre du temps met en pause, recule et accélère ; clique sur la date pour sauter à n’importe quel jour ou à une éclipse.",
+					"text@simple": "Maintenant, un mois entier passe à chaque seconde. Regarde les planètes tourner autour du Soleil ! Les boutons du temps font aller le temps plus vite, plus lentement ou en arrière."
 				},
 				"compare": {
 					"title": "Compare les mondes",
@@ -1668,14 +1668,14 @@
 				"teachers": {
 					"title": "Pour les enseignants : Présenter",
 					"title@simple": "Pour les enseignants",
-					"text": "Présenter, en haut à droite, agrandit le texte pour un projecteur, ajoute un contraste élevé et des touches pour une télécommande de présentation, et cache les commandes avec H. Partager donne à la classe un lien ou un QR code vers exactement cette vue.",
-					"text@simple": "Enseignants : appuyez sur Présenter en haut à droite pour montrer le système solaire à une classe sur un grand écran."
+					"text": "Présenter agrandit le texte pour un projecteur, ajoute un contraste élevé et des touches pour une télécommande de présentation, et cache les commandes avec H. Partager donne à la classe un lien ou un QR code vers exactement cette vue.",
+					"text@simple": "Enseignants : appuyez sur Présenter pour montrer le système solaire à une classe sur un grand écran."
 				},
 				"more": {
 					"title": "Il y a encore plus",
 					"title@simple": "Il y a encore plus",
-					"text": "Chaque fonction, comment l’utiliser et un lien pour l’essayer, se trouve sur la page d’aide : le bouton Aide en haut à droite. Quelque chose ne va pas, ou tu as une idée ? « Envoyer un avis », sous la flèche à côté d’Aide, arrive aux personnes qui font Orbitalia. Bonne exploration !",
-					"text@simple": "Il y a encore plein de choses à découvrir. Le bouton Aide en haut à droite t’explique tout. Quelque chose est cassé, ou tu as une idée ? Dis-le-nous avec « Dis-nous ce que tu en penses », à côté d’Aide. Amuse-toi bien !"
+					"text": "Chaque fonction, comment l’utiliser et un lien pour l’essayer, se trouve sur la page d’aide : appuie sur Aide. Quelque chose ne va pas, ou tu as une idée ? « Envoyer un avis », sous la flèche à côté d’Aide (sur un téléphone, sous Aide lui-même), arrive aux personnes qui font Orbitalia. Bonne exploration !",
+					"text@simple": "Il y a encore plein de choses à découvrir. Le bouton Aide t’explique tout. Quelque chose est cassé, ou tu as une idée ? Dis-le-nous avec « Dis-nous ce que tu en penses », à côté d’Aide (sur un téléphone, sous Aide). Amuse-toi bien !"
 				}
 			}
 		}
@@ -2002,7 +2002,7 @@
 			"code": "Le code sur GitHub",
 			"discussions": "GitHub Discussions"
 		},
-		"readingLevel": "Tu lis cette page au niveau {level}. Change la langue et le niveau de lecture dans le menu en haut à droite.",
+		"readingLevel": "Tu lis cette page au niveau {level}. Change la langue et le niveau de lecture avec le bouton des langues (il affiche FR).",
 		"shortcutsLink": "Toutes les fonctions et comment les utiliser : ouvre la page d’aide"
 	},
 	"feedback": {

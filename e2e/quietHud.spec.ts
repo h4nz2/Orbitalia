@@ -14,6 +14,7 @@ import {
 	openScale,
 	openTime,
 	openTool,
+	unobstructed,
 } from "./support/hud"
 import { cameraAtRest } from "./support/scene"
 
@@ -26,46 +27,6 @@ const ready = async (page: Page, url: string) => {
 	})
 	await cameraAtRest(page)
 }
-
-/**
- * The share of the screen no HUD panel covers: every element of the HUD that
- * takes the pointer (the panels; the HUD layer itself lets it through) is
- * painted onto a coarse grid, and the free cells are counted.
- */
-const unobstructed = (page: Page): Promise<number> =>
-	page.evaluate(() => {
-		const hud = document.querySelector("[data-testid=hud]")!
-		const boxes: DOMRect[] = []
-		const walk = (element: Element) => {
-			for (const child of element.children) {
-				const style = getComputedStyle(child)
-				if (style.display === "none" || style.visibility === "hidden") continue
-				if (style.pointerEvents !== "none" && style.display !== "contents") {
-					const box = child.getBoundingClientRect()
-					if (box.width > 0 && box.height > 0) boxes.push(box)
-					continue
-				}
-				walk(child)
-			}
-		}
-		walk(hud)
-		const step = 4
-		const width = window.innerWidth
-		const height = window.innerHeight
-		let free = 0
-		let total = 0
-		for (let y = step / 2; y < height; y += step)
-			for (let x = step / 2; x < width; x += step) {
-				total += 1
-				if (
-					!boxes.some(
-						(b) => x >= b.left && x <= b.right && y >= b.top && y <= b.bottom,
-					)
-				)
-					free += 1
-			}
-		return free / total
-	})
 
 test("a focused planet on a laptop leaves at least 80 % of the screen to space", async ({
 	page,

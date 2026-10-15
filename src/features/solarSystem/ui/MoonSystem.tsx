@@ -151,6 +151,7 @@ const MoonStory = ({ moon }: { moon: Body }) => {
 						component="button"
 						type="button"
 						size="sm"
+						className={classes.readMore}
 						aria-expanded={open}
 						onClick={() => setOpen(!open)}
 					>

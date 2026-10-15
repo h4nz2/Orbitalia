@@ -48,7 +48,7 @@
 	white-space: nowrap;
 }
 
-@media (max-width: 599px) {
+@media $phone {
 	.select {
 		width: 100%;
 	}

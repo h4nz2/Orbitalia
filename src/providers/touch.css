@@ -1,0 +1,135 @@
+/*
+ * Finger sizes (#58; docs/ARCHITECTURE.md, "HUD layout"). Where the primary
+ * pointer is a finger (`$touch`: phones and tablets) every control is at least
+ * 44×44 px (WCAG 2.5.5, Apple); a laptop with a mouse, touchscreen or not,
+ * keeps the dense look. This sheet lifts Mantine's own size scales, so every
+ * ActionIcon, Button, input, switch, menu item and segment of every page grows
+ * with no change to the component; controls a module styles itself add their
+ * own `@media $touch` rule. Exempt: links inside running text (WCAG's inline
+ * exception) and the scene's labels and markers (generous picking radii).
+ *
+ * `html` in front outranks Mantine's single-class rules whatever the order the
+ * stylesheets load in. Mantine sets a component's size as a variable pointing
+ * at its scale (`--ai-size: var(--ai-size-lg)`), so lifting the scale is enough.
+ */
+@media $touch {
+	html {
+		--touch-target: 44px;
+	}
+
+	html .mantine-ActionIcon-root {
+		--ai-size-xs: var(--touch-target);
+		--ai-size-sm: var(--touch-target);
+		--ai-size-md: var(--touch-target);
+		--ai-size-lg: var(--touch-target);
+		--ai-size-input-xs: var(--touch-target);
+		--ai-size-input-sm: var(--touch-target);
+		--ai-size-input-md: var(--touch-target);
+	}
+
+	html .mantine-CloseButton-root {
+		--cb-size-xs: var(--touch-target);
+		--cb-size-sm: var(--touch-target);
+		--cb-size-md: var(--touch-target);
+		--cb-size-lg: var(--touch-target);
+	}
+
+	html .mantine-Button-root {
+		--button-height-xs: var(--touch-target);
+		--button-height-sm: var(--touch-target);
+		--button-height-md: var(--touch-target);
+		--button-height-compact-xs: var(--touch-target);
+		--button-height-compact-sm: var(--touch-target);
+		--button-height-compact-md: var(--touch-target);
+		--button-height-compact-lg: var(--touch-target);
+		--button-height-compact-xl: var(--touch-target);
+		min-width: var(--touch-target);
+		min-height: var(--touch-target);
+	}
+
+	/* text fields and selects (the focus picker, the comparison's boxes, the help search) */
+	html .mantine-Input-wrapper {
+		--input-height-xs: var(--touch-target);
+		--input-height-sm: var(--touch-target);
+		--input-height-md: var(--touch-target);
+	}
+
+	/* each segment of a segmented control (speed presets, spin, scale presets, tabs) */
+	html .mantine-SegmentedControl-label {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		min-width: var(--touch-target);
+		min-height: var(--touch-target);
+	}
+
+	/* a switch or checkbox is hit on its whole row: the track and its words */
+	html .mantine-Switch-body,
+	html .mantine-Checkbox-body {
+		align-items: center;
+		min-height: var(--touch-target);
+	}
+
+	/* a checkbox's words are its own label element: they take the row's height */
+	html .mantine-Checkbox-label {
+		display: flex;
+		align-items: center;
+		min-height: var(--touch-target);
+	}
+
+	html .mantine-Switch-root {
+		--switch-height-xs: 24px;
+		--switch-height-sm: 24px;
+		--switch-width-xs: 46px;
+		--switch-width-sm: 46px;
+		--switch-thumb-size-xs: 18px;
+		--switch-thumb-size-sm: 18px;
+	}
+
+	html .mantine-Checkbox-root {
+		--checkbox-size-xs: 24px;
+		--checkbox-size-sm: 24px;
+	}
+
+	/* a slider is hit on its whole row; a bigger thumb to hold */
+	html .mantine-Slider-root {
+		--slider-size-xs: 6px;
+		--slider-size-sm: 6px;
+		min-height: var(--touch-target);
+	}
+
+	html .mantine-Slider-thumb {
+		width: 24px;
+		height: 24px;
+	}
+
+	/* menus, the focus picker's list, the language menu */
+	html .mantine-Menu-item,
+	html .mantine-Combobox-option {
+		min-height: var(--touch-target);
+	}
+
+	html .mantine-Accordion-control {
+		min-height: var(--touch-target);
+	}
+
+	/* the calendars: the birthday's, time travel's */
+	html .mantine-DatePicker-day {
+		--day-size-xs: var(--touch-target);
+		--day-size-sm: var(--touch-target);
+		--day-size-md: var(--touch-target);
+	}
+
+	html .mantine-DatePicker-monthsListControl,
+	html .mantine-DatePicker-yearsListControl {
+		--dpc-size-xs: var(--touch-target);
+		--dpc-size-sm: var(--touch-target);
+		--dpc-size-md: var(--touch-target);
+	}
+
+	html .mantine-DatePicker-calendarHeader {
+		--dch-control-size-xs: var(--touch-target);
+		--dch-control-size-sm: var(--touch-target);
+		--dch-control-size-md: var(--touch-target);
+	}
+}

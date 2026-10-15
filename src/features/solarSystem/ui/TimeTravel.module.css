@@ -26,7 +26,7 @@
 }
 
 /* phones (#42): the time bar keeps to one row */
-@media (max-width: 599px) {
+@media $phone {
 	.trigger {
 		padding: 0.25rem 0.375rem;
 	}
@@ -70,4 +70,11 @@
 	flex: none;
 	white-space: nowrap;
 	font-variant-numeric: tabular-nums;
+}
+
+/* fingers (#58): the date is a button like the others */
+@media $touch {
+	.trigger {
+		min-height: var(--touch-target);
+	}
 }

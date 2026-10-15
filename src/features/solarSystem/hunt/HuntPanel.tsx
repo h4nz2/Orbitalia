@@ -108,7 +108,8 @@ const ShareButton = ({ huntKey }: { huntKey: string }) => {
 					{t("solarSystem.hunt.share.button")}
 				</Button>
 			</Popover.Target>
-			<Popover.Dropdown>
+			{/* short enough for any screen: it keeps its arrow (providers/fit.css) */}
+			<Popover.Dropdown data-own-scroll>
 				<Stack gap="xs">
 					<Text fw={600} size="sm">
 						{t("solarSystem.hunt.share.title")}

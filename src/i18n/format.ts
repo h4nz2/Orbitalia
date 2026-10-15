@@ -125,6 +125,46 @@ export function formatDateTimeUTC(date: Date, locale: string): string {
 	return dateTimeFormat(locale, date.getUTCFullYear() <= 0).format(date)
 }
 
+/** `formatDateTimeUTC` in its two halves, which together read exactly as the whole. */
+export interface DateTimeParts {
+	/** "Sep 24, 2026" */
+	date: string
+	/** what joins them in the locale: ", " in English, " " in Czech */
+	separator: string
+	/** "10:35 UTC" */
+	time: string
+}
+
+/**
+ * `formatDateTimeUTC` split before the hour, so a phone (#58) can show the
+ * date over the time on a narrow time bar: `date + separator + time` is the
+ * whole string. An invalid Date is all date (a dash).
+ */
+export function formatDateTimeUTCParts(
+	date: Date,
+	locale: string,
+): DateTimeParts {
+	if (!Number.isFinite(date.getTime()))
+		return { date: MISSING_VALUE, separator: "", time: "" }
+	const parts = dateTimeFormat(
+		locale,
+		date.getUTCFullYear() <= 0,
+	).formatToParts(date)
+	const hour = parts.findIndex((part) => part.type === "hour")
+	const join = (from: number, to?: number) =>
+		parts
+			.slice(from, to)
+			.map((part) => part.value)
+			.join("")
+	if (hour <= 0) return { date: join(0), separator: "", time: "" }
+	const literal = parts[hour - 1].type === "literal" ? hour - 1 : hour
+	return {
+		date: join(0, literal),
+		separator: join(literal, hour),
+		time: join(hour),
+	}
+}
+
 const pad = (value: number, width = 2): string =>
 	String(Math.abs(Math.trunc(value))).padStart(width, "0")
 
