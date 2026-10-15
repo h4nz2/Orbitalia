@@ -579,6 +579,7 @@
 			"hideFacts": "Fakten ausblenden",
 			"close": "Schließen",
 			"compare": "Vergleichen mit …",
+			"compareShort": "Vergleichen",
 			"walk": "{bodyId, select, sun {Schrumpf die Sonne auf einen Basketball und lauf das Sonnensystem ab} other {Schrumpf die Sonne auf einen Basketball und lauf bis zu dieser Welt}}",
 			"walk@simple": "{bodyId, select, sun {Mach die Sonne zu einem Basketball und lauf zu den Planeten} other {Mach die Sonne zu einem Basketball und lauf zu dieser Welt}}"
 		},
@@ -1132,7 +1133,7 @@
 			}
 		},
 		"light": {
-			"open": "Lichtgeschwindigkeit",
+			"open": "Licht\u00adgeschwindigkeit",
 			"open@simple": "Wie schnell ist Licht?",
 			"openHint": "Schick einen Lichtblitz los und sieh zu, wie lange er durch das Sonnensystem braucht",
 			"title": "Das langsame Licht",
@@ -1507,6 +1508,7 @@
 			"keys@simple": "Mit den Pfeiltasten geht es weiter. Du kannst dich jederzeit umsehen: Die Tour wartet auf dich.",
 			"card": "Tour: {title}",
 			"stopOf": "Station {n} von {count}",
+			"progress": "{n} / {count}",
 			"back": "Zurück",
 			"next": "Weiter",
 			"finish": "Beenden",
@@ -1656,6 +1658,20 @@
 			},
 			"chipHint": "Öffnet die ganze Zeit im Feld: rückwärts, das Datum, „Jetzt“, die Tempi und die Drehung.",
 			"chipHint@simple": "Lass die Zeit schneller, langsamer oder rückwärts laufen."
+		},
+		"gestures": {
+			"label": "Drei Gesten zum Ausprobieren",
+			"drag": "Zieh den Balken am Feld hoch oder runter.",
+			"drag@simple": "Zieh den kleinen Balken hoch: Du siehst mehr.",
+			"tap": "Tipp auf den Himmel: Knöpfe weg und wieder da.",
+			"tap@simple": "Tipp auf den Himmel: Die Knöpfe sind weg.",
+			"swipe": "Wisch die Karte zur nächsten Welt.",
+			"swipe@simple": "Wisch die Karte zum nächsten Planeten.",
+			"ok": "Verstanden",
+			"ok@simple": "OK",
+			"okHint": "Die Tipps kommen nicht wieder. Die Hilfe unter „Mehr“ erklärt jede Geste.",
+			"okHint@simple": "Die Tipps kommen nicht wieder. In der Hilfe unter „Mehr“ findest du sie.",
+			"close": "Tipps schließen"
 		},
 		"quickLook": {
 			"ask": {

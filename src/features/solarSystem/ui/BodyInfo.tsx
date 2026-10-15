@@ -9,7 +9,7 @@
  * that the planets can be clicked. The card starts small, name and one
  * sentence (#42), and its facts unfold on demand, so it never buries the scene.
  */
-import { useEffect, useMemo } from "react"
+import { useEffect, useLayoutEffect, useMemo, useRef } from "react"
 import { ActionIcon, Anchor, Button, CloseButton } from "@mantine/core"
 import {
 	IconChevronDown,
@@ -24,10 +24,11 @@ import { compareSearchFor } from "@/features/compare/links"
 import { isWalkFocusId } from "@/features/solarWalk/search"
 
 import { bodyById } from "@/data"
+import { useUprightPhone } from "@/hooks/useSizeClass"
 import { useI18n } from "@/i18n"
 import { useBodyText } from "@/i18n/bodies"
 import { useHudStore } from "@/store/hud"
-import { useSimStore, type SimState } from "@/store/sim"
+import { useSimStore } from "@/store/sim"
 
 import BodyRecording from "../sound/BodyRecording"
 import {
@@ -36,17 +37,15 @@ import {
 } from "../smallBodies/SmallBodyNotes"
 
 import { headlineFacts } from "./bodyFacts"
+import { cardBodyId } from "./cardBody"
 import { dictionaryEntry } from "./dictionaryEntry"
 import MoonSystem from "./MoonSystem"
 import WorldSurfaceNote from "./WorldSurfaceNote"
 
 import classes from "./BodyInfo.module.css"
 
-/** The body the card is about: the selection, else the focused body; null in the overview or a free view. */
-export const cardBodyId = (
-	state: Pick<SimState, "selectedId" | "view">,
-): string | null =>
-	state.selectedId ?? (state.view.kind === "body" ? state.view.id : null)
+// the body the card is about (pure, for the swipe's sake too, #62)
+export { cardBodyId }
 
 /**
  * "Compare with…" (#24): the body beside its first partner at true relative
@@ -56,6 +55,8 @@ export const cardBodyId = (
 const CompareButton = ({ bodyId }: { bodyId: string }) => {
 	const { t } = useI18n()
 	const navigate = useNavigate()
+	// a phone held upright (#62): the short word, so the world's name keeps its room
+	const upright = useUprightPhone()
 	return (
 		<Button
 			variant="light"
@@ -71,7 +72,9 @@ const CompareButton = ({ bodyId }: { bodyId: string }) => {
 				})
 			}
 		>
-			{t("solarSystem.card.compare")}
+			{t(
+				upright ? "solarSystem.card.compareShort" : "solarSystem.card.compare",
+			)}
 		</Button>
 	)
 }
@@ -99,6 +102,65 @@ const WalkLink = ({ bodyId }: { bodyId: string }) => {
 	)
 }
 
+/**
+ * A phone held upright (#62): the tagline sits under the name beside the
+ * card's buttons when both fit there on one line each; else it takes a line
+ * of its own across the card, under the name and the buttons
+ * (`data-tagline="under"`), so it never wraps word by word beside Compare
+ * (German at the simple level). Measured, not guessed: it follows the words,
+ * the language and the screen.
+ */
+function useTaglinePlace(
+	upright: boolean,
+	words: string,
+): React.RefObject<HTMLElement | null> {
+	const header = useRef<HTMLElement>(null)
+	useLayoutEffect(() => {
+		const element = header.current
+		if (element === null) return
+		if (!upright) {
+			element.removeAttribute("data-tagline")
+			return
+		}
+		/** One line's width of `text`, as laid out now. */
+		const natural = (text: HTMLElement): number => {
+			const { whiteSpace, width } = text.style
+			text.style.whiteSpace = "nowrap"
+			text.style.width = "max-content"
+			const px = text.getBoundingClientRect().width
+			text.style.whiteSpace = whiteSpace
+			text.style.width = width
+			return px
+		}
+		const place = () => {
+			const title = element.querySelector<HTMLElement>("[data-card-title]")
+			const name = element.querySelector<HTMLElement>("h2")
+			const tagline = element.querySelector<HTMLElement>("p")
+			if (title === null || name === null || tagline === null) return
+			const gap = parseFloat(getComputedStyle(element).columnGap) || 0
+			let buttons = 0
+			for (const child of element.children)
+				if (child !== title)
+					buttons += child.getBoundingClientRect().width + gap
+			const room = element.clientWidth - buttons
+			const under = Math.max(natural(name), natural(tagline)) > room + 0.5
+			if ((element.dataset.tagline === "under") !== under)
+				element.dataset.tagline = under ? "under" : "beside"
+		}
+		place()
+		// the width only: the header's own height follows from the choice
+		let width = element.clientWidth
+		const observer = new ResizeObserver(() => {
+			if (element.clientWidth === width) return
+			width = element.clientWidth
+			place()
+		})
+		observer.observe(element)
+		return () => observer.disconnect()
+	}, [upright, words])
+	return header
+}
+
 const ClickHint = () => {
 	const { t } = useI18n()
 	return (
@@ -121,6 +183,8 @@ const BodyCard = ({ bodyId }: { bodyId: string }) => {
 	// starts small (#42): name and one sentence; the viewer's choice holds from body to body
 	const open = useHudStore((state) => state.cardExpanded)
 	const setExpanded = useHudStore((state) => state.setCardExpanded)
+	const upright = useUprightPhone()
+	const headerRef = useTaglinePlace(upright, `${text.name}|${text.tagline}`)
 	if (body === undefined) return null
 	const entry = dictionaryEntry(body.id)
 	const story = text.comparisons[0]
@@ -146,8 +210,8 @@ const BodyCard = ({ bodyId }: { bodyId: string }) => {
 			data-card-body={body.id}
 			data-sheet-folds
 		>
-			<header className={classes.header}>
-				<div className={classes.title}>
+			<header className={classes.header} ref={headerRef}>
+				<div className={classes.title} data-card-title>
 					<h2 className={classes.name}>{text.name}</h2>
 					<p className={classes.tagline}>{text.tagline}</p>
 				</div>

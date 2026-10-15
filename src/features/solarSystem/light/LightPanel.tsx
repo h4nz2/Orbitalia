@@ -287,7 +287,8 @@ const PulseTab = () => {
 			<Text size="xs" c="gray.4" lh={1.4}>
 				{t("solarSystem.light.intro", { speed: SPEED_OF_LIGHT_KM_S })}
 			</Text>
-			<Group gap="xs" align="flex-end" wrap="wrap">
+			{/* the phone's sheet brings it into view as the panel opens (#62) */}
+			<Group gap="xs" align="flex-end" wrap="wrap" data-sheet-main>
 				<div className={classes.grow}>
 					<BodySelect
 						label={t("solarSystem.light.from")}
@@ -302,6 +303,7 @@ const PulseTab = () => {
 					color="orange"
 					leftSection={<IconBolt size={14} />}
 					onClick={() => send()}
+					data-testid="light-send"
 				>
 					{pulse === null
 						? t("solarSystem.light.send")
@@ -334,16 +336,17 @@ const DelayTab = () => {
 			<Text size="xs" c="gray.4" lh={1.4}>
 				{t("solarSystem.light.delay.intro")}
 			</Text>
-			<BodySelect
-				label={t("solarSystem.light.delay.to")}
-				value={targetId}
-				onChange={setTarget}
-				exclude={HOME_ID}
-				extra={selectedId === HOME_ID ? null : selectedId}
-				testId="light-delay-target"
-			/>
-			{delay !== null && (
-				<>
+			{/* where to, and how long: the phone's sheet brings it into view as the panel opens (#62) */}
+			<Stack gap="sm" data-sheet-main>
+				<BodySelect
+					label={t("solarSystem.light.delay.to")}
+					value={targetId}
+					onChange={setTarget}
+					exclude={HOME_ID}
+					extra={selectedId === HOME_ID ? null : selectedId}
+					testId="light-delay-target"
+				/>
+				{delay !== null && (
 					<dl className={classes.delay}>
 						<dt>{t("solarSystem.light.delay.oneWay")}</dt>
 						<dd data-light-delay={delay.seconds}>
@@ -352,6 +355,10 @@ const DelayTab = () => {
 						<dt>{t("solarSystem.light.delay.roundTrip")}</dt>
 						<dd>{formatDuration(delay.seconds * 2, i18n)}</dd>
 					</dl>
+				)}
+			</Stack>
+			{delay !== null && (
+				<>
 					<Text size="xs" c="dimmed">
 						{t("solarSystem.light.delay.now", {
 							distance: formatDistanceKm(delay.distanceKm, i18n),

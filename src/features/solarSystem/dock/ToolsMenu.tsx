@@ -4,9 +4,14 @@
  * picking one opens it in the dock, closing whatever was open there
  * (`exclusive.ts`). New tools add an item here, not a button of their own
  * (docs/ARCHITECTURE.md, "HUD layout").
+ *
+ * On a phone held upright (#62) Tools is a panel of large tiles in the sheet
+ * instead of a menu: what you do with a phone in your hand first, every tile
+ * an icon and the tool's name, all nine in view at once. The tiles keep the
+ * menu's `data-tool`, its words and what its items do.
  */
-import type { ReactNode } from "react"
-import { Button, Menu, Text } from "@mantine/core"
+import { useEffect, type ReactNode } from "react"
+import { Button, Menu, Text, UnstyledButton } from "@mantine/core"
 import {
 	IconBolt,
 	IconBook,
@@ -23,6 +28,7 @@ import { useNavigate } from "@tanstack/react-router"
 
 import { compareSearchFor } from "@/features/compare/links"
 
+import { useUprightPhone } from "@/hooks/useSizeClass"
 import { useI18n, type MessageKey } from "@/i18n"
 import { Hint } from "@/primitives/hint"
 import { useBirthdayStore } from "@/store/birthday"
@@ -115,6 +121,31 @@ export const TOOLS: readonly Tool[] = [
 	},
 ]
 
+/**
+ * The tiles' order on a phone held upright (#62): what you do with a phone in
+ * your hand first (the hunt, your birthday, tonight's sky, a picture, side by
+ * side), then the rest.
+ */
+export const PHONE_ORDER: readonly ToolId[] = [
+	"hunt",
+	"birthday",
+	"sky",
+	"postcard",
+	"compare",
+	"light",
+	"spacecraft",
+	"walk",
+	"dictionary",
+]
+
+const toolById = new Map(TOOLS.map((tool) => [tool.id, tool]))
+
+/** The tiles in their order: a tool not placed in `PHONE_ORDER` yet still gets its tile, last. */
+const TILES: readonly Tool[] = [
+	...PHONE_ORDER,
+	...TOOLS.map((tool) => tool.id).filter((id) => !PHONE_ORDER.includes(id)),
+].map((id) => toolById.get(id)!)
+
 /** Whether a tool's panel is on screen (the pages and the picture open no panel). */
 function useOpenTool(): ToolId | null {
 	const light = useLightStore((state) => state.open)
@@ -130,12 +161,13 @@ function useOpenTool(): ToolId | null {
 	return null
 }
 
-const ToolsMenu = () => {
-	const { t } = useI18n()
+/** What picking a tool does, from the menu or a tile. */
+function useRunTool(): (id: ToolId) => void {
 	const navigate = useNavigate()
-	const active = useOpenTool()
-
-	const run = (id: ToolId) => {
+	return (id: ToolId) => {
+		// the tiles' panel (#62) makes way; a tool with a panel replaces it anyway (`exclusive.ts`)
+		if (useHudStore.getState().panel === "tools")
+			useHudStore.getState().setPanel(null)
 		switch (id) {
 			case "light":
 				useLightStore.getState().setOpen(true)
@@ -177,6 +209,74 @@ const ToolsMenu = () => {
 				return
 		}
 	}
+}
+
+/**
+ * Tools as tiles (#62), the panel Tools opens on a phone held upright: a
+ * three by three grid of large tiles, an icon and the tool's name each (the
+ * menu's words, so the help's "Tools, then …" fits both), all in view at
+ * once. A long press says what the tool does.
+ */
+export function ToolTiles() {
+	const { t } = useI18n()
+	const run = useRunTool()
+	return (
+		<div className={classes.tiles} data-testid="tool-tiles">
+			{TILES.map((tool) => (
+				<Hint key={tool.id} text={t(tool.description)}>
+					<UnstyledButton
+						className={classes.tile}
+						onClick={() => run(tool.id)}
+						data-tool={tool.id}
+					>
+						<span className={classes.tileIcon} aria-hidden>
+							{tool.icon}
+						</span>
+						{/* the menu's own words, so the help's "Tools, then …" fits both */}
+						<span className={classes.tileName}>{t(tool.label)}</span>
+					</UnstyledButton>
+				</Hint>
+			))}
+		</div>
+	)
+}
+
+/** On a phone held upright (#62): Tools opens its tiles in the sheet, like Layers and Scale open theirs. */
+function ToolsButton({ active }: { active: boolean }) {
+	const { t } = useI18n()
+	const open = useHudStore((state) => state.panel === "tools")
+	const togglePanel = useHudStore((state) => state.togglePanel)
+	return (
+		<Hint text={t("solarSystem.hud.toolsHint")}>
+			<Button
+				variant={open || active ? "light" : "subtle"}
+				color={open || active ? "orange" : "gray"}
+				size="compact-sm"
+				className={classes.entry}
+				leftSection={<IconTools size={16} aria-hidden />}
+				aria-expanded={open}
+				data-entry="tools"
+				data-testid="tools-menu"
+				onClick={() => togglePanel("tools")}
+			>
+				{t("solarSystem.hud.tools")}
+			</Button>
+		</Hint>
+	)
+}
+
+const ToolsMenu = () => {
+	const { t } = useI18n()
+	const active = useOpenTool()
+	const run = useRunTool()
+	const upright = useUprightPhone()
+	// turned on its side, a phone has the menu again: the tiles go
+	useEffect(() => {
+		if (!upright && useHudStore.getState().panel === "tools")
+			useHudStore.getState().setPanel(null)
+	}, [upright])
+
+	if (upright) return <ToolsButton active={active !== null} />
 
 	return (
 		<Hint text={t("solarSystem.hud.toolsHint")}>

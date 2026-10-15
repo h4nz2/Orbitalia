@@ -10,7 +10,7 @@
  */
 import { expect, test, type Page } from "@playwright/test"
 
-import { cameraAtRest } from "./support/scene"
+import { cameraAtRest, menuAtRest } from "./support/scene"
 import { smallControls } from "./support/touch"
 
 // software WebGL is slow, and the taps on the sky wait for the camera each time
@@ -500,12 +500,15 @@ test.describe("a tap on the sky, on a phone", () => {
 		page,
 	}) => {
 		await ready(page, "/solar_system?focus=mars&lang=en")
-		// the topmost patch of sky, clear of the Tools menu over the sheet
+		// the point of view's menu, under the top row (Tools is tiles in the sheet now, #62)
+		await page.getByTestId("frame-menu").tap()
+		const menu = page.getByRole("menu")
+		await expect(menu).toBeVisible()
+		await menuAtRest(page)
+		// a patch of sky clear of the open menu
 		const [spot] = await skySpots(page, ["mars", "phobos", "deimos"])
-		await page.getByTestId("tools-menu").tap()
-		await expect(page.locator("[data-tool]").first()).toBeVisible()
 		await page.touchscreen.tap(spot.x, spot.y)
-		await expect(page.locator("[data-tool]").first()).toBeHidden()
+		await expect(menu).toBeHidden()
 		expect(await hidden(page)).toBe(false)
 		// and the next tap on the sky does
 		await page.touchscreen.tap(spot.x, spot.y)

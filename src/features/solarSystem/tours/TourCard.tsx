@@ -4,6 +4,10 @@
  * autoplay, a link to the stop, fold and close. While the visitor looks
  * around on their own it says so and offers the way back to the stop.
  *
+ * On a phone held upright (#62) the dots give their line(s) to the stop's
+ * words: a compact "3 / 11" and a thin bar under the header say how far the
+ * tour has come, and Back and Next stay at the sheet's foot.
+ *
  * Large type for a projector; a HUD `.panel`, so labels keep clear of it.
  */
 import { useState } from "react"
@@ -22,6 +26,7 @@ import {
 
 import { eventOfTourId } from "@/data/skyEvents"
 import type { Tour, TourLink } from "@/data/tours"
+import { useUprightPhone } from "@/hooks/useSizeClass"
 import { Hint } from "@/primitives/hint"
 import { useI18n } from "@/i18n"
 import { useSimStore } from "@/store/sim"
@@ -118,6 +123,8 @@ const TourCard = ({ className = "" }: { className?: string }) => {
 	const steps = useTourStore((state) => state.steps)
 	const sequence = useSimStore((state) => state.sequence)
 	const status = tourStatus(sequence, { tour, steps })
+	// a phone held upright (#62): a compact progress instead of a dot per stop
+	const upright = useUprightPhone()
 
 	// a sky event (#41) and the quick look (#44) play as tours but have their own cards
 	if (
@@ -134,13 +141,21 @@ const TourCard = ({ className = "" }: { className?: string }) => {
 	const count = tour.stops.length
 	const last = index >= count - 1
 	const away = status !== "playing"
+	const stopOf = t("solarSystem.tours.stopOf", { n: index + 1, count })
 
 	const header = (
 		<header className={classes.header}>
 			<IconRoute className={classes.tourIcon} size={18} aria-hidden />
 			<span className={classes.tourTitle}>{tourText.title}</span>
-			<span className={classes.count} data-testid="tour-count">
-				{t("solarSystem.tours.stopOf", { n: index + 1, count })}
+			{/* on a phone held upright "3 / 11", which the bar below says in words to a screen reader */}
+			<span
+				className={classes.count}
+				data-testid="tour-count"
+				aria-hidden={upright || undefined}
+			>
+				{upright
+					? t("solarSystem.tours.progress", { n: index + 1, count })
+					: stopOf}
 			</span>
 			<ActionIcon
 				variant="subtle"
@@ -163,6 +178,23 @@ const TourCard = ({ className = "" }: { className?: string }) => {
 				onClick={exitTour}
 				aria-label={t("solarSystem.tours.close")}
 			/>
+			{upright && (
+				<div
+					className={classes.progress}
+					role="progressbar"
+					aria-label={tourText.title}
+					aria-valuemin={1}
+					aria-valuemax={count}
+					aria-valuenow={index + 1}
+					aria-valuetext={stopOf}
+					data-testid="tour-progress"
+				>
+					<span
+						className={classes.progressDone}
+						style={{ width: `${((index + 1) / count) * 100}%` }}
+					/>
+				</div>
+			)}
 		</header>
 	)
 
@@ -190,6 +222,29 @@ const TourCard = ({ className = "" }: { className?: string }) => {
 		>
 			{last ? t("solarSystem.tours.finish") : t("solarSystem.tours.next")}
 		</Button>
+	)
+
+	const tools = (
+		<div className={classes.tools}>
+			<Hint text={t("solarSystem.tours.autoplayHint")}>
+				<ActionIcon
+					variant={auto ? "filled" : "subtle"}
+					color={auto ? "orange" : "gray"}
+					size="lg"
+					onClick={() => setTourAuto(!auto)}
+					aria-label={t("solarSystem.tours.autoplay")}
+					aria-pressed={auto}
+					data-testid="tour-autoplay"
+				>
+					{auto ? (
+						<IconPlayerPause size={18} aria-hidden />
+					) : (
+						<IconPlayerPlay size={18} aria-hidden />
+					)}
+				</ActionIcon>
+			</Hint>
+			<ShareButton tour={tour} index={index} />
+		</div>
 	)
 
 	return (
@@ -259,46 +314,31 @@ const TourCard = ({ className = "" }: { className?: string }) => {
 							</Button>
 						</div>
 					)}
-					<ol className={classes.dots}>
-						{tour.stops.map((s, i) => (
-							<li key={s.id}>
-								<button
-									type="button"
-									className={classes.dot}
-									data-current={i === index || undefined}
-									data-done={i < index || undefined}
-									aria-current={i === index ? "step" : undefined}
-									aria-label={t("solarSystem.tours.goTo", {
-										n: i + 1,
-										title: words.stop(tour, s).title,
-									})}
-									onClick={() => goToStop(i)}
-								/>
-							</li>
-						))}
-					</ol>
+					{!upright && (
+						<ol className={classes.dots}>
+							{tour.stops.map((s, i) => (
+								<li key={s.id}>
+									<button
+										type="button"
+										className={classes.dot}
+										data-current={i === index || undefined}
+										data-done={i < index || undefined}
+										aria-current={i === index ? "step" : undefined}
+										aria-label={t("solarSystem.tours.goTo", {
+											n: i + 1,
+											title: words.stop(tour, s).title,
+										})}
+										onClick={() => goToStop(i)}
+									/>
+								</li>
+							))}
+						</ol>
+					)}
+					{/* a phone held upright (#62): autoplay and the link under the words, so Back and Next keep the foot to themselves */}
+					{upright && tools}
 					<div className={classes.controls} data-sheet-footer>
 						{back}
-						<div className={classes.tools}>
-							<Hint text={t("solarSystem.tours.autoplayHint")}>
-								<ActionIcon
-									variant={auto ? "filled" : "subtle"}
-									color={auto ? "orange" : "gray"}
-									size="lg"
-									onClick={() => setTourAuto(!auto)}
-									aria-label={t("solarSystem.tours.autoplay")}
-									aria-pressed={auto}
-									data-testid="tour-autoplay"
-								>
-									{auto ? (
-										<IconPlayerPause size={18} aria-hidden />
-									) : (
-										<IconPlayerPlay size={18} aria-hidden />
-									)}
-								</ActionIcon>
-							</Hint>
-							<ShareButton tour={tour} index={index} />
-						</div>
+						{!upright && tools}
 						{next}
 					</div>
 				</>

@@ -579,6 +579,7 @@
 			"hideFacts": "Hide facts",
 			"close": "Close",
 			"compare": "Compare with…",
+			"compareShort": "Compare",
 			"walk": "{bodyId, select, sun {Shrink the Sun to a basketball and walk the solar system} other {Shrink the Sun to a basketball and walk out to this world}}",
 			"walk@simple": "{bodyId, select, sun {Make the Sun a basketball and walk to the planets} other {Make the Sun a basketball and walk to this world}}"
 		},
@@ -1507,6 +1508,7 @@
 			"keys@simple": "Use the arrow keys to go on. You can look around at any time: the tour waits for you.",
 			"card": "Tour: {title}",
 			"stopOf": "Stop {n} of {count}",
+			"progress": "{n} / {count}",
 			"back": "Back",
 			"next": "Next",
 			"finish": "Finish",
@@ -1656,6 +1658,20 @@
 			},
 			"chipHint": "Opens the whole time in the panel: reverse, the date, Now, the speeds and the spin.",
 			"chipHint@simple": "Make time go faster, slower or backwards."
+		},
+		"gestures": {
+			"label": "Three moves to try",
+			"drag": "Drag the panel's bar up or down.",
+			"drag@simple": "Pull the little bar up to see more.",
+			"tap": "Tap the sky to hide or show the buttons.",
+			"tap@simple": "Tap the sky to hide the buttons.",
+			"swipe": "Swipe the card to the next world.",
+			"swipe@simple": "Swipe the card to the next planet.",
+			"ok": "Got it",
+			"ok@simple": "OK",
+			"okHint": "The tips will not come back. Help, under More, explains every move.",
+			"okHint@simple": "The tips will not come back. Help, under More, shows them again.",
+			"close": "Close the tips"
 		},
 		"quickLook": {
 			"ask": {

@@ -66,6 +66,70 @@
 	}
 }
 
+/*
+ * Tools as tiles (#62), on a phone held upright: three by three, an icon over
+ * a short name, all nine in view at once (the panel is shown whole in the
+ * sheet, `data-sheet-whole`). The name may take two lines and is never cut.
+ */
+.tiles {
+	display: grid;
+	grid-template-columns: repeat(3, minmax(0, 1fr));
+	gap: 0.375rem;
+}
+
+/* the tiles take the panel's width: a long word ("Licht­geschwindigkeit") keeps whole at 360 px */
+.panel[data-dock-panel="tools"] .body {
+	padding-inline: 0.5rem;
+}
+
+.tile {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	gap: 0.25rem;
+	min-width: 0;
+	min-height: 4rem;
+	padding: 0.375rem 0.125rem;
+	border: 1px solid rgba(255, 255, 255, 0.08);
+	border-radius: var(--mantine-radius-md);
+	background: rgba(255, 255, 255, 0.05);
+	color: var(--mantine-color-gray-1);
+	text-align: center;
+	-webkit-tap-highlight-color: transparent;
+	transition: background 120ms ease;
+}
+
+.tile:hover {
+	background: rgba(255, 255, 255, 0.09);
+}
+
+.tile:active {
+	background: rgba(253, 126, 20, 0.2);
+}
+
+.tile:focus-visible {
+	outline: 2px solid var(--mantine-color-orange-5);
+	outline-offset: 2px;
+}
+
+.tileIcon {
+	display: inline-flex;
+	color: var(--mantine-color-orange-4);
+}
+
+.tileIcon svg {
+	width: 1.5rem;
+	height: 1.5rem;
+}
+
+.tileName {
+	max-width: 100%;
+	font-size: var(--mantine-font-size-xs);
+	font-weight: 600;
+	line-height: 1.2;
+}
+
 /* the light panel in the dock (its own module sets its width) */
 .lightPanel {
 	max-height: 100%;
@@ -115,8 +179,9 @@
 		min-width: 0;
 	}
 
+	/* each as wide as its word needs, the rest shared (#62: "Herramientas" whole at 360 px) */
 	.entry {
-		flex: 1 1 0;
+		flex: 1 1 auto;
 		min-width: 0;
 	}
 

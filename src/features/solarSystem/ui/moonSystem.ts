@@ -20,6 +20,7 @@ import {
 	CAMERA_FOV_DEG,
 	bodyFramingRadii,
 	fitDistanceIn,
+	framedRingRatio,
 	lensOf,
 } from "../camera/framing"
 
@@ -60,7 +61,7 @@ export const planetFramingRadii = (
 	insets: Insets = NO_INSETS,
 ): number =>
 	bodyFramingRadii(
-		planet.rings == null ? 0 : planet.rings.outerRadiusKm / planet.radiusKm,
+		framedRingRatio(planet),
 		lensOf(CAMERA_FOV_DEG, aspect, insets),
 	)
 

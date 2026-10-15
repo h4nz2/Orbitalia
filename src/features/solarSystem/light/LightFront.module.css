@@ -50,3 +50,45 @@
 	outline: 2px solid var(--mantine-color-orange-6);
 	outline-offset: 2px;
 }
+
+/*
+ * fingers (#58, #62: a student's link to the flash): the button itself is
+ * 44 px, the same small circle drawn in its middle, and the label keeps its
+ * size (the negative margin takes the extra room back)
+ */
+@media $touch {
+	.stop {
+		width: var(--touch-target);
+		height: var(--touch-target);
+		margin: calc((1.5em - var(--touch-target)) / 2);
+		border: 0;
+		background: none;
+		isolation: isolate;
+	}
+
+	.stop::before {
+		content: "";
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		z-index: -1;
+		width: 1.5em;
+		height: 1.5em;
+		transform: translate(-50%, -50%);
+		border: 1px solid rgba(255, 231, 163, 0.7);
+		border-radius: 50%;
+		background: rgba(0, 0, 0, 0.55);
+	}
+
+	.stop::after {
+		inset: 0;
+	}
+
+	.stop:hover {
+		background: none;
+	}
+
+	.stop:hover::before {
+		background: rgba(255, 214, 107, 0.25);
+	}
+}

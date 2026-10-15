@@ -521,6 +521,7 @@ const Asking = ({ question }: { question: HuntQuestion }) => {
 				size={easy ? "sm" : "compact-sm"}
 				leftSection={<IconBulb size={14} />}
 				onClick={nextHint}
+				data-testid="hunt-hint"
 			>
 				{hints === 0
 					? t("solarSystem.hunt.firstHint")

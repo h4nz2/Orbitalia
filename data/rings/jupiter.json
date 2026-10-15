@@ -1,6 +1,7 @@
 {
 	"innerRadiusKm": 92000,
 	"castsShadow": false,
+	"faint": true,
 	"outerRadiusKm": 181350,
 	"textures": {
 		"alpha": "/assets/textures/jupiter/rings/rings_alpha.png",

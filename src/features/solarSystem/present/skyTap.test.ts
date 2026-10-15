@@ -1,6 +1,8 @@
-import { describe, expect, it } from "vitest"
+import { afterEach, describe, expect, it } from "vitest"
 
+import { useGestureHintStore } from "../sheet/gestureHint"
 import {
+	onSkyTap,
 	skyTapAction,
 	skyTapHides,
 	tapRestores,
@@ -81,5 +83,17 @@ describe("a tap on the sky with the phone's sheet raised (#60)", () => {
 		expect(skyTapAction({ ...raised, dismissing: true })).toBe("none")
 		expect(skyTapAction({ ...raised, hidden: true })).toBe("none")
 		expect(skyTapAction({ ...raised, opening: true })).toBe("none")
+	})
+})
+
+describe("a tap on the sky while the gesture hint is up (#62)", () => {
+	afterEach(() =>
+		useGestureHintStore.setState(useGestureHintStore.getInitialState(), true),
+	)
+
+	it("takes the hint away and does nothing else", () => {
+		useGestureHintStore.setState({ showing: true })
+		expect(onSkyTap(new Event("click"))).toBe("none")
+		expect(useGestureHintStore.getState().showing).toBe(false)
 	})
 })

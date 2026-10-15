@@ -239,16 +239,19 @@
 				"standard": [
 					"Siempre en pantalla: la flecha para volver a donde estabas, el botón de la casa (volver a todo el sistema), el nombre del mundo que ves con su ficha y la barra del tiempo. La flecha de la ficha abre sus datos, lunas e historias.",
 					"En la barra del tiempo: reproducir, pausar y la fecha; el botón con la velocidad (como 1x) abre «Ahora», las velocidades y la rotación. En un móvil en vertical la sustituye el botón del tiempo sobre el panel: reproducir o pausar, y la velocidad con la fecha, que abre todo el tiempo en el panel.",
-					"Visitas, Capas (lo que se dibuja), Escala (qué tamaño y a qué distancia) y Herramientas (la velocidad de la luz, el cielo de esta noche, naves, tu cumpleaños, la búsqueda del tesoro, lado a lado, recorrer el sistema solar a pie, el diccionario visual y hacer una foto) abren todo lo demás. Solo se abre un panel a la vez; la × lo cierra. En un móvil en vertical todo se abre en un panel abajo, con Visitas, Capas, Escala y Herramientas como última fila. Arrastra el asa (la barrita de arriba) o el título para dejarlo pequeño, a media altura o completo; un toque en el asa lo sube un paso, y un toque en el cielo vacío lo baja.",
+					"Visitas, Capas (lo que se dibuja), Escala (qué tamaño y a qué distancia) y Herramientas (la velocidad de la luz, el cielo de esta noche, naves, tu cumpleaños, la búsqueda del tesoro, lado a lado, recorrer el sistema solar a pie, el diccionario visual y hacer una foto) abren todo lo demás. Solo se abre un panel a la vez; la × lo cierra. En un móvil en vertical todo se abre en un panel abajo, con Visitas, Capas, Escala y Herramientas como última fila. Arrastra el asa (la barrita de arriba) o el título para dejarlo pequeño, a media altura o completo; un toque en el asa lo sube un paso, y un toque en el cielo vacío lo baja. Allí Herramientas se abre en mosaicos: un botón grande para cada herramienta, todos a la vista.",
 					"Los botones para presentar y para los ajustes: Presentar, Compartir, el ojo tachado que lo oculta todo (H lo devuelve), el sonido, Ayuda y el idioma. En un móvil están todos en Más.",
-					"En un móvil o una tableta, tocar el cielo vacío oculta todos los controles, y el siguiente toque en cualquier sitio los devuelve; la vista nunca se mueve."
+					"En un móvil o una tableta, tocar el cielo vacío oculta todos los controles, y el siguiente toque en cualquier sitio los devuelve; la vista nunca se mueve.",
+					"La primera vez en un móvil en vertical, una tarjeta corta muestra los tres gestos que no tienen botón: arrastrar la barra del panel, tocar el cielo y deslizar la ficha de un mundo. «Entendido» o la × la cierran, y también probar cualquiera de los gestos; no vuelve a salir."
 				],
 				"simple": [
 					"La flecha Atrás vuelve un paso atrás. El botón de la casa, a su lado, te lleva de vuelta a todos los planetas.",
 					"Pulsa Capas, Escala o Herramientas para encontrar más.",
 					"En un móvil todo se abre en un panel abajo. Súbelo para ver más, o bájalo para ver más espacio.",
+					"En un móvil, Herramientas muestra un botón grande para cada herramienta.",
 					"Para ocultar todos los botones, toca el cielo vacío en un móvil o una tableta, o pulsa el ojo tachado. Toca otra vez, o pulsa H, para recuperarlos.",
-					"En un móvil, pulsa Más para compartir, para el sonido, para la ayuda y para tu idioma."
+					"En un móvil, pulsa Más para compartir, para el sonido, para la ayuda y para tu idioma.",
+					"La primera vez en un móvil, una tarjetita te enseña tres trucos. Pulsa «OK» cuando los sepas."
 				]
 			}
 		},
@@ -269,16 +272,18 @@
 				"standard": [
 					"Vuela a un mundo: aparece su ficha con su nombre y una frase.",
 					"La flecha de la ficha abre sus datos, lunas e historias; se queda abierta para el siguiente mundo.",
-					"«Leer más en el diccionario» abre su página; «Comparar con…» lo pone junto a otro mundo.",
+					"«Leer más en el diccionario» abre su página; «Comparar con…» (en un móvil en vertical, «Comparar») lo pone junto a otro mundo.",
 					"Debajo de la comparación, «Encoge el Sol hasta un balón de baloncesto…» encuentra el mundo en el paseo por el patio del colegio.",
 					"La última línea de la ficha abierta dice de dónde viene la imagen del mundo: un mapa de una nave espacial o, donde no hay un mapa completo, una pintura hecha a partir de fotos de naves.",
-					"En un móvil en vertical, la ficha está en el panel de abajo: sube el panel (o pulsa la flecha) para leer más, y bájalo para ver más espacio. Un toque en el asa, la barrita de arriba, lo pasa por pequeño, medio y completo."
+					"En un móvil en vertical, la ficha está en el panel de abajo: sube el panel (o pulsa la flecha) para leer más, y bájalo para ver más espacio. Un toque en el asa, la barrita de arriba, lo pasa por pequeño, medio y completo.",
+					"En un móvil en vertical, desliza la ficha hacia un lado para volar al mundo siguiente, como con las flechas: hacia la izquierda sigues hacia fuera (después de la Tierra, Marte), hacia la derecha vuelves, y las lunas de un planeta se turnan entre ellas. Atrás te devuelve al mundo anterior."
 				],
 				"simple": [
 					"Vuela a un planeta.",
 					"Lee su ficha.",
 					"Toca la flechita para ver más.",
-					"En un móvil, sube el panel para leer más."
+					"En un móvil, sube el panel para leer más.",
+					"En un móvil, desliza la ficha hacia un lado para visitar el siguiente planeta."
 				]
 			}
 		},
@@ -1038,13 +1043,13 @@
 					"Pulsa «Visitas» y elige una visita.",
 					"Avanza con «Siguiente» y «Atrás» en la tarjeta, con las flechas o con un mando de presentaciones (Av Pág / Re Pág).",
 					"Mira a tu alrededor cuando quieras; «Volver a la visita» recupera la parada. «Reproducción automática» avanza sola, y el botón del enlace copia un enlace a la parada actual. Los docentes pueden escribir sus propias visitas como datos (src/data/tours/README.md).",
-					"En un móvil en vertical, cada parada se abre en el panel de abajo, a media altura para que se lea el texto; bájalo para ver más de la vista. «Atrás» y «Siguiente» se quedan al pie del panel."
+					"En un móvil en vertical, cada parada se abre en el panel de abajo, a media altura para que se lea el texto; bájalo para ver más de la vista. «Atrás» y «Siguiente» se quedan al pie del panel. «3 / 11» y una barra fina bajo el título muestran cuánto llevas de la visita; «Reproducción automática» y el botón del enlace están debajo del texto."
 				],
 				"simple": [
 					"Pulsa «Visitas» y elige una.",
 					"Lee la tarjeta y pulsa «Siguiente» o una flecha.",
 					"Mira a tu alrededor cuando quieras y luego pulsa «Volver a la visita».",
-					"En un móvil, baja el panel para ver más espacio, y súbelo para leer."
+					"En un móvil, baja el panel para ver más espacio, y súbelo para leer. «3 / 11» te dice cuánto llevas."
 				]
 			}
 		},
@@ -1271,6 +1276,7 @@
 		},
 		"siblings": {
 			"action": "Mundo siguiente o anterior de la misma familia",
+			"touch": "Desliza la ficha del mundo hacia un lado (un móvil en vertical)",
 			"keys": "← / →"
 		},
 		"planets": {

@@ -55,7 +55,7 @@ src/data/worlds.json         the dictionary's stories (#53): layers, air, temper
 src/store/                   sim.ts, navigation.ts, flight.ts, scale.ts, lighting.ts, spin.ts, trails.ts, light.ts, hunt.ts,
                              hud.ts (the quiet HUD, #42), freeArea.ts (the part of the screen the scene is seen in, #61), presentation.ts, postcard.ts, sound.ts, birthday.ts, skyTonight.ts, tour.ts, simSearch.ts (URL schema),
                              urlSync.ts, viewHistory.ts (Back, #46)
-src/features/                solarDictionary/, solarSystem/ (index.tsx, back/ (#46), scene/, bodies/, camera/, dock/, frame/, hunt/, intro/, labels/, lighting/, light/, postcard/, present/, rings/,
+src/features/                solarDictionary/, solarSystem/ (index.tsx, back/ (#46), scene/, bodies/, camera/, dock/, frame/, hunt/, intro/, labels/, lighting/, light/, postcard/, present/, rings/, sheet/ (#60, #62),
                              smallBodies/ (#23), sound/, tours/, ui/, birthday/, skyTonight/, walk/ (the walk's ways in, #48)),
                              solarWalk/ (the basketball solar system, #25), compare/ (side by side, #24), help/ (the help page, #43),
                              feedback/ (the feedback page, its schema shared with the Worker, the error page)
@@ -76,8 +76,10 @@ public/assets/sounds/        the real space recordings (#32) and their CREDITS.m
   units and dates through its formatters, body names through `bodyName`/`useBodyName`, never `body.name`.
 - **The HUD stays quiet (#42, see "HUD layout").** A new feature puts its control behind an existing entry point
   (Tours, Layers, Scale, Tools, the time popover, the Present menu, a body's card), never as a new permanent panel on
-  the scene. A tool that needs a panel registers in the Tools menu (`dock/ToolsMenu.tsx`) and renders into the dock,
-  one panel at a time (`dock/exclusive.ts`). Its help entry says where it lives.
+  the scene. A tool that needs a panel registers in the Tools menu (`dock/ToolsMenu.tsx` `TOOLS`; on a phone held
+  upright the same entry is a tile, placed by `PHONE_ORDER`, #62) and renders into the dock, one panel at a time
+  (`dock/exclusive.ts`). Its help entry says where it lives. A move with no button of its own (#62: dragging the
+  sheet, a tap on the sky, a swipe of the card) is shown once in the phone's gesture hint and named in its help entry.
 - **Phones and fingers (#58, see "Size classes, finger sizes and screen edges").** The arrangement follows the
   screen's size: `@media $phone` (narrower than 600 px or lower than 480 px) and `@media $touch` (the primary
   pointer is a finger), defined once in `src/utils/sizeClasses.json`; code uses `usePhone`/`useTouch`. Under `$touch`
@@ -675,7 +677,8 @@ canvas, exactly as before.
   band's centre, kept on the canvas): a thinner band would shrink the subject to a speck.
 - **The sheet's band (#60).** On an upright phone `sheet/Sheet.tsx` writes `{ width, height, top, bottom }`: the
   bottom of the top row (`[data-sheet-top]`: where, More, the badges under them) and the top of the time chip
-  (`[data-sheet-above]`) or of the sheet, whichever is higher, measured from the canvas's bottom. It writes when the
+  (`[data-sheet-above]`; the gesture hint above it while it shows, #62) or of the sheet, whichever is higher,
+  measured from the canvas's bottom. It writes when the
   sheet comes to rest (after a snap's `transitionend`, or at most `SNAP_WAIT_MS` later on a busy machine), when the
   screen or the top row resizes, and when the controls hide or show; never during a drag. `dock/FreeArea.tsx`
   renders nothing there (`useUprightPhone()`), so there is one writer at a time, and `SheetBand` draws an invisible
@@ -705,12 +708,17 @@ canvas, exactly as before.
   fixed distance; an eye (#41) keeps its place.
 - **Fit narrow screens** (`bodyFramingRadii`): a body is framed from `FRAMING_RADII` (6) drawn radii, or farther
   where that would not fit: the body within `BODY_FIT_SHARE` (90 %) of the band's half-width and half-height, its
-  rings (`ringRatioOf`: the outer edge in planet radii, true in every preset) within that share of the width, and in
-  a band (a phone) of its height too. A ring is a disc tilted to the line of sight, so a laptop, whose narrow side
-  is the height, frames rings by the width alone: every laptop and landscape screen keeps 6 radii for every body
-  (tested for 16:9, 16:10, 4:3 and a phone on its side). On a 390 x 844 phone Saturn backs off to about 14 radii,
-  its rings across 90 % of the width. The moon system shot (`ui/moonSystem.ts`) and the hunt divide by the
-  planet's framing (`planetFramingRadii`), not by 6.
+  rings (`ringRatioOf` / `framedRingRatio`: the outer edge in planet radii, true in every preset) within that share
+  of the width, and in a band (a phone) of its height too. A ring is a disc tilted to the line of sight, so a
+  laptop, whose narrow side is the height, frames rings by the width alone: every laptop and landscape screen keeps
+  6 radii for every body (tested for 16:9, 16:10, 4:3 and a phone on its side). On a 390 x 844 phone Saturn backs
+  off to about 14 radii, its rings across 90 % of the width. Only rings that read clearly count (#62): a ring
+  system marked `faint` in its data (`data/rings/<planet>.json` -> `rings.faint`: normal optical depth below 0.1,
+  Jupiter's and Neptune's, drawn far brighter than they are so they can be seen at all) is left out of the fit and
+  may run off the sides, so a student's Jupiter link shows Jupiter across 87 % of a 390 px phone (the size of every
+  ringless planet) instead of 34 % for its gossamer rings. Saturn's and Uranus's (tipped on its side, a teaching
+  point) keep fitting. The moon system shot (`ui/moonSystem.ts`) and the hunt divide by the planet's framing
+  (`planetFramingRadii`, the same `framedRingRatio`), not by 6.
 - **The whole system on an upright screen** (`UPRIGHT_HOME_SHOT`, `homeShot()`, `defaultShotOf(view)` in
   `src/store/navigation.ts`): on a canvas taller than wide the overview's home shot looks down from 65 deg instead
   of 45, and every preset takes the tight fit (`tightFitDistance`, as Poster does on a laptop) into the band: the
@@ -749,8 +757,8 @@ and angle it was left at. It is one step; the overview button is the way out, al
   phone's back gesture do the same, Forward re-applies a step, and from the first view of the visit the browser's
   back leaves the page as it always did. The address of every entry still describes its view.
 - **What is a step** (marked with `markStep()` before it changes anything): choosing a body or spacecraft (a click
-  or tap on it or its label, `scene/BodyPicking.tsx` `activateBody`; the picker, search, arrow keys and the centre
-  badge through `setFocus`; a craft's marker, `spacecraft/facts.ts` `showCraft`; a comet's watch; the presenter's
+  or tap on it or its label, `scene/BodyPicking.tsx` `activateBody`; the picker, search, arrow keys, a swipe of the
+  card on a phone (#62) and the centre badge through `setFocus`; a craft's marker, `spacecraft/facts.ts` `showCraft`; a comet's watch; the presenter's
   digits, Page Up/Down and 0), the flight that comes with it, the way out (`ui/OverviewButton.tsx` `wayOut`: the
   house and Escape; the centre badge's "Back to overview"), a stop of a menu tour or sky event (`tours/player.ts`
   `enterStop`), a spacecraft's milestone (`showEvent`), a hunt's "Show me" and holding a body still (`anchorFrame`,
@@ -980,6 +988,10 @@ Driven by data alone: a body with `rings` gets them (Jupiter, Saturn, Uranus, Ne
   (`ringShadowTransmittance`). Ringless bodies compile none of it, and neither do planets whose ring file says
   `"castsShadow": false` (Jupiter, Neptune): their rings are drawn far more opaque than they are (optical depth
   1e-6 to 0.1), so their real shadow is invisible and the exaggerated one drew dark lines across the planet.
+- Faint rings: the same two ring files say `"faint": true` (`Rings.faint` in `src/data/schema.ts`: normal optical
+  depth below 0.1; Uranus's narrow rings reach 0.3 to 2.5, Saturn's main rings more than 1). It is about seeing,
+  not shadows: the camera's framing on a narrow screen does not back off to fit faint rings (#62, see "Framing
+  what is free").
 - Picking: the ring sheet is a real scene target, nearer than `BodyPicking`'s "empty space": a click on the rings is
   `activateBody(planet)` and hovering them hovers the planet, so a click on Saturn's rings never resets the view.
 
@@ -1558,7 +1570,8 @@ unobstructed (`e2e/quietHud.spec.ts` measures it). Every control is at most two 
     (on an upright phone the time chip above the sheet, #60);
   - bottom right, the entry points (`dock/Dock.tsx` `EntryBar`): Tours (#28), Layers, Scale (named after the
     preset on screen, so the honest word stays visible), Tools (`dock/ToolsMenu.tsx`: light, tonight's sky, spacecraft,
-    birthday, hunt, side by side, the walk, the dictionary, picture; it scrolls on a short screen).
+    birthday, hunt, side by side, the walk, the dictionary, picture; it scrolls on a short screen; on an upright phone
+    a panel of tiles in the sheet, #62, "Students first").
 - **The dock** (right column, above the entry points; on an upright phone the sheet, #60, "The phone's sheet") holds
   one panel at a time: Layers, Scale and the spacecraft list (`useHudStore.panel`) or a tool with its own store
   (light, birthday, sky tonight, hunt). `dock/exclusive.ts` `keepOneOpen` closes the previous one whichever way the
@@ -1662,8 +1675,9 @@ took a second row of six bare icons. The phone keeps one quiet row instead, and 
   first, then lowering the phone's sheet from half or full to small (#60, by finger or mouse; `skyTapAction`), and a tap that might have been meant for a body (`nearBody`: the full near miss round a dot, one target
   radius round a big disc's plain edge) does nothing. `skyTapHides` (pure, unit-tested) also says no while the
   opening plays or its hints are up, while the hunt's panel is up (the clue is the point), while the quick look asks
-  or plays, when the press closed a menu, a popover or a hint (`pressDismisses`, noted at `pointerdown` in the
-  capture phase, before Mantine closes them), and with the controls already hidden. During a tour it hides; hiding
+  or plays, when the press closed a menu, a popover or a hint, or took the gesture hint away (#62)
+  (`pressDismisses`, noted at `pointerdown` in the capture phase, before Mantine closes them), and with the controls
+  already hidden. During a tour it hides; hiding
   never stops the time or the tour.
 - **The tap that brings them back** (`useSkyTap`, installed by `PresentationLayer`): a capture-phase `click` listener
   on the window that, while hidden and on a touch screen, takes any tap (`isTapClick`: the travel allowance, the end
@@ -1685,8 +1699,8 @@ took a second row of six bare icons. The phone keeps one quiet row instead, and 
 Map apps solved a phone's bottom long ago: one sheet that rests at a few heights, one thing at a time, with the
 content behind it still usable (Apple's sheets, Android's supporting pane, NASA's Eyes). On a phone held upright
 (`$uprightPhone`) the body card, a dock panel (Layers, Scale, the spacecraft list, the light, tonight's sky, the
-birthday, the hunt), the tour card (and a sky event's), the quick look and the time controls share it; More stays a
-popover at the top and Tools a menu. Laptops, tablets and a phone on its side keep the dock.
+birthday, the hunt, and Tools as tiles since #62), the tour card (and a sky event's), the quick look and the time
+controls share it; More stays a popover at the top. Laptops, tablets and a phone on its side keep the dock.
 
 - **One tree, two arrangements.** `index.tsx` always renders `Sheet` around the card's place, the dock and the
   bottom row; `.sheet` and `.sheetContent` are `display: contents` except on an upright phone, so those elements
@@ -1700,6 +1714,9 @@ popover at the top and Tools a menu. Laptops, tablets and a phone on its side ke
   panel still closes the one before (`dock/exclusive.ts`); a tour starting puts the time controls away. A new thing
   opens at its kind's height (`DEFAULT_HEIGHT`: the card small, a panel and the time half, a tour stop half, the hunt
   small, the quick look half); the kind is `data-sheet-kind` on its root (`DockPanel` says "panel" or its `kind`).
+  Content marked `data-sheet-whole` (the Tools tiles, `DockPanel whole`) is shown whole at half, up to under the top
+  row, so it never scrolls; a panel's `data-sheet-main` (#62) is brought into view as it opens (see "Students
+  first"). The next world's card after a swipe keeps the sheet's height.
 - **Three heights** (`heights.ts`, pure, unit-tested; content px): `small` shows one line of it: a panel's header
   (`:scope > header` or `[data-sheet-summary]`), and what folds itself (`data-sheet-folds`: the card, a tour, a sky
   event, the hunt) folded, its fold and the sheet's height being one and the same both ways (`cardExpanded`, the
@@ -1730,15 +1747,95 @@ popover at the top and Tools a menu. Laptops, tablets and a phone on its side ke
   in the sheet is 44 px.
 - **The band** (#61): the sheet is its one writer on an upright phone (see "Framing what is free"). With a hunt's
   clue at small on a 360 x 640 phone every world "Look and find" asks for is in sight above it (#61's open limit).
-- **For #62:** a shared link's thing already opens in the sheet at its kind's height (a tour stop half, a hunt
-  small, a planet's card small, a tool's panel half); a sideways swipe on the card would join the content's touch
-  handling in `Sheet.tsx` (it only takes vertical moves today); Tools as tiles would be a `DockPanel` of its own in
-  the sheet instead of the Tools menu on an upright phone.
+- **#62** builds the students' side on it: links that open ready, the gesture hint, the swipe between worlds and
+  Tools as tiles (see "Students first").
 - **Tests:** `e2e/phoneSheet.spec.ts` (390 x 844 and 360 x 640: the scene shares, two rows in the sheet, half for
   panels, the card and tours, the handle by tap, keys and its name, drags by handle and header, the pull from the
   content's top and no drag while it scrolls, closing, the scene never moving, the chip, the sky's lowering, the
   band at rest and never during a drag, turning the phone, the hunt's worlds above the clue, Earth at half; laptops
   and tablets have no sheet), `heights.test.ts`, `skyTap.test.ts`.
+
+### Students first: a shared link on a phone (`sheet/gestureHint.ts`, `sheet/swipe.ts`, `dock/ToolsMenu.tsx`; #62)
+
+Students open their teacher's links and the class QR code (#29, #50) on their own phones, held upright, and come
+first when they and other viewers compete. Every kind of link is as likely as the others; each opens with the shared
+thing ready in the sheet (#60), its main action in the lower half of the screen (thumb reach), and nothing to close
+first: a link skips the opening and the quick look (#30, #44), and nothing else comes in front of the sheet.
+
+- **What a link opens** (at `DEFAULT_HEIGHT`, #60): a tour stop at half with Back and Next stuck to the sheet's foot;
+  a hunt's clue at small, its hint button with it, the worlds to find in the band (#61); a planet's or a moon's card
+  small (a laptop-made `cam=` frames the same, #61; Jupiter and Neptune as big as a ringless planet, their faint
+  rings running off the sides, see "Framing what is free"); a spacecraft's card small (following it too); a tool's panel at
+  half (the light's flash and its signal delay, the birthday, tonight's sky). A panel brings its main action into
+  view as it opens (`data-sheet-main`, `Sheet.tsx` `revealMain`: the flash's source and Send, the delay's
+  destination and times, the birthday's calendar, the sky's "Are you near …?"), scrolling the words above it out of
+  the way, so it is ready on a 360 x 640 phone too; in the sheet the light panel's words have no scroller of their
+  own (`--light-panel-body-max: none`). Labels keep out of the whole sheet (`labels/Labels.tsx`), and the flash's ×
+  on its label is a 44 px target on touch.
+- **The tour on an upright phone** (`tours/TourCard.tsx`): the dots give their line(s) to the stop's words. The
+  header says "3 / 11" (`solarSystem.tours.progress`) over a thin bar (`role=progressbar`, its text "Stop 3 of 11"),
+  the tour's name wraps rather than being cut, and autoplay and the link sit under the words, so Back and Next have
+  the foot to themselves (in German at 360 px they no longer squeeze). Jumping to a stop by its dot is a laptop's and
+  a tablet's: they, and a phone on its side, keep the dots.
+- **Swiping between worlds** (`sheet/swipe.ts`, pure, and `Sheet.tsx`): a sideways finger on a world's card in the
+  sheet (`data-card-body`, touch only: a pointer that is not a mouse, or the content's touch events) flies to the
+  next world or the one before, exactly as ArrowRight / ArrowLeft (`ui/focusCycle.ts` `cycleFocus`, from the world on
+  the card, `ui/cardBody.ts`): the planets in order from the Sun, a planet's moons among themselves. To the left is
+  the next world, outwards, like a carousel. It needs `SWIPE_PX` (48) sideways and `SWIPE_RATIO` (1.5) times as much
+  sideways as up or down (`swipeDirection`); the axis is decided in the first 6 px, so an upright move stays the
+  sheet's and a swipe never moves the sheet. The card follows the finger by 40 % (at most 72 px, `followPx`) and
+  springs back in 200 ms; with reduced motion it does neither. `setFocus` marks the step, so Back (#46) returns; the
+  click a swipe leaves on a button is swallowed; the next world's card keeps the sheet's height. The card is
+  `touch-action: pan-y` in the sheet, its header `none`. Off on laptops, tablets and a phone on its side (no sheet
+  there).
+- **Tools as tiles** (`dock/ToolsMenu.tsx` `ToolTiles`, `ToolsButton`): on an upright phone Tools toggles
+  `useHudStore.panel = "tools"`, a `DockPanel whole` in the sheet (one at a time through `keepOneOpen`), with a 3 x 3
+  grid of tiles: the tool's icon over its name, in the menu's own words (so every help entry's "Tools, then …" fits
+  both; a long German word carries a soft hyphen, `Licht­geschwindigkeit`), never cut, on two or three lines
+  where a language needs them, each at least 64 px tall. What you do with a phone in your hand comes first
+  (`PHONE_ORDER`: the hunt, your birthday, tonight's sky, a picture, side by side, then the light, spacecraft, the
+  walk, the dictionary); a tool missing from it still gets a tile, last. Tiles keep `data-tool` and do what the
+  menu's items do (`useRunTool`); a long press says what the tool does (`<Hint>`). All nine are in view without
+  scrolling at 390 x 844 and at 360 x 640, in every language and level (at most 334 px of content, so on a 360 x 640
+  phone the panel rises above half). Turned on its side, the phone gets the menu again. `e2e/support/hud.ts`
+  `openTool` works with both.
+- **The gesture hint** (`sheet/gestureHint.ts`, `sheet/GestureHint.tsx`): three moves have no button: dragging the
+  sheet's handle, a tap on the sky that hides the controls (#59), and the swipe. A short card shows them once, on a
+  phone held upright with a finger (`isUprightPhone() && isTouch()`), in every language and at both levels
+  (`solarSystem.gestures.*`).
+  - **Once:** localStorage `orbitalia.gestureHintShown`, set when it appears; with storage blocked, once per visit.
+    `playwright.config.ts` presets it, as it does `introSeen`; `e2e/studentsFirst.spec.ts` clears it.
+  - **When** (`watchGestureHint`; every change starts the wait again): the sheet shows a world's card
+    (`useSheetStore.world`), where all three moves can be tried, and the scene (`useHudStore.sceneOn`, set by the
+    camera rig's first frame) has been at rest (`cameraMoving` false, no drag) for `REST_MS` (2 s). On a link to a
+    planet or a moon that is soon after it opened; over a tour, a hunt or a tool it waits until the card is back (over
+    the hunt the sky's tap hides nothing and there is no card, and on a 360 x 640 phone it would leave no room to
+    find the answer). A first visit without a link waits for the opening, its hints and the quick look, and for a
+    world to be chosen. Never while presenting, never with the controls hidden, never on a laptop, a tablet or a
+    phone on its side.
+  - **Where:** the foot of the open row, right above the time chip (`.gestures` in `SolarSystem.module.css`), never
+    over the sheet, its handle or what it holds. It is `data-sheet-above`, so the band the camera frames into (#61)
+    ends at its top while it shows: it covers no world. It is more opaque than a panel, so its words read over a
+    planet.
+  - **Until:** its OK ("Got it"; its hint says it will not come back) or ×, or one of its moves: a drag of the sheet
+    or a tap on its handle (`Sheet.tsx`), a swipe of the card, a tap on the sky. The sky's tap only takes it away:
+    `[data-gesture-hint]` is in `present/skyTap.ts` `DISMISSIBLE`, and `onSkyTap` returns "none" after
+    `dismissGestureHint()`, so that tap neither hides the controls nor lowers the sheet. It also goes when the card
+    makes way, presenting starts or the controls hide.
+- **Children's words fit** (German at the simple level, 360 x 640): the card's header puts the tagline on a line of
+  its own under the name and the buttons when either would wrap beside them (`useTaglinePlace` in `ui/BodyInfo.tsx`
+  measures and sets `data-tagline`, so a short tagline keeps the compact header and the scene its share), and
+  Compare says "Compare" there (`solarSystem.card.compareShort`); the hunt's and the tour's names wrap; the phone's
+  entry buttons are as wide as their words need (`flex: 1 1 auto`: "Herramientas" whole). `e2e/studentsFirst.spec.ts`
+  `truncated` finds text wider than its box, or ellipsised, in the card's header, the time chip, More, the entry row,
+  the tiles, the tour's header and foot, the hunt and the gesture hint.
+- **Tests:** `e2e/studentsFirst.spec.ts` (390 x 844 and 360 x 640, touch: every kind of link, its main action in the
+  lower half and topmost, nothing in the way, finger sizes; the swipe to Mars and to Venus, Back, the card following
+  and springing back, an upright or short move that is no swipe; the tiles: order, size, no scroll, a tile opening
+  the hunt; the compact progress; German at the simple level with nothing cut off; the gesture hint once, clear of
+  the sheet, the band above it, OK, the sky's tap that neither hides nor lowers, the swipe, waiting over a hunt; a
+  laptop and a tablet with no hint, the menu and the dots), `swipe.test.ts`, `gestureHint.test.ts`,
+  `skyTap.test.ts`.
 
 ### The way in and the way back (#45)
 
@@ -2207,7 +2304,8 @@ import { Hint, hintKey } from "@/primitives/hint"
   choice, speakers and certificate (#52), the two "stop the flash" buttons (#38), the sound toggle and its settings button (#32), the sky-tonight launcher and "Show me in space" (#36), the Help menu (#30), the opening's pause and Next (#49), the spacecraft menu, its two switches and "Show" (#35), "Follow" (card and list, with a disabled `reason`),
   "Watch" and the followed spot (#57), the tours menu and the tour card's autoplay toggle (#28), the Help button (every page) and its "more" chevron (#43), Overview, and Back (#46, with a disabled `reason`), More
   and its Share, "Link and QR code", sound, language, hiding, presenting and Home Screen items (#59), the sheet's
-  handle and the time chip's two buttons (#60). The tour card's share button keeps its Mantine `Tooltip`: it doubles as the "Link copied" confirmation. Plain tabs (the light
+  handle and the time chip's two buttons (#60), the Tools tiles (each says what its tool does) and the gesture
+  hint's OK and × (#62). The tour card's share button keeps its Mantine `Tooltip`: it doubles as the "Link copied" confirmation. Plain tabs (the light
   panel's, the birthday panel's) have none, by design. A switch that already shows a Mantine `description` under
   its label is explained in place; wrap it in `<Hint>` only to add something the description does not say (the
   projector switch) or a disabled `reason` (high contrast), as the sound panel's switches show.
@@ -2251,7 +2349,8 @@ index)` with no holds (stops wait for the presenter; `finishMove()` when jumping
 - **UI.** `TourMenu` (the "Tours" button in the picker panel: title, summary, stops and minutes per tour).
   `TourCard` (a `.panel` in the HUD's dock, above the entry points, #42; on phones it takes the body card's place): tour and stop counter, heading and narration (`aria-live`), the
   "exploring" note with "Back to the tour", a dot per stop, Back / Next (Finish), autoplay, copy a link to the stop
-  (`?tour=&stop=` with the language only), fold, close. Type grows with the viewport for projectors.
+  (`?tour=&stop=` with the language only), fold, close. On an upright phone (#62) "3 / 11" and a thin bar replace
+  the dots, and autoplay and the link sit under the words (see "Students first"). Type grows with the viewport for projectors.
   `TourSync` (after `UrlSync`): opens `?tour=<id>&stop=<n>&autoplay=true` as a jump, follows the sequence, runs
   autoplay (a timer on a waiting stop; the camera coming to rest after a look around restarts it; the last stop
   never auto-finishes), and the presenter keys in the capture phase while a tour exists: ArrowRight / PageDown

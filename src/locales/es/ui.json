@@ -579,6 +579,7 @@
 			"hideFacts": "Ocultar datos",
 			"close": "Cerrar",
 			"compare": "Comparar con…",
+			"compareShort": "Comparar",
 			"walk": "{bodyId, select, sun {Encoge el Sol hasta un balón de baloncesto y recorre a pie el sistema solar} other {Encoge el Sol hasta un balón de baloncesto y camina hasta este mundo}}",
 			"walk@simple": "{bodyId, select, sun {Convierte el Sol en un balón de baloncesto y camina hasta los planetas} other {Convierte el Sol en un balón de baloncesto y camina hasta este mundo}}"
 		},
@@ -1507,6 +1508,7 @@
 			"keys@simple": "Usa las flechas para seguir. Puedes mirar a tu alrededor cuando quieras: la visita te espera.",
 			"card": "Visita: {title}",
 			"stopOf": "Parada {n} de {count}",
+			"progress": "{n} / {count}",
 			"back": "Atrás",
 			"next": "Siguiente",
 			"finish": "Terminar",
@@ -1656,6 +1658,20 @@
 			},
 			"chipHint": "Abre todo el tiempo en el panel: hacia atrás, la fecha, «Ahora», las velocidades y la rotación.",
 			"chipHint@simple": "Haz que el tiempo vaya más rápido, más lento o hacia atrás."
+		},
+		"gestures": {
+			"label": "Tres gestos para probar",
+			"drag": "Arrastra la barra del panel arriba o abajo.",
+			"drag@simple": "Sube la barrita para ver más.",
+			"tap": "Toca el cielo para esconder o ver los botones.",
+			"tap@simple": "Toca el cielo para esconder los botones.",
+			"swipe": "Desliza la tarjeta al mundo siguiente.",
+			"swipe@simple": "Desliza la tarjeta al planeta siguiente.",
+			"ok": "Entendido",
+			"ok@simple": "OK",
+			"okHint": "Los consejos no volverán. La ayuda, en Más, explica cada gesto.",
+			"okHint@simple": "Los consejos no volverán. Los encuentras en la ayuda, en Más.",
+			"close": "Cerrar los consejos"
 		},
 		"quickLook": {
 			"ask": {

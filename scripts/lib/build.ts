@@ -522,13 +522,15 @@ const ringsOf = (raw: Raw, planetId: string, ctx: Context): Rings | null => {
 			`${planetId}: invalid data/rings/${planetId}.json (${issues})`,
 		)
 	}
-	const { innerRadiusKm, outerRadiusKm, textures, castsShadow } = parsed.data
+	const { innerRadiusKm, outerRadiusKm, textures, castsShadow, faint } =
+		parsed.data
 	return checkRings(
 		{
 			innerRadiusKm,
 			outerRadiusKm,
 			textures: { alpha: textures.alpha, color: textures.color },
 			...(castsShadow === undefined ? {} : { castsShadow }),
+			...(faint === undefined ? {} : { faint }),
 		},
 		planetId,
 		ctx,
