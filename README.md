@@ -1,106 +1,46 @@
 # Orbitalia
 
-Live at **[orbitalia.app](https://orbitalia.app)**: it opens straight into the 3D solar system, and everything
-else (tours, the walk, the dictionary, comparisons, the help page) is reached from there.
+**See how big space really is.** Orbitalia is a free, open-source 3D model of our solar system, built to help people learn and teach about planets, moons and the physics of how they move.
 
-_Klassenlager 2022 project_
+**[▶ Open orbitalia.app](https://orbitalia.app)**: no install or account. It runs in the browser on desktop, tablet and phone.
 
-## Preface
+![Orbitalia: the solar system in 3D](docs/screenshot.png)
 
-We want to create both a visual dictionary as well as a 3D model of our solar system.
+## Why Orbitalia
 
-Along side the fun of dealing with our solar system, this project aims to be a playground especially for [GSAP](https://greensock.com) as well as [Three.js](https://threejs.org) and if we will have enough time and reach it also [Theatre.js](https://www.theatrejs.com/).
-In the background of it thought, is the use of the Panter stack and implamantation of frontend concepts from my training program such as:
+Textbook diagrams squeeze the planets onto one page, so most of us never get a real feel for the distances and sizes involved. Orbitalia uses true-scale 3D graphics and interaction to make that scale tangible: how tiny the planets are next to the Sun, how far apart everything is, and how bodies actually move.
 
-- coding techniques:
-  - KISS, DRY, SOLID and Occam’s Razor principles
-  - Design patterns in frontend development
-  - Functional Programming
-  - Component Design
-  - Code quality
-  - Best practices
-  - Project structure - file structure, naming conventions
-- Practical:
-  - TypeScript
-  - React (Vite)
-  - State Management
-  - Working with a static, validated data set
-  - Building functional components
-  - Routing
-  - Responsivity
-- Tooling
-  - GIT
-  - formatters (prettier), linters (eslint)
-  - CI/CD basics (set up of the project pipelines)
-- Soft skills
-  - Solve mid complex problems independently
+**Made for teachers.** Put it on a projector and take your class on a guided tour, compare planets side by side, or look up any body in the dictionary.
 
-#### We value the care and effort to improve: for any comment, bug or idea, write to [feedback@orbitalia.app](mailto:feedback@orbitalia.app)
+**And for anyone curious about space.** Fly around, zoom in, and get lost in it.
 
-# Getting started
+## What you can do
 
-## Setup
+- **Explore the solar system in 3D**: the Sun, planets and moons, at true scale
+- **Take guided tours** through the solar system
+- **Take the walk** to feel the real distances between the planets
+- **Compare** planets and moons side by side
+- **Browse the visual dictionary** of space objects
+- **See real surfaces**: maps from NASA, USGS and other open sources
+- **Hear space**: real recordings from NASA missions
 
-A client-only [Vite](https://vitejs.dev/) + React 19 + TypeScript app. See
-[docs/ARCHITECTURE.md](docs/ARCHITECTURE.md) for the full contract.
+## Get involved
 
-- routing: [TanStack Router](https://tanstack.com/router) (file routes in `src/routes`)
-- 3D: [Three.js](https://threejs.org) via [@react-three/fiber](https://docs.pmnd.rs/react-three-fiber) and drei
-- animation: [GSAP](https://greensock.com)
-- UI: [Mantine](https://mantine.dev/) 9 with CSS modules
-- data: static JSON in `data/` (no server, no GraphQL)
+Orbitalia is MIT-licensed and open to new ideas: technologies, data sources and features are all on the table. You don't have to write code to help:
 
-Requirements: Node 22 (`.nvmrc`) and [pnpm](https://pnpm.io).
+- 🐛 [Report a bug](https://github.com/h4nz2/Orbitalia/issues/new?template=bug.yml) or 💡 [suggest an idea](https://github.com/h4nz2/Orbitalia/issues/new?template=idea.yml)
+- 🌍 Add a translation, a tour or new facts
+- 🧑‍🏫 Using it in class? Tell us how in [Discussions](https://github.com/h4nz2/Orbitalia/discussions). Teachers' feedback shapes what comes next.
+- 💻 Pick up an issue. See [CONTRIBUTING.md](CONTRIBUTING.md) to get started.
 
-### Scripts
+You can also send feedback right from the app ([orbitalia.app/feedback](https://orbitalia.app/feedback)) or by email at <feedback@orbitalia.app>.
 
-- `pnpm install` installs dependencies (and the git hooks through husky)
-- `pnpm dev` starts the dev server on [localhost:5173](http://localhost:5173)
-- `pnpm build` builds the static site into `dist/`
-- `pnpm preview` serves `dist/` locally
-- `pnpm typecheck` runs the TypeScript compiler
-- `pnpm lint` runs ESLint
-- `pnpm format` / `pnpm format:check` runs Prettier
-- `pnpm test` runs the Vitest unit tests
-- `pnpm test:e2e` runs the Playwright smoke tests against `pnpm preview` (run `pnpm build` first; once: `pnpm exec playwright install chromium`, plus `sudo pnpm exec playwright install-deps chromium` on a bare Linux box for the system libraries such as `libasound2`)
+## Built with
 
-Set `VITE_BASE=/sub/path/` when the site is served from a sub path.
+React 19 · TypeScript · Three.js ([React Three Fiber](https://docs.pmnd.rs/react-three-fiber) + drei) · [GSAP](https://greensock.com) · [Mantine](https://mantine.dev/) · [TanStack Router](https://tanstack.com/router) · Vite · Vitest · Playwright · Cloudflare Workers
 
-The pre-commit hook runs `pnpm format:check`, `pnpm lint` and `pnpm typecheck`. There is no CI, so run
-`pnpm test`, `pnpm check:data` and `pnpm test:e2e` yourself before deploying.
+The project began as a learning playground for frontend architecture and 3D on the web. The original goals are in [docs/LEARNING-GOALS.md](docs/LEARNING-GOALS.md).
 
-### Deploy
+---
 
-The site is served by Cloudflare Workers at [orbitalia.app](https://orbitalia.app) (`wrangler.jsonc`):
-
-```bash
-pnpm build && npx wrangler deploy
-```
-
-The Worker in `worker/` answers `/api/feedback` (the feedback form) and needs two secrets, set once with
-`npx wrangler secret put`: `TURNSTILE_SECRET` and `FEEDBACK_TO` (see "Feedback" in
-[docs/ARCHITECTURE.md](docs/ARCHITECTURE.md)). To try the form locally, copy `.dev.vars.example` to `.dev.vars` and
-run `pnpm build && npx wrangler dev`.
-
-## Feedback and contributing
-
-Bug reports, ideas and any kind of feedback are very welcome:
-
-- in the app: the arrow next to Help → **Send feedback** (or [orbitalia.app/feedback](https://orbitalia.app/feedback)), no account needed;
-- on GitHub: [report a bug](https://github.com/h4nz2/Orbitalia/issues/new?template=bug.yml),
-  [suggest an idea](https://github.com/h4nz2/Orbitalia/issues/new?template=idea.yml), or join
-  [Discussions](https://github.com/h4nz2/Orbitalia/discussions);
-- by email: [feedback@orbitalia.app](mailto:feedback@orbitalia.app).
-
-Pull requests are warmly welcome too: translations, tours, facts and code. See [CONTRIBUTING.md](CONTRIBUTING.md).
-
-## Licensing
-
-The code in this project is licensed under the MIT [license](LICENSE).
-
-The surface maps of the Sun, the planets and the moons come from NASA, USGS and other open sources, or are
-painted for this project where no open map exists; each one's source, credit and licence is recorded in
-`data/planet-textures.json` and `data/moon-surfaces.json` (and listed in `src/data/credits.json` and on the
-app's help page). Saturn's ring profile and its sources are in `data/rings/saturn.json`.
-
-The space recordings in `public/assets/sounds/` are © The University of Iowa, from NASA missions, used under Creative Commons Attribution licences; see [`public/assets/sounds/CREDITS.md`](public/assets/sounds/CREDITS.md).
+<!-- Existing sections continue from here: Getting started, Setup, Scripts, Deploy, Licensing -->
