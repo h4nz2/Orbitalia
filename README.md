@@ -40,9 +40,3 @@ Originally started by [Oded Winberger](https://www.linkedin.com/in/odedw/) and [
 ## Built with
 
 React 19 · TypeScript · Three.js ([React Three Fiber](https://docs.pmnd.rs/react-three-fiber) + drei) · [GSAP](https://greensock.com) · [Mantine](https://mantine.dev/) · [TanStack Router](https://tanstack.com/router) · Vite · Vitest · Playwright · Cloudflare Workers
-
-The project began as a learning playground for frontend architecture and 3D on the web. The original goals are in [docs/LEARNING-GOALS.md](docs/LEARNING-GOALS.md).
-
----
-
-<!-- Existing sections continue from here: Getting started, Setup, Scripts, Deploy, Licensing -->
