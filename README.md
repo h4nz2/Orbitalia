@@ -35,7 +35,7 @@ You can also send feedback right from the app ([orbitalia.app/feedback](https://
 
 ## Credits
 
-Originally started by Oded Winberger and Jan Hric as a small fun project. 100% of credit for the initiative goes to Oded, thanks buddy!
+Originally started by Oded [Winberger](https://www.linkedin.com/in/odedw/) and [Jan Hric](https://www.linkedin.com/in/jan-hric-a67346123) as a small fun project. 100% of credit for the initiative goes to **Oded**, thanks buddy!
 
 ## Built with
 
