@@ -32,6 +32,7 @@ import { createCraftLocator, type CraftFrame } from "../spacecraft/craftFrame"
 import { MotionWatch } from "./motion"
 import { exposeDebugHandle } from "./debugHandle"
 import { CAMERA_FRAME_PRIORITY, CameraDirector } from "./director"
+import { PIVOT_LIFT_PROPERTY, writePivotLift } from "./lift"
 import {
 	PAN_ENABLED,
 	configureInput,
@@ -131,9 +132,20 @@ function CameraRig({ craftFrame }: CameraRigProps) {
 	)
 	useEffect(() => () => useHudStore.getState().setCameraMoving(false), [])
 
+	// where the pivot is drawn (#61), for the HUD's centre marker: written to
+	// the DOM only when it moves, never through React state
+	const lift = useMemo(() => ({ written: Number.NaN }), [])
+	useEffect(
+		() => () => {
+			document.documentElement.style.removeProperty(PIVOT_LIFT_PROPERTY)
+		},
+		[],
+	)
+
 	useFrame((_state, delta) => {
 		const now = performance.now()
 		director?.tick(now, delta)
+		writePivotLift(camera, lift, document.documentElement)
 		useHudStore
 			.getState()
 			.setCameraMoving(

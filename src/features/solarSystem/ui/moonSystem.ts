@@ -4,6 +4,7 @@
  * camera shot that shows the whole drawn system at once.
  */
 import { moonsOf, type Body } from "@/data"
+import { NO_INSETS, type Insets } from "@/store/freeArea"
 import type { CameraShot } from "@/store/navigation"
 import {
 	childDistanceCurve,
@@ -15,7 +16,12 @@ import {
 	type Vec3,
 } from "@/sim"
 
-import { CAMERA_FOV_DEG, FRAMING_RADII, fitDistance } from "../camera/framing"
+import {
+	CAMERA_FOV_DEG,
+	bodyFramingRadii,
+	fitDistanceIn,
+	lensOf,
+} from "../camera/framing"
 
 /** Margin around the outermost drawn orbit in the system shot. */
 export const SYSTEM_MARGIN = 1.15
@@ -43,17 +49,34 @@ export function moonSystemOf(planetId: string): MoonSystem {
 	}
 }
 
+/** A planet as the moon system's framing reads it: its size, depth and rings. */
+export type FramedPlanet = Pick<Body, "radiusKm" | "parentId"> &
+	Partial<Pick<Body, "rings">>
+
+/** The planet's default framing in its drawn radii (`bodyFramingRadii`, #61). */
+export const planetFramingRadii = (
+	planet: FramedPlanet,
+	aspect: number,
+	insets: Insets = NO_INSETS,
+): number =>
+	bodyFramingRadii(
+		planet.rings == null ? 0 : planet.rings.outerRadiusKm / planet.radiusKm,
+		lensOf(CAMERA_FOV_DEG, aspect, insets),
+	)
+
 /**
  * The shot distance (a multiple of the planet's default framing,
- * `FRAMING_RADII` drawn radii) that fits the drawn apoapsis of the outermost of
- * `moons` under `scale`, with `SYSTEM_MARGIN`, in a view of `aspect`. At least
- * 1: the system view never comes closer than the close-up. 1 without moons.
+ * `planetFramingRadii`) that fits the drawn apoapsis of the outermost of
+ * `moons` under `scale`, with `SYSTEM_MARGIN`, in a view of `aspect` with
+ * the band `insets` leave free (#61). At least 1: the system view never
+ * comes closer than the close-up. 1 without moons.
  */
 export function moonSystemShotDistance(
-	planet: Pick<Body, "radiusKm" | "parentId">,
+	planet: FramedPlanet,
 	moons: readonly Pick<Body, "orbit">[],
 	scale: ScaleSettings,
 	aspect: number,
+	insets: Insets = NO_INSETS,
 ): number {
 	const curve = childDistanceCurve(scale, planet.parentId === null)
 	let radii = 0
@@ -68,8 +91,13 @@ export function moonSystemShotDistance(
 		)
 	}
 	if (radii === 0) return 1
-	const distance = fitDistance(SYSTEM_MARGIN * radii, CAMERA_FOV_DEG, aspect)
-	return Math.max(1, distance / FRAMING_RADII)
+	const distance = fitDistanceIn(
+		SYSTEM_MARGIN * radii,
+		CAMERA_FOV_DEG,
+		aspect,
+		insets,
+	)
+	return Math.max(1, distance / planetFramingRadii(planet, aspect, insets))
 }
 
 const normalize = (v: Vec3): Vec3 => {
@@ -116,11 +144,12 @@ export function moonSystemDirection(
  * `moonSystemShotDistance`.
  */
 export function moonSystemShot(
-	planet: Pick<Body, "radiusKm" | "parentId" | "rotation" | "orbit">,
+	planet: FramedPlanet & Pick<Body, "rotation" | "orbit">,
 	moons: readonly Pick<Body, "orbit">[],
 	scale: ScaleSettings,
 	aspect: number,
 	jd: number,
+	insets: Insets = NO_INSETS,
 ): CameraShot {
 	const d = moonSystemDirection(planet, jd)
 	return {
@@ -129,6 +158,6 @@ export function moonSystemShot(
 			MAX_SHOT_ELEVATION_DEG,
 			radToDeg(Math.asin(Math.max(-1, Math.min(1, d.y)))),
 		),
-		distance: moonSystemShotDistance(planet, moons, scale, aspect),
+		distance: moonSystemShotDistance(planet, moons, scale, aspect, insets),
 	}
 }

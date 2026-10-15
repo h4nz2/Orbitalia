@@ -5,7 +5,8 @@
  * at Jupiter."). Either way the answer is framed clear of the hunt panel in
  * the dock, so it is on screen without a single drag. The hunt asks the
  * navigation store for the view, like every feature: the camera has one
- * owner.
+ * owner. On a phone the camera already frames everything in the band the
+ * HUD leaves free above the clue (#61), so the clearance is that band.
  */
 import { bodyById, moonsOf, sun, type Body } from "@/data"
 import {
@@ -17,26 +18,35 @@ import {
 	type ScaleSettings,
 	type Vec3,
 } from "@/sim"
-import { HOME_SHOT } from "@/store/navigation"
+import {
+	NO_INSETS,
+	insetShares,
+	useFreeAreaStore,
+	type Insets,
+} from "@/store/freeArea"
+import { HOME_SHOT, homeShot } from "@/store/navigation"
 import { useScaleStore } from "@/store/scale"
 import { useSimStore } from "@/store/sim"
 
-import {
-	CAMERA_FOV_DEG,
-	FRAMING_RADII,
-	overviewDistance,
-} from "../camera/framing"
+import { CAMERA_FOV_DEG, overviewDistance } from "../camera/framing"
 import { prefersReducedMotion } from "../present/media"
-import { SYSTEM_MARGIN, moonSystemShot } from "../ui/moonSystem"
+import {
+	SYSTEM_MARGIN,
+	moonSystemShot,
+	planetFramingRadii,
+} from "../ui/moonSystem"
 import type { HuntQuestion } from "./hunts"
 
 /**
- * How far from the centre of a `width` x `height` screen the scene is free
- * of docked panels, px, towards each side.
+ * How far from where the camera draws its pivot (the centre of a `width` x
+ * `height` screen, or of the band `insets` leave free on a phone, #61) the
+ * scene is free of docked panels, px, towards each side.
  */
 export interface Clearance {
 	width: number
 	height: number
+	/** The HUD's bands at the top and bottom (shares of the height; a phone, #61). */
+	insets: Insets
 	left: number
 	right: number
 	up: number
@@ -51,16 +61,42 @@ export const EDGE_ROOM_PX = 24
 /**
  * The clearance left by the dock at `dock` (its rectangle on the screen;
  * null when empty): beside it (a panel at the right) or above it (a sheet
- * from the bottom on a phone), whichever leaves more.
+ * from the bottom), whichever leaves more. With `insets` (a phone, #61) the
+ * camera frames the band between the HUD's stacks, the dock among them, and
+ * the clearance is that band round its centre.
  */
 export function clearanceOf(
 	width: number,
 	height: number,
 	dock: { left: number; top: number } | null,
+	insets: Insets = NO_INSETS,
 ): Clearance {
 	const side = width / 2 - EDGE_ROOM_PX
+	if (insets.top > 0 || insets.bottom > 0) {
+		const band = Math.max(
+			1,
+			(height * (1 - insets.top - insets.bottom)) / 2 - EDGE_ROOM_PX,
+		)
+		return {
+			width,
+			height,
+			insets,
+			left: side,
+			right: side,
+			up: band,
+			down: band,
+		}
+	}
 	const bars = height / 2 - BAR_ROOM_PX
-	const free = { width, height, left: side, right: side, up: bars, down: bars }
+	const free = {
+		width,
+		height,
+		insets: NO_INSETS,
+		left: side,
+		right: side,
+		up: bars,
+		down: bars,
+	}
 	if (dock === null) return free
 	const beside = {
 		...free,
@@ -112,9 +148,9 @@ export function drawnPosition(
 
 /**
  * Where a point drawn at `at` (scene units round the Sun) appears in the
- * overview, px from the centre of a screen `height` high (right and down
- * positive), the camera `distance` away at `HOME_SHOT`'s elevation and at
- * `azimuthDeg` (about +Y from +Z, the camera's convention).
+ * overview, px from where the Sun is drawn on a screen `height` high (right
+ * and down positive), the camera `distance` away at `elevationDeg` (the home
+ * shot's) and at `azimuthDeg` (about +Y from +Z, the camera's convention).
  */
 export function overviewPx(
 	at: Vec3,
@@ -122,12 +158,13 @@ export function overviewPx(
 	height: number,
 	azimuthDeg = HOME_SHOT.azimuthDeg,
 	fovDeg = CAMERA_FOV_DEG,
+	elevationDeg = HOME_SHOT.elevationDeg,
 ): { x: number; y: number } {
 	const azimuth = degToRad(azimuthDeg)
 	// turned into the frame of a camera at azimuth 0, which looks from +z
 	const x = at.x * Math.cos(azimuth) - at.z * Math.sin(azimuth)
 	const z = at.x * Math.sin(azimuth) + at.z * Math.cos(azimuth)
-	const elevation = degToRad(HOME_SHOT.elevationDeg)
+	const elevation = degToRad(elevationDeg)
 	const sin = Math.sin(elevation)
 	const cos = Math.cos(elevation)
 	const depth = Math.max(1e-9, distance - (z * cos + at.y * sin))
@@ -158,10 +195,20 @@ export function overviewShotDistance(
 		scale,
 		CAMERA_FOV_DEG,
 		clear.width / clear.height,
+		clear.insets,
 	)
+	// the overview a reset shows on this screen (#61: steeper on an upright one)
+	const { elevationDeg } = homeShot(clear.height > clear.width)
 	let distance = 1
 	for (const at of answers) {
-		const { x, y } = overviewPx(at, base, clear.height, azimuthDeg)
+		const { x, y } = overviewPx(
+			at,
+			base,
+			clear.height,
+			azimuthDeg,
+			CAMERA_FOV_DEG,
+			elevationDeg,
+		)
 		const across = x >= 0 ? clear.right : clear.left
 		const along = y >= 0 ? clear.down : clear.up
 		// backing off by k divides the offset by about k; the name keeps its size
@@ -239,7 +286,8 @@ export function moonsShotDistance(
 	if (radii === 0) return 1
 	return Math.max(
 		1,
-		clearFitDistance(SYSTEM_MARGIN * radii, clear) / FRAMING_RADII,
+		clearFitDistance(SYSTEM_MARGIN * radii, clear) /
+			planetFramingRadii(planet, clear.width / clear.height, clear.insets),
 	)
 }
 
@@ -259,16 +307,18 @@ function labelRoom(id: string): LabelRoom {
 	}
 }
 
-/** The screen's clearance now: the viewport beside the dock's panels. */
+/** The screen's clearance now: the viewport beside the dock's panels, or the band a phone's HUD leaves free (#61). */
 function clearanceNow(): Clearance {
-	const width = window.innerWidth || 1
-	const height = window.innerHeight || 1
+	const { area } = useFreeAreaStore.getState()
+	const width = area.width || window.innerWidth || 1
+	const height = area.height || window.innerHeight || 1
 	const dock = document.querySelector<HTMLElement>('[data-testid="dock"]')
 	const rect = dock?.getBoundingClientRect()
 	return clearanceOf(
 		width,
 		height,
 		rect === undefined || rect.width === 0 || rect.height === 0 ? null : rect,
+		insetShares(area),
 	)
 }
 
@@ -319,6 +369,7 @@ export function goToStart(question: HuntQuestion, sim = useSimStore): void {
 		scale,
 		clear.width / clear.height,
 		store.simTimeJD,
+		clear.insets,
 	)
 	sim.getState().goTo(
 		{ kind: "body", id: planet.id },

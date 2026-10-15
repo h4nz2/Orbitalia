@@ -1,7 +1,17 @@
 import { describe, expect, it } from "vitest"
 
-import { bodies, getBody } from "@/data"
-import { AU_KM, SCALE_PRESETS, TRUE_SCALE, degToRad, toUnits } from "@/sim"
+import { bodies, getBody, sun } from "@/data"
+import {
+	AU_KM,
+	SCALE_PRESETS,
+	SCALE_PRESET_IDS,
+	TRUE_SCALE,
+	degToRad,
+	displayDistanceKm,
+	toUnits,
+} from "@/sim"
+import { insetShares, type Insets } from "@/store/freeArea"
+import { UPRIGHT_HOME_SHOT } from "@/store/navigation"
 
 import { createSimFrame } from "../scene/simFrame"
 import {
@@ -17,6 +27,12 @@ import {
 	minViewDistance,
 	overviewDistance,
 	overviewRadius,
+	BODY_FIT_SHARE,
+	bodyFramingRadii,
+	lensOf,
+	pivotLift,
+	ringRatioOf,
+	tightFitDistance,
 } from "./framing"
 
 describe("minDollyDistance", () => {
@@ -119,13 +135,12 @@ describe("defaultDistance", () => {
 			OVERVIEW_MARGIN * radius,
 			6,
 		)
-		// a portrait screen backs further out to fit the width
+		// a portrait screen backs further out to fit the width, and (#61) frames
+		// the drawn orbits tightly from the steeper upright home elevation
 		const portrait = overviewDistance(TRUE_SCALE, 45, 0.5)
 		expect(portrait).toBeGreaterThan(landscape)
-		const halfWidth = Math.atan(Math.tan(degToRad(22.5)) * 0.5)
-		expect(portrait * Math.sin(halfWidth)).toBeCloseTo(
-			OVERVIEW_MARGIN * radius,
-			6,
+		expect(portrait).toBe(
+			tightFitDistance(radius, 45, 0.5, UPRIGHT_HOME_SHOT.elevationDeg),
 		)
 	})
 
@@ -168,5 +183,204 @@ describe("minViewDistance", () => {
 				trueFrame,
 			) / 100,
 		)
+	})
+})
+
+/** A 390 x 844 phone as today's HUD covers it: the card folded, then unfolded. */
+const PHONE = { width: 390, height: 844 }
+const folded = insetShares({ ...PHONE, top: 122, bottom: 206 })
+const unfolded = insetShares({ ...PHONE, top: 122, bottom: 522 })
+const TAN_HALF = Math.tan(degToRad(22.5))
+
+/**
+ * The box (px on a `width` x `height` canvas) a circle of `radius` round the
+ * pivot in the plane of the orbits takes, seen from `elevationDeg` (azimuth
+ * 0) at `distance`, the pivot drawn `lift` of the height above the centre.
+ */
+function circleBox(
+	radius: number,
+	distance: number,
+	elevationDeg: number,
+	width: number,
+	height: number,
+	lift = 0,
+) {
+	const e = degToRad(elevationDeg)
+	const pxPerTan = height / 2 / TAN_HALF
+	const box = {
+		top: Infinity,
+		bottom: -Infinity,
+		left: Infinity,
+		right: -Infinity,
+	}
+	for (let k = 0; k < 720; k++) {
+		const t = (k / 720) * 2 * Math.PI
+		const x = radius * Math.cos(t)
+		const z = radius * Math.sin(t)
+		// camera at distance (0, sin e, cos e); forward -that, up (0, cos e, -sin e), right +x
+		const depth = distance - z * Math.cos(e)
+		const up = -z * Math.sin(e)
+		const px = width / 2 + (x / depth) * pxPerTan
+		const py = height / 2 - lift * height - (up / depth) * pxPerTan
+		box.top = Math.min(box.top, py)
+		box.bottom = Math.max(box.bottom, py)
+		box.left = Math.min(box.left, px)
+		box.right = Math.max(box.right, px)
+	}
+	return box
+}
+
+/** The tangent of the angular radius of a sphere `radii` big seen from `distance` (in its radii). */
+const outline = (radii: number, distance: number) =>
+	Math.tan(Math.asin(radii / distance))
+
+describe("framing what is free (#61)", () => {
+	it("frames the band the HUD leaves free as a lens of its own", () => {
+		const insets: Insets = { top: 0.1, bottom: 0.3 }
+		const lens = lensOf(45, 0.5, insets)
+		expect(Math.tan(degToRad(lens.fovDeg / 2))).toBeCloseTo(TAN_HALF * 0.6, 12)
+		expect(lens.aspect).toBeCloseTo(0.5 / 0.6, 12)
+		expect(lens).toMatchObject({ upright: true, banded: true })
+		// the pivot in the middle of the band: 0.1 of the height above the centre
+		expect(pivotLift(insets)).toBeCloseTo(0.1, 12)
+		// nothing covered: the canvas itself
+		expect(lensOf(45, 16 / 9)).toEqual({
+			fovDeg: 45,
+			aspect: 16 / 9,
+			upright: false,
+			banded: false,
+		})
+		expect(pivotLift({ top: 0, bottom: 0 })).toBe(0)
+	})
+
+	it("keeps every laptop's and landscape screen's framing: 6 drawn radii for every body", () => {
+		for (const aspect of [16 / 9, 1366 / 768, 16 / 10, 4 / 3, 844 / 390]) {
+			for (const body of bodies) {
+				expect(
+					defaultDistance(
+						{ kind: "body", id: body.id },
+						visibleFrame,
+						45,
+						aspect,
+					),
+				).toBe(FRAMING_RADII * drawn(visibleFrame, body.id))
+			}
+		}
+	})
+
+	it("fits every ringed planet across an upright phone, and backs off no further", () => {
+		const halfWidth = TAN_HALF * (PHONE.width / PHONE.height)
+		for (const id of ["jupiter", "saturn", "uranus", "neptune"]) {
+			const ratio = ringRatioOf(id)
+			expect(ratio).toBeGreaterThan(2)
+			const radii =
+				defaultDistance(
+					{ kind: "body", id },
+					visibleFrame,
+					45,
+					PHONE.width / PHONE.height,
+					folded,
+				) / drawn(visibleFrame, id)
+			expect(radii).toBe(
+				bodyFramingRadii(ratio, lensOf(45, PHONE.width / PHONE.height, folded)),
+			)
+			// the rings' outer edge at the framing's share of the half-width
+			expect(outline(ratio, radii)).toBeCloseTo(BODY_FIT_SHARE * halfWidth, 9)
+		}
+		// the planets without rings already fit at 6 radii
+		for (const id of ["mercury", "venus", "earth", "mars"]) {
+			expect(
+				defaultDistance(
+					{ kind: "body", id },
+					visibleFrame,
+					45,
+					PHONE.width / PHONE.height,
+					folded,
+				),
+			).toBe(FRAMING_RADII * drawn(visibleFrame, id))
+		}
+	})
+
+	it("fits a body, and its rings, whole into the short band above an unfolded card", () => {
+		const halfBand = TAN_HALF * (1 - unfolded.top - unfolded.bottom)
+		for (const id of ["earth", "moon", "mars", "jupiter", "saturn", "uranus"]) {
+			const radii =
+				defaultDistance(
+					{ kind: "body", id },
+					visibleFrame,
+					45,
+					PHONE.width / PHONE.height,
+					unfolded,
+				) / drawn(visibleFrame, id)
+			const extent = Math.max(1, ringRatioOf(id))
+			expect(outline(extent, radii)).toBeLessThanOrEqual(
+				BODY_FIT_SHARE * halfBand * (1 + 1e-12),
+			)
+		}
+	})
+
+	it("shows the whole system over a third of an upright phone, inside the free band, in every preset", () => {
+		const aspect = PHONE.width / PHONE.height
+		const lift = pivotLift(folded)
+		const neptune = getBody("neptune").orbit!
+		for (const id of SCALE_PRESET_IDS) {
+			const scale = SCALE_PRESETS[id]
+			const distance = overviewDistance(scale, 45, aspect, folded)
+			const orbit = toUnits(
+				displayDistanceKm(
+					neptune.semiMajorAxisKm,
+					sun.radiusKm,
+					sun.radiusKm,
+					scale.orbitDistance,
+				),
+			)
+			const elevation = UPRIGHT_HOME_SHOT.elevationDeg
+			const orbits = circleBox(
+				orbit,
+				distance,
+				elevation,
+				PHONE.width,
+				PHONE.height,
+				lift,
+			)
+			expect(orbits.bottom - orbits.top, id).toBeGreaterThanOrEqual(
+				PHONE.height / 3,
+			)
+			// the drawn system, the farthest disc included, in the band and across the width
+			const system = circleBox(
+				overviewRadius(scale),
+				distance,
+				elevation,
+				PHONE.width,
+				PHONE.height,
+				lift,
+			)
+			expect(system.top, id).toBeGreaterThanOrEqual(folded.top * PHONE.height)
+			expect(system.bottom, id).toBeLessThanOrEqual(
+				(1 - folded.bottom) * PHONE.height,
+			)
+			expect(system.left, id).toBeGreaterThanOrEqual(0)
+			expect(system.right, id).toBeLessThanOrEqual(PHONE.width)
+		}
+	})
+
+	it("uses the height of an upright tablet too, with nothing covered", () => {
+		const tablet = { width: 768, height: 1024 }
+		for (const id of SCALE_PRESET_IDS) {
+			const scale = SCALE_PRESETS[id]
+			const distance = overviewDistance(scale, 45, tablet.width / tablet.height)
+			const system = circleBox(
+				overviewRadius(scale),
+				distance,
+				UPRIGHT_HOME_SHOT.elevationDeg,
+				tablet.width,
+				tablet.height,
+			)
+			expect(system.bottom - system.top, id).toBeGreaterThan(tablet.height / 2)
+			expect(system.top, id).toBeGreaterThanOrEqual(0)
+			expect(system.bottom, id).toBeLessThanOrEqual(tablet.height)
+			expect(system.left, id).toBeGreaterThanOrEqual(0)
+			expect(system.right, id).toBeLessThanOrEqual(tablet.width)
+		}
 	})
 })

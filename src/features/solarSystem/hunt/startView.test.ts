@@ -2,7 +2,8 @@ import { afterEach, beforeEach, describe, expect, it, vi } from "vitest"
 
 import { getBody } from "@/data"
 import { SCALE_PRESETS } from "@/sim"
-import { HOME_SHOT, OVERVIEW } from "@/store/navigation"
+import { NO_INSETS, insetShares } from "@/store/freeArea"
+import { HOME_SHOT, OVERVIEW, UPRIGHT_HOME_SHOT } from "@/store/navigation"
 import { useScaleStore } from "@/store/scale"
 import { useSimStore } from "@/store/sim"
 import { useTourStore } from "@/store/tour"
@@ -33,6 +34,7 @@ describe("where an Easy clue is asked from (#52)", () => {
 		expect(clearanceOf(1280, 800, null)).toEqual({
 			width: 1280,
 			height: 800,
+			insets: NO_INSETS,
 			left: side,
 			right: side,
 			up: bars,
@@ -136,6 +138,47 @@ describe("where an Easy clue is asked from (#52)", () => {
 		const back = overviewPx({ x: -3, y: 0.5, z: 2 }, 50, 800, 180)
 		expect(back.x).toBeCloseTo(front.x)
 		expect(back.y).toBeCloseTo(front.y)
+	})
+
+	it("on a phone, keeps the answer in the band the HUD leaves above the clue (#61)", () => {
+		const jd = 2461321.04
+		// 390 x 844 with the clue's panel from 369 px down: the band from 122 to 361
+		const insets = insetShares({
+			width: 390,
+			height: 844,
+			top: 122,
+			bottom: 483,
+		})
+		const clear = clearanceOf(390, 844, { left: 8, top: 369 }, insets)
+		const band = 844 - 122 - 483
+		expect(clear.up).toBeCloseTo(band / 2 - EDGE_ROOM_PX, 9)
+		expect(clear.down).toBe(clear.up)
+		expect(clear.insets).toBe(insets)
+		for (const preset of [
+			"everythingVisible",
+			"poster",
+			"trueScale",
+		] as const) {
+			const lie = SCALE_PRESETS[preset]
+			for (const id of ["earth", "mars", "jupiter", "saturn", "neptune"]) {
+				const at = [drawnPosition(getBody(id), lie, jd)]
+				// the whole system is framed in the band: the home view, as it is
+				expect(overviewShot(at, lie, clear), `${preset} ${id}`).toEqual({
+					azimuthDeg: 0,
+					distance: 1,
+				})
+				const px = overviewPx(
+					at[0],
+					overviewDistance(lie, CAMERA_FOV_DEG, 390 / 844, insets),
+					844,
+					0,
+					CAMERA_FOV_DEG,
+					UPRIGHT_HOME_SHOT.elevationDeg,
+				)
+				expect(Math.abs(px.y), `${preset} ${id}`).toBeLessThanOrEqual(band / 2)
+				expect(Math.abs(px.x), `${preset} ${id}`).toBeLessThanOrEqual(195)
+			}
+		}
 	})
 
 	it("frames a moon with the moons out to the next one, as company", () => {

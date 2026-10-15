@@ -1,12 +1,15 @@
 /*
  * The pivot sits in the middle of the canvas (the camera looks at it), so the
  * marker is plain CSS centred over the page: no 3D object, never occluded,
- * the same size at every scale.
+ * the same size at every scale. On a phone the camera draws the pivot in the
+ * middle of the band the HUD leaves free (#61): `--pivot-lift` on <html>
+ * (written by camera/CameraRig.tsx) is how far above the centre, as a share
+ * of the height.
  */
 .marker {
 	position: absolute;
 	left: 50%;
-	top: 50%;
+	top: calc((0.5 - var(--pivot-lift, 0)) * 100%);
 	width: 28px;
 	height: 28px;
 	margin: -14px 0 0 -14px;

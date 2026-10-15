@@ -5,15 +5,22 @@
  * drawn one (the active scale's, docs/ARCHITECTURE.md "Scale"), read from the
  * SimFrame, never a true one.
  */
-import { planets, sun } from "@/data"
+import { bodyById, planets, sun } from "@/data"
 import {
 	degToRad,
 	displayDistanceKm,
 	displayRadiusKm,
+	radToDeg,
 	toUnits,
 	type ScaleSettings,
 } from "@/sim"
-import { HOME_SHOT, type View, viewBodyId } from "@/store/navigation"
+import { NO_INSETS, type Insets } from "@/store/freeArea"
+import {
+	HOME_SHOT,
+	UPRIGHT_HOME_SHOT,
+	type View,
+	viewBodyId,
+} from "@/store/navigation"
 
 import type { SimFrame } from "../scene/simFrame"
 
@@ -52,6 +59,62 @@ export const CAMERA_SMOOTH_TIME_S = 0.4
  * top and bottom of the screen do not cover the outermost orbit.
  */
 export const OVERVIEW_MARGIN = 1.3
+
+/**
+ * Share of the framed band's half-width and half-height that a body, and a
+ * planet's rings, may take at the default framing (#61): what is framed
+ * whole keeps a margin to the edges.
+ */
+export const BODY_FIT_SHARE = 0.9
+
+/**
+ * The part of the canvas the camera frames into, as a lens of its own
+ * (#61, "Framing what is free"): on a phone the band the HUD leaves free
+ * between its top and bottom stacks; elsewhere the whole canvas. Same
+ * pixels per radian as the canvas (the band is the canvas's lens shifted,
+ * never zoomed), so only the field of view and the aspect change.
+ */
+export interface Lens {
+	/** Vertical field of view of the framed band, degrees. */
+	fovDeg: number
+	/** The band's width over its height. */
+	aspect: number
+	/** The whole canvas is taller than wide: the overview looks down from `UPRIGHT_HOME_SHOT`'s elevation. */
+	upright: boolean
+	/** The HUD covers the canvas in bands (a phone): rings are fitted into the band's height too. */
+	banded: boolean
+}
+
+/**
+ * The lens of the band a canvas of vertical field `fovDeg` and `aspect`
+ * leaves free between `insets` (shares of its height covered at the top and
+ * the bottom); the canvas's own lens without insets.
+ */
+export function lensOf(
+	fovDeg: number,
+	aspect: number,
+	insets: Insets = NO_INSETS,
+): Lens {
+	const canvasAspect = aspect > 0 ? aspect : 1
+	const upright = canvasAspect < 1
+	const share = 1 - insets.top - insets.bottom
+	if ((insets.top <= 0 && insets.bottom <= 0) || !(share > 0)) {
+		return { fovDeg, aspect: canvasAspect, upright, banded: false }
+	}
+	return {
+		fovDeg: radToDeg(2 * Math.atan(Math.tan(degToRad(fovDeg) / 2) * share)),
+		aspect: canvasAspect / share,
+		upright,
+		banded: true,
+	}
+}
+
+/**
+ * Where the pivot is drawn (#61): the share of the canvas height above its
+ * centre that puts it in the middle of the free band (negative: below).
+ */
+export const pivotLift = (insets: Insets): number =>
+	(insets.bottom - insets.top) / 2
 
 /** What framing reads from the SimFrame: the drawn radii and the active scale. */
 export type FramingFrame = Pick<SimFrame, "index" | "renderRadius" | "scale">
@@ -95,6 +158,43 @@ export const minDollyDistance = (radiusUnits: number): number =>
 	Math.max(MIN_DISTANCE_RADII * radiusUnits, radiusUnits + 2 * CAMERA_NEAR)
 
 /**
+ * Distance from which a sphere of `radius` round the centre reaches `share`
+ * of the way to the edge of a half-field whose tangent is `tanHalf`.
+ */
+const sphereFit = (radius: number, tanHalf: number, share = 1): number =>
+	radius / Math.sin(Math.atan(share * tanHalf))
+
+/** A body's rings' outer edge in its radii (true in every preset: they scale with the drawn planet); 0 without rings. */
+export function ringRatioOf(id: string): number {
+	const body = bodyById.get(id)
+	return body?.rings == null ? 0 : body.rings.outerRadiusKm / body.radiusKm
+}
+
+/**
+ * A body's default distance in its drawn radii under `lens` (#61):
+ * `FRAMING_RADII`, or farther where that does not fit. The body must fit
+ * within `BODY_FIT_SHARE` of the band both ways, its rings (`ringRatio`, the
+ * outer edge in body radii) within that share of the width, and in a band
+ * (a phone) within that share of its height too. A ring is a disc tilted to
+ * the line of sight, so a laptop, whose narrow side is the height, frames it
+ * by the width alone, as before: a laptop's framing is unchanged, a ringed
+ * planet on an upright phone backs off until the rings fit across.
+ */
+export function bodyFramingRadii(ringRatio: number, lens: Lens): number {
+	const tanV = Math.tan(degToRad(lens.fovDeg) / 2)
+	const tanH = tanV * lens.aspect
+	const narrow = Math.min(tanV, tanH)
+	let radii = Math.max(FRAMING_RADII, sphereFit(1, narrow, BODY_FIT_SHARE))
+	if (ringRatio > 1) {
+		radii = Math.max(
+			radii,
+			sphereFit(ringRatio, lens.banded ? narrow : tanH, BODY_FIT_SHARE),
+		)
+	}
+	return radii
+}
+
+/**
  * Distance from which a sphere of `radius` exactly fills the narrower of the
  * two fields of view (vertical `fovDeg`, horizontal from `aspect`).
  */
@@ -108,6 +208,17 @@ export function fitDistance(
 		Math.tan(halfVertical) * (aspect > 0 ? aspect : 1),
 	)
 	return radius / Math.sin(Math.min(halfVertical, halfHorizontal))
+}
+
+/** `fitDistance` into the band `insets` leave free (#61). */
+export const fitDistanceIn = (
+	radius: number,
+	fovDeg: number,
+	aspect: number,
+	insets: Insets = NO_INSETS,
+): number => {
+	const lens = lensOf(fovDeg, aspect, insets)
+	return fitDistance(radius, lens.fovDeg, lens.aspect)
 }
 
 /**
@@ -136,21 +247,35 @@ export function tightFitDistance(
 }
 
 /**
- * The overview's default distance: the whole planetary system on screen. The
- * shared fit puts a sphere `OVERVIEW_MARGIN` times the drawn system into the
- * narrower field of view; a scale with `overviewFit` (Poster, #54) blends
- * toward `tightFitDistance`, so a switch glides the camera there.
+ * The overview's default distance: the whole planetary system on screen, in
+ * the band the HUD leaves free (`insets`, #61). The shared fit puts a sphere
+ * `OVERVIEW_MARGIN` times the drawn system into the narrower field of view;
+ * a scale with `overviewFit` (Poster, #54) blends toward `tightFitDistance`,
+ * so a switch glides the camera there. On an upright screen every scale
+ * takes the tight fit, seen from `UPRIGHT_HOME_SHOT`'s steeper elevation:
+ * the system is fitted to the width and the steeper view makes it use the
+ * height (#61).
  */
 export function overviewDistance(
 	scale: ScaleSettings,
 	fovDeg: number,
 	aspect: number,
+	insets: Insets = NO_INSETS,
 ): number {
+	const lens = lensOf(fovDeg, aspect, insets)
 	const radius = overviewRadius(scale)
-	const shared = fitDistance(OVERVIEW_MARGIN * radius, fovDeg, aspect)
+	if (lens.upright) {
+		return tightFitDistance(
+			radius,
+			lens.fovDeg,
+			lens.aspect,
+			UPRIGHT_HOME_SHOT.elevationDeg,
+		)
+	}
+	const shared = fitDistance(OVERVIEW_MARGIN * radius, lens.fovDeg, lens.aspect)
 	const fit = scale.overviewFit ?? 0
 	if (!(fit > 0)) return shared
-	const tight = tightFitDistance(radius, fovDeg, aspect)
+	const tight = tightFitDistance(radius, lens.fovDeg, lens.aspect)
 	return shared + (tight - shared) * Math.min(1, fit)
 }
 
@@ -165,23 +290,32 @@ export const viewRadius = (view: View, frame: FramingFrame): number =>
  * system for the overview and for a point in interplanetary space (a point
  * anchored to the Sun, #15), `FRAMING_RADII` drawn radii of the body (or of
  * the anchor of a point in its neighbourhood) otherwise, so Jupiter and
- * Mercury fill the same share of the screen; a fixed distance for a
- * followed spacecraft (`CRAFT_FRAMING_DISTANCE`).
+ * Mercury fill the same share of the screen, or farther where the body or
+ * its rings would not fit (`bodyFramingRadii`, #61); a fixed distance for a
+ * followed spacecraft (`CRAFT_FRAMING_DISTANCE`). Everything is framed into
+ * the band `insets` leave free (#61), so `distance: 1` is "whole, in what
+ * can be seen" on every screen, and a link's camera fits a phone too.
  */
 export function defaultDistance(
 	view: View,
 	frame: FramingFrame,
 	fovDeg: number,
 	aspect: number,
+	insets: Insets = NO_INSETS,
 ): number {
 	if (view.kind === "craft") return CRAFT_FRAMING_DISTANCE
 	if (
 		view.kind === "overview" ||
 		(view.kind === "point" && view.anchorId === sun.id)
 	) {
-		return overviewDistance(frame.scale, fovDeg, aspect)
+		return overviewDistance(frame.scale, fovDeg, aspect, insets)
 	}
-	return FRAMING_RADII * viewRadius(view, frame)
+	return (
+		bodyFramingRadii(
+			ringRatioOf(viewBodyId(view)),
+			lensOf(fovDeg, aspect, insets),
+		) * viewRadius(view, frame)
+	)
 }
 
 /**

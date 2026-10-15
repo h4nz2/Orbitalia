@@ -24,6 +24,7 @@ import { bodyById, sun } from "@/data"
 import { spacecraftById } from "@/data/spacecraft"
 
 import { FLIGHT_PROFILE } from "./flight"
+import { isUprightScreen } from "./freeArea"
 
 /** A world-space offset in km, scene frame axes (see src/sim/kepler.ts). */
 export type Vec3Km = readonly [number, number, number]
@@ -311,6 +312,28 @@ export const HOME_SHOT: CameraShot = {
 	elevationDeg: 45,
 	distance: 1,
 }
+/**
+ * The overview's camera on an upright screen (#61): it looks down more
+ * steeply, so the system's orbits use the height of a phone instead of
+ * lying in a thin band across its middle.
+ */
+export const UPRIGHT_HOME_SHOT: CameraShot = {
+	azimuthDeg: 0,
+	elevationDeg: 65,
+	distance: 1,
+}
+/** The overview's home camera on the screen in use: `UPRIGHT_HOME_SHOT` on a screen taller than wide, else `HOME_SHOT`. */
+export const homeShot = (upright = isUprightScreen()): CameraShot =>
+	upright ? UPRIGHT_HOME_SHOT : HOME_SHOT
+/**
+ * The camera a view opens with when nothing asks for another (a link
+ * without `cam`), and that a link leaves out: the home shot of the screen
+ * for the overview, `HOME_SHOT` for everything else.
+ */
+export const defaultShotOf = (
+	view: View,
+	upright = isUprightScreen(),
+): CameraShot => (view.kind === "overview" ? homeShot(upright) : HOME_SHOT)
 export const MAX_ELEVATION_DEG = 89.9
 
 /** The view states: overview, focused, free (a point in space), following a spacecraft, or in transit. */
@@ -652,7 +675,7 @@ export function createNavigationSlice(
 		overview: (request) =>
 			get().goTo(OVERVIEW, {
 				...request,
-				shot: { ...HOME_SHOT, ...request?.shot },
+				shot: { ...homeShot(), ...request?.shot },
 			}),
 		goTo: (view, request) => {
 			if (!isValidView(view)) return
@@ -669,7 +692,7 @@ export function createNavigationSlice(
 		reset: () => {
 			start(
 				OVERVIEW,
-				{ shot: HOME_SHOT },
+				{ shot: homeShot() },
 				{ selectedId: null, sequence: null, frameId: OVERVIEW_BODY_ID },
 			)
 		},
@@ -692,7 +715,7 @@ export function createNavigationSlice(
 			get().markStep()
 			start(
 				OVERVIEW,
-				{ ...request, shot: { ...HOME_SHOT, ...request?.shot } },
+				{ ...request, shot: { ...homeShot(), ...request?.shot } },
 				{ ...interruptSequence(), frameId: OVERVIEW_BODY_ID },
 			)
 		},

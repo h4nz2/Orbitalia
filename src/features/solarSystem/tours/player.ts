@@ -21,7 +21,7 @@ import type { Tour } from "@/data/tours"
 import { tourById } from "@/data/tours"
 import { dateToJD } from "@/sim"
 import { FLIGHT_PROFILE } from "@/store/flight"
-import { HOME_SHOT, OVERVIEW_BODY_ID, type Sequence } from "@/store/navigation"
+import { OVERVIEW_BODY_ID, homeShot, type Sequence } from "@/store/navigation"
 import { useScaleStore } from "@/store/scale"
 import { useSimStore, type SimState } from "@/store/sim"
 import { useSpacecraftStore } from "@/store/spacecraft"
@@ -301,7 +301,7 @@ function restoreScene(baseline: TourBaseline, scene: TourScene): void {
 	}
 	const request = {
 		shot:
-			scene.shot ?? (scene.view.kind === "overview" ? HOME_SHOT : undefined),
+			scene.shot ?? (scene.view.kind === "overview" ? homeShot() : undefined),
 		// from one body to another: the flight (#18)
 		profile:
 			scene.view.kind === "body" && sim.view.kind === "body"

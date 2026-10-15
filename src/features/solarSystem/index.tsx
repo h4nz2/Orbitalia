@@ -22,6 +22,7 @@ import { TeacherBar } from "./present/TeacherBar"
 import PresentationLayer from "./present/PresentationLayer"
 import Scene from "./scene/Scene"
 import { DockPanels, EntryBar } from "./dock/Dock"
+import FreeArea from "./dock/FreeArea"
 import SoundControl from "./sound/SoundControl"
 import SoundDirector from "./sound/SoundDirector"
 import CraftLink from "./spacecraft/CraftLink"
@@ -107,6 +108,8 @@ const SolarSystem = () => {
 			<HuntSpot />
 			<CentreMarker />
 			<div className={classes.hud} data-testid="hud">
+				{/* the band the scene is seen in on a phone, measured for the camera (#61) */}
+				<FreeArea className={classes.free} />
 				<div className={classes.pickerStack}>
 					<div
 						className={`${classes.panel} ${classes.picker}`}

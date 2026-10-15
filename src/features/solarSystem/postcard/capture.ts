@@ -10,10 +10,22 @@
  * The names over the scene are DOM (../labels), not WebGL: they are read from
  * the label layer as they are on screen, to be painted onto the picture.
  * Only the canvas and the names are taken, never the HUD.
+ *
+ * A picture has no HUD, so what the camera looks at is in its middle: on a
+ * phone the screen draws it in the band the HUD leaves free (#61, an
+ * off-centre lens), and the picture is rendered with the lens centred again,
+ * the names moved down with the scene.
  */
-import type { Camera, Scene, WebGLRenderer } from "three"
+import {
+	PerspectiveCamera,
+	type Camera,
+	type Scene,
+	type WebGLRenderer,
+} from "three"
 
 import type { SceneShot, ShotLabel } from "@/store/postcard"
+
+import { pivotLiftOf, setPivotLift } from "../camera/lift"
 
 /** The picture's long side is at least this many pixels (1920 x 1080 from a 1280 x 720 projector). */
 export const CAPTURE_LONG_SIDE = 1920
@@ -39,10 +51,11 @@ export function captureRatio(
 export const LABEL_LAYER_SELECTOR = "[data-label-layer]"
 
 /**
- * The names as they are on screen, relative to `origin` (the canvas's box):
- * every label element with some opacity, in paint order.
+ * The names as they are on screen, relative to `origin` (the canvas's box)
+ * and moved down by `shiftPx` (the picture's lens is centred, #61): every
+ * label element with some opacity, in paint order.
  */
-export function readLabels(origin: DOMRect): ShotLabel[] {
+export function readLabels(origin: DOMRect, shiftPx = 0): ShotLabel[] {
 	const layer = document.querySelector(LABEL_LAYER_SELECTOR)
 	if (layer === null || (layer as HTMLElement).hidden) return []
 	const labels: ShotLabel[] = []
@@ -60,7 +73,7 @@ export function readLabels(origin: DOMRect): ShotLabel[] {
 		labels.push({
 			text,
 			x: rect.left - origin.left,
-			y: rect.top - origin.top + rect.height / 2,
+			y: rect.top - origin.top + rect.height / 2 + shiftPx,
 			fontStyle: style.fontStyle,
 			fontWeight: style.fontWeight,
 			fontSizePx: Number.parseFloat(style.fontSize) || 14,
@@ -90,19 +103,24 @@ export function snapshotScene(
 	)
 	const ratio = captureRatio(box.width, box.height, previous, limit)
 	const image = document.createElement("canvas")
+	// the subject in the middle of the picture: the lens centred for this render
+	const lift = pivotLiftOf(camera)
+	const centre = lift !== 0 && camera instanceof PerspectiveCamera
 	try {
 		if (ratio !== previous) gl.setPixelRatio(ratio)
+		if (centre) setPivotLift(camera, 0)
 		gl.render(scene, camera)
 		image.width = canvas.width
 		image.height = canvas.height
 		image.getContext("2d")?.drawImage(canvas, 0, 0)
 	} finally {
+		if (centre) setPivotLift(camera, lift)
 		if (ratio !== previous) gl.setPixelRatio(previous)
 	}
 	return {
 		image,
 		ratio: image.width / box.width,
-		labels: readLabels(box),
+		labels: readLabels(box, lift * box.height),
 	}
 }
 
