@@ -93,6 +93,41 @@ export interface Box {
 	bottom: number
 }
 
+/** An element's box as `boundingBox()` gives it, in CSS pixels. */
+export interface Rect {
+	x: number
+	y: number
+	width: number
+	height: number
+}
+
+/**
+ * The boxes of several elements, all read in the same instant (one
+ * `page.evaluate`). Every page slides in from below as it opens
+ * (`FadeInOutUp`, 40 px over 2 s, far longer on a busy machine), the scene
+ * and the HUD together, so boxes read one after another with `boundingBox()`
+ * come from different moments of the slide and disagree by pixels. Read at
+ * once they agree with each other, wherever the page is in its slide: compare
+ * positions of several elements through this, never through separate reads.
+ */
+export async function boxesAtOnce(...locators: Locator[]): Promise<Rect[]> {
+	const handles = await Promise.all(
+		locators.map((locator) => locator.elementHandle()),
+	)
+	try {
+		return await locators[0].page().evaluate(
+			(elements) =>
+				elements.map((element) => {
+					const { x, y, width, height } = element.getBoundingClientRect()
+					return { x, y, width, height }
+				}),
+			handles,
+		)
+	} finally {
+		await Promise.all(handles.map((handle) => handle.dispose()))
+	}
+}
+
 /**
  * The HUD's panels (#42): every element of the HUD that takes the pointer
  * (the HUD layer itself lets it through to the scene), and on an upright
