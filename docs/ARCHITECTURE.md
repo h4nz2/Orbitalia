@@ -662,9 +662,11 @@ canvas, exactly as before.
   canvas and of what covers it at its top and bottom (0 where nothing covers it in bands). Whoever covers the screen
   writes it; nothing else does. Today that is `dock/FreeArea.tsx`, an empty, invisible cell of the HUD grid that the
   phone's arrangement puts in its open row (`.free` in `SolarSystem.module.css`, `display: none` outside the phone
-  media query): its box is exactly what can be seen. It is measured at mount (a layout effect, before the first
-  frame) and by a `ResizeObserver` on the cell, the page and every piece of the HUD (a `MutationObserver` adds new
-  ones), never per frame; hiding the controls (#29) leaves the whole canvas. `insetShares(area)` turns it into
+  media query; on a phone on its side, #58, the paired rows' middle row across the width, the card at its left and
+  a panel at its right, so the body is centred between them): its box is exactly what can be seen, read against the
+  page, never the window: every page slides in as it opens (`FadeInOutUp`), the canvas and the HUD together. It is
+  measured at mount (a layout effect, before the first frame) and by a `ResizeObserver` on the cell, the page and
+  every piece of the HUD (a `MutationObserver` adds new ones), never per frame; hiding the controls (#29) leaves the whole canvas. `insetShares(area)` turns it into
   shares of the height and never leaves less than `MIN_FREE_SHARE` (15 %) between them (a band round the free
   band's centre, kept on the canvas): a thinner band would shrink the subject to a speck.
 - **For #60 (the bottom sheet): feed the sheet's resting height here.** Call
@@ -729,6 +731,9 @@ canvas, exactly as before.
   unfolded card, the upright overview in every preset, an upright tablet), `director.freeArea.test.ts` (the lift
   from the first frame, the glide and the distance following a new band, the upright home shot, turning the
   screen), `src/store/freeArea.test.ts`, `startView.test.ts`; `e2e/phoneFraming.spec.ts` on 390 x 844 and 360 x 640.
+  The e2e tests compare boxes on the canvas (`onCanvas`, the coordinates of `screenOf`), not the page's
+  `boundingBox`: the page's entrance slide (40 px over 2 s, much longer on a loaded machine) moves the canvas and
+  the HUD together, and `cameraAtRest` also waits for the pivot's lift to settle.
 
 ### Back: the view history (`src/store/viewHistory.ts`, `features/solarSystem/back`; #46)
 

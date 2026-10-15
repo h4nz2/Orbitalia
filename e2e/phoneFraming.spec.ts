@@ -10,7 +10,7 @@ import path from "node:path"
 
 import { expect, test, type Page } from "@playwright/test"
 
-import { expandCard } from "./support/hud"
+import { expandCard, openLayers } from "./support/hud"
 import { cameraAtRest, labelsAtRest, nextFrames } from "./support/scene"
 import { stubSpeech } from "./support/speech"
 
@@ -54,16 +54,38 @@ interface Placement {
 const screenOf = (page: Page, id: string): Promise<Placement | null> =>
 	page.evaluate((id) => window.__orbitalia!.screenOf(id), id)
 
-/** The band the HUD leaves free (the phone's open row, dock/FreeArea.tsx), px. */
+/**
+ * An element's box on the scene's canvas: the coordinates `screenOf` and the
+ * camera use, read together with the canvas's own box in one go. Every page
+ * slides in from below as it opens (`FadeInOutUp`, 40 px over 2 s, far longer
+ * on a busy machine), the canvas and the HUD together, so a box in page
+ * coordinates (`boundingBox`) can be pixels off the scene for a while.
+ */
+const onCanvas = (page: Page, selector: string) =>
+	page.evaluate((selector) => {
+		const canvas = document.querySelector("canvas")!.getBoundingClientRect()
+		const box = document.querySelector(selector)?.getBoundingClientRect()
+		return box === undefined
+			? null
+			: {
+					x: box.x - canvas.x,
+					y: box.y - canvas.y,
+					width: box.width,
+					height: box.height,
+				}
+	}, selector)
+
+/** The band the HUD leaves free (the phone's open row, dock/FreeArea.tsx), px on the canvas. */
 const freeBand = async (page: Page) => {
-	const box = await page.locator("[data-free-area]").boundingBox()
+	const box = await onCanvas(page, "[data-free-area]")
 	expect(box, "the phone's HUD leaves a band free").not.toBeNull()
+	expect(box!.height, "the phone's HUD leaves a band free").toBeGreaterThan(0)
 	return { top: box!.y, bottom: box!.y + box!.height }
 }
 
-/** The top of the body card, px. */
+/** The top of the body card, px on the canvas. */
 const cardTop = async (page: Page) =>
-	(await page.getByTestId("body-card").boundingBox())!.y
+	(await onCanvas(page, '[data-testid="body-card"]'))!.y
 
 test.describe("on an upright phone", () => {
 	test.use({
@@ -219,7 +241,9 @@ test.describe("on an upright phone", () => {
 			await page.evaluate(() => window.__orbitalia!.camera().pivotLift),
 		).toBeGreaterThan(0)
 		const jupiter = (await screenOf(page, "jupiter"))!
-		await page.touchscreen.tap(jupiter.x, jupiter.y)
+		// screenOf is on the canvas: the tap goes where the canvas is on the page
+		const canvas = (await page.locator("canvas").first().boundingBox())!
+		await page.touchscreen.tap(canvas.x + jupiter.x, canvas.y + jupiter.y)
 		await expect
 			.poll(() =>
 				page.evaluate(() => window.__orbitalia!.store.getState().selectedId),
@@ -245,17 +269,40 @@ test.describe("on an upright phone", () => {
 		page,
 	}) => {
 		await ready(page, "/solar_system?focus=mars&at=0_40_0&lang=en")
-		const marker = page.getByTestId("centre-marker")
-		await expect(marker).toHaveAttribute("data-visible", "true")
-		const box = (await marker.boundingBox())!
-		const lift = await page.evaluate(
-			() => window.__orbitalia!.camera().pivotLift,
+		// a panel from the bottom raises the band, and the pivot with it (in a
+		// free view the top stack, with the badge, about balances the bottom one)
+		await openLayers(page)
+		await cameraAtRest(page, 10)
+		await expect(page.getByTestId("centre-marker")).toHaveAttribute(
+			"data-visible",
+			"true",
 		)
-		expect(lift).toBeGreaterThan(0)
-		expect(
-			Math.abs(box.y + box.height / 2 - (844 / 2 - lift * 844)),
-		).toBeLessThan(1.5)
-		expect(Math.abs(box.x + box.width / 2 - 195)).toBeLessThan(1.5)
+		// the marker, the canvas and the camera's lift, read in the same frame
+		const centre = () =>
+			page.evaluate(() => {
+				const canvas = document.querySelector("canvas")!.getBoundingClientRect()
+				const marker = document
+					.querySelector('[data-testid="centre-marker"]')!
+					.getBoundingClientRect()
+				const lift = window.__orbitalia!.camera().pivotLift
+				return {
+					lifted: lift > 0.05,
+					onPivot:
+						Math.abs(
+							marker.y +
+								marker.height / 2 -
+								canvas.y -
+								canvas.height * (0.5 - lift),
+						) < 1.5,
+					centred:
+						Math.abs(
+							marker.x + marker.width / 2 - canvas.x - canvas.width / 2,
+						) < 1.5,
+				}
+			})
+		await expect
+			.poll(centre)
+			.toEqual({ lifted: true, onPivot: true, centred: true })
 	})
 
 	test("Look and find: every world a clue asks for is in sight while the clue is up", async ({
@@ -271,10 +318,15 @@ test.describe("on an upright phone", () => {
 			await nextFrames(page)
 			const at = (await screenOf(page, answer))!
 			expect(at, `${answer} on screen`).not.toBeNull()
-			const clue = (await panel.boundingBox())!
+			const clue = (await onCanvas(page, "#hunt-panel"))!
 			expect(at.y, `${answer} above the clue`).toBeLessThan(clue.y)
 			const hit = await page.evaluate(
-				([x, y]) => document.elementFromPoint(x, y)?.tagName,
+				([x, y]) => {
+					const canvas = document
+						.querySelector("canvas")!
+						.getBoundingClientRect()
+					return document.elementFromPoint(canvas.x + x, canvas.y + y)?.tagName
+				},
 				[at.x, at.y],
 			)
 			expect(hit, `${answer} is not under a panel`).toBe("CANVAS")

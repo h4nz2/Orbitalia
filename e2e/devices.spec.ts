@@ -135,7 +135,13 @@ async function expectSizes(page: Page, device: Device, where: string) {
 
 /** The focused body's centre is not under a panel. */
 async function expectBodyInView(page: Page, id: string, where: string) {
-	const body = await page.evaluate((id) => window.__orbitalia!.screenOf(id), id)
+	// screenOf is on the canvas, the panels on the page, which slides in as it opens
+	const body = await page.evaluate((id) => {
+		const at = window.__orbitalia!.screenOf(id)
+		if (at === null) return null
+		const canvas = document.querySelector("canvas")!.getBoundingClientRect()
+		return { x: canvas.x + at.x, y: canvas.y + at.y }
+	}, id)
 	expect(body, `${where}: ${id} on screen`).not.toBeNull()
 	const under = (await hudPanels(page)).filter(
 		(panel) =>
