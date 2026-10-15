@@ -33,6 +33,10 @@ Orbitalia is MIT-licensed and open to new ideas: technologies, data sources and 
 
 You can also send feedback right from the app ([orbitalia.app/feedback](https://orbitalia.app/feedback)) or by email at <feedback@orbitalia.app>.
 
+## Credits
+
+Originally started by Oded Winberger and Jan Hric as a small fun project. 100% of credit for the initiative goes to Oded, thanks buddy!
+
 ## Built with
 
 React 19 · TypeScript · Three.js ([React Three Fiber](https://docs.pmnd.rs/react-three-fiber) + drei) · [GSAP](https://greensock.com) · [Mantine](https://mantine.dev/) · [TanStack Router](https://tanstack.com/router) · Vite · Vitest · Playwright · Cloudflare Workers
