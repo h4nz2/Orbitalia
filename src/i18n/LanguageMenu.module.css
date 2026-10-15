@@ -1,8 +1,9 @@
 /* Pages without a HUD (hero, dictionary, not found) pin the switcher to the top-right corner. */
 .corner {
 	position: fixed;
-	top: 0.75rem;
-	right: 0.75rem;
+	/* clear of the notch, the rounded corners and the home indicator (#58) */
+	top: max(0.75rem, env(safe-area-inset-top));
+	right: max(0.75rem, env(safe-area-inset-right));
 	z-index: 100;
 	/* opaque rather than a backdrop blur: a blur over an animated canvas costs a compositing pass every frame */
 	background: rgba(20, 22, 28, 0.9);

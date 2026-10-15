@@ -6,7 +6,7 @@
 .column {
 	position: fixed;
 	top: 10rem;
-	right: 2rem;
+	right: max(2rem, env(safe-area-inset-right));
 	width: min(36ch, 32vw);
 	max-height: calc(100vh - 11rem);
 	max-height: calc(100dvh - 11rem);
@@ -27,7 +27,9 @@
 		width: auto;
 		max-height: 55vh;
 		max-height: 55dvh;
-		padding: 0 0.75rem 0.5rem;
+		padding: 0 max(0.75rem, env(safe-area-inset-right))
+			max(0.5rem, env(safe-area-inset-bottom))
+			max(0.75rem, env(safe-area-inset-left));
 		/* opaque: the bright globe would show through any transparency */
 		background: rgb(20, 22, 28);
 		border-top: 1px solid rgba(255, 255, 255, 0.08);

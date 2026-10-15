@@ -8,6 +8,7 @@ import { eventOfTourId, skyEventById, type SkyEvent } from "@/data/skyEvents"
 import { useSimStore } from "@/store/sim"
 import { useSpacecraftStore } from "@/store/spacecraft"
 import { useTourStore } from "@/store/tour"
+import { isPhone } from "@/utils/sizeClasses"
 
 import { exitTour, goToStop, startTour } from "../tours/player"
 import { eventTour, viewIndex, type EventView } from "./staging"
@@ -30,13 +31,7 @@ export function startEvent(
 	const tour = eventTour(event, current.kind !== "overview" && !jump)
 	startTour(tour, { startAt: viewIndex(tour, view) ?? 0, jump })
 	// on a phone the card starts folded, so the event itself is in view
-	if (
-		typeof window !== "undefined" &&
-		typeof window.matchMedia === "function" &&
-		window.matchMedia("(max-width: 599px)").matches
-	) {
-		useTourStore.getState().setCollapsed(true)
-	}
+	if (isPhone()) useTourStore.getState().setCollapsed(true)
 	const craft = event.space?.craft
 	if (craft !== undefined) useSpacecraftStore.getState().selectCraft(craft)
 }

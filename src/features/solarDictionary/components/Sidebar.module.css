@@ -1,7 +1,7 @@
 .base {
 	position: fixed;
 	top: 10rem;
-	left: 2rem;
+	left: max(2rem, env(safe-area-inset-left));
 	font-family: arial;
 	width: 20ch;
 	display: flex;

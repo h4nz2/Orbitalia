@@ -61,3 +61,54 @@
 	color: var(--mantine-color-red-4);
 	background: var(--mantine-color-dark-4);
 }
+
+/*
+ * Fingers (#58): each world is a 44 px target with the same dot in its middle,
+ * in a row under the corner's finger-sized buttons; where nine do not fit in
+ * one row (a phone upright) they take two balanced rows.
+ */
+@media $touch {
+	.base {
+		top: 5rem;
+		min-width: 0;
+		gap: 0;
+		flex-wrap: wrap;
+		margin-inline: auto;
+		max-width: calc(9 * var(--touch-target));
+	}
+
+	.menuTarget {
+		width: var(--touch-target);
+		height: var(--touch-target);
+		background: none;
+	}
+
+	.menuTarget::after {
+		content: "";
+		position: absolute;
+		inset: calc(50% - 10px);
+		border-radius: 50%;
+		background-color: gray;
+	}
+
+	.menuTarget[data-active]::after {
+		background-color: white;
+	}
+
+	/* the ring round the dot, not round the target */
+	.menuTarget:hover::before {
+		width: 31px;
+		height: 30px;
+	}
+
+	.menuTarget[data-active]::before {
+		width: 50px;
+		height: 50px;
+	}
+
+	@media (max-width: 419px) {
+		.base {
+			max-width: calc(5 * var(--touch-target));
+		}
+	}
+}

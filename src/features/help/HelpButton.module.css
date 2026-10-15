@@ -1,8 +1,9 @@
 /* Pages without a HUD pin help and the language menu to the top-right corner (#43). */
 .corner {
 	position: fixed;
-	top: 0.75rem;
-	right: 0.75rem;
+	/* clear of the notch, the rounded corners and the home indicator (#58) */
+	top: max(0.75rem, env(safe-area-inset-top));
+	right: max(0.75rem, env(safe-area-inset-right));
 	z-index: 100;
 	display: flex;
 	align-items: center;
@@ -32,12 +33,21 @@
 }
 
 /* phones: the icon alone (its name stays its label), like the comparison's back arrow */
-@media (max-width: 599px) {
+@media $phone {
 	.label {
 		display: none;
 	}
 
 	.section {
 		margin: 0;
+	}
+
+	/*
+	 * the solar system's corner on a phone (#58): Help and its "more help"
+	 * chevron are one finger-sized button, the menu (intro/IntroMenu.tsx),
+	 * whose first item is this page
+	 */
+	:global([data-hud-corner]) .button {
+		display: none;
 	}
 }

@@ -18,7 +18,7 @@ import {
 	IconPlayerPlayFilled,
 } from "@tabler/icons-react"
 
-import { isoMinuteUTC, useI18n } from "@/i18n"
+import { formatDateTimeUTCParts, isoMinuteUTC, useI18n } from "@/i18n"
 import { Hint, hintKey } from "@/primitives/hint"
 import { jdToDate } from "@/sim"
 import { WARP_PRESETS, useSimStore } from "@/store/sim"
@@ -85,14 +85,19 @@ const play = (direction: Direction): void => {
 /**
  * The simulation clock in the active locale's date format, with the ISO
  * instant in `dateTime`; its own component so the ~10 Hz updates re-render nothing else.
+ * A phone (#58) shows the date over the time, so the bar keeps to one row
+ * with finger-sized buttons; the text is the same.
  */
 const SimDateTime = () => {
 	const jd = useThrottledSimTime()
-	const { dateTimeUTC } = useI18n()
+	const { formatLocale } = useI18n()
 	const date = jdToDate(jd)
+	const parts = formatDateTimeUTCParts(date, formatLocale)
 	return (
 		<time className={classes.date} dateTime={isoMinuteUTC(date)}>
-			{dateTimeUTC(date)}
+			<span className={classes.datePart}>{parts.date}</span>
+			<span className={classes.dateSeparator}>{parts.separator}</span>
+			<span className={classes.datePart}>{parts.time}</span>
 		</time>
 	)
 }

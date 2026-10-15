@@ -35,7 +35,7 @@
 	color: var(--mantine-color-gray-1);
 }
 
-@media (max-width: 599px) {
+@media $phone {
 	.route {
 		font-size: var(--mantine-font-size-md);
 	}
@@ -113,7 +113,7 @@
 	white-space: nowrap;
 }
 
-@media (max-width: 599px) {
+@media $phone {
 	.root {
 		width: auto;
 		font-size: var(--mantine-font-size-xs);

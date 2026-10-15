@@ -36,6 +36,26 @@
 	color: var(--mantine-color-orange-3);
 }
 
+/* fingers (#58): every moon, and "Read more", is a 44 px target */
+@media $touch {
+	.list {
+		gap: 0.375rem;
+	}
+
+	.moon,
+	.readMore {
+		display: inline-flex;
+		align-items: center;
+		min-height: var(--touch-target);
+	}
+
+	.moon {
+		min-width: var(--touch-target);
+		justify-content: center;
+		padding-inline: 0.75rem;
+	}
+}
+
 .description {
 	margin: 0 0 0.25rem;
 	color: var(--mantine-color-gray-2);

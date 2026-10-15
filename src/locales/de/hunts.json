@@ -568,12 +568,12 @@
 			},
 			"hints": {
 				"simple": [
-					"Such oben links den Knopf, auf dem „Sonne in der Mitte“ steht.",
+					"Such neben dem Namensfeld den Knopf, auf dem „Sonne in der Mitte“ steht.",
 					"Wähle „Von der Erde aus: Planeten“ und lass die Zeit laufen.",
 					"Mars ist ein gutes Beispiel: Wähle „Von der Erde aus: Planeten“ und klick Mars an, während er seine Schleife zeichnet."
 				],
 				"standard": [
-					"Such oben links den Knopf, auf dem „Sonne im Zentrum“ steht: Er ändert den Blickwinkel.",
+					"Such neben dem Namensfeld den Knopf, auf dem „Sonne im Zentrum“ steht: Er ändert den Blickwinkel.",
 					"Wähle „Von der Erde aus: die Planeten“ und lass die Zeit laufen.",
 					"Mars ist ein gutes Beispiel: Wähle „Von der Erde aus: die Planeten“ und wähle Mars aus, während er seine Schleife zeichnet."
 				]

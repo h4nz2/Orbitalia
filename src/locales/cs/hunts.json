@@ -568,12 +568,12 @@
 			},
 			"hints": {
 				"simple": [
-					"Najdi vlevo nahoře tlačítko, na kterém je napsáno „Slunce uprostřed“.",
+					"Najdi vedle pole se jménem tlačítko, na kterém je napsáno „Slunce uprostřed“.",
 					"Vyber „Ze Země: planety“ a nech běžet čas.",
 					"Dobrý příklad je Mars: vyber „Ze Země: planety“ a klikni na Mars, zatímco kreslí svou smyčku."
 				],
 				"standard": [
-					"Najdi vlevo nahoře tlačítko s nápisem „Slunce ve středu“: mění úhel pohledu.",
+					"Najdi vedle pole se jménem tlačítko s nápisem „Slunce ve středu“: mění úhel pohledu.",
 					"Vyber „Pohled ze Země: planety“ a nech běžet čas.",
 					"Dobrý příklad je Mars: vyber „Pohled ze Země: planety“ a vyber Mars, zatímco kreslí svou smyčku."
 				]

@@ -2,7 +2,9 @@
  * The sound control (#32), next to the language button: a speaker that
  * switches all sound on or off with one click (or M), and a popover with the
  * volume, the two layers and the real recordings. Off by default; the
- * speaker is crossed out and grey while off, orange while on.
+ * speaker is crossed out and grey while off, orange while on. On a phone
+ * (#58) the two are one finger-sized button: the speaker opens the popover,
+ * whose first switch turns sound on or off.
  */
 import {
 	ActionIcon,
@@ -127,6 +129,7 @@ function SoundControl() {
 					aria-keyshortcuts="M"
 					onClick={toggleSound}
 					data-testid="sound-toggle"
+					className={classes.toggle}
 				>
 					{enabled ? (
 						<IconVolume size={18} aria-hidden />
@@ -150,11 +153,28 @@ function SoundControl() {
 							color="gray"
 							size="sm"
 							aria-label={t("solarSystem.sound.settings")}
+							data-testid="sound-menu"
 						>
-							<IconChevronDown size={14} aria-hidden />
+							<IconChevronDown
+								size={14}
+								aria-hidden
+								className={classes.chevron}
+							/>
+							<span
+								className={classes.speaker}
+								data-on={enabled || undefined}
+								aria-hidden
+							>
+								{enabled ? (
+									<IconVolume size={18} />
+								) : (
+									<IconVolumeOff size={18} />
+								)}
+							</span>
 						</ActionIcon>
 					</Popover.Target>
-					<Popover.Dropdown>
+					{/* it scrolls inside, so it keeps its arrow (providers/fit.css) */}
+					<Popover.Dropdown data-own-scroll>
 						<Settings />
 					</Popover.Dropdown>
 				</Popover>

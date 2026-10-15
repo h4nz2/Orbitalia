@@ -10,7 +10,10 @@
 .inner {
 	max-width: 52rem;
 	margin: 0 auto;
-	padding: 1rem 1rem 4rem;
+	/* clear of the notch, the rounded corners and the home indicator (#58) */
+	padding: max(1rem, env(safe-area-inset-top))
+		max(1rem, env(safe-area-inset-right)) max(4rem, env(safe-area-inset-bottom))
+		max(1rem, env(safe-area-inset-left));
 }
 
 .header {
@@ -196,6 +199,16 @@
 .open3d {
 	display: inline-flex;
 	color: var(--mantine-color-gray-4);
+}
+
+/* fingers (#58): the planet icon that opens the 3D view is a 44 px target */
+@media $touch {
+	.open3d {
+		align-items: center;
+		justify-content: center;
+		min-width: var(--touch-target);
+		min-height: var(--touch-target);
+	}
 }
 
 .size {
@@ -386,7 +399,7 @@
 	}
 }
 
-@media (max-width: 599px) {
+@media $phone {
 	.header {
 		padding-right: 0;
 		padding-top: 2.5rem;

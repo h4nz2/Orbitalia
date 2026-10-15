@@ -809,7 +809,7 @@
 				"other": "Eso es {bodyId, select, sun {el Sol} earth {la Tierra} moon {la Luna} other {{name}}}. No es la respuesta – ¡sigue explorando!",
 				"other@simple": "Eso es {bodyId, select, sun {el Sol} earth {la Tierra} moon {la Luna} other {{name}}}. ¡Prueba con otro!",
 				"warm": "¡Caliente! La respuesta está cerca {bodyId, select, sun {del Sol} earth {de la Tierra} moon {de la Luna} other {de {name}}}. Mira a su alrededor.",
-				"almost": "¡Sí, {name}! Ahora obsérvalo desde {frameId, select, sun {el Sol} earth {la Tierra} moon {la Luna} other {{frame}}}: elige el punto de vista arriba a la izquierda."
+				"almost": "¡Sí, {name}! Ahora obsérvalo desde {frameId, select, sun {el Sol} earth {la Tierra} moon {la Luna} other {{frame}}}: elige el punto de vista junto al cuadro de nombres."
 			},
 			"found": "¡Encontrado!",
 			"star": "¡Una estrella para ti!",
@@ -1638,20 +1638,20 @@
 				"fly": {
 					"title": "Haz clic en un planeta para volar allí",
 					"title@simple": "Haz clic en un planeta",
-					"text": "Cualquier planeta o luna: haz clic en él o escribe su nombre en la casilla de arriba a la izquierda. Por el camino, el marcador de abajo cuenta la distancia real y cuánto tardarían la luz, el cohete más rápido y un coche.",
-					"text@simple": "Haz clic en un planeta y vuelas hasta él. El cuadro de abajo te dice lo lejos que está de verdad y cuánto tardaría un cohete."
+					"text": "Cualquier planeta o luna: haz clic en él o escribe su nombre en el cuadro de nombres. Por el camino, un marcador cuenta la distancia real y cuánto tardarían la luz, el cohete más rápido y un coche.",
+					"text@simple": "Haz clic en un planeta y vuelas hasta él. Por el camino, un cuadro te dice lo lejos que está de verdad y cuánto tardaría un cohete."
 				},
 				"trueScale": {
 					"title": "Escala real",
 					"title@simple": "El tamaño real",
-					"text": "Ahora cada tamaño y cada distancia son reales, y los planetas desaparecen en el espacio vacío: los puntos solo muestran dónde están. Escala, abajo a la derecha, cambia entre la realidad y dibujos en los que se ve algo. Ahí también encoges el Sol hasta un balón de baloncesto para recorrer a pie el sistema solar en el patio del colegio.",
-					"text@simple": "Este es el tamaño real de todo. ¡Los planetas son tan pequeños que no los ves! Los puntos muestran dónde están. Pulsa Escala abajo a la derecha para cambiar. Ahí también puedes caminar hasta los planetas en tu escuela."
+					"text": "Ahora cada tamaño y cada distancia son reales, y los planetas desaparecen en el espacio vacío: los puntos solo muestran dónde están. El botón Escala cambia entre la realidad y dibujos en los que se ve algo. Ahí también encoges el Sol hasta un balón de baloncesto para recorrer a pie el sistema solar en el patio del colegio.",
+					"text@simple": "Este es el tamaño real de todo. ¡Los planetas son tan pequeños que no los ves! Los puntos muestran dónde están. Pulsa Escala para cambiar. Ahí también puedes caminar hasta los planetas en tu escuela."
 				},
 				"time": {
 					"title": "Viaja en el tiempo",
 					"title@simple": "Viaja en el tiempo",
-					"text": "Cada segundo pasa un mes, así que ves a los planetas girar alrededor del Sol. La barra del tiempo de abajo pausa, va hacia atrás y acelera; haz clic en la fecha para saltar a cualquier día o a un eclipse.",
-					"text@simple": "Ahora pasa un mes entero cada segundo. ¡Mira cómo giran los planetas alrededor del Sol! Los botones de abajo hacen que el tiempo vaya más rápido, más lento o hacia atrás."
+					"text": "Cada segundo pasa un mes, así que ves a los planetas girar alrededor del Sol. La barra del tiempo pausa, va hacia atrás y acelera; haz clic en la fecha para saltar a cualquier día o a un eclipse.",
+					"text@simple": "Ahora pasa un mes entero cada segundo. ¡Mira cómo giran los planetas alrededor del Sol! Los botones de tiempo hacen que el tiempo vaya más rápido, más lento o hacia atrás."
 				},
 				"compare": {
 					"title": "Compara mundos",
@@ -1668,14 +1668,14 @@
 				"teachers": {
 					"title": "Para docentes: Presentar",
 					"title@simple": "Para docentes",
-					"text": "Presentar, arriba a la derecha, agranda el texto para un proyector, añade alto contraste y teclas para un mando de presentaciones, y oculta los controles con H. Compartir da a la clase un enlace o un código QR a esta misma vista.",
-					"text@simple": "Docentes: pulsad Presentar arriba a la derecha para mostrar el sistema solar a la clase en una pantalla grande."
+					"text": "Presentar agranda el texto para un proyector, añade alto contraste y teclas para un mando de presentaciones, y oculta los controles con H. Compartir da a la clase un enlace o un código QR a esta misma vista.",
+					"text@simple": "Docentes: pulsad Presentar para mostrar el sistema solar a la clase en una pantalla grande."
 				},
 				"more": {
 					"title": "Hay más",
 					"title@simple": "Hay más",
-					"text": "Cada función, cómo se usa y un enlace para probarla están en la página de ayuda: el botón Ayuda de arriba a la derecha. ¿Algo no va bien o tienes una idea? «Enviar comentarios», en la flecha junto a Ayuda, llega a quienes hacen Orbitalia. ¡Que disfrutes explorando!",
-					"text@simple": "Hay muchas más cosas por descubrir. El botón Ayuda de arriba a la derecha te lo cuenta todo. ¿Algo se ha roto o tienes una idea? Cuéntanoslo con «Dinos qué piensas», junto a Ayuda. ¡Diviértete!"
+					"text": "Cada función, cómo se usa y un enlace para probarla están en la página de ayuda: pulsa Ayuda. ¿Algo no va bien o tienes una idea? «Enviar comentarios», en la flecha junto a Ayuda (en un móvil, en el propio botón Ayuda), llega a quienes hacen Orbitalia. ¡Que disfrutes explorando!",
+					"text@simple": "Hay muchas más cosas por descubrir. El botón Ayuda te lo cuenta todo. ¿Algo se ha roto o tienes una idea? Cuéntanoslo con «Dinos qué piensas», junto a Ayuda (en un móvil, dentro de Ayuda). ¡Diviértete!"
 				}
 			}
 		}
@@ -2002,7 +2002,7 @@
 			"code": "El código en GitHub",
 			"discussions": "GitHub Discussions"
 		},
-		"readingLevel": "Nivel de lectura: {level}. Puedes cambiar el idioma y el nivel de lectura en el menú de arriba a la derecha.",
+		"readingLevel": "Nivel de lectura: {level}. Puedes cambiar el idioma y el nivel de lectura con el botón de idioma (muestra ES).",
 		"shortcutsLink": "Todas las funciones y cómo usarlas: abre la página de ayuda"
 	},
 	"feedback": {

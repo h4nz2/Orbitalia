@@ -55,7 +55,7 @@
 	}
 }
 
-@media (max-width: 599px) {
+@media $phone {
 	.card {
 		width: auto;
 	}

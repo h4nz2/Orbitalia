@@ -193,7 +193,7 @@ const ToolsMenu = () => {
 						{t("solarSystem.hud.tools")}
 					</Button>
 				</Menu.Target>
-				<Menu.Dropdown className={classes.toolsMenu}>
+				<Menu.Dropdown>
 					<Menu.Label>{t("solarSystem.hud.tools")}</Menu.Label>
 					{TOOLS.map((tool) => (
 						<Menu.Item

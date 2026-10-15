@@ -83,3 +83,64 @@ export async function closeTime(page: Page): Promise<void> {
 	if (await popover.isVisible()) await page.getByTestId("time-menu").click()
 	await popover.waitFor({ state: "hidden" })
 }
+
+/** A box on the page, in CSS pixels, named for the messages. */
+export interface Box {
+	name: string
+	left: number
+	top: number
+	right: number
+	bottom: number
+}
+
+/**
+ * The HUD's panels (#42): every element of the HUD that takes the pointer
+ * (the HUD layer itself lets it through to the scene).
+ */
+export const hudPanels = (page: Page): Promise<Box[]> =>
+	page.evaluate(() => {
+		const panels: Box[] = []
+		const walk = (element: Element) => {
+			for (const child of element.children) {
+				const style = getComputedStyle(child)
+				if (style.display === "none" || style.visibility === "hidden") continue
+				if (style.pointerEvents !== "none" && style.display !== "contents") {
+					const { left, top, right, bottom, width, height } =
+						child.getBoundingClientRect()
+					const name =
+						(child as HTMLElement).dataset.testid ??
+						String(child.className).split(" ")[0]
+					if (width > 0 && height > 0)
+						panels.push({ name, left, top, right, bottom })
+					continue
+				}
+				walk(child)
+			}
+		}
+		const hud = document.querySelector("[data-testid=hud]")
+		if (hud !== null) walk(hud)
+		return panels
+	})
+
+/**
+ * The share of the screen no HUD panel covers (#42): the panels are painted
+ * onto a coarse grid, and the free cells are counted.
+ */
+export async function unobstructed(page: Page): Promise<number> {
+	const boxes = await hudPanels(page)
+	const { width, height } = page.viewportSize()!
+	const step = 4
+	let free = 0
+	let total = 0
+	for (let y = step / 2; y < height; y += step)
+		for (let x = step / 2; x < width; x += step) {
+			total += 1
+			if (
+				!boxes.some(
+					(b) => x >= b.left && x <= b.right && y >= b.top && y <= b.bottom,
+				)
+			)
+				free += 1
+		}
+	return free / total
+}

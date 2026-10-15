@@ -95,6 +95,25 @@
 	margin-top: 0.5rem;
 }
 
+/* fingers (#58): the card's links are 44 px targets (they stand alone, not in a sentence) */
+@media $touch {
+	.walk {
+		align-items: center;
+		min-height: var(--touch-target);
+	}
+
+	.walkIcon {
+		margin-top: 0;
+	}
+
+	.more {
+		display: inline-flex;
+		align-items: center;
+		min-height: var(--touch-target);
+		margin-top: 0.25rem;
+	}
+}
+
 .hint {
 	display: flex;
 	align-items: center;
@@ -103,7 +122,7 @@
 	color: var(--mantine-color-gray-3);
 }
 
-@media (max-width: 599px) {
+@media $phone {
 	.fact {
 		grid-template-columns: 5rem minmax(0, 1fr);
 	}

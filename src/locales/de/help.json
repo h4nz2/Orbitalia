@@ -77,14 +77,14 @@
 					"Um bei einem Text zu bleiben, drück die Leertaste, tippe auf die Szene oder drück den Pause-Knopf; noch einmal, und es geht weiter. Solange es angehalten ist, kannst du die Ansicht drehen, ohne das Intro zu beenden.",
 					"„Weiter“ (oder die Pfeiltaste nach rechts) geht gleich zum nächsten Teil; angehalten Teil für Teil.",
 					"Nach dem ersten Intro fragt die App einmal, ob du kurz sehen willst, was du hier machen kannst (siehe „Ein kurzer Blick“).",
-					"Um es noch einmal zu sehen, öffne den Pfeil neben „Hilfe“ und wähle „Intro noch einmal abspielen“.",
+					"Um es noch einmal zu sehen, öffne den Pfeil neben „Hilfe“ (auf dem Handy „Hilfe“ selbst) und wähle „Intro noch einmal abspielen“.",
 					"„Zeigen, wie man sich bewegt“ im selben Menü holt die Hinweise zum Ziehen, Zoomen und Klicken zurück."
 				],
 				"simple": [
 					"Es läuft, wenn du zum ersten Mal kommst.",
 					"Drück die Leertaste oder tippe auf das Bild, dann hält es an. Noch einmal, und es läuft weiter.",
 					"„Weiter“ zeigt den nächsten Teil.",
-					"Willst du es noch mal sehen? Drück auf den Pfeil neben „Hilfe“ und dann auf „Intro noch einmal abspielen“."
+					"Willst du es noch mal sehen? Drück auf den Pfeil neben „Hilfe“ (auf dem Handy auf „Hilfe“ selbst) und dann auf „Intro noch einmal abspielen“."
 				]
 			}
 		},
@@ -105,12 +105,12 @@
 				"standard": [
 					"Beim ersten Besuch, nach dem Intro, antworte „Ja, zeig es mir“. Die Frage kommt in diesem Browser nur einmal, nie über einen geteilten Link und nie beim Präsentieren.",
 					"Er geht von selbst weiter; „Zurück“, „Weiter“ und die Pfeiltasten gehen Schritt für Schritt, und „Den Rest überspringen“ oder × beenden ihn jederzeit, zurück zu einer ruhigen Ansicht.",
-					"Um ihn noch einmal zu sehen, öffne den Pfeil neben „Hilfe“ und wähle „Den kurzen Blick noch einmal“."
+					"Um ihn noch einmal zu sehen, öffne den Pfeil neben „Hilfe“ (auf dem Handy „Hilfe“ selbst) und wähle „Den kurzen Blick noch einmal“."
 				],
 				"simple": [
 					"Drück nach dem Intro auf „Ja, zeig es mir“.",
 					"Schau zu, oder drück „Weiter“.",
-					"Willst du ihn noch mal sehen? Drück auf den Pfeil neben „Hilfe“."
+					"Willst du ihn noch mal sehen? Drück auf den Pfeil neben „Hilfe“ (auf dem Handy auf „Hilfe“ selbst)."
 				]
 			}
 		},
@@ -132,13 +132,13 @@
 					"Zeige auf einen Planeten oder seinen Namen: Ein Ring erscheint mit „Klicken zum Hinfliegen“.",
 					"Klicke oder tippe darauf. Um sofort zu landen, drücke „Überspringen“ in der Anzeige.",
 					"Bei einem kleinen Punkt klickst du einfach irgendwo in seine Nähe: Das Ziel ist großzügig bemessen.",
-					"Der Haus-Knopf oben links (oder Esc) ist der Weg zurück zum ganzen Sonnensystem; ein Klick ins Leere lässt die Ansicht, wie sie ist."
+					"Der Haus-Knopf (oder Esc) ist der Weg zurück zum ganzen Sonnensystem; ein Klick ins Leere lässt die Ansicht, wie sie ist."
 				],
 				"simple": [
 					"Fahr mit der Maus über einen Planeten. Ein Ring taucht auf.",
 					"Klick drauf. Jetzt schau dir die Reise an.",
 					"Drück „Sofort hin“, wenn du nicht warten willst.",
-					"Drück den Haus-Knopf oben links, dann siehst du wieder alle Planeten."
+					"Drück den Haus-Knopf, dann siehst du wieder alle Planeten."
 				]
 			}
 		},
@@ -149,7 +149,7 @@
 			},
 			"what": {
 				"standard": "Der Pfeil neben dem Haus-Knopf bringt dich einen Schritt zurück: zur Welt, Raumsonde oder Stelle, die du vorher angeschaut hast, aus demselben Abstand und Winkel. Drück ihn noch einmal, dann geht es weiter zurück.",
-				"simple": "Der Pfeil oben links bringt dich zurück zu dem, was du vorher gesehen hast."
+				"simple": "Der Pfeil „Zurück“ neben dem Haus-Knopf bringt dich zurück zu dem, was du vorher gesehen hast."
 			},
 			"why": {
 				"standard": "Aus Versehen einen Mond angeklickt, oder hat dich ein Meilenstein einer Raumsonde weit weggebracht? Nichts ist verloren: Zurück macht den Sprung rückgängig, der Haus-Knopf dagegen geht ganz hinaus zum ganzen System.",
@@ -158,13 +158,13 @@
 			"how": {
 				"standard": [
 					"Klick eine Welt an, zum Beispiel den Mond, dann eine andere, etwa den Mars.",
-					"Drück den Pfeil oben links oder die Rücktaste: Die Kamera fliegt zurück zum Mond, so wie du ihn verlassen hast. Drück noch einmal, um weiter zurückzugehen; wenn nichts mehr da ist, ist der Pfeil ausgegraut.",
+					"Drück den Pfeil „Zurück“ neben dem Haus-Knopf oder die Rücktaste: Die Kamera fliegt zurück zum Mond, so wie du ihn verlassen hast. Drück noch einmal, um weiter zurückzugehen; wenn nichts mehr da ist, ist der Pfeil ausgegraut.",
 					"Die Zurück-Taste deines Browsers und die Zurück-Geste deines Handys tun dasselbe. In einer Tour geht Zurück zur Station davor.",
 					"Drehen, Zoomen, die Zeit, die Ebenen und der Maßstab sind keine Schritte: Zurück überspringt sie."
 				],
 				"simple": [
 					"Klick auf den Mond. Dann klick auf den Mars.",
-					"Drück auf den Pfeil oben links. Du fliegst zurück zum Mond.",
+					"Drück auf den Pfeil „Zurück“ neben dem Haus-Knopf. Du fliegst zurück zum Mond.",
 					"Drück noch einmal, dann geht es weiter zurück."
 				]
 			}
@@ -175,7 +175,7 @@
 				"simple": "Eine Welt mit ihrem Namen finden"
 			},
 			"what": {
-				"standard": "Das Feld oben links listet die Sonne, alle Planeten und die Monde mit einer Geschichte auf; gib einen Namen ein, um zu suchen.",
+				"standard": "Das Namensfeld, in dem die Welt im Blick steht, listet die Sonne, alle Planeten und die Monde mit einer Geschichte auf; gib einen Namen ein, um zu suchen.",
 				"simple": "Schreib den Namen eines Planeten oder Mondes, und schon fliegst du hin."
 			},
 			"why": {
@@ -184,12 +184,12 @@
 			},
 			"how": {
 				"standard": [
-					"Klicke oben links in das Feld und gib einen Namen ein, zum Beispiel „Titan“.",
+					"Klicke in das Namensfeld (dort steht die Welt, die du gerade ansiehst) und gib einen Namen ein, zum Beispiel „Titan“.",
 					"Wähle ihn aus der Liste: Die Kamera fliegt hin.",
 					"Mit ← oder → besuchst du die nächste Welt derselben Familie; der Haus-Knopf oder Esc bringt dich zurück zum ganzen System."
 				],
 				"simple": [
-					"Klick oben links in das Feld.",
+					"Klick in das Feld mit dem Namen der Welt.",
 					"Schreib einen Namen, zum Beispiel Titan, und wähl ihn aus.",
 					"Drück Esc, dann siehst du wieder das ganze Sonnensystem."
 				]
@@ -228,8 +228,8 @@
 				"simple": "Wo sind die Knöpfe?"
 			},
 			"what": {
-				"standard": "Der Bildschirm gehört dem Weltraum. Nur was du ansiehst, der Weg zurück und die Zeit bleiben darauf; alles andere wartet hinter vier Knöpfen unten rechts: Touren, Ebenen, Maßstab und Werkzeuge. Während du drehst, zoomst oder fliegst, treten die Bedienelemente ein wenig zurück.",
-				"simple": "Die meisten Knöpfe halten sich zurück, damit du den Weltraum siehst. Vier Knöpfe unten rechts öffnen den Rest."
+				"standard": "Der Bildschirm gehört dem Weltraum. Nur was du ansiehst, der Weg zurück und die Zeit bleiben darauf; alles andere wartet hinter vier Knöpfen: Touren, Ebenen, Maßstab und Werkzeuge. Während du drehst, zoomst oder fliegst, treten die Bedienelemente ein wenig zurück.",
+				"simple": "Die meisten Knöpfe halten sich zurück, damit du den Weltraum siehst. Vier Knöpfe öffnen den Rest: Touren, Ebenen, Maßstab und Werkzeuge."
 			},
 			"why": {
 				"standard": "Die Planeten sind der Unterricht, nicht die Knöpfe: Die Klasse sieht das Sonnensystem, und jedes Bedienelement ist trotzdem höchstens zwei Klicks entfernt.",
@@ -237,15 +237,15 @@
 			},
 			"how": {
 				"standard": [
-					"Oben links: der Pfeil zurück dorthin, wo du gerade warst, der Haus-Knopf (zurück zum ganzen System), der Name der Welt im Blick und ihr Steckbrief; der Pfeil im Steckbrief klappt Fakten, Monde und Geschichten auf.",
-					"Unten: Abspielen, Pause und das Datum; der Knopf mit dem Tempo (zum Beispiel 1x) öffnet „Jetzt“, die Tempi und die Drehung.",
-					"Unten rechts: Touren, Ebenen (was gezeichnet wird), Maßstab (wie groß und wie weit) und Werkzeuge (Lichtgeschwindigkeit, der Himmel heute Nacht, Raumsonden, dein Geburtstag, die Schnitzeljagd, Nebeneinander, das Sonnensystem ablaufen, das Bildlexikon und ein Foto). Es ist immer nur ein Feld offen; × schließt es.",
-					"Oben rechts: Präsentieren, Teilen, das durchgestrichene Auge, das alles ausblendet (H holt es zurück), Ton, Hilfe und die Sprache."
+					"Immer zu sehen: der Pfeil zurück dorthin, wo du gerade warst, der Haus-Knopf (zurück zum ganzen System), der Name der Welt im Blick mit ihrem Steckbrief und die Zeitleiste. Der Pfeil im Steckbrief klappt Fakten, Monde und Geschichten auf.",
+					"In der Zeitleiste: Abspielen, Pause und das Datum; der Knopf mit dem Tempo (zum Beispiel 1x) öffnet „Jetzt“, die Tempi und die Drehung.",
+					"Touren, Ebenen (was gezeichnet wird), Maßstab (wie groß und wie weit) und Werkzeuge (Lichtgeschwindigkeit, der Himmel heute Nacht, Raumsonden, dein Geburtstag, die Schnitzeljagd, Nebeneinander, das Sonnensystem ablaufen, das Bildlexikon und ein Foto) öffnen alles andere. Es ist immer nur ein Feld offen; × schließt es.",
+					"Knöpfe zum Präsentieren und Einstellen: Präsentieren, Teilen, das durchgestrichene Auge, das alles ausblendet (H holt es zurück), Ton, Hilfe und die Sprache."
 				],
 				"simple": [
-					"Der Pfeil oben links geht einen Schritt zurück. Der Haus-Knopf daneben bringt dich zurück zu allen Planeten.",
-					"Drück unten rechts auf Ebenen, Maßstab oder Werkzeuge, dann findest du mehr.",
-					"Drück oben rechts auf das durchgestrichene Auge, dann verschwinden alle Knöpfe. Mit H kommen sie zurück."
+					"Der Pfeil „Zurück“ geht einen Schritt zurück. Der Haus-Knopf daneben bringt dich zurück zu allen Planeten.",
+					"Drück auf Ebenen, Maßstab oder Werkzeuge, dann findest du mehr.",
+					"Drück auf das durchgestrichene Auge, dann verschwinden alle Knöpfe. Mit H kommen sie zurück."
 				]
 			}
 		},
@@ -316,13 +316,13 @@
 			},
 			"how": {
 				"standard": [
-					"Drücke unten rechts auf „Ebenen“: Die Schalter öffnen sich darüber.",
+					"Drücke auf „Ebenen“: Die Schalter öffnen sich in einem Feld.",
 					"Drücke L, um alle Namen auf einmal aus- oder einzublenden.",
 					"„Alle Monde“ funktioniert nur, solange „Monde“ eingeschaltet ist.",
 					"Lass den Zeiger auf einem Schalter ruhen oder halte ihn gedrückt, um zu lesen, was er tut; ein ausgegrauter Schalter sagt, was du zuerst einschalten musst."
 				],
 				"simple": [
-					"Drück unten rechts auf „Ebenen“.",
+					"Drück auf „Ebenen“.",
 					"Klick einen Schalter an, um ihn auszuschalten, und noch einmal, um ihn wieder einzuschalten.",
 					"Drück L, dann sind alle Namen versteckt.",
 					"Halte die Maus über einen Schalter, um zu erfahren, was er macht."
@@ -393,12 +393,12 @@
 			},
 			"how": {
 				"standard": [
-					"Tippe oben links „Pluto“ ins Feld und wähle ihn aus: Er wird gezeigt, auch wenn „Kleinkörper“ aus ist.",
+					"Tippe „Pluto“ ins Namensfeld und wähle ihn aus: Er wird gezeigt, auch wenn „Kleinkörper“ aus ist.",
 					"Klapp die Karte mit dem Pfeil auf: Charon steht darin; „Das ganze Mondsystem ansehen“ zeigt alle fünf Monde.",
 					"← / → springen zum nächsten Zwergplaneten."
 				],
 				"simple": [
-					"Tippe oben links „Pluto“ ins Feld.",
+					"Tippe „Pluto“ ins Namensfeld.",
 					"Wähle Pluto, und du fliegst hin."
 				]
 			}
@@ -418,13 +418,13 @@
 			},
 			"how": {
 				"standard": [
-					"Wähle oben links Halley oder Encke (Gruppe Kometen).",
+					"Wähle im Namensfeld Halley oder Encke (Gruppe Kometen).",
 					"Klapp die Karte mit dem Pfeil auf und drücke „Zusehen, wie er an der Sonne vorbeizieht“: Die App springt zum nächsten Besuch und spielt ihn in etwa anderthalb Minuten ab.",
 					"Achte darauf, wohin der Schweif auf dem Hinweg und auf dem Rückweg zeigt.",
 					"Probiere auch Hale-Bopp: Sein Kopf erscheint schon weit jenseits des Jupiter, lange bevor seine Schweife wachsen."
 				],
 				"simple": [
-					"Wähle oben links Halley.",
+					"Wähle im Namensfeld Halley.",
 					"Klapp die Karte mit dem kleinen Pfeil auf und drücke „Zusehen, wie er an der Sonne vorbeifliegt“."
 				]
 			}
@@ -451,7 +451,7 @@
 				"simple": [
 					"Flieg zur Erde.",
 					"Lass die Zeit schneller laufen.",
-					"Drück unten den Tempo-Knopf, wähl „Zeitlupe“ und schau zu, wie sich die Erde dreht."
+					"Drück den Tempo-Knopf neben dem Datum, wähl „Zeitlupe“ und schau zu, wie sich die Erde dreht."
 				]
 			}
 		},
@@ -471,11 +471,11 @@
 			"how": {
 				"standard": [
 					"Klicke neben dem Namensfeld auf „Sonne im Zentrum“ und wähle „Von der Erde aus: die Planeten“ oder „Von der Erde aus: der Mond“.",
-					"Achte auf den Hinweis oben: Er sagt, was die gewählte Welt gerade an unserem Himmel tut.",
+					"Achte auf den Hinweis, der dann erscheint: Er sagt, was die gewählte Welt gerade an unserem Himmel tut.",
 					"„… festhalten“ funktioniert mit jeder Welt; „Zurück: Sonne im Zentrum“ bringt dich zurück."
 				],
 				"simple": [
-					"Klick oben links auf „Sonne in der Mitte“.",
+					"Klick neben dem Namensfeld auf „Sonne in der Mitte“.",
 					"Wähl „Von der Erde aus: Planeten“.",
 					"Schau zu, wie Mars eine Schleife macht."
 				]
@@ -496,7 +496,7 @@
 			},
 			"how": {
 				"standard": [
-					"Öffne unten rechts „Werkzeuge“, wähle „Himmel heute Nacht“ und dann deinen Ort (die App fragt nie von sich aus nach deinem Standort).",
+					"Öffne „Werkzeuge“, wähle „Himmel heute Nacht“ und dann deinen Ort (die App fragt nie von sich aus nach deinem Standort).",
 					"Lies die Liste: was du sehen kannst, wann, wo und womit.",
 					"Drück neben einem Planeten auf „Warum kann ich das sehen?“, um den Grund im All zu sehen."
 				],
@@ -522,12 +522,12 @@
 			},
 			"how": {
 				"standard": [
-					"Öffne unten rechts „Werkzeuge“, wähle „Echte Raumsonden“ und dann eine Sonde: Die Ansicht fliegt zu ihr.",
+					"Öffne „Werkzeuge“, wähle „Echte Raumsonden“ und dann eine Sonde: Die Ansicht fliegt zu ihr.",
 					"Ihr Steckbrief zeigt Start, Abstand, Signallaufzeit und „Meilensteine“; ein Meilenstein bringt die Zeit zu diesem Moment.",
 					"„Alle Bahnen zeigen“ zeichnet alle Wege auf einmal; der Schalter „Raumsonden“ blendet sie aus."
 				],
 				"simple": [
-					"Drück unten rechts auf „Werkzeuge“.",
+					"Drück auf „Werkzeuge“.",
 					"Wähl „Echte Raumsonden“ und dann Voyager 1.",
 					"Lies, wie weit sie weg ist."
 				]
@@ -548,12 +548,12 @@
 			},
 			"how": {
 				"standard": [
-					"Öffne unten rechts „Werkzeuge“, wähle „Echte Raumsonden“ und drück den Mitflug-Knopf neben einer Sonde oder „Mitfliegen“ auf ihrem Steckbrief.",
+					"Öffne „Werkzeuge“, wähle „Echte Raumsonden“ und drück den Mitflug-Knopf neben einer Sonde oder „Mitfliegen“ auf ihrem Steckbrief.",
 					"Auf dem Steckbrief geht „Ansehen“ neben einem Vorbeiflug oder einer Ankunft kurz davor und spielt es in etwa einer halben Minute ab.",
-					"Ziehen dreht die Ansicht, Scrollen zoomt; oben links steht, mit wem du fliegst. Das Haus, Escape, eine gewählte Welt oder „Zurück“ beenden den Mitflug."
+					"Ziehen dreht die Ansicht, Scrollen zoomt; im Namensfeld steht, mit wem du fliegst. Das Haus, Escape, eine gewählte Welt oder „Zurück“ beenden den Mitflug."
 				],
 				"simple": [
-					"Drück unten rechts auf „Werkzeuge“ und wähl „Echte Raumsonden“.",
+					"Drück auf „Werkzeuge“ und wähl „Echte Raumsonden“.",
 					"Wähl Voyager 1 und drück dann „Ansehen“ neben Jupiter.",
 					"Sieh zu, wie Jupiter vorbeizieht. Drück auf das Haus, um aufzuhören."
 				]
@@ -574,7 +574,7 @@
 			},
 			"how": {
 				"standard": [
-					"Öffne unten rechts „Werkzeuge“ und wähle „Bildlexikon“: Es zeigt die Welt, die du gerade ansiehst. Oder drück „Mehr dazu im Lexikon“ im Steckbrief einer Welt.",
+					"Öffne „Werkzeuge“ und wähle „Bildlexikon“: Es zeigt die Welt, die du gerade ansiehst. Oder drück „Mehr dazu im Lexikon“ im Steckbrief einer Welt.",
 					"Wähle eine Welt in der Punktreihe oben, dann „Oberfläche“, „Gelände“, „Ozeane“ oder „Wolken“, wo es sie gibt.",
 					"Öffne neben dem Globus (auf dem Handy darunter) „Aufbau“, „Wetter“ oder „Namen“. Der offene Abschnitt bleibt offen, wenn du eine andere Welt wählst, so kann eine Klasse die Welten eine nach der anderen vergleichen."
 				],
@@ -600,12 +600,12 @@
 			},
 			"how": {
 				"standard": [
-					"Beim Öffnen der App ist der Ton immer aus. Drück oben rechts auf den Lautsprecher oder auf M, um ihn einzuschalten.",
-					"Der Pfeil daneben öffnet die Lautstärke, den „Hintergrundklang“, die „Bewegungsklänge“ und „Hör ins All“.",
+					"Beim Öffnen der App ist der Ton immer aus. Drück auf den Lautsprecher oder auf M, um ihn einzuschalten. Auf dem Handy öffnet der Lautsprecher stattdessen die Toneinstellungen: Schalte dort „Ton an“ ein.",
+					"Der Pfeil daneben (auf dem Handy der Lautsprecher selbst) öffnet die Lautstärke, den „Hintergrundklang“, die „Bewegungsklänge“ und „Hör ins All“.",
 					"Flieg zur Sonne, zur Erde, zu Jupiter oder Saturn und spiel im Steckbrief die Aufnahme ab; der Text erklärt, was du hörst."
 				],
 				"simple": [
-					"Drück oben rechts auf den Lautsprecher.",
+					"Drück auf den Lautsprecher. Auf dem Handy schaltest du dann noch „Ton an“ ein.",
 					"Flieg zu Jupiter.",
 					"Drück im Steckbrief auf Abspielen und hör zu."
 				]
@@ -626,11 +626,11 @@
 			},
 			"how": {
 				"standard": [
-					"Öffne das Sprachmenü oben rechts (dort steht DE, EN, …).",
+					"Öffne das Sprachmenü (auf seinem Knopf steht DE, EN, …).",
 					"Wähle eine Sprache und eine Lesestufe; alle Seiten und Links übernehmen sie."
 				],
 				"simple": [
-					"Klick oben rechts auf den Knopf mit DE.",
+					"Klick auf den Knopf, auf dem DE steht.",
 					"Wähl deine Sprache und dann „Einfach“."
 				]
 			}
@@ -641,8 +641,8 @@
 				"simple": "Die Zeit schneller laufen lassen"
 			},
 			"what": {
-				"standard": "Knöpfe unten lassen die Zeit vorwärts oder rückwärts laufen, halten sie an und wählen ein Tempo von Echtzeit bis zehn Jahre pro Sekunde.",
-				"simple": "Mit den Knöpfen unten läuft die Zeit, hält an, wird schneller oder läuft rückwärts."
+				"standard": "Die Knöpfe der Zeitleiste lassen die Zeit vorwärts oder rückwärts laufen, halten sie an und wählen ein Tempo von Echtzeit bis zehn Jahre pro Sekunde.",
+				"simple": "Mit den Zeitknöpfen läuft die Zeit, hält an, wird schneller oder läuft rückwärts."
 			},
 			"why": {
 				"standard": "In Echtzeit scheint sich nichts zu bewegen; bei einem Monat pro Sekunde rasen die inneren Planeten und die äußeren kriechen: Keplers Gesetz zum Zuschauen.",
@@ -655,7 +655,7 @@
 					"„Jetzt“, an derselben Stelle, bringt dich zurück in die Gegenwart."
 				],
 				"simple": [
-					"Drück unten auf den Abspielknopf.",
+					"Drück auf den Abspielknopf.",
 					"Drück den Tempo-Knopf neben dem Datum und wähl „1 Monat/s“.",
 					"Drück die Leertaste, dann hält die Zeit an."
 				]
@@ -676,12 +676,12 @@
 			},
 			"how": {
 				"standard": [
-					"Klicke unten auf Datum und Uhrzeit.",
+					"Klicke in der Zeitleiste auf Datum und Uhrzeit.",
 					"Wähle „Datum wählen“ und klicke Jahr, Monat und Tag an (berühmte Momente stehen unter „Himmelsereignisse“).",
 					"Die Planeten gleiten dorthin und die Zeit hält an; drücke Abspielen, damit sie weiterläuft."
 				],
 				"simple": [
-					"Klick unten auf das Datum.",
+					"Klick auf das Datum.",
 					"Wähl „Mars so nah wie nie“ oder such dir einen Tag aus.",
 					"Schau zu, wie die Planeten dorthin wandern."
 				]
@@ -702,12 +702,12 @@
 			},
 			"how": {
 				"standard": [
-					"Klicke unten auf das Datum und wähle „Himmelsereignisse“.",
+					"Klicke in der Zeitleiste auf das Datum und wähle „Himmelsereignisse“.",
 					"Wähle ein Ereignis, zum Beispiel „Totale Sonnenfinsternis“ (8. April 2024).",
 					"Wechsle auf der Karte zwischen „Aus dem All“ und „Von der Erde“; mit „Verlassen“ geht es zurück dorthin, wo du warst."
 				],
 				"simple": [
-					"Klick unten auf das Datum, dann auf „Himmelsereignisse“.",
+					"Klick auf das Datum, dann auf „Himmelsereignisse“.",
 					"Wähl eine Finsternis.",
 					"Drück „Von der Erde“, und der Mond bedeckt die Sonne."
 				]
@@ -752,13 +752,13 @@
 			},
 			"how": {
 				"standard": [
-					"Drücke unten rechts auf „Maßstab“ (der Knopf nennt den Maßstab im Bild) und klicke auf „Echter Maßstab“, „Schulbuch“, „Alles sichtbar“ oder „Poster“, oder drücke S.",
+					"Drücke auf „Maßstab“ (der Knopf nennt den Maßstab im Bild) und klicke auf „Echter Maßstab“, „Schulbuch“, „Alles sichtbar“ oder „Poster“, oder drücke S.",
 					"Die Schalter „Größen“ und „Abstände“ ändern immer nur eine Schummelei auf einmal.",
 					"„Poster“ zeigt alle acht Planeten in der richtigen Reihenfolge und in ihren eigenen Farben, Saturn mit seinen Ringen, keiner berührt die Bahn eines anderen. Die kleineren Monde sind dort ausgeblendet, weil sie keinen Platz haben; die Schalter „Größen“ und „Abstände“ führen zurück zu den anderen Maßstäben.",
 					"Im echten Maßstab zeigen die Punkte, wo die Planeten sind; schalte „Markierungen“ (unter „Ebenen“) aus, um zu sehen, wie wenig übrig bleibt."
 				],
 				"simple": [
-					"Drück unten rechts auf „Maßstab“.",
+					"Drück auf „Maßstab“.",
 					"Klick auf „Echter Maßstab“.",
 					"Wo sind die Planeten hin? Die Punkte zeigen, wo sie sind.",
 					"Klick auf „Poster“, dann siehst du alle Planeten groß auf einmal. Das ist das am wenigsten echte Bild!"
@@ -805,8 +805,8 @@
 			},
 			"how": {
 				"standard": [
-					"Drücke unten rechts auf „Ebenen“ und schalte „Kleinkörper“ ein.",
-					"Lies den Hinweis in der Karte oben links.",
+					"Drücke auf „Ebenen“ und schalte „Kleinkörper“ ein.",
+					"Lies den Hinweis im Steckbrief.",
 					"Wähle im Maßstab „Echter Maßstab“ und fliege zu Vesta oder Ceres: Der Gürtel bleibt ein lockeres Gestreu."
 				],
 				"simple": [
@@ -830,7 +830,7 @@
 			},
 			"how": {
 				"standard": [
-					"Öffne unten rechts „Werkzeuge“ und wähle „Das Sonnensystem ablaufen“, oder drücke auf „Maßstab“ und dann unten im Feld auf „Schrumpf die Sonne auf einen Basketball …“, in jedem Maßstab.",
+					"Öffne „Werkzeuge“ und wähle „Das Sonnensystem ablaufen“, oder drücke auf „Maßstab“ und dann unten im Feld auf „Schrumpf die Sonne auf einen Basketball …“, in jedem Maßstab.",
 					"Im Steckbrief einer Welt: Klapp die Fakten auf; unter ihrem Vergleich öffnet „Schrumpf die Sonne auf einen Basketball und lauf bis zu dieser Welt“ den Weg genau bei dieser Welt.",
 					"Wähle, was die Sonne ist (eine Orange, ein Fußball, ein Basketball, ein Gymnastikball), und bei „Vergleichen mit“ etwas, woran du die Strecken messen kannst.",
 					"Wechsle zu „Tabelle“ und drucke sie mit „Drucken“ aus, um sie mit nach draußen zu nehmen."
@@ -907,7 +907,7 @@
 			},
 			"how": {
 				"standard": [
-					"Öffne unten rechts „Werkzeuge“, wähle „Lichtgeschwindigkeit“ und dann „Lichtblitz senden“.",
+					"Öffne „Werkzeuge“, wähle „Lichtgeschwindigkeit“ und dann „Lichtblitz senden“.",
 					"Wähle, wo er startet; die Liste zeigt, wann er jede Welt erreicht.",
 					"Die Zeit springt auf Echtzeit; ein schnelleres Tempo ist erlaubt, und das Feld zählt trotzdem die echte Reisezeit.",
 					"Zum Anhalten drück „Lichtblitz stoppen“, das × an seiner Beschriftung oder das × neben seiner Uhr unter dem Namensfeld, oder X. Hat er Neptun hinter sich, verblasst er von selbst."
@@ -1028,12 +1028,12 @@
 			},
 			"how": {
 				"standard": [
-					"Drück unten rechts auf „Touren“ und wähle eine Tour.",
+					"Drück auf „Touren“ und wähle eine Tour.",
 					"Mit „Weiter“ und „Zurück“ auf der Karte, den Pfeiltasten oder einem Presenter (Bild ↓ / Bild ↑) gehst du weiter.",
 					"Sieh dich jederzeit um; „Zurück zur Tour“ stellt die Station wieder her. „Automatisch weiter“ geht von selbst weiter, und der Link-Knopf kopiert einen Link zur aktuellen Station. Lehrkräfte können eigene Touren als Daten schreiben (src/data/tours/README.md)."
 				],
 				"simple": [
-					"Drück unten rechts auf „Touren“ und wähl eine aus.",
+					"Drück auf „Touren“ und wähl eine aus.",
 					"Lies die Karte und drück dann „Weiter“ oder eine Pfeiltaste.",
 					"Sieh dich um, wann du willst, und drück dann „Zurück zur Tour“."
 				]
@@ -1044,7 +1044,7 @@
 			"what": "Größere Schrift, Namen und Knöpfe, lesbar bis in die letzte Reihe.",
 			"why": "Ein Laptop-Bildschirm ist am Beamer zu klein zum Lesen; der Beamer-Modus behebt das mit einer Taste.",
 			"how": [
-				"Öffne oben rechts „Präsentieren“ und wähle „Große Schrift für den Beamer“, oder drücke P.",
+				"Öffne „Präsentieren“ und wähle „Große Schrift für den Beamer“, oder drücke P.",
 				"Drücke F für Vollbild.",
 				"Alles andere funktioniert weiter: Tasten, Links und die Bedienelemente."
 			]
@@ -1073,7 +1073,7 @@
 			"what": "Nimm alle Knöpfe und Felder vom Bildschirm, sodass nur der Weltraum bleibt.",
 			"why": "Zum Anschauen, für Bildschirmfotos und für den Beamer: Die Klasse sieht das Sonnensystem, nicht die Bedienoberfläche.",
 			"how": [
-				"Drücke H oder das durchgestrichene Auge oben rechts (es steht auch im Menü „Präsentieren“). Das geht mit und ohne Präsentieren.",
+				"Drücke H oder das durchgestrichene Auge (es steht auch im Menü „Präsentieren“). Das geht mit und ohne Präsentieren.",
 				"Drücke noch einmal H, oder bewege die Maus und klicke auf „Bedienelemente zeigen“, um sie zurückzuholen. Die Tasten funktionieren auch, solange sie ausgeblendet sind."
 			]
 		},
@@ -1092,7 +1092,7 @@
 			"what": "Ein Link zu genau dem, was auf dem Bildschirm ist, mit einem Kopierknopf und einem QR-Code, der groß genug ist, um ihn aus der letzten Reihe zu scannen.",
 			"why": "Die Schülerinnen und Schüler öffnen dieselbe Ansicht auf ihren eigenen Tablets und erkunden von dort aus weiter, ohne etwas abzutippen.",
 			"how": [
-				"Öffne oben rechts „Teilen“.",
+				"Öffne „Teilen“.",
 				"Kopiere den Link, oder drücke „QR-Code der Klasse zeigen“."
 			]
 		},
@@ -1117,7 +1117,7 @@
 			},
 			"how": {
 				"standard": [
-					"Öffne unten rechts „Werkzeuge“ und wähle „Schnitzeljagd“.",
+					"Öffne „Werkzeuge“ und wähle „Schnitzeljagd“.",
 					"Wähle, wie schwer es sein soll („Leicht“, „Mittel“ oder „Knifflig“; vorausgewählt ist die Stufe, die zu deiner Lesestufe passt), dann eine Jagd.",
 					"Lies das Rätsel oder drücke auf den Lautsprecher, um es zu hören. Finde dann die Welt und klicke sie an.",
 					"Du steckst fest? „Brauchst du einen Tipp?“: Bei „Leicht“ lässt der erste Tipp eine Stelle am Himmel aufleuchten, und der zweite lässt die Lösung blinken; nach dem letzten kommt „Zeig es mir“.",
@@ -1147,7 +1147,7 @@
 			},
 			"how": {
 				"standard": [
-					"Öffne unten rechts „Werkzeuge“, wähle „Dein Geburtstag“ und dann Jahr, Monat und Tag.",
+					"Öffne „Werkzeuge“, wähle „Dein Geburtstag“ und dann Jahr, Monat und Tag.",
 					"Die Planeten fliegen an ihre Plätze am Tag deiner Geburt; ⏭ neben einem Planeten reist zu deinem nächsten Geburtstag dort.",
 					"Dein Datum wird nirgends gespeichert oder verschickt: Es ist vergessen, sobald du die Seite schließt, oder sofort mit „Meinen Geburtstag vergessen“."
 				],
@@ -1173,12 +1173,12 @@
 			},
 			"how": {
 				"standard": [
-					"Öffne unten rechts „Werkzeuge“ und wähle „Foto machen“.",
+					"Öffne „Werkzeuge“ und wähle „Foto machen“.",
 					"Schreibe eine Bildunterschrift und schalte bei Bedarf „Namen im Bild“ oder den QR-Code aus.",
 					"Speichere, kopiere oder teile das Bild. Es entsteht auf deinem Gerät; nichts wird hochgeladen."
 				],
 				"simple": [
-					"Drück unten rechts auf „Werkzeuge“ und dann auf „Foto machen“.",
+					"Drück auf „Werkzeuge“ und dann auf „Foto machen“.",
 					"Schreib etwas zu deinem Bild.",
 					"Drück „Bild speichern“."
 				]
@@ -1199,12 +1199,12 @@
 			},
 			"how": {
 				"standard": [
-					"Öffne im Sonnensystem den Pfeil neben „Hilfe“ oben rechts und wähle „Feedback senden“: Auf Wunsch geht die Ansicht, die du gerade siehst, mit.",
+					"Öffne im Sonnensystem den Pfeil neben „Hilfe“ (auf dem Handy „Hilfe“ selbst) und wähle „Feedback senden“: Auf Wunsch geht die Ansicht, die du gerade siehst, mit.",
 					"Wähle, worum es geht, schreib ein paar Worte und drück „Senden“. Die E-Mail-Adresse ist freiwillig: Gib sie nur an, wenn du eine Antwort möchtest.",
 					"Mit einem GitHub-Konto kannst du es auch auf GitHub melden oder auf GitHub Discussions mit anderen reden; die Seite verlinkt beides."
 				],
 				"simple": [
-					"Drück auf den Pfeil neben „Hilfe“ und dann auf „Sag uns deine Meinung“.",
+					"Drück auf den Pfeil neben „Hilfe“ (auf dem Handy auf „Hilfe“ selbst) und dann auf „Sag uns deine Meinung“.",
 					"Schreib, was kaputt ist, oder deine Idee.",
 					"Drück auf „Senden“. Deine E-Mail-Adresse brauchst du nicht."
 				]
@@ -1234,8 +1234,8 @@
 		},
 		"back": {
 			"action": "Zurück zum ganzen Sonnensystem",
-			"mouse": "Den Haus-Knopf oben links anklicken",
-			"touch": "Den Haus-Knopf oben links antippen",
+			"mouse": "Den Haus-Knopf anklicken",
+			"touch": "Den Haus-Knopf antippen",
 			"keys": "Esc"
 		},
 		"stepBack": {
@@ -1284,8 +1284,8 @@
 		},
 		"scale": {
 			"action": "Nächster Maßstab: Alles sichtbar, Schulbuch, Echter Maßstab",
-			"mouse": "„Maßstab“ unten rechts",
-			"touch": "„Maßstab“ unten rechts",
+			"mouse": "Der Knopf „Maßstab“",
+			"touch": "Der Knopf „Maßstab“",
 			"keys": "S"
 		},
 		"stopLight": {
@@ -1302,8 +1302,8 @@
 		},
 		"hide": {
 			"action": "Bedienelemente aus- oder einblenden",
-			"mouse": "Das durchgestrichene Auge oben rechts",
-			"touch": "Das durchgestrichene Auge oben rechts",
+			"mouse": "Das durchgestrichene Auge",
+			"touch": "Das durchgestrichene Auge",
 			"keys": "H"
 		},
 		"fullscreen": {
@@ -1327,7 +1327,7 @@
 		"sound": {
 			"action": "Ton an oder aus (beim Öffnen der App immer aus)",
 			"mouse": "Der Lautsprecher-Knopf",
-			"touch": "Der Lautsprecher-Knopf",
+			"touch": "Der Lautsprecher-Knopf (auf dem Handy: der Lautsprecher, dann „Ton an“)",
 			"keys": "M"
 		},
 		"shortcuts": {

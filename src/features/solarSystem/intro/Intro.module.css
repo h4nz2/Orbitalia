@@ -245,7 +245,7 @@
 	}
 }
 
-@media (max-width: 599px) {
+@media $phone {
 	.card {
 		padding: 0.7rem 0.9rem 0.6rem;
 	}
@@ -256,5 +256,20 @@
 
 	.hintList {
 		gap: 0.3rem 0.9rem;
+	}
+}
+
+/* the Help menu's button (IntroMenu.tsx): a chevron beside Help, or Help itself on a phone (#58) */
+.menuHelp {
+	display: none;
+}
+
+@media $phone {
+	.menuChevron {
+		display: none;
+	}
+
+	.menuHelp {
+		display: block;
 	}
 }

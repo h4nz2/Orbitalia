@@ -20,7 +20,7 @@
 }
 
 /* phones: a sheet from the bottom, the width of the screen */
-@media (max-width: 599px) {
+@media $phone {
 	.panel {
 		width: 100%;
 	}

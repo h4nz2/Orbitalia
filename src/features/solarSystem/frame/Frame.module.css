@@ -137,7 +137,7 @@
 }
 
 /* phones: the frame and the way back only; the explanation and the map fold away */
-@media (max-width: 599px) {
+@media $phone {
 	.badge {
 		width: auto;
 	}

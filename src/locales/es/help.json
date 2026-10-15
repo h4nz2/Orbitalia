@@ -77,14 +77,14 @@
 					"Para quedarte en un texto, pulsa la barra espaciadora, toca la escena o pulsa el botón de pausa; otra vez, y continúa. En pausa puedes girar la vista sin terminar la introducción.",
 					"«Siguiente» (o la flecha derecha) pasa ya a la siguiente parte; en pausa, de una en una.",
 					"Después de la primera introducción, la aplicación pregunta una vez si quieres ver rápidamente lo que puedes hacer (mira «Un vistazo rápido»).",
-					"Para verla otra vez, abre la flecha junto a «Ayuda» y elige «Ver la introducción otra vez».",
+					"Para verla otra vez, abre la flecha junto a «Ayuda» (en un móvil, el propio botón «Ayuda») y elige «Ver la introducción otra vez».",
 					"«Mostrar cómo moverse», en el mismo menú, vuelve a mostrar las pistas para arrastrar, acercar y hacer clic."
 				],
 				"simple": [
 					"Se ve la primera vez que entras.",
 					"Pulsa la barra espaciadora o toca la imagen para pararla. Otra vez, y sigue.",
 					"«Siguiente» muestra la parte siguiente.",
-					"Para verla otra vez, pulsa la flecha junto a «Ayuda» y luego «Ver la introducción otra vez»."
+					"Para verla otra vez, pulsa la flecha junto a «Ayuda» (en un móvil, el propio botón «Ayuda») y luego «Ver la introducción otra vez»."
 				]
 			}
 		},
@@ -105,12 +105,12 @@
 				"standard": [
 					"En tu primera visita, después de la introducción, responde «Sí, enséñamelo». Solo se pregunta una vez en este navegador, nunca en un enlace compartido ni al presentar.",
 					"Avanza solo; «Atrás», «Siguiente» y las flechas lo recorren paso a paso, y «Saltar el resto» o × lo terminan cuando quieras, de vuelta a una vista tranquila.",
-					"Para verlo otra vez, abre la flecha junto a «Ayuda» y elige «Ver otra vez el vistazo rápido»."
+					"Para verlo otra vez, abre la flecha junto a «Ayuda» (en un móvil, el propio botón «Ayuda») y elige «Ver otra vez el vistazo rápido»."
 				],
 				"simple": [
 					"Después de la introducción, pulsa «Sí, enséñamelo».",
 					"Mira, o pulsa «Siguiente».",
-					"Para verlo otra vez, pulsa la flecha junto a «Ayuda»."
+					"Para verlo otra vez, pulsa la flecha junto a «Ayuda» (en un móvil, el propio botón «Ayuda»)."
 				]
 			}
 		},
@@ -132,13 +132,13 @@
 					"Señala un planeta o su nombre: aparece un anillo con «Haz clic para volar hasta allí».",
 					"Haz clic o tócalo. Para llegar al instante, pulsa «Saltar» en el recuadro del vuelo.",
 					"Si es un punto pequeño, haz clic en cualquier sitio cerca de él: la zona de clic es generosa.",
-					"El botón de la casa, arriba a la izquierda (o Esc), es el camino de vuelta a todo el sistema solar; un clic en el espacio vacío deja la vista como está."
+					"El botón de la casa (o Esc) es el camino de vuelta a todo el sistema solar; un clic en el espacio vacío deja la vista como está."
 				],
 				"simple": [
 					"Pasa el ratón por encima de un planeta. Aparece un anillo.",
 					"Haz clic en él. Ahora mira el viaje.",
 					"Pulsa «Llegar ya» si no quieres esperar.",
-					"Pulsa el botón de la casa, arriba a la izquierda, para volver a ver todos los planetas."
+					"Pulsa el botón de la casa para volver a ver todos los planetas."
 				]
 			}
 		},
@@ -149,7 +149,7 @@
 			},
 			"what": {
 				"standard": "La flecha junto al botón de la casa te lleva un paso atrás: al mundo, la nave o el lugar que mirabas antes, desde la misma distancia y el mismo ángulo. Púlsala otra vez para seguir retrocediendo.",
-				"simple": "La flecha de arriba a la izquierda te lleva a lo que veías antes."
+				"simple": "La flecha Atrás, junto al botón de la casa, te lleva a lo que veías antes."
 			},
 			"why": {
 				"standard": "¿Hiciste clic en una luna sin querer, o un hito de una nave te llevó muy lejos? No se pierde nada: Atrás deshace el salto, mientras que el botón de la casa vuelve hasta todo el sistema.",
@@ -158,13 +158,13 @@
 			"how": {
 				"standard": [
 					"Haz clic en un mundo, por ejemplo la Luna, y luego en otro, como Marte.",
-					"Pulsa la flecha de arriba a la izquierda o la tecla Retroceso: la cámara vuelve volando a la Luna, tal como la dejaste. Púlsala otra vez para retroceder más; cuando no queda nada, se ve en gris.",
+					"Pulsa la flecha Atrás, junto al botón de la casa, o la tecla Retroceso: la cámara vuelve volando a la Luna, tal como la dejaste. Púlsala otra vez para retroceder más; cuando no queda nada, se ve en gris.",
 					"El botón atrás del navegador y el gesto atrás del móvil hacen lo mismo. En una visita guiada, Atrás va a la parada anterior.",
 					"Girar, hacer zoom, el tiempo, las capas y la escala no son pasos: Atrás se los salta."
 				],
 				"simple": [
 					"Haz clic en la Luna. Luego haz clic en Marte.",
-					"Pulsa la flecha de arriba a la izquierda. Vuelves volando a la Luna.",
+					"Pulsa la flecha Atrás, junto al botón de la casa. Vuelves volando a la Luna.",
 					"Púlsala otra vez para volver más atrás."
 				]
 			}
@@ -175,7 +175,7 @@
 				"simple": "Encuentra un mundo por su nombre"
 			},
 			"what": {
-				"standard": "El cuadro de arriba a la izquierda contiene el Sol, todos los planetas y las lunas que tienen una historia; escribe para buscar.",
+				"standard": "El cuadro de nombres, que muestra el mundo que estás mirando, contiene el Sol, todos los planetas y las lunas que tienen una historia; escribe para buscar.",
 				"simple": "Escribe el nombre de un planeta o de una luna, y vas allí."
 			},
 			"why": {
@@ -184,12 +184,12 @@
 			},
 			"how": {
 				"standard": [
-					"Haz clic en el cuadro de arriba a la izquierda y escribe un nombre, por ejemplo «Titán».",
+					"Haz clic en el cuadro de nombres (muestra el mundo que estás mirando) y escribe un nombre, por ejemplo «Titán».",
 					"Elígelo en la lista: la cámara vuela hasta allí.",
 					"Pulsa ← o → para visitar el siguiente mundo de la misma familia; el botón de la casa o Esc te devuelven a todo el sistema."
 				],
 				"simple": [
-					"Haz clic en el cuadro de arriba a la izquierda.",
+					"Haz clic en el cuadro con el nombre del mundo.",
 					"Escribe un nombre, como Titán, y elígelo.",
 					"Pulsa Esc para volver a ver todo el sistema solar."
 				]
@@ -228,8 +228,8 @@
 				"simple": "¿Dónde están los botones?"
 			},
 			"what": {
-				"standard": "La pantalla es del espacio. En ella solo quedan lo que estás mirando, el camino de vuelta y el tiempo; todo lo demás espera detrás de cuatro botones abajo a la derecha: Visitas, Capas, Escala y Herramientas. Mientras giras, haces zoom o vuelas, los controles se apartan un poco.",
-				"simple": "Casi todos los botones se apartan para que veas el espacio. Cuatro botones abajo a la derecha abren el resto."
+				"standard": "La pantalla es del espacio. En ella solo quedan lo que estás mirando, el camino de vuelta y el tiempo; todo lo demás espera detrás de cuatro botones: Visitas, Capas, Escala y Herramientas. Mientras giras, haces zoom o vuelas, los controles se apartan un poco.",
+				"simple": "Casi todos los botones se apartan para que veas el espacio. Cuatro botones abren el resto: Visitas, Capas, Escala y Herramientas."
 			},
 			"why": {
 				"standard": "La lección son los planetas, no los botones: la clase ve el sistema solar, y cada control sigue a dos clics como mucho.",
@@ -237,15 +237,15 @@
 			},
 			"how": {
 				"standard": [
-					"Arriba a la izquierda: la flecha para volver a donde estabas, el botón de la casa (volver a todo el sistema), el nombre del mundo que ves y su ficha; la flecha de la ficha abre sus datos, lunas e historias.",
-					"Abajo: reproducir, pausar y la fecha; el botón con la velocidad (como 1x) abre «Ahora», las velocidades y la rotación.",
-					"Abajo a la derecha: Visitas, Capas (lo que se dibuja), Escala (qué tamaño y a qué distancia) y Herramientas (la velocidad de la luz, el cielo de esta noche, naves, tu cumpleaños, la búsqueda del tesoro, lado a lado, recorrer el sistema solar a pie, el diccionario visual y hacer una foto). Solo se abre un panel a la vez; la × lo cierra.",
-					"Arriba a la derecha: Presentar, Compartir, el ojo tachado que lo oculta todo (H lo devuelve), el sonido, Ayuda y el idioma."
+					"Siempre en pantalla: la flecha para volver a donde estabas, el botón de la casa (volver a todo el sistema), el nombre del mundo que ves con su ficha y la barra del tiempo. La flecha de la ficha abre sus datos, lunas e historias.",
+					"En la barra del tiempo: reproducir, pausar y la fecha; el botón con la velocidad (como 1x) abre «Ahora», las velocidades y la rotación.",
+					"Visitas, Capas (lo que se dibuja), Escala (qué tamaño y a qué distancia) y Herramientas (la velocidad de la luz, el cielo de esta noche, naves, tu cumpleaños, la búsqueda del tesoro, lado a lado, recorrer el sistema solar a pie, el diccionario visual y hacer una foto) abren todo lo demás. Solo se abre un panel a la vez; la × lo cierra.",
+					"Los botones para presentar y para los ajustes: Presentar, Compartir, el ojo tachado que lo oculta todo (H lo devuelve), el sonido, Ayuda y el idioma."
 				],
 				"simple": [
-					"La flecha de arriba a la izquierda vuelve un paso atrás. El botón de la casa, a su lado, te lleva de vuelta a todos los planetas.",
-					"Pulsa Capas, Escala o Herramientas abajo a la derecha para encontrar más.",
-					"Pulsa el ojo tachado arriba a la derecha para ocultar todos los botones. Pulsa H para recuperarlos."
+					"La flecha Atrás vuelve un paso atrás. El botón de la casa, a su lado, te lleva de vuelta a todos los planetas.",
+					"Pulsa Capas, Escala o Herramientas para encontrar más.",
+					"Pulsa el ojo tachado para ocultar todos los botones. Pulsa H para recuperarlos."
 				]
 			}
 		},
@@ -316,13 +316,13 @@
 			},
 			"how": {
 				"standard": [
-					"Pulsa Capas abajo a la derecha: los interruptores se abren encima.",
+					"Pulsa Capas: sus interruptores se abren en un panel.",
 					"Pulsa L para ocultar o mostrar todos los nombres a la vez.",
 					"Todas las lunas solo funciona si Lunas está activado.",
 					"Deja el puntero sobre un interruptor, o mantenlo pulsado, para leer qué hace; uno en gris dice qué activar primero."
 				],
 				"simple": [
-					"Pulsa Capas abajo a la derecha.",
+					"Pulsa Capas.",
 					"Haz clic en un interruptor para apagarlo, y otra vez para volver a encenderlo.",
 					"Pulsa L para ocultar todos los nombres.",
 					"Deja el ratón sobre un interruptor para saber qué hace."
@@ -393,12 +393,12 @@
 			},
 			"how": {
 				"standard": [
-					"Escribe «Plutón» en la casilla de arriba a la izquierda y elígelo: se muestra aunque «Cuerpos menores» esté apagado.",
+					"Escribe «Plutón» en el cuadro de nombres y elígelo: se muestra aunque «Cuerpos menores» esté apagado.",
 					"Abre la tarjeta con su flecha: Caronte aparece en ella; «Ver todo el sistema de lunas» muestra las cinco.",
 					"← / → pasan al siguiente planeta enano."
 				],
 				"simple": [
-					"Escribe «Plutón» en la casilla de arriba a la izquierda.",
+					"Escribe «Plutón» en el cuadro de nombres.",
 					"Elige Plutón y volarás hasta allí."
 				]
 			}
@@ -418,13 +418,13 @@
 			},
 			"how": {
 				"standard": [
-					"Elige Halley o Encke en la casilla de arriba a la izquierda (grupo Cometas).",
+					"Elige Halley o Encke en el cuadro de nombres (grupo Cometas).",
 					"Abre su tarjeta con la flecha y pulsa el botón para verlo pasar junto al Sol: la aplicación va a su próxima visita y la muestra en un minuto y medio.",
 					"Fíjate hacia dónde apunta la cola a la ida y a la vuelta.",
 					"Prueba también Hale-Bopp: su cabeza aparece ya mucho más allá de Júpiter, mucho antes de que le crezcan las colas."
 				],
 				"simple": [
-					"Elige Halley en la casilla de arriba a la izquierda.",
+					"Elige Halley en el cuadro de nombres.",
 					"Abre su tarjeta con la flechita y pulsa el botón para verlo pasar junto al Sol."
 				]
 			}
@@ -451,7 +451,7 @@
 				"simple": [
 					"Vuela a la Tierra.",
 					"Haz que el tiempo vaya más rápido.",
-					"Pulsa el botón de la velocidad, abajo, y elige Cámara lenta para ver girar la Tierra."
+					"Pulsa el botón de la velocidad, junto a la fecha, y elige Cámara lenta para ver girar la Tierra."
 				]
 			}
 		},
@@ -471,11 +471,11 @@
 			"how": {
 				"standard": [
 					"Haz clic en «Centrado en el Sol», junto al cuadro de nombres, y elige «Visto desde la Tierra: los planetas» o «Visto desde la Tierra: la Luna».",
-					"Mira la etiqueta de arriba: dice qué está haciendo en nuestro cielo el mundo seleccionado.",
+					"Mira la etiqueta que aparece: dice qué está haciendo en nuestro cielo el mundo seleccionado.",
 					"«Fijar …» funciona con cualquier mundo; «Volver a centrar en el Sol» te devuelve a la vista normal."
 				],
 				"simple": [
-					"Haz clic en «El Sol en el centro», arriba a la izquierda.",
+					"Haz clic en «El Sol en el centro», junto al cuadro de nombres.",
 					"Elige «Desde la Tierra: los planetas».",
 					"Mira cómo Marte hace un bucle."
 				]
@@ -496,7 +496,7 @@
 			},
 			"how": {
 				"standard": [
-					"Abre Herramientas abajo a la derecha, elige «El cielo esta noche» y luego tu ciudad (la aplicación nunca pide tu ubicación por su cuenta).",
+					"Abre Herramientas, elige «El cielo esta noche» y luego tu ciudad (la aplicación nunca pide tu ubicación por su cuenta).",
 					"Lee la lista: qué puedes ver, cuándo, dónde y con qué.",
 					"Pulsa «¿Por qué se ve?» junto a un planeta para ver el motivo en el espacio."
 				],
@@ -522,12 +522,12 @@
 			},
 			"how": {
 				"standard": [
-					"Abre Herramientas abajo a la derecha, elige «Naves espaciales reales» y luego una nave: la vista vuela hasta ella.",
+					"Abre Herramientas, elige «Naves espaciales reales» y luego una nave: la vista vuela hasta ella.",
 					"Su tarjeta muestra el lanzamiento, la distancia, el tiempo de la señal y los «Hitos»; un hito lleva el tiempo a ese momento.",
 					"«Mostrar todas las trayectorias» dibuja todas las rutas a la vez; el interruptor «Naves espaciales» las oculta."
 				],
 				"simple": [
-					"Pulsa Herramientas abajo a la derecha.",
+					"Pulsa Herramientas.",
 					"Elige «Naves espaciales reales» y luego la Voyager 1.",
 					"Lee lo lejos que está."
 				]
@@ -548,12 +548,12 @@
 			},
 			"how": {
 				"standard": [
-					"Abre Herramientas abajo a la derecha, elige «Naves espaciales reales» y pulsa el botón de seguir junto a una nave, o «Seguir» en su tarjeta.",
+					"Abre Herramientas, elige «Naves espaciales reales» y pulsa el botón de seguir junto a una nave, o «Seguir» en su tarjeta.",
 					"En la tarjeta, «Ver» junto a un sobrevuelo o una llegada va a justo antes y lo muestra en medio minuto más o menos.",
-					"Arrastra para girar y usa la rueda para acercarte mientras viajas; arriba a la izquierda ves a quién sigues. La casa, Escape, elegir un mundo o Atrás lo terminan."
+					"Arrastra para girar y usa la rueda para acercarte mientras viajas; el cuadro de nombres muestra a quién sigues. La casa, Escape, elegir un mundo o Atrás lo terminan."
 				],
 				"simple": [
-					"Pulsa Herramientas abajo a la derecha y elige «Naves espaciales reales».",
+					"Pulsa Herramientas y elige «Naves espaciales reales».",
 					"Elige la Voyager 1 y pulsa «Ver» junto a Júpiter.",
 					"Mira cómo pasa Júpiter. Pulsa la casa para parar."
 				]
@@ -574,7 +574,7 @@
 			},
 			"how": {
 				"standard": [
-					"Abre Herramientas abajo a la derecha y elige «Diccionario visual»: se abre en el mundo que estás mirando. O pulsa «Leer más en el diccionario» en la ficha de un mundo.",
+					"Abre Herramientas y elige «Diccionario visual»: se abre en el mundo que estás mirando. O pulsa «Leer más en el diccionario» en la ficha de un mundo.",
 					"Elige un mundo en la fila de puntos de arriba y luego «Superficie», «Relieve», «Océanos» o «Nubes», si los tiene.",
 					"Abre «Composición», «Clima» o «Nombres» junto al globo (debajo, en un móvil). La sección abierta sigue abierta cuando eliges otro mundo, así que una clase puede compararlos uno a uno."
 				],
@@ -600,12 +600,12 @@
 			},
 			"how": {
 				"standard": [
-					"Al abrir la aplicación el sonido siempre está apagado. Pulsa el botón del altavoz arriba a la derecha, o M, para activarlo.",
-					"La flecha de al lado abre el volumen, el «Sonido de fondo», los «Sonidos de movimiento» y «Escucha el espacio».",
+					"Al abrir la aplicación el sonido siempre está apagado. Pulsa el botón del altavoz, o M, para activarlo. En un móvil, el altavoz abre en su lugar los ajustes de sonido: activa allí «Sonido activado».",
+					"La flecha de al lado (en un móvil, el propio altavoz) abre el volumen, el «Sonido de fondo», los «Sonidos de movimiento» y «Escucha el espacio».",
 					"Vuela al Sol, a la Tierra, a Júpiter o a Saturno y reproduce su grabación desde la tarjeta; el texto explica lo que oyes."
 				],
 				"simple": [
-					"Pulsa el botón del altavoz arriba a la derecha.",
+					"Pulsa el botón del altavoz. En un móvil, activa también «Sonido activado».",
 					"Vuela a Júpiter.",
 					"Pulsa reproducir en su tarjeta y escucha."
 				]
@@ -626,11 +626,11 @@
 			},
 			"how": {
 				"standard": [
-					"Abre el menú de idioma arriba a la derecha (muestra ES, EN, …).",
+					"Abre el menú de idioma (su botón muestra ES, EN, …).",
 					"Elige un idioma y un nivel de lectura; todas las páginas y enlaces se adaptan."
 				],
 				"simple": [
-					"Haz clic en el botón con ES, arriba a la derecha.",
+					"Haz clic en el botón con ES.",
 					"Elige tu idioma, y elige Sencillo."
 				]
 			}
@@ -641,8 +641,8 @@
 				"simple": "Haz que el tiempo vaya más rápido"
 			},
 			"what": {
-				"standard": "Los botones de abajo hacen correr el tiempo hacia delante o hacia atrás, lo pausan y eligen una velocidad, desde el tiempo real hasta diez años por segundo.",
-				"simple": "Los botones de abajo hacen que el tiempo avance, se pare, vaya más rápido o vaya hacia atrás."
+				"standard": "Los botones de la barra del tiempo hacen correr el tiempo hacia delante o hacia atrás, lo pausan y eligen una velocidad, desde el tiempo real hasta diez años por segundo.",
+				"simple": "Los botones de tiempo hacen que el tiempo avance, se pare, vaya más rápido o vaya hacia atrás."
 			},
 			"why": {
 				"standard": "En tiempo real nada parece moverse; a un mes por segundo, los planetas interiores corren y los exteriores se arrastran: es la ley de Kepler, a la vista.",
@@ -655,7 +655,7 @@
 					"«Ahora», en el mismo sitio, te devuelve al presente."
 				],
 				"simple": [
-					"Pulsa el botón de reproducir, abajo.",
+					"Pulsa el botón de reproducir.",
 					"Pulsa el botón de la velocidad junto a la fecha y elige 1 mes/s.",
 					"Pulsa Espacio para parar."
 				]
@@ -676,12 +676,12 @@
 			},
 			"how": {
 				"standard": [
-					"Haz clic en la fecha y la hora, abajo.",
+					"Haz clic en la fecha y la hora, en la barra del tiempo.",
 					"Elige «Elige una fecha» y haz clic en el año, el mes y el día (los momentos famosos están en «Fenómenos del cielo»).",
 					"Los planetas se deslizan hasta allí y el tiempo se detiene; pulsa reproducir para continuar."
 				],
 				"simple": [
-					"Haz clic en la fecha, abajo.",
+					"Haz clic en la fecha.",
 					"Elige «Marte, más cerca que nunca» o elige un día.",
 					"Mira cómo los planetas se mueven hasta allí."
 				]
@@ -702,12 +702,12 @@
 			},
 			"how": {
 				"standard": [
-					"Haz clic en la fecha, abajo, y elige «Fenómenos del cielo».",
+					"Haz clic en la fecha, en la barra del tiempo, y elige «Fenómenos del cielo».",
 					"Elige un fenómeno, por ejemplo «Eclipse total de Sol» (8 de abril de 2024).",
 					"En la tarjeta, cambia entre «Desde el espacio» y «Desde la Tierra»; pulsa «Salir» para volver a donde estabas."
 				],
 				"simple": [
-					"Haz clic en la fecha, abajo, y luego en «Fenómenos del cielo».",
+					"Haz clic en la fecha y luego en «Fenómenos del cielo».",
 					"Elige un eclipse.",
 					"Pulsa «Desde la Tierra» y la Luna tapa el Sol."
 				]
@@ -752,13 +752,13 @@
 			},
 			"how": {
 				"standard": [
-					"Pulsa Escala abajo a la derecha (el botón dice qué escala ves) y haz clic en Escala real, Libro de texto, Todo visible o Póster, o pulsa S.",
+					"Pulsa Escala (el botón dice qué escala ves) y haz clic en Escala real, Libro de texto, Todo visible o Póster, o pulsa S.",
 					"Los interruptores Tamaños y Distancias cambian una sola mentira cada vez.",
 					"Póster muestra los ocho planetas en orden y con sus propios colores, Saturno con sus anillos, sin que ninguno toque la órbita de otro. Oculta las lunas pequeñas, que no caben; los interruptores Tamaños y Distancias llevan de vuelta a las otras escalas.",
 					"A escala real, los puntos muestran dónde están los planetas; desactiva Marcadores (en Capas) para ver lo poco que queda."
 				],
 				"simple": [
-					"Pulsa Escala abajo a la derecha.",
+					"Pulsa Escala.",
 					"Haz clic en Escala real.",
 					"¿Adónde han ido los planetas? Los puntos muestran dónde están.",
 					"Haz clic en Póster para ver todos los planetas grandes a la vez. ¡Es la imagen menos real!"
@@ -805,8 +805,8 @@
 			},
 			"how": {
 				"standard": [
-					"Pulsa Capas abajo a la derecha y activa «Cuerpos menores».",
-					"Lee la nota de la tarjeta de arriba a la izquierda.",
+					"Pulsa Capas y activa «Cuerpos menores».",
+					"Lee la nota de la tarjeta.",
 					"Elige «Escala real» en el panel de escala y vuela a Vesta o a Ceres: el cinturón sigue siendo unos puntos dispersos."
 				],
 				"simple": [
@@ -830,7 +830,7 @@
 			},
 			"how": {
 				"standard": [
-					"Abre Herramientas abajo a la derecha y elige «Recorre el sistema solar a pie», o pulsa Escala y luego «Encoge el Sol hasta un balón de baloncesto…» al final del panel, en cualquier escala.",
+					"Abre Herramientas y elige «Recorre el sistema solar a pie», o pulsa Escala y luego «Encoge el Sol hasta un balón de baloncesto…» al final del panel, en cualquier escala.",
 					"En la ficha de un mundo, despliega los datos: debajo de su comparación, «Encoge el Sol hasta un balón de baloncesto y camina hasta este mundo» abre el paseo justo en ese mundo.",
 					"Elige qué es el Sol (una naranja, un balón de fútbol, un balón de baloncesto, una pelota de gimnasia) y un lugar conocido con el que comparar.",
 					"Cambia a Tabla y pulsa Imprimir para llevártela afuera."
@@ -907,7 +907,7 @@
 			},
 			"how": {
 				"standard": [
-					"Abre Herramientas abajo a la derecha, elige «Velocidad de la luz» y luego «Enviar un destello».",
+					"Abre Herramientas, elige «Velocidad de la luz» y luego «Enviar un destello».",
 					"Elige desde dónde sale; la lista muestra cuándo llega a cada mundo.",
 					"El tiempo pasa a tiempo real; puedes elegir una velocidad mayor y el panel sigue contando el tiempo de viaje real.",
 					"Para detenerlo, pulsa «Detener el destello», la × de su etiqueta o la × junto a su reloj bajo la casilla del nombre, o X. Cuando ha pasado Neptuno, se desvanece solo."
@@ -1028,12 +1028,12 @@
 			},
 			"how": {
 				"standard": [
-					"Pulsa «Visitas» abajo a la derecha y elige una visita.",
+					"Pulsa «Visitas» y elige una visita.",
 					"Avanza con «Siguiente» y «Atrás» en la tarjeta, con las flechas o con un mando de presentaciones (Av Pág / Re Pág).",
 					"Mira a tu alrededor cuando quieras; «Volver a la visita» recupera la parada. «Reproducción automática» avanza sola, y el botón del enlace copia un enlace a la parada actual. Los docentes pueden escribir sus propias visitas como datos (src/data/tours/README.md)."
 				],
 				"simple": [
-					"Pulsa «Visitas» abajo a la derecha y elige una.",
+					"Pulsa «Visitas» y elige una.",
 					"Lee la tarjeta y pulsa «Siguiente» o una flecha.",
 					"Mira a tu alrededor cuando quieras y luego pulsa «Volver a la visita»."
 				]
@@ -1044,7 +1044,7 @@
 			"what": "Texto, nombres y botones más grandes, legibles desde el fondo de la clase.",
 			"why": "La pantalla de un portátil en un proyector es demasiado pequeña para leerla; el modo proyector lo arregla con una tecla.",
 			"how": [
-				"Abre Presentar, arriba a la derecha, y elige «Texto grande para proyector», o pulsa P.",
+				"Abre Presentar y elige «Texto grande para proyector», o pulsa P.",
 				"Pulsa F para la pantalla completa.",
 				"Todo lo demás sigue funcionando: las teclas, los enlaces y los controles."
 			]
@@ -1073,7 +1073,7 @@
 			"what": "Quita de la pantalla todos los botones y paneles, para que solo quede el espacio.",
 			"why": "Para mirar, para hacer capturas de pantalla y para el proyector: la clase ve el sistema solar, no la interfaz.",
 			"how": [
-				"Pulsa H o el ojo tachado de arriba a la derecha (también está en el menú Presentar). Funciona presentando o no.",
+				"Pulsa H o el ojo tachado (también está en el menú Presentar). Funciona presentando o no.",
 				"Pulsa H otra vez, o mueve el ratón y haz clic en «Mostrar los controles», para recuperarlos. Las teclas siguen funcionando mientras están ocultos."
 			]
 		},
@@ -1092,7 +1092,7 @@
 			"what": "Un enlace a exactamente lo que hay en pantalla, con un botón para copiarlo y un código QR lo bastante grande para escanearlo desde la última fila.",
 			"why": "Los alumnos abren la misma vista en sus propias tabletas y exploran desde ahí, sin tener que escribir nada.",
 			"how": [
-				"Abre Compartir, arriba a la derecha.",
+				"Abre Compartir.",
 				"Copia el enlace o pulsa «Mostrar el código QR a la clase»."
 			]
 		},
@@ -1117,7 +1117,7 @@
 			},
 			"how": {
 				"standard": [
-					"Abre Herramientas abajo a la derecha y elige «Búsqueda del tesoro».",
+					"Abre Herramientas y elige «Búsqueda del tesoro».",
 					"Elige la dificultad (Fácil, Media o Complicada; empieza en la de tu nivel de lectura) y luego una búsqueda.",
 					"Lee la pista o pulsa el altavoz para escucharla; luego encuentra el mundo y haz clic en él.",
 					"¿Te has atascado? Pulsa «¿Necesitas una ayuda?»: en Fácil, la primera ayuda ilumina una parte del cielo y la segunda hace parpadear la respuesta; después de la última, «Muéstramelo».",
@@ -1147,7 +1147,7 @@
 			},
 			"how": {
 				"standard": [
-					"Abre Herramientas abajo a la derecha, elige «Tu cumpleaños» y luego el año, el mes y el día.",
+					"Abre Herramientas, elige «Tu cumpleaños» y luego el año, el mes y el día.",
 					"Los planetas se mueven hasta el día en que naciste; ⏭ junto a un planeta te lleva a tu próximo cumpleaños allí.",
 					"Tu fecha no se guarda ni se envía a ningún sitio: se olvida al cerrar la página, o al momento con «Olvidar mi cumpleaños»."
 				],
@@ -1173,12 +1173,12 @@
 			},
 			"how": {
 				"standard": [
-					"Abre Herramientas abajo a la derecha y elige «Hacer una foto».",
+					"Abre Herramientas y elige «Hacer una foto».",
 					"Escribe un pie de foto; desactiva los nombres o el código QR si no los quieres.",
 					"Guarda, copia o comparte la imagen. Se crea en tu dispositivo; no se sube nada."
 				],
 				"simple": [
-					"Pulsa Herramientas abajo a la derecha y luego «Hacer una foto».",
+					"Pulsa Herramientas y luego «Hacer una foto».",
 					"Escribe algo sobre tu foto.",
 					"Pulsa «Guardar imagen»."
 				]
@@ -1199,12 +1199,12 @@
 			},
 			"how": {
 				"standard": [
-					"En el sistema solar, abre la flecha junto a Ayuda, arriba a la derecha, y elige «Enviar comentarios»: si quieres, se adjunta la vista que estás mirando.",
+					"En el sistema solar, abre la flecha junto a Ayuda (en un móvil, el propio botón Ayuda) y elige «Enviar comentarios»: si quieres, se adjunta la vista que estás mirando.",
 					"Elige de qué se trata, escribe unas palabras y pulsa «Enviar». El correo es opcional: ponlo solo si quieres una respuesta.",
 					"Con una cuenta de GitHub también puedes informar en GitHub o hablar con otros en GitHub Discussions; la página enlaza a ambos."
 				],
 				"simple": [
-					"Pulsa la flecha junto a Ayuda y luego «Dinos qué piensas».",
+					"Pulsa la flecha junto a Ayuda (en un móvil, el propio botón Ayuda) y luego «Dinos qué piensas».",
 					"Escribe qué se ha roto, o tu idea.",
 					"Pulsa «Enviar». No hace falta que pongas tu correo."
 				]
@@ -1234,8 +1234,8 @@
 		},
 		"back": {
 			"action": "Volver a todo el sistema solar",
-			"mouse": "Hacer clic en el botón de la casa, arriba a la izquierda",
-			"touch": "Tocar el botón de la casa, arriba a la izquierda",
+			"mouse": "Hacer clic en el botón de la casa",
+			"touch": "Tocar el botón de la casa",
 			"keys": "Esc"
 		},
 		"stepBack": {
@@ -1284,8 +1284,8 @@
 		},
 		"scale": {
 			"action": "Siguiente escala: Todo visible, Libro de texto, Escala real",
-			"mouse": "Escala, abajo a la derecha",
-			"touch": "Escala, abajo a la derecha",
+			"mouse": "El botón Escala",
+			"touch": "El botón Escala",
 			"keys": "S"
 		},
 		"stopLight": {
@@ -1302,8 +1302,8 @@
 		},
 		"hide": {
 			"action": "Ocultar o mostrar los controles",
-			"mouse": "El ojo tachado, arriba a la derecha",
-			"touch": "El ojo tachado, arriba a la derecha",
+			"mouse": "El ojo tachado",
+			"touch": "El ojo tachado",
 			"keys": "H"
 		},
 		"fullscreen": {
@@ -1327,7 +1327,7 @@
 		"sound": {
 			"action": "Activar o desactivar el sonido (siempre apagado al abrir la aplicación)",
 			"mouse": "El botón del altavoz",
-			"touch": "El botón del altavoz",
+			"touch": "El botón del altavoz (en un móvil: el altavoz y luego «Sonido activado»)",
 			"keys": "M"
 		},
 		"shortcuts": {

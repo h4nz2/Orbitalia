@@ -8,7 +8,7 @@ import {
 	Text,
 	TextInput,
 } from "@mantine/core"
-import { useDebouncedValue, useMediaQuery } from "@mantine/hooks"
+import { useDebouncedValue } from "@mantine/hooks"
 import {
 	IconCopy,
 	IconDownload,
@@ -17,6 +17,7 @@ import {
 	IconShare,
 } from "@tabler/icons-react"
 
+import { usePhone } from "@/hooks/useSizeClass"
 import { useI18n, type MessageKey } from "@/i18n"
 import { Hint } from "@/primitives/hint"
 import { usePostcardStore, type PostcardSnapshot } from "@/store/postcard"
@@ -69,7 +70,7 @@ const PostcardView = ({
 }) => {
 	const i18n = useI18n()
 	const { t } = i18n
-	const phone = useMediaQuery("(max-width: 600px)")
+	const phone = usePhone()
 	const text = useMemo(() => postcardText(snapshot, i18n), [snapshot, i18n])
 	const hasNames = snapshot.shot.labels.length > 0
 	const [names, setNames] = useState(hasNames)

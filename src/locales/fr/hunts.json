@@ -568,12 +568,12 @@
 			},
 			"hints": {
 				"simple": [
-					"Cherche en haut à gauche le bouton où il est écrit « Le Soleil au milieu ».",
+					"Cherche à côté de la case des noms le bouton où il est écrit « Le Soleil au milieu ».",
 					"Choisis « Depuis la Terre : les planètes » et laisse le temps défiler.",
 					"Mars marche bien : choisis « Depuis la Terre : les planètes » et clique sur Mars pendant qu’elle dessine sa boucle."
 				],
 				"standard": [
-					"Cherche en haut à gauche le bouton où il est écrit « Centré sur le Soleil » : il change le point de vue.",
+					"Cherche à côté du champ des noms le bouton où il est écrit « Centré sur le Soleil » : il change le point de vue.",
 					"Choisis « Vu depuis la Terre : les planètes » et laisse le temps défiler.",
 					"Mars marche bien : choisis « Vu depuis la Terre : les planètes » et sélectionne Mars pendant qu’elle dessine sa boucle."
 				]

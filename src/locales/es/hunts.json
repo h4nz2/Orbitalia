@@ -568,12 +568,12 @@
 			},
 			"hints": {
 				"simple": [
-					"Busca arriba a la izquierda el botón que dice «El Sol en el centro».",
+					"Busca junto al cuadro de nombres el botón que dice «El Sol en el centro».",
 					"Elige «Desde la Tierra: los planetas» y deja correr el tiempo.",
 					"Marte es un buen ejemplo: elige «Desde la Tierra: los planetas» y haz clic en Marte mientras dibuja su bucle."
 				],
 				"standard": [
-					"Busca arriba a la izquierda el botón que dice «Centrado en el Sol»: cambia el punto de vista.",
+					"Busca junto al cuadro de nombres el botón que dice «Centrado en el Sol»: cambia el punto de vista.",
 					"Elige «Visto desde la Tierra: los planetas» y deja correr el tiempo.",
 					"Marte es un buen ejemplo: elige «Visto desde la Tierra: los planetas» y selecciona Marte mientras dibuja su bucle."
 				]

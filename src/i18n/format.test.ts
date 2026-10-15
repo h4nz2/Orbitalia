@@ -4,10 +4,12 @@ import { J2000_JD, jdToDate } from "@/sim"
 
 import {
 	formatDateTimeUTC,
+	formatDateTimeUTCParts,
 	formatNumber,
 	formatQuantity,
 	formatSignificant,
 	isoMinuteUTC,
+	type DateTimeParts,
 } from "./format"
 
 // CLDR's Swiss grouping separator (U+2019 in current ICU, an ASCII apostrophe in older data)
@@ -80,6 +82,33 @@ describe("formatDateTimeUTC", () => {
 
 	it("shows a dash for a Date out of range", () => {
 		expect(formatDateTimeUTC(new Date(Number.NaN), "en")).toBe("—")
+	})
+})
+
+describe("formatDateTimeUTCParts", () => {
+	const date = new Date(Date.UTC(2026, 8, 24, 10, 35, 59))
+	const whole = ({ date, separator, time }: DateTimeParts) =>
+		date + separator + time
+
+	it("splits before the hour, and the halves read as the whole", () => {
+		expect(formatDateTimeUTCParts(date, "en")).toEqual({
+			date: "Sep 24, 2026",
+			separator: ", ",
+			time: "10:35 UTC",
+		})
+		for (const locale of ["en", "de", "cs", "es", "fr", "de-CH"])
+			expect(whole(formatDateTimeUTCParts(date, locale))).toBe(
+				formatDateTimeUTC(date, locale),
+			)
+		const bc = new Date(Date.UTC(-500, 0, 1))
+		expect(formatDateTimeUTCParts(bc, "de").date).toBe("1. Jan. 501 v. Chr.")
+		expect(whole(formatDateTimeUTCParts(bc, "en"))).toBe(
+			formatDateTimeUTC(bc, "en"),
+		)
+	})
+
+	it("keeps the dash for a Date out of range", () => {
+		expect(whole(formatDateTimeUTCParts(new Date(Number.NaN), "en"))).toBe("—")
 	})
 })
 
