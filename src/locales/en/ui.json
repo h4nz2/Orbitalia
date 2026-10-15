@@ -1031,7 +1031,9 @@
 			"chrome": {
 				"show": "Show the controls",
 				"hint": "Controls hidden: press H or use the button to bring them back",
-				"hint@simple": "The buttons are hidden. Press H to get them back."
+				"hint@simple": "The buttons are hidden. Press H to get them back.",
+				"hintTouch": "Controls hidden: tap anywhere to bring them back",
+				"hintTouch@simple": "The buttons are hidden. Tap to get them back."
 			},
 			"help": {
 				"title": "Keyboard shortcuts",
@@ -1079,6 +1081,7 @@
 				"labelsOff": "Names hidden",
 				"lightStopped": "Light flash stopped",
 				"chromeHidden": "Controls hidden. Press H to show them again.",
+				"chromeHiddenTouch": "Controls hidden. Tap the screen to show them again.",
 				"chromeShown": "Controls shown",
 				"projectorOn": "Large text on",
 				"projectorOff": "Large text off",
@@ -1099,6 +1102,34 @@
 			},
 			"layersHint": "What the scene shows: orbits, names, moons, markers and lighting.",
 			"layersHint@simple": "Choose what you see in the picture."
+		},
+		"more": {
+			"button": "More",
+			"title": "More",
+			"hint": "Share this view, sound, the language, help, hiding the controls and the settings for presenting to a class.",
+			"hint@simple": "Share, sound, your language, help and more.",
+			"back": "Back",
+			"backLabel": "Back to More",
+			"shareHint": "Send the link to this view straight from your phone: to a chat, by mail or to someone nearby.",
+			"shareHint@simple": "Send this view to a friend.",
+			"linkAndQr": "Link and QR code",
+			"language": "Language and reading level",
+			"languageHint": "Read Orbitalia in English, German, Czech, Spanish or French, in simple words, standard or advanced.",
+			"languageHint@simple": "Choose your language, and Simple for easy words.",
+			"homeScreen": {
+				"button": "Full screen",
+				"title": "Full screen on an iPhone",
+				"hint": "On an iPhone, Orbitalia fills the whole screen when you open it from the Home Screen. This says how.",
+				"hint@simple": "How to fill the whole screen with space.",
+				"intro": "Safari on an iPhone cannot show a web page on the whole screen, but Orbitalia opened from your Home Screen can.",
+				"intro@simple": "Your iPhone shows Orbitalia on the whole screen only when you open it from the Home Screen.",
+				"share": "In Safari, open the Share menu: the square with an arrow (in newer versions, under “…”).",
+				"share@simple": "In Safari, press Share: the square with an arrow.",
+				"add": "Choose “Add to Home Screen”, then “Add”.",
+				"add@simple": "Press “Add to Home Screen”.",
+				"open": "Open Orbitalia from its new icon: space fills the whole screen.",
+				"open@simple": "Open Orbitalia with the new icon."
+			}
 		},
 		"light": {
 			"open": "Speed of light",
@@ -1607,6 +1638,8 @@
 			"scaleHint@simple": "Make the planets their real size, or big enough to see. The panel tells you how much bigger they are drawn.",
 			"hideHint": "Only the solar system stays on screen: for looking, for a picture or for a projector. Press H or “Show the controls” to bring them back.",
 			"hideHint@simple": "Hide all the buttons so you see only space. Press H or “Show the controls” to get them back.",
+			"hideHintTouch": "Only the solar system stays on screen: for looking, for a picture or for a projector. A tap on the empty sky does the same; a tap anywhere brings the controls back.",
+			"hideHintTouch@simple": "Hide all the buttons so you see only space. Tapping the sky does it too. Tap again to get them back.",
 			"time": "Time",
 			"timeButton": "Time and speed: {speed}",
 			"timeHint": "How fast time runs, back to now, and how fast the planets spin. + and − change the speed from the keyboard.",
@@ -1668,14 +1701,14 @@
 				"teachers": {
 					"title": "For teachers: Present",
 					"title@simple": "For teachers",
-					"text": "Present makes the text large for a projector, adds high contrast and keys for a presenter remote, and hides the controls with H. Share gives the class a link or a QR code to exactly this view.",
-					"text@simple": "Teachers: press Present to show the solar system on a big screen to a class."
+					"text": "Present makes the text large for a projector, adds high contrast and keys for a presenter remote, and hides the controls with H. Share gives the class a link or a QR code to exactly this view. On a phone, both are under More.",
+					"text@simple": "Teachers: press Present (on a phone, More) to show the solar system on a big screen to a class."
 				},
 				"more": {
 					"title": "There is more",
 					"title@simple": "There is more",
-					"text": "Every feature, with how to use it and a link to try it, is on the help page: press Help. Something wrong, or an idea? “Send feedback”, under the arrow next to Help (on a phone, under Help itself), reaches the people who make Orbitalia. Have fun exploring!",
-					"text@simple": "There is much more to find. The Help button tells you about everything. Is something broken, or do you have an idea? Tell us with “Tell us what you think”, next to Help (on a phone, under Help). Have fun!"
+					"text": "Every feature, with how to use it and a link to try it, is on the help page: press Help (on a phone, under More). Something wrong, or an idea? “Send feedback”, under the arrow next to Help (on a phone, under More), reaches the people who make Orbitalia. Have fun exploring!",
+					"text@simple": "There is much more to find. The Help button (on a phone, under More) tells you about everything. Is something broken, or do you have an idea? Tell us with “Tell us what you think”, next to Help (on a phone, under More). Have fun!"
 				}
 			}
 		}

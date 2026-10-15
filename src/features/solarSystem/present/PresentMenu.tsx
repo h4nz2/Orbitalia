@@ -1,11 +1,4 @@
-import {
-	Suspense,
-	lazy,
-	useEffect,
-	useRef,
-	useState,
-	type ReactNode,
-} from "react"
+import { Suspense, lazy, useRef, useState, type ReactNode } from "react"
 import {
 	Button,
 	Kbd,
@@ -26,30 +19,19 @@ import {
 	IconShare,
 } from "@tabler/icons-react"
 
+import { useTouch } from "@/hooks/useSizeClass"
 import { useI18n } from "@/i18n"
 import { useBodyName } from "@/i18n/bodies"
 import { Hint } from "@/primitives/hint"
 import { usePresentationStore } from "@/store/presentation"
 
 import { runCommand, setChromeHidden, toggleFullscreen } from "./commands"
+import { useFullscreen } from "./fullscreen"
 import { usePrefersMoreContrast } from "./usePresentationDocument"
 
 import classes from "./Presentation.module.css"
 
 const SharePanel = lazy(() => import("./SharePanel"))
-
-/** Whether the page is in full screen, following the browser (F11, Escape, the button). */
-function useFullscreen(): boolean {
-	const [full, setFull] = useState(
-		() => typeof document !== "undefined" && !!document.fullscreenElement,
-	)
-	useEffect(() => {
-		const update = () => setFull(!!document.fullscreenElement)
-		document.addEventListener("fullscreenchange", update)
-		return () => document.removeEventListener("fullscreenchange", update)
-	}, [])
-	return full
-}
 
 const fullscreenAvailable = () =>
 	typeof document !== "undefined" && document.fullscreenEnabled === true
@@ -89,7 +71,8 @@ function Action({
 /**
  * The teacher's menu (#29): large text for a projector, high contrast, hide
  * the controls, full screen, back to the start of the lesson and the keyboard
- * shortcuts. Every entry is also a key, listed beside it.
+ * shortcuts. Every entry is also a key, listed beside it. Laptops and tablets;
+ * on a phone it is all under More (#59, `MoreMenu.tsx`).
  */
 export function PresentMenu() {
 	const { t } = useI18n()
@@ -102,6 +85,7 @@ export function PresentMenu() {
 	const setHelpOpen = usePresentationStore((state) => state.setHelpOpen)
 	const moreContrast = usePrefersMoreContrast()
 	const fullscreen = useFullscreen()
+	const touch = useTouch()
 
 	const restart = () => {
 		setOpened(false)
@@ -182,7 +166,13 @@ export function PresentMenu() {
 									setChromeHidden(true)
 									usePresentationStore
 										.getState()
-										.announce(t("solarSystem.present.announce.chromeHidden"))
+										.announce(
+											t(
+												touch
+													? "solarSystem.present.announce.chromeHiddenTouch"
+													: "solarSystem.present.announce.chromeHidden",
+											),
+										)
 								}}
 							>
 								{t("solarSystem.present.hideControls")}

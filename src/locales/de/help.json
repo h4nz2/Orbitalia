@@ -77,14 +77,14 @@
 					"Um bei einem Text zu bleiben, drück die Leertaste, tippe auf die Szene oder drück den Pause-Knopf; noch einmal, und es geht weiter. Solange es angehalten ist, kannst du die Ansicht drehen, ohne das Intro zu beenden.",
 					"„Weiter“ (oder die Pfeiltaste nach rechts) geht gleich zum nächsten Teil; angehalten Teil für Teil.",
 					"Nach dem ersten Intro fragt die App einmal, ob du kurz sehen willst, was du hier machen kannst (siehe „Ein kurzer Blick“).",
-					"Um es noch einmal zu sehen, öffne den Pfeil neben „Hilfe“ (auf dem Handy „Hilfe“ selbst) und wähle „Intro noch einmal abspielen“.",
+					"Um es noch einmal zu sehen, öffne den Pfeil neben „Hilfe“ (auf dem Handy „Mehr“) und wähle „Intro noch einmal abspielen“.",
 					"„Zeigen, wie man sich bewegt“ im selben Menü holt die Hinweise zum Ziehen, Zoomen und Klicken zurück."
 				],
 				"simple": [
 					"Es läuft, wenn du zum ersten Mal kommst.",
 					"Drück die Leertaste oder tippe auf das Bild, dann hält es an. Noch einmal, und es läuft weiter.",
 					"„Weiter“ zeigt den nächsten Teil.",
-					"Willst du es noch mal sehen? Drück auf den Pfeil neben „Hilfe“ (auf dem Handy auf „Hilfe“ selbst) und dann auf „Intro noch einmal abspielen“."
+					"Willst du es noch mal sehen? Drück auf den Pfeil neben „Hilfe“ (auf dem Handy auf „Mehr“) und dann auf „Den Anfang noch mal ansehen“."
 				]
 			}
 		},
@@ -105,12 +105,12 @@
 				"standard": [
 					"Beim ersten Besuch, nach dem Intro, antworte „Ja, zeig es mir“. Die Frage kommt in diesem Browser nur einmal, nie über einen geteilten Link und nie beim Präsentieren.",
 					"Er geht von selbst weiter; „Zurück“, „Weiter“ und die Pfeiltasten gehen Schritt für Schritt, und „Den Rest überspringen“ oder × beenden ihn jederzeit, zurück zu einer ruhigen Ansicht.",
-					"Um ihn noch einmal zu sehen, öffne den Pfeil neben „Hilfe“ (auf dem Handy „Hilfe“ selbst) und wähle „Den kurzen Blick noch einmal“."
+					"Um ihn noch einmal zu sehen, öffne den Pfeil neben „Hilfe“ (auf dem Handy „Mehr“) und wähle „Den kurzen Blick noch einmal“."
 				],
 				"simple": [
 					"Drück nach dem Intro auf „Ja, zeig es mir“.",
 					"Schau zu, oder drück „Weiter“.",
-					"Willst du ihn noch mal sehen? Drück auf den Pfeil neben „Hilfe“ (auf dem Handy auf „Hilfe“ selbst)."
+					"Willst du ihn noch mal sehen? Drück auf den Pfeil neben „Hilfe“ (auf dem Handy auf „Mehr“)."
 				]
 			}
 		},
@@ -240,12 +240,14 @@
 					"Immer zu sehen: der Pfeil zurück dorthin, wo du gerade warst, der Haus-Knopf (zurück zum ganzen System), der Name der Welt im Blick mit ihrem Steckbrief und die Zeitleiste. Der Pfeil im Steckbrief klappt Fakten, Monde und Geschichten auf.",
 					"In der Zeitleiste: Abspielen, Pause und das Datum; der Knopf mit dem Tempo (zum Beispiel 1x) öffnet „Jetzt“, die Tempi und die Drehung.",
 					"Touren, Ebenen (was gezeichnet wird), Maßstab (wie groß und wie weit) und Werkzeuge (Lichtgeschwindigkeit, der Himmel heute Nacht, Raumsonden, dein Geburtstag, die Schnitzeljagd, Nebeneinander, das Sonnensystem ablaufen, das Bildlexikon und ein Foto) öffnen alles andere. Es ist immer nur ein Feld offen; × schließt es.",
-					"Knöpfe zum Präsentieren und Einstellen: Präsentieren, Teilen, das durchgestrichene Auge, das alles ausblendet (H holt es zurück), Ton, Hilfe und die Sprache."
+					"Knöpfe zum Präsentieren und Einstellen: Präsentieren, Teilen, das durchgestrichene Auge, das alles ausblendet (H holt es zurück), Ton, Hilfe und die Sprache. Auf dem Handy stehen sie alle unter „Mehr“.",
+					"Auf Handy und Tablet blendet ein Tipp auf den leeren Himmel alle Bedienelemente aus, und der nächste Tipp irgendwohin holt sie zurück; die Ansicht bewegt sich dabei nie."
 				],
 				"simple": [
 					"Der Pfeil „Zurück“ geht einen Schritt zurück. Der Haus-Knopf daneben bringt dich zurück zu allen Planeten.",
 					"Drück auf Ebenen, Maßstab oder Werkzeuge, dann findest du mehr.",
-					"Drück auf das durchgestrichene Auge, dann verschwinden alle Knöpfe. Mit H kommen sie zurück."
+					"Tippe auf dem Handy oder Tablet auf den leeren Himmel oder drück auf das durchgestrichene Auge, dann verschwinden alle Knöpfe. Tippe noch mal oder drück H, dann kommen sie zurück.",
+					"Auf dem Handy findest du unter „Mehr“: Teilen, Ton, Hilfe und deine Sprache."
 				]
 			}
 		},
@@ -600,12 +602,12 @@
 			},
 			"how": {
 				"standard": [
-					"Beim Öffnen der App ist der Ton immer aus. Drück auf den Lautsprecher oder auf M, um ihn einzuschalten. Auf dem Handy öffnet der Lautsprecher stattdessen die Toneinstellungen: Schalte dort „Ton an“ ein.",
-					"Der Pfeil daneben (auf dem Handy der Lautsprecher selbst) öffnet die Lautstärke, den „Hintergrundklang“, die „Bewegungsklänge“ und „Hör ins All“.",
+					"Beim Öffnen der App ist der Ton immer aus. Drück auf den Lautsprecher oder auf M, um ihn einzuschalten. Auf dem Handy öffne „Mehr“ und schalte „Ton an“ ein.",
+					"Der Pfeil daneben (auf dem Handy „Toneinstellungen“ unter „Mehr“) öffnet die Lautstärke, den „Hintergrundklang“, die „Bewegungsklänge“ und „Hör ins All“.",
 					"Flieg zur Sonne, zur Erde, zu Jupiter oder Saturn und spiel im Steckbrief die Aufnahme ab; der Text erklärt, was du hörst."
 				],
 				"simple": [
-					"Drück auf den Lautsprecher. Auf dem Handy schaltest du dann noch „Ton an“ ein.",
+					"Drück auf den Lautsprecher. Auf dem Handy drückst du auf „Mehr“ und dann auf „Ton an“.",
 					"Flieg zu Jupiter.",
 					"Drück im Steckbrief auf Abspielen und hör zu."
 				]
@@ -626,11 +628,11 @@
 			},
 			"how": {
 				"standard": [
-					"Öffne das Sprachmenü (auf seinem Knopf steht DE, EN, …).",
+					"Öffne das Sprachmenü (auf seinem Knopf steht DE, EN, …; auf dem Handy steht es unter „Mehr“).",
 					"Wähle eine Sprache und eine Lesestufe; alle Seiten und Links übernehmen sie."
 				],
 				"simple": [
-					"Klick auf den Knopf, auf dem DE steht.",
+					"Klick auf den Knopf, auf dem DE steht. Auf dem Handy drückst du zuerst auf „Mehr“.",
 					"Wähl deine Sprache und dann „Einfach“."
 				]
 			}
@@ -1044,8 +1046,8 @@
 			"what": "Größere Schrift, Namen und Knöpfe, lesbar bis in die letzte Reihe.",
 			"why": "Ein Laptop-Bildschirm ist am Beamer zu klein zum Lesen; der Beamer-Modus behebt das mit einer Taste.",
 			"how": [
-				"Öffne „Präsentieren“ und wähle „Große Schrift für den Beamer“, oder drücke P.",
-				"Drücke F für Vollbild.",
+				"Öffne „Präsentieren“ (auf dem Handy „Mehr“) und wähle „Große Schrift für den Beamer“, oder drücke P.",
+				"Drücke F, oder wähle „Vollbild“ im selben Menü. Ein iPhone kann in Safari kein Vollbild: „Mehr“ erklärt, wie du Orbitalia zum Home-Bildschirm hinzufügst; von dort öffnet es sich auf dem ganzen Bildschirm.",
 				"Alles andere funktioniert weiter: Tasten, Links und die Bedienelemente."
 			]
 		},
@@ -1054,7 +1056,7 @@
 			"what": "Kräftigere Farben und Umrisse für blasse Beamer und helle Räume.",
 			"why": "Ein blasser Beamer bei Tageslicht verschluckt graue Schrift und feine Linien; hoher Kontrast hält alles lesbar.",
 			"how": [
-				"Öffne „Präsentieren“ und wähle „Hoher Kontrast“, oder drücke C.",
+				"Öffne „Präsentieren“ (auf dem Handy „Mehr“) und wähle „Hoher Kontrast“, oder drücke C.",
 				"Er schaltet sich auch von selbst ein, wenn der Computer mehr Kontrast anfordert."
 			]
 		},
@@ -1073,8 +1075,9 @@
 			"what": "Nimm alle Knöpfe und Felder vom Bildschirm, sodass nur der Weltraum bleibt.",
 			"why": "Zum Anschauen, für Bildschirmfotos und für den Beamer: Die Klasse sieht das Sonnensystem, nicht die Bedienoberfläche.",
 			"how": [
-				"Drücke H oder das durchgestrichene Auge (es steht auch im Menü „Präsentieren“). Das geht mit und ohne Präsentieren.",
-				"Drücke noch einmal H, oder bewege die Maus und klicke auf „Bedienelemente zeigen“, um sie zurückzuholen. Die Tasten funktionieren auch, solange sie ausgeblendet sind."
+				"Drücke H oder das durchgestrichene Auge (es steht auch im Menü „Präsentieren“, auf dem Handy unter „Mehr“). Das geht mit und ohne Präsentieren.",
+				"Tippe auf Handy und Tablet auf den leeren Himmel. Wo dieser Tipp schon eine Aufgabe hat, etwa eine ausgewählte Welt loszulassen, erledigt er stattdessen die.",
+				"Drücke noch einmal H, oder bewege die Maus und klicke auf „Bedienelemente zeigen“, um sie zurückzuholen; auf Handy und Tablet tippst du irgendwohin. Dieser Tipp holt sie nur zurück: Er wählt keine Welt aus und bewegt die Ansicht nicht. Die Tasten funktionieren auch, solange sie ausgeblendet sind."
 			]
 		},
 		"prepareLesson": {
@@ -1092,7 +1095,7 @@
 			"what": "Ein Link zu genau dem, was auf dem Bildschirm ist, mit einem Kopierknopf und einem QR-Code, der groß genug ist, um ihn aus der letzten Reihe zu scannen.",
 			"why": "Die Schülerinnen und Schüler öffnen dieselbe Ansicht auf ihren eigenen Tablets und erkunden von dort aus weiter, ohne etwas abzutippen.",
 			"how": [
-				"Öffne „Teilen“.",
+				"Öffne „Teilen“. Auf dem Handy öffne „Mehr“: „Teilen“ schickt den Link direkt in einen Chat oder eine Mail, und „Link und QR-Code“ öffnet dieses Feld.",
 				"Kopiere den Link, oder drücke „QR-Code der Klasse zeigen“."
 			]
 		},
@@ -1199,12 +1202,12 @@
 			},
 			"how": {
 				"standard": [
-					"Öffne im Sonnensystem den Pfeil neben „Hilfe“ (auf dem Handy „Hilfe“ selbst) und wähle „Feedback senden“: Auf Wunsch geht die Ansicht, die du gerade siehst, mit.",
+					"Öffne im Sonnensystem den Pfeil neben „Hilfe“ (auf dem Handy „Mehr“) und wähle „Feedback senden“: Auf Wunsch geht die Ansicht, die du gerade siehst, mit.",
 					"Wähle, worum es geht, schreib ein paar Worte und drück „Senden“. Die E-Mail-Adresse ist freiwillig: Gib sie nur an, wenn du eine Antwort möchtest.",
 					"Mit einem GitHub-Konto kannst du es auch auf GitHub melden oder auf GitHub Discussions mit anderen reden; die Seite verlinkt beides."
 				],
 				"simple": [
-					"Drück auf den Pfeil neben „Hilfe“ (auf dem Handy auf „Hilfe“ selbst) und dann auf „Sag uns deine Meinung“.",
+					"Drück auf den Pfeil neben „Hilfe“ (auf dem Handy auf „Mehr“) und dann auf „Sag uns deine Meinung“.",
 					"Schreib, was kaputt ist, oder deine Idee.",
 					"Drück auf „Senden“. Deine E-Mail-Adresse brauchst du nicht."
 				]
@@ -1303,31 +1306,31 @@
 		"hide": {
 			"action": "Bedienelemente aus- oder einblenden",
 			"mouse": "Das durchgestrichene Auge",
-			"touch": "Das durchgestrichene Auge",
+			"touch": "Auf den leeren Himmel tippen; irgendwohin tippen holt sie zurück",
 			"keys": "H"
 		},
 		"fullscreen": {
 			"action": "Vollbild ein oder aus",
 			"mouse": "Präsentieren → Vollbild",
-			"touch": "Präsentieren → Vollbild",
+			"touch": "Präsentieren → Vollbild (auf dem Handy unter „Mehr“)",
 			"keys": "F"
 		},
 		"projector": {
 			"action": "Große Schrift für den Beamer",
 			"mouse": "Präsentieren → Große Schrift",
-			"touch": "Präsentieren → Große Schrift",
+			"touch": "Präsentieren → Große Schrift (auf dem Handy unter „Mehr“)",
 			"keys": "P"
 		},
 		"contrast": {
 			"action": "Hoher Kontrast ein oder aus",
 			"mouse": "Präsentieren → Hoher Kontrast",
-			"touch": "Präsentieren → Hoher Kontrast",
+			"touch": "Präsentieren → Hoher Kontrast (auf dem Handy unter „Mehr“)",
 			"keys": "C"
 		},
 		"sound": {
 			"action": "Ton an oder aus (beim Öffnen der App immer aus)",
 			"mouse": "Der Lautsprecher-Knopf",
-			"touch": "Der Lautsprecher-Knopf (auf dem Handy: der Lautsprecher, dann „Ton an“)",
+			"touch": "Der Lautsprecher-Knopf (auf dem Handy: „Mehr“ → „Ton an“)",
 			"keys": "M"
 		},
 		"shortcuts": {

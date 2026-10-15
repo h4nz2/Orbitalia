@@ -3,9 +3,8 @@
  * only deliberately from here; the movement hints can be called back too.
  * Since #43 it is the chevron beside the Help button (a split button): the
  * button opens the help page in one click, the chevron offers the rest, last
- * "Send feedback" with the view on screen offered to attach. On a phone (#58)
- * the chevron is the only Help button: it shows the help icon and its menu
- * starts with the help page.
+ * "Send feedback" with the view on screen offered to attach. On a phone the
+ * same items are under More (#59, present/MoreMenu.tsx).
  */
 import { ActionIcon, Menu } from "@mantine/core"
 import { Link, useRouter } from "@tanstack/react-router"
@@ -13,7 +12,6 @@ import {
 	IconBook,
 	IconChevronDown,
 	IconHandClick,
-	IconHelp,
 	IconMessageCircle,
 	IconPlayerPlay,
 	IconSparkles,
@@ -25,20 +23,23 @@ import { Hint } from "@/primitives/hint"
 import { startQuickLook } from "../quickLook/quickLook"
 import { showHints, startIntro } from "./intro"
 
-import classes from "./Intro.module.css"
-
-const IntroMenu = () => {
-	const { t, readingLevel } = useI18n()
+/** "Send feedback": the feedback page, with the view on screen offered to attach. */
+export function useSendFeedback(): () => void {
 	const router = useRouter()
-	const label = t("help.more")
 	// the view as it is when the item is picked: every view is in its address
-	const sendFeedback = () => {
+	return () => {
 		const { pathname, searchStr } = router.state.location
 		void router.navigate({
 			to: "/feedback",
 			search: { from: `${pathname}${searchStr}`.slice(0, 2000) },
 		})
 	}
+}
+
+const IntroMenu = () => {
+	const { t, readingLevel } = useI18n()
+	const sendFeedback = useSendFeedback()
+	const label = t("help.more")
 	return (
 		<Hint text={t("solarSystem.intro.menuHint")}>
 			<Menu shadow="md" position="bottom-start">
@@ -50,8 +51,7 @@ const IntroMenu = () => {
 						aria-label={label}
 						data-testid="intro-menu"
 					>
-						<IconChevronDown size={16} className={classes.menuChevron} />
-						<IconHelp size={18} aria-hidden className={classes.menuHelp} />
+						<IconChevronDown size={16} />
 					</ActionIcon>
 				</Menu.Target>
 				<Menu.Dropdown>

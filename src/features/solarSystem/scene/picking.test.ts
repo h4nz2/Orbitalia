@@ -168,6 +168,34 @@ describe("isNearAnyBody", () => {
 		expect(near(10 + reach - 1)).toBe(true)
 		expect(near(10 + reach + 2)).toBe(false)
 	})
+
+	it("gives a disc its own, closer reach, and a dot the full one (#59)", () => {
+		const target = TARGET_RADIUS_PX.touch
+		const reach = target * NEAR_MISS_FACTOR
+		const discs = { minRadiusPx: target, reachPx: target }
+		const near = (frame: PickFrame, at: number) =>
+			isNearAnyBody(
+				frame,
+				origin,
+				rayAtPx(at),
+				PX_PER_UNIT,
+				reach,
+				everything,
+				discs,
+			)
+		// a planet filling the view, 150 px across its radius
+		const planet = toyFrame([
+			{ id: "earth", at: [0, 0, -100], radius: 150 * px },
+		])
+		// (a wide angle: the edge in pixels is only roughly linear out there)
+		expect(near(planet, 150 + target - 4)).toBe(true)
+		expect(near(planet, 150 + target + 8)).toBe(false)
+		expect(near(planet, 150 + reach - 4)).toBe(false)
+		// a moon drawn as a dot keeps the generous near miss
+		const dot = toyFrame([{ id: "moon", at: [0, 0, -100], radius: 2 * px }])
+		expect(near(dot, 2 + reach - 1)).toBe(true)
+		expect(near(dot, 2 + reach + 2)).toBe(false)
+	})
 })
 
 describe("hasGenerousTarget", () => {

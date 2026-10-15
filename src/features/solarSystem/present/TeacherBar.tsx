@@ -2,6 +2,7 @@ import type { ReactNode } from "react"
 import { ActionIcon, Group } from "@mantine/core"
 import { IconEyeOff } from "@tabler/icons-react"
 
+import { useTouch } from "@/hooks/useSizeClass"
 import { useI18n } from "@/i18n"
 import { Hint } from "@/primitives/hint"
 import { usePresentationStore } from "@/store/presentation"
@@ -12,13 +13,20 @@ import { PresentMenu, ShareMenu } from "./PresentMenu"
 /**
  * "Hide the controls" for everyone (#42), not only while presenting: for
  * looking, for a picture (#33) or for a projector. The same action as the H
- * key; `PresentationLayer`'s "Show the controls" (or H again) brings them back.
+ * key; `PresentationLayer`'s "Show the controls" (or H again) brings them back,
+ * and on a touch screen a tap anywhere (#59), where a tap on the sky hides
+ * them too.
  */
 export function HideButton() {
 	const { t } = useI18n()
+	const touch = useTouch()
 	const label = t("solarSystem.present.hideControls")
 	return (
-		<Hint text={t("solarSystem.hud.hideHint")}>
+		<Hint
+			text={t(
+				touch ? "solarSystem.hud.hideHintTouch" : "solarSystem.hud.hideHint",
+			)}
+		>
 			<ActionIcon
 				variant="subtle"
 				color="gray"
@@ -30,7 +38,13 @@ export function HideButton() {
 					setChromeHidden(true)
 					usePresentationStore
 						.getState()
-						.announce(t("solarSystem.present.announce.chromeHidden"))
+						.announce(
+							t(
+								touch
+									? "solarSystem.present.announce.chromeHiddenTouch"
+									: "solarSystem.present.announce.chromeHidden",
+							),
+						)
 				}}
 			>
 				<IconEyeOff size={18} aria-hidden />
@@ -45,7 +59,8 @@ export function HideButton() {
  * passed (sound, help and the language menu, which sit in the same corner on
  * every page). Where its half of the top row is too narrow for finger-sized
  * buttons (an upright tablet, #58) it wraps onto a second line rather than
- * squeezing the name of the world in view.
+ * squeezing the name of the world in view. A phone shows More instead (#59,
+ * `MoreMenu.tsx`), with all of this inside.
  */
 export function TeacherBar({ children }: { children?: ReactNode }) {
 	return (

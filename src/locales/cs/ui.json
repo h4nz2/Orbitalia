@@ -1031,7 +1031,9 @@
 			"chrome": {
 				"show": "Zobrazit ovládání",
 				"hint": "Ovládání je skryté: stiskni H nebo použij tlačítko a zase se objeví",
-				"hint@simple": "Tlačítka jsou schovaná. Stiskni H a vrátí se."
+				"hint@simple": "Tlačítka jsou schovaná. Stiskni H a vrátí se.",
+				"hintTouch": "Ovládání je skryté: ťukni kamkoli a zase se objeví",
+				"hintTouch@simple": "Tlačítka jsou schovaná. Ťukni a vrátí se."
 			},
 			"help": {
 				"title": "Klávesové zkratky",
@@ -1079,6 +1081,7 @@
 				"labelsOff": "Názvy skryty",
 				"lightStopped": "Světelný záblesk zastaven",
 				"chromeHidden": "Ovládání skryto. Stiskni H a znovu se zobrazí.",
+				"chromeHiddenTouch": "Ovládání skryto. Ťukni na obrazovku a znovu se zobrazí.",
 				"chromeShown": "Ovládání zobrazeno",
 				"projectorOn": "Velké písmo zapnuto",
 				"projectorOff": "Velké písmo vypnuto",
@@ -1099,6 +1102,34 @@
 			},
 			"layersHint": "Co scéna ukazuje: dráhy, názvy, měsíce, značky a osvětlení.",
 			"layersHint@simple": "Vyber, co na obrázku uvidíš."
+		},
+		"more": {
+			"button": "Více",
+			"title": "Více",
+			"hint": "Sdílení tohoto pohledu, zvuk, jazyk, nápověda, skrytí ovládání a nastavení pro prezentaci třídě.",
+			"hint@simple": "Sdílení, zvuk, tvůj jazyk, nápověda a další.",
+			"back": "Zpět",
+			"backLabel": "Zpět na Více",
+			"shareHint": "Pošli odkaz na tento pohled přímo z telefonu: do chatu, e-mailem nebo někomu poblíž.",
+			"shareHint@simple": "Pošli tenhle pohled kamarádovi.",
+			"linkAndQr": "Odkaz a QR kód",
+			"language": "Jazyk a náročnost textu",
+			"languageHint": "Čti Orbitalii česky, anglicky, německy, španělsky nebo francouzsky, jednoduše, běžně nebo pokročile.",
+			"languageHint@simple": "Vyber svůj jazyk a „Jednoduchá“ pro lehká slova.",
+			"homeScreen": {
+				"button": "Celá obrazovka",
+				"title": "Celá obrazovka na iPhonu",
+				"hint": "Na iPhonu vyplní Orbitalia celou obrazovku, když ji otevřeš z plochy. Tady je návod.",
+				"hint@simple": "Jak vyplnit vesmírem celou obrazovku.",
+				"intro": "Safari na iPhonu neumí ukázat webovou stránku přes celou obrazovku, Orbitalia otevřená z plochy ale ano.",
+				"intro@simple": "Tvůj iPhone ukáže Orbitalii přes celou obrazovku, jen když ji otevřeš z plochy.",
+				"share": "V Safari otevři nabídku Sdílet: čtverec se šipkou (v novějších verzích pod „…“).",
+				"share@simple": "V Safari stiskni Sdílet: čtverec se šipkou.",
+				"add": "Vyber „Přidat na plochu“ a pak „Přidat“.",
+				"add@simple": "Stiskni „Přidat na plochu“.",
+				"open": "Otevři Orbitalii její novou ikonou: vesmír vyplní celou obrazovku.",
+				"open@simple": "Otevři Orbitalii novou ikonou."
+			}
 		},
 		"light": {
 			"open": "Rychlost světla",
@@ -1607,6 +1638,8 @@
 			"scaleHint@simple": "Ukaž planety ve skutečné velikosti, nebo dost velké, aby byly vidět. Panel ti řekne, o kolik větší jsou nakreslené.",
 			"hideHint": "Na obrazovce zůstane jen sluneční soustava: na dívání, na fotku nebo na projektor. Klávesa H nebo „Zobrazit ovládání“ je vrátí.",
 			"hideHint@simple": "Schovej všechna tlačítka, ať vidíš jen vesmír. Klávesa H nebo „Zobrazit ovládání“ je vrátí.",
+			"hideHintTouch": "Na obrazovce zůstane jen sluneční soustava: na dívání, na fotku nebo na projektor. Totéž udělá ťuknutí na prázdnou oblohu; ťuknutí kamkoli ovládání vrátí.",
+			"hideHintTouch@simple": "Schovej všechna tlačítka, ať vidíš jen vesmír. Jde to i ťuknutím na oblohu. Ťukni znovu a vrátí se.",
 			"time": "Čas",
 			"timeButton": "Čas a rychlost: {speed}",
 			"timeHint": "Jak rychle běží čas, návrat do teď a jak rychle se planety otáčejí. + a − mění rychlost z klávesnice.",
@@ -1668,14 +1701,14 @@
 				"teachers": {
 					"title": "Pro učitele: Prezentovat",
 					"title@simple": "Pro učitele",
-					"text": "Prezentovat zvětší písmo pro projektor, přidá vysoký kontrast a klávesy pro prezentační ovladač a klávesou H skryje ovládání. Sdílet dá třídě odkaz nebo QR kód přesně na tento pohled.",
-					"text@simple": "Učitelé: stiskněte Prezentovat a ukažte sluneční soustavu třídě na velké obrazovce."
+					"text": "Prezentovat zvětší písmo pro projektor, přidá vysoký kontrast a klávesy pro prezentační ovladač a klávesou H skryje ovládání. Sdílet dá třídě odkaz nebo QR kód přesně na tento pohled. Na telefonu jsou obě pod Více.",
+					"text@simple": "Učitelé: stiskněte Prezentovat (na telefonu Více) a ukažte sluneční soustavu třídě na velké obrazovce."
 				},
 				"more": {
 					"title": "Je toho víc",
 					"title@simple": "Je toho víc",
-					"text": "Každá funkce, jak se používá a odkaz na vyzkoušení, je na stránce nápovědy: stiskni Nápovědu. Něco nefunguje, nebo máš nápad? „Poslat zpětnou vazbu“ pod šipkou vedle Nápovědy (na telefonu přímo pod Nápovědou) se dostane k lidem, kteří Orbitalii dělají. Hodně zábavy při objevování!",
-					"text@simple": "Je tu ještě spousta dalších věcí. Tlačítko Nápověda ti poví o všem. Něco se rozbilo, nebo máš nápad? Napiš nám přes „Napiš nám, co si myslíš“ vedle Nápovědy (na telefonu pod Nápovědou). Hodně zábavy!"
+					"text": "Každá funkce, jak se používá a odkaz na vyzkoušení, je na stránce nápovědy: stiskni Nápovědu (na telefonu pod Více). Něco nefunguje, nebo máš nápad? „Poslat zpětnou vazbu“ pod šipkou vedle Nápovědy (na telefonu pod Více) se dostane k lidem, kteří Orbitalii dělají. Hodně zábavy při objevování!",
+					"text@simple": "Je tu ještě spousta dalších věcí. Tlačítko Nápověda (na telefonu pod Více) ti poví o všem. Něco se rozbilo, nebo máš nápad? Napiš nám přes „Napiš nám, co si myslíš“ vedle Nápovědy (na telefonu pod Více). Hodně zábavy!"
 				}
 			}
 		}

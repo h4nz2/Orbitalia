@@ -81,8 +81,9 @@ public/assets/sounds/        the real space recordings (#32) and their CREDITS.m
 - **Phones and fingers (#58, see "Size classes, finger sizes and screen edges").** The arrangement follows the
   screen's size: `@media $phone` (narrower than 600 px or lower than 480 px) and `@media $touch` (the primary
   pointer is a finger), defined once in `src/utils/sizeClasses.json`; code uses `usePhone`/`useTouch`. Under `$touch`
-  every control is at least 44×44 px. A new control says where it lives on a phone (behind the same entry points,
-  nothing new permanently on screen), and help texts name the control, never a screen corner.
+  every control is at least 44×44 px. A new control says where it lives on a phone (behind the same entry points;
+  the teacher's corner is More there, #59; nothing new permanently on screen), and help texts name the control, never
+  a screen corner.
 - Every toggle, and every choice that changes the scene and is not self-explanatory, has a hint: wrap it in
   `<Hint text={t("…hint.x")}>` (see Hints). No `title=` attributes and no Mantine `Tooltip` for this.
 - Nobody commits; the orchestrator commits at the end of each phase.
@@ -552,7 +553,7 @@ Director (`camera/director.ts`, unit-tested frame by frame):
   (`hasExplicitView`: any key of `simSearchSchema`; `lang`/`reading` do not count) and localStorage
   `orbitalia.introSeen` is unset (set when it starts; guarded, nothing is sent anywhere). A link with a view opens
   exactly there. Replayed deliberately from the Help menu (`intro/IntroMenu.tsx`: since #43 the chevron of the Help
-  split button beside the language menu, with the help page first), which also shows the hints again, and by
+  split button beside the language menu, with the help page first; on a phone the same items are under More, #59), which also shows the hints again, and by
   `?intro=play` (the help page's link; an instruction, never written back). e2e: `playwright.config.ts` presets the key so every test is a returning visitor;
   `e2e/intro.spec.ts` clears it.
 - **Hand-over** (`status: "handover"`): the hints (`IntroHints.tsx`: drag to look around, scroll or pinch to zoom,
@@ -577,7 +578,8 @@ and the help page. About a minute, moving on by itself.
   `flash`, `compare`) and builds a `Tour` (`quickLook`, `returnOnExit`, never listed, never in a link). The watcher
   adds each step's extras: `useQuickLookStore.spot` (mirrored to `data-quick-look-spot` on `<html>`; the glow in
   `QuickLook.module.css` rings the real control: the picker, Scale, the time bar, the card's Compare, Tools,
-  Present, Help — a soft ring, not an arrow, per #30), and `flash` sends #27's flash.
+  Present, Help — a soft ring, not an arrow, per #30; on a phone Present and Help are under More, which glows for both,
+  #59), and `flash` sends #27's flash.
 - **UI** (`QuickLook.tsx`): `QuickLookController` (watcher, glow, `?look=play`), `QuickLookAsk` and `QuickLookCard`
   in the HUD's dock (#42). The card: "n of N", the step's words (`solarSystem.quickLook.steps.<id>` at every reading
   level), the comparison drawing (`features/compare/Stage`, lazy) where the step has one, dots, Back, autoplay,
@@ -586,7 +588,7 @@ and the help page. About a minute, moving on by itself.
 - **Always a calm way out**: Skip, Finish, × and Escape leave through `exitTour` (`returnOnExit`: back to where the
   viewer was, which after the opening is the overview, now, 1x, Everything visible) and clear the flash and the glow;
   a world clicked mid-way ends it there but puts speed, scale and layers back (`leaveToExplore`).
-- **Replay**: the Help chevron's "Take the quick look again", and `?look=play` (the help page's try-it link; an
+- **Replay**: the Help chevron's (on a phone, More's) "Take the quick look again", and `?look=play` (the help page's try-it link; an
   instruction, never written back).
 
 ### Re-centring and free movement (`camera/recentre.ts`, `camera/input.ts`; #15)
@@ -653,7 +655,7 @@ become the sky's motions (the Sun's yearly circle, Mercury's and Venus's flowers
 
 ### Framing what is free: phones (`src/store/freeArea.ts`, `camera/framing.ts`, `camera/lift.ts`, `dock/FreeArea.tsx`; #61)
 
-On a phone the HUD stacks its controls in bands at the top (where, the corner) and the bottom (the dock, the card, the
+On a phone the HUD stacks its controls in bands at the top (the one row of where and More, #59) and the bottom (the dock, the card, the
 time bar, the entry points), so the camera centres what it looks at in the band between them and fits it there.
 Elsewhere (laptops, tablets, a phone on its side) nothing covers the scene in bands and the framing is the whole
 canvas, exactly as before.
@@ -1159,7 +1161,7 @@ export const useSimFrame = (): SimFrame // throws outside the provider
   layout" below): `OverviewButton`, `FocusPicker`, `FrameMenu` (#31), `BodyInfo` (the focused view's card, see Picking),
   `TimeControls` (the time bar; `SpinControl`, the speed presets and Now in its popover), `CentreBadge` and
   `CentreMarker` (#15), `FlightReadout` (#18, above the time bar), `TeacherBar` (#29, the top-right corner: Present,
-  Share, hide, then `SoundControl` (#32), Help (#43) and `LanguageMenu`), `EntryBar` (Tours, Layers → `SceneToggles`,
+  Share, hide, then `SoundControl` (#32), Help (#43) and `LanguageMenu`; on a phone `MoreMenu` instead, #59), `EntryBar` (Tours, Layers → `SceneToggles`,
   Scale → `ScalePanel` (#21), Tools). Escape, the overview button and a click on empty space call `reset()`; the card's close button only clears the selection and hides the focused body's card (`useHudStore.cardClosedFor`) until another body is focused or selected, the camera staying put. The clock shows the locale's date format inside
   `<time dateTime="2026-09-24T10:35Z">`; warp labels come from the value (`ui/warp.ts` `warpParts`).
   Keys (ignored in fields and with modifiers): Space pause (the opening's own pause while it plays, #49), `+`/`-` next faster/slower preset (direction kept),
@@ -1191,7 +1193,9 @@ hover ring, name and cursor apply to labels too.
   the one in view (`select(null)`; in the overview, a free view or while a body is held still, its card closes or
   gives way to the focused body's); the focused body stays selected, so its card stays and the planet filling the
   view never turns into a click target. Nothing on a near miss (within `NEAR_MISS_FACTOR` x the target
-  radius of a drawn edge) or while a sequence (tour) runs. While an Easy hunt clue is on screen (#52,
+  radius of a drawn edge) or while a sequence (tour) runs. On a touch screen a tap with no such job hides the
+  controls (#59, `present/skyTap.ts`, see "The phone's top row, More and a tap on the sky"); for that, a big disc's near miss is only one target
+  radius off its plain edge (`isNearAnyBody`'s `discs`), a dot keeps the full one. While an Easy hunt clue is on screen (#52,
   `useHuntStore.assist`) the target radius is `EASY_TARGET_FACTOR` (2) times larger.
 - **Only taps count** (`scene/tap.ts` `isTapEvent`, used by every clickable thing in the scene; the pure
   `createPressTracker` is fed by window listeners and unit-tested): the press may wander at most `TAP_MAX_TRAVEL_PX`
@@ -1485,8 +1489,10 @@ the URL, so "save the lesson" is the link itself (plus `paused`, `present`, `con
   larger. Presenting also preloads the lazy panels.
 - **Hiding never unmounts** the HUD (`:global(html[data-chrome="hidden"]) .hud { display: none }`): the HUD's own keys
   (Space, +/-, Left/Right, Escape) keep working. Since #42 hiding is for everyone: H, or the crossed-out eye in the
-  top-right corner (`present/TeacherBar.tsx` `HideButton`), with or without presenting. `PresentationLayer` (outside the HUD) keeps a "Show the controls"
-  button that appears on pointer movement or focus, and hides an idle pointer.
+  top-right corner (`present/TeacherBar.tsx` `HideButton`; on a phone "Hide the controls" under More), with or
+  without presenting, and on a touch screen a tap on the sky (#59). `PresentationLayer` (outside the HUD) keeps a
+  "Show the controls" button that appears on pointer movement or focus, and hides an idle pointer; on a touch screen
+  a tap anywhere brings the controls back too.
 - **Keys** (`present/keys.ts` pure mapping, `present/commands.ts` actions, `present/usePresenterKeys.ts` listener):
   PageDown/PageUp next/previous (presenter remotes), 0 the whole system, 1-8 the planets from the Sun, Backspace
   Back (#46), R/Home back to the start, S next named scale preset, L names, H controls, F full screen, P projector, C contrast, ? the shortcut
@@ -1536,7 +1542,9 @@ unobstructed (`e2e/quietHud.spec.ts` measures it). Every control is at most two 
     a followed spacecraft's name with the follow mark, #57) and the point of view (#31);
     under them the frame badge (#31), the light's running clock while a flash is out (#27/#38) and the body card;
   - top centre: the free-view badge (#15), only in a free view;
-  - top right, the corner: Present (tinted, easy to find), Share, hide the controls, sound, Help, language;
+  - top right, the corner: Present (tinted, easy to find), Share, hide the controls, sound, Help, language (on a
+    phone, all of it is More at the end of the one top row, #59: see "The phone's top row, More and a tap on the
+    sky");
   - bottom: the time bar (reverse/pause/play, the date → time travel, the speed button → a popover with Now, the
     speed presets and the spin), with the flight readout above it and the too-fast / not-to-the-clock notes under it;
   - bottom right, the entry points (`dock/Dock.tsx` `EntryBar`): Tours (#28), Layers, Scale (named after the
@@ -1562,7 +1570,7 @@ unobstructed (`e2e/quietHud.spec.ts` measures it). Every control is at most two 
 - **The rule for new features** (also in Conventions and `CLAUDE.md`): put the control behind an existing entry
   point; a panel goes into the dock through Tools; never a new permanent panel. Update the help entry's "how" with
   where it lives, naming the control or entry point ("under Tools"), never a screen corner. On a phone it lives behind
-  the same entry points and is finger-sized under `$touch` (#58).
+  the same entry points (the corner's are under More, #59) and is finger-sized under `$touch` (#58).
 
 ### Size classes, finger sizes and screen edges (#58)
 
@@ -1576,12 +1584,11 @@ the same features at every size and shows fewer at once). Laptops with a mouse l
   `useTouch()` (`@/hooks/useSizeClass`, live on rotation, resizing and split screen) or `isPhone()` / `isTouch()`
   (`@/utils/sizeClasses`). Do not write `max-width: 599px` again. Breakpoints that say when one row stops fitting
   (719 px for the speed presets, 899, 1099, 1199 px, the walk's and the help table's 40em) are not size classes and stay.
-- **The phone arrangement** (until #59 and #60 give phones their own): one column, top to bottom the "where" row,
-  the corner, the scene, the dock or the card (one at a time), the time bar (the date over the time, so it keeps to
-  one row) and the entry points sharing the width. A phone on its side keeps it with the rows paired: the name beside
-  the corner, the time bar beside the entry points, the card rising at the left and a panel at the right, so the body
-  in the centre stays in view. On a phone the split buttons are one button each, by CSS alone: the speaker opens the
-  sound settings, whose first switch turns sound on; Help opens the Help menu, whose first item is the help page.
+- **The phone arrangement** (until #60 gives the bottom its sheet): one column, top to bottom one row with the
+  "where" panel and More (#59, see below), the scene, the dock or the card (one at a time), the time bar
+  (the date over the time, so it keeps to one row) and the entry points sharing the width. A phone on its side keeps
+  it with the rows paired: the name beside More, the time bar beside the entry points, the card rising at the left
+  and a panel at the right, so the body in the centre stays in view.
 - **Finger sizes** (`src/providers/touch.css`, loaded by the Mantine provider): under `$touch` every control is at
   least 44×44 px (`--touch-target`; WCAG 2.5.5, Apple). The sheet lifts Mantine's size scales (ActionIcon, Button,
   CloseButton, inputs, SegmentedControl, Switch, Checkbox, Slider, Menu and Combobox items, the date pickers), so a
@@ -1599,7 +1606,7 @@ the same features at every size and shows fewer at once). Laptops with a mouse l
   the room beside its button (Floating UI's `size` middleware as a theme default, `--dropdown-max-height`) and
   scrolls when it is taller; a popover with an arrow sets `data-own-scroll` and scrolls inside, keeping its arrow.
 - **Help texts name the control, not the corner** ("Press Layers", "the house button", "the arrow next to Help (on
-  a phone, Help itself)"), so one text fits every arrangement; `src/i18n/screenCorners.test.ts` fails on a screen
+  a phone, More)"), so one text fits every arrangement; `src/i18n/screenCorners.test.ts` fails on a screen
   corner in any locale ("top right", "unten rechts", "en haut à droite", "vpravo nahoře", …).
 - **Tests**: `e2e/devices.spec.ts` on a 390×844 and a 360×640 phone, a phone on its side (844×390) and an iPad
   (768×1024), all with touch, and a 1366×768 laptop with a mouse: the pointer and the size class match the device,
@@ -1607,6 +1614,57 @@ the same features at every size and shows fewer at once). Laptops with a mouse l
   Layers switches all reachable, every control at least 44 px on the touch screens (`e2e/support/touch.ts`
   `smallControls`) and the laptop still dense, the arrangement switching live as a phone turns, and every other page
   at phone and iPad size. One spec, not whole-suite projects: every test drives a software-WebGL scene.
+
+### The phone's top row, More and a tap on the sky (`present/MoreMenu.tsx`, `present/skyTap.ts`; #59)
+
+On a phone the teacher's corner served a projector (projector text, high contrast, keyboard keys, full screen) and
+took a second row of six bare icons. The phone keeps one quiet row instead, and a way to clear the screen.
+
+- **One row at the top** (`$phone`, upright and on its side): Back, the way out, the name box, the point of view, and
+  **More**: an icon with its word ("More", "Mehr", "Více", "Más", "Plus"), never a bare ☰ (hidden navigation gets
+  used about half as often). `index.tsx` `Corner` renders `MoreMenu` instead of `TeacherBar` while `usePhone()`; the
+  phone grid's first row is `"picker corner"`, so More sits where the corner was on a phone on its side. 62 px of
+  top instead of 124 px on a 390 x 844 phone, and the free band (#61) grows with it. Laptops and tablets keep the
+  corner, split buttons included.
+- **More** is a popover anchored at it (scrolling when taller than its room, `providers/fit.css`). Groups, every item
+  with words: Share (the phone's share sheet where `navigator.share` exists, then "Link and QR code"), sound (a
+  "Sound on" switch, "Sound settings"), the language and reading level, Help (the page, the opening, the quick look,
+  the movement hints, feedback), "Hide the controls", and presenting (projector text, high contrast, "Back to the
+  start", and full screen: "Full screen" where `document.fullscreenEnabled`; on an iPhone in Safari not opened from
+  the Home Screen, a page on adding Orbitalia to the Home Screen, the only full screen there; opened from it,
+  neither: `present/fullscreen.ts` `fullscreenOffer`). With a finger (`useTouch()`) there are no keyboard keys and
+  no "Keyboard shortcuts"; a narrow window with a mouse gets both. Everything of the corner is at most two taps
+  away: More, then the item. The share panel, the sound settings, the languages and the Home Screen steps open as a
+  page inside More with a "Back" (focus moves to it, and back to the item that opened it).
+- **Share** (`present/nativeShare.ts`): the title and the address of the view, like the share panel's link, sent
+  from inside the tap (browsers want a user gesture). Sent: More closes. Cancelled (`AbortError`): silent, More stays.
+  Impossible after all (`canShare` false, `NotAllowedError`): the share panel instead. The class QR code takes
+  More's place as it takes the panel's (#50), and closing it gives the focus back to More.
+- **For #60:** `MorePanel` is More's content alone (`onClose`, `onQr`), so the bottom sheet can show it as it shows
+  a panel; the popover is just today's container.
+- **A tap on the sky hides the controls** on a touch screen (`$touch`: phones and tablets; the tap's own pointer must
+  not be a mouse), and the next tap anywhere brings them back (Apple's "going full screen"). `scene/BodyPicking.tsx`
+  calls `hideOnSkyTap` when a tap on empty space had no other job: letting go of a second selected body (#47) comes
+  first, and a tap that might have been meant for a body (`nearBody`: the full near miss round a dot, one target
+  radius round a big disc's plain edge) does nothing. `skyTapHides` (pure, unit-tested) also says no while the
+  opening plays or its hints are up, while the hunt's panel is up (the clue is the point), while the quick look asks
+  or plays, when the press closed a menu, a popover or a hint (`pressDismisses`, noted at `pointerdown` in the
+  capture phase, before Mantine closes them), and with the controls already hidden. During a tour it hides; hiding
+  never stops the time or the tour.
+- **The tap that brings them back** (`useSkyTap`, installed by `PresentationLayer`): a capture-phase `click` listener
+  on the window that, while hidden and on a touch screen, takes any tap (`isTapClick`: the travel allowance, the end
+  of a pinch and a focus click are never taps) before the scene's own click, so it never selects or focuses a body
+  and never moves the camera; a drag still turns the view. The "Show the controls" button keeps its own click, and
+  stays for keyboards and screen readers; both say what happened in the live region. While hidden the framing takes
+  the whole canvas (#61), so the planet glides to the middle and back: its angles and its distance as a multiple of
+  the framing never change. A mouse never hides by clicking the sky, and a teacher presenting with hidden controls
+  still clicks planets to fly there.
+- **Tests:** `e2e/phoneTop.spec.ts` (390 x 844 and 360 x 640: one row, More's items, finger sizes, no keys, two taps;
+  the share sheet stubbed, cancelled and missing; an iPhone user agent without the Fullscreen API, and opened from
+  the Home Screen; twenty taps on the sky that hide and restore and never change the camera's angles, its framing
+  multiple or the selection; a hidden tap on Mars or its moons; the deselect that comes first; a tap closing a popover;
+  a tour; the iPad's corner; a laptop that never hides; a narrow laptop window), `skyTap.test.ts`,
+  `fullscreen.test.ts`, `nativeShare.test.ts`, `picking.test.ts` (the disc reach), `e2e/devices.spec.ts`.
 
 ### The way in and the way back (#45)
 
@@ -1919,13 +1977,13 @@ entry, in every locale and reading level, in the same change.
   reader's language, case and accents folded), `/help?topic=<entry | group | controls | about | credits>` scrolls there and
   highlights it (for #44's last step; the shortcut list's link uses `topic=controls`).
 - **One click from every screen, in one place:** `HelpButton` beside the language menu, top right: in the solar
-  system's teacher bar, and `CornerBar` (help + language, fixed top right) on every page without the HUD (dictionary,
+  system's teacher bar (on a phone, More's Help group, #59), and `CornerBar` (help + language, fixed top right) on every page without the HUD (dictionary,
   walk, comparison, not found). A new page renders `<CornerBar />`, and a way back (`useBackToSolarSystem`, #45).
 - **About** (#45): what the start page used to say (the name, "To the stars!", who made it) is the page's "About
   Orbitalia" section (`help.about.*` in `ui.json`), before the credits.
 - **On the scene** the Help button opens the page in one click; its chevron (#30's `IntroMenu`) holds the page again,
   "Play the opening again" and "Show how to move around". `?intro=play` replays the opening (the `opening` entry).
-  On a phone (#58) the two are one button, the menu, whose first item is the page.
+  On a phone both are under More (#59): the page first in its Help group, then the rest of the menu.
 - `?light=flash|delay|beyond` on `/solar_system` (`light/LightLink.tsx`) opens the light panel on that tab, `flash`
   with a flash already sent from the Sun: an instruction only, dropped from the URL like `birthday`.
   `?craft=<spacecraft id>` (`spacecraft/CraftLink.tsx`) selects a spacecraft (#35) and flies to it once its
@@ -1940,7 +1998,8 @@ entry, in every locale and reading level, in the same change.
 Reporting a bug, sending an idea or just a word is welcome, and the app says so without ever interrupting: no
 popups, no prompts, nothing timed. The way in waits where people already look for help.
 
-- **Ways in:** the Help menu on the scene (the chevron: "Send feedback", with the view on screen as `from`), the help
+- **Ways in:** the Help menu on the scene (the chevron, on a phone More: "Send feedback", with the view on screen as
+  `from`), the help
   page (the "Make Orbitalia better" group's entry and the About section, with GitHub and Discussions), one sentence on
   the quick look's last step, the not-found page ("Report a broken link") and the error page
   (`feedback/AppError.tsx`, the router's `defaultErrorComponent`: plain elements, as it may render outside the
@@ -2020,8 +2079,8 @@ rule decides the defaults: **off until asked, never a surprise**.
   recordings bus). Words in `solarSystem.sound.recording.<id>.{title, what}` at every level; each `what` starts
   by saying it is not sound, and the settings popover adds why space is silent (`solarSystem.sound.honest`).
 - **UI**: `SoundControl` (beside the language button: a speaker that toggles, `aria-pressed`, crossed out and grey
-  while off, and a chevron popover with the master switch, volume slider, the two layers and all recordings; on a
-  phone, #58, the two are one button showing the speaker, which opens the popover);
+  while off, and a chevron popover with the master switch, volume slider, the two layers and all recordings
+  (`SoundSettings`); on a phone, #59, both are under More: a "Sound on" switch, and the same settings as a page);
   `BodyRecording` in the body card under the facts (Listen/Stop, the explanation and the credit with the licence
   linked to its source, always visible so nothing depends on hearing it).
 
@@ -2072,7 +2131,8 @@ import { Hint, hintKey } from "@/primitives/hint"
   play / Now / the speed presets, the point-of-view menu, the Present, Share and Layers buttons, the projector and
   high-contrast switches, the postcard's switches and button, the birthday, hunt and light buttons, the hunt's difficulty
   choice, speakers and certificate (#52), the two "stop the flash" buttons (#38), the sound toggle and its settings button (#32), the sky-tonight launcher and "Show me in space" (#36), the Help menu (#30), the opening's pause and Next (#49), the spacecraft menu, its two switches and "Show" (#35), "Follow" (card and list, with a disabled `reason`),
-  "Watch" and the followed spot (#57), the tours menu and the tour card's autoplay toggle (#28), the Help button (every page) and its "more" chevron (#43), Overview, and Back (#46, with a disabled `reason`). The tour card's share button keeps its Mantine `Tooltip`: it doubles as the "Link copied" confirmation. Plain tabs (the light
+  "Watch" and the followed spot (#57), the tours menu and the tour card's autoplay toggle (#28), the Help button (every page) and its "more" chevron (#43), Overview, and Back (#46, with a disabled `reason`), More
+  and its Share, "Link and QR code", sound, language, hiding, presenting and Home Screen items (#59). The tour card's share button keeps its Mantine `Tooltip`: it doubles as the "Link copied" confirmation. Plain tabs (the light
   panel's, the birthday panel's) have none, by design. A switch that already shows a Mantine `description` under
   its label is explained in place; wrap it in `<Hint>` only to add something the description does not say (the
   projector switch) or a disabled `reason` (high contrast), as the sound panel's switches show.

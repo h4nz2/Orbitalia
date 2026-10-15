@@ -1,12 +1,14 @@
-import { Suspense, lazy, useEffect, useRef, useState } from "react"
+import { Suspense, lazy, useCallback, useEffect, useRef, useState } from "react"
 import { Button, Kbd, Modal, Table, Text, VisuallyHidden } from "@mantine/core"
 import { Link } from "@tanstack/react-router"
 import { IconAdjustments } from "@tabler/icons-react"
 
+import { useTouch } from "@/hooks/useSizeClass"
 import { useI18n, type MessageKey } from "@/i18n"
 import { usePresentationStore } from "@/store/presentation"
 
 import { setChromeHidden } from "./commands"
+import { useSkyTap } from "./skyTap"
 import { usePresentationDocument } from "./usePresentationDocument"
 import { usePresenterKeys } from "./usePresenterKeys"
 
@@ -145,11 +147,12 @@ function KeyHelp() {
  * While the controls are hidden: a hint and a "Show the controls" button, in
  * view for a few seconds after hiding and whenever the pointer moves (or the
  * button has keyboard focus), so a touch screen or a mouse can always bring
- * the controls back. The pointer itself is hidden while idle, so it does not
+ * the controls back (on a touch screen a tap anywhere does too, #59). The pointer itself is hidden while idle, so it does not
  * sit in the middle of the projection.
  */
 function ChromeRestore() {
 	const { t } = useI18n()
+	const touch = useTouch()
 	const hidden = usePresentationStore((state) => state.chromeHidden)
 	const [active, setActive] = useState(true)
 	const timer = useRef<ReturnType<typeof setTimeout> | undefined>(undefined)
@@ -182,7 +185,11 @@ function ChromeRestore() {
 	return (
 		<div className={classes.restore} data-active={active || undefined}>
 			<Text className={classes.restoreHint} size="sm">
-				{t("solarSystem.present.chrome.hint")}
+				{t(
+					touch
+						? "solarSystem.present.chrome.hintTouch"
+						: "solarSystem.present.chrome.hint",
+				)}
 			</Text>
 			<Button
 				color="orange"
@@ -223,12 +230,29 @@ function LiveRegion() {
  * Teacher and presentation mode (#29), the parts outside the HUD: the
  * presenter's keys, the document attributes the presentation styles key on,
  * the live region, the shortcut list, the class QR code and the way back
- * from hidden controls. Rendered once by the solar system page, outside the
+ * from hidden controls (the button, H, and on a touch screen a tap, #59). Rendered once by the solar system page, outside the
  * HUD, so it stays when the HUD is hidden.
  */
 export function PresentationLayer() {
+	const { t } = useI18n()
 	usePresenterKeys()
 	usePresentationDocument()
+	// a tap on the sky hides the controls on a touch screen, the next tap brings them back (#59)
+	useSkyTap(
+		useCallback(
+			(hidden: boolean) =>
+				usePresentationStore
+					.getState()
+					.announce(
+						t(
+							hidden
+								? "solarSystem.present.announce.chromeHiddenTouch"
+								: "solarSystem.present.announce.chromeShown",
+						),
+					),
+			[t],
+		),
+	)
 	const qrOpen = usePresentationStore((state) => state.qrOpen)
 	// hidden controls never outlive the page: coming back always shows them
 	useEffect(

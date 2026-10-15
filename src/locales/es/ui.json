@@ -1031,7 +1031,9 @@
 			"chrome": {
 				"show": "Mostrar los controles",
 				"hint": "Controles ocultos: pulsa H o usa el botón para recuperarlos",
-				"hint@simple": "Los botones están ocultos. Pulsa H para que vuelvan."
+				"hint@simple": "Los botones están ocultos. Pulsa H para que vuelvan.",
+				"hintTouch": "Controles ocultos: toca en cualquier sitio para recuperarlos",
+				"hintTouch@simple": "Los botones están ocultos. Toca para que vuelvan."
 			},
 			"help": {
 				"title": "Atajos de teclado",
@@ -1079,6 +1081,7 @@
 				"labelsOff": "Nombres ocultos",
 				"lightStopped": "Destello de luz detenido",
 				"chromeHidden": "Controles ocultos. Pulsa H para volver a mostrarlos.",
+				"chromeHiddenTouch": "Controles ocultos. Toca la pantalla para volver a mostrarlos.",
 				"chromeShown": "Controles visibles",
 				"projectorOn": "Texto grande activado",
 				"projectorOff": "Texto grande desactivado",
@@ -1099,6 +1102,34 @@
 			},
 			"layersHint": "Lo que muestra la escena: órbitas, nombres, lunas, marcadores e iluminación.",
 			"layersHint@simple": "Elige lo que ves en la imagen."
+		},
+		"more": {
+			"button": "Más",
+			"title": "Más",
+			"hint": "Compartir esta vista, el sonido, el idioma, la ayuda, ocultar los controles y los ajustes para presentar a una clase.",
+			"hint@simple": "Compartir, sonido, tu idioma, ayuda y más.",
+			"back": "Atrás",
+			"backLabel": "Volver a Más",
+			"shareHint": "Envía el enlace a esta vista directamente desde tu móvil: a un chat, por correo o a alguien cercano.",
+			"shareHint@simple": "Manda esta vista a un amigo.",
+			"linkAndQr": "Enlace y código QR",
+			"language": "Idioma y nivel de lectura",
+			"languageHint": "Lee Orbitalia en español, inglés, alemán, checo o francés, con palabras sencillas, en nivel estándar o avanzado.",
+			"languageHint@simple": "Elige tu idioma, y Sencillo para palabras fáciles.",
+			"homeScreen": {
+				"button": "Pantalla completa",
+				"title": "Pantalla completa en un iPhone",
+				"hint": "En un iPhone, Orbitalia llena toda la pantalla si la abres desde la pantalla de inicio. Aquí se explica cómo.",
+				"hint@simple": "Cómo llenar toda la pantalla con el espacio.",
+				"intro": "Safari en un iPhone no puede mostrar una página web en pantalla completa, pero Orbitalia abierta desde tu pantalla de inicio sí.",
+				"intro@simple": "Tu iPhone muestra Orbitalia en toda la pantalla solo si la abres desde la pantalla de inicio.",
+				"share": "En Safari, abre el menú Compartir: el cuadrado con una flecha (en versiones más nuevas, dentro de «…»).",
+				"share@simple": "En Safari, pulsa Compartir: el cuadrado con una flecha.",
+				"add": "Elige «Añadir a pantalla de inicio» y luego «Añadir».",
+				"add@simple": "Pulsa «Añadir a pantalla de inicio».",
+				"open": "Abre Orbitalia desde su nuevo icono: el espacio llena toda la pantalla.",
+				"open@simple": "Abre Orbitalia con el nuevo icono."
+			}
 		},
 		"light": {
 			"open": "Velocidad de la luz",
@@ -1607,6 +1638,8 @@
 			"scaleHint@simple": "Muestra los planetas a su tamaño real, o lo bastante grandes para verlos. El panel te dice cuánto más grandes se dibujan.",
 			"hideHint": "Solo el sistema solar queda en la pantalla: para mirar, para una foto o para un proyector. La tecla H o «Mostrar los controles» los devuelve.",
 			"hideHint@simple": "Esconde todos los botones para ver solo el espacio. La tecla H o «Mostrar los controles» los devuelve.",
+			"hideHintTouch": "Solo el sistema solar queda en la pantalla: para mirar, para una foto o para un proyector. Tocar el cielo vacío hace lo mismo; tocar en cualquier sitio devuelve los controles.",
+			"hideHintTouch@simple": "Esconde todos los botones para ver solo el espacio. También puedes tocar el cielo. Toca otra vez para que vuelvan.",
 			"time": "Tiempo",
 			"timeButton": "Tiempo y velocidad: {speed}",
 			"timeHint": "Lo rápido que pasa el tiempo, volver a ahora y lo rápido que giran los planetas. + y − cambian la velocidad desde el teclado.",
@@ -1668,14 +1701,14 @@
 				"teachers": {
 					"title": "Para docentes: Presentar",
 					"title@simple": "Para docentes",
-					"text": "Presentar agranda el texto para un proyector, añade alto contraste y teclas para un mando de presentaciones, y oculta los controles con H. Compartir da a la clase un enlace o un código QR a esta misma vista.",
-					"text@simple": "Docentes: pulsad Presentar para mostrar el sistema solar a la clase en una pantalla grande."
+					"text": "Presentar agranda el texto para un proyector, añade alto contraste y teclas para un mando de presentaciones, y oculta los controles con H. Compartir da a la clase un enlace o un código QR a esta misma vista. En un móvil, los dos están en Más.",
+					"text@simple": "Docentes: pulsad Presentar (en un móvil, Más) para mostrar el sistema solar a la clase en una pantalla grande."
 				},
 				"more": {
 					"title": "Hay más",
 					"title@simple": "Hay más",
-					"text": "Cada función, cómo se usa y un enlace para probarla están en la página de ayuda: pulsa Ayuda. ¿Algo no va bien o tienes una idea? «Enviar comentarios», en la flecha junto a Ayuda (en un móvil, en el propio botón Ayuda), llega a quienes hacen Orbitalia. ¡Que disfrutes explorando!",
-					"text@simple": "Hay muchas más cosas por descubrir. El botón Ayuda te lo cuenta todo. ¿Algo se ha roto o tienes una idea? Cuéntanoslo con «Dinos qué piensas», junto a Ayuda (en un móvil, dentro de Ayuda). ¡Diviértete!"
+					"text": "Cada función, cómo se usa y un enlace para probarla están en la página de ayuda: pulsa Ayuda (en un móvil, dentro de Más). ¿Algo no va bien o tienes una idea? «Enviar comentarios», en la flecha junto a Ayuda (en un móvil, dentro de Más), llega a quienes hacen Orbitalia. ¡Que disfrutes explorando!",
+					"text@simple": "Hay muchas más cosas por descubrir. El botón Ayuda (en un móvil, dentro de Más) te lo cuenta todo. ¿Algo se ha roto o tienes una idea? Cuéntanoslo con «Dinos qué piensas», junto a Ayuda (en un móvil, dentro de Más). ¡Diviértete!"
 				}
 			}
 		}

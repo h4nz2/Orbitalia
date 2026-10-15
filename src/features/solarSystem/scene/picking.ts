@@ -170,6 +170,10 @@ export function pickBody(
 /**
  * Whether the ray passes within `reachPx` of any shown body's drawn edge: a
  * click there is a near miss, not a click on empty space.
+ *
+ * `discs` gives a body drawn at least `minRadiusPx` across a reach of its own:
+ * the edge of a planet filling the view is plain to see, so a tap well clear
+ * of it is a tap on the sky (#59), while a dot is still easy to miss.
  */
 export function isNearAnyBody(
 	frame: PickFrame,
@@ -178,6 +182,7 @@ export function isNearAnyBody(
 	pxPerUnit: number,
 	reachPx: number,
 	isShown: (i: number) => boolean,
+	discs?: { minRadiusPx: number; reachPx: number },
 ): boolean {
 	for (let i = 0; i < frame.bodies.length; i++) {
 		if (!isShown(i)) continue
@@ -187,7 +192,11 @@ export function isNearAnyBody(
 		const perp = Math.sqrt(Math.max(0, centre.lengthSq() - along * along))
 		const radius = frame.renderRadius(i)
 		if (perp <= radius) return true
-		if (((perp - radius) / along) * pxPerUnit <= reachPx) return true
+		const reach =
+			discs !== undefined && (radius / along) * pxPerUnit >= discs.minRadiusPx
+				? discs.reachPx
+				: reachPx
+		if (((perp - radius) / along) * pxPerUnit <= reach) return true
 	}
 	return false
 }

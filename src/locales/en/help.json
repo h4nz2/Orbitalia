@@ -77,14 +77,14 @@
 					"To stay on a caption, press Space, tap the scene or press the pause button; do it again to carry on. While it is paused you can turn the view without ending it.",
 					"“Next” (or the right arrow key) goes straight on to the next part; while paused, one part at a time.",
 					"After the first opening the app asks once whether you want a quick look at what you can do (see “A quick look”).",
-					"To see it again, open the arrow next to Help (on a phone, Help itself) and choose “Play the opening again”.",
+					"To see it again, open the arrow next to Help (on a phone, More) and choose “Play the opening again”.",
 					"“Show how to move around” in the same menu brings back the hints for dragging, zooming and clicking."
 				],
 				"simple": [
 					"It plays the first time you come.",
 					"Press Space or tap the picture to stop it. Do it again to go on.",
 					"“Next” shows the next part.",
-					"To watch it again, press the arrow next to Help (on a phone, Help itself), then “Play the opening again”."
+					"To watch it again, press the arrow next to Help (on a phone, More), then “Watch the start again”."
 				]
 			}
 		},
@@ -105,12 +105,12 @@
 				"standard": [
 					"On your first visit, after the opening, answer “Yes, show me”. It is asked only once in this browser, and never over a shared link or while presenting.",
 					"It moves on by itself; Back, Next and the arrow keys step it, and “Skip the rest” or × leave it at any time, back to a calm view.",
-					"To see it again, open the arrow next to Help (on a phone, Help itself) and choose “Take the quick look again”."
+					"To see it again, open the arrow next to Help (on a phone, More) and choose “Take the quick look again”."
 				],
 				"simple": [
 					"After the opening, press “Yes, show me”.",
 					"Watch, or press Next.",
-					"To see it again, press the arrow next to Help (on a phone, Help itself)."
+					"To see it again, press the arrow next to Help (on a phone, More)."
 				]
 			}
 		},
@@ -240,12 +240,14 @@
 					"Always on screen: the arrow back to where you just were, the house button (back to the whole system), the name of the world in view with its card, and the time bar. The arrow on the card opens its facts, moons and stories.",
 					"In the time bar: play, pause and the date; the button with the speed (like 1x) opens Now, the speeds and the spin.",
 					"Tours, Layers (what is drawn), Scale (how big and how far) and Tools (the speed of light, tonight's sky, spacecraft, your birthday, the scavenger hunt, side by side, walking the solar system, the picture dictionary and taking a picture) open everything else. One panel opens at a time; × closes it.",
-					"Buttons for presenting and settings: Present, Share, the crossed-out eye that hides everything (H brings it back), sound, Help and the language."
+					"Buttons for presenting and settings: Present, Share, the crossed-out eye that hides everything (H brings it back), sound, Help and the language. On a phone they are all under More.",
+					"On a phone or tablet, a tap on the empty sky hides every control, and the next tap anywhere brings them back; it never moves the view."
 				],
 				"simple": [
 					"The Back arrow goes back one step. The house button next to it takes you back to all the planets.",
 					"Press Layers, Scale or Tools to find more.",
-					"Press the crossed-out eye to hide all the buttons. Press H to get them back."
+					"To hide all the buttons, tap the empty sky on a phone or tablet, or press the crossed-out eye. Tap again, or press H, to get them back.",
+					"On a phone, press More to share, for sound, for help and for your language."
 				]
 			}
 		},
@@ -600,12 +602,12 @@
 			},
 			"how": {
 				"standard": [
-					"Sound is always off when the app opens. Press the speaker button, or M, to turn it on. On a phone, the speaker opens the sound settings instead: switch on “Sound on” there.",
-					"The arrow next to it (on a phone, the speaker itself) opens the volume, the background hum, the motion sounds and “Listen to space”.",
+					"Sound is always off when the app opens. Press the speaker button, or M, to turn it on. On a phone, open More and switch on “Sound on”.",
+					"The arrow next to it (on a phone, “Sound settings” under More) opens the volume, the background hum, the motion sounds and “Listen to space”.",
 					"Fly to the Sun, Earth, Jupiter or Saturn and play its recording from the card; the text says what you hear."
 				],
 				"simple": [
-					"Press the speaker button. On a phone, also switch on “Sound on”.",
+					"Press the speaker button. On a phone, press More, then “Sound on”.",
 					"Fly to Jupiter.",
 					"Press play on its card and listen."
 				]
@@ -626,11 +628,11 @@
 			},
 			"how": {
 				"standard": [
-					"Open the language menu (its button shows EN, DE, …).",
+					"Open the language menu (its button shows EN, DE, …; on a phone, it is under More).",
 					"Pick a language and a reading level; every page and link follows."
 				],
 				"simple": [
-					"Click the button with EN on it.",
+					"Click the button with EN on it. On a phone, press More first.",
 					"Choose your language, and choose Simple."
 				]
 			}
@@ -1044,8 +1046,8 @@
 			"what": "Larger text, names and buttons, readable from the back of the room.",
 			"why": "A laptop screen on a projector is too small to read; projector mode fixes that with one key.",
 			"how": [
-				"Open Present and choose “Large text for a projector”, or press P.",
-				"Press F for full screen.",
+				"Open Present (on a phone, More) and choose “Large text for a projector”, or press P.",
+				"Press F, or choose “Full screen” in the same menu. An iPhone cannot go full screen in Safari: More explains how to add Orbitalia to the Home Screen, which opens it on the whole screen.",
 				"Everything else keeps working: keys, links and the controls."
 			]
 		},
@@ -1054,7 +1056,7 @@
 			"what": "Stronger colours and outlines for washed-out projectors and bright rooms.",
 			"why": "A pale beamer in daylight hides grey text and faint lines; high contrast keeps everything legible.",
 			"how": [
-				"Open Present and choose “High contrast”, or press C.",
+				"Open Present (on a phone, More) and choose “High contrast”, or press C.",
 				"It also switches on by itself when the computer asks for more contrast."
 			]
 		},
@@ -1073,8 +1075,9 @@
 			"what": "Take every button and panel off the screen, so only space is left.",
 			"why": "For looking, for screenshots and for a projector: the class sees the solar system, not the interface.",
 			"how": [
-				"Press H, or the crossed-out eye (it is also in the Present menu). It works with or without presenting.",
-				"Press H again, or move the mouse and click “Show the controls”, to bring them back. Keys keep working while hidden."
+				"Press H, or the crossed-out eye (it is also in the Present menu; on a phone, under More). It works with or without presenting.",
+				"On a phone or tablet, tap the empty sky. Where that tap already has a job, such as letting go of a selected world, it does that instead.",
+				"Press H again, or move the mouse and click “Show the controls”, to bring them back; on a phone or tablet, tap anywhere. That tap only brings them back: it never picks a world or moves the view. Keys keep working while hidden."
 			]
 		},
 		"prepareLesson": {
@@ -1092,7 +1095,7 @@
 			"what": "A link to exactly what is on screen, with a copy button and a QR code big enough to scan from the back row.",
 			"why": "Students open the same view on their own tablets and explore from there, with no typing.",
 			"how": [
-				"Open Share.",
+				"Open Share. On a phone, open More: “Share” sends the link straight to a chat or a mail, and “Link and QR code” opens this panel.",
 				"Copy the link, or press “Show the QR code to the class”."
 			]
 		},
@@ -1199,12 +1202,12 @@
 			},
 			"how": {
 				"standard": [
-					"On the solar system, open the arrow next to Help (on a phone, Help itself) and choose “Send feedback”: the view you are looking at goes with it, if you like.",
+					"On the solar system, open the arrow next to Help (on a phone, More) and choose “Send feedback”: the view you are looking at goes with it, if you like.",
 					"Choose what it is about, write a few words and press “Send”. Your email is optional: give it only if you would like an answer.",
 					"With a GitHub account you can also report it on GitHub or talk with others in GitHub Discussions; the page links to both."
 				],
 				"simple": [
-					"Press the arrow next to Help (on a phone, Help itself), then “Tell us what you think”.",
+					"Press the arrow next to Help (on a phone, More), then “Tell us what you think”.",
 					"Write what is broken, or your idea.",
 					"Press “Send”. You do not need to give your email."
 				]
@@ -1303,31 +1306,31 @@
 		"hide": {
 			"action": "Hide or show the controls",
 			"mouse": "The crossed-out eye",
-			"touch": "The crossed-out eye",
+			"touch": "Tap the empty sky; tap anywhere to bring them back",
 			"keys": "H"
 		},
 		"fullscreen": {
 			"action": "Full screen on or off",
 			"mouse": "Present → Full screen",
-			"touch": "Present → Full screen",
+			"touch": "Present → Full screen (on a phone, under More)",
 			"keys": "F"
 		},
 		"projector": {
 			"action": "Large text for a projector",
 			"mouse": "Present → Large text",
-			"touch": "Present → Large text",
+			"touch": "Present → Large text (on a phone, under More)",
 			"keys": "P"
 		},
 		"contrast": {
 			"action": "High contrast on or off",
 			"mouse": "Present → High contrast",
-			"touch": "Present → High contrast",
+			"touch": "Present → High contrast (on a phone, under More)",
 			"keys": "C"
 		},
 		"sound": {
 			"action": "Sound on or off (always off when the app opens)",
 			"mouse": "The speaker button",
-			"touch": "The speaker button (on a phone: the speaker, then “Sound on”)",
+			"touch": "The speaker button (on a phone: More → Sound on)",
 			"keys": "M"
 		},
 		"shortcuts": {

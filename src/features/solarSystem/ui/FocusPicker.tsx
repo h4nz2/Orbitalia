@@ -17,6 +17,7 @@ import {
 	sun,
 	type Body,
 } from "@/data"
+import { usePhone } from "@/hooks/useSizeClass"
 import { formatSize, isSimple, useI18n, type I18n } from "@/i18n"
 import { bodyName } from "@/i18n/bodies"
 import { getSpacecraftText } from "@/i18n/spacecraft"
@@ -110,6 +111,9 @@ const FocusPicker = () => {
 	const craftName =
 		followed === null ? null : getSpacecraftText(followed, i18n).name
 	const data = useMemo(() => focusOptions(chain, t), [chain, t])
+	// on a phone the name shares the one top row with More (#59): the crosshair
+	// gives its room to the name; the follow mark (#57) says something and stays
+	const phone = usePhone()
 	useWindowKeydown(handleKeyDown)
 
 	const renderOption = ({
@@ -155,7 +159,9 @@ const FocusPicker = () => {
 				placeholder={craftName ?? t("solarSystem.picker.placeholder")}
 				leftSection={
 					craftName === null ? (
-						<IconFocus2 size={16} />
+						phone ? undefined : (
+							<IconFocus2 size={16} />
+						)
 					) : (
 						<IconCurrentLocation
 							size={16}

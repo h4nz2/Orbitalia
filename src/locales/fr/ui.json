@@ -1031,7 +1031,9 @@
 			"chrome": {
 				"show": "Afficher les commandes",
 				"hint": "Commandes masquées : appuie sur H ou utilise le bouton pour les faire revenir",
-				"hint@simple": "Les boutons sont cachés. Appuie sur H pour les retrouver."
+				"hint@simple": "Les boutons sont cachés. Appuie sur H pour les retrouver.",
+				"hintTouch": "Commandes masquées : touche n’importe où pour les faire revenir",
+				"hintTouch@simple": "Les boutons sont cachés. Touche l’écran pour les retrouver."
 			},
 			"help": {
 				"title": "Raccourcis clavier",
@@ -1079,6 +1081,7 @@
 				"labelsOff": "Noms masqués",
 				"lightStopped": "Éclair de lumière arrêté",
 				"chromeHidden": "Commandes masquées. Appuie sur H pour les réafficher.",
+				"chromeHiddenTouch": "Commandes masquées. Touche l’écran pour les réafficher.",
 				"chromeShown": "Commandes affichées",
 				"projectorOn": "Grand texte activé",
 				"projectorOff": "Grand texte désactivé",
@@ -1099,6 +1102,34 @@
 			},
 			"layersHint": "Ce que montre la scène : orbites, noms, lunes, repères et éclairage.",
 			"layersHint@simple": "Choisis ce que tu vois dans l’image."
+		},
+		"more": {
+			"button": "Plus",
+			"title": "Plus",
+			"hint": "Partager cette vue, le son, la langue, l’aide, masquer les commandes et les réglages pour présenter à une classe.",
+			"hint@simple": "Partager, le son, ta langue, l’aide et plus encore.",
+			"back": "Retour",
+			"backLabel": "Retour à Plus",
+			"shareHint": "Envoie le lien vers cette vue directement depuis ton téléphone : dans une discussion, par e-mail ou à quelqu’un à côté.",
+			"shareHint@simple": "Envoie cette vue à un ami.",
+			"linkAndQr": "Lien et QR code",
+			"language": "Langue et niveau de lecture",
+			"languageHint": "Lis Orbitalia en français, anglais, allemand, tchèque ou espagnol, avec des mots simples, au niveau standard ou avancé.",
+			"languageHint@simple": "Choisis ta langue, et Simple pour des mots faciles.",
+			"homeScreen": {
+				"button": "Plein écran",
+				"title": "Plein écran sur un iPhone",
+				"hint": "Sur un iPhone, Orbitalia remplit tout l’écran quand tu l’ouvres depuis l’écran d’accueil. Voici comment.",
+				"hint@simple": "Comment remplir tout l’écran avec l’espace.",
+				"intro": "Safari sur iPhone ne peut pas afficher une page web en plein écran, mais Orbitalia ouvert depuis ton écran d’accueil, si.",
+				"intro@simple": "Ton iPhone montre Orbitalia sur tout l’écran seulement si tu l’ouvres depuis l’écran d’accueil.",
+				"share": "Dans Safari, ouvre le menu Partager : le carré avec une flèche (dans les versions récentes, sous « … »).",
+				"share@simple": "Dans Safari, appuie sur Partager : le carré avec une flèche.",
+				"add": "Choisis « Sur l’écran d’accueil », puis « Ajouter ».",
+				"add@simple": "Appuie sur « Sur l’écran d’accueil ».",
+				"open": "Ouvre Orbitalia avec sa nouvelle icône : l’espace remplit tout l’écran.",
+				"open@simple": "Ouvre Orbitalia avec la nouvelle icône."
+			}
 		},
 		"light": {
 			"open": "Vitesse de la lumière",
@@ -1607,6 +1638,8 @@
 			"scaleHint@simple": "Montre les planètes à leur vraie taille, ou assez grandes pour les voir. Le panneau te dit combien elles sont dessinées plus grandes.",
 			"hideHint": "Seul le système solaire reste à l’écran : pour regarder, pour une photo ou pour un projecteur. La touche H ou « Afficher les commandes » les fait revenir.",
 			"hideHint@simple": "Cache tous les boutons pour ne voir que l’espace. La touche H ou « Afficher les commandes » les fait revenir.",
+			"hideHintTouch": "Seul le système solaire reste à l’écran : pour regarder, pour une photo ou pour un projecteur. Toucher le ciel vide fait pareil ; toucher n’importe où fait revenir les commandes.",
+			"hideHintTouch@simple": "Cache tous les boutons pour ne voir que l’espace. Tu peux aussi toucher le ciel. Touche encore pour les retrouver.",
 			"time": "Temps",
 			"timeButton": "Temps et vitesse : {speed}",
 			"timeHint": "La vitesse du temps, le retour à maintenant et la vitesse de rotation des planètes. + et − changent la vitesse au clavier.",
@@ -1668,14 +1701,14 @@
 				"teachers": {
 					"title": "Pour les enseignants : Présenter",
 					"title@simple": "Pour les enseignants",
-					"text": "Présenter agrandit le texte pour un projecteur, ajoute un contraste élevé et des touches pour une télécommande de présentation, et cache les commandes avec H. Partager donne à la classe un lien ou un QR code vers exactement cette vue.",
-					"text@simple": "Enseignants : appuyez sur Présenter pour montrer le système solaire à une classe sur un grand écran."
+					"text": "Présenter agrandit le texte pour un projecteur, ajoute un contraste élevé et des touches pour une télécommande de présentation, et cache les commandes avec H. Partager donne à la classe un lien ou un QR code vers exactement cette vue. Sur un téléphone, les deux sont sous Plus.",
+					"text@simple": "Enseignants : appuyez sur Présenter (sur un téléphone, Plus) pour montrer le système solaire à une classe sur un grand écran."
 				},
 				"more": {
 					"title": "Il y a encore plus",
 					"title@simple": "Il y a encore plus",
-					"text": "Chaque fonction, comment l’utiliser et un lien pour l’essayer, se trouve sur la page d’aide : appuie sur Aide. Quelque chose ne va pas, ou tu as une idée ? « Envoyer un avis », sous la flèche à côté d’Aide (sur un téléphone, sous Aide lui-même), arrive aux personnes qui font Orbitalia. Bonne exploration !",
-					"text@simple": "Il y a encore plein de choses à découvrir. Le bouton Aide t’explique tout. Quelque chose est cassé, ou tu as une idée ? Dis-le-nous avec « Dis-nous ce que tu en penses », à côté d’Aide (sur un téléphone, sous Aide). Amuse-toi bien !"
+					"text": "Chaque fonction, comment l’utiliser et un lien pour l’essayer, se trouve sur la page d’aide : appuie sur Aide (sur un téléphone, sous Plus). Quelque chose ne va pas, ou tu as une idée ? « Envoyer un avis », sous la flèche à côté d’Aide (sur un téléphone, sous Plus), arrive aux personnes qui font Orbitalia. Bonne exploration !",
+					"text@simple": "Il y a encore plein de choses à découvrir. Le bouton Aide (sur un téléphone, sous Plus) t’explique tout. Quelque chose est cassé, ou tu as une idée ? Dis-le-nous avec « Dis-nous ce que tu en penses », à côté d’Aide (sur un téléphone, sous Plus). Amuse-toi bien !"
 				}
 			}
 		}

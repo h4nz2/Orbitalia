@@ -1031,7 +1031,9 @@
 			"chrome": {
 				"show": "Bedienelemente zeigen",
 				"hint": "Bedienelemente ausgeblendet: Drücke H oder den Knopf, um sie zurückzuholen",
-				"hint@simple": "Die Knöpfe sind versteckt. Drücke H, um sie zurückzuholen."
+				"hint@simple": "Die Knöpfe sind versteckt. Drücke H, um sie zurückzuholen.",
+				"hintTouch": "Bedienelemente ausgeblendet: Tippe irgendwohin, um sie zurückzuholen",
+				"hintTouch@simple": "Die Knöpfe sind versteckt. Tippe, dann kommen sie zurück."
 			},
 			"help": {
 				"title": "Tastenkürzel",
@@ -1079,6 +1081,7 @@
 				"labelsOff": "Namen ausgeblendet",
 				"lightStopped": "Lichtblitz gestoppt",
 				"chromeHidden": "Bedienelemente ausgeblendet. Drücke H, um sie wieder zu zeigen.",
+				"chromeHiddenTouch": "Bedienelemente ausgeblendet. Tippe auf den Bildschirm, um sie wieder zu zeigen.",
 				"chromeShown": "Bedienelemente eingeblendet",
 				"projectorOn": "Große Schrift an",
 				"projectorOff": "Große Schrift aus",
@@ -1099,6 +1102,34 @@
 			},
 			"layersHint": "Was die Szene zeigt: Umlaufbahnen, Namen, Monde, Markierungen und Beleuchtung.",
 			"layersHint@simple": "Wähle, was du im Bild siehst."
+		},
+		"more": {
+			"button": "Mehr",
+			"title": "Mehr",
+			"hint": "Diese Ansicht teilen, Ton, Sprache, Hilfe, die Bedienelemente ausblenden und die Einstellungen zum Präsentieren vor einer Klasse.",
+			"hint@simple": "Teilen, Ton, deine Sprache, Hilfe und mehr.",
+			"back": "Zurück",
+			"backLabel": "Zurück zu „Mehr“",
+			"shareHint": "Schick den Link zu dieser Ansicht direkt vom Handy: in einen Chat, per Mail oder an jemanden in der Nähe.",
+			"shareHint@simple": "Schick diese Ansicht an jemanden, den du magst.",
+			"linkAndQr": "Link und QR-Code",
+			"language": "Sprache und Lesestufe",
+			"languageHint": "Lies Orbitalia auf Deutsch, Englisch, Tschechisch, Spanisch oder Französisch, in einfachen Worten, normal oder für Fortgeschrittene.",
+			"languageHint@simple": "Wähl deine Sprache, und „Einfach“ für leichte Wörter.",
+			"homeScreen": {
+				"button": "Vollbild",
+				"title": "Vollbild auf dem iPhone",
+				"hint": "Auf dem iPhone füllt Orbitalia den ganzen Bildschirm, wenn du es vom Home-Bildschirm aus öffnest. Hier steht, wie.",
+				"hint@simple": "So füllt der Weltraum den ganzen Bildschirm.",
+				"intro": "Safari kann auf dem iPhone keine Webseite im Vollbild zeigen, Orbitalia vom Home-Bildschirm aus aber schon.",
+				"intro@simple": "Dein iPhone zeigt Orbitalia nur dann auf dem ganzen Bildschirm, wenn du es vom Home-Bildschirm aus öffnest.",
+				"share": "Öffne in Safari das Teilen-Menü: das Quadrat mit dem Pfeil (in neueren Versionen unter „…“).",
+				"share@simple": "Drück in Safari auf „Teilen“: das Quadrat mit dem Pfeil.",
+				"add": "Wähle „Zum Home-Bildschirm“ und dann „Hinzufügen“.",
+				"add@simple": "Drück auf „Zum Home-Bildschirm“.",
+				"open": "Öffne Orbitalia über sein neues Symbol: Der Weltraum füllt den ganzen Bildschirm.",
+				"open@simple": "Öffne Orbitalia mit dem neuen Symbol."
+			}
 		},
 		"light": {
 			"open": "Lichtgeschwindigkeit",
@@ -1607,6 +1638,8 @@
 			"scaleHint@simple": "Zeig die Planeten in echter Größe oder groß genug zum Sehen. Das Feld sagt dir, wie viel größer sie gezeichnet sind.",
 			"hideHint": "Nur das Sonnensystem bleibt auf dem Bildschirm: zum Schauen, für ein Bild oder für den Beamer. H oder „Bedienelemente zeigen“ holt sie zurück.",
 			"hideHint@simple": "Versteck alle Knöpfe, damit du nur den Weltraum siehst. H oder „Bedienelemente zeigen“ holt sie zurück.",
+			"hideHintTouch": "Nur das Sonnensystem bleibt auf dem Bildschirm: zum Schauen, für ein Bild oder für den Beamer. Ein Tipp auf den leeren Himmel macht dasselbe; ein Tipp irgendwohin holt die Bedienelemente zurück.",
+			"hideHintTouch@simple": "Versteck alle Knöpfe, damit du nur den Weltraum siehst. Ein Tipp auf den Himmel geht auch. Tippe noch mal, dann kommen sie zurück.",
 			"time": "Zeit",
 			"timeButton": "Zeit und Geschwindigkeit: {speed}",
 			"timeHint": "Wie schnell die Zeit läuft, zurück zu jetzt, und wie schnell sich die Planeten drehen. + und − ändern die Geschwindigkeit über die Tastatur.",
@@ -1668,14 +1701,14 @@
 				"teachers": {
 					"title": "Für Lehrkräfte: Präsentieren",
 					"title@simple": "Für Lehrkräfte",
-					"text": "„Präsentieren“ macht die Schrift groß für den Beamer, bietet hohen Kontrast und Tasten für einen Presenter und blendet mit H die Bedienelemente aus. „Teilen“ gibt der Klasse einen Link oder QR-Code zu genau dieser Ansicht.",
-					"text@simple": "Lehrkräfte: Drück auf „Präsentieren“, um das Sonnensystem einer Klasse auf einem großen Bildschirm zu zeigen."
+					"text": "„Präsentieren“ macht die Schrift groß für den Beamer, bietet hohen Kontrast und Tasten für einen Presenter und blendet mit H die Bedienelemente aus. „Teilen“ gibt der Klasse einen Link oder QR-Code zu genau dieser Ansicht. Auf dem Handy stehen beide unter „Mehr“.",
+					"text@simple": "Lehrkräfte: Drück auf „Präsentieren“ (auf dem Handy „Mehr“), um das Sonnensystem einer Klasse auf einem großen Bildschirm zu zeigen."
 				},
 				"more": {
 					"title": "Es gibt noch mehr",
 					"title@simple": "Es gibt noch mehr",
-					"text": "Jede Funktion, wie man sie benutzt, mit einem Link zum Ausprobieren, steht auf der Hilfeseite: Drück auf „Hilfe“. Stimmt etwas nicht, oder hast du eine Idee? „Feedback senden“ unter dem Pfeil neben „Hilfe“ (auf dem Handy unter „Hilfe“ selbst) erreicht die Leute, die Orbitalia machen. Viel Spaß beim Entdecken!",
-					"text@simple": "Es gibt noch viel mehr zu entdecken. Der Knopf „Hilfe“ erklärt dir alles. Ist etwas kaputt, oder hast du eine Idee? Sag es uns mit „Sag uns deine Meinung“ neben „Hilfe“ (auf dem Handy unter „Hilfe“). Viel Spaß!"
+					"text": "Jede Funktion, wie man sie benutzt, mit einem Link zum Ausprobieren, steht auf der Hilfeseite: Drück auf „Hilfe“ (auf dem Handy unter „Mehr“). Stimmt etwas nicht, oder hast du eine Idee? „Feedback senden“ unter dem Pfeil neben „Hilfe“ (auf dem Handy unter „Mehr“) erreicht die Leute, die Orbitalia machen. Viel Spaß beim Entdecken!",
+					"text@simple": "Es gibt noch viel mehr zu entdecken. Der Knopf „Hilfe“ (auf dem Handy unter „Mehr“) erklärt dir alles. Ist etwas kaputt, oder hast du eine Idee? Sag es uns mit „Sag uns deine Meinung“ neben „Hilfe“ (auf dem Handy unter „Mehr“). Viel Spaß!"
 				}
 			}
 		}

@@ -363,9 +363,17 @@ test.describe("on a phone", () => {
 		await ready(page, "/solar_system?focus=mars")
 		const before = await pose(page)
 		const spots = await emptySpots(page, ["mars", "phobos", "deimos"], 60)
+		// on a touch screen each tap on the sky also hides or brings back the
+		// controls (#59, e2e/phoneTop.spec.ts), and the camera eases to the room
+		// it has (#61): let it land before the next tap
 		for (const spot of spread(spots, 20)) {
 			await page.touchscreen.tap(spot.x, spot.y)
+			await settled(page)
 		}
+		await expect(page.locator("html")).not.toHaveAttribute(
+			"data-chrome",
+			"hidden",
+		)
 		await settled(page)
 		expect(await state(page)).toMatchObject({
 			view: { kind: "body", id: "mars" },

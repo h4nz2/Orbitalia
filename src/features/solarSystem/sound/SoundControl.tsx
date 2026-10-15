@@ -3,8 +3,8 @@
  * switches all sound on or off with one click (or M), and a popover with the
  * volume, the two layers and the real recordings. Off by default; the
  * speaker is crossed out and grey while off, orange while on. On a phone
- * (#58) the two are one finger-sized button: the speaker opens the popover,
- * whose first switch turns sound on or off.
+ * both live under More instead (#59, present/MoreMenu.tsx): a switch, and
+ * these same settings.
  */
 import {
 	ActionIcon,
@@ -29,7 +29,12 @@ import { toggleSound } from "./SoundDirector"
 
 import classes from "./Sound.module.css"
 
-const Settings = () => {
+/**
+ * The sound settings: the master switch, the volume, the two layers and the
+ * recordings. `scrolls`: it scrolls by itself, inside a popover with an arrow;
+ * a container that scrolls on its own (More, #59) passes false.
+ */
+export const SoundSettings = ({ scrolls = true }: { scrolls?: boolean }) => {
 	const { t } = useI18n()
 	const enabled = useSoundStore((state) => state.enabled)
 	const volume = useSoundStore((state) => state.volume)
@@ -41,7 +46,11 @@ const Settings = () => {
 	const setCues = useSoundStore((state) => state.setCues)
 
 	return (
-		<Stack gap="sm" className={classes.settings} data-testid="sound-settings">
+		<Stack
+			gap="sm"
+			className={`${classes.settings} ${scrolls ? classes.scrolls : ""}`}
+			data-testid="sound-settings"
+		>
 			<Switch
 				color="orange"
 				label={t("solarSystem.sound.on")}
@@ -129,7 +138,6 @@ function SoundControl() {
 					aria-keyshortcuts="M"
 					onClick={toggleSound}
 					data-testid="sound-toggle"
-					className={classes.toggle}
 				>
 					{enabled ? (
 						<IconVolume size={18} aria-hidden />
@@ -155,27 +163,12 @@ function SoundControl() {
 							aria-label={t("solarSystem.sound.settings")}
 							data-testid="sound-menu"
 						>
-							<IconChevronDown
-								size={14}
-								aria-hidden
-								className={classes.chevron}
-							/>
-							<span
-								className={classes.speaker}
-								data-on={enabled || undefined}
-								aria-hidden
-							>
-								{enabled ? (
-									<IconVolume size={18} />
-								) : (
-									<IconVolumeOff size={18} />
-								)}
-							</span>
+							<IconChevronDown size={14} aria-hidden />
 						</ActionIcon>
 					</Popover.Target>
 					{/* it scrolls inside, so it keeps its arrow (providers/fit.css) */}
 					<Popover.Dropdown data-own-scroll>
-						<Settings />
+						<SoundSettings />
 					</Popover.Dropdown>
 				</Popover>
 			</Hint>
