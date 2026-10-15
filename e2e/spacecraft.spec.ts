@@ -55,9 +55,12 @@ const pick = async (page: Page, id: string) => {
 const panel = (page: Page) =>
 	page.getByRole("region", { name: "Selected spacecraft" })
 
-/** The HUD clock's machine-readable instant. */
-const clockISO = (page: Page) =>
-	page.locator("time[datetime]").first().getAttribute("datetime")
+/**
+ * The HUD clock; its `datetime` is the machine-readable instant. Its text
+ * follows the store's clock at 10 Hz (`useThrottledSimTime`), up to 100 ms
+ * and a render behind it: await it with `toHaveAttribute`, never read it once.
+ */
+const hudClock = (page: Page) => page.locator("time[datetime]").first()
 
 test("Voyager 1: where it is, when it launched, how long its signal takes", async ({
 	page,
@@ -113,7 +116,16 @@ test("a milestone travels in time to it: Voyager 1 at Jupiter, 1979", async ({
 		.filter({ hasText: "Jupiter" })
 		.click()
 	await settled(page)
-	expect(await clockISO(page)).toMatch(/^1979-03-05T12:/)
+	// on arrival the clock stands exactly on the flyby: paused, nothing drifts
+	const clock = await page.evaluate(() => {
+		const { simTimeJD, clock } = window.__orbitalia!.store.getState()
+		const iso = new Date((simTimeJD - 2440587.5) * 86_400_000).toISOString()
+		return { iso, rate: clock.rate }
+	})
+	expect(clock.iso).toMatch(/^1979-03-05T12:/)
+	expect(clock.rate).toBe(0)
+	// and the HUD shows it, a moment later
+	await expect(hudClock(page)).toHaveAttribute("datetime", /^1979-03-05T12:/)
 	await expect(
 		page.getByRole("button", { name: "Pause", pressed: true }),
 	).toBeVisible()

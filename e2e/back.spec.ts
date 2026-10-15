@@ -3,6 +3,7 @@ import path from "node:path"
 
 import { expect, test, type Page } from "@playwright/test"
 
+import { boxesAtOnce } from "./support/hud"
 import { cameraAtRest } from "./support/scene"
 
 // Back (#46): return to where you just were. Choosing a body is a step that
@@ -207,12 +208,14 @@ test("the arrow sits beside the house, on a laptop and on a phone", async ({
 	] as const) {
 		await page.setViewportSize({ width, height })
 		await ready(page, "/solar_system?focus=mars&lang=en")
-		const where = page.getByTestId("where")
-		const back = (await backButton(page).boundingBox())!
-		const home = (await where
-			.getByRole("button", { name: "Back to overview", exact: true })
-			.boundingBox())!
-		const picker = (await focusPicker(page).boundingBox())!
+		// measured at one instant: the page slides in as it opens
+		const [back, home, picker] = await boxesAtOnce(
+			backButton(page),
+			page
+				.getByTestId("where")
+				.getByRole("button", { name: "Back to overview", exact: true }),
+			focusPicker(page),
+		)
 		// in one row, left to right: Back, the way out, the name
 		expect(Math.abs(back.y - home.y), name).toBeLessThan(2)
 		expect(back.x + back.width, name).toBeLessThanOrEqual(home.x + 1)

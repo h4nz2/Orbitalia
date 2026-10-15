@@ -17,6 +17,7 @@ import { expect, test, type Page } from "@playwright/test"
 
 import { stubTurnstile } from "./support/feedback"
 import {
+	boxesAtOnce,
 	expandCard,
 	hudPanels,
 	openLayers,
@@ -241,8 +242,11 @@ test.describe("turning a phone", () => {
 			.poll(async () => Math.abs((await box(corner)).y - (await box(where)).y))
 			.toBeLessThan(2)
 		await expect(page.getByTestId("more-menu")).toBeVisible()
-		const time = await box(page.getByTestId("time-bar"))
-		const entries = await box(page.getByTestId("entry-bar"))
+		// measured at one instant: the page slides in as it opens
+		const [time, entries] = await boxesAtOnce(
+			page.getByTestId("time-bar"),
+			page.getByTestId("entry-bar"),
+		)
 		expect(
 			Math.abs(time.y + time.height - (entries.y + entries.height)),
 		).toBeLessThan(2)
