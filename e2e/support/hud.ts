@@ -46,9 +46,14 @@ export type ToolId =
 	| "dictionary"
 	| "postcard"
 
-/** Opens a tool from the Tools menu at the bottom right. */
+/**
+ * Opens a tool from Tools: its menu, or on a phone held upright its tiles in
+ * the sheet (#62). Both carry `data-tool`; Tools is pressed unless the tiles
+ * are already open (a menu still closing from the last pick does not count).
+ */
 export async function openTool(page: Page, tool: ToolId): Promise<void> {
-	await page.getByTestId("tools-menu").click()
+	if (!(await page.locator("[data-dock-panel=tools]").isVisible()))
+		await page.getByTestId("tools-menu").click()
 	await page.locator(`[data-tool="${tool}"]`).click()
 }
 

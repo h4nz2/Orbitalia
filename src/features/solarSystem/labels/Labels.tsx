@@ -7,7 +7,9 @@
  * component joins the scene's picking with a raycast that hit-tests the label
  * boxes in screen space. A label therefore behaves exactly like its body: the
  * pointer cursor, hover, and a tap (not a drag) that activates it. The HUD
- * panels (`.panel` of SolarSystem.module.css) are areas labels keep out of.
+ * panels (`.panel` of SolarSystem.module.css) are areas labels keep out of,
+ * and so is the whole of a phone's sheet (#60), its handle's strip included
+ * (#62: no name drawn over what a link opened).
  */
 import { useCallback, useMemo, useRef } from "react"
 import { useFrame, useThree, type ThreeEvent } from "@react-three/fiber"
@@ -82,7 +84,7 @@ function Labels({
 		sinceKeepOut.current += delta
 		if (sinceKeepOut.current >= KEEP_OUT_INTERVAL_S) {
 			sinceKeepOut.current = 0
-			measureKeepOut(board, canvas, `.${hudClasses.panel}`)
+			measureKeepOut(board, canvas, `.${hudClasses.panel}, [data-sheet]`)
 		}
 		camera.updateMatrixWorld()
 		fillLabelLayout(

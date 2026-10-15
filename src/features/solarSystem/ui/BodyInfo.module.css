@@ -122,6 +122,39 @@
 	color: var(--mantine-color-gray-3);
 }
 
+/*
+ * A phone held upright (#62): when the name or the tagline would wrap beside
+ * Compare, the arrow and ×, the tagline takes a line of its own across the
+ * card under them (`data-tagline="under"`, measured in BodyInfo.tsx), so
+ * neither is squeezed (German at the simple level included).
+ */
+@media $uprightPhone {
+	.header[data-tagline="under"] {
+		display: grid;
+		grid-template-columns: minmax(0, 1fr) auto auto auto;
+		grid-template-areas:
+			"name compare toggle close"
+			"tagline tagline tagline tagline";
+		align-items: center;
+		column-gap: 0.25rem;
+	}
+
+	.header[data-tagline="under"] .title {
+		display: contents;
+	}
+
+	.header[data-tagline="under"] .name {
+		grid-area: name;
+		min-width: 0;
+		overflow-wrap: break-word;
+		hyphens: auto;
+	}
+
+	.header[data-tagline="under"] .tagline {
+		grid-area: tagline;
+	}
+}
+
 @media $phone {
 	.fact {
 		grid-template-columns: 5rem minmax(0, 1fr);

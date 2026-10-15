@@ -751,6 +751,19 @@ describe("buildBodies", () => {
 		expect(get("uranus").rings).not.toHaveProperty("castsShadow")
 	})
 
+	it("passes a ring file's faint through, and only when it is set (#62)", () => {
+		const faint = buildBodies(fixture, {
+			...options,
+			ringsFor: (planetId) =>
+				planetId === "uranus" ? { ...uranusRings, faint: true } : null,
+		})
+		expect(faint.bodies.find((body) => body.id === "uranus")?.rings).toEqual({
+			...uranusRings,
+			faint: true,
+		})
+		expect(get("uranus").rings).not.toHaveProperty("faint")
+	})
+
 	it("warns when a ringed planet has no ring file", () => {
 		const without = buildBodies(fixture, { ...options, ringsFor: () => null })
 		expect(

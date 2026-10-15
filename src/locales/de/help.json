@@ -239,16 +239,19 @@
 				"standard": [
 					"Immer zu sehen: der Pfeil zurück dorthin, wo du gerade warst, der Haus-Knopf (zurück zum ganzen System), der Name der Welt im Blick mit ihrem Steckbrief und die Zeitleiste. Der Pfeil im Steckbrief klappt Fakten, Monde und Geschichten auf.",
 					"In der Zeitleiste: Abspielen, Pause und das Datum; der Knopf mit dem Tempo (zum Beispiel 1x) öffnet „Jetzt“, die Tempi und die Drehung. Auf einem hochkant gehaltenen Handy ersetzt sie der Zeit-Knopf über dem Feld: Abspielen oder Pause, und das Tempo mit dem Datum, das die ganze Zeit im Feld öffnet.",
-					"Touren, Ebenen (was gezeichnet wird), Maßstab (wie groß und wie weit) und Werkzeuge (Lichtgeschwindigkeit, der Himmel heute Nacht, Raumsonden, dein Geburtstag, die Schnitzeljagd, Nebeneinander, das Sonnensystem ablaufen, das Bildlexikon und ein Foto) öffnen alles andere. Es ist immer nur ein Feld offen; × schließt es. Auf einem hochkant gehaltenen Handy öffnet sich alles in einem Feld unten, mit Touren, Ebenen, Maßstab und Werkzeuge als letzter Zeile. Zieh am Griff (dem kurzen Balken oben) oder am Titel, um es klein, halb oder ganz hoch zu stellen; ein Tipp auf den Griff stellt es eine Stufe höher, ein Tipp auf den leeren Himmel senkt es.",
+					"Touren, Ebenen (was gezeichnet wird), Maßstab (wie groß und wie weit) und Werkzeuge (Lichtgeschwindigkeit, der Himmel heute Nacht, Raumsonden, dein Geburtstag, die Schnitzeljagd, Nebeneinander, das Sonnensystem ablaufen, das Bildlexikon und ein Foto) öffnen alles andere. Es ist immer nur ein Feld offen; × schließt es. Auf einem hochkant gehaltenen Handy öffnet sich alles in einem Feld unten, mit Touren, Ebenen, Maßstab und Werkzeuge als letzter Zeile. Zieh am Griff (dem kurzen Balken oben) oder am Titel, um es klein, halb oder ganz hoch zu stellen; ein Tipp auf den Griff stellt es eine Stufe höher, ein Tipp auf den leeren Himmel senkt es. Dort öffnet „Werkzeuge“ große Kacheln, eine für jedes Werkzeug, alle auf einmal zu sehen.",
 					"Knöpfe zum Präsentieren und Einstellen: Präsentieren, Teilen, das durchgestrichene Auge, das alles ausblendet (H holt es zurück), Ton, Hilfe und die Sprache. Auf dem Handy stehen sie alle unter „Mehr“.",
-					"Auf Handy und Tablet blendet ein Tipp auf den leeren Himmel alle Bedienelemente aus, und der nächste Tipp irgendwohin holt sie zurück; die Ansicht bewegt sich dabei nie."
+					"Auf Handy und Tablet blendet ein Tipp auf den leeren Himmel alle Bedienelemente aus, und der nächste Tipp irgendwohin holt sie zurück; die Ansicht bewegt sich dabei nie.",
+					"Beim ersten Mal auf einem hochkant gehaltenen Handy zeigt eine kleine Karte die drei Gesten ohne Knopf: den Balken am Feld ziehen, auf den Himmel tippen, den Steckbrief einer Welt zur Seite wischen. „Verstanden“ oder × schließt sie, und auch jede der Gesten; sie kommt nicht wieder."
 				],
 				"simple": [
 					"Der Pfeil „Zurück“ geht einen Schritt zurück. Der Haus-Knopf daneben bringt dich zurück zu allen Planeten.",
 					"Drück auf Ebenen, Maßstab oder Werkzeuge, dann findest du mehr.",
 					"Auf dem Handy öffnet sich alles in einem Feld unten. Zieh es hoch, um mehr zu sehen, oder runter, um mehr vom Weltraum zu sehen.",
+					"Auf dem Handy zeigt „Werkzeuge“ einen großen Knopf für jedes Werkzeug.",
 					"Tippe auf dem Handy oder Tablet auf den leeren Himmel oder drück auf das durchgestrichene Auge, dann verschwinden alle Knöpfe. Tippe noch mal oder drück H, dann kommen sie zurück.",
-					"Auf dem Handy findest du unter „Mehr“: Teilen, Ton, Hilfe und deine Sprache."
+					"Auf dem Handy findest du unter „Mehr“: Teilen, Ton, Hilfe und deine Sprache.",
+					"Beim ersten Mal zeigt eine kleine Karte auf dem Handy drei Tricks. Drück „OK“, wenn du sie kennst."
 				]
 			}
 		},
@@ -269,16 +272,18 @@
 				"standard": [
 					"Fliege zu einer Welt: Ihr Steckbrief erscheint mit Namen und einem Satz.",
 					"Der Pfeil im Steckbrief klappt Fakten, Monde und Geschichten auf; so bleibt er auch für die nächste Welt.",
-					"„Mehr dazu im Lexikon“ öffnet ihre Seite, „Vergleichen mit …“ stellt sie neben eine andere Welt.",
+					"„Mehr dazu im Lexikon“ öffnet ihre Seite, „Vergleichen mit …“ (auf einem hochkant gehaltenen Handy „Vergleichen“) stellt sie neben eine andere Welt.",
 					"Unter dem Vergleich findet „Schrumpf die Sonne auf einen Basketball …“ die Welt auf dem Weg über den Sportplatz.",
 					"Die letzte Zeile des geöffneten Steckbriefs sagt, woher das Bild der Welt stammt: eine Karte einer Raumsonde oder, wo es keine vollständige Karte gibt, nach Fotos von Raumsonden gemalt.",
-					"Auf einem hochkant gehaltenen Handy steht der Steckbrief im Feld unten: Zieh das Feld hoch (oder drück den Pfeil), um mehr zu lesen, und runter, um mehr vom Weltraum zu sehen. Ein Tipp auf den Griff, den kurzen Balken oben, stellt es klein, halb und ganz hoch."
+					"Auf einem hochkant gehaltenen Handy steht der Steckbrief im Feld unten: Zieh das Feld hoch (oder drück den Pfeil), um mehr zu lesen, und runter, um mehr vom Weltraum zu sehen. Ein Tipp auf den Griff, den kurzen Balken oben, stellt es klein, halb und ganz hoch.",
+					"Auf einem hochkant gehaltenen Handy wischst du den Steckbrief zur Seite, um zur nächsten Welt zu fliegen, wie mit den Pfeiltasten: Nach links geht es weiter nach außen (nach der Erde der Mars), nach rechts zurück, und die Monde eines Planeten wechseln sich untereinander ab. „Zurück“ bringt dich zur Welt davor."
 				],
 				"simple": [
 					"Flieg zu einem Planeten.",
 					"Lies seinen Steckbrief.",
 					"Tipp auf den kleinen Pfeil, dann siehst du mehr.",
-					"Auf dem Handy ziehst du das Feld hoch, um mehr zu lesen."
+					"Auf dem Handy ziehst du das Feld hoch, um mehr zu lesen.",
+					"Auf dem Handy wischst du den Steckbrief zur Seite, dann fliegst du zum nächsten Planeten."
 				]
 			}
 		},
@@ -1038,13 +1043,13 @@
 					"Drück auf „Touren“ und wähle eine Tour.",
 					"Mit „Weiter“ und „Zurück“ auf der Karte, den Pfeiltasten oder einem Presenter (Bild ↓ / Bild ↑) gehst du weiter.",
 					"Sieh dich jederzeit um; „Zurück zur Tour“ stellt die Station wieder her. „Automatisch weiter“ geht von selbst weiter, und der Link-Knopf kopiert einen Link zur aktuellen Station. Lehrkräfte können eigene Touren als Daten schreiben (src/data/tours/README.md).",
-					"Auf einem hochkant gehaltenen Handy öffnet sich ein Halt im Feld unten, halb hoch, damit man den Text lesen kann; zieh es runter, um mehr von der Ansicht zu sehen. „Zurück“ und „Weiter“ bleiben unten im Feld."
+					"Auf einem hochkant gehaltenen Handy öffnet sich ein Halt im Feld unten, halb hoch, damit man den Text lesen kann; zieh es runter, um mehr von der Ansicht zu sehen. „Zurück“ und „Weiter“ bleiben unten im Feld. „3 / 11“ und ein dünner Balken unter dem Titel zeigen, wie weit die Tour ist; „Automatisch weiter“ und der Link-Knopf stehen unter dem Text."
 				],
 				"simple": [
 					"Drück auf „Touren“ und wähl eine aus.",
 					"Lies die Karte und drück dann „Weiter“ oder eine Pfeiltaste.",
 					"Sieh dich um, wann du willst, und drück dann „Zurück zur Tour“.",
-					"Auf dem Handy ziehst du das Feld runter, um mehr vom Weltraum zu sehen, und hoch, um zu lesen."
+					"Auf dem Handy ziehst du das Feld runter, um mehr vom Weltraum zu sehen, und hoch, um zu lesen. „3 / 11“ zeigt dir, wie weit du bist."
 				]
 			}
 		},
@@ -1271,6 +1276,7 @@
 		},
 		"siblings": {
 			"action": "Nächste oder vorherige Welt derselben Familie",
+			"touch": "Den Steckbrief der Welt zur Seite wischen (ein hochkant gehaltenes Handy)",
 			"keys": "← / →"
 		},
 		"planets": {

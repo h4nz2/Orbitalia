@@ -239,16 +239,19 @@
 				"standard": [
 					"Pořád na obrazovce: šipka zpět na předchozí pohled, tlačítko s domečkem (zpátky na celou soustavu), jméno světa, na který se díváš, s jeho kartou a časová lišta. Šipka na kartě rozbalí údaje, měsíce a příběhy.",
 					"V časové liště: spustit, pozastavit a datum; tlačítko s rychlostí (třeba 1x) otevře „Teď“, rychlosti a rotaci. Na telefonu drženém na výšku ji nahrazuje tlačítko času nad panelem: spustit nebo zastavit a rychlost s datem, která otevře v panelu celé ovládání času.",
-					"Prohlídky, Vrstvy (co se kreslí), Měřítko (jak velké a jak daleko) a Nástroje (rychlost světla, dnešní obloha, sondy, tvoje narozeniny, pátrací hra, vedle sebe, procházka sluneční soustavou, obrazový slovník a fotka) otevřou všechno ostatní. Otevřený je vždy jen jeden panel; × ho zavře. Na telefonu drženém na výšku se všechno otevře v jednom panelu dole, s Prohlídkami, Vrstvami, Měřítkem a Nástroji jako posledním řádkem. Táhni za úchyt (krátký proužek nahoře) nebo za název a panel bude malý, poloviční nebo plný; ťuknutí na úchyt ho zvedne o stupeň a ťuknutí na prázdnou oblohu ho sníží.",
+					"Prohlídky, Vrstvy (co se kreslí), Měřítko (jak velké a jak daleko) a Nástroje (rychlost světla, dnešní obloha, sondy, tvoje narozeniny, pátrací hra, vedle sebe, procházka sluneční soustavou, obrazový slovník a fotka) otevřou všechno ostatní. Otevřený je vždy jen jeden panel; × ho zavře. Na telefonu drženém na výšku se všechno otevře v jednom panelu dole, s Prohlídkami, Vrstvami, Měřítkem a Nástroji jako posledním řádkem. Táhni za úchyt (krátký proužek nahoře) nebo za název a panel bude malý, poloviční nebo plný; ťuknutí na úchyt ho zvedne o stupeň a ťuknutí na prázdnou oblohu ho sníží. Tam Nástroje otevřou velké dlaždice, jednu pro každý nástroj, všechny najednou.",
 					"Tlačítka pro prezentaci a nastavení: Prezentovat, Sdílet, přeškrtnuté oko, které všechno skryje (H to vrátí), zvuk, Nápověda a jazyk. Na telefonu jsou všechna pod Více.",
-					"Na telefonu a tabletu skryje ťuknutí na prázdnou oblohu všechno ovládání a další ťuknutí kamkoli ho vrátí; pohled se přitom nikdy nepohne."
+					"Na telefonu a tabletu skryje ťuknutí na prázdnou oblohu všechno ovládání a další ťuknutí kamkoli ho vrátí; pohled se přitom nikdy nepohne.",
+					"Poprvé na telefonu drženém na výšku ukáže malá karta tři pohyby bez tlačítka: táhnout proužek panelu, ťuknout na oblohu, přejet po kartě světa do strany. „Rozumím“ nebo × ji zavře, stejně jako kterýkoli z pohybů; už se nevrátí."
 				],
 				"simple": [
 					"Šipka Zpět tě vrátí o krok zpět. Tlačítko s domečkem vedle ní tě vrátí ke všem planetám.",
 					"Stiskni Vrstvy, Měřítko nebo Nástroje a najdeš víc.",
 					"Na telefonu se všechno otevře v panelu dole. Vytáhni ho nahoru a uvidíš víc, nebo dolů a uvidíš víc vesmíru.",
+					"Na telefonu ukážou Nástroje velké tlačítko pro každý nástroj.",
 					"Na telefonu nebo tabletu ťukni na prázdnou oblohu, nebo stiskni přeškrtnuté oko, a všechna tlačítka zmizí. Ťukni znovu nebo stiskni H a vrátí se.",
-					"Na telefonu najdeš pod Více sdílení, zvuk, nápovědu a svůj jazyk."
+					"Na telefonu najdeš pod Více sdílení, zvuk, nápovědu a svůj jazyk.",
+					"Poprvé na telefonu ti malá karta ukáže tři triky. Až je znáš, stiskni „OK“."
 				]
 			}
 		},
@@ -269,16 +272,18 @@
 				"standard": [
 					"Leť k nějakému světu: objeví se jeho karta se jménem a jednou větou.",
 					"Šipka na kartě rozbalí údaje, měsíce a příběhy; karta pak zůstane rozbalená i u dalšího světa.",
-					"„Víc ve slovníku“ otevře jeho stránku, „Porovnat s…“ ho postaví vedle jiného světa.",
+					"„Víc ve slovníku“ otevře jeho stránku, „Porovnat s…“ (na telefonu drženém na výšku „Porovnat“) ho postaví vedle jiného světa.",
 					"Pod přirovnáním najde „Zmenši Slunce na basketbalový míč…“ tento svět na procházce po školním hřišti.",
 					"Poslední řádek rozbalené karty říká, odkud je obrázek světa: mapa ze sondy, nebo malba podle snímků ze sond tam, kde úplná mapa neexistuje.",
-					"Na telefonu drženém na výšku je karta v panelu dole: vytáhni panel nahoru (nebo stiskni šipku) a přečteš si víc, stáhni ho dolů a uvidíš víc vesmíru. Ťuknutí na úchyt, krátký proužek nahoře, ho přepíná mezi malou, poloviční a plnou výškou."
+					"Na telefonu drženém na výšku je karta v panelu dole: vytáhni panel nahoru (nebo stiskni šipku) a přečteš si víc, stáhni ho dolů a uvidíš víc vesmíru. Ťuknutí na úchyt, krátký proužek nahoře, ho přepíná mezi malou, poloviční a plnou výškou.",
+					"Na telefonu drženém na výšku přejeď prstem po kartě do strany a poletíš k dalšímu světu, jako se šipkami: doleva dál od Slunce (po Zemi Mars), doprava zpátky, a měsíce planety se střídají mezi sebou. Zpět tě vrátí ke světu předtím."
 				],
 				"simple": [
 					"Leť k planetě.",
 					"Přečti si její kartu.",
 					"Ťukni na malou šipku a uvidíš víc.",
-					"Na telefonu vytáhni panel nahoru a přečteš si víc."
+					"Na telefonu vytáhni panel nahoru a přečteš si víc.",
+					"Na telefonu přejeď po kartě do strany a poletíš k další planetě."
 				]
 			}
 		},
@@ -1038,13 +1043,13 @@
 					"Stiskni „Prohlídky“ a vyber prohlídku.",
 					"Pokračuj tlačítky „Dál“ a „Zpět“ na kartičce, šipkami nebo prezentačním ovladačem (Page Down / Page Up).",
 					"Rozhlížej se kdykoli; „Zpátky k prohlídce“ zastávku obnoví. „Automaticky dál“ pokračuje samo a tlačítko s odkazem zkopíruje odkaz na aktuální zastávku. Učitelé mohou psát vlastní prohlídky jako data (src/data/tours/README.md).",
-					"Na telefonu drženém na výšku se zastávka otevře v panelu dole, do poloviny výšky, aby se dal přečíst text; stáhni ho dolů a uvidíš víc z pohledu. „Zpět“ a „Dál“ zůstávají dole v panelu."
+					"Na telefonu drženém na výšku se zastávka otevře v panelu dole, do poloviny výšky, aby se dal přečíst text; stáhni ho dolů a uvidíš víc z pohledu. „Zpět“ a „Dál“ zůstávají dole v panelu. „3 / 11“ a tenký proužek pod názvem ukazují, jak daleko prohlídka je; „Automaticky dál“ a tlačítko s odkazem jsou pod textem."
 				],
 				"simple": [
 					"Stiskni „Prohlídky“ a jednu vyber.",
 					"Přečti si kartičku a stiskni „Dál“ nebo šipku.",
 					"Rozhlédni se, kdy chceš, a pak stiskni „Zpátky k prohlídce“.",
-					"Na telefonu stáhni panel dolů a uvidíš víc vesmíru, nahoru a budeš číst."
+					"Na telefonu stáhni panel dolů a uvidíš víc vesmíru, nahoru a budeš číst. „3 / 11“ ukazuje, jak daleko jsi."
 				]
 			}
 		},
@@ -1271,6 +1276,7 @@
 		},
 		"siblings": {
 			"action": "Další nebo předchozí svět ze stejné rodiny",
+			"touch": "Přejet po kartě světa do strany (telefon držený na výšku)",
 			"keys": "← / →"
 		},
 		"planets": {

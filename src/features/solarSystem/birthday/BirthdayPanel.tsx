@@ -76,7 +76,8 @@ const BirthCalendar = ({
 	const { t, formatLocale } = useI18n()
 	const labels = calendarLabels(formatLocale)
 	return (
-		<Stack gap={4} align="center">
+		// the phone's sheet brings it into view as the panel opens (#62)
+		<Stack gap={4} align="center" data-sheet-main>
 			<DatePicker
 				value={value}
 				defaultDate={value ?? calendarStart(now)}

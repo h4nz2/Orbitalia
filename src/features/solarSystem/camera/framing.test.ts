@@ -29,6 +29,7 @@ import {
 	overviewRadius,
 	BODY_FIT_SHARE,
 	bodyFramingRadii,
+	framedRingRatio,
 	lensOf,
 	pivotLift,
 	ringRatioOf,
@@ -268,9 +269,9 @@ describe("framing what is free (#61)", () => {
 		}
 	})
 
-	it("fits every ringed planet across an upright phone, and backs off no further", () => {
+	it("fits rings that read clearly across an upright phone, and backs off no further", () => {
 		const halfWidth = TAN_HALF * (PHONE.width / PHONE.height)
-		for (const id of ["jupiter", "saturn", "uranus", "neptune"]) {
+		for (const id of ["saturn", "uranus"]) {
 			const ratio = ringRatioOf(id)
 			expect(ratio).toBeGreaterThan(2)
 			const radii =
@@ -287,8 +288,16 @@ describe("framing what is free (#61)", () => {
 			// the rings' outer edge at the framing's share of the half-width
 			expect(outline(ratio, radii)).toBeCloseTo(BODY_FIT_SHARE * halfWidth, 9)
 		}
-		// the planets without rings already fit at 6 radii
-		for (const id of ["mercury", "venus", "earth", "mars"]) {
+		// the planets without rings, and those whose rings are faint (#62: Jupiter's
+		// and Neptune's run off the sides), are framed as on a laptop
+		for (const id of [
+			"mercury",
+			"venus",
+			"earth",
+			"mars",
+			"jupiter",
+			"neptune",
+		]) {
 			expect(
 				defaultDistance(
 					{ kind: "body", id },
@@ -299,6 +308,23 @@ describe("framing what is free (#61)", () => {
 				),
 			).toBe(FRAMING_RADII * drawn(visibleFrame, id))
 		}
+	})
+
+	it("counts only the rings that read clearly (#62): Jupiter's and Neptune's are faint", () => {
+		for (const id of ["jupiter", "neptune"]) {
+			const body = getBody(id)
+			expect(body.rings?.faint).toBe(true)
+			// their data rings reach far out, yet the framing does not count them
+			expect(body.rings!.outerRadiusKm / body.radiusKm).toBeGreaterThan(2.5)
+			expect(ringRatioOf(id)).toBe(0)
+			expect(framedRingRatio(body)).toBe(0)
+		}
+		for (const id of ["saturn", "uranus"]) {
+			const body = getBody(id)
+			expect(body.rings?.faint).toBeUndefined()
+			expect(ringRatioOf(id)).toBe(body.rings!.outerRadiusKm / body.radiusKm)
+		}
+		expect(ringRatioOf("earth")).toBe(0)
 	})
 
 	it("fits a body, and its rings, whole into the short band above an unfolded card", () => {

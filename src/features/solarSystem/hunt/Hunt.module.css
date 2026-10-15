@@ -43,6 +43,15 @@
 	white-space: nowrap;
 }
 
+/* a phone (#62): a long hunt's name wraps rather than being cut (German at the simple level) */
+@media $phone {
+	.title {
+		white-space: normal;
+		text-overflow: clip;
+		overflow-wrap: break-word;
+	}
+}
+
 .body {
 	flex: 1;
 	min-height: 0;

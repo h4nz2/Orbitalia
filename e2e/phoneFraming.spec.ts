@@ -2,8 +2,10 @@
  * Phones: the planet in the part of the screen you can see (#61). On an
  * upright phone the camera centres and fits what it looks at in the band the
  * HUD leaves free between its top and bottom stacks, fits a ringed planet
- * across the width, and looks down more steeply on the whole system; taps
- * still land on what they aim at. A laptop's framing is unchanged.
+ * across the width (rings that read clearly: Saturn's and Uranus's, not
+ * Jupiter's and Neptune's faint ones, #62), and looks down more steeply on
+ * the whole system; taps still land on what they aim at. A laptop's framing
+ * is unchanged.
  */
 import { mkdirSync } from "node:fs"
 import path from "node:path"
@@ -25,6 +27,7 @@ test.describe.configure({ timeout: 180_000 })
 
 /** The rings' outer edge in planet radii (data/rings, `ringRatioOf`). */
 const SATURN_RINGS = 140220 / 58232
+const URANUS_RINGS = 51500 / 25362
 
 const PLANETS = [
 	"mercury",
@@ -114,8 +117,13 @@ test.describe("on an upright phone", () => {
 		expect(Math.abs(earth.y - (band.top + band.bottom) / 2)).toBeLessThan(1.5)
 		await shot(page, "earth-unfolded")
 
-		// folded again: Earth grows back into the larger band, still whole
+		// folded again: Earth grows back into the larger band, still whole. The
+		// sheet writes the band once it has come to rest (#60), which a busy
+		// machine may take longer than the camera's ten frames at rest
 		await page.getByTestId("card-toggle").tap()
+		await expect
+			.poll(async () => (await freeBand(page)).bottom)
+			.toBeGreaterThan(band.bottom + 20)
 		await cameraAtRest(page, 10)
 		const folded = await freeBand(page)
 		const back = (await screenOf(page, "earth"))!
@@ -140,6 +148,34 @@ test.describe("on an upright phone", () => {
 		expect(saturn.y + saturn.discPx).toBeLessThan(await cardTop(page))
 		expect(Math.abs(saturn.y - (band.top + band.bottom) / 2)).toBeLessThan(1.5)
 		await shot(page, "saturn")
+	})
+
+	test("Jupiter and Neptune are as big as a planet without rings: their faint rings may run off; Uranus's fit", async ({
+		page,
+	}) => {
+		// a planet without rings: the size every planet is framed at, unless its rings must fit
+		await ready(page, "/solar_system?focus=earth&lang=en")
+		const earth = (await screenOf(page, "earth"))!
+		for (const id of ["jupiter", "neptune"]) {
+			await ready(page, `/solar_system?focus=${id}&lang=en`)
+			const planet = (await screenOf(page, id))!
+			expect(planet.discPx / earth.discPx, id).toBeGreaterThan(0.97)
+			expect(planet.discPx / earth.discPx, id).toBeLessThan(1.03)
+			// most of the width, whole, above the card
+			expect(2 * planet.discPx, id).toBeGreaterThan(0.75 * 390)
+			expect(planet.x - planet.discPx, id).toBeGreaterThanOrEqual(0)
+			expect(planet.x + planet.discPx, id).toBeLessThanOrEqual(390)
+			expect(planet.y + planet.discPx, id).toBeLessThan(await cardTop(page))
+			await shot(page, id)
+		}
+		// Uranus's narrow rings are a teaching point: they still fit across
+		await ready(page, "/solar_system?focus=uranus&lang=en")
+		const uranus = (await screenOf(page, "uranus"))!
+		const rings = URANUS_RINGS * uranus.discPx
+		expect(uranus.x - rings).toBeGreaterThanOrEqual(0)
+		expect(uranus.x + rings).toBeLessThanOrEqual(390)
+		expect(2 * rings).toBeGreaterThan(0.85 * 390)
+		expect(uranus.discPx).toBeLessThan(earth.discPx)
 	})
 
 	test("a link to Saturn made on a laptop, its camera included, opens whole on the phone", async ({

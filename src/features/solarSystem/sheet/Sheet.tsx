@@ -20,10 +20,19 @@
  *   events, so scrolling inside never moves the sheet). Pulled well below
  *   `small`, it closes what it shows, except a tour or the quick look, which
  *   close with their own ×. Dragging never reaches the scene.
+ * - **Ready to use** (#62): a panel that opens brings its main action
+ *   (`data-sheet-main`: the light's Send, the birthday's calendar, the sky's
+ *   place) into view at its height, scrolling its words above it out of the
+ *   way, so a link's tool is ready in thumb reach on a small phone too.
+ * - **Swiping the card** (#62): a finger moving sideways on a world's card
+ *   flies to the next world (to the left, outwards) or the one before, as
+ *   the arrow keys do (`ui/focusCycle.ts`); the card follows the finger a
+ *   little and springs back. Up and down stay the sheet's.
  * - **The band the scene is seen in** (#61): the sheet writes its resting top
- *   edge (the time chip's, which sits above it) to `useFreeAreaStore`, on
- *   rest and on resize, never during a drag. It is the band's only writer on
- *   an upright phone (`dock/FreeArea.tsx` stands down there).
+ *   edge (the time chip's, which sits above it, or the gesture hint's above
+ *   that, #62) to `useFreeAreaStore`, on rest and on resize, never during a
+ *   drag. It is the band's only writer on an upright phone
+ *   (`dock/FreeArea.tsx` stands down there).
  */
 import {
 	useCallback,
@@ -51,6 +60,7 @@ import {
 } from "@/store/sheet"
 import { useTourStore } from "@/store/tour"
 
+import { dismissGestureHint, useGestureHintStore } from "./gestureHint"
 import {
 	HALF_SHARE,
 	contentPx,
@@ -59,6 +69,7 @@ import {
 	stepHeight,
 	type ContentSizes,
 } from "./heights"
+import { followPx, swipeDirection, swipeToWorld } from "./swipe"
 
 import hudClasses from "../SolarSystem.module.css"
 import classes from "./Sheet.module.css"
@@ -69,6 +80,9 @@ export const STRIP_FULL_PX = 60
 
 /** A press must travel this far, px, before it moves the sheet (a tap stays a tap). */
 const DRAG_START_PX = 6
+
+/** The card springs back in this long, ms (#62). */
+const SWIPE_SPRING_MS = 200
 
 /** The snap's length (SolarSystem.module.css): the band is written once it is over. */
 const SNAP_MS = 240
@@ -127,6 +141,54 @@ function scrollerOf(
 	return root
 }
 
+/** Room kept round a main action brought into view, px. */
+const REVEAL_MARGIN = 8
+
+/**
+ * Scrolls the sheet's content `area` so the main action of `element` (its
+ * first `data-sheet-main`, #62) is in view with the content `px` high, never
+ * past the action's top under a header that stays in place. Returns whether
+ * there was one to bring.
+ */
+function revealMain(area: HTMLElement, element: Element, px: number): boolean {
+	const main = [
+		...element.querySelectorAll<HTMLElement>("[data-sheet-main]"),
+	].find((candidate) => candidate.getClientRects().length > 0)
+	if (main === undefined) return false
+	const view = area.getBoundingClientRect()
+	const box = main.getBoundingClientRect()
+	const top = box.top - view.top + area.scrollTop
+	const header = element.querySelector(":scope > header")
+	const headerPx =
+		header !== null && getComputedStyle(header).position === "sticky"
+			? header.getBoundingClientRect().height
+			: 0
+	const want = top + box.height + REVEAL_MARGIN - px
+	const limit = top - headerPx - REVEAL_MARGIN
+	const scroll = Math.max(0, Math.min(want, limit))
+	if (scroll > area.scrollTop + 1) area.scrollTop = scroll
+	return true
+}
+
+/** Whether `target` sits in something that scrolls sideways (its own swipe is a scroll). */
+function inSideScroller(target: EventTarget | null, root: Element): boolean {
+	let element = target instanceof HTMLElement ? target : null
+	while (element !== null && element !== root) {
+		const style = getComputedStyle(element)
+		if (
+			(style.overflowX === "auto" || style.overflowX === "scroll") &&
+			element.scrollWidth > element.clientWidth + 1
+		)
+			return true
+		element = element.parentElement
+	}
+	return false
+}
+
+const reducedMotion = () =>
+	typeof window.matchMedia === "function" &&
+	window.matchMedia("(prefers-reduced-motion: reduce)").matches
+
 /** The bottom of the HUD's top row (where, More, the badges under them), px from the HUD's top. */
 function topRowBottom(hud: HTMLElement): number {
 	const hudTop = hud.getBoundingClientRect().top
@@ -147,6 +209,12 @@ interface Drag {
 	scroller: HTMLElement | null
 	moving: boolean
 	samples: { y: number; t: number }[]
+	/** A world's card under a finger (#62): a sideways move swipes it. */
+	swipe: HTMLElement | null
+	/** The finger is swiping the card sideways (it then never moves the sheet). */
+	swiping: boolean
+	lastX: number
+	lastY: number
 }
 
 export interface SheetProps {
@@ -188,6 +256,10 @@ export function Sheet({ content, bottom }: SheetProps) {
 	const writeTimer = useRef<ReturnType<typeof setTimeout> | undefined>(
 		undefined,
 	)
+	/** The next world's card comes from a swipe (#62): it keeps the sheet's height. */
+	const swiped = useRef(false)
+	/** A panel just opened: its main action is brought into view once it is there (#62). */
+	const bringMain = useRef(false)
 
 	// the dock's children in the order they came: the last one is on show
 	useLayoutEffect(() => {
@@ -229,15 +301,33 @@ export function Sheet({ content, bottom }: SheetProps) {
 
 	useEffect(() => {
 		useSheetStore.getState().setActive(active && shown !== null)
+		// a world's card: the one a swipe moves on from (#62)
+		useSheetStore
+			.getState()
+			.setWorld(
+				active &&
+					shown !== null &&
+					!shown.inDock &&
+					shown.element.hasAttribute("data-card-body"),
+			)
 	}, [active, shown])
-	useEffect(() => () => useSheetStore.getState().setActive(false), [])
+	useEffect(
+		() => () => {
+			useSheetStore.getState().setActive(false)
+			useSheetStore.getState().setWorld(false)
+		},
+		[],
+	)
 
-	// something new opens at its kind's height
+	// something new opens at its kind's height; the next world's card after a swipe keeps it (#62)
 	useLayoutEffect(() => {
 		const opened = kindRef.current
 		if (shown === null || opened === null) return
 		foldedPx.current = null
-		useSheetStore.getState().setHeight(DEFAULT_HEIGHT[opened])
+		const keep = swiped.current && opened === "card"
+		swiped.current = false
+		bringMain.current = opened === "panel"
+		if (!keep) useSheetStore.getState().setHeight(DEFAULT_HEIGHT[opened])
 	}, [shown])
 
 	// a tour or the quick look starting puts the time controls away: one thing at a time
@@ -255,7 +345,14 @@ export function Sheet({ content, bottom }: SheetProps) {
 		const area = contentRef.current
 		const hud = root?.parentElement
 		const element = shown?.element
-		if (root == null || area == null || hud == null || element == null)
+		// a thing just taken out of the page: the observer brings the next one
+		if (
+			root == null ||
+			area == null ||
+			hud == null ||
+			element == null ||
+			!element.isConnected
+		)
 			return null
 		const container = shown!.inDock
 			? element.parentElement!
@@ -282,7 +379,9 @@ export function Sheet({ content, bottom }: SheetProps) {
 		const gap = parseFloat(getComputedStyle(hud).rowGap) || 0
 		const fullCap =
 			rootBox.bottom - hudBox.top - (topRowBottom(hud) + 2 * gap) - fullChrome
-		return { natural, summary, halfCap, fullCap }
+		// shown whole (#62, the Tools tiles): its half is all of it, up to under the top row
+		const whole = (element as HTMLElement).hasAttribute("data-sheet-whole")
+		return { natural, summary, halfCap: whole ? fullCap : halfCap, fullCap }
 	}, [shown, height])
 
 	/** Writes the band the scene is seen in (#61): from under the top row to the top of the chip or the sheet. */
@@ -299,8 +398,9 @@ export function Sheet({ content, bottom }: SheetProps) {
 		}
 		const hudTop = hud.getBoundingClientRect().top
 		const top = topRowBottom(hud) + (hudTop - screen.top)
+		// the time chip, a flight's readout and the gesture hint (#62) sit above the sheet
 		let edge = root.getBoundingClientRect().top
-		for (const element of root.querySelectorAll<HTMLElement>(
+		for (const element of hud.querySelectorAll<HTMLElement>(
 			"[data-sheet-above]",
 		))
 			if (element.getClientRects().length > 0)
@@ -341,6 +441,8 @@ export function Sheet({ content, bottom }: SheetProps) {
 		(write = true) => {
 			const area = contentRef.current
 			if (area === null || useSheetStore.getState().dragging) return
+			// what it showed was just taken out of the page: the observer brings the next one
+			if (shown !== null && !shown.element.isConnected) return
 			const sizes = measure()
 			if (sizes === null) {
 				area.style.height = ""
@@ -367,8 +469,15 @@ export function Sheet({ content, bottom }: SheetProps) {
 				if (write) scheduleWrite(animates ? SNAP_MS + 60 : 0)
 			} else if (write) scheduleWrite()
 			if (height === "small") area.scrollTop = 0
+			// a panel that just opened: its main action in view (it may still be loading)
+			else if (
+				bringMain.current &&
+				shown !== null &&
+				revealMain(area, shown.element, target)
+			)
+				bringMain.current = false
 		},
-		[measure, height, scheduleWrite],
+		[measure, height, scheduleWrite, shown],
 	)
 
 	// the height at rest, and the fold of what folds itself
@@ -444,13 +553,20 @@ export function Sheet({ content, bottom }: SheetProps) {
 		return () => area.removeEventListener("transitionend", onEnd)
 	}, [active, scheduleWrite])
 
-	// hiding the controls (#59) frees the whole screen; showing them again, the band
+	// hiding the controls (#59) frees the whole screen; showing them again, the band;
+	// the gesture hint (#62) coming and going moves the band's foot
 	useEffect(() => {
 		if (!active) return
 		writeFreeArea()
-		return usePresentationStore.subscribe((state, previous) => {
-			if (state.chromeHidden !== previous.chromeHidden) scheduleWrite(0)
-		})
+		const stops = [
+			usePresentationStore.subscribe((state, previous) => {
+				if (state.chromeHidden !== previous.chromeHidden) scheduleWrite(0)
+			}),
+			useGestureHintStore.subscribe((state, previous) => {
+				if (state.showing !== previous.showing) scheduleWrite()
+			}),
+		]
+		return () => stops.forEach((stop) => stop())
 	}, [active, writeFreeArea, scheduleWrite])
 
 	// —— moving it ——————————————————————————————————————————————
@@ -474,12 +590,28 @@ export function Sheet({ content, bottom }: SheetProps) {
 		return true
 	}
 
+	/** The world's card under a finger's press, which a sideways move swipes (#62); else null. */
+	const swipeable = (target: EventTarget | null): HTMLElement | null => {
+		const element = shown?.element
+		if (
+			kindRef.current !== "card" ||
+			!(element instanceof HTMLElement) ||
+			!element.hasAttribute("data-card-body") ||
+			!(target instanceof Node) ||
+			!element.contains(target) ||
+			inSideScroller(target, element)
+		)
+			return null
+		return element
+	}
+
 	const begin = (
 		zone: Drag["zone"],
 		pointerId: number | null,
 		x: number,
 		y: number,
 		target: EventTarget | null,
+		finger: boolean,
 	) => {
 		const area = contentRef.current
 		if (area === null || shown === null) return
@@ -492,7 +624,31 @@ export function Sheet({ content, bottom }: SheetProps) {
 			scroller: zone === "content" ? scrollerOf(target, area) : null,
 			moving: false,
 			samples: [{ y, t: performance.now() }],
+			swipe: finger && zone !== "handle" ? swipeable(target) : null,
+			swiping: false,
+			lastX: x,
+			lastY: y,
 		}
+	}
+
+	/** The card follows a sideways finger a little (#62); none with reduced motion. */
+	const follow = (card: HTMLElement, dx: number) => {
+		if (reducedMotion()) return
+		const px = followPx(dx)
+		card.style.transition = "none"
+		card.style.transform = `translateX(${px}px)`
+		card.style.opacity = String(1 - Math.abs(px) / 216)
+	}
+
+	/** And springs back as the finger lifts. */
+	const springBack = (card: HTMLElement) => {
+		if (card.style.transform === "") return
+		card.style.transition = `transform ${SWIPE_SPRING_MS}ms ease-out, opacity ${SWIPE_SPRING_MS}ms ease-out`
+		card.style.transform = ""
+		card.style.opacity = ""
+		setTimeout(() => {
+			card.style.transition = ""
+		}, SWIPE_SPRING_MS)
 	}
 
 	/** Moves the sheet with the press; returns whether it is a drag of the sheet now. */
@@ -500,12 +656,27 @@ export function Sheet({ content, bottom }: SheetProps) {
 		const current = drag.current
 		const area = contentRef.current
 		if (current === null || area === null) return false
+		current.lastX = x
+		current.lastY = y
 		const dy = y - current.startY
+		const dx = x - current.startX
+		// sideways on a world's card: a swipe to the next world (#62), never the sheet
+		if (current.swiping) {
+			follow(current.swipe!, dx)
+			return true
+		}
+		if (
+			!current.moving &&
+			current.swipe !== null &&
+			Math.abs(dx) >= DRAG_START_PX &&
+			Math.abs(dx) > Math.abs(dy)
+		) {
+			current.swiping = true
+			follow(current.swipe, dx)
+			return true
+		}
 		if (!current.moving) {
-			if (
-				Math.abs(dy) < DRAG_START_PX ||
-				Math.abs(dy) < Math.abs(x - current.startX)
-			)
+			if (Math.abs(dy) < DRAG_START_PX || Math.abs(dy) < Math.abs(dx))
 				return false
 			// on the content: only down, and only from the top of what scrolls
 			if (
@@ -517,6 +688,8 @@ export function Sheet({ content, bottom }: SheetProps) {
 			}
 			current.moving = true
 			useSheetStore.getState().setDragging(true)
+			// one of the gestures the hint shows (#62): it has done its job
+			dismissGestureHint()
 			// what folds itself opens as the sheet rises, so there is something to see
 			if (dy < 0 && FOLDS.includes(kindRef.current!))
 				setFolded(kindRef.current, false)
@@ -534,6 +707,21 @@ export function Sheet({ content, bottom }: SheetProps) {
 		const current = drag.current
 		drag.current = null
 		const area = contentRef.current
+		if (current?.swiping === true) {
+			const dx = current.lastX - current.startX
+			const dy = current.lastY - current.startY
+			springBack(current.swipe!)
+			// the click the finger leaves on a button of the card is no click
+			suppressClick.current = true
+			// to the left is the next world, outwards, like a carousel
+			const direction = swipeDirection(dx, dy)
+			if (direction !== null) {
+				dismissGestureHint()
+				swiped.current = true
+				if (!swipeToWorld(direction)) swiped.current = false
+			}
+			return
+		}
 		if (current === null || !current.moving || area === null) return
 		suppressClick.current = true
 		// px per ms, positive when the sheet grows (the finger moves up), over the
@@ -580,7 +768,14 @@ export function Sheet({ content, bottom }: SheetProps) {
 				? "header"
 				: null
 		if (zone === null) return
-		begin(zone, event.pointerId, event.clientX, event.clientY, event.target)
+		begin(
+			zone,
+			event.pointerId,
+			event.clientX,
+			event.clientY,
+			event.target,
+			event.pointerType !== "mouse",
+		)
 	}
 
 	useEffect(() => {
@@ -593,7 +788,11 @@ export function Sheet({ content, bottom }: SheetProps) {
 		const onUp = (event: PointerEvent) => {
 			const current = drag.current
 			if (current === null || current.pointerId !== event.pointerId) return
-			if (event.type === "pointercancel" && !current.moving) {
+			if (
+				event.type === "pointercancel" &&
+				!current.moving &&
+				!current.swiping
+			) {
 				drag.current = null
 				return
 			}
@@ -633,7 +832,9 @@ export function Sheet({ content, bottom }: SheetProps) {
 			const target = event.target as Element
 			if (target.closest("header, [data-sheet-summary]")) return
 			const touch = event.touches[0]
-			begin("content", null, touch.clientX, touch.clientY, event.target)
+			// the viewer scrolls for themselves now
+			bringMain.current = false
+			begin("content", null, touch.clientX, touch.clientY, event.target, true)
 		}
 		const onMove = (event: TouchEvent) => {
 			const current = drag.current
@@ -679,6 +880,8 @@ export function Sheet({ content, bottom }: SheetProps) {
 
 	const onHandleClick = () => {
 		if (suppressClick.current) return
+		// one of the gestures the hint shows (#62)
+		dismissGestureHint()
 		setHeight(nextHeight(height, heightsNow()))
 	}
 

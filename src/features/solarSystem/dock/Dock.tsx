@@ -8,7 +8,12 @@
  */
 import { useEffect, type ReactNode } from "react"
 import { Button } from "@mantine/core"
-import { IconRuler2, IconSatellite, IconStack2 } from "@tabler/icons-react"
+import {
+	IconRuler2,
+	IconSatellite,
+	IconStack2,
+	IconTools,
+} from "@tabler/icons-react"
 
 import { useI18n } from "@/i18n"
 import { Hint } from "@/primitives/hint"
@@ -25,7 +30,7 @@ import ScalePanel from "../ui/ScalePanel"
 import SceneToggles from "../ui/SceneToggles"
 import DockPanel from "./DockPanel"
 import { keepDockToOnePanel } from "./exclusive"
-import ToolsMenu from "./ToolsMenu"
+import ToolsMenu, { ToolTiles } from "./ToolsMenu"
 
 import hudClasses from "../SolarSystem.module.css"
 import classes from "./Dock.module.css"
@@ -96,6 +101,18 @@ export function DockPanels() {
 					onClose={close}
 				>
 					<SpacecraftList onPicked={close} />
+				</DockPanel>
+			)}
+			{/* Tools as tiles, on a phone held upright (#62): all nine in view, so shown whole */}
+			{panel === "tools" && (
+				<DockPanel
+					id="tools"
+					title={t("solarSystem.hud.tools")}
+					icon={<IconTools size={16} aria-hidden className={classes.icon} />}
+					onClose={close}
+					whole
+				>
+					<ToolTiles />
 				</DockPanel>
 			)}
 			<LightSlot

@@ -199,9 +199,51 @@
 		max-height: 22dvh;
 	}
 
-	/* in the phones' entry row (#42) the four entry points share the width */
+	/* in the phones' entry row (#42) the four entry points share the width, each as wide as its word needs (#62) */
 	.menuButton {
-		flex: 1 1 0;
+		flex: 1 1 auto;
 		min-width: 0;
+	}
+}
+
+/*
+ * A phone held upright (#62): the dots give their lines to the stop's words. A
+ * compact "3 / 11" in the header and a thin bar under it say how far the tour
+ * has come; the tour's name wraps rather than being cut.
+ */
+.progress {
+	order: 10;
+	flex: 0 0 100%;
+	height: 0.1875rem;
+	border-radius: 999px;
+	background: rgba(255, 255, 255, 0.14);
+	overflow: hidden;
+}
+
+.progressDone {
+	display: block;
+	height: 100%;
+	border-radius: inherit;
+	background: var(--mantine-color-orange-5);
+	transition: width 240ms ease;
+}
+
+@media (prefers-reduced-motion: reduce) {
+	.progressDone {
+		transition: none;
+	}
+}
+
+@media $uprightPhone {
+	.header {
+		flex-wrap: wrap;
+		row-gap: 0.25rem;
+	}
+
+	.tourTitle {
+		white-space: normal;
+		overflow: visible;
+		text-overflow: clip;
+		overflow-wrap: break-word;
 	}
 }

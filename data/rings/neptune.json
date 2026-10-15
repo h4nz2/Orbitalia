@@ -1,6 +1,7 @@
 {
 	"innerRadiusKm": 40900,
 	"castsShadow": false,
+	"faint": true,
 	"outerRadiusKm": 63200,
 	"textures": {
 		"alpha": "/assets/textures/neptune/rings/rings_alpha.png",

@@ -459,12 +459,19 @@
 		display: block;
 		max-height: none;
 		width: 100%;
+		/* the sheet scrolls the light panel's words: no scroller inside the scroller (#62) */
+		--light-panel-body-max: none;
 	}
 
 	.sheet .dock > * {
 		width: 100%;
 		max-height: none;
 		overflow: visible;
+	}
+
+	/* a world's card: a sideways finger is a swipe to the next world (#62), up and down still scroll */
+	.sheet .info [data-card-body] {
+		touch-action: pan-y;
 	}
 
 	/* the header of what it shows stays in view while its words scroll, and drags the sheet */
@@ -679,5 +686,21 @@
 	.intro,
 	:global(html[data-intro="hints"]) .intro {
 		grid-row: 2;
+	}
+}
+
+/*
+ * The gesture hint (#62, sheet/GestureHint.tsx; it shows only on a phone held
+ * upright): at the foot of the open row, right above the time chip, so it
+ * covers neither the sheet nor its handle.
+ */
+@media $uprightPhone {
+	.gestures {
+		grid-row: 2;
+		grid-column: 1 / -1;
+		align-self: end;
+		justify-self: stretch;
+		min-width: 0;
+		min-height: 0;
 	}
 }

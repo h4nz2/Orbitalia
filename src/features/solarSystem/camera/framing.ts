@@ -5,7 +5,7 @@
  * drawn one (the active scale's, docs/ARCHITECTURE.md "Scale"), read from the
  * SimFrame, never a true one.
  */
-import { bodyById, planets, sun } from "@/data"
+import { bodyById, planets, sun, type Body } from "@/data"
 import {
 	degToRad,
 	displayDistanceKm,
@@ -164,10 +164,24 @@ export const minDollyDistance = (radiusUnits: number): number =>
 const sphereFit = (radius: number, tanHalf: number, share = 1): number =>
 	radius / Math.sin(Math.atan(share * tanHalf))
 
-/** A body's rings' outer edge in its radii (true in every preset: they scale with the drawn planet); 0 without rings. */
+/**
+ * The outer edge of the rings the framing fits, in the body's radii (true in
+ * every preset: they scale with the drawn planet); 0 without rings, and 0 for
+ * faint ones (`rings.faint`, #62: Jupiter's and Neptune's), which may run off
+ * the sides of a narrow screen rather than shrink the planet for rings
+ * nobody sees. Saturn's and Uranus's read clearly and are fitted (#61).
+ */
+export const framedRingRatio = (
+	body: Pick<Body, "radiusKm"> & { readonly rings?: Body["rings"] },
+): number =>
+	body.rings == null || body.rings.faint === true
+		? 0
+		: body.rings.outerRadiusKm / body.radiusKm
+
+/** `framedRingRatio` of the body `id`; 0 for an unknown id. */
 export function ringRatioOf(id: string): number {
 	const body = bodyById.get(id)
-	return body?.rings == null ? 0 : body.rings.outerRadiusKm / body.radiusKm
+	return body === undefined ? 0 : framedRingRatio(body)
 }
 
 /**

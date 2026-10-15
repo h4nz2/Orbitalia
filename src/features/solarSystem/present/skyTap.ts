@@ -12,7 +12,7 @@
  *   plays (it pauses the opening, #49) or its hints say "Tap a planet", while
  *   the hunt's panel is up (the clue is the point) or while the quick look
  *   asks or plays never hides. Nor does the tap that closes a menu, a popover
- *   or a hint. During a tour it may hide:
+ *   or a hint, or takes the gesture hint away (#62). During a tour it may hide:
  *   hiding never stops the time or the tour.
  * - **The tap that brings them back** does that alone (`tapRestores`): it is
  *   swallowed in the capture phase before the scene's own click, so it never
@@ -35,6 +35,7 @@ import { isTouch } from "@/utils/sizeClasses"
 import { useIntroStore } from "../intro/intro"
 import { isQuickLook, useQuickLookStore } from "../quickLook/quickLook"
 import { isTapClick, pointerKindOf, type PointerKind } from "../scene/tap"
+import { dismissGestureHint } from "../sheet/gestureHint"
 import { setChromeHidden } from "./commands"
 
 /** What decides whether a tap hides or brings back the controls. */
@@ -96,12 +97,16 @@ export const tapRestores = (
 	context: Pick<SkyTapContext, "touch" | "pointer" | "hidden" | "opening">,
 ): boolean => byFinger(context) && context.hidden && !context.opening
 
-/** Something a press outside it closes: an open menu, popover, list or hint. */
+/**
+ * Something a press outside it closes: an open menu, popover, list or hint,
+ * and the gesture hint (#62), which a tap on the sky takes away.
+ */
 const DISMISSIBLE = [
 	".mantine-Popover-dropdown",
 	".mantine-Menu-dropdown",
 	".mantine-Combobox-dropdown",
 	"[role=tooltip]:not([hidden])",
+	"[data-gesture-hint]",
 ].join(",")
 
 /** Whether the press under way went down while something it closes was open. */
@@ -132,6 +137,8 @@ let announceChrome: ((hidden: boolean) => void) | null = null
  * controls. Returns what it did.
  */
 export function onSkyTap(event: Event): SkyTapAction {
+	// the gesture hint (#62) is up: the tap on the sky was its gesture, it takes the hint away and nothing else
+	if (dismissGestureHint()) return "none"
 	const action = skyTapAction(currentContext(event))
 	if (action === "lower") useSheetStore.getState().lower()
 	if (action === "hide") {

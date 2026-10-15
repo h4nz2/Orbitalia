@@ -579,6 +579,7 @@
 			"hideFacts": "Skrýt údaje",
 			"close": "Zavřít",
 			"compare": "Porovnat s…",
+			"compareShort": "Porovnat",
 			"walk": "{bodyId, select, sun {Zmenši Slunce na basketbalový míč a projdi sluneční soustavu} other {Zmenši Slunce na basketbalový míč a dojdi až k tomuto světu}}",
 			"walk@simple": "{bodyId, select, sun {Udělej ze Slunce basketbalový míč a dojdi k planetám} other {Udělej ze Slunce basketbalový míč a dojdi k tomuto světu}}"
 		},
@@ -1507,6 +1508,7 @@
 			"keys@simple": "Šipkami jdeš dál. Kdykoli se můžeš rozhlédnout: prohlídka na tebe počká.",
 			"card": "Prohlídka: {title}",
 			"stopOf": "Zastávka {n} z {count}",
+			"progress": "{n} / {count}",
 			"back": "Zpět",
 			"next": "Dál",
 			"finish": "Dokončit",
@@ -1656,6 +1658,20 @@
 			},
 			"chipHint": "Otevře v panelu celé ovládání času: pozpátku, datum, „Teď“, rychlosti a rotaci.",
 			"chipHint@simple": "Pusť čas rychleji, pomaleji nebo pozpátku."
+		},
+		"gestures": {
+			"label": "Tři pohyby na vyzkoušení",
+			"drag": "Táhni proužek panelu nahoru nebo dolů.",
+			"drag@simple": "Vytáhni proužek nahoru a uvidíš víc.",
+			"tap": "Ťukni na oblohu: tlačítka zmizí a vrátí se.",
+			"tap@simple": "Ťukni na oblohu a tlačítka zmizí.",
+			"swipe": "Přejeď po kartě k dalšímu světu.",
+			"swipe@simple": "Přejeď po kartě k další planetě.",
+			"ok": "Rozumím",
+			"ok@simple": "OK",
+			"okHint": "Tipy se znovu neukážou. Nápověda v nabídce Více vysvětlí každý pohyb.",
+			"okHint@simple": "Tipy se znovu neukážou. Najdeš je v nápovědě v nabídce Více.",
+			"close": "Zavřít tipy"
 		},
 		"quickLook": {
 			"ask": {

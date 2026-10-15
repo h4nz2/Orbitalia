@@ -435,7 +435,8 @@ const AskPlace = () => {
 			<Text size="sm" c="gray.3" lh={1.45}>
 				{t("solarSystem.sky.ask.why")}
 			</Text>
-			<div className={classes.suggestion}>
+			{/* the phone's sheet brings the question into view as the panel opens (#62) */}
+			<div className={classes.suggestion} data-sheet-main>
 				<Stack gap={6}>
 					<Text size="sm" fw={600}>
 						{t("solarSystem.sky.ask.suggestion", {

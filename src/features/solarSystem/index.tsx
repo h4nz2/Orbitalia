@@ -23,6 +23,7 @@ import { MoreMenu } from "./present/MoreMenu"
 import { TeacherBar } from "./present/TeacherBar"
 import PresentationLayer from "./present/PresentationLayer"
 import Scene from "./scene/Scene"
+import GestureHint from "./sheet/GestureHint"
 import { Sheet, SheetBand } from "./sheet/Sheet"
 import { TimeChip, TimePanel } from "./sheet/TimeChip"
 import { DockPanels, EntryBar } from "./dock/Dock"
@@ -169,6 +170,8 @@ const SolarSystem = () => {
 				<CentreBadgePanel />
 				<Corner />
 				<IntroOverlay className={classes.intro} />
+				{/* the first time on a phone held upright, the moves without a button (#62) */}
+				<GestureHint className={classes.gestures} />
 				{/* on a phone held upright one sheet from the bottom (#60); elsewhere these keep their places in the grid */}
 				<Sheet
 					content={

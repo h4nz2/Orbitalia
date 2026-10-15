@@ -579,6 +579,7 @@
 			"hideFacts": "Masquer les infos",
 			"close": "Fermer",
 			"compare": "Comparer avec…",
+			"compareShort": "Comparer",
 			"walk": "{bodyId, select, sun {Réduis le Soleil à un ballon de basket et parcours le système solaire à pied} other {Réduis le Soleil à un ballon de basket et marche jusqu’à ce monde}}",
 			"walk@simple": "{bodyId, select, sun {Transforme le Soleil en ballon de basket et marche jusqu’aux planètes} other {Transforme le Soleil en ballon de basket et marche jusqu’à ce monde}}"
 		},
@@ -1507,6 +1508,7 @@
 			"keys@simple": "Utilise les flèches pour continuer. Tu peux regarder autour de toi quand tu veux : la visite t’attend.",
 			"card": "Visite : {title}",
 			"stopOf": "Étape {n} sur {count}",
+			"progress": "{n} / {count}",
 			"back": "Retour",
 			"next": "Suivant",
 			"finish": "Terminer",
@@ -1656,6 +1658,20 @@
 			},
 			"chipHint": "Ouvre tout le temps dans le panneau : à l’envers, la date, « Maintenant », les vitesses et la rotation.",
 			"chipHint@simple": "Fais aller le temps plus vite, plus lentement ou à l’envers."
+		},
+		"gestures": {
+			"label": "Trois gestes à essayer",
+			"drag": "Fais glisser la barre du panneau en haut ou en bas.",
+			"drag@simple": "Tire la petite barre vers le haut pour voir plus.",
+			"tap": "Touche le ciel pour cacher ou montrer les boutons.",
+			"tap@simple": "Touche le ciel pour cacher les boutons.",
+			"swipe": "Fais glisser la carte vers le monde suivant.",
+			"swipe@simple": "Fais glisser la carte vers la planète suivante.",
+			"ok": "Compris",
+			"ok@simple": "OK",
+			"okHint": "Les astuces ne reviendront pas. L’aide, sous Plus, explique chaque geste.",
+			"okHint@simple": "Les astuces ne reviendront pas. Tu les retrouves dans l’aide, sous Plus.",
+			"close": "Fermer les astuces"
 		},
 		"quickLook": {
 			"ask": {

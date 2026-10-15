@@ -136,6 +136,15 @@ export const Rings = z
 		 * lines across the planet that are not there. Absent: they cast one (Saturn, Uranus).
 		 */
 		castsShadow: z.boolean().optional(),
+		/**
+		 * true: a ring system too faint to read at a glance (Jupiter's and Neptune's: their
+		 * normal optical depth stays below 0.1, from 1e-6 in Jupiter's gossamer rings to the
+		 * densest of Neptune's arcs; Uranus's narrow rings reach 0.3 to 2.5, Saturn's main rings
+		 * more than 1). The camera's framing does not back off to fit them on a narrow screen
+		 * (#62): they may run off its sides, so the planet is not shown small for rings nobody
+		 * sees. Absent: they read clearly, and an upright phone fits them across (#61).
+		 */
+		faint: z.boolean().optional(),
 	})
 	.refine((rings) => rings.outerRadiusKm > rings.innerRadiusKm, {
 		message: "outerRadiusKm must be larger than innerRadiusKm",

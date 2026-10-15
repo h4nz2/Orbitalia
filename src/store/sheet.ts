@@ -11,6 +11,8 @@
  * - `timeOpen`: the time controls are in the sheet (the time chip opens them).
  *   One of the dock's entries (`dock/exclusive.ts`), so opening them closes a
  *   panel and the other way round.
+ * - `world`: what the sheet shows is a world's card, the one a sideways swipe
+ *   moves on from (#62); the gesture hint waits for it.
  *
  * Nothing here is in the URL, and no sheet state is a step of the view
  * history (#46): the phone's back gesture keeps stepping through views.
@@ -50,10 +52,13 @@ export interface SheetState {
 	timeOpen: boolean
 	/** A finger or the mouse is moving the sheet right now. */
 	dragging: boolean
+	/** It shows a world's card (#62). */
+	world: boolean
 	setActive: (active: boolean) => void
 	setHeight: (height: SheetHeight) => void
 	setTimeOpen: (open: boolean) => void
 	setDragging: (dragging: boolean) => void
+	setWorld: (world: boolean) => void
 	/** Down to `small`, if the sheet is on screen and higher (a tap on the sky, #59). Returns whether it moved. */
 	lower: () => boolean
 }
@@ -63,6 +68,7 @@ export const useSheetStore = create<SheetState>()((set, get) => ({
 	height: "small",
 	timeOpen: false,
 	dragging: false,
+	world: false,
 	setActive: (active) => {
 		if (get().active !== active) set({ active })
 	},
@@ -74,6 +80,9 @@ export const useSheetStore = create<SheetState>()((set, get) => ({
 	},
 	setDragging: (dragging) => {
 		if (get().dragging !== dragging) set({ dragging })
+	},
+	setWorld: (world) => {
+		if (get().world !== world) set({ world })
 	},
 	lower: () => {
 		if (!get().active || get().height === "small") return false

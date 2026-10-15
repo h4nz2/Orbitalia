@@ -134,7 +134,13 @@ function CameraRig({ craftFrame }: CameraRigProps) {
 		}),
 		[controls, director],
 	)
-	useEffect(() => () => useHudStore.getState().setCameraMoving(false), [])
+	useEffect(
+		() => () => {
+			useHudStore.getState().setCameraMoving(false)
+			useHudStore.getState().setSceneOn(false)
+		},
+		[],
+	)
 
 	// where the pivot is drawn (#61), for the HUD's centre marker: written to
 	// the DOM only when it moves, never through React state
@@ -150,11 +156,12 @@ function CameraRig({ craftFrame }: CameraRigProps) {
 		const now = performance.now()
 		director?.tick(now, delta)
 		writePivotLift(camera, lift, document.documentElement)
-		useHudStore
-			.getState()
-			.setCameraMoving(
-				motion.update(now, pose, useSimStore.getState().transition !== null),
-			)
+		const hud = useHudStore.getState()
+		hud.setCameraMoving(
+			motion.update(now, pose, useSimStore.getState().transition !== null),
+		)
+		// the scene is on screen (#62: "at rest" waits for it)
+		hud.setSceneOn(true)
 	}, CAMERA_FRAME_PRIORITY)
 
 	return null

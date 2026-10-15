@@ -22,6 +22,11 @@ export interface DockPanelProps {
 	labelled?: boolean
 	/** What it is to the phone's sheet (#60), which decides the height it opens at; a panel by default. */
 	kind?: SheetKind
+	/**
+	 * Shown whole in the phone's sheet (#62, the Tools tiles): its half height
+	 * is all of it, up to just under the top row, so it never scrolls.
+	 */
+	whole?: boolean
 	children: ReactNode
 }
 
@@ -40,6 +45,7 @@ export function DockPanel({
 	id,
 	labelled = true,
 	kind = "panel",
+	whole = false,
 	children,
 }: DockPanelProps) {
 	const { t } = useI18n()
@@ -65,6 +71,7 @@ export function DockPanel({
 			aria-labelledby={labelled ? titleId : undefined}
 			data-dock-panel={id}
 			data-sheet-kind={kind}
+			data-sheet-whole={whole || undefined}
 		>
 			<header className={classes.header}>
 				{icon}
