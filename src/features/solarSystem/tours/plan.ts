@@ -19,9 +19,9 @@ import { AU_KM, dateToJD, isScalePresetId, type ScalePresetId } from "@/sim"
 import { truePositionAt } from "@/sim/light"
 import { FLIGHT_PROFILE } from "@/store/flight"
 import {
-	HOME_SHOT,
 	OVERVIEW,
 	OVERVIEW_BODY_ID,
+	homeShot,
 	followedCraftId,
 	type CameraShot,
 	type SequenceStep,
@@ -169,7 +169,7 @@ export function stopStep(tour: Tour, index: number, jd: number): SequenceStep {
 	const view = stopView(stop)
 	const camera = stop.camera ?? {}
 	const shot: Partial<CameraShot> = {}
-	if (view.kind === "overview") Object.assign(shot, HOME_SHOT)
+	if (view.kind === "overview") Object.assign(shot, homeShot())
 	else shot.elevationDeg = DEFAULT_ELEVATION_DEG
 	if (camera.elevation !== undefined) shot.elevationDeg = camera.elevation
 	if (camera.distance !== undefined) shot.distance = camera.distance

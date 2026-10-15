@@ -19,6 +19,7 @@ import { propagate, radToDeg, type ScalePresetId } from "@/sim"
 import {
 	HOME_SHOT,
 	OVERVIEW,
+	type CameraShot,
 	type SequenceStep,
 	type View,
 } from "@/store/navigation"
@@ -93,6 +94,11 @@ export interface IntroOptions {
 	reducedMotion: boolean
 	/** How long each beat's caption must stay readable (`captionReadingMs`). */
 	readMs: ReadingTimes
+	/**
+	 * The overview the opening ends on: the one a reset shows on this screen
+	 * (`homeShot()`, #61: steeper on an upright one); `HOME_SHOT` by default.
+	 */
+	home?: CameraShot
 }
 
 /**
@@ -147,10 +153,11 @@ export function introSteps({
 	earthAzimuthDeg,
 	reducedMotion,
 	readMs,
+	home = HOME_SHOT,
 }: IntroOptions): SequenceStep[] {
 	const earthView: View = { kind: "body", id: "earth" }
 	const az = (share: number) =>
-		turnToward(earthAzimuthDeg, HOME_SHOT.azimuthDeg, share)
+		turnToward(earthAzimuthDeg, home.azimuthDeg, share)
 	const step = (beat: IntroBeat, rest: Omit<SequenceStep, "holdMs">) => {
 		const moveMs = reducedMotion ? 0 : MOVE_MS[beat]
 		// the hold starts on arrival: whatever of the fade and the scale switch is still running, then the reading
@@ -176,8 +183,8 @@ export function introSteps({
 			shot: { azimuthDeg: az(0.55), elevationDeg: 55 },
 			fit: { km: INNER_FIT_KM, around: "sun" },
 		}),
-		step("system", { view: OVERVIEW, shot: HOME_SHOT }),
-		step("scale", { view: OVERVIEW, shot: HOME_SHOT }),
+		step("system", { view: OVERVIEW, shot: home }),
+		step("scale", { view: OVERVIEW, shot: home }),
 	]
 }
 

@@ -41,8 +41,8 @@ import {
 } from "@/sim"
 
 import {
-	HOME_SHOT,
 	OVERVIEW,
+	defaultShotOf,
 	followedCraftId,
 	formatOffset,
 	formatShot,
@@ -164,7 +164,9 @@ export function searchFromState(
 				? state.selectedId
 				: undefined,
 		cam:
-			shot === null || sameShot(shot, HOME_SHOT) ? undefined : formatShot(shot),
+			shot === null || sameShot(shot, defaultShotOf(view))
+				? undefined
+				: formatShot(shot),
 		frame:
 			state.frameId !== undefined && isFrameAnchored({ frameId: state.frameId })
 				? state.frameId

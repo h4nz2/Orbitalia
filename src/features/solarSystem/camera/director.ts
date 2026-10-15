@@ -39,9 +39,17 @@ import {
 	type FlightState,
 } from "@/store/flight"
 import {
+	insetShares,
+	useFreeAreaStore,
+	type FreeAreaState,
+} from "@/store/freeArea"
+import {
 	HOME_SHOT,
 	OVERVIEW,
+	defaultShotOf,
+	homeShot,
 	isFrameAnchored,
+	sameShot,
 	type EyePoint,
 	type FitRegion,
 	type Transition,
@@ -59,10 +67,13 @@ import {
 	CAMERA_FOV_DEG,
 	CAMERA_MAX_DISTANCE,
 	defaultDistance,
-	fitDistance,
+	fitDistanceIn,
+	lensOf,
 	minDollyDistance,
 	minViewDistance,
+	pivotLift,
 } from "./framing"
+import { setPivotLift } from "./lift"
 import {
 	clamp01,
 	createPose,
@@ -104,6 +115,19 @@ const PAN_REST_EPSILON = 1e-4
 /** How long a released pan glides onto the body it landed on (#15), ms. */
 export const SNAP_DURATION_MS = 450
 
+/**
+ * How fast the framing follows the free part of the screen (#61): the time
+ * constant (s) of the glide to a new band when the HUD settles at another
+ * size (a card unfolded, a panel opened); about half a second to arrive.
+ */
+export const FREE_AREA_EASE_S = 0.12
+/**
+ * For this long after the first frame (ms), a new free area is taken at
+ * once: the HUD measures itself as the page opens, and a link must open
+ * framed, not glide into place.
+ */
+export const FREE_AREA_SETTLE_MS = 1000
+
 export interface StoreLike {
 	getState(): SimState
 }
@@ -125,6 +149,11 @@ export interface CraftLocator {
 	 * scale (`craftLengthScale`, src/sim/follow.ts); NaN while it is not drawn.
 	 */
 	lengthScale(id: string): number
+}
+
+/** Where the director reads the free part of the screen (#61). */
+export interface FreeAreaLike {
+	getState(): Pick<FreeAreaState, "area">
 }
 
 /** Where the director records flights for the readout (#18). */
@@ -163,6 +192,11 @@ export interface CameraSnapshot {
 	fovDeg: number
 	/** The camera stands at a requested eye point and follows it (#41). */
 	eyeHeld: boolean
+	/**
+	 * Where the pivot is drawn (#61): the share of the canvas height above
+	 * its centre (the middle of the band the HUD leaves free on a phone).
+	 */
+	pivotLift: number
 	finite: boolean
 }
 
@@ -179,6 +213,7 @@ const scratchPivot = new Float64Array(3)
 const scratchEye = new Float64Array(3)
 const scratchEyePivot = new Float64Array(3)
 const scratchCraft = new Float64Array(3)
+const scratchInsets = { top: 0, bottom: 0 }
 
 /** camera-controls' ACTION.NONE: no gesture in progress. */
 const ACTION_NONE = 0
@@ -215,6 +250,20 @@ export class CameraDirector {
 	/** The scale version and default distance the settled camera was framed under (scale changes rescale it). */
 	private followedVersion = -1
 	private followedDefault = 0
+	/** The lens and free band (#61) it was framed under: a new band or screen shape rescales it too. */
+	private readonly followedLens = { fov: 0, aspect: 0, top: 0, bottom: 0 }
+
+	/**
+	 * The free band the camera frames into now (#61), shares of the canvas
+	 * height covered at the top and bottom: eased toward the free area's.
+	 */
+	private readonly insets = { top: 0, bottom: 0 }
+	/** The pivot's lift applied to the camera's lens. */
+	private appliedLift = 0
+	/** When the first frame was drawn (ms); a new free area is taken at once until `FREE_AREA_SETTLE_MS` later. */
+	private initializedAt = 0
+	/** Whether the canvas was upright last frame (null before the first). */
+	private upright: boolean | null = null
 
 	/** Body the current pivot is attached to (for the start of the next transition). */
 	private heldIndex = 0
@@ -273,6 +322,7 @@ export class CameraDirector {
 		readonly store: StoreLike,
 		readonly flights: FlightLogLike = useFlightStore,
 		readonly crafts: CraftLocator | null = null,
+		readonly freeArea: FreeAreaLike = useFreeAreaStore,
 	) {
 		this.truckSpeed = controls.truckSpeed
 	}
@@ -297,6 +347,7 @@ export class CameraDirector {
 	tick(now: number, deltaS: number): void {
 		// before the first frame the camera is wherever three.js put it; initialize replaces it
 		if (this.initialized && !this.isHealthy()) this.recover()
+		this.followFreeArea(now, deltaS)
 		const transition = this.store.getState().transition
 		if (!this.initialized) {
 			this.initialize(now)
@@ -363,6 +414,7 @@ export class CameraDirector {
 			elevationDeg: 90 - radToDeg(pose.phi),
 			fovDeg: this.camera.fov,
 			eyeHeld: this.eye !== null && this.eyeHeld,
+			pivotLift: this.appliedLift,
 			finite,
 		}
 	}
@@ -376,6 +428,7 @@ export class CameraDirector {
 		const view = pending?.view ?? state.view
 		const index = this.anchorIndex(view)
 		this.initialized = true
+		this.initializedAt = now
 		if (index === undefined) {
 			state.reset()
 			this.forceJump = true
@@ -388,7 +441,7 @@ export class CameraDirector {
 		this.toFov = this.fromFov = this.camera.fov
 		shotToPose(
 			{
-				...HOME_SHOT,
+				...defaultShotOf(view, this.camera.aspect < 1),
 				...state.shot,
 				...pending?.shot,
 				...(fit === null ? {} : { distance: this.fitFactor(fit, view) }),
@@ -609,6 +662,7 @@ export class CameraDirector {
 			return
 		}
 		if (view.kind === "craft") view = this.followCraft(view)
+		this.rehome()
 		this.heldIndex = this.anchorIndex(view) ?? index
 		const pivot = this.toKm
 		if (this.pendingPan !== null) this.anchoredKm(this.pendingPan, pivot)
@@ -644,7 +698,7 @@ export class CameraDirector {
 			this.controls.maxDistance = CAMERA_MAX_DISTANCE
 			return
 		}
-		this.followScale(view)
+		this.followFraming(view)
 		this.controls.minDistance =
 			this.pendingPan === null
 				? minViewDistance(view, this.frame)
@@ -697,19 +751,38 @@ export class CameraDirector {
 
 	// --- helpers -------------------------------------------------------------
 
-	/** Remembers what the settled camera is framed against, for `followScale`. */
+	/** Remembers what the settled camera is framed against, for `followFraming`. */
 	private follow(view: View): void {
 		this.followedVersion = this.frame.scaleVersion
+		const lens = this.followedLens
+		lens.fov = this.camera.fov
+		lens.aspect = this.camera.aspect
+		lens.top = this.insets.top
+		lens.bottom = this.insets.bottom
 		this.followedDefault = this.defaultDistance(view)
+	}
+
+	/** The lens or the free band changed since the camera was last framed (#61). */
+	private lensMoved(): boolean {
+		const lens = this.followedLens
+		return (
+			lens.fov !== this.camera.fov ||
+			lens.aspect !== this.camera.aspect ||
+			lens.top !== this.insets.top ||
+			lens.bottom !== this.insets.bottom
+		)
 	}
 
 	/**
 	 * A scale change (#8, #21) moves every drawn size and distance: the camera
 	 * distance scales with the view's default framing (the focus's drawn radius,
 	 * or the drawn system for the overview), so what is framed keeps its size on
-	 * screen while everything else moves to where the new scale puts it.
+	 * screen while everything else moves to where the new scale puts it. A new
+	 * free band or screen shape (#61: the card unfolded, a panel opened, the
+	 * phone turned) does the same: the distance keeps its multiple of the
+	 * default framing, so what was framed whole stays whole in the band.
 	 */
-	private followScale(view: View): void {
+	private followFraming(view: View): void {
 		// a followed craft (#57): with the drawing round it, measured now and last frame
 		const craftScale =
 			view.kind === "craft"
@@ -717,16 +790,18 @@ export class CameraDirector {
 				: Number.NaN
 		const craftRatio = craftScale / this.craftScale
 		this.craftScale = craftScale
-		if (this.frame.scaleVersion === this.followedVersion) return
+		const scaled = this.frame.scaleVersion !== this.followedVersion
+		if (!scaled && !this.lensMoved()) return
 		const from = this.followedDefault
 		this.follow(view)
 		if (!(from > 0) || this.pendingPan !== null) return
 		const ratio =
 			view.kind === "craft"
-				? Number.isFinite(craftRatio) && craftRatio > 0
+				? scaled && Number.isFinite(craftRatio) && craftRatio > 0
 					? craftRatio
 					: 1
 				: this.followedDefault / from
+		if (ratio === 1) return
 		const radius = this.readPose(this.pose, true).radius
 		const min = minViewDistance(view, this.frame)
 		// the new limit first: dollyTo clamps to it
@@ -999,7 +1074,7 @@ export class CameraDirector {
 			childDistanceCurve(this.frame.scale, body.parentId === null),
 		)
 		const factor =
-			fitDistance(toUnits(drawnKm), fovDeg, this.camera.aspect) /
+			fitDistanceIn(toUnits(drawnKm), fovDeg, this.camera.aspect, this.insets) /
 			this.defaultDistance(view)
 		return Number.isFinite(factor) && factor > 0 ? factor : fallback
 	}
@@ -1049,7 +1124,63 @@ export class CameraDirector {
 			this.frame,
 			this.camera.fov,
 			this.camera.aspect,
+			this.insets,
 		)
+	}
+
+	/**
+	 * Every frame: eases the band the camera frames into toward the free part
+	 * of the screen (#61) and draws the pivot in its middle. A new band is
+	 * taken at once on the first frames (the HUD measuring itself as the page
+	 * opens) and with reduced motion; otherwise it glides (`FREE_AREA_EASE_S`),
+	 * and the settled camera's distance follows (`followFraming`).
+	 */
+	private followFreeArea(now: number, deltaS: number): void {
+		const target = insetShares(this.freeArea.getState().area, scratchInsets)
+		const insets = this.insets
+		if (target.top !== insets.top || target.bottom !== insets.bottom) {
+			const jump =
+				!this.initialized ||
+				now - this.initializedAt < FREE_AREA_SETTLE_MS ||
+				prefersReducedMotion()
+			const k = jump ? 1 : 1 - Math.exp(-Math.max(0, deltaS) / FREE_AREA_EASE_S)
+			insets.top += (target.top - insets.top) * k
+			insets.bottom += (target.bottom - insets.bottom) * k
+			// within a thousandth of the height (under a pixel): arrived
+			if (Math.abs(target.top - insets.top) < 1e-3) insets.top = target.top
+			if (Math.abs(target.bottom - insets.bottom) < 1e-3) {
+				insets.bottom = target.bottom
+			}
+		}
+		const lift = pivotLift(insets)
+		if (lift !== this.appliedLift) {
+			setPivotLift(this.camera, lift)
+			this.appliedLift = lift
+		}
+	}
+
+	/**
+	 * The screen turned between upright and wide (#61) while the overview
+	 * rests at the home shot of the old shape: it moves to the new shape's
+	 * home shot, so a phone turned back and forth keeps the overview its
+	 * shape is best seen from.
+	 */
+	private rehome(): void {
+		const upright = this.camera.aspect < 1
+		const was = this.upright
+		this.upright = upright
+		if (was === null || was === upright) return
+		const state = this.store.getState()
+		if (
+			state.view.kind !== "overview" ||
+			state.transition !== null ||
+			state.sequence !== null ||
+			this.pendingPan !== null ||
+			!sameShot(state.shot, homeShot(was))
+		) {
+			return
+		}
+		state.goTo(OVERVIEW, { shot: homeShot(upright) })
 	}
 
 	/** The profile's input from the current pivots (fills `fromKm` and `toKm`). */
@@ -1064,8 +1195,10 @@ export class CameraDirector {
 		this.input.fromDistance = this.fromPose.radius
 		this.input.toDistance = this.toPose.radius
 		this.input.separation = Math.hypot(dx, dy, dz) / KM_PER_UNIT
-		this.input.widthPerDistance = 2 * Math.tan(degToRad(this.camera.fov) / 2)
-		this.input.aspect = this.camera.aspect > 0 ? this.camera.aspect : 1
+		// the free band's lens (#61): a flight's top fits what can be seen
+		const lens = lensOf(this.camera.fov, this.camera.aspect, this.insets)
+		this.input.widthPerDistance = 2 * Math.tan(degToRad(lens.fovDeg) / 2)
+		this.input.aspect = lens.aspect
 	}
 }
 

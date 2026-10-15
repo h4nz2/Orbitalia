@@ -23,7 +23,7 @@ import { create } from "zustand"
 
 import { DEFAULT_READING_LEVEL, type ReadingLevel } from "@/i18n"
 import { readPreference, writePreference } from "@/i18n/storage"
-import type { SequenceStep } from "@/store/navigation"
+import { homeShot, type SequenceStep } from "@/store/navigation"
 import { useScaleStore } from "@/store/scale"
 import { useSimStore, type SimState } from "@/store/sim"
 import type { SimSearch } from "@/store/simSearch"
@@ -126,6 +126,7 @@ export function startIntro(
 		earthAzimuthDeg: sunlitAzimuthDeg(sim.simTimeJD),
 		reducedMotion,
 		readMs: captionReadingMs(readingLevel),
+		home: homeShot(),
 	})
 	useIntroStore.setState({
 		status: "playing",

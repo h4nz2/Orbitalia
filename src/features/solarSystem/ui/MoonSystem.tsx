@@ -14,6 +14,7 @@ import { IconArrowBackUp, IconFocusCentered } from "@tabler/icons-react"
 import { bodyById, type Body } from "@/data"
 import { useI18n } from "@/i18n"
 import { bodyKindLabel, useBodyName, useBodyText } from "@/i18n/bodies"
+import { framingNow } from "@/store/freeArea"
 import { useScaleStore } from "@/store/scale"
 import { useSimStore } from "@/store/sim"
 
@@ -21,11 +22,6 @@ import { moonSystemOf, moonSystemShot } from "./moonSystem"
 import SurfaceNote from "./SurfaceNote"
 
 import classes from "./MoonSystem.module.css"
-
-const viewAspect = (): number =>
-	typeof window === "undefined" || window.innerHeight === 0
-		? 1
-		: window.innerWidth / window.innerHeight
 
 const PlanetMoons = ({ planet }: { planet: Body }) => {
 	const { t } = useI18n()
@@ -51,6 +47,8 @@ const PlanetMoons = ({ planet }: { planet: Body }) => {
 	const drawn = allShown ? [...featured, ...others] : featured
 	const viewSystem = () => {
 		if (!showMoons) setShowMoons(true)
+		// the screen's shape and the band its HUD leaves free (#61)
+		const { aspect, insets } = framingNow()
 		goTo(
 			{ kind: "body", id: planet.id },
 			{
@@ -58,8 +56,9 @@ const PlanetMoons = ({ planet }: { planet: Body }) => {
 					planet,
 					drawn,
 					useScaleStore.getState().scale,
-					viewAspect(),
+					aspect,
 					useSimStore.getState().simTimeJD,
+					insets,
 				),
 			},
 		)

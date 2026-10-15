@@ -192,8 +192,26 @@
 	}
 }
 
+/*
+ * The part of the screen the scene is seen in (#61, dock/FreeArea.tsx): an
+ * empty, invisible cell the camera measures to frame what it looks at. Only
+ * the phone's arrangement covers the scene in bands (its open row); elsewhere
+ * the camera frames the whole canvas.
+ */
+.free {
+	display: none;
+	pointer-events: none;
+}
+
 /* phones: one column; the scene keeps the middle, the panels come up from the bottom */
 @media (max-width: 599px) {
+	.free {
+		display: block;
+		grid-row: 4;
+		grid-column: 1;
+		min-height: 0;
+	}
+
 	.hud {
 		grid-template-columns: minmax(0, 1fr);
 		grid-template-rows: auto auto auto minmax(0, 1fr) auto auto auto;

@@ -51,7 +51,7 @@ src/sim/                     pure simulation, no React or three objects (import 
 src/data/skyEvents.json      the sky events (#41): real instants and the check that each happens in the simulation
 src/data/worlds.json         the dictionary's stories (#53): layers, air, temperatures, nicknames, names, discovery, each with its source
 src/store/                   sim.ts, navigation.ts, flight.ts, scale.ts, lighting.ts, spin.ts, trails.ts, light.ts, hunt.ts,
-                             hud.ts (the quiet HUD, #42), presentation.ts, postcard.ts, sound.ts, birthday.ts, skyTonight.ts, tour.ts, simSearch.ts (URL schema),
+                             hud.ts (the quiet HUD, #42), freeArea.ts (the part of the screen the scene is seen in, #61), presentation.ts, postcard.ts, sound.ts, birthday.ts, skyTonight.ts, tour.ts, simSearch.ts (URL schema),
                              urlSync.ts, viewHistory.ts (Back, #46)
 src/features/                solarDictionary/, solarSystem/ (index.tsx, back/ (#46), scene/, bodies/, camera/, dock/, frame/, hunt/, intro/, labels/, lighting/, light/, postcard/, present/, rings/,
                              smallBodies/ (#23), sound/, tours/, ui/, birthday/, skyTonight/, walk/ (the walk's ways in, #48)),
@@ -327,7 +327,9 @@ too big and distances 50 to 500x too close (Earth 29x and 60x), checked against 
   from the home elevation, their near edge at 85 % of the half-height (the time bar's room), their sides at 90 % of
   the half-width, instead of the shared sphere x 1.3. Tilting the camera steeper than 45 deg brings the near edge
   closer to the bottom; the other presets' overview is unchanged (only the drawn disc of the farthest planet is now
-  part of every preset's overview radius, a fraction of a pixel outside Poster).
+  part of every preset's overview radius, a fraction of a pixel outside Poster). On an upright screen every preset
+  takes this tight fit, from the steeper upright home elevation, into the band a phone's HUD leaves free (#61, see
+  "Framing what is free").
 
 ### Scale presets, the experience (#21)
 
@@ -474,7 +476,8 @@ Director (`camera/director.ts`, unit-tested frame by frame):
   the overview it only descends (`smooth`). Every selection path (click, label, picker search, arrow keys, the centre
   badge) goes through `setFocus`, so all of them fly.
 - **Shape** (`flightPlan`, `flightProfile`, pure): pull back until the gap fits the narrow side of the view
-  `FLIGHT_TOP_FIT` (2.4) times (portrait phones included, never lower than either end), travel at that height, descend.
+  `FLIGHT_TOP_FIT` (2.4) times (portrait phones included, the band a phone's HUD leaves free as the view, #61; never
+  lower than either end), travel at that height, descend.
   Distance is eased in log space over the climb and the descent (up to `FLIGHT_ZOOM_SHARE` = 25 % of the time each, in
   proportion to their e-folds); the pivot crosses over [`travelStart`, `travelEnd`] = halfway up to halfway down, eased,
   so the phases flow into one move and over 90 % of the crossing happens at the top. The camera rises to at least
@@ -505,7 +508,8 @@ Director (`camera/director.ts`, unit-tested frame by frame):
 - **What plays:** on a first visit, close on Earth (from its sunlit side, `sunlitAzimuthDeg`) in **true scale**, then
   pull back: the Moon's orbit, the inner planets, the whole system (Earth far below a pixel, the markers showing where
   the planets are), and finally the animated switch to Everything visible ("so we draw them bigger and closer"). It
-  ends on exactly the overview a reset shows, in the default preset (`introSteps` in `intro/script.ts`, pure).
+  ends on exactly the overview a reset shows, in the default preset (`introSteps` in `intro/script.ts`, pure; the
+  screen's home shot is handed in as `home`, steeper on an upright screen, #61).
 - **Slow enough to read (#49):** every caption stays up, fully faded in and with the camera and the scale still, for
   `readingMs` = max(3.5 s, 1.5 s + 0.45 s a word) (reading aloud at a calm pace, about 130 words a minute). The words
   are those of the caption's longest translation (title and detail) at the reading level the opening starts in
@@ -595,7 +599,8 @@ and the help page. About a minute, moving on by itself.
     `unmapDistance` in `src/sim/scale.ts`) and drawn with `pointDisplayKm`, so it keeps its place under every preset.
 - Limits follow the centre: a point uses its anchor's `minViewDistance`; a point anchored to the Sun is framed
   (`defaultDistance`) like the overview.
-- HUD: `ui/CentreMarker.tsx` (crosshair at the canvas centre while `panning` or free), `ui/CentreBadge.tsx` ("Free view
+- HUD: `ui/CentreMarker.tsx` (crosshair on the pivot while `panning` or free: the canvas centre, on a phone the
+  middle of the free band, #61), `ui/CentreBadge.tsx` ("Free view
   near Mars" + "Centre on Mars", or "in interplanetary space" + "Back to overview"); the picker shows no body while free.
   `ui/centre.ts` holds `freeCentreId` (stable selector) and the strings.
 - Building on it: #16 clicks call `setFocus` (see Picking); #31 anchors the frame to `focusId` (a point's anchor).
@@ -638,6 +643,85 @@ become the sky's motions (the Sun's yearly circle, Mercury's and Venus's flowers
   of a body of the same family) beside a map of the same moment from above the Sun (`frame/inset.ts`, true
   proportions, line of sight) or the phase disc, and holds "Back to Sun-centred" and "Restart the trails".
   Strings: `solarSystem.frame.*`.
+
+### Framing what is free: phones (`src/store/freeArea.ts`, `camera/framing.ts`, `camera/lift.ts`, `dock/FreeArea.tsx`; #61)
+
+On a phone the HUD stacks its controls in bands at the top (where, the corner) and the bottom (the dock, the card, the
+time bar, the entry points), so the camera centres what it looks at in the band between them and fits it there.
+Elsewhere (laptops, tablets, a phone on its side) nothing covers the scene in bands and the framing is the whole
+canvas, exactly as before.
+
+- **The free area** (`useFreeAreaStore`, `src/store/freeArea.ts`): `{ width, height, top, bottom }`, CSS px of the
+  canvas and of what covers it at its top and bottom (0 where nothing covers it in bands). Whoever covers the screen
+  writes it; nothing else does. Today that is `dock/FreeArea.tsx`, an empty, invisible cell of the HUD grid that the
+  phone's arrangement puts in its open row (`.free` in `SolarSystem.module.css`, `display: none` outside the phone
+  media query): its box is exactly what can be seen. It is measured at mount (a layout effect, before the first
+  frame) and by a `ResizeObserver` on the cell, the page and every piece of the HUD (a `MutationObserver` adds new
+  ones), never per frame; hiding the controls (#29) leaves the whole canvas. `insetShares(area)` turns it into
+  shares of the height and never leaves less than `MIN_FREE_SHARE` (15 %) between them (a band round the free
+  band's centre, kept on the canvas): a thinner band would shrink the subject to a speck.
+- **For #60 (the bottom sheet): feed the sheet's resting height here.** Call
+  `useFreeAreaStore.getState().setArea({ width, height, top, bottom })` with the canvas size, the bottom of the top
+  stack (px from the canvas's top) and the sheet's top edge measured from the canvas's bottom (plus anything under
+  it), whenever the sheet comes to rest at a height (small, half, full) and when the screen resizes; not during a
+  drag (the camera eases on its own, so a writer may jump). At full height report what is still visible (or keep
+  the last resting value if the sheet covers the scene). Then retire `.free` and `dock/FreeArea.tsx`, or keep the
+  cell as the sheet's measuring point; either way only one writer. Every reader (the director, the hunt, the
+  moon system shot) picks it up with no other change.
+- **The lens of the band** (`lensOf(fovDeg, aspect, insets)`): the band as a camera of its own, with the canvas's
+  pixels per radian: its vertical field `2 atan(tan(fov / 2) x share)` and aspect `aspect / share`, plus `upright`
+  (the canvas is taller than wide) and `banded`. `defaultDistance`, `overviewDistance`, `fitDistanceIn` and the
+  flight's top fit (`fillInput`) all frame into it, so `distance: 1` means "whole, in what can be seen" on every
+  screen.
+- **The pivot drawn off-centre** (`camera/lift.ts`): the director gives the camera a view offset (`camera.view`, kept
+  in shares of a 1 x 1 view so a resize never leaves it stale) that draws the pivot `pivotLift(insets)` =
+  `(bottom - top) / 2` of the height above the canvas's centre: the band's middle. It is a shift of the picture,
+  never a zoom, so everything that projects through the camera follows by itself: labels and their picking (#20),
+  body picking and the generous targets (#16, the raycaster unprojects through the offset), markers, hover and
+  selection rings, the opening's pulse, the hunt's spot, spacecraft markers, `screenOf`. A pan's snap (#15) tests
+  the pivot, which is where it is drawn. The `CameraSnapshot` carries `pivotLift`, and `CameraRig` writes it to
+  `--pivot-lift` on `<html>` (`writePivotLift`, only when it moves) for the centre marker (`ui/CentreMarker`), which
+  therefore sits on the pivot in the middle of the band.
+- **Following the band** (`director.ts` `followFreeArea`, `followFraming`): every frame the director eases its
+  insets toward the store's (time constant `FREE_AREA_EASE_S` = 0.12 s, about half a second to arrive; at once
+  for the first `FREE_AREA_SETTLE_MS` after the first frame, while the page measures itself, and with
+  `prefers-reduced-motion`). A settled camera keeps its distance as a multiple of the default framing whenever the
+  lens or the band changes, as it does on a scale change: the card unfolded, a panel opened, the phone turned, a
+  window resized, and what was framed whole stays whole. The shot in the store (and the URL's `cam`) keeps its
+  multiple, so nothing churns. A running move reads the default every frame anyway. A followed spacecraft keeps its
+  fixed distance; an eye (#41) keeps its place.
+- **Fit narrow screens** (`bodyFramingRadii`): a body is framed from `FRAMING_RADII` (6) drawn radii, or farther
+  where that would not fit: the body within `BODY_FIT_SHARE` (90 %) of the band's half-width and half-height, its
+  rings (`ringRatioOf`: the outer edge in planet radii, true in every preset) within that share of the width, and in
+  a band (a phone) of its height too. A ring is a disc tilted to the line of sight, so a laptop, whose narrow side
+  is the height, frames rings by the width alone: every laptop and landscape screen keeps 6 radii for every body
+  (tested for 16:9, 16:10, 4:3 and a phone on its side). On a 390 x 844 phone Saturn backs off to about 14 radii,
+  its rings across 90 % of the width. The moon system shot (`ui/moonSystem.ts`) and the hunt divide by the
+  planet's framing (`planetFramingRadii`), not by 6.
+- **The whole system on an upright screen** (`UPRIGHT_HOME_SHOT`, `homeShot()`, `defaultShotOf(view)` in
+  `src/store/navigation.ts`): on a canvas taller than wide the overview's home shot looks down from 65 deg instead
+  of 45, and every preset takes the tight fit (`tightFitDistance`, as Poster does on a laptop) into the band: the
+  orbits fill 90 % of the width and, seen more steeply, over a third of a 390 x 844 phone's height (37 %; a quarter
+  before), every planet in the band, in every preset (`framing.test.ts`). `reset`, `overview`, `releaseFrame`, Back
+  to the overview, a tour's overview stop, the opening's last beats (`introSteps({ home })`) and a link without
+  `cam` all use the screen's home shot; the URL leaves out the home shot of the screen it is written on
+  (`defaultShotOf`), so a phone's home overview opens as the laptop's home overview on a laptop and the other way
+  round. A link whose overview camera was moved keeps its angles. When the screen turns between upright and wide
+  while the overview rests at the old shape's home shot, the director glides to the new one (`rehome`); a camera
+  the viewer turned is left alone. Body views keep `HOME_SHOT` (45 deg) everywhere. Laptops: unchanged.
+- **A link made on a laptop** carries its camera as a multiple of the default framing, which on a phone is the
+  phone's: `cam=35_20_1` (Saturn turned on a laptop) opens on a phone with the same angles, Saturn and its rings
+  whole across the width and above the card, without rewriting the link. A link zoomed in on the laptop
+  (`distance` < 1) keeps that zoom relative to the phone's framing, so its subject may overflow the narrow side.
+- **Pictures** (#33) have no HUD: `snapshotScene` renders the picture with the lens centred again and moves the
+  names down with the scene, so the subject is in the middle of the picture.
+- **Hunt** (#52): on a phone the clue's panel is part of the bottom stack, so the start view frames the whole
+  system (or the moon system) in the band above the clue; `clearanceOf(width, height, dock, insets)` then measures
+  room from the band's centre, not the dock.
+- Tests: `framing.test.ts` (the lens, laptops unchanged, rings across an upright phone, a body whole above an
+  unfolded card, the upright overview in every preset, an upright tablet), `director.freeArea.test.ts` (the lift
+  from the first frame, the glide and the distance following a new band, the upright home shot, turning the
+  screen), `src/store/freeArea.test.ts`, `startView.test.ts`; `e2e/phoneFraming.spec.ts` on 390 x 844 and 360 x 640.
 
 ### Back: the view history (`src/store/viewHistory.ts`, `features/solarSystem/back`; #46)
 
@@ -1049,8 +1133,10 @@ export const useSimFrame = (): SimFrame // throws outside the provider
   body is wider than 6 px, and moon dots show only within the focused family (`isMoonDotShown`). The dots are drawn
   only; picking is `BodyPicking`'s (see Picking). Labels join the same picking (see Labels).
 - Camera (`camera/framing.ts`, `camera/input.ts`): `minDistance = max(1.2 R, R + 2 near)` of the drawn radius, bodies
-  framed from 6 radii, the overview fits the drawn planetary system (the farthest aphelion plus that planet's drawn
-  disc) x 1.3 from azimuth 0 / elevation 45, Poster tighter (`overviewFit`, see Scale), a followed spacecraft from
+  framed from 6 radii (farther where the body or its rings would not fit, #61), the overview fits the drawn planetary
+  system (the farthest aphelion plus that planet's drawn disc) x 1.3 from azimuth 0 / elevation 45, Poster tighter
+  (`overviewFit`, see Scale), an upright screen tight from 65 deg (#61), all of it into the band a phone's HUD leaves
+  free with the pivot drawn in its middle (see "Framing what is free"), a followed spacecraft from
   a fixed `CRAFT_FRAMING_DISTANCE` (a million drawn km; its closest dolly 100 km; #57). Orbit with
   left button or one finger; dolly with wheel, pinch (ctrl+wheel via `pinchAsDolly`) or middle button; pan with the right
   button, Shift + left, two or three fingers (see Re-centring). A point's zoom limits are its anchor's.
@@ -1447,7 +1533,9 @@ unobstructed (`e2e/quietHud.spec.ts` measures it). Every control is at most two 
   one panel at a time: Layers, Scale and the spacecraft list (`useHudStore.panel`) or a tool with its own store
   (light, birthday, sky tonight, hunt). `dock/exclusive.ts` `keepOneOpen` closes the previous one whichever way the
   next one opened (button, Tools menu, link, key); a new tool adds one `DockEntry` there. `DockPanel` is the shell
-  (title, close, focus moves in on open and back to the opener on close). The tour card (#28) sits in the dock too,
+  (title, close, focus moves in on open and back to the opener on close). On phones the HUD's open row holds an
+  empty, invisible cell (`dock/FreeArea.tsx`) that tells the camera which part of the screen the scene is seen in
+  (#61, "Framing what is free"). The tour card (#28) sits in the dock too,
   under the panel, and so does the walk's one-time tip while the Scale panel is closed (#48). On phones a dock panel or a tour takes the body card's place.
 - **The body card starts small**: name, one sentence, Compare, the unfold arrow and close. The facts, moons, stories
   (the comparison with its way to the walk, #48) and recordings unfold on demand; the choice (`useHudStore.cardExpanded`) holds from body to body while the page
@@ -1514,7 +1602,9 @@ handed to the visitor. Everything happens on the device: no upload, no server, n
   `CAPTURE_LONG_SIDE` (1920 px, at most `CAPTURE_MAX_SIDE` 4096; `captureRatio`) and put back at once (the next
   animation frame redraws, nothing flickers). Labels are DOM: `readLabels` reads the label layer
   (`[data-label-layer]`) as painted (text, box, computed font, colour, opacity) and `draw.ts` paints them back with a
-  halo. Only the canvas and the names are taken; HUD panels, hover rings and badges never are.
+  halo. Only the canvas and the names are taken; HUD panels, hover rings and badges never are. On a phone the screen
+  draws the subject in the band its HUD leaves free (#61); the picture has no HUD, so that one render centres the
+  lens again (`setPivotLift(camera, 0)`, put back at once) and the names move down with the scene.
 - **Snapshot** (`takePostcard(extra?)` in `take.ts`, call it from the click): the shot, the simulation JD, the subject
   (`postcardSubject`: the selection, else the focused body), the drawn scale preset, `hideDate`
   (`hidesTimeInUrl`: a birth date is entered) and `postcardLink` (the page URL with `t` pinned to the moment on
@@ -1652,7 +1742,8 @@ is the receipt. No score, no timer, no ranking, no failure state; a star for eve
 - **Easy clues are answered by looking** (`hunt/startView.ts`): when an Easy clue is asked, the hunt asks the
   navigation store for its start view (the camera keeps one owner): `reset()` to the overview, or for `at` the
   planet with the featured moons out to the one beyond the answer (`framedMoons`, `moonSystemShot`'s direction),
-  names on, Moons on. Both are framed clear of the docked panel: `clearanceOf` measures the dock; the overview stays
+  names on, Moons on. Both are framed clear of the docked panel: `clearanceOf` measures the dock (on a phone, #61:
+  the camera frames the band above the clue's panel, and the clearance is that band); the overview stays
   the home view when the answer and its name are clear, else it turns round the Sun the least that brings them into
   the clear (`overviewShot`, `overviewPx`; the planets keep their size, which matters in Poster, #54) and backs off
   only when no turn is enough; a moon system backs off as far as its orbits need (`moonsShotDistance`). Reduced
@@ -1938,7 +2029,8 @@ body held still) plus narration. Adding one is data only; `src/data/tours/README
   (`tours/text.ts`: `tourWords`, `stopWords`, `useTourWords`). `src/data/tours.test.ts` is the contract: schema,
   known bodies/moments/presets, `frame` only on the body in view, words for every stop in every locale, and the
   shipped tours at every reading level.
-- **Plan** (`tours/plan.ts`, pure): `stopStep` turns a stop into a `SequenceStep` (the overview gets `HOME_SHOT`;
+- **Plan** (`tours/plan.ts`, pure): `stopStep` turns a stop into a `SequenceStep` (the overview gets the screen's
+  home shot, `homeShot()`, #61;
   `fit` in AU or km; `move` fly / glide / jump, flying by default between two bodies; `camera.light` picks the
   azimuth that sees the body lit as asked from the TRUE Sun direction at the stop's date, `sunlitAzimuthDeg`).
   `stopSettings` folds scale, speed and layers forward from the tour's baseline (the scene when it started), so

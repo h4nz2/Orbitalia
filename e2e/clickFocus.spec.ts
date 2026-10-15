@@ -120,6 +120,43 @@ const beside = async (page: Page, id: string, distance: number) => {
 	}
 }
 
+/**
+ * `distance` px from a body, in the first of eight directions (away from the
+ * Sun first) where no other body's name is drawn: a name is a target of its
+ * own (#20), and on a phone's steeper overview (#61) one may sit right there.
+ */
+const besideClear = async (page: Page, id: string, distance: number) => {
+	const { body, x, y } = await beside(page, id, distance)
+	const labels = await page.evaluate(
+		(id) =>
+			[
+				...document.querySelectorAll<HTMLElement>(
+					'[data-label-layer] [data-visible="true"]',
+				),
+			]
+				.filter((label) => label.dataset.body !== id)
+				.map((label) => label.getBoundingClientRect().toJSON() as DOMRect),
+		id,
+	)
+	const away = Math.atan2(y - body.y, x - body.x)
+	for (let k = 0; k < 8; k++) {
+		const angle = away + (k * Math.PI) / 4
+		const aim = {
+			x: body.x + Math.cos(angle) * distance,
+			y: body.y + Math.sin(angle) * distance,
+		}
+		const onName = labels.some(
+			(box) =>
+				aim.x > box.left - 6 &&
+				aim.x < box.right + 6 &&
+				aim.y > box.top - 6 &&
+				aim.y < box.bottom + 6,
+		)
+		if (!onName) return { body, ...aim }
+	}
+	throw new Error(`no spot beside ${id} clear of other names`)
+}
+
 const shot = async (page: Page, name: string) => {
 	mkdirSync(screenshotDir, { recursive: true })
 	await page.screenshot({ path: path.join(screenshotDir, `${name}.png`) })
@@ -302,8 +339,8 @@ test.describe("on a phone", () => {
 		page,
 	}) => {
 		await ready(page)
-		// a finger lands 16 px off
-		const aim = await beside(page, "mars", 16)
+		// a finger lands 16 px off (not on another planet's name)
+		const aim = await besideClear(page, "mars", 16)
 		await page.touchscreen.tap(aim.x, aim.y)
 		await expect.poll(async () => (await state(page)).selectedId).toBe("mars")
 		await settled(page)

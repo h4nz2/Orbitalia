@@ -12,8 +12,8 @@
 import { eventOfTourId } from "@/data/skyEvents"
 import { FLIGHT_PROFILE } from "@/store/flight"
 import {
-	HOME_SHOT,
 	OVERVIEW_BODY_ID,
+	homeShot,
 	isFrameAnchored,
 	viewBodyId,
 	type CameraShot,
@@ -57,7 +57,7 @@ export function returnRequest(
 		to.kind !== "overview" &&
 		viewBodyId(from) !== viewBodyId(to)
 	return {
-		shot: shot ?? (to.kind === "overview" ? HOME_SHOT : undefined),
+		shot: shot ?? (to.kind === "overview" ? homeShot() : undefined),
 		profile: trip ? FLIGHT_PROFILE : undefined,
 		durationMs: instant ? 0 : undefined,
 	}

@@ -18,6 +18,7 @@ import {
 	moonSystemOf,
 	moonSystemShot,
 	moonSystemShotDistance,
+	planetFramingRadii,
 } from "./moonSystem"
 
 describe("the curated moons (#17)", () => {
@@ -112,10 +113,12 @@ describe("moonSystemShotDistance", () => {
 		expect(
 			moonSystemShotDistance(jupiter, featured, SCALE_PRESETS.trueScale, 1.5),
 		).toBeGreaterThan(story)
-		// a narrow phone screen needs more distance than a wide one
+		// a narrow phone screen needs more distance than a wide one (#61: the
+		// shot is a multiple of the planet's framing, which backs off there too)
 		expect(
-			moonSystemShotDistance(jupiter, featured, scale, 0.5),
-		).toBeGreaterThan(story)
+			moonSystemShotDistance(jupiter, featured, scale, 0.5) *
+				planetFramingRadii(jupiter, 0.5),
+		).toBeGreaterThan(story * planetFramingRadii(jupiter, 1.5))
 	})
 
 	it("is never closer than the close-up, and 1 without moons", () => {

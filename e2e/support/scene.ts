@@ -26,8 +26,9 @@ export const nextFrames = (page: Page, count = 3): Promise<void> =>
  * Waits until the solar system is on screen and its camera has come to rest:
  * no transition runs, no pan is pending (a released pan glides on and is then
  * committed, often as a short snap flight: #15), and the camera's pose round
- * its pivot (distance, azimuth, elevation, and the controls' target, which a
- * pan moves off the pivot) has stayed the same for `frames` consecutive
+ * its pivot (distance, azimuth, elevation, the controls' target, which a pan
+ * moves off the pivot, and where the pivot is drawn, #61) has stayed the
+ * same for `frames` consecutive
  * frames, which also lets the scene draw that many frames at rest before the
  * picture is judged. Frames, not milliseconds: camera-controls' damping
  * advances per drawn frame, however long a loaded machine takes to draw one.
@@ -51,9 +52,10 @@ export const cameraAtRest = (page: Page, frames = 3): Promise<unknown> =>
 				probe.restFor = 0
 			}
 			const drift = Math.hypot(...camera.targetUnits) / camera.distance
+			// the pivot's lift (#61): on a phone the picture glides when the HUD resizes
 			const pose = [camera.distance, camera.azimuthDeg, camera.elevationDeg]
 				.map((value) => value.toPrecision(6))
-				.concat(drift.toFixed(6))
+				.concat(drift.toFixed(6), camera.pivotLift.toFixed(5))
 				.join()
 			const moving =
 				camera.transitionId !== null ||
