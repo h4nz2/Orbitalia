@@ -10,6 +10,7 @@
  */
 import { expect, test, type Page } from "@playwright/test"
 
+import { pageInPlace } from "./support/hud"
 import { cameraAtRest, menuAtRest } from "./support/scene"
 import { smallControls } from "./support/touch"
 
@@ -75,9 +76,11 @@ const hidden = (page: Page) =>
 
 /**
  * Points on the bare canvas (no panel over them) well clear of every listed
- * body: a finger there taps the sky, not a near miss.
+ * body: a finger there taps the sky, not a near miss. Read once the page has
+ * slid into place, so no panel slides over them afterwards.
  */
 const skySpots = async (page: Page, ids: string[], clearance = 90) => {
+	await pageInPlace(page)
 	const spots = await page.evaluate(
 		({ ids, clearance }) => {
 			const canvas = document.querySelector("canvas")!.getBoundingClientRect()

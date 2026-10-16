@@ -3,6 +3,8 @@ import { describe, expect, it } from "vitest"
 import {
 	CLOSE_SHARE,
 	FLICK_PX_PER_MS,
+	FOOT_MARGIN_PX,
+	clearOfFoot,
 	contentPx,
 	distinctHeights,
 	nextHeight,
@@ -81,5 +83,33 @@ describe("the sheet's heights (#60)", () => {
 		// a flick down from just below small closes too
 		expect(restingHeight(40, -2 * FLICK_PX_PER_MS, heights, true)).toBe("close")
 		expect(restingHeight(40, 0, heights, true)).toBe("small")
+	})
+})
+
+describe("a sticky foot never rests across a control (#60)", () => {
+	// a tour stop: its words, then autoplay and the link (215-259 in the content), then Back and Next
+	const tools = { top: 215, bottom: 259 }
+	const foot = 56
+
+	it("leaves a height alone that cuts no control", () => {
+		// all of it above the foot
+		expect(clearOfFoot(330, foot, [tools], 0)).toBe(330)
+		// the foot's top above the row: the row waits behind it, whole
+		expect(clearOfFoot(260, foot, [tools], 0)).toBe(260)
+	})
+
+	it("lowers the content until a cut control waits wholly behind the foot", () => {
+		expect(clearOfFoot(294, foot, [tools], 0)).toBe(215 - FOOT_MARGIN_PX + foot)
+		// scrolled: the same row, measured from the content's top
+		expect(clearOfFoot(200, foot, [tools], 50)).toBe(
+			215 - FOOT_MARGIN_PX + foot - 50,
+		)
+	})
+
+	it("and then a control above it, should that be cut instead", () => {
+		const link = { top: 180, bottom: 212 }
+		const height = clearOfFoot(294, foot, [link, tools], 0)
+		expect(height).toBe(180 - FOOT_MARGIN_PX + foot)
+		expect(clearOfFoot(height, foot, [link, tools], 0)).toBe(height)
 	})
 })

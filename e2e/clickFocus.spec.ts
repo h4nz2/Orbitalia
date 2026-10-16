@@ -2,7 +2,7 @@ import { mkdirSync } from "node:fs"
 import path from "node:path"
 
 import { expect, test, type Page } from "@playwright/test"
-import { expandCard } from "./support/hud"
+import { expandCard, pageInPlace } from "./support/hud"
 import { cameraAtRest, nextFrames } from "./support/scene"
 
 // Click a body to focus on it (#16), in the real browser: hover feedback,
@@ -59,9 +59,11 @@ const screenOf = async (page: Page, id: string) => {
 
 /**
  * Points on the bare canvas (no HUD panel over them), on a 40 px grid, at
- * least `clearance` px from every listed body; at least one.
+ * least `clearance` px from every listed body; at least one. Read once the
+ * page has slid into place, so no panel slides over them afterwards.
  */
 const emptySpots = async (page: Page, ids: string[], clearance = 90) => {
+	await pageInPlace(page)
 	const spots = await page.evaluate(
 		({ ids, clearance }) => {
 			const bodies = ids.map((id) => window.__orbitalia!.screenOf(id))
