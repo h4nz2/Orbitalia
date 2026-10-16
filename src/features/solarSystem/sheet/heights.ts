@@ -118,3 +118,47 @@ export function restingHeight(
 		if (Math.abs(level.px - px) < Math.abs(best.px - px)) best = level
 	return best.height
 }
+
+/** Where a control sits in the content, px from the content's top (not from the view). */
+export interface Span {
+	top: number
+	bottom: number
+}
+
+/** Room kept between a control and a sticky foot it rests beside, px. */
+export const FOOT_MARGIN_PX = 4
+
+/**
+ * The content's height `px` lowered so a sticky foot (`data-sheet-footer`: a
+ * tour's Back and Next) never rests across a control (#60): with the content
+ * scrolled by `scroll`, a control the foot's top would cut waits wholly
+ * behind the foot instead, a scroll away (and so may one above it, cut in
+ * turn). Lower, never higher: content that fits shows whole anyway, and
+ * `half` keeps its share of the screen for the scene. Pure: `foot` is the
+ * foot's height, `controls` the controls above it.
+ */
+export function clearOfFoot(
+	px: number,
+	foot: number,
+	controls: readonly Span[],
+	scroll: number,
+): number {
+	const cutAt = (height: number) => {
+		const line = scroll + height - foot
+		return controls.filter(
+			(control) => control.top < line - 0.5 && control.bottom > line + 0.5,
+		)
+	}
+	let height = px
+	let cut = cutAt(height)
+	// at most once for each control
+	for (let i = 0; i < controls.length && cut.length > 0; i++) {
+		height =
+			Math.min(...cut.map((control) => control.top)) -
+			FOOT_MARGIN_PX +
+			foot -
+			scroll
+		cut = cutAt(height)
+	}
+	return Math.max(0, Math.floor(height))
+}

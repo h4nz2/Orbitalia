@@ -58,6 +58,36 @@ test("the focused body's card opens the comparison in one click, and back", asyn
 	)
 })
 
+test("the scene changing while the comparison loads does not bring the solar system back", async ({
+	page,
+}) => {
+	test.slow()
+	// the comparison's code is held back, so the solar system is still on screen
+	// under the new address, as on a slow network or a busy machine
+	let release!: () => void
+	const held = new Promise<void>((resolve) => (release = resolve))
+	await page.route(/\/assets\/compare-[\w-]+\.js$/, async (route) => {
+		await held
+		await route.continue()
+	})
+	await page.goto("/solar_system?focus=saturn&lang=en&reading=standard")
+	const card = page.getByTestId("body-card")
+	await expect(card).toHaveAttribute("data-card-body", "saturn")
+	await card.getByRole("button", { name: "Compare with…" }).click()
+	await expect(page).toHaveURL(/\/compare\?/)
+	expect(
+		await page.evaluate(() => window.__orbitalia !== undefined),
+		"the solar system is still on screen",
+	).toBe(true)
+	// the scene writes its changes into the address (the clock does, every few seconds)
+	await page.evaluate(() =>
+		window.__orbitalia!.store.getState().setTimeWarp(60),
+	)
+	release()
+	await expect(slots(page)).toHaveCount(2)
+	await expect(page).toHaveURL(/\/compare\?bodies=saturn%2Cearth/)
+})
+
 test("Earth beside the Sun: too small to see, circled, and the numbers that land", async ({
 	page,
 }) => {

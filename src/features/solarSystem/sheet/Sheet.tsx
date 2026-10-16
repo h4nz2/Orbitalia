@@ -63,11 +63,13 @@ import { useTourStore } from "@/store/tour"
 import { dismissGestureHint, useGestureHintStore } from "./gestureHint"
 import {
 	HALF_SHARE,
+	clearOfFoot,
 	contentPx,
 	nextHeight,
 	restingHeight,
 	stepHeight,
 	type ContentSizes,
+	type Span,
 } from "./heights"
 import { followPx, swipeDirection, swipeToWorld } from "./swipe"
 
@@ -168,6 +170,45 @@ function revealMain(area: HTMLElement, element: Element, px: number): boolean {
 	const scroll = Math.max(0, Math.min(want, limit))
 	if (scroll > area.scrollTop + 1) area.scrollTop = scroll
 	return true
+}
+
+/**
+ * What a finger presses: the controls a sticky foot must not rest across (a
+ * segment or a switch by its label, which is what shows).
+ */
+const CONTROLS =
+	"button, a[href], label, select, textarea, [role=button], [role=slider]"
+
+/**
+ * The sticky foot of `element` (`data-sheet-footer`: a tour's, a sky event's
+ * or the quick look's Back and Next) and the controls before it, which slide
+ * under it, in px from the top of the content `area` (scroll included); null
+ * without a foot that sticks. The sticky header's controls never pass under it.
+ */
+function footOf(
+	area: HTMLElement,
+	element: Element,
+): { foot: number; controls: Span[] } | null {
+	const foot = [
+		...element.querySelectorAll<HTMLElement>("[data-sheet-footer]"),
+	].find((candidate) => candidate.getClientRects().length > 0)
+	if (foot === undefined || getComputedStyle(foot).position !== "sticky")
+		return null
+	const top = area.getBoundingClientRect().top - area.scrollTop
+	const controls: Span[] = []
+	for (const control of element.querySelectorAll<HTMLElement>(CONTROLS)) {
+		if (
+			control.getClientRects().length === 0 ||
+			control.closest("header, [data-sheet-footer]") !== null ||
+			!(
+				foot.compareDocumentPosition(control) & Node.DOCUMENT_POSITION_PRECEDING
+			)
+		)
+			continue
+		const box = control.getBoundingClientRect()
+		controls.push({ top: box.top - top, bottom: box.bottom - top })
+	}
+	return { foot: foot.getBoundingClientRect().height, controls }
 }
 
 /** Whether `target` sits in something that scrolls sideways (its own swipe is a scroll). */
@@ -454,6 +495,11 @@ export function Sheet({ content, bottom }: SheetProps) {
 				half: contentPx("half", sizes),
 				full: contentPx("full", sizes),
 			}
+			// a sticky foot (a tour's Back and Next) never rests across a control above it
+			const foot = shown === null ? null : footOf(area, shown.element)
+			if (foot !== null)
+				for (const at of ["half", "full"] as const)
+					px[at] = clearOfFoot(px[at], foot.foot, foot.controls, area.scrollTop)
 			levels.current = px
 			if (height === "small" && FOLDS.includes(kindRef.current!))
 				foldedPx.current = px.small

@@ -134,6 +134,23 @@ export async function boxesAtOnce(...locators: Locator[]): Promise<Rect[]> {
 }
 
 /**
+ * Waits until the page has slid into place: its entrance (`FadeInOutUp`, see
+ * `boxesAtOnce`) has ended, the page at its place and fully opaque. On a busy
+ * machine the slide outlasts the camera's arrival (gsap slows it down when
+ * frames are late), so a point read as bare sky with `elementFromPoint`
+ * mid-slide can lie under a panel a moment later: read such points after this.
+ */
+export const pageInPlace = (page: Page): Promise<unknown> =>
+	page.waitForFunction(() => {
+		const slide = document.querySelector("main")?.parentElement
+		if (slide == null) return false
+		const style = getComputedStyle(slide)
+		return (
+			style.opacity === "1" && new DOMMatrixReadOnly(style.transform).isIdentity
+		)
+	})
+
+/**
  * The HUD's panels (#42): every element of the HUD that takes the pointer
  * (the HUD layer itself lets it through to the scene), and on an upright
  * phone the time chip above the sheet (#60).

@@ -372,6 +372,50 @@ for (const phone of PHONES) {
 			await expect(progress).toHaveAttribute("aria-valuenow", "4")
 			await expect(page.getByTestId("tour-count")).toHaveText("4 / 11")
 		})
+
+		for (const words of ["lang=en", "lang=de&reading=simple"])
+			test(`at a tour stop at half, Back and Next never rest across autoplay and the link (${words})`, async ({
+				page,
+			}) => {
+				await ready(page, `/solar_system?tour=grandTour&stop=3&${words}`)
+				await restsAt(page, "half")
+				await cameraAtRest(page)
+				/** The foot and the two buttons above it, read at once; `end` scrolls the content to its end first. */
+				const boxes = (end: boolean) =>
+					page.evaluate((end) => {
+						const content = document.querySelector<HTMLElement>(
+							"[data-testid=sheet-content]",
+						)!
+						if (end) content.scrollTop = content.scrollHeight
+						const card = document.querySelector("[data-tour-card]")!
+						const box = (element: Element) => {
+							const { top, bottom } = element.getBoundingClientRect()
+							return { top, bottom }
+						}
+						return {
+							foot: box(card.querySelector("[data-sheet-footer]")!),
+							tools: ["tour-autoplay", "tour-share"].map((id) =>
+								box(card.querySelector(`[data-testid=${id}]`)!),
+							),
+						}
+					}, end)
+				// at rest: each wholly above the foot, or wholly behind it, a scroll away
+				const rest = await boxes(false)
+				for (const tool of rest.tools)
+					expect(
+						tool.bottom <= rest.foot.top + 0.5 ||
+							tool.top >= rest.foot.top - 0.5,
+						`half under the foot: ${JSON.stringify(rest)}`,
+					).toBe(true)
+				// scrolled to the end: both clear of the foot
+				const end = await boxes(true)
+				for (const tool of end.tools)
+					expect(
+						tool.bottom <= end.foot.top + 0.5 ||
+							tool.top >= end.foot.bottom - 0.5,
+						`under the foot at the end: ${JSON.stringify(end)}`,
+					).toBe(true)
+			})
 	})
 }
 

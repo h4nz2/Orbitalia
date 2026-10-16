@@ -402,9 +402,18 @@ export function useSimUrlSync(): void {
 		usePresentationStore.setState(presentationFromSearch(searchRef.current))
 		usePresentationStore.getState().setStartSearch(searchRef.current)
 
+		const history = router.history
+		// this page's path, however the link spelt it ("/solar_system/" too)
+		const pathOf = (pathname: string) => pathname.replace(/\/+$/, "")
+		const solarSystemPath = pathOf(history.location.pathname)
+		const onThisPage = () =>
+			pathOf(history.location.pathname) === solarSystemPath
 		let timer: ReturnType<typeof setTimeout> | undefined
 		/** Writes the store into the URL: in place, or as a new history entry for a step (#46). */
 		const write = (push = false) => {
+			// another page is on its way in (Compare, Help, the browser's Back): the
+			// address is its now, and writing the scene would take it back here
+			if (!onThisPage()) return
 			// a step is written once, at its end, so the entry it leaves stays as it was
 			if (!push && recorder.holds()) return
 			const sim = useSimStore.getState()
@@ -449,8 +458,6 @@ export function useSimUrlSync(): void {
 		}
 
 		// the view history (#46): steps become entries, back and forward go to them
-		const history = router.history
-		const solarSystemPath = history.location.pathname
 		const recorder = createRecorder({
 			now: currentWaypoint,
 			write,
@@ -472,7 +479,7 @@ export function useSimUrlSync(): void {
 				action: action.type,
 				index: location.state.__TSR_index,
 				key: location.state.key,
-				solarSystem: location.pathname === solarSystemPath,
+				solarSystem: pathOf(location.pathname) === solarSystemPath,
 			}),
 		)
 		const unsubscribeStep = useSimStore.subscribe((state, previous) => {

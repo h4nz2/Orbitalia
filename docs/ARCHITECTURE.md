@@ -1104,7 +1104,9 @@ are left out; a link without a switch turns it on. `simSearch.ts` drops invalid 
 0). `useSimUrlSync()` runs once, in `<UrlSync />` rendered before `<Scene />`: it seeds the store before the Canvas
 mounts (no `t` means the wall clock at mount), then writes back with `replace: true`, `t` at most once per second and
 only while paused or at |warp| <= 60, and never while a birth date is entered (#26, see Birthday); a step (#46) is
-written once at its end, as a new history entry (see "Back: the view history").
+written once at its end, as a new history entry (see "Back: the view history"). Once the address is another
+page's (Compare, Help, the browser's back), while that page is still loading, nothing is written: a write then would
+take the browser straight back to the solar system.
 `?birthday=true` opens the birthday panel, `?sky=true` the sky tonight panel (#36; never written back); `?hunt=` the
 scavenger hunt (see Scavenger hunt). `paused=true` (written
 while paused, so a prepared moment opens standing still), `present=true` and `contrast=high` belong to #29 (see
@@ -1724,8 +1726,11 @@ controls share it; More stays a popover at the top. Laptops, tablets and a phone
   folded hunt keeps its hint button and leaves out its stars. `half` is the whole sheet at `HALF_SHARE` (44 %) of
   the screen, `full` stops under the top row (the grid's gaps kept), which stays in view. Content shorter than a
   height shows whole at it, and equal heights count once. Headers stick to the top while the content scrolls, and a
-  card's own way on (`data-sheet-footer`: a tour's Back and Next) sticks to its foot. The snap is a 240 ms height
-  transition, none with reduced motion or during a drag.
+  card's own way on (`data-sheet-footer`: a tour's Back and Next) sticks to its foot, and never rests across a
+  control above it: where the foot would cut one (a tour stop's autoplay and link at half on a 390 x 844 phone), the
+  content stops a little lower, so the control waits wholly behind the foot, a scroll away (`clearOfFoot`; never
+  higher: half keeps its share for the scene). The snap is a 240 ms height transition, none with reduced motion or
+  during a drag.
 - **Moving it.** The handle is a 44 px button drawn as a bar: a tap (Enter, Space) steps up and from full back to
   small, ArrowUp / ArrowDown raise and lower, Home / End go to the ends; its name says the height ("Panel height:
   half") and its hint how to move it. A drag on the handle or the header (pointer events, `touch-action: none`)
@@ -1832,7 +1837,9 @@ first: a link skips the opening and the quick look (#30, #44), and nothing else 
 - **Tests:** `e2e/studentsFirst.spec.ts` (390 x 844 and 360 x 640, touch: every kind of link, its main action in the
   lower half and topmost, nothing in the way, finger sizes; the swipe to Mars and to Venus, Back, the card following
   and springing back, an upright or short move that is no swipe; the tiles: order, size, no scroll, a tile opening
-  the hunt; the compact progress; German at the simple level with nothing cut off; the gesture hint once, clear of
+  the hunt; the compact progress; a tour stop's autoplay and link never half under Back and Next, at rest or
+  scrolled to the end, in English and German at the simple level; German at the simple level with nothing cut off;
+  the gesture hint once, clear of
   the sheet, the band above it, OK, the sky's tap that neither hides nor lowers, the swipe, waiting over a hunt; a
   laptop and a tablet with no hint, the menu and the dots), `swipe.test.ts`, `gestureHint.test.ts`,
   `skyTap.test.ts`.
