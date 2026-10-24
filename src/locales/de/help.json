@@ -589,12 +589,12 @@
 			"how": {
 				"standard": [
 					"Öffne „Werkzeuge“ und wähle „Bildlexikon“: Es zeigt die Welt, die du gerade ansiehst. Oder drück „Mehr dazu im Lexikon“ im Steckbrief einer Welt.",
-					"Wähle eine Welt in der Punktreihe oben, dann „Oberfläche“, „Gelände“, „Ozeane“ oder „Wolken“, wo es sie gibt.",
+					"Wähle eine Welt in der Punktreihe oben (auf dem Handy lässt sich die Reihe zur Seite wischen, dort sind die anderen), dann „Oberfläche“, „Gelände“, „Ozeane“ oder „Wolken“, wo es sie gibt.",
 					"Öffne neben dem Globus (auf dem Handy darunter) „Aufbau“, „Wetter“ oder „Namen“. Der offene Abschnitt bleibt offen, wenn du eine andere Welt wählst, so kann eine Klasse die Welten eine nach der anderen vergleichen."
 				],
 				"simple": [
 					"Drück auf „Werkzeuge“ und dann auf „Planetenbuch“.",
-					"Wähl oben in der Punktreihe einen Planeten.",
+					"Wähl oben in der Punktreihe einen Planeten. Auf dem Handy wischst du die Reihe zur Seite, dann siehst du alle.",
 					"Drück auf „Was steckt drin?“, „Heiß oder kalt?“ oder „Namen und Spitznamen“."
 				]
 			}

@@ -52,6 +52,7 @@
 	}
 
 	.globe {
+		height: min(36vh, 20rem);
 		height: min(36dvh, 20rem);
 	}
 

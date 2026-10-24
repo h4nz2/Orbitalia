@@ -11,7 +11,8 @@
 /* a phone (#75): the page scrolls, and an opened section comes up clear of the way back and the corner */
 @media $phone {
 	.item {
-		scroll-margin-top: calc(max(0.75rem, env(safe-area-inset-top)) + 4rem);
+		/* below the band behind them (SolarDictionary.module.css), with room */
+		scroll-margin-top: calc(max(0.75rem, env(safe-area-inset-top)) + 4.75rem);
 	}
 }
 

@@ -145,13 +145,22 @@ function scrollerOf(
 /** Room kept round a main action brought into view, px. */
 const REVEAL_MARGIN = 8
 
+/** How far above the edge the words fade (`.sheetContent[data-sheet-more]` in SolarSystem.module.css), rem. */
+const FADE_REM = 1.5
+
 /**
  * Scrolls the sheet's content `area` so the main action of `element` (its
- * first `data-sheet-main`, #62) is in view with the content `px` high, never
- * past the action's top under a header that stays in place. Returns whether
- * there was one to bring.
+ * first `data-sheet-main`, #62) is in view above the edge, `edge` px below
+ * the content's top (its height, less a sticky foot's), and above the fade
+ * there with room to spare (#75), never past the action's top under a header
+ * that stays in place, and with no line of words cut at the top. Returns
+ * whether there was one to bring.
  */
-function revealMain(area: HTMLElement, element: Element, px: number): boolean {
+function revealMain(
+	area: HTMLElement,
+	element: Element,
+	edge: number,
+): boolean {
 	const main = [
 		...element.querySelectorAll<HTMLElement>("[data-sheet-main]"),
 	].find((candidate) => candidate.getClientRects().length > 0)
@@ -164,9 +173,25 @@ function revealMain(area: HTMLElement, element: Element, px: number): boolean {
 		header !== null && getComputedStyle(header).position === "sticky"
 			? header.getBoundingClientRect().height
 			: 0
-	const want = top + box.height + REVEAL_MARGIN - px
+	// the fade grows with the text (rem: projector mode, #29)
+	const fade =
+		FADE_REM * parseFloat(getComputedStyle(document.documentElement).fontSize)
+	const want = top + box.height + fade + REVEAL_MARGIN - edge
 	const limit = top - headerPx - REVEAL_MARGIN
-	const scroll = Math.max(0, Math.min(want, limit))
+	let scroll = Math.max(0, Math.min(want, limit))
+	// nor does the top cut a line of the words scrolled away: that line goes too
+	const content = view.top - area.scrollTop
+	const cut = linesOf(
+		element,
+		content,
+		(parent) => parent.closest("header") === null,
+	).find(
+		(line) =>
+			line.top < scroll + headerPx - 0.5 &&
+			line.bottom > scroll + headerPx + 0.5,
+	)
+	if (cut !== undefined && cut.bottom - headerPx <= limit)
+		scroll = cut.bottom - headerPx
 	if (scroll > area.scrollTop + 1) area.scrollTop = scroll
 	return true
 }
@@ -539,6 +564,8 @@ export function Sheet({ content, bottom }: SheetProps) {
 
 	/** Until when a snap is under way (its transition's end clears it; a busy machine stretches it). */
 	const snapUntil = useRef(0)
+	/** Sizes changed during a snap: they are measured at its end. */
+	const applyAfterSnap = useRef(false)
 
 	/**
 	 * Writes the band once the sheet has come to rest: never during a drag,
@@ -607,23 +634,29 @@ export function Sheet({ content, bottom }: SheetProps) {
 				foldedPx.current = px.small
 			const element = shown?.element ?? null
 			if (height === "small") area.scrollTop = 0
-			// a panel that just opened: its main action in view (it may still be loading)
-			else if (
-				bringMain.current &&
-				element !== null &&
-				revealMain(area, element, px[height])
-			)
-				bringMain.current = false
-			// where the content rests, scrolled as it is, its edge (a sticky foot's top,
-			// else the entry buttons) never cuts a control or a line of text; full stays
-			// under the top row where nothing sticks to its foot (#60, #75)
+			// where the content rests at its top, as it opens, its edge (a sticky foot's
+			// top, else the entry buttons) never cuts a control or a line of text; full
+			// stays under the top row where nothing sticks to its foot (#60, #75). From
+			// the top, not from where the reader has scrolled to: a resize later (the
+			// top row, the time chip) never moves the stop by a line under their eyes.
+			let foot = 0
 			if (element !== null) {
 				const edge = edgeOf(area, element)
+				foot = edge.foot
 				const heights =
 					edge.foot > 0 ? (["half", "full"] as const) : (["half"] as const)
 				for (const at of heights)
-					px[at] = clearOfFoot(px[at], edge.foot, edge.spans, area.scrollTop)
+					px[at] = clearOfFoot(px[at], edge.foot, edge.spans, 0)
 			}
+			// a panel that just opened: its main action in view above the edge and its
+			// fade, at the height it rests at (it may still be loading)
+			if (
+				height !== "small" &&
+				bringMain.current &&
+				element !== null &&
+				revealMain(area, element, px[height] - foot)
+			)
+				bringMain.current = false
 			levels.current = px
 			const target = px[height]
 			if (area.style.height !== `${target}px`) {
@@ -686,7 +719,24 @@ export function Sheet({ content, bottom }: SheetProps) {
 		const root = rootRef.current
 		const hud = root?.parentElement
 		if (!active || root == null || hud == null) return
-		const observer = new ResizeObserver(() => apply())
+		let settle: ReturnType<typeof setTimeout> | undefined
+		const observer = new ResizeObserver(() => {
+			// a snap resizes the sheet on every frame: measure once, at its end
+			// (`transitionend` below, or at the latest when its time is up)
+			const left = snapUntil.current - performance.now()
+			if (left <= 0) {
+				applyAfterSnap.current = false
+				apply()
+				return
+			}
+			applyAfterSnap.current = true
+			clearTimeout(settle)
+			settle = setTimeout(() => {
+				if (!applyAfterSnap.current) return
+				applyAfterSnap.current = false
+				apply()
+			}, left + 20)
+		})
 		// the sheet itself: a snap is over when it stops changing size
 		observer.observe(root)
 		if (shown !== null) {
@@ -699,7 +749,10 @@ export function Sheet({ content, bottom }: SheetProps) {
 			observer.observe(element)
 		for (const element of root.querySelectorAll("[data-sheet-above]"))
 			observer.observe(element)
-		return () => observer.disconnect()
+		return () => {
+			observer.disconnect()
+			clearTimeout(settle)
+		}
 	}, [active, shown, apply])
 
 	// the snap is over: the band now (a busy machine may stretch a snap well past its time)
@@ -709,12 +762,18 @@ export function Sheet({ content, bottom }: SheetProps) {
 		const onEnd = (event: TransitionEvent) => {
 			if (event.target !== area || event.propertyName !== "height") return
 			snapUntil.current = 0
+			if (applyAfterSnap.current) {
+				// what changed during the snap, measured now (it writes the band)
+				applyAfterSnap.current = false
+				apply()
+				return
+			}
 			scheduleWrite(0)
 			showFade()
 		}
 		area.addEventListener("transitionend", onEnd)
 		return () => area.removeEventListener("transitionend", onEnd)
-	}, [active, scheduleWrite, showFade])
+	}, [active, apply, scheduleWrite, showFade])
 
 	// hiding the controls (#59) frees the whole screen; showing them again, the band;
 	// the gesture hint (#62) coming and going moves the band's foot

@@ -129,7 +129,7 @@ const SolarDictionary: FC<SolarDictionaryProps> = () => {
 	if (!currentEntity || loading) return <Loader />
 
 	return (
-		<Box className={classes.page}>
+		<Box className={classes.page} data-testid="dictionary-page">
 			<CornerBar />
 			<Button
 				variant="subtle"

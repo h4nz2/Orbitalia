@@ -589,12 +589,12 @@
 			"how": {
 				"standard": [
 					"Otevři Nástroje a vyber „Obrazový slovník“: otevře se na světě, na který se právě díváš. Nebo stiskni „Víc ve slovníku“ na kartě světa.",
-					"Vyber svět v řadě teček nahoře, pak „Povrch“, „Terén“, „Oceány“ nebo „Mraky“, pokud je má.",
+					"Vyber svět v řadě teček nahoře (na telefonu se řada posouvá do strany: posuň ji prstem a uvidíš ostatní), pak „Povrch“, „Terén“, „Oceány“ nebo „Mraky“, pokud je má.",
 					"Otevři „Z čeho se skládá“, „Počasí“ nebo „Jména“ vedle glóbu (na telefonu pod ním). Otevřená část zůstane otevřená, i když vybereš jiný svět, takže třída může světy porovnávat jeden po druhém."
 				],
 				"simple": [
 					"Stiskni Nástroje a pak „Kniha o planetách“.",
-					"Vyber planetu v řadě teček nahoře.",
+					"Vyber planetu v řadě teček nahoře. Na telefonu posuň řadu prstem do strany a uvidíš všechny.",
 					"Stiskni „Co je uvnitř?“, „Horko, nebo zima?“ nebo „Jména a přezdívky“."
 				]
 			}

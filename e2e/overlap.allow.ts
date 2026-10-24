@@ -74,22 +74,4 @@ export const ALLOWED: Allowed[] = [
 		sizes: ["1366x768"],
 		screens: ["birthday"],
 	},
-
-	// #75: the phone's panels (a follow-up in this phase removes these)
-	{
-		issue: 75,
-		what: "presenting on a phone: the sheet's handle (a 44 px target) over the card's header",
-		a: "[data-testid=sheet-handle]",
-		b: "[data-testid=body-card] header",
-		sizes: PHONES,
-		screens: ["present"],
-	},
-	{
-		issue: 75,
-		kind: "offScreen",
-		what: "the dictionary on a phone: the page does not scroll, so all below the first screen is out of reach",
-		a: "main",
-		sizes: PHONES,
-		screens: ["dictionary"],
-	},
 ]

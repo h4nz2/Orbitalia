@@ -3,7 +3,7 @@
  * and its names, in sections the reader opens one at a time, with the open
  * section in the address so a teacher can link straight to it.
  */
-import { expect, test } from "@playwright/test"
+import { expect, test, type Page } from "@playwright/test"
 
 test("the story sections open one at a time and stay open from world to world", async ({
 	page,
@@ -141,3 +141,96 @@ test.describe("on a phone", () => {
 		await expect(picture).toBeInViewport()
 	})
 })
+
+/** Where the page has scrolled to, and where its first fact and first section are on screen. */
+const scrolled = (page: Page) =>
+	page.evaluate(() => ({
+		scroll: document.querySelector("[data-testid=dictionary-page]")!.scrollTop,
+		fact: document.querySelector("[data-fact-key]")!.getBoundingClientRect()
+			.top,
+		section: document
+			.querySelector("[data-testid=dictionary-section-madeOf]")!
+			.getBoundingClientRect().top,
+	}))
+
+/** A finger moving `dy` px up the screen from (x, y), in small steps, as a real swipe does. */
+async function swipeUp(page: Page, x: number, y: number, dy: number) {
+	const cdp = await page.context().newCDPSession(page)
+	const at = (yy: number) => [{ x, y: yy, id: 1 }]
+	await cdp.send("Input.dispatchTouchEvent", {
+		type: "touchStart",
+		touchPoints: at(y),
+	})
+	for (let i = 1; i <= 10; i++) {
+		await cdp.send("Input.dispatchTouchEvent", {
+			type: "touchMove",
+			touchPoints: at(y - (dy * i) / 10),
+		})
+		await page.waitForTimeout(16)
+	}
+	await cdp.send("Input.dispatchTouchEvent", {
+		type: "touchEnd",
+		touchPoints: [],
+	})
+	await cdp.detach()
+}
+
+// the page scrolls itself (#75): the body never does, so without a scroller of
+// its own nothing moved, with a finger or a wheel; nothing here clicks, so no
+// scrolling of Playwright's own can help it along
+for (const viewport of [
+	{ width: 390, height: 844 },
+	{ width: 360, height: 640 },
+	{ width: 844, height: 390 },
+])
+	test.describe(`on a phone, ${viewport.width}x${viewport.height}`, () => {
+		test.use({ viewport, hasTouch: true, isMobile: true })
+
+		test("the page scrolls with a finger and with a wheel", async ({
+			page,
+		}) => {
+			await page.goto("/solar_dictionary?entity=4&lang=en")
+			await expect(page.getByTestId("dictionary-section-madeOf")).toBeAttached()
+			// the facts have slid in: the page holds still
+			let last = ""
+			await expect
+				.poll(
+					async () => {
+						const now = JSON.stringify(await scrolled(page))
+						const same = now === last
+						last = now
+						return same
+					},
+					{ intervals: [300] },
+				)
+				.toBe(true)
+			const start = await scrolled(page)
+			expect(start.scroll).toBe(0)
+			expect(start.section).toBeGreaterThan(viewport.height)
+
+			// a wheel over the facts
+			const x = viewport.width / 2
+			const y = viewport.height * 0.8
+			await page.mouse.move(x, y)
+			await page.mouse.wheel(0, 300)
+			await expect.poll(async () => (await scrolled(page)).scroll).toBe(300)
+			const wheeled = await scrolled(page)
+			expect(start.fact - wheeled.fact).toBeCloseTo(300, 0)
+			expect(start.section - wheeled.section).toBeCloseTo(300, 0)
+
+			// a finger swiping up from low on the screen
+			await swipeUp(page, x, y, viewport.height * 0.4)
+			await expect
+				.poll(async () => (await scrolled(page)).scroll)
+				.toBeGreaterThan(wheeled.scroll + 50)
+			const swiped = await scrolled(page)
+			expect(wheeled.section - swiped.section).toBeCloseTo(
+				swiped.scroll - wheeled.scroll,
+				0,
+			)
+			// the body itself never moved
+			expect(
+				await page.evaluate(() => [window.scrollY, document.body.scrollTop]),
+			).toEqual([0, 0])
+		})
+	})

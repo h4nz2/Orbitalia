@@ -589,12 +589,12 @@
 			"how": {
 				"standard": [
 					"Open Tools and choose “Picture dictionary”: it opens on the world you are looking at. Or press “Read more in the dictionary” on a world’s card.",
-					"Pick a world in the row of dots at the top, then Surface, Terrain, Oceans or Clouds where it has them.",
+					"Pick a world in the row of dots at the top (on a phone the row scrolls sideways: swipe it for the others), then Surface, Terrain, Oceans or Clouds where it has them.",
 					"Open “Made of”, “Weather” or “Names” beside the globe (under it on a phone). The open section stays open when you pick another world, so a class can compare them one by one."
 				],
 				"simple": [
 					"Press Tools, then “Planet book”.",
-					"Pick a planet in the row of dots at the top.",
+					"Pick a planet in the row of dots at the top. On a phone, swipe the row sideways to see them all.",
 					"Press “What is inside?”, “Hot or cold?” or “Its names”."
 				]
 			}
