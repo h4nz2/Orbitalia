@@ -73,7 +73,8 @@
 			},
 			"how": {
 				"standard": [
-					"Přehraje se jednou, při první návštěvě; „Přeskočit úvod“, tažení nebo Esc ho kdykoli ukončí.",
+					"Přehraje se při první návštěvě, a příště znovu, když stránku zavřeš dřív, než skončí; „Přeskočit úvod“, tažení nebo Esc ho kdykoli ukončí.",
+					"Odkaz na přehled, jak ho aplikace otevře (celá sluneční soustava v dnešní den, ze „Sdílet“), ho přehraje každému, kdo ho ještě neviděl; „Od začátku“ ve „Sdílet“ ho přehraje všem.",
 					"Chceš u textu zůstat? Stiskni mezerník, klepni na scénu nebo na tlačítko pauzy; znovu, a pokračuje se. Když je úvod pozastavený, můžeš otáčet pohledem a neskončí.",
 					"„Dál“ (nebo šipka doprava) přejde hned na další část; když je pozastavený, po jedné části.",
 					"Po prvním úvodu se aplikace jednou zeptá, jestli se chceš rychle podívat, co tu jde (viz „Rychlý pohled“).",
@@ -82,6 +83,7 @@
 				],
 				"simple": [
 					"Přehraje se, když přijdeš poprvé.",
+					"Odkaz na celou sluneční soustavu ho pustí taky, když jsi ho ještě neviděl.",
 					"Stiskni mezerník nebo ťukni na obrázek a úvod se zastaví. Znovu, a jede dál.",
 					"„Dál“ ukáže další část.",
 					"Chceš ho vidět znovu? Stiskni šipku vedle „Nápověda“ (na telefonu „Více“) a pak „Pustit začátek ještě jednou“."
@@ -1106,11 +1108,13 @@
 		},
 		"share": {
 			"title": "Sdílení se třídou",
-			"what": "Odkaz přesně na to, co je na obrazovce, s tlačítkem pro kopírování a QR kódem tak velkým, že ho naskenují i v poslední lavici.",
-			"why": "Žáci si stejný pohled otevřou na svých tabletech a pokračují v objevování sami, bez opisování adresy.",
+			"what": "Odkaz přesně na to, co je na obrazovce, nebo na start od začátku s úvodem, s tlačítkem pro kopírování a QR kódem tak velkým, že ho naskenují i v poslední lavici.",
+			"why": "Žáci si stejný pohled otevřou na svých tabletech a pokračují v objevování sami, bez opisování adresy. Start od začátku přivítá třídu, která aplikaci ještě nezná: všichni uvidí úvod a nováčci rychlý pohled.",
 			"how": [
-				"Otevři „Sdílet“. Na telefonu otevři Více: „Sdílet“ pošle odkaz rovnou do chatu nebo e-mailu a „Odkaz a QR kód“ otevře tento panel.",
-				"Zkopíruj odkaz, nebo stiskni „Ukázat QR kód třídě“."
+				"Otevři „Sdílet“. Na telefonu otevři Více: „Sdílet“ pošle odkaz na tento pohled rovnou do chatu nebo e-mailu a „Odkaz a QR kód“ otevře tento panel.",
+				"Vyber, co odkaz otevře: „Tento pohled“ (přesně to, co je na obrazovce) nebo „Od začátku“ (aplikaci od začátku v tvém jazyce: úvod pro všechny a potom rychlý pohled pro každého, kdo je tu nový). Odkaz i oba QR kódy se řídí tvou volbou.",
+				"Zkopíruj odkaz, nebo stiskni „Ukázat QR kód třídě“.",
+				"Dokud hodiny ukazují přítomnost (1x, po „Teď“), odkaz datum vynechá: každému se otevře v jeho vlastní přítomnosti. Chceš sdílet určitou chvíli? Zastav čas nebo vyber datum."
 			]
 		},
 		"ownHunt": {

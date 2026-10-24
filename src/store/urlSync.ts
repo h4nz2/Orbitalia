@@ -13,6 +13,15 @@
  * time follows at most once per second, and only while it is slow enough to
  * be worth a link (paused or |warp| <= 1 min/s).
  *
+ * A clock that only shows "now" is not part of a view (#69): while it is live
+ * (`isLive`, src/sim/live.ts: running at 1x within two minutes of the wall
+ * clock) the URL carries no `t`, so a link of the untouched overview is a
+ * plain arrival and plays the opening for a newcomer, and opens at the
+ * viewer's own "now". Leaving live (a pause, another speed, a time travel, a
+ * tour) writes `t` at once, a fast speed included (the moment it left), so a
+ * link taken at 1 day/s opens on its own date, not on the viewer's today. The
+ * time bar's Now, back at 1x, takes `t` out again.
+ *
  * A step (#46: choosing a body, the way out, a tour stop, ...; see
  * ./viewHistory.ts) is written once, at its end, as a new history entry;
  * everything else rewrites the entry on screen (`replace: true`), so the
@@ -37,6 +46,7 @@ import { spacecraftById } from "@/data/spacecraft"
 import {
 	DEFAULT_SCALE_PRESET,
 	dateToJD,
+	isLive,
 	isScalePresetId,
 	type ScalePresetId,
 } from "@/sim"
@@ -132,7 +142,10 @@ type MirroredClock = Pick<SimState, "timeWarp" | "simTimeJD">
 
 /**
  * The search params that mirror `state`, starting from `previous` so a `t` that
- * is not being mirrored right now (fast warp) keeps its last written value.
+ * is not being mirrored right now (fast warp) keeps its last written value, or
+ * when there is none (the clock went straight from "now" to a fast speed) the
+ * moment on screen. A live clock (`isLive` at the wall clock `now`, #69) writes
+ * no `t`: "now" is not part of a view.
  * Defaults (the overview, the home camera, a selection equal to the focus,
  * 1x, a layer switch that is on) are left out to keep the URL short. A point
  * view (the pivot moved into empty space, #15) is its anchor in `focus` and
@@ -149,6 +162,7 @@ export function searchFromState(
 	state: Mirrored,
 	previous: SimSearch,
 	hideTime = false,
+	now: Date = new Date(),
 ): SimSearch {
 	const { timeWarp, view, shot } = state
 	const focus = view.kind === "overview" ? undefined : viewBodyId(view)
@@ -174,11 +188,12 @@ export function searchFromState(
 			state.frameId !== undefined && isFrameAnchored({ frameId: state.frameId })
 				? state.frameId
 				: undefined,
-		t: hideTime
-			? undefined
-			: shouldMirrorTime(state.paused, timeWarp)
-				? roundJD(state.simTimeJD)
-				: previous.t,
+		t:
+			hideTime || isLive(state, now)
+				? undefined
+				: shouldMirrorTime(state.paused, timeWarp)
+					? roundJD(state.simTimeJD)
+					: (previous.t ?? roundJD(state.simTimeJD)),
 		warp:
 			timeWarp !== 0 && timeWarp !== DEFAULT_TIME_WARP ? timeWarp : undefined,
 	}
@@ -198,6 +213,29 @@ export function searchFromState(
 	search.autoplay = state.tour?.autoplay
 	return search
 }
+
+/** Every param of the solar system's address. */
+const SIM_PARAMS = Object.keys(simSearchSchema.shape) as (keyof SimSearch)[]
+
+/**
+ * Whether the address `current` holds a param the mirror never writes into
+ * `next`: the arrival's instructions (`?light=flash`, `?birthday=true`,
+ * `?sky=true`, `?intro=play`, `?look=play`), acted on once and dropped by the
+ * next write. `hunt` is not one: the route keeps it on every navigation.
+ * Before #69 the clock's first `t` wrote the address within a second of
+ * arriving; a live clock writes no `t`, so such a param alone is a reason to
+ * write, or a reload would send the flash again.
+ */
+export const holdsInstruction = (
+	current: SimSearch,
+	next: SimSearch,
+): boolean =>
+	SIM_PARAMS.some(
+		(param) =>
+			param !== "hunt" &&
+			current[param] !== undefined &&
+			next[param] === undefined,
+	)
 
 export const sameSearch = (a: SimSearch, b: SimSearch): boolean =>
 	a.focus === b.focus &&
@@ -425,6 +463,8 @@ export function useSimUrlSync(): void {
 		const onThisPage = () =>
 			pathOf(history.location.pathname) === solarSystemPath
 		let timer: ReturnType<typeof setTimeout> | undefined
+		// whether the clock showed the present (#69) when the URL was last worked out
+		let live = false
 		/** Writes the store into the URL: in place, or as a new history entry for a step (#46). */
 		const write = (push = false) => {
 			// another page is on its way in (Compare, Help, the browser's Back): the
@@ -433,6 +473,8 @@ export function useSimUrlSync(): void {
 			// a step is written once, at its end, so the entry it leaves stays as it was
 			if (!push && recorder.holds()) return
 			const sim = useSimStore.getState()
+			const now = new Date()
+			live = isLive(sim, now)
 			const next = {
 				...searchFromState(
 					{
@@ -443,6 +485,7 @@ export function useSimUrlSync(): void {
 					},
 					searchRef.current,
 					hidesTimeInUrl(useBirthdayStore.getState()),
+					now,
 				),
 				...presentationSearch({
 					...usePresentationStore.getState(),
@@ -452,7 +495,8 @@ export function useSimUrlSync(): void {
 			if (
 				!push &&
 				sameSearch(next, searchRef.current) &&
-				samePresentationSearch(next, searchRef.current)
+				samePresentationSearch(next, searchRef.current) &&
+				!holdsInstruction(searchRef.current, next)
 			) {
 				return
 			}
@@ -505,7 +549,8 @@ export function useSimUrlSync(): void {
 		setHistoryBack(() => history.back())
 
 		// store -> URL: view, selection, camera, warp, pause and layer changes right
-		// away (a pause also pins `t`); the running clock at most once per TIME_SYNC_INTERVAL_MS
+		// away (a pause also pins `t`); the running clock at most once per
+		// TIME_SYNC_INTERVAL_MS, and not at all while it shows the present (#69)
 		const unsubscribe = useSimStore.subscribe((state, previous) => {
 			if (
 				state.view !== previous.view ||
@@ -522,8 +567,15 @@ export function useSimUrlSync(): void {
 				write()
 				return
 			}
+			if (state.simTimeJD === previous.simTimeJD) return
+			// a time travel away from the present, or Now back to it: `t` goes into the
+			// address or out of it at once, not with the next throttled write
+			if (isLive(state, new Date()) !== live) {
+				write()
+				return
+			}
 			if (
-				state.simTimeJD !== previous.simTimeJD &&
+				!live &&
 				timer === undefined &&
 				shouldMirrorTime(state.paused, state.timeWarp)
 			) {

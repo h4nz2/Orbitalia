@@ -7,10 +7,11 @@ import {
 import { J2000_JD, dateToJD } from "@/sim"
 
 import { HOME_SHOT, OVERVIEW } from "./navigation"
-import { simSearchSchema } from "./simSearch"
+import { simSearchSchema, type SimSearch } from "./simSearch"
 import {
 	LAYER_PARAMS,
 	TIME_SYNC_MAX_WARP,
+	holdsInstruction,
 	layersFromSearch,
 	mountState,
 	roundJD,
@@ -136,6 +137,89 @@ describe("urlSync helpers", () => {
 				{},
 			),
 		).toEqual({ focus: "io", t: 2451545.1235, warp: 60 })
+	})
+
+	describe("a clock that only shows now is not part of the view (#69)", () => {
+		const now = new Date("2025-03-20T09:30:00Z")
+		const nowJD = dateToJD(now)
+		const live = state({ timeWarp: 1, paused: false, simTimeJD: nowJD })
+		const t = (partial: Partial<Mirrored>, previous: SimSearch = {}) =>
+			searchFromState({ ...live, ...partial }, previous, false, now).t
+
+		it("writes no t while the clock runs at 1x on the wall clock", () => {
+			expect(t({})).toBeUndefined()
+			// a minute either way (the time bar's Now landing, a rounded t) is still now
+			expect(t({ simTimeJD: nowJD - 1 / 1440 })).toBeUndefined()
+			expect(t({ simTimeJD: nowJD + 1 / 1440 })).toBeUndefined()
+			// the untouched overview's address is the bare one
+			expect(
+				Object.values(searchFromState(live, {}, false, now)).filter(
+					(value) => value !== undefined,
+				),
+			).toEqual([])
+		})
+
+		it("writes t once the clock leaves now: paused, another speed, a time travel", () => {
+			expect(t({ paused: true })).toBe(roundJD(nowJD))
+			expect(t({ timeWarp: 2 })).toBe(roundJD(nowJD))
+			expect(t({ timeWarp: -1 })).toBe(roundJD(nowJD))
+			expect(t({ simTimeJD: nowJD - 3 / 1440 })).toBe(roundJD(nowJD - 3 / 1440))
+			expect(t({ simTimeJD: J2000_JD })).toBe(J2000_JD)
+		})
+
+		it("keeps the moment it left now when it goes straight to a fast speed", () => {
+			// the address held no t; at 1 day/s it is not mirrored, yet the link must keep its date
+			expect(t({ timeWarp: 86400 }, {})).toBe(roundJD(nowJD))
+			// once written, a fast clock keeps that moment as before
+			expect(
+				t({ timeWarp: 86400, simTimeJD: nowJD + 30 }, { t: roundJD(nowJD) }),
+			).toBe(roundJD(nowJD))
+			expect(t({ timeWarp: -31557600 }, {})).toBe(roundJD(nowJD))
+		})
+
+		it("takes t out again when Now brings the clock back to the present", () => {
+			expect(t({}, { t: J2000_JD })).toBeUndefined()
+			// Now at another speed or paused still is a chosen moment
+			expect(t({ paused: true }, { t: J2000_JD })).toBe(roundJD(nowJD))
+		})
+
+		it("reads the real wall clock without a clock argument", () => {
+			const present = dateToJD(new Date())
+			expect(
+				searchFromState({ ...live, simTimeJD: present }, { t: J2000_JD }).t,
+			).toBeUndefined()
+			expect(searchFromState({ ...live, simTimeJD: J2000_JD }, {}).t).toBe(
+				J2000_JD,
+			)
+		})
+	})
+
+	it("drops the arrival's instructions with the first write, even while nothing else changes (#69)", () => {
+		const now = new Date("2025-03-20T09:30:00Z")
+		const live = searchFromState(
+			state({ timeWarp: 1, paused: false, simTimeJD: dateToJD(now) }),
+			{},
+			false,
+			now,
+		)
+		for (const instruction of [
+			{ light: "flash" },
+			{ birthday: true },
+			{ sky: true },
+			{ intro: "play" },
+			{ look: "play" },
+			{ craft: "voyager1" },
+		] as const) {
+			expect(
+				holdsInstruction(instruction, live),
+				JSON.stringify(instruction),
+			).toBe(true)
+		}
+		// the view itself, and the hunt the route keeps, are not instructions
+		expect(holdsInstruction({}, live)).toBe(false)
+		expect(holdsInstruction({ hunt: "lookAndFind" }, live)).toBe(false)
+		const io = { focus: "io", t: J2000_JD }
+		expect(holdsInstruction(io, io)).toBe(false)
 	})
 
 	it("keeps the time out of the link while a birth date is entered (#26)", () => {

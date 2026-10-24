@@ -73,7 +73,8 @@
 			},
 			"how": {
 				"standard": [
-					"It plays once, on the first visit; “Skip intro”, a drag or Esc ends it at any time.",
+					"It plays on the first visit, and again next time if the page is closed before it ends; “Skip intro”, a drag or Esc ends it at any time.",
+					"A link to the overview as the app opens it (the whole solar system at today’s date, from Share) plays it for anyone who has not seen it yet; “A fresh start” under Share plays it for everyone.",
 					"To stay on a caption, press Space, tap the scene or press the pause button; do it again to carry on. While it is paused you can turn the view without ending it.",
 					"“Next” (or the right arrow key) goes straight on to the next part; while paused, one part at a time.",
 					"After the first opening the app asks once whether you want a quick look at what you can do (see “A quick look”).",
@@ -82,6 +83,7 @@
 				],
 				"simple": [
 					"It plays the first time you come.",
+					"A link to the whole solar system plays it too, if you have not seen it yet.",
 					"Press Space or tap the picture to stop it. Do it again to go on.",
 					"“Next” shows the next part.",
 					"To watch it again, press the arrow next to Help (on a phone, More), then “Watch the start again”."
@@ -1106,11 +1108,13 @@
 		},
 		"share": {
 			"title": "Share with the class",
-			"what": "A link to exactly what is on screen, with a copy button and a QR code big enough to scan from the back row.",
-			"why": "Students open the same view on their own tablets and explore from there, with no typing.",
+			"what": "A link to exactly what is on screen, or to a fresh start with the opening, with a copy button and a QR code big enough to scan from the back row.",
+			"why": "Students open the same view on their own tablets and explore from there, with no typing. A fresh start welcomes a class new to the app: everyone gets the opening, and newcomers the quick look.",
 			"how": [
-				"Open Share. On a phone, open More: “Share” sends the link straight to a chat or a mail, and “Link and QR code” opens this panel.",
-				"Copy the link, or press “Show the QR code to the class”."
+				"Open Share. On a phone, open More: “Share” sends the link to this view straight to a chat or a mail, and “Link and QR code” opens this panel.",
+				"Choose what the link opens: “This view” (exactly what is on screen) or “A fresh start” (the app from the beginning in your language: the opening for everyone, then the quick look for anyone new). The link and both QR codes follow your choice.",
+				"Copy the link, or press “Show the QR code to the class”.",
+				"While the clock shows the present (1x, after “Now”), the link leaves the date out, so it opens at each viewer’s own present. Pause or pick a date to share a moment."
 			]
 		},
 		"ownHunt": {

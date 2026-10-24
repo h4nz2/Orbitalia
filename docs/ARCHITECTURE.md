@@ -235,6 +235,9 @@ Build rules (`scripts/lib/`):
   second (negative runs backwards). `retimeTimeline` re-anchors on a rate change, `jumpTimeline` jumps,
   `glideTimeline` eases to a target (up to 2.5 s, log of the distance). `skipFrameGap` counts at most 250 ms of a frame
   gap (hidden tab, sleep) except at rate 1, so a clock showing the present keeps showing it.
+- "Now" (`live.ts`, #69): `isLive(clock, now)` is the one definition of a clock showing the present: not paused,
+  `timeWarp` exactly 1, within `LIVE_TOLERANCE_DAYS` (2 minutes) of the wall clock handed in. The URL sync leaves `t`
+  out while it holds, the comparison opens at the present, and a tour that returns on exit goes back to "now".
 - Units: 1 scene unit = 1000 km (`toUnits`, `toKm` in `units.ts`); nothing else hard-codes the scale.
 - Frame: three.js is Y-up; ecliptic (xe, ye, ze) maps to scene (xe, ze, -ye), so the ecliptic is the XZ plane (`kepler.ts`).
 - `propagate(orbit, jd, out)` gives the parent-centric position in km (Newton iteration, e up to 0.99), including
@@ -553,10 +556,19 @@ Director (`camera/director.ts`, unit-tested frame by frame):
   panel back).
 - **Once per device, never over a link:** it plays on arrival only when no simulation parameter is in the URL
   (`hasExplicitView`: any key of `simSearchSchema`; `lang`/`reading` do not count) and localStorage
-  `orbitalia.introSeen` is unset (set when it starts; guarded, nothing is sent anywhere). A link with a view opens
-  exactly there. Replayed deliberately from the Help menu (`intro/IntroMenu.tsx`: since #43 the chevron of the Help
+  `orbitalia.introSeen` is unset (guarded, nothing is sent anywhere). A link with a view opens exactly there.
+- **Seen once it has ended (#69):** the key is written in `endIntro`, the one place every end goes through (it ran
+  out, Next on the last beat, Skip, Escape, a drag, a world chosen, the viewer's own scale), not when it starts. A
+  tab closed mid-way, or the page left (`cancelIntro`, which stops the sequence without ending it), leaves it unset,
+  so it plays again next time. Blocked storage: it plays on every visit, as before.
+- **The live overview is a plain arrival (#69):** a clock that only shows "now" writes no `t` (see Store, the URL),
+  so the untouched overview's address is `/solar_system?lang=…&reading=…`, and a link of it (the class QR code of
+  the Share panel's "This view" included) plays the opening for a newcomer, then the quick look's question. Anything
+  chosen (a world, a camera, a date, a speed, a layer, a tour, a tool) is still a view.
+- **Replayed deliberately** from the Help menu (`intro/IntroMenu.tsx`: since #43 the chevron of the Help
   split button beside the language menu, with the help page first; on a phone the same items are under More, #59), which also shows the hints again, and by
-  `?intro=play` (the help page's link; an instruction, never written back). e2e: `playwright.config.ts` presets the key so every test is a returning visitor;
+  `?intro=play` (the help page's link, and the Share panel's fresh start, #69; an instruction, never written back),
+  which plays it for everyone, returning visitors included. e2e: `playwright.config.ts` presets the key so every test is a returning visitor;
   `e2e/intro.spec.ts` clears it.
 - **Hand-over** (`status: "handover"`): the hints (`IntroHints.tsx`: drag to look around, scroll or pinch to zoom,
   click or tap a planet; touch words for `pointer: coarse`) fade 3 s after the first camera input or after 10 s, and
@@ -575,7 +587,9 @@ and the help page. About a minute, moving on by itself.
 - **Asked once** (`quickLook.ts`): `watchQuickLook` sees the opening go from `playing` to `handover` and calls `ask()`,
   which stores `orbitalia.quickLookAsked` in local storage when the question appears (ignored = no; it goes away
   after 30 s). Blocked storage: a module flag asks at most once per visit. Never while presenting or while another
-  tour runs; never over a shared link, because the opening itself never plays over one (`hasExplicitView`).
+  tour runs; never over a shared link, because the opening itself never plays over one (`hasExplicitView`). It
+  follows every opening that hands over, so a link of the live overview (#69) and the Share panel's fresh start
+  (`?intro=play`) ask it too, on a device not asked before.
 - **Played on the tour player (#28)**: `script.ts` validates `src/data/quickLook.json` (tour stops plus `spot`,
   `flash`, `compare`) and builds a `Tour` (`quickLook`, `returnOnExit`, never listed, never in a link). The watcher
   adds each step's extras: `useQuickLookStore.spot` (mirrored to `data-quick-look-spot` on `<html>`; the glow in
@@ -1105,7 +1119,15 @@ off by default, as `orbitNames=true` while on, and so is `allMoons=true` (#17, t
 are left out; a link without a switch turns it on. `simSearch.ts` drops invalid or blank values (never coerces them to
 0). `useSimUrlSync()` runs once, in `<UrlSync />` rendered before `<Scene />`: it seeds the store before the Canvas
 mounts (no `t` means the wall clock at mount), then writes back with `replace: true`, `t` at most once per second and
-only while paused or at |warp| <= 60, and never while a birth date is entered (#26, see Birthday); a step (#46) is
+only while paused or at |warp| <= 60, and never while a birth date is entered (#26, see Birthday). A clock that only
+shows "now" is not part of a view (#69): while it is live (`isLive`, `src/sim/live.ts`: 1x, within 2 minutes of the
+wall clock) no `t` is written, so the untouched overview's link is a plain arrival (see "The first ten seconds")
+and opens at the viewer's own now. Crossing that line writes at once, in place (a pause or a speed change as
+always; a time travel away from now, or Now back to it, without waiting for the throttle), and a clock that goes
+straight from now to a fast speed, where `t` is otherwise not mirrored, writes the moment it left, so a link taken
+at 1 day/s keeps its date. `searchFromState` takes the wall clock as a parameter (pure, tested). The arrival's
+instructions (`light`, `birthday`, `sky`, `intro`, `look`), which the first `t` used to drop, are a reason to write of
+their own (`holdsInstruction`), so a reload never acts on them again. A step (#46) is
 written once at its end, as a new history entry (see "Back: the view history"). Once the address is another
 page's (Compare, Help, the browser's back), while that page is still loading, nothing is written: a write then would
 take the browser straight back to the solar system.
@@ -1547,12 +1569,22 @@ the URL, so "save the lesson" is the link itself (plus `paused`, `present`, `con
 - **Back to the start** (`present/restoreStart.ts`): re-applies `startSearch` through the store actions (view,
   frame, camera, selection, speed, pause, time glide, layers, the spacecraft layer (#70: `spacecraft=true`, or a
   followed craft, which shows it), animated scale); without a link that is the opening
-  state (overview, now, 1x). Presentation settings are left alone: they belong to the room, not the lesson. A
+  state (overview, now, 1x), and a link taken while the clock showed the present (no `t`, #69) comes back to "now".
+  Presentation settings are left alone: they belong to the room, not the lesson. A
   guided tour opened since ends (`exitTour`); a link that itself opened on a tour stop starts that tour on that stop
   again, with the restored scene as its baseline.
 - **Sharing** (`present/SharePanel.tsx`, lazy): the current address with a copy button (`useClipboard`) and a QR
   code (`uqr` encodes, `present/qr.ts` draws one SVG path), small in the popover and large for the class
   (`ClassQr`, a modal outside the popover).
+  - **This view or a fresh start (#69).** A `SegmentedControl` at the top of the panel ("This view" by default,
+    each option with its hint) chooses what the link opens: the address on screen, or a fresh start,
+    `<origin><VITE_BASE>solar_system?lang=<on screen>&reading=<on screen>&intro=play` and nothing else
+    (`present/shareLink.ts` `freshStartLink`): the opening for everyone, returning visitors included, then the
+    quick look's question for anyone not asked before. The address field, the copy button, the small code and the
+    class code (whose title and label say which) all follow it. The choice is `useShareStore`, kept while the page
+    is open and never stored. On a phone it lives in More's "Link and QR code" page; More's "Share" (the phone's
+    share sheet, #59) always sends the view. Since the live overview carries no `t`, "This view" of the untouched
+    overview welcomes newcomers too; the fresh start is for a class whatever is on screen.
   - **The class code takes the panel's place (#50).** Opening it closes the popover (`ShareMenu` holds it open);
     closing it puts the focus on Share, it does not reopen the panel (the dialog mounts open, so `ShareMenu` returns
     the focus itself). The modal sits at Mantine's `max` z-index, above every HUD popover and menu, so nothing
@@ -2031,7 +2063,8 @@ whole comparison is its link: `/compare?bodies=earth,jupiter,saturn&t=<jd>` (`se
   sizes as the postcard's labels) and stamps the pair's comparisons under it (see Postcard).
 - **Entry:** the focused body's card (`ui/BodyInfo.tsx`) has "Compare with…" in its header (always in view, also while a
   phone folds the facts); it opens the body with its default partner at the moment on screen (`links.ts`
-  `compareSearchFor`: `t` unless the clock shows the present at 1x). "Back" returns through the history, else to
+  `compareSearchFor`: `t` unless the clock shows the present, `isLive` in `src/sim/live.ts`, shared with the URL
+  sync and the tours since #69). "Back" returns through the history, else to
   `/solar_system?focus=<first>`.
 
 ## Scavenger hunt (`features/solarSystem/hunt`, `src/store/hunt.ts`; #34, #52)
@@ -2432,7 +2465,8 @@ moments of #14 (one list, not two), each staged in one action with a viewpoint f
 - **Leaving is one action**: `returnOnExit` (new in the tour format) makes `exitTour` restore the `TourBaseline.scene`
   captured at the start (view, camera, frame, selection, the time or "now", speed, pause, scale, layers, the spacecraft
   layer, #70, which an event about a craft turns on); one event
-  after another keeps the first one's baseline.
+  after another keeps the first one's baseline. "Now" is `currentScene`'s `atNow`: `isLive` (`src/sim/live.ts`),
+  within 2 minutes of the wall clock at 1x since #69 (it was its own 1-minute check before).
 - **Drawn for it**: `events/Corona.tsx`, the Sun's corona, fades in only while the drawn Moon covers the drawn Sun seen
   from the camera (`coveredShare` >= 97 %), so a total eclipse from the Earth is a black Moon in a pearly ring;
   `REFRACTED_GLOW` (`lighting/bodyLighting.ts`, uniform `uUmbraGlow`) lights a body in its parent's umbra with the

@@ -1,8 +1,8 @@
 import { describe, expect, it } from "vitest"
 
-import { dateToJD } from "@/sim"
+import { dateToJD, isLive } from "@/sim"
 
-import { compareSearchFor, isLive } from "./links"
+import { compareSearchFor } from "./links"
 
 const now = new Date("2026-09-25T12:00:00Z")
 const nowJD = dateToJD(now)

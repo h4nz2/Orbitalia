@@ -1,6 +1,7 @@
 /**
  * Pure simulation code: units, time, the simulation clock, Kepler propagation,
- * hierarchy positions, axial rotation and spin speed. No React, no three.js. See docs/ARCHITECTURE.md.
+ * hierarchy positions, axial rotation and spin speed, whether the clock shows
+ * the present. No React, no three.js. See docs/ARCHITECTURE.md.
  */
 export {
 	AU_KM,
@@ -131,6 +132,8 @@ export {
 	timelineJD,
 } from "./clock"
 export type { SimTimeline, TimeGlide } from "./clock"
+export { LIVE_TOLERANCE_DAYS, isLive } from "./live"
+export type { LiveClock } from "./live"
 export {
 	MAX_OCCLUDERS,
 	OCCLUDER_STRIDE,
