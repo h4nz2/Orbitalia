@@ -1373,6 +1373,10 @@
 			"title": "Oberflächenkarten",
 			"intro": "Die Bilder, die um die Globen gelegt sind."
 		},
+		"models": {
+			"title": "Modelle der Raumsonden",
+			"intro": "Die 3D-Modelle der echten Raumsonden, von der NASA."
+		},
 		"sounds": {
 			"title": "Klänge",
 			"intro": "Die Aufnahmen, die du anhören kannst. Die eigenen Töne der App entstehen im Browser."

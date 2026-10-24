@@ -1373,6 +1373,10 @@
 			"title": "Mapy povrchu",
 			"intro": "Obrázky obtočené kolem glóbů."
 		},
+		"models": {
+			"title": "Modely kosmických sond",
+			"intro": "3D modely skutečných kosmických sond od NASA."
+		},
 		"sounds": {
 			"title": "Zvuky",
 			"intro": "Nahrávky, které si můžeš poslechnout. Vlastní tóny aplikace vznikají v prohlížeči."

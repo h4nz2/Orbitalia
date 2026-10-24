@@ -1373,6 +1373,10 @@
 			"title": "Mapas de superficie",
 			"intro": "Las imágenes que envuelven los globos."
 		},
+		"models": {
+			"title": "Modelos de naves espaciales",
+			"intro": "Los modelos 3D de las naves espaciales reales, hechos por la NASA."
+		},
 		"sounds": {
 			"title": "Sonidos",
 			"intro": "Las grabaciones que puedes escuchar. Los tonos propios de la aplicación se crean en el navegador."

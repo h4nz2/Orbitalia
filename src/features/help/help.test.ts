@@ -102,10 +102,14 @@ describe("the help page's words (src/locales/<locale>/help.json)", () => {
 				]),
 			].sort(),
 		)
-		// the image sources of src/data/credits.json are listed under "maps"
+		// the image sources of src/data/credits.json are listed under "maps", its 3D models under "models"
 		expect(Object.keys(english.creditSections).sort()).toEqual(
 			[
-				...new Set([...HELP_CREDITS.map((credit) => credit.section), "maps"]),
+				...new Set([
+					...HELP_CREDITS.map((credit) => credit.section),
+					"maps",
+					"models",
+				]),
 			].sort(),
 		)
 	})
@@ -283,7 +287,7 @@ describe("credits", () => {
 		const rows = creditRows("maps", createI18n({ locale: "de" }))
 		expect(rows.length).toBe(
 			HELP_CREDITS.filter((credit) => credit.section === "maps").length +
-				IMAGE_CREDITS.length,
+				IMAGE_CREDITS.filter((credit) => credit.kind !== "model").length,
 		)
 		expect(rows.find((row) => row.id === "image-svs-moon")?.licence).toBe(
 			"gemeinfrei",
@@ -294,6 +298,20 @@ describe("credits", () => {
 		).toBe("gemeinfrei")
 		expect(rows.find((row) => row.id === "image-sdo-aia304")).toBeDefined()
 		expect(rows.every((row) => row.licence !== "Quelle unbekannt")).toBe(true)
+	})
+
+	it("lists the spacecraft's 3D models apart from the pictures (#72)", () => {
+		const models = IMAGE_CREDITS.filter((credit) => credit.kind === "model")
+		expect(models.length).toBeGreaterThan(0)
+		const rows = creditRows("models", createI18n({ locale: "fr" }))
+		expect(rows.map((row) => row.id)).toEqual(
+			models.map((credit) => `image-${credit.id}`),
+		)
+		expect(rows.every((row) => row.licence === "domaine public")).toBe(true)
+		const maps = creditRows("maps", createI18n({ locale: "fr" }))
+		expect(maps.some((row) => rows.some((model) => model.id === row.id))).toBe(
+			false,
+		)
 	})
 })
 

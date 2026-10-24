@@ -74,6 +74,7 @@ export const STANDARD_ONLY_GROUPS: readonly HelpGroupId[] = ["teachers"]
 export const CREDIT_SECTIONS = [
 	"data",
 	"maps",
+	"models",
 	"sounds",
 	"software",
 	"app",
@@ -273,8 +274,9 @@ export const creditName = (credit: HelpCredit, i18n: Reader): string =>
 
 /**
  * The image sources of #37 (`src/data/credits.json`, written by `pnpm build:data`):
- * every moon map with its credit and licence, listed under "Surface maps". Read
- * as JSON, not through `@/data`, so the help page does not load the body data.
+ * every map with its credit and licence, listed under "Surface maps", and the
+ * spacecraft's 3D models (`kind: "model"`, #72), listed under "Spacecraft models".
+ * Read as JSON, not through `@/data`, so the help page does not load the body data.
  */
 interface ImageCreditLike {
 	id: string
@@ -302,7 +304,15 @@ export interface CreditRow {
 	licence: string
 }
 
-/** Everything credited in a section, in order: the help page's own credits, then (maps) every image source. */
+/** The credits.json entries a section lists: the 3D models under "models", every picture under "maps". */
+const imageCreditsOf = (section: CreditSection): readonly ImageCreditLike[] =>
+	section === "models"
+		? IMAGE_CREDITS.filter((credit) => credit.kind === "model")
+		: section === "maps"
+			? IMAGE_CREDITS.filter((credit) => credit.kind !== "model")
+			: []
+
+/** Everything credited in a section, in order: the help page's own credits, then its entries of credits.json. */
 export function creditRows(section: CreditSection, i18n: Reader): CreditRow[] {
 	const own = HELP_CREDITS.filter((credit) => credit.section === section).map(
 		(credit) => ({
@@ -313,10 +323,9 @@ export function creditRows(section: CreditSection, i18n: Reader): CreditRow[] {
 			licence: licenceText(credit.licence, i18n),
 		}),
 	)
-	if (section !== "maps") return own
 	return [
 		...own,
-		...IMAGE_CREDITS.map((credit) => ({
+		...imageCreditsOf(section).map((credit) => ({
 			id: `image-${credit.id}`,
 			name: credit.title,
 			url: credit.url,
