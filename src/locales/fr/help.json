@@ -525,8 +525,8 @@
 				"simple": "Les sondes spatiales"
 			},
 			"what": {
-				"standard": "Voyager, Pioneer, New Horizons, Cassini, Juno, Parker, JWST et Europa Clipper, dessinées là où elles sont vraiment à la date affichée, avec leurs trajectoires et leurs étapes. Elles restent cachées jusqu’à ce que tu les montres.",
-				"simple": "De vraies sondes construites par des humains, montrées là où elles sont maintenant. Elles sont cachées jusqu’à ce que tu les allumes."
+				"standard": "Voyager, Pioneer, New Horizons, Cassini, Juno, Parker, JWST et Europa Clipper, dessinées là où elles sont vraiment à la date affichée, avec leurs trajectoires et leurs étapes. Elles restent cachées jusqu’à ce que tu les montres. De près, tu vois chaque engin lui-même, le modèle 3D de la NASA, dessiné bien plus grand qu’en vrai : sa fiche dit de combien.",
+				"simple": "De vraies sondes construites par des humains, montrées là où elles sont maintenant. Elles sont cachées jusqu’à ce que tu les allumes. De près, tu vois la sonde elle-même, dessinée bien plus grande qu’en vrai."
 			},
 			"why": {
 				"standard": "Voyager 1 envoie encore des messages depuis bien au-delà des planètes : sa fiche montre combien de temps son signal met à nous parvenir, et pourquoi le voyage a demandé tant d’assistances gravitationnelles.",
@@ -536,7 +536,7 @@
 				"standard": [
 					"Ouvre Outils, choisis « Sondes spatiales réelles » puis une sonde : la vue vole jusqu’à elle et les sondes apparaissent.",
 					"Pour les voir toutes, active « Sondes spatiales » dans Calques (ou dans la liste des sondes). Un lien, une étape de visite guidée ou un événement du ciel autour d’une sonde les montre aussi.",
-					"Sa fiche montre le lancement, la distance, le temps du signal et les « Étapes » ; une étape amène le temps à ce moment.",
+					"Sa fiche montre le lancement, la distance, le temps du signal, de combien la sonde est dessinée plus grande, et les « Étapes » ; une étape amène le temps à ce moment.",
 					"« Afficher toutes les trajectoires » dessine toutes les routes à la fois ; désactiver « Sondes spatiales » les cache de nouveau."
 				],
 				"simple": [
@@ -553,8 +553,8 @@
 				"simple": "Vole avec une sonde"
 			},
 			"what": {
-				"standard": "Suis une sonde spatiale et la caméra reste avec elle pendant que le temps passe, à n’importe quelle vitesse, en avant comme en arrière : Voyager frôlant Jupiter, Juno qui arrive, Parker qui plonge près de Vénus. « Regarder » à côté d’un survol prépare tout pour toi.",
-				"simple": "La caméra vole avec une sonde spatiale. Tu vois une planète passer à côté d’elle."
+				"standard": "Suis une sonde spatiale et la caméra reste avec elle pendant que le temps passe, à n’importe quelle vitesse, en avant comme en arrière : Voyager frôlant Jupiter, Juno qui arrive, Parker qui plonge près de Vénus. « Regarder » à côté d’un survol prépare tout pour toi. Tu vois la sonde elle-même à côté de la planète, dessinée bien plus grande qu’en vrai pour qu’on puisse la voir.",
+				"simple": "La caméra vole avec une sonde spatiale. Tu vois la sonde elle-même, dessinée bien plus grande qu’en vrai, et une planète passer à côté d’elle."
 			},
 			"why": {
 				"standard": "La gravité d’une planète courbe la route d’une sonde et la lance vers le monde suivant. En voyageant avec elle, tu vois Jupiter et ses lunes défiler et la trajectoire se courber autour : l’astuce qui a mené Voyager jusqu’aux planètes lointaines.",

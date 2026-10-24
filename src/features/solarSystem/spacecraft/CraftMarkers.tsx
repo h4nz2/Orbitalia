@@ -4,7 +4,10 @@
  * for a natural body (round dots, white, grey or yellow). A craft whose
  * mission has ended but which still flies (Pioneer 10 and 11) is drawn
  * dimmer. Picking is angular, like the bodies' dots: hovering names the craft,
- * a tap selects it (and shows it in the info panel).
+ * a tap selects it (and shows it in the info panel). Where a craft is drawn
+ * as its model (#73, ./CraftModels.tsx) its diamond fades out as the model
+ * fades in, and its core on screen is the craft's target (`craftPickRadiusPx`,
+ * `craftHitDistance`), not its booms over a planet beside it.
  */
 import { useCallback, useLayoutEffect, useMemo, useRef } from "react"
 import { useFrame, useThree, type ThreeEvent } from "@react-three/fiber"
@@ -43,6 +46,26 @@ export const CRAFT_COLOR: readonly [number, number, number] = [0.4, 0.9, 1]
  */
 export const CRAFT_PICK_RADIUS_PX = 12
 
+/**
+ * How near a craft (px) a tap selects it: its diamond's `CRAFT_PICK_RADIUS_PX`,
+ * or, drawn as its model (#73, `blend` of the way), the model's core radius
+ * on screen where that is more. Not its whole length: Voyager's booms or
+ * Cassini's magnetometer reach far over a planet beside it, and a tap there
+ * is meant for the planet.
+ */
+export const craftPickRadiusPx = (corePx: number, blend: number): number =>
+	Math.max(CRAFT_PICK_RADIUS_PX, 0.5 * corePx * blend)
+
+/**
+ * Where a hit on the craft drawn `along` scene units down the ray counts
+ * (the intersection's distance), `offPx` from its centre on screen: within
+ * the diamond's `CRAFT_PICK_RADIUS_PX` at 0, before everything (the diamond
+ * is drawn over everything); farther out on its model, where it really is,
+ * so a planet or a moon in front of the craft takes the tap.
+ */
+export const craftHitDistance = (offPx: number, along: number): number =>
+	offPx <= CRAFT_PICK_RADIUS_PX ? 0 : along
+
 /** A silent craft (mission over, still flying) is drawn at this brightness. */
 export const SILENT_DIM = 0.5
 
@@ -62,7 +85,10 @@ const diamondPoints = (shader: { fragmentShader: string }) => {
 
 export interface CraftMarkerBuffers {
 	positions: Float32Array
+	/** RGBA: the alpha fades the diamond while the craft's model fades in (#73) */
 	colors: Float32Array
+	/** the pick radius of each drawn vertex, px (`craftPickRadiusPx`) */
+	pickRadii: Float32Array
 	/** craft index behind each drawn vertex */
 	vertexCraft: Int32Array
 	/** whether craft k was shown last frame (hysteresis of the clearance rule) */
@@ -73,7 +99,8 @@ export const createCraftMarkerBuffers = (
 	count: number,
 ): CraftMarkerBuffers => ({
 	positions: new Float32Array(count * 3),
-	colors: new Float32Array(count * 3),
+	colors: new Float32Array(count * 4),
+	pickRadii: new Float32Array(count),
 	vertexCraft: new Int32Array(count),
 	shown: new Uint8Array(count),
 })
@@ -98,7 +125,7 @@ export function fillCraftMarkers(
 		followed?: string | null
 	},
 ): number {
-	const { positions, colors, vertexCraft, shown } = buffers
+	const { positions, colors, pickRadii, vertexCraft, shown } = buffers
 	let drawn = 0
 	for (let k = 0; k < craftFrame.craft.length; k++) {
 		const id = craftFrame.craft[k].id
@@ -125,27 +152,35 @@ export function fillCraftMarkers(
 		positions[v + 1] = toUnits(state.displayKm[1] - frame.originKm[1])
 		positions[v + 2] = toUnits(state.displayKm[2] - frame.originKm[2])
 		const dim = craftFrame.phases[k] === "silent" ? SILENT_DIM : 1
-		colors[v] = CRAFT_COLOR[0] * dim
-		colors[v + 1] = CRAFT_COLOR[1] * dim
-		colors[v + 2] = CRAFT_COLOR[2] * dim
+		const c = drawn * 4
+		colors[c] = CRAFT_COLOR[0] * dim
+		colors[c + 1] = CRAFT_COLOR[1] * dim
+		colors[c + 2] = CRAFT_COLOR[2] * dim
+		colors[c + 3] = 1 - craftFrame.modelBlend[k]
+		pickRadii[drawn] = craftPickRadiusPx(
+			craftFrame.modelCorePx[k],
+			craftFrame.modelBlend[k],
+		)
 		vertexCraft[drawn] = k
 		drawn++
 	}
 	return drawn
 }
 
-/** The drawn vertex nearest the ray within `radiusPx`, or -1. */
+/**
+ * The drawn vertex nearest the ray within its pick radius (`radiiPx`, px per
+ * vertex: a model's is its size on screen), or -1.
+ */
 export function pickCraftMarker(
 	positions: Float32Array,
 	drawn: number,
 	origin: Vector3,
 	direction: Vector3,
 	anglePerPx: number,
-	radiusPx: number,
+	radiiPx: Float32Array,
 ): number {
-	const pickTanSq = (radiusPx * anglePerPx) ** 2
 	let best = -1
-	let bestTanSq = pickTanSq
+	let bestTanSq = Infinity
 	for (let v = 0; v < drawn; v++) {
 		const o = v * 3
 		const dx = positions[o] - origin.x
@@ -155,7 +190,7 @@ export function pickCraftMarker(
 		if (along <= 0) continue
 		const perpSq = Math.max(0, dx * dx + dy * dy + dz * dz - along * along)
 		const tanSq = perpSq / (along * along)
-		if (tanSq < bestTanSq) {
+		if (tanSq <= (radiiPx[v] * anglePerPx) ** 2 && tanSq < bestTanSq) {
 			best = v
 			bestTanSq = tanSq
 		}
@@ -171,6 +206,16 @@ export interface CraftMarkersProps {
 }
 
 const pointer = new Vector3()
+/** The crafts drawn wherever they are, refilled every frame (no object a frame). */
+const always: {
+	selected: string | null
+	hovered: string | null
+	followed: string | null
+} = {
+	selected: null,
+	hovered: null,
+	followed: null,
+}
 
 function CraftMarkers({ frame, craftFrame, labels }: CraftMarkersProps) {
 	const pointsRef = useRef<Points>(null)
@@ -183,6 +228,9 @@ function CraftMarkers({ frame, craftFrame, labels }: CraftMarkersProps) {
 		const points = pointsRef.current
 		if (points === null || !(camera instanceof PerspectiveCamera)) return
 		const craftState = useSpacecraftStore.getState()
+		always.selected = craftState.selectedCraftId
+		always.hovered = craftState.hoverCraftId
+		always.followed = followedCraftId(useSimStore.getState().view)
 		const drawn = craftState.showSpacecraft
 			? fillCraftMarkers(
 					buffers,
@@ -191,11 +239,7 @@ function CraftMarkers({ frame, craftFrame, labels }: CraftMarkersProps) {
 					camera,
 					size.width,
 					size.height,
-					{
-						selected: craftState.selectedCraftId,
-						hovered: craftState.hoverCraftId,
-						followed: followedCraftId(useSimStore.getState().view),
-					},
+					always,
 				)
 			: 0
 		const geometry = points.geometry
@@ -243,13 +287,14 @@ function CraftMarkers({ frame, craftFrame, labels }: CraftMarkersProps) {
 				}
 			}
 			const drawn = Math.min(points.geometry.drawRange.count, count)
+			const anglePerPx = 1 / pixelsPerUnit(camera, size.height)
 			const best = pickCraftMarker(
 				buffers.positions,
 				drawn,
 				origin,
 				direction,
-				1 / pixelsPerUnit(camera, size.height),
-				CRAFT_PICK_RADIUS_PX,
+				anglePerPx,
+				buffers.pickRadii,
 			)
 			if (best < 0) return
 			const o = best * 3
@@ -258,10 +303,19 @@ function CraftMarkers({ frame, craftFrame, labels }: CraftMarkersProps) {
 				buffers.positions[o + 1],
 				buffers.positions[o + 2],
 			)
+			const dx = hit.x - origin.x
+			const dy = hit.y - origin.y
+			const dz = hit.z - origin.z
+			const along = dx * direction.x + dy * direction.y + dz * direction.z
+			const offPx =
+				Math.sqrt(Math.max(0, dx * dx + dy * dy + dz * dz - along * along)) /
+				along /
+				anglePerPx
 			intersects.push({
-				// drawn over everything (no depth test), so it is hit before any body
-				// target or #16's "empty space"
-				distance: 0,
+				// the diamond is drawn over everything (no depth test), so it is hit
+				// before any body target or #16's "empty space"; the rest of a model
+				// where it is (`craftHitDistance`)
+				distance: craftHitDistance(offPx, along),
 				point: hit,
 				index: buffers.vertexCraft[best],
 				object: points,
@@ -311,7 +365,7 @@ function CraftMarkers({ frame, craftFrame, labels }: CraftMarkersProps) {
 					attach="attributes-position"
 					args={[buffers.positions, 3]}
 				/>
-				<bufferAttribute attach="attributes-color" args={[buffers.colors, 3]} />
+				<bufferAttribute attach="attributes-color" args={[buffers.colors, 4]} />
 			</bufferGeometry>
 			<pointsMaterial
 				size={CRAFT_MARKER_SIZE_PX}

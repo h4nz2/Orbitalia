@@ -1,3 +1,4 @@
+import { useEffect } from "react"
 import {
 	ActionIcon,
 	Group,
@@ -21,6 +22,7 @@ import { useSpacecraftStore } from "@/store/spacecraft"
 import useThrottledSimTime from "../scene/useThrottledSimTime"
 import { formatDayUTC } from "../ui/timeTravel"
 import { followCraft, showCraft } from "./facts"
+import { loadTrajectories } from "./trajectories"
 
 import classes from "./Spacecraft.module.css"
 
@@ -30,7 +32,9 @@ import classes from "./Spacecraft.module.css"
  * "show every path", and every craft with what it is and whether it is
  * working at the simulation date. Picking one selects it (which shows the
  * layer) and flies the view there, its follow button rides along with it
- * (#57); either way `onPicked` then closes the panel.
+ * (#57); either way `onPicked` then closes the panel. Opening it fetches the
+ * trajectories (#73: they wait until a craft is wanted), so the craft picked
+ * next is flown to at once.
  */
 export const SpacecraftList = ({ onPicked }: { onPicked: () => void }) => {
 	const i18n = useI18n()
@@ -44,6 +48,9 @@ export const SpacecraftList = ({ onPicked }: { onPicked: () => void }) => {
 		state.view.kind === "craft" ? state.view.id : null,
 	)
 	const { setShowSpacecraft, setShowAllPaths } = useSpacecraftStore.getState()
+	useEffect(() => {
+		void loadTrajectories()
+	}, [])
 	const day = (iso: string) => formatDayUTC(new Date(iso), i18n.formatLocale)
 	const phaseText = (
 		craft: Spacecraft,

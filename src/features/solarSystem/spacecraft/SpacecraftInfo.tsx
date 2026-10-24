@@ -6,7 +6,9 @@
  * flies the view to it and one that rides along with it (#57). Every number
  * comes from true positions at the instant the drawing shows (10 Hz): the
  * simulation time, except in the slow motion of a planet passage (#56);
- * while following, the card adds the nearest planet and how far it is.
+ * while following, the card adds the nearest planet and how far it is. It
+ * says honestly how much bigger than it is the craft is drawn, or that it is
+ * shown as a marker (#73, ./drawnSize.ts).
  */
 import { useMemo, type ReactNode } from "react"
 import {
@@ -52,6 +54,7 @@ import {
 	watchEvent,
 } from "./facts"
 import { formatDuration } from "../light/lightTravel"
+import { drawnSentence, useCraftDrawnStore } from "./drawnSize"
 import { eventLabel } from "./text"
 
 import classes from "./Spacecraft.module.css"
@@ -97,6 +100,22 @@ const Fact = ({
 )
 
 const asOfJD = isoToJD(`${spacecraftAsOf}T00:00Z`)
+
+/** How the scene draws the craft (#73): its model, so many times bigger than it is, or a marker. */
+const DrawnStatement = ({ craftId }: { craftId: string }) => {
+	const i18n = useI18n()
+	const as = useCraftDrawnStore((state) =>
+		state.craftId === craftId ? state.as : "none",
+	)
+	const factor = useCraftDrawnStore((state) => state.factor)
+	const sentence = drawnSentence(as, factor, i18n)
+	if (sentence === null) return null
+	return (
+		<p className={classes.note} data-drawn={as}>
+			{i18n.t(sentence.key, sentence.values)}
+		</p>
+	)
+}
 
 /** True while the camera rides along with craft `id` (#57). */
 const useFollowing = (id: string): boolean =>
@@ -252,6 +271,8 @@ const CraftPanel = ({ craft }: { craft: Spacecraft }) => {
 			<p className={classes.status} data-phase={phase}>
 				{status}
 			</p>
+			{/* what you see first: how much bigger than it is it is drawn (#73) */}
+			{known && <DrawnStatement craftId={craft.id} />}
 			<dl className={classes.facts}>
 				<Fact label={t("solarSystem.spacecraft.launched")} id="launch">
 					{day(craft.launch)}

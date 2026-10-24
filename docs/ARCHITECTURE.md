@@ -823,7 +823,7 @@ and angle it was left at. It is one step; the overview button is the way out, al
 ## Lighting (`src/sim/lighting.ts`, `features/solarSystem/lighting/`, `src/store/lighting.ts`; #22)
 
 The single authority on how anything is lit. The Sun (the root body) is the only light source; there are no three.js
-lights. Everything is decided in TRUE km (`positionsKm`, `radiusKm`), never in display space, so the terminator, phases
+lights (the spacecraft models, the scene's only lit materials, carry their own: see "Spacecraft", Models in the scene). Everything is decided in TRUE km (`positionsKm`, `radiusKm`), never in display space, so the terminator, phases
 and eclipses are the real ones in every scale preset (a moon drawn 10x too big never casts a 10x bigger shadow).
 
 - Direction: each body is lit from the true Sun direction from its centre (`uSunKm`). A fragment of the drawn sphere
@@ -1185,7 +1185,7 @@ export const useSimFrame = (): SimFrame // throws outside the provider
   `updateOrbitBuffers`, `fillMarkers`) to satisfy `react-hooks/immutability` without `eslint-disable`. No allocations
   in the frame loop.
 - Canvas: `dpr={[1, 2]}`, logarithmic depth buffer, near 1e-5, far 1e9, fov 45 (`camera/framing.ts`), background
-  `#0b0d12`. No three.js lights (see Lighting); the Sun is unlit (`toneMapped={false}`). Bloom arrives in Phase 6.
+  `#0b0d12`. No three.js lights (see Lighting; the spacecraft models' own aside, #73); the Sun is unlit (`toneMapped={false}`). Bloom arrives in Phase 6.
 - Bodies (`bodies/BodyMesh.tsx`): a group per body (the pole frame, see Rotation), scaling one of three shared unit spheres (64/32/16 segments for
   Sun and planets / moons / estimated moons) by the drawn radius; lazy sRGB textures behind a per-body Suspense; every
   body but the Sun uses the sunlit material (see Lighting).
@@ -1375,7 +1375,8 @@ responses are cached in `node_modules/.cache/orbitalia-horizons`. It writes:
 
 ```
 src/data/spacecraft.json              the catalogue (+ flyby times and distances from the data), a few kB, eager
-src/data/spacecraftTrajectories.json  craft id -> segments (compact, .prettierignore), ~0.5 MB, loaded on demand
+src/data/spacecraftTrajectories.json  craft id -> segments (compact, .prettierignore), ~0.5 MB, loaded on demand (#73: the
+                                      first time the layer is shown or the spacecraft list opened, never on a visit without a craft)
 src/data/spacecraftCheck.json         dropped Horizons states with their tolerance, for the unit tests only
 ```
 
@@ -1447,7 +1448,8 @@ updates it at `useFrame` priority -0.9 (after SimClock, before the director) and
 
 - markers (`CraftMarkers.tsx`): 9 px cyan diamonds with a dark rim (bodies are round dots), dimmer for a silent
   craft; hidden near a planet that is still a dot until 10 px clear of it (the moon-name rule), unless selected or
-  hovered; angular picking; 12 px pick radius (smaller than #16's finger target, so a tap beside a planet stays the planet's); hover shows the pointer, a tap selects.
+  hovered; angular picking; 12 px pick radius (smaller than #16's finger target, so a tap beside a planet stays the planet's), out to a model's core radius on screen where one is drawn (#73, see "Models in the scene"); hover shows the pointer, a tap selects. A diamond fades out as its craft's model fades in (RGBA colours, `CraftFrame.modelBlend`).
+- models (`CraftModels.tsx`, #73): NASA's model of the craft wherever it would be seen; see "Models in the scene" below.
 - paths (`CraftPaths.tsx`, for the selected and hovered craft, or all with "Show every path"): the cruise path in
   the Sun's frame with each vertex placed where the planets were at that time (rebuilt on a scale change; extra
   vertices along each drawn passage, `flybyPathTimes`), bright
@@ -1581,6 +1583,78 @@ exclusive: Cassini wears `cassini-no-huygens` from Huygens' release, 2004-12-25 
   generator's catalogue, notes and sources stay out of the bundle.
 - Credits: each source joins `src/data/credits.json` through `pnpm build:data` (`kind: "model"`, `bodies` = the craft
   wearing it), listed on the help page under "Spacecraft models".
+
+**Models in the scene (`spacecraft/CraftModels.tsx`, `modelSize.ts`, `attitude.ts`, `modelCache.ts`, `drawnSize.ts`;
+#73).** A real craft is 3 to 30 m across: even where the drawing is stretched most it would be far below a pixel. So
+each craft is drawn as its model, larger on purpose, and its card says by how much.
+
+- **Which:** the selected or followed craft, and any other whose model would be bigger on screen than its diamond;
+  only while the layer is on; never in true scale (from the click on True scale: there the craft would be its true
+  size, and true scale stays true). Diamond and model cross-fade over `MODEL_FADE_S` (0.2 s; at once with reduced
+  motion). The diamond stays while the file loads, for good if it fails, and while a planet, a big moon or the Sun
+  stands between the camera and the craft (the model is depth-tested; the diamond, drawn over everything, marks
+  where the craft is, as before). Every craft's name keeps #20's layout, beside the model (`modelRadiusPx` is its
+  label radius). A tap selects it within its model's core radius on screen, at least the diamond's 12 px
+  (`craftPickRadiusPx`: the angular picking, no mesh raycast), not its whole length: Voyager's booms and
+  Cassini's magnetometer reach over the planet beside it, and a tap there is the planet's. Within 12 px the hit
+  counts before everything, as the diamond's did; farther out it counts where the craft is (`craftHitDistance`),
+  so a planet or a moon in front of it takes the tap.
+- **Size** (`modelSize`, pure): two lengths. The longest (`sizeM`, boom tip to boom tip) is what must stay small
+  beside a planet and on the screen; the core (twice the distance within which 80 % of the model's surface lies,
+  measured once the file has loaded: Voyager 0.41 of its 16.9 m, Pioneer and Cassini 0.33, JWST 0.55, Juno 0.75) is
+  what a person sees: Voyager 48 px from boom tip to boom tip is a 10 px dish. In order: (1) the core is
+  `MODEL_DRAWN_KM` (30,000 drawn km) long, so dollying in makes it bigger; (2) the chosen craft's core is at least
+  `MODEL_MIN_PX` (48 px) from the follow framing out, until the camera is more than twice the craft's drawn distance
+  from the Sun away; (3) near the Sun, a planet or a dwarf planet (within 12 of its drawn radii, fading out by 24)
+  or a moon of 1,000 km or more (within 3 radii, by 6) the whole model is at most 0.4 of that body's drawn diameter,
+  and so it is near what a flyby or arrival of the data passes, wherever that is drawn, within `PASSAGE_HOURS` (2 h,
+  fading out by 4) of the moment the craft passes it closest as drawn (Watch's `trueJD`: for a moon or Pluto, whose
+  model positions are not the real ones, hours off the milestone's date); this wins over (2): at a closest approach
+  the craft is clearly smaller than what it passes; (4) the whole
+  model is at most 40 % of the shorter side of the screen; (5) a model whose core is under 10 px is a diamond (9 px
+  back), the chosen craft's not while the whole of it is 18 px or more. Rule (3) is `bodyLimitKm` (pure, in
+  `modelSize.ts`): the scene hands it which bodies' layers are on (a hidden body limits nothing), the passages'
+  closest approaches (worked out once by `watchPlan` from the true positions, so they hold in every preset) and
+  the drawing's phase (`drawnPhaseAt`). Tested (`modelSize.test.ts`) for every
+  flyby and arrival in the data in every preset but true scale, as Watch frames its closest approach on 1366x768,
+  through that same function: the passage holds in full there, the core is at least 48 px or a body holds the
+  whole model to its limit, and the model is under half the disc of what it passes, or the diamond. Where both cannot hold the body wins, down to the diamond: where #56 draws a
+  moon's, Pluto's or Arrokoth's passage away from the drawn body, which is then a small disc (Voyager 1 at Titan and
+  Voyager 2 at Triton in every preset, New Horizons at Pluto and Arrokoth in all but Poster), and Europa Clipper
+  meeting Ganymede on its arrival in Everything visible; Cassini 10 drawn radii from Jupiter is a 22 px model.
+- **Honest:** the card's `DrawnStatement` (`SpacecraftInfo.tsx`): "Drawn about 510,000 times bigger than it is. At
+  its real size it would be far smaller than a pixel." The factor is the drawn length in true kilometres round the
+  craft (over `craftLengthScale`, #57) over `sizeM`, two significant digits, in words from a million ("37 billion";
+  French and Spanish say "de fois", "de veces" then, through a `form` select); at `simple` "more than 100" and "far
+  too small to see". As a diamond (true scale, far out, behind a planet): "Shown as a marker: at its real size it
+  would be far too small to see." The scene hands the number over through `useCraftDrawnStore` at most every 250 ms
+  and only when the rounded figure changes (no per-frame React state). On a phone it is in the card in the sheet.
+- **Facing** (`craftAttitude`, pure): +Z at Earth or the Sun (`points`) as drawn, from the craft's drawn position;
+  +Y as close to ecliptic north as +Z allows (no flip; pointing at a pole, the roll held before). A simplification:
+  real attitudes vary by mission phase (a camera turned to a moon, a burn). Juno spins about +Z at `spinRpm` (2)
+  with the clock, capped like the planets' slowed spin (#13): at most one turn per 4 s of real time, 30 s in Slow,
+  none in Stopped (`CRAFT_MIN_SECONDS_PER_TURN`; true to the clock it would strobe at almost any speed). Cassini's
+  two models are fetched together and the model changes at Huygens' release.
+- **Light:** the models are the only lit materials in the scene, so their light lives with them and is the scene's
+  only three.js light: a point light where the Sun is drawn (no falloff; from the viewer with "Always lit"), plus
+  a small generated room (`RoomEnvironment` through PMREM, nothing fetched) reflected at 0.35 as fill, so foil and
+  Europa Clipper's fully metallic panels show their shape; 0.7 with high contrast (#29), 0.25 with "Always lit". No
+  shadows or eclipses on a craft.
+- **Loading** (`modelCache.ts`): three's own GLTFLoader and MeshoptDecoder (no Draco), each in its own chunk,
+  fetched with the first model; a file is fetched the first time the size rule wants its model and cached for the
+  session; each craft gets its own copy with its own materials (for its fade; geometry and textures shared),
+  always in the transparent pass (double-sided parts in one pass) so a fade never recompiles. A new copy's shaders
+  are compiled before it fades in, with the light it is drawn in (`precompile`: `compileAsync` in the background,
+  `compile` where that is missing): the diamond stays a moment longer instead of the scene stalling on the
+  model's first frame. The frame loop allocates nothing (objects reused, no closures or `find` per frame). 3,300 to 19,500
+  triangles a model, 3 to 34 draw calls. Not drei's `useGLTF`: the frame loop needs "loading"
+  and "failed" as values, not a Suspense or an error boundary.
+- **For tests:** a hidden `<span data-craft-model={id} data-state="model|loading|diamond" data-px data-core-px>`
+  per craft in the label layer (`modelProbe.ts`; the whole model's and its core's length on screen), written
+  when it changes, at most every `PROBE_WRITE_MS` (250 ms).
+- Known limits: no shadow or eclipse on a craft; the real attitude is not modelled; JWST at L2 is held to 0.4 of
+  Earth's drawn diameter (about 20 px at Watch's framing in Everything visible: dolly in to see it bigger); a
+  craft passing inside a drawn moon (Juno at Europa in Everything visible, #56) is hidden in it.
 
 **Content.** `src/locales/<locale>/spacecraft.json` (`@/i18n/spacecraft`: `useSpacecraftText`,
 `spacecraftName`): name, tagline and a description at every reading level, tested for every locale. UI strings

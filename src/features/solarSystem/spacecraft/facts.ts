@@ -44,7 +44,7 @@ import { prefersReducedMotion } from "../present/media"
 import { pointOffsetKm } from "../camera/recentre"
 import { createSimFrame } from "../scene/simFrame"
 import { travelAndStop } from "../ui/timeTravel"
-import { trajectoryOf } from "./trajectories"
+import { trajectoryOf, withTrajectories } from "./trajectories"
 
 const index = buildIndex(bodies)
 const rootIndex = rootIndexOf(bodies)
@@ -188,20 +188,31 @@ export function craftView(
 	}
 }
 
-/** Selects the craft and flies the view to where it is now: a step of the view history (#46). */
+/** Whether `id` is still the craft chosen once the trajectories have arrived. */
+const stillChosen = (id: string): boolean =>
+	useSpacecraftStore.getState().selectedCraftId === id
+
+/**
+ * Selects the craft and flies the view to where it is now: a step of the
+ * view history (#46). Chosen before the trajectories are in (the layer was
+ * hidden, #73), it flies once they have arrived.
+ */
 export function showCraft(id: string, scale: ScaleSettings): void {
 	const craft = spacecraftById.get(id)
 	if (craft === undefined) return
 	useSimStore.getState().markStep()
 	useSpacecraftStore.getState().selectCraft(id)
-	const view = craftView(craft, useSimStore.getState().simTimeJD, scale)
-	if (view === null) return
-	useSimStore
-		.getState()
-		.goTo(
-			{ kind: "point", anchorId: view.anchorId, offsetKm: view.offsetKm },
-			{ shot: { distance: view.distance } },
-		)
+	withTrajectories(() => {
+		if (!stillChosen(id)) return
+		const view = craftView(craft, useSimStore.getState().simTimeJD, scale)
+		if (view === null) return
+		useSimStore
+			.getState()
+			.goTo(
+				{ kind: "point", anchorId: view.anchorId, offsetKm: view.offsetKm },
+				{ shot: { distance: view.distance } },
+			)
+	})
 }
 
 /** The planet to watch an event from: the target planet, or a moon's planet. */
@@ -224,28 +235,31 @@ export function showEvent(
 	event: { date: string; target?: string },
 	scale: ScaleSettings,
 ): void {
-	const trajectory = trajectoryOf(craft.id)
-	const eventJD = isoToJD(event.date)
-	const jd =
-		trajectory === null
-			? eventJD
-			: Math.min(trajectory.toJD, Math.max(trajectory.fromJD, eventJD))
 	useSimStore.getState().markStep()
 	useSpacecraftStore.getState().selectCraft(craft.id)
-	travelAndStop(jd)
-	const planet = eventPlanet(event.target)
-	const store = useSimStore.getState()
-	if (planet !== null) {
-		store.focus(planet.id)
-		return
-	}
-	const view = craftView(craft, jd, scale)
-	if (view !== null) {
-		store.goTo(
-			{ kind: "point", anchorId: view.anchorId, offsetKm: view.offsetKm },
-			{ shot: { distance: view.distance } },
-		)
-	}
+	withTrajectories(() => {
+		if (!stillChosen(craft.id)) return
+		const trajectory = trajectoryOf(craft.id)
+		const eventJD = isoToJD(event.date)
+		const jd =
+			trajectory === null
+				? eventJD
+				: Math.min(trajectory.toJD, Math.max(trajectory.fromJD, eventJD))
+		travelAndStop(jd)
+		const planet = eventPlanet(event.target)
+		const store = useSimStore.getState()
+		if (planet !== null) {
+			store.focus(planet.id)
+			return
+		}
+		const view = craftView(craft, jd, scale)
+		if (view !== null) {
+			store.goTo(
+				{ kind: "point", anchorId: view.anchorId, offsetKm: view.offsetKm },
+				{ shot: { distance: view.distance } },
+			)
+		}
+	})
 }
 
 /**
@@ -290,15 +304,23 @@ export const isFollowing = (id: string): boolean => {
 /**
  * Rides along with a craft (#57): selects it and keeps it centred while time
  * runs, the camera's direction kept, its distance the craft's own. A step of
- * the view history (#46); already following it, nothing moves.
+ * the view history (#46); already following it, nothing moves. Asked for
+ * before the trajectories are in (#73), it starts once they have arrived.
  */
 export function followCraft(id: string, scale: ScaleSettings): void {
 	const craft = spacecraftById.get(id)
 	if (craft === undefined) return
-	const sim = useSimStore.getState()
-	sim.markStep()
+	useSimStore.getState().markStep()
 	useSpacecraftStore.getState().selectCraft(id)
 	if (isFollowing(id)) return
+	withTrajectories(() => {
+		if (stillChosen(id) && !isFollowing(id)) startFollowing(craft, scale)
+	})
+}
+
+function startFollowing(craft: Spacecraft, scale: ScaleSettings): void {
+	const id = craft.id
+	const sim = useSimStore.getState()
 	const framing = followFraming(craft, sim.simTimeJD, scale)
 	sim.goTo(
 		{
@@ -385,4 +407,4 @@ export function watchEvent(
 }
 
 /** The camera stands this much farther out than what frames the closest approach exactly. */
-const WATCH_MARGIN = 1.2
+export const WATCH_MARGIN = 1.2

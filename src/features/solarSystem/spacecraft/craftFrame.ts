@@ -43,6 +43,18 @@ export interface CraftFrame {
 	scaleVersion: number
 	/** Places a true point like a body there would be drawn, anchored frames (#31) included. */
 	readonly map: TruePointMapper
+	/**
+	 * Per craft (#73): how far it is drawn as its model rather than its
+	 * diamond (0 the diamond, 1 the model; between them mid-cross-fade), the
+	 * model's radius on screen (px, times that blend; 0 without a model: the
+	 * names keep clear of it) and its core's length on screen (px, its last;
+	 * a tap within its radius selects the craft, ./CraftMarkers.tsx), written
+	 * by ./CraftModels.tsx each frame before the diamonds and the names read
+	 * them.
+	 */
+	readonly modelBlend: Float32Array
+	readonly modelRadiusPx: Float32Array
+	readonly modelCorePx: Float32Array
 }
 
 export function createCraftFrame(
@@ -60,6 +72,9 @@ export function createCraftFrame(
 		scaleVersion: -1,
 		map: (anchor, x, y, z, out) =>
 			mapTruePointKm(frame, root, anchor, x, y, z, out),
+		modelBlend: new Float32Array(craft.length),
+		modelRadiusPx: new Float32Array(craft.length),
+		modelCorePx: new Float32Array(craft.length),
 	}
 	updateCraftFrame(craftFrame, frame)
 	return craftFrame
@@ -104,6 +119,39 @@ export const craftIndexOf = (
 	id === null ? -1 : craftFrame.craft.findIndex((craft) => craft.id === id)
 
 /**
+ * How many drawn km one true km round craft `k` is drawn as (#57's
+ * `craftLengthScale`), or NaN while it is not drawn: what the camera keeps
+ * on a scale change, and what tells how much bigger than it is a model is
+ * drawn (#73).
+ */
+export function craftLengthScaleAt(
+	craftFrame: CraftFrame,
+	frame: SimFrame,
+	k: number,
+): number {
+	if (k < 0 || craftFrame.present[k] !== 1) return Number.NaN
+	const state = craftFrame.states[k]
+	const root = rootIndexOf(frame.bodies)
+	const distance = (body: number) => {
+		const o = body * 3
+		return Math.hypot(
+			state.trueKm[0] - frame.positionsKm[o],
+			state.trueKm[1] - frame.positionsKm[o + 1],
+			state.trueKm[2] - frame.positionsKm[o + 2],
+		)
+	}
+	const planet = state.drawnPlanet
+	return craftLengthScale(
+		frame.scale,
+		frame.bodies[root],
+		distance(root),
+		planet < 0 ? null : frame.bodies[planet],
+		planet < 0 ? 0 : distance(planet),
+		state.drawnWeight,
+	)
+}
+
+/**
  * The craft frame as the camera director reads it (#57): where a craft is
  * drawn now, the body whose neighbourhood it is in, and the drawing's local
  * scale round it.
@@ -112,15 +160,6 @@ export function createCraftLocator(
 	craftFrame: CraftFrame,
 	frame: SimFrame,
 ): CraftLocator {
-	const root = rootIndexOf(frame.bodies)
-	const distance = (state: CraftState, body: number) => {
-		const o = body * 3
-		return Math.hypot(
-			state.trueKm[0] - frame.positionsKm[o],
-			state.trueKm[1] - frame.positionsKm[o + 1],
-			state.trueKm[2] - frame.positionsKm[o + 2],
-		)
-	}
 	return {
 		locate: (id, out) => {
 			const k = craftIndexOf(craftFrame, id)
@@ -129,19 +168,7 @@ export function createCraftLocator(
 			out.set(state.displayKm)
 			return Math.max(0, state.anchorIndex)
 		},
-		lengthScale: (id) => {
-			const k = craftIndexOf(craftFrame, id)
-			if (k < 0 || craftFrame.present[k] !== 1) return Number.NaN
-			const state = craftFrame.states[k]
-			const planet = state.drawnPlanet
-			return craftLengthScale(
-				frame.scale,
-				frame.bodies[root],
-				distance(state, root),
-				planet < 0 ? null : frame.bodies[planet],
-				planet < 0 ? 0 : distance(state, planet),
-				state.drawnWeight,
-			)
-		},
+		lengthScale: (id) =>
+			craftLengthScaleAt(craftFrame, frame, craftIndexOf(craftFrame, id)),
 	}
 }

@@ -4,7 +4,8 @@
  * positioned and faded by the labels' frame loop (labels/Labels.tsx) together
  * with the bodies' names. Translated through `@/i18n/spacecraft`. The marker
  * picking (CraftMarkers.tsx) makes the names clickable; the layer itself
- * never takes pointer events.
+ * never takes pointer events. Beside each name, a hidden probe tells tests
+ * how the craft is drawn (#73, ./modelProbe.ts).
  */
 import { useLayoutEffect } from "react"
 
@@ -14,6 +15,7 @@ import { useSimStore } from "@/store/sim"
 import { useSpacecraftStore } from "@/store/spacecraft"
 
 import { attachLabel, measureLabels, type LabelBoard } from "../labels/board"
+import { attachModelProbe } from "./modelProbe"
 
 import labelClasses from "../labels/Labels.module.css"
 import classes from "./Spacecraft.module.css"
@@ -59,6 +61,14 @@ function SpacecraftLabelLayer({ board, firstSlot }: SpacecraftLabelLayerProps) {
 				>
 					{name(craft.id)}
 				</span>
+			))}
+			{spacecraft.map((craft) => (
+				<span
+					key={`model-${craft.id}`}
+					hidden
+					data-craft-model={craft.id}
+					ref={(element) => attachModelProbe(craft.id, element)}
+				/>
 			))}
 		</div>
 	)

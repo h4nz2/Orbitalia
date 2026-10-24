@@ -1,9 +1,11 @@
 /**
  * The decoded spacecraft trajectories (issue #35), shared by the scene and the
- * HUD. The data arrives on demand (`loadTrajectoryData` in @/data/spacecraft);
- * until it has, every craft is simply absent from the scene and the HUD says
- * nothing about positions. `trajectoriesReady` in the spacecraft store flips
- * when it arrives, so React UI re-renders once.
+ * HUD. The data arrives on demand (`loadTrajectoryData` in @/data/spacecraft),
+ * fetched the first time the spacecraft layer is shown (#73,
+ * ./SpacecraftScene.tsx) or the spacecraft list opened; until it has, every
+ * craft is simply absent from the scene and the HUD says nothing about
+ * positions. `trajectoriesReady` in the spacecraft store flips when it
+ * arrives, so React UI re-renders once.
  */
 import { bodies } from "@/data"
 import { loadTrajectoryData } from "@/data/spacecraft"
@@ -39,4 +41,14 @@ export function loadTrajectories(): Promise<void> {
 		useSpacecraftStore.setState({ trajectoriesReady: true })
 	})
 	return loading
+}
+
+/**
+ * Runs `then` with the trajectories in: at once when they are, else once
+ * they have arrived (fetching them), so a craft chosen before the data is
+ * there is still flown to.
+ */
+export function withTrajectories(then: () => void): void {
+	if (decoded !== null) then()
+	else void loadTrajectories().then(then)
 }

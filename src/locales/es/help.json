@@ -525,8 +525,8 @@
 				"simple": "Sondas espaciales"
 			},
 			"what": {
-				"standard": "Voyager, Pioneer, New Horizons, Cassini, Juno, Parker, JWST y Europa Clipper, dibujadas donde están de verdad en la fecha de la pantalla, con sus trayectorias y sus hitos. Siguen ocultas hasta que las muestras.",
-				"simple": "Sondas espaciales de verdad, construidas por personas, justo donde están ahora. Están escondidas hasta que las enciendes."
+				"standard": "Voyager, Pioneer, New Horizons, Cassini, Juno, Parker, JWST y Europa Clipper, dibujadas donde están de verdad en la fecha de la pantalla, con sus trayectorias y sus hitos. Siguen ocultas hasta que las muestras. De cerca ves cada nave tal como es, con el modelo 3D de la NASA, dibujada mucho más grande de lo que es en realidad: su tarjeta dice cuánto.",
+				"simple": "Sondas espaciales de verdad, construidas por personas, justo donde están ahora. Están escondidas hasta que las enciendes. De cerca ves la sonda misma, dibujada mucho más grande de lo que es de verdad."
 			},
 			"why": {
 				"standard": "La Voyager 1 sigue enviando mensajes desde mucho más allá de los planetas: su tarjeta muestra cuánto tarda su señal en llegarnos y por qué el viaje necesitó tantas asistencias gravitatorias.",
@@ -536,7 +536,7 @@
 				"standard": [
 					"Abre Herramientas, elige «Naves espaciales reales» y luego una nave: la vista vuela hasta ella y aparecen las naves.",
 					"Para verlas todas, activa «Naves espaciales» en Capas (o en la lista de naves). Un enlace, una parada de una visita guiada o un evento del cielo sobre una nave también las muestran.",
-					"Su tarjeta muestra el lanzamiento, la distancia, el tiempo de la señal y los «Hitos»; un hito lleva el tiempo a ese momento.",
+					"Su tarjeta muestra el lanzamiento, la distancia, el tiempo de la señal, cuánto más grande se dibuja la nave y los «Hitos»; un hito lleva el tiempo a ese momento.",
 					"«Mostrar todas las trayectorias» dibuja todas las rutas a la vez; al desactivar «Naves espaciales» se ocultan otra vez."
 				],
 				"simple": [
@@ -553,8 +553,8 @@
 				"simple": "Vuela con una sonda"
 			},
 			"what": {
-				"standard": "Sigue una nave espacial y la cámara se queda con ella mientras corre el tiempo, a cualquier velocidad, hacia delante o hacia atrás: la Voyager pasando junto a Júpiter, Juno llegando, la Parker rozando Venus. «Ver» junto a un sobrevuelo lo prepara todo por ti.",
-				"simple": "La cámara vuela junto a una sonda espacial. Ves cómo un planeta pasa a su lado."
+				"standard": "Sigue una nave espacial y la cámara se queda con ella mientras corre el tiempo, a cualquier velocidad, hacia delante o hacia atrás: la Voyager pasando junto a Júpiter, Juno llegando, la Parker rozando Venus. «Ver» junto a un sobrevuelo lo prepara todo por ti. Ves la nave misma junto al planeta, dibujada mucho más grande de lo que es para que se pueda ver.",
+				"simple": "La cámara vuela junto a una sonda espacial. Ves la sonda misma, dibujada mucho más grande de lo que es, y cómo un planeta pasa a su lado."
 			},
 			"why": {
 				"standard": "La gravedad de un planeta curva la trayectoria de una nave y la lanza hacia el siguiente mundo. Viajando con ella ves pasar Júpiter y sus lunas y cómo la trayectoria se curva a su alrededor: el truco que llevó a la Voyager a los planetas exteriores.",

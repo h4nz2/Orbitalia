@@ -89,7 +89,11 @@ export function createCraftLabels(
 				layout.cx[slot] = point.x
 				layout.cy[slot] = point.y
 				layout.depth[slot] = point.depth
-				layout.radius[slot] = CRAFT_MARKER_SIZE_PX / 2
+				// beside the model where one is drawn (#73), else beside the diamond
+				layout.radius[slot] = Math.max(
+					CRAFT_MARKER_SIZE_PX / 2,
+					craftFrame.modelRadiusPx[k],
+				)
 				layout.centred[slot] = 0
 				layout.budgeted[slot] = 0
 				if (isKeptOut(layout, point.x, point.y)) {
