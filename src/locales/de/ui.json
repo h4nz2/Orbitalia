@@ -1025,13 +1025,13 @@
 					"label": "Was der Link öffnet",
 					"view": "Diese Ansicht",
 					"fresh": "Von vorn",
-					"viewHint": "Der Link öffnet genau das, was auf dem Bildschirm ist: dieselbe Welt, Kamera, dasselbe Datum, Tempo und denselben Maßstab.",
-					"viewHint@simple": "Der Link zeigt jemandem genau das, was du jetzt siehst.",
+					"viewHint": "Der Link öffnet, was auf dem Bildschirm ist: dieselbe Welt, Kamera, dasselbe Tempo und denselben Maßstab – und dasselbe Datum, außer die Uhr zeigt die Gegenwart: Dann öffnet er in der Gegenwart dessen, der ihn öffnet.",
+					"viewHint@simple": "Der Link zeigt jemandem, was du jetzt siehst. Zeigt die Uhr die echte Zeit, zeigt er auch dort die echte Zeit.",
 					"freshHint": "Der Link startet die App von vorn in dieser Sprache: das Intro für alle, danach den kurzen Blick für alle, die neu sind. Gut für einen QR-Code für die Klasse.",
 					"freshHint@simple": "Der Link startet die App ganz von vorn, mit dem Startfilm."
 				},
-				"explain": "Der Link öffnet genau diese Ansicht: derselbe Himmelskörper, dieselbe Kamera, dasselbe Datum, Tempo, derselbe Maßstab und dieselbe Sprache. Setze ein Lesezeichen, um eine Lektion vorzubereiten, oder verschicke ihn als Hausaufgabe.",
-				"explain@simple": "Der Link öffnet genau das, was du jetzt siehst. Speichere ihn oder schick ihn jemandem.",
+				"explain": "Der Link öffnet diese Ansicht: derselbe Himmelskörper, dieselbe Kamera, dasselbe Tempo, derselbe Maßstab und dieselbe Sprache – und dasselbe Datum, außer die Uhr zeigt die Gegenwart: Dann öffnet er in der Gegenwart dessen, der ihn öffnet. Setze ein Lesezeichen, um eine Lektion vorzubereiten, oder verschicke ihn als Hausaufgabe.",
+				"explain@simple": "Der Link öffnet, was du jetzt siehst. Zeigt die Uhr die echte Zeit, zeigt er auch dort die echte Zeit. Speichere ihn oder schick ihn jemandem.",
 				"explainFresh": "Der Link startet Orbitalia von vorn, in dieser Sprache und Lesestufe. Alle sehen das Intro; wer neu ist, bekommt danach einen kurzen Blick auf das angeboten, was die App kann.",
 				"explainFresh@simple": "Der Link startet die App von vorn, mit dem Startfilm. Gut für alle, die neu sind.",
 				"link": "Link zu dieser Ansicht",
@@ -1044,8 +1044,8 @@
 				"qrLabel": "QR-Code des Links zu dieser Ansicht",
 				"qrLabelFresh": "QR-Code des Links zum Start von vorn",
 				"qrShow": "QR-Code der Klasse zeigen",
-				"hint": "Ein Link und ein QR-Code, die genau diese Ansicht öffnen – zum Vorbereiten einer Stunde oder als Hausaufgabe.",
-				"hint@simple": "Hol dir einen Link, der jemand anderem genau das zeigt, was du siehst."
+				"hint": "Ein Link und ein QR-Code, die diese Ansicht öffnen – zum Vorbereiten einer Stunde oder als Hausaufgabe –, oder ein Start von vorn mit dem Intro, zum Scannen für eine Klasse.",
+				"hint@simple": "Hol dir einen Link, der jemand anderem zeigt, was du siehst, oder einen, der die App von vorn startet."
 			},
 			"chrome": {
 				"show": "Bedienelemente zeigen",

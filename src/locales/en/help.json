@@ -319,8 +319,8 @@
 				"simple": "Names, paths and dots"
 			},
 			"what": {
-				"standard": "Switches decide what is drawn: orbits, names, moons, all moons, dot markers, the names of the orbits, the spacecraft and “Always lit”.",
-				"simple": "Switches turn the names, the paths, the dots and the space probes on and off."
+				"standard": "Switches decide what is drawn: orbits, names, moons, all moons, dot markers, the names of the orbits, small bodies, the spacecraft and “Always lit”.",
+				"simple": "Switches turn the names, the paths, the dots, small worlds like Pluto and the space probes on and off."
 			},
 			"why": {
 				"standard": "Hide the names for a quiz, or switch the markers off at true scale to see how invisible the planets really are.",

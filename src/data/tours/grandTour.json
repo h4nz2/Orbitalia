@@ -31,7 +31,8 @@
 		{
 			"id": "beyond",
 			"view": "overview",
-			"camera": { "distance": 2.5, "elevation": 30 }
+			"camera": { "distance": 2.5, "elevation": 30 },
+			"layers": { "spacecraft": true }
 		}
 	]
 }

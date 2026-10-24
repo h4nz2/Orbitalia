@@ -308,6 +308,47 @@ describe("the spacecraft layer (#70)", () => {
 		expect(craft().showSpacecraft).toBe(false)
 		expect(craft().selectedCraftId).toBeNull()
 	})
+
+	it("a stop's layers can show them, carried forward; before that, they stay as the viewer has them", () => {
+		const tour: Tour = {
+			id: "probes",
+			order: 0,
+			stops: [
+				{ id: "start", view: "overview" },
+				{ id: "beyond", view: "overview", layers: { spacecraft: true } },
+				{ id: "neptune", view: "neptune" },
+				{ id: "home", view: "earth", layers: { spacecraft: false } },
+			],
+		}
+		startTour(tour)
+		expect(craft().showSpacecraft).toBe(false)
+		nextStop()
+		expect(craft().showSpacecraft).toBe(true)
+		expect(craft().selectedCraftId).toBeNull()
+		nextStop()
+		expect(craft().showSpacecraft).toBe(true)
+		nextStop()
+		expect(craft().showSpacecraft).toBe(false)
+		// a link opening on a later stop shows them as the tour has them there
+		exitTour()
+		startTour(tour, { startAt: 2, jump: true })
+		expect(craft().showSpacecraft).toBe(true)
+		// back before the stop that showed them: a tour never hides them on its own
+		previousStop()
+		previousStop()
+		expect(craft().showSpacecraft).toBe(true)
+		// nor craft the viewer chose to see before any stop said a word
+		exitTour()
+		craft().setShowSpacecraft(true)
+		startTour(tour)
+		expect(craft().showSpacecraft).toBe(true)
+	})
+
+	it("the grand tour's last stop shows Voyager 1, which its narration names", () => {
+		startTour("grandTour", { startAt: 10, jump: true })
+		expect(tours().tour?.stops[10].id).toBe("beyond")
+		expect(craft().showSpacecraft).toBe(true)
+	})
 })
 
 it("autoplay is a switch on the tour", () => {

@@ -241,6 +241,12 @@ Build rules (`scripts/lib/`):
 - "Now" (`live.ts`, #69): `isLive(clock, now)` is the one definition of a clock showing the present: not paused,
   `timeWarp` exactly 1, within `LIVE_TOLERANCE_DAYS` (2 minutes) of the wall clock handed in. The URL sync leaves `t`
   out while it holds, the comparison opens at the present, and a tour that returns on exit goes back to "now".
+  `performance.now()` stands still while a laptop sleeps, so a live clock would wake up a night behind (no longer
+  live, and the address would take a `t`): `resumeLive` puts a clock that was live at the previous frame back on the
+  wall clock after a gap of more than `LIVE_RESUME_GAP_MS` (2 s) on the wall clock, an instant jump with no step and
+  no change of speed or pause. The store's `tick(realMs, wallMs)` applies it (SimClock passes `Date.now()`); the
+  first frame after the page comes back into view is such a gap, so no `visibilitychange` listener is needed. A
+  clock that was not live (paused, fast, a chosen moment) is left alone.
 - Units: 1 scene unit = 1000 km (`toUnits`, `toKm` in `units.ts`); nothing else hard-codes the scale.
 - Frame: three.js is Y-up; ecliptic (xe, ye, ze) maps to scene (xe, ze, -ye), so the ecliptic is the XZ plane (`kepler.ts`).
 - `propagate(orbit, jd, out)` gives the parent-centric position in km (Newton iteration, e up to 0.99), including
@@ -1128,7 +1134,9 @@ wall clock) no `t` is written, so the untouched overview's link is a plain arriv
 and opens at the viewer's own now. Crossing that line writes at once, in place (a pause or a speed change as
 always; a time travel away from now, or Now back to it, without waiting for the throttle), and a clock that goes
 straight from now to a fast speed, where `t` is otherwise not mirrored, writes the moment it left, so a link taken
-at 1 day/s keeps its date. `searchFromState` takes the wall clock as a parameter (pure, tested). The arrival's
+at 1 day/s keeps its date. `searchFromState` takes the wall clock as a parameter (pure, tested). The hook's body is `connectSimUrl` (the
+router's history and `navigate` handed in), so `urlSyncLive.test.ts` runs the live bookkeeping (the crossing write,
+a step holding it, the throttle while not live, a sleeping laptop) on a memory history. The arrival's
 instructions (`light`, `birthday`, `sky`, `intro`, `look`), which the first `t` used to drop, are a reason to write of
 their own (`holdsInstruction`), so a reload never acts on them again. A step (#46) is
 written once at its end, as a new history entry (see "Back: the view history"). Once the address is another
@@ -1461,7 +1469,8 @@ layer is mirrored in the URL as `spacecraft=true` (only `true` is written, like 
 a followed craft is chosen, so a link with a craft in it shows the layer either way and writes `spacecraft=true` from
 then on); `?craft=<id>` selects and shows one on arrival (#43, `CraftLink.tsx`); following one is the view itself
 (`craft=<id>&follow=true`, #57). A tour records the layer in its baseline (`TourBaseline.spacecraft`) and a tour that
-returns on exit puts it back (`restoreLayers` in `tours/player.ts`, also the quick look's `leaveToExplore`).
+returns on exit puts it back (`restoreLayers` in `tours/player.ts`, also the quick look's `leaveToExplore`). A tour
+stop can show it with `layers.spacecraft` (the grand tour's "Beyond Neptune", whose narration names Voyager 1).
 
 **HUD.** `SpacecraftList` (`spacecraft/SpacecraftMenu.tsx`; Tools → Real spacecraft, a panel of the dock since #42): layer switch (the same
 field as Layers → Spacecraft, `ui/SceneToggles.tsx`, #70), "Show every path", every craft
@@ -1606,7 +1615,8 @@ the URL, so "save the lesson" is the link itself (plus `paused`, `present`, `con
   key-driven moves jump (`durationMs: 0`) and the scale switches without animating.
 - **Back to the start** (`present/restoreStart.ts`): re-applies `startSearch` through the store actions (view,
   frame, camera, selection, speed, pause, time glide, layers, the spacecraft layer (#70: `spacecraft=true`, or a
-  followed craft, which shows it), animated scale); without a link that is the opening
+  followed craft, which shows it; a craft chosen since is deselected first, so its card goes even when the link
+  shows the layer), animated scale); without a link that is the opening
   state (overview, now, 1x), and a link taken while the clock showed the present (no `t`, #69) comes back to "now".
   Presentation settings are left alone: they belong to the room, not the lesson. A
   guided tour opened since ends (`exitTour`); a link that itself opened on a tour stop starts that tour on that stop
@@ -1614,6 +1624,13 @@ the URL, so "save the lesson" is the link itself (plus `paused`, `present`, `con
 - **Sharing** (`present/SharePanel.tsx`, lazy): the current address with a copy button (`useClipboard`) and a QR
   code (`uqr` encodes, `present/qr.ts` draws one SVG path), small in the popover and large for the class
   (`ClassQr`, a modal outside the popover).
+  - **The moment on screen (#69).** "This view" is `viewLink` (`present/shareLink.ts`): the address with `t` set to
+    the moment on screen, written as the router writes it, unless the clock is live or a birth date hides the time
+    (then the address as it is). At a fast clock the address keeps the moment the clock left "now", so a link taken
+    a minute later at 1 day/s would otherwise open two months off; this pins what the viewer sees, as `postcardLink`
+    does. It is read when a link is taken (`currentViewLink`): the panel and the class code each mount as they open
+    and re-read it whenever the address changes, never per frame (a QR code that changes under the camera cannot be
+    scanned). More's "Share" sends the same link through the share sheet.
   - **This view or a fresh start (#69).** A `SegmentedControl` at the top of the panel ("This view" by default,
     each option with its hint) chooses what the link opens: the address on screen, or a fresh start,
     `<origin><VITE_BASE>solar_system?lang=<on screen>&reading=<on screen>&intro=play` and nothing else
@@ -2475,7 +2492,9 @@ body held still) plus narration. Adding one is data only; `src/data/tours/README
   `fit` in AU or km; `move` fly / glide / jump, flying by default between two bodies; `camera.light` picks the
   azimuth that sees the body lit as asked from the TRUE Sun direction at the stop's date, `sunlitAzimuthDeg`).
   `stopSettings` folds scale, speed and layers forward from the tour's baseline (the scene when it started), so
-  any stop can be entered on its own and looks as it did in order; `frame`, `select` and `follow` (ride along with a
+  any stop can be entered on its own and looks as it did in order; the spacecraft layer (`layers.spacecraft`,
+  #70; its own store, so `StopSettings.spacecraft` beside `TOUR_LAYER_FIELDS`) folds forward from null instead:
+  until a stop sets it, the layer stays as the viewer has it, so a tour never hides craft someone chose to see; `frame`, `select` and `follow` (ride along with a
   spacecraft, #57: the stop's view is the craft, `view` names its neighbourhood) belong to one stop.
   `autoHoldMs`: the stop's `autoSeconds`, else the narration read aloud (330 ms a word + 3 s, 7..40 s).
 - **Player** (`tours/player.ts`; `useTourStore` in `src/store/tour.ts` is its plain state: `tour`, `index`,

@@ -379,6 +379,21 @@ test("a clock that only shows now stays out of the link; leaving it writes the m
 	const fast = addressTime(page)
 	await page.waitForTimeout(2000)
 	expect(addressTime(page)).toBe(fast)
+	// the shared link carries the moment on screen, pinned as the panel opens,
+	// not redrawn every frame: two days and more past the address's moment
+	await page.getByRole("button", { name: "Share", exact: true }).click()
+	const panel = page.getByRole("dialog", { name: "Share", exact: true })
+	const field = panel.getByRole("textbox", { name: "Link to this view" })
+	await expect(field).toHaveValue(/[?&]t=/)
+	const pinned = await field.inputValue()
+	const shared = Number(new URL(pinned).searchParams.get("t"))
+	expect(shared).toBeGreaterThan(fast! + 1.5)
+	expect(shared).toBeLessThanOrEqual((await state(page)).simTimeJD)
+	await page.waitForTimeout(1000)
+	expect(await field.inputValue()).toBe(pinned)
+	await page.keyboard.press("Escape")
+	await expect(panel).toBeHidden()
+	expect(addressTime(page)).toBe(fast)
 
 	// back to 1x and Now: the present again, no `t`
 	await page.evaluate(() => {

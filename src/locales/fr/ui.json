@@ -1025,13 +1025,13 @@
 					"label": "Ce que le lien ouvre",
 					"view": "Cette vue",
 					"fresh": "Depuis le début",
-					"viewHint": "Le lien ouvre exactement ce qui est à l’écran : même monde, même caméra, même date, même vitesse et même échelle.",
-					"viewHint@simple": "Le lien montre à quelqu’un exactement ce que tu vois maintenant.",
+					"viewHint": "Le lien ouvre ce qui est à l’écran : même monde, même caméra, même vitesse et même échelle, et la même date sauf si l’horloge montre le présent : il s’ouvre alors au présent de celui qui l’ouvre.",
+					"viewHint@simple": "Le lien montre à quelqu’un ce que tu vois maintenant. Si l’horloge montre l’heure réelle, il s’ouvre aussi à son heure réelle.",
 					"freshHint": "Le lien lance l’application depuis le début dans cette langue : l’introduction pour tout le monde, puis le petit aperçu pour les nouveaux. Idéal pour un QR code de classe.",
 					"freshHint@simple": "Le lien lance l’application depuis le tout début, avec le film du début."
 				},
-				"explain": "Le lien ouvre exactement cette vue : même astre, même caméra, même date, même vitesse, même échelle et même langue. Mets-le en favori pour préparer un cours, ou envoie-le comme devoir.",
-				"explain@simple": "Le lien ouvre exactement ce que tu vois maintenant. Enregistre-le ou envoie-le à quelqu’un.",
+				"explain": "Le lien ouvre cette vue : même astre, même caméra, même vitesse, même échelle et même langue, et la même date sauf si l’horloge montre le présent : il s’ouvre alors au présent de celui qui l’ouvre. Mets-le en favori pour préparer un cours, ou envoie-le comme devoir.",
+				"explain@simple": "Le lien ouvre ce que tu vois maintenant. Si l’horloge montre l’heure réelle, il s’ouvre aussi à l’heure réelle. Enregistre-le ou envoie-le à quelqu’un.",
 				"explainFresh": "Le lien lance Orbitalia depuis le début, dans cette langue et ce niveau de lecture. Tout le monde voit l’introduction ; les nouveaux se voient ensuite proposer un petit aperçu de ce que fait l’application.",
 				"explainFresh@simple": "Le lien lance l’application depuis le début, avec le film du début. Idéal pour quelqu’un qui découvre.",
 				"link": "Lien vers cette vue",
@@ -1044,8 +1044,8 @@
 				"qrLabel": "QR code du lien vers cette vue",
 				"qrLabelFresh": "QR code du lien pour partir du début",
 				"qrShow": "Montrer le QR code à la classe",
-				"hint": "Un lien et un code QR qui ouvrent exactement cette vue, pour préparer un cours ou l’envoyer en devoir.",
-				"hint@simple": "Obtiens un lien qui montre à quelqu’un d’autre exactement ce que tu vois."
+				"hint": "Un lien et un code QR qui ouvrent cette vue, pour préparer un cours ou l’envoyer en devoir, ou un départ depuis le début avec l’introduction, à scanner par une classe.",
+				"hint@simple": "Obtiens un lien qui montre à quelqu’un d’autre ce que tu vois, ou un lien qui lance l’application depuis le début."
 			},
 			"chrome": {
 				"show": "Afficher les commandes",

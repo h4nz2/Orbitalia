@@ -25,6 +25,7 @@ import {
 	glideDurationMs,
 	glideTimeline,
 	jumpTimeline,
+	resumeLive,
 	retimeTimeline,
 	settleTimeline,
 	skipFrameGap,
@@ -52,6 +53,8 @@ export interface SimState extends NavigationSlice {
 	clock: SimTimeline
 	/** `performance.now()` of the last `tick()`; null before the first frame. */
 	lastTickMs: number | null
+	/** The wall clock (`Date.now()`) at the last `tick()`; null before the first frame. */
+	lastTickWallMs: number | null
 	hoverId: string | null
 	showOrbits: boolean
 	showLabels: boolean
@@ -95,8 +98,13 @@ export interface SimState extends NavigationSlice {
 	 * Non-finite values are ignored.
 	 */
 	travelTo: (jd: number, durationMs?: number) => void
-	/** The clock sample for the frame at `realMs` (`performance.now()`). SimClock's job; nobody else calls it. */
-	tick: (realMs: number) => void
+	/**
+	 * The clock sample for the frame at `realMs` (`performance.now()`), with the
+	 * wall clock `wallMs` (default `Date.now()`), which puts a live clock back on
+	 * the present after the laptop slept (`resumeLive`, #69). SimClock's job;
+	 * nobody else calls it.
+	 */
+	tick: (realMs: number, wallMs?: number) => void
 	setHover: (id: string | null) => void
 	setShowOrbits: (show: boolean) => void
 	setShowLabels: (show: boolean) => void
@@ -186,6 +194,7 @@ export const useSimStore = create<SimState>()((set, get) => ({
 	paused: false,
 	clock: createTimeline(initialJD, performance.now(), 1),
 	lastTickMs: null,
+	lastTickWallMs: null,
 	hoverId: null,
 	showOrbits: true,
 	showLabels: true,
@@ -224,13 +233,26 @@ export const useSimStore = create<SimState>()((set, get) => ({
 		const now = performance.now()
 		set(clockAt(glideTimeline(get().clock, now, jd, durationMs), now))
 	},
-	tick: (realMs) => {
-		const { clock, lastTickMs } = get()
+	tick: (realMs, wallMs = Date.now()) => {
+		const { clock, lastTickMs, lastTickWallMs, simTimeJD, timeWarp, paused } =
+			get()
+		// a clock that showed the present still does after a sleep (#69); any
+		// other clock resumes where it was
+		const resumed =
+			lastTickWallMs === null
+				? clock
+				: resumeLive(
+						clock,
+						{ clock: { simTimeJD, timeWarp, paused }, wallMs: lastTickWallMs },
+						realMs,
+						wallMs,
+					)
 		const gapped =
-			lastTickMs === null ? clock : skipFrameGap(clock, lastTickMs, realMs)
+			lastTickMs === null ? resumed : skipFrameGap(resumed, lastTickMs, realMs)
 		set({
 			...clockAt(settleTimeline(gapped, realMs), realMs),
 			lastTickMs: realMs,
+			lastTickWallMs: wallMs,
 		})
 	},
 	setHover: (id) => {

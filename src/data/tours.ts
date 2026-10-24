@@ -96,6 +96,13 @@ const TourLayers = z
 		orbitNames: z.boolean().optional(),
 		/** The long tail of small moons (#17); off shows only the featured ones. */
 		allMoons: z.boolean().optional(),
+		/**
+		 * The spacecraft (#70), so a stop whose narration names a craft shows it.
+		 * Carried forward like the others, but until a stop sets it the layer stays
+		 * as the viewer has it: it is off by default, and a tour never hides
+		 * craft someone chose to see.
+		 */
+		spacecraft: z.boolean().optional(),
 	})
 	.strict()
 

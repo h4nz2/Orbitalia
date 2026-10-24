@@ -252,6 +252,29 @@ describe("frame gaps", () => {
 		expect(state().simTimeJD).toBeCloseTo(before + 600 / DAY, 9)
 	})
 
+	it("a live clock is back on the wall clock after the laptop slept (#69)", () => {
+		const wall = new Date("2026-09-24T22:00:00Z").getTime()
+		state().setSimTime(dateToJD(new Date(wall)))
+		state().tick(realMs, wall)
+		state().tick((realMs += 16), wall + 16)
+		// performance.now() stood still through the night; the wall clock did not
+		const morning = wall + 9 * 3600_000
+		state().tick((realMs += 16), morning)
+		expect(state().simTimeJD).toBeCloseTo(dateToJD(new Date(morning)), 8)
+		expect(state().timeWarp).toBe(1)
+		expect(state().paused).toBe(false)
+		expect(state().step).toBe(0)
+	})
+
+	it("a paused clock stays where it was across the same night", () => {
+		const wall = new Date("2026-09-24T22:00:00Z").getTime()
+		state().setSimTime(dateToJD(new Date(wall)))
+		state().setPaused(true)
+		state().tick(realMs, wall)
+		state().tick((realMs += 16), wall + 9 * 3600_000)
+		expect(state().simTimeJD).toBe(dateToJD(new Date(wall)))
+	})
+
 	it("a jump made during a gap is kept", () => {
 		state().setTimeWarp(DAY)
 		run(100)

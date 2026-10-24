@@ -39,6 +39,7 @@ import {
 	useRouter,
 	useSearch,
 	type HistoryState,
+	type RouterHistory,
 } from "@tanstack/react-router"
 
 import { bodyById } from "@/data"
@@ -423,221 +424,236 @@ export function useSimUrlSync(): void {
 		searchRef.current = search
 	}, [search])
 
-	useLayoutEffect(() => {
-		// URL -> store, once; the view is a jump since the page is just appearing.
-		// Time goes through the clock actions (issue #9), never a bare setState.
-		const { simTimeJD, timeWarp } = mountState(searchRef.current)
-		const store = useSimStore.getState()
-		if (timeWarp !== undefined) store.setTimeWarp(timeWarp)
-		// #29: a prepared lesson opens paused where it was paused (before the
-		// jump, or the clock runs on at the link's speed for an instant)
-		if (searchRef.current.paused === true) store.setPaused(true)
-		if (simTimeJD !== undefined) store.setSimTime(simTimeJD)
-		const { view, shot, selectedId } = viewFromSearch(searchRef.current)
-		const frameId = frameFromSearch(searchRef.current)
-		store.jumpTo(view, shot)
-		if (frameId !== null && view.kind !== "craft") {
-			store.anchorFrame(frameId, { shot: shot ?? undefined, durationMs: 0 })
-		}
-		store.select(selectedId)
-		// the spacecraft layer (#70), before a followed craft is chosen (which shows it)
-		useSpacecraftStore
-			.getState()
-			.setShowSpacecraft(spacecraftFromSearch(searchRef.current))
-		// following a spacecraft (#57): its card is the one shown
-		if (view.kind === "craft") {
-			useSpacecraftStore.getState().selectCraft(view.id)
-		}
-		// the layer switches are plain fields
-		useSimStore.setState(layersFromSearch(searchRef.current))
-		// the scale: a jump as well, the switch animates only when the user makes it
-		useScaleStore.getState().setPreset(scaleFromSearch(searchRef.current))
-		// #29: the presentation settings, and the link as the start of the lesson
-		usePresentationStore.setState(presentationFromSearch(searchRef.current))
-		usePresentationStore.getState().setStartSearch(searchRef.current)
+	useLayoutEffect(
+		() => connectSimUrl({ history: router.history, navigate }, searchRef),
+		[navigate, router],
+	)
+}
 
-		const history = router.history
-		// this page's path, however the link spelt it ("/solar_system/" too)
-		const pathOf = (pathname: string) => pathname.replace(/\/+$/, "")
-		const solarSystemPath = pathOf(history.location.pathname)
-		const onThisPage = () =>
-			pathOf(history.location.pathname) === solarSystemPath
-		let timer: ReturnType<typeof setTimeout> | undefined
-		// whether the clock showed the present (#69) when the URL was last worked out
-		let live = false
-		/** Writes the store into the URL: in place, or as a new history entry for a step (#46). */
-		const write = (push = false) => {
-			// another page is on its way in (Compare, Help, the browser's Back): the
-			// address is its now, and writing the scene would take it back here
-			if (!onThisPage()) return
-			// a step is written once, at its end, so the entry it leaves stays as it was
-			if (!push && recorder.holds()) return
-			const sim = useSimStore.getState()
-			const now = new Date()
-			live = isLive(sim, now)
-			const next = {
-				...searchFromState(
-					{
-						...sim,
-						scalePreset: useScaleStore.getState().targetId,
-						tour: tourSearch(useTourStore.getState(), isListedTour),
-						showSpacecraft: useSpacecraftStore.getState().showSpacecraft,
-					},
-					searchRef.current,
-					hidesTimeInUrl(useBirthdayStore.getState()),
-					now,
-				),
-				...presentationSearch({
-					...usePresentationStore.getState(),
-					paused: sim.paused,
-				}),
-			}
-			if (
-				!push &&
-				sameSearch(next, searchRef.current) &&
-				samePresentationSearch(next, searchRef.current) &&
-				!holdsInstruction(searchRef.current, next)
-			) {
-				return
-			}
-			searchRef.current = next
-			void navigate({
-				to: "/solar_system",
-				search: next,
-				replace: !push,
-				// a step that changes nothing the address shows (a spacecraft chosen)
-				// is still an entry of its own: its state tells it apart
-				...(push
-					? {
-							state: (previous: HistoryState) => ({
-								...previous,
-								orbitaliaStep: sim.step,
-							}),
-						}
-					: {}),
-			})
-		}
+/** What the URL sync talks to: the router's history and its `navigate` (`useNavigate`). */
+export interface UrlSyncRouter {
+	history: RouterHistory
+	navigate: ReturnType<typeof useNavigate>
+}
 
-		// the view history (#46): steps become entries, back and forward go to them
-		const recorder = createRecorder({
-			now: currentWaypoint,
-			write,
-			arrive: (recorded) => {
-				const arrived = simSearchSchema.parse(
-					defaultParseSearch(history.location.search),
-				)
-				searchRef.current = arrived
-				arrive(recorded ?? waypointFromSearch(arrived))
-				write()
-			},
-		})
-		recorder.open(
-			history.location.state.__TSR_index,
-			history.location.state.key,
-		)
-		const unsubscribeHistory = history.subscribe(({ location, action }) =>
-			recorder.note({
-				action: action.type,
-				index: location.state.__TSR_index,
-				key: location.state.key,
-				solarSystem: pathOf(location.pathname) === solarSystemPath,
+/**
+ * The two-way sync itself, for a page that is appearing (`useSimUrlSync`'s
+ * layout effect; the tests hand it a memory history): seeds the stores from
+ * the address once (`searchRef.current`, kept as the URL last seen or written),
+ * then writes them into it as they change. Returns what stops it.
+ */
+export function connectSimUrl(
+	router: UrlSyncRouter,
+	searchRef: { current: SimSearch },
+): () => void {
+	const { navigate } = router
+	// URL -> store, once; the view is a jump since the page is just appearing.
+	// Time goes through the clock actions (issue #9), never a bare setState.
+	const { simTimeJD, timeWarp } = mountState(searchRef.current)
+	const store = useSimStore.getState()
+	if (timeWarp !== undefined) store.setTimeWarp(timeWarp)
+	// #29: a prepared lesson opens paused where it was paused (before the
+	// jump, or the clock runs on at the link's speed for an instant)
+	if (searchRef.current.paused === true) store.setPaused(true)
+	if (simTimeJD !== undefined) store.setSimTime(simTimeJD)
+	const { view, shot, selectedId } = viewFromSearch(searchRef.current)
+	const frameId = frameFromSearch(searchRef.current)
+	store.jumpTo(view, shot)
+	if (frameId !== null && view.kind !== "craft") {
+		store.anchorFrame(frameId, { shot: shot ?? undefined, durationMs: 0 })
+	}
+	store.select(selectedId)
+	// the spacecraft layer (#70), before a followed craft is chosen (which shows it)
+	useSpacecraftStore
+		.getState()
+		.setShowSpacecraft(spacecraftFromSearch(searchRef.current))
+	// following a spacecraft (#57): its card is the one shown
+	if (view.kind === "craft") {
+		useSpacecraftStore.getState().selectCraft(view.id)
+	}
+	// the layer switches are plain fields
+	useSimStore.setState(layersFromSearch(searchRef.current))
+	// the scale: a jump as well, the switch animates only when the user makes it
+	useScaleStore.getState().setPreset(scaleFromSearch(searchRef.current))
+	// #29: the presentation settings, and the link as the start of the lesson
+	usePresentationStore.setState(presentationFromSearch(searchRef.current))
+	usePresentationStore.getState().setStartSearch(searchRef.current)
+
+	const history = router.history
+	// this page's path, however the link spelt it ("/solar_system/" too)
+	const pathOf = (pathname: string) => pathname.replace(/\/+$/, "")
+	const solarSystemPath = pathOf(history.location.pathname)
+	const onThisPage = () => pathOf(history.location.pathname) === solarSystemPath
+	let timer: ReturnType<typeof setTimeout> | undefined
+	// whether the clock showed the present (#69) when the URL was last worked out
+	let live = false
+	/** Writes the store into the URL: in place, or as a new history entry for a step (#46). */
+	const write = (push = false) => {
+		// another page is on its way in (Compare, Help, the browser's Back): the
+		// address is its now, and writing the scene would take it back here
+		if (!onThisPage()) return
+		// a step is written once, at its end, so the entry it leaves stays as it was
+		if (!push && recorder.holds()) return
+		const sim = useSimStore.getState()
+		const now = new Date()
+		live = isLive(sim, now)
+		const next = {
+			...searchFromState(
+				{
+					...sim,
+					scalePreset: useScaleStore.getState().targetId,
+					tour: tourSearch(useTourStore.getState(), isListedTour),
+					showSpacecraft: useSpacecraftStore.getState().showSpacecraft,
+				},
+				searchRef.current,
+				hidesTimeInUrl(useBirthdayStore.getState()),
+				now,
+			),
+			...presentationSearch({
+				...usePresentationStore.getState(),
+				paused: sim.paused,
 			}),
-		)
-		const unsubscribeStep = useSimStore.subscribe((state, previous) => {
-			if (state.step !== previous.step) recorder.step()
-		})
-		setHistoryBack(() => history.back())
-
-		// store -> URL: view, selection, camera, warp, pause and layer changes right
-		// away (a pause also pins `t`); the running clock at most once per
-		// TIME_SYNC_INTERVAL_MS, and not at all while it shows the present (#69)
-		const unsubscribe = useSimStore.subscribe((state, previous) => {
-			if (
-				state.view !== previous.view ||
-				state.frameId !== previous.frameId ||
-				state.selectedId !== previous.selectedId ||
-				state.shot !== previous.shot ||
-				state.timeWarp !== previous.timeWarp ||
-				state.paused !== previous.paused ||
-				LAYER_PARAMS.some(([, field]) => state[field] !== previous[field]) ||
-				state.showOrbitLabels !== previous.showOrbitLabels ||
-				state.showSmallBodies !== previous.showSmallBodies ||
-				state.showAllMoons !== previous.showAllMoons
-			) {
-				write()
-				return
-			}
-			if (state.simTimeJD === previous.simTimeJD) return
-			// a time travel away from the present, or Now back to it: `t` goes into the
-			// address or out of it at once, not with the next throttled write
-			if (isLive(state, new Date()) !== live) {
-				write()
-				return
-			}
-			if (
-				!live &&
-				timer === undefined &&
-				shouldMirrorTime(state.paused, state.timeWarp)
-			) {
-				timer = setTimeout(() => {
-					timer = undefined
-					write()
-				}, TIME_SYNC_INTERVAL_MS)
-			}
-		})
-		// the chosen preset goes into the URL at the click, not when the animation lands
-		const unsubscribeScale = useScaleStore.subscribe((state, previous) => {
-			if (state.targetId !== previous.targetId) write()
-		})
-		// the spacecraft layer (#70): one of its switches, or a craft chosen
-		const unsubscribeSpacecraft = useSpacecraftStore.subscribe(
-			(state, previous) => {
-				if (state.showSpacecraft !== previous.showSpacecraft) write()
-			},
-		)
-		// a tour starting, moving to another stop, or ending (#28)
-		const unsubscribeTour = useTourStore.subscribe((state, previous) => {
-			if (
-				state.tour !== previous.tour ||
-				state.index !== previous.index ||
-				state.auto !== previous.auto
-			) {
-				write()
-			}
-		})
-		// entering or forgetting a birth date takes `t` out of the URL or puts it back
-		const unsubscribeBirthday = useBirthdayStore.subscribe(
-			(state, previous) => {
-				if (hidesTimeInUrl(state) !== hidesTimeInUrl(previous)) write()
-			},
-		)
-		// the presentation settings (#29)
-		const unsubscribePresentation = usePresentationStore.subscribe(
-			(state, previous) => {
-				if (
-					state.presenting !== previous.presenting ||
-					state.highContrast !== previous.highContrast
-				) {
-					write()
-				}
-			},
-		)
-		write()
-
-		return () => {
-			unsubscribe()
-			unsubscribeHistory()
-			unsubscribeStep()
-			recorder.dispose()
-			setHistoryBack(null)
-			unsubscribeScale()
-			unsubscribeSpacecraft()
-			unsubscribeTour()
-			unsubscribeBirthday()
-			unsubscribePresentation()
-			if (timer !== undefined) clearTimeout(timer)
 		}
-	}, [navigate, router])
+		if (
+			!push &&
+			sameSearch(next, searchRef.current) &&
+			samePresentationSearch(next, searchRef.current) &&
+			!holdsInstruction(searchRef.current, next)
+		) {
+			return
+		}
+		searchRef.current = next
+		void navigate({
+			to: "/solar_system",
+			search: next,
+			replace: !push,
+			// a step that changes nothing the address shows (a spacecraft chosen)
+			// is still an entry of its own: its state tells it apart
+			...(push
+				? {
+						state: (previous: HistoryState) => ({
+							...previous,
+							orbitaliaStep: sim.step,
+						}),
+					}
+				: {}),
+		})
+	}
+
+	// the view history (#46): steps become entries, back and forward go to them
+	const recorder = createRecorder({
+		now: currentWaypoint,
+		write,
+		arrive: (recorded) => {
+			const arrived = simSearchSchema.parse(
+				defaultParseSearch(history.location.search),
+			)
+			searchRef.current = arrived
+			arrive(recorded ?? waypointFromSearch(arrived))
+			write()
+		},
+	})
+	recorder.open(history.location.state.__TSR_index, history.location.state.key)
+	const unsubscribeHistory = history.subscribe(({ location, action }) =>
+		recorder.note({
+			action: action.type,
+			index: location.state.__TSR_index,
+			key: location.state.key,
+			solarSystem: pathOf(location.pathname) === solarSystemPath,
+		}),
+	)
+	const unsubscribeStep = useSimStore.subscribe((state, previous) => {
+		if (state.step !== previous.step) recorder.step()
+	})
+	setHistoryBack(() => history.back())
+
+	// store -> URL: view, selection, camera, warp, pause and layer changes right
+	// away (a pause also pins `t`); the running clock at most once per
+	// TIME_SYNC_INTERVAL_MS, and not at all while it shows the present (#69)
+	const unsubscribe = useSimStore.subscribe((state, previous) => {
+		if (
+			state.view !== previous.view ||
+			state.frameId !== previous.frameId ||
+			state.selectedId !== previous.selectedId ||
+			state.shot !== previous.shot ||
+			state.timeWarp !== previous.timeWarp ||
+			state.paused !== previous.paused ||
+			LAYER_PARAMS.some(([, field]) => state[field] !== previous[field]) ||
+			state.showOrbitLabels !== previous.showOrbitLabels ||
+			state.showSmallBodies !== previous.showSmallBodies ||
+			state.showAllMoons !== previous.showAllMoons
+		) {
+			write()
+			return
+		}
+		if (state.simTimeJD === previous.simTimeJD) return
+		// a time travel away from the present, or Now back to it: `t` goes into the
+		// address or out of it at once, not with the next throttled write
+		if (isLive(state, new Date()) !== live) {
+			write()
+			return
+		}
+		if (
+			!live &&
+			timer === undefined &&
+			shouldMirrorTime(state.paused, state.timeWarp)
+		) {
+			timer = setTimeout(() => {
+				timer = undefined
+				write()
+			}, TIME_SYNC_INTERVAL_MS)
+		}
+	})
+	// the chosen preset goes into the URL at the click, not when the animation lands
+	const unsubscribeScale = useScaleStore.subscribe((state, previous) => {
+		if (state.targetId !== previous.targetId) write()
+	})
+	// the spacecraft layer (#70): one of its switches, or a craft chosen
+	const unsubscribeSpacecraft = useSpacecraftStore.subscribe(
+		(state, previous) => {
+			if (state.showSpacecraft !== previous.showSpacecraft) write()
+		},
+	)
+	// a tour starting, moving to another stop, or ending (#28)
+	const unsubscribeTour = useTourStore.subscribe((state, previous) => {
+		if (
+			state.tour !== previous.tour ||
+			state.index !== previous.index ||
+			state.auto !== previous.auto
+		) {
+			write()
+		}
+	})
+	// entering or forgetting a birth date takes `t` out of the URL or puts it back
+	const unsubscribeBirthday = useBirthdayStore.subscribe((state, previous) => {
+		if (hidesTimeInUrl(state) !== hidesTimeInUrl(previous)) write()
+	})
+	// the presentation settings (#29)
+	const unsubscribePresentation = usePresentationStore.subscribe(
+		(state, previous) => {
+			if (
+				state.presenting !== previous.presenting ||
+				state.highContrast !== previous.highContrast
+			) {
+				write()
+			}
+		},
+	)
+	write()
+
+	return () => {
+		unsubscribe()
+		unsubscribeHistory()
+		unsubscribeStep()
+		recorder.dispose()
+		setHistoryBack(null)
+		unsubscribeScale()
+		unsubscribeSpacecraft()
+		unsubscribeTour()
+		unsubscribeBirthday()
+		unsubscribePresentation()
+		if (timer !== undefined) clearTimeout(timer)
+	}
 }
 
 export default useSimUrlSync

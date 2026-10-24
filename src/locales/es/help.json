@@ -319,8 +319,8 @@
 				"simple": "Nombres, caminos y puntos"
 			},
 			"what": {
-				"standard": "Unos interruptores deciden qué se dibuja: órbitas, nombres, lunas, todas las lunas, marcadores en forma de punto, nombres de las órbitas, naves espaciales y «Siempre iluminado».",
-				"simple": "Unos interruptores encienden y apagan los nombres, los caminos, los puntos y las sondas espaciales."
+				"standard": "Unos interruptores deciden qué se dibuja: órbitas, nombres, lunas, todas las lunas, marcadores en forma de punto, nombres de las órbitas, cuerpos menores, naves espaciales y «Siempre iluminado».",
+				"simple": "Unos interruptores encienden y apagan los nombres, los caminos, los puntos, los mundos pequeños como Plutón y las sondas espaciales."
 			},
 			"why": {
 				"standard": "Oculta los nombres para un juego de preguntas, o desactiva los marcadores a escala real para ver lo invisibles que son de verdad los planetas.",

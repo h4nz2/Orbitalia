@@ -18,7 +18,12 @@ import { Hint } from "@/primitives/hint"
 import { usePresentationStore } from "@/store/presentation"
 
 import { qrCode } from "./qr"
-import { freshStartLink, useShareStore, type ShareKind } from "./shareLink"
+import {
+	currentViewLink,
+	freshStartLink,
+	useShareStore,
+	type ShareKind,
+} from "./shareLink"
 
 import classes from "./Presentation.module.css"
 
@@ -39,11 +44,16 @@ function QrImage({ link, label }: { link: string; label: string }) {
 	)
 }
 
-/** The address of what is on screen, absolute; re-read whenever the view writes a new one. */
+/**
+ * The link of what is on screen, absolute (`currentViewLink`): taken as the
+ * panel or the class code opens (each mounts as it opens) and again whenever
+ * the view writes a new address, so a fast clock's moment is pinned rather
+ * than redrawn every frame.
+ */
 function useViewLink(): string {
 	const href = useRouterState({ select: (state) => state.location.href })
 	return useMemo(
-		() => (typeof window === "undefined" ? href : window.location.href),
+		() => (typeof window === "undefined" ? href : currentViewLink()),
 		[href],
 	)
 }
