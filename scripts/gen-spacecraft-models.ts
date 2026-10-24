@@ -1,7 +1,8 @@
 /**
  * pnpm gen:models [--only voyager,juno]: data/spacecraft-models.json -> one GLB per model under
  * public/assets/models/spacecraft/ (#72). Each NASA source is downloaded once into
- * node_modules/.cache/orbitalia-models/ (a rerun is offline), then:
+ * node_modules/.cache/orbitalia-models/ (a rerun is offline) and must have the SHA-256 the
+ * catalogue gives it, both when downloaded and on every rerun, then:
  *
  * 1. the meshes of the nodes in `remove` are left out (Huygens, after the probe's release; the
  *    1 m cube some Blender exports put on the root node);
@@ -69,6 +70,7 @@ import {
 	MODELS_TOTAL_BUDGET_BYTES,
 	SPACECRAFT_MODEL_DIR,
 	SpacecraftModelsFile,
+	type ModelSource,
 	type SpacecraftModel,
 } from "../src/data/spacecraftModelsSchema"
 
@@ -78,8 +80,10 @@ import {
 	kilobytes,
 	normaliseMatrix,
 	paintBox,
+	parseOnly,
 	sharedPositionLocks,
 	sizeProblem,
+	verifySource,
 	type Bounds,
 } from "./lib/spacecraftModels"
 
@@ -92,17 +96,31 @@ const log = (line: string): void => {
 	process.stdout.write(`${line}\n`)
 }
 
-const download = async (url: string, file: string): Promise<void> => {
-	if (existsSync(file)) return
-	log(`  downloading ${url}`)
-	const response = await fetch(url, {
+/**
+ * The source's file in the cache, downloaded first if it is not there. Both the download (before it
+ * is cached) and every cached copy must have the catalogue's SHA-256: the models are made from
+ * exactly the bytes the catalogue was written for, or not at all.
+ */
+const sourceFile = async (id: string, source: ModelSource): Promise<string> => {
+	const file = join(cacheDir, cacheFileName(id, source.file, source.sha256))
+	if (existsSync(file)) {
+		verifySource(id, readFileSync(file), source.sha256, file)
+		return file
+	}
+	log(`  downloading ${source.file}`)
+	const response = await fetch(source.file, {
 		headers: {
 			"user-agent": "Orbitalia gen:models (https://github.com/h4nz2/Orbitalia)",
 		},
 	})
-	if (!response.ok) throw new Error(`${url}: HTTP ${response.status}`)
+	if (!response.ok) {
+		throw new Error(`source "${id}": ${source.file}: HTTP ${response.status}`)
+	}
+	const bytes = Buffer.from(await response.arrayBuffer())
+	verifySource(id, bytes, source.sha256, source.file)
 	mkdirSync(dirname(file), { recursive: true })
-	writeFileSync(file, Buffer.from(await response.arrayBuffer()))
+	writeFileSync(file, bytes)
+	return file
 }
 
 /**
@@ -123,19 +141,26 @@ const dracoDecoder = async (): Promise<unknown> => {
 	return (sandbox.module.exports as () => Promise<unknown>)()
 }
 
-/** Leaves out the meshes of the nodes named in `remove` (their children stay). */
+/**
+ * Leaves out the meshes of the nodes named in `remove` (only the node's own mesh: its children
+ * stay). A name must be that of exactly one node with a mesh, so a source that changes its node
+ * names stops the generator rather than quietly losing the wrong part or none.
+ */
 const removeMeshes = (doc: Document, names: readonly string[]): void => {
-	const left = new Set(names)
-	for (const node of doc.getRoot().listNodes()) {
-		if (!left.has(node.getName())) continue
-		if (node.getMesh() === null) {
-			throw new Error(`remove: node "${node.getName()}" has no mesh`)
+	for (const name of names) {
+		const nodes = doc
+			.getRoot()
+			.listNodes()
+			.filter((node) => node.getName() === name)
+		if (nodes.length !== 1) {
+			throw new Error(
+				`remove: ${nodes.length === 0 ? "no node" : `${nodes.length} nodes`} named "${name}"`,
+			)
 		}
-		node.setMesh(null)
-		left.delete(node.getName())
-	}
-	if (left.size > 0) {
-		throw new Error(`remove: no node named ${[...left].join(", ")}`)
+		if (nodes[0].getMesh() === null) {
+			throw new Error(`remove: node "${name}" has no mesh`)
+		}
+		nodes[0].setMesh(null)
 	}
 }
 
@@ -453,14 +478,16 @@ const boundsOf = (doc: Document): Bounds => {
 }
 
 const main = async (): Promise<number> => {
-	const onlyArg = process.argv.indexOf("--only")
-	const only =
-		onlyArg === -1 ? null : new Set(process.argv[onlyArg + 1]?.split(","))
 	const catalogue = SpacecraftModelsFile.parse(
 		JSON.parse(
 			readFileSync(join(root, "data", "spacecraft-models.json"), "utf8"),
 		),
 	)
+	const only = parseOnly(process.argv.slice(2), Object.keys(catalogue.models))
+	if ("problem" in only) {
+		log(`error: ${only.problem}`)
+		return 1
+	}
 	await MeshoptDecoder.ready
 	await MeshoptEncoder.ready
 	await MeshoptSimplifier.ready
@@ -474,11 +501,10 @@ const main = async (): Promise<number> => {
 	mkdirSync(outDir, { recursive: true })
 	let failed = false
 	for (const [id, model] of Object.entries(catalogue.models)) {
-		if (only !== null && !only.has(id)) continue
+		if (only.ids !== null && !only.ids.has(id)) continue
 		const started = Date.now()
 		const source = catalogue.sources[model.source]
-		const cached = join(cacheDir, cacheFileName(model.source, source.file))
-		await download(source.file, cached)
+		const cached = await sourceFile(model.source, source)
 		const doc = await io.read(cached)
 		doc.setLogger(new Logger(Logger.Verbosity.WARN))
 		const before = statsOf(doc)

@@ -11,13 +11,25 @@
  */
 import { z } from "zod"
 
-/** An instant, UTC: `2004-12-25T02:00Z`. */
+/**
+ * An instant, UTC: `2004-12-25T02:00Z` (seconds optional). It must be a real one: `Date.parse`
+ * quietly rolls 30 February over into March and 24:00 into the next day, so the time it parses to
+ * must print back as the same date and time.
+ */
 const instant = z
 	.string()
 	.regex(
 		/^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}(:\d{2})?Z$/,
 		"expected YYYY-MM-DDTHH:MMZ",
 	)
+	.refine((text) => {
+		const time = Date.parse(text)
+		const written = text.length === 17 ? `${text.slice(0, 16)}:00` : text
+		return (
+			Number.isFinite(time) &&
+			new Date(time).toISOString().slice(0, 19) === written.slice(0, 19)
+		)
+	}, "not a real date and time")
 
 /** A source axis: "+x", "-y", ... */
 export const SourceAxis = z.enum(["+x", "-x", "+y", "-y", "+z", "-z"])
@@ -39,8 +51,25 @@ export const ModelSource = z
 		short: z.string().min(1),
 		/** where a person can read about the model */
 		url: z.url(),
-		/** the file `pnpm gen:models` downloads (a GLB) */
-		file: z.url(),
+		/**
+		 * the file `pnpm gen:models` downloads (a GLB); one on GitHub is pinned to a commit, so it
+		 * cannot change under us
+		 */
+		file: z
+			.url()
+			.refine(
+				(url) =>
+					!url.startsWith("https://raw.githubusercontent.com/") ||
+					/^https:\/\/raw\.githubusercontent\.com\/[^/]+\/[^/]+\/[0-9a-f]{40}\//.test(
+						url,
+					),
+				"a file on raw.githubusercontent.com must be pinned to a commit",
+			),
+		/**
+		 * the SHA-256 of that file (hex): the generator checks every download and every cached copy
+		 * against it, so the models are always made from exactly these bytes
+		 */
+		sha256: z.string().regex(/^[0-9a-f]{64}$/, "expected 64 hex digits"),
 		/** its path in nasa/NASA-3D-Resources, when it comes from there */
 		path: z.string().min(1).optional(),
 		licence: z.literal("Public domain"),
@@ -79,7 +108,10 @@ export const SpacecraftModel = z
 			.refine((frame) => frame.z[1] !== frame.y[1], {
 				message: "+Z and +Y must come from different source axes",
 			}),
-		/** names of source nodes left out (with everything under them) */
+		/**
+		 * names of source nodes whose own mesh is left out (their children stay); each name must
+		 * be that of exactly one node with a mesh
+		 */
 		remove: z.array(z.string().min(1)).optional(),
 		/**
 		 * patches over a NASA insignia or logotype in a texture (NASA's media guidelines keep them
@@ -195,13 +227,27 @@ export const SpacecraftModelsFile = z
 						path: ["craft", craftId, i, "model"],
 					})
 				}
-				// the uses tile time: each one ends where the next begins
+				// each use begins before it ends, and the uses tile time: each one ends where the
+				// next begins (as times: 02:00Z and 02:00:00Z are the same instant)
+				if (
+					use.from !== undefined &&
+					use.until !== undefined &&
+					!(Date.parse(use.from) < Date.parse(use.until))
+				) {
+					ctx.addIssue({
+						code: "custom",
+						message: `craft "${craftId}": model ${i} must begin before it ends`,
+						path: ["craft", craftId, i],
+					})
+				}
 				const next = uses[i + 1]
 				const tiled =
 					(i === 0 ? use.from === undefined : true) &&
 					(next === undefined
 						? use.until === undefined
-						: use.until !== undefined && use.until === next.from)
+						: use.until !== undefined &&
+							next.from !== undefined &&
+							Date.parse(use.until) === Date.parse(next.from))
 				if (!tiled) {
 					ctx.addIssue({
 						code: "custom",
@@ -213,6 +259,33 @@ export const SpacecraftModelsFile = z
 		}
 	})
 export type SpacecraftModelsFile = z.infer<typeof SpacecraftModelsFile>
+
+/**
+ * src/data/spacecraftModels.json, the app's slim copy of the catalogue (written by
+ * `pnpm build:data`; src/data/spacecraftModels.ts reads it): craft id -> the models it wears in
+ * time order, `from` inclusive and `until` exclusive, open ends open.
+ */
+export const CraftModelsFile = z.record(
+	z.string().min(1),
+	z
+		.array(
+			z
+				.object({
+					/** the model's id, its file name without .glb */
+					id: z.string().regex(MODEL_ID),
+					/** the GLB under public/ */
+					file: z.string().min(1),
+					sizeM: z.number().positive(),
+					points: z.enum(["earth", "sun"]),
+					spinRpm: z.number().positive().optional(),
+					from: instant.optional(),
+					until: instant.optional(),
+				})
+				.strict(),
+		)
+		.min(1),
+)
+export type CraftModelsFile = z.infer<typeof CraftModelsFile>
 
 /** Where the generated models live under public/. */
 export const SPACECRAFT_MODEL_DIR = "assets/models/spacecraft"

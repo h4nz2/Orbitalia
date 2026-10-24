@@ -815,6 +815,84 @@ describe("buildBodies", () => {
 	})
 })
 
+describe("spacecraft models (#72)", () => {
+	const source = {
+		title: "Voyager",
+		credit: "NASA",
+		short: "NASA 3D Resources",
+		url: "https://example.org/voyager",
+		file: "https://example.org/voyager.glb",
+		sha256: "0".repeat(64),
+		licence: "Public domain",
+		licenceUrl: "https://example.org/licence",
+	}
+	const model = {
+		source: "voyager",
+		normalise: { z: "+y", y: "+z", centre: [0, 0, 0], scale: 1 },
+		textureSize: 512,
+		simplify: 0.002,
+		axes: { z: "the dish", y: "the boom" },
+		points: "earth",
+		sizeM: 16.9,
+		size: { note: "16.9 m", url: "https://example.org/size" },
+		note: "nothing special",
+	}
+	const spacecraftModels = {
+		sources: { voyager: source },
+		models: { voyager: model },
+		craft: {
+			voyager1: [{ model: "voyager" }],
+			voyager2: [{ model: "voyager" }],
+		},
+	}
+	const modelFiles = (path: string) =>
+		existing.has(path) || path === "assets/models/spacecraft/voyager.glb"
+
+	it("credits the models after the images and gives the app its slim copy", () => {
+		const built = buildBodies(fixture, {
+			...options,
+			fileExists: modelFiles,
+			spacecraftModels,
+		})
+		expect(built.credits.at(-1)).toMatchObject({
+			id: "voyager",
+			kind: "model",
+			bodies: ["voyager1", "voyager2"],
+		})
+		const voyager = {
+			id: "voyager",
+			file: "assets/models/spacecraft/voyager.glb",
+			sizeM: 16.9,
+			points: "earth",
+		}
+		expect(built.spacecraftModels).toEqual({
+			voyager1: [voyager],
+			voyager2: [voyager],
+		})
+	})
+
+	it("leaves both out without a catalogue", () => {
+		expect(result.spacecraftModels).toBeUndefined()
+		expect(result.credits.some((credit) => credit.kind === "model")).toBe(false)
+	})
+
+	it("fails the build on a missing model file or a malformed catalogue", () => {
+		expect(() =>
+			buildBodies(fixture, { ...options, spacecraftModels }),
+		).toThrow(BuildError)
+		expect(() =>
+			buildBodies(fixture, { ...options, spacecraftModels }),
+		).toThrow(/voyager1: assets\/models\/spacecraft\/voyager.glb is missing/)
+		expect(() =>
+			buildBodies(fixture, {
+				...options,
+				fileExists: modelFiles,
+				spacecraftModels: { ...spacecraftModels, sources: {} },
+			}),
+		).toThrow(/invalid data\/spacecraft-models.json/)
+	})
+})
+
 describe("synchronousRotation", () => {
 	const spin = (periodHours: number | null) => ({
 		periodHours,

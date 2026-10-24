@@ -1,0 +1,91 @@
+{
+	"voyager1": [
+		{
+			"id": "voyager",
+			"file": "assets/models/spacecraft/voyager.glb",
+			"sizeM": 16.9,
+			"points": "earth"
+		}
+	],
+	"voyager2": [
+		{
+			"id": "voyager",
+			"file": "assets/models/spacecraft/voyager.glb",
+			"sizeM": 16.9,
+			"points": "earth"
+		}
+	],
+	"pioneer10": [
+		{
+			"id": "pioneer",
+			"file": "assets/models/spacecraft/pioneer.glb",
+			"sizeM": 8.25,
+			"points": "earth"
+		}
+	],
+	"pioneer11": [
+		{
+			"id": "pioneer",
+			"file": "assets/models/spacecraft/pioneer.glb",
+			"sizeM": 8.25,
+			"points": "earth"
+		}
+	],
+	"newHorizons": [
+		{
+			"id": "new-horizons",
+			"file": "assets/models/spacecraft/new-horizons.glb",
+			"sizeM": 3,
+			"points": "earth"
+		}
+	],
+	"cassini": [
+		{
+			"id": "cassini",
+			"file": "assets/models/spacecraft/cassini.glb",
+			"sizeM": 18,
+			"points": "earth",
+			"until": "2004-12-25T02:00Z"
+		},
+		{
+			"id": "cassini-no-huygens",
+			"file": "assets/models/spacecraft/cassini-no-huygens.glb",
+			"sizeM": 18,
+			"points": "earth",
+			"from": "2004-12-25T02:00Z"
+		}
+	],
+	"parker": [
+		{
+			"id": "parker",
+			"file": "assets/models/spacecraft/parker.glb",
+			"sizeM": 6.6,
+			"points": "sun"
+		}
+	],
+	"jwst": [
+		{
+			"id": "jwst",
+			"file": "assets/models/spacecraft/jwst.glb",
+			"sizeM": 21,
+			"points": "sun"
+		}
+	],
+	"juno": [
+		{
+			"id": "juno",
+			"file": "assets/models/spacecraft/juno.glb",
+			"sizeM": 19.5,
+			"points": "earth",
+			"spinRpm": 2
+		}
+	],
+	"europaClipper": [
+		{
+			"id": "europa-clipper",
+			"file": "assets/models/spacecraft/europa-clipper.glb",
+			"sizeM": 30.5,
+			"points": "sun"
+		}
+	]
+}

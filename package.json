@@ -11,7 +11,7 @@
 		"dev": "vite",
 		"build": "vite build",
 		"build:data": "tsx scripts/build-bodies.ts",
-		"check:data": "pnpm build:data && git diff --exit-code -- src/data/bodies.json src/data/credits.json src/data/belts.json",
+		"check:data": "pnpm build:data && git diff --exit-code -- src/data/bodies.json src/data/credits.json src/data/belts.json src/data/spacecraftModels.json",
 		"build:spacecraft": "tsx scripts/build-spacecraft.ts",
 		"preview": "vite preview",
 		"typecheck": "tsc --noEmit -p tsconfig.json",

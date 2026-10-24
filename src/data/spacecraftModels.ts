@@ -1,24 +1,26 @@
 /**
  * NASA's 3D models of the spacecraft (#72; docs/ARCHITECTURE.md, "Spacecraft", Models): which
  * model a craft wears at a given time, where its file is and how big the craft is. Read from
- * data/spacecraft-models.json, validated by src/data/spacecraftModels.test.ts, so cast here.
+ * src/data/spacecraftModels.json, the slim part of data/spacecraft-models.json that `pnpm
+ * build:data` writes for the app (validated there and by src/data/spacecraftModels.test.ts, so
+ * cast here); the generator's catalogue stays out of the bundle.
  *
  * Every model is normalised by `pnpm gen:models`, so nothing here or in the scene needs to know
  * one craft from another: the origin is the centre of the craft's bus, one unit is one metre, +Z
  * is the axis that must point at `points` (Earth: the high-gain antenna; the Sun: Parker's heat
  * shield, JWST's sunshield, Europa Clipper's solar arrays) and +Y a stable second axis. The files
- * are meshopt-compressed: load them with three's GLTFLoader and its MeshoptDecoder (drei's
- * `useGLTF` does both).
+ * are meshopt-compressed: load them with three's GLTFLoader and three-stdlib's MeshoptDecoder
+ * (drei's `useGLTF` does both).
  */
 import { dateToJD } from "@/sim"
 import { assetUrl } from "@/utils/assetUrl"
 
 import {
 	SPACECRAFT_MODEL_DIR,
-	type SpacecraftModelsFile,
+	type CraftModelsFile,
 } from "./spacecraftModelsSchema"
 
-import modelsJson from "../../data/spacecraft-models.json"
+import modelsJson from "./spacecraftModels.json"
 
 export { SPACECRAFT_MODEL_DIR }
 
@@ -38,26 +40,23 @@ export interface CraftModel {
 	untilJD: number
 }
 
-const file = modelsJson as unknown as SpacecraftModelsFile
+const file = modelsJson as CraftModelsFile
 
 const jdOf = (instant: string | undefined, open: number): number =>
 	instant === undefined ? open : dateToJD(new Date(instant))
 
 const byCraft: ReadonlyMap<string, readonly CraftModel[]> = new Map(
-	Object.entries(file.craft).map(([craftId, uses]) => [
+	Object.entries(file).map(([craftId, uses]) => [
 		craftId,
-		uses.map((use) => {
-			const model = file.models[use.model]
-			return {
-				id: use.model,
-				url: assetUrl(`${SPACECRAFT_MODEL_DIR}/${use.model}.glb`),
-				sizeM: model.sizeM,
-				points: model.points,
-				...(model.spinRpm === undefined ? {} : { spinRpm: model.spinRpm }),
-				fromJD: jdOf(use.from, -Infinity),
-				untilJD: jdOf(use.until, Infinity),
-			}
-		}),
+		uses.map((use) => ({
+			id: use.id,
+			url: assetUrl(use.file),
+			sizeM: use.sizeM,
+			points: use.points,
+			...(use.spinRpm === undefined ? {} : { spinRpm: use.spinRpm }),
+			fromJD: jdOf(use.from, -Infinity),
+			untilJD: jdOf(use.until, Infinity),
+		})),
 	]),
 )
 

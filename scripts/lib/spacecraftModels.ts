@@ -1,13 +1,17 @@
 /**
  * The pure parts of `pnpm gen:models` (scripts/gen-spacecraft-models.ts, #72) and of the models'
- * credits in `pnpm build:data`: the matrix that normalises a source model, rebuilt normals, the
- * simplifier's locks, the patch over an insignia, the size check. See docs/ARCHITECTURE.md,
+ * share of `pnpm build:data` (their credits and the app's slim src/data/spacecraftModels.json):
+ * the matrix that normalises a source model, rebuilt normals, the simplifier's locks, the patch
+ * over an insignia, the size check, the check of a download. See docs/ARCHITECTURE.md,
  * "Spacecraft", Models.
  */
+import { createHash } from "node:crypto"
+
 import type { ImageCredit } from "../../src/data/schema"
 import {
 	SPACECRAFT_MODEL_DIR,
 	SpacecraftModelsFile,
+	type CraftModelsFile,
 	type SourceAxis,
 	type SpacecraftModel,
 } from "../../src/data/spacecraftModelsSchema"
@@ -308,16 +312,94 @@ export const paintBox = (
 	}
 }
 
-/** The cache file of a source: its id plus the download's extension. */
-export const cacheFileName = (sourceId: string, file: string): string => {
+/**
+ * The cache file of a source: its id, its SHA-256 and the download's extension. A new hash in the
+ * catalogue is a new file name, so a changed source is downloaded again rather than taken from the
+ * cache.
+ */
+export const cacheFileName = (
+	sourceId: string,
+	file: string,
+	sha256: string,
+): string => {
 	const path = new URL(file).pathname
 	const dot = path.lastIndexOf(".")
-	return `${sourceId}${dot > path.lastIndexOf("/") ? path.slice(dot) : ""}`
+	return `${sourceId}-${sha256}${dot > path.lastIndexOf("/") ? path.slice(dot) : ""}`
+}
+
+/**
+ * Stops unless `bytes` (a download or its cached copy) are the source's file as the catalogue
+ * pins it: NASA can replace a file at the same address, and a model made from other bytes is not
+ * the model the catalogue describes (axes, centre, scale, node names).
+ */
+export const verifySource = (
+	sourceId: string,
+	bytes: Uint8Array,
+	sha256: string,
+	where: string,
+): void => {
+	const actual = createHash("sha256").update(bytes).digest("hex")
+	if (actual !== sha256) {
+		throw new Error(
+			`source "${sourceId}": ${where} has SHA-256 ${actual}, data/spacecraft-models.json expects ${sha256}; the file changed or is damaged (check it, then update the source's sha256 and the model's settings, or delete the cached copy)`,
+		)
+	}
+}
+
+/**
+ * The generator's arguments: `--only voyager,juno` makes just those models, nothing makes them
+ * all. A typo stops it with the list of models instead of quietly making none or all of them.
+ */
+export const parseOnly = (
+	args: readonly string[],
+	modelIds: readonly string[],
+): { ids: ReadonlySet<string> | null } | { problem: string } => {
+	const known = `the models: ${modelIds.join(", ")}`
+	let ids: Set<string> | null = null
+	for (let i = 0; i < args.length; i++) {
+		// pnpm may pass on the "--" that ends its own options
+		if (args[i] === "--") continue
+		if (args[i] !== "--only") {
+			return {
+				problem: `unknown argument "${args[i]}" (usage: pnpm gen:models [--only voyager,juno])`,
+			}
+		}
+		const value = args[i + 1]
+		const wanted = (value?.startsWith("--") ? "" : (value ?? ""))
+			.split(",")
+			.filter((id) => id !== "")
+		if (wanted.length === 0) {
+			return {
+				problem: `--only needs model ids, as in --only voyager,juno (${known})`,
+			}
+		}
+		const unknown = wanted.filter((id) => !modelIds.includes(id))
+		if (unknown.length > 0) {
+			return {
+				problem: `--only: no model ${unknown.map((id) => `"${id}"`).join(", ")} (${known})`,
+			}
+		}
+		ids = new Set([...(ids ?? []), ...wanted])
+		i++
+	}
+	return { ids }
 }
 
 /** "123.4 KB" */
 export const kilobytes = (bytes: number): string =>
 	`${(bytes / 1024).toFixed(1)} KB`
+
+/** data/spacecraft-models.json, validated; stops on the first problem. */
+const parseCatalogue = (raw: unknown): SpacecraftModelsFile => {
+	const parsed = SpacecraftModelsFile.safeParse(raw)
+	if (!parsed.success) {
+		const issue = parsed.error.issues[0]
+		throw new Error(
+			`invalid data/spacecraft-models.json (${issue.path.join(".")}: ${issue.message})`,
+		)
+	}
+	return parsed.data
+}
 
 /**
  * The models' sources for src/data/credits.json (`kind: "model"`), in the catalogue's order, each
@@ -328,14 +410,7 @@ export const modelCredits = (
 	raw: unknown,
 	fileExists: (publicPath: string) => boolean,
 ): ImageCredit[] => {
-	const parsed = SpacecraftModelsFile.safeParse(raw)
-	if (!parsed.success) {
-		const issue = parsed.error.issues[0]
-		throw new Error(
-			`invalid data/spacecraft-models.json (${issue.path.join(".")}: ${issue.message})`,
-		)
-	}
-	const catalogue = parsed.data
+	const catalogue = parseCatalogue(raw)
 	const craftBySource = new Map<string, string[]>()
 	for (const [craftId, uses] of Object.entries(catalogue.craft)) {
 		for (const use of uses) {
@@ -369,4 +444,30 @@ export const modelCredits = (
 			},
 		]
 	})
+}
+
+/**
+ * src/data/spacecraftModels.json, all the app reads of the catalogue (the generator's settings,
+ * sources and notes stay out of the bundle): per craft, the models it wears in time order, each
+ * with its file under public/, the craft's size, what +Z points at, its spin and when it is worn.
+ */
+export const craftModelRanges = (raw: unknown): CraftModelsFile => {
+	const catalogue = parseCatalogue(raw)
+	return Object.fromEntries(
+		Object.entries(catalogue.craft).map(([craftId, uses]) => [
+			craftId,
+			uses.map((use) => {
+				const model = catalogue.models[use.model]
+				return {
+					id: use.model,
+					file: `${SPACECRAFT_MODEL_DIR}/${use.model}.glb`,
+					sizeM: model.sizeM,
+					points: model.points,
+					...(model.spinRpm === undefined ? {} : { spinRpm: model.spinRpm }),
+					...(use.from === undefined ? {} : { from: use.from }),
+					...(use.until === undefined ? {} : { until: use.until }),
+				}
+			}),
+		]),
+	)
 }
