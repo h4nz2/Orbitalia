@@ -1764,6 +1764,50 @@ the same features at every size and shows fewer at once). Laptops with a mouse l
   Layers switches all reachable, every control at least 44 px on the touch screens (`e2e/support/touch.ts`
   `smallControls`) and the laptop still dense, the arrangement switching live as a phone turns, and every other page
   at phone and iPad size. One spec, not whole-suite projects: every test drives a software-WebGL scene.
+- **Nothing overlaps** (#76; `e2e/overlap.spec.ts`, `e2e/support/overlap.ts`, `e2e/overlap.allow.ts`): every "try
+  it" link of the help page (read from `src/data/help.json`, so a new entry is checked without touching the spec;
+  entries that share a link, or links that differ only in their date, are one screen), and the quick look two steps
+  in, a flight under way, a card unfolded, and on the phones the gesture hint and the Share panel (More → Link and QR
+  code), on a 360×640 phone with touch in English and in German at the simple level (the longest words), a 390×844
+  phone with touch in English and a 1366×768 laptop in English. Each screen waits until it has settled (the camera
+  at rest, every fade over, nothing loading, no text or control moving for 5 frames, the scene's names still for
+  0.6 s, longer than the label layout's 0.25 s look at the panels; what plays by itself is held: the opening paused
+  on its first caption, the quick look's autoplay off), then every pair of visible texts and controls is compared.
+  Every wait has a 20 s bound (60 s for a page and its scene to load) and every screen a 90 s one: a stuck screen
+  reports itself and the others still get their look. A link without a date gets one (`t`), so the names stand in
+  the same places every day; the page's entrance slide is put at its end at once; screens share a page, eight at a
+  time, each opened with a fresh load (a warm cache).
+  - **The rules:** visible is displayed, not hidden, at least 0.15 opaque and not `aria-hidden` (the scene's names
+    count all the same); a text counts by its line boxes, a control by its whole box, which is what a finger hits
+    (the sheet's handle is 44 px tall however thin it is drawn), and a control's own words are part of it; every box
+    is cut to its clipping ancestors, so a scroller's content counts only where it shows (a scroller's edge cuts
+    lines as any scrolling list does); an element never overlaps its own ancestor or descendant; more than 3 px each
+    way is an overlap. What is opaque and on top hides what lies under it: a sticky bar of the same scroller (the
+    sheet's header and foot), an open menu or popover, any other opaque box holding others (a panel, never a
+    control). A text wholly under one is hidden, not overlapped: content scrolling under the sheet's foot is no
+    overlap. But a line a bar or a panel slices through, more than 3 px of it on each side, is a finding of its own
+    (`cut`): a sliced line, or a name half under a panel, looks broken. A menu slices nothing, nor does a scroller
+    that fades its words out before the bar below them (a CSS mask: the sheet's `data-sheet-more`, #75; a sticky
+    header still can). A control under a panel, or partly under a bar, is out of a finger's reach (`covered`);
+    wholly behind its own scroller's bar it is scrolled away (the sheet's foot, #62). A text or a control drawn over
+    a panel it does not belong to overlaps it, unless it is meant to lie over the page (a menu) or passes over as
+    the panel's scroller's sticky bar does. A text past the screen's edge
+    where nothing scrolls it into view fails too (a scroller with more in it: any upright; sideways only one
+    narrower than the screen, as a page never scrolls sideways). During a flight the scene's names are left out
+    (they move between two looks); with a clock faster than an hour a second the interface is looked at as it runs
+    (the too-fast note shows only then) and the names once the clock is paused and they stand still. A flight that
+    has landed before the look fails the screen: the moment was missed.
+  - **Reading a failure:** it names the screen (size, language, address) and, for each problem, both pieces as a
+    selector path with their words, the overlap's size and which one is on top (or how much of a line or a control
+    is under what), and saves a picture beside the results with the boxes outlined and numbered (its path is in the
+    message). A CSS module's class appears without its hash (`p.text`); `[class*="_text_"]` matches it.
+    `OVERLAP_LOG=<file>` appends every screen's findings as JSON lines, to look at them all.
+  - **The allow-list** holds the overlaps known when the guard landed, each with the issue that fixes it: an entry
+    names its two pieces by CSS selector (the piece itself or an ancestor matches), the screens it occurs on and,
+    where it needs to, its sizes and languages. The guard fails on every overlap not listed, on a listed one that no
+    longer occurs on a screen it names, and on a listed piece missing from a screen it names, so the list only
+    shrinks and no entry outlives its pieces: a fix removes its entry in the same change, and a new overlap is
+    fixed, not listed.
 
 ### The phone's top row, More and a tap on the sky (`present/MoreMenu.tsx`, `present/skyTap.ts`; #59)
 
