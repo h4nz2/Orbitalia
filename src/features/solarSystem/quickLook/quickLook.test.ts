@@ -7,6 +7,7 @@ import { useLightStore } from "@/store/light"
 import { usePresentationStore } from "@/store/presentation"
 import { useScaleStore } from "@/store/scale"
 import { useSimStore } from "@/store/sim"
+import { useSpacecraftStore } from "@/store/spacecraft"
 import { useTourStore } from "@/store/tour"
 
 import { useIntroStore } from "../intro/intro"
@@ -61,6 +62,7 @@ afterEach(() => {
 	useHudStore.setState(useHudStore.getInitialState(), true)
 	useQuickLookStore.setState(useQuickLookStore.getInitialState(), true)
 	usePresentationStore.setState(usePresentationStore.getInitialState(), true)
+	useSpacecraftStore.setState(useSpacecraftStore.getInitialState(), true)
 })
 
 /** Lets the watcher's microtasks run. */
@@ -243,5 +245,27 @@ describe("the quick look", () => {
 		expect(sim().focusId).toBe("jupiter")
 		expect(sim().timeWarp).toBe(1)
 		expect(useScaleStore.getState().targetId).toBe("everythingVisible")
+	})
+
+	it("a world clicked mid-way puts the spacecraft layer back as it was (#70)", async () => {
+		startQuickLook()
+		nextStop()
+		useSpacecraftStore.getState().setShowSpacecraft(true)
+		sim().setFocus("jupiter")
+		await flush()
+		expect(tour().tour).toBeNull()
+		expect(useSpacecraftStore.getState().showSpacecraft).toBe(false)
+	})
+
+	it("a spacecraft picked mid-way stays drawn when it ends there", async () => {
+		startQuickLook()
+		nextStop()
+		// what the list's pick does: choose it, fly to it
+		useSpacecraftStore.getState().selectCraft("voyager1")
+		sim().goTo({ kind: "point", anchorId: "jupiter", offsetKm: [1e6, 0, 0] })
+		await flush()
+		expect(tour().tour).toBeNull()
+		expect(useSpacecraftStore.getState().showSpacecraft).toBe(true)
+		expect(useSpacecraftStore.getState().selectedCraftId).toBe("voyager1")
 	})
 })

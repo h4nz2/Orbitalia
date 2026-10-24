@@ -26,9 +26,10 @@ import classes from "./Spacecraft.module.css"
 
 /**
  * The spacecraft list (#35), a panel of the dock since #42 (Tools → Real
- * spacecraft): the layer switch, "show every path", and every craft with
- * what it is and whether it is working at the simulation date. Picking one
- * selects it and flies the view there, its follow button rides along with it
+ * spacecraft): the layer switch (the same as Layers → Spacecraft, #70),
+ * "show every path", and every craft with what it is and whether it is
+ * working at the simulation date. Picking one selects it (which shows the
+ * layer) and flies the view there, its follow button rides along with it
  * (#57); either way `onPicked` then closes the panel.
  */
 export const SpacecraftList = ({ onPicked }: { onPicked: () => void }) => {
@@ -100,7 +101,6 @@ export const SpacecraftList = ({ onPicked }: { onPicked: () => void }) => {
 								data-phase={phase}
 								data-selected={craft.id === selected || undefined}
 								onClick={() => {
-									setShowSpacecraft(true)
 									showCraft(craft.id, scale)
 									onPicked()
 								}}
@@ -130,7 +130,6 @@ export const SpacecraftList = ({ onPicked }: { onPicked: () => void }) => {
 									aria-pressed={craft.id === followed}
 									disabled={!isInSpace(phase)}
 									onClick={() => {
-										setShowSpacecraft(true)
 										followCraft(craft.id, scale)
 										onPicked()
 									}}

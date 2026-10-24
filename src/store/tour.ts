@@ -42,6 +42,12 @@ export interface TourBaseline {
 	readonly paused: boolean
 	readonly layers: Readonly<Record<TourLayerKey, boolean>>
 	/**
+	 * The spacecraft layer (#70; its own store, not a tour-file key): a stop
+	 * that rides along with a craft shows it, and a tour that returns on exit
+	 * puts it back as it was.
+	 */
+	readonly spacecraft: boolean
+	/**
 	 * Where the viewer was when a tour that returns on exit began (a sky
 	 * event, #41): leaving it goes back there.
 	 */

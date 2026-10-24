@@ -1,6 +1,7 @@
 /**
  * Search params of `/solar_system?focus=io&at=<x_y_z>&sel=europa&frame=io&cam=<az_el_dist>&t=<jd>&warp=<n>&moons=false&scale=trueScale`
- * (`craft=voyager1&follow=true` while following a spacecraft, #57)
+ * (`craft=voyager1&follow=true` while following a spacecraft, #57;
+ * `spacecraft=true` while the spacecraft are shown, #70)
  * (the layer switches `orbits`, `labels`, `moons`, `markers` alike; `paused`,
  * `present`, `contrast` for #29).
  *
@@ -60,6 +61,8 @@ export const simSearchSchema = z.object({
 	smallBodies: layerSwitch,
 	// every moon, not only the featured ones (#17): off by default, so only `true` is ever written
 	allMoons: layerSwitch,
+	// the spacecraft (#70) are off by default, so only `true` is ever written
+	spacecraft: layerSwitch,
 	// the scale preset (#21), a preset id of src/sim/scale.ts; absent is the
 	// default (Everything visible), unknown ids are ignored when applied
 	scale: z.string().optional().catch(undefined),

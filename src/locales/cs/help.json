@@ -317,8 +317,8 @@
 				"simple": "Názvy, dráhy a tečky"
 			},
 			"what": {
-				"standard": "Přepínače určují, co se kreslí: dráhy, názvy, měsíce, všechny měsíce, značky (tečky), názvy drah a „Vždy osvětlené“.",
-				"simple": "Přepínači zapneš a vypneš názvy, dráhy a tečky."
+				"standard": "Přepínače určují, co se kreslí: dráhy, názvy, měsíce, všechny měsíce, značky (tečky), názvy drah, kosmické sondy a „Vždy osvětlené“.",
+				"simple": "Přepínači zapneš a vypneš názvy, dráhy, tečky a vesmírné sondy."
 			},
 			"why": {
 				"standard": "Na kvíz schovej názvy, nebo ve skutečném měřítku vypni značky a uvidíš, jak neviditelné planety doopravdy jsou.",
@@ -523,8 +523,8 @@
 				"simple": "Vesmírné sondy"
 			},
 			"what": {
-				"standard": "Voyager, Pioneer, New Horizons, Cassini, Juno, Parker, JWST a Europa Clipper, nakreslené tam, kde ke zobrazenému datu opravdu jsou, s jejich drahami a milníky.",
-				"simple": "Skutečné sondy, které postavili lidé, ukázané tam, kde právě jsou."
+				"standard": "Voyager, Pioneer, New Horizons, Cassini, Juno, Parker, JWST a Europa Clipper, nakreslené tam, kde ke zobrazenému datu opravdu jsou, s jejich drahami a milníky. Zůstanou skryté, dokud si je nezobrazíš.",
+				"simple": "Skutečné sondy, které postavili lidé, ukázané tam, kde právě jsou. Jsou schované, dokud je nezapneš."
 			},
 			"why": {
 				"standard": "Voyager 1 pořád posílá zprávy z dálky daleko za planetami: kartička ukáže, jak dlouho k nám letí jeho signál a proč cesta potřebovala tolik gravitačních praků.",
@@ -532,14 +532,16 @@
 			},
 			"how": {
 				"standard": [
-					"Otevři Nástroje, vyber „Skutečné kosmické sondy“ a pak sondu: pohled k ní poletí.",
+					"Otevři Nástroje, vyber „Skutečné kosmické sondy“ a pak sondu: pohled k ní poletí a sondy se objeví.",
+					"Všechny uvidíš, když ve Vrstvách (nebo v seznamu sond) zapneš „Kosmické sondy“. Ukáže je i odkaz, zastávka prohlídky nebo úkaz na obloze, který se sondy týká.",
 					"Kartička ukáže start, vzdálenost, dobu letu signálu a „Milníky“; milník přesune čas do toho okamžiku.",
-					"„Zobrazit všechny dráhy“ nakreslí všechny cesty najednou; přepínač „Kosmické sondy“ je skryje."
+					"„Zobrazit všechny dráhy“ nakreslí všechny cesty najednou; vypnutím přepínače „Kosmické sondy“ je zase skryješ."
 				],
 				"simple": [
 					"Stiskni Nástroje.",
 					"Vyber „Skutečné kosmické sondy“ a pak Voyager 1.",
-					"Přečti si, jak je daleko."
+					"Přečti si, jak je daleko.",
+					"Všechny sondy uvidíš, když stiskneš Vrstvy a zapneš „Kosmické sondy“."
 				]
 			}
 		},

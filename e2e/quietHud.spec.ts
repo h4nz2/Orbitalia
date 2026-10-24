@@ -62,8 +62,10 @@ test("every control is two actions away, behind named entry points", async ({
 	await ready(page, "/solar_system?focus=earth&lang=en")
 
 	const layers = await openLayers(page)
-	await expect(layers.getByRole("switch")).toHaveCount(8)
+	await expect(layers.getByRole("switch")).toHaveCount(9)
 	await expect(layers.getByRole("switch", { name: "Always lit" })).toBeVisible()
+	// the spacecraft (#70) are a layer too, beside the small bodies
+	await expect(layers.getByRole("switch", { name: "Spacecraft" })).toBeVisible()
 
 	const scale = await openScale(page)
 	// one panel at a time: Layers made way

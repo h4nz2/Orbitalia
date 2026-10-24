@@ -303,6 +303,9 @@
 				"smallBodies": "Montre Pluton et les autres planètes naines, les astéroïdes, les comètes et les deux ceintures. Désactivé par défaut pour que les planètes restent lisibles.",
 				"smallBodies@simple": "Montre Pluton, les comètes et la ceinture d’astéroïdes.",
 				"smallBodies@advanced": "Ajoute les planètes naines, des astéroïdes nommés, les comètes avec leurs queues, et les ceintures d’astéroïdes et de Kuiper sous forme de nuages de points (chaque point représente de nombreux corps réels).",
+				"spacecraft": "Montre les vraies sondes spatiales envoyées par l’humanité, comme Voyager 1 et le télescope spatial James-Webb, là où elles sont à la date affichée. Désactivé par défaut pour que les planètes restent lisibles.",
+				"spacecraft@simple": "Montre les sondes que les gens ont envoyées dans l’espace.",
+				"spacecraft@advanced": "Ajoute les sondes à leurs positions mesurées (données de suivi de la NASA et du JPL) à la date affichée, avec leurs noms et la trajectoire de celle choisie. Choisir une sonde n’importe où l’active.",
 				"alwaysLit": "Éclaire chaque astre depuis l’endroit d’où tu regardes, pour que la face de nuit ne soit pas noire. Bien pour voir les surfaces ; cache la leçon du jour et de la nuit.",
 				"alwaysLit@simple": "Éclaire chaque planète de ton côté, pour que rien ne soit sombre. Mais alors tu ne vois plus le jour et la nuit !",
 				"alwaysLit@advanced": "Éclaire chaque astre depuis le point de vue plutôt que depuis le Soleil : ni face de nuit, ni phases, ni ombres d’éclipse. Bien pour le détail des surfaces, faux pour la géométrie de la lumière solaire."
@@ -313,7 +316,8 @@
 				"allMoonsPoster@simple": "Sur l’affiche, les petites lunes sont cachées. Il n’y a pas de place pour elles !",
 				"orbitNames": "{missing, select, orbits {Active d’abord Orbites.} labels {Active d’abord Noms.} other {Active d’abord Orbites et Noms.}}"
 			},
-			"smallBodies": "Petits corps"
+			"smallBodies": "Petits corps",
+			"spacecraft": "Sondes spatiales"
 		},
 		"scale": {
 			"label": "Échelle",

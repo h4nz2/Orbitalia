@@ -1,10 +1,12 @@
 import { expect, test, type Page } from "@playwright/test"
-import { openTool } from "./support/hud"
+import { openLayers, openTool } from "./support/hud"
 
 // Real spacecraft (#35) in the real browser: the menu, the info panel with its
 // launch date, targets and signal time, a milestone that travels in time,
 // honest states before launch and after a mission ended, the layer switch,
-// German names, and a craft's name as a click target.
+// German names, and a craft's name as a click target. The layer is hidden
+// until asked for (#70): its two switches agree and are in the link, and a
+// link, a sky event or Back to a craft shows it.
 
 // software WebGL is slow, and flights and time glides must land first
 test.describe.configure({ timeout: 180_000 })
@@ -54,6 +56,22 @@ const pick = async (page: Page, id: string) => {
 
 const panel = (page: Page) =>
 	page.getByRole("region", { name: "Selected spacecraft" })
+
+/** Craft names on screen (the layer draws them with the markers and paths). */
+const namesShown = (page: Page) =>
+	page.locator("span[data-craft][data-visible=true]")
+
+/** Layers → Spacecraft (#70). */
+const layerSwitch = async (page: Page) =>
+	(await openLayers(page)).getByRole("switch", { name: "Spacecraft" })
+
+/** Tools → Real spacecraft → Spacecraft: the same layer. */
+const listSwitch = async (page: Page) => {
+	await openMenu(page)
+	return page
+		.locator("[data-dock-panel=spacecraft]")
+		.getByRole("switch", { name: "Spacecraft" })
+}
 
 /**
  * The HUD clock; its `datetime` is the machine-readable instant. Its text
@@ -211,4 +229,89 @@ test("a craft's name is a click target, like its marker", async ({ page }) => {
 	await page.mouse.down()
 	await page.mouse.up()
 	await expect(panel(page)).toContainText("Voyager 2")
+})
+
+test("hidden on a fresh visit; the Layers switch shows them, the link carries them, and both switches agree (#70)", async ({
+	page,
+	context,
+}) => {
+	await ready(page, `/solar_system?t=${T_2026}&paused=true&lang=en`)
+	await page.waitForTimeout(600)
+	await expect(namesShown(page)).toHaveCount(0)
+	const layers = await layerSwitch(page)
+	await expect(layers).not.toBeChecked()
+
+	await layers.click()
+	await expect(layers).toBeChecked()
+	await expect(page).toHaveURL(/[?&]spacecraft=true/)
+	await expect.poll(() => namesShown(page).count()).toBeGreaterThan(0)
+	// the list's switch is the same layer
+	const list = await listSwitch(page)
+	await expect(list).toBeChecked()
+
+	// the link opens with them shown
+	const again = await context.newPage()
+	await ready(again, page.url().replace(/^https?:\/\/[^/]+/, ""))
+	await expect(await layerSwitch(again)).toBeChecked()
+	await expect.poll(() => namesShown(again).count()).toBeGreaterThan(0)
+	await again.close()
+
+	// off in the list: off in Layers, gone from the address and the sky
+	await list.click()
+	await expect(list).not.toBeChecked()
+	await expect(await layerSwitch(page)).not.toBeChecked()
+	await expect(page).not.toHaveURL(/spacecraft=/)
+	await expect(namesShown(page)).toHaveCount(0)
+})
+
+test("a spacecraft link shows the layer with the craft selected, and the address keeps it (#70)", async ({
+	page,
+}) => {
+	await ready(page, `/solar_system?craft=voyager1&t=${T_2026}&lang=en`)
+	await expect(panel(page)).toContainText("Voyager 1", { timeout: 30_000 })
+	await settled(page)
+	await expect(page.locator("span[data-craft=voyager1]")).toHaveAttribute(
+		"data-selected",
+		"true",
+	)
+	await expect(page.locator("span[data-craft=voyager1]")).toHaveAttribute(
+		"data-visible",
+		"true",
+	)
+	await expect(page).toHaveURL(/[?&]spacecraft=true/)
+	await expect(page).not.toHaveURL(/[?&]craft=/)
+	await expect(await layerSwitch(page)).toBeChecked()
+})
+
+test("a sky event about a spacecraft shows the layer, and leaving it hides it again (#70)", async ({
+	page,
+}) => {
+	await ready(page, "/solar_system?tour=event-voyagerNeptune&stop=1&lang=en")
+	await expect(panel(page)).toContainText("Voyager 2", { timeout: 30_000 })
+	await expect(page).toHaveURL(/[?&]spacecraft=true/)
+	// the event goes back to the scene before it: the spacecraft were hidden there
+	await page.locator("[data-event-card]").getByTestId("event-leave").click()
+	await expect(page).not.toHaveURL(/tour=/)
+	await expect(page).not.toHaveURL(/spacecraft=/)
+	await expect(panel(page)).toHaveCount(0)
+})
+
+test("Back to a spacecraft shows the layer again (#70)", async ({ page }) => {
+	await ready(page, `/solar_system?t=${T_2026}&paused=true&lang=en`)
+	await pick(page, "voyager1")
+	await expect(panel(page)).toContainText("Voyager 1")
+	await page.evaluate(() =>
+		window.__orbitalia!.store.getState().setFocus("jupiter"),
+	)
+	await settled(page)
+	await expect(panel(page)).toHaveCount(0)
+	const layers = await layerSwitch(page)
+	await layers.click()
+	await expect(layers).not.toBeChecked()
+	await expect(page).not.toHaveURL(/spacecraft=/)
+
+	await page.getByTestId("back-button").click()
+	await expect(panel(page)).toContainText("Voyager 1")
+	await expect(await layerSwitch(page)).toBeChecked()
+	await expect(page).toHaveURL(/[?&]spacecraft=true/)
 })

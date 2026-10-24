@@ -1,4 +1,4 @@
-/* phones: eight switches (#23 added "Small bodies") in three rows, so the scale panel stays clear of the planets */
+/* phones: nine switches (#23 added "Small bodies", #70 "Spacecraft") packed tight, so the panel stays clear of the planets */
 @media $phone {
 	.layers.layers {
 		column-gap: 0.625rem;

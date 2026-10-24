@@ -317,8 +317,8 @@
 				"simple": "Namen, Wege und Punkte"
 			},
 			"what": {
-				"standard": "Schalter bestimmen, was gezeichnet wird: „Umlaufbahnen“, „Beschriftungen“, „Monde“, „Alle Monde“, „Markierungen“, „Bahnnamen“ und „Immer beleuchtet“.",
-				"simple": "Mit Schaltern machst du die Namen, die Wege und die Punkte an und aus."
+				"standard": "Schalter bestimmen, was gezeichnet wird: „Umlaufbahnen“, „Beschriftungen“, „Monde“, „Alle Monde“, „Markierungen“, „Bahnnamen“, „Raumsonden“ und „Immer beleuchtet“.",
+				"simple": "Mit Schaltern machst du die Namen, die Wege, die Punkte und die Raumsonden an und aus."
 			},
 			"why": {
 				"standard": "Blende die Namen für ein Quiz aus, oder schalte im echten Maßstab die Markierungen ab, um zu sehen, wie unsichtbar die Planeten wirklich sind.",
@@ -523,8 +523,8 @@
 				"simple": "Raumsonden"
 			},
 			"what": {
-				"standard": "Voyager, Pioneer, New Horizons, Cassini, Juno, Parker, JWST und Europa Clipper, gezeichnet dort, wo sie am angezeigten Datum wirklich sind, mit ihren Bahnen und Meilensteinen.",
-				"simple": "Echte Raumsonden, die Menschen gebaut haben, dort gezeigt, wo sie gerade sind."
+				"standard": "Voyager, Pioneer, New Horizons, Cassini, Juno, Parker, JWST und Europa Clipper, gezeichnet dort, wo sie am angezeigten Datum wirklich sind, mit ihren Bahnen und Meilensteinen. Sie bleiben ausgeblendet, bis du sie zeigst.",
+				"simple": "Echte Raumsonden, die Menschen gebaut haben, dort gezeigt, wo sie gerade sind. Sie sind versteckt, bis du sie einschaltest."
 			},
 			"why": {
 				"standard": "Voyager 1 sendet noch immer Nachrichten von weit jenseits der Planeten: Ihr Steckbrief zeigt, wie lange ihr Signal bis zu uns braucht und warum die Reise so viele Swing-by-Manöver brauchte.",
@@ -532,14 +532,16 @@
 			},
 			"how": {
 				"standard": [
-					"Öffne „Werkzeuge“, wähle „Echte Raumsonden“ und dann eine Sonde: Die Ansicht fliegt zu ihr.",
+					"Öffne „Werkzeuge“, wähle „Echte Raumsonden“ und dann eine Sonde: Die Ansicht fliegt zu ihr, und die Raumsonden erscheinen.",
+					"Um alle zu sehen, schalte unter „Ebenen“ (oder in der Liste der Raumsonden) „Raumsonden“ ein. Ein Link, ein Tourhalt oder ein Himmelsereignis zu einer Sonde zeigt sie auch.",
 					"Ihr Steckbrief zeigt Start, Abstand, Signallaufzeit und „Meilensteine“; ein Meilenstein bringt die Zeit zu diesem Moment.",
-					"„Alle Bahnen zeigen“ zeichnet alle Wege auf einmal; der Schalter „Raumsonden“ blendet sie aus."
+					"„Alle Bahnen zeigen“ zeichnet alle Wege auf einmal; schaltest du „Raumsonden“ aus, sind sie wieder ausgeblendet."
 				],
 				"simple": [
 					"Drück auf „Werkzeuge“.",
 					"Wähl „Echte Raumsonden“ und dann Voyager 1.",
-					"Lies, wie weit sie weg ist."
+					"Lies, wie weit sie weg ist.",
+					"Um alle Sonden zu sehen, drück auf „Ebenen“ und schalte „Raumsonden“ ein."
 				]
 			}
 		},

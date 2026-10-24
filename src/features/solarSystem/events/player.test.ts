@@ -74,6 +74,22 @@ describe("a sky event", () => {
 		expect(useSpacecraftStore.getState().selectedCraftId).toBe("voyager2")
 	})
 
+	it("an event about a spacecraft shows the hidden layer, and leaving puts it back (#70)", () => {
+		expect(useSpacecraftStore.getState().showSpacecraft).toBe(false)
+		startEvent("voyagerNeptune")
+		expect(useSpacecraftStore.getState().showSpacecraft).toBe(true)
+		expect(useTourStore.getState().baseline?.spacecraft).toBe(false)
+		leaveEvent()
+		expect(useSpacecraftStore.getState().showSpacecraft).toBe(false)
+		expect(useSpacecraftStore.getState().selectedCraftId).toBeNull()
+
+		// shown before the event, it stays shown after it
+		useSpacecraftStore.getState().setShowSpacecraft(true)
+		startEvent("voyagerNeptune")
+		leaveEvent()
+		expect(useSpacecraftStore.getState().showSpacecraft).toBe(true)
+	})
+
 	it("ignores unknown events", () => {
 		startEvent("noSuchEvent")
 		expect(useTourStore.getState().tour).toBeNull()

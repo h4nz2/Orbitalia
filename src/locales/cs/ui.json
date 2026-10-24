@@ -303,6 +303,9 @@
 				"smallBodies": "Ukáže Pluto a další trpasličí planety, planetky, komety a oba pásy. Ve výchozím stavu je vypnutý, aby planety zůstaly přehledné.",
 				"smallBodies@simple": "Ukáže Pluto, komety a pás planetek.",
 				"smallBodies@advanced": "Přidá trpasličí planety, pojmenované planetky, komety s ohony a pás planetek i Kuiperův pás jako oblaka teček (každá tečka zastupuje mnoho skutečných těles).",
+				"spacecraft": "Ukáže skutečné kosmické sondy, které lidé vyslali, třeba Voyager 1 a Vesmírný dalekohled Jamese Webba, tam, kde jsou k zobrazenému datu. Ve výchozím stavu je vypnutý, aby planety zůstaly přehledné.",
+				"spacecraft@simple": "Ukáže sondy, které lidé poslali do vesmíru.",
+				"spacecraft@advanced": "Přidá sondy na jejich změřených polohách (data sledování NASA/JPL) k zobrazenému datu, s jejich názvy a dráhou vybrané sondy. Když kdekoli vybereš sondu, zapne se sám.",
 				"alwaysLit": "Osvětlí každé těleso z místa, odkud se díváš, takže noční strana není černá. Dobré pro prohlížení povrchů; skryje ale den a noc.",
 				"alwaysLit@simple": "Osvětlí každou planetu z tvé strany, takže nic není tmavé. Pak ale neuvidíš den a noc!",
 				"alwaysLit@advanced": "Osvětluje každé těleso z místa pozorovatele místo ze Slunce: žádné noční strany, fáze ani stíny zatmění. Dobré pro detaily povrchu, špatné pro geometrii slunečního světla."
@@ -313,7 +316,8 @@
 				"allMoonsPoster@simple": "Na plakátu jsou malé měsíce schované. Není pro ně místo!",
 				"orbitNames": "{missing, select, orbits {Nejdřív zapni Dráhy.} labels {Nejdřív zapni Názvy.} other {Nejdřív zapni Dráhy a Názvy.}}"
 			},
-			"smallBodies": "Malá tělesa"
+			"smallBodies": "Malá tělesa",
+			"spacecraft": "Kosmické sondy"
 		},
 		"scale": {
 			"label": "Měřítko",

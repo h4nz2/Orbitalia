@@ -4,6 +4,7 @@ import { J2000_JD } from "@/sim"
 import { useScaleStore } from "@/store/scale"
 import { useSimStore } from "@/store/sim"
 import { simSearchSchema } from "@/store/simSearch"
+import { useSpacecraftStore } from "@/store/spacecraft"
 import { useTourStore } from "@/store/tour"
 
 import { nextStop, startTour, tourStatus } from "../tours/player"
@@ -15,6 +16,7 @@ afterEach(() => {
 	useSimStore.setState(useSimStore.getInitialState(), true)
 	useScaleStore.setState(useScaleStore.getInitialState(), true)
 	useTourStore.setState(useTourStore.getInitialState(), true)
+	useSpacecraftStore.setState(useSpacecraftStore.getInitialState(), true)
 })
 
 /** Wanders away from any start: another body, a held frame, speed, layers, scale. */
@@ -91,6 +93,31 @@ describe("restoreStart", () => {
 		// the scale switch animates back to the default
 		expect(useScaleStore.getState().targetId).toBe("everythingVisible")
 		expect(useScaleStore.getState().transition).not.toBeNull()
+	})
+
+	it("puts the spacecraft layer back as the link had it (#70)", () => {
+		const craft = () => useSpacecraftStore.getState()
+		// shown since, hidden in the link: hidden again, nothing selected
+		craft().selectCraft("juno")
+		restoreStart({ focus: "saturn" }, true)
+		expect(craft().showSpacecraft).toBe(false)
+		expect(craft().selectedCraftId).toBeNull()
+		// the link shows them: shown again
+		restoreStart(simSearchSchema.parse({ spacecraft: true }), true)
+		expect(craft().showSpacecraft).toBe(true)
+		// a lesson riding along with a craft shows them without the switch
+		craft().setShowSpacecraft(false)
+		restoreStart(
+			simSearchSchema.parse({
+				craft: "voyager1",
+				follow: true,
+				focus: "jupiter",
+			}),
+			true,
+		)
+		expect(sim().view).toMatchObject({ kind: "craft", id: "voyager1" })
+		expect(craft().showSpacecraft).toBe(true)
+		expect(craft().selectedCraftId).toBe("voyager1")
 	})
 
 	it("stops a running tour", () => {

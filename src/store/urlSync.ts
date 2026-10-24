@@ -3,11 +3,12 @@
  *
  * On mount the validated search params (`focus`, `at`, `sel`, `cam`, `t`,
  * `warp`, the layer switches `orbits`, `labels`, `moons`, `markers` and the
- * scale preset `scale`; #29's `paused`, `present` and `contrast`) seed the store: the view (`focus`: a body, with `at`
+ * scale preset `scale`; #29's `paused`, `present` and `contrast`; #70's
+ * `spacecraft`) seed the store: the view (`focus`: a body, with `at`
  * a point in space near it, absent: the overview) and its camera shot are
  * applied as a jump, so a shared link opens exactly on the view it was taken
  * from. From then on view, selection, camera shot, warp, the layer switches
- * and the scale preset are written to the URL
+ * (the spacecraft's too) and the scale preset are written to the URL
  * as they change (the shot when the camera comes to rest) and the simulation
  * time follows at most once per second, and only while it is slow enough to
  * be worth a link (paused or |warp| <= 1 min/s).
@@ -123,6 +124,8 @@ type Mirrored = Omit<
 		scalePreset?: ScalePresetId | null
 		/** The guided tour in progress (#28), see `tourSearch` in ./tour.ts. */
 		tour?: TourSearch
+		/** The spacecraft layer (#70, `useSpacecraftStore`); absent writes nothing. */
+		showSpacecraft?: boolean
 	}
 
 type MirroredClock = Pick<SimState, "timeWarp" | "simTimeJD">
@@ -185,6 +188,7 @@ export function searchFromState(
 	search.orbitNames = state.showOrbitLabels ? true : undefined
 	search.smallBodies = state.showSmallBodies ? true : undefined
 	search.allMoons = state.showAllMoons ? true : undefined
+	search.spacecraft = state.showSpacecraft === true ? true : undefined
 	search.scale =
 		state.scalePreset != null && state.scalePreset !== DEFAULT_SCALE_PRESET
 			? state.scalePreset
@@ -208,6 +212,7 @@ export const sameSearch = (a: SimSearch, b: SimSearch): boolean =>
 	a.orbitNames === b.orbitNames &&
 	a.smallBodies === b.smallBodies &&
 	a.allMoons === b.allMoons &&
+	a.spacecraft === b.spacecraft &&
 	a.scale === b.scale &&
 	a.tour === b.tour &&
 	a.stop === b.stop &&
@@ -330,6 +335,13 @@ export const layersFromSearch = (search: SimSearch): Layers => ({
 	showAllMoons: search.allMoons === true,
 })
 
+/**
+ * The spacecraft layer a search opens with (#70): off unless the link turns it
+ * on. A link that chooses a craft shows it anyway, through `selectCraft`.
+ */
+export const spacecraftFromSearch = (search: SimSearch): boolean =>
+	search.spacecraft === true
+
 /** The scale preset a search opens in: `scale` when it names a preset, else the default. */
 export const scaleFromSearch = (search: SimSearch): ScalePresetId =>
 	isScalePresetId(search.scale) ? search.scale : DEFAULT_SCALE_PRESET
@@ -390,6 +402,10 @@ export function useSimUrlSync(): void {
 			store.anchorFrame(frameId, { shot: shot ?? undefined, durationMs: 0 })
 		}
 		store.select(selectedId)
+		// the spacecraft layer (#70), before a followed craft is chosen (which shows it)
+		useSpacecraftStore
+			.getState()
+			.setShowSpacecraft(spacecraftFromSearch(searchRef.current))
 		// following a spacecraft (#57): its card is the one shown
 		if (view.kind === "craft") {
 			useSpacecraftStore.getState().selectCraft(view.id)
@@ -423,6 +439,7 @@ export function useSimUrlSync(): void {
 						...sim,
 						scalePreset: useScaleStore.getState().targetId,
 						tour: tourSearch(useTourStore.getState(), isListedTour),
+						showSpacecraft: useSpacecraftStore.getState().showSpacecraft,
 					},
 					searchRef.current,
 					hidesTimeInUrl(useBirthdayStore.getState()),
@@ -520,6 +537,12 @@ export function useSimUrlSync(): void {
 		const unsubscribeScale = useScaleStore.subscribe((state, previous) => {
 			if (state.targetId !== previous.targetId) write()
 		})
+		// the spacecraft layer (#70): one of its switches, or a craft chosen
+		const unsubscribeSpacecraft = useSpacecraftStore.subscribe(
+			(state, previous) => {
+				if (state.showSpacecraft !== previous.showSpacecraft) write()
+			},
+		)
 		// a tour starting, moving to another stop, or ending (#28)
 		const unsubscribeTour = useTourStore.subscribe((state, previous) => {
 			if (
@@ -556,6 +579,7 @@ export function useSimUrlSync(): void {
 			recorder.dispose()
 			setHistoryBack(null)
 			unsubscribeScale()
+			unsubscribeSpacecraft()
 			unsubscribeTour()
 			unsubscribeBirthday()
 			unsubscribePresentation()

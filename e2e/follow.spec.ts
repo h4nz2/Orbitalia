@@ -7,7 +7,8 @@ import { cameraAtRest, nextFrames } from "./support/scene"
 // it centred while time runs; Watch on a flyby sets the time and the speed
 // and follows; the view turns and zooms without ending it; the way out, a
 // world chosen and Back end it and give back normal control; and the link
-// reopens the same follow view. Every date is pinned in the links.
+// reopens the same follow view, the hidden spacecraft layer shown (#70).
+// Every date is pinned in the links.
 
 // software WebGL is slow, and flights and time glides must land first
 test.describe.configure({ timeout: 240_000 })
@@ -204,6 +205,12 @@ test("the link reopens the same follow view", async ({ page, context }) => {
 	const url = page.url()
 	expect(url).toContain("craft=voyager1")
 	expect(url).toContain("follow=true")
+	// the link had no `spacecraft=true`: following the craft showed the layer (#70)
+	expect(url).toContain("spacecraft=true")
+	await expect(page.locator("span[data-craft=voyager1]")).toHaveAttribute(
+		"data-visible",
+		"true",
+	)
 
 	const again = await context.newPage()
 	await ready(again, url.replace(/^https?:\/\/[^/]+/, ""))
