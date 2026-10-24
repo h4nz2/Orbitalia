@@ -2,7 +2,8 @@
  * Teacher and presentation mode (#29): a prepared link opens exactly on its
  * view, a lesson runs from the keyboard with every control hidden, and one
  * key brings back the start; high contrast, reduced motion and the screen
- * reader's live region; sharing; and a layout that survives a projector.
+ * reader's live region; sharing (this view or a fresh start, #69; a clock
+ * showing now stays out of the link); and a layout that survives a projector.
  */
 import { expect, test, type Locator, type Page } from "@playwright/test"
 
@@ -261,8 +262,7 @@ test("share: the link is the view, copied or scanned", async ({
 	await context.grantPermissions(["clipboard-read", "clipboard-write"])
 	await page.setViewportSize({ width: 1366, height: 768 })
 	await open(page, "focus=jupiter&lang=en")
-	// a running clock rewrites `t` in the address every second: hold it still, so the
-	// shared link and the address are compared at the same instant
+	// a paused clock is a chosen moment, so the address and the link carry it (#69)
 	await page.evaluate(() =>
 		window.__orbitalia!.store.getState().setPaused(true),
 	)
@@ -333,6 +333,178 @@ test("share: the link is the view, copied or scanned", async ({
 		await expect(phone ? more : share, where).toBeFocused()
 	}
 	expect((await state(page)).focusId).toBe("jupiter")
+})
+
+/** The `t` of the address, or null. */
+const addressTime = (page: Page) => {
+	const t = new URL(page.url()).searchParams.get("t")
+	return t === null ? null : Number(t)
+}
+
+/** The wall clock as a Julian Date. */
+const nowJD = () => Date.now() / 86_400_000 + 2440587.5
+
+test("a clock that only shows now stays out of the link; leaving it writes the moment at once (#69)", async ({
+	page,
+}) => {
+	await page.setViewportSize({ width: 1366, height: 768 })
+	await open(page, "lang=en")
+	await cameraAtRest(page)
+	// a few seconds on the untouched overview: no time in the address
+	await page.waitForTimeout(3000)
+	expect(addressTime(page)).toBeNull()
+	const entries = await page.evaluate(() => history.length)
+
+	// pause: `t` within a second and a half, written over the entry on screen
+	await page.keyboard.press("Space")
+	await expect(
+		page.getByRole("button", { name: "Pause", pressed: true }),
+	).toBeVisible()
+	await expect(page).toHaveURL(/[?&]t=\d+(\.\d+)?(&|$)/, { timeout: 1500 })
+	expect(Math.abs(addressTime(page)! - nowJD())).toBeLessThan(2 / 1440)
+	expect(await page.evaluate(() => history.length)).toBe(entries)
+
+	// running again a moment later: still the present, so `t` goes again
+	await page.keyboard.press("Space")
+	await expect.poll(() => addressTime(page)).toBeNull()
+
+	// straight to 1 day/s, where `t` is not mirrored: the link keeps the moment it left now
+	const left = nowJD()
+	await page.evaluate(() =>
+		window.__orbitalia!.store.getState().setTimeWarp(86400),
+	)
+	await expect(page).toHaveURL(/[?&]warp=86400(&|$)/)
+	expect(addressTime(page)).not.toBeNull()
+	expect(Math.abs(addressTime(page)! - left)).toBeLessThan(2 / 1440)
+	const fast = addressTime(page)
+	await page.waitForTimeout(2000)
+	expect(addressTime(page)).toBe(fast)
+
+	// back to 1x and Now: the present again, no `t`
+	await page.evaluate(() => {
+		const store = window.__orbitalia!.store.getState()
+		store.setTimeWarp(1)
+		store.setNow()
+	})
+	await expect.poll(() => addressTime(page), { timeout: 10_000 }).toBeNull()
+	expect(new URL(page.url()).searchParams.has("warp")).toBe(false)
+	expect(await page.evaluate(() => history.length)).toBe(entries)
+
+	// a time travel at 1x: `t` within a second and a half
+	await page.evaluate(() =>
+		window.__orbitalia!.store.getState().travelTo(2451545),
+	)
+	await expect.poll(() => addressTime(page), { timeout: 1500 }).not.toBeNull()
+	await expect
+		.poll(() => addressTime(page), { timeout: 10_000 })
+		.toBeCloseTo(2451545, 1)
+
+	// R, back to the start of a link taken at now: now again, at 1x, with no `t`
+	await page.evaluate(() =>
+		window.__orbitalia!.store.getState().setTimeWarp(-3600),
+	)
+	await page.keyboard.press("r")
+	await expect(liveRegion(page)).toHaveText("Back to the start")
+	await expect.poll(() => addressTime(page), { timeout: 15_000 }).toBeNull()
+	const back = await state(page)
+	expect(back.timeWarp).toBe(1)
+	expect(back.paused).toBe(false)
+	expect(Math.abs(back.simTimeJD - nowJD())).toBeLessThan(2 / 1440)
+})
+
+test("share: a fresh start plays the opening for everyone, then asks the quick look (#69)", async ({
+	page,
+	context,
+	browser,
+}) => {
+	await page.setViewportSize({ width: 1366, height: 768 })
+	await open(page, "focus=jupiter&lang=en")
+	await page.getByRole("button", { name: "Share", exact: true }).click()
+	const panel = page.getByRole("dialog", { name: "Share", exact: true })
+	const choice = panel.getByRole("radiogroup", { name: "What the link opens" })
+	// this view by default
+	await expect(choice.getByRole("radio", { name: "This view" })).toBeChecked()
+	await expect(
+		panel.getByRole("textbox", { name: "Link to this view" }),
+	).toHaveValue(/focus=jupiter/)
+
+	// a fresh start: the app's address with the language, the reading level and intro=play
+	await choice.getByText("A fresh start", { exact: true }).click()
+	await expect(
+		choice.getByRole("radio", { name: "A fresh start" }),
+	).toBeChecked()
+	const field = panel.getByRole("textbox", { name: "Link to a fresh start" })
+	const origin = new URL(page.url()).origin
+	await expect(field).toHaveValue(
+		`${origin}/solar_system?lang=en&reading=standard&intro=play`,
+	)
+	await expect(
+		panel.getByRole("img", { name: "QR code of the link to a fresh start" }),
+	).toBeVisible()
+	const link = await field.inputValue()
+
+	// the class code follows the choice, and the choice holds while the page is open
+	await panel
+		.getByRole("button", { name: "Show the QR code to the class" })
+		.click()
+	const large = page.getByRole("dialog", {
+		name: "Scan to start Orbitalia from the beginning on a phone or tablet",
+	})
+	await expect(large).toBeVisible()
+	await expect(
+		large.getByRole("img", { name: "QR code of the link to a fresh start" }),
+	).toBeVisible()
+	await page.keyboard.press("Escape")
+	await expect(large).toBeHidden()
+	await page.getByRole("button", { name: "Share", exact: true }).click()
+	await expect(
+		choice.getByRole("radio", { name: "A fresh start" }),
+	).toBeChecked()
+	// the view itself is untouched
+	expect((await state(page)).focusId).toBe("jupiter")
+
+	// a student who has seen the opening before (this context remembers it) gets it again
+	const student = await context.newPage()
+	await student.goto(link)
+	await expect(student.getByTestId("intro-skip")).toBeVisible({
+		timeout: 60_000,
+	})
+	expect(
+		await student.evaluate(() => localStorage.getItem("orbitalia.introSeen")),
+	).toBe("1")
+	await student.getByTestId("intro-skip").click()
+	// asked once on this device, as after any opening (#44)
+	await expect(student.getByTestId("quick-look-ask")).toBeVisible()
+	await expect(student).not.toHaveURL(/intro=/)
+	await student.close()
+
+	// on a phone the choice lives in More's "Link and QR code", finger-sized
+	const phone = await browser.newContext({
+		viewport: { width: 390, height: 844 },
+		isMobile: true,
+		hasTouch: true,
+	})
+	const teacher = await phone.newPage()
+	await open(teacher, "focus=jupiter&lang=en")
+	await teacher.getByTestId("more-menu").tap()
+	const more = teacher.getByTestId("more-panel")
+	await more.getByRole("button", { name: "Link and QR code" }).tap()
+	const phoneChoice = more.getByRole("radiogroup", {
+		name: "What the link opens",
+	})
+	await phoneChoice.getByText("A fresh start", { exact: true }).tap()
+	await expect(
+		more.getByRole("textbox", { name: "Link to a fresh start" }),
+	).toHaveValue(/\/solar_system\?lang=en&reading=standard&intro=play$/)
+	for (const segment of ["This view", "A fresh start"]) {
+		const box = (await phoneChoice
+			.locator("label")
+			.filter({ hasText: segment })
+			.boundingBox())!
+		expect(box.height, segment).toBeGreaterThanOrEqual(43.5)
+		expect(box.x + box.width, segment).toBeLessThanOrEqual(390)
+	}
+	await phone.close()
 })
 
 /** Every control a teacher needs lies fully inside the viewport. */

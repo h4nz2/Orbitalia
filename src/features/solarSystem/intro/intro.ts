@@ -42,7 +42,9 @@ import {
 
 /**
  * Remembered on this device only (never sent anywhere): the opening has been
- * shown here, so a returning visitor goes straight to the overview.
+ * shown here, so a returning visitor goes straight to the overview. Written
+ * when it ends (#69), however it ends; a tab closed mid-way leaves it unseen,
+ * so it plays again next time.
  */
 export const INTRO_SEEN_KEY = "orbitalia.introSeen"
 
@@ -112,8 +114,8 @@ const withOwnScale = (change: () => void) => {
 /**
  * Plays the opening from the start (first visit, or "Play the opening again"):
  * back to a known state (overview, Sun-centred, nothing selected), true scale,
- * then the sequence, its captions timed for `readingLevel`. Marks the opening
- * as seen on this device.
+ * then the sequence, its captions timed for `readingLevel`. It counts as seen
+ * only once it ends (`endIntro`).
  */
 export function startIntro(
 	readingLevel: ReadingLevel = DEFAULT_READING_LEVEL,
@@ -140,13 +142,18 @@ export function startIntro(
 	})
 	withOwnScale(() => useScaleStore.getState().setPreset(INTRO_SCALE))
 	useSimStore.getState().playSequence(steps)
-	writePreference(INTRO_SEEN_KEY, "1")
 }
 
-/** Ends the opening and hands over: the default scale, the hints, and Earth pulsing. */
+/**
+ * Ends the opening and hands over: the default scale, the hints, and Earth
+ * pulsing. Every end comes through here (it ran out, Skip, Next on the last
+ * beat, Escape, a drag, a world chosen, the viewer's own scale), so this is
+ * where it becomes seen on this device (#69).
+ */
 export function endIntro(how: IntroEnd, now: number = performance.now()): void {
 	const intro = useIntroStore.getState()
 	if (intro.status !== "playing") return
+	writePreference(INTRO_SEEN_KEY, "1")
 	// first, so the store changes below never end it a second time
 	useIntroStore.setState({
 		status: "handover",
@@ -214,13 +221,13 @@ export function previousBeat(): void {
 	useSimStore.getState().goToStep(Math.max(0, sequence.index - 1))
 }
 
-/** Leaving the page: nothing of the opening survives. */
+/**
+ * Leaving the page: nothing of the opening survives. Like a tab closed
+ * mid-way, it is no end: an opening cut short here is not seen (#69).
+ */
 export function cancelIntro(): void {
 	const intro = useIntroStore.getState()
-	const sim = useSimStore.getState()
-	if (sim.sequence !== null && sim.sequence.steps === intro.steps) {
-		sim.stopSequence()
-	}
+	// first, so stopping its sequence below never counts as an end
 	useIntroStore.setState({
 		status: "off",
 		steps: null,
@@ -230,6 +237,10 @@ export function cancelIntro(): void {
 		pulse: false,
 		hints: false,
 	})
+	const sim = useSimStore.getState()
+	if (sim.sequence !== null && sim.sequence.steps === intro.steps) {
+		sim.stopSequence()
+	}
 }
 
 /** "Show how to move around": the hints again, without the opening. */

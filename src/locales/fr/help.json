@@ -73,7 +73,8 @@
 			},
 			"how": {
 				"standard": [
-					"Elle passe une fois, à la première visite ; « Passer l’intro », un glissement ou Échap l’arrêtent à tout moment.",
+					"Elle passe à la première visite, et encore la fois suivante si la page est fermée avant la fin ; « Passer l’intro », un glissement ou Échap l’arrêtent à tout moment.",
+					"Un lien vers la vue d’ensemble telle que l’application l’ouvre (tout le système solaire à la date d’aujourd’hui, depuis Partager) la lance pour qui ne l’a pas encore vue ; « Depuis le début » dans Partager la lance pour tout le monde.",
 					"Pour rester sur un texte, appuie sur la barre d’espace, touche la scène ou appuie sur le bouton pause ; encore une fois, et ça reprend. En pause, tu peux tourner la vue sans arrêter l’introduction.",
 					"« Suivant » (ou la flèche droite) passe tout de suite à la partie suivante ; en pause, une partie à la fois.",
 					"Après la première introduction, l’application demande une fois si tu veux un petit aperçu de ce que tu peux faire (voir « Un petit aperçu »).",
@@ -82,6 +83,7 @@
 				],
 				"simple": [
 					"Elle passe la première fois que tu viens.",
+					"Un lien vers tout le système solaire la lance aussi, si tu ne l’as pas encore vue.",
 					"Appuie sur la barre d’espace ou touche l’image pour l’arrêter. Encore une fois, et ça repart.",
 					"« Suivant » montre la partie suivante.",
 					"Pour la revoir, appuie sur la flèche à côté de « Aide » (sur un téléphone, sur « Plus »), puis sur « Revoir le début »."
@@ -1106,11 +1108,13 @@
 		},
 		"share": {
 			"title": "Partager avec la classe",
-			"what": "Un lien vers exactement ce qui est à l’écran, avec un bouton pour le copier et un QR code assez grand pour être scanné depuis le dernier rang.",
-			"why": "Les élèves ouvrent la même vue sur leur propre tablette et explorent à partir de là, sans rien taper.",
+			"what": "Un lien vers exactement ce qui est à l’écran, ou pour partir du début avec l’introduction, avec un bouton pour le copier et un QR code assez grand pour être scanné depuis le dernier rang.",
+			"why": "Les élèves ouvrent la même vue sur leur propre tablette et explorent à partir de là, sans rien taper. Partir du début accueille une classe qui découvre l’application : tout le monde voit l’introduction, et les nouveaux le petit aperçu.",
 			"how": [
-				"Ouvre Partager. Sur un téléphone, ouvre Plus : « Partager » envoie le lien directement dans une discussion ou un e-mail, et « Lien et QR code » ouvre ce panneau.",
-				"Copie le lien, ou appuie sur « Montrer le QR code à la classe »."
+				"Ouvre Partager. Sur un téléphone, ouvre Plus : « Partager » envoie le lien vers cette vue directement dans une discussion ou un e-mail, et « Lien et QR code » ouvre ce panneau.",
+				"Choisis ce que le lien ouvre : « Cette vue » (exactement ce qui est à l’écran) ou « Depuis le début » (l’application depuis le début dans ta langue : l’introduction pour tout le monde, puis le petit aperçu pour les nouveaux). Le lien et les deux QR codes suivent ton choix.",
+				"Copie le lien, ou appuie sur « Montrer le QR code à la classe ».",
+				"Tant que l’horloge montre le présent (1x, après « Maintenant »), le lien laisse la date de côté : il s’ouvre dans le présent de chacun. Pour partager un moment, mets le temps en pause ou choisis une date."
 			]
 		},
 		"ownHunt": {

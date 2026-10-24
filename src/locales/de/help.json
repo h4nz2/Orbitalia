@@ -73,7 +73,8 @@
 			},
 			"how": {
 				"standard": [
-					"Es läuft einmal, beim ersten Besuch; „Intro überspringen“, Ziehen oder Esc beenden es jederzeit.",
+					"Es läuft beim ersten Besuch, und beim nächsten Mal noch einmal, wenn die Seite geschlossen wird, bevor es zu Ende ist; „Intro überspringen“, Ziehen oder Esc beenden es jederzeit.",
+					"Ein Link zur Übersicht, wie die App sie öffnet (das ganze Sonnensystem am heutigen Tag, über „Teilen“), spielt es für alle ab, die es noch nicht gesehen haben; „Von vorn“ unter „Teilen“ spielt es für alle ab.",
 					"Um bei einem Text zu bleiben, drück die Leertaste, tippe auf die Szene oder drück den Pause-Knopf; noch einmal, und es geht weiter. Solange es angehalten ist, kannst du die Ansicht drehen, ohne das Intro zu beenden.",
 					"„Weiter“ (oder die Pfeiltaste nach rechts) geht gleich zum nächsten Teil; angehalten Teil für Teil.",
 					"Nach dem ersten Intro fragt die App einmal, ob du kurz sehen willst, was du hier machen kannst (siehe „Ein kurzer Blick“).",
@@ -82,6 +83,7 @@
 				],
 				"simple": [
 					"Es läuft, wenn du zum ersten Mal kommst.",
+					"Ein Link zum ganzen Sonnensystem zeigt es auch, wenn du es noch nicht gesehen hast.",
 					"Drück die Leertaste oder tippe auf das Bild, dann hält es an. Noch einmal, und es läuft weiter.",
 					"„Weiter“ zeigt den nächsten Teil.",
 					"Willst du es noch mal sehen? Drück auf den Pfeil neben „Hilfe“ (auf dem Handy auf „Mehr“) und dann auf „Den Anfang noch mal ansehen“."
@@ -1106,11 +1108,13 @@
 		},
 		"share": {
 			"title": "Mit der Klasse teilen",
-			"what": "Ein Link zu genau dem, was auf dem Bildschirm ist, mit einem Kopierknopf und einem QR-Code, der groß genug ist, um ihn aus der letzten Reihe zu scannen.",
-			"why": "Die Schülerinnen und Schüler öffnen dieselbe Ansicht auf ihren eigenen Tablets und erkunden von dort aus weiter, ohne etwas abzutippen.",
+			"what": "Ein Link zu genau dem, was auf dem Bildschirm ist, oder zu einem Start von vorn mit dem Intro, mit einem Kopierknopf und einem QR-Code, der groß genug ist, um ihn aus der letzten Reihe zu scannen.",
+			"why": "Die Schülerinnen und Schüler öffnen dieselbe Ansicht auf ihren eigenen Tablets und erkunden von dort aus weiter, ohne etwas abzutippen. Ein Start von vorn begrüßt eine Klasse, die die App noch nicht kennt: Alle sehen das Intro, und wer neu ist, den kurzen Blick.",
 			"how": [
-				"Öffne „Teilen“. Auf dem Handy öffne „Mehr“: „Teilen“ schickt den Link direkt in einen Chat oder eine Mail, und „Link und QR-Code“ öffnet dieses Feld.",
-				"Kopiere den Link, oder drücke „QR-Code der Klasse zeigen“."
+				"Öffne „Teilen“. Auf dem Handy öffne „Mehr“: „Teilen“ schickt den Link zu dieser Ansicht direkt in einen Chat oder eine Mail, und „Link und QR-Code“ öffnet dieses Feld.",
+				"Wähle, was der Link öffnet: „Diese Ansicht“ (genau das, was auf dem Bildschirm ist) oder „Von vorn“ (die App von Anfang an in deiner Sprache: das Intro für alle, danach der kurze Blick für alle, die neu sind). Der Link und beide QR-Codes folgen deiner Wahl.",
+				"Kopiere den Link, oder drücke „QR-Code der Klasse zeigen“.",
+				"Solange die Uhr die Gegenwart zeigt (1x, nach „Jetzt“), lässt der Link das Datum weg: Er öffnet sich bei allen in ihrer eigenen Gegenwart. Halte die Zeit an oder wähle ein Datum, um einen Moment zu teilen."
 			]
 		},
 		"ownHunt": {

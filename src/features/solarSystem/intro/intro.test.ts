@@ -8,6 +8,7 @@ import { useViewHistoryStore } from "@/store/viewHistory"
 import {
 	INTRO_SEEN_KEY,
 	RESTORE_SCALE_MS,
+	cancelIntro,
 	endIntro,
 	hasSeenIntro,
 	nextBeat,
@@ -97,11 +98,13 @@ describe("arrival", () => {
 		expect(hasSeenIntro()).toBe(false)
 		expect(() => startIntro()).not.toThrow()
 		expect(intro().status).toBe("playing")
+		expect(() => skipIntro()).not.toThrow()
+		expect(intro().status).toBe("handover")
 	})
 })
 
 describe("the opening", () => {
-	it("starts close on Earth in true scale and remembers it was shown here", () => {
+	it("starts close on Earth in true scale, and is not yet seen while it plays", () => {
 		sim().select("mars")
 		startIntro()
 		expect(intro().status).toBe("playing")
@@ -111,7 +114,9 @@ describe("the opening", () => {
 		// a replay starts from a known state
 		expect(sim().selectedId).toBeNull()
 		expect(scale().presetId).toBe("trueScale")
-		expect(storage.get(INTRO_SEEN_KEY)).toBe("1")
+		// #69: a tab closed mid-way plays it again next time
+		playThrough(2)
+		expect(storage.has(INTRO_SEEN_KEY)).toBe(false)
 	})
 
 	it("follows the beats and switches to Everything visible in the last one", () => {
@@ -140,6 +145,45 @@ describe("the opening", () => {
 		expect(sim().view).toEqual(OVERVIEW)
 		expect(sim().transition?.shot ?? HOME_SHOT).toEqual(HOME_SHOT)
 		expect(scale().presetId).toBe("everythingVisible")
+	})
+
+	it("is seen on this device once it ends, however it ends (#69)", () => {
+		const ends: Record<string, () => void> = {
+			ranOut: () => {
+				const at = playThrough(SCALE_BEAT)
+				arrive(at)
+				sim().tickSequence(sim().sequence!.holdUntil!)
+			},
+			next: () => {
+				playThrough(SCALE_BEAT)
+				nextBeat()
+			},
+			skip: skipIntro,
+			escape: () => sim().reset(),
+			drag: () => sim().userInput(),
+			world: () => sim().setFocus("jupiter"),
+			ownScale: () => scale().switchTo("textbook", 5000),
+		}
+		for (const [how, end] of Object.entries(ends)) {
+			storage.clear()
+			useIntroStore.setState(useIntroStore.getInitialState(), true)
+			useScaleStore.setState(useScaleStore.getInitialState(), true)
+			startIntro()
+			playThrough(1)
+			expect(storage.has(INTRO_SEEN_KEY), how).toBe(false)
+			end()
+			expect(intro().status, how).toBe("handover")
+			expect(storage.get(INTRO_SEEN_KEY), how).toBe("1")
+			expect(hasSeenIntro(), how).toBe(true)
+		}
+	})
+
+	it("is not seen when the page goes away mid-way", () => {
+		startIntro()
+		playThrough(2)
+		cancelIntro()
+		expect(intro().status).toBe("off")
+		expect(hasSeenIntro()).toBe(false)
 	})
 
 	it("stops pulsing once the viewer picks a body", () => {

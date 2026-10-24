@@ -73,7 +73,8 @@
 			},
 			"how": {
 				"standard": [
-					"Se reproduce una vez, en la primera visita; «Saltar la intro», arrastrar o Esc la terminan en cualquier momento.",
+					"Se reproduce en la primera visita, y otra vez la próxima si cierras la página antes de que termine; «Saltar la intro», arrastrar o Esc la terminan en cualquier momento.",
+					"Un enlace a la vista general tal como la abre la aplicación (todo el sistema solar en la fecha de hoy, desde Compartir) la reproduce para quien aún no la ha visto; «Desde el principio» en Compartir la reproduce para todos.",
 					"Para quedarte en un texto, pulsa la barra espaciadora, toca la escena o pulsa el botón de pausa; otra vez, y continúa. En pausa puedes girar la vista sin terminar la introducción.",
 					"«Siguiente» (o la flecha derecha) pasa ya a la siguiente parte; en pausa, de una en una.",
 					"Después de la primera introducción, la aplicación pregunta una vez si quieres ver rápidamente lo que puedes hacer (mira «Un vistazo rápido»).",
@@ -82,6 +83,7 @@
 				],
 				"simple": [
 					"Se ve la primera vez que entras.",
+					"Un enlace a todo el sistema solar también la pone, si todavía no la has visto.",
 					"Pulsa la barra espaciadora o toca la imagen para pararla. Otra vez, y sigue.",
 					"«Siguiente» muestra la parte siguiente.",
 					"Para verla otra vez, pulsa la flecha junto a «Ayuda» (en un móvil, «Más») y luego «Ver el principio otra vez»."
@@ -1106,11 +1108,13 @@
 		},
 		"share": {
 			"title": "Compartir con la clase",
-			"what": "Un enlace a exactamente lo que hay en pantalla, con un botón para copiarlo y un código QR lo bastante grande para escanearlo desde la última fila.",
-			"why": "Los alumnos abren la misma vista en sus propias tabletas y exploran desde ahí, sin tener que escribir nada.",
+			"what": "Un enlace a exactamente lo que hay en pantalla, o para empezar desde el principio con la introducción, con un botón para copiarlo y un código QR lo bastante grande para escanearlo desde la última fila.",
+			"why": "Los alumnos abren la misma vista en sus propias tabletas y exploran desde ahí, sin tener que escribir nada. Empezar desde el principio da la bienvenida a una clase que no conoce la aplicación: todos ven la introducción y quien sea nuevo, el vistazo rápido.",
 			"how": [
-				"Abre Compartir. En un móvil, abre Más: «Compartir» manda el enlace directamente a un chat o a un correo, y «Enlace y código QR» abre este panel.",
-				"Copia el enlace o pulsa «Mostrar el código QR a la clase»."
+				"Abre Compartir. En un móvil, abre Más: «Compartir» manda el enlace a esta vista directamente a un chat o a un correo, y «Enlace y código QR» abre este panel.",
+				"Elige qué abre el enlace: «Esta vista» (exactamente lo que hay en pantalla) o «Desde el principio» (la aplicación desde el inicio en tu idioma: la introducción para todos y después el vistazo rápido para quien sea nuevo). El enlace y los dos códigos QR siguen tu elección.",
+				"Copia el enlace o pulsa «Mostrar el código QR a la clase».",
+				"Mientras el reloj muestra el presente (1x, después de «Ahora»), el enlace no lleva la fecha: se abre en el presente de quien lo abre. Para compartir un momento, pausa el tiempo o elige una fecha."
 			]
 		},
 		"ownHunt": {

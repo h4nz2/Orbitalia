@@ -1,8 +1,10 @@
 import { describe, expect, it } from "vitest"
 
 import { bodyById } from "@/data"
-import { propagate, radToDeg } from "@/sim"
+import { dateToJD, propagate, radToDeg } from "@/sim"
 import { HOME_SHOT, OVERVIEW, isValidView } from "@/store/navigation"
+import { presentationSearch } from "@/store/presentation"
+import { searchFromState } from "@/store/urlSync"
 
 import {
 	CAPTION_FADE_MS,
@@ -221,5 +223,42 @@ describe("hasExplicitView", () => {
 		expect(hasExplicitView({ labels: false })).toBe(true)
 		expect(hasExplicitView({ frame: "earth" })).toBe(true)
 		expect(hasExplicitView({ birthday: true })).toBe(true)
+	})
+
+	it("is false for the address of the untouched overview while the clock shows now (#69)", () => {
+		const now = new Date("2025-03-20T09:30:00Z")
+		const overview = {
+			view: OVERVIEW,
+			selectedId: null,
+			shot: HOME_SHOT,
+			timeWarp: 1,
+			paused: false,
+			simTimeJD: dateToJD(now),
+			showOrbits: true,
+			showLabels: true,
+			showMoons: true,
+			showMarkers: true,
+			showOrbitLabels: false,
+		}
+		const address = {
+			...searchFromState(overview, {}, false, now),
+			...presentationSearch({
+				presenting: false,
+				highContrast: false,
+				paused: false,
+			}),
+		}
+		expect(hasExplicitView(address)).toBe(false)
+		// the same overview paused, or at another speed, is a moment someone chose
+		expect(
+			hasExplicitView(
+				searchFromState({ ...overview, paused: true }, {}, false, now),
+			),
+		).toBe(true)
+		expect(
+			hasExplicitView(
+				searchFromState({ ...overview, timeWarp: 3600 }, {}, false, now),
+			),
+		).toBe(true)
 	})
 })

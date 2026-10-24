@@ -1,10 +1,14 @@
 import { expect, test, type Page } from "@playwright/test"
 
+import { cameraAtRest } from "./support/scene"
+
 // The first ten seconds (#30): a first-time visitor gets the opening (close on
 // Earth in true scale, pull back, the switch to Everything visible) and a
 // hand-over with hints and a pulsing Earth; a returning visitor and a shared
 // link never do. Slow enough to read, at the viewer's own pace (#49): every
 // caption holds for its reading time, Space or a tap pauses it, Next steps it.
+// It counts as seen once it has ended, and a link of the untouched overview is
+// a plain arrival that plays it for a newcomer (#69).
 // playwright.config.ts makes every visitor a returning one; these tests clear
 // that to arrive for the first time.
 
@@ -148,7 +152,8 @@ test.describe("a first visit", () => {
 		// skippable from the very first frame
 		await expect(skip(page)).toBeVisible({ timeout: 60_000 })
 		await handle(page)
-		expect(await seen(page)).toBe("1")
+		// seen once it has ended, not while it plays (#69)
+		expect(await seen(page)).toBeNull()
 
 		// the first caption runs its course; the middle three are stepped with Next (what a
 		// natural hold looks like is measured on the first and the last); the last runs out
@@ -161,6 +166,7 @@ test.describe("a first visit", () => {
 		// hand-over: the overview a reset shows, in Everything visible, with hints and Earth pulsing
 		await expect(hints(page)).toBeVisible({ timeout: 60_000 })
 		await expect(card(page)).toHaveCount(0)
+		expect(await seen(page)).toBe("1")
 
 		// every beat played, in order: Earth and the Moon, the inner planets and the
 		// whole system in true scale, then the switch to Everything visible
@@ -241,9 +247,13 @@ test.describe("a first visit", () => {
 
 	test("Skip ends it at once, from the first frame", async ({ page }) => {
 		await page.goto("/solar_system")
-		await skip(page).click({ timeout: 60_000 })
+		await expect(skip(page)).toBeVisible({ timeout: 60_000 })
+		// not seen while it plays (#69)
+		expect(await seen(page)).toBeNull()
+		await skip(page).click()
 		await expect(card(page)).toHaveCount(0)
 		await expect(hints(page)).toBeVisible()
+		expect(await seen(page)).toBe("1")
 		await handle(page)
 		const after = await state(page)
 		expect(after.sequence).toBeNull()
@@ -364,6 +374,69 @@ test.describe("a first visit", () => {
 		expect(view.sequence).toBeNull()
 		expect(view.scale).toBe("everythingVisible")
 		expect(await seen(page)).toBeNull()
+
+		// a world alone is a view too (#69): never the opening, nor the quick look's question
+		await page.goto("/solar_system?focus=jupiter&lang=en")
+		await handle(page)
+		await cameraAtRest(page)
+		await expect(page.getByTestId("intro")).toHaveCount(0)
+		await expect(skip(page)).toHaveCount(0)
+		await expect(page.getByTestId("quick-look-ask")).toHaveCount(0)
+		expect((await state(page)).view).toEqual({ kind: "body", id: "jupiter" })
+		expect(await seen(page)).toBeNull()
+	})
+
+	test("the untouched overview's address holds no time, and opens the opening for a newcomer (#69)", async ({
+		page,
+		browser,
+	}) => {
+		await page.goto("/solar_system?lang=en")
+		await skip(page).click({ timeout: 60_000 })
+		await expect(hints(page)).toBeVisible()
+		await handle(page)
+		await cameraAtRest(page)
+		// a few seconds on the overview without touching anything: the clock shows
+		// now, so the address carries neither a time nor anything else of a view
+		await page.waitForTimeout(3000)
+		const link = new URL(page.url())
+		expect(link.searchParams.has("t")).toBe(false)
+		expect(
+			[...link.searchParams.keys()].filter(
+				(key) => key !== "lang" && key !== "reading",
+			),
+		).toEqual([])
+
+		// someone who never opened Orbitalia scans it: the opening, then the quick look's question
+		const context = await browser.newContext(firstVisit)
+		const newcomer = await context.newPage()
+		await newcomer.goto(link.toString())
+		await expect(skip(newcomer)).toBeVisible({ timeout: 60_000 })
+		await expect(card(newcomer)).toBeVisible()
+		await skip(newcomer).click()
+		await expect(newcomer.getByTestId("quick-look-ask")).toBeVisible()
+		await context.close()
+	})
+
+	test("closed during the second caption, it plays again next time (#69)", async ({
+		page,
+		context,
+	}) => {
+		await page.goto("/solar_system?lang=en")
+		await handle(page)
+		await onBeat(page, "earth")
+		await next(page).click()
+		await onBeat(page, "moon")
+		expect(await seen(page)).toBeNull()
+		await page.close()
+
+		const again = await context.newPage()
+		await again.goto("/solar_system?lang=en")
+		await expect(skip(again)).toBeVisible({ timeout: 60_000 })
+		await expect(card(again)).toBeVisible()
+		expect(await seen(again)).toBeNull()
+		await skip(again).click()
+		await expect(hints(again)).toBeVisible()
+		expect(await seen(again)).toBe("1")
 	})
 
 	test("a drag takes over: the opening ends and the planets grow back", async ({

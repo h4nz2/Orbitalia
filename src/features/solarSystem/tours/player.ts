@@ -19,7 +19,7 @@
  */
 import type { Tour } from "@/data/tours"
 import { tourById } from "@/data/tours"
-import { dateToJD } from "@/sim"
+import { isLive } from "@/sim"
 import { FLIGHT_PROFILE } from "@/store/flight"
 import { OVERVIEW_BODY_ID, homeShot, type Sequence } from "@/store/navigation"
 import { useScaleStore } from "@/store/scale"
@@ -275,10 +275,11 @@ export function exitTour(): void {
 	if (baseline?.scene !== undefined) restoreScene(baseline, baseline.scene)
 }
 
-/** The clock counts as showing the present within this many days of the wall clock (a minute). */
-const NOW_TOLERANCE_DAYS = 1 / 1440
-
-/** Where the viewer is now, for a tour that returns on exit. */
+/**
+ * Where the viewer is now, for a tour that returns on exit. A clock showing
+ * the present (`isLive`, src/sim/live.ts: 1x, within two minutes of the wall
+ * clock) goes back to "now", not to the instant the tour began.
+ */
 export function currentScene(
 	sim: SimState = useSimStore.getState(),
 	now: Date = new Date(),
@@ -289,10 +290,7 @@ export function currentScene(
 		frameId: sim.frameId,
 		selectedId: sim.selectedId,
 		jd: sim.simTimeJD,
-		atNow:
-			!sim.paused &&
-			sim.timeWarp === 1 &&
-			Math.abs(sim.simTimeJD - dateToJD(now)) < NOW_TOLERANCE_DAYS,
+		atNow: isLive(sim, now),
 	}
 }
 
