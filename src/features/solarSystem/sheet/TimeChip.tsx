@@ -14,7 +14,7 @@
 import { ActionIcon, Button } from "@mantine/core"
 import { IconClock, IconPlayerPause, IconPlayerPlay } from "@tabler/icons-react"
 
-import { formatDateTimeUTCParts, isoMinuteUTC, useI18n } from "@/i18n"
+import { clockWidths, formatClockUTC, isoMinuteUTC, useI18n } from "@/i18n"
 import { Hint } from "@/primitives/hint"
 import { jdToDate } from "@/sim"
 import { useSheetStore } from "@/store/sheet"
@@ -27,14 +27,22 @@ import { warpLabel } from "../ui/warp"
 
 import classes from "./Sheet.module.css"
 
-/** The simulation's date, short (the locale's own order), in its `<time>`. */
+/**
+ * The simulation's date, short (the locale's own order), in its `<time>`; as
+ * wide as the locale's widest date of the year (#71), so the chip keeps its
+ * size while time runs.
+ */
 function ShortDate() {
 	const jd = useThrottledSimTime()
 	const { formatLocale } = useI18n()
 	const date = jdToDate(jd)
 	return (
-		<time className={classes.chipDate} dateTime={isoMinuteUTC(date)}>
-			{formatDateTimeUTCParts(date, formatLocale).date}
+		<time
+			className={classes.chipDate}
+			dateTime={isoMinuteUTC(date)}
+			style={{ minWidth: `${clockWidths(formatLocale).date}ch` }}
+		>
+			{formatClockUTC(date, formatLocale).date}
 		</time>
 	)
 }

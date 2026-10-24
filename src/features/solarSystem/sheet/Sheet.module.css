@@ -79,12 +79,15 @@
 	font-weight: 700;
 }
 
+/* its least width in ch (#71, set in TimeChip.tsx) is exact in a monospaced font */
 .chipDate {
+	display: inline-block;
 	margin-inline-start: 0.5rem;
 	font-weight: 500;
 	color: var(--mantine-color-gray-3);
 	font-family: var(--mantine-font-family-monospace);
 	font-size: var(--mantine-font-size-xs);
+	text-align: center;
 }
 
 /* at full height, tucked into the strip beside the handle: play or pause and the speed */

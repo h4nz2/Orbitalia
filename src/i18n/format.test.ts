@@ -2,9 +2,11 @@ import { describe, expect, it } from "vitest"
 
 import { J2000_JD, jdToDate } from "@/sim"
 
+import { LOCALES } from "./catalog"
 import {
+	clockWidths,
+	formatClockUTC,
 	formatDateTimeUTC,
-	formatDateTimeUTCParts,
 	formatNumber,
 	formatQuantity,
 	formatSignificant,
@@ -85,30 +87,72 @@ describe("formatDateTimeUTC", () => {
 	})
 })
 
-describe("formatDateTimeUTCParts", () => {
+describe("formatClockUTC", () => {
 	const date = new Date(Date.UTC(2026, 8, 24, 10, 35, 59))
 	const whole = ({ date, separator, time }: DateTimeParts) =>
 		date + separator + time
 
 	it("splits before the hour, and the halves read as the whole", () => {
-		expect(formatDateTimeUTCParts(date, "en")).toEqual({
+		expect(formatClockUTC(date, "en")).toEqual({
 			date: "Sep 24, 2026",
 			separator: ", ",
 			time: "10:35 UTC",
 		})
+		// from the 10th on, the clock is the date in a sentence
 		for (const locale of ["en", "de", "cs", "es", "fr", "de-CH"])
-			expect(whole(formatDateTimeUTCParts(date, locale))).toBe(
+			expect(whole(formatClockUTC(date, locale))).toBe(
 				formatDateTimeUTC(date, locale),
 			)
 		const bc = new Date(Date.UTC(-500, 0, 1))
-		expect(formatDateTimeUTCParts(bc, "de").date).toBe("1. Jan. 501 v. Chr.")
-		expect(whole(formatDateTimeUTCParts(bc, "en"))).toBe(
-			formatDateTimeUTC(bc, "en"),
-		)
+		expect(formatClockUTC(bc, "de").date).toBe("01. Jan. 501 v. Chr.")
+		expect(whole(formatClockUTC(bc, "en"))).toBe("Jan 01, 501 BC, 00:00 UTC")
+	})
+
+	it("gives the day two digits, where the month is a word (#71)", () => {
+		const may = new Date(Date.UTC(2026, 4, 1, 9, 5))
+		expect(formatClockUTC(may, "en").date).toBe("May 01, 2026")
+		expect(formatClockUTC(may, "de").date).toBe("01. Mai 2026")
+		expect(formatClockUTC(may, "es").date).toBe("01 may 2026")
+		expect(formatClockUTC(may, "fr").date).toBe("01 mai 2026")
+		// a month written as a number keeps the locale's day: "01. 5. 2026" reads wrong
+		expect(formatClockUTC(may, "cs").date).toBe("1. 5. 2026")
+		// a sentence keeps its own day
+		expect(formatDateTimeUTC(may, "en")).toBe("May 1, 2026, 09:05 UTC")
 	})
 
 	it("keeps the dash for a Date out of range", () => {
-		expect(whole(formatDateTimeUTCParts(new Date(Number.NaN), "en"))).toBe("—")
+		expect(whole(formatClockUTC(new Date(Number.NaN), "en"))).toBe("—")
+	})
+})
+
+describe("clockWidths", () => {
+	const length = (text: string) => [...text].length
+
+	it("covers every month of the year in every language (#71)", () => {
+		for (const locale of [...LOCALES, "de-CH", "en-GB", "fr-CA", "es-MX"]) {
+			const widths = clockWidths(locale)
+			for (let month = 0; month < 12; month++)
+				for (const day of [1, 9, 10, 28])
+					for (const [hour, minute] of [
+						[0, 0],
+						[23, 59],
+					]) {
+						const at = new Date(Date.UTC(2026, month, day, hour, minute))
+						const { date, separator, time } = formatClockUTC(at, locale)
+						const what = `${locale}: ${date + separator + time}`
+						expect(widths.date, what).toBeGreaterThanOrEqual(length(date))
+						expect(widths.time, what).toBeGreaterThanOrEqual(length(time))
+						expect(widths.whole, what).toBeGreaterThanOrEqual(
+							length(date + separator + time),
+						)
+					}
+		}
+	})
+
+	it("is the widest date of the year, worked out once per locale", () => {
+		// "28. Sept. 2026, 23:59 UTC"
+		expect(clockWidths("de")).toEqual({ date: 14, time: 9, whole: 25 })
+		expect(clockWidths("de")).toBe(clockWidths("de"))
 	})
 })
 
