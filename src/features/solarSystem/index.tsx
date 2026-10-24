@@ -11,6 +11,7 @@ import { useSimUrlSync } from "@/store/urlSync"
 import BackButton from "./back/BackButton"
 import FrameBadge from "./frame/FrameBadge"
 import FrameMenu from "./frame/FrameMenu"
+import { usePointOfViewInMore } from "./frame/placement"
 import HuntSpot from "./hunt/HuntSpot"
 import IntroController from "./intro/IntroController"
 import IntroMenu from "./intro/IntroMenu"
@@ -129,6 +130,8 @@ const Corner = () => {
  */
 const SolarSystem = () => {
 	const upright = useUprightPhone()
+	// a phone too narrow for it beside the name: the point of view is under More (#75)
+	const pointOfViewInMore = usePointOfViewInMore()
 	return (
 		<div className={classes.page}>
 			<UrlSync />
@@ -157,9 +160,11 @@ const SolarSystem = () => {
 						<BackButton />
 						<OverviewButton />
 						<FocusPicker />
-						<div className={classes.frame} data-dim>
-							<FrameMenu />
-						</div>
+						{!pointOfViewInMore && (
+							<div className={classes.frame} data-dim>
+								<FrameMenu />
+							</div>
+						)}
 					</div>
 					<FrameBadgePanel />
 					<LightSlot

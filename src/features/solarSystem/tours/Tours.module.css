@@ -240,6 +240,12 @@
 		row-gap: 0.25rem;
 	}
 
+	/* the sheet scrolls the words, fading them before Back and Next (#75): no scroller inside it to slice a line */
+	.text {
+		max-height: none;
+		overflow-y: visible;
+	}
+
 	.tourTitle {
 		white-space: normal;
 		overflow: visible;

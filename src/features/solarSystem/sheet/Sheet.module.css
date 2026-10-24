@@ -4,25 +4,23 @@
  * the pieces it holds.
  */
 
-/* the strip above the content: the handle, and at full height the time chip */
+/*
+ * the strip above the content: the handle, and at full height the time chip;
+ * its height and the handle's top come from heights.ts (`stripPx`,
+ * `handleSpan`), so the handle never lies over the header under it (#75)
+ */
 .strip {
 	position: relative;
 	flex: none;
-	height: 1.5rem; /* STRIP_PX in Sheet.tsx */
 	touch-action: none;
-}
-
-:global([data-sheet-height="full"]) > .strip {
-	height: 3.75rem; /* STRIP_FULL_PX */
 }
 
 /* a finger-sized button, drawn as a short bar */
 .handle {
 	position: absolute;
 	left: 50%;
-	top: -0.625rem;
 	width: 5.5rem;
-	height: 2.75rem; /* 44 px (#58) */
+	height: 2.75rem; /* 44 px (#58), HANDLE_PX */
 	transform: translateX(-50%);
 	display: flex;
 	align-items: center;
@@ -35,10 +33,6 @@
 	cursor: grab;
 	touch-action: none;
 	-webkit-tap-highlight-color: transparent;
-}
-
-:global([data-sheet-height="full"]) > .strip > .handle {
-	top: 0.5rem;
 }
 
 .handle:active {

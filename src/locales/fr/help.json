@@ -482,12 +482,12 @@
 			},
 			"how": {
 				"standard": [
-					"Clique sur « Centré sur le Soleil » à côté du champ des noms et choisis « Vu depuis la Terre : les planètes » ou « Vu depuis la Terre : la Lune ».",
+					"Clique sur « Centré sur le Soleil » à côté du champ des noms (sur un téléphone étroit, dans « Plus ») et choisis « Vu depuis la Terre : les planètes » ou « Vu depuis la Terre : la Lune ».",
 					"Regarde le badge qui apparaît : il dit ce que fait le monde sélectionné dans notre ciel.",
 					"« Point fixe : … » fonctionne avec n’importe quel monde ; « Revenir au Soleil au centre » te ramène au départ."
 				],
 				"simple": [
-					"Clique sur « Le Soleil au milieu », à côté de la case des noms.",
+					"Clique sur « Le Soleil au milieu », à côté de la case des noms (sur un petit téléphone, appuie d’abord sur « Plus »).",
 					"Choisis « Depuis la Terre : les planètes ».",
 					"Regarde Mars faire une boucle."
 				]

@@ -46,3 +46,52 @@
 	font-weight: 200;
 	letter-spacing: 1px;
 }
+
+/*
+ * Phones (#75): the facts in the page's flow under the globe, one column at
+ * a size a student reads: no letter-spaced micro type, no bars.
+ */
+@media $phone {
+	.base {
+		position: static;
+		width: auto;
+		max-height: none;
+		overflow: visible;
+		gap: 0.875rem;
+		padding: 0.5rem max(1rem, env(safe-area-inset-right)) 0
+			max(1rem, env(safe-area-inset-left));
+	}
+
+	.littleBar {
+		display: none;
+	}
+
+	.label {
+		font-size: 0.8125rem;
+		font-weight: 600;
+		letter-spacing: 0.04em;
+		color: #9aa0a6;
+	}
+
+	.text {
+		font-size: 1.125rem;
+		letter-spacing: normal;
+		line-height: 1.35;
+	}
+
+	.largeText {
+		font-size: 1.75rem;
+		line-height: 1.2;
+	}
+
+	.extra {
+		display: inline-block;
+		margin-top: 0.125rem;
+		padding-bottom: 0;
+		font-size: 0.9375rem;
+		font-weight: 400;
+		letter-spacing: normal;
+		line-height: 1.45;
+		color: var(--mantine-color-gray-3);
+	}
+}

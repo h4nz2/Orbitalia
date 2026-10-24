@@ -482,12 +482,12 @@
 			},
 			"how": {
 				"standard": [
-					"Klicke neben dem Namensfeld auf „Sonne im Zentrum“ und wähle „Von der Erde aus: die Planeten“ oder „Von der Erde aus: der Mond“.",
+					"Klicke neben dem Namensfeld auf „Sonne im Zentrum“ (auf einem schmalen Handy unter „Mehr“) und wähle „Von der Erde aus: die Planeten“ oder „Von der Erde aus: der Mond“.",
 					"Achte auf den Hinweis, der dann erscheint: Er sagt, was die gewählte Welt gerade an unserem Himmel tut.",
 					"„… festhalten“ funktioniert mit jeder Welt; „Zurück: Sonne im Zentrum“ bringt dich zurück."
 				],
 				"simple": [
-					"Klick neben dem Namensfeld auf „Sonne in der Mitte“.",
+					"Klick neben dem Namensfeld auf „Sonne in der Mitte“ (auf einem kleinen Handy drückst du zuerst auf „Mehr“).",
 					"Wähl „Von der Erde aus: Planeten“.",
 					"Schau zu, wie Mars eine Schleife macht."
 				]

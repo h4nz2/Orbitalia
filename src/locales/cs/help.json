@@ -482,12 +482,12 @@
 			},
 			"how": {
 				"standard": [
-					"Klikni na „Slunce ve středu“ vedle pole s názvy a vyber „Pohled ze Země: planety“ nebo „Pohled ze Země: Měsíc“.",
+					"Klikni na „Slunce ve středu“ vedle pole s názvy (na úzkém telefonu pod „Více“) a vyber „Pohled ze Země: planety“ nebo „Pohled ze Země: Měsíc“.",
 					"Sleduj štítek, který se objeví: říká, co vybraný svět právě dělá na naší obloze.",
 					"„… stojí na místě“ funguje pro každý svět; „Zpět ke Slunci ve středu“ tě vrátí zpátky."
 				],
 				"simple": [
-					"Klikni na „Slunce uprostřed“ vedle pole se jménem.",
+					"Klikni na „Slunce uprostřed“ vedle pole se jménem (na malém telefonu nejdřív stiskni „Více“).",
 					"Vyber „Ze Země: planety“.",
 					"Sleduj, jak Mars udělá smyčku."
 				]

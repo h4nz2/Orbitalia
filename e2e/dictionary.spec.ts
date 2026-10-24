@@ -125,10 +125,16 @@ test("a language with its own name for the world tells its story", async ({
 test.describe("on a phone", () => {
 	test.use({ viewport: { width: 390, height: 844 } })
 
-	test("the sections sit under the globe and open there", async ({ page }) => {
+	// one column that scrolls (#75): the globe, the facts, then the sections in the page's flow
+	test("the sections follow the facts and open there", async ({ page }) => {
 		await page.goto("/solar_dictionary?entity=4&lang=en")
 		const madeOf = page.getByRole("button", { name: "Made of" })
-		await expect(madeOf).toBeInViewport()
+		await expect(madeOf).toBeAttached()
+		const [facts, section] = await Promise.all([
+			page.locator("[data-fact-key]").last().boundingBox(),
+			madeOf.boundingBox(),
+		])
+		expect(section!.y).toBeGreaterThanOrEqual(facts!.y + facts!.height)
 		await madeOf.click()
 		const picture = page.getByRole("img", { name: "Inside Mars" })
 		await expect(picture).toBeVisible()

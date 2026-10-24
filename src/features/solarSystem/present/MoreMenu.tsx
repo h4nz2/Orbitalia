@@ -73,6 +73,8 @@ import { Hint } from "@/primitives/hint"
 import { usePresentationStore } from "@/store/presentation"
 import { useSoundStore } from "@/store/sound"
 
+import { FrameChoices, FrameIcon, useFrameChoice } from "../frame/FrameMenu"
+import { usePointOfViewInMore } from "../frame/placement"
 import { showHints, startIntro } from "../intro/intro"
 import { useSendFeedback } from "../intro/IntroMenu"
 import { startQuickLook } from "../quickLook/quickLook"
@@ -88,7 +90,8 @@ import classes from "./MoreMenu.module.css"
 const SharePanel = lazy(() => import("./SharePanel"))
 
 /** The pages of More: the list, and what opens inside it. */
-type MorePage = "main" | "share" | "sound" | "language" | "homeScreen"
+type MorePage =
+	"main" | "share" | "sound" | "language" | "homeScreen" | "pointOfView"
 
 /** One item of the list: an icon and its words, a key where there is a keyboard, `›` where it opens a page. */
 function Item({
@@ -309,6 +312,9 @@ export function MorePanel({ onClose, onQr }: MorePanelProps) {
 	const sound = useSoundStore((state) => state.enabled)
 	const setSound = useSoundStore((state) => state.setEnabled)
 	const [soundAvailable] = useState(canPlaySound)
+	// too narrow for it in the top row: the point of view is here (#75)
+	const pointOfView = usePointOfViewInMore()
+	const frame = useFrameChoice()
 
 	// a page opened: the focus goes to its way back; back on the list, to the item that opened it
 	useEffect(() => {
@@ -398,12 +404,34 @@ export function MorePanel({ onClose, onQr }: MorePanelProps) {
 						<HomeScreenSteps />
 					</Page>
 				)}
+				{page === "pointOfView" && (
+					<Page title={t("solarSystem.frame.label")} onBack={back}>
+						<FrameChoices onChosen={onClose} />
+					</Page>
+				)}
 			</div>
 		)
 
 	return (
 		<div ref={root} className={classes.panel} data-more-page="main">
 			<Stack gap={2}>
+				{/* the point of view, on a phone too narrow for it beside the name (#75) */}
+				{pointOfView && (
+					<>
+						<Hint text={t("solarSystem.frame.hint")}>
+							<Item
+								id="pointOfView"
+								icon={<FrameIcon anchored={frame.anchored} size={18} />}
+								opens
+								onClick={() => open("pointOfView")}
+								data-testid="more-point-of-view"
+							>
+								{t("solarSystem.frame.menu", { current: frame.current })}
+							</Item>
+						</Hint>
+						<Divider className={classes.divider} />
+					</>
+				)}
 				{/* Share: the phone's own sheet, and the link with the class QR code */}
 				{shareSheet && (
 					<Hint text={t("solarSystem.more.shareHint")}>
