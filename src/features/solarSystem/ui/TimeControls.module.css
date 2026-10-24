@@ -14,7 +14,13 @@
 	gap: 0.5rem;
 }
 
+/*
+ * as wide as the language's widest date of the year (#71, set in SimDateTime): in a
+ * monospaced font every character is 1ch, so the buttons beside it never move
+ */
 .date {
+	display: inline-block;
+	min-width: var(--clock-width);
 	font-family: var(--mantine-font-family-monospace);
 	font-size: var(--mantine-font-size-sm);
 	font-variant-numeric: tabular-nums;
@@ -24,13 +30,24 @@
 
 @media $phone {
 	.date {
+		min-width: 0;
 		font-size: var(--mantine-font-size-xs);
 		line-height: 1.25;
 	}
 
 	/* the date over the time (#58): the bar keeps to one row with finger-sized buttons */
-	.datePart {
+	.datePart,
+	.timePart {
 		display: block;
+	}
+
+	/* each line as wide as its widest of the year (#71) */
+	.datePart {
+		min-width: var(--clock-date-width);
+	}
+
+	.timePart {
+		min-width: var(--clock-time-width);
 	}
 
 	.dateSeparator {

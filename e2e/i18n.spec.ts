@@ -34,9 +34,9 @@ test("the solar system renders completely in German", async ({ page }) => {
 	await expandCard(page)
 	await expect(page.getByText("Das Sonnenlicht braucht")).toBeVisible()
 	await expect(page.getByText("Der Riese des Sonnensystems")).toBeVisible()
-	// German date order and number format
+	// German date order and number format; the time bar's day has two digits (#71)
 	await expect(page.locator("time")).toHaveText(
-		/^\d{1,2}\. \S+ \d{4}, \d{2}:\d{2} UTC$/,
+		/^\d{2}\. \S+ \d{4}, \d{2}:\d{2} UTC$/,
 	)
 	await expect(
 		page

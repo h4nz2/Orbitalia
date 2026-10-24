@@ -1,4 +1,4 @@
-import { useState } from "react"
+import { useState, type CSSProperties } from "react"
 import {
 	ActionIcon,
 	Button,
@@ -18,7 +18,7 @@ import {
 	IconPlayerPlayFilled,
 } from "@tabler/icons-react"
 
-import { formatDateTimeUTCParts, isoMinuteUTC, useI18n } from "@/i18n"
+import { clockWidths, formatClockUTC, isoMinuteUTC, useI18n } from "@/i18n"
 import { Hint, hintKey } from "@/primitives/hint"
 import { jdToDate } from "@/sim"
 import { WARP_PRESETS, useSimStore } from "@/store/sim"
@@ -89,18 +89,26 @@ const play = (direction: Direction): void => {
  * The simulation clock in the active locale's date format, with the ISO
  * instant in `dateTime`; its own component so the ~10 Hz updates re-render nothing else.
  * A phone (#58) shows the date over the time, so the bar keeps to one row
- * with finger-sized buttons; the text is the same.
+ * with finger-sized buttons; the text is the same. It is as wide as the
+ * locale's widest date of the year (#71, `clockWidths`), so the buttons
+ * beside it stay put while time runs.
  */
 export const SimDateTime = () => {
 	const jd = useThrottledSimTime()
 	const { formatLocale } = useI18n()
 	const date = jdToDate(jd)
-	const parts = formatDateTimeUTCParts(date, formatLocale)
+	const parts = formatClockUTC(date, formatLocale)
+	const widths = clockWidths(formatLocale)
+	const style = {
+		"--clock-width": `${widths.whole}ch`,
+		"--clock-date-width": `${widths.date}ch`,
+		"--clock-time-width": `${widths.time}ch`,
+	} as CSSProperties
 	return (
-		<time className={classes.date} dateTime={isoMinuteUTC(date)}>
+		<time className={classes.date} dateTime={isoMinuteUTC(date)} style={style}>
 			<span className={classes.datePart}>{parts.date}</span>
 			<span className={classes.dateSeparator}>{parts.separator}</span>
-			<span className={classes.datePart}>{parts.time}</span>
+			<span className={classes.timePart}>{parts.time}</span>
 		</time>
 	)
 }

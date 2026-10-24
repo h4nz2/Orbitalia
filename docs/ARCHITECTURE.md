@@ -1310,6 +1310,16 @@ Everything goes through the clock actions of #9; nothing here touches the clock 
   `TimeSettings` (Now, the speeds, the spin) inline. The chip carries the keys (`useTimeKeys`: Space, +, -) in the
   bar's place, so they never act twice. Hiding the controls hides the chip; at full height it tucks into the
   sheet's strip, its date left out so it clears the handle.
+- **The date keeps its width** (#71), so the buttons beside it never move while time runs. The time bar and the
+  time chip show `formatClockUTC` (`src/i18n/format.ts`): the date with a two-digit day where the month is a word
+  ("01. Mai 2026", "May 01, 2026"; Czech, whose month is a number, keeps "1. 5. 2026"), split before the hour.
+  Its least width is the locale's widest date of the year (`clockWidths`: every month on the 28th at 23:59,
+  worked out once per format locale) in `ch`, which is exact in the monospaced font the date uses: every glyph a
+  date has there (digits, letters such as "ä", "é", "û", punctuation, spaces) is as wide as "0", and Chromium
+  rounds `ch` up, never down. The time bar sets it on the whole; on a phone (the date over the time) the date and
+  the time each get their own; the chip's short date the date's. Years outside 1000–9999 and years BC may still
+  widen it once. Sentences, cards and the postcard keep `formatDateTimeUTC` ("May 1, 2026"). `e2e/timeBar.spec.ts`
+  opens paused links on short and long dates in every language and finds the buttons within a pixel.
 - `TooFastHint.tsx` / `ui/tooFast.ts`: the wagon-wheel warning. When the fastest body in view (planets, plus the
   focused family's moons while shown) laps more than a sixth of an orbit per drawn frame (`TOO_FAST_LAPS_PER_FRAME`,
   frame rate measured by `useFrameRate()` from the ticks), a line under the presets names it and its laps per second.
