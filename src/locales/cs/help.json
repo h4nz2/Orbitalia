@@ -525,8 +525,8 @@
 				"simple": "Vesmírné sondy"
 			},
 			"what": {
-				"standard": "Voyager, Pioneer, New Horizons, Cassini, Juno, Parker, JWST a Europa Clipper, nakreslené tam, kde ke zobrazenému datu opravdu jsou, s jejich drahami a milníky. Zůstanou skryté, dokud si je nezobrazíš.",
-				"simple": "Skutečné sondy, které postavili lidé, ukázané tam, kde právě jsou. Jsou schované, dokud je nezapneš."
+				"standard": "Voyager, Pioneer, New Horizons, Cassini, Juno, Parker, JWST a Europa Clipper, nakreslené tam, kde ke zobrazenému datu opravdu jsou, s jejich drahami a milníky. Zůstanou skryté, dokud si je nezobrazíš. Zblízka uvidíš samotnou sondu, 3D model od NASA, nakreslenou mnohem větší, než ve skutečnosti je: kolik, to řekne její kartička.",
+				"simple": "Skutečné sondy, které postavili lidé, ukázané tam, kde právě jsou. Jsou schované, dokud je nezapneš. Zblízka uvidíš samotnou sondu, nakreslenou mnohem větší, než doopravdy je."
 			},
 			"why": {
 				"standard": "Voyager 1 pořád posílá zprávy z dálky daleko za planetami: kartička ukáže, jak dlouho k nám letí jeho signál a proč cesta potřebovala tolik gravitačních praků.",
@@ -536,7 +536,7 @@
 				"standard": [
 					"Otevři Nástroje, vyber „Skutečné kosmické sondy“ a pak sondu: pohled k ní poletí a sondy se objeví.",
 					"Všechny uvidíš, když ve Vrstvách (nebo v seznamu sond) zapneš „Kosmické sondy“. Ukáže je i odkaz, zastávka prohlídky nebo úkaz na obloze, který se sondy týká.",
-					"Kartička ukáže start, vzdálenost, dobu letu signálu a „Milníky“; milník přesune čas do toho okamžiku.",
+					"Kartička ukáže start, vzdálenost, dobu letu signálu, kolikrát větší je sonda nakreslená, a „Milníky“; milník přesune čas do toho okamžiku.",
 					"„Zobrazit všechny dráhy“ nakreslí všechny cesty najednou; vypnutím přepínače „Kosmické sondy“ je zase skryješ."
 				],
 				"simple": [
@@ -553,8 +553,8 @@
 				"simple": "Leť se sondou"
 			},
 			"what": {
-				"standard": "Sleduj kosmickou sondu a kamera s ní zůstane, zatímco běží čas, v jakékoli rychlosti, dopředu i dozadu: Voyager míjí Jupiter, Juno přilétá, Parker se řítí kolem Venuše. „Podívat se“ u průletu všechno připraví za tebe.",
-				"simple": "Kamera letí spolu s kosmickou sondou. Uvidíš, jak kolem ní proletí planeta."
+				"standard": "Sleduj kosmickou sondu a kamera s ní zůstane, zatímco běží čas, v jakékoli rychlosti, dopředu i dozadu: Voyager míjí Jupiter, Juno přilétá, Parker se řítí kolem Venuše. „Podívat se“ u průletu všechno připraví za tebe. Uvidíš samotnou sondu vedle planety, nakreslenou mnohem větší, než je, aby vůbec byla vidět.",
+				"simple": "Kamera letí spolu s kosmickou sondou. Uvidíš samotnou sondu, nakreslenou mnohem větší, než je, a jak kolem ní proletí planeta."
 			},
 			"why": {
 				"standard": "Gravitace planety ohne dráhu sondy a vymrští ji k dalšímu světu. Když letíš s ní, vidíš, jak kolem proletí Jupiter se svými měsíci a dráha se kolem něj ohne: právě tímhle trikem se Voyager dostal k vnějším planetám.",

@@ -525,8 +525,8 @@
 				"simple": "Space probes"
 			},
 			"what": {
-				"standard": "Voyager, Pioneer, New Horizons, Cassini, Juno, Parker, JWST and Europa Clipper, drawn where they really are on the date on screen, with their paths and milestones. They stay hidden until you show them.",
-				"simple": "Real space probes that people built, shown where they are right now. They are hidden until you turn them on."
+				"standard": "Voyager, Pioneer, New Horizons, Cassini, Juno, Parker, JWST and Europa Clipper, drawn where they really are on the date on screen, with their paths and milestones. They stay hidden until you show them. Close up you see each craft itself, NASA’s 3D model, drawn far bigger than it really is: its card says how much.",
+				"simple": "Real space probes that people built, shown where they are right now. They are hidden until you turn them on. Up close you see the probe itself, drawn much bigger than it really is."
 			},
 			"why": {
 				"standard": "Voyager 1 is still sending messages from far beyond the planets: its card shows how long its signal takes to reach us, and why the trip took so many gravity assists.",
@@ -536,7 +536,7 @@
 				"standard": [
 					"Open Tools, choose “Real spacecraft” and pick a craft: the view flies to it, and the spacecraft appear.",
 					"To see them all, turn on Spacecraft under Layers (or in the spacecraft list). A link, a tour stop or a sky event about a craft shows them too.",
-					"Its card shows launch, distance, signal time and milestones; a milestone takes time to that moment.",
+					"Its card shows launch, distance, signal time, how much bigger than life the craft is drawn, and milestones; a milestone takes time to that moment.",
 					"“Show every path” draws all their routes at once; turning the Spacecraft switch off hides them again."
 				],
 				"simple": [
@@ -553,8 +553,8 @@
 				"simple": "Fly with a space probe"
 			},
 			"what": {
-				"standard": "Follow a spacecraft and the camera stays with it while time runs, at any speed, forwards or backwards: Voyager swinging past Jupiter, Juno arriving, Parker diving past Venus. “Watch” beside a flyby sets it all up for you.",
-				"simple": "The camera flies along with a space probe. You see a planet swing past it."
+				"standard": "Follow a spacecraft and the camera stays with it while time runs, at any speed, forwards or backwards: Voyager swinging past Jupiter, Juno arriving, Parker diving past Venus. “Watch” beside a flyby sets it all up for you. You see the craft itself beside the planet, drawn far bigger than it is so that you can see it at all.",
+				"simple": "The camera flies along with a space probe. You see the probe itself, drawn much bigger than it is, and a planet swing past it."
 			},
 			"why": {
 				"standard": "A planet's gravity bends a craft's path and flings it on to the next world. Riding along, you see Jupiter and its moons sweep past and the path bend round it: the trick that took Voyager to the outer planets.",

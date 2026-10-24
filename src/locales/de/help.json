@@ -525,8 +525,8 @@
 				"simple": "Raumsonden"
 			},
 			"what": {
-				"standard": "Voyager, Pioneer, New Horizons, Cassini, Juno, Parker, JWST und Europa Clipper, gezeichnet dort, wo sie am angezeigten Datum wirklich sind, mit ihren Bahnen und Meilensteinen. Sie bleiben ausgeblendet, bis du sie zeigst.",
-				"simple": "Echte Raumsonden, die Menschen gebaut haben, dort gezeigt, wo sie gerade sind. Sie sind versteckt, bis du sie einschaltest."
+				"standard": "Voyager, Pioneer, New Horizons, Cassini, Juno, Parker, JWST und Europa Clipper, gezeichnet dort, wo sie am angezeigten Datum wirklich sind, mit ihren Bahnen und Meilensteinen. Sie bleiben ausgeblendet, bis du sie zeigst. Aus der Nähe siehst du die Sonde selbst, NASAs 3D-Modell, viel größer gezeichnet, als sie wirklich ist: Ihr Steckbrief sagt, wie viel.",
+				"simple": "Echte Raumsonden, die Menschen gebaut haben, dort gezeigt, wo sie gerade sind. Sie sind versteckt, bis du sie einschaltest. Aus der Nähe siehst du die Sonde selbst, viel größer gezeichnet, als sie wirklich ist."
 			},
 			"why": {
 				"standard": "Voyager 1 sendet noch immer Nachrichten von weit jenseits der Planeten: Ihr Steckbrief zeigt, wie lange ihr Signal bis zu uns braucht und warum die Reise so viele Swing-by-Manöver brauchte.",
@@ -536,7 +536,7 @@
 				"standard": [
 					"Öffne „Werkzeuge“, wähle „Echte Raumsonden“ und dann eine Sonde: Die Ansicht fliegt zu ihr, und die Raumsonden erscheinen.",
 					"Um alle zu sehen, schalte unter „Ebenen“ (oder in der Liste der Raumsonden) „Raumsonden“ ein. Ein Link, ein Tourhalt oder ein Himmelsereignis zu einer Sonde zeigt sie auch.",
-					"Ihr Steckbrief zeigt Start, Abstand, Signallaufzeit und „Meilensteine“; ein Meilenstein bringt die Zeit zu diesem Moment.",
+					"Ihr Steckbrief zeigt Start, Abstand, Signallaufzeit, wie viel größer die Sonde gezeichnet ist, und „Meilensteine“; ein Meilenstein bringt die Zeit zu diesem Moment.",
 					"„Alle Bahnen zeigen“ zeichnet alle Wege auf einmal; schaltest du „Raumsonden“ aus, sind sie wieder ausgeblendet."
 				],
 				"simple": [
@@ -553,8 +553,8 @@
 				"simple": "Mit einer Sonde mitfliegen"
 			},
 			"what": {
-				"standard": "Flieg mit einer Raumsonde mit: Die Kamera bleibt bei ihr, während die Zeit läuft, in jedem Tempo, vorwärts wie rückwärts. Voyager am Jupiter vorbei, Juno bei der Ankunft, Parker dicht an der Venus vorbei. „Ansehen“ neben einem Vorbeiflug richtet alles für dich ein.",
-				"simple": "Die Kamera fliegt mit einer Raumsonde mit. Du siehst, wie ein Planet an ihr vorbeizieht."
+				"standard": "Flieg mit einer Raumsonde mit: Die Kamera bleibt bei ihr, während die Zeit läuft, in jedem Tempo, vorwärts wie rückwärts. Voyager am Jupiter vorbei, Juno bei der Ankunft, Parker dicht an der Venus vorbei. „Ansehen“ neben einem Vorbeiflug richtet alles für dich ein. Du siehst die Sonde selbst neben dem Planeten, viel größer gezeichnet, als sie ist, damit du sie überhaupt sehen kannst.",
+				"simple": "Die Kamera fliegt mit einer Raumsonde mit. Du siehst die Sonde selbst, viel größer gezeichnet, als sie ist, und wie ein Planet an ihr vorbeizieht."
 			},
 			"why": {
 				"standard": "Die Schwerkraft eines Planeten biegt die Bahn einer Sonde und schleudert sie zur nächsten Welt weiter. Beim Mitfliegen ziehen Jupiter und seine Monde vorbei, und die Bahn biegt sich um ihn herum: Mit diesem Trick kam Voyager zu den äußeren Planeten.",
