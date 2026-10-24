@@ -122,7 +122,8 @@
 @media $phone {
 	.base {
 		position: static;
-		margin-top: calc(max(0.75rem, env(safe-area-inset-top)) + 3.75rem);
+		/* under the band behind the way back and the corner (SolarDictionary.module.css) */
+		margin-top: calc(max(0.75rem, env(safe-area-inset-top)) + 4.25rem);
 		min-width: 0;
 		max-width: none;
 		flex-wrap: nowrap;
@@ -139,6 +140,37 @@
 
 	.base::-webkit-scrollbar {
 		display: none;
+	}
+
+	/*
+	 * The row's ends fade where more worlds lie past them (`data-more-start`,
+	 * `data-more-end`, Navbar.tsx), over a dot and a half: the last dot in
+	 * view always fades, so the row says it goes on.
+	 */
+	.base[data-more-start] {
+		--fade-start: 2.5rem;
+	}
+
+	.base[data-more-end] {
+		--fade-end: 2.5rem;
+	}
+
+	.base[data-more-start],
+	.base[data-more-end] {
+		-webkit-mask-image: linear-gradient(
+			to right,
+			transparent,
+			#000 var(--fade-start, 0px),
+			#000 calc(100% - var(--fade-end, 0px)),
+			transparent
+		);
+		mask-image: linear-gradient(
+			to right,
+			transparent,
+			#000 var(--fade-start, 0px),
+			#000 calc(100% - var(--fade-end, 0px)),
+			transparent
+		);
 	}
 
 	.menuTarget {

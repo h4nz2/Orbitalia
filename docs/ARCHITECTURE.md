@@ -1863,7 +1863,7 @@ took a second row of six bare icons. The phone keeps one quiet row instead, and 
   the whole canvas (#61), so the planet glides to the middle and back: its angles and its distance as a multiple of
   the framing never change. A mouse never hides by clicking the sky, and a teacher presenting with hidden controls
   still clicks planets to fly there.
-- **Tests:** `e2e/phonePanels.spec.ts` (the row at 320, 360 and 390 px in English and German: no box over another,
+- **Tests:** `e2e/phonePanels.spec.ts` (the row at 320, 360 and 390 px, and 844 x 390 on its side, in English and German: no box over another,
   "Neptune" and "Voyager 1" whole, the point of view under More at 320 px and working), `e2e/phoneTop.spec.ts`
   (390 x 844 and 360 x 640: one row, More's items, finger sizes, no keys, two taps;
   the share sheet stubbed, cancelled and missing; an iPhone user agent without the Fullscreen API, and opened from
@@ -1889,7 +1889,8 @@ controls share it; More stays a popover at the top. Laptops, tablets and a phone
   float above it (`.time`, `[data-sheet-above]`).
 - **The handle has a strip of its own** (#75, `heights.ts` `HANDLE_PX`, `HANDLE_RISE_PX`, `STRIP_PX`,
   `handleSpan`; `Sheet.tsx` sets the strip's height and the handle's top from them): at small and half the 44 px
-  target reaches 8 px above the sheet, into the gap under the time chip (which floats 0.5rem above it), never over
+  target (px like the strip, so projector mode's larger rem, #29, never pushes it over the header; tested with
+  `?present=true`) reaches 8 px above the sheet, into the gap under the time chip (which floats 0.5rem above it), never over
   the chip, and the other 36 px are the strip, so it ends where the content begins and lies over no header and no
   one-line summary; at full it sits inside the 60 px strip beside the chip. A tap 10 px above the sheet is the
   scene's. The sheet is no taller for it: what it shows has no top padding of its own in the sheet (the strip is
@@ -1913,7 +1914,10 @@ controls share it; More stays a popover at the top. Laptops, tablets and a phone
   card's own way on (`data-sheet-footer`: a tour's Back and Next) sticks to its foot, and never rests across a
   control or a line of text above it: where the foot would cut one (a tour stop's autoplay and link at half on a
   390 x 844 phone, a line of its words on a 360 x 640 one), the content stops a little lower, so it waits wholly
-  behind the foot, a scroll away (`clearOfFoot`; never higher: half keeps its share for the scene). Without a foot
+  behind the foot, a scroll away (`clearOfFoot`; never higher: half keeps its share for the scene). The stop is
+  measured with the content at its top, where it opens, not where the reader has scrolled to, so a resize later
+  (the top row, the time chip) never moves it by a line under their eyes; and once a snap is over (its
+  `transitionend`, at the latest `SNAP_WAIT_MS`), never on each of its frames. Without a foot
   the edge is the content's bottom over the entry buttons, and at half it never cuts a line of text (a panel's
   list of buttons keeps its rows). Lines are measured as line boxes (`Sheet.tsx` `linesOf`: a `Range` per text,
   one box per line, the leading included, so lines that follow each other touch); a control keeps 4 px of room
@@ -1953,9 +1957,10 @@ controls share it; More stays a popover at the top. Laptops, tablets and a phone
 - **#62** builds the students' side on it: links that open ready, the gesture hint, the swipe between worlds and
   Tools as tiles (see "Students first").
 - **Tests:** `e2e/phonePanels.spec.ts` (390 x 844 and 360 x 640: no line cut by the foot at rest in a tour stop,
-  a quick look step and a sky event, the fade while the words go on and none at their end, a panel's words over
-  the entry buttons; the handle's target over no header part and not the chip at small, half and full, and a tap
-  10 px above the sheet the scene's), `e2e/phoneSheet.spec.ts` (390 x 844 and 360 x 640: the scene shares, two rows in the sheet, half for
+  a quick look step and a sky event, the fade while the words go on (always there on the 360 x 640 phone) and none
+  at their end, a panel's words over the entry buttons; the main action of tonight's sky, the birthday, the flash
+  and the delay above the fade; the handle's target over no header part and not the chip at small, half and full,
+  in presentation mode too, and a tap 10 px above the sheet the scene's), `e2e/phoneSheet.spec.ts` (390 x 844 and 360 x 640: the scene shares, two rows in the sheet, half for
   panels, the card and tours, the handle by tap, keys and its name, drags by handle and header, the pull from the
   content's top and no drag while it scrolls, closing, the scene never moving, the chip, the sky's lowering, the
   band at rest and never during a drag, turning the phone, the hunt's worlds above the clue, Earth at half; laptops
@@ -1975,7 +1980,8 @@ first: a link skips the opening and the quick look (#30, #44), and nothing else 
   half (the light's flash and its signal delay, the birthday, tonight's sky). A panel brings its main action into
   view as it opens (`data-sheet-main`, `Sheet.tsx` `revealMain`: the flash's source and Send, the delay's
   destination and times, the birthday's calendar, the sky's "Are you near …?"), scrolling the words above it out of
-  the way, so it is ready on a 360 x 640 phone too; in the sheet the light panel's words have no scroller of their
+  the way, so it is ready on a 360 x 640 phone too. It is placed once the content's stop is known (`clearOfFoot`),
+  at the height the sheet rests at, above the fade with 8 px to spare (#75), so it never rests in the fade; in the sheet the light panel's words have no scroller of their
   own (`--light-panel-body-max: none`). Labels keep out of the whole sheet (`labels/Labels.tsx`), and the flash's ×
   on its label is a 44 px target on touch.
 - **The tour on an upright phone** (`tours/TourCard.tsx`): the dots give their line(s) to the stop's words. The
@@ -2134,10 +2140,15 @@ description, and the stories a reader opens.
   `search.ts`) and stays open from world to world, so a class can go through the planets' weather one by one. On a
   desktop they sit under the description in the right-hand column, which scrolls; from 900 px down to a phone the
   description is hidden and the sections form a bottom sheet (at most 55 % of the height) under the globe.
-- **On a phone** (`$phone`, #75) the page is one column that scrolls, nothing over anything: the way back and the
-  corner stay fixed at the top (opaque); under them the nine worlds in one row in the page's flow, never over the
+- **On a phone** (`$phone`, #75) the page is one column that scrolls, nothing over anything. The page is its own
+  scroller, one screen high (`height: 100dvh; overflow-y: auto`, like the help page: the body never scrolls,
+  `index.html`), so a finger and a wheel both move it. The way back and the corner stay fixed at the top on an
+  opaque band the width of the screen (`.page::before`), whose last 0.75rem fades: what scrolls up passes under
+  it, never sliced between the two buttons. Under it the nine worlds in one row in the page's flow, never over the
   facts' headings, which scrolls sideways where nine 44 px targets do not fit (snapping to a world, the chosen one
-  brought to the row's middle, `Navbar.tsx`); the globe in a box of its own (`Stage.module.css` `.globe`,
+  brought to the row's middle, `Navbar.tsx`); its ends fade over a dot and a half where more worlds lie past them
+  (`data-more-start`, `data-more-end`), so the last dot in view always fades and the row says it goes on (the help
+  entry says so too); the globe in a box of its own (`Stage.module.css` `.globe`,
   `min(36dvh, 20rem)`, the camera closer so it fills it); the facts in one column at a size a student reads (the
   value 1.125rem, its sentence 0.9375rem, the label 0.8125rem, no letter-spaced micro type and no bars); then the
   tagline and description (shown again: the page scrolls) and the sections, in the flow below the facts. A
@@ -2177,9 +2188,11 @@ discovery}`), plain text, one value or one per reading level. No text may state 
   round, a nickname, a name origin and a discovery, each with https sources; every locale has exactly the facts'
   worlds, nicknames, layers and gases, every story at every reading level, a local name story exactly where the data
   lists that locale, simple texts without numbers above 100 or units, and the year of every discovery in its standard
-  text. `e2e/dictionary.spec.ts` opens the sections; `e2e/phonePanels.spec.ts` checks the phone's column at
-  390 x 844 and 360 x 640 (German at the simple level too): no text over another, the dots in one row above the
-  facts, the facts' sizes, the sections after the facts. Adding a world's story: its facts in `worlds.json`, its words
+  text. `e2e/dictionary.spec.ts` opens the sections, and on a phone (390 x 844, 360 x 640, 844 x 390) scrolls the
+  page with a wheel and a finger (CDP touch events; nothing clicks); `e2e/phonePanels.spec.ts` checks the phone's
+  column at 390 x 844, 360 x 640 (German at the simple level too) and 844 x 390: no text over another at the top,
+  the middle and the end, the way back and the corner on the band, the dots in one row above the facts and their
+  faded ends, the facts' sizes, the sections after the facts. Adding a world's story: its facts in `worlds.json`, its words
   in every locale.
 - **Entry:** Tools → the dictionary (the world in view, #45) and "Read more in the dictionary" on a world's card
   (`ui/dictionaryEntry.ts`: Sun 0, planets 1..8).

@@ -10,9 +10,35 @@
 }
 
 @media $phone {
+	/* the page scrolls itself, with a finger and a wheel: the body never does
+	   (index.html), so the column is its own scroller, one screen high */
 	.page {
-		height: auto;
-		min-height: 100dvh;
+		height: 100vh;
+		height: 100dvh;
+		overflow-y: auto;
+		overscroll-behavior-y: contain;
+	}
+
+	/*
+	 * An opaque band the width of the screen behind the way back and the
+	 * corner: what scrolls up passes under its foot, fading out over its last
+	 * 0.75rem, never sliced between the two or seen through them. It ends
+	 * where the row of worlds begins (Navbar.module.css), so at the top it
+	 * covers nothing.
+	 */
+	.page::before {
+		content: "";
+		position: fixed;
+		top: 0;
+		left: 0;
+		right: 0;
+		z-index: 99;
+		height: calc(max(0.75rem, env(safe-area-inset-top)) + 4.25rem);
+		background: linear-gradient(
+			rgb(20, 22, 28) calc(100% - 0.75rem),
+			rgba(20, 22, 28, 0)
+		);
+		pointer-events: none;
 	}
 }
 

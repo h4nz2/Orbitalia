@@ -20,7 +20,9 @@
 	position: absolute;
 	left: 50%;
 	width: 5.5rem;
-	height: 2.75rem; /* 44 px (#58), HANDLE_PX */
+	/* HANDLE_PX (#58), in px like the strip it fits: projector mode's larger
+	   rem (#29, presentation.css) would push it over the header below */
+	height: 44px;
 	transform: translateX(-50%);
 	display: flex;
 	align-items: center;

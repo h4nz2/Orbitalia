@@ -589,12 +589,12 @@
 			"how": {
 				"standard": [
 					"Abre Herramientas y elige «Diccionario visual»: se abre en el mundo que estás mirando. O pulsa «Leer más en el diccionario» en la ficha de un mundo.",
-					"Elige un mundo en la fila de puntos de arriba y luego «Superficie», «Relieve», «Océanos» o «Nubes», si los tiene.",
+					"Elige un mundo en la fila de puntos de arriba (en un móvil la fila se desliza hacia un lado: deslízala para ver los demás) y luego «Superficie», «Relieve», «Océanos» o «Nubes», si los tiene.",
 					"Abre «Composición», «Clima» o «Nombres» junto al globo (debajo, en un móvil). La sección abierta sigue abierta cuando eliges otro mundo, así que una clase puede compararlos uno a uno."
 				],
 				"simple": [
 					"Pulsa Herramientas y luego «Libro de los planetas».",
-					"Elige un planeta en la fila de puntos de arriba.",
+					"Elige un planeta en la fila de puntos de arriba. En un móvil, desliza la fila hacia un lado para verlos todos.",
 					"Pulsa «¿Qué hay dentro?», «¿Hace calor o frío?» o «Sus nombres»."
 				]
 			}

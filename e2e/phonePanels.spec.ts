@@ -62,7 +62,7 @@ async function restsAt(page: Page, value: "small" | "half" | "full") {
 interface Words {
 	/** The lines the edge cuts through: a foot's top, else the content's bottom. */
 	cut: string[]
-	/** Words lie hidden below the edge. */
+	/** Words (or a control) lie hidden below the edge. */
 	hidden: boolean
 	/** The content says so (`data-sheet-more`) and fades out (a mask). */
 	more: boolean
@@ -120,6 +120,22 @@ const words = (page: Page, scroll?: number | "end") =>
 					cut.push(node.textContent!.trim().slice(0, 40))
 			}
 		}
+		// a control without words hides below the edge too (the quick look's dots)
+		for (const control of area.querySelectorAll(
+			"button, a[href], img, [role=button], [role=slider]",
+		)) {
+			if (
+				control.getClientRects().length === 0 ||
+				control.closest("header, [data-sheet-footer]") !== null ||
+				(foot !== undefined &&
+					!(
+						foot.compareDocumentPosition(control) &
+						Node.DOCUMENT_POSITION_PRECEDING
+					))
+			)
+				continue
+			if (control.getBoundingClientRect().bottom > edge + 1) hidden = true
+		}
 		const style = getComputedStyle(area)
 		const mask = style.maskImage || style.webkitMaskImage
 		return {
@@ -132,6 +148,35 @@ const words = (page: Page, scroll?: number | "end") =>
 			foot: footBox === undefined ? 0 : view.bottom - footBox.top,
 		}
 	}, scroll)
+
+/** The handle against the shown header's parts and the time chip, read at once. */
+const handleClashes = (page: Page) =>
+	page.evaluate(() => {
+		const handle = document
+			.querySelector("[data-testid=sheet-handle]")!
+			.getBoundingClientRect()
+		const shown =
+			document.querySelector("[data-sheet-shown]") ??
+			document.querySelector("[data-info] > *")!
+		const parts = [
+			...shown.querySelectorAll(":scope > header *, [data-sheet-summary] *"),
+			...document.querySelectorAll("[data-testid=time-chip]"),
+		]
+		const found: string[] = []
+		for (const part of parts) {
+			if (part.getClientRects().length === 0) continue
+			const box = part.getBoundingClientRect()
+			const w =
+				Math.min(box.right, handle.right) - Math.max(box.left, handle.left)
+			const h =
+				Math.min(box.bottom, handle.bottom) - Math.max(box.top, handle.top)
+			if (w > 0.5 && h > 0.5)
+				found.push(
+					`${part.tagName} "${(part.textContent ?? "").trim().slice(0, 20)}" ${Math.round(w)}x${Math.round(h)}`,
+				)
+		}
+		return { found, height: handle.height }
+	})
 
 for (const phone of PHONES) {
 	test.describe(`an upright phone, ${phone.width}x${phone.height}`, () => {
@@ -155,9 +200,13 @@ for (const phone of PHONES) {
 						await expect(auto).toHaveAttribute("aria-pressed", "false")
 					}).toPass()
 				await restsAt(page, "half")
-				const rest = await words(page)
+				// at its top, where it rests (a tap on the quick look's switch may have scrolled it)
+				const rest = await words(page, 0)
 				expect(rest.cut, JSON.stringify(rest)).toEqual([])
 				expect(rest.foot).toBeGreaterThan(40)
+				// on the small phone the words always go on below: the fade must be there
+				if (phone.height === 640)
+					expect(rest.hidden, JSON.stringify(rest)).toBe(true)
 				// what is hidden fades out above the foot, not at the sheet's bottom
 				expect(rest.more).toBe(rest.hidden)
 				if (rest.hidden) {
@@ -182,6 +231,8 @@ for (const phone of PHONES) {
 			const rest = await words(page)
 			expect(rest.cut, JSON.stringify(rest)).toEqual([])
 			expect(rest.foot).toBe(0)
+			if (phone.height === 640)
+				expect(rest.hidden, JSON.stringify(rest)).toBe(true)
 			expect(rest.more).toBe(rest.hidden)
 			if (rest.hidden) {
 				expect(rest.masked).toBe(true)
@@ -192,50 +243,85 @@ for (const phone of PHONES) {
 			expect(end.masked).toBe(false)
 		})
 
+		for (const [what, url] of [
+			["tonight's sky", "/solar_system?sky=true&lang=en"],
+			["the birthday", "/solar_system?birthday=true&lang=en"],
+			["the light flash", "/solar_system?light=flash&lang=en"],
+			["the signal delay", "/solar_system?light=delay&lang=en"],
+		] as const)
+			test(`${what}: its main action rests above the fade, never in it`, async ({
+				page,
+			}) => {
+				await ready(page, url)
+				await restsAt(page, "half")
+				const main = () =>
+					page.evaluate(() => {
+						const area = document.querySelector<HTMLElement>(
+							"[data-testid=sheet-content]",
+						)!
+						const action = [
+							...area.querySelectorAll("[data-sheet-shown] [data-sheet-main]"),
+						].find((element) => element.getClientRects().length > 0)!
+						const view = area.getBoundingClientRect()
+						const box = action.getBoundingClientRect()
+						const end = parseFloat(
+							area.style.getPropertyValue("--sheet-fade-end") || "0",
+						)
+						const fade =
+							1.5 *
+							parseFloat(getComputedStyle(document.documentElement).fontSize)
+						const header = area.querySelector("[data-sheet-shown] > header")
+						return {
+							// the edge, and where the fade above it begins, px from the screen's top
+							edge: view.bottom - end,
+							fadeTop: view.bottom - end - fade,
+							more: area.hasAttribute("data-sheet-more"),
+							top: box.top,
+							bottom: box.bottom,
+							under: header?.getBoundingClientRect().bottom ?? view.top,
+						}
+					})
+				// it may still be loading (the sky's suggestion): it comes to rest
+				let last = ""
+				await expect
+					.poll(
+						async () => {
+							const now = JSON.stringify(await main())
+							const same = now === last
+							last = now
+							return same
+						},
+						{ intervals: [300] },
+					)
+					.toBe(true)
+				const at = await main()
+				const room = at.edge - at.under
+				const fade = at.edge - at.fadeTop
+				expect(at.top, JSON.stringify(at)).toBeGreaterThanOrEqual(
+					at.under - 0.5,
+				)
+				// 8 px under the header, 8 px over the fade
+				if (at.bottom - at.top + 16 + fade <= room)
+					// it fits: whole, above the fade with room to spare
+					expect(at.bottom, JSON.stringify(at)).toBeLessThanOrEqual(
+						(at.more ? at.fadeTop : at.edge) - 4,
+					)
+				// taller than the room: it starts right under the header
+				else expect(at.top - at.under, JSON.stringify(at)).toBeLessThan(9)
+			})
+
 		test("the handle's target lies over nothing, at every height; a tap just above the sheet is the scene's", async ({
 			page,
 		}) => {
 			await ready(page, "/solar_system?focus=earth&lang=en")
 			await restsAt(page, "small")
-			/** The handle against the shown header's parts and the time chip, read at once. */
-			const clashes = () =>
-				page.evaluate(() => {
-					const handle = document
-						.querySelector("[data-testid=sheet-handle]")!
-						.getBoundingClientRect()
-					const shown =
-						document.querySelector("[data-sheet-shown]") ??
-						document.querySelector("[data-info] > *")!
-					const parts = [
-						...shown.querySelectorAll(
-							":scope > header *, [data-sheet-summary] *",
-						),
-						...document.querySelectorAll("[data-testid=time-chip]"),
-					]
-					const found: string[] = []
-					for (const part of parts) {
-						if (part.getClientRects().length === 0) continue
-						const box = part.getBoundingClientRect()
-						const w =
-							Math.min(box.right, handle.right) -
-							Math.max(box.left, handle.left)
-						const h =
-							Math.min(box.bottom, handle.bottom) -
-							Math.max(box.top, handle.top)
-						if (w > 0.5 && h > 0.5)
-							found.push(
-								`${part.tagName} "${(part.textContent ?? "").trim().slice(0, 20)}" ${Math.round(w)}x${Math.round(h)}`,
-							)
-					}
-					return { found, height: handle.height }
-				})
-			const small = await clashes()
+			const small = await handleClashes(page)
 			expect(small.height).toBeGreaterThan(43.5)
 			expect(small.found).toEqual([])
 			// the card unfolded at half: its header sticks under the handle's strip
 			await handle(page).tap()
 			await restsAt(page, "half")
-			expect((await clashes()).found).toEqual([])
+			expect((await handleClashes(page)).found).toEqual([])
 
 			// a long list at half and full, scrolled: its header stays under the strip
 			await openTool(page, "spacecraft")
@@ -248,11 +334,11 @@ for (const phone of PHONES) {
 					content.scrollTop = 120
 				})
 			await list()
-			expect((await clashes()).found).toEqual([])
+			expect((await handleClashes(page)).found).toEqual([])
 			await handle(page).tap()
 			await restsAt(page, "full")
 			await list()
-			expect((await clashes()).found).toEqual([])
+			expect((await handleClashes(page)).found).toEqual([])
 			await page
 				.locator("[data-sheet-shown]")
 				.getByRole("button", { name: /^Close/ })
@@ -295,6 +381,20 @@ for (const phone of PHONES) {
 			)
 			await expect(sheet(page)).toHaveAttribute("data-sheet-height", "small")
 		})
+
+		test("in presentation mode too, its larger type never pushes the handle over the card's header", async ({
+			page,
+		}) => {
+			await ready(page, "/solar_system?focus=earth&present=true&lang=en")
+			await expect(page.locator("html")).toHaveAttribute("data-presenting", "")
+			await restsAt(page, "small")
+			const small = await handleClashes(page)
+			expect(small.height).toBeCloseTo(44, 0)
+			expect(small.found).toEqual([])
+			await handle(page).tap()
+			await restsAt(page, "half")
+			expect((await handleClashes(page)).found).toEqual([])
+		})
 	})
 }
 
@@ -334,10 +434,16 @@ const topRow = (page: Page) =>
 		}
 	})
 
-for (const width of [320, 360, 390]) {
-	test.describe(`the top row at ${width} px`, () => {
+// upright phones, and one on its side (a phone by its height)
+for (const [width, height] of [
+	[320, 700],
+	[360, 700],
+	[390, 700],
+	[844, 390],
+] as const) {
+	test.describe(`the top row at ${width}x${height}`, () => {
 		test.use({
-			viewport: { width, height: 700 },
+			viewport: { width, height },
 			hasTouch: true,
 			isMobile: true,
 		})
@@ -423,11 +529,43 @@ for (const width of [320, 360, 390]) {
 
 /**
  * Every visible text and control of the page in one column: pairs of them
- * that overlap (neither inside the other), measured at the page's top.
+ * that overlap (neither inside the other), with the page scrolled to its
+ * top, its middle or its end. What scrolls under the opaque band behind the
+ * way back and the corner is hidden by it, so only its part below the band
+ * counts; the way back and the corner must lie on the band, the width of the
+ * screen, so nothing that scrolls is ever seen between or through them.
  */
-const pageOverlaps = (page: Page) =>
-	page.evaluate(() => {
-		window.scrollTo(0, 0)
+const pageOverlaps = (page: Page, at: "top" | "middle" | "end" = "top") =>
+	page.evaluate((at) => {
+		const scroller = document.querySelector<HTMLElement>(
+			"[data-testid=dictionary-page]",
+		)!
+		const range = scroller.scrollHeight - scroller.clientHeight
+		scroller.scrollTop = at === "top" ? 0 : at === "middle" ? range / 2 : range
+		const band = getComputedStyle(scroller, "::before")
+		// its solid part: the last 0.75rem fades
+		const solid =
+			parseFloat(band.height) -
+			0.75 * parseFloat(getComputedStyle(document.documentElement).fontSize)
+		// the way back and the corner (help and the language menu)
+		let corner = document.querySelector("[data-testid=help-button]")
+		while (corner !== null && getComputedStyle(corner).position !== "fixed")
+			corner = corner.parentElement
+		const bars = [
+			document.querySelector("[data-testid=dictionary-back]")!,
+			corner!,
+		]
+		const found: string[] = []
+		if (
+			band.position !== "fixed" ||
+			!band.backgroundImage.startsWith("linear-gradient(rgb(")
+		)
+			found.push(`no opaque band: ${band.position} ${band.backgroundImage}`)
+		for (const bar of bars)
+			if (bar.getBoundingClientRect().bottom > solid + 0.5)
+				found.push(`"${bar.textContent}" off the band`)
+		if (parseFloat(band.width) < window.innerWidth - 0.5)
+			found.push(`a band ${band.width} wide`)
 		const items: { element: Element; boxes: DOMRect[]; text: string }[] = []
 		for (const element of document.querySelectorAll("body *")) {
 			if (element.closest("canvas, svg, [aria-hidden=true]")) continue
@@ -440,10 +578,15 @@ const pageOverlaps = (page: Page) =>
 				"button, a[href], input, [role=button], [role=switch]",
 			)
 			if (!text && !control) continue
-			// an inline run that wraps is one box per line
-			const boxes = [...element.getClientRects()].filter(
-				(box) => box.width >= 2 && box.height >= 2,
-			)
+			// an inline run that wraps is one box per line; what scrolls shows below the band
+			const below = !bars.some((bar) => bar.contains(element))
+			const boxes = [...element.getClientRects()]
+				.map((box) =>
+					below && box.top < solid
+						? new DOMRect(box.x, solid, box.width, box.bottom - solid)
+						: box,
+				)
+				.filter((box) => box.width >= 2 && box.height >= 2)
 			if (boxes.length === 0) continue
 			const style = getComputedStyle(element)
 			if (style.visibility === "hidden" || Number(style.opacity) < 0.15)
@@ -460,7 +603,6 @@ const pageOverlaps = (page: Page) =>
 					.slice(0, 30),
 			})
 		}
-		const found: string[] = []
 		for (let i = 0; i < items.length; i++)
 			for (let j = i + 1; j < items.length; j++) {
 				const a = items[i]
@@ -477,12 +619,13 @@ const pageOverlaps = (page: Page) =>
 				if (meet) found.push(`"${a.text}" × "${b.text}"`)
 			}
 		return found
-	})
+	}, at)
 
 for (const [width, height, lang] of [
 	[390, 844, "lang=en"],
 	[360, 640, "lang=en"],
 	[360, 640, "lang=de&reading=simple"],
+	[844, 390, "lang=en"],
 ] as const)
 	test.describe(`the dictionary at ${width}x${height} (${lang})`, () => {
 		test.use({ viewport: { width, height }, hasTouch: true, isMobile: true })
@@ -493,6 +636,8 @@ for (const [width, height, lang] of [
 			await page.goto(`/solar_dictionary?entity=6&section=madeOf&${lang}`)
 			const madeOf = page.getByTestId("dictionary-section-madeOf")
 			await expect(madeOf).toHaveAttribute("aria-expanded", "true")
+			// the page has slid in: the band and the bars are where they stay
+			await pageInPlace(page)
 			// the facts have faded in
 			await expect
 				.poll(() =>
@@ -506,6 +651,12 @@ for (const [width, height, lang] of [
 				)
 				.toBe(true)
 			expect(await pageOverlaps(page)).toEqual([])
+			// scrolled, what passes under the way back and the corner is never sliced by them
+			expect(await pageOverlaps(page, "middle")).toEqual([])
+			expect(await pageOverlaps(page, "end")).toEqual([])
+			await page
+				.getByTestId("dictionary-page")
+				.evaluate((element) => (element.scrollTop = 0))
 			const layout = await page.evaluate(() => {
 				const dots = [
 					...document.querySelectorAll<HTMLElement>("[data-dictionary-world]"),
@@ -575,6 +726,58 @@ for (const [width, height, lang] of [
 			await expect(
 				page.getByRole("img", { name: /Saturn/ }).first(),
 			).toBeVisible()
+		})
+
+		test("the row of worlds fades at an end where more lie past it", async ({
+			page,
+		}) => {
+			// the Sun: the row from its start
+			await page.goto(`/solar_dictionary?${lang}`)
+			const row = page.locator("[data-dictionary-world]").first().locator("..")
+			await expect(row.locator("[data-dictionary-world]")).toHaveCount(9)
+			const ends = () =>
+				row.evaluate((element) => {
+					const style = getComputedStyle(element)
+					const box = element.getBoundingClientRect()
+					const inView = [
+						...element.querySelectorAll("[data-dictionary-world]"),
+					]
+						.map((dot) => dot.getBoundingClientRect())
+						.filter(
+							(dot) => dot.left + 12 < box.right && dot.right - 12 > box.left,
+						)
+					return {
+						start: element.hasAttribute("data-more-start"),
+						end: element.hasAttribute("data-more-end"),
+						masked: (style.maskImage || style.webkitMaskImage).includes(
+							"gradient",
+						),
+						scrolls: element.scrollWidth > element.clientWidth,
+						// how far the last dot in view (its 20 px dot, 12 px in) lies from the row's end
+						lastFromEnd: box.right - (inView[inView.length - 1].right - 12),
+					}
+				})
+			const first = await ends()
+			if (width > 600) {
+				// a phone on its side: the nine fit, nothing fades
+				expect(first).toMatchObject({ start: false, end: false, masked: false })
+				return
+			}
+			expect(first).toMatchObject({
+				start: false,
+				end: true,
+				masked: true,
+				scrolls: true,
+			})
+			// the last dot in view lies in the fade (2.5rem), so the row says it goes on
+			expect(first.lastFromEnd).toBeLessThan(40)
+			// swiped to its end: the other end fades
+			await row.evaluate((element) =>
+				element.scrollTo({ left: element.scrollWidth }),
+			)
+			await expect
+				.poll(ends)
+				.toMatchObject({ start: true, end: false, masked: true })
 		})
 	})
 

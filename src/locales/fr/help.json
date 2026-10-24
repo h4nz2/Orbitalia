@@ -589,12 +589,12 @@
 			"how": {
 				"standard": [
 					"Ouvre Outils et choisis « Dictionnaire illustré » : il s’ouvre sur le monde que tu regardes. Ou clique sur « En savoir plus dans le dictionnaire » sur la fiche d’un monde.",
-					"Choisis un monde dans la rangée de points en haut, puis « Surface », « Relief », « Océans » ou « Nuages » quand il en a.",
+					"Choisis un monde dans la rangée de points en haut (sur un téléphone, la rangée défile sur le côté : fais-la glisser pour voir les autres), puis « Surface », « Relief », « Océans » ou « Nuages » quand il en a.",
 					"Ouvre « Composition », « Météo » ou « Noms » à côté du globe (en dessous sur un téléphone). La section ouverte le reste quand tu choisis un autre monde : une classe peut ainsi les comparer un par un."
 				],
 				"simple": [
 					"Appuie sur Outils, puis sur « Livre des planètes ».",
-					"Choisis une planète dans la rangée de points en haut.",
+					"Choisis une planète dans la rangée de points en haut. Sur un téléphone, fais glisser la rangée sur le côté pour toutes les voir.",
 					"Appuie sur « Qu’y a-t-il dedans ? », « Chaud ou froid ? » ou « Ses noms »."
 				]
 			}

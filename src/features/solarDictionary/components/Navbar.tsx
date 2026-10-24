@@ -46,6 +46,28 @@ const Navbar: FC<NavbarProps> = ({
 		})
 		first.current = false
 	}, [activeEntityIndex])
+	// its ends fade where more worlds lie past them (Navbar.module.css), so a
+	// row that runs off the screen says so
+	useEffect(() => {
+		const element = row.current
+		if (element == null) return
+		const mark = () => {
+			const left = element.scrollLeft
+			element.toggleAttribute("data-more-start", left > 1)
+			element.toggleAttribute(
+				"data-more-end",
+				element.scrollWidth - element.clientWidth - left > 1,
+			)
+		}
+		mark()
+		element.addEventListener("scroll", mark, { passive: true })
+		const observer = new ResizeObserver(mark)
+		observer.observe(element)
+		return () => {
+			element.removeEventListener("scroll", mark)
+			observer.disconnect()
+		}
+	}, [])
 	return (
 		<Box ref={row} className={classes.base}>
 			{solarDict.map((entity, i) => {
