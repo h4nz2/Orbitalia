@@ -686,5 +686,119 @@
 			"s20151364721",
 			"dysnomia"
 		]
+	},
+	{
+		"id": "nasa3d-voyager",
+		"kind": "model",
+		"title": "Voyager Probe (B), NASA 3D Resources",
+		"credit": "NASA, from NASA 3D Resources (NASA Ames Research Center)",
+		"short": "NASA 3D Resources",
+		"url": "https://github.com/nasa/NASA-3D-Resources/tree/master/3D%20Models/Voyager%20Probe%20%28B%29",
+		"licence": "Public domain",
+		"licenceUrl": "https://www.nasa.gov/nasa-brand-center/images-and-media/",
+		"note": "NASA 3D Resources calls its models free and without copyright; NASA's media guidelines ask for NASA to be credited and keep the NASA insignia and logotype out of the public domain, so none appears in our textures.",
+		"bodies": [
+			"voyager1",
+			"voyager2"
+		]
+	},
+	{
+		"id": "nasa3d-pioneer",
+		"kind": "model",
+		"title": "Pioneer 10, NASA 3D Resources",
+		"credit": "NASA, from NASA 3D Resources (NASA Ames Research Center)",
+		"short": "NASA 3D Resources",
+		"url": "https://github.com/nasa/NASA-3D-Resources/tree/master/3D%20Models/Pioneer%2010",
+		"licence": "Public domain",
+		"licenceUrl": "https://www.nasa.gov/nasa-brand-center/images-and-media/",
+		"note": "NASA 3D Resources calls its models free and without copyright; NASA's media guidelines ask for NASA to be credited and keep the NASA insignia and logotype out of the public domain, so none appears in our textures.",
+		"bodies": [
+			"pioneer10",
+			"pioneer11"
+		]
+	},
+	{
+		"id": "nasa3d-cassini",
+		"kind": "model",
+		"title": "Cassini-Huygens (A), NASA 3D Resources",
+		"credit": "NASA, from NASA 3D Resources (NASA Ames Research Center)",
+		"short": "NASA 3D Resources",
+		"url": "https://github.com/nasa/NASA-3D-Resources/tree/master/3D%20Models/Cassini-Huygens%20%28A%29",
+		"licence": "Public domain",
+		"licenceUrl": "https://www.nasa.gov/nasa-brand-center/images-and-media/",
+		"note": "NASA 3D Resources calls its models free and without copyright; NASA's media guidelines ask for NASA to be credited and keep the NASA insignia and logotype out of the public domain, so none appears in our textures.",
+		"bodies": [
+			"cassini"
+		]
+	},
+	{
+		"id": "nasa3d-jwst",
+		"kind": "model",
+		"title": "James Webb Space Telescope (B), NASA 3D Resources",
+		"credit": "NASA, from NASA 3D Resources (NASA Ames Research Center)",
+		"short": "NASA 3D Resources",
+		"url": "https://github.com/nasa/NASA-3D-Resources/tree/master/3D%20Models/James%20Webb%20Space%20Telescope%20%28B%29",
+		"licence": "Public domain",
+		"licenceUrl": "https://www.nasa.gov/nasa-brand-center/images-and-media/",
+		"note": "NASA 3D Resources calls its models free and without copyright; NASA's media guidelines ask for NASA to be credited and keep the NASA insignia and logotype out of the public domain, so none appears in our textures.",
+		"bodies": [
+			"jwst"
+		]
+	},
+	{
+		"id": "nasa3d-juno",
+		"kind": "model",
+		"title": "Juno (A), NASA 3D Resources",
+		"credit": "NASA, from NASA 3D Resources (NASA Ames Research Center)",
+		"short": "NASA 3D Resources",
+		"url": "https://github.com/nasa/NASA-3D-Resources/tree/master/3D%20Models/Juno%20%28A%29",
+		"licence": "Public domain",
+		"licenceUrl": "https://www.nasa.gov/nasa-brand-center/images-and-media/",
+		"note": "NASA 3D Resources calls its models free and without copyright; NASA's media guidelines ask for NASA to be credited and keep the NASA insignia and logotype out of the public domain, so none appears in our textures.",
+		"bodies": [
+			"juno"
+		]
+	},
+	{
+		"id": "nasa3d-parker",
+		"kind": "model",
+		"title": "Parker Solar Probe, NASA 3D Resources",
+		"credit": "NASA, from NASA 3D Resources (NASA Ames Research Center)",
+		"short": "NASA 3D Resources",
+		"url": "https://github.com/nasa/NASA-3D-Resources/tree/master/3D%20Models/Parker%20Solar%20Probe",
+		"licence": "Public domain",
+		"licenceUrl": "https://www.nasa.gov/nasa-brand-center/images-and-media/",
+		"note": "NASA 3D Resources calls its models free and without copyright; NASA's media guidelines ask for NASA to be credited and keep the NASA insignia and logotype out of the public domain, so none appears in our textures.",
+		"bodies": [
+			"parker"
+		]
+	},
+	{
+		"id": "vtad-new-horizons",
+		"kind": "model",
+		"title": "New Horizons 3D Model (NASA Science)",
+		"credit": "NASA Visualization Technology Applications and Development (VTAD)",
+		"short": "NASA VTAD",
+		"url": "https://science.nasa.gov/resource/new-horizons-3d-model/",
+		"licence": "Public domain",
+		"licenceUrl": "https://www.nasa.gov/nasa-brand-center/images-and-media/",
+		"note": "One of NASA's 3D models on NASA Science, made by NASA's Visualization Technology Applications and Development team; NASA's media guidelines ask for NASA to be credited and keep the NASA insignia and logotype out of the public domain, so none appears in our textures.",
+		"bodies": [
+			"newHorizons"
+		]
+	},
+	{
+		"id": "vtad-europa-clipper",
+		"kind": "model",
+		"title": "Europa Clipper 3D Model (NASA Science)",
+		"credit": "NASA Visualization Technology Applications and Development (VTAD)",
+		"short": "NASA VTAD",
+		"url": "https://science.nasa.gov/resource/europa-clipper-3d-model/",
+		"licence": "Public domain",
+		"licenceUrl": "https://www.nasa.gov/nasa-brand-center/images-and-media/",
+		"note": "One of NASA's 3D models on NASA Science, made by NASA's Visualization Technology Applications and Development team; NASA's media guidelines ask for NASA to be credited and keep the NASA insignia and logotype out of the public domain, so none appears in our textures.",
+		"bodies": [
+			"europaClipper"
+		]
 	}
 ]

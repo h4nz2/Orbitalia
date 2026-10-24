@@ -1373,6 +1373,10 @@
 			"title": "Surface maps",
 			"intro": "The pictures wrapped around the globes."
 		},
+		"models": {
+			"title": "Spacecraft models",
+			"intro": "The 3D models of the real spacecraft, made by NASA."
+		},
 		"sounds": {
 			"title": "Sounds",
 			"intro": "The recordings you can listen to. The app’s own tones are made in the browser."

@@ -105,11 +105,13 @@ export const Surface = z.object({
 
 /**
  * One image source with its credit and licence (src/data/credits.json, built from
- * data/planet-textures.json and data/moon-surfaces.json). The help page (#43) lists these; `bodies` are the ids that show it.
+ * data/planet-textures.json and data/moon-surfaces.json), or a spacecraft's 3D model (`model`,
+ * from data/spacecraft-models.json, #72). The help page (#43) lists these; `bodies` are the ids
+ * that show it (for a model, the craft that wear it).
  */
 export const ImageCredit = z.object({
 	id: z.string().min(1),
-	kind: z.enum(["map", "painted"]),
+	kind: z.enum(["map", "painted", "model"]),
 	title: z.string().min(1),
 	credit: z.string().min(1),
 	short: z.string().min(1),

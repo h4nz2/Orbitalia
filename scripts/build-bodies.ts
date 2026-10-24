@@ -4,8 +4,9 @@
  * All mapping rules live in scripts/lib/build.ts (pure, unit-tested); this file only
  * does the I/O: read the source, the optional data/rings/<planet>.json files and the
  * curated data/featured-moons.json (#17), the moon surfaces data/moon-surfaces.json (#37) and
- * the Sun's and planets' textures data/planet-textures.json (both give src/data/credits.json), check
- * texture paths against public/, validate with the zod schema, write, print stats.
+ * the Sun's and planets' textures data/planet-textures.json (both give src/data/credits.json, as
+ * does data/spacecraft-models.json for the spacecraft's 3D models, #72), check texture and model
+ * paths against public/, validate with the zod schema, write, print stats.
  * Warnings go to stderr, the summary to stdout. Exit code 1 on any data error.
  */
 import { existsSync, readFileSync, writeFileSync } from "node:fs"
@@ -26,6 +27,7 @@ const paths = {
 	surfaces: join(root, "data", "moon-surfaces.json"),
 	builtSurfaces: join(root, "data", "moon-surfaces.built.json"),
 	planetTextures: join(root, "data", "planet-textures.json"),
+	spacecraftModels: join(root, "data", "spacecraft-models.json"),
 	publicDir: join(root, "public"),
 	out: join(root, "src", "data", "bodies.json"),
 	beltsOut: join(root, "src", "data", "belts.json"),
@@ -70,6 +72,7 @@ const main = (): number => {
 			? readJson(paths.builtSurfaces)
 			: undefined,
 		planetTextures: readJson(paths.planetTextures),
+		spacecraftModels: readJson(paths.spacecraftModels),
 	})
 	for (const warning of result.warnings) err(`warning: ${warning}`)
 
@@ -104,7 +107,10 @@ const main = (): number => {
 	writeFileSync(paths.beltsOut, toJsonFile(result.belts))
 	out(`wrote ${paths.beltsOut} (${result.belts.length} belts)`)
 	writeFileSync(paths.credits, toJsonFile(result.credits))
-	out(`wrote ${paths.credits} (${result.credits.length} image sources)`)
+	const models = result.credits.filter((credit) => credit.kind === "model")
+	out(
+		`wrote ${paths.credits} (${result.credits.length - models.length} image sources, ${models.length} model sources)`,
+	)
 	printStats(result.stats)
 	return 0
 }

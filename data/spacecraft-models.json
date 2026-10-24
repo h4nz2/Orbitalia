@@ -1,0 +1,373 @@
+{
+	"$comment": "NASA's 3D models of the spacecraft (#72), the input of `pnpm gen:models` (scripts/gen-spacecraft-models.ts), which writes public/assets/models/spacecraft/<model>.glb. `sources` give the credit and licence (src/data/credits.json is built from them by `pnpm build:data`) and the file downloaded. `models` say how each source becomes a model: every model is normalised so the origin is the centre of the craft's bus, one unit is one metre, +Z is the axis that must point (at Earth or the Sun, `points`) and +Y a stable second axis (`axes` says what each is on that craft); `normalise` gives the source axes that become +Z and +Y, the bus centre in source units and metres per source unit. Then duplicates are merged, meshes welded and simplified within `simplify` x `sizeM` metres, normal maps dropped except for `normalMaps`, textures re-encoded as WebP at most `textureSize` px and the geometry meshopt-compressed, at most 300 KB a file and 2 MB in all. `sizeM` is the craft's longest dimension (the model's, checked against what NASA publishes, `size`). `craft` maps each craft of data/spacecraft.json to its models in time order (`from` inclusive, `until` exclusive). See docs/ARCHITECTURE.md, \"Spacecraft\", Models.",
+	"sources": {
+		"nasa3d-voyager": {
+			"title": "Voyager Probe (B), NASA 3D Resources",
+			"credit": "NASA, from NASA 3D Resources (NASA Ames Research Center)",
+			"short": "NASA 3D Resources",
+			"url": "https://github.com/nasa/NASA-3D-Resources/tree/master/3D%20Models/Voyager%20Probe%20%28B%29",
+			"file": "https://raw.githubusercontent.com/nasa/NASA-3D-Resources/master/3D%20Models/Voyager%20Probe%20%28B%29/Voyager%20Probe%20%28B%29.glb",
+			"path": "3D Models/Voyager Probe (B)/Voyager Probe (B).glb",
+			"licence": "Public domain",
+			"licenceUrl": "https://www.nasa.gov/nasa-brand-center/images-and-media/",
+			"note": "NASA 3D Resources calls its models free and without copyright; NASA's media guidelines ask for NASA to be credited and keep the NASA insignia and logotype out of the public domain, so none appears in our textures."
+		},
+		"nasa3d-pioneer": {
+			"title": "Pioneer 10, NASA 3D Resources",
+			"credit": "NASA, from NASA 3D Resources (NASA Ames Research Center)",
+			"short": "NASA 3D Resources",
+			"url": "https://github.com/nasa/NASA-3D-Resources/tree/master/3D%20Models/Pioneer%2010",
+			"file": "https://raw.githubusercontent.com/nasa/NASA-3D-Resources/master/3D%20Models/Pioneer%2010/Pioneer%2010.glb",
+			"path": "3D Models/Pioneer 10/Pioneer 10.glb",
+			"licence": "Public domain",
+			"licenceUrl": "https://www.nasa.gov/nasa-brand-center/images-and-media/",
+			"note": "NASA 3D Resources calls its models free and without copyright; NASA's media guidelines ask for NASA to be credited and keep the NASA insignia and logotype out of the public domain, so none appears in our textures."
+		},
+		"nasa3d-cassini": {
+			"title": "Cassini-Huygens (A), NASA 3D Resources",
+			"credit": "NASA, from NASA 3D Resources (NASA Ames Research Center)",
+			"short": "NASA 3D Resources",
+			"url": "https://github.com/nasa/NASA-3D-Resources/tree/master/3D%20Models/Cassini-Huygens%20%28A%29",
+			"file": "https://raw.githubusercontent.com/nasa/NASA-3D-Resources/master/3D%20Models/Cassini-Huygens%20%28A%29/Cassini-Huygens%20%28A%29.glb",
+			"path": "3D Models/Cassini-Huygens (A)/Cassini-Huygens (A).glb",
+			"licence": "Public domain",
+			"licenceUrl": "https://www.nasa.gov/nasa-brand-center/images-and-media/",
+			"note": "NASA 3D Resources calls its models free and without copyright; NASA's media guidelines ask for NASA to be credited and keep the NASA insignia and logotype out of the public domain, so none appears in our textures."
+		},
+		"nasa3d-jwst": {
+			"title": "James Webb Space Telescope (B), NASA 3D Resources",
+			"credit": "NASA, from NASA 3D Resources (NASA Ames Research Center)",
+			"short": "NASA 3D Resources",
+			"url": "https://github.com/nasa/NASA-3D-Resources/tree/master/3D%20Models/James%20Webb%20Space%20Telescope%20%28B%29",
+			"file": "https://raw.githubusercontent.com/nasa/NASA-3D-Resources/master/3D%20Models/James%20Webb%20Space%20Telescope%20%28B%29/James%20Webb%20Space%20Telescope%20%28B%29.glb",
+			"path": "3D Models/James Webb Space Telescope (B)/James Webb Space Telescope (B).glb",
+			"licence": "Public domain",
+			"licenceUrl": "https://www.nasa.gov/nasa-brand-center/images-and-media/",
+			"note": "NASA 3D Resources calls its models free and without copyright; NASA's media guidelines ask for NASA to be credited and keep the NASA insignia and logotype out of the public domain, so none appears in our textures."
+		},
+		"nasa3d-juno": {
+			"title": "Juno (A), NASA 3D Resources",
+			"credit": "NASA, from NASA 3D Resources (NASA Ames Research Center)",
+			"short": "NASA 3D Resources",
+			"url": "https://github.com/nasa/NASA-3D-Resources/tree/master/3D%20Models/Juno%20%28A%29",
+			"file": "https://raw.githubusercontent.com/nasa/NASA-3D-Resources/master/3D%20Models/Juno%20%28A%29/Juno%20%28A%29.glb",
+			"path": "3D Models/Juno (A)/Juno (A).glb",
+			"licence": "Public domain",
+			"licenceUrl": "https://www.nasa.gov/nasa-brand-center/images-and-media/",
+			"note": "NASA 3D Resources calls its models free and without copyright; NASA's media guidelines ask for NASA to be credited and keep the NASA insignia and logotype out of the public domain, so none appears in our textures."
+		},
+		"nasa3d-parker": {
+			"title": "Parker Solar Probe, NASA 3D Resources",
+			"credit": "NASA, from NASA 3D Resources (NASA Ames Research Center)",
+			"short": "NASA 3D Resources",
+			"url": "https://github.com/nasa/NASA-3D-Resources/tree/master/3D%20Models/Parker%20Solar%20Probe",
+			"file": "https://raw.githubusercontent.com/nasa/NASA-3D-Resources/master/3D%20Models/Parker%20Solar%20Probe/Parker%20Solar%20Probe.glb",
+			"path": "3D Models/Parker Solar Probe/Parker Solar Probe.glb",
+			"licence": "Public domain",
+			"licenceUrl": "https://www.nasa.gov/nasa-brand-center/images-and-media/",
+			"note": "NASA 3D Resources calls its models free and without copyright; NASA's media guidelines ask for NASA to be credited and keep the NASA insignia and logotype out of the public domain, so none appears in our textures."
+		},
+		"vtad-new-horizons": {
+			"title": "New Horizons 3D Model (NASA Science)",
+			"credit": "NASA Visualization Technology Applications and Development (VTAD)",
+			"short": "NASA VTAD",
+			"url": "https://science.nasa.gov/resource/new-horizons-3d-model/",
+			"file": "https://assets.science.nasa.gov/content/dam/science/psd/solar/2023/09/n/New_Horizons.glb",
+			"licence": "Public domain",
+			"licenceUrl": "https://www.nasa.gov/nasa-brand-center/images-and-media/",
+			"note": "One of NASA's 3D models on NASA Science, made by NASA's Visualization Technology Applications and Development team; NASA's media guidelines ask for NASA to be credited and keep the NASA insignia and logotype out of the public domain, so none appears in our textures."
+		},
+		"vtad-europa-clipper": {
+			"title": "Europa Clipper 3D Model (NASA Science)",
+			"credit": "NASA Visualization Technology Applications and Development (VTAD)",
+			"short": "NASA VTAD",
+			"url": "https://science.nasa.gov/resource/europa-clipper-3d-model/",
+			"file": "https://assets.science.nasa.gov/content/dam/science/psd/solar/2023/09/c/clipper_spacecraft.glb",
+			"licence": "Public domain",
+			"licenceUrl": "https://www.nasa.gov/nasa-brand-center/images-and-media/",
+			"note": "One of NASA's 3D models on NASA Science, made by NASA's Visualization Technology Applications and Development team; NASA's media guidelines ask for NASA to be credited and keep the NASA insignia and logotype out of the public domain, so none appears in our textures."
+		}
+	},
+	"models": {
+		"voyager": {
+			"source": "nasa3d-voyager",
+			"normalise": {
+				"z": "+y",
+				"y": "+z",
+				"centre": [0, 0.8, 0],
+				"scale": 1
+			},
+			"remove": ["_root"],
+			"paintOver": [
+				{
+					"texture": "Voyager_tex_01.ps",
+					"box": [836, 448, 866, 470],
+					"what": "the NASA logotype (\"worm\") and a small label on a sticker, in one of the photographs the texture is made of"
+				}
+			],
+			"textureSize": 512,
+			"simplify": 0.0005,
+			"axes": {
+				"z": "the high-gain antenna's boresight",
+				"y": "the side the magnetometer boom reaches out to"
+			},
+			"points": "earth",
+			"sizeM": 16.9,
+			"size": {
+				"note": "NASA gives the dish as 3.66 m, the bus as 1.78 m across, the science boom as 2.5 m and the magnetometer boom as 13 m on the opposite side: about 17.3 m from boom tip to boom tip. The model is in metres: its dish measures 3.81 m, its two booms 16.9 m tip to tip.",
+				"url": "https://nssdc.gsfc.nasa.gov/nmc/spacecraft/display.action?id=1977-084A"
+			},
+			"note": "Voyager Probe (B) rather than (A): NASA's textured model, in metres, its booms the length NASA gives, and within budget once compressed. The 1 m cube Blender put on the root node is left out; the NASA logotype on a sticker in its texture is painted over."
+		},
+		"pioneer": {
+			"source": "nasa3d-pioneer",
+			"normalise": {
+				"z": "-z",
+				"y": "-y",
+				"centre": [0, 0, 0.45],
+				"scale": 1
+			},
+			"textureSize": 512,
+			"simplify": 0.002,
+			"axes": {
+				"z": "the high-gain antenna's boresight, also the spin axis",
+				"y": "the magnetometer boom"
+			},
+			"points": "earth",
+			"sizeM": 8.25,
+			"size": {
+				"note": "NASA gives the dish as 2.74 m, the magnetometer boom as 6.6 m from the equipment compartment and the RTGs as about 3 m from the centre. The model is in metres: its dish measures 2.74 m, and the magnetometer boom's tip lies 8.25 m from the RTGs on the far side.",
+				"url": "https://nssdc.gsfc.nasa.gov/nmc/spacecraft/display.action?id=1972-012A"
+			},
+			"note": "Shared by Pioneer 10 and 11, twins in this respect. Nothing beyond the common steps."
+		},
+		"cassini": {
+			"source": "nasa3d-cassini",
+			"normalise": {
+				"z": "+y",
+				"y": "-z",
+				"centre": [0, -0.4, 0],
+				"scale": 1
+			},
+			"remove": ["_root"],
+			"textureSize": 512,
+			"simplify": 0.002,
+			"axes": {
+				"z": "the high-gain antenna's boresight",
+				"y": "the magnetometer boom"
+			},
+			"points": "earth",
+			"sizeM": 18.0,
+			"size": {
+				"note": "ESA gives Cassini as more than 6.7 m high and 4 m wide, with an 11 m magnetometer boom. The model is in metres: its dish measures 4.0 m, it stands 6.5 m high, and two of its three radio and plasma wave antennas reach 18.0 m across tip to tip.",
+				"url": "https://www.esa.int/Science_Exploration/Space_Science/Cassini-Huygens/Cassini_spacecraft"
+			},
+			"note": "Cassini-Huygens (A), NASA's textured model, with the Huygens probe on its side (Cassini-Huygens (B) is untextured). The 1 m cube Blender put on the root node is left out."
+		},
+		"cassini-no-huygens": {
+			"source": "nasa3d-cassini",
+			"normalise": {
+				"z": "+y",
+				"y": "-z",
+				"centre": [0, -0.4, 0],
+				"scale": 1
+			},
+			"remove": ["_root", "foil_gold_h", "tex_01_h"],
+			"textureSize": 512,
+			"simplify": 0.002,
+			"axes": {
+				"z": "the high-gain antenna's boresight",
+				"y": "the magnetometer boom"
+			},
+			"points": "earth",
+			"sizeM": 18.0,
+			"size": {
+				"note": "ESA gives Cassini as more than 6.7 m high and 4 m wide, with an 11 m magnetometer boom. The model is in metres: its dish measures 4.0 m, it stands 6.5 m high, and two of its three radio and plasma wave antennas reach 18.0 m across tip to tip.",
+				"url": "https://www.esa.int/Science_Exploration/Space_Science/Cassini-Huygens/Cassini_spacecraft"
+			},
+			"note": "The same source with Huygens' two parts (foil_gold_h, tex_01_h) left out, so it matches the model with the probe exactly; NASA publishes the same variant as a separate file (\"without Hyugens\")."
+		},
+		"jwst": {
+			"source": "nasa3d-jwst",
+			"normalise": {
+				"z": "-y",
+				"y": "+z",
+				"centre": [0.075, -1.78, -0.26],
+				"scale": 1
+			},
+			"textureSize": 512,
+			"creaseAngle": 35,
+			"simplify": 0.002,
+			"exact": ["JWST-TopReflector", "JWST-black-sm"],
+			"axes": {
+				"z": "the sunshield's normal on its Sun side (away from the mirror)",
+				"y": "the telescope's line of sight"
+			},
+			"points": "sun",
+			"sizeM": 21.0,
+			"size": {
+				"note": "NASA gives the deployed sunshield as about 21 by 14 m. The model is in metres: its sunshield is 21.0 m long.",
+				"url": "https://blogs.nasa.gov/webb/2021/12/"
+			},
+			"note": "James Webb Space Telescope (B) (A is 1,600 meshes and half a million vertices). Its normals are one per face, so they are rebuilt with a 35 degree crease after welding and simplifying (99,239 triangles to about 19,500). The black baffle round the secondary mirror's light path and a gold copy of it underneath (JWST-black-sm, JWST-TopReflector) are not simplified, or the gold shows through."
+		},
+		"juno": {
+			"source": "nasa3d-juno",
+			"normalise": {
+				"z": "+y",
+				"y": "+x",
+				"centre": [-0.12, -0.4, 0],
+				"scale": 1.05
+			},
+			"textureSize": 256,
+			"simplify": 0.002,
+			"axes": {
+				"z": "the high-gain antenna's boresight, also the spin axis",
+				"y": "the solar array that carries the magnetometer boom"
+			},
+			"points": "earth",
+			"sizeM": 19.5,
+			"size": {
+				"note": "JPL gives Juno's main body as 3.5 m tall and 3.5 m across and the span with the solar arrays deployed as more than 20 m; NASA's data archive gives the high-gain antenna as 2.5 m. The model's dish measures 2.38 m: scaled by 1.05, its span is 19.5 m.",
+				"url": "https://www.jpl.nasa.gov/news/press_kits/juno/spacecraft/"
+			},
+			"spinRpm": 2,
+			"spin": {
+				"note": "JPL: 1 rpm in cruise, 2 rpm for science operations (in orbit round Jupiter), 5 rpm for main engine burns. +Z, the high-gain antenna's boresight, is the spin axis.",
+				"url": "https://www.jpl.nasa.gov/news/press_kits/juno/spacecraft/"
+			},
+			"note": "Juno (A) rather than (B): NASA's textured model, in true proportions ((B) has a body and dish almost twice too big for its arrays), and within budget once compressed. Textures at 256 px."
+		},
+		"parker": {
+			"source": "nasa3d-parker",
+			"normalise": {
+				"z": "-z",
+				"y": "+y",
+				"centre": [0, -0.05, 0.18],
+				"scale": 1
+			},
+			"remove": ["_root"],
+			"textureSize": 512,
+			"simplify": 0.002,
+			"exact": ["electricAntennas"],
+			"axes": {
+				"z": "the heat shield's normal, towards the Sun",
+				"y": "the side opposite the high-gain antenna"
+			},
+			"points": "sun",
+			"sizeM": 6.6,
+			"size": {
+				"note": "NASA gives the heat shield as 8 feet (2.4 m) across and 11.43 cm thick. The model is in metres: its shield measures about 2.1 m, and it is 6.6 m long from the shield to the tip of the magnetometer boom.",
+				"url": "https://svs.gsfc.nasa.gov/12946"
+			},
+			"note": "The 1 m cube Blender put on the root node is left out. The four electric field antennas at the heat shield's rim (electricAntennas) are thinner than the simplifier's error and are not simplified, or they would vanish."
+		},
+		"new-horizons": {
+			"source": "vtad-new-horizons",
+			"normalise": {
+				"z": "+y",
+				"y": "+z",
+				"centre": [0, 0.05, 0],
+				"scale": 1
+			},
+			"remove": ["_root"],
+			"textureSize": 512,
+			"normalMaps": ["foil_gold"],
+			"simplify": 0.002,
+			"axes": {
+				"z": "the high-gain antenna's boresight",
+				"y": "the side the RTG sticks out to"
+			},
+			"points": "earth",
+			"sizeM": 3.0,
+			"size": {
+				"note": "Johns Hopkins APL gives the high-gain antenna as 2.1 m. The model is in metres: its dish measures 1.89 m, and it is 3.0 m long from the RTG's end to the far side of the body.",
+				"url": "https://pluto.jhuapl.edu/Mission/Spacecraft/Systems-and-Components.php"
+			},
+			"note": "NASA's textured model from NASA Science (VTAD), in place of painting the 3D-printing parts (which come unassembled). The invisible 1 m cube on the root node is left out; the gold foil keeps its crinkle (normal map)."
+		},
+		"europa-clipper": {
+			"source": "vtad-europa-clipper",
+			"normalise": {
+				"z": "+z",
+				"y": "-y",
+				"centre": [0, -0.18, 2.07],
+				"scale": 1
+			},
+			"textureSize": 256,
+			"normalMaps": ["clipper_blanket_hard"],
+			"creaseAngle": 35,
+			"simplify": 0.0025,
+			"permissive": true,
+			"axes": {
+				"z": "the solar arrays' normal on the cells' side",
+				"y": "the high-gain antenna's boresight"
+			},
+			"points": "sun",
+			"sizeM": 30.5,
+			"size": {
+				"note": "NASA gives the span with both solar arrays deployed as more than 100 feet (30.5 m) and the high-gain antenna as about 3 m. The model is in metres and spans 30.5 m.",
+				"url": "https://science.nasa.gov/blogs/europa-clipper/2024/03/12/nasas-europa-clipper-mission-advances-with-solar-array-deployment/"
+			},
+			"note": "NASA's textured model from NASA Science (VTAD, 35 MB), in place of painting the printable scale model (its body comes as a print plate of seven unassembled parts). Its normals are rebuilt with a 35 degree crease, and its instruments, patchworks of small texture islands, are simplified across those seams (203,662 triangles to about 9,800); the high-gain antenna's foil keeps its crinkle (normal map). Textures at 256 px."
+		}
+	},
+	"craft": {
+		"voyager1": [
+			{
+				"model": "voyager"
+			}
+		],
+		"voyager2": [
+			{
+				"model": "voyager"
+			}
+		],
+		"pioneer10": [
+			{
+				"model": "pioneer"
+			}
+		],
+		"pioneer11": [
+			{
+				"model": "pioneer"
+			}
+		],
+		"newHorizons": [
+			{
+				"model": "new-horizons"
+			}
+		],
+		"cassini": [
+			{
+				"model": "cassini",
+				"until": "2004-12-25T02:00Z"
+			},
+			{
+				"model": "cassini-no-huygens",
+				"from": "2004-12-25T02:00Z",
+				"note": "Huygens separated from Cassini on 25 December 2004 at 02:00 UTC (ESA, https://sci.esa.int/web/cassini-huygens/-/36351-cassini-huygens-status-report)."
+			}
+		],
+		"parker": [
+			{
+				"model": "parker"
+			}
+		],
+		"jwst": [
+			{
+				"model": "jwst"
+			}
+		],
+		"juno": [
+			{
+				"model": "juno"
+			}
+		],
+		"europaClipper": [
+			{
+				"model": "europa-clipper"
+			}
+		]
+	}
+}

@@ -1373,6 +1373,10 @@
 			"title": "Cartes de surface",
 			"intro": "Les images enroulées autour des globes."
 		},
+		"models": {
+			"title": "Modèles des sondes spatiales",
+			"intro": "Les modèles 3D des vraies sondes spatiales, réalisés par la NASA."
+		},
 		"sounds": {
 			"title": "Sons",
 			"intro": "Les enregistrements que tu peux écouter. Les tons de l’application sont créés dans le navigateur."

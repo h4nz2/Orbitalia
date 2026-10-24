@@ -33,6 +33,7 @@ import { normalizeName } from "./names"
 import { parseMass, parseNumber } from "./numbers"
 import { creditsOf, resolveSurfaces, surfacePath } from "./surfaces"
 import { applyPlanetTextures } from "./planetTextures"
+import { modelCredits } from "./spacecraftModels"
 import { densityKgPerM3, laplaceRadiusKm, periodDaysFromKepler } from "./orbit"
 import {
 	first,
@@ -150,6 +151,11 @@ export interface BuildOptions {
 	 * textures are not credited (unit fixtures).
 	 */
 	planetTextures?: unknown
+	/**
+	 * parsed data/spacecraft-models.json (#72): the spacecraft's 3D models, credited after the
+	 * images. Absent: not credited (unit fixtures).
+	 */
+	spacecraftModels?: unknown
 }
 
 export interface BuildStats {
@@ -175,7 +181,7 @@ export interface BuildResult {
 	stats: BuildStats
 	/** non-fatal findings, for stderr */
 	warnings: string[]
-	/** image sources in use, with credit and licence (src/data/credits.json; #37) */
+	/** image sources and 3D models in use, with credit and licence (src/data/credits.json; #37, #72) */
 	credits: ImageCredit[]
 }
 
@@ -1046,6 +1052,18 @@ const withPlanetTextures = (
 	}
 }
 
+/** The spacecraft models' credits (data/spacecraft-models.json, #72), after the images. */
+const withSpacecraftModels = (
+	options: Pick<BuildOptions, "spacecraftModels" | "fileExists">,
+): ImageCredit[] => {
+	if (options.spacecraftModels === undefined) return []
+	try {
+		return modelCredits(options.spacecraftModels, options.fileExists)
+	} catch (error) {
+		throw new BuildError(error instanceof Error ? error.message : String(error))
+	}
+}
+
 /** data/moon-surfaces.built.json: moon id -> the generated map's mean colour. */
 const BuiltSurfaces = z.record(
 	z.string(),
@@ -1181,11 +1199,10 @@ export const buildBodies = (
 	for (const { raw, body } of smallEntries) pushMoons(raw, body)
 
 	markFeatured(bodies, options.featuredMoons)
-	const credits = withPlanetTextures(
-		bodies,
-		options,
-		applySurfaces(bodies, options),
-	)
+	const credits = [
+		...withPlanetTextures(bodies, options, applySurfaces(bodies, options)),
+		...withSpacecraftModels(options),
+	]
 
 	return {
 		bodies,

@@ -72,3 +72,20 @@ test("the help page credits the planets' maps with their licences", async ({
 		"source unknown",
 	)
 })
+
+test("the help page credits the spacecraft's 3D models apart from the maps (#72)", async ({
+	page,
+}) => {
+	await page.goto("/help?lang=en&topic=credits")
+	const models = page.locator("[data-credits=models]")
+	await expect(models).toContainText("Spacecraft models")
+	await expect(
+		models.locator("[data-credit=image-nasa3d-voyager]"),
+	).toContainText("Voyager Probe (B)")
+	await expect(
+		models.locator("[data-credit=image-vtad-europa-clipper]"),
+	).toContainText("public domain")
+	await expect(
+		page.locator("[data-credits=maps] [data-credit=image-nasa3d-voyager]"),
+	).toHaveCount(0)
+})
