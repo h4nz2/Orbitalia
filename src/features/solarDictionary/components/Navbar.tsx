@@ -1,4 +1,4 @@
-import { FC, useState } from "react"
+import { FC, useEffect, useRef, useState } from "react"
 import { Box, Menu } from "@mantine/core"
 import type { SolarDictionaryItem } from "@/data/solarDictionary"
 import { useI18n } from "@/i18n"
@@ -26,8 +26,28 @@ const Navbar: FC<NavbarProps> = ({
 	const [openMenu, setOpenMenu] = useState(false)
 	const { t } = useI18n()
 	const bodyName = useBodyName()
+	const row = useRef<HTMLDivElement>(null)
+	const first = useRef(true)
+	// a row that scrolls sideways (a phone, #75): the chosen world in its middle
+	useEffect(() => {
+		const element = row.current
+		const active = element?.querySelector<HTMLElement>("[data-active]")
+		if (element == null || active == null) return
+		if (element.scrollWidth <= element.clientWidth + 1) return
+		const reduced = window.matchMedia(
+			"(prefers-reduced-motion: reduce)",
+		).matches
+		element.scrollTo({
+			left:
+				active.offsetLeft -
+				element.offsetLeft -
+				(element.clientWidth - active.offsetWidth) / 2,
+			behavior: first.current || reduced ? "auto" : "smooth",
+		})
+		first.current = false
+	}, [activeEntityIndex])
 	return (
-		<Box className={classes.base}>
+		<Box ref={row} className={classes.base}>
 			{solarDict.map((entity, i) => {
 				const isActive = i === activeEntityIndex
 				const handleOnChange = () => {
@@ -46,6 +66,7 @@ const Navbar: FC<NavbarProps> = ({
 							<Box
 								className={classes.menuTarget}
 								mod={{ active: isActive }}
+								data-dictionary-world={i}
 								role="button"
 								aria-label={t("dictionary.pick", {
 									name: bodyName(dictionaryBodyId(entity)),

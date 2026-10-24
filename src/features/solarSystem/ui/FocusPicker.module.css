@@ -52,11 +52,15 @@
 	/*
 	 * the name shares the one top row with More (#59): the follow mark and the
 	 * chevron keep to their own width, not the 44 px a finger-sized input would
-	 * give them, so the name itself has the room (the whole box is the target)
+	 * give them, so the name itself has the room (the whole box is the target).
+	 * It is what gives way when the row is short (#75): it takes what the
+	 * buttons leave, and at 320 px still shows "Neptune" or "Voyager 1" whole
+	 * (the point of view moves under More first, frame/placement.ts)
 	 */
 	.select {
-		width: 100%;
-		--input-left-section-width: 2rem;
-		--input-right-section-width: 1.75rem;
+		flex: 1 1 0;
+		min-width: 0;
+		--input-left-section-width: 1.5rem;
+		--input-right-section-width: 1.25rem;
 	}
 }

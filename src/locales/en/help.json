@@ -482,12 +482,12 @@
 			},
 			"how": {
 				"standard": [
-					"Click “Sun-centred” next to the name box and choose “Seen from Earth: the planets” or “Seen from Earth: the Moon”.",
+					"Click “Sun-centred” next to the name box (on a narrow phone, under More) and choose “Seen from Earth: the planets” or “Seen from Earth: the Moon”.",
 					"Watch the badge that appears: it says what the selected world is doing in our sky.",
 					"“Hold … still” works for any world; “Back to Sun-centred” returns."
 				],
 				"simple": [
-					"Click “Sun in the middle”, next to the name box.",
+					"Click “Sun in the middle”, next to the name box (on a small phone, press More first).",
 					"Choose “From Earth: the planets”.",
 					"Watch Mars make a loop."
 				]

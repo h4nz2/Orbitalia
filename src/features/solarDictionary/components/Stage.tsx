@@ -27,7 +27,9 @@ const Stage: FC<StageProps> = ({
 }) => {
 	return (
 		<Box className={classes.base}>
-			<Scene texture={texture} />
+			<div className={classes.globe}>
+				<Scene texture={texture} />
+			</div>
 			<Sidebar facts={facts} />
 			<aside className={classes.column} data-open={section ?? undefined}>
 				<BodyDescription bodyId={bodyId} />

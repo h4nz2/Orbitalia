@@ -11,6 +11,38 @@ import { SHEET_HEIGHTS, type SheetHeight } from "@/store/sheet"
 /** Of the screen's height, the whole sheet at `half` (handle, content and entry buttons). */
 export const HALF_SHARE = 0.44
 
+/** The handle's target, px: a finger's (#58). */
+export const HANDLE_PX = 44
+
+/**
+ * How far the handle's target reaches above the sheet's top, px, at small and
+ * half (#75): into the gap under the time chip (its 0.5rem in
+ * SolarSystem.module.css), never over the chip, and never over a planet a tap
+ * lands on 10 px above the sheet.
+ */
+export const HANDLE_RISE_PX = 8
+
+/**
+ * The handle's strip above the content, px: the rest of the handle's target,
+ * so the target never lies over the header or the one line under it (#75).
+ * At full the strip also holds the time chip, and the handle sits in it.
+ */
+export const STRIP_PX = HANDLE_PX - HANDLE_RISE_PX
+export const STRIP_FULL_PX = 60
+
+/** Where the handle's target lies, px from the top of the sheet's strip. */
+export function handleSpan(height: SheetHeight): Span {
+	if (height === "full") {
+		const top = (STRIP_FULL_PX - HANDLE_PX) / 2
+		return { top, bottom: top + HANDLE_PX }
+	}
+	return { top: -HANDLE_RISE_PX, bottom: STRIP_PX }
+}
+
+/** The strip's height at `height`, px. */
+export const stripPx = (height: SheetHeight): number =>
+	height === "full" ? STRIP_FULL_PX : STRIP_PX
+
 /** A flick at least this fast, px per ms, moves on to the next height whatever the distance. */
 export const FLICK_PX_PER_MS = 0.5
 
@@ -119,46 +151,61 @@ export function restingHeight(
 	return best.height
 }
 
-/** Where a control sits in the content, px from the content's top (not from the view). */
+/**
+ * Where a control or a line of text sits in the content, px from the
+ * content's top (not from the view).
+ */
 export interface Span {
 	top: number
 	bottom: number
+	/** A line of text (its line box, leading included): it keeps no room of its own. */
+	line?: boolean
 }
 
-/** Room kept between a control and a sticky foot it rests beside, px. */
+/** Room kept between a control and the edge it rests above, px. */
 export const FOOT_MARGIN_PX = 4
 
 /**
- * The content's height `px` lowered so a sticky foot (`data-sheet-footer`: a
- * tour's Back and Next) never rests across a control (#60): with the content
- * scrolled by `scroll`, a control the foot's top would cut waits wholly
- * behind the foot instead, a scroll away (and so may one above it, cut in
- * turn). Lower, never higher: content that fits shows whole anyway, and
- * `half` keeps its share of the screen for the scene. Pure: `foot` is the
- * foot's height, `controls` the controls above it.
+ * The most the edge is lowered to keep things whole, px: a control and a
+ * line. Where that would take more (a tall control, things side by side in
+ * steps), the height stays and the fade above the edge does the work (#75).
+ */
+export const MAX_LOWER_PX = 96
+
+/**
+ * The content's height `px` lowered so its lower edge never rests across a
+ * control or a line of text (#60, #75): with the content scrolled by
+ * `scroll`, a control or a line that edge would cut waits wholly behind it
+ * instead, a scroll away (and so may one beside it that reaches higher, cut
+ * in turn). The edge is the top of a sticky foot `foot` px high
+ * (`data-sheet-footer`: a tour's Back and Next), or with `foot` 0 the
+ * content's own bottom, where the entry buttons begin. A control keeps a
+ * little room above it, unless that room would cut the one right above it
+ * (a list of buttons): then it waits with none. Lower, never higher, and
+ * never by more than `MAX_LOWER_PX`: content that fits shows whole anyway,
+ * and `half` keeps its share of the screen for the scene. Pure: `spans` are
+ * the controls and the lines above the edge.
  */
 export function clearOfFoot(
 	px: number,
 	foot: number,
-	controls: readonly Span[],
+	spans: readonly Span[],
 	scroll: number,
 ): number {
-	const cutAt = (height: number) => {
-		const line = scroll + height - foot
-		return controls.filter(
-			(control) => control.top < line - 0.5 && control.bottom > line + 0.5,
+	const cutAt = (edge: number) =>
+		spans.filter((span) => span.top < edge - 0.5 && span.bottom > edge + 0.5)
+	let edge = scroll + px - foot
+	let cut = cutAt(edge)
+	// at most once for each span
+	for (let i = 0; i < spans.length && cut.length > 0; i++) {
+		const top = Math.min(...cut.map((span) => span.top))
+		edge = Math.min(
+			...cut.map((span) => span.top - (span.line ? 0 : FOOT_MARGIN_PX)),
 		)
+		if (cutAt(edge).some((span) => span.bottom <= top + 0.5)) edge = top
+		cut = cutAt(edge)
 	}
-	let height = px
-	let cut = cutAt(height)
-	// at most once for each control
-	for (let i = 0; i < controls.length && cut.length > 0; i++) {
-		height =
-			Math.min(...cut.map((control) => control.top)) -
-			FOOT_MARGIN_PX +
-			foot -
-			scroll
-		cut = cutAt(height)
-	}
-	return Math.max(0, Math.floor(height))
+	const height = Math.floor(edge + foot - scroll)
+	if (px - height > MAX_LOWER_PX) return px
+	return Math.max(0, Math.min(px, height))
 }

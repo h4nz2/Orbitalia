@@ -482,12 +482,12 @@
 			},
 			"how": {
 				"standard": [
-					"Haz clic en «Centrado en el Sol», junto al cuadro de nombres, y elige «Visto desde la Tierra: los planetas» o «Visto desde la Tierra: la Luna».",
+					"Haz clic en «Centrado en el Sol», junto al cuadro de nombres (en un móvil estrecho, en «Más»), y elige «Visto desde la Tierra: los planetas» o «Visto desde la Tierra: la Luna».",
 					"Mira la etiqueta que aparece: dice qué está haciendo en nuestro cielo el mundo seleccionado.",
 					"«Fijar …» funciona con cualquier mundo; «Volver a centrar en el Sol» te devuelve a la vista normal."
 				],
 				"simple": [
-					"Haz clic en «El Sol en el centro», junto al cuadro de nombres.",
+					"Haz clic en «El Sol en el centro», junto al cuadro de nombres (en un móvil pequeño, pulsa antes «Más»).",
 					"Elige «Desde la Tierra: los planetas».",
 					"Mira cómo Marte hace un bucle."
 				]

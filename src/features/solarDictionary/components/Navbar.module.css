@@ -112,3 +112,46 @@
 		}
 	}
 }
+
+/*
+ * Phones (#75): the worlds in one row under the way back and the corner, in
+ * the page's flow, never over the facts' headings; where nine do not fit,
+ * the row scrolls sideways and snaps to a world, and the chosen one is
+ * brought into view (Navbar.tsx).
+ */
+@media $phone {
+	.base {
+		position: static;
+		margin-top: calc(max(0.75rem, env(safe-area-inset-top)) + 3.75rem);
+		min-width: 0;
+		max-width: none;
+		flex-wrap: nowrap;
+		justify-content: flex-start;
+		overflow-x: auto;
+		overscroll-behavior-x: contain;
+		scroll-snap-type: x mandatory;
+		scrollbar-width: none;
+		/* room for the chosen world's ring */
+		padding: 0.25rem max(0.75rem, env(safe-area-inset-right)) 0.25rem
+			max(0.75rem, env(safe-area-inset-left));
+		scroll-padding-inline: 0.75rem;
+	}
+
+	.base::-webkit-scrollbar {
+		display: none;
+	}
+
+	.menuTarget {
+		flex: none;
+		scroll-snap-align: center;
+	}
+
+	/* centred while they fit, from the start once they scroll */
+	.menuTarget:first-child {
+		margin-inline-start: auto;
+	}
+
+	.menuTarget:last-child {
+		margin-inline-end: auto;
+	}
+}

@@ -63,11 +63,14 @@ import { useTourStore } from "@/store/tour"
 import { dismissGestureHint, useGestureHintStore } from "./gestureHint"
 import {
 	HALF_SHARE,
+	STRIP_FULL_PX,
 	clearOfFoot,
 	contentPx,
+	handleSpan,
 	nextHeight,
 	restingHeight,
 	stepHeight,
+	stripPx,
 	type ContentSizes,
 	type Span,
 } from "./heights"
@@ -75,10 +78,6 @@ import { followPx, swipeDirection, swipeToWorld } from "./swipe"
 
 import hudClasses from "../SolarSystem.module.css"
 import classes from "./Sheet.module.css"
-
-/** The handle's strip above the content, px; at `full` it also holds the time chip. */
-export const STRIP_PX = 24
-export const STRIP_FULL_PX = 60
 
 /** A press must travel this far, px, before it moves the sheet (a tap stays a tap). */
 const DRAG_START_PX = 6
@@ -179,36 +178,121 @@ function revealMain(area: HTMLElement, element: Element, px: number): boolean {
 const CONTROLS =
 	"button, a[href], label, select, textarea, [role=button], [role=slider]"
 
-/**
- * The sticky foot of `element` (`data-sheet-footer`: a tour's, a sky event's
- * or the quick look's Back and Next) and the controls before it, which slide
- * under it, in px from the top of the content `area` (scroll included); null
- * without a foot that sticks. The sticky header's controls never pass under it.
- */
-function footOf(
-	area: HTMLElement,
-	element: Element,
-): { foot: number; controls: Span[] } | null {
+/** The sticky foot of `element` on show (`data-sheet-footer`: a tour's, a sky event's or the quick look's Back and Next), else null. */
+function stickyFoot(element: Element): HTMLElement | null {
 	const foot = [
 		...element.querySelectorAll<HTMLElement>("[data-sheet-footer]"),
 	].find((candidate) => candidate.getClientRects().length > 0)
-	if (foot === undefined || getComputedStyle(foot).position !== "sticky")
-		return null
-	const top = area.getBoundingClientRect().top - area.scrollTop
-	const controls: Span[] = []
-	for (const control of element.querySelectorAll<HTMLElement>(CONTROLS)) {
-		if (
-			control.getClientRects().length === 0 ||
-			control.closest("header, [data-sheet-footer]") !== null ||
-			!(
-				foot.compareDocumentPosition(control) & Node.DOCUMENT_POSITION_PRECEDING
-			)
-		)
+	return foot !== undefined && getComputedStyle(foot).position === "sticky"
+		? foot
+		: null
+}
+
+/**
+ * The lines of text in `element` that `keep` accepts, in px from `top`: one
+ * line box (its leading included, so lines that follow each other touch) per
+ * line each text runs over.
+ */
+function linesOf(
+	element: Element,
+	top: number,
+	keep: (parent: Element) => boolean,
+): Span[] {
+	const lines: Span[] = []
+	const heights = new Map<Element, number>()
+	const range = document.createRange()
+	const walker = document.createTreeWalker(element, NodeFilter.SHOW_TEXT)
+	for (let node = walker.nextNode(); node !== null; node = walker.nextNode()) {
+		const parent = node.parentElement
+		if (parent === null || node.textContent?.trim() === "" || !keep(parent))
 			continue
-		const box = control.getBoundingClientRect()
-		controls.push({ top: box.top - top, bottom: box.bottom - top })
+		let lineHeight = heights.get(parent)
+		if (lineHeight === undefined) {
+			// "normal" has no number: the text's own box stands in
+			lineHeight = parseFloat(getComputedStyle(parent).lineHeight)
+			heights.set(parent, lineHeight)
+		}
+		range.selectNodeContents(node)
+		for (const box of range.getClientRects()) {
+			if (box.width < 1 || box.height < 1) continue
+			const height = Number.isFinite(lineHeight) ? lineHeight : box.height
+			const middle = (box.top + box.bottom) / 2 - top
+			lines.push({
+				top: middle - height / 2,
+				bottom: middle + height / 2,
+				line: true,
+			})
+		}
 	}
-	return { foot: foot.getBoundingClientRect().height, controls }
+	return lines
+}
+
+/**
+ * The edge the content of `element` rests on and what must not be cut by it
+ * (#60, #75), in px from the top of the content `area` (scroll included): a
+ * sticky foot's top (`foot` its height) and the controls and lines of text
+ * that pass under it; else the content's own bottom over the entry buttons
+ * (`foot` 0) and the lines of text (a panel's list of buttons keeps its
+ * height, faded at the edge, rather than losing a row). The sticky header's
+ * never pass under it, nor what follows the foot.
+ */
+function edgeOf(
+	area: HTMLElement,
+	element: Element,
+): { foot: number; spans: Span[] } {
+	const foot = stickyFoot(element)
+	const top = area.getBoundingClientRect().top - area.scrollTop
+	const above = (node: Element) =>
+		node.closest("header, [data-sheet-footer]") === null &&
+		(foot === null ||
+			(foot.compareDocumentPosition(node) &
+				Node.DOCUMENT_POSITION_PRECEDING) !==
+				0)
+	const spans: Span[] = []
+	for (const control of foot === null
+		? []
+		: element.querySelectorAll<HTMLElement>(CONTROLS)) {
+		if (control.getClientRects().length === 0 || !above(control)) continue
+		const box = control.getBoundingClientRect()
+		spans.push({ top: box.top - top, bottom: box.bottom - top })
+	}
+	spans.push(...linesOf(element, top, above))
+	return { foot: foot?.getBoundingClientRect().height ?? 0, spans }
+}
+
+/** The nearest sibling before `element` that is laid out, else null. */
+function laidOutBefore(element: Element): Element | null {
+	let sibling = element.previousElementSibling
+	while (sibling !== null && sibling.getClientRects().length === 0)
+		sibling = sibling.previousElementSibling
+	return sibling
+}
+
+/**
+ * Whether the content `area` goes on below what shows (#75), and how far
+ * above its bottom that hidden part begins, px: at the top of a sticky foot
+ * that the words pass under, else at the bottom itself, over the entry
+ * buttons. A foot in its own place, with nothing under it, fades nothing.
+ */
+function hiddenBelow(
+	area: HTMLElement,
+	element: Element | null,
+): { more: boolean; end: number } {
+	const foot = element === null ? null : stickyFoot(element)
+	if (foot === null)
+		return {
+			more: area.scrollHeight - area.scrollTop - area.clientHeight > 1,
+			end: 0,
+		}
+	const box = foot.getBoundingClientRect()
+	const before = laidOutBefore(foot)
+	const gap = parseFloat(getComputedStyle(foot.parentElement!).rowGap) || 0
+	const under =
+		before !== null && before.getBoundingClientRect().bottom + gap > box.top + 1
+	return {
+		more: under,
+		end: Math.max(0, area.getBoundingClientRect().bottom - box.top),
+	}
 }
 
 /** Whether `target` sits in something that scrolls sideways (its own swipe is a scroll). */
@@ -413,7 +497,7 @@ export function Sheet({ content, bottom }: SheetProps) {
 		const hudBox = hud.getBoundingClientRect()
 		const rootBox = root.getBoundingClientRect()
 		const chrome = rootBox.height - area.getBoundingClientRect().height
-		const strip = height === "full" ? STRIP_FULL_PX : STRIP_PX
+		const strip = stripPx(height)
 		const fullChrome = chrome - strip + STRIP_FULL_PX
 		const halfCap = HALF_SHARE * hudBox.height - chrome
 		// the grid's two gaps stay: under the top row, and above the sheet
@@ -477,6 +561,30 @@ export function Sheet({ content, bottom }: SheetProps) {
 	)
 	useEffect(() => () => clearTimeout(writeTimer.current), [])
 
+	/**
+	 * Fades the content out above its edge while more of it lies hidden below
+	 * (#75: a mask in SolarSystem.module.css, `data-sheet-more`), never at
+	 * small, where the sheet shows exactly its one line.
+	 */
+	const showFade = useCallback(() => {
+		const area = contentRef.current
+		if (area === null) return
+		const { more, end } =
+			active && height !== "small"
+				? hiddenBelow(area, shown?.element ?? null)
+				: { more: false, end: 0 }
+		area.toggleAttribute("data-sheet-more", more)
+		area.style.setProperty("--sheet-fade-end", `${Math.round(end)}px`)
+	}, [active, height, shown])
+
+	// scrolling to the end takes the fade away, and back up brings it
+	useEffect(() => {
+		const area = contentRef.current
+		if (area === null) return
+		area.addEventListener("scroll", showFade, { passive: true })
+		return () => area.removeEventListener("scroll", showFade)
+	}, [showFade])
+
 	/** Sets the content's height for the resting height, measured now. */
 	const apply = useCallback(
 		(write = true) => {
@@ -495,14 +603,28 @@ export function Sheet({ content, bottom }: SheetProps) {
 				half: contentPx("half", sizes),
 				full: contentPx("full", sizes),
 			}
-			// a sticky foot (a tour's Back and Next) never rests across a control above it
-			const foot = shown === null ? null : footOf(area, shown.element)
-			if (foot !== null)
-				for (const at of ["half", "full"] as const)
-					px[at] = clearOfFoot(px[at], foot.foot, foot.controls, area.scrollTop)
-			levels.current = px
 			if (height === "small" && FOLDS.includes(kindRef.current!))
 				foldedPx.current = px.small
+			const element = shown?.element ?? null
+			if (height === "small") area.scrollTop = 0
+			// a panel that just opened: its main action in view (it may still be loading)
+			else if (
+				bringMain.current &&
+				element !== null &&
+				revealMain(area, element, px[height])
+			)
+				bringMain.current = false
+			// where the content rests, scrolled as it is, its edge (a sticky foot's top,
+			// else the entry buttons) never cuts a control or a line of text; full stays
+			// under the top row where nothing sticks to its foot (#60, #75)
+			if (element !== null) {
+				const edge = edgeOf(area, element)
+				const heights =
+					edge.foot > 0 ? (["half", "full"] as const) : (["half"] as const)
+				for (const at of heights)
+					px[at] = clearOfFoot(px[at], edge.foot, edge.spans, area.scrollTop)
+			}
+			levels.current = px
 			const target = px[height]
 			if (area.style.height !== `${target}px`) {
 				const from = area.getBoundingClientRect().height
@@ -514,16 +636,9 @@ export function Sheet({ content, bottom }: SheetProps) {
 				if (animates) snapUntil.current = performance.now() + SNAP_WAIT_MS
 				if (write) scheduleWrite(animates ? SNAP_MS + 60 : 0)
 			} else if (write) scheduleWrite()
-			if (height === "small") area.scrollTop = 0
-			// a panel that just opened: its main action in view (it may still be loading)
-			else if (
-				bringMain.current &&
-				shown !== null &&
-				revealMain(area, shown.element, target)
-			)
-				bringMain.current = false
+			showFade()
 		},
-		[measure, height, scheduleWrite, shown],
+		[measure, height, scheduleWrite, shown, showFade],
 	)
 
 	// the height at rest, and the fold of what folds itself
@@ -531,13 +646,14 @@ export function Sheet({ content, bottom }: SheetProps) {
 		if (!active) {
 			const area = contentRef.current
 			if (area !== null) area.style.height = ""
+			showFade()
 			return
 		}
 		// a new thing just set its own height: this render's is stale, the next one applies
 		if (useSheetStore.getState().height !== height) return
 		setFolded(kindRef.current, height === "small")
 		apply()
-	}, [active, height, shown, apply])
+	}, [active, height, shown, apply, showFade])
 
 	// the content's own fold toggles move the sheet: unfolded is at least half, folded is small
 	useEffect(() => {
@@ -594,10 +710,11 @@ export function Sheet({ content, bottom }: SheetProps) {
 			if (event.target !== area || event.propertyName !== "height") return
 			snapUntil.current = 0
 			scheduleWrite(0)
+			showFade()
 		}
 		area.addEventListener("transitionend", onEnd)
 		return () => area.removeEventListener("transitionend", onEnd)
-	}, [active, scheduleWrite])
+	}, [active, scheduleWrite, showFade])
 
 	// hiding the controls (#59) frees the whole screen; showing them again, the band;
 	// the gesture hint (#62) coming and going moves the band's foot
@@ -973,11 +1090,12 @@ export function Sheet({ content, bottom }: SheetProps) {
 			onPointerDown={onPointerDown}
 		>
 			{sheetOn && (
-				<div className={classes.strip}>
+				<div className={classes.strip} style={{ height: stripPx(height) }}>
 					<Hint text={t("solarSystem.sheet.handleHint")}>
 						<button
 							type="button"
 							className={classes.handle}
+							style={{ top: handleSpan(height).top }}
 							aria-label={t("solarSystem.sheet.handle", { height: heightName })}
 							data-sheet-handle
 							data-testid="sheet-handle"

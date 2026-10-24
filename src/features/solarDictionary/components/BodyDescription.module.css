@@ -12,9 +12,27 @@
 	line-height: 1.5;
 }
 
-/* phones: the sphere needs the room; the story sections stay */
+/* narrow windows: the sphere needs the room; the story sections stay */
 @media (max-width: 899px) {
 	.root {
 		display: none;
+	}
+}
+
+/* phones (#75): the page scrolls, so the description has its place again, under the facts */
+@media $phone {
+	.root {
+		display: block;
+	}
+
+	.tagline {
+		font-size: 0.8125rem;
+		font-weight: 600;
+		letter-spacing: 0.04em;
+		color: #9aa0a6;
+	}
+
+	.description {
+		font-size: 1rem;
 	}
 }

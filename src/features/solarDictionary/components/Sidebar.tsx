@@ -32,8 +32,8 @@ const Sidebar: FC<StageLabelProps> = ({ facts }) => {
 	return (
 		<Box className={classes.base}>
 			{facts.map(({ key, label, value, extra }) => (
-				<Box key={key}>
-					<Box ref={textRef} className={classes.label}>
+				<Box key={key} data-fact-key={key}>
+					<Box ref={textRef} className={classes.label} data-fact-label>
 						<Box className={classes.littleBar} />
 						{label}
 						<Box className={classes.littleBar} />
@@ -41,6 +41,7 @@ const Sidebar: FC<StageLabelProps> = ({ facts }) => {
 
 					<Text
 						ref={textRef}
+						data-fact-value
 						className={
 							key === "name"
 								? `${classes.text} ${classes.largeText}`
@@ -51,7 +52,9 @@ const Sidebar: FC<StageLabelProps> = ({ facts }) => {
 						{extra ? (
 							<>
 								<br />
-								<span className={classes.extra}>{extra}</span>
+								<span className={classes.extra} data-fact-extra>
+									{extra}
+								</span>
 							</>
 						) : null}
 					</Text>

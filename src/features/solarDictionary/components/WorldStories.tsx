@@ -10,6 +10,7 @@ import {
 import { worldById } from "@/data/worlds"
 import { useI18n } from "@/i18n"
 import { useBodyName } from "@/i18n/bodies"
+import { isPhone } from "@/utils/sizeClasses"
 
 import { DICTIONARY_SECTIONS, type DictionarySection } from "../search"
 import MadeOf from "./MadeOf"
@@ -44,10 +45,15 @@ const WorldStories: FC<WorldStoriesProps> = ({
 	const name = useBodyName()(bodyId)
 	const world = worldById.get(bodyId)
 	const root = useRef<HTMLDivElement>(null)
+	const opened = useRef(false)
 
-	// bring the opened section to the top of the scrolling column, once it has unfolded
+	// bring the opened section to the top of the scrolling column, once it has unfolded;
+	// on a phone the page itself scrolls (#75): a section a link opens waits below the
+	// world's globe and facts, and one the reader opens comes up to the top
 	useEffect(() => {
-		if (section === null) return
+		const first = !opened.current
+		opened.current = true
+		if (section === null || (first && isPhone())) return
 		const timer = window.setTimeout(() => {
 			const control = root.current?.querySelector(`[data-section="${section}"]`)
 			const reduced = window.matchMedia(

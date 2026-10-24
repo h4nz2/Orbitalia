@@ -251,6 +251,26 @@
 		align-items: stretch;
 	}
 
+	/*
+	 * The one top row gives way before anything overlaps (#75): its buttons
+	 * keep their 44 px side by side, with no gaps and thin panels, and the
+	 * name box takes what they leave (ui/FocusPicker.module.css). Where even
+	 * that is too little for a name like "Voyager 1", the point of view is an
+	 * item under More instead (frame/placement.ts).
+	 */
+	.picker {
+		gap: 0;
+		padding: 0.125rem;
+	}
+
+	.corner {
+		padding: 0.125rem;
+	}
+
+	.frame {
+		flex: none;
+	}
+
 	.centre,
 	.info,
 	.dock {
@@ -418,6 +438,30 @@
 		transition: height 240ms cubic-bezier(0.2, 0.8, 0.2, 1);
 	}
 
+	/*
+	 * Words that go on below fade out over the last 1.5rem above the edge they
+	 * pass under (#75): a sticky foot's top, `--sheet-fade-end` above the
+	 * bottom, or the bottom itself over the entry buttons. A line is never
+	 * sliced by a hard edge, and the fade says there is more. Sheet.tsx sets
+	 * `data-sheet-more` while there is, so it goes at the end. It never moves:
+	 * nothing to soften for reduced motion.
+	 */
+	.sheetContent[data-sheet-more] {
+		--sheet-fade-at: calc(100% - var(--sheet-fade-end, 0px));
+		-webkit-mask-image: linear-gradient(
+			to bottom,
+			#000 calc(var(--sheet-fade-at) - 1.5rem),
+			transparent var(--sheet-fade-at),
+			#000 var(--sheet-fade-at)
+		);
+		mask-image: linear-gradient(
+			to bottom,
+			#000 calc(var(--sheet-fade-at) - 1.5rem),
+			transparent var(--sheet-fade-at),
+			#000 var(--sheet-fade-at)
+		);
+	}
+
 	.sheet[data-sheet-dragging] .sheetContent {
 		transition: none;
 	}
@@ -441,12 +485,13 @@
 	}
 
 	/* one thing at a time: what came last into the dock, else the card */
+	/* the handle's strip above is its room at the top (#75): no padding of its own there */
 	.sheet .info {
 		display: block;
 		max-height: none;
 		overflow: visible;
 		width: 100%;
-		padding-block: 0.25rem;
+		padding-block: 0;
 	}
 
 	.sheet .info:empty,
@@ -467,6 +512,7 @@
 		width: 100%;
 		max-height: none;
 		overflow: visible;
+		padding-top: 0;
 	}
 
 	/* a world's card: a sideways finger is a swipe to the next world (#62), up and down still scroll */
@@ -502,7 +548,8 @@
 		order: 10;
 		width: auto;
 		margin: 0;
-		padding-block: 0.125rem;
+		/* its few px went to the handle's strip (#75): the sheet is no taller for it */
+		padding-block: 0;
 		background: none;
 		border: 0;
 		border-top: 1px solid rgba(255, 255, 255, 0.06);

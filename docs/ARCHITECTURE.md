@@ -1653,7 +1653,8 @@ unobstructed (`e2e/quietHud.spec.ts` measures it). Every control is at most two 
 - **Always on screen** (`SolarSystem.module.css`, a grid over the canvas; this is the laptop and tablet arrangement,
   phones stack the same pieces, see "Size classes, finger sizes and screen edges"):
   - top left, "where": Back (#46, one step back), the overview button (the way out), the focus picker (the name;
-    a followed spacecraft's name with the follow mark, #57) and the point of view (#31);
+    a followed spacecraft's name with the follow mark, #57) and the point of view (#31; on a phone narrower than
+    358 px under More, #75);
     under them the frame badge (#31), the light's running clock while a flash is out (#27/#38) and the body card;
   - top centre: the free-view badge (#15), only in a free view;
   - top right, the corner: Present (tinted, easy to find), Share, hide the controls, sound, Help, language (on a
@@ -1747,6 +1748,15 @@ took a second row of six bare icons. The phone keeps one quiet row instead, and 
   phone grid's first row is `"picker corner"`, so More sits where the corner was on a phone on its side. 62 px of
   top instead of 124 px on a 390 x 844 phone, and the free band (#61) grows with it. Laptops and tablets keep the
   corner, split buttons included.
+- **The row gives way before anything overlaps** (#75): its buttons keep their 44 px side by side (no gaps, thin
+  panels: 0.125rem), and the name box is the one flexible piece (`flex: 1 1 0`, `min-width: 0`, the follow mark's
+  and the chevron's sections 1.5rem and 1.25rem), so it shrinks first and nothing runs into More. Measured in every
+  language (More's word is at most 77 px wide), the name box with the point of view beside it is too narrow for
+  "Voyager 1" with its follow mark below 354 px: there (`frame/placement.ts`, `(max-width: 357px)`, a few px to
+  spare for other fonts; not a size class) the point of view leaves the row and is More's first item, "Point of
+  view: Sun-centred ›", opening a page inside More with the presets and "Hold … still" (`frame/FrameMenu.tsx`
+  `FrameChoices`, finger-sized; a choice closes More). At 320 px the name box still shows "Voyager 1" whole; at
+  360 px and wider the point of view stays in the row. Its help entry says "on a narrow phone, under More".
 - **More** is a popover anchored at it (scrolling when taller than its room, `providers/fit.css`). Groups, every item
   with words: Share (the phone's share sheet where `navigator.share` exists, then "Link and QR code"), sound (a
   "Sound on" switch, "Sound settings"), the language and reading level, Help (the page, the opening, the quick look,
@@ -1781,7 +1791,9 @@ took a second row of six bare icons. The phone keeps one quiet row instead, and 
   the whole canvas (#61), so the planet glides to the middle and back: its angles and its distance as a multiple of
   the framing never change. A mouse never hides by clicking the sky, and a teacher presenting with hidden controls
   still clicks planets to fly there.
-- **Tests:** `e2e/phoneTop.spec.ts` (390 x 844 and 360 x 640: one row, More's items, finger sizes, no keys, two taps;
+- **Tests:** `e2e/phonePanels.spec.ts` (the row at 320, 360 and 390 px in English and German: no box over another,
+  "Neptune" and "Voyager 1" whole, the point of view under More at 320 px and working), `e2e/phoneTop.spec.ts`
+  (390 x 844 and 360 x 640: one row, More's items, finger sizes, no keys, two taps;
   the share sheet stubbed, cancelled and missing; an iPhone user agent without the Fullscreen API, and opened from
   the Home Screen; twenty taps on the sky that hide and restore and never change the camera's angles, its framing
   multiple or the selection; a hidden tap on Mars or its moons; the deselect that comes first; a tap closing a popover;
@@ -1803,6 +1815,14 @@ controls share it; More stays a popover at the top. Laptops, tablets and a phone
   opening's captions, the sheet). The sheet: the handle's strip, the content (one thing, with a set height that
   scrolls inside), and the entry buttons as its bottom row at every height. The time chip (and a flight's readout)
   float above it (`.time`, `[data-sheet-above]`).
+- **The handle has a strip of its own** (#75, `heights.ts` `HANDLE_PX`, `HANDLE_RISE_PX`, `STRIP_PX`,
+  `handleSpan`; `Sheet.tsx` sets the strip's height and the handle's top from them): at small and half the 44 px
+  target reaches 8 px above the sheet, into the gap under the time chip (which floats 0.5rem above it), never over
+  the chip, and the other 36 px are the strip, so it ends where the content begins and lies over no header and no
+  one-line summary; at full it sits inside the 60 px strip beside the chip. A tap 10 px above the sheet is the
+  scene's. The sheet is no taller for it: what it shows has no top padding of its own in the sheet (the strip is
+  its room), the card no bottom padding, and the entry row no padding (131 px at small with Earth's card on a
+  360 x 640 phone, as before).
 - **One at a time.** The sheet watches the dock's children (a `MutationObserver`): whatever appeared last is on
   show (`data-sheet-shown`; the CSS hides the others and the card), and when the dock is empty, the card. Opening a
   panel still closes the one before (`dock/exclusive.ts`); a tour starting puts the time controls away. A new thing
@@ -1819,10 +1839,24 @@ controls share it; More stays a popover at the top. Laptops, tablets and a phone
   the screen, `full` stops under the top row (the grid's gaps kept), which stays in view. Content shorter than a
   height shows whole at it, and equal heights count once. Headers stick to the top while the content scrolls, and a
   card's own way on (`data-sheet-footer`: a tour's Back and Next) sticks to its foot, and never rests across a
-  control above it: where the foot would cut one (a tour stop's autoplay and link at half on a 390 x 844 phone), the
-  content stops a little lower, so the control waits wholly behind the foot, a scroll away (`clearOfFoot`; never
-  higher: half keeps its share for the scene). The snap is a 240 ms height transition, none with reduced motion or
-  during a drag.
+  control or a line of text above it: where the foot would cut one (a tour stop's autoplay and link at half on a
+  390 x 844 phone, a line of its words on a 360 x 640 one), the content stops a little lower, so it waits wholly
+  behind the foot, a scroll away (`clearOfFoot`; never higher: half keeps its share for the scene). Without a foot
+  the edge is the content's bottom over the entry buttons, and at half it never cuts a line of text (a panel's
+  list of buttons keeps its rows). Lines are measured as line boxes (`Sheet.tsx` `linesOf`: a `Range` per text,
+  one box per line, the leading included, so lines that follow each other touch); a control keeps 4 px of room
+  above the edge unless that room would cut the one right above it (a list), and the content is never lowered by
+  more than `MAX_LOWER_PX` (96): past that the fade does the work. Full stays under the top row where nothing
+  sticks to its foot. The tour's words have no scroller of their own in the sheet. The snap is a 240 ms height
+  transition, none with reduced motion or during a drag.
+- **Words fade before the edge** (#75): while more of the content lies hidden below what shows,
+  `data-sheet-more` is on the content and a mask fades the last 1.5rem above the edge the words pass under: a
+  sticky foot's top (`--sheet-fade-end`, the foot's height from the bottom) while the words run under it, else
+  the content's bottom over the entry buttons. A foot back in its own place (the words scrolled to their end)
+  fades nothing, and so does content that fits; never at small, where the sheet shows exactly its one line.
+  `Sheet.tsx` `hiddenBelow` sets it on every scroll, rest and snap's end. A data attribute, not a scroll-driven
+  mask, so Safari and Chromium behave alike; the mask switches and never animates, so reduced motion needs nothing
+  more. No line is ever sliced by a hard edge, and the fade says there is more.
 - **Moving it.** The handle is a 44 px button drawn as a bar: a tap (Enter, Space) steps up and from full back to
   small, ArrowUp / ArrowDown raise and lower, Home / End go to the ends; its name says the height ("Panel height:
   half") and its hint how to move it. A drag on the handle or the header (pointer events, `touch-action: none`)
@@ -1846,7 +1880,10 @@ controls share it; More stays a popover at the top. Laptops, tablets and a phone
   clue at small on a 360 x 640 phone every world "Look and find" asks for is in sight above it (#61's open limit).
 - **#62** builds the students' side on it: links that open ready, the gesture hint, the swipe between worlds and
   Tools as tiles (see "Students first").
-- **Tests:** `e2e/phoneSheet.spec.ts` (390 x 844 and 360 x 640: the scene shares, two rows in the sheet, half for
+- **Tests:** `e2e/phonePanels.spec.ts` (390 x 844 and 360 x 640: no line cut by the foot at rest in a tour stop,
+  a quick look step and a sky event, the fade while the words go on and none at their end, a panel's words over
+  the entry buttons; the handle's target over no header part and not the chip at small, half and full, and a tap
+  10 px above the sheet the scene's), `e2e/phoneSheet.spec.ts` (390 x 844 and 360 x 640: the scene shares, two rows in the sheet, half for
   panels, the card and tours, the handle by tap, keys and its name, drags by handle and header, the pull from the
   content's top and no drag while it scrolls, closing, the scene never moving, the chip, the sky's lowering, the
   band at rest and never during a drag, turning the phone, the hunt's worlds above the clue, Earth at half; laptops
@@ -2023,8 +2060,17 @@ description, and the stories a reader opens.
 - **Sections the reader opens** (`components/WorldStories.tsx`, a Mantine `Accordion`, one open at a time, closed
   panels unmounted): _Made of_, _Weather_ and _Names_. The open one is URL state (`?section=madeOf|weather|names`,
   `search.ts`) and stays open from world to world, so a class can go through the planets' weather one by one. On a
-  desktop they sit under the description in the right-hand column, which scrolls; below 900 px the description is
-  hidden and the sections form a bottom sheet (at most 55 % of the height) under the globe.
+  desktop they sit under the description in the right-hand column, which scrolls; from 900 px down to a phone the
+  description is hidden and the sections form a bottom sheet (at most 55 % of the height) under the globe.
+- **On a phone** (`$phone`, #75) the page is one column that scrolls, nothing over anything: the way back and the
+  corner stay fixed at the top (opaque); under them the nine worlds in one row in the page's flow, never over the
+  facts' headings, which scrolls sideways where nine 44 px targets do not fit (snapping to a world, the chosen one
+  brought to the row's middle, `Navbar.tsx`); the globe in a box of its own (`Stage.module.css` `.globe`,
+  `min(36dvh, 20rem)`, the camera closer so it fills it); the facts in one column at a size a student reads (the
+  value 1.125rem, its sentence 0.9375rem, the label 0.8125rem, no letter-spaced micro type and no bars); then the
+  tagline and description (shown again: the page scrolls) and the sections, in the flow below the facts. A
+  section a link opens waits there (the page does not jump past the globe); one the reader opens comes up to the
+  top, clear of the fixed bars (`scroll-margin-top`). Laptops and tablets are unchanged.
 - **Made of** (`MadeOf.tsx`): the cut-away picture (`CutAway.tsx`, an inline SVG drawn from the layer data: the
   world's outside in its `surface` colour with a quarter cut away, one wedge per layer from `outer` and `color`; a
   layer never thinner than `MIN_BAND` of the radius so a crust shows, which its note says), the legend (the layers'
@@ -2059,7 +2105,9 @@ discovery}`), plain text, one value or one per reading level. No text may state 
   round, a nickname, a name origin and a discovery, each with https sources; every locale has exactly the facts'
   worlds, nicknames, layers and gases, every story at every reading level, a local name story exactly where the data
   lists that locale, simple texts without numbers above 100 or units, and the year of every discovery in its standard
-  text. `e2e/dictionary.spec.ts` opens the sections. Adding a world's story: its facts in `worlds.json`, its words
+  text. `e2e/dictionary.spec.ts` opens the sections; `e2e/phonePanels.spec.ts` checks the phone's column at
+  390 x 844 and 360 x 640 (German at the simple level too): no text over another, the dots in one row above the
+  facts, the facts' sizes, the sections after the facts. Adding a world's story: its facts in `worlds.json`, its words
   in every locale.
 - **Entry:** Tools → the dictionary (the world in view, #45) and "Read more in the dictionary" on a world's card
   (`ui/dictionaryEntry.ts`: Sun 0, planets 1..8).

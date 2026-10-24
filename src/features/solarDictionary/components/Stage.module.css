@@ -2,6 +2,10 @@
 	height: 100%;
 }
 
+.globe {
+	height: 100%;
+}
+
 /* the written side, opposite the fact sidebar: the description, then the story sections (#53) */
 .column {
 	position: fixed;
@@ -32,6 +36,35 @@
 			max(0.75rem, env(safe-area-inset-left));
 		/* opaque: the bright globe would show through any transparency */
 		background: rgb(20, 22, 28);
+		border-top: 1px solid rgba(255, 255, 255, 0.08);
+	}
+}
+
+/*
+ * Phones (#75): one column that scrolls with the page: the globe at a size
+ * that leaves the first facts in view, then the facts (Sidebar), then the
+ * description and the stories in the page's flow, below the facts, never
+ * over them. The way back and the corner stay where they are, opaque.
+ */
+@media $phone {
+	.base {
+		height: auto;
+	}
+
+	.globe {
+		height: min(36dvh, 20rem);
+	}
+
+	.column {
+		position: static;
+		width: auto;
+		max-height: none;
+		overflow: visible;
+		margin-top: 0.75rem;
+		padding: 0.75rem max(1rem, env(safe-area-inset-right))
+			max(1.5rem, env(safe-area-inset-bottom))
+			max(1rem, env(safe-area-inset-left));
+		background: none;
 		border-top: 1px solid rgba(255, 255, 255, 0.08);
 	}
 }
