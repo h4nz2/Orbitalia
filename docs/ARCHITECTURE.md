@@ -39,7 +39,8 @@ scripts/build-bodies.ts      data/ -> src/data/bodies.json (pnpm build:data); th
 scripts/gen-ring-textures.ts data/rings -> public/assets/textures/<planet>/rings/ (pnpm gen:rings)
 data/spacecraft.json         curated spacecraft catalogue (#35); scripts/build-spacecraft.ts + JPL Horizons -> src/data/spacecraft*.json (pnpm build:spacecraft)
 data/spacecraft-models.json  NASA's 3D models of the craft (#72): source, credit, licence, normalisation, size; scripts/gen-spacecraft-models.ts
-                             -> public/assets/models/spacecraft/<model>.glb (pnpm gen:models), read by src/data/spacecraftModels.ts
+                             -> public/assets/models/spacecraft/<model>.glb (pnpm gen:models); pnpm build:data -> src/data/spacecraftModels.json,
+                             read by src/data/spacecraftModels.ts
 scripts/gen-moon-surfaces.ts data/moon-surfaces.json -> public/assets/textures/<planet>/satellites/<id>.jpg (pnpm gen:surfaces)
 scripts/gen-planet-textures.ts  data/planet-textures.json -> public/assets/textures/<body>/*.jpg (run by pnpm gen:surfaces)
 src/routes/                  file routes; src/routeTree.gen.ts is generated and committed
@@ -49,7 +50,7 @@ src/providers/               Mantine theme (touch.css: finger sizes, fit.css: dr
 src/utils/sizeClasses.*      the phone and touch size classes (#58), read by CSS (postcss.config.js) and code (hooks/useSizeClass.ts)
 src/i18n/                    languages and reading levels (see i18n); body content in bodies.ts ("@/i18n/bodies")
 src/locales/                 translation resources: config.json, <locale>/ui.json, <locale>/bodies.json
-src/data/                    bodies.json, belts.json (#23), credits.json (image sources + licences, #37 and planet textures; 3D models, #72), schema.ts (zod), index.ts (lookups), solarDictionary.ts (dictionary adapter),
+src/data/                    bodies.json, belts.json (#23), credits.json (image sources + licences, #37 and planet textures; 3D models, #72), spacecraftModels.json (#72), schema.ts (zod), index.ts (lookups), solarDictionary.ts (dictionary adapter),
                              tours.ts + tours/*.json (guided tours, #28)
 src/sim/                     pure simulation, no React or three objects (import from "@/sim"); testing/ is test-only
 src/data/skyEvents.json      the sky events (#41): real instants and the check that each happens in the simulation
@@ -1534,7 +1535,8 @@ Every craft has NASA's own 3D model, drawn by #73: Voyager Probe (B) for both Vo
 Cassini-Huygens (A), James Webb Space Telescope (B), Juno (A) and Parker Solar Probe from NASA 3D Resources
 (github.com/nasa/NASA-3D-Resources, NASA Ames), New Horizons and Europa Clipper from NASA Science's 3D models (NASA
 VTAD). The catalogue records each source (landing page, file, repo path, credit, licence: NASA media are not
-copyrighted; credit NASA, no insignia), what the generator does to it, the craft's longest dimension `sizeM` with the
+copyrighted; credit NASA, no insignia; the file pinned: a GitHub file to a commit of nasa/NASA-3D-Resources, every
+file to its `sha256`), what the generator does to it, the craft's longest dimension `sizeM` with the
 published figures it was checked against, and which model each craft wears when (`from` inclusive, `until`
 exclusive: Cassini wears `cassini-no-huygens` from Huygens' release, 2004-12-25 02:00 UTC).
 
@@ -1544,9 +1546,13 @@ exclusive: Cassini wears `cassini-no-huygens` from Huygens' release, 2004-12-25 
   stable second axis (`axes` says which: a magnetometer boom, JWST's line of sight, New Horizons' RTG, Clipper's
   high-gain antenna). The transform is baked into the vertices; the GLB's nodes carry only quantization. Juno spins
   about +Z (`spinRpm` 2, its rate in science orbit).
-- `pnpm gen:models [--only voyager,juno]` downloads each source once into `node_modules/.cache/orbitalia-models`
-  (NASA's GLBs are Draco-compressed; three's bundled Draco decoder reads them, no extra dependency), leaves out the
-  meshes in `remove`, bakes the normalisation, merges duplicates, welds, simplifies (meshoptimizer, within
+- `pnpm gen:models [--only voyager,juno]` downloads each source once into
+  `node_modules/.cache/orbitalia-models/<source>-<sha256>.glb` and checks the download, and the cached copy on every
+  later run, against the catalogue's `sha256`: a mismatch stops it with an error naming the source, so the models are
+  only ever made from the bytes the catalogue was written for (a new hash is a new cache file). An unknown model or a
+  bare `--only` stops it too. NASA's GLBs are Draco-compressed; three's bundled Draco decoder reads them, no extra
+  dependency. It leaves out the meshes in `remove` (each named node's own mesh, its children stay; a name must match
+  exactly one node), bakes the normalisation, merges duplicates, welds, simplifies (meshoptimizer, within
   `simplify` x `sizeM` metres anywhere on the craft, loose bits below that pruned, shared edges between parts
   locked; `exact` parts untouched, `permissive` across texture seams; CAD-style models with one normal per face get
   normals rebuilt with a `creaseAngle`), joins parts by material, drops normal maps except `normalMaps`, paints over
@@ -1554,12 +1560,16 @@ exclusive: Cassini wears `cassini-no-huygens` from Huygens' release, 2004-12-25 
   `textureSize` px (coordinates beyond 0..1 rescaled with KHR_texture_transform so they quantize) and writes the
   geometry quantized and meshopt-compressed. Deterministic; it prints each file's size before and after and fails on
   a file over 300 KB, all over 2 MB, or a model whose longest side is more than 5 % off `sizeM`.
-- Budget (tested in `src/data/spacecraftModels.test.ts`, which also decodes every file as the app will): about
-  1.6 MB for the nine files, the largest Europa Clipper at 271 KB. Load with three's GLTFLoader + MeshoptDecoder
-  (`three/examples/jsm/libs/meshopt_decoder.module.js`, 29 KB unminified, the WebAssembly inside; drei's `useGLTF`
-  sets it up).
+- Budget (tested in `src/data/spacecraftModels.test.ts`): about 1.6 MB for the nine files, the largest Europa Clipper
+  at 271 KB. Load with three's GLTFLoader + three-stdlib's `MeshoptDecoder` (the WebAssembly inside; drei's `useGLTF`
+  sets both up). The test decodes every meshopt-compressed buffer view with that very decoder (`decodeGltfBuffer` of
+  the three-stdlib drei depends on, found through drei), so an encoder that writes something the app's decoder cannot
+  read fails the test, not the app.
 - `src/data/spacecraftModels.ts` is the single place the scene needs: `craftModelAt(craftId, jd)` (id, `url` through
-  `assetUrl`, `sizeM`, `points`, `spinRpm`), `craftModels(craftId)` for preloading, `modelUrl(craftId, jd)`.
+  `assetUrl`, `sizeM`, `points`, `spinRpm`), `craftModels(craftId)` for preloading, `modelUrl(craftId, jd)`. It reads
+  only `src/data/spacecraftModels.json`, the slim copy `pnpm build:data` writes (per craft its models with id, file,
+  `sizeM`, `points`, `spinRpm`, `from`/`until`; `pnpm check:data` and the test say when it is stale), so the
+  generator's catalogue, notes and sources stay out of the bundle.
 - Credits: each source joins `src/data/credits.json` through `pnpm build:data` (`kind: "model"`, `bodies` = the craft
   wearing it), listed on the help page under "Spacecraft models".
 
@@ -1570,7 +1580,8 @@ under `solarSystem.spacecraft.*`; event targets that are not bodies (Pluto, Arro
 
 **Adding a craft:** add it to `data/spacecraft.json` (a planet-centred orbit phase gets an `orbits` entry), run
 `pnpm build:spacecraft`, add its content to every `spacecraft.json` locale, give it a model in
-`data/spacecraft-models.json` (then `pnpm gen:models` and `pnpm build:data`), run `pnpm test`.
+`data/spacecraft-models.json` (a new source with its file's `sha256`; then `pnpm gen:models` and `pnpm build:data`),
+run `pnpm test`.
 
 ## Presentation: teacher mode (`features/solarSystem/present`, `src/store/presentation.ts`; #29)
 

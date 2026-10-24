@@ -1,16 +1,21 @@
 import { describe, expect, it } from "vitest"
 
+import { createHash } from "node:crypto"
+
 import {
 	axisVector,
 	cacheFileName,
+	craftModelRanges,
 	creaseNormals,
 	longestSide,
 	modelCredits,
 	normaliseMatrix,
 	paintBox,
+	parseOnly,
 	sharedPositionLocks,
 	sizeProblem,
 	transformPoint,
+	verifySource,
 	type Mat4,
 	type Vec3,
 } from "./spacecraftModels"
@@ -196,14 +201,75 @@ describe("paintBox", () => {
 })
 
 describe("cacheFileName", () => {
-	it("keeps the download's extension", () => {
+	const sha = "ab".repeat(32)
+
+	it("names the source and its hash, and keeps the download's extension", () => {
 		expect(
 			cacheFileName(
 				"nasa3d-voyager",
-				"https://raw.githubusercontent.com/nasa/NASA-3D-Resources/master/3D%20Models/Voyager%20Probe%20%28B%29/Voyager%20Probe%20%28B%29.glb",
+				"https://raw.githubusercontent.com/nasa/NASA-3D-Resources/11ebb4ee043715aefbba6aeec8a61746fad67fa7/3D%20Models/Voyager%20Probe%20%28B%29/Voyager%20Probe%20%28B%29.glb",
+				sha,
 			),
-		).toBe("nasa3d-voyager.glb")
-		expect(cacheFileName("x", "https://example.org/a.b/file")).toBe("x")
+		).toBe(`nasa3d-voyager-${sha}.glb`)
+		expect(cacheFileName("x", "https://example.org/a.b/file", sha)).toBe(
+			`x-${sha}`,
+		)
+	})
+
+	it("gives a new hash a new file, so a changed source is downloaded again", () => {
+		const url = "https://example.org/model.glb"
+		expect(cacheFileName("x", url, sha)).not.toBe(
+			cacheFileName("x", url, "cd".repeat(32)),
+		)
+	})
+})
+
+describe("verifySource", () => {
+	const bytes = new TextEncoder().encode("a model")
+	const sha = createHash("sha256").update(bytes).digest("hex")
+
+	it("passes the pinned bytes", () => {
+		expect(() => verifySource("x", bytes, sha, "the cache")).not.toThrow()
+	})
+
+	it("stops on any other bytes, naming the source and where they came from", () => {
+		const changed = new TextEncoder().encode("a model!")
+		expect(() =>
+			verifySource("nasa3d-juno", changed, sha, "the cache"),
+		).toThrow(
+			new RegExp(
+				`source "nasa3d-juno": the cache has SHA-256 [0-9a-f]{64}, .* expects ${sha}`,
+			),
+		)
+	})
+})
+
+describe("parseOnly", () => {
+	const ids = ["voyager", "juno", "cassini-no-huygens"]
+
+	it("makes every model without --only, and the named ones with it", () => {
+		expect(parseOnly([], ids)).toEqual({ ids: null })
+		expect(parseOnly(["--", "--only", "juno,voyager"], ids)).toEqual({
+			ids: new Set(["juno", "voyager"]),
+		})
+	})
+
+	it("stops on --only without ids, an unknown id or an unknown argument", () => {
+		for (const args of [
+			["--only"],
+			["--only", ""],
+			["--only", "--only", "juno"],
+		]) {
+			expect(parseOnly(args, ids), args.join(" ")).toEqual({
+				problem: expect.stringMatching(/--only needs model ids.*voyager, juno/),
+			})
+		}
+		expect(parseOnly(["--only", "juno,vojager"], ids)).toEqual({
+			problem: expect.stringMatching(/no model "vojager"/),
+		})
+		expect(parseOnly(["--onyl", "juno"], ids)).toEqual({
+			problem: expect.stringMatching(/unknown argument "--onyl"/),
+		})
 	})
 })
 
@@ -214,6 +280,7 @@ describe("modelCredits", () => {
 		short: "NASA",
 		url: "https://example.org/",
 		file: "https://example.org/model.glb",
+		sha256: "0".repeat(64),
 		licence: "Public domain",
 		licenceUrl: "https://example.org/licence",
 	})
@@ -279,5 +346,49 @@ describe("modelCredits", () => {
 				() => true,
 			),
 		).toThrow(/end where the next begins/)
+	})
+
+	it("gives the app which model each craft wears when, and nothing else", () => {
+		const spun = {
+			...catalogue,
+			models: {
+				...catalogue.models,
+				"model-a": {
+					...model("a"),
+					spinRpm: 2,
+					spin: { note: "2 rpm", url: "https://example.org/spin" },
+				},
+			},
+		}
+		expect(craftModelRanges(spun)).toEqual({
+			one: [
+				{
+					id: "model-b",
+					file: "assets/models/spacecraft/model-b.glb",
+					sizeM: 10,
+					points: "earth",
+				},
+			],
+			two: [
+				{
+					id: "model-a",
+					file: "assets/models/spacecraft/model-a.glb",
+					sizeM: 10,
+					points: "earth",
+					spinRpm: 2,
+					until: "2004-12-25T02:00Z",
+				},
+				{
+					id: "model-b2",
+					file: "assets/models/spacecraft/model-b2.glb",
+					sizeM: 10,
+					points: "earth",
+					from: "2004-12-25T02:00Z",
+				},
+			],
+		})
+		expect(() =>
+			craftModelRanges({ ...catalogue, craft: { one: [{ model: "nope" }] } }),
+		).toThrow(/unknown model "nope"/)
 	})
 })

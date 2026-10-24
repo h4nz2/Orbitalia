@@ -20,6 +20,7 @@ import type {
 	Rings,
 	Rotation,
 } from "../../src/data/schema"
+import type { CraftModelsFile } from "../../src/data/spacecraftModelsSchema"
 import type { Vec3 } from "../../src/sim/kepler"
 import { eclipticDirection } from "../../src/sim/rotation"
 import { HOURS_PER_DAY } from "../../src/sim/time"
@@ -33,7 +34,7 @@ import { normalizeName } from "./names"
 import { parseMass, parseNumber } from "./numbers"
 import { creditsOf, resolveSurfaces, surfacePath } from "./surfaces"
 import { applyPlanetTextures } from "./planetTextures"
-import { modelCredits } from "./spacecraftModels"
+import { craftModelRanges, modelCredits } from "./spacecraftModels"
 import { densityKgPerM3, laplaceRadiusKm, periodDaysFromKepler } from "./orbit"
 import {
 	first,
@@ -153,7 +154,8 @@ export interface BuildOptions {
 	planetTextures?: unknown
 	/**
 	 * parsed data/spacecraft-models.json (#72): the spacecraft's 3D models, credited after the
-	 * images. Absent: not credited (unit fixtures).
+	 * images, and the app's slim copy of it (`spacecraftModels` of the result). Absent: neither
+	 * (unit fixtures).
 	 */
 	spacecraftModels?: unknown
 }
@@ -183,6 +185,11 @@ export interface BuildResult {
 	warnings: string[]
 	/** image sources and 3D models in use, with credit and licence (src/data/credits.json; #37, #72) */
 	credits: ImageCredit[]
+	/**
+	 * which model each craft wears when (src/data/spacecraftModels.json, #72); absent without
+	 * `spacecraftModels` in the options
+	 */
+	spacecraftModels?: CraftModelsFile
 }
 
 /** A data problem that must stop the build (missing planet texture, malformed ring file, ...). */
@@ -1052,13 +1059,19 @@ const withPlanetTextures = (
 	}
 }
 
-/** The spacecraft models' credits (data/spacecraft-models.json, #72), after the images. */
+/**
+ * The spacecraft models (data/spacecraft-models.json, #72): their credits, after the images, and
+ * the app's slim copy (which model each craft wears when).
+ */
 const withSpacecraftModels = (
 	options: Pick<BuildOptions, "spacecraftModels" | "fileExists">,
-): ImageCredit[] => {
-	if (options.spacecraftModels === undefined) return []
+): { credits: ImageCredit[]; craft?: CraftModelsFile } => {
+	if (options.spacecraftModels === undefined) return { credits: [] }
 	try {
-		return modelCredits(options.spacecraftModels, options.fileExists)
+		return {
+			credits: modelCredits(options.spacecraftModels, options.fileExists),
+			craft: craftModelRanges(options.spacecraftModels),
+		}
 	} catch (error) {
 		throw new BuildError(error instanceof Error ? error.message : String(error))
 	}
@@ -1199,9 +1212,10 @@ export const buildBodies = (
 	for (const { raw, body } of smallEntries) pushMoons(raw, body)
 
 	markFeatured(bodies, options.featuredMoons)
+	const models = withSpacecraftModels(options)
 	const credits = [
 		...withPlanetTextures(bodies, options, applySurfaces(bodies, options)),
-		...withSpacecraftModels(options),
+		...models.credits,
 	]
 
 	return {
@@ -1216,6 +1230,7 @@ export const buildBodies = (
 		),
 		warnings: ctx.warnings,
 		credits,
+		...(models.craft === undefined ? {} : { spacecraftModels: models.craft }),
 	}
 }
 
