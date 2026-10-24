@@ -38,5 +38,7 @@ not need to write code to help.
      level, in the same change.
 4. Before you open the pull request: `pnpm typecheck && pnpm lint && pnpm test && pnpm build`, and `pnpm test:e2e`
    when the interface changed.
+   `e2e/overlap.spec.ts` checks that nothing on screen overlaps: a fixed overlap leaves the allow-list
+   (`e2e/overlap.allow.ts`) in the same change.
 
 Everything you contribute is published under the project's [MIT licence](LICENSE).
