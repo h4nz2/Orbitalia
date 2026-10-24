@@ -319,8 +319,8 @@
 				"simple": "Noms, chemins et points"
 			},
 			"what": {
-				"standard": "Des interrupteurs décident de ce qui est dessiné : les orbites, les noms, les lunes, toutes les lunes, les points de repère, les noms des orbites, les sondes spatiales et « Toujours éclairé ».",
-				"simple": "Des interrupteurs montrent ou cachent les noms, les chemins, les points et les sondes spatiales."
+				"standard": "Des interrupteurs décident de ce qui est dessiné : les orbites, les noms, les lunes, toutes les lunes, les points de repère, les noms des orbites, les petits corps, les sondes spatiales et « Toujours éclairé ».",
+				"simple": "Des interrupteurs montrent ou cachent les noms, les chemins, les points, les petits mondes comme Pluton et les sondes spatiales."
 			},
 			"why": {
 				"standard": "Masque les noms pour un quiz, ou désactive les repères à l’échelle réelle pour voir à quel point les planètes sont vraiment invisibles.",

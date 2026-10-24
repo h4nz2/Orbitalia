@@ -204,6 +204,27 @@ describe("stopSettings: what carries forward", () => {
 		expect(stopSettings(tour, 1, baseline).layers.markers).toBe(true)
 		expect(stopSettings(tour, 1, baseline).scale).toBe("textbook")
 	})
+
+	it("carries the spacecraft layer from the stop that sets it; none before (#70)", () => {
+		const probes: Tour = {
+			id: "probes",
+			order: 0,
+			stops: [
+				{ id: "a", view: "overview" },
+				{ id: "b", view: "overview", layers: { spacecraft: true } },
+				{ id: "c", view: "neptune" },
+				{ id: "d", view: "earth", layers: { spacecraft: false } },
+			],
+		}
+		const shown = { ...baseline, spacecraft: true }
+		// before any stop sets it: null, the layer as the viewer has it
+		expect(stopSettings(probes, 0, shown).spacecraft).toBeNull()
+		expect(stopSettings(probes, 1, baseline).spacecraft).toBe(true)
+		expect(stopSettings(probes, 2, baseline).spacecraft).toBe(true)
+		expect(stopSettings(probes, 3, shown).spacecraft).toBe(false)
+		// the other layers are untouched by it
+		expect(stopSettings(probes, 1, baseline).layers).toEqual(baseline.layers)
+	})
 })
 
 describe("timeJD", () => {

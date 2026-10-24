@@ -244,6 +244,11 @@ export interface StopSettings {
 	warp: number
 	paused: boolean
 	layers: Record<TourLayerKey, boolean>
+	/**
+	 * The spacecraft layer (#70) as the latest stop at or before this one set
+	 * it; null while none has: the layer is left as the viewer has it.
+	 */
+	spacecraft: boolean | null
 	/** The latest date set at or before the stop, and the stop that set it. */
 	time: { time: TourTime; index: number } | null
 }
@@ -258,6 +263,7 @@ export function stopSettings(
 		warp: baseline.warp,
 		paused: baseline.paused,
 		layers: { ...baseline.layers },
+		spacecraft: null,
 		time: null,
 	}
 	const last = Math.max(0, Math.min(tour.stops.length - 1, index))
@@ -272,6 +278,9 @@ export function stopSettings(
 		for (const key of Object.keys(TOUR_LAYER_FIELDS) as TourLayerKey[]) {
 			const value = stop.layers?.[key]
 			if (value !== undefined) settings.layers[key] = value
+		}
+		if (stop.layers?.spacecraft !== undefined) {
+			settings.spacecraft = stop.layers.spacecraft
 		}
 		if (stop.time !== undefined) settings.time = { time: stop.time, index: i }
 	}

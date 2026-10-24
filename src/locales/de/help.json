@@ -319,8 +319,8 @@
 				"simple": "Namen, Wege und Punkte"
 			},
 			"what": {
-				"standard": "Schalter bestimmen, was gezeichnet wird: „Umlaufbahnen“, „Beschriftungen“, „Monde“, „Alle Monde“, „Markierungen“, „Bahnnamen“, „Raumsonden“ und „Immer beleuchtet“.",
-				"simple": "Mit Schaltern machst du die Namen, die Wege, die Punkte und die Raumsonden an und aus."
+				"standard": "Schalter bestimmen, was gezeichnet wird: „Umlaufbahnen“, „Beschriftungen“, „Monde“, „Alle Monde“, „Markierungen“, „Bahnnamen“, „Kleinkörper“, „Raumsonden“ und „Immer beleuchtet“.",
+				"simple": "Mit Schaltern machst du die Namen, die Wege, die Punkte, kleine Welten wie Pluto und die Raumsonden an und aus."
 			},
 			"why": {
 				"standard": "Blende die Namen für ein Quiz aus, oder schalte im echten Maßstab die Markierungen ab, um zu sehen, wie unsichtbar die Planeten wirklich sind.",

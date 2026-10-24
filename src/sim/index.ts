@@ -132,8 +132,13 @@ export {
 	timelineJD,
 } from "./clock"
 export type { SimTimeline, TimeGlide } from "./clock"
-export { LIVE_TOLERANCE_DAYS, isLive } from "./live"
-export type { LiveClock } from "./live"
+export {
+	LIVE_RESUME_GAP_MS,
+	LIVE_TOLERANCE_DAYS,
+	isLive,
+	resumeLive,
+} from "./live"
+export type { LiveClock, LiveFrame } from "./live"
 export {
 	MAX_OCCLUDERS,
 	OCCLUDER_STRIDE,

@@ -141,6 +141,14 @@ function showStop(index: number, mode: EnterMode): void {
 			sim[LAYER_SETTERS[field]](settings.layers[key])
 		}
 	}
+	// the spacecraft (#70): as the latest stop that set them; before any did, as they are
+	const spacecraft = useSpacecraftStore.getState()
+	if (
+		settings.spacecraft !== null &&
+		spacecraft.showSpacecraft !== settings.spacecraft
+	) {
+		spacecraft.setShowSpacecraft(settings.spacecraft)
+	}
 
 	// the clock: the speed first, so a date glide runs on at it (or lands paused)
 	if (settings.paused) {

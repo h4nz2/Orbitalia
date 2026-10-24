@@ -83,6 +83,7 @@ import { SoundSettings } from "../sound/SoundControl"
 import { runCommand, setChromeHidden, toggleFullscreen } from "./commands"
 import { currentFullscreenOffer, useFullscreen } from "./fullscreen"
 import { canShareLink, shareLink } from "./nativeShare"
+import { currentViewLink } from "./shareLink"
 import { usePrefersMoreContrast } from "./usePresentationDocument"
 
 import classes from "./MoreMenu.module.css"
@@ -348,7 +349,7 @@ export function MorePanel({ onClose, onQr }: MorePanelProps) {
 		// inside the tap, before any await: the sheet opens only in answer to one
 		void shareLink({
 			title: document.title,
-			url: window.location.href,
+			url: currentViewLink(),
 		}).then((result) => {
 			if (result === "shared") onClose()
 			// no sheet after all: the link and the code instead; a cancel is silent

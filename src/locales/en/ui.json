@@ -1025,13 +1025,13 @@
 					"label": "What the link opens",
 					"view": "This view",
 					"fresh": "A fresh start",
-					"viewHint": "The link opens exactly what is on screen: the same world, camera, date, speed and scale.",
-					"viewHint@simple": "The link shows someone exactly what you see now.",
+					"viewHint": "The link opens what is on screen: the same world, camera, speed and scale, and the same date unless the clock shows now (then it opens on the viewer's own now).",
+					"viewHint@simple": "The link shows someone what you see now. If the clock shows the real time, it opens at their real time too.",
 					"freshHint": "The link starts the app from the beginning in this language: the opening for everyone, then the quick look for anyone new. Good for a class QR code.",
 					"freshHint@simple": "The link starts the app from the very beginning, with the start film."
 				},
-				"explain": "The link opens exactly this view: the same body, camera, date, speed, scale and language. Bookmark it to prepare a lesson, or send it as homework.",
-				"explain@simple": "The link opens exactly what you see now. Save it or send it to someone.",
+				"explain": "The link opens this view: the same body, camera, speed, scale and language, and the same date unless the clock shows now (then it opens on the viewer's own now). Bookmark it to prepare a lesson, or send it as homework.",
+				"explain@simple": "The link opens what you see now. If the clock shows the real time, it opens at the real time too. Save it or send it to someone.",
 				"explainFresh": "The link starts Orbitalia from the beginning, in this language and reading level. Everyone sees the opening; anyone new is then offered a quick look at what the app can do.",
 				"explainFresh@simple": "The link starts the app from the beginning, with the start film. Good for someone who is new.",
 				"link": "Link to this view",
@@ -1044,8 +1044,8 @@
 				"qrLabel": "QR code of the link to this view",
 				"qrLabelFresh": "QR code of the link to a fresh start",
 				"qrShow": "Show the QR code to the class",
-				"hint": "A link and a QR code that open exactly this view, to prepare a lesson or to send as homework.",
-				"hint@simple": "Get a link that shows someone else exactly what you see."
+				"hint": "A link and a QR code that open this view, to prepare a lesson or send as homework, or a fresh start with the opening, for a class to scan.",
+				"hint@simple": "Get a link that shows someone else what you see, or one that starts the app from the beginning."
 			},
 			"chrome": {
 				"show": "Show the controls",

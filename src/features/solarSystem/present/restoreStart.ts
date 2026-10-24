@@ -68,6 +68,9 @@ export function restoreStart(search: SimSearch, instant: boolean): void {
 		useSimStore.getState().goTo(view, request)
 	}
 	useSimStore.getState().select(selectedId)
+	// a craft chosen since is part of the wandering off: its card goes, even
+	// when the link shows the layer (#70); a followed craft is chosen again below
+	useSpacecraftStore.getState().selectCraft(null)
 	// the spacecraft layer as the link had it (#70), before a followed craft shows it again
 	useSpacecraftStore.getState().setShowSpacecraft(spacecraftFromSearch(search))
 	// a lesson that rides along with a spacecraft (#57) shows its card again

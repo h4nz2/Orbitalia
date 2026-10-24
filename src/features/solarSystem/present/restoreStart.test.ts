@@ -105,6 +105,21 @@ describe("restoreStart", () => {
 		// the link shows them: shown again
 		restoreStart(simSearchSchema.parse({ spacecraft: true }), true)
 		expect(craft().showSpacecraft).toBe(true)
+		// a craft chosen since, the layer on in the link (a point view, nothing
+		// selected): the layer stays, the craft's card goes
+		craft().selectCraft("juno")
+		restoreStart(
+			simSearchSchema.parse({
+				spacecraft: true,
+				focus: "earth",
+				at: "3_0_0",
+			}),
+			true,
+		)
+		expect(sim().view).toMatchObject({ kind: "point", anchorId: "earth" })
+		expect(craft().showSpacecraft).toBe(true)
+		expect(craft().selectedCraftId).toBeNull()
+		expect(sim().selectedId).toBeNull()
 		// a lesson riding along with a craft shows them without the switch
 		craft().setShowSpacecraft(false)
 		restoreStart(
