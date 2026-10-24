@@ -133,6 +133,20 @@ describe("going back to a view", () => {
 		expect(sim().selectedId).toBe("mars")
 	})
 
+	it("back to a spacecraft shows the hidden layer, which then stays on (#70)", () => {
+		expect(useSpacecraftStore.getState().showSpacecraft).toBe(false)
+		returnTo(view({ craftId: "voyager1" }))
+		expect(useSpacecraftStore.getState().showSpacecraft).toBe(true)
+		returnTo(view({ view: { kind: "body", id: "mars" }, selectedId: "mars" }))
+		expect(useSpacecraftStore.getState().showSpacecraft).toBe(true)
+
+		// following one, too
+		useSpacecraftStore.getState().setShowSpacecraft(false)
+		returnTo({ kind: "follow", craftId: "juno", shot: null })
+		expect(useSpacecraftStore.getState().showSpacecraft).toBe(true)
+		expect(useSpacecraftStore.getState().selectedCraftId).toBe("juno")
+	})
+
 	it("from inside a tour to before it began leaves the tour", () => {
 		startTour(tour)
 		returnTo(view({ view: { kind: "body", id: "venus" }, selectedId: "venus" }))

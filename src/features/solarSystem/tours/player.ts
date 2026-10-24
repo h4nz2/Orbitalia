@@ -70,12 +70,13 @@ export function currentBaseline(
 		| "showAllMoons"
 	> = useSimStore.getState(),
 	scale = useScaleStore.getState().targetId,
+	spacecraft = useSpacecraftStore.getState().showSpacecraft,
 ): TourBaseline {
 	const layers = {} as Record<TourLayerKey, boolean>
 	for (const [key, field] of Object.entries(TOUR_LAYER_FIELDS)) {
 		layers[key as TourLayerKey] = sim[field]
 	}
-	return { scale, warp: sim.timeWarp, paused: sim.paused, layers }
+	return { scale, warp: sim.timeWarp, paused: sim.paused, layers, spacecraft }
 }
 
 const LAYER_SETTERS = {
@@ -86,6 +87,24 @@ const LAYER_SETTERS = {
 	showOrbitLabels: "setShowOrbitLabels",
 	showAllMoons: "setShowAllMoons",
 } as const
+
+/**
+ * Puts the layers of `baseline` back (a tour that returns on exit, the quick
+ * look left to explore): the tour-file switches and the spacecraft (#70).
+ */
+export function restoreLayers(baseline: TourBaseline): void {
+	const sim = useSimStore.getState()
+	for (const key of Object.keys(TOUR_LAYER_FIELDS) as TourLayerKey[]) {
+		const field = TOUR_LAYER_FIELDS[key]
+		if (sim[field] !== baseline.layers[key]) {
+			sim[LAYER_SETTERS[field]](baseline.layers[key])
+		}
+	}
+	const craft = useSpacecraftStore.getState()
+	if (craft.showSpacecraft !== baseline.spacecraft) {
+		craft.setShowSpacecraft(baseline.spacecraft)
+	}
+}
 
 /** Shows stop `index` of the running tour, as a step of the view history (#46) where it is one. */
 function enterStop(index: number, mode: EnterMode): void {
@@ -283,13 +302,8 @@ function restoreScene(baseline: TourBaseline, scene: TourScene): void {
 	if (baseline.scale !== null && scaleStore.targetId !== baseline.scale) {
 		scaleStore.switchTo(baseline.scale, performance.now())
 	}
+	restoreLayers(baseline)
 	const sim = useSimStore.getState()
-	for (const key of Object.keys(TOUR_LAYER_FIELDS) as TourLayerKey[]) {
-		const field = TOUR_LAYER_FIELDS[key]
-		if (sim[field] !== baseline.layers[key]) {
-			sim[LAYER_SETTERS[field]](baseline.layers[key])
-		}
-	}
 	if (scene.atNow) {
 		sim.setTimeWarp(1)
 		sim.setPaused(false)

@@ -61,6 +61,7 @@ const baseline: TourBaseline = {
 		orbitNames: false,
 		allMoons: false,
 	},
+	spacecraft: false,
 }
 
 /** Angle (degrees, 0..180) between the camera's direction and the Sun's, seen from `id`. */

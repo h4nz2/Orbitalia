@@ -191,7 +191,9 @@ test("a spacecraft link selects the craft and shows its panel", async ({
 	await expect(
 		page.getByRole("region", { name: "Selected spacecraft" }),
 	).toContainText("Voyager 1", { timeout: 30_000 })
-	await expect(page).not.toHaveURL(/craft=/)
+	// the instruction is dropped; the spacecraft it showed (#70) stay in the address
+	await expect(page).not.toHaveURL(/[?&]craft=/)
+	await expect(page).toHaveURL(/[?&]spacecraft=true/)
 })
 
 // every "try it" link, clicked on the page, opens its page without errors;

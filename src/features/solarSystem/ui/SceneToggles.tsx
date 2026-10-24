@@ -4,6 +4,7 @@ import { useI18n } from "@/i18n"
 import { Hint } from "@/primitives/hint"
 import { useLightingStore } from "@/store/lighting"
 import { useSimStore } from "@/store/sim"
+import { useSpacecraftStore } from "@/store/spacecraft"
 
 import classes from "./SceneToggles.module.css"
 
@@ -19,9 +20,11 @@ export function orbitNamesMissing(
 
 /**
  * Switches for the orbit lines, the labels, the moons (all of them, #17), the
- * markers, the orbit names, the small bodies (#23) and the "always lit" teaching mode. Each has a hint
- * (#39) saying what it does and, while disabled, what to turn on first (or, for All
- * moons in Poster, that the scale hides them, #54).
+ * markers, the orbit names, the small bodies (#23), the spacecraft (#70: the
+ * same store field as Tools → Real spacecraft's switch, so the two agree) and
+ * the "always lit" teaching mode. Each has a hint (#39) saying what it does
+ * and, while disabled, what to turn on first (or, for All moons in Poster,
+ * that the scale hides them, #54).
  */
 const SceneToggles = () => {
 	const { t } = useI18n()
@@ -40,6 +43,10 @@ const SceneToggles = () => {
 	const setShowOrbitLabels = useSimStore((state) => state.setShowOrbitLabels)
 	const showSmallBodies = useSimStore((state) => state.showSmallBodies)
 	const setShowSmallBodies = useSimStore((state) => state.setShowSmallBodies)
+	const showSpacecraft = useSpacecraftStore((state) => state.showSpacecraft)
+	const setShowSpacecraft = useSpacecraftStore(
+		(state) => state.setShowSpacecraft,
+	)
 	const alwaysLit = useLightingStore((state) => state.alwaysLit)
 	const setAlwaysLit = useLightingStore((state) => state.setAlwaysLit)
 	const missing = orbitNamesMissing(showOrbits, showLabels)
@@ -131,6 +138,15 @@ const SceneToggles = () => {
 					label={t("solarSystem.layers.smallBodies")}
 					checked={showSmallBodies}
 					onChange={(event) => setShowSmallBodies(event.currentTarget.checked)}
+				/>
+			</Hint>
+			<Hint text={t("solarSystem.layers.hint.spacecraft")}>
+				<Switch
+					size="xs"
+					color="orange"
+					label={t("solarSystem.layers.spacecraft")}
+					checked={showSpacecraft}
+					onChange={(event) => setShowSpacecraft(event.currentTarget.checked)}
 				/>
 			</Hint>
 			<Hint text={t("solarSystem.layers.hint.alwaysLit")}>

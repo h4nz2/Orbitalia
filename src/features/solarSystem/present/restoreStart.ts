@@ -2,7 +2,8 @@
  * "Back to the start" (#29, R / Home): the view the page was opened with, the
  * prepared lesson link, restored as a whole: body or spacecraft followed
  * (#57), point of view (#31),
- * camera, selection, date, speed, pause, layers and scale. A teacher who has
+ * camera, selection, date, speed, pause, layers (the spacecraft's too, #70)
+ * and scale. A teacher who has
  * wandered off mid-lesson is one key away from the known state the lesson
  * began in. Without a link that is the app's own opening state: the overview,
  * now, at 1x.
@@ -28,6 +29,7 @@ import {
 	frameFromSearch,
 	layersFromSearch,
 	scaleFromSearch,
+	spacecraftFromSearch,
 	viewFromSearch,
 } from "@/store/urlSync"
 
@@ -66,6 +68,8 @@ export function restoreStart(search: SimSearch, instant: boolean): void {
 		useSimStore.getState().goTo(view, request)
 	}
 	useSimStore.getState().select(selectedId)
+	// the spacecraft layer as the link had it (#70), before a followed craft shows it again
+	useSpacecraftStore.getState().setShowSpacecraft(spacecraftFromSearch(search))
 	// a lesson that rides along with a spacecraft (#57) shows its card again
 	if (view.kind === "craft") useSpacecraftStore.getState().selectCraft(view.id)
 

@@ -195,7 +195,7 @@ for (const device of DEVICES) {
 			await expectSizes(page, device, "Layers")
 			// the panel's switches are all there to reach: in view, or a scroll away inside it
 			const layers = page.locator("[data-dock-panel=layers]")
-			await expect(layers.getByRole("switch")).toHaveCount(8)
+			await expect(layers.getByRole("switch")).toHaveCount(9)
 			for (const toggle of await layers.getByRole("switch").all()) {
 				await toggle.scrollIntoViewIfNeeded()
 				await expect(toggle).toBeInViewport()

@@ -317,8 +317,8 @@
 				"simple": "Nombres, caminos y puntos"
 			},
 			"what": {
-				"standard": "Unos interruptores deciden qué se dibuja: órbitas, nombres, lunas, todas las lunas, marcadores en forma de punto, nombres de las órbitas y «Siempre iluminado».",
-				"simple": "Unos interruptores encienden y apagan los nombres, los caminos y los puntos."
+				"standard": "Unos interruptores deciden qué se dibuja: órbitas, nombres, lunas, todas las lunas, marcadores en forma de punto, nombres de las órbitas, naves espaciales y «Siempre iluminado».",
+				"simple": "Unos interruptores encienden y apagan los nombres, los caminos, los puntos y las sondas espaciales."
 			},
 			"why": {
 				"standard": "Oculta los nombres para un juego de preguntas, o desactiva los marcadores a escala real para ver lo invisibles que son de verdad los planetas.",
@@ -523,8 +523,8 @@
 				"simple": "Sondas espaciales"
 			},
 			"what": {
-				"standard": "Voyager, Pioneer, New Horizons, Cassini, Juno, Parker, JWST y Europa Clipper, dibujadas donde están de verdad en la fecha de la pantalla, con sus trayectorias y sus hitos.",
-				"simple": "Sondas espaciales de verdad, construidas por personas, justo donde están ahora."
+				"standard": "Voyager, Pioneer, New Horizons, Cassini, Juno, Parker, JWST y Europa Clipper, dibujadas donde están de verdad en la fecha de la pantalla, con sus trayectorias y sus hitos. Siguen ocultas hasta que las muestras.",
+				"simple": "Sondas espaciales de verdad, construidas por personas, justo donde están ahora. Están escondidas hasta que las enciendes."
 			},
 			"why": {
 				"standard": "La Voyager 1 sigue enviando mensajes desde mucho más allá de los planetas: su tarjeta muestra cuánto tarda su señal en llegarnos y por qué el viaje necesitó tantas asistencias gravitatorias.",
@@ -532,14 +532,16 @@
 			},
 			"how": {
 				"standard": [
-					"Abre Herramientas, elige «Naves espaciales reales» y luego una nave: la vista vuela hasta ella.",
+					"Abre Herramientas, elige «Naves espaciales reales» y luego una nave: la vista vuela hasta ella y aparecen las naves.",
+					"Para verlas todas, activa «Naves espaciales» en Capas (o en la lista de naves). Un enlace, una parada de una visita guiada o un evento del cielo sobre una nave también las muestran.",
 					"Su tarjeta muestra el lanzamiento, la distancia, el tiempo de la señal y los «Hitos»; un hito lleva el tiempo a ese momento.",
-					"«Mostrar todas las trayectorias» dibuja todas las rutas a la vez; el interruptor «Naves espaciales» las oculta."
+					"«Mostrar todas las trayectorias» dibuja todas las rutas a la vez; al desactivar «Naves espaciales» se ocultan otra vez."
 				],
 				"simple": [
 					"Pulsa Herramientas.",
 					"Elige «Naves espaciales reales» y luego la Voyager 1.",
-					"Lee lo lejos que está."
+					"Lee lo lejos que está.",
+					"Para ver todas las sondas, pulsa Capas y activa «Naves espaciales»."
 				]
 			}
 		},

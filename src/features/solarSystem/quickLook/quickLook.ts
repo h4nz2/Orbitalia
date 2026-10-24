@@ -26,14 +26,11 @@ import { useLightStore } from "@/store/light"
 import { usePresentationStore } from "@/store/presentation"
 import { useScaleStore } from "@/store/scale"
 import { useSimStore } from "@/store/sim"
-import {
-	TOUR_LAYER_FIELDS,
-	useTourStore,
-	type TourLayerKey,
-} from "@/store/tour"
+import { useSpacecraftStore } from "@/store/spacecraft"
+import { useTourStore } from "@/store/tour"
 
 import { useIntroStore } from "../intro/intro"
-import { exitTour, startTour, tourStatus } from "../tours/player"
+import { exitTour, restoreLayers, startTour, tourStatus } from "../tours/player"
 import {
 	QUICK_LOOK_ID,
 	quickLookStep,
@@ -128,19 +125,11 @@ function calmExtras(): void {
 	if (light.pulse !== null) light.clear()
 }
 
-const LAYER_SETTERS = {
-	showOrbits: "setShowOrbits",
-	showLabels: "setShowLabels",
-	showMoons: "setShowMoons",
-	showMarkers: "setShowMarkers",
-	showOrbitLabels: "setShowOrbitLabels",
-	showAllMoons: "setShowAllMoons",
-} as const
-
 /**
  * The viewer went off to look at a world of their own: the quick look ends
- * there, keeping that world in view, with the speed, scale and layers back as
- * they were before it began.
+ * there, keeping that world in view, with the speed, scale and layers (the
+ * spacecraft too, #70) back as they were before it began. A spacecraft they
+ * went off to (picked in the list, followed) stays drawn.
  */
 function leaveToExplore(): void {
 	const { baseline } = useTourStore.getState()
@@ -150,12 +139,9 @@ function leaveToExplore(): void {
 	const scale = useScaleStore.getState()
 	if (baseline.scale !== null && scale.targetId !== baseline.scale)
 		scale.switchTo(baseline.scale, performance.now())
+	const craftChosen = useSpacecraftStore.getState().selectedCraftId !== null
+	restoreLayers(craftChosen ? { ...baseline, spacecraft: true } : baseline)
 	const sim = useSimStore.getState()
-	for (const key of Object.keys(TOUR_LAYER_FIELDS) as TourLayerKey[]) {
-		const field = TOUR_LAYER_FIELDS[key]
-		if (sim[field] !== baseline.layers[key])
-			sim[LAYER_SETTERS[field]](baseline.layers[key])
-	}
 	if (baseline.scene?.atNow === true) {
 		sim.setTimeWarp(1)
 		sim.setPaused(false)

@@ -589,7 +589,8 @@ and the help page. About a minute, moving on by itself.
   player's keys (arrows, PageUp/Down) step it.
 - **Always a calm way out**: Skip, Finish, × and Escape leave through `exitTour` (`returnOnExit`: back to where the
   viewer was, which after the opening is the overview, now, 1x, Everything visible) and clear the flash and the glow;
-  a world clicked mid-way ends it there but puts speed, scale and layers back (`leaveToExplore`).
+  a world clicked mid-way ends it there but puts speed, scale and layers back (`leaveToExplore`; the spacecraft layer
+  too, #70, unless the viewer went off to a craft).
 - **Replay**: the Help chevron's (on a phone, More's) "Take the quick look again", and `?look=play` (the help page's try-it link; an
   instruction, never written back).
 
@@ -1097,7 +1098,8 @@ Anything positioned in time is a pure function of a JD, never of frames. In `use
 React UI subscribes with selectors, and reads the clock only through `useThrottledSimTime()` (10 Hz).
 
 URL: `/solar_system?focus=io&sel=europa&cam=<az_el_dist>&t=<jd>&warp=<n>&moons=false&scale=trueScale` (`scale`: see
-Scale presets). `smallBodies=true` while the small bodies are shown (#23, off by default). The layer switches `orbits`,
+Scale presets). `smallBodies=true` while the small bodies are shown (#23, off by default), and so is
+`spacecraft=true` (#70, the spacecraft layer of `useSpacecraftStore`, see Spacecraft). The layer switches `orbits`,
 `labels`, `moons`, `markers` (`LAYER_PARAMS` in `urlSync.ts`) are written as `=false` while off; the orbit names,
 off by default, as `orbitNames=true` while on, and so is `allMoons=true` (#17, the long tail of moons); `frame=<id>` while a body is held still (#31); `tour=<id>&stop=<n>` (and `autoplay=true`) while a guided tour runs (#28); `craft=<id>&follow=true` while a spacecraft is followed (#57, with `focus` naming the neighbourhood it is in). Defaults (overview, home shot `0_45_1`, `warp=1`, a switch that is on)
 are left out; a link without a switch turns it on. `simSearch.ts` drops invalid or blank values (never coerces them to
@@ -1423,12 +1425,21 @@ updates it at `useFrame` priority -0.9 (after SimClock, before the director) and
   after every body and before orbit names. `SpacecraftLabelLayer.tsx` renders `<span data-craft>` into the shared
   board (cyan text); the marker's raycast also picks the names.
 
-**Store (`src/store/spacecraft.ts`).** `showSpacecraft` (on), `showAllPaths` (off), `selectedCraftId`,
+**Store (`src/store/spacecraft.ts`).** `showSpacecraft` (off), `showAllPaths` (off), `selectedCraftId`,
 `hoverCraftId`, `trajectoriesReady`. Selecting a craft clears the body selection; choosing a body or any request for
-the overview (home, Escape) clears the craft. Not mirrored in the URL; `?craft=<id>` selects and shows one on arrival (#43, `CraftLink.tsx`);
-following one is the view itself (`craft=<id>&follow=true`, #57).
+the overview (home, Escape) clears the craft. The layer is hidden until someone asks for it (#70): its switch (Layers →
+Spacecraft and Tools → Real spacecraft, one field), or choosing a craft: `selectCraft(id)` with an id also sets
+`showSpacecraft`, and every way of choosing one goes through it (the list, `CraftLink`, following, `showEvent` /
+`watchEvent`, a tour stop's `follow`, a sky event's craft, Back, Back to the start, a marker), so a chosen craft is
+never invisible. Once on it stays on until it is turned off; turning it off clears the selection and the hover. The
+layer is mirrored in the URL as `spacecraft=true` (only `true` is written, like `smallBodies`; read on arrival before
+a followed craft is chosen, so a link with a craft in it shows the layer either way and writes `spacecraft=true` from
+then on); `?craft=<id>` selects and shows one on arrival (#43, `CraftLink.tsx`); following one is the view itself
+(`craft=<id>&follow=true`, #57). A tour records the layer in its baseline (`TourBaseline.spacecraft`) and a tour that
+returns on exit puts it back (`restoreLayers` in `tours/player.ts`, also the quick look's `leaveToExplore`).
 
-**HUD.** `SpacecraftList` (`spacecraft/SpacecraftMenu.tsx`; Tools → Real spacecraft, a panel of the dock since #42): layer switch, "Show every path", every craft
+**HUD.** `SpacecraftList` (`spacecraft/SpacecraftMenu.tsx`; Tools → Real spacecraft, a panel of the dock since #42): layer switch (the same
+field as Layers → Spacecraft, `ui/SceneToggles.tsx`, #70), "Show every path", every craft
 with its tagline and status at the simulation date; picking one selects it and flies there (`showCraft`: a point
 view at the craft, anchored to its neighbourhood, framed so the Sun or the planet stays in view); the follow button
 beside it rides along (#57).
@@ -1534,7 +1545,8 @@ the URL, so "save the lesson" is the link itself (plus `paused`, `present`, `con
   live region, so screen-reader users hear what a key did with the controls hidden. With `prefers-reduced-motion`
   key-driven moves jump (`durationMs: 0`) and the scale switches without animating.
 - **Back to the start** (`present/restoreStart.ts`): re-applies `startSearch` through the store actions (view,
-  frame, camera, selection, speed, pause, time glide, layers, animated scale); without a link that is the opening
+  frame, camera, selection, speed, pause, time glide, layers, the spacecraft layer (#70: `spacecraft=true`, or a
+  followed craft, which shows it), animated scale); without a link that is the opening
   state (overview, now, 1x). Presentation settings are left alone: they belong to the room, not the lesson. A
   guided tour opened since ends (`exitTour`); a link that itself opened on a tour stop starts that tour on that stop
   again, with the restored scene as its baseline.
@@ -2348,7 +2360,8 @@ body held still) plus narration. Adding one is data only; `src/data/tours/README
   spacecraft, #57: the stop's view is the craft, `view` names its neighbourhood) belong to one stop.
   `autoHoldMs`: the stop's `autoSeconds`, else the narration read aloud (330 ms a word + 3 s, 7..40 s).
 - **Player** (`tours/player.ts`; `useTourStore` in `src/store/tour.ts` is its plain state: `tour`, `index`,
-  `steps`, `auto`, `baseline`, `collapsed`). `startTour(tour | id, { startAt, auto, jump })`, `nextStop` (after the
+  `steps`, `auto`, `baseline` (the spacecraft layer too, #70: a stop that follows a craft shows it, and it stays on
+  after the tour like the other layers), `collapsed`). `startTour(tour | id, { startAt, auto, jump })`, `nextStop` (after the
   last: `exitTour`), `previousStop`, `goToStop`, `resumeTour`, `setTourAuto`, `exitTour`. Entering a stop applies,
   in order: scale (`switchTo`, `setPreset` when jumping), layers, speed, the date (`travelTo` / `setNow`; only the
   stop's own date when going forward, the latest one when re-entering), the frame (`anchorFrame` /
@@ -2417,7 +2430,8 @@ moments of #14 (one list, not two), each staged in one action with a viewpoint f
   so their sizes compare, the arc of a gathering). Played by #28's player, so presenter keys step the views, the scene
   can be explored and resumed, and `?tour=event-solar2024&stop=2` is its link (`TourSync`, `urlSync`).
 - **Leaving is one action**: `returnOnExit` (new in the tour format) makes `exitTour` restore the `TourBaseline.scene`
-  captured at the start (view, camera, frame, selection, the time or "now", speed, pause, scale, layers); one event
+  captured at the start (view, camera, frame, selection, the time or "now", speed, pause, scale, layers, the spacecraft
+  layer, #70, which an event about a craft turns on); one event
   after another keeps the first one's baseline.
 - **Drawn for it**: `events/Corona.tsx`, the Sun's corona, fades in only while the drawn Moon covers the drawn Sun seen
   from the camera (`coveredShare` >= 97 %), so a total eclipse from the Earth is a black Moon in a pearly ring;

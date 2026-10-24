@@ -3,13 +3,14 @@
  * path splitting, where "Show" sends the camera, and craft names in the body
  * labels' layout (never overlapping a body's name, ranked after the bodies).
  */
-import { beforeAll, describe, expect, it } from "vitest"
+import { afterEach, beforeAll, describe, expect, it } from "vitest"
 import { PerspectiveCamera } from "three"
 
 import { bodies } from "@/data"
 import { spacecraftById } from "@/data/spacecraft"
 import { SCALE_PRESETS, SCALE_PRESET_IDS, degToRad } from "@/sim"
 import { isoToJD } from "@/sim/spacecraft"
+import { useSimStore } from "@/store/sim"
 import { useSpacecraftStore } from "@/store/spacecraft"
 
 import { overviewDistance } from "../camera/framing"
@@ -19,7 +20,14 @@ import { createSimFrame, updateSimFrame } from "../scene/simFrame"
 import { createCraftFrame, updateCraftFrame } from "./craftFrame"
 import { craftLabelRank, createCraftLabels } from "./craftLabels"
 import { countUpTo, writeSplitPath, type PathSplit } from "./CraftPaths"
-import { craftFacts, craftView } from "./facts"
+import {
+	craftFacts,
+	craftView,
+	followCraft,
+	showCraft,
+	showEvent,
+	watchEvent,
+} from "./facts"
 import { loadTrajectories } from "./trajectories"
 
 const JD_2026 = isoToJD("2026-09-25T00:00Z")
@@ -126,6 +134,46 @@ describe("facts", () => {
 			expect(parker.distance).toBeLessThan(1)
 		},
 	)
+})
+
+describe("choosing a craft shows the hidden layer (#70)", () => {
+	const scale = SCALE_PRESETS.everythingVisible
+	const voyager = spacecraftById.get("voyager1")!
+	const jupiter = voyager.events.find((event) => event.target === "jupiter")!
+	const shown = () => useSpacecraftStore.getState().showSpacecraft
+	const hide = () => {
+		useSimStore.setState(useSimStore.getInitialState(), true)
+		useSimStore.getState().setSimTime(JD_2026)
+		useSpacecraftStore.setState(useSpacecraftStore.getInitialState(), true)
+		expect(shown()).toBe(false)
+	}
+	afterEach(() => {
+		useSimStore.setState(useSimStore.getInitialState(), true)
+		useSpacecraftStore.setState(useSpacecraftStore.getInitialState(), true)
+	})
+
+	it("Show (the list, the card, a ?craft= link)", () => {
+		hide()
+		showCraft("voyager1", scale)
+		expect(shown()).toBe(true)
+		expect(useSpacecraftStore.getState().selectedCraftId).toBe("voyager1")
+	})
+
+	it("Follow", () => {
+		hide()
+		followCraft("voyager1", scale)
+		expect(shown()).toBe(true)
+		expect(useSimStore.getState().view).toMatchObject({ kind: "craft" })
+	})
+
+	it("a milestone, and Watch", () => {
+		hide()
+		showEvent(voyager, jupiter, scale)
+		expect(shown()).toBe(true)
+		hide()
+		expect(watchEvent(voyager, jupiter, scale)).toBe(true)
+		expect(shown()).toBe(true)
+	})
 })
 
 describe("craft names in the label layout", () => {

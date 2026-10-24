@@ -303,6 +303,9 @@
 				"smallBodies": "Shows Pluto and the other dwarf planets, asteroids, comets and the two belts. Off by default so the planets stay easy to read.",
 				"smallBodies@simple": "Shows Pluto, comets and the asteroid belt.",
 				"smallBodies@advanced": "Adds the dwarf planets, named asteroids, comets with their tails, and the asteroid and Kuiper belts as fields of dots (each dot stands for many real bodies).",
+				"spacecraft": "Shows the real spacecraft people have sent out, such as Voyager 1 and the James Webb Space Telescope, where they are on the date shown. Off by default so the planets stay easy to read.",
+				"spacecraft@simple": "Shows the space probes people have sent into space.",
+				"spacecraft@advanced": "Adds the spacecraft at their tracked positions (NASA/JPL data) on the date shown, with their names and the chosen craft’s path. Choosing a craft anywhere turns it on.",
 				"alwaysLit": "Lights every body from where you look, so the night side is not black. Good for seeing surfaces; hides the day and night lesson.",
 				"alwaysLit@simple": "Lights every planet from your side, so nothing is dark. But then you cannot see day and night!",
 				"alwaysLit@advanced": "Lights each body from the viewpoint instead of the Sun: no night sides, phases or eclipse shadows. Good for surface detail, wrong for the geometry of sunlight."
@@ -313,7 +316,8 @@
 				"allMoonsPoster@simple": "In Poster the little moons are hidden. There is no room for them!",
 				"orbitNames": "{missing, select, orbits {Turn on Orbits first.} labels {Turn on Labels first.} other {Turn on Orbits and Labels first.}}"
 			},
-			"smallBodies": "Small bodies"
+			"smallBodies": "Small bodies",
+			"spacecraft": "Spacecraft"
 		},
 		"scale": {
 			"label": "Scale",

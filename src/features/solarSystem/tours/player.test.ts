@@ -11,6 +11,7 @@ import { dateToJD } from "@/sim"
 import { useFlightStore } from "@/store/flight"
 import { useScaleStore } from "@/store/scale"
 import { WARP_PRESETS, useSimStore } from "@/store/sim"
+import { useSpacecraftStore } from "@/store/spacecraft"
 import { useTourStore } from "@/store/tour"
 import { useTrailStore } from "@/store/trails"
 
@@ -78,6 +79,7 @@ afterEach(() => {
 	useTourStore.setState(useTourStore.getInitialState(), true)
 	useTrailStore.setState(useTrailStore.getInitialState(), true)
 	useFlightStore.setState(useFlightStore.getInitialState(), true)
+	useSpacecraftStore.setState(useSpacecraftStore.getInitialState(), true)
 })
 
 describe("starting a tour", () => {
@@ -269,6 +271,42 @@ describe("a sequence moved by someone else", () => {
 		} finally {
 			unfollow()
 		}
+	})
+})
+
+describe("the spacecraft layer (#70)", () => {
+	const ride = (returnOnExit?: boolean): Tour => ({
+		id: "ride",
+		order: 0,
+		returnOnExit,
+		stops: [
+			{ id: "start", view: "overview" },
+			{ id: "voyager", view: "jupiter", follow: "voyager1" },
+			{ id: "saturn", view: "saturn" },
+		],
+	})
+	const craft = () => useSpacecraftStore.getState()
+
+	it("is in the baseline, and a stop riding along with a craft shows it", () => {
+		startTour(ride())
+		expect(tours().baseline?.spacecraft).toBe(false)
+		expect(craft().showSpacecraft).toBe(false)
+		nextStop()
+		expect(craft().showSpacecraft).toBe(true)
+		expect(craft().selectedCraftId).toBe("voyager1")
+		// it stays on for the rest of the tour, and after it, like the other layers
+		nextStop()
+		expect(craft().showSpacecraft).toBe(true)
+		exitTour()
+		expect(craft().showSpacecraft).toBe(true)
+	})
+
+	it("a tour that returns on exit puts it back as it was", () => {
+		startTour(ride(true), { startAt: 1 })
+		expect(craft().showSpacecraft).toBe(true)
+		exitTour()
+		expect(craft().showSpacecraft).toBe(false)
+		expect(craft().selectedCraftId).toBeNull()
 	})
 })
 

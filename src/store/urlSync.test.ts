@@ -1,4 +1,8 @@
 import { describe, expect, it } from "vitest"
+import {
+	defaultParseSearch,
+	defaultStringifySearch,
+} from "@tanstack/react-router"
 
 import { J2000_JD, dateToJD } from "@/sim"
 
@@ -13,6 +17,7 @@ import {
 	sameSearch,
 	searchFromState,
 	shouldMirrorTime,
+	spacecraftFromSearch,
 	stateFromSearch,
 	viewFromSearch,
 	waypointFromSearch,
@@ -267,6 +272,32 @@ describe("urlSync helpers", () => {
 		expect(layersFromSearch(simSearchSchema.parse(on)).showAllMoons).toBe(true)
 		expect(layersFromSearch({}).showAllMoons).toBe(false)
 		expect(sameSearch({ allMoons: true }, {})).toBe(false)
+	})
+
+	it("writes the spacecraft only while they are shown (off by default, #70)", () => {
+		expect(searchFromState(state(), {}).spacecraft).toBeUndefined()
+		expect(
+			searchFromState(state({ showSpacecraft: false }), {}).spacecraft,
+		).toBeUndefined()
+		const on = searchFromState(state({ showSpacecraft: true }), {})
+		expect(on.spacecraft).toBe(true)
+		// the link round trip: written as `spacecraft=true`, read back on
+		const link = defaultStringifySearch({ spacecraft: on.spacecraft })
+		expect(link).toBe("?spacecraft=true")
+		const back = simSearchSchema.parse(defaultParseSearch(link))
+		expect(spacecraftFromSearch(back)).toBe(true)
+		expect(spacecraftFromSearch({})).toBe(false)
+		// only `true` turns it on; anything else is absent
+		expect(simSearchSchema.parse({ spacecraft: "yes" }).spacecraft).toBe(
+			undefined,
+		)
+		expect(spacecraftFromSearch({ spacecraft: false })).toBe(false)
+		// a link with a craft but no switch is off here: choosing the craft shows it
+		expect(spacecraftFromSearch({ craft: "voyager1", follow: true })).toBe(
+			false,
+		)
+		expect(sameSearch({ spacecraft: true }, {})).toBe(false)
+		expect(sameSearch({ spacecraft: true }, { spacecraft: true })).toBe(true)
 	})
 
 	it("compares searches field by field", () => {

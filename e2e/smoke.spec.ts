@@ -22,7 +22,7 @@ const routes: Record<string, (page: Page) => Promise<void>> = {
 		// the quiet HUD (#42): the layer switches wait behind Layers
 		await expect(page.getByRole("switch")).toHaveCount(0)
 		await openLayers(page)
-		await expect(page.getByRole("switch")).toHaveCount(8)
+		await expect(page.getByRole("switch")).toHaveCount(9)
 		// the clock is formatted for the locale; <time dateTime> carries the instant
 		const clock = page.locator("time")
 		await expect(clock).toBeVisible()

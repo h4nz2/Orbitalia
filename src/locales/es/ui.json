@@ -303,6 +303,9 @@
 				"smallBodies": "Muestra Plutón y los demás planetas enanos, asteroides, cometas y los dos cinturones. Apagado por defecto para que los planetas se lean con claridad.",
 				"smallBodies@simple": "Muestra Plutón, los cometas y el cinturón de asteroides.",
 				"smallBodies@advanced": "Añade los planetas enanos, asteroides con nombre, cometas con sus colas y los cinturones de asteroides y de Kuiper como nubes de puntos (cada punto representa muchos cuerpos reales).",
+				"spacecraft": "Muestra las naves espaciales reales que ha enviado la humanidad, como la Voyager 1 y el telescopio espacial James Webb, donde están en la fecha que se ve. Apagado por defecto para que los planetas se lean con claridad.",
+				"spacecraft@simple": "Muestra las sondas que la gente ha enviado al espacio.",
+				"spacecraft@advanced": "Añade las naves en sus posiciones medidas (datos de seguimiento de la NASA/JPL) en la fecha que se ve, con sus nombres y la trayectoria de la elegida. Elegir una nave en cualquier sitio lo activa.",
 				"alwaysLit": "Ilumina cada cuerpo desde donde miras, para que el lado de noche no sea negro. Bueno para ver superficies; esconde la lección del día y la noche.",
 				"alwaysLit@simple": "Ilumina cada planeta desde tu lado, así nada está oscuro. ¡Pero entonces no ves el día y la noche!",
 				"alwaysLit@advanced": "Ilumina cada cuerpo desde el punto de vista en lugar del Sol: sin lados de noche, fases ni sombras de eclipse. Bueno para el detalle de la superficie, falso para la geometría de la luz solar."
@@ -313,7 +316,8 @@
 				"allMoonsPoster@simple": "En Póster las lunas pequeñas están escondidas. ¡No hay sitio para ellas!",
 				"orbitNames": "{missing, select, orbits {Activa primero Órbitas.} labels {Activa primero Etiquetas.} other {Activa primero Órbitas y Etiquetas.}}"
 			},
-			"smallBodies": "Cuerpos menores"
+			"smallBodies": "Cuerpos menores",
+			"spacecraft": "Naves espaciales"
 		},
 		"scale": {
 			"label": "Escala",

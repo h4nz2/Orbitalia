@@ -317,8 +317,8 @@
 				"simple": "Names, paths and dots"
 			},
 			"what": {
-				"standard": "Switches decide what is drawn: orbits, names, moons, all moons, dot markers, the names of the orbits and “Always lit”.",
-				"simple": "Switches turn the names, the paths and the dots on and off."
+				"standard": "Switches decide what is drawn: orbits, names, moons, all moons, dot markers, the names of the orbits, the spacecraft and “Always lit”.",
+				"simple": "Switches turn the names, the paths, the dots and the space probes on and off."
 			},
 			"why": {
 				"standard": "Hide the names for a quiz, or switch the markers off at true scale to see how invisible the planets really are.",
@@ -523,8 +523,8 @@
 				"simple": "Space probes"
 			},
 			"what": {
-				"standard": "Voyager, Pioneer, New Horizons, Cassini, Juno, Parker, JWST and Europa Clipper, drawn where they really are on the date on screen, with their paths and milestones.",
-				"simple": "Real space probes that people built, shown where they are right now."
+				"standard": "Voyager, Pioneer, New Horizons, Cassini, Juno, Parker, JWST and Europa Clipper, drawn where they really are on the date on screen, with their paths and milestones. They stay hidden until you show them.",
+				"simple": "Real space probes that people built, shown where they are right now. They are hidden until you turn them on."
 			},
 			"why": {
 				"standard": "Voyager 1 is still sending messages from far beyond the planets: its card shows how long its signal takes to reach us, and why the trip took so many gravity assists.",
@@ -532,14 +532,16 @@
 			},
 			"how": {
 				"standard": [
-					"Open Tools, choose “Real spacecraft” and pick a craft: the view flies to it.",
+					"Open Tools, choose “Real spacecraft” and pick a craft: the view flies to it, and the spacecraft appear.",
+					"To see them all, turn on Spacecraft under Layers (or in the spacecraft list). A link, a tour stop or a sky event about a craft shows them too.",
 					"Its card shows launch, distance, signal time and milestones; a milestone takes time to that moment.",
-					"“Show every path” draws all their routes at once; the Spacecraft switch hides them."
+					"“Show every path” draws all their routes at once; turning the Spacecraft switch off hides them again."
 				],
 				"simple": [
 					"Press Tools.",
 					"Choose “Real spacecraft”, then Voyager 1.",
-					"Read how far away it is."
+					"Read how far away it is.",
+					"To see all the probes, press Layers and turn on Spacecraft."
 				]
 			}
 		},

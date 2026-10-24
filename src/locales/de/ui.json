@@ -303,6 +303,9 @@
 				"smallBodies": "Zeigt Pluto und die anderen Zwergplaneten, Asteroiden, Kometen und die beiden Gürtel. Standardmäßig aus, damit die Planeten gut lesbar bleiben.",
 				"smallBodies@simple": "Zeigt Pluto, Kometen und den Asteroidengürtel.",
 				"smallBodies@advanced": "Fügt die Zwergplaneten, benannte Asteroiden, Kometen mit ihren Schweifen sowie Asteroiden- und Kuipergürtel als Punktwolken hinzu (jeder Punkt steht für viele echte Körper).",
+				"spacecraft": "Zeigt die echten Raumsonden, die Menschen ausgesandt haben, etwa Voyager 1 und das James-Webb-Weltraumteleskop, dort, wo sie am angezeigten Datum sind. Standardmäßig aus, damit die Planeten gut lesbar bleiben.",
+				"spacecraft@simple": "Zeigt die Raumsonden, die Menschen ins All geschickt haben.",
+				"spacecraft@advanced": "Fügt die Raumsonden an ihren gemessenen Positionen (Bahndaten von NASA/JPL) zum angezeigten Datum hinzu, mit ihren Namen und dem Weg der ausgewählten Sonde. Wählst du irgendwo eine Sonde aus, schaltet sich das ein.",
 				"alwaysLit": "Beleuchtet jeden Himmelskörper von deinem Blickpunkt aus, sodass die Nachtseite nicht schwarz ist. Gut, um Oberflächen zu sehen; versteckt aber Tag und Nacht.",
 				"alwaysLit@simple": "Beleuchtet jeden Planeten von deiner Seite, sodass nichts dunkel ist. Dann siehst du aber Tag und Nacht nicht mehr!",
 				"alwaysLit@advanced": "Beleuchtet jeden Körper vom Blickpunkt statt von der Sonne: keine Nachtseiten, Phasen oder Finsternisschatten. Gut für Oberflächendetails, falsch für die Geometrie des Sonnenlichts."
@@ -313,7 +316,8 @@
 				"allMoonsPoster@simple": "Im Poster sind die kleinen Monde versteckt. Es ist kein Platz für sie da!",
 				"orbitNames": "{missing, select, orbits {Schalte zuerst Umlaufbahnen ein.} labels {Schalte zuerst Beschriftungen ein.} other {Schalte zuerst Umlaufbahnen und Beschriftungen ein.}}"
 			},
-			"smallBodies": "Kleinkörper"
+			"smallBodies": "Kleinkörper",
+			"spacecraft": "Raumsonden"
 		},
 		"scale": {
 			"label": "Maßstab",
