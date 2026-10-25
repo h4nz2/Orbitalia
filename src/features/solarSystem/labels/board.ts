@@ -38,12 +38,14 @@ export function attachLabel(
 
 /** Reads every label's box size from the DOM (after a render or a font load). */
 export function measureLabels(board: LabelBoard): void {
-	const { layout, elements } = board
-	for (let i = 0; i < layout.count; i++) {
-		const element = elements[i]
-		layout.width[i] = element?.offsetWidth ?? 0
-		layout.height[i] = element?.offsetHeight ?? 0
-	}
+	for (let i = 0; i < board.layout.count; i++) measureLabel(board, i)
+}
+
+/** Reads one label's box size from the DOM (a text that changes by itself: the light flash's clock, #74). */
+export function measureLabel(board: LabelBoard, slot: number): void {
+	const element = board.elements[slot]
+	board.layout.width[slot] = element?.offsetWidth ?? 0
+	board.layout.height[slot] = element?.offsetHeight ?? 0
 }
 
 /** Opacity is written in steps of 1/20, so a fade is 4 writes per label. */
@@ -95,19 +97,29 @@ export function hideLabels(board: LabelBoard): void {
 }
 
 /**
+ * What the names keep out from under, given the HUD panels' class: every HUD
+ * panel, everything in the dock whatever its own class (#74: the birthday
+ * and sky-tonight panels bring their own styles, and so may any later tool)
+ * and the whole of a phone's sheet (#60, #62).
+ */
+export const keepOutSelector = (panelClass: string): string =>
+	`.${panelClass}, [data-dock] > *, [data-sheet]`
+
+/**
  * Reads the screen rectangles of the elements matching `selector` (the HUD
- * panels) relative to `canvas`, as the layout's keep-out areas: a label
- * half-hidden under a panel reads as a different word.
+ * panels, `keepOutSelector`) relative to `canvas`, as the layout's keep-out
+ * areas: a label half-hidden under a panel reads as a different word.
  */
 export function measureKeepOut(
 	board: LabelBoard,
-	canvas: HTMLElement,
+	canvas: Pick<Element, "getBoundingClientRect">,
 	selector: string,
+	root: Pick<ParentNode, "querySelectorAll"> = document,
 ): void {
 	const origin = canvas.getBoundingClientRect()
 	setKeepOut(
 		board.layout,
-		Array.from(document.querySelectorAll(selector), (element) => {
+		Array.from(root.querySelectorAll(selector), (element) => {
 			const rect = element.getBoundingClientRect()
 			return {
 				x: rect.left - origin.left,

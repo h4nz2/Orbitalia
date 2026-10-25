@@ -37,41 +37,5 @@ export interface Allowed {
 	langs?: Lang[]
 }
 
-const PHONES: Size[] = ["360x640", "390x844"]
-
-export const ALLOWED: Allowed[] = [
-	// #74: every name in the scene goes through one layout
-	{
-		issue: 74,
-		what: "the light flash's label (and its ×) over the planets' names",
-		a: "[data-light-front-label]",
-		b: "[data-label-layer] [data-body]",
-		screens: ["lightFlash"],
-	},
-	{
-		issue: 74,
-		what: "the light flash's × (a 44 px target) over its own words",
-		a: "[data-light-front-stop]",
-		b: "[data-light-front-label]",
-		sizes: PHONES,
-		screens: ["lightFlash"],
-	},
-	{
-		issue: 74,
-		what: "the Kuiper belt's name over a dwarf planet's",
-		a: "[data-belt]",
-		b: "[data-label-layer] [data-body]",
-		sizes: ["360x640", "1366x768"],
-		langs: ["en"],
-		screens: ["asteroidBelt"],
-	},
-	{
-		issue: 74,
-		kind: "cut",
-		what: "a laptop: Neptune's name half under the birthday panel",
-		a: "[data-label-layer] [data-body]",
-		b: "#birthday-panel",
-		sizes: ["1366x768"],
-		screens: ["birthday"],
-	},
-]
+// empty since #74: every name in the scene goes through one layout
+export const ALLOWED: Allowed[] = []

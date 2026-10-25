@@ -1,7 +1,9 @@
 /**
  * The asteroid belt and the Kuiper belt (#23): one Points object per belt, each dot on
  * its own Kepler orbit, moved and scaled on the GPU (beltShader.ts), plus the belt's name
- * written on it in wide views. Shown with the "Small bodies" layer.
+ * written on it in wide views. Shown with the "Small bodies" layer. The name is placed by
+ * the label layout with every other name in the scene (#74, ./beltLabels.ts); this only
+ * puts its element on the label board.
  *
  * Honest by construction: a dot is a few pixels whatever the zoom, so flying into the
  * belt never turns it into the rock field of the films; it stays a sparse scatter, and the
@@ -14,11 +16,8 @@ import {
 	BufferAttribute,
 	BufferGeometry,
 	NormalBlending,
-	PerspectiveCamera,
 	Points,
 	ShaderMaterial,
-	Vector3,
-	type Camera,
 } from "three"
 
 import { belts, bodyById, type Belt } from "@/data"
@@ -27,16 +26,10 @@ import { rootIndexOf } from "@/sim"
 import { generateBeltOrbits } from "@/sim/belts"
 import { useSimStore } from "@/store/sim"
 
-import { pixelsPerUnitAtDistanceOne } from "../scene/picking"
-import {
-	FRAME_BLEND_SLOTS,
-	useSimFrame,
-	type SimFrame,
-} from "../scene/simFrame"
+import { attachLabel, measureLabel, type LabelBoard } from "../labels/board"
+import { FRAME_BLEND_SLOTS, useSimFrame } from "../scene/simFrame"
 import { beltFragmentShader, beltVertexShader } from "./beltShader"
 import {
-	beltLabelPosition,
-	beltMidRadiusKm,
 	createBeltUniforms,
 	hexToRgb,
 	updateBeltUniforms,
@@ -45,10 +38,11 @@ import {
 
 import classes from "./SmallBodies.module.css"
 
-/** A belt's name shows while the belt's middle circle is at least this wide on screen (px radius)... */
-export const BELT_LABEL_MIN_PX = 70
-/** ...and at most this many viewport heights (inside the belt the name says nothing). */
-export const BELT_LABEL_MAX_VIEWPORTS = 1.2
+/** Where the belts' names go on the label board: the slot of the first belt's (./beltLabels.ts). */
+export interface BeltLabelSlots {
+	board: LabelBoard
+	firstSlot: number
+}
 
 const createBeltPoints = (belt: Belt): Points => {
 	const parent = bodyById.get(belt.parentId)
@@ -78,11 +72,6 @@ const createBeltPoints = (belt: Belt): Points => {
 	return points
 }
 
-const centre = new Vector3()
-const labelAt = new Vector3()
-const side = new Vector3()
-const projected = new Vector3()
-
 /** The belt's name element (plain DOM beside the canvas, removed with a guard on unmount). */
 const createBeltLabel = (beltId: string): HTMLSpanElement => {
 	const label = document.createElement("span")
@@ -94,79 +83,49 @@ const createBeltLabel = (beltId: string): HTMLSpanElement => {
 }
 
 /**
- * Puts the belt's name beside the canvas with its text; returns the clean-up, which removes
- * it only while it is still attached (the canvas's host may be gone when the page is left).
+ * Puts the belt's name beside the canvas with its text, on the label board's `slot`, and
+ * measures it; returns the clean-up, which takes it off the board and removes it only while
+ * it is still attached (the canvas's host may be gone when the page is left).
  */
 export function attachBeltLabel(
 	label: HTMLSpanElement,
 	canvas: HTMLCanvasElement,
 	text: string,
+	slots: BeltLabelSlots | undefined,
+	slot: number,
 ): () => void {
 	label.textContent = text
 	canvas.parentElement?.appendChild(label)
+	if (slots !== undefined) {
+		attachLabel(slots.board, slot, label)
+		measureLabel(slots.board, slot)
+	}
 	return () => {
+		if (slots !== undefined) attachLabel(slots.board, slot, null)
 		label.parentNode?.removeChild(label)
 	}
 }
 
-/**
- * Per frame: the belt shader's uniforms, and its name on the belt's middle circle on the
- * viewer's left, shown only while that circle is a sensible size on screen.
- */
-export function updateBeltField(
-	points: Points,
-	label: HTMLSpanElement | null,
-	frame: SimFrame,
-	root: number,
-	midKm: number,
-	camera: Camera,
-	pixelRatio: number,
-	size: { width: number; height: number },
-): void {
-	updateBeltUniforms(
-		(points.material as ShaderMaterial).uniforms as unknown as BeltUniforms,
-		frame,
-		root,
-		pixelRatio,
-	)
-	if (label === null) return
-	side.setFromMatrixColumn(camera.matrixWorld, 0).negate()
-	beltLabelPosition(frame, midKm, side.x, side.z, labelAt)
-	frame.renderPosition(root, centre)
-	const distance = camera.position.distanceTo(centre)
-	const pxPerUnit =
-		camera instanceof PerspectiveCamera
-			? pixelsPerUnitAtDistanceOne(camera, size.height)
-			: 0
-	const radiusPx =
-		distance > 0 ? (labelAt.distanceTo(centre) * pxPerUnit) / distance : 0
-	projected.copy(labelAt).project(camera)
-	const inFront = projected.z > -1 && projected.z < 1
-	const shown =
-		inFront &&
-		radiusPx >= BELT_LABEL_MIN_PX &&
-		radiusPx <= BELT_LABEL_MAX_VIEWPORTS * size.height
-	label.dataset.visible = shown ? "true" : "false"
-	if (!shown) return
-	const x = ((projected.x + 1) / 2) * size.width
-	const y = ((1 - projected.y) / 2) * size.height
-	label.style.transform = `translate(${x.toFixed(1)}px, ${y.toFixed(1)}px) translate(-50%, -50%)`
-}
-
-function BeltField({ belt }: { belt: Belt }) {
+function BeltField({
+	belt,
+	labels,
+	slot,
+}: {
+	belt: Belt
+	labels: BeltLabelSlots | undefined
+	slot: number
+}) {
 	const frame = useSimFrame()
 	const { t } = useI18n()
 	const points = useMemo(() => createBeltPoints(belt), [belt])
 	const root = useMemo(() => rootIndexOf(frame.bodies), [frame])
-	const midKm = useMemo(() => beltMidRadiusKm(belt), [belt])
-	const size = useThree((state) => state.size)
 	const gl = useThree((state) => state.gl)
 	const text = t("solarSystem.smallBodies.beltName", { belt: belt.id })
 	const label = useMemo(() => createBeltLabel(belt.id), [belt.id])
 
 	useEffect(
-		() => attachBeltLabel(label, gl.domElement, text),
-		[label, gl, text],
+		() => attachBeltLabel(label, gl.domElement, text, labels, slot),
+		[label, gl, text, labels, slot],
 	)
 
 	useEffect(
@@ -177,30 +136,31 @@ function BeltField({ belt }: { belt: Belt }) {
 		[points],
 	)
 
-	useFrame(({ camera }) =>
-		updateBeltField(
-			points,
-			label,
+	useFrame(() =>
+		updateBeltUniforms(
+			(points.material as ShaderMaterial).uniforms as unknown as BeltUniforms,
 			frame,
 			root,
-			midKm,
-			camera,
 			gl.getPixelRatio(),
-			size,
 		),
 	)
 
 	return <primitive object={points} />
 }
 
-/** The belts, while the "Small bodies" layer is on. */
-function Belts() {
+/** The belts, while the "Small bodies" layer is on; their names on the label board's `labels` slots. */
+function Belts({ labels }: { labels?: BeltLabelSlots }) {
 	const show = useSimStore((state) => state.showSmallBodies)
 	if (!show) return null
 	return (
 		<>
-			{belts.map((belt) => (
-				<BeltField key={belt.id} belt={belt} />
+			{belts.map((belt, k) => (
+				<BeltField
+					key={belt.id}
+					belt={belt}
+					labels={labels}
+					slot={(labels?.firstSlot ?? 0) + k}
+				/>
 			))}
 		</>
 	)

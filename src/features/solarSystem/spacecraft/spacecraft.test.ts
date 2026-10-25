@@ -233,7 +233,7 @@ describe("craft names in the label layout", () => {
 					},
 					ranks,
 					undefined,
-					extension,
+					[extension],
 				)
 				const placed = [...layout.placed.slice(0, layout.placedLength)]
 				craftShown += placed.filter((slot) => slot >= firstSlot).length

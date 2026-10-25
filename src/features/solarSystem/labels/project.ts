@@ -21,6 +21,8 @@ import {
 	isKeptOut,
 	isLabelCandidate,
 	isOccluded,
+	isOrbitFamily,
+	labelDensity,
 	labelRank,
 	placeLabels,
 	putOnSide,
@@ -45,13 +47,14 @@ export interface LabelFrameState extends LabelState {
 }
 
 /**
- * Names of things that are not bodies (spacecraft, #35), laid out in the same
- * pass as the bodies' so they follow the same rules and never collide. An
- * extension owns the slots after the bodies' and orbits' (from
- * `labelSlotCount(bodies)`); every frame, after the bodies are projected, it
- * projects its own, sets their geometry, rank and eligibility and appends the
- * eligible ones to `layout.order`. Occlusion, sorting, placement and fading
- * then treat them like any other label.
+ * Names of things that are not bodies (spacecraft, #35; the belts and the
+ * light flash, #74), laid out in the same pass as the bodies' so they follow
+ * the same rules and never collide. Each extension owns slots after the
+ * bodies' and orbits' (from `labelSlotCount(bodies)` on, one range each);
+ * every frame, after the bodies are projected, it projects its own, sets
+ * their geometry, rank and eligibility and appends the eligible ones to
+ * `layout.order`. Occlusion, sorting, placement and fading then treat them
+ * like any other label.
  */
 export interface LabelExtension {
 	fill(
@@ -125,6 +128,7 @@ function isMoonOrbitFaded(
 	)
 }
 const anchor: OrbitAnchor = { x: 0, y: 0, depth: 0 }
+const NO_EXTENSIONS: readonly LabelExtension[] = []
 
 /**
  * Projects body `i` into the layout: screen centre, disc radius (px) and
@@ -168,7 +172,9 @@ function project(
  * `staticLabelRanks(frame.bodies)`. Labels that are no longer candidates but
  * still fading out keep following their bodies. With `orbitCache`, the orbits
  * of labelled bodies get their names too while `showOrbitLabels` is on, after
- * every body name in priority. An `extension` adds its own labels (spacecraft).
+ * every body name in priority (on a small screen only the focus family's,
+ * `labelDensity`). The `extensions` add their own labels (spacecraft, belts,
+ * the light flash).
  */
 export function fillLabelLayout(
 	layout: LabelLayout,
@@ -179,16 +185,18 @@ export function fillLabelLayout(
 	state: LabelFrameState,
 	staticRanks: Float64Array,
 	orbitCache?: OrbitAnchorCache,
-	extension?: LabelExtension,
+	extensions: readonly LabelExtension[] = NO_EXTENSIONS,
 ): void {
 	layout.viewportWidth = widthPx
 	layout.viewportHeight = heightPx
+	// fewer names on a smaller screen (#74)
+	const density = labelDensity(widthPx, heightPx, layout.density)
 	const pxPerUnit =
 		heightPx / (2 * Math.tan(degToRad(camera.fov / 2))) / camera.zoom
 	const bodies: readonly Body[] = frame.bodies
 	const focusIndex = frame.index.get(state.focusId)
-	const focusParentId =
-		focusIndex === undefined ? null : bodies[focusIndex].parentId
+	const focus = focusIndex === undefined ? undefined : bodies[focusIndex]
+	const focusParentId = focus?.parentId ?? null
 	const { order, eligible, visible, opacity, rank } = layout
 
 	layout.orderLength = 0
@@ -241,6 +249,9 @@ export function fillLabelLayout(
 			(frame.topIndex[i] === i && heliocentricFaded) ||
 			!isBodyShown(body, state) ||
 			!isLabelCandidate(body, state, focusParentId) ||
+			(density.familyOrbitsOnly &&
+				focus !== undefined &&
+				!isOrbitFamily(body, focus)) ||
 			isMoonOrbitFaded(frame, i, camera, pxPerUnit) ||
 			!orbitAnchor(
 				orbitCache,
@@ -273,7 +284,9 @@ export function fillLabelLayout(
 		}
 	}
 
-	extension?.fill(layout, camera, pxPerUnit, state)
+	for (const extension of extensions) {
+		extension.fill(layout, camera, pxPerUnit, state)
+	}
 
 	// eligibility needs every candidate projected: occlusion and moon clearance
 	for (let k = 0; k < layout.orderLength; k++) {

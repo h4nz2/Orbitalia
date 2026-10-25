@@ -8,8 +8,9 @@
  * boxes in screen space. A label therefore behaves exactly like its body: the
  * pointer cursor, hover, and a tap (not a drag) that activates it. The HUD
  * panels (`.panel` of SolarSystem.module.css) are areas labels keep out of,
- * and so is the whole of a phone's sheet (#60), its handle's strip included
- * (#62: no name drawn over what a link opened).
+ * and so is everything in the dock whatever its own class (#74: the birthday
+ * panel brings its own) and the whole of a phone's sheet (#60), its handle's
+ * strip included (#62: no name drawn over what a link opened).
  */
 import { useCallback, useMemo, useRef } from "react"
 import { useFrame, useThree, type ThreeEvent } from "@react-three/fiber"
@@ -28,6 +29,7 @@ import { isTapEvent } from "../scene/tap"
 import { focusBodyFromLabel, type LabelActivateHandler } from "./activate"
 import {
 	hideLabels,
+	keepOutSelector,
 	measureKeepOut,
 	writeLabels,
 	type LabelBoard,
@@ -47,18 +49,19 @@ export interface LabelsProps {
 	board: LabelBoard
 	/** What a tap on a label does; default: what a tap on the body does (./activate.ts). */
 	onActivate?: LabelActivateHandler
-	/** Labels of things that are not bodies (spacecraft, #35) in the same layout; they pick themselves. */
-	extension?: LabelExtension
+	/** Labels of things that are not bodies (spacecraft, #35; belts and the light flash, #74) in the same layout; they pick themselves. */
+	extensions?: readonly LabelExtension[]
 }
 
 const pointer = new Vector3()
 /** How often the HUD panels' rectangles are re-read, s. */
 const KEEP_OUT_INTERVAL_S = 0.25
+const KEEP_OUT = keepOutSelector(hudClasses.panel)
 
 function Labels({
 	board,
 	onActivate = focusBodyFromLabel,
-	extension,
+	extensions,
 }: LabelsProps) {
 	const frame = useSimFrame()
 	const groupRef = useRef<Group>(null)
@@ -84,7 +87,7 @@ function Labels({
 		sinceKeepOut.current += delta
 		if (sinceKeepOut.current >= KEEP_OUT_INTERVAL_S) {
 			sinceKeepOut.current = 0
-			measureKeepOut(board, canvas, `.${hudClasses.panel}, [data-sheet]`)
+			measureKeepOut(board, canvas, KEEP_OUT)
 		}
 		camera.updateMatrixWorld()
 		fillLabelLayout(
@@ -96,7 +99,7 @@ function Labels({
 			state,
 			ranks,
 			orbitCache,
-			extension,
+			extensions,
 		)
 		fadeLabels(layout, delta)
 		writeLabels(board)
