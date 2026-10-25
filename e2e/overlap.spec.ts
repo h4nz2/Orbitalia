@@ -19,6 +19,7 @@ import { expect, test, type Page, type TestInfo } from "@playwright/test"
 import { ALLOWED, type Allowed, type Lang, type Size } from "./overlap.allow"
 import { stubTurnstile } from "./support/feedback"
 import { expandCard, pageInPlace } from "./support/hud"
+import { skipDrawing } from "./support/noDrawing"
 import {
 	findOverlaps,
 	layoutAtRest,
@@ -32,8 +33,9 @@ import { cameraAtRest } from "./support/scene"
 
 // software WebGL is slow, and a screen waits for its scene to settle
 test.describe.configure({ timeout: 120_000 })
-// a failure attaches its own picture, with the overlaps outlined
-test.use({ screenshot: "off" })
+// a failure attaches its own picture, with the overlaps outlined; no trace,
+// which would record every one of a test's screens
+test.use({ screenshot: "off", trace: "off" })
 
 const helpData = JSON.parse(
 	readFileSync(path.join("src", "data", "help.json"), "utf8"),
@@ -532,6 +534,10 @@ for (const device of DEVICES)
 						// every wait has its bound, so a stuck screen reports itself
 						page.setDefaultTimeout(WAIT_MS)
 						await page.addInitScript(inPlaceAtOnce)
+						// the guard reads text and boxes, never pixels: the scene runs
+						// without drawing (OVERLAP_DRAW=1 draws it, to compare)
+						if (process.env.OVERLAP_DRAW === undefined)
+							await page.addInitScript(skipDrawing)
 						// the feedback page's Turnstile never reaches the network in a test
 						await stubTurnstile(page)
 						const clear = run[0].clear
