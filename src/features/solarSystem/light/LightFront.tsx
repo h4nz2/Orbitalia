@@ -4,39 +4,37 @@
  * passed, and a label riding on it with the time the light has been
  * travelling. The geometry is `writeFront` (lightFront.ts), rewritten every
  * frame from the SimFrame and the simulation time, so the front pauses,
- * speeds up and runs backwards with the clock.
+ * speeds up and runs backwards with the clock. The label is DOM beside the
+ * Canvas (`FrontLabelLayer`), placed by the label layout with every other
+ * name in the scene (#74, ./frontLabel.ts): this writes where on the front
+ * it rides.
  */
-import {
-	useEffect,
-	useLayoutEffect,
-	useMemo,
-	useRef,
-	type RefObject,
-} from "react"
-import { useFrame, useThree } from "@react-three/fiber"
-import { Html } from "@react-three/drei"
+import { useEffect, useMemo, useRef } from "react"
+import { useFrame } from "@react-three/fiber"
 import { IconX } from "@tabler/icons-react"
 import {
 	BufferAttribute,
 	BufferGeometry,
 	Color,
 	DoubleSide,
-	Group,
 	Mesh,
 	MeshBasicMaterial,
 	type InterleavedBuffer,
+	type Vector3,
 } from "three"
 import { LineMaterial } from "three/examples/jsm/lines/LineMaterial.js"
 import { LineSegments2 } from "three/examples/jsm/lines/LineSegments2.js"
 import { LineSegmentsGeometry } from "three/examples/jsm/lines/LineSegmentsGeometry.js"
 
-import { useI18n, type I18n } from "@/i18n"
+import { useI18n } from "@/i18n"
 import { Hint } from "@/primitives/hint"
 import { frontRadiusKm, secondsSince } from "@/sim/light"
 import { toUnits } from "@/sim"
 import { useLightStore, type LightPulse } from "@/store/light"
 
+import { attachLabel, measureLabel, type LabelBoard } from "../labels/board"
 import { useSimFrame, type SimFrame } from "../scene/simFrame"
+import type { FrontLabelAnchor } from "./frontLabel"
 import {
 	FRONT_VERTICES,
 	frontPointDisplayKm,
@@ -52,6 +50,7 @@ import {
 	pulseTargetIds,
 } from "./lightTravel"
 
+import labelClasses from "../labels/Labels.module.css"
 import classes from "./LightFront.module.css"
 
 export const FRONT_COLOR = "#ffe7a3"
@@ -138,9 +137,10 @@ const centre = new Float64Array(3)
 const labelPoint = new Float64Array(3)
 
 /**
- * Per frame: the front's vertices, the glow fan and the label's position.
- * `fade` (0..1) fades the whole front out once it has left the planets
- * behind (#38). Returns whether anything is drawn.
+ * Per frame: the front's vertices, the glow fan and the point the label
+ * rides on (`label`, scene units). `fade` (0..1) fades the whole front out
+ * once it has left the planets behind (#38). Returns whether anything is
+ * drawn.
  */
 export function updateFront(
 	frame: SimFrame,
@@ -149,7 +149,7 @@ export function updateFront(
 	towardIndex: number,
 	objects: FrontObjects,
 	state: FrontState,
-	label: Group,
+	label: Vector3,
 	fade = 1,
 ): boolean {
 	const radiusKm = frontRadiusKm(pulse.emitJD, frame.jd)
@@ -189,7 +189,7 @@ export function updateFront(
 		frame.positionsKm[t] - source.origin[0],
 	)
 	frontPointDisplayKm(frame, source, state.anchor, radiusKm, theta, labelPoint)
-	label.position.set(
+	label.set(
 		toUnits(labelPoint[0] - originKm[0]),
 		toUnits(labelPoint[1] - originKm[1]),
 		toUnits(labelPoint[2] - originKm[2]),
@@ -231,7 +231,7 @@ export function nextTarget(
 	return toward
 }
 
-/** The whole per-frame update: front, glow, label position and its visibility. */
+/** The whole per-frame update: front, glow, and where and how much the label shows. */
 function drawFront(
 	frame: SimFrame,
 	pulse: LightPulse | null,
@@ -239,11 +239,10 @@ function drawFront(
 	targets: readonly number[],
 	objects: FrontObjects,
 	state: FrontState,
-	label: Group | null,
-	text: HTMLSpanElement | null,
+	label: FrontLabelAnchor,
 ): void {
 	let shown = false
-	if (pulse !== null && source !== null && label !== null) {
+	if (pulse !== null && source !== null) {
 		const toward = nextTarget(
 			frame,
 			source,
@@ -261,17 +260,15 @@ function drawFront(
 			toward,
 			objects,
 			state,
-			label,
+			label.position,
 			opacity,
 		)
 	} else {
 		objects.line.visible = false
 		objects.glow.visible = false
 	}
-	if (text !== null) {
-		text.style.visibility = shown ? "visible" : "hidden"
-		text.style.opacity = String(state.opacity)
-	}
+	label.shown = shown
+	label.opacity = shown ? state.opacity : 0
 }
 
 /** Stops a click on the label's button from reaching the scene underneath (a click on empty space clears the selection). */
@@ -281,69 +278,102 @@ const keepFromScene = (event: { stopPropagation: () => void }) =>
 /**
  * The label on the front: "Light · 4 min 12 s" ("Beyond the planets · …" once
  * it has passed them), refreshed 10 times a second, with a button that stops
- * the flash right where it is (#38). Outside every React context (see
- * LightFront); `ref` is the whole label, which drawFront shows and fades.
+ * the flash right where it is (#38). DOM beside the Canvas, on the label
+ * board's `slot`: the label layout places and fades it (#74, ./frontLabel.ts),
+ * and its inside fades with the front (`anchor.opacity`). The button is part
+ * of the label's box, never over its words, so the layout keeps every other
+ * name off it too; on touch it is a 44 px target (#62).
  */
-const FrontLabel = ({
-	pulse,
+export function FrontLabelLayer({
+	board,
+	slot,
+	anchor,
 	frame,
-	i18n,
-	ref,
 }: {
-	pulse: LightPulse
+	board: LabelBoard
+	slot: number
+	anchor: FrontLabelAnchor
 	frame: SimFrame
-	i18n: I18n
-	ref: RefObject<HTMLSpanElement | null>
-}) => {
+}) {
+	const i18n = useI18n()
+	const pulse = useLightStore((state) => state.pulse)
+	const contentRef = useRef<HTMLSpanElement>(null)
 	const textRef = useRef<HTMLSpanElement>(null)
 	useEffect(() => {
+		if (pulse === null) return
+		let opacity = ""
+		let length = -1
 		const write = () => {
-			if (textRef.current === null) return
+			if (textRef.current === null || contentRef.current === null) return
 			const seconds = secondsSince(pulse.emitJD, frame.jd)
 			const { phase } = flashState(seconds, pastPlanetsSeconds(pulse))
-			textRef.current.textContent = i18n.t(
+			const text = i18n.t(
 				phase === "leaving"
 					? "solarSystem.light.frontLabelLeaving"
 					: "solarSystem.light.frontLabel",
 				{ duration: formatDuration(seconds, i18n, true) },
 			)
+			if (textRef.current.textContent !== text) {
+				textRef.current.textContent = text
+				// a new width only with a new length (tabular digits: another
+				// number of them, "Beyond the planets"); measuring forces a layout
+				if (text.length !== length) {
+					length = text.length
+					measureLabel(board, slot)
+				}
+			}
+			const next = String(Math.round(anchor.opacity * 20) / 20)
+			if (next !== opacity) {
+				contentRef.current.style.opacity = next
+				opacity = next
+			}
 		}
 		write()
 		const timer = setInterval(write, 100)
 		return () => clearInterval(timer)
-	}, [pulse, frame, i18n])
+	}, [pulse, frame, i18n, board, slot, anchor])
+	if (pulse === null) return null
 	const stop = i18n.t("solarSystem.light.stop")
 	return (
-		<span ref={ref} className={classes.label} data-light-front-label>
-			<span ref={textRef} />
-			<Hint text={i18n.t("solarSystem.light.stopHint")}>
-				<button
-					type="button"
-					className={classes.stop}
-					aria-label={stop}
-					data-light-front-stop
-					onPointerDown={keepFromScene}
-					onPointerUp={keepFromScene}
-					onClick={(event) => {
-						event.stopPropagation()
-						useLightStore.getState().clear()
-					}}
-				>
-					<IconX size={12} stroke={2.5} />
-				</button>
-			</Hint>
-		</span>
+		// over the canvas, under the HUD panels (later in the page)
+		<div className={labelClasses.layer}>
+			<span
+				ref={(element) => {
+					attachLabel(board, slot, element)
+					if (element !== null) measureLabel(board, slot)
+				}}
+				className={classes.label}
+				data-light-front-label
+			>
+				<span ref={contentRef} className={classes.content}>
+					<span ref={textRef} data-light-front-text />
+					<Hint text={i18n.t("solarSystem.light.stopHint")}>
+						<button
+							type="button"
+							className={classes.stop}
+							aria-label={stop}
+							data-light-front-stop
+							onPointerDown={keepFromScene}
+							onPointerUp={keepFromScene}
+							onClick={(event) => {
+								event.stopPropagation()
+								useLightStore.getState().clear()
+							}}
+						>
+							<IconX size={12} stroke={2.5} />
+						</button>
+					</Hint>
+				</span>
+			</span>
+		</div>
 	)
 }
 
-function LightFront() {
+/** The front and its glow, in the Canvas; `label` is where its label rides (`FrontLabelLayer`). */
+function LightFront({ label }: { label: FrontLabelAnchor }) {
 	const frame = useSimFrame()
-	// drei's <Html> renders in a React root of its own: pass context values down as props
-	const i18n = useI18n()
 	const pulse = useLightStore((state) => state.pulse)
 	const objects = useMemo(() => createFrontObjects(), [])
-	const labelRef = useRef<Group>(null)
-	const textRef = useRef<HTMLSpanElement>(null)
 	const state = useMemo<FrontState>(
 		() => ({ visible: false, opacity: 0, anchor: 0 }),
 		[],
@@ -363,54 +393,22 @@ function LightFront() {
 	)
 
 	useEffect(() => () => disposeFront(objects), [objects])
-
-	// The label's own layer over the canvas, owned here rather than React's:
-	// drei's <Html> appends to the canvas wrapper by default, and leaving the
-	// page with a flash on screen then threw "removeChild ... not a child"
-	// while the scene was torn down (found by the help page's try-it test, #43).
-	const gl = useThree((three) => three.gl)
-	const layer = useMemo(() => {
-		const div = document.createElement("div")
-		div.style.cssText =
-			"position:absolute;inset:0;overflow:hidden;pointer-events:none;"
-		return div
-	}, [])
-	const layerRef = useRef<HTMLElement>(layer)
-	useLayoutEffect(() => {
-		gl.domElement.parentNode?.appendChild(layer)
-		return () => layer.remove()
-	}, [gl, layer])
+	// no front drawn, no label: the scene is left
+	useEffect(
+		() => () => {
+			label.shown = false
+		},
+		[label],
+	)
 
 	useFrame(() =>
-		drawFront(
-			frame,
-			pulse,
-			source,
-			targets,
-			objects,
-			state,
-			labelRef.current,
-			textRef.current,
-		),
+		drawFront(frame, pulse, source, targets, objects, state, label),
 	)
 
 	return (
 		<>
 			<primitive object={objects.glow} />
 			<primitive object={objects.line} />
-			<group ref={labelRef}>
-				{pulse !== null && (
-					// z-index 0: the HUD panels, later in the page, stay on top of it
-					<Html
-						center
-						portal={layerRef}
-						zIndexRange={[0, 0]}
-						style={{ pointerEvents: "none" }}
-					>
-						<FrontLabel pulse={pulse} frame={frame} i18n={i18n} ref={textRef} />
-					</Html>
-				)}
-			</group>
 		</>
 	)
 }

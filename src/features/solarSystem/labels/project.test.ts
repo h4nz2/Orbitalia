@@ -12,11 +12,18 @@ import {
 } from "../scene/simFrame"
 import {
 	LABEL_GAP_PX,
+	MOON_DISC_NAMED_PX,
+	MOON_LABEL_BUDGET,
 	createLabelLayout,
+	isOrbitFamily,
 	staticLabelRanks,
 	type LabelLayout,
 } from "./layout"
-import { createOrbitAnchorCache, orbitAnchor } from "./orbitAnchor"
+import {
+	createOrbitAnchorCache,
+	orbitAnchor,
+	type OrbitAnchorCache,
+} from "./orbitAnchor"
 import {
 	fillLabelLayout,
 	isBudgeted,
@@ -244,6 +251,103 @@ describe("fillLabelLayout", () => {
 		expect(isBudgeted(io, { ...s, hoverId: "io" }, 2)).toBe(false)
 		expect(isBudgeted(io, { ...s, focusId: "io" }, 2)).toBe(false)
 		expect(isBudgeted({ id: "mars", kind: "planet" }, s, 2)).toBe(false)
+	})
+})
+
+describe("density by screen size (#74)", () => {
+	/** A camera for a `width` x `height` screen, `distance` units from the origin, 45° up. */
+	const cameraFor = (distance: number, width: number, height: number) => {
+		const camera = new PerspectiveCamera(45, width / height, 1e-5, 1e9)
+		const d = distance * Math.SQRT1_2
+		camera.position.set(0, d, d)
+		camera.lookAt(0, 0, 0)
+		camera.updateMatrixWorld()
+		return camera
+	}
+	const layAt = (
+		frame: SimFrame,
+		distance: number,
+		width: number,
+		height: number,
+		state: Partial<LabelFrameState>,
+		orbits?: OrbitAnchorCache,
+	) => {
+		const layout = createLabelLayout(labelSlotCount(bodies.length))
+		layout.width.fill(70)
+		layout.height.fill(18)
+		fillLabelLayout(
+			layout,
+			frame,
+			cameraFor(distance, width, height),
+			width,
+			height,
+			{ ...baseState, ...state },
+			ranks,
+			orbits,
+		)
+		return layout
+	}
+	const moonNames = (layout: LabelLayout) =>
+		shown(layout).filter((id) => bodies[index(id)].kind === "moon")
+
+	it("names fewer of Saturn's moons on a phone than on a laptop", () => {
+		const frame = frameOn("saturn")
+		const distance = 80 * frame.renderRadius(index("saturn"))
+		const state = { focusId: "saturn" }
+		const laptop = layAt(frame, distance, 1366, 768, state)
+		const phone = layAt(frame, distance, 360, 640, state)
+		expect(laptop.density.moonBudget).toBe(MOON_LABEL_BUDGET)
+		expect(phone.density.moonBudget).toBe(3)
+		expect(moonNames(phone).length).toBeLessThan(moonNames(laptop).length)
+		// within the phone's budget, except the moons big enough to be worlds on screen
+		const small = moonNames(phone).filter(
+			(id) => phone.radius[index(id)] < MOON_DISC_NAMED_PX,
+		)
+		expect(small.length).toBeLessThanOrEqual(3)
+		// the selected moon is named on top of them
+		const iapetus = layAt(frame, distance, 360, 640, {
+			focusId: "saturn",
+			selectedId: "iapetus",
+		})
+		expect(shown(iapetus)).toContain("iapetus")
+	})
+
+	it("names only the focus family's orbits on a phone, every orbit on a laptop", () => {
+		const frame = frameOn("saturn")
+		const distance = 400 * frame.renderRadius(index("saturn"))
+		const state = { focusId: "saturn", showOrbitLabels: true }
+		const n = bodies.length
+		const orbitsEligible = (layout: LabelLayout) =>
+			bodies
+				.filter((_, i) => layout.eligible[orbitSlot(i, n)] === 1)
+				.map((b) => b.id)
+		const laptop = orbitsEligible(
+			layAt(
+				frame,
+				distance,
+				1366,
+				768,
+				state,
+				createOrbitAnchorCache(bodies.length),
+			),
+		)
+		const phone = orbitsEligible(
+			layAt(
+				frame,
+				distance,
+				360,
+				640,
+				state,
+				createOrbitAnchorCache(bodies.length),
+			),
+		)
+		expect(laptop).toContain("jupiter")
+		expect(phone).not.toContain("jupiter")
+		expect(phone.length).toBeGreaterThan(0)
+		const saturn = bodies[index("saturn")]
+		expect(phone.every((id) => isOrbitFamily(bodies[index(id)], saturn))).toBe(
+			true,
+		)
 	})
 })
 

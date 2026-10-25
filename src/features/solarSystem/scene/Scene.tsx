@@ -5,12 +5,13 @@
  * No three.js lights: the Sun lights every body through the sunlight model
  * (../lighting, docs/ARCHITECTURE.md, "Lighting"). The body labels are DOM
  * beside the Canvas (labels/LabelLayer.tsx), laid out by labels/Labels.tsx
- * inside it; both share one label board.
+ * inside it; both share one label board, and so does every other text in the
+ * scene (#74): the spacecraft's, the belts' and the light flash's names.
  */
 import { Suspense, useMemo } from "react"
 import { Canvas } from "@react-three/fiber"
 
-import { bodies } from "@/data"
+import { belts, bodies } from "@/data"
 import { useScaleStore } from "@/store/scale"
 import { useSimStore } from "@/store/sim"
 
@@ -26,11 +27,13 @@ import IntroPulseTracker from "../intro/IntroPulseTracker"
 import { createLabelBoard } from "../labels/board"
 import LabelLayer from "../labels/LabelLayer"
 import Labels from "../labels/Labels"
-import LightFront from "../light/LightFront"
+import { createFrontLabel, createFrontLabelAnchor } from "../light/frontLabel"
+import LightFront, { FrontLabelLayer } from "../light/LightFront"
 import SceneCapture from "../postcard/SceneCapture"
 import DprSync from "../present/DprSync"
 import SoundProbe from "../sound/SoundProbe"
 import { labelSlotCount } from "../labels/project"
+import { createBeltLabels } from "../smallBodies/beltLabels"
 import Belts from "../smallBodies/Belts"
 import CometTails from "../smallBodies/CometTails"
 import { createCraftFrame } from "../spacecraft/craftFrame"
@@ -59,16 +62,25 @@ function Scene() {
 			),
 		[],
 	)
-	// spacecraft (#35): their own frame, and their names after the bodies' label slots
+	// spacecraft (#35): their own frame, and their names after the bodies' label slots;
+	// then the belts' names and the light flash's (#74)
 	const craftFrame = useMemo(() => createCraftFrame(frame), [frame])
 	const craftSlot = labelSlotCount(bodies.length)
-	const labels = useMemo(
-		() => createLabelBoard(craftSlot + craftFrame.craft.length),
-		[craftSlot, craftFrame],
+	const beltSlot = craftSlot + craftFrame.craft.length
+	const frontSlot = beltSlot + belts.length
+	const labels = useMemo(() => createLabelBoard(frontSlot + 1), [frontSlot])
+	const frontLabel = useMemo(() => createFrontLabelAnchor(), [])
+	const labelExtensions = useMemo(
+		() => [
+			createCraftLabels(frame, craftFrame, craftSlot),
+			createBeltLabels(frame, belts, beltSlot),
+			createFrontLabel(frontLabel, bodies.length, frontSlot),
+		],
+		[frame, craftFrame, craftSlot, beltSlot, frontLabel, frontSlot],
 	)
-	const craftLabels = useMemo(
-		() => createCraftLabels(frame, craftFrame, craftSlot),
-		[frame, craftFrame, craftSlot],
+	const beltLabels = useMemo(
+		() => ({ board: labels, firstSlot: beltSlot }),
+		[labels, beltSlot],
 	)
 
 	return (
@@ -100,9 +112,9 @@ function Scene() {
 					<OrbitLines />
 					<Trails />
 					<Markers />
-					<Belts />
+					<Belts labels={beltLabels} />
 					<CometTails />
-					<LightFront />
+					<LightFront label={frontLabel} />
 					<SpacecraftScene
 						frame={frame}
 						craftFrame={craftFrame}
@@ -111,7 +123,7 @@ function Scene() {
 					<Labels
 						board={labels}
 						onActivate={activateBody}
-						extension={craftLabels}
+						extensions={labelExtensions}
 					/>
 					<BodyPicking />
 					<CameraRig craftFrame={craftFrame} />
@@ -124,6 +136,12 @@ function Scene() {
 			</Canvas>
 			<LabelLayer board={labels} />
 			<SpacecraftLabelLayer board={labels} firstSlot={craftSlot} />
+			<FrontLabelLayer
+				board={labels}
+				slot={frontSlot}
+				anchor={frontLabel}
+				frame={frame}
+			/>
 		</>
 	)
 }

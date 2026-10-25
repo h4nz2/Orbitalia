@@ -24,8 +24,15 @@
  *    it had last frame first, so labels do not hop), never on it, fully
  *    inside the viewport, never over another label and, if at all possible,
  *    never over another body's dot, never under a HUD panel. A label with no
- *    free side is hidden, never squeezed in. At most `MOON_LABEL_BUDGET` moon
- *    names show at once, the featured moons first, then the largest.
+ *    free side is hidden, never squeezed in. A name centred on a line (an
+ *    orbit's, a belt's) has spots instead of sides, tried the same way. At
+ *    most `MOON_LABEL_BUDGET` moon
+ *    names show at once, the featured moons first, then the largest; fewer
+ *    on a smaller screen (`labelDensity`, #74).
+ *
+ * Every text drawn in the scene takes part (#74): beside the bodies' and
+ * orbits' names, the spacecraft's, the belts' and the light flash's come in
+ * through a `LabelExtension` (./project.ts).
  *
  * Labels keep their on-screen size whatever the zoom (CSS, relative to the
  * viewport), so they are readable when a planet is one pixel and small beside
@@ -79,6 +86,68 @@ export const OBSTACLE_MAX_RADIUS_PX = 24
  * and more names are only noise.
  */
 export const MOON_LABEL_BUDGET = 10
+/**
+ * A screen this big (px², about a laptop's browser window: 1280 x 625) or
+ * bigger shows every name the rules allow (#74); a smaller one fewer, in
+ * proportion to its area (`labelDensity`).
+ */
+export const FULL_DENSITY_AREA_PX = 800_000
+/**
+ * A screen smaller than this (px²) is small: every phone, upright or
+ * sideways, the largest (430 x 932) included, and no tablet. It names the
+ * orbits of the focus's family only and at most `SMALL_SCREEN_CRAFT_NAMES`
+ * spacecraft besides the one the user is looking at.
+ */
+export const SMALL_SCREEN_AREA_PX = 500_000
+/** Fewest moon names a screen gets, however small. */
+export const MIN_MOON_LABEL_BUDGET = 2
+/** Spacecraft names on a small screen besides the selected, hovered or followed craft. */
+export const SMALL_SCREEN_CRAFT_NAMES = 2
+
+/** How many names a screen of this size shows (#74; docs/ARCHITECTURE.md, "Labels"). */
+export interface LabelDensity {
+	/** Moon (and asteroid) names at once: `MOON_LABEL_BUDGET` scaled by the screen's area. */
+	moonBudget: number
+	/** Orbit names only for the focus's family (`isOrbitFamily`). */
+	familyOrbitsOnly: boolean
+	/** Spacecraft names besides the selected, hovered or followed craft (Infinity: every one). */
+	craftNames: number
+}
+
+/** Every name the rules allow: a laptop's density, and a new layout's. */
+const fullDensity = (): LabelDensity => ({
+	moonBudget: MOON_LABEL_BUDGET,
+	familyOrbitsOnly: false,
+	craftNames: Infinity,
+})
+
+/**
+ * The density of names for a screen `width` x `height` px, written into `out`
+ * (the layout's, once per frame: no allocation). It goes by the area, not the
+ * size class: a phone sideways has as little room for names as upright, and
+ * the largest phone a little more than the smallest. A laptop keeps every
+ * name it showed before #74.
+ */
+export function labelDensity(
+	width: number,
+	height: number,
+	out: LabelDensity = fullDensity(),
+): LabelDensity {
+	const area = Math.max(0, width) * Math.max(0, height)
+	const small = area < SMALL_SCREEN_AREA_PX
+	out.moonBudget = Math.max(
+		MIN_MOON_LABEL_BUDGET,
+		Math.min(
+			MOON_LABEL_BUDGET,
+			Math.round((MOON_LABEL_BUDGET * area) / FULL_DENSITY_AREA_PX),
+		),
+	)
+	out.familyOrbitsOnly = small
+	out.craftNames = small ? SMALL_SCREEN_CRAFT_NAMES : Infinity
+	return out
+}
+/** Spots a centred label may have (`LabelLayout.centred`): a belt's eight on its circle. */
+export const MAX_LABEL_SPOTS = 8
 /** A moon drawn at least this radius (px) is a world on screen and always may be named. */
 export const MOON_DISC_NAMED_PX = 8
 /** Screen rectangles labels keep out of (HUD panels), at most. */
@@ -94,8 +163,17 @@ export interface LabelLayout {
 	readonly cy: Float64Array
 	/** Drawn disc radius on screen (at least the marker dot's), px. */
 	readonly radius: Float64Array
-	/** Centred on its anchor (`SIDE.centre`) instead of beside a disc. */
+	/**
+	 * 0: beside its disc. n >= 1: centred (`SIDE.centre`) on one of n spots,
+	 * tried in order: (cx, cy), then `spotX/Y` (a belt's name, #74). A spot
+	 * at NaN is not there this frame (behind the camera, under a panel).
+	 */
 	readonly centred: Uint8Array
+	/** A centred label's spots after (cx, cy): `MAX_LABEL_SPOTS - 1` per label, px. */
+	readonly spotX: Float64Array
+	readonly spotY: Float64Array
+	/** The spot a centred label was placed on last (0 = cx, cy). */
+	readonly spot: Uint8Array
 	/** Distance from the camera, for occlusion (any unit, larger = farther). */
 	readonly depth: Float64Array
 	/** The label box as the DOM measured it, px; 0 = not measured, never shown. */
@@ -122,8 +200,11 @@ export interface LabelLayout {
 	readonly opacity: Float32Array
 	/** Counts against `MOON_LABEL_BUDGET` (set per frame by the projection). */
 	readonly budgeted: Uint8Array
-	/** How many budgeted labels may be placed per frame. */
-	budget: number
+	/**
+	 * How many names this screen shows (`labelDensity`, set once per frame by
+	 * the projection); `moonBudget` budgeted labels may be placed per frame.
+	 */
+	readonly density: LabelDensity
 	/** Rectangles no label may overlap (HUD panels): x, y, width, height px. */
 	readonly keepOut: Float64Array
 	keepOutLength: number
@@ -138,6 +219,9 @@ export const createLabelLayout = (count: number): LabelLayout => ({
 	cy: new Float64Array(count),
 	radius: new Float64Array(count),
 	centred: new Uint8Array(count),
+	spotX: new Float64Array(count * (MAX_LABEL_SPOTS - 1)),
+	spotY: new Float64Array(count * (MAX_LABEL_SPOTS - 1)),
+	spot: new Uint8Array(count),
 	depth: new Float64Array(count),
 	width: new Float32Array(count),
 	height: new Float32Array(count),
@@ -153,7 +237,7 @@ export const createLabelLayout = (count: number): LabelLayout => ({
 	placedLength: 0,
 	opacity: new Float32Array(count),
 	budgeted: new Uint8Array(count),
-	budget: MOON_LABEL_BUDGET,
+	density: fullDensity(),
 	keepOut: new Float64Array(MAX_KEEP_OUT * 4),
 	keepOutLength: 0,
 	viewportWidth: 0,
@@ -206,6 +290,22 @@ export const isLabelCandidate = (
 		(focusParentId !== null && body.parentId === focusParentId)
 	)
 }
+
+/**
+ * Whether a body's orbit is in the focus's family, the orbits a small screen
+ * names (#74): the focus's own, its moons', and for a moon its planet's and
+ * its sister moons'. In the overview (the Sun in focus) that is every orbit
+ * round the Sun; beside a planet, the other planets' orbits are not.
+ */
+export const isOrbitFamily = (
+	body: Pick<Body, "id" | "parentId">,
+	focus: Pick<Body, "id" | "kind" | "parentId">,
+): boolean =>
+	body.id === focus.id ||
+	body.parentId === focus.id ||
+	(focus.kind === "moon" &&
+		focus.parentId !== null &&
+		(body.id === focus.parentId || body.parentId === focus.parentId))
 
 const KIND_TIER: Record<BodyKind, number> = {
 	star: 0,
@@ -315,13 +415,28 @@ export const isClearOfParent = (
 	MOON_MIN_SEPARATION_PX +
 		(wasVisible ? -LABEL_HYSTERESIS_PX : LABEL_HYSTERESIS_PX)
 
-/** Top-left of body `i`'s label on `side`, written into `layout.x/y[i]`. */
-export function putOnSide(layout: LabelLayout, i: number, side: Side): void {
+/**
+ * Top-left of body `i`'s label on `side` (centred: on `spot`, by default the
+ * one it was placed on last), written into `layout.x/y[i]`. A spot that is
+ * not there leaves the label where it was and returns false.
+ */
+export function putOnSide(
+	layout: LabelLayout,
+	i: number,
+	side: Side,
+	spot: number = layout.spot[i],
+): boolean {
 	const reach = layout.radius[i] + LABEL_GAP_PX
 	const w = layout.width[i]
 	const h = layout.height[i]
-	const cx = layout.cx[i]
-	const cy = layout.cy[i]
+	let cx = layout.cx[i]
+	let cy = layout.cy[i]
+	if (side === SIDE.centre && spot > 0) {
+		const k = i * (MAX_LABEL_SPOTS - 1) + spot - 1
+		cx = layout.spotX[k]
+		cy = layout.spotY[k]
+	}
+	if (Number.isNaN(cx) || Number.isNaN(cy)) return false
 	switch (side) {
 		case SIDE.right:
 			layout.x[i] = cx + reach
@@ -361,6 +476,7 @@ export function putOnSide(layout: LabelLayout, i: number, side: Side): void {
 			layout.y[i] = cy - h / 2
 			break
 	}
+	return true
 }
 
 const insideViewport = (layout: LabelLayout, i: number): boolean =>
@@ -449,19 +565,24 @@ function collides(
 	return false
 }
 
-/** Tries `side` for body `i`; places it and returns true when it fits. */
+/** Tries `side` (centred: `spot`) for body `i`; places it and returns true when it fits. */
 function tryPlace(
 	layout: LabelLayout,
 	i: number,
 	side: Side,
 	pad: number,
 	allDots: boolean,
+	spot = 0,
 ): boolean {
-	putOnSide(layout, i, side)
-	if (!insideViewport(layout, i) || collides(layout, i, pad, allDots)) {
+	if (
+		!putOnSide(layout, i, side, spot) ||
+		!insideViewport(layout, i) ||
+		collides(layout, i, pad, allDots)
+	) {
 		return false
 	}
 	layout.side[i] = side
+	layout.spot[i] = spot
 	layout.visible[i] = 1
 	layout.placed[layout.placedLength++] = i
 	return true
@@ -476,7 +597,7 @@ function tryPlace(
  */
 export function placeLabels(layout: LabelLayout): void {
 	layout.placedLength = 0
-	let budgetLeft = layout.budget
+	let budgetLeft = layout.density.moonBudget
 	for (let k = 0; k < layout.orderLength; k++) {
 		const i = layout.order[k]
 		const wasVisible = layout.visible[i] === 1
@@ -492,16 +613,33 @@ export function placeLabels(layout: LabelLayout): void {
 		// a shown label survives a small overlap where it is; moving to another
 		// side is appearing there, which needs the clear space more
 		const stay = wasVisible ? -LABEL_HYSTERESIS_PX : LABEL_HYSTERESIS_PX
-		const centred = layout.centred[i] === 1
-		const previous = centred ? SIDE.centre : layout.side[i]
+		const spots = Math.min(layout.centred[i], MAX_LABEL_SPOTS)
+		const previous = spots > 0 ? SIDE.centre : layout.side[i]
+		const lastSpot = layout.spot[i] < spots ? layout.spot[i] : 0
 		let placed = false
 		// first clear of every dot, then (crowded) clear of the placed labels' dots only
 		for (let pass = 0; pass < 2 && !placed; pass++) {
 			const allDots = pass === 0
+			if (spots > 0) {
+				// a centred name: its spot of last frame first, then the others in order
+				placed = tryPlace(layout, i, SIDE.centre, stay, allDots, lastSpot)
+				for (let s = 0; s < spots && !placed; s++) {
+					if (s === lastSpot) continue
+					placed = tryPlace(
+						layout,
+						i,
+						SIDE.centre,
+						LABEL_HYSTERESIS_PX,
+						allDots,
+						s,
+					)
+				}
+				continue
+			}
 			if (previous >= 0) {
 				placed = tryPlace(layout, i, previous as Side, stay, allDots)
 			}
-			for (let s = 0; s < SIDES.length && !placed && !centred; s++) {
+			for (let s = 0; s < SIDES.length && !placed; s++) {
 				if (SIDES[s] === previous) continue
 				placed = tryPlace(layout, i, SIDES[s], LABEL_HYSTERESIS_PX, allDots)
 			}

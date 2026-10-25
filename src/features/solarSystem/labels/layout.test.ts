@@ -3,19 +3,26 @@ import { describe, expect, it } from "vitest"
 import { bodies } from "@/data"
 
 import {
+	FULL_DENSITY_AREA_PX,
 	LABEL_EDGE_MARGIN_PX,
 	LABEL_FADE_S,
 	LABEL_GAP_PX,
 	LABEL_HYSTERESIS_PX,
+	MAX_LABEL_SPOTS,
+	MIN_MOON_LABEL_BUDGET,
 	MOON_LABEL_BUDGET,
 	MOON_MIN_SEPARATION_PX,
 	SIDE,
+	SMALL_SCREEN_AREA_PX,
+	SMALL_SCREEN_CRAFT_NAMES,
 	createLabelLayout,
 	fadeLabels,
 	isClearOfParent,
 	isKeptOut,
 	isLabelCandidate,
 	isOccluded,
+	isOrbitFamily,
+	labelDensity,
 	labelRank,
 	pickLabel,
 	placeLabels,
@@ -353,6 +360,54 @@ describe("placeLabels", () => {
 		expect(isKeptOut(layout, 400, 300)).toBe(false)
 	})
 
+	it("moves a centred name to its next spot when one is taken, and stays there (hysteresis)", () => {
+		// body 0's name lies over spot 0 of the centred name 1 (a belt's)
+		const layout = layoutOf([
+			{ cx: 400, cy: 300 },
+			{ cx: 440, cy: 300, r: 0 },
+		])
+		const centred = (spot0x: number) => {
+			layout.cx[1] = spot0x
+			layout.centred[1] = 3
+			const k = 1 * (MAX_LABEL_SPOTS - 1)
+			// spot 1 is not there this frame (behind the camera); spot 2 is
+			layout.spotX[k] = NaN
+			layout.spotY[k] = NaN
+			layout.spotX[k + 1] = 600
+			layout.spotY[k + 1] = 300
+			placeLabels(layout)
+		}
+		centred(440)
+		expect(layout.visible[1]).toBe(1)
+		expect(layout.side[1]).toBe(SIDE.centre)
+		expect(layout.spot[1]).toBe(2)
+		expect(layout.x[1]).toBe(600 - 30)
+		expect(overlaps(layout, 0, 1)).toBe(false)
+		// spot 0 comes free: the name stays where it is, unless that is taken
+		centred(200)
+		expect(layout.spot[1]).toBe(2)
+		layout.spotX[1 * (MAX_LABEL_SPOTS - 1) + 1] = 440
+		layout.visible[1] = 0
+		placeLabels(layout)
+		expect(layout.spot[1]).toBe(0)
+		expect(layout.x[1]).toBe(200 - 30)
+	})
+
+	it("keeps a centred name off other bodies' dots when one of its spots is clear", () => {
+		// a dot (a dwarf planet's, ranked after the belt) under spot 0
+		const layout = layoutOf([
+			{ cx: 300, cy: 300, r: 0 },
+			{ cx: 300, cy: 300 },
+		])
+		layout.centred[0] = 2
+		layout.spotX[0] = 500
+		layout.spotY[0] = 300
+		placeLabels(layout)
+		expect(layout.spot[0]).toBe(1)
+		expect(layout.visible[1]).toBe(1)
+		expect(overlaps(layout, 0, 1)).toBe(false)
+	})
+
 	it("hides ineligible and unmeasured labels", () => {
 		const layout = layoutOf([
 			{ cx: 100, cy: 100 },
@@ -361,6 +416,78 @@ describe("placeLabels", () => {
 		layout.eligible[0] = 0
 		placeLabels(layout)
 		expect(layout.placedLength).toBe(0)
+	})
+})
+
+describe("density by screen size (#74)", () => {
+	it("keeps a laptop's names exactly, from about a browser window up", () => {
+		for (const [w, h] of [
+			[1366, 768],
+			[1280, 625],
+			[1920, 1080],
+			[1440, 900],
+		]) {
+			expect(labelDensity(w, h)).toEqual({
+				moonBudget: MOON_LABEL_BUDGET,
+				familyOrbitsOnly: false,
+				craftNames: Infinity,
+			})
+		}
+		expect(1280 * 625).toBe(FULL_DENSITY_AREA_PX)
+	})
+
+	it("gives a phone fewer moon names, the focus family's orbits and two craft", () => {
+		expect(labelDensity(360, 640)).toEqual({
+			moonBudget: 3,
+			familyOrbitsOnly: true,
+			craftNames: SMALL_SCREEN_CRAFT_NAMES,
+		})
+		expect(labelDensity(390, 844)).toEqual({
+			moonBudget: 4,
+			familyOrbitsOnly: true,
+			craftNames: SMALL_SCREEN_CRAFT_NAMES,
+		})
+		expect(SMALL_SCREEN_CRAFT_NAMES).toBe(2)
+		// the largest phone is still one; a tablet is not
+		expect(labelDensity(430, 932).familyOrbitsOnly).toBe(true)
+		expect(430 * 932).toBeLessThan(SMALL_SCREEN_AREA_PX)
+		expect(labelDensity(768, 1024)).toEqual({
+			moonBudget: MOON_LABEL_BUDGET,
+			familyOrbitsOnly: false,
+			craftNames: Infinity,
+		})
+	})
+
+	it("goes by the area: sideways as upright, never fewer on a bigger screen", () => {
+		expect(labelDensity(640, 360)).toEqual(labelDensity(360, 640))
+		expect(labelDensity(844, 390)).toEqual(labelDensity(390, 844))
+		expect(labelDensity(120, 200).moonBudget).toBe(MIN_MOON_LABEL_BUDGET)
+		let previous = 0
+		for (let side = 200; side <= 1400; side += 50) {
+			const budget = labelDensity(side, side).moonBudget
+			expect(budget).toBeGreaterThanOrEqual(previous)
+			expect(budget).toBeLessThanOrEqual(MOON_LABEL_BUDGET)
+			previous = budget
+		}
+	})
+
+	it("counts the focus, its moons, and a moon's planet and sisters as the focus family", () => {
+		const body = (id: string) => bodies.find((b) => b.id === id)!
+		const family = (id: string, focus: string) =>
+			isOrbitFamily(body(id), body(focus))
+		// the overview: every orbit round the Sun, no moon's
+		expect(family("mars", "sun")).toBe(true)
+		expect(family("io", "sun")).toBe(false)
+		// beside a planet: its own orbit and its moons', not the other planets'
+		expect(family("saturn", "saturn")).toBe(true)
+		expect(family("titan", "saturn")).toBe(true)
+		expect(family("jupiter", "saturn")).toBe(false)
+		// beside a moon: its planet and its sister moons too
+		expect(family("titan", "titan")).toBe(true)
+		expect(family("rhea", "titan")).toBe(true)
+		expect(family("saturn", "titan")).toBe(true)
+		expect(family("io", "titan")).toBe(false)
+		expect(family("jupiter", "titan")).toBe(false)
 	})
 })
 

@@ -1,9 +1,14 @@
-/* the time riding on the light front: small, warm, with the labels' dark halo (labels/Labels.module.css) */
+/*
+ * the time riding on the light front: small, warm, with the labels' dark halo
+ * (labels/Labels.module.css); placed, shown and faded by the label layout
+ * (#74, labels/board.ts), its inside faded with the front (.content)
+ */
 .label {
-	display: flex;
-	align-items: center;
-	gap: 0.3rem;
-	transform: translateY(-1.1rem);
+	position: absolute;
+	top: 0;
+	left: 0;
+	visibility: hidden;
+	opacity: 0;
 	white-space: nowrap;
 	font-size: clamp(11px, 0.55rem + 0.35vw, 15px);
 	font-weight: 600;
@@ -15,10 +20,19 @@
 		0 0 8px rgba(0, 0, 0, 0.9);
 	pointer-events: none;
 	user-select: none;
-	visibility: hidden;
 }
 
-/* the label's stop button (#38): small, but a clear target on the flash itself */
+.content {
+	display: flex;
+	align-items: center;
+	gap: 0.3rem;
+}
+
+/*
+ * the label's stop button (#38): small, but a clear target on the flash
+ * itself; its box is the target, inside the label's box (#74), so no other
+ * name is ever drawn over it
+ */
 .stop {
 	display: inline-grid;
 	place-items: center;
@@ -35,13 +49,6 @@
 	position: relative;
 }
 
-/* a finger-sized target around the small circle */
-.stop::after {
-	content: "";
-	position: absolute;
-	inset: -0.6rem;
-}
-
 .stop:hover {
 	background: rgba(255, 214, 107, 0.25);
 }
@@ -52,16 +59,20 @@
 }
 
 /*
- * fingers (#58, #62: a student's link to the flash): the button itself is
- * 44 px, the same small circle drawn in its middle, and the label keeps its
- * size (the negative margin takes the extra room back)
+ * fingers (#58, #62: a student's link to the flash): the button itself is a
+ * 44 px target beside the words, never over them (#74), with the same small
+ * circle drawn at its start, next to the words; the label is as tall as the
+ * target, so the layout keeps every other name off all of it
  */
 @media $touch {
 	.stop {
 		width: var(--touch-target);
 		height: var(--touch-target);
-		margin: calc((1.5em - var(--touch-target)) / 2);
+		/* the × in the middle of the circle */
+		justify-items: start;
+		padding: 0 0 0 calc((1.5em - 12px) / 2);
 		border: 0;
+		border-radius: 0;
 		background: none;
 		isolation: isolate;
 	}
@@ -70,18 +81,15 @@
 		content: "";
 		position: absolute;
 		top: 50%;
-		left: 50%;
+		left: 0;
 		z-index: -1;
 		width: 1.5em;
 		height: 1.5em;
-		transform: translate(-50%, -50%);
+		transform: translateY(-50%);
+		box-sizing: border-box;
 		border: 1px solid rgba(255, 231, 163, 0.7);
 		border-radius: 50%;
 		background: rgba(0, 0, 0, 0.55);
-	}
-
-	.stop::after {
-		inset: 0;
 	}
 
 	.stop:hover {

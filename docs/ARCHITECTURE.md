@@ -898,7 +898,8 @@ specks and ties an orbit tangle round Jupiter and Saturn, so the rule is **curat
   (`bodies/moonOrbitFade.ts`: hidden below 14 px radius, full from 48 px), so from the overview (any preset) moon
   systems are clean dots and approaching a planet draws its system in. Long-tail orbits are drawn at 40 % of a
   featured orbit's opacity, so the swarm stays behind the story. Moon dots and names stay limited to the focus
-  family (Markers, Labels); names rank featured moons first (`MOON_LABEL_BUDGET` 10: all 9 of Saturn's).
+  family (Markers, Labels); names rank featured moons first (`MOON_LABEL_BUDGET` 10: all 9 of Saturn's; fewer on a
+  phone, #74, see Labels).
 - **Moon distances** are the scale engine's `moonDistance` curve (see Scale), not a second model; moon sizes its
   `bodySize`, or in Poster `moonSize` (true to the planet's drawn size).
 - **Card** (`ui/MoonSystem.tsx`, `ui/moonSystem.ts`): a planet's card lists its featured moons (a click flies
@@ -1087,8 +1088,10 @@ position with the root's `orbitDistance` curve (its power law, plus an anchored 
 (`updateBeltUniforms` feeds the root's and anchors' drawn and true positions; a unit test re-implements the shader
 in JS and matches `mapTruePointKm` in every preset and frame). 10,000 dots, no per-frame CPU work beyond a few
 uniforms. Dots are `BELT_DOT_PX` (2.2 px) at 45 % opacity whatever the zoom: flying into the belt shows a sparse
-scatter, never a rock field. The belt's name (drei `Html`) sits on its middle circle on the viewer's left while that
-circle is 70 px .. 1.2 viewports on screen; it is not part of the label layout (like the light front's label).
+scatter, never a rock field. The belt's name sits on its middle circle, centred there like an orbit's name, while
+that circle is 70 px .. 1.2 viewports on screen: on the viewer's left, or where that is taken on the right, the far or
+the near side or between them (`BELT_SPOTS`). It is part of the label layout since #74 (`smallBodies/beltLabels.ts`, ranked after the
+planets' names; see Labels).
 
 **Honesty in the HUD** (`SmallBodyNotes.tsx`, `smallBodyText.ts`, strings under `solarSystem.smallBodies.*`): the
 overview card, while the layer is on, and the card of a belt member (semi-major axis within the belt's `extentKm`)
@@ -1280,7 +1283,9 @@ hover ring, name and cursor apply to labels too.
 ## Labels (`features/solarSystem/labels`; #20)
 
 Names are DOM text over the Canvas (crisp, translated through `@/i18n/bodies`, styled in `Labels.module.css`), laid
-out in screen space every frame. Three parts share one `LabelBoard` created in `Scene.tsx`:
+out in screen space every frame. Every text drawn in the scene goes through this one layout (#74): the bodies' and
+orbits' names, the spacecraft's, the belts' and the light flash's label. Three parts share one `LabelBoard` created in
+`Scene.tsx`:
 
 ```
 layout.ts      pure: candidates, priority, placement, fading, picking (LabelLayout: typed arrays per slot)
@@ -1288,11 +1293,20 @@ project.ts     per frame: projects SimFrame drawn positions/radii through the ca
 orbitAnchor.ts where an orbit's name goes (the orbit line's own samples, leftmost point on screen)
 Labels.tsx     in the Canvas: the useFrame loop (layout, fade, write DOM) and the scene-picking hook
 LabelLayer.tsx beside the Canvas: one <span data-body> per body (+ <span data-orbit> while orbit names are on)
-board.ts       the DOM side: attach, measure (offsetWidth), writeLabels (transform/opacity only when changed)
+board.ts       the DOM side: attach, measure (offsetWidth), writeLabels (transform/opacity only when changed),
+               keepOutSelector / measureKeepOut (the panels names keep out from under)
 activate.ts    what a tap on a label does (default: setFocus, the same as a tap on the body)
 ```
 
-Slots: `0..n-1` are the bodies' names, `n..2n-1` their orbits' names (`orbitSlot`, `slotBody`).
+Slots: `0..n-1` are the bodies' names, `n..2n-1` their orbits' names (`orbitSlot`, `slotBody`), then one range per
+`LabelExtension` (`fillLabelLayout(..., extensions)`, `<Labels extensions>`): the spacecraft's names
+(`spacecraft/craftLabels.ts`, #35), the belts' (`smallBodies/beltLabels.ts`) and the light flash's label
+(`light/frontLabel.ts`). An extension projects its own anchors after the bodies, sets their geometry, rank and
+eligibility and appends them to the order; occlusion, sorting, placement, fading and the keep-out then treat them like
+any body's name. Its element attaches to the board like the bodies' (`attachLabel`; `measureLabel` for a text that
+changes by itself, such as the flash's clock, measured again only when the text's length changes: its digits are
+tabular). Extension labels pick themselves (a craft's marker picking, the flash's
+own button); the scene's label picking answers only for bodies.
 
 - **Anchor:** `frame.renderPosition(i)` projected, offset by the drawn disc (`frame.renderRadius(i)` as an angular
   radius, at least the 2 px marker dot). Nothing has its own scale factor, so a label stays on its body in every
@@ -1302,14 +1316,34 @@ Slots: `0..n-1` are the bodies' names, `n..2n-1` their orbits' names (`orbitSlot
 - **Eligible:** in front of the camera, not behind a nearer larger disc (`isOccluded`), not under a HUD panel
   (`isKeptOut`), and a moon of a planet that is still a dot (<= 24 px radius) at least 10 px clear of it
   (`isClearOfParent`): moons' names fade in as the camera approaches.
-- **Priority** (`labelRank`): hovered, selected, focus, then Sun, planets, moons, larger first within each tier.
+- **Priority** (`labelRank`): the light flash's label while a flash is out (`frontLabelRank`, above everything: the
+  viewer just asked for it, and it holds the stop button), then hovered, selected, focus, then Sun, planets, the belts'
+  names (`beltLabelRank`), the other bodies (dwarf planets,
+  comets, moons), larger first within each tier, then the spacecraft's names, then the orbits'.
 - **Placement** (`placeLabels`): greedy in priority order; 8 positions round the disc (right, left, below, above,
-  diagonals; last frame's side first), never on its own disc, inside the viewport, never over another label or a HUD
-  `.panel` (`setKeepOut`, re-read every 0.25 s), first try clear of every dot (<= 24 px), else only of labelled ones.
+  diagonals; last frame's side first; the flash's label tries above the front first, where it always sat), never on
+  its own disc, inside the viewport, never over another label or a HUD panel, first try clear of every dot (<= 24 px),
+  else only of labelled ones. A name centred on a line has spots instead of sides (`LabelLayout.centred` = how many,
+  `spotX/Y`, `spot`; `MAX_LABEL_SPOTS`), tried the same way, last frame's first: an orbit's one, a belt's eight along
+  its circle (the viewer's left, right, the far and the near side, then the four between; a spot behind the camera or
+  under a panel is NaN). So "Asteroid belt" no longer lies on the Sun's name with the small bodies on, nor "Kuiper
+  belt" on Haumea's, and both still show. The keep-out (`setKeepOut`, re-read every 0.25 s, `keepOutSelector`) is every HUD
+  `.panel`, everything in the dock whatever its own class (`[data-dock] > *`: the birthday and sky-tonight panels
+  bring their own styles; #74 found Neptune's name half under the birthday panel) and the whole of a phone's sheet.
   No free position: hidden. 2 px hysteresis against flicker (a shown label survives that much overlap where it is;
   one that appears or moves to another side needs that much clear space); 0.2 s fades (`fadeLabels`).
 - **Density:** at most `MOON_LABEL_BUDGET` (10) moon names at once (featured moons first, then largest; #17); the hovered, selected or focused
   moon and moons drawn >= 8 px radius are extra. Orbit names rank after every body name and share the moon budget; a faded-out moon orbit (see Moons) gets no name.
+  **By screen size** (#74, `labelDensity(width, height)` into `layout.density` once per frame, from the screen's
+  area, not the size class, so a phone sideways counts as upright): from `FULL_DENSITY_AREA_PX` (800,000 px², about a laptop's browser window, 1280 x 625)
+  up every name above shows, exactly as before. Below it the moon budget shrinks with the area
+  (`round(10 x area / 800,000)`, at least 2): 3 at 360 x 640, 4 at 390 x 844, 10 again on a 768 x 1024 tablet. A
+  screen under `SMALL_SCREEN_AREA_PX` (500,000 px²: every phone, the largest 430 x 932 included, no tablet) also names
+  the orbits of the focus's family only (`isOrbitFamily`: the focus, its moons, and for a moon its planet and sister
+  moons; in the overview every orbit round the Sun) and at most `SMALL_SCREEN_CRAFT_NAMES` (2) spacecraft besides the
+  selected, hovered or followed one, the nearest to the focus (or the followed craft) first; a craft named last frame
+  keeps its name unless another is more than 10 % nearer (`CRAFT_PICK_HYSTERESIS`), so two at about the same distance
+  do not swap; the rest fade out beside their markers.
 - **Size:** CSS, relative to the viewport (planets 13..19 px, moons 12..16 px, orbits 11..15 px), never the zoom.
   Light text with a dark multi-layer halo for contrast on black space and bright planet faces alike; the Sun
   and moons take their marker colours, the selection is orange, hover underlines.
@@ -1317,13 +1351,16 @@ Slots: `0..n-1` are the bodies' names, `n..2n-1` their orbits' names (`orbitSlot
   camera). `Labels.tsx` adds a `<group raycast>` that hit-tests the label boxes (`pickLabel`, 3 px slack) and reports
   a hit at distance 0 with `index` = body index, so labels win over what they are drawn over and share the markers'
   hover, cursor and tap (`isTapEvent`) handling. `<Labels onActivate>` is the hook for #16 (`activateBody`).
-- **Switches:** `showLabels` (the Labels switch; `setShowLabels(false)` hides every name at once, e.g. for #30/#33),
-  `showOrbitLabels` (Orbit names; needs orbits and labels on).
+- **Switches:** `showLabels` (the Labels switch; `setShowLabels(false)` hides every name at once, e.g. for #30/#33,
+  the belts' names and the flash's label included since #74: the flash's clock and stop button stay in the light
+  chip and panel), `showOrbitLabels` (Orbit names; needs orbits and labels on).
 - **Pictures** (#52): while an Easy hunt clue is on screen (`useHuntStore.assist`) the Sun, the planets and the
   featured moons of the planet in view carry their `ui/BodyPicture` before the name (`labelPicture`; the text in a
   `[data-label-text]` span, which the postcard reads), and the layer measures again.
 - **For later issues:** `[data-body=<id>][data-visible=true]` marks a shown name (tests, tours); a feature that
-  needs a body named can select or hover it (top priority).
+  needs a body named can select or hover it (top priority). A new text in the scene is a `LabelExtension` with slots of
+  its own (`Scene.tsx`), never a free-floating element: e2e/sceneNames.spec.ts and the overlap guard (#76) check that
+  no two names overlap on a phone.
 
 ## Time controls (`features/solarSystem/ui`; #14)
 
@@ -1459,7 +1496,8 @@ updates it at `useFrame` priority -0.9 (after SimClock, before the director) and
   (`labelSlotCount(n)` on) and joins #20's layout pass, so craft names obey the same placement, keep-out, fading
   and collision rules and never overlap a body's name. Rank: hovered craft first, selected above any body, else
   after every body and before orbit names. `SpacecraftLabelLayer.tsx` renders `<span data-craft>` into the shared
-  board (cyan text); the marker's raycast also picks the names.
+  board (cyan text); the marker's raycast also picks the names. On a phone (#74, `labelDensity`) only the selected,
+  hovered or followed craft and the two nearest the focus are named; a laptop names every craft on screen.
 
 **Store (`src/store/spacecraft.ts`).** `showSpacecraft` (off), `showAllPaths` (off), `selectedCraftId`,
 `hoverCraftId`, `trajectoriesReady`. Selecting a craft clears the body selection; choosing a body or any request for
@@ -2419,8 +2457,15 @@ Every light time comes from TRUE positions; only the drawn front goes through th
   travel time). Panel state (`open`, `tab`, emitter, delay target). Not persisted or in the URL.
 - Drawing (`light/lightFront.ts`, `LightFront.tsx`, in the Canvas after the markers): the circle where the light
   sphere cuts the plane through its source, centred on where the source was when it sent the flash (fixed in the
-  Sun-centred frame), plus a faint glow fan and a DOM label ("Light · 4 min 12 s", drei `Html`) riding on it toward
-  the next body it reaches. Each point is drawn like a body: anchor's drawn position + `displayOffset` of its true
+  Sun-centred frame), plus a faint glow fan and a DOM label ("Light · 4 min 12 s") riding on it toward the next body
+  it reaches. The label is in the label layout since #74 (`light/frontLabel.ts`, a `LabelExtension`; see Labels):
+  `LightFront` writes the point it rides on (`FrontLabelAnchor`) every frame, the layout places the label beside that
+  point (above it first) ahead of every other name, keeps it from under the panels and fades it; `FrontLabelLayer`
+  (DOM beside the Canvas) writes its clock 10 times a second, measures it again when its width changes, and fades its
+  inside with the front (below 15 % it gives its place back to the other names). Its stop button is part of the
+  label's box, beside the words and never over them, so no other name is drawn over it; on touch the button is a
+  44 px target with the small circle drawn at its start.
+  Each point is drawn like a body: anchor's drawn position + `displayOffset` of its true
   offset from the anchor. The anchor is the Sun (the planets' rule, so the front crosses every drawn planet exactly
   on arrival in every preset), except while the front is inside the source planet's neighbourhood (a planet, or a
   moon's planet): then that planet with the moons' rule, so the Earth -> Moon flash crosses the drawn Moon at 1.3 s.
