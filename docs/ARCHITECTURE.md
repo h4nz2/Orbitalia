@@ -1851,6 +1851,19 @@ the same features at every size and shows fewer at once). Laptops with a mouse l
   reports itself and the others still get their look. A link without a date gets one (`t`), so the names stand in
   the same places every day; the page's entrance slide is put at its end at once; screens share a page, eight at a
   time, each opened with a fresh load (a warm cache).
+  - **The scene runs but draws nothing** (`e2e/support/noDrawing.ts` `skipDrawing`, an init script of this spec
+    alone): every WebGL context is made without antialiasing and its draw calls do nothing (`drawArrays`,
+    `drawElements`, their instanced and ranged forms, and the instancing and multi-draw extensions' own), so software
+    WebGL skips the rasterising that was most of a screen's time. Safe because the guard never looks at a pixel: it
+    reads the page's text and boxes, and the names are DOM placed from the camera's projection. The frame loop keeps
+    running, so the camera, the label layout and every wait settle as they do on screen, and shaders still compile
+    and textures still upload. Nothing on the guard's screens reads the canvas back: only the postcard does
+    (`postcard/capture.ts`), at a click the guard never makes. Every other spec draws for real (the rings', the
+    lighting's and the spacecraft models' pixel counts need it). `OVERLAP_DRAW=1` draws the scene here too, to
+    compare: on 64 screens the findings came out the same both ways, but for the light flash, looked at elsewhere on
+    its way as any two runs do. A failure's picture shows the page and the names over an empty sky. No Playwright
+    trace either (it would record every screen of a test; a failure saves its own picture). The whole guard, 182
+    screens, takes about 3.9 min at two workers (6.5 min when it landed, drawing).
   - **The rules:** visible is displayed, not hidden, at least 0.15 opaque and not `aria-hidden` (the scene's names
     count all the same); a text counts by its line boxes, a control by its whole box, which is what a finger hits
     (the sheet's handle is 44 px tall however thin it is drawn), and a control's own words are part of it; every box
