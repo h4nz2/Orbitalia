@@ -825,7 +825,13 @@
 				"copied": "Copié",
 				"link": "Lien vers cette chasse"
 			},
-			"otherHunts": "Autres chasses",
+			"end": {
+				"button": "Arrêter la chasse",
+				"button@simple": "Arrêter cette chasse",
+				"question": "Arrêter cette chasse ? Tes étoiles gagnées jusqu’ici seront perdues.",
+				"question@simple": "Arrêter cette chasse ? Tes étoiles vont partir.",
+				"keep": "Continuer à jouer"
+			},
 			"certificate": {
 				"title": "Diplôme d’exploration spatiale",
 				"title@simple": "Mission spatiale réussie !",

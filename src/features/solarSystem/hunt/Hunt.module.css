@@ -41,6 +41,8 @@
 	overflow: hidden;
 	text-overflow: ellipsis;
 	white-space: nowrap;
+	/* takes focus when the hunt ends: nothing to press, so no ring */
+	outline: none;
 }
 
 /* a phone (#62): a long hunt's name wraps rather than being cut (German at the simple level) */
@@ -389,4 +391,9 @@
 	.spark {
 		display: none;
 	}
+}
+
+/* brought into view whole when it asks: clear of the phone's sheet's fade */
+.endQuestion {
+	scroll-margin-bottom: 1.5rem;
 }

@@ -13,7 +13,8 @@ import { spoken, stubSpeech } from "./support/speech"
 // progress surviving a reload. For young explorers (#52): the difficulty as a
 // real choice, and an Easy hunt played to the end with pictures, a voice
 // (stubbed: headless Chromium has none), hints that show, stars and a
-// certificate.
+// certificate. Ending a hunt midway, for another one: at once, or with a
+// question once a star would be lost.
 
 const screenshotDir = path.join("test-results", "hunt")
 
@@ -466,4 +467,263 @@ test("an Easy clue in Poster (#54), and its start view a step of Back (#46)", as
 	await page.screenshot({ path: path.join(screenshotDir, "easy-poster.png") })
 	await clickBody(page, "neptune")
 	await expect(page.getByTestId("hunt-found")).toBeVisible()
+})
+
+const endButton = (page: Page) =>
+	panel(page).getByRole("button", { name: "End hunt" })
+const keepPlaying = (page: Page) =>
+	panel(page).getByRole("button", { name: "Keep playing" })
+const endQuestion = (page: Page) => page.getByTestId("hunt-end-question")
+const starsEarned = (page: Page) =>
+	page.getByTestId("hunt-stars").locator('[data-state="found"]')
+const viewNow = (page: Page) =>
+	page.evaluate(() => window.__orbitalia!.store.getState().view)
+const stored = (page: Page) =>
+	page.evaluate(() => sessionStorage.getItem("orbitalia.hunt"))
+
+test("End hunt: with a star it asks first, then the chooser is back and nothing carries on", async ({
+	page,
+}) => {
+	await page.setViewportSize({ width: 1280, height: 800 })
+	await ready(page, "/solar_system?hunt=true&lang=en&reading=standard")
+	await chooseDifficulty(page, "Medium")
+	await panel(page).locator('[data-hunt="firstSteps"]').click()
+	await page.evaluate(() =>
+		window.__orbitalia!.store.getState().setFocus("moon"),
+	)
+	await expect(page.getByTestId("hunt-found")).toBeVisible()
+	await panel(page).getByRole("button", { name: "Next clue" }).click()
+	await expect(page.getByTestId("hunt-progress")).toHaveText("Clue 2 of 6")
+
+	mkdirSync(screenshotDir, { recursive: true })
+	await panel(page).screenshot({
+		path: path.join(screenshotDir, "end-button.png"),
+	})
+
+	// it asks in its own place, with the safe answer in focus
+	await endButton(page).click()
+	await expect(endQuestion(page)).toHaveText(
+		"End this hunt? Your stars so far will be lost.",
+	)
+	await expect(keepPlaying(page)).toBeFocused()
+	// the safe answer first, with no speaker beside a clue that is not Easy
+	await expect(
+		panel(page)
+			.getByRole("group", { name: "End this hunt?" })
+			.getByRole("button"),
+	).toHaveText(["Keep playing", "End hunt"])
+	await panel(page).screenshot({
+		path: path.join(screenshotDir, "end-question.png"),
+	})
+
+	// Keep playing leaves it all as it was
+	await keepPlaying(page).click()
+	await expect(endQuestion(page)).toHaveCount(0)
+	await expect(endButton(page)).toBeFocused()
+	await expect(page.getByTestId("hunt-progress")).toHaveText("Clue 2 of 6")
+	await expect(starsEarned(page)).toHaveCount(1)
+	expect(search(page).get("hunt")).toBe("firstSteps")
+
+	// the clue solved while it asks: the question was about another moment
+	await endButton(page).click()
+	await expect(endQuestion(page)).toBeVisible()
+	await page.evaluate(() =>
+		window.__orbitalia!.store.getState().setFocus("mars"),
+	)
+	await expect(page.getByTestId("hunt-found")).toBeVisible()
+	await expect(endQuestion(page)).toHaveCount(0)
+
+	// ended from a find: the chooser on the level it was on, nothing to carry on,
+	// the camera where it was
+	const view = await viewNow(page)
+	await endButton(page).click()
+	await endButton(page).click()
+	await expect(panel(page).getByText("Pick a hunt")).toBeVisible()
+	await expect(difficulty(page, "Medium")).toBeChecked()
+	await expect(panel(page).locator('[data-hunt="firstSteps"]')).toBeVisible()
+	await expect(panel(page)).not.toContainText("Carry on")
+	await expect(page.locator("#hunt-title")).toBeFocused()
+	await expect.poll(() => search(page).get("hunt")).toBe("true")
+	expect(await stored(page)).toBeNull()
+	expect(await viewNow(page)).toEqual(view)
+
+	// a reload stays in the chooser
+	await page.reload()
+	await page.waitForFunction(() => window.__orbitalia !== undefined)
+	await expect(panel(page).getByText("Pick a hunt")).toBeVisible()
+	await expect.poll(() => search(page).get("hunt")).toBe("true")
+
+	// another hunt starts on its first clue
+	await panel(page).locator('[data-hunt="lightAndMotion"]').click()
+	await expect(page.getByTestId("hunt-progress")).toHaveText("Clue 1 of 5")
+	await expect(starsEarned(page)).toHaveCount(0)
+	await expect.poll(() => search(page).get("hunt")).toBe("lightAndMotion")
+})
+
+test("Stop this hunt, no star yet: it ends at once, the scene's help goes, the camera and Back stay", async ({
+	page,
+}) => {
+	await page.setViewportSize({ width: 1280, height: 800 })
+	await stubSpeech(page)
+	await ready(
+		page,
+		"/solar_system?focus=jupiter&hunt=true&lang=en&reading=simple",
+	)
+	await panel(page).locator('[data-hunt="lookAndFind"]').click()
+	await expect.poll(() => spoken(page)).toContain("Find the planet we live on.")
+	await cameraAtRest(page)
+	expect(await viewNow(page)).toEqual({ kind: "overview" })
+	await panel(page).getByRole("button", { name: "Need a hint?" }).click()
+	await expect(page.getByTestId("hunt-spot")).toBeVisible()
+	await expect(
+		page.locator('[data-label-layer] [data-body="earth"] [data-picture]'),
+	).toBeVisible()
+
+	const cancels = await page.evaluate(() => window.__speech!.cancels)
+	await panel(page).getByRole("button", { name: "Stop this hunt" }).click()
+	await expect(endQuestion(page)).toHaveCount(0)
+	await expect(panel(page).getByText("Pick a hunt")).toBeVisible()
+	await expect(difficulty(page, "Easy")).toBeChecked()
+	await expect.poll(() => search(page).get("hunt")).toBe("true")
+	expect(await stored(page)).toBeNull()
+
+	// the voice stops, the circle in the sky and the pictures beside the names go
+	expect(await page.evaluate(() => window.__speech!.cancels)).toBeGreaterThan(
+		cancels,
+	)
+	await expect(page.getByTestId("hunt-spot")).toBeHidden()
+	await expect(page.locator("[data-label-layer] [data-picture]")).toHaveCount(0)
+
+	// ending is no navigation: same view, and Back still returns to before the clue
+	expect(await viewNow(page)).toEqual({ kind: "overview" })
+	await page.getByTestId("back-button").click()
+	await cameraAtRest(page)
+	expect(await viewNow(page)).toEqual({ kind: "body", id: "jupiter" })
+	await expect(panel(page).getByText("Pick a hunt")).toBeVisible()
+})
+
+test("ended with no pick of a level, the chooser opens on the hunt's own: from a link, after a reload", async ({
+	page,
+}) => {
+	await page.setViewportSize({ width: 1280, height: 800 })
+	// the standard reading level alone would open on Tricky
+	await ready(page, "/solar_system?hunt=lookAndFind&lang=en&reading=standard")
+	await expect(page.getByTestId("hunt-clue")).toBeVisible()
+	await endButton(page).click()
+	await expect(difficulty(page, "Easy")).toBeChecked()
+
+	await panel(page).locator('[data-hunt="lookAndFind"]').click()
+	await expect(page.getByTestId("hunt-clue")).toBeVisible()
+	await page.reload()
+	await page.waitForFunction(() => window.__orbitalia !== undefined)
+	await expect(page.getByTestId("hunt-clue")).toBeVisible()
+	await endButton(page).click()
+	await expect(difficulty(page, "Easy")).toBeChecked()
+
+	// the viewer's own pick stays, whatever the level of the hunt ended
+	await chooseDifficulty(page, "Tricky")
+	await panel(page).getByText("Make your own hunt").click()
+	await panel(page).getByLabel("Find the red planet.", { exact: true }).check()
+	await panel(page).getByRole("button", { name: "Start" }).click()
+	await expect(page.getByTestId("hunt-clue")).toBeVisible()
+	await endButton(page).click()
+	await expect(difficulty(page, "Tricky")).toBeChecked()
+})
+
+test("the question beside an Easy clue has its speaker, and Keep playing stops it", async ({
+	page,
+}) => {
+	await page.setViewportSize({ width: 1280, height: 800 })
+	await stubSpeech(page)
+	// a teacher's own hunt: an Easy clue, then a Medium one
+	await ready(page, "/solar_system?hunt=seeRed.walkedOn&lang=en&reading=simple")
+	await page.evaluate(() =>
+		window.__orbitalia!.store.getState().setFocus("mars"),
+	)
+	await expect(page.getByTestId("hunt-found")).toBeVisible()
+	const stop = panel(page).getByRole("button", { name: "Stop this hunt" })
+	const question = panel(page).getByRole("group", { name: "Stop this hunt?" })
+	await stop.click()
+	await question.getByRole("button", { name: "Read it aloud" }).click()
+	await expect
+		.poll(() => spoken(page))
+		.toContain("Stop this hunt? Your stars will go away.")
+	const cancels = await page.evaluate(() => window.__speech!.cancels)
+	await keepPlaying(page).click()
+	await expect(endQuestion(page)).toHaveCount(0)
+	expect(await page.evaluate(() => window.__speech!.cancels)).toBeGreaterThan(
+		cancels,
+	)
+
+	await panel(page).getByRole("button", { name: "Next clue" }).click()
+	await expect(page.getByTestId("hunt-progress")).toHaveText("Clue 2 of 2")
+	await stop.click()
+	await expect(endQuestion(page)).toBeVisible()
+	await expect(question.getByTestId("hunt-read")).toHaveCount(0)
+})
+
+test.describe("on an upright phone", () => {
+	test.use({
+		viewport: { width: 390, height: 844 },
+		hasTouch: true,
+		isMobile: true,
+	})
+
+	test("End hunt is a finger's size, in reach in the sheet, and leaves the chooser there", async ({
+		page,
+	}) => {
+		await ready(page, "/solar_system?hunt=firstSteps&lang=en&reading=standard")
+		await expect(page.getByTestId("hunt-clue")).toBeVisible()
+		await page.evaluate(() =>
+			window.__orbitalia!.store.getState().setFocus("moon"),
+		)
+		await expect(page.getByTestId("hunt-found")).toBeVisible()
+		const sheet = page.getByTestId("sheet")
+		await expect(sheet).toHaveAttribute("data-sheet-height", "small")
+		// folded, the sheet has no way out: unfolded it does
+		await expect(endButton(page)).toHaveCount(0)
+		await panel(page).getByRole("button", { name: "Unfold" }).tap()
+		await expect(sheet).toHaveAttribute("data-sheet-height", "half")
+
+		await endButton(page).scrollIntoViewIfNeeded()
+		const button = (await endButton(page).boundingBox())!
+		expect(button.height).toBeGreaterThanOrEqual(44)
+		expect(button.y + button.height).toBeLessThanOrEqual(844)
+
+		await endButton(page).tap()
+		await expect(endQuestion(page)).toBeVisible()
+		// the question comes into view by itself, its answers clear of the fade
+		const content = page.getByTestId("sheet-content")
+		await expect(content).not.toHaveAttribute("data-sheet-more")
+		const shown = (await content.boundingBox())!
+		const keep = (await keepPlaying(page).boundingBox())!
+		expect(keep.y + keep.height).toBeLessThanOrEqual(shown.y + shown.height)
+		expect(keep.height).toBeGreaterThan(43)
+		// a double tap: where the first one fell, the second is not End hunt
+		expect((await endButton(page).boundingBox())!.x).toBeGreaterThan(
+			button.x + button.width / 2,
+		)
+		expect((await endButton(page).boundingBox())!.height).toBeGreaterThan(43)
+		await page.screenshot({
+			path: path.join(screenshotDir, "end-question-phone.png"),
+		})
+
+		await endButton(page).tap()
+		// the chooser, in the sheet, readable from its top
+		await expect(panel(page).getByText("Pick a hunt")).toBeVisible()
+		await expect(sheet).toHaveAttribute("data-sheet-height", "half")
+		await expect(panel(page)).not.toHaveAttribute("data-sheet-folds")
+		// opened from a link: the hunt's own level, First steps is Medium
+		await expect(difficulty(page, "Medium")).toBeChecked()
+		const header = (await panel(page).locator("header").boundingBox())!
+		const intro = (await panel(page)
+			.getByText("Every clue describes a world")
+			.boundingBox())!
+		expect(intro.y).toBeGreaterThanOrEqual(header.y + header.height - 1)
+		expect(intro.y + intro.height).toBeLessThanOrEqual(844)
+		await expect.poll(() => search(page).get("hunt")).toBe("true")
+		await page.screenshot({
+			path: path.join(screenshotDir, "end-chooser-phone.png"),
+		})
+	})
 })

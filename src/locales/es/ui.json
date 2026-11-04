@@ -825,7 +825,13 @@
 				"copied": "Copiado",
 				"link": "Enlace a esta búsqueda"
 			},
-			"otherHunts": "Otras búsquedas",
+			"end": {
+				"button": "Abandonar la búsqueda",
+				"button@simple": "Parar esta búsqueda",
+				"question": "¿Abandonar esta búsqueda? Perderás las estrellas que llevas.",
+				"question@simple": "¿Parar esta búsqueda? Tus estrellas se irán.",
+				"keep": "Seguir jugando"
+			},
 			"certificate": {
 				"title": "Diploma de exploración espacial",
 				"title@simple": "¡Misión espacial cumplida!",

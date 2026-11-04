@@ -1116,6 +1116,7 @@
 					"Vyber, jak těžká má být (Lehká, Střední nebo Záludná; nejdřív se nabídne ta, která odpovídá tvé náročnosti textu), a pak hru.",
 					"Přečti si hádanku, nebo si ji poslechni tlačítkem s reproduktorem, a pak najdi svět a klikni na něj.",
 					"Nevíš si rady? „Potřebuješ nápovědu?“: u obtížnosti Lehká rozsvítí první nápověda část oblohy a druhá rozbliká odpověď; po poslední nápovědě „Ukaž mi to“.",
+					"Chceš jinou hru? „Ukončit hru“ tuhle ukončí: přijdeš o její hvězdičky a vrátí se seznam her. × jen zavře panel: až ho znovu otevřeš, hra bude pokračovat tam, kde skončila.",
 					"Na konci ti „Vytvořit diplom“ dá obrázek, který si můžeš uložit nebo vytisknout."
 				],
 				"simple": [
@@ -1123,6 +1124,7 @@
 					"Vyber „Lehká“ a pak hru.",
 					"Podívej se na obrázek a najdi ho. Stiskni tlačítko s reproduktorem a uslyšíš hádanku.",
 					"Nevíš si rady? Stiskni „Potřebuješ nápovědu?“.",
+					"Chceš jinou hru? Stiskni „Zastavit tuto hru“. Tvoje hvězdičky zmizí. Když stiskneš ×, hra na tebe počká.",
 					"Na konci stiskni „Získej svůj diplom“."
 				]
 			}

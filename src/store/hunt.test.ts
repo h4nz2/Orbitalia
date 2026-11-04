@@ -114,6 +114,38 @@ describe("useHuntStore", () => {
 		})
 	})
 
+	it("ends the hunt in progress: nothing to carry on, nothing stored, the chooser's level kept", () => {
+		const store = useHuntStore.getState()
+		store.setDifficulty("medium")
+		store.start("firstSteps")
+		store.solve("moon")
+		store.next()
+		store.hint(2)
+		store.setGuess({ bodyId: "mars", kind: "other" })
+		store.setCollapsed(true)
+		expect(sessionStorage.getItem(HUNT_STORAGE_KEY)).not.toBeNull()
+		store.cancel()
+		expect(useHuntStore.getState()).toMatchObject({
+			key: null,
+			step: 0,
+			hints: 0,
+			phase: "asking",
+			found: [],
+			open: true,
+			choosing: false,
+			collapsed: false,
+			guess: null,
+			difficulty: "medium",
+		})
+		expect(sessionStorage.getItem(HUNT_STORAGE_KEY)).toBeNull()
+		store.resume("firstSteps")
+		expect(useHuntStore.getState()).toMatchObject({
+			key: "firstSteps",
+			step: 0,
+			found: [],
+		})
+	})
+
 	it("keeps the chooser's difficulty and the Easy assist out of the progress (#52)", () => {
 		const store = useHuntStore.getState()
 		store.setDifficulty("easy")

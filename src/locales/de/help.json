@@ -1116,6 +1116,7 @@
 					"Wähle, wie schwer es sein soll („Leicht“, „Mittel“ oder „Knifflig“; vorausgewählt ist die Stufe, die zu deiner Lesestufe passt), dann eine Jagd.",
 					"Lies das Rätsel oder drücke auf den Lautsprecher, um es zu hören. Finde dann die Welt und klicke sie an.",
 					"Du steckst fest? „Brauchst du einen Tipp?“: Bei „Leicht“ lässt der erste Tipp eine Stelle am Himmel aufleuchten, und der zweite lässt die Lösung blinken; nach dem letzten kommt „Zeig es mir“.",
+					"Lieber eine andere Jagd? „Jagd beenden“ beendet diese, ihre Sterne gehen verloren und die Liste der Jagden kommt zurück. × schließt nur das Fenster: Öffnest du es wieder, machst du dort weiter, wo du warst.",
 					"Am Ende macht dir „Urkunde erstellen“ ein Bild zum Speichern oder Ausdrucken."
 				],
 				"simple": [
@@ -1123,6 +1124,7 @@
 					"Wähl „Leicht“ und dann eine Jagd.",
 					"Schau dir das Bild an und finde es. Drück auf den Lautsprecher, um das Rätsel zu hören.",
 					"Du kommst nicht weiter? Drück auf „Brauchst du einen Tipp?“.",
+					"Du willst eine andere Jagd? Drück auf „Diese Jagd stoppen“. Dann sind deine Sterne weg. Drückst du auf ×, wartet die Jagd auf dich.",
 					"Am Ende drückst du auf „Hol dir deine Urkunde“."
 				]
 			}
