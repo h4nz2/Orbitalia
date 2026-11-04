@@ -113,6 +113,13 @@ const shownNames = (page: Page): Promise<Box[]> =>
 		return boxes
 	}, NAMES)
 
+/**
+ * How far a measured size may read off its CSS: a rectangle's sides are single
+ * precision, so a box the layout moves reads 44 px as 43.99998 where it spans
+ * a power of two (y = 256).
+ */
+const ROUNDING_PX = 0.01
+
 /** More than 1 px each way: a hairline is not an overlap. */
 const overlap = (a: Box, b: Box) =>
 	Math.min(a.x1, b.x1) - Math.max(a.x0, b.x0) > 1 &&
@@ -153,8 +160,8 @@ for (const viewport of PHONES)
 				box("flash label"),
 			]
 			// the × is a finger's target, inside the label's box and off its words
-			expect(stop.x1 - stop.x0).toBeGreaterThanOrEqual(44)
-			expect(stop.y1 - stop.y0).toBeGreaterThanOrEqual(44)
+			expect(stop.x1 - stop.x0).toBeGreaterThanOrEqual(44 - ROUNDING_PX)
+			expect(stop.y1 - stop.y0).toBeGreaterThanOrEqual(44 - ROUNDING_PX)
 			expect(overlap(words, stop)).toBe(false)
 			expect(stop.x0).toBeGreaterThanOrEqual(whole.x0 - 0.5)
 			expect(stop.x1).toBeLessThanOrEqual(whole.x1 + 0.5)

@@ -634,9 +634,11 @@ test("the question beside an Easy clue has its speaker, and Keep playing stops i
 	page,
 }) => {
 	await page.setViewportSize({ width: 1280, height: 800 })
-	await stubSpeech(page)
+	await stubSpeech(page, undefined, { untilStopped: true })
 	// a teacher's own hunt: an Easy clue, then a Medium one
 	await ready(page, "/solar_system?hunt=seeRed.walkedOn&lang=en&reading=simple")
+	// the panel loads apart from the scene: a selection from before the clue is let go
+	await expect(page.getByTestId("hunt-clue")).toBeVisible()
 	await page.evaluate(() =>
 		window.__orbitalia!.store.getState().setFocus("mars"),
 	)
@@ -648,6 +650,9 @@ test("the question beside an Easy clue has its speaker, and Keep playing stops i
 	await expect
 		.poll(() => spoken(page))
 		.toContain("Stop this hunt? Your stars will go away.")
+	await expect(
+		question.getByRole("button", { name: "Stop reading" }),
+	).toHaveAttribute("aria-pressed", "true")
 	const cancels = await page.evaluate(() => window.__speech!.cancels)
 	await keepPlaying(page).click()
 	await expect(endQuestion(page)).toHaveCount(0)
