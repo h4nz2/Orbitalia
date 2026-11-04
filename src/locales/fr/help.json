@@ -126,20 +126,19 @@
 				"simple": "Clique sur une planète, et hop, tu t’envoles vers elle."
 			},
 			"why": {
-				"standard": "Le vol montre la distance entre les mondes, et un encadré indique combien de temps il faudrait à la lumière, à un engin spatial et à une voiture pour faire le même trajet.",
-				"simple": "En route, tu vois si c’est loin, et combien de temps il faudrait à une voiture. Des années et des années !"
+				"standard": "Le vol lui-même montre la distance entre les mondes : la caméra doit reculer jusqu’à les voir tous les deux, et pour un monde lointain, c’est un long chemin.",
+				"simple": "En route, tu vois à quel point les planètes sont loin les unes des autres. L’espace est immense !"
 			},
 			"how": {
 				"standard": [
 					"Pointe une planète ou son nom : un anneau apparaît avec « Clique pour t’y rendre ».",
-					"Clique ou touche-la. Pour arriver tout de suite, appuie sur « Passer » dans l’encadré.",
+					"Clique ou touche-la. En route, un glissement fait tourner la caméra, et le vol arrive quand même à destination.",
 					"Sur un petit point, clique n’importe où tout autour : la zone de clic est large.",
-					"Le bouton maison (ou Échap) est le chemin du retour vers tout le système solaire ; un clic dans le vide laisse la vue telle quelle."
+					"Le bouton maison (ou Échap) est le chemin du retour vers tout le système solaire, même en plein vol ; un clic dans le vide laisse la vue telle quelle."
 				],
 				"simple": [
 					"Passe la souris sur une planète. Un anneau apparaît.",
 					"Clique dessus. Maintenant, regarde le voyage.",
-					"Appuie sur « Y être tout de suite » si tu ne veux pas attendre.",
 					"Appuie sur le bouton maison pour revoir toutes les planètes."
 				]
 			}
@@ -778,31 +777,6 @@
 					"Clique sur Échelle réelle.",
 					"Où sont passées les planètes ? Les points montrent où elles sont.",
 					"Clique sur Affiche pour voir toutes les planètes en grand à la fois. C’est l’image la moins vraie !"
-				]
-			}
-		},
-		"howFar": {
-			"title": {
-				"standard": "À quelle distance ?",
-				"simple": "C’est loin comment ?"
-			},
-			"what": {
-				"standard": "Chaque vol entre deux mondes affiche leur vraie distance à la date affichée, et le temps qu’il faudrait à la lumière, à l’engin spatial le plus rapide et à une voiture.",
-				"simple": "Quand tu voles vers une planète, tu vois à quelle distance elle est."
-			},
-			"why": {
-				"standard": "Une voiture mettrait des centaines d’années pour atteindre Jupiter : les chiffres transforment un vol de quelques secondes en une vraie idée de la distance.",
-				"simple": "Une voiture mettrait des centaines d’années pour aller jusqu’à Jupiter !"
-			},
-			"how": {
-				"standard": [
-					"Vole d’un monde à un autre.",
-					"Pendant le voyage, lis l’encadré au-dessus des commandes du temps ; ferme-le à l’arrivée.",
-					"La distance change avec la date, parce que les planètes bougent."
-				],
-				"simple": [
-					"Vole de la Terre vers une autre planète.",
-					"Lis la case au-dessus des boutons du temps."
 				]
 			}
 		},

@@ -3,8 +3,9 @@ import { expect, test, type Page } from "@playwright/test"
 import { cameraAtRest } from "./support/scene"
 
 // Fly between planets (#18), in the real browser: a second selection flies
-// (pull back, travel, descend) with the distance and travel-time readout, and
-// the flight can be skipped, retargeted and abandoned with Escape.
+// (pull back, travel, descend) with nothing on screen but the flight, a screen
+// reader hears where it goes, and the flight can be retargeted and abandoned
+// with Escape.
 
 // software WebGL is slow and every step here waits for real flights to land
 test.describe.configure({ timeout: 180_000 })
@@ -44,30 +45,32 @@ const waitForProgress = (page: Page, at: number) =>
 interface FlightLog {
 	/** The farthest the camera got from its pivot, scene units. */
 	farthest: number
-	/** The readout's Skip button labels seen while the flight was under way. */
-	skips: string[]
+	/** Frames seen with the camera on its way. */
+	moving: number
+	/** The most panels seen at the time bar's place while the camera moved. */
+	atTheTime: number
 }
 
 /**
- * Watches every frame from now on: how far the camera pulls back, and what the
- * readout offers while the flight is under way. A flight at its own speed
- * lasts 2.5-5 s of real time, which a loaded machine can spend before a single
- * check has run, so what only shows mid-flight is recorded as it happens.
+ * Watches every frame from now on: how far the camera pulls back, and whether
+ * a panel comes up beside the time bar while it moves. A flight at its own
+ * speed lasts 2.5-5 s of real time, which a loaded machine can spend before a
+ * single check has run, so what only shows mid-flight is recorded as it happens.
  */
 const recordFlight = (page: Page) =>
 	page.evaluate(() => {
-		const log: FlightLog = { farthest: 0, skips: [] }
+		const log: FlightLog = { farthest: 0, moving: 0, atTheTime: 0 }
 		;(window as unknown as { flightLog: FlightLog }).flightLog = log
 		const watch = () => {
 			const camera = window.__orbitalia?.camera()
 			if (camera !== undefined) {
 				log.farthest = Math.max(log.farthest, camera.distance)
 			}
-			const skip = document.querySelector(
-				"[data-testid=flight-readout][data-arrived=false] header button",
-			)
-			const label = skip?.textContent?.trim()
-			if (label && !log.skips.includes(label)) log.skips.push(label)
+			if (camera?.progress !== null && camera?.progress !== undefined) {
+				log.moving += 1
+				const time = document.querySelector("[data-sheet-above]")
+				log.atTheTime = Math.max(log.atTheTime, time?.childElementCount ?? 0)
+			}
 			requestAnimationFrame(watch)
 		}
 		requestAnimationFrame(watch)
@@ -76,78 +79,129 @@ const recordFlight = (page: Page) =>
 const flightLog = (page: Page) =>
 	page.evaluate(() => (window as unknown as { flightLog: FlightLog }).flightLog)
 
-test("a second selection flies there, with the distance and the travel times", async ({
+/** Until the watcher has seen the camera on its way, then until it lands. */
+const landed = async (page: Page) => {
+	await page.waitForFunction(
+		() => (window as unknown as { flightLog: FlightLog }).flightLog.moving > 0,
+		null,
+		{ timeout: 60_000 },
+	)
+	await cameraAtRest(page)
+	return camera(page)
+}
+
+/** While the camera moved, only the time bar sat at its place. */
+const expectNoBox = async (page: Page) => {
+	expect((await flightLog(page)).atTheTime).toBe(1)
+	await expect(page.getByTestId("flight-readout")).toHaveCount(0)
+}
+
+const liveRegion = (page: Page) => page.locator("[data-announcer]")
+
+/** From now on, everything the live region is given to read. */
+const listenToLiveRegion = (page: Page) =>
+	page.evaluate(() => {
+		const heard: string[] = []
+		;(window as unknown as { heard: string[] }).heard = heard
+		new MutationObserver((records) => {
+			for (const record of records) {
+				for (const node of record.addedNodes) {
+					heard.push(node.textContent ?? "")
+				}
+			}
+		}).observe(document.querySelector("[data-announcer]")!, {
+			childList: true,
+		})
+	})
+
+const heard = (page: Page) =>
+	page.evaluate(() => (window as unknown as { heard: string[] }).heard)
+
+test("a second selection flies there, pulling far back on the way, and brings no box", async ({
 	page,
 }) => {
 	await ready(page, "/solar_system?focus=earth")
 	const start = (await camera(page)).distance
-	const readout = page.getByRole("region", { name: "Flight" })
 
 	// the picker, like any selection from a focused body, starts the flight
 	await page.getByRole("combobox", { name: "Focus body" }).click()
 	await recordFlight(page)
 	await page.getByRole("option", { name: /^Jupiter/ }).click()
-	await expect(readout).toBeVisible()
-	await expect(readout.getByText("Earth → Jupiter")).toBeVisible()
-	await expect(
-		readout.getByText(/^\d+ million km apart on this date$/),
-	).toBeVisible()
-	await expect(readout.getByRole("listitem")).toHaveText([
-		/^Light\s*\d+ minutes$/,
-		/^New Horizons, the fastest launch ever\s*[\d.]+ years?$/,
-		/^A car at 100 km\/h\s*[\d,]+ years$/,
-	])
 
-	await cameraAtRest(page)
-	const log = await flightLog(page)
-	// on the way it offered Skip, and the camera pulled far back
-	expect(log.skips).toEqual(["Skip"])
-	expect(log.farthest).toBeGreaterThan(100 * start)
-	const landed = await camera(page)
-	expect(landed.mode).toBe("focused")
-	expect(landed.distance).toBeLessThan(10 * start)
+	const end = await landed(page)
+	// on the way the camera pulled far back
+	expect((await flightLog(page)).farthest).toBeGreaterThan(100 * start)
+	await expectNoBox(page)
+	expect(end.mode).toBe("focused")
+	expect(end.distance).toBeLessThan(10 * start)
 	await expect(page).toHaveURL(/[?&]focus=jupiter(&|$)/)
-
-	// the readout stays for the class to read, until closed
-	await expect(readout).toHaveAttribute("data-arrived", "true")
-	await expect(readout.getByText(/crossed/)).toHaveCount(0)
-	await readout.getByRole("button", { name: "Close" }).click()
-	await expect(readout).toHaveCount(0)
+	await expect(liveRegion(page)).toHaveText("Now showing Jupiter")
 })
 
-test("a flight can be skipped, retargeted and abandoned", async ({ page }) => {
+test("a screen reader hears each destination once, from a flight or from a presenter's key", async ({
+	page,
+}) => {
 	await ready(page, "/solar_system?focus=earth")
-	const readout = page.getByTestId("flight-readout")
+	await listenToLiveRegion(page)
 
-	// Skip lands at once and keeps the numbers
-	await flySlowly(page, "saturn")
-	await waitForProgress(page, 0.1)
-	await expect(page.getByTestId("flight-crossed")).toHaveText(/crossed$/)
-	await readout.getByRole("button", { name: "Skip" }).click()
+	await page.evaluate(() =>
+		window.__orbitalia!.store.getState().setFocus("jupiter"),
+	)
+	await expect.poll(() => heard(page)).toEqual(["Now showing Jupiter"])
 	await cameraAtRest(page)
-	expect((await camera(page)).mode).toBe("focused")
-	await expect(readout).toHaveAttribute("data-arrived", "true")
-	await expect(readout.getByText("Earth → Saturn")).toBeVisible()
+
+	// the key says it itself, and moves without a flight of its own
+	await page.keyboard.press("6")
+	await cameraAtRest(page)
+	expect(await heard(page)).toEqual([
+		"Now showing Jupiter",
+		"Now showing Saturn",
+	])
+
+	// Back says so at once, and the flight says where to when it leaves
+	await page.keyboard.press("Backspace")
+	await expect
+		.poll(() => heard(page))
+		.toEqual([
+			"Now showing Jupiter",
+			"Now showing Saturn",
+			"Back to the view before",
+			"Now showing Jupiter",
+		])
+	await cameraAtRest(page)
+	expect((await heard(page)).length).toBe(4)
+})
+
+test("a flight can be retargeted and abandoned", async ({ page }) => {
+	await ready(page, "/solar_system?focus=earth")
 
 	// a third selection mid-flight turns round from where the camera is
 	await flySlowly(page, "neptune")
 	await waitForProgress(page, 0.2)
-	await page.evaluate(() =>
-		window.__orbitalia!.store.getState().setFocus("mars"),
-	)
-	await expect(readout.getByText("Saturn → Mars")).toBeVisible()
+	const turned = await page.evaluate(async () => {
+		const orbitalia = window.__orbitalia!
+		const high = orbitalia.camera().distance
+		orbitalia.store.getState().setFocus("mars")
+		const profile = orbitalia.store.getState().transition?.profile
+		await new Promise(requestAnimationFrame)
+		await new Promise(requestAnimationFrame)
+		return { profile, high, next: orbitalia.camera().distance }
+	})
+	expect(turned.profile).toBe("fly")
+	// no snap back: the new flight starts high up, where the camera was
+	expect(turned.next).toBeGreaterThan(turned.high / 2)
 	await cameraAtRest(page)
+	expect((await camera(page)).mode).toBe("focused")
 	expect(
 		await page.evaluate(() => window.__orbitalia!.store.getState().focusId),
 	).toBe("mars")
 
-	// Escape mid-flight: the way out, and the readout goes with the trip
+	// Escape mid-flight: the way out
 	await flySlowly(page, "venus")
 	await waitForProgress(page, 0.3)
 	await page.keyboard.press("Escape")
 	await cameraAtRest(page)
 	expect((await camera(page)).mode).toBe("overview")
-	await expect(readout).toHaveCount(0)
 })
 
 test("true scale, in German at the simple reading level", async ({ page }) => {
@@ -155,19 +209,18 @@ test("true scale, in German at the simple reading level", async ({ page }) => {
 		page,
 		"/solar_system?focus=earth&scale=trueScale&lang=de&reading=simple",
 	)
+	const start = (await camera(page)).distance
 	await recordFlight(page)
 	await flySlowly(page, "moon", 8000)
-	const readout = page.getByRole("region", { name: "Reise" })
-	await expect(readout.getByText("Reise: Erde → Mond")).toBeVisible()
-	// no kilometres at the simple level: Earth is the yardstick (#51)
+	expect((await landed(page)).mode).toBe("focused")
+	await expect(page).toHaveURL(/[?&]focus=moon(&|$)/)
+	// the gap in true scale: far wider than the close-up of the Earth
+	expect((await flightLog(page)).farthest).toBeGreaterThan(5 * start)
+	await expectNoBox(page)
+	// the page around it is the German one
+	await expect(page.locator("html")).toHaveAttribute("lang", "de")
+	await expect(liveRegion(page)).toHaveText("Jetzt zu sehen: Mond")
 	await expect(
-		readout.getByText(/^Das ist so weit wie \d{2} Erden in einer Reihe$/),
-	).toBeVisible()
-	await expect(readout.getByRole("listitem").first()).toHaveText(
-		/^Licht, das Schnellste, was es gibt\s*1(,5)? Sekunden?$/,
-	)
-	await cameraAtRest(page)
-	expect((await camera(page)).mode).toBe("focused")
-	// while under way it offered to skip, in German
-	expect((await flightLog(page)).skips).toEqual(["Sofort hin"])
+		page.getByRole("combobox", { name: "Himmelskörper im Fokus" }),
+	).toHaveValue("Mond")
 })

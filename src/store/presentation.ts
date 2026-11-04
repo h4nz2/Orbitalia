@@ -10,7 +10,8 @@
  *   URL: a link must never open without its way back.
  * - `startSearch`: the link the page was opened with, the "start of the
  *   lesson" that `R` / Home restore (`present/restoreStart.ts`).
- * - `announcement`: the last keyboard action, read out by the live region.
+ * - `announcement`: the last keyboard action or the flight's destination, read
+ *   out by the live region.
  *
  * Per-frame code reads it with `usePresentationStore.getState()`; the HUD
  * subscribes through selectors.

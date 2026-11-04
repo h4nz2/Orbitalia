@@ -126,20 +126,19 @@
 				"simple": "Klikni na planetu a poletíš k ní."
 			},
 			"why": {
-				"standard": "Let ukazuje, jak daleko od sebe světy jsou, a okénko s údaji prozradí, jak dlouho by na stejnou cestu potřebovalo světlo, kosmická sonda a auto.",
-				"simple": "Cestou uvidíš, jak je to daleko a jak dlouho by tam jelo auto. Roky a roky!"
+				"standard": "Samotný let ukazuje, jak daleko od sebe světy jsou: kamera se musí vzdálit, až jsou vidět oba, a u vzdáleného světa je to dlouhá cesta.",
+				"simple": "Cestou uvidíš, jak daleko jsou planety od sebe. Vesmír je obrovský!"
 			},
 			"how": {
 				"standard": [
 					"Najeď myší na planetu nebo na její název: objeví se kroužek s nápisem „Klikni a leť tam“.",
-					"Klikni nebo ťukni. Chceš-li být na místě hned, stiskni v okénku „Přeskočit“.",
+					"Klikni nebo ťukni. Tažením cestou otáčíš kameru, a ta přesto doletí na místo.",
 					"U malé tečky stačí kliknout kamkoli poblíž: zásah se počítá i kousek vedle.",
-					"Tlačítko s domečkem (nebo Esc) je cesta zpět na celou sluneční soustavu; kliknutí do prázdného prostoru pohled nezmění."
+					"Tlačítko s domečkem (nebo Esc) je cesta zpět na celou sluneční soustavu, i uprostřed letu; kliknutí do prázdného prostoru pohled nezmění."
 				],
 				"simple": [
 					"Najeď myší na planetu. Objeví se kroužek.",
 					"Klikni na ni. A teď sleduj cestu!",
-					"Nechceš čekat? Stiskni „Být tam hned“.",
 					"Stiskni tlačítko s domečkem a uvidíš zase všechny planety."
 				]
 			}
@@ -778,31 +777,6 @@
 					"Klikni na „Skutečné měřítko“.",
 					"Kam se planety poděly? Tečky ukazují, kde jsou.",
 					"Klikni na „Plakát“ a uvidíš všechny planety velké najednou. Je to nejméně skutečný obrázek!"
-				]
-			}
-		},
-		"howFar": {
-			"title": {
-				"standard": "Jak je to daleko?",
-				"simple": "Jak daleko to je?"
-			},
-			"what": {
-				"standard": "Každý let mezi dvěma světy ukáže jejich skutečnou vzdálenost k datu na obrazovce a jak dlouho by tu cestu trvala světlu, nejrychlejší kosmické sondě a autu.",
-				"simple": "Když letíš k planetě, uvidíš, jak daleko je."
-			},
-			"why": {
-				"standard": "Auto by k Jupiteru jelo stovky let: čísla promění let na pár sekund ve skutečnou představu o vzdálenosti.",
-				"simple": "Auto by k Jupiteru jelo stovky let!"
-			},
-			"how": {
-				"standard": [
-					"Leť z jednoho světa k druhému.",
-					"Během cesty sleduj okénko nad ovládáním času; po příletu ho zavři.",
-					"Vzdálenost se mění s datem, protože se planety pohybují."
-				],
-				"simple": [
-					"Leť ze Země k jiné planetě.",
-					"Přečti si okénko nad tlačítky času."
 				]
 			}
 		},

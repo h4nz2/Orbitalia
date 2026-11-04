@@ -126,20 +126,19 @@
 				"simple": "Click a planet and you fly there."
 			},
 			"why": {
-				"standard": "The flight shows how far apart the worlds are, and a readout says how long light, a spacecraft and a car would need for the same trip.",
-				"simple": "On the way you see how far it is, and how long a car would need. Years and years!"
+				"standard": "The flight itself shows how far apart the worlds are: the camera has to pull back until both are in view, and for a faraway world that is a long way.",
+				"simple": "On the way you see how far apart the planets are. Space is big!"
 			},
 			"how": {
 				"standard": [
 					"Point at a planet or its name: a ring appears with “Click to fly there”.",
-					"Click or tap it. To land at once, press Skip in the readout.",
+					"Click or tap it. A drag on the way turns the camera, and the flight still lands there.",
 					"On a small dot, click anywhere near it: the target is generous.",
-					"The house button (or Esc) is the way back to the whole solar system; a click on empty space leaves the view where it is."
+					"The house button (or Esc) is the way back to the whole solar system, also in mid-flight; a click on empty space leaves the view where it is."
 				],
 				"simple": [
 					"Move the mouse over a planet. A ring shows up.",
 					"Click it. Now watch the trip.",
-					"Press “Be there now” if you do not want to wait.",
 					"Press the house button to see all the planets again."
 				]
 			}
@@ -778,31 +777,6 @@
 					"Click True scale.",
 					"Where did the planets go? The dots show where they are.",
 					"Click Poster to see all the planets big at once. It is the least real picture!"
-				]
-			}
-		},
-		"howFar": {
-			"title": {
-				"standard": "How far is it?",
-				"simple": "How far away is it?"
-			},
-			"what": {
-				"standard": "Every flight between two worlds shows their true distance on the date on screen, and how long light, the fastest spacecraft and a car would take.",
-				"simple": "When you fly to a planet, you see how far away it is."
-			},
-			"why": {
-				"standard": "A car would need hundreds of years to reach Jupiter: the numbers turn a flight of a few seconds into a sense of real distance.",
-				"simple": "A car would need hundreds of years to drive to Jupiter!"
-			},
-			"how": {
-				"standard": [
-					"Fly from one world to another.",
-					"Read the readout above the time controls while you travel; close it when you arrive.",
-					"The distance changes with the date, because the planets move."
-				],
-				"simple": [
-					"Fly from Earth to another planet.",
-					"Read the box above the time buttons."
 				]
 			}
 		},

@@ -15,7 +15,7 @@
  *
  *   what you look at, the way out    [free-view badge]      the teacher's corner
  *   the body card (starts small)                                       the dock
- *   (flight readout above) the time bar          Tours · Layers · Scale · Tools
+ *   the time bar                                 Tours · Layers · Scale · Tools
  *
  * The dock holds one panel at a time (Layers, Scale, a tool) and the tour's
  * card; the entry points below it open them. Phones stack the same pieces:
@@ -162,7 +162,7 @@
 	max-width: 100%;
 }
 
-/* the bottom row: the time bar in the middle (the flight readout above it), the entry points at the right */
+/* the bottom row: the time bar in the middle, the entry points at the right */
 .bottom {
 	grid-area: bottom;
 	display: grid;
@@ -559,7 +559,7 @@
 		-webkit-backdrop-filter: none;
 	}
 
-	/* the time chip (in the time bar's place) and a flight's readout float above the sheet */
+	/* the time chip (in the time bar's place) floats above the sheet */
 	.sheet .time {
 		position: absolute;
 		left: 0;
@@ -576,10 +576,6 @@
 		left: 0.25rem;
 	}
 
-	.sheet[data-sheet-height="full"] .time > :not(.chip) {
-		display: none;
-	}
-
 	/* the opening (#30) gets the whole screen but the top row */
 	:global(html[data-intro="playing"]) .sheet {
 		display: none;
@@ -592,12 +588,10 @@
  * on screen and usable, and pointing at one or focusing one brings it back.
  * The name, the way out and the time bar (`data-steady`) never dim; within
  * them only the parts marked `data-dim` do (the point of view, the speed).
- * The flight's readout (#18, beside the time bar) and the tour's words (#28)
- * are what the move is about: they stay too.
+ * The tour's words (#28) are what the move is about: they stay too.
  */
 :global(html[data-camera="moving"])
-	:not(.time)
-	> .panel:not([data-steady]):not(.tour):not(:hover):not(:focus-within),
+	.panel:not([data-steady]):not(.tour):not(:hover):not(:focus-within),
 :global(html[data-camera="moving"])
 	.dock
 	> :not(.tour):not(:hover):not(:focus-within),

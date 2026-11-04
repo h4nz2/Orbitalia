@@ -666,31 +666,6 @@
 			"sunlightRange": "La luz del Sol tarda entre {near} y {far} en llegar aquí, según en qué punto de su larga órbita se encuentre",
 			"sunlightRange@simple": "La luz del Sol necesita {near} para llegar hasta aquí cuando está más cerca y {far} cuando está más lejos"
 		},
-		"flight": {
-			"label": "Vuelo",
-			"route": "{from} → {to}",
-			"route@simple": "De {from} a {to}",
-			"distance": "{distance} de separación en esta fecha",
-			"distance@simple": "Distancia: {distance}",
-			"distance@advanced": "{distance} ({au}) en línea recta en esta fecha",
-			"crossed": "{distance} recorridos",
-			"crossed@simple": "Hasta ahora: {distance}",
-			"question": "¿Cuánto duraría el viaje?",
-			"question@simple": "¿Cuánto se tardaría en llegar?",
-			"question@advanced": "Tiempo de viaje a velocidad constante",
-			"light": "La luz",
-			"light@simple": "La luz, lo más rápido que existe",
-			"light@advanced": "La luz ({speed})",
-			"probe": "New Horizons, el lanzamiento más rápido de la historia",
-			"probe@simple": "El lanzamiento de cohete más rápido de la historia",
-			"probe@advanced": "Velocidad de lanzamiento de New Horizons ({speed})",
-			"car": "Un coche a {speed}",
-			"car@simple": "Un coche que nunca se detiene",
-			"car@advanced": "Un coche a {speed}, sin paradas",
-			"skip": "Saltar",
-			"skip@simple": "Llegar ya",
-			"close": "Cerrar"
-		},
 		"birthday": {
 			"open": "Tu cumpleaños",
 			"openHint": "¿Cuántos años tienes en otros planetas?",
@@ -1721,8 +1696,8 @@
 				"fly": {
 					"title": "Haz clic en un planeta para volar allí",
 					"title@simple": "Haz clic en un planeta",
-					"text": "Cualquier planeta o luna: haz clic en él o escribe su nombre en el cuadro de nombres. Por el camino, un marcador cuenta la distancia real y cuánto tardarían la luz, el cohete más rápido y un coche.",
-					"text@simple": "Haz clic en un planeta y vuelas hasta él. Por el camino, un cuadro te dice lo lejos que está de verdad y cuánto tardaría un cohete."
+					"text": "Cualquier planeta o luna: haz clic en él o escribe su nombre en el cuadro de nombres. Por el camino, la cámara se aleja y te muestra la distancia entre los dos mundos.",
+					"text@simple": "Haz clic en un planeta y vuelas hasta él. Por el camino ves lo lejos que están los planetas unos de otros."
 				},
 				"trueScale": {
 					"title": "Escala real",

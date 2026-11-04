@@ -5,9 +5,11 @@ import { IconAdjustments } from "@tabler/icons-react"
 
 import { useTouch } from "@/hooks/useSizeClass"
 import { useI18n, type MessageKey } from "@/i18n"
+import { useBodyName } from "@/i18n/bodies"
 import { usePresentationStore } from "@/store/presentation"
 
 import { setChromeHidden } from "./commands"
+import { watchFlights } from "./flightAnnouncer"
 import { useSkyTap } from "./skyTap"
 import { usePresentationDocument } from "./usePresentationDocument"
 import { usePresenterKeys } from "./usePresenterKeys"
@@ -209,9 +211,22 @@ function ChromeRestore() {
 	)
 }
 
-/** Reads out what the presenter's keys did (`announce`), politely, once per announcement. */
+/** Reads out what the presenter's keys did and where a flight goes (`announce`), politely, once per announcement. */
 function LiveRegion() {
+	const { t } = useI18n()
+	const name = useBodyName()
 	const announcement = usePresentationStore((state) => state.announcement)
+	useEffect(
+		() =>
+			watchFlights((id) =>
+				usePresentationStore
+					.getState()
+					.announce(
+						t("solarSystem.present.announce.focus", { body: name(id) }),
+					),
+			),
+		[t, name],
+	)
 	return (
 		<VisuallyHidden
 			role="status"

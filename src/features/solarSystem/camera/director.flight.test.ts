@@ -3,7 +3,7 @@
  * camera-controls, frame by frame: one continuous pull back -> travel ->
  * descend, both ends in view at the top in every scale preset and screen
  * shape, the destination met where it is on arrival, and the record the
- * distance readout is built from.
+ * sound follows.
  */
 import { afterEach, describe, expect, it } from "vitest"
 import * as THREE from "three"
@@ -234,31 +234,17 @@ describe("the flight between bodies", () => {
 		expect(h.snapshot().mode).toBe("focused")
 	})
 
-	describe("the record behind the readout", () => {
-		it("gives the TRUE distance between the two bodies at departure, never the drawn one", () => {
+	describe("the record behind the sound", () => {
+		it("says where it goes, how long it takes and when it crosses", () => {
 			const h = new Harness(body("earth"))
 			store().setFocus("jupiter")
 			h.step()
 			const record = flight()!
-			expect(record).toMatchObject({
-				fromId: "earth",
-				toId: "jupiter",
-				arrived: false,
-			})
-			const truth = createSimFrame(bodies, J2000_JD)
-			updateSimFrame(truth, h.jd)
-			const at = (id: string) => truth.index.get(id)! * 3
-			const [e, j] = [at("earth"), at("jupiter")]
-			const p = truth.positionsKm
-			const km = Math.hypot(
-				p[j] - p[e],
-				p[j + 1] - p[e + 1],
-				p[j + 2] - p[e + 2],
-			)
-			expect(record.distanceKm).toBeCloseTo(km, 0)
-			// about 4-6 AU, whatever the preset draws
-			expect(record.distanceKm).toBeGreaterThan(5.8e8)
+			expect(record).toMatchObject({ toId: "jupiter", arrived: false })
 			expect(record.durationMs).toBe(h.snapshot().durationMs)
+			expect(record.travelStart).toBeGreaterThan(0)
+			expect(record.travelEnd).toBeGreaterThan(record.travelStart)
+			expect(record.travelEnd).toBeLessThan(1)
 			while (store().transition !== null) h.step()
 			expect(flight()?.arrived).toBe(true)
 		})
@@ -276,13 +262,15 @@ describe("the flight between bodies", () => {
 			expect(flight()).toBeNull()
 		})
 
-		it("is replaced by a new flight from the body the camera is held on when retargeted", () => {
+		it("is replaced by a new flight when retargeted", () => {
 			const h = new Harness(body("earth"))
 			store().setFocus("neptune")
 			h.step(20)
+			const first = flight()!.id
 			store().setFocus("mars")
 			h.step()
-			expect(flight()).toMatchObject({ fromId: "earth", toId: "mars" })
+			expect(flight()).toMatchObject({ toId: "mars", arrived: false })
+			expect(flight()!.id).not.toBe(first)
 			h.fly("mars")
 			expect(flight()).toMatchObject({ toId: "mars", arrived: true })
 		})
@@ -302,9 +290,7 @@ describe("the flight between bodies", () => {
 			const h = new Harness(body("earth"))
 			store().playSequence([flightStep("moon", { holdMs: 500 })])
 			h.step()
-			expect(flight()).toMatchObject({ fromId: "earth", toId: "moon" })
-			expect(flight()!.distanceKm).toBeGreaterThan(3.5e5)
-			expect(flight()!.distanceKm).toBeLessThan(4.1e5)
+			expect(flight()).toMatchObject({ toId: "moon", arrived: false })
 		})
 	})
 })

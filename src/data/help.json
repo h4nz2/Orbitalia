@@ -137,11 +137,6 @@
 			"try": "/solar_system?scale=trueScale"
 		},
 		{
-			"id": "howFar",
-			"group": "sizeDistance",
-			"try": "/solar_system?focus=earth&scale=trueScale"
-		},
-		{
 			"id": "asteroidBelt",
 			"group": "sizeDistance",
 			"try": "/solar_system?smallBodies=true&scale=trueScale"

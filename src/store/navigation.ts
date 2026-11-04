@@ -261,7 +261,7 @@ export interface NavigationSlice {
 	skip: () => void
 	/**
 	 * Finishes the running transition at once but stays in a running sequence,
-	 * whose stop then holds or waits as usual (the flight readout's Skip, #18).
+	 * whose stop then holds or waits as usual (a tour stop that jumps, #28).
 	 */
 	finishMove: () => void
 	/**
