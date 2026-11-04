@@ -850,7 +850,13 @@
 				"copied": "Copied",
 				"link": "Link to this hunt"
 			},
-			"otherHunts": "Other hunts",
+			"end": {
+				"button": "End hunt",
+				"button@simple": "Stop this hunt",
+				"question": "End this hunt? Your stars so far will be lost.",
+				"question@simple": "Stop this hunt? Your stars will go away.",
+				"keep": "Keep playing"
+			},
 			"certificate": {
 				"title": "Space explorer certificate",
 				"title@simple": "Space explorer!",

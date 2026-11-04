@@ -850,7 +850,13 @@
 				"copied": "Zkopírováno",
 				"link": "Odkaz na tuto hru"
 			},
-			"otherHunts": "Další hry",
+			"end": {
+				"button": "Ukončit hru",
+				"button@simple": "Zastavit tuto hru",
+				"question": "Ukončit tuto hru? Přijdeš o hvězdičky, které máš.",
+				"question@simple": "Zastavit tuto hru? Tvoje hvězdičky zmizí.",
+				"keep": "Hrát dál"
+			},
 			"certificate": {
 				"title": "Diplom za průzkum vesmíru",
 				"title@simple": "Vesmírná mise splněna!",

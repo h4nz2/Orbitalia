@@ -1,4 +1,11 @@
-import { useEffect, useMemo, useState } from "react"
+import {
+	useEffect,
+	useId,
+	useLayoutEffect,
+	useMemo,
+	useRef,
+	useState,
+} from "react"
 import {
 	ActionIcon,
 	Badge,
@@ -26,6 +33,7 @@ import {
 	IconChevronUp,
 	IconConfetti,
 	IconCopy,
+	IconDoorExit,
 	IconEye,
 	IconMapSearch,
 	IconPlayerStopFilled,
@@ -767,6 +775,110 @@ const Play = ({ hunt }: { hunt: ResolvedHunt }) => {
 	)
 }
 
+/** `color="gray"`'s light button all but vanishes on this panel: this one can be found. */
+const END_COLOR = "var(--mantine-color-gray-4)"
+
+/**
+ * The way out of a hunt in progress, for another one. It ends at once while
+ * nothing would be lost; with a star earned it asks first, in its own place.
+ * Focus stays with what is on offer: the safe answer, then the button again,
+ * then the panel's title, as what held it goes away. The chooser opens on
+ * the viewer's pick, or with none (a link, a reload) on this hunt's level.
+ */
+const EndHunt = ({
+	difficulty,
+	easy,
+}: {
+	difficulty: Difficulty | null
+	easy: boolean
+}) => {
+	const { t } = useI18n()
+	const cancel = useHuntStore((state) => state.cancel)
+	const earned = useHuntStore((state) => state.found.length > 0)
+	const reading = useSpoken()
+	const [asking, setAsking] = useState(false)
+	const questionId = useId()
+	const asked = useRef(false)
+	const button = useRef<HTMLButtonElement>(null)
+	const question = useRef<HTMLDivElement>(null)
+	const keep = useRef<HTMLButtonElement>(null)
+
+	useEffect(() => {
+		if (asking) {
+			keep.current?.focus({ preventScroll: true })
+			question.current?.scrollIntoView({ block: "nearest" })
+		} else if (asked.current) button.current?.focus()
+		asked.current = asking
+	}, [asking])
+
+	const words = t("solarSystem.hunt.end.question")
+
+	const end = () => {
+		const store = useHuntStore.getState()
+		if (store.difficulty === null && difficulty !== null) {
+			store.setDifficulty(difficulty)
+		}
+		cancel()
+		document.getElementById("hunt-title")?.focus()
+	}
+	const keepPlaying = () => {
+		if (reading === words) stopSpeaking()
+		setAsking(false)
+	}
+
+	if (!asking) {
+		return (
+			<Button
+				ref={button}
+				variant="light"
+				color={END_COLOR}
+				size="compact-sm"
+				mt="md"
+				leftSection={<IconDoorExit size={14} />}
+				onClick={() => (earned ? setAsking(true) : end())}
+			>
+				{t("solarSystem.hunt.end.button")}
+			</Button>
+		)
+	}
+	return (
+		<Stack
+			ref={question}
+			gap="xs"
+			mt="md"
+			className={classes.endQuestion}
+			role="group"
+			aria-labelledby={questionId}
+		>
+			<Group gap="xs" wrap="nowrap" align="flex-start">
+				<Text size="sm" id={questionId} data-testid="hunt-end-question">
+					{words}
+				</Text>
+				{easy && <ReadAloud text={words} size="md" />}
+			</Group>
+			{/* the safe answer first: a double tap falls where the button was */}
+			<Group gap="xs">
+				<Button
+					ref={keep}
+					color="orange"
+					size="compact-sm"
+					onClick={keepPlaying}
+				>
+					{t("solarSystem.hunt.end.keep")}
+				</Button>
+				<Button
+					variant="light"
+					color={END_COLOR}
+					size="compact-sm"
+					onClick={end}
+				>
+					{t("solarSystem.hunt.end.button")}
+				</Button>
+			</Group>
+		</Stack>
+	)
+}
+
 /**
  * The scavenger hunt (#34), docked at the right like the birthday panel so the
  * scene stays in view: the chooser, or the hunt being played with its
@@ -782,12 +894,25 @@ const HuntPanel = () => {
 	const collapsed = useHuntStore((state) => state.collapsed)
 	const setCollapsed = useHuntStore((state) => state.setCollapsed)
 	const setOpen = useHuntStore((state) => state.setOpen)
-	const browse = useHuntStore((state) => state.browse)
 	const upright = useUprightPhone()
 	const hunt = useMemo(() => resolveHunt(key), [key])
+	const body = useRef<HTMLDivElement>(null)
+	const choosing = hunt === null
 
 	// closing the panel or leaving the page stops the voice
 	useEffect(() => () => stopSpeaking(), [])
+	// the chooser opens at its top, whichever box had scrolled the hunt's words
+	// (this panel's body, or the phone's sheet round it)
+	useLayoutEffect(() => {
+		if (!choosing) return
+		for (
+			let box: Element | null = body.current;
+			box !== null;
+			box = box.parentElement
+		) {
+			box.scrollTop = 0
+		}
+	}, [choosing])
 
 	const title =
 		hunt === null
@@ -814,7 +939,12 @@ const HuntPanel = () => {
 				<Group gap="xs" wrap="nowrap" justify="space-between">
 					<Group gap={8} wrap="nowrap" miw={0}>
 						<IconMapSearch size={20} className={classes.headerIcon} />
-						<Title order={2} id="hunt-title" className={classes.title}>
+						<Title
+							order={2}
+							id="hunt-title"
+							tabIndex={-1}
+							className={classes.title}
+						>
 							{title}
 						</Title>
 					</Group>
@@ -872,18 +1002,15 @@ const HuntPanel = () => {
 					</>
 				)}
 			</header>
-			<div className={classes.body}>
+			<div ref={body} className={classes.body}>
 				{hunt === null ? <Chooser /> : <Play hunt={hunt} />}
+				{/* a new clue or a find: the question is no longer the one that was asked */}
 				{hunt !== null && !collapsed && step < total && (
-					<Button
-						variant="subtle"
-						color="gray"
-						size="compact-xs"
-						mt="md"
-						onClick={browse}
-					>
-						{t("solarSystem.hunt.otherHunts")}
-					</Button>
+					<EndHunt
+						key={`${step}-${phase}`}
+						difficulty={hunt.difficulty}
+						easy={easy}
+					/>
 				)}
 			</div>
 		</section>

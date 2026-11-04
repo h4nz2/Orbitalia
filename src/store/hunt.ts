@@ -70,6 +70,8 @@ export interface HuntState extends HuntProgress {
 	resume: (key: string) => void
 	/** Shows the chooser; the hunt in progress is kept and can be carried on. */
 	browse: () => void
+	/** Ends the hunt in progress: its progress is gone and the open panel shows the chooser. */
+	cancel: () => void
 	/** Shows one more hint (at most `available`). */
 	hint: (available: number) => void
 	/** The clue is solved by `bodyId`. */
@@ -160,6 +162,8 @@ export const useHuntStore = create<HuntState>()((set, get) => ({
 		else get().start(key)
 	},
 	browse: () => set({ choosing: true, collapsed: false }),
+	cancel: () =>
+		set({ ...EMPTY, choosing: false, collapsed: false, guess: null }),
 	hint: (available) =>
 		set((state) => ({ hints: Math.min(available, state.hints + 1) })),
 	solve: (bodyId) =>

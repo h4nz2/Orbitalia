@@ -2427,13 +2427,20 @@ is the receipt. No score, no timer, no ranking, no failure state; a star for eve
   to save, copy or share like any postcard.
 - **Store** (`useHuntStore`): the hunt `key`, `step`, `hints`, `phase` (asking/found), `found` bodies, plus panel
   state, `difficulty` and `assist`. Progress (only the first five) is kept in sessionStorage (a reload mid-lesson
-  keeps it; nothing leaves the device).
+  keeps it; nothing leaves the device). `browse` shows the chooser and keeps the hunt, so it can be carried on (the
+  finish, a `?hunt=true` link); `cancel` ends it: progress and its stored copy gone, the panel open on the chooser,
+  `difficulty` kept (`EndHunt` sets it to the hunt's level first when the viewer has picked none). Ending moves no
+  camera: `Play` and `Asking` unmounting stop the voice, the watching, the spot and the assist; the URL follows to
+  `?hunt=true`, replacing its entry, so Back keeps its steps.
 - **UI**: Tools → Scavenger hunt opens it (#42); `hunt/Hunt.tsx` has the panel slot, in the dock;
   `HuntPanel.tsx` (lazy) is a panel of the dock like the birthday panel and carries the HUD `.panel` class, so
   labels avoid it: the chooser (difficulty, hunt cards, "Make your own hunt" from the whole bank), then the stars,
   the clue in large type (larger at Easy, with its picture), hints, the discovery text and a finish. It folds to the
-  clue alone. In projector mode (#29) everything grows with the root font; the e2e test checks an Easy clue at
-  1366 x 768 there.
+  clue alone. "End hunt" under the clue or find (`EndHunt`; not folded, not on the finish) is the way to another
+  hunt: at once with no star yet; with one it asks in its own place, Keep playing first and in focus (a double tap
+  falls on it), with the speaker beside an Easy clue, and the question closes when the clue or phase moves on. The panel's × only closes: reopening carries on. The chooser opens at its top,
+  whichever box had scrolled the hunt (its body, or the phone's sheet at the height it rested at). In projector mode
+  (#29) everything grows with the root font; the e2e test checks an Easy clue at 1366 x 768 there.
 - **Links**: `?hunt=true` opens the chooser, `?hunt=<hunt id>` or `?hunt=<question ids joined by ".">` (a teacher's
   own hunt, `resolveHunt`) opens that hunt. The route keeps `hunt` on every navigation (`retainSearchParams`), so
   the store mirror in `urlSync.ts` leaves it alone; the panel sets and clears it. "Share" builds

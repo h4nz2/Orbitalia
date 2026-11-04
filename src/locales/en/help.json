@@ -1142,6 +1142,7 @@
 					"Pick how hard it should be (Easy, Medium or Tricky; it starts on the one for your reading level), then a hunt.",
 					"Read the clue or press the speaker to hear it, then find the world and click it.",
 					"Stuck? “Need a hint?”: at Easy the first hint lights up a part of the sky and the second makes the answer blink; after the last one, “Show me”.",
+					"Want a different hunt? “End hunt” stops this one, its stars are lost and the list of hunts comes back. × only closes the panel: open it again and you carry on where you were.",
 					"At the end, “Make a certificate” gives you a picture to save or print."
 				],
 				"simple": [
@@ -1149,6 +1150,7 @@
 					"Pick “Easy”, then a hunt.",
 					"Look at the picture and find it. Press the speaker to hear the clue.",
 					"Stuck? Press “Need a hint?”.",
+					"Want a different hunt? Press “Stop this hunt”. Your stars will go away. Press × and the hunt waits for you.",
 					"At the end, press “Get your certificate”."
 				]
 			}

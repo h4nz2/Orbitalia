@@ -1142,6 +1142,7 @@
 					"Elige la dificultad (Fácil, Media o Complicada; empieza en la de tu nivel de lectura) y luego una búsqueda.",
 					"Lee la pista o pulsa el altavoz para escucharla; luego encuentra el mundo y haz clic en él.",
 					"¿Te has atascado? Pulsa «¿Necesitas una ayuda?»: en Fácil, la primera ayuda ilumina una parte del cielo y la segunda hace parpadear la respuesta; después de la última, «Muéstramelo».",
+					"¿Quieres otra búsqueda? «Abandonar la búsqueda» termina esta: pierdes sus estrellas y vuelve la lista de búsquedas. × solo cierra el panel: al abrirlo de nuevo sigues donde ibas.",
 					"Al final, «Crear un diploma» te da una imagen para guardar o imprimir."
 				],
 				"simple": [
@@ -1149,6 +1150,7 @@
 					"Elige «Fácil» y luego una búsqueda.",
 					"Mira la imagen y encuéntrala. Pulsa el altavoz para escuchar la pista.",
 					"¿Te has atascado? Pulsa «¿Necesitas una ayuda?».",
+					"¿Quieres otra búsqueda? Pulsa «Parar esta búsqueda». Tus estrellas se irán. Si pulsas ×, la búsqueda te espera.",
 					"Al final, pulsa «Consigue tu diploma»."
 				]
 			}

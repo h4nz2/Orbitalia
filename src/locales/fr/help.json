@@ -1142,6 +1142,7 @@
 					"Choisis la difficulté (Facile, Moyen ou Corsé ; celle de ton niveau de lecture est choisie au départ), puis une chasse.",
 					"Lis l’énigme ou appuie sur le haut-parleur pour l’écouter, puis trouve le monde et clique dessus.",
 					"Tu bloques ? « Besoin d’un indice ? » : au niveau Facile, le premier indice éclaire une partie du ciel et le second fait clignoter la réponse ; après le dernier, « Montre-moi ».",
+					"Envie d’une autre chasse ? « Arrêter la chasse » met fin à celle-ci : ses étoiles sont perdues et la liste des chasses revient. × ferme seulement le panneau : rouvre-le et tu reprends là où tu en étais.",
 					"À la fin, « Créer un diplôme » te donne une image à enregistrer ou à imprimer."
 				],
 				"simple": [
@@ -1149,6 +1150,7 @@
 					"Choisis « Facile », puis une chasse.",
 					"Regarde l’image et trouve ce monde. Appuie sur le haut-parleur pour écouter l’énigme.",
 					"Tu bloques ? Appuie sur « Besoin d’un indice ? ».",
+					"Tu veux une autre chasse ? Appuie sur « Arrêter cette chasse ». Tes étoiles vont partir. Si tu appuies sur ×, la chasse t’attend.",
 					"À la fin, appuie sur « Reçois ton diplôme »."
 				]
 			}

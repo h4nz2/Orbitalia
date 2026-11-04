@@ -850,7 +850,13 @@
 				"copied": "Kopiert",
 				"link": "Link zu dieser Jagd"
 			},
-			"otherHunts": "Andere Jagden",
+			"end": {
+				"button": "Jagd beenden",
+				"button@simple": "Diese Jagd stoppen",
+				"question": "Diese Jagd beenden? Deine bisherigen Sterne gehen verloren.",
+				"question@simple": "Diese Jagd stoppen? Dann sind deine Sterne weg.",
+				"keep": "Weiterspielen"
+			},
 			"certificate": {
 				"title": "Weltraum-Urkunde",
 				"title@simple": "Weltraum-Profi!",
