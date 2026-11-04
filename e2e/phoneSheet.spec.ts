@@ -6,13 +6,14 @@
  * handle (a tap, a drag, the keyboard), by its header, by a pull down from
  * the top of its content, and closes by its ×; scrolling inside never moves
  * it, and moving it never moves the scene. Its resting top edge is the
- * bottom of the band the camera frames into (#61).
+ * bottom of the band the camera frames into (#61). Inside it there is one
+ * scroller: a finger on any panel scrolls the sheet's content.
  *
  * Boxes on the page and on the canvas are measured in one evaluate: the page
  * slides in as it opens, the canvas and the HUD together (see #61's
  * `onCanvas`).
  */
-import { expect, test, type Page } from "@playwright/test"
+import { expect, test, type Locator, type Page } from "@playwright/test"
 
 import { stubSpeech } from "./support/speech"
 import { openLayers, openTool, unobstructed } from "./support/hud"
@@ -105,8 +106,18 @@ const pose = (page: Page) =>
 		)
 	})
 
-/** A finger dragging from (x, y) by `dy` px in steps (CDP touch events). */
-async function swipe(page: Page, x: number, y: number, dy: number, steps = 8) {
+/**
+ * A finger dragging from (x, y) by `dy` px in steps (CDP touch events). With
+ * `rest` it stops that long before it lifts, so nothing flings on after it.
+ */
+async function swipe(
+	page: Page,
+	x: number,
+	y: number,
+	dy: number,
+	steps = 8,
+	rest = 0,
+) {
 	const cdp = await page.context().newCDPSession(page)
 	const point = (yy: number) => [{ x, y: yy, id: 1 }]
 	await cdp.send("Input.dispatchTouchEvent", {
@@ -120,6 +131,7 @@ async function swipe(page: Page, x: number, y: number, dy: number, steps = 8) {
 		})
 		await page.waitForTimeout(16)
 	}
+	if (rest > 0) await page.waitForTimeout(rest)
 	await cdp.send("Input.dispatchTouchEvent", {
 		type: "touchEnd",
 		touchPoints: [],
@@ -557,6 +569,473 @@ test.describe("a small phone, 360x640", () => {
 			}
 		}
 	})
+})
+
+/** How far the sheet's content has scrolled, px. */
+const scrolled = (page: Page) =>
+	page.getByTestId("sheet-content").evaluate((element) => element.scrollTop)
+
+/** A finger through the sheet's content, stopping before it lifts: the scroll is over when this returns. */
+const scrollWith = (page: Page, x: number, y: number, dy: number) =>
+	swipe(page, x, y, dy, 12, 150)
+
+/** The sheet's content, and where a finger lands low in it, in the middle of its width. */
+const low = async (page: Page) => {
+	const box = (await page.getByTestId("sheet-content").boundingBox())!
+	return { x: box.x + box.width / 2, y: box.y + box.height - 20 }
+}
+
+/** A finger up from low in the content, and the content moves. */
+async function fingerScrollsUp(page: Page) {
+	const before = await scrolled(page)
+	const { x, y } = await low(page)
+	await scrollWith(page, x, y, -100)
+	await expect.poll(() => scrolled(page)).toBeGreaterThan(before + 10)
+}
+
+/** Whether `target` is in the content's view: its bottom above the content's. */
+const inReach = (target: Locator) =>
+	target.evaluate((element) => {
+		const content = document.querySelector("[data-testid=sheet-content]")!
+		return (
+			element.getBoundingClientRect().bottom <=
+			content.getBoundingClientRect().bottom
+		)
+	})
+
+/** Scrolls with a finger only, until `target` is in the content's view. */
+async function reach(page: Page, target: Locator) {
+	const { x, y } = await low(page)
+	for (let i = 0; i < 60 && !(await inReach(target)); i++)
+		await scrollWith(page, x, y, -100)
+	expect(await inReach(target)).toBe(true)
+}
+
+/** Whether a finger meets the header across its whole width, whatever is scrolled under it. */
+const headerOnTop = (header: Locator) =>
+	header.evaluate((element) => {
+		const box = element.getBoundingClientRect()
+		return [0.1, 0.3, 0.5, 0.7, 0.9].every((share) =>
+			element.contains(
+				document.elementFromPoint(
+					box.left + box.width * share,
+					box.top + box.height / 2,
+				),
+			),
+		)
+	})
+
+/** What in the content could end a finger's scroll: anything, on show or not, with an `overscroll-behavior` of its own. */
+const heldBack = (page: Page) =>
+	page.getByTestId("sheet-content").evaluate((content) =>
+		[...content.querySelectorAll("*")]
+			.filter((element) => {
+				const style = getComputedStyle(element)
+				return (
+					style.overscrollBehaviorX !== "auto" ||
+					style.overscrollBehaviorY !== "auto"
+				)
+			})
+			.map((element) => `${element.tagName} ${String(element.className)}`),
+	)
+
+/** The hunt's chooser at half, a panel, on the screen with a card whole in view and the finger's to tap. */
+async function chooserInView(page: Page) {
+	const panel = page.locator("#hunt-panel")
+	await expect(panel).toHaveAttribute("data-sheet-kind", "panel")
+	await expect(panel).not.toHaveAttribute("data-collapsed")
+	await expect(panel.locator("[data-hunt]").first()).toBeVisible()
+	await restsAt(page, "half")
+	// no card lit: nobody has chosen one, wherever a finger last fell
+	await expect
+		.poll(() =>
+			panel
+				.locator("[data-hunt]")
+				.evaluateAll(
+					(cards) =>
+						new Set(cards.map((card) => getComputedStyle(card).borderColor))
+							.size,
+				),
+		)
+		.toBe(1)
+	expect(
+		await panel
+			.locator("[data-hunt]")
+			.first()
+			.evaluate((card) => {
+				const content = document.querySelector("[data-testid=sheet-content]")!
+				const sheet = document.querySelector("[data-testid=sheet]")!
+				const header = card.closest("section")!.querySelector("header")!
+				const box = card.getBoundingClientRect()
+				return (
+					sheet.getBoundingClientRect().bottom <= innerHeight &&
+					box.top >= header.getBoundingClientRect().bottom &&
+					box.bottom <= content.getBoundingClientRect().bottom &&
+					card.contains(
+						document.elementFromPoint(
+							box.left + box.width / 2,
+							box.top + box.height / 2,
+						),
+					)
+				)
+			}),
+	).toBe(true)
+}
+
+/** The hunt's clue, folded, with the sheet at small: the fold and the sheet agree. */
+async function clueFolded(page: Page) {
+	const panel = page.locator("#hunt-panel")
+	await expect(page.getByTestId("hunt-clue")).toBeVisible()
+	await expect(panel).toHaveAttribute("data-sheet-kind", "hunt")
+	await expect(panel).toHaveAttribute("data-sheet-folds", "")
+	await restsAt(page, "small")
+	await expect(panel).toHaveAttribute("data-collapsed", "true")
+}
+
+test.describe("every way into the hunt's chooser, 390x844", () => {
+	test.use({ viewport: PHONE, hasTouch: true, isMobile: true })
+
+	const card = (page: Page) => page.locator("#hunt-panel [data-hunt]").first()
+	const endHunt = (page: Page) =>
+		page.locator("#hunt-panel").getByRole("button", { name: "End hunt" })
+
+	test("Tools: at half with its cards in view; a pick ends at small with the clue, and End hunt goes back and forth", async ({
+		page,
+	}) => {
+		await stubSpeech(page)
+		await ready(page, "/solar_system?lang=en&reading=standard")
+		await openTool(page, "hunt")
+		await chooserInView(page)
+		// "Make your own hunt" and all: a finger's size
+		expect(await smallControls(page)).toEqual([])
+
+		for (let round = 0; round < 2; round++) {
+			await card(page).tap()
+			await clueFolded(page)
+			// unfolded, the same fold and height as a shared link's
+			await handle(page).tap()
+			await restsAt(page, "half")
+			await expect(page.locator("#hunt-panel")).not.toHaveAttribute(
+				"data-collapsed",
+			)
+			await endHunt(page).scrollIntoViewIfNeeded()
+			await endHunt(page).tap()
+			await chooserInView(page)
+		}
+	})
+
+	test("a link: ?hunt=true at half with its cards in view, a shared hunt at small", async ({
+		page,
+	}) => {
+		await stubSpeech(page)
+		await ready(page, "/solar_system?hunt=true&lang=en&reading=simple")
+		await chooserInView(page)
+		await ready(page, "/solar_system?hunt=firstSteps&lang=en&reading=standard")
+		await clueFolded(page)
+	})
+
+	test("the finish's Choose another hunt: at half with its cards in view", async ({
+		page,
+	}) => {
+		await stubSpeech(page)
+		await ready(page, "/solar_system?hunt=walkedOn.redPlanet&lang=en")
+		await clueFolded(page)
+		const panel = page.locator("#hunt-panel")
+		await handle(page).tap()
+		await restsAt(page, "half")
+		for (const [answer, next] of [
+			["moon", "Next clue"],
+			["mars", "Finish"],
+		]) {
+			await page.evaluate(
+				(id) => window.__orbitalia!.store.getState().setFocus(id),
+				answer,
+			)
+			const button = panel.getByRole("button", { name: next })
+			// its way on is in the sheet
+			await button.scrollIntoViewIfNeeded()
+			await button.tap()
+		}
+		await expect(page.getByTestId("hunt-done")).toBeVisible()
+		const other = panel.getByRole("button", { name: "Choose another hunt" })
+		await other.scrollIntoViewIfNeeded()
+		await other.tap()
+		await chooserInView(page)
+		await card(page).tap()
+		await clueFolded(page)
+	})
+})
+
+test.describe("the hunt's chooser and clue on a small phone, 360x640", () => {
+	test.use({
+		viewport: { width: 360, height: 640 },
+		hasTouch: true,
+		isMobile: true,
+	})
+
+	const camera = (page: Page) =>
+		page.evaluate(() => {
+			const { azimuthDeg, distance } = window.__orbitalia!.camera()
+			return { azimuthDeg, distance }
+		})
+	const lookAndFind = (page: Page) =>
+		page.locator('#hunt-panel [data-hunt="lookAndFind"]')
+
+	test("the first clue is planned for the band the sheet rests at: the home azimuth, again after End hunt", async ({
+		page,
+	}) => {
+		await stubSpeech(page)
+		await ready(page, "/solar_system?lang=en&reading=simple")
+		await openTool(page, "hunt")
+		for (let round = 0; round < 2; round++) {
+			await chooserInView(page)
+			await cameraAtRest(page, 5)
+			const before = await camera(page)
+			await lookAndFind(page).tap()
+			await clueFolded(page)
+			// it does not go without its move
+			await expect
+				.poll(async () => (await camera(page)).distance)
+				.toBeLessThan(before.distance * 0.8)
+			await cameraAtRest(page, 10)
+			expect(Math.abs((await camera(page)).azimuthDeg)).toBeLessThan(1)
+			await handle(page).tap()
+			await restsAt(page, "half")
+			const stop = page
+				.locator("#hunt-panel")
+				.getByRole("button", { name: "Stop this hunt" })
+			await stop.scrollIntoViewIfNeeded()
+			await stop.tap()
+		}
+	})
+
+	test("a pick from the chooser at full ends at small, with the clue", async ({
+		page,
+	}) => {
+		await stubSpeech(page)
+		await ready(page, "/solar_system?lang=en&reading=simple")
+		await openTool(page, "hunt")
+		await chooserInView(page)
+		await handle(page).tap()
+		await restsAt(page, "full")
+		await lookAndFind(page).tap()
+		await clueFolded(page)
+	})
+
+	test("End hunt from a clue at full opens the chooser at half", async ({
+		page,
+	}) => {
+		await ready(page, "/solar_system?hunt=firstSteps&lang=en&reading=standard")
+		await clueFolded(page)
+		await handle(page).tap()
+		await restsAt(page, "half")
+		// a tap would fold it again: a clue goes on up by a drag
+		const at = await handleAt(page)
+		await swipe(page, at.x, at.y, -300)
+		await restsAt(page, "full")
+		const end = page
+			.locator("#hunt-panel")
+			.getByRole("button", { name: "End hunt" })
+		await end.scrollIntoViewIfNeeded()
+		await end.tap()
+		await chooserInView(page)
+	})
+})
+
+for (const phone of [PHONE, { width: 360, height: 640 }]) {
+	test.describe(`one scroller in the sheet, ${phone.width}x${phone.height}`, () => {
+		test.use({ viewport: phone, hasTouch: true, isMobile: true })
+
+		test("a finger scrolls the hunt's chooser: from its cards to the Start of your own hunt and back", async ({
+			page,
+		}) => {
+			await ready(page, "/solar_system?lang=en&reading=simple")
+			await openTool(page, "hunt")
+			await chooserInView(page)
+			const panel = page.locator("#hunt-panel")
+			const card = panel.locator("[data-hunt]")
+			const content = page.getByTestId("sheet-content")
+
+			// your own hunt, opened: more than the sheet shows at either size
+			const own = panel.getByText("Make your own hunt")
+			await reach(page, own)
+			await own.tap()
+			const start = panel.getByRole("button", { name: "Start", exact: true })
+			await expect(start).toBeAttached()
+			await expect
+				.poll(() =>
+					content.evaluate(
+						(element) => element.scrollHeight - element.clientHeight,
+					),
+				)
+				.toBeGreaterThan(200)
+			await content.evaluate((element) => {
+				element.scrollTop = 0
+			})
+			await restsAt(page, "half")
+			const header = panel.locator("header")
+			const headerAt = (await header.boundingBox())!.y
+
+			// a finger from a hunt's card: the list moves, the sheet and the header stay, the hunt does not start
+			const { x, y } = await low(page)
+			const on = (await card.first().boundingBox())!
+			const onCard = on.y + on.height - 10
+			expect(
+				await page.evaluate(
+					({ x, y }) =>
+						document.elementFromPoint(x, y)?.closest("[data-hunt]") !== null,
+					{ x, y: onCard },
+				),
+			).toBe(true)
+			await scrollWith(page, x, onCard, -40)
+			await expect.poll(() => scrolled(page)).toBeGreaterThan(10)
+			await expect(page.getByTestId("hunt-progress")).toHaveCount(0)
+			await restsAt(page, "half")
+			expect((await header.boundingBox())!.y).toBeCloseTo(headerAt, 0)
+
+			// the choice of difficulty passes under the header, never over it
+			await page.getByTestId("hunt-difficulty").evaluate((element) => {
+				const content = document.querySelector("[data-testid=sheet-content]")!
+				const under = document
+					.querySelector("#hunt-panel header")!
+					.getBoundingClientRect()
+				const box = element.getBoundingClientRect()
+				content.scrollTop +=
+					box.top + box.height / 2 - (under.top + under.height / 2)
+			})
+			expect(await headerOnTop(header)).toBe(true)
+
+			// on to the last card, and your own hunt's Start
+			await reach(page, card.last())
+			await reach(page, start)
+			await expect(start).toBeDisabled()
+			await restsAt(page, "half")
+			expect((await header.boundingBox())!.y).toBeCloseTo(headerAt, 0)
+
+			// and back down the list with a finger, the sheet staying, up to its top
+			const atStart = await scrolled(page)
+			await scrollWith(page, x, y - 100, 100)
+			await expect.poll(() => scrolled(page)).toBeLessThan(atStart - 10)
+			await content.evaluate((element) => {
+				element.scrollTop = 40
+			})
+			await scrollWith(page, x, y - 100, 100)
+			await expect.poll(() => scrolled(page)).toBe(0)
+			await restsAt(page, "half")
+
+			// a finger on the header drags the sheet, it scrolls nothing
+			const top = (await header.boundingBox())!
+			// three quarters of the way: nearer small, and not so far that it closes
+			const pull = (await content.boundingBox())!.height * 0.75
+			await swipe(page, x, top.y + top.height / 2, pull)
+			await restsAt(page, "small")
+			await expect(panel).toBeVisible()
+			expect(await scrolled(page)).toBe(0)
+			await handle(page).tap()
+			await restsAt(page, "half")
+
+			// a pull down from the top lowers the sheet
+			const open = (await content.boundingBox())!
+			await swipe(page, x, open.y + 70, pull)
+			await restsAt(page, "small")
+			await expect(panel).toBeVisible()
+
+			// and a tap on a card starts its hunt
+			await handle(page).tap()
+			await restsAt(page, "half")
+			await card.first().tap()
+			await clueFolded(page)
+		})
+
+		test("a finger scrolls every panel that scrolls for itself elsewhere, and nothing in the content holds it back", async ({
+			page,
+		}) => {
+			await ready(page, "/solar_system?lang=en&reading=simple")
+			for (const tool of ["birthday", "sky", "spacecraft"] as const) {
+				await openTool(page, tool)
+				await restsAt(page, "half")
+				// it may have opened with its main action brought into view
+				await page.getByTestId("sheet-content").evaluate((element) => {
+					element.scrollTop = 0
+				})
+				await fingerScrollsUp(page)
+				await restsAt(page, "half")
+				expect(await heldBack(page), tool).toEqual([])
+			}
+		})
+
+		test("a finger scrolls the hunt's clue, with its hints", async ({
+			page,
+		}) => {
+			await stubSpeech(page)
+			await ready(
+				page,
+				"/solar_system?hunt=firstSteps&lang=en&reading=standard",
+			)
+			await expect(page.getByTestId("hunt-clue")).toBeVisible()
+			await restsAt(page, "small")
+			await handle(page).tap()
+			await restsAt(page, "half")
+			await page.getByTestId("hunt-hint").tap()
+			await restsAt(page, "half")
+			await fingerScrollsUp(page)
+			await restsAt(page, "half")
+			expect(await heldBack(page)).toEqual([])
+		})
+	})
+}
+
+test.describe("a phone on its side, 844x390: a dock, no sheet", () => {
+	test.use({
+		viewport: { width: 844, height: 390 },
+		hasTouch: true,
+		isMobile: true,
+	})
+
+	test("a finger scrolls the hunt's chooser inside its panel", async ({
+		page,
+	}) => {
+		await ready(page, "/solar_system?lang=en&reading=simple")
+		await expect(sheet(page)).toHaveCount(0)
+		await openTool(page, "hunt")
+		const card = page.locator("#hunt-panel [data-hunt]").first()
+		await expect(card).toBeVisible()
+		const box = (await page.locator("#hunt-panel").boundingBox())!
+		await swipe(page, box.x + box.width / 2, box.y + box.height - 20, -100, 12)
+		// the panel's own scroller moves, whichever element under the header it is
+		await expect
+			.poll(() =>
+				card.evaluate((element) => {
+					let moved = 0
+					for (
+						let at = element.parentElement;
+						at !== null;
+						at = at.parentElement
+					)
+						moved += at.scrollTop
+					return moved
+				}),
+			)
+			.toBeGreaterThan(10)
+	})
+})
+
+test("on a laptop a panel's body still scrolls for itself", async ({
+	page,
+}) => {
+	await page.setViewportSize({ width: 1366, height: 768 })
+	await ready(page, "/solar_system?lang=en")
+	const body = (panel: string) =>
+		page.locator(`${panel} > [class*="_body_"]`).evaluate((element) => {
+			const style = getComputedStyle(element)
+			return `${style.overflowY} ${style.overscrollBehaviorY}`
+		})
+	await openTool(page, "spacecraft")
+	expect(await body("[data-dock-panel=spacecraft]")).toBe("auto contain")
+	await openTool(page, "birthday")
+	expect(await body("#birthday-panel")).toBe("auto contain")
+	await openTool(page, "hunt")
+	expect(await body("#hunt-panel")).toBe("auto contain")
 })
 
 test("laptops and tablets keep the dock: no sheet", async ({ browser }) => {

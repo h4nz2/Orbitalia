@@ -504,8 +504,9 @@
 		display: block;
 		max-height: none;
 		width: 100%;
-		/* the sheet scrolls the light panel's words: no scroller inside the scroller (#62) */
+		/* the sheet scrolls a panel's words: no scroller inside the scroller (#62) */
 		--light-panel-body-max: none;
+		--panel-body-overflow: visible;
 	}
 
 	.sheet .dock > * {
@@ -515,17 +516,26 @@
 		padding-top: 0;
 	}
 
+	/*
+	 * One scroller in the sheet: its content. A `contain` meant for a laptop, or
+	 * a phone on its side, would end a finger's scroll even at a box with nothing
+	 * to scroll, and the content would never move.
+	 */
+	.sheet .sheetContent * {
+		overscroll-behavior: auto;
+	}
+
 	/* a world's card: a sideways finger is a swipe to the next world (#62), up and down still scroll */
 	.sheet .info [data-card-body] {
 		touch-action: pan-y;
 	}
 
-	/* the header of what it shows stays in view while its words scroll, and drags the sheet */
+	/* the header of what it shows stays in view while its words scroll, and drags the sheet; over a control's own layers (a slider's thumb is 3) */
 	.sheet .dock > [data-sheet-shown] > header,
 	.sheet .info > * > header {
 		position: sticky;
 		top: 0;
-		z-index: 2;
+		z-index: 4;
 		background: rgb(18, 20, 26);
 		touch-action: none;
 	}
@@ -534,7 +544,7 @@
 	.sheet [data-sheet-shown] [data-sheet-footer] {
 		position: sticky;
 		bottom: 0;
-		z-index: 2;
+		z-index: 4;
 		padding-block: 0.375rem;
 		background: rgb(18, 20, 26);
 	}

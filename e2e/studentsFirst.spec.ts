@@ -340,9 +340,7 @@ for (const phone of PHONES) {
 
 			// a tile does what the menu's item does: the hunt opens in the tiles' place
 			await openTool(page, "hunt")
-			await expect(
-				page.locator("[data-sheet-shown][data-sheet-kind=hunt]"),
-			).toBeVisible()
+			await expect(page.locator("#hunt-panel[data-sheet-shown]")).toBeVisible()
 			await expect(panel).toHaveCount(0)
 			await expect(page.getByTestId("tools-menu")).toHaveAttribute(
 				"data-variant",
