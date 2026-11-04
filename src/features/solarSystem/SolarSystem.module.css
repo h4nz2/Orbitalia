@@ -622,6 +622,9 @@
  * above the bottom panels. While it plays the body card gives way to the
  * caption and the rest of the HUD steps back (still usable: hover or focus
  * brings a panel back); `data-intro` on <html> is set by intro/IntroOverlay.tsx.
+ * On a phone the band the camera frames into (#61) ends at the caption's top:
+ * on an upright one the sheet writes it so, on one on its side the open row
+ * ends there.
  */
 .intro {
 	grid-row: 2;
@@ -682,11 +685,16 @@
 		grid-row: 5;
 	}
 
-	/* on its side (#58) the rows are paired: the captions and hints sit in the open middle row */
+	/* on its side (#58) the rows are paired: the hints sit in the open middle row */
 	@media (orientation: landscape) {
 		.intro,
 		:global(html[data-intro="hints"]) .intro {
 			grid-row: 2;
+		}
+
+		/* while it plays the caption has the time bar's empty row, so the open row (the band, #61) ends above it */
+		:global(html[data-intro="playing"]) .intro {
+			grid-row: 3;
 		}
 	}
 }

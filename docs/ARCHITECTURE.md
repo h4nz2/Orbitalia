@@ -557,6 +557,13 @@ Director (`camera/director.ts`, unit-tested frame by frame):
   and the inner planets). The scale is the one non-camera cue: `intro/intro.ts` (`useIntroStore`, `watchIntro`)
   watches the sequence and switches the scale at the last beat (`useScaleStore.switchTo`). Tours (#28) should do the
   same for their own cues; there is no second player.
+- **Framed on a phone (#61):** what the opening is about stands in the middle of what can be seen, whole and clear of
+  the caption. On an upright phone the sheet is away (`display: none`) and the caption's card stands in its place, so
+  the band ("Framing what is free") runs from under the top row to the caption's top; it follows the caption's height,
+  which changes with a beat's words, and since a beat's words change as its move starts, that glide is part of the
+  move. On a phone on its side the caption has the time bar's empty row while it plays, so the open row
+  (`dock/FreeArea.tsx`) ends above it. At the hand-over the sheet comes back, the band is the sheet's and the camera
+  glides to it; the hints don't count towards the band. Elsewhere the whole canvas is framed, as everywhere.
 - **Never in the way:** anything that interrupts a sequence ends the opening at once (a drag, wheel or pinch, a body
   chosen in the picker, Escape, the home button, the Skip button, another sequence); an interrupted opening's
   sequence is stopped, never left for a tour player to resume. While it is paused a drag only looks around (a paused
@@ -699,13 +706,17 @@ canvas, exactly as before.
   measured at mount (a layout effect, before the first frame) and by a `ResizeObserver` on the cell, the page and
   every piece of the HUD (a `MutationObserver` adds new ones), never per frame; hiding the controls (#29) leaves the whole canvas. `insetShares(area)` turns it into
   shares of the height and never leaves less than `MIN_FREE_SHARE` (15 %) between them (a band round the free
-  band's centre, kept on the canvas): a thinner band would shrink the subject to a speck.
+  band's centre, kept on the canvas): a thinner band would shrink the subject to a speck. A cover as high as the
+  whole canvas is no measurement (nothing that stops under the top row reads that way, only a box that isn't there):
+  no insets, the picture in the middle.
 - **The sheet's band (#60).** On an upright phone `sheet/Sheet.tsx` writes `{ width, height, top, bottom }`: the
   bottom of the top row (`[data-sheet-top]`: where, More, the badges under them) and the top of the time chip
   (`[data-sheet-above]`; the gesture hint above it while it shows, #62) or of the sheet, whichever is higher,
-  measured from the canvas's bottom. It writes when the
-  sheet comes to rest (after a snap's `transitionend`, or at most `SNAP_WAIT_MS` later on a busy machine), when the
-  screen or the top row resizes, and when the controls hide or show; never during a drag. `dock/FreeArea.tsx`
+  measured from the canvas's bottom. What has no box counts as nothing: while the opening plays the sheet is
+  `display: none` and the caption's card, `data-sheet-above` too, is the band's foot ("The first ten seconds"). It
+  writes when the sheet comes to rest (after a snap's `transitionend`, or at most `SNAP_WAIT_MS` later on a busy
+  machine), when the screen or the top row resizes, when the controls hide or show, and when the opening's caption
+  appears or changes height; never during a drag. `dock/FreeArea.tsx`
   renders nothing there (`useUprightPhone()`), so there is one writer at a time, and `SheetBand` draws an invisible
   `[data-free-area]` box over the band that was written, for tests. Every reader (the director, the hunt, the moon
   system shot) picks it up with no other change.

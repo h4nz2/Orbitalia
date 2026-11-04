@@ -48,6 +48,19 @@ describe("the free part of the screen (#61)", () => {
 		expect(top.bottom).toBeCloseTo(1 - MIN_FREE_SHARE, 12)
 	})
 
+	it("takes a cover as high as the canvas for no measurement: the picture stays in the middle", () => {
+		// a sheet with no box, its top read as the screen's
+		expect(
+			insetShares({ width: 390, height: 844, top: 58, bottom: 844 }),
+		).toEqual(NO_INSETS)
+		expect(
+			insetShares({ width: 390, height: 844, top: 58, bottom: 900 }),
+		).toEqual(NO_INSETS)
+		expect(
+			insetShares({ width: 390, height: 844, top: 844, bottom: 0 }),
+		).toEqual(NO_INSETS)
+	})
+
 	it("ignores a measurement that moved by less than a pixel", () => {
 		const { setArea } = useFreeAreaStore.getState()
 		setArea({ width: 390, height: 844, top: 122, bottom: 206 })
