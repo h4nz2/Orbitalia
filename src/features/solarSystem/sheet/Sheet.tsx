@@ -31,8 +31,9 @@
  * - **The band the scene is seen in** (#61): the sheet writes its resting top
  *   edge (the time chip's, which sits above it, or the gesture hint's above
  *   that, #62) to `useFreeAreaStore`, on rest and on resize, never during a
- *   drag. It is the band's only writer on an upright phone
- *   (`dock/FreeArea.tsx` stands down there).
+ *   drag; while the opening plays (#30) it is away, and the top of the
+ *   caption in its place is written instead. It is the band's only writer on
+ *   an upright phone (`dock/FreeArea.tsx` stands down there).
  */
 import {
 	useCallback,
@@ -60,6 +61,7 @@ import {
 } from "@/store/sheet"
 import { useTourStore } from "@/store/tour"
 
+import { useIntroStore } from "../intro/intro"
 import { dismissGestureHint, useGestureHintStore } from "./gestureHint"
 import {
 	HALF_SHARE,
@@ -377,6 +379,7 @@ export interface SheetProps {
 export function Sheet({ content, bottom }: SheetProps) {
 	const { t } = useI18n()
 	const active = useUprightPhone()
+	const opening = useIntroStore((state) => state.status === "playing")
 	const height = useSheetStore((state) => state.height)
 	const dragging = useSheetStore((state) => state.dragging)
 	const setHeight = useSheetStore((state) => state.setHeight)
@@ -548,11 +551,13 @@ export function Sheet({ content, bottom }: SheetProps) {
 		}
 		const hudTop = hud.getBoundingClientRect().top
 		const top = topRowBottom(hud) + (hudTop - screen.top)
-		// the time chip, a flight's readout and the gesture hint (#62) sit above the sheet
-		let edge = root.getBoundingClientRect().top
-		for (const element of hud.querySelectorAll<HTMLElement>(
-			"[data-sheet-above]",
-		))
+		// the sheet, the time chip and the gesture hint (#62) above it, or the opening's
+		// caption (#30) in its place: what has no box counts as nothing
+		let edge = screen.bottom
+		for (const element of [
+			root,
+			...hud.querySelectorAll<HTMLElement>("[data-sheet-above]"),
+		])
 			if (element.getClientRects().length > 0)
 				edge = Math.min(edge, element.getBoundingClientRect().top)
 		useFreeAreaStore.getState().setArea({
@@ -790,6 +795,18 @@ export function Sheet({ content, bottom }: SheetProps) {
 		]
 		return () => stops.forEach((stop) => stop())
 	}, [active, writeFreeArea, scheduleWrite])
+
+	// the opening (#30) takes the sheet away, and the band ends at its caption from the
+	// first frame on, at whatever height the beat's words give it; at its end the sheet
+	// comes back and the observer above brings the sheet's band
+	useEffect(() => {
+		const hud = rootRef.current?.parentElement
+		if (!active || !opening || hud == null) return
+		const observer = new ResizeObserver(() => writeFreeArea())
+		for (const element of hud.querySelectorAll("[data-sheet-above]"))
+			observer.observe(element)
+		return () => observer.disconnect()
+	}, [active, opening, writeFreeArea])
 
 	// —— moving it ——————————————————————————————————————————————
 

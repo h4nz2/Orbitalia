@@ -76,8 +76,10 @@ export const useFreeAreaStore = create<FreeAreaState>()((set, get) => ({
 /**
  * The insets of `area` as shares of its height, with at least
  * `MIN_FREE_SHARE` of the height left between them (a band round the free
- * band's centre, kept on the canvas). No height: no insets. Written into
- * `out` (the camera asks every frame).
+ * band's centre, kept on the canvas). No height, or a cover as high as the
+ * whole canvas (nothing stops under the top row but a box that isn't there):
+ * no insets, the picture in the middle. Written into `out` (the camera asks
+ * every frame).
  */
 export function insetShares(
 	area: FreeArea,
@@ -86,6 +88,11 @@ export function insetShares(
 	const height = area.height > 0 ? area.height : 0
 	let top = height > 0 ? Math.max(0, area.top / height) : 0
 	let bottom = height > 0 ? Math.max(0, area.bottom / height) : 0
+	if (top >= 1 || bottom >= 1) {
+		out.top = 0
+		out.bottom = 0
+		return out
+	}
 	const free = 1 - top - bottom
 	if ((top > 0 || bottom > 0) && free < MIN_FREE_SHARE) {
 		// the band's centre, kept where a band of the least height still fits

@@ -61,6 +61,7 @@ const Opening = () => {
 			data-testid="intro"
 			data-beat={id}
 			data-paused={paused || undefined}
+			data-sheet-above
 		>
 			<div
 				className={classes.caption}

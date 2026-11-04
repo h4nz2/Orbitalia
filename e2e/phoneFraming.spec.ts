@@ -101,11 +101,16 @@ test.describe("on an upright phone", () => {
 		page,
 	}) => {
 		await ready(page, "/solar_system?focus=earth&lang=en")
+		const unfolding = await freeBand(page)
 		await expandCard(page)
 		await expect(page.getByTestId("card-toggle")).toHaveAttribute(
 			"aria-expanded",
 			"true",
 		)
+		// the sheet writes the band once it has come to rest (#60), and the camera glides after that
+		await expect
+			.poll(async () => (await freeBand(page)).bottom)
+			.toBeLessThan(unfolding.bottom - 20)
 		await cameraAtRest(page, 10)
 		const band = await freeBand(page)
 		const earth = (await screenOf(page, "earth"))!
@@ -339,6 +344,36 @@ test.describe("on an upright phone", () => {
 		await expect
 			.poll(centre)
 			.toEqual({ lifted: true, onPivot: true, centred: true })
+	})
+
+	test("a sheet with no box counts as no sheet: the band runs to the screen's foot, and back", async ({
+		page,
+	}) => {
+		await ready(page, "/solar_system?lang=en")
+		const withSheet = await freeBand(page)
+		await page.evaluate(() => {
+			document.querySelector<HTMLElement>(
+				"[data-testid=sheet]",
+			)!.style.display = "none"
+		})
+		await expect
+			.poll(async () => (await freeBand(page)).bottom, { timeout: 30_000 })
+			.toBeGreaterThan(843)
+		expect((await freeBand(page)).top).toBeCloseTo(withSheet.top, 0)
+		await cameraAtRest(page)
+		const lift = await page.evaluate(
+			() => window.__orbitalia!.camera().pivotLift,
+		)
+		expect(lift).toBeCloseTo(-withSheet.top / 2 / 844, 3)
+
+		await page.evaluate(() => {
+			document.querySelector<HTMLElement>(
+				"[data-testid=sheet]",
+			)!.style.display = ""
+		})
+		await expect
+			.poll(async () => (await freeBand(page)).bottom, { timeout: 30_000 })
+			.toBeCloseTo(withSheet.bottom, 0)
 	})
 
 	test("Look and find: every world a clue asks for is in sight while the clue is up", async ({

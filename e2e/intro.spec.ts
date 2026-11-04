@@ -1,4 +1,4 @@
-import { expect, test, type Page } from "@playwright/test"
+import { expect, test, type Browser, type Page } from "@playwright/test"
 
 import { cameraAtRest } from "./support/scene"
 
@@ -140,6 +140,88 @@ const hints = (page: Page) => page.getByTestId("intro-hints")
 /** Waits until the caption of `beat` is on screen. */
 const onBeat = (page: Page, beat: string) =>
 	expect(card(page)).toHaveAttribute("data-beat", beat, { timeout: 60_000 })
+
+/** Holds the opening on its first caption (the card's pause; ← back to it if a slow machine has moved on). */
+const heldOnEarth = async (page: Page) => {
+	await expect(pause(page)).toBeVisible({ timeout: 60_000 })
+	await pause(page).tap()
+	await expect(paused(page)).toBeVisible()
+	const until = Date.now() + 60_000
+	while ((await card(page).getAttribute("data-beat")) !== "earth") {
+		if (Date.now() > until)
+			throw new Error("the opening never went back to its first caption")
+		await page.keyboard.press("ArrowLeft")
+	}
+}
+
+/** Boxes on the scene's canvas, and where `id` is drawn on it, read together with the canvas's own box. */
+const picture = (page: Page, id: string) =>
+	page.evaluate((id) => {
+		const canvas = document.querySelector("canvas")!.getBoundingClientRect()
+		const box = (element: Element) => {
+			const { top, bottom } = element.getBoundingClientRect()
+			return { top: top - canvas.y, bottom: bottom - canvas.y }
+		}
+		const shown = [...document.querySelectorAll("[data-sheet-top]")].filter(
+			(element) => element.getClientRects().length > 0,
+		)
+		return {
+			width: canvas.width,
+			band: box(document.querySelector("[data-free-area]")!),
+			topRow: Math.max(...shown.map((element) => box(element).bottom)),
+			caption: box(document.querySelector("[data-testid=intro]")!),
+			at: window.__orbitalia!.screenOf(id)!,
+		}
+	}, id)
+
+/** At rest on this beat: the band runs from under the top row to the caption, and `id` stands in its middle. */
+const inTheBand = async (page: Page, id: string) => {
+	await cameraAtRest(page)
+	const { width, band, topRow, caption, at } = await picture(page, id)
+	// the grid's gap, under the top row and above the caption, on a phone on its side
+	expect(band.top - topRow).toBeGreaterThanOrEqual(-1)
+	expect(band.top - topRow).toBeLessThan(16)
+	expect(caption.top - band.bottom).toBeGreaterThanOrEqual(-1)
+	expect(caption.top - band.bottom).toBeLessThan(16)
+	// (the free area is kept to whole pixels)
+	expect(Math.abs(at.y - (band.top + band.bottom) / 2)).toBeLessThan(1.5)
+	expect(Math.abs(at.x - width / 2)).toBeLessThan(1.5)
+	return { width, band, at }
+}
+
+/**
+ * On from the Earth beat, held: what each beat is about stands in the middle of
+ * the band, Earth with the Moon in sight, and the Sun from the inner planets on.
+ * Returns the last beat's band.
+ */
+const throughTheBeats = async (page: Page) => {
+	await next(page).tap()
+	await onBeat(page, "moon")
+	const { band } = await inTheBand(page, "earth")
+	const { at: moon } = await picture(page, "moon")
+	expect(moon.y).toBeGreaterThan(band.top)
+	expect(moon.y).toBeLessThan(band.bottom)
+	let last = band
+	for (const beat of ["inner", "system", "scale"]) {
+		await next(page).tap()
+		await onBeat(page, beat)
+		last = (await inTheBand(page, "sun")).band
+	}
+	return last
+}
+
+/** How far the band's foot is from the time chip's top, px: the sheet's band at rest (the hints don't count). */
+const bandFromChip = (page: Page) =>
+	page.evaluate(() => {
+		const band = document
+			.querySelector("[data-free-area]")!
+			.getBoundingClientRect().bottom
+		const chip = document
+			.querySelector("[data-testid=time-chip]")!
+			.closest("[data-sheet-above]")!
+			.getBoundingClientRect().top
+		return Math.abs(band - chip)
+	})
 
 test.describe("a first visit", () => {
 	test.use(firstVisit)
@@ -554,6 +636,129 @@ test.describe("a first visit", () => {
 		await expect(hints(page)).toContainText("Mit zwei Fingern zoomen")
 		await context.close()
 	})
+
+	/** Opens the opening on a touch screen of this size, held on its first beat so a slow machine never races it. */
+	const heldOpening = async (
+		browser: Browser,
+		viewport: { width: number; height: number },
+	) => {
+		const context = await browser.newContext({
+			viewport,
+			isMobile: true,
+			hasTouch: true,
+		})
+		const page = await context.newPage()
+		await page.goto("/solar_system?lang=en")
+		await handle(page)
+		await heldOnEarth(page)
+		return { context, page }
+	}
+
+	for (const viewport of [
+		{ width: 390, height: 844 },
+		{ width: 360, height: 640 },
+	])
+		test(`on a phone held upright, ${viewport.width} x ${viewport.height}, what it is about stands in the middle of what can be seen`, async ({
+			browser,
+		}) => {
+			const { context, page } = await heldOpening(browser, viewport)
+			const earth = await inTheBand(page, "earth")
+			// whole: in the width, and clear of the top row and the caption
+			expect(earth.at.x - earth.at.discPx).toBeGreaterThanOrEqual(0)
+			expect(earth.at.x + earth.at.discPx).toBeLessThanOrEqual(earth.width)
+			expect(earth.at.y - earth.at.discPx).toBeGreaterThanOrEqual(
+				earth.band.top,
+			)
+			expect(earth.at.y + earth.at.discPx).toBeLessThanOrEqual(
+				earth.band.bottom,
+			)
+
+			// the caption grows with the longer words, and the band ends at it
+			const last = await throughTheBeats(page)
+			expect(last.bottom).toBeLessThan(earth.band.bottom)
+
+			// the hand-over: the sheet is back, and the band is the sheet's
+			await skip(page).tap()
+			await expect(hints(page)).toBeVisible({ timeout: 60_000 })
+			await expect
+				.poll(() => bandFromChip(page), { timeout: 30_000 })
+				.toBeLessThan(2)
+			await context.close()
+		})
+
+	test("on a phone, holding the opening moves nothing: the caption, and with it the band, keep their height", async ({
+		browser,
+	}) => {
+		const context = await browser.newContext({
+			viewport: { width: 390, height: 844 },
+			isMobile: true,
+			hasTouch: true,
+		})
+		const page = await context.newPage()
+		await page.goto("/solar_system?lang=en")
+		await expect(pause(page)).toBeVisible({ timeout: 60_000 })
+		const playing = (await card(page).boundingBox())!.height
+		await pause(page).tap()
+		await expect(paused(page)).toBeVisible()
+		expect((await card(page).boundingBox())!.height).toBeCloseTo(playing, 0)
+		await context.close()
+	})
+
+	test("on a phone on its side the caption keeps clear of Earth too", async ({
+		browser,
+	}) => {
+		const { context, page } = await heldOpening(browser, {
+			width: 844,
+			height: 390,
+		})
+		const earth = await inTheBand(page, "earth")
+		expect(earth.at.y - earth.at.discPx).toBeGreaterThanOrEqual(earth.band.top)
+		expect(earth.at.y + earth.at.discPx).toBeLessThanOrEqual(earth.band.bottom)
+		await throughTheBeats(page)
+		await context.close()
+	})
+
+	test("an upright tablet frames the whole canvas, the caption clear of Earth", async ({
+		browser,
+	}) => {
+		const { context, page } = await heldOpening(browser, {
+			width: 820,
+			height: 1180,
+		})
+		await cameraAtRest(page)
+		const { at, caption } = await picture(page, "earth")
+		expect(
+			await page.evaluate(() => window.__orbitalia!.camera().pivotLift),
+		).toBe(0)
+		expect(at.x).toBeCloseTo(410, 0)
+		expect(at.y).toBeCloseTo(590, 0)
+		expect(at.y + at.discPx).toBeLessThan(caption.top)
+		await context.close()
+	})
+})
+
+test("on an upright phone, replayed from More it is framed the same, and Escape brings the sheet's band back", async ({
+	browser,
+}) => {
+	const context = await browser.newContext({
+		viewport: { width: 390, height: 844 },
+		isMobile: true,
+		hasTouch: true,
+	})
+	const page = await context.newPage()
+	await page.goto("/solar_system?lang=en")
+	await handle(page)
+	await expect(page.getByTestId("intro")).toHaveCount(0)
+	await page.getByTestId("more-menu").tap()
+	await page.getByRole("button", { name: "Play the opening again" }).tap()
+	await heldOnEarth(page)
+	await inTheBand(page, "earth")
+	await page.keyboard.press("Escape")
+	await expect(card(page)).toHaveCount(0)
+	await expect
+		.poll(() => bandFromChip(page), { timeout: 30_000 })
+		.toBeLessThan(2)
+	await context.close()
 })
 
 test("a returning visitor replays it from the Help menu, and Escape ends it", async ({
