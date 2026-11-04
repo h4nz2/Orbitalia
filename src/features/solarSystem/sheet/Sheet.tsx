@@ -9,7 +9,8 @@
  *
  * - **One at a time.** What appeared in the dock last is on show
  *   (`data-sheet-shown`); with nothing in the dock, the body card. A new
- *   thing opens at its kind's height (`DEFAULT_HEIGHT`).
+ *   thing, or one that turns into another kind (the hunt's chooser into its
+ *   clue), opens at its kind's height (`DEFAULT_HEIGHT`).
  * - **Three heights** (`heights.ts`): `small` shows one line of it (a panel's
  *   header; the card, a tour and the hunt fold themselves, their own fold
  *   toggles and the sheet's height being one and the same), `half` about
@@ -149,6 +150,9 @@ const REVEAL_MARGIN = 8
 
 /** How far above the edge the words fade (`.sheetContent[data-sheet-more]` in SolarSystem.module.css), rem. */
 const FADE_REM = 1.5
+
+/** The room above the sheet for the time chip, below full (`.sheet` in SolarSystem.module.css), rem. */
+const CHIP_ROOM_REM = 3.25
 
 /**
  * Scrolls the sheet's content `area` so the main action of `element` (its
@@ -388,8 +392,9 @@ export function Sheet({ content, bottom }: SheetProps) {
 	const [shown, setShown] = useState<{
 		element: Element
 		inDock: boolean
+		kind: SheetKind | null
 	} | null>(null)
-	const kind = kindOf(shown?.element ?? null, shown?.inDock ?? false)
+	const kind = shown?.kind ?? null
 	const kindRef = useRef(kind)
 	// first of the layout effects, so the ones below read this render's kind
 	useLayoutEffect(() => {
@@ -424,6 +429,8 @@ export function Sheet({ content, bottom }: SheetProps) {
 			return
 		}
 		let order: Element[] = []
+		let seen: Element | null = null
+		let seenKind: SheetKind | null = null
 		const update = () => {
 			const children = [...dock.children]
 			order = order.filter((child) => children.includes(child))
@@ -433,20 +440,35 @@ export function Sheet({ content, bottom }: SheetProps) {
 			for (const child of children)
 				child.toggleAttribute("data-sheet-shown", child === top)
 			const element = top ?? info.firstElementChild
+			const inDock = top !== null
+			const kind = kindOf(element, inDock)
+			if (element !== seen || kind !== seenKind) {
+				seen = element
+				seenKind = kind
+				useSheetStore.getState().setBandPending(true)
+			}
 			setShown((previous) =>
-				previous?.element === element
+				previous?.element === element && previous.kind === kind
 					? previous
 					: element === null
 						? null
-						: { element, inDock: top !== null },
+						: { element, inDock, kind },
 			)
 		}
 		update()
 		const observer = new MutationObserver(update)
 		observer.observe(dock, { childList: true })
 		observer.observe(info, { childList: true })
+		// the same element turning into another kind: the hunt's chooser into its clue
+		const kinds = new MutationObserver(update)
+		kinds.observe(dock, {
+			attributes: true,
+			attributeFilter: ["data-sheet-kind"],
+			subtree: true,
+		})
 		return () => {
 			observer.disconnect()
+			kinds.disconnect()
 			for (const child of dock.children)
 				child.removeAttribute("data-sheet-shown")
 		}
@@ -519,7 +541,10 @@ export function Sheet({ content, bottom }: SheetProps) {
 			if (header !== null) {
 				const top = container.getBoundingClientRect().top
 				const pad = parseFloat(getComputedStyle(container).paddingBottom) || 0
-				summary = header.getBoundingClientRect().bottom - top + pad
+				// a sticky header stays put while what it heads scrolls away: where it lies unscrolled
+				const scrolled =
+					getComputedStyle(header).position === "sticky" ? area.scrollTop : 0
+				summary = header.getBoundingClientRect().bottom - top - scrolled + pad
 			}
 		}
 		const hudBox = hud.getBoundingClientRect()
@@ -529,12 +554,21 @@ export function Sheet({ content, bottom }: SheetProps) {
 		const fullChrome = chrome - strip + STRIP_FULL_PX
 		const halfCap = HALF_SHARE * hudBox.height - chrome
 		// the grid's two gaps stay: under the top row, and above the sheet
-		const gap = parseFloat(getComputedStyle(hud).rowGap) || 0
-		const fullCap =
-			rootBox.bottom - hudBox.top - (topRowBottom(hud) + 2 * gap) - fullChrome
-		// shown whole (#62, the Tools tiles): its half is all of it, up to under the top row
+		const hudStyle = getComputedStyle(hud)
+		const gap = parseFloat(hudStyle.rowGap) || 0
+		// where the sheet rests: content too tall for it, not yet given its height, pushes it past that
+		const bottom = Math.min(
+			rootBox.bottom,
+			hudBox.bottom - (parseFloat(hudStyle.paddingBottom) || 0),
+		)
+		const room = bottom - hudBox.top - (topRowBottom(hud) + 2 * gap)
+		const fullCap = room - fullChrome
+		// shown whole (#62, the Tools tiles, the hunt's chooser): its half is all of it, up to under the top row and the chip's room
 		const whole = (element as HTMLElement).hasAttribute("data-sheet-whole")
-		return { natural, summary, halfCap: whole ? fullCap : halfCap, fullCap }
+		const rem = parseFloat(getComputedStyle(document.documentElement).fontSize)
+		const wholeCap =
+			room - (chrome - strip + stripPx("half")) - CHIP_ROOM_REM * rem
+		return { natural, summary, halfCap: whole ? wholeCap : halfCap, fullCap }
 	}, [shown, height])
 
 	/** Writes the band the scene is seen in (#61): from under the top row to the top of the chip or the sheet. */
@@ -579,19 +613,34 @@ export function Sheet({ content, bottom }: SheetProps) {
 	 */
 	const scheduleWrite = useCallback(
 		(delay = 80) => {
+			const { setBandPending } = useSheetStore.getState()
+			setBandPending(true)
 			const wait = (ms: number) => {
 				clearTimeout(writeTimer.current)
 				writeTimer.current = setTimeout(() => {
-					if (useSheetStore.getState().dragging) return
-					if (performance.now() < snapUntil.current) wait(80)
-					else writeFreeArea()
+					if (useSheetStore.getState().dragging) {
+						setBandPending(false)
+						return
+					}
+					if (performance.now() < snapUntil.current) {
+						wait(80)
+						return
+					}
+					writeFreeArea()
+					setBandPending(false)
 				}, ms)
 			}
 			wait(delay)
 		},
 		[writeFreeArea],
 	)
-	useEffect(() => () => clearTimeout(writeTimer.current), [])
+	useEffect(
+		() => () => {
+			clearTimeout(writeTimer.current)
+			useSheetStore.getState().setBandPending(false)
+		},
+		[],
+	)
 
 	/**
 	 * Fades the content out above its edge while more of it lies hidden below

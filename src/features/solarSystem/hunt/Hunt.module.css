@@ -57,7 +57,7 @@
 .body {
 	flex: 1;
 	min-height: 0;
-	overflow-y: auto;
+	overflow-y: var(--panel-body-overflow, auto);
 	padding: 0.75rem 0.875rem 0.875rem;
 	overscroll-behavior: contain;
 }
@@ -148,10 +148,17 @@
 		border-color 0.15s ease;
 }
 
-.card:hover,
 .card:focus-visible {
 	background: rgba(240, 140, 0, 0.1);
 	border-color: rgba(240, 140, 0, 0.45);
+}
+
+/* a pointer's only: under a finger the card where a tap fell would stay lit */
+@media (hover: hover) {
+	.card:hover {
+		background: rgba(240, 140, 0, 0.1);
+		border-color: rgba(240, 140, 0, 0.45);
+	}
 }
 
 /* an Easy hunt's card shows what there is to find */
@@ -187,6 +194,12 @@
 	font-weight: 600;
 	font-size: var(--mantine-font-size-sm);
 	color: var(--mantine-color-orange-4);
+}
+
+@media $touch {
+	.customSummary {
+		padding-block: 0.75rem;
+	}
 }
 
 .hints {

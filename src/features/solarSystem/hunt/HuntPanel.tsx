@@ -49,6 +49,7 @@ import { useI18n } from "@/i18n"
 import { useBodyName } from "@/i18n/bodies"
 import { Hint } from "@/primitives/hint"
 import { useHuntStore } from "@/store/hunt"
+import { whenSheetRests } from "@/store/sheet"
 import { useSimStore } from "@/store/sim"
 
 import { takePostcard } from "../postcard/take"
@@ -275,13 +276,15 @@ function useOpenHunt(): (key: string, resume?: boolean) => void {
 	}
 }
 
-/** A ready-made hunt, as a card in the chooser. */
+/** A ready-made hunt, as a card in the chooser; the first (`main`) is in view as a phone's sheet opens it. */
 const HuntCard = ({
 	hunt,
 	difficulty,
+	main,
 }: {
 	hunt: Hunt
 	difficulty: Difficulty
+	main: boolean
 }) => {
 	const i18n = useI18n()
 	const { t } = i18n
@@ -299,6 +302,7 @@ const HuntCard = ({
 			className={classes.card}
 			onClick={() => open(hunt.id, inProgress)}
 			data-hunt={hunt.id}
+			data-sheet-main={main ? "" : undefined}
 		>
 			<Group gap="xs" justify="space-between" wrap="nowrap">
 				<Text fw={700}>{title}</Text>
@@ -448,8 +452,13 @@ const Chooser = () => {
 				{t("solarSystem.hunt.choose")}
 			</Text>
 			<Stack gap="xs">
-				{hunts.map((hunt) => (
-					<HuntCard key={hunt.id} hunt={hunt} difficulty={difficulty} />
+				{hunts.map((hunt, index) => (
+					<HuntCard
+						key={hunt.id}
+						hunt={hunt}
+						difficulty={difficulty}
+						main={index === 0}
+					/>
 				))}
 				{hunts.length === 0 && (
 					<Text size="sm" c="dimmed">
@@ -484,9 +493,10 @@ const Asking = ({ question }: { question: HuntQuestion }) => {
 	const voice = useVoice(locale)
 
 	useEffect(() => watchAnswers(question), [question])
-	// Easy: to where the clue can be answered by looking, once per clue
+	// Easy: to where the clue can be answered by looking, once per clue, for the band the sheet rests at
 	useEffect(() => {
-		if (easy) goToStart(question)
+		if (!easy) return
+		return whenSheetRests(() => goToStart(question))
 	}, [easy, question])
 	useReadOut(easy ? spokenClue(question, i18n) : null)
 	// Easy: the hints shown so far light up the sky
@@ -932,8 +942,9 @@ const HuntPanel = () => {
 			aria-labelledby="hunt-title"
 			data-collapsed={collapsed || undefined}
 			data-easy={easy || undefined}
-			data-sheet-kind="hunt"
+			data-sheet-kind={hunt === null ? "panel" : "hunt"}
 			data-sheet-folds={hunt === null ? undefined : ""}
+			data-sheet-whole={hunt === null ? "" : undefined}
 		>
 			<header className={classes.header}>
 				<Group gap="xs" wrap="nowrap" justify="space-between">

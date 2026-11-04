@@ -2031,10 +2031,13 @@ controls share it; More stays a popover at the top. Laptops, tablets and a phone
 - **One at a time.** The sheet watches the dock's children (a `MutationObserver`): whatever appeared last is on
   show (`data-sheet-shown`; the CSS hides the others and the card), and when the dock is empty, the card. Opening a
   panel still closes the one before (`dock/exclusive.ts`); a tour starting puts the time controls away. A new thing
-  opens at its kind's height (`DEFAULT_HEIGHT`: the card small, a panel and the time half, a tour stop half, the hunt
-  small, the quick look half); the kind is `data-sheet-kind` on its root (`DockPanel` says "panel" or its `kind`).
-  Content marked `data-sheet-whole` (the Tools tiles, `DockPanel whole`) is shown whole at half, up to under the top
-  row, so it never scrolls; a panel's `data-sheet-main` (#62) is brought into view as it opens (see "Students
+  opens at its kind's height (`DEFAULT_HEIGHT`: the card small, a panel and the time half, a tour stop half, the hunt's
+  clue small, the quick look half); the kind is `data-sheet-kind` on its root (`DockPanel` says "panel" or its `kind`).
+  An element that turns into another kind counts as new (a second `MutationObserver`): the hunt's chooser is a panel,
+  its clue is `hunt`, so picking a hunt ends at small with the clue folded and End hunt or "Choose another hunt" at
+  half. Content marked `data-sheet-whole` (the Tools tiles, `DockPanel whole`, the hunt's chooser, whose cards lie
+  below 44 % of the screen) is shown whole at half, up to under the top row and the chip's room (`CHIP_ROOM_REM`), so
+  it scrolls only if it is taller than that (the chooser's first card is its `data-sheet-main`); a panel's `data-sheet-main` (#62) is brought into view as it opens (see "Students
   first"). The next world's card after a swipe keeps the sheet's height.
 - **Three heights** (`heights.ts`, pure, unit-tested; content px): `small` shows one line of it: a panel's header
   (`:scope > header` or `[data-sheet-summary]`), and what folds itself (`data-sheet-folds`: the card, a tour, a sky
@@ -2042,7 +2045,11 @@ controls share it; More stays a popover at the top. Laptops, tablets and a phone
   tour's and the hunt's `collapsed`): the card's arrow raises the sheet to half, lowering it folds the card. A
   folded hunt keeps its hint button and leaves out its stars. `half` is the whole sheet at `HALF_SHARE` (44 %) of
   the screen, `full` stops under the top row (the grid's gaps kept), which stays in view. Content shorter than a
-  height shows whole at it, and equal heights count once. Headers stick to the top while the content scrolls, and a
+  height shows whole at it, and equal heights count once. The content is the one scroller in the sheet: a panel's
+  body scrolls for itself only on a laptop or a phone on its side (`--panel-body-overflow`), and `.sheet .sheetContent *`
+  takes away any `overscroll-behavior: contain`, which would end a finger's scroll even at a box with nothing to scroll
+  and leave the content unmoved. Headers stick to the top while the content scrolls, over a control's own layers (`z-index: 4`; a slider's
+  thumb is 3, a segmented control's labels 2), and a
   card's own way on (`data-sheet-footer`: a tour's Back and Next) sticks to its foot, and never rests across a
   control or a line of text above it: where the foot would cut one (a tour stop's autoplay and link at half on a
   390 x 844 phone, a line of its words on a 360 x 640 one), the content stops a little lower, so it waits wholly
@@ -2096,7 +2103,11 @@ controls share it; More stays a popover at the top. Laptops, tablets and a phone
   panels, the card and tours, the handle by tap, keys and its name, drags by handle and header, the pull from the
   content's top and no drag while it scrolls, closing, the scene never moving, the chip, the sky's lowering, the
   band at rest and never during a drag, turning the phone, the hunt's worlds above the clue, Earth at half; laptops
-  and tablets have no sheet), `heights.test.ts`, `skyTap.test.ts`.
+  and tablets have no sheet; a finger's real scroll on the hunt's chooser, from its cards to the Start of your own
+  hunt and back, on the clue with its hints and on the birthday, tonight's sky and the spacecraft list; the chooser
+  on a phone on its side; every way into the chooser at half with a card in view, a picked hunt's clue at small, also
+  from full, and at the home azimuth; End hunt from full; nothing in the content but `overscroll-behavior: auto`; a
+  panel's own scroller on a laptop), `heights.test.ts`, `skyTap.test.ts`.
 
 ### Students first: a shared link on a phone (`sheet/gestureHint.ts`, `sheet/swipe.ts`, `dock/ToolsMenu.tsx`; #62)
 
@@ -2395,7 +2406,9 @@ is the receipt. No score, no timer, no ranking, no failure state; a star for eve
   navigation store for its start view (the camera keeps one owner): `reset()` to the overview, or for `at` the
   planet with the featured moons out to the one beyond the answer (`framedMoons`, `moonSystemShot`'s direction),
   names on, Moons on. Both are framed clear of the docked panel: `clearanceOf` measures the dock (on a phone, #61:
-  the camera frames the band above the clue's panel, and the clearance is that band); the overview stays
+  the camera frames the band above the clue's panel, and the clearance is that band; picked from the chooser, the
+  sheet is on its way down, so the shot waits for the band of where it rests, `whenSheetRests`, at most 2 s, and not
+  at all without a sheet); the overview stays
   the home view when the answer and its name are clear, else it turns round the Sun the least that brings them into
   the clear (`overviewShot`, `overviewPx`; the planets keep their size, which matters in Poster, #54) and backs off
   only when no turn is enough; a moon system backs off as far as its orbits need (`moonsShotDistance`). Reduced
@@ -2446,7 +2459,8 @@ is the receipt. No score, no timer, no ranking, no failure state; a star for eve
   clue alone. "End hunt" under the clue or find (`EndHunt`; not folded, not on the finish) is the way to another
   hunt: at once with no star yet; with one it asks in its own place, Keep playing first and in focus (a double tap
   falls on it), with the speaker beside an Easy clue, and the question closes when the clue or phase moves on. The panel's × only closes: reopening carries on. The chooser opens at its top,
-  whichever box had scrolled the hunt (its body, or the phone's sheet at the height it rested at). In projector mode
+  whichever box had scrolled the hunt (its body, or the phone's sheet at the height it rested at); on an upright phone
+  at half, its cards in view, and a picked hunt's clue at small (`data-sheet-kind`, "The phone's sheet"). In projector mode
   (#29) everything grows with the root font; the e2e test checks an Easy clue at 1366 x 768 there.
 - **Links**: `?hunt=true` opens the chooser, `?hunt=<hunt id>` or `?hunt=<question ids joined by ".">` (a teacher's
   own hunt, `resolveHunt`) opens that hunt. The route keeps `hunt` on every navigation (`retainSearchParams`), so

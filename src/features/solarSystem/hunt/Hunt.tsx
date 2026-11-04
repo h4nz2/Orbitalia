@@ -70,7 +70,7 @@ export const HuntPanelSlot = () => {
 			fallback={
 				<div
 					className={`${hudClasses.panel} ${classes.panel}`}
-					data-sheet-kind="hunt"
+					data-sheet-kind={key === null ? "panel" : "hunt"}
 				>
 					<Center p="md">
 						<Loader size="sm" color="orange" />

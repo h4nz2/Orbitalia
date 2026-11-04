@@ -33,6 +33,7 @@ export const smallControls = (
 				"input:not([type=hidden])",
 				"select",
 				"textarea",
+				"summary",
 				...[
 					"button",
 					"switch",
