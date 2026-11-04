@@ -37,11 +37,6 @@ import {
 	cometSentences,
 } from "@/features/solarSystem/smallBodies/smallBodyText"
 import { headlineFacts } from "@/features/solarSystem/ui/bodyFacts"
-import {
-	crossedLine,
-	distanceLine,
-	travelTimes,
-} from "@/features/solarSystem/ui/flightFacts"
 import { scaleSentences } from "@/features/solarSystem/ui/scaleStatement"
 import { SUN_OBJECT_IDS, buildWalk } from "@/features/solarWalk/walk"
 import {
@@ -422,12 +417,9 @@ describe.each(LOCALES)("the simple level's numbers in %s (#51)", (locale) => {
 		expectClean(values, locale)
 	})
 
-	it("flights, light travel and the spacecraft", () => {
+	it("light travel and the spacecraft", () => {
 		expectClean(
 			range(2, 11).flatMap((km) => [
-				distanceLine(km, i18n),
-				crossedLine(km, i18n),
-				...travelTimes(km, i18n).map((time) => time.time),
 				formatDuration(km / 299_792.458, i18n),
 				formatDuration(km / 299_792.458, i18n, true),
 			]),

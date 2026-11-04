@@ -666,31 +666,6 @@
 			"sunlightRange": "La lumière du Soleil met entre {near} et {far} pour arriver ici, selon la position de l’astre sur sa longue orbite",
 			"sunlightRange@simple": "La lumière du Soleil met {near} pour arriver ici quand l’astre est au plus près du Soleil, et {far} quand il est au plus loin"
 		},
-		"flight": {
-			"label": "Vol",
-			"route": "{from} → {to}",
-			"route@simple": "Départ : {from} · Arrivée : {to}",
-			"distance": "Écart à cette date : {distance}",
-			"distance@simple": "Distance : {distance}",
-			"distance@advanced": "{distance} ({au}) en ligne droite à cette date",
-			"crossed": "{distance} parcourus",
-			"crossed@simple": "Jusqu’ici : {distance}",
-			"question": "Combien de temps durerait le voyage ?",
-			"question@simple": "Combien de temps faudrait-il pour y aller ?",
-			"question@advanced": "Durée du trajet à vitesse constante",
-			"light": "La lumière",
-			"light@simple": "La lumière, ce qu’il y a de plus rapide",
-			"light@advanced": "La lumière ({speed})",
-			"probe": "New Horizons, le lancement le plus rapide de l’histoire",
-			"probe@simple": "Le lancement de fusée le plus rapide de l’histoire",
-			"probe@advanced": "Vitesse de lancement de New Horizons ({speed})",
-			"car": "Une voiture à {speed}",
-			"car@simple": "Une voiture qui ne s’arrête jamais",
-			"car@advanced": "Une voiture à {speed}, sans arrêt",
-			"skip": "Passer",
-			"skip@simple": "Y être tout de suite",
-			"close": "Fermer"
-		},
 		"birthday": {
 			"open": "Ton anniversaire",
 			"openHint": "Quel âge as-tu sur les autres planètes ?",
@@ -1721,8 +1696,8 @@
 				"fly": {
 					"title": "Clique sur une planète pour y voler",
 					"title@simple": "Clique sur une planète",
-					"text": "N’importe quelle planète ou lune : clique dessus, ou tape son nom dans le champ des noms. En route, un affichage compte la vraie distance et le temps qu’il faudrait à la lumière, à la fusée la plus rapide et à une voiture.",
-					"text@simple": "Clique sur une planète et tu voles jusqu’à elle. En route, une case te dit à quelle distance elle est vraiment, et combien de temps il faudrait à une fusée."
+					"text": "N’importe quelle planète ou lune : clique dessus, ou tape son nom dans le champ des noms. En route, la caméra recule et te montre le vide entre les deux mondes.",
+					"text@simple": "Clique sur une planète et tu voles jusqu’à elle. En route, tu vois à quel point les planètes sont loin les unes des autres."
 				},
 				"trueScale": {
 					"title": "Échelle réelle",

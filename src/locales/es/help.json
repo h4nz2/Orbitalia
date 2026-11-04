@@ -126,20 +126,19 @@
 				"simple": "Haz clic en un planeta y vuelas hasta él."
 			},
 			"why": {
-				"standard": "El vuelo muestra lo separados que están los mundos, y un recuadro indica cuánto tardarían la luz, una nave espacial y un coche en hacer el mismo viaje.",
-				"simple": "Por el camino ves lo lejos que está y cuánto tardaría un coche. ¡Años y años!"
+				"standard": "El propio vuelo muestra lo separados que están los mundos: la cámara tiene que alejarse hasta verlos a los dos y, con un mundo lejano, eso es mucho camino.",
+				"simple": "Por el camino ves lo lejos que están los planetas unos de otros. ¡El espacio es enorme!"
 			},
 			"how": {
 				"standard": [
 					"Señala un planeta o su nombre: aparece un anillo con «Haz clic para volar hasta allí».",
-					"Haz clic o tócalo. Para llegar al instante, pulsa «Saltar» en el recuadro del vuelo.",
+					"Haz clic o tócalo. Si arrastras por el camino, la cámara gira, y el vuelo llega igualmente a su destino.",
 					"Si es un punto pequeño, haz clic en cualquier sitio cerca de él: la zona de clic es generosa.",
-					"El botón de la casa (o Esc) es el camino de vuelta a todo el sistema solar; un clic en el espacio vacío deja la vista como está."
+					"El botón de la casa (o Esc) es el camino de vuelta a todo el sistema solar, también en pleno vuelo; un clic en el espacio vacío deja la vista como está."
 				],
 				"simple": [
 					"Pasa el ratón por encima de un planeta. Aparece un anillo.",
 					"Haz clic en él. Ahora mira el viaje.",
-					"Pulsa «Llegar ya» si no quieres esperar.",
 					"Pulsa el botón de la casa para volver a ver todos los planetas."
 				]
 			}
@@ -778,31 +777,6 @@
 					"Haz clic en Escala real.",
 					"¿Adónde han ido los planetas? Los puntos muestran dónde están.",
 					"Haz clic en Póster para ver todos los planetas grandes a la vez. ¡Es la imagen menos real!"
-				]
-			}
-		},
-		"howFar": {
-			"title": {
-				"standard": "¿A qué distancia está?",
-				"simple": "¿Está muy lejos?"
-			},
-			"what": {
-				"standard": "Cada vuelo entre dos mundos muestra la distancia real entre ellos en la fecha que aparece en pantalla, y cuánto tardarían la luz, la nave espacial más rápida y un coche.",
-				"simple": "Cuando vuelas a un planeta, ves lo lejos que está."
-			},
-			"why": {
-				"standard": "Un coche necesitaría cientos de años para llegar a Júpiter: las cifras convierten un vuelo de unos segundos en una idea de la distancia real.",
-				"simple": "¡Un coche tardaría cientos de años en llegar a Júpiter!"
-			},
-			"how": {
-				"standard": [
-					"Vuela de un mundo a otro.",
-					"Lee el recuadro que hay encima de los controles de tiempo mientras viajas; ciérralo al llegar.",
-					"La distancia cambia con la fecha, porque los planetas se mueven."
-				],
-				"simple": [
-					"Vuela de la Tierra a otro planeta.",
-					"Lee el recuadro que hay encima de los botones de tiempo."
 				]
 			}
 		},

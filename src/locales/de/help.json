@@ -126,20 +126,19 @@
 				"simple": "Klick auf einen Planeten, und du fliegst hin."
 			},
 			"why": {
-				"standard": "Der Flug zeigt, wie weit die Welten voneinander entfernt sind, und eine Anzeige sagt, wie lange Licht, eine Raumsonde und ein Auto für dieselbe Reise bräuchten.",
-				"simple": "Unterwegs siehst du, wie weit es ist und wie lange ein Auto bräuchte. Jahre und Jahre!"
+				"standard": "Der Flug selbst zeigt, wie weit die Welten voneinander entfernt sind: Die Kamera muss sich zurückziehen, bis beide zu sehen sind, und bei einer fernen Welt ist das ein weiter Weg.",
+				"simple": "Unterwegs siehst du, wie weit die Planeten auseinander sind. Das Weltall ist riesig!"
 			},
 			"how": {
 				"standard": [
 					"Zeige auf einen Planeten oder seinen Namen: Ein Ring erscheint mit „Klicken zum Hinfliegen“.",
-					"Klicke oder tippe darauf. Um sofort zu landen, drücke „Überspringen“ in der Anzeige.",
+					"Klicke oder tippe darauf. Ziehen unterwegs dreht die Kamera, und der Flug landet trotzdem dort.",
 					"Bei einem kleinen Punkt klickst du einfach irgendwo in seine Nähe: Das Ziel ist großzügig bemessen.",
-					"Der Haus-Knopf (oder Esc) ist der Weg zurück zum ganzen Sonnensystem; ein Klick ins Leere lässt die Ansicht, wie sie ist."
+					"Der Haus-Knopf (oder Esc) ist der Weg zurück zum ganzen Sonnensystem, auch mitten im Flug; ein Klick ins Leere lässt die Ansicht, wie sie ist."
 				],
 				"simple": [
 					"Fahr mit der Maus über einen Planeten. Ein Ring taucht auf.",
 					"Klick drauf. Jetzt schau dir die Reise an.",
-					"Drück „Sofort hin“, wenn du nicht warten willst.",
 					"Drück den Haus-Knopf, dann siehst du wieder alle Planeten."
 				]
 			}
@@ -778,31 +777,6 @@
 					"Klick auf „Echter Maßstab“.",
 					"Wo sind die Planeten hin? Die Punkte zeigen, wo sie sind.",
 					"Klick auf „Poster“, dann siehst du alle Planeten groß auf einmal. Das ist das am wenigsten echte Bild!"
-				]
-			}
-		},
-		"howFar": {
-			"title": {
-				"standard": "Wie weit ist es?",
-				"simple": "Wie weit weg ist es?"
-			},
-			"what": {
-				"standard": "Jeder Flug zwischen zwei Welten zeigt ihre echte Entfernung an dem Datum auf dem Bildschirm und wie lange Licht, die schnellste Raumsonde und ein Auto bräuchten.",
-				"simple": "Wenn du zu einem Planeten fliegst, siehst du, wie weit weg er ist."
-			},
-			"why": {
-				"standard": "Ein Auto bräuchte Hunderte Jahre bis zum Jupiter: Die Zahlen machen aus einem Flug von wenigen Sekunden ein Gefühl für echte Entfernungen.",
-				"simple": "Ein Auto müsste Hunderte Jahre fahren, um zum Jupiter zu kommen!"
-			},
-			"how": {
-				"standard": [
-					"Fliege von einer Welt zu einer anderen.",
-					"Lies während der Reise die Anzeige über den Zeitknöpfen; schließe sie, wenn du angekommen bist.",
-					"Die Entfernung ändert sich mit dem Datum, weil sich die Planeten bewegen."
-				],
-				"simple": [
-					"Flieg von der Erde zu einem anderen Planeten.",
-					"Lies das Kästchen über den Zeitknöpfen."
 				]
 			}
 		},

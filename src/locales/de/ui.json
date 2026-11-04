@@ -666,31 +666,6 @@
 			"sunlightRange": "Das Sonnenlicht braucht zwischen {near} und {far} bis hierher, je nachdem, wo er gerade auf seiner langen Bahn ist",
 			"sunlightRange@simple": "Licht von der Sonne braucht {near}, wenn er ihr am nächsten ist, und {far}, wenn er am weitesten weg ist"
 		},
-		"flight": {
-			"label": "Reise",
-			"route": "{from} → {to}",
-			"route@simple": "Reise: {from} → {to}",
-			"distance": "An diesem Tag {distance} voneinander entfernt",
-			"distance@simple": "Das ist {distance}",
-			"distance@advanced": "{distance} ({au}) Luftlinie an diesem Datum",
-			"crossed": "{distance} zurückgelegt",
-			"crossed@simple": "Bisher: {distance}",
-			"question": "Wie lange würde die Reise dauern?",
-			"question@simple": "Wie lange bräuchte man bis dorthin?",
-			"question@advanced": "Reisezeit bei gleichbleibender Geschwindigkeit",
-			"light": "Licht",
-			"light@simple": "Licht, das Schnellste, was es gibt",
-			"light@advanced": "Licht ({speed})",
-			"probe": "New Horizons, der schnellste Start aller Zeiten",
-			"probe@simple": "Der schnellste Raketenstart aller Zeiten",
-			"probe@advanced": "Startgeschwindigkeit von New Horizons ({speed})",
-			"car": "Ein Auto mit {speed}",
-			"car@simple": "Ein Auto, das nie anhält",
-			"car@advanced": "Ein Auto mit {speed}, ohne Pause",
-			"skip": "Überspringen",
-			"skip@simple": "Sofort hin",
-			"close": "Schließen"
-		},
 		"birthday": {
 			"open": "Dein Geburtstag",
 			"openHint": "Wie alt bist du auf anderen Planeten?",
@@ -1721,8 +1696,8 @@
 				"fly": {
 					"title": "Klick einen Planeten an, um hinzufliegen",
 					"title@simple": "Klick einen Planeten an",
-					"text": "Jeder Planet und jeder Mond: anklicken oder seinen Namen ins Namensfeld eintippen. Unterwegs zählt eine Anzeige die echte Entfernung und sagt, wie lange Licht, die schnellste Rakete und ein Auto bräuchten.",
-					"text@simple": "Klick einen Planeten an, und du fliegst hin. Unterwegs sagt dir ein Feld, wie weit er wirklich weg ist und wie lange eine Rakete bräuchte."
+					"text": "Jeder Planet und jeder Mond: anklicken oder seinen Namen ins Namensfeld eintippen. Unterwegs zieht sich die Kamera zurück und zeigt dir die Strecke zwischen den beiden Welten.",
+					"text@simple": "Klick einen Planeten an, und du fliegst hin. Unterwegs siehst du, wie weit die Planeten auseinander sind."
 				},
 				"trueScale": {
 					"title": "Echter Maßstab",

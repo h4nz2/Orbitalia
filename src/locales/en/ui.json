@@ -666,31 +666,6 @@
 			"sunlightRange": "Sunlight takes between {near} and {far} to get here, depending on where it is on its long orbit",
 			"sunlightRange@simple": "Light from the Sun needs {near} to reach it when it is closest and {far} when it is farthest away"
 		},
-		"flight": {
-			"label": "Flight",
-			"route": "{from} → {to}",
-			"route@simple": "From {from} to {to}",
-			"distance": "{distance} apart on this date",
-			"distance@simple": "That is {distance}",
-			"distance@advanced": "{distance} ({au}) in a straight line on this date",
-			"crossed": "{distance} crossed",
-			"crossed@simple": "So far: {distance}",
-			"question": "How long would the trip take?",
-			"question@simple": "How long would it take to get there?",
-			"question@advanced": "Travel time at a constant speed",
-			"light": "Light",
-			"light@simple": "Light, the fastest thing there is",
-			"light@advanced": "Light ({speed})",
-			"probe": "New Horizons, the fastest launch ever",
-			"probe@simple": "The fastest rocket launch ever",
-			"probe@advanced": "New Horizons' launch speed ({speed})",
-			"car": "A car at {speed}",
-			"car@simple": "A car that never stops",
-			"car@advanced": "A car at {speed}, non-stop",
-			"skip": "Skip",
-			"skip@simple": "Be there now",
-			"close": "Close"
-		},
 		"birthday": {
 			"open": "Your birthday",
 			"openHint": "How old are you on other planets?",
@@ -1721,8 +1696,8 @@
 				"fly": {
 					"title": "Click a planet to fly there",
 					"title@simple": "Click a planet to fly there",
-					"text": "Any planet or moon: click it, or type its name in the name box. On the way, the readout counts the real distance and how long light, the fastest rocket and a car would take.",
-					"text@simple": "Click a planet and you fly there. On the way, a box tells you how far it really is, and how long a rocket would need."
+					"text": "Any planet or moon: click it, or type its name in the name box. On the way the camera pulls back and shows you the gap between the two worlds.",
+					"text@simple": "Click a planet and you fly there. On the way you see how far apart the planets are."
 				},
 				"trueScale": {
 					"title": "True scale",

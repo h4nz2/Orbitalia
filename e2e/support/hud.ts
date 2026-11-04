@@ -177,7 +177,7 @@ export const hudPanels = (page: Page): Promise<Box[]> =>
 		}
 		const hud = document.querySelector("[data-testid=hud]")
 		if (hud !== null) walk(hud)
-		// above the phone's sheet (#60), outside its box: the time chip, a flight's readout
+		// above the phone's sheet (#60), outside its box: the time chip
 		for (const child of document.querySelectorAll(
 			"[data-testid=sheet] [data-sheet-above] > *",
 		)) {

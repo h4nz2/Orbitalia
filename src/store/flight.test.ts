@@ -2,7 +2,6 @@ import { afterEach, describe, expect, it } from "vitest"
 
 import {
 	FLIGHT_PROFILE,
-	flightProgress,
 	flightStep,
 	travelledAt,
 	useFlightStore,
@@ -25,10 +24,7 @@ const arrive = () => {
 
 const departure: Departure = {
 	id: 7,
-	fromId: "earth",
 	toId: "jupiter",
-	distanceKm: 6.3e8,
-	startedAt: 1000,
 	durationMs: 4000,
 	travelStart: 0.1,
 	travelEnd: 0.9,
@@ -75,7 +71,7 @@ describe("which moves are flights", () => {
 	})
 })
 
-describe("finishMove (the readout's Skip)", () => {
+describe("finishMove (a tour's jump)", () => {
 	it("lands the running move at once", () => {
 		store().setFocus("mars")
 		const flying = store().transition!
@@ -117,30 +113,21 @@ describe("the flight record", () => {
 		expect(flights().flight?.arrived).toBe(true)
 	})
 
-	it("goes with any move elsewhere, and with the close button", () => {
+	it("goes with any move elsewhere", () => {
 		flights().depart(departure)
 		flights().transitionStarted(8, { kind: "overview" })
 		expect(flights().flight).toBeNull()
 		flights().depart(departure)
 		flights().transitionStarted(9, { kind: "body", id: "saturn" })
 		expect(flights().flight).toBeNull()
-		flights().depart(departure)
-		flights().dismiss()
-		expect(flights().flight).toBeNull()
 	})
 
-	it("counts the distance crossed with the camera's easing", () => {
+	it("crosses the gap with the camera's easing", () => {
 		expect(travelledAt(0, 0.1, 0.9)).toBe(0)
 		expect(travelledAt(0.1, 0.1, 0.9)).toBe(0)
 		expect(travelledAt(0.5, 0.1, 0.9)).toBeCloseTo(0.5, 12)
 		expect(travelledAt(0.9, 0.1, 0.9)).toBe(1)
 		// slow start, fast middle
 		expect(travelledAt(0.2, 0.1, 0.9)).toBeLessThan(0.05)
-		const flight = { ...departure, arrived: false }
-		expect(flightProgress(flight, 1000)).toBe(0)
-		expect(flightProgress(flight, 3000)).toBeCloseTo(0.5, 12)
-		expect(flightProgress(flight, 9000)).toBe(1)
-		expect(flightProgress({ ...flight, arrived: true }, 1000)).toBe(1)
-		expect(flightProgress({ ...flight, durationMs: 0 }, 1000)).toBe(1)
 	})
 })

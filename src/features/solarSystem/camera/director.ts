@@ -156,7 +156,7 @@ export interface FreeAreaLike {
 	getState(): Pick<FreeAreaState, "area">
 }
 
-/** Where the director records flights for the readout (#18). */
+/** Where the director records flights for the sound (#18). */
 export interface FlightLogLike {
 	getState(): Pick<FlightState, "depart" | "transitionStarted" | "arrive">
 }
@@ -164,7 +164,7 @@ export interface FlightLogLike {
 /** Polar angle (from +Y) the camera rises to during a flight's lift. */
 const LIFT_PHI = degToRad(90 - LIFT_ELEVATION_DEG)
 
-/** With reduced motion asked for, flights jump (the readout still tells the story). */
+/** With reduced motion asked for, flights jump. */
 const prefersReducedMotion = (): boolean =>
 	typeof window !== "undefined" &&
 	typeof window.matchMedia === "function" &&
@@ -538,20 +538,16 @@ export class CameraDirector {
 					this.profile.durationMs?.(this.input) ??
 					transitDurationMs(this.profile.length(this.input)))
 		this.forceJump = false
-		this.logFlight(transition, toIndex, now)
+		this.logFlight(transition, toIndex)
 	}
 
 	/**
-	 * Records a flight between two bodies for the readout (#18): where from
-	 * (the body the pivot was attached to), where to, and the TRUE distance
-	 * between their centres right now. Any other move tells the log, which
-	 * keeps the record only when the move lands on the flight's destination.
+	 * Records a flight between two bodies for the sound (#18): where to, how
+	 * long it takes and when it crosses the gap. Any other move tells the log,
+	 * which keeps the record only when the move lands on the flight's
+	 * destination.
 	 */
-	private logFlight(
-		transition: Transition,
-		toIndex: number,
-		now: number,
-	): void {
+	private logFlight(transition: Transition, toIndex: number): void {
 		const log = this.flights.getState()
 		const fromIndex = this.from.index
 		if (
@@ -562,20 +558,10 @@ export class CameraDirector {
 			log.transitionStarted(transition.id, transition.view)
 			return
 		}
-		const p = this.frame.positionsKm
-		const a = fromIndex * 3
-		const b = toIndex * 3
 		const plan = flightPlan(this.input)
 		log.depart({
 			id: transition.id,
-			fromId: this.frame.bodies[fromIndex].id,
 			toId: this.frame.bodies[toIndex].id,
-			distanceKm: Math.hypot(
-				p[b] - p[a],
-				p[b + 1] - p[a + 1],
-				p[b + 2] - p[a + 2],
-			),
-			startedAt: now,
 			durationMs: this.durationMs,
 			travelStart: plan.travelStart,
 			travelEnd: plan.travelEnd,

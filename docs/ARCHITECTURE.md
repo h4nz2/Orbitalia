@@ -493,7 +493,7 @@ Director (`camera/director.ts`, unit-tested frame by frame):
 - `window.__orbitalia` (`camera/debugHandle.ts`) exposes `camera()` (`director.snapshot()`) and the store for the
   console and e2e tests. Read the camera, never write it.
 
-### Flights: fly between planets (`camera/profiles.ts`, `src/store/flight.ts`, `ui/FlightReadout.tsx`; #18)
+### Flights: fly between planets (`camera/profiles.ts`, `src/store/flight.ts`; #18)
 
 - **When:** `setFocus` from a body, or from a point near another body, requests `profile: FLIGHT_PROFILE` ("fly"); from
   the overview it only descends (`smooth`). Every selection path (click, label, picker search, arrow keys, the centre
@@ -508,21 +508,17 @@ Director (`camera/director.ts`, unit-tested frame by frame):
   the orbits, planets and labels passing beneath are what moves in frame. 2.5–5 s (`FLIGHT_MIN_MS`..`FLIGHT_MAX_MS`,
   2.2 s + 120 ms per e-fold of zoom). Both pivots are re-read every frame (the destination is met where it is on
   arrival); interruptions, hand-over and Escape are the director's as for every move. With `prefers-reduced-motion`
-  a flight jumps (the readout still shows).
-- **Record** (`useFlightStore`, written only by the director): on departure `depart(...)` with `fromId`, `toId`,
-  `distanceKm`, `startedAt`, `durationMs`, `travelStart` and `travelEnd`. `fromId` is the body the pivot was held on
-  (after a mid-flight retarget: the nearer end), `distanceKm` the TRUE centre-to-centre distance at departure. Any
-  other move calls `transitionStarted`: one landing on the flight's destination (a skip, a re-frame) keeps it as
-  arrived, anything else drops it. `flightProgress(flight, now)` / `travelledAt` give the share crossed with the
-  pivot's own easing.
-- **Readout** (`ui/FlightReadout.tsx`, words in `ui/flightFacts.ts`, `solarSystem.flight.*`): stacked above the time
-  controls (`.bottom` in `SolarSystem.module.css`) while the view is the flight's destination. Route, true distance
-  ("896 million km apart on this date", AU at the advanced level), a bar and "… km crossed" counter written to the DOM
-  per animation frame while flying, and the time light (299,792 km/s), New Horizons' launch speed (16.26 km/s, the
-  fastest launch ever) and a car at 100 km/h would take. Skip (`finishMove`: lands the move, stays in a tour) while
-  flying, a close button (`dismiss`) after arrival. The question line hides below 800 px of height and on phones.
+  a flight jumps.
+- **No panel of its own:** the camera's move is what shows the gap. As in any move, Escape leaves the flight and a drag
+  takes over direction and distance while it still arrives. Screen readers hear the destination through the live region
+  as the flight is asked for (`present/flightAnnouncer.ts`); a presenter's command that flies announces in the same tick
+  and the region renders only the last announcement, so its words are the ones read.
+- **Record** (`useFlightStore`, written only by the director), which the flight's sound follows (`sound/events.ts`): on
+  departure `depart(...)` with `toId`, `durationMs`, `travelStart` and `travelEnd`. Any other move calls
+  `transitionStarted`: one landing on the flight's destination (a skip, a re-frame) keeps it as arrived, anything else
+  drops it. `travelledAt` is the pivot's own easing over the crossing.
 - **For tours and the opening (#28, #30):** the step `flightStep("neptune", { holdMs })` is a body view with
-  `profile: FLIGHT_PROFILE`; it flies with the readout like a user's flight, and `durationMs` on the step overrides the
+  `profile: FLIGHT_PROFILE`; it flies like a user's flight, and `durationMs` on the step overrides the
   automatic length. Outside a sequence, `focus(id, { profile: FLIGHT_PROFILE })` does the same. `finishMove()` skips
   the current move of a sequence without ending it (`skip()` still ends the whole sequence).
 
@@ -1215,7 +1211,7 @@ export const useSimFrame = (): SimFrame // throws outside the provider
 - HUD (`ui/`, `dock/`, plain React over the Canvas, selectors only, never the SimFrame; where each piece sits is "HUD
   layout" below): `OverviewButton`, `FocusPicker`, `FrameMenu` (#31), `BodyInfo` (the focused view's card, see Picking),
   `TimeControls` (the time bar; `SpinControl`, the speed presets and Now in its popover), `CentreBadge` and
-  `CentreMarker` (#15), `FlightReadout` (#18, above the time bar), `TeacherBar` (#29, the top-right corner: Present,
+  `CentreMarker` (#15), `TeacherBar` (#29, the top-right corner: Present,
   Share, hide, then `SoundControl` (#32), Help (#43) and `LanguageMenu`; on a phone `MoreMenu` instead, #59), `EntryBar` (Tours, Layers → `SceneToggles`,
   Scale → `ScalePanel` (#21), Tools). Escape, the overview button and a click on empty space call `reset()`; the card's close button only clears the selection and hides the focused body's card (`useHudStore.cardClosedFor`) until another body is focused or selected, the camera staying put. The clock shows the locale's date format inside
   `<time dateTime="2026-09-24T10:35Z">`; warp labels come from the value (`ui/warp.ts` `warpParts`).
@@ -1801,7 +1797,7 @@ unobstructed (`e2e/quietHud.spec.ts` measures it). Every control is at most two 
     phone, all of it is More at the end of the one top row, #59: see "The phone's top row, More and a tap on the
     sky");
   - bottom: the time bar (reverse/pause/play, the date → time travel, the speed button → a popover with Now, the
-    speed presets and the spin), with the flight readout above it and the too-fast / not-to-the-clock notes under it
+    speed presets and the spin), with the too-fast / not-to-the-clock notes under it
     (on an upright phone the time chip above the sheet, #60);
   - bottom right, the entry points (`dock/Dock.tsx` `EntryBar`): Tours (#28), Layers, Scale (named after the
     preset on screen, so the honest word stays visible), Tools (`dock/ToolsMenu.tsx`: light, tonight's sky, spacecraft,
@@ -1824,8 +1820,8 @@ unobstructed (`e2e/quietHud.spec.ts` measures it). Every control is at most two 
   as still; the distance as a multiple of the framing, `CameraDirector.framingDistance()`, so a re-frame the
   interface caused itself, the band of #61 following a phone's sheet (#60), a resize, a turned screen or a scale
   switch, is no camera move and never dims the panel just opened) sets `useHudStore.cameraMoving`; `dock/Dock.tsx` mirrors it to `data-camera="moving"` on `<html>`.
-  The CSS dims every panel to 35 % except `data-steady` ones (the where panel, the time bar, the card's header), the
-  flight readout and the tour card; inside steady panels only `data-dim` parts dim (point of view, speed). Hover or
+  The CSS dims every panel to 35 % except `data-steady` ones (the where panel, the time bar, the card's header) and
+  the tour card; inside steady panels only `data-dim` parts dim (point of view, speed). Hover or
   focus brings a panel back at once; nothing hides, there is no idle timer, and reduced motion drops the fade.
 - **The rule for new features** (also in Conventions and `CLAUDE.md`): put the control behind an existing entry
   point; a panel goes into the dock through Tools; never a new permanent panel. Update the help entry's "how" with
@@ -2010,8 +2006,8 @@ controls share it; More stays a popover at the top. Laptops, tablets and a phone
   keep their grid places everywhere else and nothing remounts as a phone turns (a panel open upright is still open
   on its side). Upright the HUD grid has three rows (the top row, the open row with the free view's badge and the
   opening's captions, the sheet). The sheet: the handle's strip, the content (one thing, with a set height that
-  scrolls inside), and the entry buttons as its bottom row at every height. The time chip (and a flight's readout)
-  float above it (`.time`, `[data-sheet-above]`).
+  scrolls inside), and the entry buttons as its bottom row at every height. The time chip floats above it (`.time`,
+  `[data-sheet-above]`).
 - **The handle has a strip of its own** (#75, `heights.ts` `HANDLE_PX`, `HANDLE_RISE_PX`, `STRIP_PX`,
   `handleSpan`; `Sheet.tsx` sets the strip's height and the handle's top from them): at small and half the 44 px
   target (px like the strip, so projector mode's larger rem, #29, never pushes it over the header; tested with
@@ -2923,8 +2919,8 @@ units of time in `quantity.unit.*`, so a Czech "za 1 sekundu" or a German "dauer
 | `dayVsEarth(days)`, `yearVsEarth(days)`                                            | "A day there lasts as long as 10 days at home", "In one year at home, 4 years go by there"                                         | same, exact                    |
 | `weightVsEarth(ratio)`, `formatWeight(kg)`, `massVsEarth(kg)`, `formatSpeed(km/s)` | "You would weigh twice as much as at home", "more than 100 kg", "weighs as much as more than 100 Earths", "17 km every second"     | exact                          |
 
-A feature with its own exact format branches with `isSimple(i18n)` and calls the helper at `simple` (the flight
-readout, light travel, the compare page, the spacecraft card, the dictionary, the birthday, the scale notice, the
+A feature with its own exact format branches with `isSimple(i18n)` and calls the helper at `simple` (light travel,
+the compare page, the spacecraft card, the dictionary, the birthday, the scale notice, the
 walk's lengths above 100 m in football pitches). A message whose number can pass 100 at `simple` gets an
 `@simple` variant that shows `{n}` (and keeps `{count}` for the plural); the code passes `countArgs(value, i18n)`.
 

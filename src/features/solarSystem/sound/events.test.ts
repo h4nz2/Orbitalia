@@ -46,10 +46,7 @@ afterEach(() => {
 
 const departure: Departure = {
 	id: 7,
-	fromId: "earth",
 	toId: "jupiter",
-	distanceKm: 6.3e8,
-	startedAt: 0,
 	durationMs: 3500,
 	travelStart: 0.2,
 	travelEnd: 0.8,
@@ -61,15 +58,12 @@ describe("flights (#18)", () => {
 		expect(calls).toEqual([["flightStart", "jupiter"]])
 		useFlightStore.getState().arrive(7)
 		expect(names()).toEqual(["flightStart", "flightEnd"])
-		// the readout closing later is silent
-		useFlightStore.getState().dismiss()
-		expect(names()).toEqual(["flightStart", "flightEnd"])
 	})
 
 	it("stops the whoosh on a skip, and starts a new one on a retarget", () => {
 		const flights = useFlightStore.getState()
 		flights.depart(departure)
-		flights.transitionStarted(8, { kind: "body", id: "jupiter" }) // Skip
+		flights.transitionStarted(8, { kind: "body", id: "jupiter" }) // landed at once
 		expect(names()).toEqual(["flightStart", "flightEnd"])
 		calls = []
 		flights.depart({ ...departure, id: 9, toId: "saturn" })

@@ -47,7 +47,6 @@ import { WalkNudge } from "./walk/WalkOffer"
 import { freeCentreId } from "./ui/centre"
 import CentreBadge from "./ui/CentreBadge"
 import CentreMarker from "./ui/CentreMarker"
-import FlightReadout from "./ui/FlightReadout"
 import FocusPicker from "./ui/FocusPicker"
 import OverviewButton from "./ui/OverviewButton"
 import TimeControls from "./ui/TimeControls"
@@ -202,7 +201,6 @@ const SolarSystem = () => {
 					bottom={
 						<div className={classes.bottom}>
 							<div className={classes.time} data-sheet-above>
-								<FlightReadout className={classes.panel} />
 								{/* an upright phone: the time chip in the time bar's place (#60) */}
 								{upright ? (
 									<div

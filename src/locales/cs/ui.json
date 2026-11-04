@@ -666,31 +666,6 @@
 			"sunlightRange": "Sluneční světlo sem letí {near} až {far} – podle toho, kde se právě na své dlouhé dráze nachází",
 			"sunlightRange@simple": "Světlo ze Slunce sem doletí za {near}, když je nejblíž, a za {far}, když je nejdál"
 		},
-		"flight": {
-			"label": "Let",
-			"route": "{from} → {to}",
-			"route@simple": "Cesta: {from} → {to}",
-			"distance": "Vzdálenost k tomuto datu: {distance}",
-			"distance@simple": "Je to {distance}",
-			"distance@advanced": "Přímá vzdálenost k tomuto datu: {distance} ({au})",
-			"crossed": "Uletěno {distance}",
-			"crossed@simple": "Zatím {distance}",
-			"question": "Jak dlouho by cesta trvala?",
-			"question@simple": "Jak dlouho by trvalo se tam dostat?",
-			"question@advanced": "Doba letu při stálé rychlosti",
-			"light": "Světlo",
-			"light@simple": "Světlo, to nejrychlejší, co existuje",
-			"light@advanced": "Světlo ({speed})",
-			"probe": "New Horizons, nejrychlejší start v historii",
-			"probe@simple": "Nejrychlejší start rakety v historii",
-			"probe@advanced": "Startovní rychlost sondy New Horizons ({speed})",
-			"car": "Auto rychlostí {speed}",
-			"car@simple": "Auto, které nikdy nezastaví",
-			"car@advanced": "Auto rychlostí {speed}, bez zastávky",
-			"skip": "Přeskočit",
-			"skip@simple": "Být tam hned",
-			"close": "Zavřít"
-		},
 		"birthday": {
 			"open": "Tvoje narozeniny",
 			"openHint": "Kolik ti je let na jiných planetách?",
@@ -1721,8 +1696,8 @@
 				"fly": {
 					"title": "Klikni na planetu a leť k ní",
 					"title@simple": "Klikni na planetu",
-					"text": "Kterákoli planeta nebo měsíc: klikni na ni, nebo napiš její jméno do pole se jménem. Cestou ukazatel počítá skutečnou vzdálenost a jak dlouho by letělo světlo, nejrychlejší raketa a auto.",
-					"text@simple": "Klikni na planetu a poletíš k ní. Cestou ti okénko řekne, jak daleko opravdu je a jak dlouho by letěla raketa."
+					"text": "Kterákoli planeta nebo měsíc: klikni na ni, nebo napiš její jméno do pole se jménem. Cestou se kamera vzdálí a ukáže ti prázdný prostor mezi oběma světy.",
+					"text@simple": "Klikni na planetu a poletíš k ní. Cestou uvidíš, jak daleko jsou planety od sebe."
 				},
 				"trueScale": {
 					"title": "Skutečné měřítko",

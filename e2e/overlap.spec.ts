@@ -159,10 +159,18 @@ const EXTRA_SCREENS: Screen[] = [
 		moving: true,
 		act: async (page) => {
 			await cameraAtRest(page)
-			await page.keyboard.press("ArrowRight")
-			await page.getByTestId("flight-readout").waitFor()
+			// slowed down, so the look still finds it in the air
+			await page.evaluate(() => {
+				const store = window.__orbitalia!.store.getState()
+				store.select("mars")
+				store.focus("mars", { profile: "fly", durationMs: 90_000 })
+			})
+			await page.waitForFunction(
+				() => window.__orbitalia!.camera().progress !== null,
+			)
 		},
-		still: (page) => page.getByTestId("flight-readout").isVisible(),
+		still: (page) =>
+			page.evaluate(() => window.__orbitalia!.camera().progress !== null),
 	},
 	{
 		name: "the gesture hint",

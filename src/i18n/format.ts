@@ -24,7 +24,6 @@ export type IntlUnit =
 	| "month"
 	| "year"
 	| "kilometer-per-second"
-	| "kilometer-per-hour"
 	| "kilogram"
 	| "celsius"
 
